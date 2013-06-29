@@ -1,0 +1,94 @@
+1
+00:00:00,000 --> 00:00:00,480
+
+2
+00:00:00,480 --> 00:00:02,400
+And the answer is
+that MongoDB is
+
+3
+00:00:02,400 --> 00:00:04,950
+document-oriented, as we've shown.
+
+4
+00:00:04,950 --> 00:00:07,650
+It does not support joins,
+because joins are not
+
+5
+00:00:07,650 --> 00:00:10,480
+horizontally scalable.
+
+6
+00:00:10,480 --> 00:00:11,510
+It is schemaless.
+
+7
+00:00:11,510 --> 00:00:13,990
+And technically, is it
+really schemaless?
+
+8
+00:00:13,990 --> 00:00:15,790
+Each document can have
+its own schema.
+
+9
+00:00:15,790 --> 00:00:19,630
+There are indexes that you
+can associate with each
+
+10
+00:00:19,630 --> 00:00:21,270
+collection, which is
+a form of schema.
+
+11
+00:00:21,270 --> 00:00:23,040
+But we call it schemaless.
+
+12
+00:00:23,040 --> 00:00:25,920
+The schema is, I would say,
+flexible, and the schema is
+
+13
+00:00:25,920 --> 00:00:28,800
+not documented for a particular
+collection.
+
+14
+00:00:28,800 --> 00:00:31,250
+And then finally, MongoDB
+supports SQL.
+
+15
+00:00:31,250 --> 00:00:35,350
+MongoDB does not support SQL,
+and that is specifically
+
+16
+00:00:35,350 --> 00:00:37,100
+missing in the product.
+
+17
+00:00:37,100 --> 00:00:40,080
+It would be difficult to support
+SQL with all of the
+
+18
+00:00:40,080 --> 00:00:43,380
+sub-documents and sub-arrays
+that are offered within the
+
+19
+00:00:43,380 --> 00:00:45,540
+document-oriented model.
+
+20
+00:00:45,540 --> 00:00:46,790
+All right, so that's
+the answer.
+
+21
+00:00:46,790 --> 00:00:47,750
