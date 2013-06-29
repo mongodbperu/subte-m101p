@@ -38,3 +38,10 @@
 Icon?
 ehthumbs.db
 Thumbs.db
+
+# Video formats #
+#################
+*.mp4
+*.webm
+*.3gp
+*.flv
