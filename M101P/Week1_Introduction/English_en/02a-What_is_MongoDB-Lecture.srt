@@ -1,0 +1,323 @@
+1
+00:00:00,000 --> 00:00:00,680
+
+2
+00:00:00,680 --> 00:00:03,810
+All right, so what is MongoDB?
+
+3
+00:00:03,810 --> 00:00:09,090
+MongoDB is a non-relational data
+store for JSON documents.
+
+4
+00:00:09,090 --> 00:00:11,990
+And by non-relational, we mean
+that it doesn't store its data
+
+5
+00:00:11,990 --> 00:00:15,900
+in tables, like a relational
+database does, and it stores
+
+6
+00:00:15,900 --> 00:00:17,192
+JSON documents.
+
+7
+00:00:17,192 --> 00:00:19,840
+Now all databases, of course,
+in the world are represented
+
+8
+00:00:19,840 --> 00:00:22,020
+as big disk-like objects.
+
+9
+00:00:22,020 --> 00:00:24,680
+Even if we store them on
+solid-state disk today, we
+
+10
+00:00:24,680 --> 00:00:27,640
+always make a database
+look like this.
+
+11
+00:00:27,640 --> 00:00:29,840
+So what is JSON?
+
+12
+00:00:29,840 --> 00:00:32,890
+Well, JSON stands for JavaScript
+Object Notation,
+
+13
+00:00:32,890 --> 00:00:34,560
+and looks like this.
+
+14
+00:00:34,560 --> 00:00:36,230
+There's an opening parenthesis,
+and there's a
+
+15
+00:00:36,230 --> 00:00:37,810
+key, and then a value.
+
+16
+00:00:37,810 --> 00:00:40,840
+So here's a very simple JSON
+document, and the JSON
+
+17
+00:00:40,840 --> 00:00:45,600
+document has the key name
+and the value Andrew.
+
+18
+00:00:45,600 --> 00:00:47,275
+You can create a more complex
+JSON document.
+
+19
+00:00:47,275 --> 00:00:49,730
+I'll show you a slightly more
+complex JSON document.
+
+20
+00:00:49,730 --> 00:00:52,420
+Here's a slightly more complex
+JSON document.
+
+21
+00:00:52,420 --> 00:00:55,860
+This JSON document has three
+different keys in it, a, b,
+
+22
+00:00:55,860 --> 00:00:58,365
+and c, and those are my
+attempts at quotes.
+
+23
+00:00:58,365 --> 00:01:02,660
+You see there are colons here,
+and a has the value 4, b has
+
+24
+00:01:02,660 --> 00:01:05,190
+the value 5, and c
+has the value 7.
+
+25
+00:01:05,190 --> 00:01:09,580
+And these JSON documents are
+stored within MongoDB.
+
+26
+00:01:09,580 --> 00:01:11,310
+But what makes it
+non-relational--
+
+27
+00:01:11,310 --> 00:01:14,060
+because you could sort of see
+this similar to a table--
+
+28
+00:01:14,060 --> 00:01:16,630
+is that they can have
+some hierarchy.
+
+29
+00:01:16,630 --> 00:01:17,770
+So let me show you a way--
+
+30
+00:01:17,770 --> 00:01:20,990
+JSON document with some
+hierarchy in it.
+
+31
+00:01:20,990 --> 00:01:23,640
+So this is a JSON document with
+some hierarchy in it.
+
+32
+00:01:23,640 --> 00:01:28,160
+It has a key a, value
+6, key b, value 7.
+
+33
+00:01:28,160 --> 00:01:32,160
+And then a key called fruit,
+which is an array that
+
+34
+00:01:32,160 --> 00:01:36,040
+contains the items apple,
+pear, and banana.
+
+35
+00:01:36,040 --> 00:01:36,980
+And that's new.
+
+36
+00:01:36,980 --> 00:01:38,760
+You could never do that
+in a relational table.
+
+37
+00:01:38,760 --> 00:01:41,470
+So that's what MongoDB is
+at its highest level.
+
+38
+00:01:41,470 --> 00:01:44,200
+It's a JSON document store.
+
+39
+00:01:44,200 --> 00:01:46,650
+And we're going to see that
+that's really useful when
+
+40
+00:01:46,650 --> 00:01:50,250
+writing programs, because you
+may have already seen that
+
+41
+00:01:50,250 --> 00:01:54,450
+this type of data structure
+looks a lot closer to what you
+
+42
+00:01:54,450 --> 00:01:58,650
+have inside your programs than
+relational data does, where
+
+43
+00:01:58,650 --> 00:02:00,760
+relational data-- and you
+guys have all seen
+
+44
+00:02:00,760 --> 00:02:02,330
+this before, probably--
+
+45
+00:02:02,330 --> 00:02:06,470
+is a series of tables where
+there are column names along
+
+46
+00:02:06,470 --> 00:02:08,750
+the top and then rows of data.
+
+47
+00:02:08,750 --> 00:02:12,020
+This doesn't quite match as well
+with what you typically
+
+48
+00:02:12,020 --> 00:02:13,620
+do inside programs.
+
+49
+00:02:13,620 --> 00:02:16,830
+And this fundamental fact that
+MongoDB stores documents is
+
+50
+00:02:16,830 --> 00:02:20,330
+what makes it so easy
+to program in.
+
+51
+00:02:20,330 --> 00:02:23,440
+Now there's another aspect of
+MongoDB that is interesting,
+
+52
+00:02:23,440 --> 00:02:26,200
+which is that it's
+also schemaless.
+
+53
+00:02:26,200 --> 00:02:27,715
+What does that mean?
+
+54
+00:02:27,715 --> 00:02:31,290
+Well, "schemaless" means that
+two documents don't need to
+
+55
+00:02:31,290 --> 00:02:32,250
+have the same schema.
+
+56
+00:02:32,250 --> 00:02:35,420
+So you could store something in
+a collection that has the
+
+57
+00:02:35,420 --> 00:02:37,780
+values a, and b.
+
+58
+00:02:37,780 --> 00:02:41,310
+And you can see here I've left
+off the quotes on a and b,
+
+59
+00:02:41,310 --> 00:02:43,250
+because they're not always
+needed, although it's
+
+60
+00:02:43,250 --> 00:02:44,570
+safer to have them.
+
+61
+00:02:44,570 --> 00:02:46,120
+And you could have another
+document in the same
+
+62
+00:02:46,120 --> 00:02:52,021
+collection that has the
+values a, b, and c.
+
+63
+00:02:52,021 --> 00:02:53,750
+OK, it's time for a quiz.
+
+64
+00:02:53,750 --> 00:02:55,000
+Which of the following
+statements
+
+65
+00:02:55,000 --> 00:02:56,890
+are true about MongoDB?
+
+66
+00:02:56,890 --> 00:02:58,670
+MongoDB is document-oriented.
+
+67
+00:02:58,670 --> 00:03:00,660
+MongoDB supports joins.
+
+68
+00:03:00,660 --> 00:03:02,240
+MongoDB is schemaless.
+
+69
+00:03:02,240 --> 00:03:03,740
+And MongoDB supports SQL.
+
+70
+00:03:03,740 --> 00:03:04,990
