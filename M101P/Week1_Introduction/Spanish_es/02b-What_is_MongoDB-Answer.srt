@@ -3,45 +3,45 @@
 
 2
 00:00:00,480 --> 00:00:02,400
-And the answer is
-that MongoDB is
+Y la respuesta es
+que MongoDB es
 
 3
 00:00:02,400 --> 00:00:04,950
-document-oriented, as we've shown.
+orientado a documentos, como te mostramos.
 
 4
 00:00:04,950 --> 00:00:07,650
-It does not support joins,
-because joins are not
+Y no soporta relaciones,
+porque éstas no son
 
 5
 00:00:07,650 --> 00:00:10,480
-horizontally scalable.
+horizontalmente escalables.
 
 6
 00:00:10,480 --> 00:00:11,510
-It is schemaless.
+Es schemaless.
 
 7
 00:00:11,510 --> 00:00:13,990
-And technically, is it
-really schemaless?
+Y técnicamente, ¿Es
+realmente schemaless?
 
 8
 00:00:13,990 --> 00:00:15,790
-Each document can have
-its own schema.
+Cada documento puede tener
+su propio esquema.
 
 9
 00:00:15,790 --> 00:00:19,630
-There are indexes that you
-can associate with each
+Hay índices que
+puedes asociar con cada
 
 10
 00:00:19,630 --> 00:00:21,270
-collection, which is
-a form of schema.
+colección, que es
+una forma de esquema.
 
 11
 00:00:21,270 --> 00:00:23,040
@@ -49,46 +49,46 @@ But we call it schemaless.
 
 12
 00:00:23,040 --> 00:00:25,920
-The schema is, I would say,
-flexible, and the schema is
+El esquema es, yo diría,
+flexible, y el esquemas no está
 
 13
 00:00:25,920 --> 00:00:28,800
-not documented for a particular
-collection.
+documentado para una particular
+colección.
 
 14
 00:00:28,800 --> 00:00:31,250
-And then finally, MongoDB
-supports SQL.
+Y finalmente, MongoDB
+soporta SQL.
 
 15
 00:00:31,250 --> 00:00:35,350
-MongoDB does not support SQL,
-and that is specifically
+MongoDB no soporta SQL,
+y que no se encuentra
 
 16
 00:00:35,350 --> 00:00:37,100
-missing in the product.
+específicamente en el producto.
 
 17
 00:00:37,100 --> 00:00:40,080
-It would be difficult to support
-SQL with all of the
+Sería difícil soportar
+SQL con todos los
 
 18
 00:00:40,080 --> 00:00:43,380
-sub-documents and sub-arrays
-that are offered within the
+subdocumentos y subarreglos
+que son ofrecidos con el
 
 19
 00:00:43,380 --> 00:00:45,540
-document-oriented model.
+modelo orientado a documentos.
 
 20
 00:00:45,540 --> 00:00:46,790
-All right, so that's
-the answer.
+Todo bien, ésta
+es la respuesta.
 
 21
 00:00:46,790 --> 00:00:47,750
