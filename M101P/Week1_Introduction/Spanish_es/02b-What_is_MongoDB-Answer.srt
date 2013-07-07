@@ -21,12 +21,12 @@ horizontalmente escalables.
 
 6
 00:00:10,480 --> 00:00:11,510
-Es schemaless.
+Es "schemaless".
 
 7
 00:00:11,510 --> 00:00:13,990
 Y técnicamente, ¿Es
-realmente schemaless?
+realmente "schemaless"?
 
 8
 00:00:13,990 --> 00:00:15,790
@@ -50,12 +50,12 @@ But we call it schemaless.
 12
 00:00:23,040 --> 00:00:25,920
 El esquema es, yo diría,
-flexible, y el esquemas no está
+flexible, y el esquema no está
 
 13
 00:00:25,920 --> 00:00:28,800
-documentado para una particular
-colección.
+documentado para una colección
+en particular.
 
 14
 00:00:28,800 --> 00:00:31,250
@@ -65,11 +65,11 @@ soporta SQL.
 15
 00:00:31,250 --> 00:00:35,350
 MongoDB no soporta SQL,
-y que no se encuentra
+y ha sido específicamente
 
 16
 00:00:35,350 --> 00:00:37,100
-específicamente en el producto.
+excluído del producto.
 
 17
 00:00:37,100 --> 00:00:40,080
@@ -87,7 +87,7 @@ modelo orientado a documentos.
 
 20
 00:00:45,540 --> 00:00:46,790
-Todo bien, ésta
+Bueno, ésta
 es la respuesta.
 
 21

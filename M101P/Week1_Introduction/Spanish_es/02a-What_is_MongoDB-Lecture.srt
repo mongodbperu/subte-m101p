@@ -18,7 +18,7 @@ que no almacena sus datos
 5
 00:00:11,990 --> 00:00:15,900
 en tablas, como lo hace una
-base de datos relacional, y almacena
+base de datos relacional, sino almacena
 
 6
 00:00:15,900 --> 00:00:17,192
@@ -40,12 +40,12 @@ discos de estado sólido hoy en día,
 
 10
 00:00:24,680 --> 00:00:27,640
-siempre hacemos una base de datos
+siempre dibujamos una base de datos
 de esta manera.
 
 11
 00:00:27,640 --> 00:00:29,840
-Ahora ¿Qué es JSON?
+Ahora, ¿qué es JSON?
 
 12
 00:00:29,840 --> 00:00:32,890
@@ -72,8 +72,8 @@ JSON, y el documento JSON
 
 17
 00:00:40,840 --> 00:00:45,600
-tiene la clave name
-y el valor Andrew.
+tiene la clave "name"
+y el valor "Andrew".
 
 18
 00:00:45,600 --> 00:00:47,275
@@ -93,7 +93,7 @@ más complejo.
 21
 00:00:52,420 --> 00:00:55,860
 Este documento JSON tiene tres
-diferentes claves en él, a, b,
+diferentes claves, a, b,
 
 22
 00:00:55,860 --> 00:00:58,365
@@ -151,7 +151,7 @@ Tiene una clave a, valor
 
 33
 00:01:28,160 --> 00:01:32,160
-Y luego una clave llamada fruit,
+Y luego una clave llamada "fruit",
 que es un arreglo que
 
 34
@@ -190,7 +190,7 @@ es posible que hayas visto que
 41
 00:01:50,250 --> 00:01:54,450
 este tipo de estructura de datos
-se parezca mucho más a lo que
+se parece mucho más a lo que
 
 42
 00:01:54,450 --> 00:01:58,650
@@ -218,7 +218,7 @@ filas de datos.
 
 47
 00:02:08,750 --> 00:02:12,020
-Esto no se ajusta exactamente tan bien
+Esto no se ajusta muy bien
 con lo que se hace normalmente
 
 48
@@ -227,13 +227,13 @@ dentro de los programas.
 
 49
 00:02:13,620 --> 00:02:16,830
-Este es un factor fundamental para
-que MongoDB almacene documentos y es
+Y el hecho fundamental que
+MongoDB almacena documentos es
 
 50
 00:02:16,830 --> 00:02:20,330
-que hace más fácil
-programar.
+lo que lo hace tal fácil de
+usar al programar.
 
 51
 00:02:20,330 --> 00:02:23,440
@@ -243,7 +243,7 @@ MongoDB que es interesante,
 52
 00:02:23,440 --> 00:02:26,200
 y es que también
-es schemaless.
+es "schemaless".
 
 53
 00:02:26,200 --> 00:02:27,715
@@ -303,7 +303,7 @@ afirmaciones
 
 65
 00:02:55,000 --> 00:02:56,890
-son verdaderas para MongoDB?
+son verdaderas sobre MongoDB?
 
 66
 00:02:56,890 --> 00:02:58,670
@@ -315,7 +315,7 @@ MongoDB soporta relaciones.
 
 68
 00:03:00,660 --> 00:03:02,240
-MongoDB es schemaless.
+MongoDB es "schemaless".
 
 69
 00:03:02,240 --> 00:03:03,740
