@@ -3,359 +3,366 @@
 
 2
 00:00:00,120 --> 00:00:03,590
-Welcome to 101 MongoDB
-for Developers.
+Bienvenido a M101 MongoDB
+para Desarrolladores.
 
 3
 00:00:03,590 --> 00:00:06,025
-My name is Andrew Erlichson.
+Mi nombre es
+Andrew Erlichson.
 
 4
 00:00:06,025 --> 00:00:08,600
-This is the first
-day of class.
+Este es el primer día de
+clases.
 
 5
 00:00:08,600 --> 00:00:13,150
-This is going to be a seven
-week class on MongoDB
+Será un curso de siete
+semanas acerca del desarrollo
 
 6
 00:00:13,150 --> 00:00:14,270
-development.
+con MongoDB.
 
 7
 00:00:14,270 --> 00:00:17,290
-So we're going to be talking
-about all things MongoDB from
+Así que hablaremos todo
+acerca de MongoDB desde
 
 8
 00:00:17,290 --> 00:00:19,165
-a developer standpoint.
+el punto de vista de un
+desarrollador.
 
 9
 00:00:19,165 --> 00:00:22,190
-In this class, we're going
-to write a blog.
+En este curso, vamos a
+escribir un blog.
 
 10
 00:00:22,190 --> 00:00:23,950
-We're going to give you most
-of the code for that.
+Vamos a darte mucho de código
+para esto.
 
 11
 00:00:23,950 --> 00:00:26,450
-You're going to be doing a bunch
-of small parts of it
+Vas a estar haciendo muchas
+partes de esto
 
 12
 00:00:26,450 --> 00:00:28,390
-attaching it to MongoDB.
+que lo unen a MongoDB.
 
 13
 00:00:28,390 --> 00:00:30,820
-Most folks are familiar
-with the blog.
+La mayoría de gente está
+familiarizada con un blog.
 
 14
 00:00:30,820 --> 00:00:34,070
-And we're going to have you
-write that code, and it's
+Y vamos a tener que escribir
+este código y será
 
 15
 00:00:34,070 --> 00:00:36,300
-going to be Python code.
+en código Python.
 
 16
 00:00:36,300 --> 00:00:39,630
-Python is not a requirement
-for this course.
+Python no es un requisito
+para este curso.
 
 17
 00:00:39,630 --> 00:00:41,900
-If you've never used Python
-before, that's OK.
+Si nunca has usado Python
+antes, está bien.
 
 18
 00:00:41,900 --> 00:00:43,230
-We're going to give you
-most of the code.
+Vamos a darte la mayor parte
+del código.
 
 19
 00:00:43,230 --> 00:00:45,400
-We're going to teach you some
-of the basics of Python.
+Y te enseñaremos algunos
+conceptos básicos de Python.
 
 20
 00:00:45,400 --> 00:00:47,730
-I guess what probably is a
-requirement is that you have
+Supongo que lo que probablemente
+es un requisiro es que tengas
 
 21
 00:00:47,730 --> 00:00:48,870
-some experience with some other
+un poco de experiencia con
+algún otro
 
 22
 00:00:48,870 --> 00:00:50,655
-high-level programming language.
+lenguaje de programación de
+alto nivel.
 
 23
 00:00:50,655 --> 00:00:52,890
-So let's go over some of
-the course logistics.
+Así que vamos a repasar algunos
+temas de la logística del curso.
 
 24
 00:00:52,890 --> 00:00:56,310
-There are going to be video
-lectures, much like this one,
+Habrán clases en vídeo,
+al igual que éste,
 
 25
 00:00:56,310 --> 00:00:58,540
-and you can watch those
-whenever you want.
+y puedes verlos siempre que
+desees.
 
 26
 00:00:58,540 --> 00:01:00,272
-They're on YouTube.
+Están en YouTube.
 
 27
 00:01:00,272 --> 00:01:04,269
-And we're going to probably
-release them on Mondays and
+Y vamos a publicarlos
+probablemente los lunes y
 
 28
 00:01:04,269 --> 00:01:07,020
-then is about two hours
-a week of material.
+son aproximadamente dos horas
+de material por semana.
 
 29
 00:01:07,020 --> 00:01:10,510
-At the end of every video
-lecture, there is going to be
+Al final de todas las clases
+en vídeo, habrá
 
 30
 00:01:10,510 --> 00:01:12,870
-a quiz, well not every one
-but a lot of them have
+un cuestionario, bueno no todos
+pero muchos de ellos tendrán
 
 31
 00:01:12,870 --> 00:01:13,900
-quizzes at the end.
+cuestionarios al final.
 
 32
 00:01:13,900 --> 00:01:16,090
-And those are just little
-learning checks so that you
+Y estos son apenas pequeños
+controles de aprendizaje que
 
 33
 00:01:16,090 --> 00:01:19,070
-can make sure that you
-understand the material.
+aseguran que entiendes el
+material.
 
 34
 00:01:19,070 --> 00:01:22,110
-Each week we're going to have a
-homework assignment for each
+Cada semana vamos a tener una
+tarea para cada una
 
 35
 00:01:22,110 --> 00:01:23,180
-of the seven weeks.
+de las siete semanas.
 
 36
 00:01:23,180 --> 00:01:26,410
-Now, the homework assignments
-are going to be a combination
+Ahora, las tareas van a ser
+una combinación
 
 37
 00:01:26,410 --> 00:01:30,350
-of questions in using the
-quizzing engine and also
+de preguntas en el uso del
+motor y también
 
 38
 00:01:30,350 --> 00:01:33,810
-assignments where you have to
-run MongoDB locally on your
+tareas donde tienes que
+ejecutar MongoDB localmente en tu
 
 39
 00:01:33,810 --> 00:01:37,070
-computer and download some code,
-modify it, maybe write
+computador y descargar un
+código, modificarlo, tal vez escribir
 
 40
 00:01:37,070 --> 00:01:40,280
-some queries, maybe write some
-code in Python to do some
+algunas consultas, tal vez escribir
+algo de código en Python para hacer algunas
 
 41
 00:01:40,280 --> 00:01:42,710
-queries, pretty straightforward
-if we ask you
+consultas, bastante sencillo
+si te pedimos
 
 42
 00:01:42,710 --> 00:01:43,240
-to do that.
+que lo hagas.
 
 43
 00:01:43,240 --> 00:01:45,220
-You'll be able to use whatever
-language you want for these
+Tú serás capaz de usar el
+lenguaje que quieras para estas
 
 44
 00:01:45,220 --> 00:01:49,080
-assignments, not necessarily in
-Python, because we won't be
+tareas, no necesariamente en
+Python, porque no vamos
 
 45
 00:01:49,080 --> 00:01:49,980
-checking the Python, itself.
+a verificar el código en
+Python.
 
 46
 00:01:49,980 --> 00:01:51,755
-We'll be checking the results.
+Nosotros verificaremos los
+resultados.
 
 47
 00:01:51,755 --> 00:01:55,810
-And then, the final part of
-the course is a final exam
+Y luego, la parte final del
+curso es un examen final
 
 48
 00:01:55,810 --> 00:01:58,160
-that is like a long homework
-assignment.
+que es como una tarea más
+grande.
 
 49
 00:01:58,160 --> 00:02:00,830
-It's going to be during the last
-week of class, during the
+Esto será durante la última
+semana de clases, durante la
 
 50
 00:02:00,830 --> 00:02:03,715
-seventh week when there isn't
-going to be any homework.
+sétima semana en donde no
+habrá ninguna tarea.
 
 51
 00:02:03,715 --> 00:02:05,880
-So let's talk about the
-scoring in the class.
+Hablemos acerca de la
+puntuación de la clase.
 
 52
 00:02:05,880 --> 00:02:09,200
-Now, video lectures count
-for 0% of your grade.
+Ahora, las clases en vídeo
+cuentan el 0% de la nota.
 
 53
 00:02:09,200 --> 00:02:12,090
-So you don't actually need to
-watch them, but we think you
+Así que en realidad no necesitas
+verlos, pero creemos que
 
 54
 00:02:12,090 --> 00:02:15,165
-should, because that's the
-whole idea of the class.
+sí debes, porque esa es la
+idea del curso.
 
 55
 00:02:15,165 --> 00:02:18,160
-And then, quizzes are not going
-to count in your grade.
+Y luego, cuestionarios que no
+contarán en tu nota.
 
 56
 00:02:18,160 --> 00:02:19,825
-They're just for your
-own learning,
+Estas son sólo para tu propio
+aprendizaje,
 
 57
 00:02:19,825 --> 00:02:21,430
-because they don't count.
+ya que no cuentan.
 
 58
 00:02:21,430 --> 00:02:24,980
-The homeworks are going to count
-for 50% of your grade,
+Las tareas contarán el 50%
+de tu nota,
 
 59
 00:02:24,980 --> 00:02:29,656
-and the final exam will count
-for 50% of your grade.
+y el examen final contará el
+50% de tu nota.
 
 60
 00:02:29,656 --> 00:02:34,250
-Now, in addition, we're going
-to drop the lowest homework.
+Ahora, adicionalmente, vamos
+a eliminar la tarea con menor nota.
 
 61
 00:02:34,250 --> 00:02:36,625
-So each week, you have a
-homework assignment.
+Así que cada semana, tienes
+una tarea.
 
 62
 00:02:36,625 --> 00:02:39,190
-And we're going to look at those
-weeks and the one where
+Y vamos a ver estas semanas y
+en la que
 
 63
 00:02:39,190 --> 00:02:42,170
-you have the lowest score,
-we'll drop that out.
+tengas menor puntuación,
+la eliminaremos.
 
 64
 00:02:42,170 --> 00:02:46,830
-For students that get a 65% or
-better in the class, we are
+Para los estudiantes que obtengan
+un 65% o más en el curso,
 
 65
 00:02:46,830 --> 00:02:50,795
-going to offer a certificate of
-completion from 10gen that
+les ofreceremos un certificado de
+finalización de 10gen que
 
 66
 00:02:50,795 --> 00:02:53,700
-you successfully completed the
-MongoDB for Developers course.
+han completado satisfactoriamente el
+curso de MongoDB para Desarrolladores.
 
 67
 00:02:53,700 --> 00:02:55,560
-It'll look a lot better
-than this.
+Se verá mucho mejor
+que esto.
 
 68
 00:02:55,560 --> 00:02:59,810
-It'll be a PDF file with some
-validation information so that
+Será un archivo PDF con
+información de validación para
 
 69
 00:02:59,810 --> 00:03:02,475
-you can prove that it's real.
+probar que es real.
 
 70
 00:03:02,475 --> 00:03:04,860
-And you'll probably get that a
-week or two after the course
+Y probablemente la obtendrás
+una o dos semanas después que el curso
 
 71
 00:03:04,860 --> 00:03:06,155
-is completed.
+haya terminado.
 
 72
 00:03:06,155 --> 00:03:06,470
-All right.
+Está bien.
 
 73
 00:03:06,470 --> 00:03:09,510
-So let's do our first quiz.
+Así que vamos a nuestro primer
+cuestionario.
 
 74
 00:03:09,510 --> 00:03:12,840
-What counts toward your final
-grade in this class, quizzes,
+¿Lo que cuenta para la calificación
+final de esta clase son los cuestionarios,
 
 75
 00:03:12,840 --> 00:03:15,730
-homeworks, final exam, or
-class participation?
+tareas, examen final, o
+participación en clase?
 
 76
 00:03:15,730 --> 00:03:16,980
-Check all that apply.
+Marca todas las que apliquen.
 
 77
 00:03:16,980 --> 00:03:17,870
