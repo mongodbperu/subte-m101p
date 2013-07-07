@@ -69,7 +69,7 @@ y ha sido específicamente
 
 16
 00:00:35,350 --> 00:00:37,100
-excluído del producto.
+excluido del producto.
 
 17
 00:00:37,100 --> 00:00:40,080

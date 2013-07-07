@@ -232,7 +232,7 @@ MongoDB almacena documentos es
 
 50
 00:02:16,830 --> 00:02:20,330
-lo que lo hace tal fácil de
+lo que lo hace tan fácil de
 usar al programar.
 
 51
