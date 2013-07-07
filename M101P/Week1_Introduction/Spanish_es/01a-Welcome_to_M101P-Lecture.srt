@@ -13,7 +13,7 @@ Andrew Erlichson.
 
 4
 00:00:06,025 --> 00:00:08,600
-Este es el primer día de
+Éste es el primer día de
 clases.
 
 5
@@ -27,7 +27,7 @@ con MongoDB.
 
 7
 00:00:14,270 --> 00:00:17,290
-Así que hablaremos todo
+Así que hablaremos de todo
 acerca de MongoDB desde
 
 8
@@ -38,30 +38,30 @@ desarrollador.
 9
 00:00:19,165 --> 00:00:22,190
 En este curso, vamos a
-escribir un blog.
+construir un blog.
 
 10
 00:00:22,190 --> 00:00:23,950
-Vamos a darte mucho de código
-para esto.
+Vamos a darte la mayoría
+del código para eso,
 
 11
 00:00:23,950 --> 00:00:26,450
-Vas a estar haciendo muchas
-partes de esto
+pero tú vas a hacer muchas
+de las pequeñas partes
 
 12
 00:00:26,450 --> 00:00:28,390
-que lo unen a MongoDB.
+que lo conectan a MongoDB.
 
 13
 00:00:28,390 --> 00:00:30,820
 La mayoría de gente está
-familiarizada con un blog.
+familiarizada con los blogs.
 
 14
 00:00:30,820 --> 00:00:34,070
-Y vamos a tener que escribir
+Y vamos a hacer que tú escribas
 este código y será
 
 15
@@ -91,7 +91,7 @@ conceptos básicos de Python.
 20
 00:00:45,400 --> 00:00:47,730
 Supongo que lo que probablemente
-es un requisiro es que tengas
+es un requisito es que tengas
 
 21
 00:00:47,730 --> 00:00:48,870
@@ -110,7 +110,7 @@ temas de la logística del curso.
 
 24
 00:00:52,890 --> 00:00:56,310
-Habrán clases en vídeo,
+Habrá clases en vídeo,
 al igual que éste,
 
 25
@@ -139,8 +139,8 @@ en vídeo, habrá
 
 30
 00:01:10,510 --> 00:01:12,870
-un cuestionario, bueno no todos
-pero muchos de ellos tendrán
+un cuestionario. Bueno, no siempre,
+pero muchas de ellas tendrán
 
 31
 00:01:12,870 --> 00:01:13,900
@@ -148,13 +148,13 @@ cuestionarios al final.
 
 32
 00:01:13,900 --> 00:01:16,090
-Y estos son apenas pequeños
+Y éstos son apenas pequeños
 controles de aprendizaje que
 
 33
 00:01:16,090 --> 00:01:19,070
-aseguran que entiendes el
-material.
+te aseguran que estás
+entendiendo el material.
 
 34
 00:01:19,070 --> 00:01:22,110
@@ -173,7 +173,7 @@ una combinación
 37
 00:01:26,410 --> 00:01:30,350
 de preguntas en el uso del
-motor y también
+motor de cuestionarios y también
 
 38
 00:01:30,350 --> 00:01:33,810
@@ -182,8 +182,8 @@ ejecutar MongoDB localmente en tu
 
 39
 00:01:33,810 --> 00:01:37,070
-computador y descargar un
-código, modificarlo, tal vez escribir
+computador y descargar código,
+modificarlo, tal vez escribir
 
 40
 00:01:37,070 --> 00:01:40,280
@@ -192,8 +192,8 @@ algo de código en Python para hacer algunas
 
 41
 00:01:40,280 --> 00:01:42,710
-consultas, bastante sencillo
-si te pedimos
+consultas, pero bastante
+sencillo si te pedimos
 
 42
 00:01:42,710 --> 00:01:43,240
@@ -236,7 +236,7 @@ semana de clases, durante la
 
 50
 00:02:00,830 --> 00:02:03,715
-sétima semana en donde no
+sétima semana para la cual no
 habrá ninguna tarea.
 
 51
@@ -247,12 +247,12 @@ puntuación de la clase.
 52
 00:02:05,880 --> 00:02:09,200
 Ahora, las clases en vídeo
-cuentan el 0% de la nota.
+cuentan para el 0% de la nota.
 
 53
 00:02:09,200 --> 00:02:12,090
 Así que en realidad no necesitas
-verlos, pero creemos que
+verlas, pero creemos que
 
 54
 00:02:12,090 --> 00:02:15,165
@@ -261,12 +261,12 @@ idea del curso.
 
 55
 00:02:15,165 --> 00:02:18,160
-Y luego, cuestionarios que no
-contarán en tu nota.
+Y luego, los cuestionarios no
+contarán para tu nota.
 
 56
 00:02:18,160 --> 00:02:19,825
-Estas son sólo para tu propio
+Éstos son sólo para tu propio
 aprendizaje,
 
 57
@@ -286,7 +286,7 @@ y el examen final contará el
 60
 00:02:29,656 --> 00:02:34,250
 Ahora, adicionalmente, vamos
-a eliminar la tarea con menor nota.
+a eliminar la tarea con la menor nota.
 
 61
 00:02:34,250 --> 00:02:36,625
@@ -295,13 +295,13 @@ una tarea.
 
 62
 00:02:36,625 --> 00:02:39,190
-Y vamos a ver estas semanas y
+Y vamos a ver esas semanas y
 en la que
 
 63
 00:02:39,190 --> 00:02:42,170
 tengas menor puntuación,
-la eliminaremos.
+eliminaremos ésa.
 
 64
 00:02:42,170 --> 00:02:46,830
@@ -315,7 +315,7 @@ finalización de 10gen que
 
 66
 00:02:50,795 --> 00:02:53,700
-han completado satisfactoriamente el
+cerciora que han completado satisfactoriamente el
 curso de MongoDB para Desarrolladores.
 
 67
@@ -335,7 +335,7 @@ probar que es real.
 70
 00:03:02,475 --> 00:03:04,860
 Y probablemente la obtendrás
-una o dos semanas después que el curso
+una o dos semanas después de que el curso
 
 71
 00:03:04,860 --> 00:03:06,155
@@ -357,8 +357,8 @@ final de esta clase son los cuestionarios,
 
 75
 00:03:12,840 --> 00:03:15,730
-tareas, examen final, o
-participación en clase?
+las tareas, el examen final, o
+la participación en clase?
 
 76
 00:03:15,730 --> 00:03:16,980
