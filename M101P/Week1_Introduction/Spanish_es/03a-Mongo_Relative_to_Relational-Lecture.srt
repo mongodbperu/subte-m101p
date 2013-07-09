@@ -3,312 +3,312 @@
 
 2
 00:00:00,190 --> 00:00:03,980
-OK, so where does MongoDB
-fit in the world?
+OK, entonces ¿dónde encaja
+MongoDB en el mundo?
 
 3
 00:00:03,980 --> 00:00:06,840
-If you think about databases and
-data storage in general,
+Si piensas en bases de datos y
+almacenamiento de datos en general,
 
 4
 00:00:06,840 --> 00:00:09,510
-you could think about these two
-axes, one of them being
+podrías pensar en estos dos
+ejes, siendo uno de ellos
 
 5
 00:00:09,510 --> 00:00:11,880
-the scalability and performance
-that is offered by
+la escalabilidad y el rendimiento
+que es ofrecido por
 
 6
 00:00:11,880 --> 00:00:13,050
-the database--
+la base de datos--
 
 7
 00:00:13,050 --> 00:00:15,420
-more being better-- and the
-other being the depth of
+cuanto más mejor-- y siendo el
+otro la profundidad de
 
 8
 00:00:15,420 --> 00:00:17,580
-functionality that the
-database offers.
+la funcionalidad ofrecida
+por la base de datos.
 
 9
 00:00:17,580 --> 00:00:21,330
-So up here in this left-hand
-corner, very scalable but not
+Así que aquí, en esta esquina
+a la izquierda, muy escalables pero
 
 10
 00:00:21,330 --> 00:00:24,030
-having very much functionality,
-are programs
+sin mucha funcionalidad,
+están los programas
 
 11
 00:00:24,030 --> 00:00:28,360
-like Memcached and other general
-key value stores.
+como Memcached y otros almacenes
+clave valor en general.
 
 12
 00:00:28,360 --> 00:00:32,630
-And these programs are really
-scalable and high-performance,
+Y estos programas realmente son
+escalables y tienen alto rendimiento,
 
 13
 00:00:32,630 --> 00:00:35,590
-but they just offer almost
-no functionality.
+pero casi no ofrecen
+funcionalidad.
 
 14
 00:00:35,590 --> 00:00:38,950
-So then on the other end of the
-scale, you've got really
+Entonces en el otro extremo
+de la escala, tienes 
 
 15
 00:00:38,950 --> 00:00:41,310
-rich functionality
-from relational
+una funcionalidad muy rica
+de los sistemas de gestión
 
 16
 00:00:41,310 --> 00:00:43,050
-database management systems.
+de bases de datos relacionales.
 
 17
 00:00:43,050 --> 00:00:46,980
-And these are your Oracles, your
-DB2s, your SQL servers.
+Y éstos son vuestros Oracles,
+DB2s y SQL servers.
 
 18
 00:00:46,980 --> 00:00:52,110
-Now the question is can we get
-somewhere close to this level
+Ahora la cuestión es ¿podemos
+conseguir algo cercano a este nivel
 
 19
 00:00:52,110 --> 00:00:55,610
-of functionality but without
-giving up all the scalability
+de funcionalidad pero sin
+renunciar a toda la escalabilidad
 
 20
 00:00:55,610 --> 00:00:57,230
-and performance we
-had over here?
+y rendimiento que 
+teníamos por aquí?
 
 21
 00:00:57,230 --> 00:01:00,230
-Because relational database
-management systems are not
+Porque los sistemas de gestión de
+bases de datos relacionales no son
 
 22
 00:01:00,230 --> 00:01:02,710
-known for being particularly
-scalable.
+conocidos por ser particularmente
+escalables.
 
 23
 00:01:02,710 --> 00:01:04,540
-They scale up pretty well.
+Escalan verticalmente bastante bien.
 
 24
 00:01:04,540 --> 00:01:07,400
-You can add more and more
-hardware to them to get higher
+Puedes añadir más y más
+hardware para conseguir un mayor
 
 25
 00:01:07,400 --> 00:01:08,940
-performance from
-a single node.
+rendimiento en
+un nodo único.
 
 26
 00:01:08,940 --> 00:01:11,610
-But if you want to scale out
-and use commodity hardware,
+Pero si quieres escalar horizontalmente
+y usar hardware estándar,
 
 27
 00:01:11,610 --> 00:01:13,120
-it's not particularly
-good at that.
+no son particularmente 
+buenos en eso.
 
 28
 00:01:13,120 --> 00:01:16,080
-So MongoDB tries to
-live over here.
+Así que MongoDB intenta
+vivir por aquí.
 
 29
 00:01:16,080 --> 00:01:19,450
-And the idea is to retain
-most, if not all, of the
+Y la idea es mantener
+la mayoría, si no toda, la
 
 30
 00:01:19,450 --> 00:01:22,730
-scalability and performance
-while giving you a lot of
+escalabilidad y el rendimiento
+ofreciendo a la vez un montón de
 
 31
 00:01:22,730 --> 00:01:25,290
-functionality to work with,
-but not quite as much
+funcionalidad con la que trabajar,
+pero no tanta como
 
 32
 00:01:25,290 --> 00:01:27,080
-as you'd get here.
+tendrías por aquí.
 
 33
 00:01:27,080 --> 00:01:30,120
-So what's missing here,
-between here and here?
+Entonces, ¿qué es lo que falta aquí,
+entre esto y esto?
 
 34
 00:01:30,120 --> 00:01:31,910
-Well, there's a few different
-things that are missing.
+Bueno, hay unas cuantas cosas
+diferentes que faltan.
 
 35
 00:01:31,910 --> 00:01:35,590
-One is that MongoDB does
-not support joins.
+Una es que MongoDB
+no soporta joins.
 
 36
 00:01:35,590 --> 00:01:39,130
-Now I talked about MongoDB
-storing documents, and those
+Ya hablé del almacenamiento de 
+documentos en MongoDB, y esos
 
 37
 00:01:39,130 --> 00:01:41,750
-documents, each document is
-stored in a collection.
+documentos, cada documento se 
+almacena en una colección.
 
 38
 00:01:41,750 --> 00:01:46,420
-But if you wanted to do a join
-between two collections, you
+Pero si quisieras hacer un join
+entre dos colecciones, 
 
 39
 00:01:46,420 --> 00:01:48,470
-can't do it within MongoDB.
+no puedes hacerlo dentro de MongoDB.
 
 40
 00:01:48,470 --> 00:01:50,860
-And the reason is joins is one
-of the items that scales
+Y la razón es que los joins son
+uno de los elementos que escalan
 
 41
 00:01:50,860 --> 00:01:53,040
-particularly poorly when
-you try to scale
+particularmente mal cuando
+intentas escalar horizontalmente
 
 42
 00:01:53,040 --> 00:01:54,930
-out to multiple nodes.
+a múltiples nodos.
 
 43
 00:01:54,930 --> 00:01:57,820
-Another piece of functionality
-missing in MongoDB is
+Otra parte de funcionalidad
+que falta en MongoDB son
 
 44
 00:01:57,820 --> 00:01:59,330
-transactions.
+las transacciones.
 
 45
 00:01:59,330 --> 00:02:03,290
-Now that sounds pretty bad,
-but the truth is that you
+Ahora eso suena bastante mal, 
+pero la verdad es que uno 
 
 46
 00:02:03,290 --> 00:02:06,915
-often don't need transactions
-in MongoDB in applications
+a menudo no necesita transacciones 
+en MongoDB en aplicaciones
 
 47
 00:02:06,915 --> 00:02:09,470
-where you would need them
-in a relational system.
+donde las necesitarías en 
+un sistema relacional.
 
 48
 00:02:09,470 --> 00:02:12,300
-And the reason is that in
-MongoDB, the documents are
+Y la razón es que en
+MongoDB los documentos son
 
 49
 00:02:12,300 --> 00:02:15,040
-hierarchical, as I showed
-in the earlier segment.
+jerárquicos, como mostré
+en el vídeo anterior.
 
 50
 00:02:15,040 --> 00:02:17,950
-And you can access those
-documents atomically.
+Y puedes acceder a esos
+documentos de forma atómica.
 
 51
 00:02:17,950 --> 00:02:19,910
-So something that might require
-multiple updates
+Por lo que algo que podría requerir
+múltiples updates
 
 52
 00:02:19,910 --> 00:02:22,880
-within a relational system can
-be handled within a single
+en un sistema relacional se puede
+manejar dentro de una simple
 
 53
 00:02:22,880 --> 00:02:25,930
-atomic transaction within
-a single document.
+transacción atómica en
+un único documento.
 
 54
 00:02:25,930 --> 00:02:28,810
-So what MongoDB does not support
-is transactions across
+Así que lo que MongoDB no soporta
+son las transacciones entre
 
 55
 00:02:28,810 --> 00:02:30,090
-multiple documents.
+múltiples documentos.
 
 56
 00:02:30,090 --> 00:02:32,320
-And the reality is that most
-of the world, you're not on
+Y la realidad es que la mayor 
+parte del mundo no está en
 
 57
 00:02:32,320 --> 00:02:35,140
-the same system, so you often
-need ways to deal with systems
+el mismo sistema, por lo que a menudo 
+necesitas maneras de lidiar con sistemas
 
 58
 00:02:35,140 --> 00:02:38,160
-that are not in the same
-transactional space.
+que no están en el mismo 
+espacio transaccional.
 
 59
 00:02:38,160 --> 00:02:42,100
-OK, it's time for a quiz Let's
-talk about MongoDB relative to
+OK, es hora de hacer un cuestionario.
+Hablemos de MongoDB en comparación con
 
 60
 00:02:42,100 --> 00:02:43,710
-relational databases.
+las bases de datos relacionales.
 
 61
 00:02:43,710 --> 00:02:47,570
-Which features did MongoDB
-omit in order to retain
+¿Qué características omitía MongoDB
+para mantener
 
 62
 00:02:47,570 --> 00:02:49,090
-horizontal scalability?
+la escalabilidad horizontal?
 
 63
 00:02:49,090 --> 00:02:53,480
-Joins, indexes, secondary
-indexes, and transactions
+Joins, índices, índices
+secundarios y transacciones
 
 64
 00:02:53,480 --> 00:02:54,820
-across multiple collections.
+entre múltiples colecciones.
 
 65
 00:02:54,820 --> 00:02:56,650
-So which of these did
-MongoDB omit?
+Así que ¿cuáles de éstas
+omitía MongoDB?
 
 66
 00:02:56,650 --> 00:02:57,910
