@@ -12,7 +12,7 @@ Contribución
 
 Contribuir es muy fácil, sólo debes seguir los siguientes pasos:
 
-- Bifuca o crea un fork de este repositorio en tu cuenta.
+- Bifurca o crea un fork de este repositorio en tu cuenta.
 - Crea un nuevo issue comentando que te harás cargo de la traducción de un
   subtítulo.
 - Crea una rama para realizar los cambios al documento que desees.
