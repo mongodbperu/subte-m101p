@@ -1,0 +1,86 @@
+1
+00:00:00,000 --> 00:00:00,340
+
+2
+00:00:00,340 --> 00:00:00,870
+OK.
+
+3
+00:00:00,870 --> 00:00:02,760
+So of these four expressions,
+only the first
+
+4
+00:00:02,760 --> 00:00:04,360
+one is valid JSON.
+
+5
+00:00:04,360 --> 00:00:07,220
+It's in the standard form with
+the key, and then a colon,
+
+6
+00:00:07,220 --> 00:00:07,910
+then the value.
+
+7
+00:00:07,910 --> 00:00:10,730
+You notice for the second one
+that there are commas between
+
+8
+00:00:10,730 --> 00:00:11,460
+the key and value.
+
+9
+00:00:11,460 --> 00:00:12,350
+That's illegal.
+
+10
+00:00:12,350 --> 00:00:16,239
+For this third one here, there
+are semicolons separating the
+
+11
+00:00:16,239 --> 00:00:17,790
+pairs of keys and values.
+
+12
+00:00:17,790 --> 00:00:19,070
+That's not legal.
+
+13
+00:00:19,070 --> 00:00:21,380
+And in the third one,
+there's actually a
+
+14
+00:00:21,380 --> 00:00:22,380
+couple things wrong.
+
+15
+00:00:22,380 --> 00:00:26,090
+But one is that it starts with
+a regular rounded brace, and
+
+16
+00:00:26,090 --> 00:00:28,420
+then finishes with
+a curly brace.
+
+17
+00:00:28,420 --> 00:00:31,270
+The whole thing needs to be in a
+set of curly braces, and you
+
+18
+00:00:31,270 --> 00:00:33,740
+can see the separaters are also
+wrong, and inconsistent
+
+19
+00:00:33,740 --> 00:00:34,990
+between the keys and value.
+
+20
+00:00:34,990 --> 00:00:36,220

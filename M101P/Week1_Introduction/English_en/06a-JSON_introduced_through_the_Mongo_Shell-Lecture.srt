@@ -1,0 +1,327 @@
+1
+00:00:00,000 --> 00:00:00,390
+
+2
+00:00:00,390 --> 00:00:02,730
+All right, so there's a couple
+more things I wanted to show
+
+3
+00:00:02,730 --> 00:00:05,940
+you about JSON and the Mongo
+shell before we move on to
+
+4
+00:00:05,940 --> 00:00:08,240
+building the rest of our
+first application--
+
+5
+00:00:08,240 --> 00:00:10,010
+our very small application.
+
+6
+00:00:10,010 --> 00:00:13,330
+The first is that as we talked
+about earlier, we can create
+
+7
+00:00:13,330 --> 00:00:15,350
+documents, which have some
+hierarchy in them.
+
+8
+00:00:15,350 --> 00:00:19,160
+So in this one, I'm going to
+create an "a" key, a "b" key,
+
+9
+00:00:19,160 --> 00:00:20,280
+as well as a "c" key.
+
+10
+00:00:20,280 --> 00:00:22,720
+Or I'll just call it fruits
+again, or fruit.
+
+11
+00:00:22,720 --> 00:00:27,360
+And then I'm going to put in
+that array, 'apple,' 'orange,'
+
+12
+00:00:27,360 --> 00:00:30,680
+and 'pear' and close
+the parentheses.
+
+13
+00:00:30,680 --> 00:00:33,060
+I'm going to save that
+into the collection.
+
+14
+00:00:33,060 --> 00:00:36,850
+Now if I do a db.thing.find,
+I'll find
+
+15
+00:00:36,850 --> 00:00:38,250
+my document in there.
+
+16
+00:00:38,250 --> 00:00:41,410
+As you can see, again,
+heterogeneous nature of the
+
+17
+00:00:41,410 --> 00:00:42,460
+collections.
+
+18
+00:00:42,460 --> 00:00:46,930
+So now we have a document with
+"a," "b," and an array,
+
+19
+00:00:46,930 --> 00:00:49,830
+"fruit," with "apple," "orange,"
+and "pear" in it.
+
+20
+00:00:49,830 --> 00:00:52,170
+And it can be nested
+any way you want.
+
+21
+00:00:52,170 --> 00:00:55,500
+You might imagine that if I
+was creating an address
+
+22
+00:00:55,500 --> 00:00:58,810
+record, for instance, I could
+do something like this.
+
+23
+00:00:58,810 --> 00:01:02,940
+With my name is Andrew, and
+my address, I could put a
+
+24
+00:01:02,940 --> 00:01:07,125
+sub-document right in here with
+the street being "elm
+
+25
+00:01:07,125 --> 00:01:12,560
+drive" and the city being "Palo
+Alto," and the zip being
+
+26
+00:01:12,560 --> 00:01:16,400
+94305, which I think
+is Palo Alto's zip.
+
+27
+00:01:16,400 --> 00:01:18,170
+Maybe we need a house number
+there, so we'll do a house
+
+28
+00:01:18,170 --> 00:01:20,590
+number, 34.
+
+29
+00:01:20,590 --> 00:01:23,660
+And I'm going to close that up
+right there, and I'm going to
+
+30
+00:01:23,660 --> 00:01:24,970
+close that up.
+
+31
+00:01:24,970 --> 00:01:25,060
+Ooh--
+
+32
+00:01:25,060 --> 00:01:26,570
+I can see an error already.
+
+33
+00:01:26,570 --> 00:01:29,540
+I can go back in the shell and
+see right there I didn't
+
+34
+00:01:29,540 --> 00:01:31,660
+actually make the whole
+thing a JSON document.
+
+35
+00:01:31,660 --> 00:01:32,910
+So I'm going to put that in.
+
+36
+00:01:32,910 --> 00:01:34,270
+I'm using Emacs.
+
+37
+00:01:34,270 --> 00:01:36,600
+This is a Control-F to go
+forward in the shell.
+
+38
+00:01:36,600 --> 00:01:37,680
+I think that, that's a
+
+39
+00:01:37,680 --> 00:01:39,470
+sub-document within the document.
+
+40
+00:01:39,470 --> 00:01:41,530
+So I need two closing
+parentheses, and then I can
+
+41
+00:01:41,530 --> 00:01:42,160
+close it out.
+
+42
+00:01:42,160 --> 00:01:42,980
+And there we go.
+
+43
+00:01:42,980 --> 00:01:46,910
+And now let's look at
+db.things.find, and let's do
+
+44
+00:01:46,910 --> 00:01:49,106
+it in a pretty way.
+
+45
+00:01:49,106 --> 00:01:51,260
+And there's a little Pretty
+command inside the shell that
+
+46
+00:01:51,260 --> 00:01:53,575
+lets you print them out
+in a pretty way.
+
+47
+00:01:53,575 --> 00:01:55,590
+And you see there, it's actually
+scrolled off the
+
+48
+00:01:55,590 --> 00:01:59,170
+screen, but you can see this
+final document I added has an
+
+49
+00:01:59,170 --> 00:02:01,800
+ID that's been assigned by the
+database, a name of Andrew,
+
+50
+00:02:01,800 --> 00:02:04,770
+and then an address, which
+is itself a sub-document.
+
+51
+00:02:04,770 --> 00:02:06,970
+And this sort of shows you the
+hierarchy that can exist
+
+52
+00:02:06,970 --> 00:02:08,810
+inside MongoDB.
+
+53
+00:02:08,810 --> 00:02:11,210
+And we're going to get to this
+later, but this is really well
+
+54
+00:02:11,210 --> 00:02:14,750
+suited to programming, because
+when you have data structures
+
+55
+00:02:14,750 --> 00:02:16,880
+inside code, this is
+the way your data
+
+56
+00:02:16,880 --> 00:02:17,900
+structures look, right?
+
+57
+00:02:17,900 --> 00:02:19,590
+They've got some hierarchy
+to them.
+
+58
+00:02:19,590 --> 00:02:20,910
+They often have dictionaries.
+
+59
+00:02:20,910 --> 00:02:22,830
+This is really a dictionary,
+if you think
+
+60
+00:02:22,830 --> 00:02:24,750
+about it, within Python.
+
+61
+00:02:24,750 --> 00:02:27,910
+They often have arrays, and you
+can express that directly
+
+62
+00:02:27,910 --> 00:02:30,820
+inside Mongo so there's no
+mismatch between the way the
+
+63
+00:02:30,820 --> 00:02:33,510
+data's expressed inside the
+tables and the way the data is
+
+64
+00:02:33,510 --> 00:02:35,800
+expressed inside your program.
+
+65
+00:02:35,800 --> 00:02:37,850
+All right, let's do a quick
+quiz based on what we just
+
+66
+00:02:37,850 --> 00:02:41,200
+learned and, again, try to
+identify what valid Mongo
+
+67
+00:02:41,200 --> 00:02:43,180
+documents look like.
+
+68
+00:02:43,180 --> 00:02:44,280
+OK, next quiz.
+
+69
+00:02:44,280 --> 00:02:46,790
+Which of the following are
+valid JSON documents?
+
+70
+00:02:46,790 --> 00:02:48,040
+You can check all that apply.
+
+71
+00:02:48,040 --> 00:02:49,250
