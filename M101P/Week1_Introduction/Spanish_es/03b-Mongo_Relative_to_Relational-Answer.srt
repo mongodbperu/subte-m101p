@@ -4,11 +4,11 @@
 2
 00:00:00,250 --> 00:00:03,890
 Y la respuesta es que MongoDB
-omitió deliberadamente los joins,
+omitió deliberadamente las relaciones,
 
 3
 00:00:03,890 --> 00:00:05,460
-porque los joins no
+porque las relaciones no
 son particularmente
 
 4

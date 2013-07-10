@@ -76,7 +76,7 @@ de bases de datos relacionales.
 
 17
 00:00:43,050 --> 00:00:46,980
-Y éstos son vuestros Oracles,
+Y éstos son los Oracles,
 DB2s y SQL servers.
 
 18
@@ -165,7 +165,7 @@ diferentes que faltan.
 35
 00:01:31,910 --> 00:01:35,590
 Una es que MongoDB
-no soporta joins.
+no soporta relaciones.
 
 36
 00:01:35,590 --> 00:01:39,130
@@ -179,7 +179,7 @@ almacena en una colección.
 
 38
 00:01:41,750 --> 00:01:46,420
-Pero si quisieras hacer un join
+Pero si quisieras hacer una relación
 entre dos colecciones, 
 
 39
@@ -188,7 +188,7 @@ no puedes hacerlo dentro de MongoDB.
 
 40
 00:01:48,470 --> 00:01:50,860
-Y la razón es que los joins son
+Y la razón es que las relaciones son
 uno de los elementos que escalan
 
 41
@@ -242,7 +242,7 @@ documentos de forma atómica.
 51
 00:02:17,950 --> 00:02:19,910
 Por lo que algo que podría requerir
-múltiples updates
+múltiples actualizaciones
 
 52
 00:02:19,910 --> 00:02:22,880
@@ -298,7 +298,7 @@ la escalabilidad horizontal?
 
 63
 00:02:49,090 --> 00:02:53,480
-Joins, índices, índices
+Relaciones, índices, índices
 secundarios y transacciones
 
 64
