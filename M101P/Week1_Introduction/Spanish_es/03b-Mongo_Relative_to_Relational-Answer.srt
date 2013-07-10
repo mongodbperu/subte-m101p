@@ -1,10 +1,10 @@
-1
+ï»¿1
 00:00:00,000 --> 00:00:00,250
 
 2
 00:00:00,250 --> 00:00:03,890
 Y la respuesta es que MongoDB
-omitió deliberadamente los joins,
+omitiÃ³ deliberadamente los joins,
 
 3
 00:00:03,890 --> 00:00:05,460
@@ -17,7 +17,7 @@ escalables horizontalmente.
 
 5
 00:00:07,060 --> 00:00:11,010
-Se soportan índices en 
+Se soportan Ã­ndices en 
 MongoDB, y se soportan
 
 6
@@ -32,8 +32,8 @@ horizontal.
 
 8
 00:00:15,920 --> 00:00:20,390
-Se ofrecen índices secundarios,
-por lo que estrictamente según la redacción
+Se ofrecen Ã­ndices secundarios,
+por lo que estrictamente segÃºn la redacciÃ³n
 
 9
 00:00:20,390 --> 00:00:22,240
@@ -42,18 +42,18 @@ se omitieron.
 
 10
 00:00:22,240 --> 00:00:25,770
-Pero para ser honesto, son muy difíciles 
+Pero para ser honesto, son muy difÃ­ciles 
 de implementar bien 
 
 11
 00:00:25,770 --> 00:00:28,490
-a través de un sistema que es 
+a travÃ©s de un sistema que es 
 escalable horizontalmente.
 
 12
 00:00:28,490 --> 00:00:30,750
-Y la última es 
-transacciones en múltiples
+Y la Ãºltima es 
+transacciones en mÃºltiples
 
 13
 00:00:30,750 --> 00:00:31,440
@@ -61,13 +61,13 @@ colecciones.
 
 14
 00:00:31,440 --> 00:00:35,360
-Y son omitidas específicamente
+Y son omitidas especÃ­ficamente
 por MongoDB porque
 
 15
 00:00:35,360 --> 00:00:38,580
-es muy difícil soportar
-transacciones a través de múltiples
+es muy difÃ­cil soportar
+transacciones a travÃ©s de mÃºltiples
 
 16
 00:00:38,580 --> 00:00:41,760

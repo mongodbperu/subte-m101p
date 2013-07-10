@@ -1,9 +1,9 @@
-1
+ï»¿1
 00:00:00,000 --> 00:00:00,190
 
 2
 00:00:00,190 --> 00:00:03,980
-OK, entonces ¿dónde encaja
+OK, entonces Â¿dÃ³nde encaja
 MongoDB en el mundo?
 
 3
@@ -13,7 +13,7 @@ almacenamiento de datos en general,
 
 4
 00:00:06,840 --> 00:00:09,510
-podrías pensar en estos dos
+podrÃ­as pensar en estos dos
 ejes, siendo uno de ellos
 
 5
@@ -27,7 +27,7 @@ la base de datos--
 
 7
 00:00:13,050 --> 00:00:15,420
-cuanto más mejor-- y siendo el
+cuanto mÃ¡s mejor-- y siendo el
 otro la profundidad de
 
 8
@@ -37,13 +37,13 @@ por la base de datos.
 
 9
 00:00:17,580 --> 00:00:21,330
-Así que aquí, en esta esquina
+AsÃ­ que aquÃ­, en esta esquina
 a la izquierda, muy escalables pero
 
 10
 00:00:21,330 --> 00:00:24,030
 sin mucha funcionalidad,
-están los programas
+estÃ¡n los programas
 
 11
 00:00:24,030 --> 00:00:28,360
@@ -68,7 +68,7 @@ de la escala, tienes
 15
 00:00:38,950 --> 00:00:41,310
 una funcionalidad muy rica
-de los sistemas de gestión
+de los sistemas de gestiÃ³n
 
 16
 00:00:41,310 --> 00:00:43,050
@@ -76,12 +76,12 @@ de bases de datos relacionales.
 
 17
 00:00:43,050 --> 00:00:46,980
-Y éstos son vuestros Oracles,
+Y Ã©stos son vuestros Oracles,
 DB2s y SQL servers.
 
 18
 00:00:46,980 --> 00:00:52,110
-Ahora la cuestión es ¿podemos
+Ahora la cuestiÃ³n es Â¿podemos
 conseguir algo cercano a este nivel
 
 19
@@ -92,11 +92,11 @@ renunciar a toda la escalabilidad
 20
 00:00:55,610 --> 00:00:57,230
 y rendimiento que 
-teníamos por aquí?
+tenÃ­amos por aquÃ­?
 
 21
 00:00:57,230 --> 00:01:00,230
-Porque los sistemas de gestión de
+Porque los sistemas de gestiÃ³n de
 bases de datos relacionales no son
 
 22
@@ -110,18 +110,18 @@ Escalan verticalmente bastante bien.
 
 24
 00:01:04,540 --> 00:01:07,400
-Puedes añadir más y más
+Puedes aÃ±adir mÃ¡s y mÃ¡s
 hardware para conseguir un mayor
 
 25
 00:01:07,400 --> 00:01:08,940
 rendimiento en
-un nodo único.
+un nodo Ãºnico.
 
 26
 00:01:08,940 --> 00:01:11,610
 Pero si quieres escalar horizontalmente
-y usar hardware estándar,
+y usar hardware estÃ¡ndar,
 
 27
 00:01:11,610 --> 00:01:13,120
@@ -130,18 +130,18 @@ buenos en eso.
 
 28
 00:01:13,120 --> 00:01:16,080
-Así que MongoDB intenta
-vivir por aquí.
+AsÃ­ que MongoDB intenta
+vivir por aquÃ­.
 
 29
 00:01:16,080 --> 00:01:19,450
 Y la idea es mantener
-la mayoría, si no toda, la
+la mayorÃ­a, si no toda, la
 
 30
 00:01:19,450 --> 00:01:22,730
 escalabilidad y el rendimiento
-ofreciendo a la vez un montón de
+ofreciendo a la vez un montÃ³n de
 
 31
 00:01:22,730 --> 00:01:25,290
@@ -150,11 +150,11 @@ pero no tanta como
 
 32
 00:01:25,290 --> 00:01:27,080
-tendrías por aquí.
+tendrÃ­as por aquÃ­.
 
 33
 00:01:27,080 --> 00:01:30,120
-Entonces, ¿qué es lo que falta aquí,
+Entonces, Â¿quÃ© es lo que falta aquÃ­,
 entre esto y esto?
 
 34
@@ -169,13 +169,13 @@ no soporta joins.
 
 36
 00:01:35,590 --> 00:01:39,130
-Ya hablé del almacenamiento de 
+Ya hablÃ© del almacenamiento de 
 documentos en MongoDB, y esos
 
 37
 00:01:39,130 --> 00:01:41,750
 documentos, cada documento se 
-almacena en una colección.
+almacena en una colecciÃ³n.
 
 38
 00:01:41,750 --> 00:01:46,420
@@ -188,7 +188,7 @@ no puedes hacerlo dentro de MongoDB.
 
 40
 00:01:48,470 --> 00:01:50,860
-Y la razón es que los joins son
+Y la razÃ³n es que los joins son
 uno de los elementos que escalan
 
 41
@@ -198,7 +198,7 @@ intentas escalar horizontalmente
 
 42
 00:01:53,040 --> 00:01:54,930
-a múltiples nodos.
+a mÃºltiples nodos.
 
 43
 00:01:54,930 --> 00:01:57,820
@@ -221,28 +221,28 @@ en MongoDB en aplicaciones
 
 47
 00:02:06,915 --> 00:02:09,470
-donde las necesitarías en 
+donde las necesitarÃ­as en 
 un sistema relacional.
 
 48
 00:02:09,470 --> 00:02:12,300
-Y la razón es que en
+Y la razÃ³n es que en
 MongoDB los documentos son
 
 49
 00:02:12,300 --> 00:02:15,040
-jerárquicos, como mostré
-en el vídeo anterior.
+jerÃ¡rquicos, como mostrÃ©
+en el vÃ­deo anterior.
 
 50
 00:02:15,040 --> 00:02:17,950
 Y puedes acceder a esos
-documentos de forma atómica.
+documentos de forma atÃ³mica.
 
 51
 00:02:17,950 --> 00:02:19,910
-Por lo que algo que podría requerir
-múltiples updates
+Por lo que algo que podrÃ­a requerir
+mÃºltiples updates
 
 52
 00:02:19,910 --> 00:02:22,880
@@ -251,22 +251,22 @@ manejar dentro de una simple
 
 53
 00:02:22,880 --> 00:02:25,930
-transacción atómica en
-un único documento.
+transacciÃ³n atÃ³mica en
+un Ãºnico documento.
 
 54
 00:02:25,930 --> 00:02:28,810
-Así que lo que MongoDB no soporta
+AsÃ­ que lo que MongoDB no soporta
 son las transacciones entre
 
 55
 00:02:28,810 --> 00:02:30,090
-múltiples documentos.
+mÃºltiples documentos.
 
 56
 00:02:30,090 --> 00:02:32,320
 Y la realidad es que la mayor 
-parte del mundo no está en
+parte del mundo no estÃ¡ en
 
 57
 00:02:32,320 --> 00:02:35,140
@@ -275,13 +275,13 @@ necesitas maneras de lidiar con sistemas
 
 58
 00:02:35,140 --> 00:02:38,160
-que no están en el mismo 
+que no estÃ¡n en el mismo 
 espacio transaccional.
 
 59
 00:02:38,160 --> 00:02:42,100
 OK, es hora de hacer un cuestionario.
-Hablemos de MongoDB en comparación con
+Hablemos de MongoDB en comparaciÃ³n con
 
 60
 00:02:42,100 --> 00:02:43,710
@@ -289,7 +289,7 @@ las bases de datos relacionales.
 
 61
 00:02:43,710 --> 00:02:47,570
-¿Qué características omitía MongoDB
+Â¿QuÃ© caracterÃ­sticas omitÃ­a MongoDB
 para mantener
 
 62
@@ -298,17 +298,17 @@ la escalabilidad horizontal?
 
 63
 00:02:49,090 --> 00:02:53,480
-Joins, índices, índices
+Joins, Ã­ndices, Ã­ndices
 secundarios y transacciones
 
 64
 00:02:53,480 --> 00:02:54,820
-entre múltiples colecciones.
+entre mÃºltiples colecciones.
 
 65
 00:02:54,820 --> 00:02:56,650
-Así que ¿cuáles de éstas
-omitía MongoDB?
+AsÃ­ que Â¿cuÃ¡les de Ã©stas
+omitÃ­a MongoDB?
 
 66
 00:02:56,650 --> 00:02:57,910
