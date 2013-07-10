@@ -3,76 +3,76 @@
 
 2
 00:00:00,250 --> 00:00:03,890
-And the answer is that MongoDB
-deliberately omitted joins,
+Y la respuesta es que MongoDB
+omitió deliberadamente los joins,
 
 3
 00:00:03,890 --> 00:00:05,460
-because joins are
-not particularly
+porque los joins no
+son particularmente
 
 4
 00:00:05,460 --> 00:00:07,060
-horizontally scalable.
+escalables horizontalmente.
 
 5
 00:00:07,060 --> 00:00:11,010
-Indexes are supported within
-MongoDB, and they're supported
+Se soportan índices en 
+MongoDB, y se soportan
 
 6
 00:00:11,010 --> 00:00:13,970
-because they're very necessary
-for good performance and do
+porque son muy necesarios
+para un buen rendimiento y
 
 7
 00:00:13,970 --> 00:00:15,920
-not prevent horizontal
-scalability.
+no impiden la escalabilidad
+horizontal.
 
 8
 00:00:15,920 --> 00:00:20,390
-Secondary indexes are offered,
-so strictly by the wording of
+Se ofrecen índices secundarios,
+por lo que estrictamente según la redacción
 
 9
 00:00:20,390 --> 00:00:22,240
-the question, they
-were not omitted.
+de la pregunta, no
+se omitieron.
 
 10
 00:00:22,240 --> 00:00:25,770
-But to be honest, they're very
-challenging to perform well
+Pero para ser honesto, son muy difíciles 
+de implementar bien 
 
 11
 00:00:25,770 --> 00:00:28,490
-across a system which is
-horizontally scalable.
+a través de un sistema que es 
+escalable horizontalmente.
 
 12
 00:00:28,490 --> 00:00:30,750
-And the final one is
-transactions across multiple
+Y la última es 
+transacciones en múltiples
 
 13
 00:00:30,750 --> 00:00:31,440
-collections.
+colecciones.
 
 14
 00:00:31,440 --> 00:00:35,360
-And that is specifically omitted
-by MongoDB because it
+Y son omitidas específicamente
+por MongoDB porque
 
 15
 00:00:35,360 --> 00:00:38,580
-is very difficult to support
-transactions across multiple
+es muy difícil soportar
+transacciones a través de múltiples
 
 16
 00:00:38,580 --> 00:00:41,760
-collections across a system
-which is horizontally scaled.
+colecciones en un sistema
+que es escalado horizontalmente.
 
 17
 00:00:41,760 --> 00:00:43,010
