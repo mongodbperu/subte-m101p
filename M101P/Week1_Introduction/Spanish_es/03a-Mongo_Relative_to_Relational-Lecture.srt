@@ -27,7 +27,7 @@ la base de datos--
 
 7
 00:00:13,050 --> 00:00:15,420
-cuanto más mejor-- y siendo el
+cuanto más, mejor-- y siendo el
 otro la profundidad de
 
 8
@@ -48,7 +48,7 @@ están los programas
 11
 00:00:24,030 --> 00:00:28,360
 como Memcached y otros almacenes
-clave valor en general.
+clave / valor en general.
 
 12
 00:00:28,360 --> 00:00:32,630
@@ -136,7 +136,7 @@ vivir por aquí.
 29
 00:01:16,080 --> 00:01:19,450
 Y la idea es mantener
-la mayoría, si no toda, la
+la mayoría de, si no toda la
 
 30
 00:01:19,450 --> 00:01:22,730
@@ -146,7 +146,7 @@ ofreciendo a la vez un montón de
 31
 00:01:22,730 --> 00:01:25,290
 funcionalidad con la que trabajar,
-pero no tanta como
+pero no tanta como la que
 
 32
 00:01:25,290 --> 00:01:27,080
@@ -289,7 +289,7 @@ las bases de datos relacionales.
 
 61
 00:02:43,710 --> 00:02:47,570
-¿Qué características omitía MongoDB
+¿Qué características omite MongoDB
 para mantener
 
 62
@@ -308,7 +308,7 @@ entre múltiples colecciones.
 65
 00:02:54,820 --> 00:02:56,650
 Así que ¿cuáles de éstas
-omitía MongoDB?
+omite MongoDB?
 
 66
 00:02:56,650 --> 00:02:57,910

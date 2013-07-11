@@ -4,7 +4,7 @@
 2
 00:00:00,250 --> 00:00:03,890
 Y la respuesta es que MongoDB
-omitió deliberadamente las relaciones,
+omite deliberadamente las relaciones,
 
 3
 00:00:03,890 --> 00:00:05,460
@@ -38,7 +38,7 @@ por lo que estrictamente según la redacción
 9
 00:00:20,390 --> 00:00:22,240
 de la pregunta, no
-se omitieron.
+se omiten.
 
 10
 00:00:22,240 --> 00:00:25,770
