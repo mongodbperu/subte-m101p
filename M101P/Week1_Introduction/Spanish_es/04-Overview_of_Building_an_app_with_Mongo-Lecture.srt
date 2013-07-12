@@ -12,13 +12,13 @@ en qué consiste MongoDB.
 
 4
 00:00:04,600 --> 00:00:07,810
-Y ahora quiero llevaros de principio a 
+Y ahora quiero llevarte de principio a 
 fin durante la construcción de una
 
 5
 00:00:07,810 --> 00:00:11,280
 pequeña aplicación en MongoDB y 
-enseñaros cómo funciona.
+enseñarte cómo funciona.
 
 6
 00:00:11,280 --> 00:00:16,490
@@ -66,7 +66,7 @@ en un servidor HTTP --
 
 15
 00:00:39,680 --> 00:00:41,850
-y recordad, vamos a intentar
+y recuerda, vamos a intentar
 construir un pequeño blog --
 
 16
@@ -148,7 +148,7 @@ Notación de Objetos JavaScript,
 
 32
 00:01:26,150 --> 00:01:30,290
-me gustaría enseñaros el shell
+me gustaría enseñarte el shell
 Mongo y luego unos cuantos
 
 33
