@@ -120,7 +120,7 @@ de un portátil --
 26
 00:01:08,760 --> 00:01:10,520
 y ese ordenador está conectado
-a través de
+a través de la
 
 27
 00:01:10,520 --> 00:01:12,750
