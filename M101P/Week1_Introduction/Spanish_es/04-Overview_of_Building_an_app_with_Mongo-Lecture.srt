@@ -143,8 +143,8 @@ cómo funciona.
 
 31
 00:01:22,560 --> 00:01:26,150
-Así que para dar una idea de la 
-Notación de Objetos JavaScript,
+Así que para dar una idea de  
+JavaScript Object Notation,
 
 32
 00:01:26,150 --> 00:01:30,290
