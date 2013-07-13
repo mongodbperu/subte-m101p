@@ -3,84 +3,84 @@
 
 2
 00:00:00,340 --> 00:00:00,870
-OK.
+De acuerdo.
 
 3
 00:00:00,870 --> 00:00:02,760
-So of these four expressions,
-only the first
+De estas cuatro expresiones,
+sólo el primero
 
 4
 00:00:02,760 --> 00:00:04,360
-one is valid JSON.
+es un JSON válido.
 
 5
 00:00:04,360 --> 00:00:07,220
-It's in the standard form with
-the key, and then a colon,
+Está en la forma estándar con
+la clave, y luego dos puntos,
 
 6
 00:00:07,220 --> 00:00:07,910
-then the value.
+luego el valor.
 
 7
 00:00:07,910 --> 00:00:10,730
-You notice for the second one
-that there are commas between
+Nota que para el segundo
+hay comas entre
 
 8
 00:00:10,730 --> 00:00:11,460
-the key and value.
+la clave y el valor.
 
 9
 00:00:11,460 --> 00:00:12,350
-That's illegal.
+Esto es ilegal.
 
 10
 00:00:12,350 --> 00:00:16,239
-For this third one here, there
-are semicolons separating the
+Para el tercero aquí, hay
+puntos y comas separando los
 
 11
 00:00:16,239 --> 00:00:17,790
-pairs of keys and values.
+pares de claves y valores.
 
 12
 00:00:17,790 --> 00:00:19,070
-That's not legal.
+Esto no es legal.
 
 13
 00:00:19,070 --> 00:00:21,380
-And in the third one,
-there's actually a
+Y en el tercero,
+en realidad hay un
 
 14
 00:00:21,380 --> 00:00:22,380
-couple things wrong.
+par de cosas mal.
 
 15
 00:00:22,380 --> 00:00:26,090
-But one is that it starts with
-a regular rounded brace, and
+Pero es que empieza con una
+paréntesis, y
 
 16
 00:00:26,090 --> 00:00:28,420
-then finishes with
-a curly brace.
+luego termina con
+un corchete.
 
 17
 00:00:28,420 --> 00:00:31,270
-The whole thing needs to be in a
-set of curly braces, and you
+Todo debe estar en un conjunto
+de corchetes, y
 
 18
 00:00:31,270 --> 00:00:33,740
-can see the separaters are also
-wrong, and inconsistent
+puedes ver que los separadores son
+también errados e inconsistentes
 
 19
 00:00:33,740 --> 00:00:34,990
-between the keys and value.
+entre las claves y valores.
 
 20
 00:00:34,990 --> 00:00:36,220
