@@ -10,13 +10,13 @@ Seguimiento
 
 1. Week 1 - Introduction
 
-   - [x] Welcome to M101P
-   - [x] What is MongoDB
-   - [x] Mongo Relative to Relational
-   - [x] Overwiew of Building an app with Mongo
-   - [ ] Quick introduction to the Mongo Shell
-   - [ ] JSON introduced through the Mongo Shell
-   - [ ] Installing MongoDB (mac)
+    - [x] Welcome to M101P #3
+    - [x] What is MongoDB #5
+    - [x] Mongo Relative to Relational #7
+    - [x] Overwiew of Building an app with Mongo #10
+    - [ ] Quick introduction to the Mongo Shell #12
+    - [ ] JSON introduced through the Mongo Shell #14
+    - [ ] Installing MongoDB (mac)
 
 
 Contribución
