@@ -1,0 +1,718 @@
+1
+00:00:00,000 --> 00:00:01,830
+
+2
+00:00:01,830 --> 00:00:05,090
+We're going to talk about
+installing MongoDB on Windows,
+
+3
+00:00:05,090 --> 00:00:07,530
+so let's just go do that.
+
+4
+00:00:07,530 --> 00:00:09,960
+So we're going to go over to
+the MongoDB site and just
+
+5
+00:00:09,960 --> 00:00:13,780
+download the tarball, or the
+zip file, if you will, with
+
+6
+00:00:13,780 --> 00:00:15,240
+the MongoDB binaries.
+
+7
+00:00:15,240 --> 00:00:18,910
+The MongoDB site to downloads,
+and then we'll pick which
+
+8
+00:00:18,910 --> 00:00:20,340
+downloads we want.
+
+9
+00:00:20,340 --> 00:00:22,320
+You'll see different
+versions here.
+
+10
+00:00:22,320 --> 00:00:24,960
+Generally, you're going to want
+the first one, which will
+
+11
+00:00:24,960 --> 00:00:26,680
+be the current production
+release.
+
+12
+00:00:26,680 --> 00:00:28,470
+The even numbers for
+the middle digit
+
+13
+00:00:28,470 --> 00:00:30,040
+are the stable releases.
+
+14
+00:00:30,040 --> 00:00:33,220
+The odd numbers for the middle
+digit are the dev branch.
+
+15
+00:00:33,220 --> 00:00:36,550
+And here we see the release
+candidate for the next stable
+
+16
+00:00:36,550 --> 00:00:38,860
+release, which will be 2.2.1.
+
+17
+00:00:38,860 --> 00:00:40,720
+But that's still a release
+candidate, so
+
+18
+00:00:40,720 --> 00:00:43,630
+we'll stick to 2.2.0.
+
+19
+00:00:43,630 --> 00:00:45,380
+Over here are the
+Windows builds.
+
+20
+00:00:45,380 --> 00:00:49,310
+Generally, you always want
+to get the 64-bit build.
+
+21
+00:00:49,310 --> 00:00:53,250
+In MongoDB, the storage engine
+uses memory map files, so for
+
+22
+00:00:53,250 --> 00:00:55,990
+larger databases, you need
+the 64-bit binary.
+
+23
+00:00:55,990 --> 00:00:57,840
+So always default to that.
+
+24
+00:00:57,840 --> 00:00:59,630
+Use that in production.
+
+25
+00:00:59,630 --> 00:01:02,670
+If your desktop development
+machine is
+
+26
+00:01:02,670 --> 00:01:05,330
+64-bit, use this version.
+
+27
+00:01:05,330 --> 00:01:08,310
+Because if that were the case,
+both of these will work on
+
+28
+00:01:08,310 --> 00:01:10,020
+your desktop, but you'll want
+to use this and just be
+
+29
+00:01:10,020 --> 00:01:11,170
+[? cluster ?] reduction.
+
+30
+00:01:11,170 --> 00:01:13,250
+If you do have 32-bit operating
+system on your
+
+31
+00:01:13,250 --> 00:01:14,680
+desktop, that's OK.
+
+32
+00:01:14,680 --> 00:01:16,360
+For development, this
+will be fine.
+
+33
+00:01:16,360 --> 00:01:18,530
+So grab whichever of these
+is appropriate.
+
+34
+00:01:18,530 --> 00:01:21,050
+And of these two, you'll see
+there's a special build here
+
+35
+00:01:21,050 --> 00:01:23,130
+under 64-bit called 2008+.
+
+36
+00:01:23,130 --> 00:01:25,730
+If you look at the bottom of
+the page by the asterisk,
+
+37
+00:01:25,730 --> 00:01:27,870
+it'll give you more details
+on this release.
+
+38
+00:01:27,870 --> 00:01:29,620
+If you click, it's going
+to download it.
+
+39
+00:01:29,620 --> 00:01:32,590
+This release uses a new API
+in Windows called Slim
+
+40
+00:01:32,590 --> 00:01:34,820
+Reader/Writer Lock which makes
+the server perform a little
+
+41
+00:01:34,820 --> 00:01:37,150
+bit better, so use this
+if you have a
+
+42
+00:01:37,150 --> 00:01:38,185
+newer version of Windows.
+
+43
+00:01:38,185 --> 00:01:43,150
+That would be Windows Server
+2008 R2 and higher and Windows
+
+44
+00:01:43,150 --> 00:01:46,590
+7 and higher on the desktop
+client side.
+
+45
+00:01:46,590 --> 00:01:49,580
+So I do have Windows 7 here,
+I think, so I've
+
+46
+00:01:49,580 --> 00:01:51,140
+just downloaded this.
+
+47
+00:01:51,140 --> 00:01:53,070
+So now, if you click here,
+it will download it.
+
+48
+00:01:53,070 --> 00:01:56,380
+I'm going to flip over to
+Explorer, and we'll see what I
+
+49
+00:01:56,380 --> 00:01:58,310
+downloaded hopefully.
+
+50
+00:01:58,310 --> 00:02:01,940
+And here it is, under my
+downloads directory.
+
+51
+00:02:01,940 --> 00:02:05,520
+So inside a zip file, it had the
+readme and such, and then
+
+52
+00:02:05,520 --> 00:02:06,930
+the binaries are in here.
+
+53
+00:02:06,930 --> 00:02:09,229
+So what I'm going to do is put
+this in a more convenient
+
+54
+00:02:09,229 --> 00:02:11,720
+location, so let's
+go over here.
+
+55
+00:02:11,720 --> 00:02:13,760
+I'll just make a directory.
+
+56
+00:02:13,760 --> 00:02:17,370
+You could put this wherever
+you like.
+
+57
+00:02:17,370 --> 00:02:19,602
+You may not be able to put it
+off the top directory if you
+
+58
+00:02:19,602 --> 00:02:20,720
+don't have the right
+privileges.
+
+59
+00:02:20,720 --> 00:02:21,976
+Let's try this, though.
+
+60
+00:02:21,976 --> 00:02:24,080
+Mongodb2_2.
+
+61
+00:02:24,080 --> 00:02:29,060
+And then we'll go back over to
+here, and I'll actually open a
+
+62
+00:02:29,060 --> 00:02:29,920
+window for that.
+
+63
+00:02:29,920 --> 00:02:31,950
+I'll just drag and
+drop these over.
+
+64
+00:02:31,950 --> 00:02:35,640
+So I'll grab all these,
+drag them into here.
+
+65
+00:02:35,640 --> 00:02:38,900
+I'll extract them from the
+zip file permanently.
+
+66
+00:02:38,900 --> 00:02:41,870
+OK, now we'll close this.
+
+67
+00:02:41,870 --> 00:02:45,550
+So we've now got these in the
+directory called mondodb2_2,
+
+68
+00:02:45,550 --> 00:02:46,760
+so now we can go run it.
+
+69
+00:02:46,760 --> 00:02:48,965
+So it's pretty much
+that simple.
+
+70
+00:02:48,965 --> 00:02:51,860
+We'll see the files here.
+
+71
+00:02:51,860 --> 00:02:55,510
+I think the key files here are
+the mongod.exe, which is the
+
+72
+00:02:55,510 --> 00:02:58,780
+database, mongo.exe without
+the D, which is the
+
+73
+00:02:58,780 --> 00:03:01,670
+administrative shell, and
+mongos, which is the sharding
+
+74
+00:03:01,670 --> 00:03:02,990
+controller.
+
+75
+00:03:02,990 --> 00:03:07,705
+So to start the database, run
+mongod.exe, and then to access
+
+76
+00:03:07,705 --> 00:03:11,030
+it for DBA and administrative
+operations, use mongo.exe.
+
+77
+00:03:11,030 --> 00:03:12,550
+So let's do that.
+
+78
+00:03:12,550 --> 00:03:15,490
+Now, we'll need a directory to
+put the files in, and the
+
+79
+00:03:15,490 --> 00:03:19,290
+default directory is backslash
+data backslash db.
+
+80
+00:03:19,290 --> 00:03:22,390
+You can use whatever you want
+if you specify the db path
+
+81
+00:03:22,390 --> 00:03:24,360
+command line setting,
+but let's just
+
+82
+00:03:24,360 --> 00:03:25,210
+use the default here.
+
+83
+00:03:25,210 --> 00:03:27,820
+So I'm going to do that, and
+then I'm going to make a
+
+84
+00:03:27,820 --> 00:03:29,490
+subdirectory under there
+called that.
+
+85
+00:03:29,490 --> 00:03:32,490
+And that's the default, so
+that way it's present.
+
+86
+00:03:32,490 --> 00:03:33,230
+We'll be all set.
+
+87
+00:03:33,230 --> 00:03:36,600
+The main database is mongod
+without the B--
+
+88
+00:03:36,600 --> 00:03:37,595
+the D is for daemon--
+
+89
+00:03:37,595 --> 00:03:38,830
+[INAUDIBLE] .exe.
+
+90
+00:03:38,830 --> 00:03:40,490
+So there's that.
+
+91
+00:03:40,490 --> 00:03:42,680
+So if you like, you
+could do this.
+
+92
+00:03:42,680 --> 00:03:45,280
+You can see what version
+you have.
+
+93
+00:03:45,280 --> 00:03:49,230
+You can also do --help and get
+a lot of details on the
+
+94
+00:03:49,230 --> 00:03:50,950
+command line options.
+
+95
+00:03:50,950 --> 00:03:55,690
+I will run this now, so just
+mongod.exe, or just like that.
+
+96
+00:03:55,690 --> 00:03:56,910
+Run it.
+
+97
+00:03:56,910 --> 00:03:59,615
+We've created our data
+directory, I believe.
+
+98
+00:03:59,615 --> 00:04:03,320
+Yeah, datadb exists, so
+let's give this a try.
+
+99
+00:04:03,320 --> 00:04:06,872
+Access, and we're up.
+
+100
+00:04:06,872 --> 00:04:10,190
+So the database is running
+now on my local machine.
+
+101
+00:04:10,190 --> 00:04:14,220
+It turns out this is a 32-bit
+machine, so I've actually went
+
+102
+00:04:14,220 --> 00:04:18,779
+and grabbed the 32-bit version
+of the binaries, because the
+
+103
+00:04:18,779 --> 00:04:21,300
+operating system
+here is 32-bit.
+
+104
+00:04:21,300 --> 00:04:22,540
+But we're up and running.
+
+105
+00:04:22,540 --> 00:04:24,100
+So now, if we go over
+to a different
+
+106
+00:04:24,100 --> 00:04:25,930
+window, we can try it.
+
+107
+00:04:25,930 --> 00:04:30,630
+So if you have some development
+tools and clients
+
+108
+00:04:30,630 --> 00:04:32,890
+for your programming language,
+you could try that now.
+
+109
+00:04:32,890 --> 00:04:35,300
+In addition, we can just go into
+the administrative shell,
+
+110
+00:04:35,300 --> 00:04:39,090
+which is called mongo,
+and connect to it.
+
+111
+00:04:39,090 --> 00:04:43,370
+So the mongo shell is sort of
+just an administrative shell
+
+112
+00:04:43,370 --> 00:04:45,400
+like you might use with
+another database.
+
+113
+00:04:45,400 --> 00:04:46,930
+So, we're just going
+to connect here
+
+114
+00:04:46,930 --> 00:04:48,780
+to the local host.
+
+115
+00:04:48,780 --> 00:04:50,770
+By the default, it will connect
+to local host in the
+
+116
+00:04:50,770 --> 00:04:53,440
+test database, and then you can
+see the options here to
+
+117
+00:04:53,440 --> 00:04:54,540
+connect to whatever
+you'd like.
+
+118
+00:04:54,540 --> 00:05:00,450
+So if I do this, that's sort of
+equivalent to just running
+
+119
+00:05:00,450 --> 00:05:01,390
+it by itself.
+
+120
+00:05:01,390 --> 00:05:03,460
+And here we are, connected.
+
+121
+00:05:03,460 --> 00:05:08,600
+So we did connect to our server
+here, and there is a
+
+122
+00:05:08,600 --> 00:05:11,610
+variable predefined called
+db, which represents our
+
+123
+00:05:11,610 --> 00:05:12,990
+connection to the server.
+
+124
+00:05:12,990 --> 00:05:17,930
+So at this point, we could do
+something like show dbs or
+
+125
+00:05:17,930 --> 00:05:21,650
+show collections in our
+current db, and
+
+126
+00:05:21,650 --> 00:05:22,720
+there are not any.
+
+127
+00:05:22,720 --> 00:05:25,100
+So we could do something-- we
+have the test database here
+
+128
+00:05:25,100 --> 00:05:26,780
+we're working with,
+db.mycollection.insert.
+
+129
+00:05:26,780 --> 00:05:33,960
+
+130
+00:05:33,960 --> 00:05:36,350
+And there we have some data
+in there, so that's that.
+
+131
+00:05:36,350 --> 00:05:38,160
+Now we could exit the shell
+with Control C, or
+
+132
+00:05:38,160 --> 00:05:39,310
+we could type exit.
+
+133
+00:05:39,310 --> 00:05:42,580
+And if we look in data db, we'll
+now see that there are
+
+134
+00:05:42,580 --> 00:05:44,280
+some files over there.
+
+135
+00:05:44,280 --> 00:05:47,720
+Now, it is possible to
+run MongoDB, v the
+
+136
+00:05:47,720 --> 00:05:48,890
+server, as a service.
+
+137
+00:05:48,890 --> 00:05:50,670
+There's a Windows service.
+
+138
+00:05:50,670 --> 00:05:53,500
+There's some command line
+options for that.
+
+139
+00:05:53,500 --> 00:05:55,340
+And if we look in the Help,
+or you could look in the
+
+140
+00:05:55,340 --> 00:05:57,980
+documentation, you
+could find that.
+
+141
+00:05:57,980 --> 00:06:00,990
+I think you will see them--
+
+142
+00:06:00,990 --> 00:06:01,750
+scroll up.
+
+143
+00:06:01,750 --> 00:06:05,870
+There you go, Windows Service
+Control Manager Options.
+
+144
+00:06:05,870 --> 00:06:09,500
+So I find that when I'm doing
+development on a development
+
+145
+00:06:09,500 --> 00:06:12,390
+box, I just run it as
+a foreground process
+
+146
+00:06:12,390 --> 00:06:13,830
+and not as a service.
+
+147
+00:06:13,830 --> 00:06:16,470
+On the server, you're probably
+going to run it as a service.
+
+148
+00:06:16,470 --> 00:06:20,420
+So just doing something like
+this I find perfectly adequate
+
+149
+00:06:20,420 --> 00:06:24,530
+on my [? devs ?] box, and same
+thing when I run the mongos
+
+150
+00:06:24,530 --> 00:06:27,570
+process, for example, which is
+the sharding controller.
+
+151
+00:06:27,570 --> 00:06:31,575
+But it can be done this way,
+if you like, so just make a
+
+152
+00:06:31,575 --> 00:06:32,470
+note of that.
+
+153
+00:06:32,470 --> 00:06:34,300
+So I think that's it.
+
+154
+00:06:34,300 --> 00:06:35,550
+We have it installed.
+
+155
+00:06:35,550 --> 00:06:36,240
