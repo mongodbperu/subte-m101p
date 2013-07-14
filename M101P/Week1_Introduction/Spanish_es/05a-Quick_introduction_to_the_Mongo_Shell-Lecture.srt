@@ -50,8 +50,8 @@ si la base de datos no ha
 
 12
 00:00:26,130 --> 00:00:28,450
-sido utilizada anteriormente, ésto
-automáticamente lo crea.
+sido utilizada anteriormente, esto
+automáticamente la crea.
 
 13
 00:00:28,450 --> 00:00:30,100
@@ -84,22 +84,22 @@ guardar algo.
 
 19
 00:00:44,160 --> 00:00:47,670
-Así que vamos a guardar un
+Entonces vamos a guardar un
 pequeño documento en "things".
 
 20
 00:00:47,670 --> 00:00:51,140
 Así que voy a poner el documento
-con una clave con el
+con una clave "a" con el
 
 21
 00:00:51,140 --> 00:00:55,320
-valor "1", clave b, con el
-valor "2", y una clave c,
+valor "1", clave "b", con el
+valor "2", y una clave "c",
 
 22
 00:00:55,320 --> 00:00:57,080
-con el valor 3.
+con el valor "3".
 
 23
 00:00:57,080 --> 00:00:59,930
@@ -140,8 +140,8 @@ valores 1, 2, y 3.
 
 31
 00:01:16,810 --> 00:01:20,480
-Presiono "Enter", y luego que
-es guardado en aquel
+Presiono "Enter", y entonces
+se guarda en aquella
 
 32
 00:01:20,480 --> 00:01:21,640
@@ -164,12 +164,12 @@ db.things.save.
 36
 00:01:30,790 --> 00:01:35,400
 Y en este caso, voy
-a poner en a, b, c.
+a poner a, b, c.
 
 37
 00:01:35,400 --> 00:01:37,940
 Y luego voy a poner
-en otro campo, d.
+otro campo, d.
 
 38
 00:01:37,940 --> 00:01:39,990
@@ -247,7 +247,6 @@ acerca de estos ObjectId luego.
 00:02:07,960 --> 00:02:10,590
 Pero son los indentificadores únicos
 que la base de datos
-
 
 55
 00:02:10,590 --> 00:02:13,240

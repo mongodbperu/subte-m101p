@@ -60,7 +60,7 @@ par de cosas mal.
 
 15
 00:00:22,380 --> 00:00:26,090
-Pero es que empieza con una
+Pero es que empieza con un
 paréntesis, y
 
 16
@@ -75,8 +75,8 @@ de corchetes, y
 
 18
 00:00:31,270 --> 00:00:33,740
-puedes ver que los separadores son
-también errados e inconsistentes
+puedes ver que los separadores también
+están mal y son inconsistentes
 
 19
 00:00:33,740 --> 00:00:34,990
