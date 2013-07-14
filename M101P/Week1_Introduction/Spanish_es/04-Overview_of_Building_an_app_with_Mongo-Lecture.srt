@@ -1,172 +1,173 @@
-1
+﻿1
 00:00:00,000 --> 00:00:00,460
 
 2
 00:00:00,460 --> 00:00:02,995
-OK, so we've shown you
-a little bit about
+OK, hemos visto
+un poco
 
 3
 00:00:02,995 --> 00:00:04,600
-what MongoDB is.
+en qué consiste MongoDB.
 
 4
 00:00:04,600 --> 00:00:07,810
-And now I want to take you end
-to end on building a small
+Y ahora quiero llevarte de principio a 
+fin durante la construcción de una
 
 5
 00:00:07,810 --> 00:00:11,280
-application within MongoDB and
-show you how that works.
+pequeña aplicación en MongoDB y 
+enseñarte cómo funciona.
 
 6
 00:00:11,280 --> 00:00:16,490
-So first of all, you have the
-MongoD process, and that's the
+Así que en primer lugar, tenemos el 
+proceso mongod, que es el 
 
 7
 00:00:16,490 --> 00:00:18,990
-database server itself running
-out of the box.
+propio servidor de base de datos que funciona 
+de fábrica.
 
 8
 00:00:18,990 --> 00:00:22,020
-In addition, you have
-the Mongo shell.
+Además, tenemos
+el shell Mongo.
 
 9
 00:00:22,020 --> 00:00:24,680
-The Mongo shell, which I'll also
-show you, connects the
+El shell Mongo, que también
+veremos, se conecta a
 
 10
 00:00:24,680 --> 00:00:27,190
-MongoD and lets you
-interact with it.
+mongod y permite 
+interactuar con él.
 
 11
 00:00:27,190 --> 00:00:30,130
-Next-- and we're going to do
-a lot of our programming in
+Lo siguiente -- y vamos a
+programar un montón en
 
 12
 00:00:30,130 --> 00:00:31,620
-Python in this class.
+Python en este curso.
 
 13
 00:00:31,620 --> 00:00:35,130
-And in particular, we're going
-to use bottle and PyMongo And
+Y en concreto, vamos a 
+utilizar Bottle y PyMongo y 
 
 14
 00:00:35,130 --> 00:00:39,680
-so you've got this world
-of an HTTP server--
+de esta forma tendremos este ecosistema
+en un servidor HTTP --
 
 15
 00:00:39,680 --> 00:00:41,850
-and remember, we're going to try
-to build a little blog--
+y recuerda, vamos a intentar
+construir un pequeño blog --
 
 16
 00:00:41,850 --> 00:00:45,310
-and within that, you'll be
-running Python and the Python
+y dentro de él, estaremos
+ejecutando Python y el intérprete
 
 17
 00:00:45,310 --> 00:00:46,320
-interpreter.
+de Python.
 
 18
 00:00:46,320 --> 00:00:49,980
-And within that, you can be
-running this Bottle framework
+Y dentro de todo eso, podemos 
+ejecutar este framework Bottle 
 
 19
 00:00:49,980 --> 00:00:53,670
-along with PyMongo, which
-we'll get to.
+junto con PyMongo, tema 
+que abordaremos después.
 
 20
 00:00:53,670 --> 00:00:56,100
-And Bottle and PyMongo
-are going to let
+Y Bottle y PyMongo
+van a permitir
 
 21
 00:00:56,100 --> 00:00:59,390
-you connect to MongoD.
+conectarnos a mongod.
 
 22
 00:00:59,390 --> 00:01:02,130
-And then over here,
-inside a house
+Y por aquí, 
+en una casa 
 
 23
 00:01:02,130 --> 00:01:04,269
-somewhere, you have a user.
+en algún lugar,
+tenemos un usuario.
 
 24
 00:01:04,269 --> 00:01:06,490
-And that user is sitting
-on a computer--
+Y ese usuario está sentado
+frente al ordenador --
 
 25
 00:01:06,490 --> 00:01:08,760
-this is my representation
-of a laptop--
+ésta es mi representación
+de un portátil --
 
 26
 00:01:08,760 --> 00:01:10,520
-and that computer connected
-over the
+y ese ordenador está conectado
+a través de la
 
 27
 00:01:10,520 --> 00:01:12,750
-internet to your process.
+internet a nuestro proceso.
 
 28
 00:01:12,750 --> 00:01:16,570
-And there might be some routers
-here and Linksys boxes
+Y podría haber algunos 
+routers por aquí 
 
 29
 00:01:16,570 --> 00:01:18,620
-and network address translation,
-everything else.
+y traducción de direcciones de red y 
+todo lo demás.
 
 30
 00:01:18,620 --> 00:01:22,560
-But that's, broadly speaking,
-how it works.
+Pero eso es, a grandes rasgos,
+cómo funciona.
 
 31
 00:01:22,560 --> 00:01:26,150
-So to give you a flavor of
+Así que para dar una idea de  
 JavaScript Object Notation,
 
 32
 00:01:26,150 --> 00:01:30,290
-I'd like to show you the Mongo
-shell and then just a few
+me gustaría enseñarte el shell
+Mongo y luego unos cuantos
 
 33
 00:01:30,290 --> 00:01:32,570
-documents getting inserted
-into it.
+documentos para insertarlos
+en él.
 
 34
 00:01:32,570 --> 00:01:35,450
-We'll do that, and then we'll
-go back to learning how to
+Haremos eso y, a continuación,
+volveremos para aparender cómo
 
 35
 00:01:35,450 --> 00:01:36,640
-install Mongo.
+instalar Mongo.
 
 36
 00:01:36,640 --> 00:01:37,890
-So let's do that.
+Hagámoslo.
 
 37
 00:01:37,890 --> 00:01:39,140
