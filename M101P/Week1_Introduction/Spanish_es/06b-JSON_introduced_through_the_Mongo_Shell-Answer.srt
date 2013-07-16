@@ -1,73 +1,73 @@
 1
 00:00:00,000 --> 00:00:00,500
-All right.
+Bien.
 
 2
 00:00:00,500 --> 00:00:03,530
-And the answer is these are
-all valid JSON documents.
+Y la respuesta es que todos
+son documentos JSON válidos.
 
 3
 00:00:03,530 --> 00:00:06,050
-So this is a pretty standard
-JSON document.
+Así que éste es un documento JSON 
+bastante estándar.
 
 4
 00:00:06,050 --> 00:00:07,720
-You've seen that before,
-the first one.
+Ya has visto esto antes,
+el primer documento.
 
 5
 00:00:07,720 --> 00:00:10,170
-The second one is a JSON
-document where the third key
+El segundo es un documento
+JSON donde la tercera clave
 
 6
 00:00:10,170 --> 00:00:13,140
-has a value of an array, which
-is completely legal.
+tiene como valor un array, lo cual
+es absolutamente legal.
 
 7
 00:00:13,140 --> 00:00:15,570
-And in the next one, this
-might be a little
+Y el siguiente, 
+podría resultarte un poco
 
 8
 00:00:15,570 --> 00:00:16,300
-surprising to you.
+sorprendente.
 
 9
 00:00:16,300 --> 00:00:19,950
-But the value for the B key
-is an empty JSON document.
+Pero el valor de la clave B
+es un documento JSON vacío.
 
 10
 00:00:19,950 --> 00:00:21,170
-That is legal.
+Eso es legal.
 
 11
 00:00:21,170 --> 00:00:25,430
-And in this one, the C key in
-the third one has an array,
+Y en este otro, la clave C en
+el tercero tiene un array,
 
 12
 00:00:25,430 --> 00:00:28,045
-the first element of which is a
-JSON document with a key and
+cuyo primer elemento es un
+documento JSON con una clave y
 
 13
 00:00:28,045 --> 00:00:30,230
-a value, and then there
-are two other values.
+un valor, y luego hay 
+otros dos valores.
 
 14
 00:00:30,230 --> 00:00:33,630
-And the last one is simply an
-empty JSON document, which is
+Y el último es simplemente un
+documento JSON vacío, lo cual es
 
 15
 00:00:33,630 --> 00:00:34,880
-a legal JSON document.
+un documento JSON válido.
 
 16
 00:00:34,880 --> 00:00:35,920
