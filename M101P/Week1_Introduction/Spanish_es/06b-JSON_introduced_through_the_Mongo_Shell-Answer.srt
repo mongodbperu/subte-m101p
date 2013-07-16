@@ -1,16 +1,16 @@
-1
+ï»¿1
 00:00:00,000 --> 00:00:00,500
 Bien.
 
 2
 00:00:00,500 --> 00:00:03,530
 Y la respuesta es que todos
-son documentos JSON válidos.
+son documentos JSON vÃ¡lidos.
 
 3
 00:00:03,530 --> 00:00:06,050
-Así que éste es un documento JSON 
-bastante estándar.
+AsÃ­ que Ã©ste es un documento JSON 
+bastante estÃ¡ndar.
 
 4
 00:00:06,050 --> 00:00:07,720
@@ -30,7 +30,7 @@ es absolutamente legal.
 7
 00:00:13,140 --> 00:00:15,570
 Y el siguiente, 
-podría resultarte un poco
+podrÃ­a resultarte un poco
 
 8
 00:00:15,570 --> 00:00:16,300
@@ -39,7 +39,7 @@ sorprendente.
 9
 00:00:16,300 --> 00:00:19,950
 Pero el valor de la clave B
-es un documento JSON vacío.
+es un documento JSON vacÃ­o.
 
 10
 00:00:19,950 --> 00:00:21,170
@@ -62,12 +62,12 @@ otros dos valores.
 
 14
 00:00:30,230 --> 00:00:33,630
-Y el último es simplemente un
-documento JSON vacío, lo cual es
+Y el Ãºltimo es simplemente un
+documento JSON vacÃ­o, lo cual es
 
 15
 00:00:33,630 --> 00:00:34,880
-un documento JSON válido.
+un documento JSON vÃ¡lido.
 
 16
 00:00:34,880 --> 00:00:35,920
