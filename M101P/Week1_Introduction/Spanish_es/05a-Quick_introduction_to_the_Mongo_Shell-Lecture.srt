@@ -3,123 +3,123 @@
 
 2
 00:00:00,550 --> 00:00:04,350
-All right so this is the
-terminal window inside Mac OS
+Muy bien, ésta es la
+ventana del terminal en Mac OS X.
 
 3
 00:00:04,350 --> 00:00:07,880
-X. And Mongo's already
-been installed here.
+Y ya se ha instalado
+Mongo aquí.
 
 4
 00:00:07,880 --> 00:00:10,430
-So what we're going to
-do is we're going to
+Así que lo que vamos a
+hacer es que vamos a
 
 5
 00:00:10,430 --> 00:00:13,080
-start the Mongo shell.
+iniciar el shell Mongo.
 
 6
 00:00:13,080 --> 00:00:16,200
-And the first thing we're going
-to do is, we're going to
+Y lo primero que vamos
+a hacer es, vamos a
 
 7
 00:00:16,200 --> 00:00:18,410
-go into a particular database
-where we're going to put our
+entrar en una base de datos determinada
+donde vamos a poner nuestras
 
 8
 00:00:18,410 --> 00:00:19,480
-collections.
+colecciones.
 
 9
 00:00:19,480 --> 00:00:21,650
-In this case, we're going
-to call it the test
+En este caso, vamos
+a llamarla la base de datos
 
 10
 00:00:21,650 --> 00:00:23,460
-database, use test.
+test, use test.
 
 11
 00:00:23,460 --> 00:00:26,130
-And the way Mongo works is that
-if the database has not
+Y la forma en que Mongo funciona es que
+si la base de datos no ha
 
 12
 00:00:26,130 --> 00:00:28,450
-previously been used, it
-automatically creates it.
+sido utilizada anteriormente, esto
+automáticamente la crea.
 
 13
 00:00:28,450 --> 00:00:30,100
-And you could put collections
-in it.
+Y podrías poner colecciones
+en ella.
 
 14
 00:00:30,100 --> 00:00:32,189
 JavaScript Object Notation
-is the way we
+es la forma de
 
 15
 00:00:32,189 --> 00:00:34,160
-express data inside Mongo.
+expresar los datos en Mongo.
 
 16
 00:00:34,160 --> 00:00:36,930
-And the shell uses JavaScript
-itself.
+Y el shell utiliza JavaScript
+por sí mismo.
 
 17
 00:00:36,930 --> 00:00:40,950
-So let's imagine that there is
-a collection called things.
+Así que imaginemos que hay
+una colección llamada "things".
 
 18
 00:00:40,950 --> 00:00:44,160
-And in this collection, we
-want to save something.
+Y en esta colección, deseamos
+guardar algo.
 
 19
 00:00:44,160 --> 00:00:47,670
-So I'm going to say a very
-small document in things.
+Entonces vamos a guardar un
+pequeño documento en "things".
 
 20
 00:00:47,670 --> 00:00:51,140
-So I'm going to put the document
-with a key a with the
+Así que voy a poner el documento
+con una clave "a" con el
 
 21
 00:00:51,140 --> 00:00:55,320
-value 1, key b, with the
-value 2, and a key c,
+valor "1", clave "b", con el
+valor "2", y una clave "c",
 
 22
 00:00:55,320 --> 00:00:57,080
-with the value 3.
+con el valor "3".
 
 23
 00:00:57,080 --> 00:00:59,930
-What you see here is, I've
-specified db, which is a
+Lo que ves aquí es que he
+especificado db, que es una
 
 24
 00:00:59,930 --> 00:01:01,790
-standard keyword inside
-the shell.
+palabra clave estándar en
+el shell.
 
 25
 00:01:01,790 --> 00:01:04,890
-Things as our collection, save
-as our command, open
+"Things" como nuestra colección, "save"
+como nuestro comando, abre
 
 26
 00:01:04,890 --> 00:01:09,400
-parenthesis, and then, right
-here, we have the JavaScript
+paréntesis, y luego,
+aquí, tenemos el JavaScript
 
 27
 00:01:09,400 --> 00:01:10,110
@@ -127,210 +127,210 @@ Object Notation.
 
 28
 00:01:10,110 --> 00:01:11,330
-This is a JSON document.
+Este es un documento JSON.
 
 29
 00:01:11,330 --> 00:01:15,370
-So it's got three keys,
-a, b, and c, with
+Así que tiene tres claves,
+a, b, y c, con los
 
 30
 00:01:15,370 --> 00:01:16,810
-values 1, 2, and 3.
+valores 1, 2, y 3.
 
 31
 00:01:16,810 --> 00:01:20,480
-I hit Return, and then that
-is now saved inside that
+Presiono "Enter", y entonces
+se guarda en aquella
 
 32
 00:01:20,480 --> 00:01:21,640
-collection.
+colección.
 
 33
 00:01:21,640 --> 00:01:25,880
-If I want to find it, I can
-do a db.things.find,
+Si deseo encontrarlo, puedo
+hacer un db.things.find,
 
 34
 00:01:25,880 --> 00:01:27,250
-and there it is.
+y ahí está.
 
 35
 00:01:27,250 --> 00:01:30,790
-I could add another document,
+Podría añadir otro documento,
 db.things.save.
 
 36
 00:01:30,790 --> 00:01:35,400
-And in this case, I'm going
-to put in a, b, c.
+Y en este caso, voy
+a poner a, b, c.
 
 37
 00:01:35,400 --> 00:01:37,940
-And them I'm going to put
-in another field, d.
+Y luego voy a poner
+otro campo, d.
 
 38
 00:01:37,940 --> 00:01:39,990
-And the reason I'm going to do
-that is just to sort of make
+Y la razón por la que voy a hacer
+esto es sólo para mostrar
 
 39
 00:01:39,990 --> 00:01:43,440
-the point that Mongo is
-schemaless, and that these
+el punto que Mongo es
+"schemaless", y que estos
 
 40
 00:01:43,440 --> 00:01:45,620
-documents can co-exist in
-the same collection.
+documentos pueden coexistir en
+la misma colección.
 
 41
 00:01:45,620 --> 00:01:48,270
-That's very different than the
-world of relational, where you
+Esto es muy diferente que el
+mundo relacional, donde
 
 42
 00:01:48,270 --> 00:01:50,430
-can't have two different
-structures and two different
+no puedes tener dos diferentes
+estructuras y dos diferentes
 
 43
 00:01:50,430 --> 00:01:51,810
-rows in the same table.
+filas en la misma tabla.
 
 44
 00:01:51,810 --> 00:01:53,240
-So we'll do that.
+Así que vamos a hacer esto.
 
 45
 00:01:53,240 --> 00:01:54,190
-So what happened there?
+Entonces, ¿qué pasó allí?
 
 46
 00:01:54,190 --> 00:01:55,950
-Do you see the syntax error?
+¿Ves el error de sintaxis?
 
 47
 00:01:55,950 --> 00:01:57,110
-Syntax error is right here.
+El error de sintaxis está aquí.
 
 48
 00:01:57,110 --> 00:01:58,480
-That's got to be a colon.
+Eso tiene que ser un dos puntos.
 
 49
 00:01:58,480 --> 00:01:59,840
-Let's redo that.
+Vamos a deshacer eso.
 
 50
 00:01:59,840 --> 00:02:00,870
-And there we go.
+Y ahí vamos.
 
 51
 00:02:00,870 --> 00:02:03,350
-Now we've got two documents
-in the same collection.
+Ahora tenemos dos documentos
+en la misma colección.
 
 52
 00:02:03,350 --> 00:02:05,900
-Now you see that they've been
-assigned these object IDs.
+Ahora puedes ver que han sido
+asignados los ObjectId.
 
 53
 00:02:05,900 --> 00:02:07,960
-And we're going to talk more
-about those object IDs later.
+Y vamos a hablar más
+acerca de estos ObjectId luego.
 
 54
 00:02:07,960 --> 00:02:10,590
-But they are unique identifiers
-that the database
+Pero son los indentificadores únicos
+que la base de datos
 
 55
 00:02:10,590 --> 00:02:13,240
-uses to keep track
-of each document.
+utiliza para mantener el seguimiento
+de cada documento.
 
 56
 00:02:13,240 --> 00:02:16,550
-And there's always an index on
-these object identifiers, so
+Y siempre hay un índice en
+estos indentificadores de objeto, por lo que
 
 57
 00:02:16,550 --> 00:02:19,610
-if you search for a document
-by the object identifier,
+si buscas por un documento
+por el identificador de objeto,
 
 58
 00:02:19,610 --> 00:02:21,010
-it'll find it efficiently.
+lo encontrará eficientemente.
 
 59
 00:02:21,010 --> 00:02:23,020
-Now, we see that we have these
-two different documents, and
+Ahora, vemos que tenemos estos
+dos diferentes documentos, y
 
 60
 00:02:23,020 --> 00:02:24,560
-they have two different
-structures.
+tienen dos estructuras
+diferentes.
 
 61
 00:02:24,560 --> 00:02:25,950
-If we want to find one of those
+Si deseamos encontrar uno de estos
 
 62
 00:02:25,950 --> 00:02:27,525
-documents, we can do that.
+documentos, podemos hacer eso.
 
 63
 00:02:27,525 --> 00:02:30,910
-And we can specify a prototype
-document right here.
+Y podemos especificar un documento
+prototipo aquí.
 
 64
 00:02:30,910 --> 00:02:33,330
-We're going to say find a:1.
+Vamos a decir find a:1.
 
 65
 00:02:33,330 --> 00:02:34,940
-Find the documents
-where a is 1.
+Encontrar los documentos
+donde "a" es "1".
 
 66
 00:02:34,940 --> 00:02:38,470
-And if we do that, you can see
-it only finds this first
+Y si lo hacemos, puedes ver
+que sólo encuentra este primer
 
 67
 00:02:38,470 --> 00:02:40,860
-document and leaves out
-the second document.
+documento y deja afuera
+el segundo documento.
 
 68
 00:02:40,860 --> 00:02:44,680
-OK, let's just do a short quiz
-based on what we just learned.
+Bien, vamos a hacer un breve cuestionario
+en base a lo que acabamos de aprender.
 
 69
 00:02:44,680 --> 00:02:47,460
-And then I'll show you some
-more complex documents.
+Y luego te mostraré algunos
+documentos más complejos.
 
 70
 00:02:47,460 --> 00:02:50,240
-For our next quiz, which of the
-following expressions are
+Para nuestro próximo cuestionario,
+¿cuáles de las siguientes expresiones son
 
 71
 00:02:50,240 --> 00:02:51,990
-valid JSON documents?
+documentos JSON válidos?
 
 72
 00:02:51,990 --> 00:02:53,240
-Check all that apply.
+Marca todos los que apliquen.
 
 73
 00:02:53,240 --> 00:02:54,090
