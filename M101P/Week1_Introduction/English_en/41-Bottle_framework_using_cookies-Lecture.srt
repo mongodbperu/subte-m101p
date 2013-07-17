@@ -1,0 +1,426 @@
+1
+00:00:00,000 --> 00:00:00,210
+
+2
+00:00:00,210 --> 00:00:01,780
+OK, let's talk about cookies.
+
+3
+00:00:01,780 --> 00:00:03,860
+And I'm not talking about the
+kind you eat, of course.
+
+4
+00:00:03,860 --> 00:00:06,050
+I'm talking about the kind
+that web servers and web
+
+5
+00:00:06,050 --> 00:00:08,060
+browsers use to identify
+users.
+
+6
+00:00:08,060 --> 00:00:10,920
+So most session management on
+the web is done through
+
+7
+00:00:10,920 --> 00:00:14,530
+cookies, where a cookie is
+returned from the web server
+
+8
+00:00:14,530 --> 00:00:15,680
+to the web browser.
+
+9
+00:00:15,680 --> 00:00:18,290
+It's a small piece of
+information that the web
+
+10
+00:00:18,290 --> 00:00:21,520
+browser will store away for
+the particular web domain.
+
+11
+00:00:21,520 --> 00:00:25,080
+And then whenever the user goes
+to any web page in that
+
+12
+00:00:25,080 --> 00:00:28,810
+domain, then the web browser
+will present the cookie to the
+
+13
+00:00:28,810 --> 00:00:30,950
+site, which will then,
+hopefully, look it up in
+
+14
+00:00:30,950 --> 00:00:34,370
+Mongo, get a whole bunch of
+other information and present
+
+15
+00:00:34,370 --> 00:00:35,860
+the session to the user.
+
+16
+00:00:35,860 --> 00:00:40,230
+So let's go through our small
+example program and see how we
+
+17
+00:00:40,230 --> 00:00:41,560
+can use cookies.
+
+18
+00:00:41,560 --> 00:00:46,510
+Let's say that I want to have
+my program here, which says
+
+19
+00:00:46,510 --> 00:00:48,615
+Hello to Richard, lists
+four fruits, asks
+
+20
+00:00:48,615 --> 00:00:49,670
+you to pick a fruit.
+
+21
+00:00:49,670 --> 00:00:51,750
+I'm going to say apple
+and submit.
+
+22
+00:00:51,750 --> 00:00:54,660
+At this point, the web browser
+has been redirected to the
+
+23
+00:00:54,660 --> 00:00:57,100
+show_fruit URL and somehow
+printed out,
+
+24
+00:00:57,100 --> 00:00:58,250
+your fruit is apple.
+
+25
+00:00:58,250 --> 00:01:00,510
+It looks kind of like it did
+before, but the difference is,
+
+26
+00:01:00,510 --> 00:01:02,750
+it wasn't a post, it was
+actually a redirect to a page
+
+27
+00:01:02,750 --> 00:01:05,409
+with a get request, so that I
+can reload it as many times as
+
+28
+00:01:05,409 --> 00:01:07,070
+I want, and it works.
+
+29
+00:01:07,070 --> 00:01:09,740
+And the way it's done, this is
+a little cookie utility that
+
+30
+00:01:09,740 --> 00:01:11,040
+you can download from Google.
+
+31
+00:01:11,040 --> 00:01:12,450
+This is Google Chrome.
+
+32
+00:01:12,450 --> 00:01:15,400
+You can see that there
+is a cookie being
+
+33
+00:01:15,400 --> 00:01:17,010
+presented to the site.
+
+34
+00:01:17,010 --> 00:01:19,210
+And that cookie has the
+word apple in it.
+
+35
+00:01:19,210 --> 00:01:21,570
+So how does the code
+make all that work?
+
+36
+00:01:21,570 --> 00:01:22,530
+Let's look.
+
+37
+00:01:22,530 --> 00:01:25,580
+Here we have again, if you
+recall, here's our handler,
+
+38
+00:01:25,580 --> 00:01:29,540
+the post handler, that will take
+the form input from that
+
+39
+00:01:29,540 --> 00:01:31,550
+form that asks them their
+favorite fruit.
+
+40
+00:01:31,550 --> 00:01:35,150
+And in this handler, we do a
+get of the fruit from the
+
+41
+00:01:35,150 --> 00:01:39,160
+form, and then all we do is set
+the cookie, bottle that
+
+42
+00:01:39,160 --> 00:01:42,920
+response, that set cookie,
+called fruit, to the value
+
+43
+00:01:42,920 --> 00:01:44,280
+that we got from the user.
+
+44
+00:01:44,280 --> 00:01:46,880
+And then we redirect--
+this is something you
+
+45
+00:01:46,880 --> 00:01:47,980
+haven't seen before.
+
+46
+00:01:47,980 --> 00:01:51,070
+We redirect the browser
+to /show_fruit.
+
+47
+00:01:51,070 --> 00:01:54,590
+That sends a HTTP response to
+the browser telling it to
+
+48
+00:01:54,590 --> 00:01:57,450
+redirect the browser and fetch,
+using a get request,
+
+49
+00:01:57,450 --> 00:01:58,670
+another page.
+
+50
+00:01:58,670 --> 00:02:00,300
+And if you think about
+the whole world of
+
+51
+00:02:00,300 --> 00:02:02,840
+Model-View-Controller that we
+talked about earlier, this has
+
+52
+00:02:02,840 --> 00:02:07,250
+a nice property that now the
+view doesn't need to have any
+
+53
+00:02:07,250 --> 00:02:09,780
+information sent to it directly
+from the controller.
+
+54
+00:02:09,780 --> 00:02:11,780
+Because what happens is,
+instead, we redirect to this
+
+55
+00:02:11,780 --> 00:02:13,820
+view, and the view then
+fetches the the
+
+56
+00:02:13,820 --> 00:02:15,810
+state, again, itself.
+
+57
+00:02:15,810 --> 00:02:17,550
+So it's a little cleaner.
+
+58
+00:02:17,550 --> 00:02:20,450
+And particularly on the web, if
+the user ever refetches the
+
+59
+00:02:20,450 --> 00:02:23,880
+page, you can't refetch a page
+that was generated as a result
+
+60
+00:02:23,880 --> 00:02:26,680
+of a post request without, I'm
+sure you've all seen this,
+
+61
+00:02:26,680 --> 00:02:29,270
+saying, do you want to resubmit
+the form information
+
+62
+00:02:29,270 --> 00:02:30,670
+and reprocess that
+form information.
+
+63
+00:02:30,670 --> 00:02:34,176
+Well, using this method with a
+redirection, using a get to
+
+64
+00:02:34,176 --> 00:02:37,330
+enter the URL, the user can
+refetch the show fruit page.
+
+65
+00:02:37,330 --> 00:02:38,850
+So OK, so that happens.
+
+66
+00:02:38,850 --> 00:02:42,110
+And then we go down the page and
+we can see the route set
+
+67
+00:02:42,110 --> 00:02:44,740
+up for this get request
+for show_fruit.
+
+68
+00:02:44,740 --> 00:02:45,375
+It's very simple.
+
+69
+00:02:45,375 --> 00:02:47,480
+And here is the function
+show_fruit, which is
+
+70
+00:02:47,480 --> 00:02:48,420
+arbitrarily named.
+
+71
+00:02:48,420 --> 00:02:51,650
+And the first thing it does is
+it gets the cookie called
+
+72
+00:02:51,650 --> 00:02:54,340
+fruit and then returns exactly
+the same template it did
+
+73
+00:02:54,340 --> 00:02:57,040
+before, setting fruit
+to fruit.
+
+74
+00:02:57,040 --> 00:03:00,270
+Now what's maybe not clear is
+that, when we go from this
+
+75
+00:03:00,270 --> 00:03:04,060
+line to this line, that involves
+a full response and
+
+76
+00:03:04,060 --> 00:03:05,960
+new request from the
+web browser.
+
+77
+00:03:05,960 --> 00:03:07,900
+So control is not passing
+inside the server
+
+78
+00:03:07,900 --> 00:03:08,560
+from here to here.
+
+79
+00:03:08,560 --> 00:03:11,230
+What's happening is, there's a
+response to the user with a
+
+80
+00:03:11,230 --> 00:03:14,630
+redirect to the show fruit URL,
+and in that response the
+
+81
+00:03:14,630 --> 00:03:16,670
+browser stores away a cookie.
+
+82
+00:03:16,670 --> 00:03:19,980
+The browser then does a get
+request to /show_fruit.
+
+83
+00:03:19,980 --> 00:03:22,930
+Since it's the same domain,
+it presents the cookie.
+
+84
+00:03:22,930 --> 00:03:25,520
+And then the web server, when it
+processes this get request,
+
+85
+00:03:25,520 --> 00:03:27,770
+fetches the cookie out
+of the request, and
+
+86
+00:03:27,770 --> 00:03:29,580
+produces the HTML.
+
+87
+00:03:29,580 --> 00:03:31,290
+I know that might be a little
+bit tricky, but this is only
+
+88
+00:03:31,290 --> 00:03:32,190
+cookies work.
+
+89
+00:03:32,190 --> 00:03:35,670
+And particularly, this is the
+way you get them and set them
+
+90
+00:03:35,670 --> 00:03:36,920
+inside Bottle.
+
+91
+00:03:36,920 --> 00:03:37,660

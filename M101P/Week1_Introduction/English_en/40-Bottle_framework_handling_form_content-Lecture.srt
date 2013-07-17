@@ -1,0 +1,465 @@
+1
+00:00:00,000 --> 00:00:00,250
+
+2
+00:00:00,250 --> 00:00:03,650
+OK, now we're going to talk
+about how you handle form
+
+3
+00:00:03,650 --> 00:00:06,200
+inputs in the Bottle
+in Python.
+
+4
+00:00:06,200 --> 00:00:09,580
+Now this is not a full course
+in web design, and we're not
+
+5
+00:00:09,580 --> 00:00:11,590
+going to be testing you heavily
+on whether or not you
+
+6
+00:00:11,590 --> 00:00:12,370
+understand this stuff.
+
+7
+00:00:12,370 --> 00:00:13,960
+And we're going to give you a
+lot of the code and tell you
+
+8
+00:00:13,960 --> 00:00:14,540
+how it works.
+
+9
+00:00:14,540 --> 00:00:16,670
+And again, this material is
+somewhat optional, but I just
+
+10
+00:00:16,670 --> 00:00:18,760
+want to give you a basic
+understanding of it so that
+
+11
+00:00:18,760 --> 00:00:20,930
+you aren't seeing it for the
+first time in some of the
+
+12
+00:00:20,930 --> 00:00:23,370
+assignments down the
+road in the class.
+
+13
+00:00:23,370 --> 00:00:26,500
+So when you do get to a page,
+in a web page, for instance,
+
+14
+00:00:26,500 --> 00:00:29,240
+an index page, then it will
+produce the content.
+
+15
+00:00:29,240 --> 00:00:31,800
+In this case, we're going to
+have a little form on the page
+
+16
+00:00:31,800 --> 00:00:33,610
+itself using the form tag.
+
+17
+00:00:33,610 --> 00:00:36,570
+And then we're going to specify
+that, on that page,
+
+18
+00:00:36,570 --> 00:00:39,780
+the response get posted
+to a post handler at
+
+19
+00:00:39,780 --> 00:00:42,210
+favorite_fruit, and you'll
+understand why in a second.
+
+20
+00:00:42,210 --> 00:00:44,900
+And that generates some code,
+which then produces some
+
+21
+00:00:44,900 --> 00:00:46,300
+output HTML.
+
+22
+00:00:46,300 --> 00:00:50,330
+So that's the basic flow of how
+you handle form inputs in
+
+23
+00:00:50,330 --> 00:00:51,300
+Python in Bottle.
+
+24
+00:00:51,300 --> 00:00:53,260
+And let's take a look
+at an example.
+
+25
+00:00:53,260 --> 00:00:55,190
+So, I'm going to run
+this small Python
+
+26
+00:00:55,190 --> 00:00:56,210
+script that I wrote.
+
+27
+00:00:56,210 --> 00:00:59,600
+And go to the home page for
+the web server on 8080.
+
+28
+00:00:59,600 --> 00:01:02,850
+You can see it says Welcome
+Richard, and it says that
+
+29
+00:01:02,850 --> 00:01:05,090
+there's apple, orange,
+banana, and peach.
+
+30
+00:01:05,090 --> 00:01:06,470
+What is your favorite fruit?
+
+31
+00:01:06,470 --> 00:01:10,200
+And then if you type in peach
+and submit it, it says, oh,
+
+32
+00:01:10,200 --> 00:01:11,920
+your favorite fruit is peach.
+
+33
+00:01:11,920 --> 00:01:13,580
+So how do we make that work?
+
+34
+00:01:13,580 --> 00:01:14,690
+Pretty straightforward.
+
+35
+00:01:14,690 --> 00:01:15,700
+Here is the code.
+
+36
+00:01:15,700 --> 00:01:18,830
+This is the fruit
+form.py program.
+
+37
+00:01:18,830 --> 00:01:22,040
+This is the home page at the
+route slash, sets up that list
+
+38
+00:01:22,040 --> 00:01:25,210
+again, and returns that same
+template we saw before where
+
+39
+00:01:25,210 --> 00:01:27,880
+it sets username to Richard
+and things to mythings.
+
+40
+00:01:27,880 --> 00:01:29,300
+And I'll show you
+that template.
+
+41
+00:01:29,300 --> 00:01:30,640
+Here's that template
+right now.
+
+42
+00:01:30,640 --> 00:01:33,410
+You can see that this template
+prints out, the title is Hello
+
+43
+00:01:33,410 --> 00:01:36,790
+World, it says Welcome to the
+person, it iterates through
+
+44
+00:01:36,790 --> 00:01:38,960
+the list of things,
+printing each one
+
+45
+00:01:38,960 --> 00:01:40,210
+out as a list element.
+
+46
+00:01:40,210 --> 00:01:41,750
+And then here's the new part.
+
+47
+00:01:41,750 --> 00:01:44,850
+There's now a form within
+the template.
+
+48
+00:01:44,850 --> 00:01:48,660
+And the form has an action of
+slash favorite_fruit, which
+
+49
+00:01:48,660 --> 00:01:51,950
+means that the web browser will
+submit your answer to the
+
+50
+00:01:51,950 --> 00:01:53,240
+favorite fruit URL.
+
+51
+00:01:53,240 --> 00:01:55,480
+And the method is
+post, not get.
+
+52
+00:01:55,480 --> 00:01:58,020
+It asks if your favorite fruit,
+oh, I see that guy
+
+53
+00:01:58,020 --> 00:01:59,220
+there, we'll just
+correct that.
+
+54
+00:01:59,220 --> 00:02:00,800
+That's what is your
+favorite fruit.
+
+55
+00:02:00,800 --> 00:02:01,800
+There we go.
+
+56
+00:02:01,800 --> 00:02:03,700
+And its got two HTML form
+elements on it.
+
+57
+00:02:03,700 --> 00:02:07,200
+The first one is a text box
+with name fruit, size 40.
+
+58
+00:02:07,200 --> 00:02:09,020
+Value is blank at
+the beginning.
+
+59
+00:02:09,020 --> 00:02:11,500
+And then underneath it, there's
+a submit button.
+
+60
+00:02:11,500 --> 00:02:13,400
+And then the form ends,
+and the body of the
+
+61
+00:02:13,400 --> 00:02:14,550
+HTML document ends.
+
+62
+00:02:14,550 --> 00:02:16,930
+And then finally the
+HTML itself ends.
+
+63
+00:02:16,930 --> 00:02:17,990
+So that's it.
+
+64
+00:02:17,990 --> 00:02:21,400
+And then you can see right
+here that there's a new
+
+65
+00:02:21,400 --> 00:02:24,000
+handler defined, which we
+haven't talked about before.
+
+66
+00:02:24,000 --> 00:02:25,500
+It is a post handler.
+
+67
+00:02:25,500 --> 00:02:28,950
+So a post handler takes a post
+request versus a get request,
+
+68
+00:02:28,950 --> 00:02:32,690
+and this post request is
+at URL favorite_fruit.
+
+69
+00:02:32,690 --> 00:02:34,980
+And defines a function called
+favorite_fruit.
+
+70
+00:02:34,980 --> 00:02:37,330
+And it has to get the form
+element, which it does by
+
+71
+00:02:37,330 --> 00:02:41,060
+calling
+bottle.request.forms.get.fruit,
+
+72
+00:02:41,060 --> 00:02:43,440
+quotes around the string
+its looking for.
+
+73
+00:02:43,440 --> 00:02:45,180
+That gets the form element
+that was named
+
+74
+00:02:45,180 --> 00:02:46,600
+fruit on the form.
+
+75
+00:02:46,600 --> 00:02:50,070
+If it's not set, it just sets
+it to no fruit selected.
+
+76
+00:02:50,070 --> 00:02:53,210
+And then it returns this other
+template called fruit
+
+77
+00:02:53,210 --> 00:02:56,510
+selection template, with
+fruit set to fruit.
+
+78
+00:02:56,510 --> 00:02:59,010
+The fruit string set to the
+fruit inside they dictionary
+
+79
+00:02:59,010 --> 00:03:00,270
+it passes the template.
+
+80
+00:03:00,270 --> 00:03:02,510
+So we just need to look at that
+fruit selection template.
+
+81
+00:03:02,510 --> 00:03:04,230
+That fruit selection temple
+is very simple.
+
+82
+00:03:04,230 --> 00:03:06,450
+It just says fruit selection
+confirmation.
+
+83
+00:03:06,450 --> 00:03:09,670
+And then it says your favorite
+fruit is, and it says fruit
+
+84
+00:03:09,670 --> 00:03:10,520
+right here.
+
+85
+00:03:10,520 --> 00:03:13,910
+And these curly braces surround
+a piece of Python
+
+86
+00:03:13,910 --> 00:03:16,950
+code, in this case, the fruit
+variable that was passed in.
+
+87
+00:03:16,950 --> 00:03:20,600
+So that might be a lot to take
+on at one time, but if you
+
+88
+00:03:20,600 --> 00:03:22,210
+know anything about web
+programming, you know how this
+
+89
+00:03:22,210 --> 00:03:23,000
+stuff works.
+
+90
+00:03:23,000 --> 00:03:24,280
+It's fairly straightforward.
+
+91
+00:03:24,280 --> 00:03:26,540
+And again, for this class,
+you're not really need to
+
+92
+00:03:26,540 --> 00:03:27,790
+understand this because
+we're going to give
+
+93
+00:03:27,790 --> 00:03:28,800
+you most of the GUI.
+
+94
+00:03:28,800 --> 00:03:31,380
+We'll mostly focus on the
+MongoDB parts of it.
+
+95
+00:03:31,380 --> 00:03:33,510
+But I wanted to make this course
+complete so that you
+
+96
+00:03:33,510 --> 00:03:36,760
+guys could understand what we're
+talking about with this
+
+97
+00:03:36,760 --> 00:03:38,760
+user interface for the blogging
+system that we're
+
+98
+00:03:38,760 --> 00:03:40,010
+going to create in MongoDB.
+
+99
+00:03:40,010 --> 00:03:40,850

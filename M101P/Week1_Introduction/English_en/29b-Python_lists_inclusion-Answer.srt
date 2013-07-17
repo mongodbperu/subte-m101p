@@ -1,0 +1,22 @@
+1
+00:00:00,000 --> 00:00:00,180
+
+2
+00:00:00,180 --> 00:00:01,860
+And here's the answer.
+
+3
+00:00:01,860 --> 00:00:03,840
+If apple in fruit, colon.
+
+4
+00:00:03,840 --> 00:00:06,540
+And then the statement that you
+wanted executed would be
+
+5
+00:00:06,540 --> 00:00:07,880
+indented in the following line.
+
+6
+00:00:07,880 --> 00:00:09,130

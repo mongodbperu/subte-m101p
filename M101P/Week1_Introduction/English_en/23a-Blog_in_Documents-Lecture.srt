@@ -1,0 +1,454 @@
+1
+00:00:00,000 --> 00:00:00,170
+
+2
+00:00:00,170 --> 00:00:03,290
+Let's talk about modeling
+our blog in MongoDB.
+
+3
+00:00:03,290 --> 00:00:05,570
+So we've seen how we might
+model it in relational.
+
+4
+00:00:05,570 --> 00:00:08,270
+But now let's talk about how
+we might model it in Mongo.
+
+5
+00:00:08,270 --> 00:00:11,510
+So it's a lot easier because
+you could imagine that we'd
+
+6
+00:00:11,510 --> 00:00:14,070
+have a collection called,
+let's say, posts.
+
+7
+00:00:14,070 --> 00:00:16,660
+And I'm going to show by example
+what would be in the
+
+8
+00:00:16,660 --> 00:00:18,170
+posts collection.
+
+9
+00:00:18,170 --> 00:00:23,860
+So we might have a post title,
+like, free online classes,
+
+10
+00:00:23,860 --> 00:00:29,080
+along with the body itself of
+the post, which I won't show,
+
+11
+00:00:29,080 --> 00:00:33,610
+just put some ellipses in for
+that, along with the user name
+
+12
+00:00:33,610 --> 00:00:35,700
+of the-- let's call
+him the author.
+
+13
+00:00:35,700 --> 00:00:38,310
+And for that, I'm going to put
+my name right into the
+
+14
+00:00:38,310 --> 00:00:38,650
+collection.
+
+15
+00:00:38,650 --> 00:00:40,330
+I'm not going to put an ID in.
+
+16
+00:00:40,330 --> 00:00:42,250
+And the reason is, and I'm going
+to show you, that we're
+
+17
+00:00:42,250 --> 00:00:46,360
+going to use this as the ID for
+our other collection, the
+
+18
+00:00:46,360 --> 00:00:47,940
+author's collection.
+
+19
+00:00:47,940 --> 00:00:49,640
+So we have a title
+of the post.
+
+20
+00:00:49,640 --> 00:00:50,820
+We have the body the post.
+
+21
+00:00:50,820 --> 00:00:52,290
+We have the author
+of the post.
+
+22
+00:00:52,290 --> 00:00:54,170
+We need the date that
+it was posted.
+
+23
+00:00:54,170 --> 00:00:56,750
+And we'll have some iso date
+here, we'll talk more about
+
+24
+00:00:56,750 --> 00:00:57,680
+types later on.
+
+25
+00:00:57,680 --> 00:01:00,660
+And then we'll probably
+want some comments.
+
+26
+00:01:00,660 --> 00:01:03,870
+But in Mongo, we can embed them
+right in the document.
+
+27
+00:01:03,870 --> 00:01:06,390
+So the comments keyword
+is right there.
+
+28
+00:01:06,390 --> 00:01:07,390
+I open up an array.
+
+29
+00:01:07,390 --> 00:01:09,870
+And then I'm going to
+have a document.
+
+30
+00:01:09,870 --> 00:01:15,000
+And it's going to have a name of
+my poster, Joe Biden, along
+
+31
+00:01:15,000 --> 00:01:20,210
+with his email, if he gave it,
+joe@whitehouse.gov, along with
+
+32
+00:01:20,210 --> 00:01:23,470
+the body of his comment, which
+we'll just call it comment.
+
+33
+00:01:23,470 --> 00:01:26,785
+And we can have multiple of
+these comments right here in
+
+34
+00:01:26,785 --> 00:01:27,000
+the document.
+
+35
+00:01:27,000 --> 00:01:29,070
+It might be very natural
+do that.
+
+36
+00:01:29,070 --> 00:01:31,410
+And it is very natural
+to do that.
+
+37
+00:01:31,410 --> 00:01:32,820
+Tags work the same way.
+
+38
+00:01:32,820 --> 00:01:35,820
+So rather than have a separate
+collection of tags, we'll just
+
+39
+00:01:35,820 --> 00:01:37,110
+put the data right in here.
+
+40
+00:01:37,110 --> 00:01:39,590
+So I'll have a tags keyword
+in this document.
+
+41
+00:01:39,590 --> 00:01:40,970
+This is the highest
+level here.
+
+42
+00:01:40,970 --> 00:01:42,730
+It's the same level as
+title and comments.
+
+43
+00:01:42,730 --> 00:01:44,720
+And I'll put tags right in--
+
+44
+00:01:44,720 --> 00:01:48,150
+cycling, education, startups.
+
+45
+00:01:48,150 --> 00:01:50,580
+So I probably only need one
+more collection from this.
+
+46
+00:01:50,580 --> 00:01:54,070
+I probably need some sort
+of authors' collection.
+
+47
+00:01:54,070 --> 00:01:56,880
+And this authors collection
+is going to have things
+
+48
+00:01:56,880 --> 00:01:59,150
+like my user name.
+
+49
+00:01:59,150 --> 00:02:01,140
+But rather than have it called
+username, this is what we're
+
+50
+00:02:01,140 --> 00:02:01,740
+going to do.
+
+51
+00:02:01,740 --> 00:02:02,470
+We'll get to this this
+a little bit
+
+52
+00:02:02,470 --> 00:02:04,060
+later, how that works.
+
+53
+00:02:04,060 --> 00:02:06,070
+In the authors collection, we're
+going to keep the user
+
+54
+00:02:06,070 --> 00:02:08,250
+name, but we're going to do is,
+we're actually going to
+
+55
+00:02:08,250 --> 00:02:11,660
+make the _ID of the object
+be the user name.
+
+56
+00:02:11,660 --> 00:02:13,420
+We haven't talked too much about
+this yet, and we'll get
+
+57
+00:02:13,420 --> 00:02:14,370
+to it later.
+
+58
+00:02:14,370 --> 00:02:17,940
+But every document needs to have
+a unique ID inside Mongo.
+
+59
+00:02:17,940 --> 00:02:20,420
+The system will assign a unique
+identifier to the
+
+60
+00:02:20,420 --> 00:02:22,310
+object if you don't
+assign one.
+
+61
+00:02:22,310 --> 00:02:25,000
+But if you have a natural,
+unique identifier that can't
+
+62
+00:02:25,000 --> 00:02:27,530
+be duplicated inside the object,
+you can use that.
+
+63
+00:02:27,530 --> 00:02:29,950
+So in this case, the username
+has to be unique in the
+
+64
+00:02:29,950 --> 00:02:32,180
+system, so we're going to
+use that as the ID.
+
+65
+00:02:32,180 --> 00:02:34,870
+And then, probably have the
+password, which will be some
+
+66
+00:02:34,870 --> 00:02:38,070
+sort of encrypted and hashed
+version of my password.
+
+67
+00:02:38,070 --> 00:02:39,190
+And you might have some
+other information
+
+68
+00:02:39,190 --> 00:02:40,660
+about the user as well.
+
+69
+00:02:40,660 --> 00:02:41,340
+And that's it.
+
+70
+00:02:41,340 --> 00:02:43,860
+I mean, that's the basic
+structure you need to
+
+71
+00:02:43,860 --> 00:02:48,390
+represent the same data inside
+MongoDB that took six tables
+
+72
+00:02:48,390 --> 00:02:50,110
+inside the relational system.
+
+73
+00:02:50,110 --> 00:02:51,100
+And it's hierarchical.
+
+74
+00:02:51,100 --> 00:02:56,510
+So every post will have a title,
+an author, a date,
+
+75
+00:02:56,510 --> 00:02:58,510
+comments, which will
+be an array
+
+76
+00:02:58,510 --> 00:02:59,840
+of the JSON on documents.
+
+77
+00:02:59,840 --> 00:03:02,410
+If the email is missing from any
+given comment, if doesn't
+
+78
+00:03:02,410 --> 00:03:04,470
+need to be there, you could
+leave it out because since
+
+79
+00:03:04,470 --> 00:03:06,890
+MongoDB is schemaless, it's
+flexible about that.
+
+80
+00:03:06,890 --> 00:03:09,510
+The tags, I could put the
+tags right in here.
+
+81
+00:03:09,510 --> 00:03:11,350
+I can have multiple listed.
+
+82
+00:03:11,350 --> 00:03:13,730
+So I've sort of turned the
+relational model on its side,
+
+83
+00:03:13,730 --> 00:03:16,200
+and I've taken things that would
+be embedded in separate
+
+84
+00:03:16,200 --> 00:03:18,470
+tables, and that would
+probably related with
+
+85
+00:03:18,470 --> 00:03:21,200
+relationships, and I've put
+them right into the same
+
+86
+00:03:21,200 --> 00:03:23,330
+document as a list or
+as a subdocument.
+
+87
+00:03:23,330 --> 00:03:24,910
+It's very convenient.
+
+88
+00:03:24,910 --> 00:03:25,280
+All right.
+
+89
+00:03:25,280 --> 00:03:28,730
+So that's how you'd model this
+blog inside the document.
+
+90
+00:03:28,730 --> 00:03:31,370
+All right, time for a quiz.
+
+91
+00:03:31,370 --> 00:03:34,410
+Given the document schema that
+we proposed for the blog in
+
+92
+00:03:34,410 --> 00:03:36,680
+this lesson, how many
+collections would we need to
+
+93
+00:03:36,680 --> 00:03:40,390
+access, to display, the blog
+homepage, which would include
+
+94
+00:03:40,390 --> 00:03:43,480
+top 10 blog posts, and their
+comments, and the author.
+
+95
+00:03:43,480 --> 00:03:45,570
+Enter your answer here
+by choosing one
+
+96
+00:03:45,570 --> 00:03:46,820
+of these four answers.
+
+97
+00:03:46,820 --> 00:03:47,840

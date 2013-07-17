@@ -1,0 +1,284 @@
+1
+00:00:00,000 --> 00:00:00,430
+
+2
+00:00:00,430 --> 00:00:02,990
+All right, so we're going to
+use Python in this class to
+
+3
+00:00:02,990 --> 00:00:03,770
+build a blog.
+
+4
+00:00:03,770 --> 00:00:06,230
+And that you can use whatever
+language you want, but Python
+
+5
+00:00:06,230 --> 00:00:08,890
+is going to be the language we
+use for all the example code.
+
+6
+00:00:08,890 --> 00:00:11,000
+And it's going to be the one
+we go into most deeply in
+
+7
+00:00:11,000 --> 00:00:12,110
+terms of drivers.
+
+8
+00:00:12,110 --> 00:00:13,890
+So if you know Python,
+that's great.
+
+9
+00:00:13,890 --> 00:00:14,840
+You can skip this part.
+
+10
+00:00:14,840 --> 00:00:16,020
+It's completely optional.
+
+11
+00:00:16,020 --> 00:00:18,150
+If you don't know Python, then
+we're going to do a small
+
+12
+00:00:18,150 --> 00:00:21,120
+tutorial on Python in the
+next few lessons.
+
+13
+00:00:21,120 --> 00:00:23,640
+You can learn it, or there are
+lots of resources online to
+
+14
+00:00:23,640 --> 00:00:24,520
+learn Python.
+
+15
+00:00:24,520 --> 00:00:26,870
+But this should be enough to get
+you started and using the
+
+16
+00:00:26,870 --> 00:00:29,400
+language if you're an
+experienced programmer in any
+
+17
+00:00:29,400 --> 00:00:30,490
+other language.
+
+18
+00:00:30,490 --> 00:00:32,759
+So Python is a scripting
+language.
+
+19
+00:00:32,759 --> 00:00:35,450
+It was created by Guido
+Von Rossum.
+
+20
+00:00:35,450 --> 00:00:38,870
+It is named after Monty Python's
+Flying Circus.
+
+21
+00:00:38,870 --> 00:00:40,280
+It strives to be readable.
+
+22
+00:00:40,280 --> 00:00:42,200
+And I think it is actually quite
+readable compared to a
+
+23
+00:00:42,200 --> 00:00:43,740
+lot of other languages.
+
+24
+00:00:43,740 --> 00:00:46,500
+It is garbage collected, which
+means you do not need to worry
+
+25
+00:00:46,500 --> 00:00:49,290
+about managing your own
+memory, which is nice.
+
+26
+00:00:49,290 --> 00:00:51,010
+And it is dynamically typed.
+
+27
+00:00:51,010 --> 00:00:55,260
+And there's a bunch of other
+features and aspects of
+
+28
+00:00:55,260 --> 00:00:58,140
+Python, but we won't go into
+them right this second.
+
+29
+00:00:58,140 --> 00:01:01,300
+Also, just generally speaking,
+if your experienced with Perl,
+
+30
+00:01:01,300 --> 00:01:03,350
+Perl sort of believed that there
+was always more than one
+
+31
+00:01:03,350 --> 00:01:04,440
+way to do everything.
+
+32
+00:01:04,440 --> 00:01:07,970
+And Python looks more toward
+creating idioms to do things
+
+33
+00:01:07,970 --> 00:01:11,020
+in a standard way so that
+the code is readable and
+
+34
+00:01:11,020 --> 00:01:12,390
+understandable by
+someone else.
+
+35
+00:01:12,390 --> 00:01:13,810
+So let's get started.
+
+36
+00:01:13,810 --> 00:01:16,220
+The first thing we're going
+to do is run the Python
+
+37
+00:01:16,220 --> 00:01:18,080
+interpreter interactively.
+
+38
+00:01:18,080 --> 00:01:20,420
+And normally, you're going to
+create a Python script and
+
+39
+00:01:20,420 --> 00:01:21,760
+you're going to edit it
+with a text editor.
+
+40
+00:01:21,760 --> 00:01:22,620
+And then you'll run it.
+
+41
+00:01:22,620 --> 00:01:24,770
+But in this case, for this
+lesson, we're actually going
+
+42
+00:01:24,770 --> 00:01:25,980
+to run interactively.
+
+43
+00:01:25,980 --> 00:01:29,390
+So I started the Python
+interpreter by typing Python.
+
+44
+00:01:29,390 --> 00:01:31,980
+And then I'm going to use
+the print command to
+
+45
+00:01:31,980 --> 00:01:33,820
+print Hello, world!
+
+46
+00:01:33,820 --> 00:01:35,290
+And you can see how
+that works.
+
+47
+00:01:35,290 --> 00:01:37,770
+And you can see that strings
+in Python are represented
+
+48
+00:01:37,770 --> 00:01:39,140
+within double quotes.
+
+49
+00:01:39,140 --> 00:01:42,610
+If you want to concatenate two
+strings, you can do that using
+
+50
+00:01:42,610 --> 00:01:43,860
+the plus operator.
+
+51
+00:01:43,860 --> 00:01:45,910
+So Hello Dwight.
+
+52
+00:01:45,910 --> 00:01:49,520
+And you can do this using
+multiple strings.
+
+53
+00:01:49,520 --> 00:01:51,770
+You can see how this puts some
+spaces in to make this a
+
+54
+00:01:51,770 --> 00:01:53,390
+little bit more readable.
+
+55
+00:01:53,390 --> 00:01:55,780
+Print Hello Dwight
+and Richard.
+
+56
+00:01:55,780 --> 00:01:57,330
+That's the first lesson.
+
+57
+00:01:57,330 --> 00:01:58,770
+Here's the quiz.
+
+58
+00:01:58,770 --> 00:02:01,390
+Right an expression to
+concatenate two strings, hat
+
+59
+00:02:01,390 --> 00:02:03,830
+and pin, in Python, to
+the string hatpin.
+
+60
+00:02:03,830 --> 00:02:06,160
+And we're just looking through
+the expression here, so no
+
+61
+00:02:06,160 --> 00:02:07,930
+assignment to a variable
+or anything else.
+
+62
+00:02:07,930 --> 00:02:09,180

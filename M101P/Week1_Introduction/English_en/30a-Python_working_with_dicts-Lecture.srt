@@ -1,0 +1,400 @@
+1
+00:00:00,000 --> 00:00:00,290
+
+2
+00:00:00,290 --> 00:00:01,920
+Let's go over Python dicts.
+
+3
+00:00:01,920 --> 00:00:02,900
+So Python dicts--
+
+4
+00:00:02,900 --> 00:00:06,940
+Python dictionaries, are very
+similar to the JSON objects
+
+5
+00:00:06,940 --> 00:00:07,635
+that we saw earlier.
+
+6
+00:00:07,635 --> 00:00:09,680
+Now there are some small
+differences, and I'll show
+
+7
+00:00:09,680 --> 00:00:10,840
+those to you.
+
+8
+00:00:10,840 --> 00:00:13,540
+You initialize dictionary
+much the same way you
+
+9
+00:00:13,540 --> 00:00:14,670
+initialize an object.
+
+10
+00:00:14,670 --> 00:00:17,650
+So if I wanted to create a small
+dictionary in Python,
+
+11
+00:00:17,650 --> 00:00:21,415
+assign it to the variable a, say
+a equals squiggly brace,
+
+12
+00:00:21,415 --> 00:00:27,430
+and then name:bob and
+age colon 20.
+
+13
+00:00:27,430 --> 00:00:28,650
+That just works.
+
+14
+00:00:28,650 --> 00:00:33,320
+Now one difference between a
+Python dictionary and a JSON
+
+15
+00:00:33,320 --> 00:00:37,370
+document is that Python doesn't
+retain any order for
+
+16
+00:00:37,370 --> 00:00:39,080
+the items inside the list.
+
+17
+00:00:39,080 --> 00:00:42,700
+So it doesn't have any notion,
+let's say, name being an
+
+18
+00:00:42,700 --> 00:00:44,590
+earlier key than age.
+
+19
+00:00:44,590 --> 00:00:47,300
+And so, as a result, inside the
+Python drivers, you'll see
+
+20
+00:00:47,300 --> 00:00:50,550
+that they don't use the exact
+dictionary class.
+
+21
+00:00:50,550 --> 00:00:52,100
+They use something that
+is very similar to the
+
+22
+00:00:52,100 --> 00:00:55,340
+dictionary, but retains the
+order as needed for JSON.
+
+23
+00:00:55,340 --> 00:00:56,970
+If I want to reference
+something, I
+
+24
+00:00:56,970 --> 00:00:58,040
+use a square brackets.
+
+25
+00:00:58,040 --> 00:01:01,260
+That's a very similar notation
+as for the lists.
+
+26
+00:01:01,260 --> 00:01:04,790
+So if I want to get the name, I
+say a, square bracket, name.
+
+27
+00:01:04,790 --> 00:01:06,570
+Now if I use this on the right
+side of an expression, I'm
+
+28
+00:01:06,570 --> 00:01:07,570
+going to get back the name.
+
+29
+00:01:07,570 --> 00:01:09,200
+And if I used it on the left
+side of the expression, I'm
+
+30
+00:01:09,200 --> 00:01:10,620
+going to wind up assigning
+to the name.
+
+31
+00:01:10,620 --> 00:01:12,980
+So if I say, that's Jim,
+that's going to be an
+
+32
+00:01:12,980 --> 00:01:17,320
+assignment, and if I say that's
+the variable b = a of
+
+33
+00:01:17,320 --> 00:01:19,880
+name, well, if I do it after
+that, then it's going to
+
+34
+00:01:19,880 --> 00:01:21,520
+assign b, Jim.
+
+35
+00:01:21,520 --> 00:01:24,630
+You can also remove an item from
+the dictionary much in
+
+36
+00:01:24,630 --> 00:01:26,130
+the same way you remove
+something from an array.
+
+37
+00:01:26,130 --> 00:01:30,130
+You can use delete functions,
+like, say delete a of name,
+
+38
+00:01:30,130 --> 00:01:31,470
+and it will delete that.
+
+39
+00:01:31,470 --> 00:01:33,710
+Now, it needs to exist
+in order for
+
+40
+00:01:33,710 --> 00:01:35,130
+that to be legal call.
+
+41
+00:01:35,130 --> 00:01:37,010
+And we'll talk about how you
+check about whether or not
+
+42
+00:01:37,010 --> 00:01:38,600
+something is in a dictionary.
+
+43
+00:01:38,600 --> 00:01:40,910
+So let's go into a terminal
+window and take a look at some
+
+44
+00:01:40,910 --> 00:01:42,815
+of the things we just did.
+
+45
+00:01:42,815 --> 00:01:45,650
+I'm going to create a dictionary
+with name colon
+
+46
+00:01:45,650 --> 00:01:48,080
+myname, city_of_birth
+colon Queens.
+
+47
+00:01:48,080 --> 00:01:51,300
+And now, if I just print out
+that expression, I'll see
+
+48
+00:01:51,300 --> 00:01:52,440
+what's there.
+
+49
+00:01:52,440 --> 00:01:56,210
+If I printed out g of name,
+I'll get Andrew Erlichson.
+
+50
+00:01:56,210 --> 00:02:00,260
+If I set g of name, equal to
+Dwight Merriman, then that'll
+
+51
+00:02:00,260 --> 00:02:02,080
+change my dictionary.
+
+52
+00:02:02,080 --> 00:02:04,810
+If I want to know all
+the keys that are in
+
+53
+00:02:04,810 --> 00:02:07,110
+here, I can call g.keys.
+
+54
+00:02:07,110 --> 00:02:08,300
+But look what happened there.
+
+55
+00:02:08,300 --> 00:02:09,469
+That's what I talked
+about before.
+
+56
+00:02:09,469 --> 00:02:12,325
+It gave me my city of birth back
+as the first key-- this
+
+57
+00:02:12,325 --> 00:02:14,750
+is a list-- and my second
+key as name.
+
+58
+00:02:14,750 --> 00:02:16,880
+This is the opposite order we
+put them into the list.
+
+59
+00:02:16,880 --> 00:02:19,190
+And that's why I said that
+Python does not retain the
+
+60
+00:02:19,190 --> 00:02:22,740
+order of the keys but JSON
+does-- a small subtlety.
+
+61
+00:02:22,740 --> 00:02:25,290
+If I want to remove something,
+I can do that.
+
+62
+00:02:25,290 --> 00:02:27,900
+I'm going to delete g is
+the name of the list,
+
+63
+00:02:27,900 --> 00:02:29,560
+name, that's fine.
+
+64
+00:02:29,560 --> 00:02:32,440
+If I delete an item that's not
+in there, that is an error.
+
+65
+00:02:32,440 --> 00:02:33,450
+I'll show you that.
+
+66
+00:02:33,450 --> 00:02:34,500
+That's an error.
+
+67
+00:02:34,500 --> 00:02:37,460
+However you can check, using
+the in operator, whether or
+
+68
+00:02:37,460 --> 00:02:39,830
+not a particular key is
+in the dictionary.
+
+69
+00:02:39,830 --> 00:02:43,920
+So I could say city of birth
+in g, and that's true.
+
+70
+00:02:43,920 --> 00:02:46,270
+If I said foo in g,
+that's false.
+
+71
+00:02:46,270 --> 00:02:48,900
+And I can use that exactly the
+same way I used it when I was
+
+72
+00:02:48,900 --> 00:02:50,300
+checking inclusion in lists.
+
+73
+00:02:50,300 --> 00:02:53,990
+Now, you'll notice that when I
+use the in operator in a list,
+
+74
+00:02:53,990 --> 00:02:56,460
+it goes through each of the
+items in the list and checks
+
+75
+00:02:56,460 --> 00:02:59,150
+whether or not the value
+is an item in the list.
+
+76
+00:02:59,150 --> 00:03:02,890
+When I use the in operator with
+a dictionary, it checks
+
+77
+00:03:02,890 --> 00:03:06,580
+whether or not the item I'm
+checking is a key in the
+
+78
+00:03:06,580 --> 00:03:07,290
+dictionary.
+
+79
+00:03:07,290 --> 00:03:09,950
+So it looks for city
+of birth as a key.
+
+80
+00:03:09,950 --> 00:03:12,440
+It did not look for
+it in the values.
+
+81
+00:03:12,440 --> 00:03:16,360
+OK, so that's the way
+dictionaries work in Python.
+
+82
+00:03:16,360 --> 00:03:18,380
+Time for a quiz.
+
+83
+00:03:18,380 --> 00:03:22,550
+Initialize a new Python
+dictionary name colors with
+
+84
+00:03:22,550 --> 00:03:27,880
+the key pairs sky, being
+blue, sea, being blue,
+
+85
+00:03:27,880 --> 00:03:29,660
+earth, being brown.
+
+86
+00:03:29,660 --> 00:03:31,580
+Type your answer right here.

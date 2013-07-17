@@ -1,0 +1,117 @@
+1
+00:00:00,000 --> 00:00:00,240
+
+2
+00:00:00,240 --> 00:00:00,510
+OK.
+
+3
+00:00:00,510 --> 00:00:02,760
+I'm going to go over the
+solution to Homework 1.
+
+4
+00:00:02,760 --> 00:00:05,670
+In Homework 1, we asked you
+to download a small tar
+
+5
+00:00:05,670 --> 00:00:07,780
+file and expand it.
+
+6
+00:00:07,780 --> 00:00:09,380
+I'm going to do that
+right now.
+
+7
+00:00:09,380 --> 00:00:11,740
+And in that file, you'll
+see there are--
+
+8
+00:00:11,740 --> 00:00:14,830
+there's one directory, a dump
+directory, that has a bunch of
+
+9
+00:00:14,830 --> 00:00:17,270
+subdirectories and then has
+one subdirectory, and then
+
+10
+00:00:17,270 --> 00:00:18,890
+there's some bson
+files in that.
+
+11
+00:00:18,890 --> 00:00:21,030
+That's just a standard
+dump file that you
+
+12
+00:00:21,030 --> 00:00:22,560
+get from Mongo dump.
+
+13
+00:00:22,560 --> 00:00:25,030
+And then there's 2 py files.
+
+14
+00:00:25,030 --> 00:00:26,500
+Then I run mongorestore.
+
+15
+00:00:26,500 --> 00:00:31,770
+On that dump, it created the
+m101 database and brought the
+
+16
+00:00:31,770 --> 00:00:33,270
+collections in.
+
+17
+00:00:33,270 --> 00:00:34,480
+I'm going to go into Mongo.
+
+18
+00:00:34,480 --> 00:00:38,230
+I'm going to use m101 and
+show collections.
+
+19
+00:00:38,230 --> 00:00:40,735
+The one we need is called
+homework 1.
+
+20
+00:00:40,735 --> 00:00:44,200
+I'm going to look at homework 1
+and see what's inside it and
+
+21
+00:00:44,200 --> 00:00:47,160
+see that there is one document
+with an answer 42.
+
+22
+00:00:47,160 --> 00:00:49,720
+That's the answer to the
+question of "The Ultimate of
+
+23
+00:00:49,720 --> 00:00:51,960
+Life, of the Universe and
+Everything" from Hitchhikers
+
+24
+00:00:51,960 --> 00:00:52,950
+Guide to the Galaxy.
+
+25
+00:00:52,950 --> 00:00:54,850
+So that's the answer
+to Homework 1.
+
+26
+00:00:54,850 --> 00:00:56,100

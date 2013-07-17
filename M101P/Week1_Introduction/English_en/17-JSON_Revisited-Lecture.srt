@@ -1,0 +1,208 @@
+1
+00:00:00,000 --> 00:00:00,190
+
+2
+00:00:00,190 --> 00:00:00,460
+All right.
+
+3
+00:00:00,460 --> 00:00:02,170
+Let's revisit JSON now and talk
+
+4
+00:00:02,170 --> 00:00:03,430
+about what it can represent.
+
+5
+00:00:03,430 --> 00:00:05,570
+And then we're going to get to
+why it can represent it.
+
+6
+00:00:05,570 --> 00:00:09,130
+There are only two basic data
+structures inside JSON, and
+
+7
+00:00:09,130 --> 00:00:11,920
+they are arrays and
+dictionaries.
+
+8
+00:00:11,920 --> 00:00:13,400
+Now, we all know what
+arrays are.
+
+9
+00:00:13,400 --> 00:00:14,800
+Arrays are list of things.
+
+10
+00:00:14,800 --> 00:00:17,950
+And dictionaries are these
+associative maps.
+
+11
+00:00:17,950 --> 00:00:20,830
+So they can be combined
+in arbitrary ways.
+
+12
+00:00:20,830 --> 00:00:24,290
+So an array inside JSON is
+represented using these square
+
+13
+00:00:24,290 --> 00:00:26,600
+brackets and then a list
+of items between.
+
+14
+00:00:26,600 --> 00:00:29,010
+And a dictionary is represented
+using the curly
+
+15
+00:00:29,010 --> 00:00:33,280
+braces, and it's a bunch of
+keyword and value pairs.
+
+16
+00:00:33,280 --> 00:00:35,850
+And then there's a keyword,
+a colon, and then a value.
+
+17
+00:00:35,850 --> 00:00:37,380
+And there could be arbitrary
+numbers of these
+
+18
+00:00:37,380 --> 00:00:38,940
+separated by commas.
+
+19
+00:00:38,940 --> 00:00:41,460
+Those are only two data
+structures inside JSON.
+
+20
+00:00:41,460 --> 00:00:43,350
+And they're all just combined,
+and they could be nested in
+
+21
+00:00:43,350 --> 00:00:44,550
+arbitrary ways.
+
+22
+00:00:44,550 --> 00:00:46,910
+So I can create a very
+deep document.
+
+23
+00:00:46,910 --> 00:00:49,560
+So I can create a document, for
+instance, and at the top
+
+24
+00:00:49,560 --> 00:00:51,110
+level, there has to
+be a dictionary.
+
+25
+00:00:51,110 --> 00:00:54,070
+And I can create something with
+a name and that has a
+
+26
+00:00:54,070 --> 00:00:57,260
+value, and then I could have a
+city, and it can have another
+
+27
+00:00:57,260 --> 00:00:58,660
+value here.
+
+28
+00:00:58,660 --> 00:01:00,900
+And then I could put, for
+instance, if this is just a
+
+29
+00:01:00,900 --> 00:01:03,060
+collection of people and their
+cities and maybe their
+
+30
+00:01:03,060 --> 00:01:05,990
+interests, I can have another
+key here called Interest, and
+
+31
+00:01:05,990 --> 00:01:08,040
+that could turn out
+to be an array.
+
+32
+00:01:08,040 --> 00:01:09,640
+And it's got square brackets,
+and I could
+
+33
+00:01:09,640 --> 00:01:11,290
+put things in here.
+
+34
+00:01:11,290 --> 00:01:14,440
+And each of these, in itself,
+could, of course, be its own
+
+35
+00:01:14,440 --> 00:01:17,070
+dictionary, which means it would
+be represented using the
+
+36
+00:01:17,070 --> 00:01:18,280
+curly braces.
+
+37
+00:01:18,280 --> 00:01:21,370
+So we're going to build up
+everything from these two
+
+38
+00:01:21,370 --> 00:01:22,720
+basic data structures.
+
+39
+00:01:22,720 --> 00:01:26,720
+The two basic structures are
+arrays and dictionaries.
+
+40
+00:01:26,720 --> 00:01:30,410
+Now we're going to go through
+and show you each of these and
+
+41
+00:01:30,410 --> 00:01:31,530
+teach you how to write them.
+
+42
+00:01:31,530 --> 00:01:33,710
+And then we'll go one higher
+level and show how they're
+
+43
+00:01:33,710 --> 00:01:35,730
+used in data representation
+relative
+
+44
+00:01:35,730 --> 00:01:36,980
+to relational databases.
+
+45
+00:01:36,980 --> 00:01:37,900

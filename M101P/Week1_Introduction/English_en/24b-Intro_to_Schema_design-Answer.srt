@@ -1,0 +1,162 @@
+1
+00:00:00,000 --> 00:00:00,200
+
+2
+00:00:00,200 --> 00:00:00,880
+All right.
+
+3
+00:00:00,880 --> 00:00:04,030
+So, turns out, that there's only
+one of these four where
+
+4
+00:00:04,030 --> 00:00:06,300
+you have to use a separate
+collection.
+
+5
+00:00:06,300 --> 00:00:09,550
+The first one is that the data
+would be duplicated across
+
+6
+00:00:09,550 --> 00:00:11,650
+multiple objects within
+the collection.
+
+7
+00:00:11,650 --> 00:00:14,780
+Now, this is not a reason why
+you have to put the data in a
+
+8
+00:00:14,780 --> 00:00:15,770
+separate collection.
+
+9
+00:00:15,770 --> 00:00:17,750
+You might want you because you
+don't want to go to the
+
+10
+00:00:17,750 --> 00:00:20,350
+trouble of changing it
+everywhere in the source
+
+11
+00:00:20,350 --> 00:00:24,120
+documents, if a piece of data
+changes in the sub-documents,
+
+12
+00:00:24,120 --> 00:00:26,420
+but it certainly isn't
+a requirement.
+
+13
+00:00:26,420 --> 00:00:28,460
+You need an index on
+the data element.
+
+14
+00:00:28,460 --> 00:00:32,170
+So know we support indexing
+sub-documents, as well as
+
+15
+00:00:32,170 --> 00:00:35,460
+array elements, so there's no
+problem with embedding data in
+
+16
+00:00:35,460 --> 00:00:36,070
+a document.
+
+17
+00:00:36,070 --> 00:00:37,370
+You can still index it.
+
+18
+00:00:37,370 --> 00:00:40,360
+And then finally, the data
+is not isomorphic.
+
+19
+00:00:40,360 --> 00:00:42,260
+Well, I'm not sure exactly
+what that means
+
+20
+00:00:42,260 --> 00:00:43,220
+here in this context--
+
+21
+00:00:43,220 --> 00:00:44,430
+I sort of made it up.
+
+22
+00:00:44,430 --> 00:00:46,540
+But no, it's not a reason.
+
+23
+00:00:46,540 --> 00:00:49,650
+Isomorphic means all the same
+type, and you could, in fact,
+
+24
+00:00:49,650 --> 00:00:52,600
+put data in each document that
+was a slightly different
+
+25
+00:00:52,600 --> 00:00:55,020
+type-- one was an array, and
+one was an array plus a
+
+26
+00:00:55,020 --> 00:00:56,850
+sub-document, that
+would be fine.
+
+27
+00:00:56,850 --> 00:00:58,530
+And there's no reason why you'd
+have to put that to a
+
+28
+00:00:58,530 --> 00:00:59,730
+separate collection.
+
+29
+00:00:59,730 --> 00:01:02,250
+But this third one here is a
+reason why you might have to
+
+30
+00:01:02,250 --> 00:01:05,420
+use a separate collection, which
+is that if the embedded
+
+31
+00:01:05,420 --> 00:01:07,810
+data would exceed the 16
+megabyte document limit,
+
+32
+00:01:07,810 --> 00:01:11,500
+within MongoDB, you have no
+choice but to put that data in
+
+33
+00:01:11,500 --> 00:01:13,540
+its own collection and reference
+it within the
+
+34
+00:01:13,540 --> 00:01:15,600
+primary collection using some
+sort of identifier.
+
+35
+00:01:15,600 --> 00:01:16,850

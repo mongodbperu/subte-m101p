@@ -1,0 +1,222 @@
+1
+00:00:00,000 --> 00:00:00,150
+
+2
+00:00:00,150 --> 00:00:03,510
+There are lots of operations
+that you can do on a list.
+
+3
+00:00:03,510 --> 00:00:06,890
+Let's go back to our example,
+before, we looked at this
+
+4
+00:00:06,890 --> 00:00:09,635
+small list, which has apple,
+pear, and banana in it.
+
+5
+00:00:09,635 --> 00:00:11,550
+And we've assigned it to a.
+
+6
+00:00:11,550 --> 00:00:13,720
+So if we wanted to add another
+item to that list, we could
+
+7
+00:00:13,720 --> 00:00:15,540
+use the append function.
+
+8
+00:00:15,540 --> 00:00:18,630
+And we could append
+a kiwi onto it.
+
+9
+00:00:18,630 --> 00:00:21,410
+And if we look at a now,
+we'll see it's apple,
+
+10
+00:00:21,410 --> 00:00:23,170
+pear, banana, and kiwi.
+
+11
+00:00:23,170 --> 00:00:24,990
+If we wanted to change,
+directly, one of the items in
+
+12
+00:00:24,990 --> 00:00:25,895
+the list, we could do that.
+
+13
+00:00:25,895 --> 00:00:28,250
+We could say a of 1 equals
+grape, and they're
+
+14
+00:00:28,250 --> 00:00:29,495
+ordered from zero.
+
+15
+00:00:29,495 --> 00:00:31,340
+And now if we look at a,
+we can see that it's
+
+16
+00:00:31,340 --> 00:00:32,840
+been changed to grape.
+
+17
+00:00:32,840 --> 00:00:34,946
+We can also remove an
+item from the list
+
+18
+00:00:34,946 --> 00:00:36,370
+using the delete command.
+
+19
+00:00:36,370 --> 00:00:38,490
+We'll do a of 2, which
+will be banana.
+
+20
+00:00:38,490 --> 00:00:41,100
+Now, if we look at a, we see
+that banana is now missing.
+
+21
+00:00:41,100 --> 00:00:43,120
+It's apple, grape, and kiwi.
+
+22
+00:00:43,120 --> 00:00:45,280
+Now if you want to see all the
+things are possible to do with
+
+23
+00:00:45,280 --> 00:00:49,260
+the list, you use a dir
+command inside Python.
+
+24
+00:00:49,260 --> 00:00:51,500
+And it will look at the object
+and tell you all the different
+
+25
+00:00:51,500 --> 00:00:52,580
+things that are possible.
+
+26
+00:00:52,580 --> 00:00:53,620
+I'm not going to go through
+a lot of these.
+
+27
+00:00:53,620 --> 00:00:55,530
+They are internal commands
+that we don't need to
+
+28
+00:00:55,530 --> 00:00:56,500
+understand.
+
+29
+00:00:56,500 --> 00:00:58,170
+But you can see there's
+a pop, and there's a
+
+30
+00:00:58,170 --> 00:01:00,520
+remove, there's an extend.
+
+31
+00:01:00,520 --> 00:01:02,600
+You can look up the
+documentation, but this dir
+
+32
+00:01:02,600 --> 00:01:04,959
+command is very useful,
+especially inside the shell,
+
+33
+00:01:04,959 --> 00:01:06,500
+if you're trying to understand
+what a method
+
+34
+00:01:06,500 --> 00:01:08,170
+can do inside Python.
+
+35
+00:01:08,170 --> 00:01:11,410
+I'll just quickly, briefly show
+you the page here from
+
+36
+00:01:11,410 --> 00:01:14,430
+the Python docs, which shows
+all the basic commands that
+
+37
+00:01:14,430 --> 00:01:16,780
+you can do, all the basic
+functions and methods you can
+
+38
+00:01:16,780 --> 00:01:18,060
+call on the list--
+
+39
+00:01:18,060 --> 00:01:23,150
+append, extend, insert, remove,
+pop, sort, reverse it.
+
+40
+00:01:23,150 --> 00:01:24,070
+And these are pretty
+straightforward.
+
+41
+00:01:24,070 --> 00:01:26,090
+You probably won't use very
+many of them when you're
+
+42
+00:01:26,090 --> 00:01:27,060
+working in this course.
+
+43
+00:01:27,060 --> 00:01:28,080
+But it's good to know
+that they're
+
+44
+00:01:28,080 --> 00:01:30,160
+available if you need them.
+
+45
+00:01:30,160 --> 00:01:32,230
+Here's the quiz.
+
+46
+00:01:32,230 --> 00:01:34,210
+Manipulating a Python list.
+
+47
+00:01:34,210 --> 00:01:36,630
+Write the code to append
+hammer onto
+
+48
+00:01:36,630 --> 00:01:38,080
+a list named things.
+
+49
+00:01:38,080 --> 00:01:39,667

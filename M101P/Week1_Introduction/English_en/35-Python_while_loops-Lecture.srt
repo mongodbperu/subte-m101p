@@ -1,0 +1,171 @@
+1
+00:00:00,000 --> 00:00:00,220
+
+2
+00:00:00,220 --> 00:00:01,890
+Next up, we're going to talk
+about while loops.
+
+3
+00:00:01,890 --> 00:00:04,030
+While loops in Python are
+pretty simple to use.
+
+4
+00:00:04,030 --> 00:00:05,780
+Let's show you some
+code to do it.
+
+5
+00:00:05,780 --> 00:00:08,600
+We're going to iterate through
+this list of fruit that we
+
+6
+00:00:08,600 --> 00:00:10,320
+created earlier, and we're
+going to use a while loop
+
+7
+00:00:10,320 --> 00:00:11,440
+rather than a for loop.
+
+8
+00:00:11,440 --> 00:00:13,680
+You remember how natural it was
+to do it in a for loop.
+
+9
+00:00:13,680 --> 00:00:15,100
+You just said for item
+and fruit, and
+
+10
+00:00:15,100 --> 00:00:16,475
+you were done, basically.
+
+11
+00:00:16,475 --> 00:00:18,740
+But a while loop will be
+slightly more complicated.
+
+12
+00:00:18,740 --> 00:00:22,130
+First, I'm going to have to use
+a variable, i, to count
+
+13
+00:00:22,130 --> 00:00:22,930
+through the loop.
+
+14
+00:00:22,930 --> 00:00:25,170
+And now I'm going to
+set it equal to 0.
+
+15
+00:00:25,170 --> 00:00:29,470
+And then I'm going to have the
+conditional be while i less
+
+16
+00:00:29,470 --> 00:00:31,660
+than the len of fruit.
+
+17
+00:00:31,660 --> 00:00:34,210
+Now, len, as an operator, I
+haven't told you about before,
+
+18
+00:00:34,210 --> 00:00:35,800
+but it'll tell you the
+length of the list.
+
+19
+00:00:35,800 --> 00:00:39,050
+And so the length, in this case,
+will be 3, and so it'll
+
+20
+00:00:39,050 --> 00:00:40,760
+iterate to the values
+0, 1, and 2,
+
+21
+00:00:40,760 --> 00:00:42,080
+which is what we expect.
+
+22
+00:00:42,080 --> 00:00:46,220
+And then for each one, it'll
+print fruit of i.
+
+23
+00:00:46,220 --> 00:00:49,280
+And you'll notice that
+then I had i = i + 1.
+
+24
+00:00:49,280 --> 00:00:51,500
+This is within the loop body
+because it's indented.
+
+25
+00:00:51,500 --> 00:00:54,160
+I did not do i++, which is what
+I would most naturally
+
+26
+00:00:54,160 --> 00:00:59,090
+do, being a C guy, because i++
+is not legal inside Python.
+
+27
+00:00:59,090 --> 00:01:01,675
+Because this is more readable,
+so this is the structure and
+
+28
+00:01:01,675 --> 00:01:05,220
+the idiom that is used inside
+Python, i = i + 1.
+
+29
+00:01:05,220 --> 00:01:05,730
+All right.
+
+30
+00:01:05,730 --> 00:01:07,960
+Let's go through and
+see if that worked.
+
+31
+00:01:07,960 --> 00:01:11,090
+Let's run python while_loop.py,
+
+32
+00:01:11,090 --> 00:01:12,030
+and what do I get?
+
+33
+00:01:12,030 --> 00:01:14,810
+I get apple, orange,
+and grape.
+
+34
+00:01:14,810 --> 00:01:17,822
+And if you recall from the
+program, that was exactly the
+
+35
+00:01:17,822 --> 00:01:21,060
+order they were put in, apple,
+orange, and grape.
+
+36
+00:01:21,060 --> 00:01:22,400
+So that's how while loops work.
+
+37
+00:01:22,400 --> 00:01:23,650

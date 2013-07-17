@@ -1,0 +1,373 @@
+1
+00:00:00,000 --> 00:00:00,190
+
+2
+00:00:00,190 --> 00:00:01,010
+OK.
+
+3
+00:00:01,010 --> 00:00:03,440
+Let's bring it all together
+now and build a web
+
+4
+00:00:03,440 --> 00:00:04,830
+application.
+
+5
+00:00:04,830 --> 00:00:06,700
+We have MongoD installed.
+
+6
+00:00:06,700 --> 00:00:10,590
+And we have our application
+layer over here.
+
+7
+00:00:10,590 --> 00:00:12,860
+And that's gonna be
+written in Python.
+
+8
+00:00:12,860 --> 00:00:15,360
+And we have Pymongo installed.
+
+9
+00:00:15,360 --> 00:00:18,780
+And Pymongo is gonna talk
+to MongDB at BSON.
+
+10
+00:00:18,780 --> 00:00:22,740
+And the last part is we want
+to be able to display a web
+
+11
+00:00:22,740 --> 00:00:24,660
+page, via http.
+
+12
+00:00:24,660 --> 00:00:28,670
+And to do that, we're going to
+write a program that uses the
+
+13
+00:00:28,670 --> 00:00:30,400
+bottle framework.
+
+14
+00:00:30,400 --> 00:00:33,300
+So I'll show you what a small
+Hello World program looks like
+
+15
+00:00:33,300 --> 00:00:34,280
+to do that.
+
+16
+00:00:34,280 --> 00:00:39,760
+So I'm going to open up this
+small program in emax.
+
+17
+00:00:39,760 --> 00:00:41,100
+We'll go through it
+line by line so we
+
+18
+00:00:41,100 --> 00:00:42,370
+can see what it does.
+
+19
+00:00:42,370 --> 00:00:44,650
+So the first thing is
+it imports bottle.
+
+20
+00:00:44,650 --> 00:00:47,410
+And then it imports Pymongo.
+
+21
+00:00:47,410 --> 00:00:51,570
+And then it creates a route for
+/, which means the default
+
+22
+00:00:51,570 --> 00:00:52,480
+route of the web server.
+
+23
+00:00:52,480 --> 00:00:56,270
+So when you go to a web server
+without any URL after the host
+
+24
+00:00:56,270 --> 00:00:57,660
+name, this is what you get.
+
+25
+00:00:57,660 --> 00:01:01,015
+This is a decorator telling
+Python that the next function
+
+26
+00:01:01,015 --> 00:01:04,489
+is going to be executed when
+the user hits that route.
+
+27
+00:01:04,489 --> 00:01:07,050
+And we call that index.
+
+28
+00:01:07,050 --> 00:01:09,000
+But there's nothing special
+about that name.
+
+29
+00:01:09,000 --> 00:01:12,080
+And you could, in fact, call it
+something else if you like.
+
+30
+00:01:12,080 --> 00:01:17,980
+The first step here is to use
+the MongoClient class to
+
+31
+00:01:17,980 --> 00:01:21,000
+connect the local
+host at 27017.
+
+32
+00:01:21,000 --> 00:01:23,660
+That's the default port that
+MongoD listens on.
+
+33
+00:01:23,660 --> 00:01:26,990
+And then, again, we connect
+to the test database.
+
+34
+00:01:26,990 --> 00:01:29,020
+db=connection.test.
+
+35
+00:01:29,020 --> 00:01:30,910
+And then to the names
+collection.
+
+36
+00:01:30,910 --> 00:01:32,430
+db.names.
+
+37
+00:01:32,430 --> 00:01:35,960
+Then we find a single document
+using the find one command
+
+38
+00:01:35,960 --> 00:01:36,990
+that's going to put
+that document
+
+39
+00:01:36,990 --> 00:01:38,650
+into the item variable.
+
+40
+00:01:38,650 --> 00:01:43,480
+And then it's going to return,
+basically, Hello whatever is
+
+41
+00:01:43,480 --> 00:01:46,130
+in the names key of
+that document.
+
+42
+00:01:46,130 --> 00:01:49,270
+And this is a Python convention
+that the %s will be
+
+43
+00:01:49,270 --> 00:01:51,690
+substituted by what's after
+this percent sign.
+
+44
+00:01:51,690 --> 00:01:53,730
+In this case, item name.
+
+45
+00:01:53,730 --> 00:01:54,830
+Item's a dictionary.
+
+46
+00:01:54,830 --> 00:01:58,160
+And we're pulling out the
+value for the name key.
+
+47
+00:01:58,160 --> 00:01:59,890
+That's the end of that function,
+which is going to
+
+48
+00:01:59,890 --> 00:02:02,870
+run when you hit the /
+route on the server.
+
+49
+00:02:02,870 --> 00:02:05,450
+And only thing left to
+do is that we have to
+
+50
+00:02:05,450 --> 00:02:06,940
+tell bottle to run.
+
+51
+00:02:06,940 --> 00:02:11,660
+And to do that we call
+bottle.run with host=localhost
+
+52
+00:02:11,660 --> 00:02:15,780
+the port=8082, which is a high
+numbered port that we can get
+
+53
+00:02:15,780 --> 00:02:17,600
+to without being route.
+
+54
+00:02:17,600 --> 00:02:20,470
+So let's run it.
+
+55
+00:02:20,470 --> 00:02:20,730
+OK.
+
+56
+00:02:20,730 --> 00:02:22,890
+It says it's listening
+on local host.
+
+57
+00:02:22,890 --> 00:02:25,210
+And now let's go to
+a web browser.
+
+58
+00:02:25,210 --> 00:02:28,620
+And hit that URL.
+
+59
+00:02:28,620 --> 00:02:31,150
+And we can see it says
+Hello Dwight.
+
+60
+00:02:31,150 --> 00:02:33,970
+And if you recall, Dwight was
+in the database in the names
+
+61
+00:02:33,970 --> 00:02:35,140
+collection.
+
+62
+00:02:35,140 --> 00:02:36,500
+And if we make a change--
+
+63
+00:02:36,500 --> 00:02:38,320
+I'll do it over here.
+
+64
+00:02:38,320 --> 00:02:40,800
+Call Mongo.
+
+65
+00:02:40,800 --> 00:02:42,360
+Use test.
+
+66
+00:02:42,360 --> 00:02:44,960
+And then we do var j=
+2 db.names.findone.
+
+67
+00:02:44,960 --> 00:02:47,680
+
+68
+00:02:47,680 --> 00:02:49,350
+We can see the j is Dwight.
+
+69
+00:02:49,350 --> 00:02:50,960
+We could do j.name=Andrew.
+
+70
+00:02:50,960 --> 00:02:54,410
+
+71
+00:02:54,410 --> 00:02:56,290
+And then we can do
+db.names.save j.
+
+72
+00:02:56,290 --> 00:03:00,000
+
+73
+00:03:00,000 --> 00:03:01,860
+And now Andrew is saved
+into the collection.
+
+74
+00:03:01,860 --> 00:03:04,210
+Let's take a look and make
+sure that's true.
+
+75
+00:03:04,210 --> 00:03:06,540
+It says Andrew is
+now in there.
+
+76
+00:03:06,540 --> 00:03:11,390
+And now if we go back to our web
+browser right here and run
+
+77
+00:03:11,390 --> 00:03:14,710
+it again, it changes
+to Andrew.
+
+78
+00:03:14,710 --> 00:03:20,460
+So you can see, now we have an
+end-to-end application that is
+
+79
+00:03:20,460 --> 00:03:25,330
+written in Python, that uses
+bottle, and that uses Pymongo.
+
+80
+00:03:25,330 --> 00:03:26,720
+Connects to the database.
+
+81
+00:03:26,720 --> 00:03:28,880
+And then I can answer
+an http request and
+
+82
+00:03:28,880 --> 00:03:30,130
+produce a web page.
+
+83
+00:03:30,130 --> 00:03:31,200

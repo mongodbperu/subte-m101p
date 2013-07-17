@@ -1,0 +1,19 @@
+1
+00:00:00,000 --> 00:00:00,310
+
+2
+00:00:00,310 --> 00:00:01,690
+And here's the answer.
+
+3
+00:00:01,690 --> 00:00:05,930
+Things equal curly brace
+animals, that's our key, with
+
+4
+00:00:05,930 --> 00:00:08,580
+its value being list,
+dog, cat, zebra.
+
+5
+00:00:08,580 --> 00:00:09,830

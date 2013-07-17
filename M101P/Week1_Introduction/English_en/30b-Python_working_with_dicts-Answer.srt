@@ -1,0 +1,19 @@
+1
+00:00:00,000 --> 00:00:00,120
+
+2
+00:00:00,120 --> 00:00:01,410
+And here's the answer.
+
+3
+00:00:01,410 --> 00:00:07,180
+Colors equal curly brace sky
+blue, sea blue, earth brown.
+
+4
+00:00:07,180 --> 00:00:09,840
+And this is essentially
+the same as JSON.
+
+5
+00:00:09,840 --> 00:00:11,090

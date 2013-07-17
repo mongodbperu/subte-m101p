@@ -1,0 +1,126 @@
+1
+00:00:00,000 --> 00:00:00,230
+
+2
+00:00:00,230 --> 00:00:03,430
+If you want to know more about
+JSON, JSON is a standard.
+
+3
+00:00:03,430 --> 00:00:07,000
+And you can look it up
+at www.json.org.
+
+4
+00:00:07,000 --> 00:00:10,150
+And this document over here,
+this webpage, shows you JSON.
+
+5
+00:00:10,150 --> 00:00:12,830
+It's the same as I've told you
+about, but there's some slight
+
+6
+00:00:12,830 --> 00:00:14,790
+different nomenclature
+that I'll go through.
+
+7
+00:00:14,790 --> 00:00:17,570
+So rather than call it a
+document at the highest level,
+
+8
+00:00:17,570 --> 00:00:18,890
+they call it an object.
+
+9
+00:00:18,890 --> 00:00:22,170
+And you can see that an object,
+or document, can have
+
+10
+00:00:22,170 --> 00:00:26,050
+an arbitrary number of keys and
+values and a colon between
+
+11
+00:00:26,050 --> 00:00:27,280
+the key and the value.
+
+12
+00:00:27,280 --> 00:00:29,330
+And then there's a comma between
+each set of them.
+
+13
+00:00:29,330 --> 00:00:32,610
+And then the value can be a
+bunch of different things.
+
+14
+00:00:32,610 --> 00:00:35,540
+If you go down the page, you
+can see a value can be a
+
+15
+00:00:35,540 --> 00:00:38,950
+string, a number, or an object,
+or it can be an array.
+
+16
+00:00:38,950 --> 00:00:42,170
+And then an array right
+here is explained.
+
+17
+00:00:42,170 --> 00:00:45,520
+An array is just the sequence
+of values that are separated
+
+18
+00:00:45,520 --> 00:00:46,690
+by a comma.
+
+19
+00:00:46,690 --> 00:00:49,540
+So this is essentially a more
+formal representation of what
+
+20
+00:00:49,540 --> 00:00:50,810
+we've been talking about.
+
+21
+00:00:50,810 --> 00:00:52,570
+But you can see that this
+standard allows for an
+
+22
+00:00:52,570 --> 00:00:56,890
+arbitrary nesting of arrays
+and documents, or objects,
+
+23
+00:00:56,890 --> 00:00:58,190
+within the array.
+
+24
+00:00:58,190 --> 00:01:00,720
+And the value can be either an
+array or another document.
+
+25
+00:01:00,720 --> 00:01:02,270
+And you can create these data
+structures that are quite
+
+26
+00:01:02,270 --> 00:01:04,840
+complex and that map pretty
+well to what you might see
+
+27
+00:01:04,840 --> 00:01:06,090
+inside your code.

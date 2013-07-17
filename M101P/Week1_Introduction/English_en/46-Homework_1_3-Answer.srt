@@ -1,0 +1,182 @@
+1
+00:00:00,000 --> 00:00:00,130
+
+2
+00:00:00,130 --> 00:00:02,330
+The goal of this homework was
+to make sure that you got
+
+3
+00:00:02,330 --> 00:00:04,390
+PyMongo and Bottle installed
+and that that
+
+4
+00:00:04,390 --> 00:00:05,850
+would all run for you.
+
+5
+00:00:05,850 --> 00:00:08,760
+So we gave you a program that
+you needed to run from the
+
+6
+00:00:08,760 --> 00:00:12,930
+command line hw1-3.py,
+which starts up a web
+
+7
+00:00:12,930 --> 00:00:15,000
+server on port 8080.
+
+8
+00:00:15,000 --> 00:00:17,810
+And then we asked you to
+go to a particular URL.
+
+9
+00:00:17,810 --> 00:00:19,510
+And I'll show you that URL.
+
+10
+00:00:19,510 --> 00:00:23,060
+And the URL we asked you
+to go to was hw1/50.
+
+11
+00:00:23,060 --> 00:00:25,530
+And if you did that, it would
+print out the value of 53.
+
+12
+00:00:25,530 --> 00:00:27,580
+And that was the answer
+to the assignment.
+
+13
+00:00:27,580 --> 00:00:29,290
+If we look at the program--
+
+14
+00:00:29,290 --> 00:00:30,870
+we'll take a quick look at this
+program-- it uses some
+
+15
+00:00:30,870 --> 00:00:33,090
+things that are not yet
+covered in the course.
+
+16
+00:00:33,090 --> 00:00:35,250
+And the program was supposed
+to be a little bit more
+
+17
+00:00:35,250 --> 00:00:38,260
+complicated so that it would be
+hard for you to run without
+
+18
+00:00:38,260 --> 00:00:39,660
+actually getting it running--
+
+19
+00:00:39,660 --> 00:00:42,030
+hard for you to run from the
+command line, that is.
+
+20
+00:00:42,030 --> 00:00:44,010
+But it's not that hard
+to understand it.
+
+21
+00:00:44,010 --> 00:00:45,960
+You can see that the first
+thing it does--
+
+22
+00:00:45,960 --> 00:00:48,760
+it has a function
+called get_hw1.
+
+23
+00:00:48,760 --> 00:00:52,440
+And it's decorated with this
+decorator calling into the
+
+24
+00:00:52,440 --> 00:00:56,450
+Bottle package, basically,
+saying that if you go to this
+
+25
+00:00:56,450 --> 00:01:00,450
+/hw1 URL with any sort of string
+appended at the end,
+
+26
+00:01:00,450 --> 00:01:02,160
+that it will run this function
+and hand you the
+
+27
+00:01:02,160 --> 00:01:03,910
+n value as an integer.
+
+28
+00:01:03,910 --> 00:01:07,300
+And it makes an int out of that
+string and connects to
+
+29
+00:01:07,300 --> 00:01:10,520
+the funny numbers collection
+in the m101 database.
+
+30
+00:01:10,520 --> 00:01:13,820
+And then it does a skip and a
+limit to skip the first n
+
+31
+00:01:13,820 --> 00:01:16,520
+value, skip the next value,
+and then print that
+
+32
+00:01:16,520 --> 00:01:17,980
+out to the web page.
+
+33
+00:01:17,980 --> 00:01:21,660
+So basically, when you ask for
+the 53rd element, it's saying,
+
+34
+00:01:21,660 --> 00:01:24,520
+skip 53 of them and limit 1.
+
+35
+00:01:24,520 --> 00:01:27,550
+So I guess you're getting the
+54th element at that point.
+
+36
+00:01:27,550 --> 00:01:30,200
+And then at the very end of the
+program, it runs Bottle in
+
+37
+00:01:30,200 --> 00:01:33,380
+debug mode and runs it on local
+host and port 8080.
+
+38
+00:01:33,380 --> 00:01:34,790
+And that is what this
+program is doing.
+
+39
+00:01:34,790 --> 00:01:36,040

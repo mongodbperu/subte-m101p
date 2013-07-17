@@ -1,0 +1,236 @@
+1
+00:00:00,000 --> 00:00:00,290
+
+2
+00:00:00,290 --> 00:00:03,530
+Sometimes life does not go
+exactly as you'd expect.
+
+3
+00:00:03,530 --> 00:00:05,470
+In Python it's no different.
+
+4
+00:00:05,470 --> 00:00:08,895
+And to handle those situations
+where an error occurs, there
+
+5
+00:00:08,895 --> 00:00:10,230
+is exception processing.
+
+6
+00:00:10,230 --> 00:00:12,150
+And I'm going to talk a little
+bit about how exception
+
+7
+00:00:12,150 --> 00:00:14,650
+processing works within Python
+and how you can catch
+
+8
+00:00:14,650 --> 00:00:16,850
+exceptions that are
+raised by code.
+
+9
+00:00:16,850 --> 00:00:21,110
+So let's go over a very simple
+program that divides by zero.
+
+10
+00:00:21,110 --> 00:00:24,210
+So here you can see, does a
+print 5 divided by zero.
+
+11
+00:00:24,210 --> 00:00:26,330
+And then it tries to print,
+but life goes on.
+
+12
+00:00:26,330 --> 00:00:29,390
+Now, if you try to run this
+program, what you'll find out
+
+13
+00:00:29,390 --> 00:00:31,110
+is that it crashes.
+
+14
+00:00:31,110 --> 00:00:32,479
+You can see the program
+crashes.
+
+15
+00:00:32,479 --> 00:00:34,590
+And it points out the line that
+causes the crash, which
+
+16
+00:00:34,590 --> 00:00:35,890
+is line three.
+
+17
+00:00:35,890 --> 00:00:38,030
+And it even tells
+you the error.
+
+18
+00:00:38,030 --> 00:00:40,960
+Now what if you want to handle
+that error inside your program
+
+19
+00:00:40,960 --> 00:00:42,080
+and continue?
+
+20
+00:00:42,080 --> 00:00:43,310
+How would you do that?
+
+21
+00:00:43,310 --> 00:00:46,610
+Well, to do that, you would need
+to catch the exception.
+
+22
+00:00:46,610 --> 00:00:48,380
+There's a standard way
+to catch exceptions.
+
+23
+00:00:48,380 --> 00:00:52,050
+Here's the same program with
+it a try/except block.
+
+24
+00:00:52,050 --> 00:00:55,380
+Now you can see here,
+it say try, try, and
+
+25
+00:00:55,380 --> 00:00:56,360
+then it says except.
+
+26
+00:00:56,360 --> 00:00:58,780
+So it tries to print
+5 divided by 0.
+
+27
+00:00:58,780 --> 00:01:02,510
+And if an exception is
+raised, it'll go down
+
+28
+00:01:02,510 --> 00:01:04,099
+to the except block.
+
+29
+00:01:04,099 --> 00:01:06,310
+And this is except block without
+exception type listed,
+
+30
+00:01:06,310 --> 00:01:08,250
+so it catches all exceptions.
+
+31
+00:01:08,250 --> 00:01:10,750
+And then here it just prints
+the exception type.
+
+32
+00:01:10,750 --> 00:01:15,660
+And this little idiom here,
+assists.exc_info function
+
+33
+00:01:15,660 --> 00:01:18,450
+call, 0th element of the
+list will print out
+
+34
+00:01:18,450 --> 00:01:19,730
+the exception name.
+
+35
+00:01:19,730 --> 00:01:22,040
+You have to import sys
+in order to be able
+
+36
+00:01:22,040 --> 00:01:23,800
+to call this method.
+
+37
+00:01:23,800 --> 00:01:27,110
+So if this works as we expect,
+then after the exception is
+
+38
+00:01:27,110 --> 00:01:29,240
+raised, we should be
+able to go on.
+
+39
+00:01:29,240 --> 00:01:30,230
+Let's see what happens.
+
+40
+00:01:30,230 --> 00:01:32,030
+I'm going to run this
+new program
+
+41
+00:01:32,030 --> 00:01:33,115
+with exception handling.
+
+42
+00:01:33,115 --> 00:01:36,320
+And in this case, you can see
+that it prints out exception,
+
+43
+00:01:36,320 --> 00:01:37,480
+zeroDivisionError.
+
+44
+00:01:37,480 --> 00:01:39,500
+But then it prints,
+but life goes on.
+
+45
+00:01:39,500 --> 00:01:41,930
+And you're going to be able to
+use the same techniques using
+
+46
+00:01:41,930 --> 00:01:46,040
+try/except to catch exceptions
+when trying to store data to
+
+47
+00:01:46,040 --> 00:01:49,160
+MongoDB, which is important
+because if an exception is
+
+48
+00:01:49,160 --> 00:01:51,570
+raised when trying to store
+data to MongoDB, then your
+
+49
+00:01:51,570 --> 00:01:53,090
+data, probably, was
+not stored.
+
+50
+00:01:53,090 --> 00:01:55,780
+In which case, you might want to
+retry or do something else.
+
+51
+00:01:55,780 --> 00:01:57,030

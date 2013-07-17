@@ -1,0 +1,282 @@
+1
+00:00:00,000 --> 00:00:00,120
+
+2
+00:00:00,120 --> 00:00:02,980
+If we wanted to model this blog
+in a relational system,
+
+3
+00:00:02,980 --> 00:00:05,460
+you'd probably have tables that
+look a lot like this.
+
+4
+00:00:05,460 --> 00:00:08,350
+And I'll take you through each
+table and what it does.
+
+5
+00:00:08,350 --> 00:00:09,960
+So there would be
+a post table.
+
+6
+00:00:09,960 --> 00:00:12,860
+And the post table would contain
+the post itself as the
+
+7
+00:00:12,860 --> 00:00:15,900
+body of the post, as well as the
+title of the post and the
+
+8
+00:00:15,900 --> 00:00:17,370
+date that it was posted.
+
+9
+00:00:17,370 --> 00:00:18,970
+I haven't put the types here.
+
+10
+00:00:18,970 --> 00:00:20,205
+Although we'd have to
+specify the types in
+
+11
+00:00:20,205 --> 00:00:21,500
+a relational system.
+
+12
+00:00:21,500 --> 00:00:24,160
+And then there would probably
+be a post ID, and then some
+
+13
+00:00:24,160 --> 00:00:27,130
+sort of author ID that
+points to the author
+
+14
+00:00:27,130 --> 00:00:29,160
+that created the post.
+
+15
+00:00:29,160 --> 00:00:31,370
+The second table is
+the comments tabe.
+
+16
+00:00:31,370 --> 00:00:32,650
+It's a critical table.
+
+17
+00:00:32,650 --> 00:00:33,840
+It would have the comments
+that people
+
+18
+00:00:33,840 --> 00:00:35,430
+made on the blog post.
+
+19
+00:00:35,430 --> 00:00:37,260
+And this would be the name of
+the commenter, the comment
+
+20
+00:00:37,260 --> 00:00:40,690
+itself, their email, and
+probably an ID to identify it.
+
+21
+00:00:40,690 --> 00:00:44,460
+So it can be associated and
+related to the posts.
+
+22
+00:00:44,460 --> 00:00:47,130
+And then the way this would work
+is, there would also be a
+
+23
+00:00:47,130 --> 00:00:50,100
+tags table here which would have
+the tag ID and the names.
+
+24
+00:00:50,100 --> 00:00:52,650
+And these are relations
+tables over here.
+
+25
+00:00:52,650 --> 00:00:56,350
+So for instance, this post table
+connects to this tags
+
+26
+00:00:56,350 --> 00:00:58,830
+table through this
+post tags table.
+
+27
+00:00:58,830 --> 00:01:02,260
+This post tags table includes
+the posts and all of the tags
+
+28
+00:01:02,260 --> 00:01:04,370
+that have been associated
+with the post.
+
+29
+00:01:04,370 --> 00:01:07,030
+This post comments table
+would relate this
+
+30
+00:01:07,030 --> 00:01:09,060
+table to this table.
+
+31
+00:01:09,060 --> 00:01:13,560
+And then, over here, this author
+ID would be used right
+
+32
+00:01:13,560 --> 00:01:16,000
+in here, in this table.
+
+33
+00:01:16,000 --> 00:01:17,620
+It's a pretty standard
+relational system
+
+34
+00:01:17,620 --> 00:01:19,040
+for building a blog.
+
+35
+00:01:19,040 --> 00:01:21,040
+You might decide to make it
+a little bit more compact.
+
+36
+00:01:21,040 --> 00:01:24,050
+This is the fully denormalized
+version of that.
+
+37
+00:01:24,050 --> 00:01:28,390
+You might be willing to put
+the post ID right into the
+
+38
+00:01:28,390 --> 00:01:31,100
+comment system, since a comment,
+probably, is only
+
+39
+00:01:31,100 --> 00:01:33,500
+associated with a single
+blog post.
+
+40
+00:01:33,500 --> 00:01:36,300
+But this is the basic way
+that you would build it.
+
+41
+00:01:36,300 --> 00:01:39,220
+So thinking about that, and now
+it's time for a quiz, the
+
+42
+00:01:39,220 --> 00:01:43,600
+question is, how many tables
+do you need to access to
+
+43
+00:01:43,600 --> 00:01:45,200
+present the front page
+of the blog?
+
+44
+00:01:45,200 --> 00:01:46,410
+So that's the quiz.
+
+45
+00:01:46,410 --> 00:01:49,130
+So there are one, two, three,
+four, five, six
+
+46
+00:01:49,130 --> 00:01:51,830
+tables in this system.
+
+47
+00:01:51,830 --> 00:01:55,610
+And if you wanted to present the
+front page of this blog,
+
+48
+00:01:55,610 --> 00:01:58,220
+you would have to do a bunch
+of selects, obviously, and
+
+49
+00:01:58,220 --> 00:02:00,010
+joins between these
+different tables.
+
+50
+00:02:00,010 --> 00:02:03,350
+How many tables would you have
+to access to present the front
+
+51
+00:02:03,350 --> 00:02:04,440
+page of the blog?
+
+52
+00:02:04,440 --> 00:02:06,710
+OK, time for a quiz.
+
+53
+00:02:06,710 --> 00:02:10,220
+Let's look back at that blog
+schema that we just created.
+
+54
+00:02:10,220 --> 00:02:12,340
+And let's assume that our blog
+can be modelled with the
+
+55
+00:02:12,340 --> 00:02:14,040
+following relational tables.
+
+56
+00:02:14,040 --> 00:02:16,490
+And you can see them here--
+authors table, posts table,
+
+57
+00:02:16,490 --> 00:02:20,030
+comments table, post comments,
+tags, and post tags.
+
+58
+00:02:20,030 --> 00:02:23,570
+If you want to display a blog
+post with all of it's comments
+
+59
+00:02:23,570 --> 00:02:26,850
+and tags, how many tables
+would you need to access
+
+60
+00:02:26,850 --> 00:02:28,100
+within the system?

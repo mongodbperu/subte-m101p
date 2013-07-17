@@ -1,0 +1,373 @@
+1
+00:00:00,000 --> 00:00:00,320
+
+2
+00:00:00,320 --> 00:00:03,390
+OK, we talked a little bit
+earlier about MongoDB being
+
+3
+00:00:03,390 --> 00:00:04,230
+schemaless.
+
+4
+00:00:04,230 --> 00:00:06,940
+And I wanted to go back to that
+and show you a little bit
+
+5
+00:00:06,940 --> 00:00:10,130
+more are inside the shell what
+that looks like now that
+
+6
+00:00:10,130 --> 00:00:13,370
+you've seen MongoDB installed,
+and you've seen the shell, and
+
+7
+00:00:13,370 --> 00:00:16,610
+you've seen us build a small
+application end-to-end.
+
+8
+00:00:16,610 --> 00:00:18,660
+So fundamentally, that
+comes down to a
+
+9
+00:00:18,660 --> 00:00:19,970
+few different things.
+
+10
+00:00:19,970 --> 00:00:23,050
+One is that, often, in
+a relational system,
+
+11
+00:00:23,050 --> 00:00:24,270
+you'll have a table.
+
+12
+00:00:24,270 --> 00:00:26,440
+And you'll have certain
+columns in the table.
+
+13
+00:00:26,440 --> 00:00:29,890
+For instance, name,
+age, and maybe
+
+14
+00:00:29,890 --> 00:00:31,480
+city of birth or something.
+
+15
+00:00:31,480 --> 00:00:33,630
+And over time, you may decide
+that you want to keep some
+
+16
+00:00:33,630 --> 00:00:34,960
+additional piece
+of information.
+
+17
+00:00:34,960 --> 00:00:37,400
+And to do that, you'd have
+to expand the table.
+
+18
+00:00:37,400 --> 00:00:39,120
+And do an ALTER TABLE command.
+
+19
+00:00:39,120 --> 00:00:40,920
+That's how it works in the
+world of relational.
+
+20
+00:00:40,920 --> 00:00:42,650
+In Mongo, you don't
+need to do that.
+
+21
+00:00:42,650 --> 00:00:44,200
+So in Mongo, different
+documents can
+
+22
+00:00:44,200 --> 00:00:45,250
+have different schema.
+
+23
+00:00:45,250 --> 00:00:48,630
+And so this means that, as the
+system evolves, with agile
+
+24
+00:00:48,630 --> 00:00:51,440
+methodologies, often you'll work
+in short two and three
+
+25
+00:00:51,440 --> 00:00:51,925
+weeks sprints.
+
+26
+00:00:51,925 --> 00:00:54,290
+And you'll make changes, and
+you'll iterate the system.
+
+27
+00:00:54,290 --> 00:00:55,690
+We can accommodate that.
+
+28
+00:00:55,690 --> 00:00:57,410
+So let's look at what
+that practically
+
+29
+00:00:57,410 --> 00:00:59,050
+looks like in the shall.
+
+30
+00:00:59,050 --> 00:01:01,550
+All right, so let's create a
+new collection and call it
+
+31
+00:01:01,550 --> 00:01:03,830
+users, and then put
+something in it.
+
+32
+00:01:03,830 --> 00:01:06,100
+I'm going to put in a name,
+put my whole name.
+
+33
+00:01:06,100 --> 00:01:09,950
+And then let's say I want to
+put my city of birth in it.
+
+34
+00:01:09,950 --> 00:01:11,540
+I'll say it's Queens.
+
+35
+00:01:11,540 --> 00:01:13,010
+And I can do that.
+
+36
+00:01:13,010 --> 00:01:14,030
+Now, if I look in the user's
+
+37
+00:01:14,030 --> 00:01:16,220
+collection, I'll see my document.
+
+38
+00:01:16,220 --> 00:01:17,300
+And here it is.
+
+39
+00:01:17,300 --> 00:01:18,570
+There's a pretty
+print command.
+
+40
+00:01:18,570 --> 00:01:19,160
+It's out of the shell.
+
+41
+00:01:19,160 --> 00:01:20,020
+It's very useful.
+
+42
+00:01:20,020 --> 00:01:21,950
+It print things out a
+little bit neater.
+
+43
+00:01:21,950 --> 00:01:23,760
+And here it is, pretty
+printed.
+
+44
+00:01:23,760 --> 00:01:24,880
+But now, let's say
+I want to add
+
+45
+00:01:24,880 --> 00:01:26,320
+another user to the system.
+
+46
+00:01:26,320 --> 00:01:28,990
+And for whatever reason, I'm
+now going to store some
+
+47
+00:01:28,990 --> 00:01:30,070
+additional information.
+
+48
+00:01:30,070 --> 00:01:33,120
+For instance, I want to store
+a new user whose name is
+
+49
+00:01:33,120 --> 00:01:34,440
+Richard Kreuter, my
+co-instructor.
+
+50
+00:01:34,440 --> 00:01:37,120
+And I've decided that I want to
+store his city of birth as
+
+51
+00:01:37,120 --> 00:01:38,900
+well, which I'm not sure
+about, and I'm just
+
+52
+00:01:38,900 --> 00:01:40,050
+going to make up.
+
+53
+00:01:40,050 --> 00:01:42,195
+But I also want to store his
+favorite color, which I
+
+54
+00:01:42,195 --> 00:01:45,390
+believe is red, based on
+nothing, just a guess.
+
+55
+00:01:45,390 --> 00:01:48,660
+Now, if I look in that
+collection, I can see that
+
+56
+00:01:48,660 --> 00:01:50,290
+I've got two different
+documents.
+
+57
+00:01:50,290 --> 00:01:52,760
+And these two different
+documents, one of them has
+
+58
+00:01:52,760 --> 00:01:54,860
+just a name, and city of birth,
+and of course this
+
+59
+00:01:54,860 --> 00:01:57,080
+interesting object ID that
+we'll talk about later.
+
+60
+00:01:57,080 --> 00:01:59,870
+And the other one has
+name, city of birth,
+
+61
+00:01:59,870 --> 00:02:01,050
+and favorite color.
+
+62
+00:02:01,050 --> 00:02:04,140
+So this permits Mongo to be very
+agile because you don't
+
+63
+00:02:04,140 --> 00:02:07,280
+need to have exactly the same
+keys in each of the documents.
+
+64
+00:02:07,280 --> 00:02:09,410
+And I can evolve it
+over time, too.
+
+65
+00:02:09,410 --> 00:02:11,910
+And I can change to schema
+of an existing document.
+
+66
+00:02:11,910 --> 00:02:15,420
+So for instance, I
+can do db.users.
+
+67
+00:02:15,420 --> 00:02:16,470
+put it into a variable.
+
+68
+00:02:16,470 --> 00:02:18,330
+And I'm looking for the
+object with the
+
+69
+00:02:18,330 --> 00:02:20,050
+name of Andrew Erlichson.
+
+70
+00:02:20,050 --> 00:02:21,730
+And I can see the object.
+
+71
+00:02:21,730 --> 00:02:22,440
+There it is.
+
+72
+00:02:22,440 --> 00:02:24,240
+Put my favorite color in.
+
+73
+00:02:24,240 --> 00:02:26,190
+And now, I can look at
+Jay, and you can see
+
+74
+00:02:26,190 --> 00:02:27,740
+that it's been updated.
+
+75
+00:02:27,740 --> 00:02:31,270
+And now I could do a
+db.users.save of Jay.
+
+76
+00:02:31,270 --> 00:02:34,260
+And now, if I look at this
+collection, you can see that
+
+77
+00:02:34,260 --> 00:02:37,330
+my object has now been
+updated to include a
+
+78
+00:02:37,330 --> 00:02:39,170
+favorite color as well.
+
+79
+00:02:39,170 --> 00:02:41,360
+This is flexibility that we're
+going to take advantage of a
+
+80
+00:02:41,360 --> 00:02:43,640
+lot as we build systems
+using MongoDB.
+
+81
+00:02:43,640 --> 00:02:44,890

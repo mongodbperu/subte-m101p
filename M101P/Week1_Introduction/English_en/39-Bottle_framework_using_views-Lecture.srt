@@ -1,0 +1,724 @@
+1
+00:00:00,000 --> 00:00:00,120
+
+2
+00:00:00,120 --> 00:00:03,150
+Many programs that interact
+with users use a design
+
+3
+00:00:03,150 --> 00:00:06,050
+pattern called
+Model-View-Controller.
+
+4
+00:00:06,050 --> 00:00:09,070
+Under Model-View-Controller your
+program is broken up into
+
+5
+00:00:09,070 --> 00:00:11,570
+three basic modules
+of functionality.
+
+6
+00:00:11,570 --> 00:00:12,700
+One is the Model.
+
+7
+00:00:12,700 --> 00:00:13,940
+And the Model keeps the state.
+
+8
+00:00:13,940 --> 00:00:18,250
+And this is where mongoDB
+would be attached.
+
+9
+00:00:18,250 --> 00:00:20,150
+And then you have a View.
+
+10
+00:00:20,150 --> 00:00:22,440
+And the View is what
+the user sees.
+
+11
+00:00:22,440 --> 00:00:24,620
+And the View get updated
+by the Model.
+
+12
+00:00:24,620 --> 00:00:26,920
+And then you have a Controller,
+which takes user
+
+13
+00:00:26,920 --> 00:00:29,690
+input and manipulates
+this model.
+
+14
+00:00:29,690 --> 00:00:33,170
+So you could think about your
+business logic being in here.
+
+15
+00:00:33,170 --> 00:00:35,970
+And this being mostly
+code to display
+
+16
+00:00:35,970 --> 00:00:37,080
+information to the user.
+
+17
+00:00:37,080 --> 00:00:39,410
+And this being code to
+handle user input.
+
+18
+00:00:39,410 --> 00:00:42,690
+So Bottle has ways of allowing
+you to use the
+
+19
+00:00:42,690 --> 00:00:44,200
+Model-View-Controller
+design pattern.
+
+20
+00:00:44,200 --> 00:00:45,470
+So how would that work?
+
+21
+00:00:45,470 --> 00:00:50,260
+Well, in an HTML page, the
+controller is really the code.
+
+22
+00:00:50,260 --> 00:00:54,220
+For instance, right here, this
+is the page that will get
+
+23
+00:00:54,220 --> 00:00:57,640
+implemented when someone
+fetches the URL slash.
+
+24
+00:00:57,640 --> 00:01:00,810
+And you don't want to mix code,
+which is your Model and
+
+25
+00:01:00,810 --> 00:01:05,000
+your Controller, with your
+View, which has mostly
+
+26
+00:01:05,000 --> 00:01:07,200
+information having to do with
+outputting and displaying
+
+27
+00:01:07,200 --> 00:01:08,730
+information for the user.
+
+28
+00:01:08,730 --> 00:01:10,920
+So how do you separate
+that in Bottle?
+
+29
+00:01:10,920 --> 00:01:12,330
+And the answer is that
+they have this
+
+30
+00:01:12,330 --> 00:01:14,300
+concept of a template.
+
+31
+00:01:14,300 --> 00:01:16,130
+And the template is a View.
+
+32
+00:01:16,130 --> 00:01:19,520
+So here I've changed this
+program slightly so that we've
+
+33
+00:01:19,520 --> 00:01:22,360
+set up a small list called
+mythings, which has apple,
+
+34
+00:01:22,360 --> 00:01:24,020
+orange, banana, and
+peach in it.
+
+35
+00:01:24,020 --> 00:01:26,630
+And rather than just returning
+Hello World,
+
+36
+00:01:26,630 --> 00:01:28,530
+I'm returning a template.
+
+37
+00:01:28,530 --> 00:01:31,470
+Bottle.template, and that
+template is called
+
+38
+00:01:31,470 --> 00:01:32,190
+hello_world.
+
+39
+00:01:32,190 --> 00:01:33,230
+That's the file name.
+
+40
+00:01:33,230 --> 00:01:35,390
+The filing is hello_world.tpl.
+
+41
+00:01:35,390 --> 00:01:38,040
+And I'm passing some arguments
+to the template--
+
+42
+00:01:38,040 --> 00:01:42,910
+a user name of Andrew and a
+value called things which is
+
+43
+00:01:42,910 --> 00:01:47,480
+going to hold a reference to
+this list called mythings.
+
+44
+00:01:47,480 --> 00:01:49,030
+Let's look at this template.
+
+45
+00:01:49,030 --> 00:01:54,350
+OK, so this hello_world.tpl file
+has mostly HTML in it.
+
+46
+00:01:54,350 --> 00:01:56,890
+So you can see here, it's
+basically a HTML page.
+
+47
+00:01:56,890 --> 00:01:59,470
+Doctype, HTML, title,
+Hello World!
+
+48
+00:01:59,470 --> 00:02:02,140
+And this is just a standard
+HTML document.
+
+49
+00:02:02,140 --> 00:02:04,890
+But it has access to some of
+the variables that were set
+
+50
+00:02:04,890 --> 00:02:06,100
+inside the program.
+
+51
+00:02:06,100 --> 00:02:09,600
+So for example, it can say
+welcome username, and it
+
+52
+00:02:09,600 --> 00:02:11,850
+should print out the username
+that was passed to it.
+
+53
+00:02:11,850 --> 00:02:14,210
+Now these double curly
+braces are special.
+
+54
+00:02:14,210 --> 00:02:17,270
+They tell the template processor
+that what appears
+
+55
+00:02:17,270 --> 00:02:21,350
+within is a Python variable or
+some sort of Python expression
+
+56
+00:02:21,350 --> 00:02:23,100
+that should be evaluated.
+
+57
+00:02:23,100 --> 00:02:26,300
+And so it actually evaluates
+username and and substitutes
+
+58
+00:02:26,300 --> 00:02:29,660
+the value for username as it
+outputs this HTML page.
+
+59
+00:02:29,660 --> 00:02:31,840
+The other thing that we might
+want to do inside one of these
+
+60
+00:02:31,840 --> 00:02:34,000
+templates is write a
+little bit of code.
+
+61
+00:02:34,000 --> 00:02:36,640
+So for instance, let's say I
+want to have that list of
+
+62
+00:02:36,640 --> 00:02:38,930
+things be printed out
+in a bulleted list.
+
+63
+00:02:38,930 --> 00:02:43,220
+Well, I do that by starting
+out with the HTML tag ul,
+
+64
+00:02:43,220 --> 00:02:45,170
+which will give me
+a numbered list.
+
+65
+00:02:45,170 --> 00:02:47,140
+And then I close it with a ul.
+
+66
+00:02:47,140 --> 00:02:48,790
+That's the closing ul tag.
+
+67
+00:02:48,790 --> 00:02:51,510
+And then in the middle, I want
+to iterate through this list
+
+68
+00:02:51,510 --> 00:02:53,660
+of things that was passed
+to this template.
+
+69
+00:02:53,660 --> 00:02:55,200
+And to do that, I want
+to write Python
+
+70
+00:02:55,200 --> 00:02:56,480
+code right in my template.
+
+71
+00:02:56,480 --> 00:02:58,550
+And the bottle templating
+language has the
+
+72
+00:02:58,550 --> 00:02:59,520
+facility for that.
+
+73
+00:02:59,520 --> 00:03:03,090
+If you put this percent sign in
+the first character of the
+
+74
+00:03:03,090 --> 00:03:05,990
+line, then it knows what follows
+is code that needs to
+
+75
+00:03:05,990 --> 00:03:07,120
+be evaluated.
+
+76
+00:03:07,120 --> 00:03:10,680
+So it's going to evaluate, right
+here, this as Python
+
+77
+00:03:10,680 --> 00:03:12,330
+code for thing and things.
+
+78
+00:03:12,330 --> 00:03:16,240
+And then this next line is just
+a regular HTML line, but
+
+79
+00:03:16,240 --> 00:03:18,790
+with that special substitutional
+logic where the
+
+80
+00:03:18,790 --> 00:03:22,570
+variable thing is substituted
+for the string thing here.
+
+81
+00:03:22,570 --> 00:03:26,290
+And then finally, because this
+HTML template language doesn't
+
+82
+00:03:26,290 --> 00:03:30,180
+depend on indentation to express
+its control block, the
+
+83
+00:03:30,180 --> 00:03:31,900
+way Python does, we
+need something, a
+
+84
+00:03:31,900 --> 00:03:32,670
+hack, if you will.
+
+85
+00:03:32,670 --> 00:03:35,400
+And the heck is that whereas
+before you would have just
+
+86
+00:03:35,400 --> 00:03:38,190
+indented this expression and
+then Python would've known
+
+87
+00:03:38,190 --> 00:03:40,040
+that this where the
+block ends--
+
+88
+00:03:40,040 --> 00:03:44,830
+because this is not indented,
+we have to put this %end in.
+
+89
+00:03:44,830 --> 00:03:47,380
+And you'll need that for every
+single control statement in
+
+90
+00:03:47,380 --> 00:03:49,520
+Python where there's normally
+a sub block
+
+91
+00:03:49,520 --> 00:03:50,770
+that would be indented.
+
+92
+00:03:50,770 --> 00:03:52,170
+So that's a lot to take in.
+
+93
+00:03:52,170 --> 00:03:54,120
+But it's really pretty
+straightforward.
+
+94
+00:03:54,120 --> 00:03:57,090
+What it is is an HTML file, this
+is your View, it's all of
+
+95
+00:03:57,090 --> 00:04:00,640
+your crafty HTML, with us a
+little bit of Python code
+
+96
+00:04:00,640 --> 00:04:05,100
+interspersed either between
+these two curly braces right
+
+97
+00:04:05,100 --> 00:04:08,490
+here or Python code that starts
+with a percentage
+
+98
+00:04:08,490 --> 00:04:10,770
+character in the first column,
+which tells the template
+
+99
+00:04:10,770 --> 00:04:13,130
+processor that this is
+actually Python code.
+
+100
+00:04:13,130 --> 00:04:17,209
+All right, so let's go to our
+web server, host 8080.
+
+101
+00:04:17,209 --> 00:04:20,000
+And when we do that, we get this
+lovely little HTML page.
+
+102
+00:04:20,000 --> 00:04:21,670
+And we can view the source
+of that page.
+
+103
+00:04:21,670 --> 00:04:24,440
+And you can see that this source
+is exactly what's in
+
+104
+00:04:24,440 --> 00:04:26,710
+this file, but with some
+substitutions.
+
+105
+00:04:26,710 --> 00:04:29,900
+So for instance, where this
+control flow was, here with
+
+106
+00:04:29,900 --> 00:04:31,970
+this Python code, now
+we have this list
+
+107
+00:04:31,970 --> 00:04:33,640
+that's shown right here.
+
+108
+00:04:33,640 --> 00:04:36,000
+And you see I carefully put in
+the beginning and the closing
+
+109
+00:04:36,000 --> 00:04:37,510
+tags for each list item.
+
+110
+00:04:37,510 --> 00:04:40,280
+And this is just HTML, nothing
+too special about that.
+
+111
+00:04:40,280 --> 00:04:42,420
+OK, there's one other thing you
+might have noticed about
+
+112
+00:04:42,420 --> 00:04:43,110
+this template.
+
+113
+00:04:43,110 --> 00:04:45,110
+And that is that there are
+two different ways of
+
+114
+00:04:45,110 --> 00:04:46,690
+calling this template.
+
+115
+00:04:46,690 --> 00:04:50,760
+One is that you can call it with
+named parameters, like
+
+116
+00:04:50,760 --> 00:04:53,110
+username is Andrew and
+thing is mythings,
+
+117
+00:04:53,110 --> 00:04:54,120
+which is this list.
+
+118
+00:04:54,120 --> 00:04:58,490
+Or you can call it with a
+dictionary right here.
+
+119
+00:04:58,490 --> 00:04:59,370
+That's equally valid.
+
+120
+00:04:59,370 --> 00:05:00,310
+I'll show you.
+
+121
+00:05:00,310 --> 00:05:03,140
+I can comment this line out
+and use this line instead.
+
+122
+00:05:03,140 --> 00:05:05,290
+Either one of these structures
+will work.
+
+123
+00:05:05,290 --> 00:05:09,000
+Here I have a dictionary with
+username of Richard and things
+
+124
+00:05:09,000 --> 00:05:11,590
+of mythings and that'll produce
+the same result, where
+
+125
+00:05:11,590 --> 00:05:14,140
+I'll be able to use the variable
+username and things
+
+126
+00:05:14,140 --> 00:05:15,860
+inside my template.
+
+127
+00:05:15,860 --> 00:05:18,300
+Now the reason why these two
+forms are equivalent is that
+
+128
+00:05:18,300 --> 00:05:21,780
+behind the scenes, Python always
+sends your variables
+
+129
+00:05:21,780 --> 00:05:24,590
+into the function
+as a dictionary.
+
+130
+00:05:24,590 --> 00:05:26,610
+And if I run this one,
+you'll see this one
+
+131
+00:05:26,610 --> 00:05:28,170
+says Welcome Richard.
+
+132
+00:05:28,170 --> 00:05:29,510
+So let's see if that's true.
+
+133
+00:05:29,510 --> 00:05:30,780
+Let's go here.
+
+134
+00:05:30,780 --> 00:05:33,380
+I'm going to restart
+the server and
+
+135
+00:05:33,380 --> 00:05:36,380
+then go to my program.
+
+136
+00:05:36,380 --> 00:05:38,510
+And now it says Welcome
+Richard with
+
+137
+00:05:38,510 --> 00:05:40,060
+the exact same output.
+
+138
+00:05:40,060 --> 00:05:42,900
+One other small detail that's
+pretty important is that I
+
+139
+00:05:42,900 --> 00:05:45,490
+didn't show you this, but you
+need to put your templates
+
+140
+00:05:45,490 --> 00:05:49,580
+into a directory called views,
+which is right there as a
+
+141
+00:05:49,580 --> 00:05:52,090
+subdirectory of the directory
+that your program runs.
+
+142
+00:05:52,090 --> 00:05:55,990
+So Python, hello_world.py, that
+starts my WSGI server,
+
+143
+00:05:55,990 --> 00:05:58,050
+and my Bottle based
+web server.
+
+144
+00:05:58,050 --> 00:06:00,180
+And then those templates
+are assumed to be in a
+
+145
+00:06:00,180 --> 00:06:01,450
+subdirectory called views.
+
+146
+00:06:01,450 --> 00:06:03,990
+And I've got a bunch of views,
+including some of the ones
+
+147
+00:06:03,990 --> 00:06:05,110
+from the blogging project.
+
+148
+00:06:05,110 --> 00:06:07,500
+And some of those other things
+you see is, actually I used
+
+149
+00:06:07,500 --> 00:06:10,080
+Dropbox, and some of these
+things are conflicted copies
+
+150
+00:06:10,080 --> 00:06:11,970
+of the things that I've
+been moving around.
+
+151
+00:06:11,970 --> 00:06:15,660
+All right, so that's how you
+use templates inside Python
+
+152
+00:06:15,660 --> 00:06:17,910
+and Bottle to approximate this
+
+153
+00:06:17,910 --> 00:06:19,450
+Model-View-Controller paradigm.
+
+154
+00:06:19,450 --> 00:06:20,700

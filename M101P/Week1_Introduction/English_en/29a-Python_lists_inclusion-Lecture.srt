@@ -1,0 +1,157 @@
+1
+00:00:00,000 --> 00:00:00,250
+
+2
+00:00:00,250 --> 00:00:03,060
+Next, I'd like to show you how
+you check whether a particular
+
+3
+00:00:03,060 --> 00:00:04,390
+item is in a list.
+
+4
+00:00:04,390 --> 00:00:07,710
+Let's say that we have a
+list of three fruits.
+
+5
+00:00:07,710 --> 00:00:12,020
+A equals apple, pear, orange.
+
+6
+00:00:12,020 --> 00:00:14,360
+We want to know whether or not
+pear appears in the list.
+
+7
+00:00:14,360 --> 00:00:16,230
+We can use the in operator.
+
+8
+00:00:16,230 --> 00:00:17,820
+Pear in a.
+
+9
+00:00:17,820 --> 00:00:20,650
+That evaluates to true.
+
+10
+00:00:20,650 --> 00:00:21,530
+How about grape?
+
+11
+00:00:21,530 --> 00:00:24,480
+Grape in a, evaluates
+to false.
+
+12
+00:00:24,480 --> 00:00:27,080
+And then I'll teach you the
+conditional statement to test
+
+13
+00:00:27,080 --> 00:00:29,540
+this, since you normally
+won't be in the shell.
+
+14
+00:00:29,540 --> 00:00:32,540
+You could say, if pear
+in a, colon--
+
+15
+00:00:32,540 --> 00:00:34,590
+there's a colon required at the
+end of the if statement.
+
+16
+00:00:34,590 --> 00:00:38,140
+And so here's our conditional
+statement, pear in a, and then
+
+17
+00:00:38,140 --> 00:00:40,540
+the colon at the end,
+I'm going to indent,
+
+18
+00:00:40,540 --> 00:00:42,690
+print, there is a pear.
+
+19
+00:00:42,690 --> 00:00:45,440
+And the statement, and then it
+prints, there is a pear,
+
+20
+00:00:45,440 --> 00:00:46,770
+because there was a pear.
+
+21
+00:00:46,770 --> 00:00:49,400
+And if we do that exact same
+test, but with a fruit that
+
+22
+00:00:49,400 --> 00:00:51,420
+was not in there,
+like a grape, if
+
+23
+00:00:51,420 --> 00:00:54,390
+grape in a, then print.
+
+24
+00:00:54,390 --> 00:00:55,430
+There is a grape.
+
+25
+00:00:55,430 --> 00:00:57,750
+It prints nothing because
+there is no grape.
+
+26
+00:00:57,750 --> 00:01:00,117
+This is very useful when you get
+data back from Mongo and
+
+27
+00:01:00,117 --> 00:01:02,650
+it's in an array, and you want
+to check whether a particular
+
+28
+00:01:02,650 --> 00:01:04,670
+item is in the structure,
+you can use the in
+
+29
+00:01:04,670 --> 00:01:06,670
+operator to do it.
+
+30
+00:01:06,670 --> 00:01:07,840
+Here's the quiz.
+
+31
+00:01:07,840 --> 00:01:11,560
+Let's talk about Python lists
+and checking for inclusion.
+
+32
+00:01:11,560 --> 00:01:14,830
+Given a Python list called
+fruit, write an if statement
+
+33
+00:01:14,830 --> 00:01:17,530
+to check whether apple
+is in the list.
+
+34
+00:01:17,530 --> 00:01:18,780
+Type your answer right here.
+
+35
+00:01:18,780 --> 00:01:19,840

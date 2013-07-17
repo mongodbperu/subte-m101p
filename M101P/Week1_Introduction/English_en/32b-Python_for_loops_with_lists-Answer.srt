@@ -1,0 +1,37 @@
+1
+00:00:00,000 --> 00:00:00,600
+
+2
+00:00:00,600 --> 00:00:00,800
+OK.
+
+3
+00:00:00,800 --> 00:00:03,900
+So it turns out that it
+just prints out eight.
+
+4
+00:00:03,900 --> 00:00:07,520
+And the reason is that this for
+loop iterates through all
+
+5
+00:00:07,520 --> 00:00:08,610
+the numbers here.
+
+6
+00:00:08,610 --> 00:00:11,740
+It does sum the numbers, but
+it doesn't print the sum.
+
+7
+00:00:11,740 --> 00:00:14,800
+It prints the final value
+of I, which is eight.
+
+8
+00:00:14,800 --> 00:00:16,050
+So it prints out eight.
+
+9
+00:00:16,050 --> 00:00:16,950

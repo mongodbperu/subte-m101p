@@ -1,0 +1,37 @@
+1
+00:00:00,000 --> 00:00:00,300
+
+2
+00:00:00,300 --> 00:00:00,910
+OK.
+
+3
+00:00:00,910 --> 00:00:05,370
+And the answer is things,
+one colon three.
+
+4
+00:00:05,370 --> 00:00:06,820
+Remember, they are numbered
+from zero.
+
+5
+00:00:06,820 --> 00:00:11,100
+So zero, one, two, three.
+
+6
+00:00:11,100 --> 00:00:13,900
+But doesn't include
+the right item.
+
+7
+00:00:13,900 --> 00:00:15,480
+So that gives you
+the first two.
+
+8
+00:00:15,480 --> 00:00:16,730
+That's the answer.
+
+9
+00:00:16,730 --> 00:00:17,280

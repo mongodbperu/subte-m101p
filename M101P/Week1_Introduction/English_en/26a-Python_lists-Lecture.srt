@@ -1,0 +1,252 @@
+1
+00:00:00,000 --> 00:00:00,130
+
+2
+00:00:00,130 --> 00:00:02,430
+Let's talk about Python lists.
+
+3
+00:00:02,430 --> 00:00:05,110
+Python lists are incredibly
+useful, very easy to use.
+
+4
+00:00:05,110 --> 00:00:07,410
+To create a new list in Python,
+you start with a
+
+5
+00:00:07,410 --> 00:00:10,450
+square bracket and you
+add your items.
+
+6
+00:00:10,450 --> 00:00:13,310
+In this case, I add an orange,
+apple, or banana, all in
+
+7
+00:00:13,310 --> 00:00:15,990
+single quotes, and you close
+with a square bracket.
+
+8
+00:00:15,990 --> 00:00:20,190
+You might notice that looks
+just like JSON, very
+
+9
+00:00:20,190 --> 00:00:21,270
+convenient.
+
+10
+00:00:21,270 --> 00:00:23,680
+And if I wanted to assign it
+to a variable a, I could do
+
+11
+00:00:23,680 --> 00:00:25,250
+that by doing a equals.
+
+12
+00:00:25,250 --> 00:00:28,050
+If I wanted an empty list, I
+would create it like this.
+
+13
+00:00:28,050 --> 00:00:31,620
+And if I wanted to create
+a list of lists, I
+
+14
+00:00:31,620 --> 00:00:32,619
+could do that too.
+
+15
+00:00:32,619 --> 00:00:35,320
+I could say, give me, the first
+item's going to be an
+
+16
+00:00:35,320 --> 00:00:37,580
+orange, and I can use single
+quotes or double quotes for
+
+17
+00:00:37,580 --> 00:00:37,970
+these strings.
+
+18
+00:00:37,970 --> 00:00:38,920
+It doesn't matter.
+
+19
+00:00:38,920 --> 00:00:41,840
+Second is going to be a pair,
+and the third, for whatever
+
+20
+00:00:41,840 --> 00:00:44,425
+reason, is going to be
+a list of numbers.
+
+21
+00:00:44,425 --> 00:00:46,600
+And in Python, if I don't put
+anything after the decimal
+
+22
+00:00:46,600 --> 00:00:48,130
+point, these will be integers.
+
+23
+00:00:48,130 --> 00:00:51,150
+All right, let's give all that
+a try in the shell so we can
+
+24
+00:00:51,150 --> 00:00:52,420
+see what that looks like.
+
+25
+00:00:52,420 --> 00:00:56,630
+So a equals apple,
+pear, banana.
+
+26
+00:00:56,630 --> 00:00:59,410
+And if I just give a and hit
+return in the shell, it will
+
+27
+00:00:59,410 --> 00:01:01,480
+give me the contents
+of that variable.
+
+28
+00:01:01,480 --> 00:01:03,340
+I can also just print
+it like that.
+
+29
+00:01:03,340 --> 00:01:05,605
+If I want to create another
+list, with just integers in
+
+30
+00:01:05,605 --> 00:01:08,135
+it, I can do that,
+1, 2, and 3.
+
+31
+00:01:08,135 --> 00:01:10,900
+And I can create a list that's
+got lists of lists in it.
+
+32
+00:01:10,900 --> 00:01:13,170
+So for instance, I can create--
+the first item's
+
+33
+00:01:13,170 --> 00:01:15,830
+going to be a 1, second
+item is going to be a
+
+34
+00:01:15,830 --> 00:01:17,010
+list of fruit again--
+
+35
+00:01:17,010 --> 00:01:20,700
+apple, orange, and pear.
+
+36
+00:01:20,700 --> 00:01:21,930
+And then we're going
+to have a three.
+
+37
+00:01:21,930 --> 00:01:23,210
+Let's see what's in it.
+
+38
+00:01:23,210 --> 00:01:24,770
+We can see there's three
+items in it.
+
+39
+00:01:24,770 --> 00:01:26,070
+The first one is one.
+
+40
+00:01:26,070 --> 00:01:27,620
+The second one is a list.
+
+41
+00:01:27,620 --> 00:01:30,770
+And the third one
+is number three.
+
+42
+00:01:30,770 --> 00:01:34,520
+You can dereference a list by
+giving the ordinal value of
+
+43
+00:01:34,520 --> 00:01:35,830
+the location.
+
+44
+00:01:35,830 --> 00:01:40,330
+So I print c of 0 is 1, c of
+1 is going to be that list,
+
+45
+00:01:40,330 --> 00:01:42,290
+apple, orange, and pear.
+
+46
+00:01:42,290 --> 00:01:46,660
+And c of 2 is going to
+be the number 3.
+
+47
+00:01:46,660 --> 00:01:49,930
+Very easy to manipulate lists
+and create lists.
+
+48
+00:01:49,930 --> 00:01:51,610
+Very useful because,
+of course, lists
+
+49
+00:01:51,610 --> 00:01:53,680
+are directly in JSON.
+
+50
+00:01:53,680 --> 00:01:55,800
+OK, time for a quiz.
+
+51
+00:01:55,800 --> 00:01:59,800
+Python lists, write the code
+to initialize the list with
+
+52
+00:01:59,800 --> 00:02:02,210
+the items hammer,
+nail, and wall.
+
+53
+00:02:02,210 --> 00:02:05,630
+And assign the list to the
+variable named things.
+
+54
+00:02:05,630 --> 00:02:06,880
+And do it right here.
+
+55
+00:02:06,880 --> 00:02:07,930

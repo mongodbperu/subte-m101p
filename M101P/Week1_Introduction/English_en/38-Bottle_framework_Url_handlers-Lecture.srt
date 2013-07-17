@@ -1,0 +1,674 @@
+1
+00:00:00,000 --> 00:00:00,210
+
+2
+00:00:00,210 --> 00:00:02,530
+In this optional section, I'm
+going to go over how the
+
+3
+00:00:02,530 --> 00:00:04,940
+Bottle framework works and a
+little bit of background on
+
+4
+00:00:04,940 --> 00:00:06,880
+web servers in general, in case
+you don't have a lot of
+
+5
+00:00:06,880 --> 00:00:08,770
+experience programming
+on the web.
+
+6
+00:00:08,770 --> 00:00:11,500
+This is completely optional,
+and you also can learn it
+
+7
+00:00:11,500 --> 00:00:13,130
+yourself if you want
+to go on the web
+
+8
+00:00:13,130 --> 00:00:14,880
+and Google for Bottle.py.
+
+9
+00:00:14,880 --> 00:00:16,840
+All right, so let's talk about
+the web for a second.
+
+10
+00:00:16,840 --> 00:00:19,910
+So on the web, you use a web
+browser, such as Chrome.
+
+11
+00:00:19,910 --> 00:00:22,240
+And that web browser
+displays web pages.
+
+12
+00:00:22,240 --> 00:00:25,340
+Those web pages are in HyperText
+Markup Language.
+
+13
+00:00:25,340 --> 00:00:29,180
+And your web browser displays
+those pages by making requests
+
+14
+00:00:29,180 --> 00:00:32,055
+over TCP over IP, usually
+on port 80
+
+15
+00:00:32,055 --> 00:00:34,160
+using the HTTP protocol.
+
+16
+00:00:34,160 --> 00:00:37,600
+And so the way that stacks up
+is that at the bottom is IP,
+
+17
+00:00:37,600 --> 00:00:41,055
+and TCP is built on top of that,
+and HTTP is built on top
+
+18
+00:00:41,055 --> 00:00:43,030
+of that, to some sort
+of web server.
+
+19
+00:00:43,030 --> 00:00:45,610
+And this web server, in our
+case, is going to be running
+
+20
+00:00:45,610 --> 00:00:47,850
+Python with the Bottle
+framework.
+
+21
+00:00:47,850 --> 00:00:52,270
+If you've seen URLs, that they
+have a host name and then
+
+22
+00:00:52,270 --> 00:00:54,390
+usually some path,
+like mypage.
+
+23
+00:00:54,390 --> 00:00:57,100
+Now by default, if there's no
+path, then you're asking for
+
+24
+00:00:57,100 --> 00:01:00,480
+the index of the website-- the
+main page, the slash page.
+
+25
+00:01:00,480 --> 00:01:03,350
+A request to get a page is
+called the get request.
+
+26
+00:01:03,350 --> 00:01:06,800
+All right, so let's go over how
+we would create a simple
+
+27
+00:01:06,800 --> 00:01:10,930
+Bottle-based program to answer
+web requests on a port.
+
+28
+00:01:10,930 --> 00:01:14,420
+One small note-- we can't use
+port 80, typically, when we're
+
+29
+00:01:14,420 --> 00:01:15,510
+not root on a machine.
+
+30
+00:01:15,510 --> 00:01:19,970
+So in the previous examples,
+I've been using port 8082, and
+
+31
+00:01:19,970 --> 00:01:23,460
+now I'm just going to use port
+8080, which is a non-reserved
+
+32
+00:01:23,460 --> 00:01:26,580
+port and can be used by a user
+that doesn't have elevated
+
+33
+00:01:26,580 --> 00:01:29,530
+privileges on it, certainly
+on a Unix machine.
+
+34
+00:01:29,530 --> 00:01:31,040
+OK, so let's go over it.
+
+35
+00:01:31,040 --> 00:01:34,130
+Here's a very small program that
+prints out Hello World.
+
+36
+00:01:34,130 --> 00:01:36,760
+And let's go over the basic
+parts of this program because
+
+37
+00:01:36,760 --> 00:01:39,040
+they're going to be the same
+in all Bottle programs.
+
+38
+00:01:39,040 --> 00:01:41,020
+So let's start out by importing
+the framework right
+
+39
+00:01:41,020 --> 00:01:42,370
+here, import Bottle.
+
+40
+00:01:42,370 --> 00:01:43,480
+That way, you'll have
+access to the
+
+41
+00:01:43,480 --> 00:01:44,860
+methods inside the framework.
+
+42
+00:01:44,860 --> 00:01:48,590
+And then, if you want to specify
+a handler that will
+
+43
+00:01:48,590 --> 00:01:51,830
+display web pages when users ask
+for your website, without
+
+44
+00:01:51,830 --> 00:01:55,990
+any path, the slash, like
+www.google.com, or just local
+
+45
+00:01:55,990 --> 00:02:00,140
+host, then you do it with this
+bottle.route decorator, set to
+
+46
+00:02:00,140 --> 00:02:02,390
+slash, and then you have a
+function here, and this name
+
+47
+00:02:02,390 --> 00:02:04,000
+here at home_page
+is arbitrary.
+
+48
+00:02:04,000 --> 00:02:05,780
+You can have it be called
+anything you want.
+
+49
+00:02:05,780 --> 00:02:08,530
+And in this case, we're just
+going to return Hello World.
+
+50
+00:02:08,530 --> 00:02:10,300
+That's all we're going to do.
+
+51
+00:02:10,300 --> 00:02:14,290
+Now, if we want to create a
+handler for the test page URL,
+
+52
+00:02:14,290 --> 00:02:15,550
+we can do that as well.
+
+53
+00:02:15,550 --> 00:02:18,675
+We declared @Bottle.route
+and then /testpage.
+
+54
+00:02:18,675 --> 00:02:20,740
+And again, after this the
+function name is arbitrary,
+
+55
+00:02:20,740 --> 00:02:22,650
+and this returns a test page.
+
+56
+00:02:22,650 --> 00:02:25,050
+These final two statements,
+you're going to probably want
+
+57
+00:02:25,050 --> 00:02:26,780
+to have them in all your
+bottle programs.
+
+58
+00:02:26,780 --> 00:02:28,070
+The first one turns
+on debugging,
+
+59
+00:02:28,070 --> 00:02:29,110
+which is very useful.
+
+60
+00:02:29,110 --> 00:02:31,170
+For one thing, you won't have
+to restart the web server
+
+61
+00:02:31,170 --> 00:02:33,260
+every single time you want
+to make a change.
+
+62
+00:02:33,260 --> 00:02:34,220
+It'll reload the pages.
+
+63
+00:02:34,220 --> 00:02:35,760
+It'll watch the pages.
+
+64
+00:02:35,760 --> 00:02:37,670
+And the second is
+the run command.
+
+65
+00:02:37,670 --> 00:02:38,930
+And that does two things.
+
+66
+00:02:38,930 --> 00:02:41,080
+It specifies what port you're
+going to listen on, which in
+
+67
+00:02:41,080 --> 00:02:42,790
+this case is port 8080.
+
+68
+00:02:42,790 --> 00:02:45,840
+And the second is that it gives
+the host name that we're
+
+69
+00:02:45,840 --> 00:02:47,500
+going to accept requests for.
+
+70
+00:02:47,500 --> 00:02:50,970
+Under the HTTP 1.1 protocol all
+web requests have a host
+
+71
+00:02:50,970 --> 00:02:53,100
+name in them so that multiple
+web services can
+
+72
+00:02:53,100 --> 00:02:54,410
+run on the same port.
+
+73
+00:02:54,410 --> 00:02:56,460
+So let's see what happens
+if we call that.
+
+74
+00:02:56,460 --> 00:02:58,170
+First, let's start
+the web server.
+
+75
+00:02:58,170 --> 00:03:02,760
+And it's already started, but
+I'm going to restart it so I'm
+
+76
+00:03:02,760 --> 00:03:06,450
+starting the web server now by
+calling Python, hello.py.
+
+77
+00:03:06,450 --> 00:03:07,240
+It starts up.
+
+78
+00:03:07,240 --> 00:03:08,660
+Prints out messages
+to standard out.
+
+79
+00:03:08,660 --> 00:03:10,390
+So this is a good place to look
+if there are any errors.
+
+80
+00:03:10,390 --> 00:03:13,790
+And then I can go to
+my web browser.
+
+81
+00:03:13,790 --> 00:03:16,390
+And I can make a request
+for local host.
+
+82
+00:03:16,390 --> 00:03:20,450
+And I'm going to make that
+request to :8080, 8080 that's
+
+83
+00:03:20,450 --> 00:03:21,685
+the web port we gave.
+
+84
+00:03:21,685 --> 00:03:24,770
+And if we do that, we can see
+here a couple things happened.
+
+85
+00:03:24,770 --> 00:03:27,260
+First is, it printed out Hello
+World on the screen.
+
+86
+00:03:27,260 --> 00:03:30,820
+And the second is that the web
+server acknowledged taking
+
+87
+00:03:30,820 --> 00:03:31,250
+your request.
+
+88
+00:03:31,250 --> 00:03:36,690
+You can see it said the get
+right here from 1.0.0.127
+
+89
+00:03:36,690 --> 00:03:39,840
+which is my loop back
+IP for my machine.
+
+90
+00:03:39,840 --> 00:03:41,930
+So all right, that works fine.
+
+91
+00:03:41,930 --> 00:03:44,550
+If you want to see exactly what
+came over the wire, you
+
+92
+00:03:44,550 --> 00:03:47,320
+can use Curl to do it,
+and I'll do that now.
+
+93
+00:03:47,320 --> 00:03:49,060
+Curl, if you don't have it
+installed, is a great little
+
+94
+00:03:49,060 --> 00:03:51,210
+program for making requests
+to web servers
+
+95
+00:03:51,210 --> 00:03:52,380
+from the command line.
+
+96
+00:03:52,380 --> 00:03:54,990
+So I'm going to do curl minus i,
+which gives me the headers
+
+97
+00:03:54,990 --> 00:03:56,990
+back as well to local
+host 8080.
+
+98
+00:03:56,990 --> 00:04:00,800
+And when I do that, you can see
+that I get back a 200 OK,
+
+99
+00:04:00,800 --> 00:04:04,750
+the date, and actually the web
+server identifies itself as a
+
+100
+00:04:04,750 --> 00:04:08,280
+Python server, WSGI server,
+and then it says that the
+
+101
+00:04:08,280 --> 00:04:10,120
+content it text/HTML.
+
+102
+00:04:10,120 --> 00:04:12,220
+And this is actually not
+a valid HTML page.
+
+103
+00:04:12,220 --> 00:04:15,130
+It's missing the HTML in the
+body and everything else.
+
+104
+00:04:15,130 --> 00:04:16,089
+But that's OK.
+
+105
+00:04:16,089 --> 00:04:17,720
+I'll show you how to add
+that in a second.
+
+106
+00:04:17,720 --> 00:04:20,380
+And then if we want to make a
+change here and request slash
+
+107
+00:04:20,380 --> 00:04:23,350
+testpage, because we're also
+going to list slash testpage,
+
+108
+00:04:23,350 --> 00:04:26,790
+then we can do that,
+slash testpage.
+
+109
+00:04:26,790 --> 00:04:29,590
+And then we get, this is
+a test right here.
+
+110
+00:04:29,590 --> 00:04:30,760
+And that's the same thing
+we'd get if we
+
+111
+00:04:30,760 --> 00:04:32,800
+went to the web browser.
+
+112
+00:04:32,800 --> 00:04:34,230
+This is a test page.
+
+113
+00:04:34,230 --> 00:04:37,820
+Now, if I wanted to return to
+more proper page, I could.
+
+114
+00:04:37,820 --> 00:04:39,570
+I have to know a little
+bit of HTML.
+
+115
+00:04:39,570 --> 00:04:41,850
+But the basic page
+looks like this--
+
+116
+00:04:41,850 --> 00:04:46,940
+HTML, title, close title, body,
+and then close the body,
+
+117
+00:04:46,940 --> 00:04:48,980
+and then close the HTML.
+
+118
+00:04:48,980 --> 00:04:51,760
+And that's a more complete
+web page.
+
+119
+00:04:51,760 --> 00:04:54,710
+And then if we go back to our
+web browser and just make a
+
+120
+00:04:54,710 --> 00:04:56,980
+request for the root page of the
+web server, it prints out
+
+121
+00:04:56,980 --> 00:04:57,930
+Hello World.
+
+122
+00:04:57,930 --> 00:04:59,850
+But now, if we view
+the source--
+
+123
+00:04:59,850 --> 00:05:01,765
+oh, might need to restart
+the server here.
+
+124
+00:05:01,765 --> 00:05:03,170
+And I'll do that.
+
+125
+00:05:03,170 --> 00:05:04,350
+There we go.
+
+126
+00:05:04,350 --> 00:05:06,230
+I think, with debugging turned
+on, I think your
+
+127
+00:05:06,230 --> 00:05:08,030
+views will be re-read.
+
+128
+00:05:08,030 --> 00:05:09,640
+And we haven't gone over
+what views are yet.
+
+129
+00:05:09,640 --> 00:05:11,480
+But not source code itself.
+
+130
+00:05:11,480 --> 00:05:13,390
+So we see what happened there.
+
+131
+00:05:13,390 --> 00:05:16,080
+Now it looks pretty much the
+same, and that's because the
+
+132
+00:05:16,080 --> 00:05:19,710
+web browser is going to hide the
+fact that the page was not
+
+133
+00:05:19,710 --> 00:05:20,740
+valid before.
+
+134
+00:05:20,740 --> 00:05:22,270
+Web browsers are pretty
+forgiving these days.
+
+135
+00:05:22,270 --> 00:05:25,380
+But if we view the source, we
+can see that now it has HTML,
+
+136
+00:05:25,380 --> 00:05:29,010
+title, no title, and then the
+body, and then a closing body
+
+137
+00:05:29,010 --> 00:05:30,960
+tag, and a closing HTML tag.
+
+138
+00:05:30,960 --> 00:05:34,950
+And if we go in using Curl, you
+should see the same thing.
+
+139
+00:05:34,950 --> 00:05:36,130
+So I'll do that.
+
+140
+00:05:36,130 --> 00:05:39,770
+And then you can see it says
+HTML, title, and then body.
+
+141
+00:05:39,770 --> 00:05:42,200
+OK, so that's how you
+create routes
+
+142
+00:05:42,200 --> 00:05:44,450
+inside your Bottle scripts.
+
+143
+00:05:44,450 --> 00:05:45,700

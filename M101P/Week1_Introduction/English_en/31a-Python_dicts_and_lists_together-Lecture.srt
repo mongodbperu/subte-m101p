@@ -1,0 +1,274 @@
+1
+00:00:00,000 --> 00:00:00,170
+
+2
+00:00:00,170 --> 00:00:03,020
+Now I've learned a little bit
+about Python dictionaries and
+
+3
+00:00:03,020 --> 00:00:04,800
+a little bit about
+Python lists.
+
+4
+00:00:04,800 --> 00:00:07,490
+And of course, they work really
+well together because
+
+5
+00:00:07,490 --> 00:00:10,320
+together, they essentially offer
+what JSON does in terms
+
+6
+00:00:10,320 --> 00:00:11,340
+of documents.
+
+7
+00:00:11,340 --> 00:00:14,770
+So if you want to do initialize
+a new Python, we'll
+
+8
+00:00:14,770 --> 00:00:17,900
+call it a document, you can do
+it pretty much the same way
+
+9
+00:00:17,900 --> 00:00:19,160
+you would in JSON.
+
+10
+00:00:19,160 --> 00:00:22,030
+Open up a squiggly brace, give
+it a key, this needs to be
+
+11
+00:00:22,030 --> 00:00:24,400
+protected by a quote
+inside Python.
+
+12
+00:00:24,400 --> 00:00:28,600
+And then if you wanted to have
+their be an array within
+
+13
+00:00:28,600 --> 00:00:30,890
+there, you can do it pretty
+much exactly the way
+
+14
+00:00:30,890 --> 00:00:32,439
+you would in JSON.
+
+15
+00:00:32,439 --> 00:00:35,950
+That's going to be a list,
+interesting in cycling,
+
+16
+00:00:35,950 --> 00:00:37,220
+running, and golf.
+
+17
+00:00:37,220 --> 00:00:39,310
+And I will close that.
+
+18
+00:00:39,310 --> 00:00:42,340
+And I'll show you that
+in the shell.
+
+19
+00:00:42,340 --> 00:00:44,500
+So let's create a new object.
+
+20
+00:00:44,500 --> 00:00:46,420
+Have that object have a name.
+
+21
+00:00:46,420 --> 00:00:47,660
+This is the Python shell.
+
+22
+00:00:47,660 --> 00:00:50,480
+I know it looks a lot like the
+Mongo shell, it's so similar.
+
+23
+00:00:50,480 --> 00:00:53,720
+And on my name's going to
+be Andrew Erlichson.
+
+24
+00:00:53,720 --> 00:00:55,910
+And then I'm going to
+put in my interests.
+
+25
+00:00:55,910 --> 00:01:00,305
+And my interests are going to be
+cycling, running, and golf.
+
+26
+00:01:00,305 --> 00:01:04,209
+I'm going to close that up
+and then there they are.
+
+27
+00:01:04,209 --> 00:01:07,690
+And if I wanted to see my
+second interest, I could
+
+28
+00:01:07,690 --> 00:01:09,780
+dereference it pretty much
+as you'd expect.
+
+29
+00:01:09,780 --> 00:01:14,415
+Interests, sorry, interests,
+here is the second item, it
+
+30
+00:01:14,415 --> 00:01:16,470
+has an ordinal value of one.
+
+31
+00:01:16,470 --> 00:01:17,810
+It depends what we
+mean by second.
+
+32
+00:01:17,810 --> 00:01:19,060
+And it's running.
+
+33
+00:01:19,060 --> 00:01:20,450
+Makes perfect sense.
+
+34
+00:01:20,450 --> 00:01:23,220
+If I wanted to append a new
+interest, I could say find
+
+35
+00:01:23,220 --> 00:01:26,460
+myinterests and append a
+new interest, swimming.
+
+36
+00:01:26,460 --> 00:01:29,930
+I'm not really that interested
+in swimming, but I wish I were
+
+37
+00:01:29,930 --> 00:01:31,370
+more interested in it.
+
+38
+00:01:31,370 --> 00:01:34,570
+All right, now we look at a
+again, and we can see that our
+
+39
+00:01:34,570 --> 00:01:37,020
+interests are cycling running,
+golf, and swimming.
+
+40
+00:01:37,020 --> 00:01:38,460
+And my name is Andrew
+Erlichson.
+
+41
+00:01:38,460 --> 00:01:41,350
+And as I told you before, Python
+does not retain the
+
+42
+00:01:41,350 --> 00:01:43,920
+order of the keys inside
+dictionaries.
+
+43
+00:01:43,920 --> 00:01:47,320
+So unlike JSON, now they've
+switched and now name is now
+
+44
+00:01:47,320 --> 00:01:49,100
+listed second and interest
+is listed first.
+
+45
+00:01:49,100 --> 00:01:52,760
+And that's the basic way that
+dictionaries and lists work
+
+46
+00:01:52,760 --> 00:01:53,850
+together in Python.
+
+47
+00:01:53,850 --> 00:01:56,850
+And you can see why we chose it
+as an example language for
+
+48
+00:01:56,850 --> 00:02:00,680
+teaching Mongo because it just
+matches so closely to the way
+
+49
+00:02:00,680 --> 00:02:03,370
+JavaScript Object Notation looks
+inside the Mongo shell.
+
+50
+00:02:03,370 --> 00:02:04,890
+It makes it an excellent
+choice for
+
+51
+00:02:04,890 --> 00:02:07,190
+showing how it all works.
+
+52
+00:02:07,190 --> 00:02:09,770
+All right, now it's time
+to quiz you on Python,
+
+53
+00:02:09,770 --> 00:02:12,220
+dictionaries, and
+lists together.
+
+54
+00:02:12,220 --> 00:02:16,240
+So initialize a new dictionary
+with a single key--
+
+55
+00:02:16,240 --> 00:02:19,260
+animals, whose value
+is a list--
+
+56
+00:02:19,260 --> 00:02:20,990
+dog, cat, zebra.
+
+57
+00:02:20,990 --> 00:02:24,650
+Assign the entire expression
+to a variable named things.
+
+58
+00:02:24,650 --> 00:02:25,900
+Type that right here.
+
+59
+00:02:25,900 --> 00:02:26,650

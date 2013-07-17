@@ -1,0 +1,34 @@
+1
+00:00:00,000 --> 00:00:00,220
+
+2
+00:00:00,220 --> 00:00:02,220
+OK, and the answer
+is shown here.
+
+3
+00:00:02,220 --> 00:00:05,220
+As you can see, we have a curly
+brace, then the address
+
+4
+00:00:05,220 --> 00:00:08,500
+key, and then another curly
+brace immediately followed by
+
+5
+00:00:08,500 --> 00:00:10,990
+the data, street address,
+it's Elm Drive.
+
+6
+00:00:10,990 --> 00:00:14,890
+City is Palo Alto, state is
+California, and zip is 94305.
+
+7
+00:00:14,890 --> 00:00:16,650
+And two curly braces to finish.
+
+8
+00:00:16,650 --> 00:00:17,900

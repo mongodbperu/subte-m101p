@@ -1,0 +1,73 @@
+1
+00:00:00,000 --> 00:00:00,190
+
+2
+00:00:00,190 --> 00:00:00,410
+OK.
+
+3
+00:00:00,410 --> 00:00:01,930
+It's time for a quiz.
+
+4
+00:00:01,930 --> 00:00:04,700
+I'd like you to write a JSON
+document with a single key,
+
+5
+00:00:04,700 --> 00:00:08,160
+address, that has as its value
+another document with the keys
+
+6
+00:00:08,160 --> 00:00:11,070
+street address, city, state, and
+zip code, in this order.
+
+7
+00:00:11,070 --> 00:00:13,250
+And those have the following
+values--
+
+8
+00:00:13,250 --> 00:00:14,900
+23 Elm Drive.
+
+9
+00:00:14,900 --> 00:00:17,200
+City is Palo Alto.
+
+10
+00:00:17,200 --> 00:00:18,670
+State is California.
+
+11
+00:00:18,670 --> 00:00:20,830
+Zip code is 94305.
+
+12
+00:00:20,830 --> 00:00:23,620
+So, once again, write a JSON
+document with a single key,
+
+13
+00:00:23,620 --> 00:00:25,710
+address, that has as its
+value another document.
+
+14
+00:00:25,710 --> 00:00:28,430
+And in that document there's
+a street address, a city, a
+
+15
+00:00:28,430 --> 00:00:29,100
+state, and a zip code.
+
+16
+00:00:29,100 --> 00:00:30,920
+And then here we give you
+the values for those.
+
+17
+00:00:30,920 --> 00:00:32,170

@@ -1,0 +1,30 @@
+1
+00:00:00,000 --> 00:00:00,160
+
+2
+00:00:00,160 --> 00:00:04,120
+OK, and the answer is 1.
+
+3
+00:00:04,120 --> 00:00:06,560
+All the information we need to
+display the homepage of this
+
+4
+00:00:06,560 --> 00:00:10,930
+blog is contained in the
+posts collection.
+
+5
+00:00:10,930 --> 00:00:15,120
+We don't need the author's
+collection because we have the
+
+6
+00:00:15,120 --> 00:00:17,830
+author name in the post
+collection directly.
+
+7
+00:00:17,830 --> 00:00:19,080
+All right?

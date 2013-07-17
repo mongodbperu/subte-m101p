@@ -1,0 +1,154 @@
+1
+00:00:00,000 --> 00:00:00,160
+
+2
+00:00:00,160 --> 00:00:04,130
+I want to circle back now and
+show you the blog that we're
+
+3
+00:00:04,130 --> 00:00:05,930
+going to be building
+in this class.
+
+4
+00:00:05,930 --> 00:00:08,020
+So I've built most of it here,
+and I'm going to take you
+
+5
+00:00:08,020 --> 00:00:09,230
+through it quickly.
+
+6
+00:00:09,230 --> 00:00:11,290
+I think most people know
+what a blog is.
+
+7
+00:00:11,290 --> 00:00:16,219
+It's a long form format for
+writing articles with titles.
+
+8
+00:00:16,219 --> 00:00:17,940
+You can see here I've
+copied some articles
+
+9
+00:00:17,940 --> 00:00:19,270
+from the 10gen blog.
+
+10
+00:00:19,270 --> 00:00:22,630
+And here, I'll click on one,
+this "Free Online MongoDB
+
+11
+00:00:22,630 --> 00:00:23,660
+Classes."
+
+12
+00:00:23,660 --> 00:00:27,840
+And you can see that there's a
+slug that is in the URL along
+
+13
+00:00:27,840 --> 00:00:30,700
+with a byline with my
+name and a date.
+
+14
+00:00:30,700 --> 00:00:33,450
+And then at the bottom, you can
+see the tags it was filed
+
+15
+00:00:33,450 --> 00:00:34,500
+underneath.
+
+16
+00:00:34,500 --> 00:00:37,080
+And then there are some comments
+by some readers, and
+
+17
+00:00:37,080 --> 00:00:39,860
+we can add another comment
+right here.
+
+18
+00:00:39,860 --> 00:00:42,670
+After we add that comment, we
+can submit it, and it'll be
+
+19
+00:00:42,670 --> 00:00:44,280
+part of the blog entry.
+
+20
+00:00:44,280 --> 00:00:47,340
+And then if we go here to the
+Home on the blog, we'll see
+
+21
+00:00:47,340 --> 00:00:48,160
+all the articles again.
+
+22
+00:00:48,160 --> 00:00:50,930
+We can also add a new
+entry into the blog.
+
+23
+00:00:50,930 --> 00:00:52,930
+I'm not going to add a new entry
+right now, but this is
+
+24
+00:00:52,930 --> 00:00:55,480
+one of the pages that we'll be
+implementing along with a
+
+25
+00:00:55,480 --> 00:00:57,680
+Sign-up page and
+a Logout page.
+
+26
+00:00:57,680 --> 00:00:59,860
+So you'll be building this
+yourself as well as extending
+
+27
+00:00:59,860 --> 00:01:03,050
+it, and we'll be showing you how
+to build a schema for this
+
+28
+00:01:03,050 --> 00:01:05,600
+and helping you along with
+writing the code.
+
+29
+00:01:05,600 --> 00:01:07,720
+So this is the way it'll look
+when it's all finished, but I
+
+30
+00:01:07,720 --> 00:01:09,660
+wanted to give you this
+high-level view of it to sort
+
+31
+00:01:09,660 --> 00:01:11,990
+of concretely explain what we're
+going to be using as a
+
+32
+00:01:11,990 --> 00:01:13,350
+vehicle for teaching
+in the class.
+
+33
+00:01:13,350 --> 00:01:14,600

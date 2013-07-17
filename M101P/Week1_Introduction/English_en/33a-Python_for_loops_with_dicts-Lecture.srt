@@ -1,0 +1,203 @@
+1
+00:00:00,000 --> 00:00:00,150
+
+2
+00:00:00,150 --> 00:00:02,880
+OK, we've seen how to
+iterate through a
+
+3
+00:00:02,880 --> 00:00:04,390
+list with a for loop.
+
+4
+00:00:04,390 --> 00:00:07,520
+But how would you get iterate
+through a dictionary, which
+
+5
+00:00:07,520 --> 00:00:09,130
+looks like JSON document?
+
+6
+00:00:09,130 --> 00:00:13,090
+So here I've created a small
+JSON document as a dictionary
+
+7
+00:00:13,090 --> 00:00:16,290
+inside Python, with my name
+being Andrew Erlichson, my
+
+8
+00:00:16,290 --> 00:00:19,280
+favorite color being blue,
+my hair being brown.
+
+9
+00:00:19,280 --> 00:00:21,940
+And then I'm going to write this
+for loop to go through
+
+10
+00:00:21,940 --> 00:00:22,940
+this dictionary.
+
+11
+00:00:22,940 --> 00:00:25,460
+So I declare my own variables
+dynamically here.
+
+12
+00:00:25,460 --> 00:00:27,900
+For key in person, I named it
+key because I thought that
+
+13
+00:00:27,900 --> 00:00:28,800
+would be intuitive.
+
+14
+00:00:28,800 --> 00:00:30,910
+But you could name it
+anything you want.
+
+15
+00:00:30,910 --> 00:00:33,770
+And now that's going to tell
+Python to iterate through the
+
+16
+00:00:33,770 --> 00:00:37,190
+person dictionary and assign
+name, and then favorite color,
+
+17
+00:00:37,190 --> 00:00:38,580
+and then hair to key.
+
+18
+00:00:38,580 --> 00:00:41,890
+And then it's going to print
+out the key value, and then
+
+19
+00:00:41,890 --> 00:00:45,790
+the value from the actual
+dictionary person key.
+
+20
+00:00:45,790 --> 00:00:47,200
+Now a couple things to note.
+
+21
+00:00:47,200 --> 00:00:49,750
+First is that we're using the
+concatenation operator that we
+
+22
+00:00:49,750 --> 00:00:51,830
+learned earlier, with strings.
+
+23
+00:00:51,830 --> 00:00:55,190
+Second that you certainly don't
+need to put this key in
+
+24
+00:00:55,190 --> 00:00:57,500
+quotes because it's
+a variable.
+
+25
+00:00:57,500 --> 00:00:59,620
+And so it's not a literal string
+that you're trying to
+
+26
+00:00:59,620 --> 00:01:00,920
+reference into person.
+
+27
+00:01:00,920 --> 00:01:03,410
+All right, so let's see what
+happens when we run that.
+
+28
+00:01:03,410 --> 00:01:06,730
+Python, for loops.
+
+29
+00:01:06,730 --> 00:01:10,110
+So when we run that, we find out
+that my hair is brown, my
+
+30
+00:01:10,110 --> 00:01:12,100
+favorite color is blue.
+
+31
+00:01:12,100 --> 00:01:15,190
+And my name is Andrew
+Erlichson.
+
+32
+00:01:15,190 --> 00:01:18,250
+And so once again, it's
+important to point out that
+
+33
+00:01:18,250 --> 00:01:21,050
+the order that came out of this
+dictionary is not the
+
+34
+00:01:21,050 --> 00:01:22,840
+order that it went into
+this dictionary.
+
+35
+00:01:22,840 --> 00:01:25,870
+So it went in name, favorite
+color, hair.
+
+36
+00:01:25,870 --> 00:01:29,110
+And it came out hair, favorite
+color, name.
+
+37
+00:01:29,110 --> 00:01:32,600
+All right, it's time for a quiz
+on Python for loops and
+
+38
+00:01:32,600 --> 00:01:33,920
+dictionaries together.
+
+39
+00:01:33,920 --> 00:01:36,290
+Let's say you have the following
+code-- people is a
+
+40
+00:01:36,290 --> 00:01:38,610
+dictionary with these
+values shown here.
+
+41
+00:01:38,610 --> 00:01:42,290
+We integrate through people,
+and then check when item is
+
+42
+00:01:42,290 --> 00:01:45,630
+equal to favorite color, and
+then print people of item.
+
+43
+00:01:45,630 --> 00:01:47,560
+What does this program print?
+
+44
+00:01:47,560 --> 00:01:48,810

@@ -1,0 +1,365 @@
+1
+00:00:00,000 --> 00:00:00,130
+
+2
+00:00:00,130 --> 00:00:01,730
+All right, now we're going
+to go over how for
+
+3
+00:00:01,730 --> 00:00:03,160
+loops work in Python.
+
+4
+00:00:03,160 --> 00:00:05,600
+For loops are a control
+flow structure
+
+5
+00:00:05,600 --> 00:00:07,110
+that's in most languages.
+
+6
+00:00:07,110 --> 00:00:09,730
+And I'm sure you're familiar
+with for loops if you've used
+
+7
+00:00:09,730 --> 00:00:11,630
+Java, or C, or C++.
+
+8
+00:00:11,630 --> 00:00:13,680
+We're just going to look at how
+they work inside Python.
+
+9
+00:00:13,680 --> 00:00:17,450
+To do that, we're going to
+switch to editing a file
+
+10
+00:00:17,450 --> 00:00:20,175
+versus using the Python
+interpreter
+
+11
+00:00:20,175 --> 00:00:21,160
+from the command line.
+
+12
+00:00:21,160 --> 00:00:23,360
+Because I want to show you
+a few things about that.
+
+13
+00:00:23,360 --> 00:00:27,530
+So we have here list of fruit
+which I've initialized with
+
+14
+00:00:27,530 --> 00:00:29,030
+apple, orange, and grape.
+
+15
+00:00:29,030 --> 00:00:31,960
+And there's a comment here,
+starting with a pound sign, to
+
+16
+00:00:31,960 --> 00:00:33,580
+initialize the array.
+
+17
+00:00:33,580 --> 00:00:36,490
+Then we have a secondary array,
+new fruit, a secondary
+
+18
+00:00:36,490 --> 00:00:39,410
+list that's been initialized
+to be empty.
+
+19
+00:00:39,410 --> 00:00:41,210
+And then here's the for
+loop right here.
+
+20
+00:00:41,210 --> 00:00:43,275
+For item in fruit (colon).
+
+21
+00:00:43,275 --> 00:00:45,420
+Now item is a variable
+name that I chose.
+
+22
+00:00:45,420 --> 00:00:47,690
+It has there been declared
+before because you don't need
+
+23
+00:00:47,690 --> 00:00:49,420
+to declare anything
+inside Python.
+
+24
+00:00:49,420 --> 00:00:50,670
+It's all dynamic.
+
+25
+00:00:50,670 --> 00:00:53,030
+And then inside this loop, you
+can see, it's important that
+
+26
+00:00:53,030 --> 00:00:55,680
+we indent because the control
+flow is applied through
+
+27
+00:00:55,680 --> 00:00:57,255
+indentation in Python.
+
+28
+00:00:57,255 --> 00:01:01,020
+And I've indented here and
+printed each item as I find it
+
+29
+00:01:01,020 --> 00:01:01,700
+in the list.
+
+30
+00:01:01,700 --> 00:01:03,950
+So I expect it to print out
+apple, orange, and grape.
+
+31
+00:01:03,950 --> 00:01:07,810
+And then I also will
+append the item to
+
+32
+00:01:07,810 --> 00:01:08,880
+the new fruit list.
+
+33
+00:01:08,880 --> 00:01:10,760
+So new fruit.append item.
+
+34
+00:01:10,760 --> 00:01:13,230
+And then at the end, I just
+print new fruit, which depends
+
+35
+00:01:13,230 --> 00:01:16,340
+on Python's ability to print
+lists and dictionaries
+
+36
+00:01:16,340 --> 00:01:18,425
+without, really,
+any assistance.
+
+37
+00:01:18,425 --> 00:01:20,540
+Now you'll notice that there's
+some syntax-based
+
+38
+00:01:20,540 --> 00:01:21,430
+highlighting here.
+
+39
+00:01:21,430 --> 00:01:23,680
+And this is the eMacs running
+in Python mode.
+
+40
+00:01:23,680 --> 00:01:25,870
+I would definitely suggest that
+you used some sort of
+
+41
+00:01:25,870 --> 00:01:27,380
+editor that can do syntax-based
+
+42
+00:01:27,380 --> 00:01:29,030
+highlighting, and most can.
+
+43
+00:01:29,030 --> 00:01:30,970
+It makes it a lot easier
+to find bugs.
+
+44
+00:01:30,970 --> 00:01:32,950
+You'll also notice that there's
+an extra line here.
+
+45
+00:01:32,950 --> 00:01:36,290
+And that'll have no impact on
+the execution of this loop.
+
+46
+00:01:36,290 --> 00:01:39,090
+This is within the loop body
+because it's indented at the
+
+47
+00:01:39,090 --> 00:01:40,890
+same level as the proceeding
+statement.
+
+48
+00:01:40,890 --> 00:01:42,330
+All right, so let's
+see what happens
+
+49
+00:01:42,330 --> 00:01:43,360
+when we run this thing.
+
+50
+00:01:43,360 --> 00:01:45,450
+All right, I'm going to run
+it by typing Python,
+
+51
+00:01:45,450 --> 00:01:47,330
+for_loops.py.
+
+52
+00:01:47,330 --> 00:01:49,300
+And does pretty much
+what we expect--
+
+53
+00:01:49,300 --> 00:01:53,420
+prints out apple, orange, grape,
+and then prints out the
+
+54
+00:01:53,420 --> 00:01:55,240
+new fruit list, which is
+apple, orange, grape.
+
+55
+00:01:55,240 --> 00:01:56,420
+So that's great.
+
+56
+00:01:56,420 --> 00:02:00,620
+Let's change it so that new
+fruit is not indented.
+
+57
+00:02:00,620 --> 00:02:01,930
+Let's see what happens.
+
+58
+00:02:01,930 --> 00:02:04,740
+Let's save it, which, in eMacs,
+is crtl-X, crtl-S. Then
+
+59
+00:02:04,740 --> 00:02:07,130
+I'm going to go back
+here and run it.
+
+60
+00:02:07,130 --> 00:02:10,590
+And now, I still get apple,
+orange, grape, but then, when
+
+61
+00:02:10,590 --> 00:02:12,350
+I print out new fruit,
+I just get grape.
+
+62
+00:02:12,350 --> 00:02:13,640
+So what happened there?
+
+63
+00:02:13,640 --> 00:02:16,740
+And what happened there is that
+rather than have this
+
+64
+00:02:16,740 --> 00:02:19,850
+append executed every time
+through the loop body, it's
+
+65
+00:02:19,850 --> 00:02:23,460
+only being executed once with
+the final value that item took
+
+66
+00:02:23,460 --> 00:02:24,770
+when the for loop excited.
+
+67
+00:02:24,770 --> 00:02:27,100
+And so it prints out something
+that has one
+
+68
+00:02:27,100 --> 00:02:28,680
+item in versus three.
+
+69
+00:02:28,680 --> 00:02:31,650
+So again, in Python this is
+probably the most unusual
+
+70
+00:02:31,650 --> 00:02:34,870
+thing if you're used to Java C,
+or C++, is that the actual
+
+71
+00:02:34,870 --> 00:02:36,260
+indentation matters.
+
+72
+00:02:36,260 --> 00:02:39,060
+It indicates to the Python
+interpreter whether or not
+
+73
+00:02:39,060 --> 00:02:40,980
+something is part of the
+proceeding block or whether or
+
+74
+00:02:40,980 --> 00:02:42,750
+not it's its own block.
+
+75
+00:02:42,750 --> 00:02:45,240
+All right, now they know about
+for loops, I'd like you to
+
+76
+00:02:45,240 --> 00:02:48,880
+tell me what this
+code prints out.
+
+77
+00:02:48,880 --> 00:02:50,640
+And put it right here.
+
+78
+00:02:50,640 --> 00:02:52,250
+Type what it prints
+out right here.
+
+79
+00:02:52,250 --> 00:02:53,500

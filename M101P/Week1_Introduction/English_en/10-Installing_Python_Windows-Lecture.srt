@@ -1,0 +1,234 @@
+1
+00:00:00,000 --> 00:00:01,290
+
+2
+00:00:01,290 --> 00:00:03,800
+Now that we have MongoDB
+installed on our Windows
+
+3
+00:00:03,800 --> 00:00:06,910
+machine, next, we need to get
+Python installed, because
+
+4
+00:00:06,910 --> 00:00:08,700
+we're going to use Python
+in this class.
+
+5
+00:00:08,700 --> 00:00:10,690
+You may already have
+Python installed.
+
+6
+00:00:10,690 --> 00:00:13,210
+And if you do have Python
+installed, then that's great.
+
+7
+00:00:13,210 --> 00:00:15,490
+You don't need to install
+it again.
+
+8
+00:00:15,490 --> 00:00:18,050
+But if you don't, you'll
+want to just Google
+
+9
+00:00:18,050 --> 00:00:19,700
+for download Python.
+
+10
+00:00:19,700 --> 00:00:23,610
+And then if you go to the first
+link right here, you'll
+
+11
+00:00:23,610 --> 00:00:27,890
+see that it's this
+python.org page.
+
+12
+00:00:27,890 --> 00:00:30,000
+And we're going to go
+for the Windows
+
+13
+00:00:30,000 --> 00:00:32,920
+installer right here, 2.7.3.
+
+14
+00:00:32,920 --> 00:00:35,690
+I'm going to click on it
+and download that.
+
+15
+00:00:35,690 --> 00:00:37,980
+And then I'm going to show
+that in the folder.
+
+16
+00:00:37,980 --> 00:00:40,290
+And I'm going to double
+click on it.
+
+17
+00:00:40,290 --> 00:00:41,650
+I actually previously
+downloaded it.
+
+18
+00:00:41,650 --> 00:00:43,060
+I'm going to run it.
+
+19
+00:00:43,060 --> 00:00:44,560
+Install for all users.
+
+20
+00:00:44,560 --> 00:00:48,030
+Python, Python, security
+check.
+
+21
+00:00:48,030 --> 00:00:49,460
+Say yes.
+
+22
+00:00:49,460 --> 00:00:51,170
+All right, that is super.
+
+23
+00:00:51,170 --> 00:00:55,090
+So now what it does by default
+is put that right into your C
+
+24
+00:00:55,090 --> 00:00:57,110
+drive, Python 2.7.
+
+25
+00:00:57,110 --> 00:01:03,340
+And what you're going to want to
+do is add that directory to
+
+26
+00:01:03,340 --> 00:01:05,950
+your path just like we
+did before so that
+
+27
+00:01:05,950 --> 00:01:06,960
+we can get to it.
+
+28
+00:01:06,960 --> 00:01:08,910
+So let's do that.
+
+29
+00:01:08,910 --> 00:01:12,030
+So we're going to go here,
+type Computer.
+
+30
+00:01:12,030 --> 00:01:15,240
+And go to System Properties.
+
+31
+00:01:15,240 --> 00:01:18,780
+I'm going to go to Advanced
+System Settings over here and
+
+32
+00:01:18,780 --> 00:01:20,790
+do Environment Variables.
+
+33
+00:01:20,790 --> 00:01:23,625
+Go down to my Path Variable.
+
+34
+00:01:23,625 --> 00:01:24,900
+It's right there.
+
+35
+00:01:24,900 --> 00:01:26,150
+And I'm going to edit it.
+
+36
+00:01:26,150 --> 00:01:27,060
+I'll go to the end of it.
+
+37
+00:01:27,060 --> 00:01:30,410
+The separator, again, seems
+to be a semi-colon.
+
+38
+00:01:30,410 --> 00:01:34,930
+So type C drive, so it goes
+in C drive, colon
+
+39
+00:01:34,930 --> 00:01:38,230
+slash Python 2.7.
+
+40
+00:01:38,230 --> 00:01:39,780
+So I've done that.
+
+41
+00:01:39,780 --> 00:01:45,650
+I'm going to say, OK, OK,
+OK, and kill that.
+
+42
+00:01:45,650 --> 00:01:49,780
+Now, if I bring up a terminal
+window, command prompt, and
+
+43
+00:01:49,780 --> 00:01:52,870
+type Python, I get the
+Python interpreter.
+
+44
+00:01:52,870 --> 00:01:55,690
+Print hello world.
+
+45
+00:01:55,690 --> 00:01:57,560
+And it prints hello world.
+
+46
+00:01:57,560 --> 00:01:58,260
+Excellent.
+
+47
+00:01:58,260 --> 00:02:02,600
+So now we have Python installed
+on our computer.
+
+48
+00:02:02,600 --> 00:02:05,940
+Next step is that we need to
+get PyMongo installed.
+
+49
+00:02:05,940 --> 00:02:09,320
+And we need to get the small
+bottle framework installed.
+
+50
+00:02:09,320 --> 00:02:12,550
+So in the next lesson, I will
+show you how to do that on a
+
+51
+00:02:12,550 --> 00:02:13,800
+Windows machine.
+
+52
+00:02:13,800 --> 00:02:14,420

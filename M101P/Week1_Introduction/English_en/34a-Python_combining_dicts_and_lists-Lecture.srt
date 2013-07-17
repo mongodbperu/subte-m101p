@@ -1,0 +1,380 @@
+1
+00:00:00,000 --> 00:00:00,130
+
+2
+00:00:00,130 --> 00:00:03,060
+We've looked at how we would
+iterate through a list.
+
+3
+00:00:03,060 --> 00:00:05,220
+And we've looked at how we
+would iterate through a
+
+4
+00:00:05,220 --> 00:00:06,040
+dictionary.
+
+5
+00:00:06,040 --> 00:00:09,380
+But what if it was a more
+typical JSON document, which
+
+6
+00:00:09,380 --> 00:00:12,670
+has a dictionary at the outer
+level and then, often, an
+
+7
+00:00:12,670 --> 00:00:14,190
+array or a list within it.
+
+8
+00:00:14,190 --> 00:00:15,490
+So how do we do that?
+
+9
+00:00:15,490 --> 00:00:20,120
+So here I have a person record
+with a name set to my name and
+
+10
+00:00:20,120 --> 00:00:23,750
+a favorite color set to blue,
+and a hair color set to brown.
+
+11
+00:00:23,750 --> 00:00:27,870
+And then the interest key is
+actually set to a Python list.
+
+12
+00:00:27,870 --> 00:00:31,200
+And this is Python code sitting
+inside a file on my
+
+13
+00:00:31,200 --> 00:00:34,400
+disk called for_loop_dict.py.
+
+14
+00:00:34,400 --> 00:00:36,550
+So I want to iterate through
+this structure,
+
+15
+00:00:36,550 --> 00:00:37,600
+so how do I do it?
+
+16
+00:00:37,600 --> 00:00:39,630
+Well, I know a little
+bit about the data.
+
+17
+00:00:39,630 --> 00:00:41,120
+And I'm going to use
+that knowledge to
+
+18
+00:00:41,120 --> 00:00:41,820
+iterate through it.
+
+19
+00:00:41,820 --> 00:00:46,200
+So for key in person, I can
+get each key that's in the
+
+20
+00:00:46,200 --> 00:00:46,850
+person record.
+
+21
+00:00:46,850 --> 00:00:48,370
+I don't know what order I'm
+going to get them in.
+
+22
+00:00:48,370 --> 00:00:49,080
+I might get name.
+
+23
+00:00:49,080 --> 00:00:51,020
+I might get favorite
+color first.
+
+24
+00:00:51,020 --> 00:00:52,290
+But I check it.
+
+25
+00:00:52,290 --> 00:00:55,900
+And if key == and that's the
+equality conditional inside
+
+26
+00:00:55,900 --> 00:00:59,900
+Python, if it == interests,
+well then I know that I'm
+
+27
+00:00:59,900 --> 00:01:01,680
+looking at the list.
+
+28
+00:01:01,680 --> 00:01:06,340
+So then, just for clarity, I
+print the word interests, and
+
+29
+00:01:06,340 --> 00:01:07,850
+then I have a secondary
+for loop.
+
+30
+00:01:07,850 --> 00:01:09,750
+And again, you can see this is
+indented at the same level as
+
+31
+00:01:09,750 --> 00:01:11,670
+the print statement, indicating
+that this is part
+
+32
+00:01:11,670 --> 00:01:12,590
+of that block.
+
+33
+00:01:12,590 --> 00:01:14,780
+And then for each interests, and
+again, I just made up that
+
+34
+00:01:14,780 --> 00:01:17,850
+variable name, inside
+person key--
+
+35
+00:01:17,850 --> 00:01:21,720
+now at this point key is equal
+to the word interests.
+
+36
+00:01:21,720 --> 00:01:26,280
+So for each interest in,
+essentially, this array, print
+
+37
+00:01:26,280 --> 00:01:28,250
+a tab, just to make it neater.
+
+38
+00:01:28,250 --> 00:01:31,810
+And when it's double quoted, it
+will interpolate and find
+
+39
+00:01:31,810 --> 00:01:34,270
+these types of characters
+within that are special
+
+40
+00:01:34,270 --> 00:01:37,680
+characters, for instance
+backslash t is a tab.
+
+41
+00:01:37,680 --> 00:01:40,170
+Print the interest is, and then
+it concatenates it with
+
+42
+00:01:40,170 --> 00:01:43,340
+the interest that it got
+right from this array.
+
+43
+00:01:43,340 --> 00:01:45,260
+So it concatenates it
+with the interest.
+
+44
+00:01:45,260 --> 00:01:47,590
+And its course iterating
+through the array--
+
+45
+00:01:47,590 --> 00:01:49,780
+cycling, running, biking.
+
+46
+00:01:49,780 --> 00:01:53,360
+Now, if it's not looking at the
+key with value interests,
+
+47
+00:01:53,360 --> 00:01:55,170
+well then it just does a normal
+thing it did before,
+
+48
+00:01:55,170 --> 00:01:56,690
+which is just, prints
+the top level key.
+
+49
+00:01:56,690 --> 00:02:00,240
+And then it dereferences
+it person key.
+
+50
+00:02:00,240 --> 00:02:01,850
+All right, so let's see
+what that does.
+
+51
+00:02:01,850 --> 00:02:06,020
+So I go here, and now I'm going
+to run this program.
+
+52
+00:02:06,020 --> 00:02:07,830
+And it does pretty much
+what you'd expect.
+
+53
+00:02:07,830 --> 00:02:10,520
+The first key it finds is hair,
+which was not the first
+
+54
+00:02:10,520 --> 00:02:12,000
+key put in, but that's OK.
+
+55
+00:02:12,000 --> 00:02:13,960
+And it prints out that
+the value is brown.
+
+56
+00:02:13,960 --> 00:02:16,060
+And then it winds up finding
+the interests.
+
+57
+00:02:16,060 --> 00:02:18,750
+And so then it iterates through
+that inner list.
+
+58
+00:02:18,750 --> 00:02:21,120
+And it prints out interested in
+cycling, running, biking.
+
+59
+00:02:21,120 --> 00:02:24,150
+These are in the same order they
+were put in because lists
+
+60
+00:02:24,150 --> 00:02:26,260
+are certainly ordered
+in Python.
+
+61
+00:02:26,260 --> 00:02:28,230
+And they were ordered
+in JSON as well.
+
+62
+00:02:28,230 --> 00:02:30,710
+And then it finds the favorite
+color value, blue, and the
+
+63
+00:02:30,710 --> 00:02:33,140
+name value being Andrew
+Erlichson.
+
+64
+00:02:33,140 --> 00:02:36,000
+So using this type of technique,
+you can print out
+
+65
+00:02:36,000 --> 00:02:39,830
+any complex data structure that
+comes out of MongoDB.
+
+66
+00:02:39,830 --> 00:02:42,505
+Now you could also do it using
+introspection, if some of you
+
+67
+00:02:42,505 --> 00:02:45,260
+have heard of introspection,
+checking whether something is
+
+68
+00:02:45,260 --> 00:02:46,940
+a list or is a dictionary.
+
+69
+00:02:46,940 --> 00:02:48,500
+And you could do the
+appropriate thing.
+
+70
+00:02:48,500 --> 00:02:51,890
+But often the code understands
+the schema enough that it
+
+71
+00:02:51,890 --> 00:02:52,950
+doesn't need to do that.
+
+72
+00:02:52,950 --> 00:02:54,310
+It just knows that the interest
+
+73
+00:02:54,310 --> 00:02:56,020
+would always be a list.
+
+74
+00:02:56,020 --> 00:02:57,200
+All right next quiz.
+
+75
+00:02:57,200 --> 00:02:59,930
+Let's combine some dictionaries
+and lists again.
+
+76
+00:02:59,930 --> 00:03:01,930
+Tell me what this
+code prints out.
+
+77
+00:03:01,930 --> 00:03:05,190
+This is a named object to set
+equal to this dictionary.
+
+78
+00:03:05,190 --> 00:03:08,275
+And here's some code that does
+some checking for inclusion
+
+79
+00:03:08,275 --> 00:03:10,160
+and then runs a loop.
+
+80
+00:03:10,160 --> 00:03:12,530
+Type what this code will
+print out right here.
+
+81
+00:03:12,530 --> 00:03:13,780

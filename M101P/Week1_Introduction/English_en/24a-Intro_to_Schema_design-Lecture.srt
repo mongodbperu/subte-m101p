@@ -1,0 +1,241 @@
+1
+00:00:00,000 --> 00:00:00,140
+
+2
+00:00:00,140 --> 00:00:02,530
+We're going to get to schema
+design a little bit later in
+
+3
+00:00:02,530 --> 00:00:03,550
+this course.
+
+4
+00:00:03,550 --> 00:00:06,140
+But I wanted to just introduce
+some of the questions that
+
+5
+00:00:06,140 --> 00:00:10,200
+arise when you're designing a
+document oriented schema.
+
+6
+00:00:10,200 --> 00:00:12,220
+With relational, it's pretty
+straightforward
+
+7
+00:00:12,220 --> 00:00:13,200
+to design the schema.
+
+8
+00:00:13,200 --> 00:00:15,620
+You typically go for the third
+normal form, and then maybe
+
+9
+00:00:15,620 --> 00:00:17,080
+you combine a few things.
+
+10
+00:00:17,080 --> 00:00:21,410
+But with mongoDB and document
+oriented designs, how do you
+
+11
+00:00:21,410 --> 00:00:23,210
+know whether to embed or not?
+
+12
+00:00:23,210 --> 00:00:25,910
+For example, in the schema that
+we finally decided on for
+
+13
+00:00:25,910 --> 00:00:29,810
+this problem, the post
+collection had a tags array
+
+14
+00:00:29,810 --> 00:00:30,870
+right inside it.
+
+15
+00:00:30,870 --> 00:00:34,970
+And the tags array had tag names
+that potentially might
+
+16
+00:00:34,970 --> 00:00:37,740
+be duplicated across the
+different posts.
+
+17
+00:00:37,740 --> 00:00:41,680
+So y embed that versus put
+it into a separate tags
+
+18
+00:00:41,680 --> 00:00:42,490
+collection.
+
+19
+00:00:42,490 --> 00:00:44,310
+You have the same question
+for the comments.
+
+20
+00:00:44,310 --> 00:00:48,540
+Why did we embed those verses
+having a separate collection?
+
+21
+00:00:48,540 --> 00:00:51,730
+And the answer is, because
+they're typically accessed at
+
+22
+00:00:51,730 --> 00:00:53,850
+the same time you access
+the posts.
+
+23
+00:00:53,850 --> 00:00:57,200
+It's very rare that you would
+need to access the tags
+
+24
+00:00:57,200 --> 00:01:00,990
+independently of accessing a
+post or access the comments
+
+25
+00:01:00,990 --> 00:01:04,140
+independently of accessing
+a post.
+
+26
+00:01:04,140 --> 00:01:07,800
+And the comment itself doesn't
+apply to more than one post.
+
+27
+00:01:07,800 --> 00:01:09,950
+Now, it is true, in the case of
+the tags, if this is, let's
+
+28
+00:01:09,950 --> 00:01:11,740
+say, cycling, and
+this running.
+
+29
+00:01:11,740 --> 00:01:14,910
+If we wanted to change the
+word cycling to biking in
+
+30
+00:01:14,910 --> 00:01:18,140
+every single post, that would be
+kind of tedious since it's
+
+31
+00:01:18,140 --> 00:01:19,740
+not relationally connected.
+
+32
+00:01:19,740 --> 00:01:22,210
+But this is an unusual change
+to make it, something you're
+
+33
+00:01:22,210 --> 00:01:23,440
+not going to make
+all the time.
+
+34
+00:01:23,440 --> 00:01:25,890
+And so it makes sense that you
+would put these tags directly
+
+35
+00:01:25,890 --> 00:01:28,130
+into the post collection
+itself.
+
+36
+00:01:28,130 --> 00:01:30,420
+And generally, when you're
+deciding whether to embed or
+
+37
+00:01:30,420 --> 00:01:33,130
+not to embed, it's going to be
+the way you access the data
+
+38
+00:01:33,130 --> 00:01:35,360
+that's going to decide that,
+along with some other
+
+39
+00:01:35,360 --> 00:01:36,630
+practical considerations.
+
+40
+00:01:36,630 --> 00:01:38,720
+For example, in mongoDB,
+a document can't be
+
+41
+00:01:38,720 --> 00:01:40,270
+more than 16 megabytes.
+
+42
+00:01:40,270 --> 00:01:43,760
+So if you were going to have
+more than 16 megabytes of
+
+43
+00:01:43,760 --> 00:01:46,520
+comments, which would be
+extremely unusual, then you'd
+
+44
+00:01:46,520 --> 00:01:49,000
+have to put the comments
+themselves into a separate
+
+45
+00:01:49,000 --> 00:01:50,050
+collection.
+
+46
+00:01:50,050 --> 00:01:52,390
+So now it's time for quiz.
+
+47
+00:01:52,390 --> 00:01:55,590
+In which scenario is it
+impossible to embed data
+
+48
+00:01:55,590 --> 00:01:56,600
+within a document?
+
+49
+00:01:56,600 --> 00:01:59,650
+That is, in which scenario do
+you have to put the data in a
+
+50
+00:01:59,650 --> 00:02:00,720
+separate collection?
+
+51
+00:02:00,720 --> 00:02:01,970
+Check all that apply.
+
+52
+00:02:01,970 --> 00:02:02,780

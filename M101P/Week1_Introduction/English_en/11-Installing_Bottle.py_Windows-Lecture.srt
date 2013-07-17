@@ -1,0 +1,355 @@
+1
+00:00:00,000 --> 00:00:00,390
+
+2
+00:00:00,390 --> 00:00:01,310
+OK.
+
+3
+00:00:01,310 --> 00:00:06,150
+The next step for us is
+to install bottle.py.
+
+4
+00:00:06,150 --> 00:00:07,870
+This is the web framework we're
+going to use to build
+
+5
+00:00:07,870 --> 00:00:09,150
+the blogging software.
+
+6
+00:00:09,150 --> 00:00:11,010
+If you're a Mac user, and
+you've already installed
+
+7
+00:00:11,010 --> 00:00:12,430
+Bottle in the previous
+segment, you
+
+8
+00:00:12,430 --> 00:00:13,790
+can skip this part.
+
+9
+00:00:13,790 --> 00:00:15,920
+This is for Windows
+users only.
+
+10
+00:00:15,920 --> 00:00:19,850
+So I've gone into Google and
+I've typed bottle.py into the
+
+11
+00:00:19,850 --> 00:00:21,230
+Google search engine.
+
+12
+00:00:21,230 --> 00:00:24,240
+And I'm going to click on
+the first link here.
+
+13
+00:00:24,240 --> 00:00:26,290
+The first thing you notice is
+that it says, this is a
+
+14
+00:00:26,290 --> 00:00:28,790
+preview release of 0.12 dev.
+
+15
+00:00:28,790 --> 00:00:30,660
+So where is the stable
+release?
+
+16
+00:00:30,660 --> 00:00:33,500
+Well, if we go down here,
+it says, stable release.
+
+17
+00:00:33,500 --> 00:00:34,960
+Ah, stable release.
+
+18
+00:00:34,960 --> 00:00:37,660
+And it makes the suggestion that
+I would download it and
+
+19
+00:00:37,660 --> 00:00:43,000
+install it by running
+easy_install, minus U, bottle.
+
+20
+00:00:43,000 --> 00:00:46,650
+But if you try that, you'll
+quickly find out that you do
+
+21
+00:00:46,650 --> 00:00:50,840
+not have easy_install installed
+on your Windows
+
+22
+00:00:50,840 --> 00:00:54,750
+machine because you do
+not have setup tools.
+
+23
+00:00:54,750 --> 00:00:57,240
+So how do you get the setup
+tools that will give you the
+
+24
+00:00:57,240 --> 00:00:59,720
+easy install that would let
+you install Bottle?
+
+25
+00:00:59,720 --> 00:01:05,519
+Well, "download setup tools."
+And when I did that in my
+
+26
+00:01:05,519 --> 00:01:06,820
+Google search engine--
+
+27
+00:01:06,820 --> 00:01:08,080
+Now, this was customized
+to me.
+
+28
+00:01:08,080 --> 00:01:09,710
+So you might see slightly
+different results.
+
+29
+00:01:09,710 --> 00:01:11,720
+But you need to go right here.
+
+30
+00:01:11,720 --> 00:01:14,230
+And it makes some suggestions
+for how you're going to get
+
+31
+00:01:14,230 --> 00:01:16,690
+setup tools, which is going
+to give you easy_install.
+
+32
+00:01:16,690 --> 00:01:19,380
+You probably have a 32-bit
+version of Python, even if you
+
+33
+00:01:19,380 --> 00:01:20,330
+have a 64-bit machine.
+
+34
+00:01:20,330 --> 00:01:21,590
+Because it does run
+32-bit binaries.
+
+35
+00:01:21,590 --> 00:01:25,350
+They suggest that you run
+the .exe installer.
+
+36
+00:01:25,350 --> 00:01:26,770
+And so we will do that.
+
+37
+00:01:26,770 --> 00:01:28,010
+We'll go down.
+
+38
+00:01:28,010 --> 00:01:31,730
+And we are running Python 2.7.
+
+39
+00:01:31,730 --> 00:01:33,390
+That's what we downloaded
+before.
+
+40
+00:01:33,390 --> 00:01:35,700
+So we're going to go for this
+installer right here.
+
+41
+00:01:35,700 --> 00:01:37,640
+And now I'm going to run that.
+
+42
+00:01:37,640 --> 00:01:39,220
+And I'm going to agree
+to the terms.
+
+43
+00:01:39,220 --> 00:01:41,030
+I'm going to say yes,
+absolutely.
+
+44
+00:01:41,030 --> 00:01:42,180
+I would like to.
+
+45
+00:01:42,180 --> 00:01:45,760
+Oh, by the way, it said that
+my Python executable is in
+
+46
+00:01:45,760 --> 00:01:47,200
+Python 2.7.
+
+47
+00:01:47,200 --> 00:01:50,470
+And it's going to put this stuff
+in lib site-packages.
+
+48
+00:01:50,470 --> 00:01:51,990
+So that's fine.
+
+49
+00:01:51,990 --> 00:01:53,400
+Now I'm going to install it.
+
+50
+00:01:53,400 --> 00:01:55,010
+And now I am finished.
+
+51
+00:01:55,010 --> 00:01:58,870
+So I'm going to now go back
+to my other window
+
+52
+00:01:58,870 --> 00:01:59,660
+and see what it said.
+
+53
+00:01:59,660 --> 00:02:03,190
+It said, "easy_install
+-U bottle." OK.
+
+54
+00:02:03,190 --> 00:02:06,125
+Well, let's go and get a new
+window, see if easy_install is
+
+55
+00:02:06,125 --> 00:02:07,440
+in my path now.
+
+56
+00:02:07,440 --> 00:02:08,190
+It's not.
+
+57
+00:02:08,190 --> 00:02:09,389
+It's in the Python directory.
+
+58
+00:02:09,389 --> 00:02:15,620
+So let's just go into there, cd
+slash, cd Python 27, cd--
+
+59
+00:02:15,620 --> 00:02:16,190
+what did it say?
+
+60
+00:02:16,190 --> 00:02:17,135
+Scripts, I think.
+
+61
+00:02:17,135 --> 00:02:18,720
+So that's going to put
+it in Scripts.
+
+62
+00:02:18,720 --> 00:02:20,830
+So I'm going to go into
+the Scripts directory.
+
+63
+00:02:20,830 --> 00:02:22,320
+And there it is.
+
+64
+00:02:22,320 --> 00:02:23,650
+There is easy_install.
+
+65
+00:02:23,650 --> 00:02:26,020
+So I'm going to do
+easy_intall, dot
+
+66
+00:02:26,020 --> 00:02:28,280
+exe, minus U, bottle.
+
+67
+00:02:28,280 --> 00:02:28,880
+OK.
+
+68
+00:02:28,880 --> 00:02:30,430
+That is great.
+
+69
+00:02:30,430 --> 00:02:33,550
+So now Bottle is installed.
+
+70
+00:02:33,550 --> 00:02:35,370
+And what version
+did it install?
+
+71
+00:02:35,370 --> 00:02:39,180
+It said it had installed
+version 0.11.3.
+
+72
+00:02:39,180 --> 00:02:42,860
+And going back to the page, that
+is the stable release.
+
+73
+00:02:42,860 --> 00:02:45,360
+So we are happy with that.
+
+74
+00:02:45,360 --> 00:02:47,910
+So that is the way you
+get Bottle installed.
+
+75
+00:02:47,910 --> 00:02:51,990
+And then in the next segment,
+you can confirm it works using
+
+76
+00:02:51,990 --> 00:02:54,840
+the same Hello World program
+that you use on a Mac.
+
+77
+00:02:54,840 --> 00:02:56,880
+It will work on both
+platforms.
+
+78
+00:02:56,880 --> 00:02:58,130
+OK.

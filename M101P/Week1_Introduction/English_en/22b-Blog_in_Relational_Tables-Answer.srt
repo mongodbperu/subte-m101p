@@ -1,0 +1,70 @@
+1
+00:00:00,000 --> 00:00:00,140
+
+2
+00:00:00,140 --> 00:00:03,650
+OK, and the answer is six,
+because in order to show a
+
+3
+00:00:03,650 --> 00:00:06,100
+blog post with all of its
+comments and tags, you'd have
+
+4
+00:00:06,100 --> 00:00:08,430
+to hit the post table.
+
+5
+00:00:08,430 --> 00:00:10,660
+Only an author ID here, so you
+have the access the author's
+
+6
+00:00:10,660 --> 00:00:13,860
+table in order to get
+the author's name.
+
+7
+00:00:13,860 --> 00:00:15,080
+You'd have to go to
+the comments table
+
+8
+00:00:15,080 --> 00:00:16,780
+to display the comments.
+
+9
+00:00:16,780 --> 00:00:19,390
+And to know which comments go
+with which post, you'd have to
+
+10
+00:00:19,390 --> 00:00:21,590
+go to the post comments table.
+
+11
+00:00:21,590 --> 00:00:24,010
+And to know what post tags you
+had, you have to go to the
+
+12
+00:00:24,010 --> 00:00:26,520
+post tags table, the
+tags themselves
+
+13
+00:00:26,520 --> 00:00:27,790
+are in the tags table.
+
+14
+00:00:27,790 --> 00:00:31,620
+So you'd actually have to access
+six to display one blog
+
+15
+00:00:31,620 --> 00:00:33,170
+post in a relational system.
+
+16
+00:00:33,170 --> 00:00:34,420

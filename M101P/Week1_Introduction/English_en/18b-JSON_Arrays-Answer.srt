@@ -1,0 +1,44 @@
+1
+00:00:00,000 --> 00:00:00,230
+
+2
+00:00:00,230 --> 00:00:02,890
+OK, and the answer
+is right here.
+
+3
+00:00:02,890 --> 00:00:05,890
+You open up the curly
+brace, fruit.
+
+4
+00:00:05,890 --> 00:00:09,790
+You can omit those quotes if you
+want around the fruit key,
+
+5
+00:00:09,790 --> 00:00:13,140
+and then colon, and
+then this array.
+
+6
+00:00:13,140 --> 00:00:14,290
+Apple, pear, and peach.
+
+7
+00:00:14,290 --> 00:00:16,730
+And you do need to have some
+sort of quoting around these
+
+8
+00:00:16,730 --> 00:00:18,470
+values here, apple,
+pear, and peach.
+
+9
+00:00:18,470 --> 00:00:20,230
+That's a JSON for
+this document.
+
+10
+00:00:20,230 --> 00:00:21,480

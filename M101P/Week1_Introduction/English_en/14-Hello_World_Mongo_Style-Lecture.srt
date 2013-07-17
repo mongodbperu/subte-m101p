@@ -1,0 +1,291 @@
+1
+00:00:00,000 --> 00:00:00,180
+
+2
+00:00:00,180 --> 00:00:00,520
+All right.
+
+3
+00:00:00,520 --> 00:00:03,160
+So we've written a small program
+that pulls data out of
+
+4
+00:00:03,160 --> 00:00:04,820
+the database and prints
+it to the screen.
+
+5
+00:00:04,820 --> 00:00:06,880
+Let's review that
+program again.
+
+6
+00:00:06,880 --> 00:00:08,900
+The Pymongo Getting
+Started Program.
+
+7
+00:00:08,900 --> 00:00:12,960
+And you can see here that we
+import the MongoClient class
+
+8
+00:00:12,960 --> 00:00:14,410
+from the Pymongo package.
+
+9
+00:00:14,410 --> 00:00:16,470
+And then we connect to
+the database server.
+
+10
+00:00:16,470 --> 00:00:17,310
+Connect to the test database.
+
+11
+00:00:17,310 --> 00:00:18,680
+The names collection.
+
+12
+00:00:18,680 --> 00:00:20,310
+And do a find_one.
+
+13
+00:00:20,310 --> 00:00:23,100
+And if we print that out,
+it prints Andrew.
+
+14
+00:00:23,100 --> 00:00:25,590
+Well, let's say we wanted to
+change data in the collection
+
+15
+00:00:25,590 --> 00:00:26,950
+and see it get updated.
+
+16
+00:00:26,950 --> 00:00:27,780
+How do we do that?
+
+17
+00:00:27,780 --> 00:00:29,980
+Well, let's open up Mongo.
+
+18
+00:00:29,980 --> 00:00:32,610
+We're already connected
+to the test database.
+
+19
+00:00:32,610 --> 00:00:36,810
+Let's look at db.names.find.
+
+20
+00:00:36,810 --> 00:00:39,180
+There's the one object
+in the collection.
+
+21
+00:00:39,180 --> 00:00:42,610
+Let's assign that to a
+JavaScript variable.
+
+22
+00:00:42,610 --> 00:00:45,720
+And we're going to do a find
+one so that we get one
+
+23
+00:00:45,720 --> 00:00:47,350
+document out of it.
+
+24
+00:00:47,350 --> 00:00:48,590
+We can look at that document.
+
+25
+00:00:48,590 --> 00:00:49,830
+Here it is.
+
+26
+00:00:49,830 --> 00:00:54,610
+We can modify it right in
+the JavaScript shell.
+
+27
+00:00:54,610 --> 00:00:57,640
+And we can save it back
+out like this
+
+28
+00:00:57,640 --> 00:00:59,190
+using the Save command.
+
+29
+00:00:59,190 --> 00:01:02,970
+And if we do that, then we'll
+see now it's Dwight.
+
+30
+00:01:02,970 --> 00:01:04,730
+Or I could just do the
+find one without
+
+31
+00:01:04,730 --> 00:01:05,950
+assigning it to a variable.
+
+32
+00:01:05,950 --> 00:01:08,680
+Let's do that.
+
+33
+00:01:08,680 --> 00:01:09,430
+Here we go.
+
+34
+00:01:09,430 --> 00:01:10,930
+There's a find or find one.
+
+35
+00:01:10,930 --> 00:01:14,230
+If we do a find one we
+see the same thing.
+
+36
+00:01:14,230 --> 00:01:15,880
+See, the name is Dwight.
+
+37
+00:01:15,880 --> 00:01:19,775
+And if we exit and run the
+program again, we can see that
+
+38
+00:01:19,775 --> 00:01:21,440
+it now prints Dwight.
+
+39
+00:01:21,440 --> 00:01:23,530
+So you might wonder how that
+Save command works.
+
+40
+00:01:23,530 --> 00:01:25,300
+And we're going to go
+over that later.
+
+41
+00:01:25,300 --> 00:01:28,180
+But I'll give you a short
+introduction to that.
+
+42
+00:01:28,180 --> 00:01:34,600
+db.names.save, if you call it
+without parentheses, then you
+
+43
+00:01:34,600 --> 00:01:37,940
+will see the actual JavaScript
+code that makes the function
+
+44
+00:01:37,940 --> 00:01:39,400
+inside the Mongo shell.
+
+45
+00:01:39,400 --> 00:01:42,010
+And you can see that the Save
+command does something sort of
+
+46
+00:01:42,010 --> 00:01:42,870
+interesting.
+
+47
+00:01:42,870 --> 00:01:46,570
+It checks whether or not there's
+actually an object ID
+
+48
+00:01:46,570 --> 00:01:47,870
+already associated.
+
+49
+00:01:47,870 --> 00:01:50,350
+And if there isn't an object
+ID, it assigns
+
+50
+00:01:50,350 --> 00:01:51,850
+one and does an insert.
+
+51
+00:01:51,850 --> 00:01:55,030
+And if there is an object ID,
+then it does an update.
+
+52
+00:01:55,030 --> 00:02:01,490
+And if you recall, when we did
+that find one like this and
+
+53
+00:02:01,490 --> 00:02:05,930
+then we looked at j, we had
+the object ID in here.
+
+54
+00:02:05,930 --> 00:02:10,270
+So when we called db.names.save
+with j like
+
+55
+00:02:10,270 --> 00:02:13,750
+that, we did that and it went
+through the Save command.
+
+56
+00:02:13,750 --> 00:02:15,520
+It said, there is
+an object ID.
+
+57
+00:02:15,520 --> 00:02:20,270
+So this must be an update of the
+object, not an insert of a
+
+58
+00:02:20,270 --> 00:02:21,110
+new object.
+
+59
+00:02:21,110 --> 00:02:24,320
+And that's how the Save command
+works in the shell.
+
+60
+00:02:24,320 --> 00:02:24,740
+All right.
+
+61
+00:02:24,740 --> 00:02:27,590
+So the next part is we get to
+bring it all together and show
+
+62
+00:02:27,590 --> 00:02:30,790
+you how to do all of this using
+Bottle so there is a web
+
+63
+00:02:30,790 --> 00:02:33,290
+application behind this rather
+than a command line
+
+64
+00:02:33,290 --> 00:02:34,540
+application.

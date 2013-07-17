@@ -1,0 +1,347 @@
+1
+00:00:00,000 --> 00:00:00,390
+
+2
+00:00:00,390 --> 00:00:02,130
+Let's talk about list slices.
+
+3
+00:00:02,130 --> 00:00:04,240
+List slices allow you to
+access parts of lists.
+
+4
+00:00:04,240 --> 00:00:08,260
+If you have a list a, and you
+want to get part of the list,
+
+5
+00:00:08,260 --> 00:00:10,520
+you could specify a start:end.
+
+6
+00:00:10,520 --> 00:00:14,930
+Now the start is the starting
+index into the list where you
+
+7
+00:00:14,930 --> 00:00:16,260
+want to return a value.
+
+8
+00:00:16,260 --> 00:00:19,890
+And indexes in Python
+lists start at zero.
+
+9
+00:00:19,890 --> 00:00:22,950
+And then end is the ending value
+you want to return or
+
+10
+00:00:22,950 --> 00:00:25,360
+the ending index, I should
+say, but again, it's
+
+11
+00:00:25,360 --> 00:00:27,610
+exclusive of this.
+
+12
+00:00:27,610 --> 00:00:32,509
+So for example, if you say a
+0:1, that's just going to give
+
+13
+00:00:32,509 --> 00:00:35,170
+you the very first element
+in the list.
+
+14
+00:00:35,170 --> 00:00:38,000
+So if you think of them as
+this being the zero-th
+
+15
+00:00:38,000 --> 00:00:41,460
+element, one element, two
+element, third element.
+
+16
+00:00:41,460 --> 00:00:45,620
+You say I want 0:1, it's going
+to get you the zero-th element
+
+17
+00:00:45,620 --> 00:00:48,400
+all the way through the first
+element but exclusive of the
+
+18
+00:00:48,400 --> 00:00:50,510
+first elements because it
+doesn't include that.
+
+19
+00:00:50,510 --> 00:00:58,310
+So we say a 0:3, you'd get 0,
+1, 2, and not the third.
+
+20
+00:00:58,310 --> 00:01:02,310
+And a 2:3, that's going
+to give you--
+
+21
+00:01:02,310 --> 00:01:04,250
+it's the zero-th element, the
+first element, the second
+
+22
+00:01:04,250 --> 00:01:06,050
+element, so it's going to
+give you this element.
+
+23
+00:01:06,050 --> 00:01:07,210
+And then it's not going to give
+you this element because
+
+24
+00:01:07,210 --> 00:01:09,340
+it doesn't give you
+the end point.
+
+25
+00:01:09,340 --> 00:01:14,230
+a 2:4, that's the fourth,
+remember they start at zero--
+
+26
+00:01:14,230 --> 00:01:18,530
+0, 1, 2, 3, 4, we'll give
+you, let's see, 0, 1, 2.
+
+27
+00:01:18,530 --> 00:01:19,840
+So it would give you
+this element.
+
+28
+00:01:19,840 --> 00:01:22,470
+And then it would give
+you this element.
+
+29
+00:01:22,470 --> 00:01:25,160
+And it wouldn't give you this
+element because it's exclusive
+
+30
+00:01:25,160 --> 00:01:28,320
+of the ending point
+that you specify.
+
+31
+00:01:28,320 --> 00:01:30,485
+And the final thing you need
+to understand about this is
+
+32
+00:01:30,485 --> 00:01:33,120
+that if you leave out a value,
+at the beginning or the end,
+
+33
+00:01:33,120 --> 00:01:34,660
+it assumes the beginning
+or end.
+
+34
+00:01:34,660 --> 00:01:40,010
+So if we say a 2 colon, that's
+going to be the second element
+
+35
+00:01:40,010 --> 00:01:41,830
+all the way to the
+end of the list.
+
+36
+00:01:41,830 --> 00:01:45,990
+If you say a :4, that's going
+to be the beginning of the
+
+37
+00:01:45,990 --> 00:01:49,390
+list all the way through
+the element with
+
+38
+00:01:49,390 --> 00:01:51,170
+the index of three.
+
+39
+00:01:51,170 --> 00:01:53,230
+0, 1, 2, 3.
+
+40
+00:01:53,230 --> 00:01:55,120
+Let's look in the shell,
+see how this works.
+
+41
+00:01:55,120 --> 00:01:58,140
+We have a list here and we've
+put in elements that have the
+
+42
+00:01:58,140 --> 00:02:01,075
+same values as their ordinal
+positions inside the list, to
+
+43
+00:02:01,075 --> 00:02:02,320
+make it easy for us.
+
+44
+00:02:02,320 --> 00:02:05,140
+We're going to say a, give me
+the zero-th elements through
+
+45
+00:02:05,140 --> 00:02:06,420
+the third element.
+
+46
+00:02:06,420 --> 00:02:09,289
+And that provides 0, 1, 2
+because, again, it's exclusive
+
+47
+00:02:09,289 --> 00:02:10,639
+of the third element.
+
+48
+00:02:10,639 --> 00:02:16,490
+a 2:3, that provides just the
+element with index two.
+
+49
+00:02:16,490 --> 00:02:19,880
+If we put 2 colon but don't give
+an end, now it's going to
+
+50
+00:02:19,880 --> 00:02:21,750
+apply the entire rest
+of the list.
+
+51
+00:02:21,750 --> 00:02:24,750
+So we get the rest of the
+list, 2, 3, 4, 5.
+
+52
+00:02:24,750 --> 00:02:27,720
+If we specify the beginning of
+the list all the way to the
+
+53
+00:02:27,720 --> 00:02:30,490
+sixth element, now there is no
+sixth element, of course, it's
+
+54
+00:02:30,490 --> 00:02:32,100
+exclusive of the
+sixth element.
+
+55
+00:02:32,100 --> 00:02:33,960
+So it's going to
+be 0 through 5.
+
+56
+00:02:33,960 --> 00:02:35,020
+And that's at the beginning
+of the list.
+
+57
+00:02:35,020 --> 00:02:37,860
+We should get the entire
+list back and we do.
+
+58
+00:02:37,860 --> 00:02:40,960
+And then, if you leave at the
+beginning and the end, then
+
+59
+00:02:40,960 --> 00:02:42,500
+you get the entire list back.
+
+60
+00:02:42,500 --> 00:02:44,200
+That sort of makes
+logical sense.
+
+61
+00:02:44,200 --> 00:02:46,040
+So that's how these
+list slices work.
+
+62
+00:02:46,040 --> 00:02:49,060
+And they're very useful because
+you're often looking,
+
+63
+00:02:49,060 --> 00:02:52,080
+in Mongo, if you get back up a
+bunch of items, and let's say
+
+64
+00:02:52,080 --> 00:02:54,600
+you wanted to print the first
+one and then print the rest of
+
+65
+00:02:54,600 --> 00:02:58,060
+the list, you could do it very
+easily using a slice operator.
+
+66
+00:02:58,060 --> 00:03:00,480
+All right, now it's time
+for a quiz on the
+
+67
+00:03:00,480 --> 00:03:02,880
+slice operator in Python.
+
+68
+00:03:02,880 --> 00:03:06,560
+Let's say we have the list
+apples, orange, pear, grape,
+
+69
+00:03:06,560 --> 00:03:10,750
+kiwi, and we want to figure out
+the slice notation that
+
+70
+00:03:10,750 --> 00:03:14,110
+will returned just the
+sublist orange, pear.
+
+71
+00:03:14,110 --> 00:03:15,410
+Orange, pair.
+
+72
+00:03:15,410 --> 00:03:16,660
+Type that right here.
+
+73
+00:03:16,660 --> 00:03:17,830
