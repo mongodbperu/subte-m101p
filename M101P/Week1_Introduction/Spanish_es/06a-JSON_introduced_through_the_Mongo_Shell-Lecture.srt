@@ -1,327 +1,326 @@
-1
+﻿1
 00:00:00,000 --> 00:00:00,390
 
 2
 00:00:00,390 --> 00:00:02,730
-All right, so there's a couple
-more things I wanted to show
+Bien, hay un par de cosas 
+más que quería enseñarte
 
 3
 00:00:02,730 --> 00:00:05,940
-you about JSON and the Mongo
-shell before we move on to
+sobre JSON y el shell Mongo 
+antes de pasar a la 
 
 4
 00:00:05,940 --> 00:00:08,240
-building the rest of our
-first application--
+construcción del resto de nuestra 
+primera aplicación --
 
 5
 00:00:08,240 --> 00:00:10,010
-our very small application.
+nuestra muy pequeña aplicación.
 
 6
 00:00:10,010 --> 00:00:13,330
-The first is that as we talked
-about earlier, we can create
+La primera es de la que hablamos
+antes, podemos crear
 
 7
 00:00:13,330 --> 00:00:15,350
-documents, which have some
-hierarchy in them.
+documentos que tienen cierta
+jerarquía en ellos.
 
 8
 00:00:15,350 --> 00:00:19,160
-So in this one, I'm going to
-create an "a" key, a "b" key,
+Así que en éste, voy a 
+crear una clave "a", una clave "b",
 
 9
 00:00:19,160 --> 00:00:20,280
-as well as a "c" key.
+así como una clave "c".
 
 10
 00:00:20,280 --> 00:00:22,720
-Or I'll just call it fruits
-again, or fruit.
+Y lo llamaré "fruits" otra vez,
+o "fruit".
 
 11
 00:00:22,720 --> 00:00:27,360
-And then I'm going to put in
-that array, 'apple,' 'orange,'
+Y luego voy a incluir en
+ese array, 'apple', 'orange',
 
 12
 00:00:27,360 --> 00:00:30,680
-and 'pear' and close
-the parentheses.
+y 'pear' y cierro
+los paréntesis.
 
 13
 00:00:30,680 --> 00:00:33,060
-I'm going to save that
-into the collection.
+Voy a guardarlo en
+la colección.
 
 14
 00:00:33,060 --> 00:00:36,850
-Now if I do a db.thing.find,
-I'll find
+Ahora si hago un db.thing.find,
+encontraré
 
 15
 00:00:36,850 --> 00:00:38,250
-my document in there.
+mi documento ahí.
 
 16
 00:00:38,250 --> 00:00:41,410
-As you can see, again,
-heterogeneous nature of the
+Puedes ver, una vez más,
+la naturaleza heterogénea de las
 
 17
 00:00:41,410 --> 00:00:42,460
-collections.
+colecciones.
 
 18
 00:00:42,460 --> 00:00:46,930
-So now we have a document with
-"a," "b," and an array,
+Entonces tenemos ahora un documento con
+"a", "b" y un array 
 
 19
 00:00:46,930 --> 00:00:49,830
-"fruit," with "apple," "orange,"
-and "pear" in it.
+"fruit" con "apple", "orange"
+y "pear".
 
 20
 00:00:49,830 --> 00:00:52,170
-And it can be nested
-any way you want.
+Y se puede anidar
+de la forma que quieras.
 
 21
 00:00:52,170 --> 00:00:55,500
-You might imagine that if I
-was creating an address
+Podrías imaginar que si
+estuviera creando un registro de
 
 22
 00:00:55,500 --> 00:00:58,810
-record, for instance, I could
-do something like this.
+dirección, por ejemplo, podría
+hacer algo como esto.
 
 23
 00:00:58,810 --> 00:01:02,940
-With my name is Andrew, and
-my address, I could put a
+Con mi nombre, "Andrew", y 
+mi dirección, podía poner un 
 
 24
 00:01:02,940 --> 00:01:07,125
-sub-document right in here with
-the street being "elm
+sub-documento justo aquí 
+siendo la calle "elm
 
 25
 00:01:07,125 --> 00:01:12,560
-drive" and the city being "Palo
-Alto," and the zip being
+drive" y la ciudad "Palo 
+Alto", y el código postal
 
 26
 00:01:12,560 --> 00:01:16,400
-94305, which I think
-is Palo Alto's zip.
+"94305", que creo que es 
+el código postal de Palo Alto.
 
 27
 00:01:16,400 --> 00:01:18,170
-Maybe we need a house number
-there, so we'll do a house
+Tal vez necesitemos ahí un número de 
+vivienda, por lo que pondremos un número
 
 28
 00:01:18,170 --> 00:01:20,590
-number, 34.
+de vivienda, 34.
 
 29
 00:01:20,590 --> 00:01:23,660
-And I'm going to close that up
-right there, and I'm going to
+Y voy a cerrar esto
+justo aquí, voy a
 
 30
 00:01:23,660 --> 00:01:24,970
-close that up.
+terminarlo.
 
 31
 00:01:24,970 --> 00:01:25,060
-Ooh--
+Ooh --
 
 32
 00:01:25,060 --> 00:01:26,570
-I can see an error already.
+Puedo ver un error.
 
 33
 00:01:26,570 --> 00:01:29,540
-I can go back in the shell and
-see right there I didn't
+Puedo volver atrás en el shell y
+ver justo ahí que no
 
 34
 00:01:29,540 --> 00:01:31,660
-actually make the whole
-thing a JSON document.
+hice realmente que todo esto
+sea un documento JSON.
 
 35
 00:01:31,660 --> 00:01:32,910
-So I'm going to put that in.
+Así que voy a poner eso.
 
 36
 00:01:32,910 --> 00:01:34,270
-I'm using Emacs.
+Estoy usando Emacs.
 
 37
 00:01:34,270 --> 00:01:36,600
-This is a Control-F to go
-forward in the shell.
+Esto es un Control-F para ir
+hacia delante en el shell.
 
 38
 00:01:36,600 --> 00:01:37,680
-I think that, that's a
+Creo que, que es un
 
 39
 00:01:37,680 --> 00:01:39,470
-sub-document within the document.
+sub-documento dentro del documento.
 
 40
 00:01:39,470 --> 00:01:41,530
-So I need two closing
-parentheses, and then I can
+Así que necesito cerrar dos
+paréntesis y luego puedo
 
 41
 00:01:41,530 --> 00:01:42,160
-close it out.
+cerrar esto.
 
 42
 00:01:42,160 --> 00:01:42,980
-And there we go.
+Y allá vamos.
 
 43
 00:01:42,980 --> 00:01:46,910
-And now let's look at
-db.things.find, and let's do
+Ahora echemos un vistazo a 
+db.things.find, y hagámoslo
 
 44
 00:01:46,910 --> 00:01:49,106
-it in a pretty way.
+de forma elegante.
 
 45
 00:01:49,106 --> 00:01:51,260
-And there's a little Pretty
-command inside the shell that
+Hay un comando "pretty"
+en el shell que 
 
 46
 00:01:51,260 --> 00:01:53,575
-lets you print them out
-in a pretty way.
+permite imprimir 
+de forma elegante.
 
 47
 00:01:53,575 --> 00:01:55,590
-And you see there, it's actually
-scrolled off the
+Y ahí lo ves, en realidad está
+desplazado fuera de la 
 
 48
 00:01:55,590 --> 00:01:59,170
-screen, but you can see this
-final document I added has an
+pantalla, pero puedes ver que este 
+documento final que añadí tiene un 
 
 49
 00:01:59,170 --> 00:02:01,800
-ID that's been assigned by the
-database, a name of Andrew,
+ID que ha sido asignado por la 
+base de datos, el nombre Andrew, 
 
 50
 00:02:01,800 --> 00:02:04,770
-and then an address, which
-is itself a sub-document.
+y luego una dirección, que 
+es en sí misma un sub-documento.
 
 51
 00:02:04,770 --> 00:02:06,970
-And this sort of shows you the
-hierarchy that can exist
+Y este tipo de documento muestra la 
+jerarquía que puede existir 
 
 52
 00:02:06,970 --> 00:02:08,810
-inside MongoDB.
+dentro de MongoDB.
 
 53
 00:02:08,810 --> 00:02:11,210
-And we're going to get to this
-later, but this is really well
+Y vamos a llegar a esto más 
+adelante, pero esto encaja realmente
 
 54
 00:02:11,210 --> 00:02:14,750
-suited to programming, because
-when you have data structures
+bien con la programación, porque 
+cuando tienes estructuras de datos 
 
 55
 00:02:14,750 --> 00:02:16,880
-inside code, this is
-the way your data
+dentro del código, ésta es la 
+forma en que tus estructuras
 
 56
 00:02:16,880 --> 00:02:17,900
-structures look, right?
+de datos se ven, ¿verdad?
 
 57
 00:02:17,900 --> 00:02:19,590
-They've got some hierarchy
-to them.
+Tienen alguna jerarquía en ellos.
 
 58
 00:02:19,590 --> 00:02:20,910
-They often have dictionaries.
+A menudo tienen diccionarios.
 
 59
 00:02:20,910 --> 00:02:22,830
-This is really a dictionary,
-if you think
+Esto es realmente un diccionario,
+si lo piensas,
 
 60
 00:02:22,830 --> 00:02:24,750
-about it, within Python.
+en Python.
 
 61
 00:02:24,750 --> 00:02:27,910
-They often have arrays, and you
-can express that directly
+A menudo tienen arrays y
+puedes expresar eso directamente
 
 62
 00:02:27,910 --> 00:02:30,820
-inside Mongo so there's no
-mismatch between the way the
+dentro de Mongo por lo que no hay
+discrepancia entre la forma en que 
 
 63
 00:02:30,820 --> 00:02:33,510
-data's expressed inside the
-tables and the way the data is
+los datos se expresan dentro de 
+las tablas y la forma en que se 
 
 64
 00:02:33,510 --> 00:02:35,800
-expressed inside your program.
+expresan dentro del programa.
 
 65
 00:02:35,800 --> 00:02:37,850
-All right, let's do a quick
-quiz based on what we just
+Muy bien, vamos a hacer un breve 
+cuestionario en base a lo que acabamos
 
 66
 00:02:37,850 --> 00:02:41,200
-learned and, again, try to
-identify what valid Mongo
+de aprender y, de nuevo, tratemos 
+de identificar cuáles parecen documentos
 
 67
 00:02:41,200 --> 00:02:43,180
-documents look like.
+válidos en Mongo.
 
 68
 00:02:43,180 --> 00:02:44,280
-OK, next quiz.
+OK, siguiente cuestionario.
 
 69
 00:02:44,280 --> 00:02:46,790
-Which of the following are
-valid JSON documents?
+¿Cúales de los siguientes son
+documentos JSON válidos?
 
 70
 00:02:46,790 --> 00:02:48,040
-You can check all that apply.
+Puedes marcar todos los que correspondan.
 
 71
 00:02:48,040 --> 00:02:49,250
