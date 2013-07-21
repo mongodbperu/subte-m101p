@@ -109,7 +109,7 @@ mi dirección, podía poner un
 
 24
 00:01:02,940 --> 00:01:07,125
-sub-documento justo aquí 
+subdocumento justo aquí 
 siendo la calle "elm
 
 25
@@ -177,7 +177,7 @@ Creo que, que es un
 
 39
 00:01:37,680 --> 00:01:39,470
-sub-documento dentro del documento.
+subdocumento dentro del documento.
 
 40
 00:01:39,470 --> 00:01:41,530
@@ -229,7 +229,7 @@ base de datos, el nombre Andrew,
 50
 00:02:01,800 --> 00:02:04,770
 y luego una dirección, que 
-es en sí misma un sub-documento.
+es en sí misma un subdocumento.
 
 51
 00:02:04,770 --> 00:02:06,970
