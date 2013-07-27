@@ -1,0 +1,131 @@
+[
+    {
+        "concept": "Introduction to Week 6",
+        "lecture": "3l9Esnu2-7s"
+    },
+    {
+        "concept": "Write Concern",
+        "lecture": "EtEPEkX3koo",
+        "answer": "2-UO105PDrk"
+    },
+    {
+        "concept": "Network Errors",
+        "lecture": "BycNYXFpqhM",
+        "answer": "64mAA3SEnkg"
+    },
+    {
+        "concept": "The Pymongo driver",
+        "lecture": "H1zGLx8ggXk",
+        "answer": "ghbQtF5YfHw"
+    },
+    {
+        "concept": "Introduction to Replication",
+        "lecture": "f1WTYGORU3w",
+        "answer": "XCssKzhlnZU"
+    },
+    {
+        "concept": "Replica set elections",
+        "lecture": "WFXSVHO78bQ",
+        "answer": "vrUxTTD-XwA"
+    },
+    {
+        "concept": "Write Consistency",
+        "lecture": "Oqf_Eza-s1M",
+        "answer": "SjaJEYK1u3E"
+    },
+    {
+        "concept": "Creating a replica set",
+        "lecture": "flCFVFBRsKI",
+        "answer": "ibZVf59aUj8"
+    },
+    {
+        "concept": "Replica Set Internals",
+        "lecture": "lx0Kj4n4EWM",
+        "answer": "_am2mdVF1uk"
+    },
+    {
+        "concept": "Failover and Rolback",
+        "lecture": "IW1oW_Adlt0",
+        "answer": "t3rNxRg6WZE"
+    },
+    {
+        "concept": "Connecting to a Replica Set from Pymongo",
+        "lecture": "WFI8LpSgaK8",
+        "answer": "rODKm1GvUpY"
+    },
+    {
+        "concept": "What happens when failover occurs",
+        "lecture": "u5V_xYBoPzs",
+        "answer": "aZLcR8ey7cE"
+    },
+    {
+        "concept": "Detecting Failover",
+        "lecture": "8pjEFAVzUKk",
+        "answer": "E1_42g_Tfao"
+    },
+    {
+        "concept": "Proper handling of failover",
+        "lecture": "tcLJxRSzVqU",
+        "answer": "4Y-xQa8CyBA"
+    },
+    {
+        "concept": "Write Concern Revisited",
+        "lecture": "5VyXyccjS3k",
+        "answer": "hQrCwRplszo"
+    },
+    {
+        "concept": "Read Preferences",
+        "lecture": "_c8_YYln5WU",
+        "answer": "tp17iqGdw-k"
+    },
+    {
+        "concept": "Review Implications of Replication",
+        "lecture": "K5ISnvYKQFQ",
+        "answer": "8wuWShep8Qs"
+    },
+    {
+        "concept": "Introduction to sharding",
+        "lecture": "_GfDqa1qRl0",
+        "answer": "4Z0D2bX5Cg4"
+    },
+    {
+        "concept": "Building a Sharded Environment",
+        "lecture": "aaYc2W4keF4",
+        "answer": "5tPjnJrY0rU"
+    },
+    {
+        "concept": "Implications of Sharding",
+        "lecture": "ig278F60gRA",
+        "answer": "vfl0hqdgB3Q"
+    },
+    {
+        "concept": "Sharded + Replicated environments",
+        "lecture": "gkUCUbM0oEg",
+        "answer": "hnuiYokdO7g"
+    },
+    {
+        "concept": "Choosing a Shard Key",
+        "lecture": "8q2GB3QSBSI",
+        "answer": "91tO_iGga5w"
+    },
+    {
+        "concept": "HW 6.1",
+        "answer": "J4ZuF8UJD9s"
+    },
+    {
+        "concept": "HW 6.2",
+        "answer": "8K-6JPrvkEs"
+    },
+    {
+        "concept": "HW 6.3",
+        "answer": "496QtQt4tX8"
+    },
+    {
+        "concept": "HW 6.4",
+        "answer": "uEemjO9S7vQ"
+    },
+    {
+        "concept": "HW 6.5",
+        "answer": "C0ZLyPfymR8"
+    }
+]

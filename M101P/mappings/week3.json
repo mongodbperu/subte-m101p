@@ -1,0 +1,84 @@
+[
+    {
+        "concept": "Introduction to Week 3",
+        "lecture": "8lLQtcrHs5U"
+    },
+    {
+        "concept": "MongoDB Schema Design",
+        "lecture": "itnfWjMnQ4A",
+        "answer": "OVDnLJXpqNE"
+    },
+    {
+        "concept": "Relational Normalization",
+        "lecture": "GX__f2s4hd8"
+    },
+    {
+        "concept": "Mongo Design for Blog",
+        "lecture": "PRylEHH5t84",
+        "answer": "s5E0T4caqj4"
+    },
+    {
+        "concept": "Alternative Schema for Blog",
+        "lecture": "ZvqNWVWB2-o"
+    },
+    {
+        "concept": "Living without constraints",
+        "lecture": "YFRMkDPaams",
+        "answer": "3VckBMGInic"
+    },
+    {
+        "concept": "Living without transactions",
+        "lecture": "FfRr3qjRfww",
+        "answer": "189zABW3HHk"
+    },
+    {
+        "concept": "One to One Relations",
+        "lecture": "cCsfon0vUlQ",
+        "answer": "BjW64RkzlGg"
+    },
+    {
+        "concept": "One to Many Relations",
+        "lecture": "EIaP1KbVkUc",
+        "answer": "KQcspnr-Y2M"
+    },
+    {
+        "concept": "Many to Many Relations",
+        "lecture": "fEYYjZ7zEHc"
+    },
+    {
+        "concept": "Multikeys",
+        "lecture": "ocU9WNUL9YQ"
+    },
+    {
+        "concept": "Benefits of Embedding",
+        "lecture": "XIN0Dqht08Q"
+    },
+    {
+        "concept": "Trees",
+        "lecture": "lIjXyQklGWY",
+        "answer": "80P6yVSkKQY"
+    },
+    {
+        "concept": "When to Denormalize",
+        "lecture": "jDZ-HFoJ0vg"
+    },
+    {
+        "concept": "Handling Blobs",
+        "lecture": "AsL5p1Z0Ss8"
+    },
+    {
+        "concept": "HW 3.1",
+        "lecture": "lpSMbphEl7c",
+        "answer": "iODR0m6m25c"
+    },
+    {
+        "concept": "HW 3.2",
+        "lecture": "SEh6Y4lHkWQ",
+        "answer": "CQ-w_w3MTAw"
+    },
+    {
+        "concept": "HW 3.3",
+        "lecture": "HPSgVT2BEYQ",
+        "answer": "wCF3X4PM49w"
+    }
+]

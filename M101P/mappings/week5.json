@@ -1,0 +1,133 @@
+[
+    {
+        "concept": "Introduction to Week 5",
+        "lecture": "EaEIHm3CMQM"
+    },
+    {
+        "concept": "Simple Aggregation Example",
+        "lecture": "T2BX-LZOYsY",
+        "answer": "Nt0cQI86G40"
+    },
+    {
+        "concept": "The Aggregation Pipeline",
+        "lecture": "WazN2DS8s8c",
+        "answer": "mcnGfI69rRc"
+    },
+    {
+        "concept": "Simple Example Expanded",
+        "lecture": "3lEpnMcfpCs",
+        "answer": "nr1E1qTyIHU"
+    },
+    {
+        "concept": "Compound Grouping",
+        "lecture": "LPFVRrag2Zg",
+        "answer": "bIlwnlYBRA0"
+    },
+    {
+        "concept": "Using a document for _id",
+        "lecture": "zoN4cj_XQzY"
+    },
+    {
+        "concept": "Aggregation Expressions",
+        "lecture": "L4G14MTfTgQ",
+        "answer": "kJ0k2na4ukU"
+    },
+    {
+        "concept": "Using $sum",
+        "lecture": "oAV9tC0R8xk",
+        "answer": "ATO_s_Ah08o"
+    },
+    {
+        "concept": "Using $avg",
+        "lecture": "7UWOK8rWf1w",
+        "answer": "tT6Jx8s9dTc"
+    },
+    {
+        "concept": "Using $addToSet",
+        "lecture": "y2FD4R3in5U",
+        "answer": "zGcTxUQuLGE"
+    },
+    {
+        "concept": "Using $push",
+        "lecture": "gjIVUFufx3A",
+        "answer": "hFqDvVXtm6E"
+    },
+    {
+        "concept": "Using $max and $min",
+        "lecture": "BYoNX4trjOQ",
+        "answer": "sHCdOiCispA"
+    },
+    {
+        "concept": "Double group stage",
+        "lecture": "ET4ubwQTTos",
+        "answer": "J-asAAEHJ0Q"
+    },
+    {
+        "concept": "$project",
+        "lecture": "yi-ySSNO8Ao",
+        "answer": "IGN0lXg-kJ0"
+    },
+    {
+        "concept": "$match",
+        "lecture": "qohLRL8k0So",
+        "answer": "CHGiumXE-pU"
+    },
+    {
+        "concept": "$sort",
+        "lecture": "TW1KByIuns4",
+        "answer": "-cghyd6AHHA"
+    },
+    {
+        "concept": "$limit and $skip",
+        "lecture": "AdxoEzVqdtc",
+        "answer": "joRw-fqCIWA"
+    },
+    {
+        "concept": "Revisiting $first and $last",
+        "lecture": "O1zeqAxdUgk",
+        "answer": "WBWb0ssDVeY"
+    },
+    {
+        "concept": "$unwind",
+        "lecture": "E4aYOQPeQvI",
+        "answer": "Xfl3m7wz8ts"
+    },
+    {
+        "concept": "$unwind example",
+        "lecture": "XiWCJr4Lqag",
+        "answer": "jAWL-BJD0tI"
+    },
+    {
+        "concept": "Double $unwind",
+        "lecture": "sgnidsHyFeU",
+        "answer": "pziFq1oVRI4"
+    },
+    {
+        "concept": "Mapping between SQL and Aggregation",
+        "lecture": "auL2R0XKlyM"
+    },
+    {
+        "concept": "Some common SQL queries",
+        "lecture": "ep2gLSR6C0U"
+    },
+    {
+        "concept": "Limitations of Aggregation Framework",
+        "lecture": "8BQzKXI-_wE"
+    },
+    {
+        "concept": "HW 5.1",
+        "answer": "9wkTlkRZ8Z0"
+    },
+    {
+        "concept": "HW 5.2",
+        "answer": "VTSFb8m4vrs"
+    },
+    {
+        "concept": "HW 5.3",
+        "answer": "wqfqAzhOie8"
+    },
+    {
+        "concept": "HW 5.4",
+        "answer": "UpwIQjRO2vw"
+    }
+]
