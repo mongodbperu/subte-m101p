@@ -1,0 +1,44 @@
+1
+00:00:00,000 --> 00:00:00,180
+
+2
+00:00:00,180 --> 00:00:00,510
+OK.
+
+3
+00:00:00,510 --> 00:00:02,960
+And the first three of these are
+all possible reasons why
+
+4
+00:00:02,960 --> 00:00:04,980
+you may have some uncertainty
+with your right commit
+
+5
+00:00:04,980 --> 00:00:07,670
+completed, even in a situation
+where you did nod-- when you
+
+6
+00:00:07,670 --> 00:00:08,850
+got an error back.
+
+7
+00:00:08,850 --> 00:00:10,840
+The last one is not.
+
+8
+00:00:10,840 --> 00:00:14,700
+We don't offer transactions, and
+there is no rollback due
+
+9
+00:00:14,700 --> 00:00:17,340
+to a violation of the primary
+key constraint.
+
+10
+00:00:17,340 --> 00:00:19,870
+So that was just sort
+of made up.

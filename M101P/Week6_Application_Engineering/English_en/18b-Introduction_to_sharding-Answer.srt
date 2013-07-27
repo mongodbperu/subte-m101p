@@ -1,0 +1,62 @@
+1
+00:00:00,000 --> 00:00:00,400
+
+2
+00:00:00,400 --> 00:00:02,880
+OK, so this is a little
+bit tricky.
+
+3
+00:00:02,880 --> 00:00:05,780
+OK, the answer is three.
+
+4
+00:00:05,780 --> 00:00:07,180
+All right, the shard key is not
+
+5
+00:00:07,180 --> 00:00:08,320
+including in the find operation.
+
+6
+00:00:08,320 --> 00:00:09,950
+There are three shards,
+each one a replica
+
+7
+00:00:09,950 --> 00:00:12,030
+set of three nodes.
+
+8
+00:00:12,030 --> 00:00:14,440
+How many nodes will see
+the find operation?
+
+9
+00:00:14,440 --> 00:00:18,480
+So it will go to all three of
+the shards, but only to one of
+
+10
+00:00:18,480 --> 00:00:21,210
+the nodes within each shard
+because it's a replica set.
+
+11
+00:00:21,210 --> 00:00:24,630
+So wherever the current primary
+and the default
+
+12
+00:00:24,630 --> 00:00:27,620
+configuration will get that
+read, and therefore, it will
+
+13
+00:00:27,620 --> 00:00:31,280
+only be seen by three
+actual Mongod's
+
+14
+00:00:31,280 --> 00:00:32,530
+and that's the answer.

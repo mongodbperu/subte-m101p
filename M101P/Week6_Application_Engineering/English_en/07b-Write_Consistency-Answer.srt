@@ -1,0 +1,54 @@
+1
+00:00:00,000 --> 00:00:01,410
+And the answer is no.
+
+2
+00:00:01,410 --> 00:00:03,620
+During that short time, and
+failover is usually under
+
+3
+00:00:03,620 --> 00:00:04,790
+three seconds.
+
+4
+00:00:04,790 --> 00:00:06,900
+During that short time when
+failover is occurring and a
+
+5
+00:00:06,900 --> 00:00:09,180
+new primary is being
+collected, no.
+
+6
+00:00:09,180 --> 00:00:12,060
+You cannot complete a write,
+and you'll get error inside
+
+7
+00:00:12,060 --> 00:00:13,490
+your program if you're
+trying to write.
+
+8
+00:00:13,490 --> 00:00:15,850
+And so you definitely want
+to be catching those, and
+
+9
+00:00:15,850 --> 00:00:18,860
+potentially retrying them for a
+while to make sure that it's
+
+10
+00:00:18,860 --> 00:00:21,080
+not just a transient
+thing where you're
+
+11
+00:00:21,080 --> 00:00:22,330
+going through failover.
+
+12
+00:00:22,330 --> 00:00:23,440

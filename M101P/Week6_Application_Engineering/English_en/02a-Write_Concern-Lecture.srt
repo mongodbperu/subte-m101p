@@ -1,0 +1,827 @@
+1
+00:00:00,000 --> 00:00:00,120
+
+2
+00:00:00,120 --> 00:00:01,480
+Welcome to Application
+Engineering.
+
+3
+00:00:01,480 --> 00:00:03,210
+This is week six.
+
+4
+00:00:03,210 --> 00:00:04,900
+This week, there are
+three main topics
+
+5
+00:00:04,900 --> 00:00:05,950
+we're going to go over.
+
+6
+00:00:05,950 --> 00:00:08,610
+The first one is the durability
+of writes--
+
+7
+00:00:08,610 --> 00:00:11,000
+and this is the durability of
+writes on a system with a
+
+8
+00:00:11,000 --> 00:00:13,110
+single Mongod instance.
+
+9
+00:00:13,110 --> 00:00:16,200
+Next is achieving availability
+and fault tolerance, which
+
+10
+00:00:16,200 --> 00:00:18,120
+we're going to do through
+replication.
+
+11
+00:00:18,120 --> 00:00:21,200
+And the last is achieving
+horizontal scalability, which
+
+12
+00:00:21,200 --> 00:00:23,410
+we do through sharding.
+
+13
+00:00:23,410 --> 00:00:25,820
+Let's start with the durability
+of writes, talk
+
+14
+00:00:25,820 --> 00:00:27,400
+about the way Mongo works.
+
+15
+00:00:27,400 --> 00:00:30,310
+In a system where you have a
+single Mongod instance, you
+
+16
+00:00:30,310 --> 00:00:32,420
+probably have your application
+running-- maybe
+
+17
+00:00:32,420 --> 00:00:33,730
+on a separate box.
+
+18
+00:00:33,730 --> 00:00:37,470
+And it's going to have various
+operations that it's going to
+
+19
+00:00:37,470 --> 00:00:41,900
+perform on the database, like
+inserts and updates--
+
+20
+00:00:41,900 --> 00:00:43,750
+and you've been writing
+stuff like that.
+
+21
+00:00:43,750 --> 00:00:45,870
+And then there's also the Mongo
+shell that really is
+
+22
+00:00:45,870 --> 00:00:48,930
+also an application, if
+you think about it.
+
+23
+00:00:48,930 --> 00:00:52,920
+And it does inserts
+and updates.
+
+24
+00:00:52,920 --> 00:00:56,440
+And inside here are the
+drivers inside your
+
+25
+00:00:56,440 --> 00:00:57,090
+application--
+
+26
+00:00:57,090 --> 00:00:59,780
+or really, probably, compiled
+against them, or linked to
+
+27
+00:00:59,780 --> 00:01:03,170
+them, or available via some
+sort of dynamic library.
+
+28
+00:01:03,170 --> 00:01:05,710
+And in a sense, the drivers
+are also inside the Mongo
+
+29
+00:01:05,710 --> 00:01:08,130
+shell, or some version
+of them.
+
+30
+00:01:08,130 --> 00:01:11,920
+When you call an update, or an
+insert, or something in the
+
+31
+00:01:11,920 --> 00:01:16,790
+API within Mongo, that is not,
+by default, acknowledged.
+
+32
+00:01:16,790 --> 00:01:18,900
+Or we don't wait for an
+acknowledgement on that.
+
+33
+00:01:18,900 --> 00:01:22,830
+We send that, and we sort
+of fire and forget it.
+
+34
+00:01:22,830 --> 00:01:24,770
+Fire and forget it.
+
+35
+00:01:24,770 --> 00:01:27,760
+Now, there are some historical
+reasons why this was the case,
+
+36
+00:01:27,760 --> 00:01:29,520
+and I'll talk about
+those in a moment.
+
+37
+00:01:29,520 --> 00:01:32,090
+So if you want to know that
+your write actually was
+
+38
+00:01:32,090 --> 00:01:33,780
+received by the server--
+
+39
+00:01:33,780 --> 00:01:36,570
+that it got it, that it
+processed it, that it--
+
+40
+00:01:36,570 --> 00:01:38,480
+not that it completed it, but
+that at least it didn't
+
+41
+00:01:38,480 --> 00:01:39,670
+violate any indexes--
+
+42
+00:01:39,670 --> 00:01:43,910
+And that it seems OK,
+syntactically, then you issue
+
+43
+00:01:43,910 --> 00:01:47,060
+the getLastError call, which is
+inside the low-level API to
+
+44
+00:01:47,060 --> 00:01:47,960
+the database.
+
+45
+00:01:47,960 --> 00:01:50,750
+Now, the Mongo shell issues one
+of these getLastErrors for
+
+46
+00:01:50,750 --> 00:01:54,470
+you every single time you
+do an update, an insert.
+
+47
+00:01:54,470 --> 00:01:57,420
+So when you call insert, it
+calls insert, then it calls
+
+48
+00:01:57,420 --> 00:01:58,400
+getLastError.
+
+49
+00:01:58,400 --> 00:02:01,050
+That's why when you violate a
+unique index inside the Mongo
+
+50
+00:02:01,050 --> 00:02:03,240
+shell, you immediately
+get the error.
+
+51
+00:02:03,240 --> 00:02:06,000
+Inside an application,
+traditionally, it depended on
+
+52
+00:02:06,000 --> 00:02:07,710
+how you invoked it.
+
+53
+00:02:07,710 --> 00:02:09,910
+Now, we talked about this
+thing called safe mode--
+
+54
+00:02:09,910 --> 00:02:13,240
+which has essentially been
+deprecated at this point, due
+
+55
+00:02:13,240 --> 00:02:14,800
+to a release that we
+did last week.
+
+56
+00:02:14,800 --> 00:02:16,610
+So I'll talk about that.
+
+57
+00:02:16,610 --> 00:02:19,150
+I'd say the word "safe" mode
+has been deprecated.
+
+58
+00:02:19,150 --> 00:02:21,720
+The way it works is pretty
+much the same.
+
+59
+00:02:21,720 --> 00:02:24,770
+Inside the application, inside
+the drivers, you decide
+
+60
+00:02:24,770 --> 00:02:27,920
+whether or not you want the
+drivers to call getLastError
+
+61
+00:02:27,920 --> 00:02:31,480
+for you when they make
+a request to Mongod.
+
+62
+00:02:31,480 --> 00:02:36,490
+And we set safe equal to true,
+which told the Python driver
+
+63
+00:02:36,490 --> 00:02:39,800
+to call getLastError after
+every single operation.
+
+64
+00:02:39,800 --> 00:02:42,660
+There are two parameters that
+can be specified inside
+
+65
+00:02:42,660 --> 00:02:46,140
+getLastError that I want to go
+over and talk to you about.
+
+66
+00:02:46,140 --> 00:02:49,720
+The first one is the w
+parameter, and the second one
+
+67
+00:02:49,720 --> 00:02:51,870
+is the j parameter.
+
+68
+00:02:51,870 --> 00:02:54,870
+Now, the w parameter determines
+whether or not
+
+69
+00:02:54,870 --> 00:02:58,140
+you're going to wait for the
+write to be acknowledged.
+
+70
+00:02:58,140 --> 00:03:02,310
+So w = 1 will wait for the
+write to be acknowledged.
+
+71
+00:03:02,310 --> 00:03:03,850
+And that's what we're mostly
+going to worry about right
+
+72
+00:03:03,850 --> 00:03:05,980
+now, the idea of just waiting
+for the write to be
+
+73
+00:03:05,980 --> 00:03:06,850
+acknowledged.
+
+74
+00:03:06,850 --> 00:03:09,230
+Now, that doesn't mean that
+Mongo necessarily did the
+
+75
+00:03:09,230 --> 00:03:10,080
+write to disk.
+
+76
+00:03:10,080 --> 00:03:12,100
+There's still a window of
+vulnerability there.
+
+77
+00:03:12,100 --> 00:03:14,500
+It may have gotten the write,
+and then made a change in
+
+78
+00:03:14,500 --> 00:03:18,260
+memory, and then power fails,
+and then that write would be
+
+79
+00:03:18,260 --> 00:03:20,040
+lost forever, and you
+wouldn't see it.
+
+80
+00:03:20,040 --> 00:03:22,040
+So it's not particularly
+durable.
+
+81
+00:03:22,040 --> 00:03:24,430
+The second parameter is
+the j parameter, which
+
+82
+00:03:24,430 --> 00:03:26,590
+is short for journal.
+
+83
+00:03:26,590 --> 00:03:30,760
+And if you set that to 1 or
+true, then what will happen is
+
+84
+00:03:30,760 --> 00:03:35,160
+getLastError will wait until the
+journal commits to disk.
+
+85
+00:03:35,160 --> 00:03:36,980
+So, what's a journal?
+
+86
+00:03:36,980 --> 00:03:39,130
+If you're familiar with
+databases, you probably know
+
+87
+00:03:39,130 --> 00:03:41,670
+what a journal is, but I'll
+review it real briefly.
+
+88
+00:03:41,670 --> 00:03:46,730
+So, a journal is a log on the
+disk that has a list of the
+
+89
+00:03:46,730 --> 00:03:48,770
+operations that you're
+performing to the data.
+
+90
+00:03:48,770 --> 00:03:52,740
+And once you commit it to the
+journal, even if the database
+
+91
+00:03:52,740 --> 00:03:57,310
+reboots or power is lost, the
+journal can be replayed, and
+
+92
+00:03:57,310 --> 00:04:00,030
+those operations applied
+to the data itself.
+
+93
+00:04:00,030 --> 00:04:02,410
+So, essentially, once it's
+committed to the journal, if
+
+94
+00:04:02,410 --> 00:04:04,810
+you assume a disk is persistent,
+then it is a
+
+95
+00:04:04,810 --> 00:04:05,980
+persistent write.
+
+96
+00:04:05,980 --> 00:04:10,280
+So we can say that we want to
+wait on every single write for
+
+97
+00:04:10,280 --> 00:04:13,080
+the journal to complete, and we
+want to wait for it to be
+
+98
+00:04:13,080 --> 00:04:13,800
+acknowledged.
+
+99
+00:04:13,800 --> 00:04:16,910
+And so, looking at the two
+different values, right--
+
+100
+00:04:16,910 --> 00:04:18,670
+I'll go through this--
+
+101
+00:04:18,670 --> 00:04:20,610
+we can leave these at 0.
+
+102
+00:04:20,610 --> 00:04:23,200
+And if we leave them both at 0,
+then what's going to happen
+
+103
+00:04:23,200 --> 00:04:24,270
+is-- this is the old world.
+
+104
+00:04:24,270 --> 00:04:25,790
+This is fire and forget.
+
+105
+00:04:25,790 --> 00:04:30,180
+Now, if we set this to 1, but
+we leave this at 0, then
+
+106
+00:04:30,180 --> 00:04:32,960
+what's going to happen is that
+we are going to wait for a
+
+107
+00:04:32,960 --> 00:04:35,340
+simple acknowledgement
+from Mongo that it
+
+108
+00:04:35,340 --> 00:04:36,300
+received the write.
+
+109
+00:04:36,300 --> 00:04:36,720
+All right?
+
+110
+00:04:36,720 --> 00:04:39,230
+So, that's going to give us a
+whole other class of errors.
+
+111
+00:04:39,230 --> 00:04:42,730
+Errors like, if it violates a
+primary key constraint, you'll
+
+112
+00:04:42,730 --> 00:04:43,470
+find that out.
+
+113
+00:04:43,470 --> 00:04:46,550
+And if we set it like this, then
+what we're going to do is
+
+114
+00:04:46,550 --> 00:04:48,970
+we're going to wait for the
+write to commit to journal.
+
+115
+00:04:48,970 --> 00:04:49,580
+OK?
+
+116
+00:04:49,580 --> 00:04:53,260
+And the idea of setting
+it to this pretty much
+
+117
+00:04:53,260 --> 00:04:55,510
+does the same as this.
+
+118
+00:04:55,510 --> 00:04:57,970
+If you assume that you want to
+wait for it to be journaled,
+
+119
+00:04:57,970 --> 00:05:00,230
+it ignores the fact that you
+said, I don't want to wait for
+
+120
+00:05:00,230 --> 00:05:01,300
+the acknowledgement.
+
+121
+00:05:01,300 --> 00:05:03,260
+There are some other
+settings for w--
+
+122
+00:05:03,260 --> 00:05:06,070
+other flags for w-- and w is
+more complex than just that.
+
+123
+00:05:06,070 --> 00:05:08,670
+But for now, that's sort of
+where I want to leave it in
+
+124
+00:05:08,670 --> 00:05:11,950
+terms of what the w parameter
+and the j parameter do in the
+
+125
+00:05:11,950 --> 00:05:13,390
+getLastError command.
+
+126
+00:05:13,390 --> 00:05:16,640
+So these settings-- w and
+j, collectively--
+
+127
+00:05:16,640 --> 00:05:18,330
+are called the write concern.
+
+128
+00:05:18,330 --> 00:05:21,050
+And the write concern is, how
+concerned are you that your
+
+129
+00:05:21,050 --> 00:05:22,520
+writes are really completed
+before you
+
+130
+00:05:22,520 --> 00:05:24,140
+get a response back?
+
+131
+00:05:24,140 --> 00:05:28,310
+Now, this whole area is pretty
+much controlled by the
+
+132
+00:05:28,310 --> 00:05:32,096
+drivers, because, in the
+underlying API, it's going to
+
+133
+00:05:32,096 --> 00:05:35,180
+send an insert over the
+wire to Mongo, right?
+
+134
+00:05:35,180 --> 00:05:36,240
+Big M. All right?
+
+135
+00:05:36,240 --> 00:05:38,220
+And that's the way that works.
+
+136
+00:05:38,220 --> 00:05:41,410
+And then, in order to make sure
+that write completes, the
+
+137
+00:05:41,410 --> 00:05:44,710
+driver then has to send a second
+getLastError command,
+
+138
+00:05:44,710 --> 00:05:46,220
+which it will do
+on your behalf.
+
+139
+00:05:46,220 --> 00:05:49,840
+Now, when we set safe mode equal
+to true, we were setting
+
+140
+00:05:49,840 --> 00:05:52,110
+w equal to 1, journal
+equal to 0.
+
+141
+00:05:52,110 --> 00:05:54,860
+That was safe mode-- when we
+set safe mode equal to true
+
+142
+00:05:54,860 --> 00:05:56,340
+earlier on in the course.
+
+143
+00:05:56,340 --> 00:06:00,600
+Now, for a long time, if you
+didn't do anything at all,
+
+144
+00:06:00,600 --> 00:06:01,770
+this was what you got.
+
+145
+00:06:01,770 --> 00:06:03,250
+But recently--
+
+146
+00:06:03,250 --> 00:06:04,330
+last week--
+
+147
+00:06:04,330 --> 00:06:08,800
+we made a big change, so that,
+by default, if you use the new
+
+148
+00:06:08,800 --> 00:06:11,170
+recommended driver methods--
+
+149
+00:06:11,170 --> 00:06:13,320
+which I'm going to show you
+later on in this week--
+
+150
+00:06:13,320 --> 00:06:15,240
+then you're now going
+to get this.
+
+151
+00:06:15,240 --> 00:06:17,450
+But if you really want to make
+sure that you're committing to
+
+152
+00:06:17,450 --> 00:06:21,020
+disk before you go on, this is
+what you should be using--
+
+153
+00:06:21,020 --> 00:06:23,160
+w = 1, journal equals 1.
+
+154
+00:06:23,160 --> 00:06:25,910
+All right, so that's a whole
+bunch of stuff that I kind of
+
+155
+00:06:25,910 --> 00:06:27,630
+threw at you, and it's kind of
+complicated, but we're going
+
+156
+00:06:27,630 --> 00:06:31,210
+to be going over it more
+than once in this week.
+
+157
+00:06:31,210 --> 00:06:33,280
+But what I really wanted to
+emphasize is that there's this
+
+158
+00:06:33,280 --> 00:06:38,380
+concept of your write concern
+and your journaling mode.
+
+159
+00:06:38,380 --> 00:06:40,870
+And there's a whole bunch of
+modes inside of the drivers
+
+160
+00:06:40,870 --> 00:06:42,050
+that let you choose these.
+
+161
+00:06:42,050 --> 00:06:45,360
+And that, by default, inside the
+lowest levels of the API
+
+162
+00:06:45,360 --> 00:06:48,780
+in Mongo, the operations
+are not acknowledged.
+
+163
+00:06:48,780 --> 00:06:52,590
+So it requires a second call to
+getLastError or something
+
+164
+00:06:52,590 --> 00:06:54,630
+to make sure that they've
+been acknowledged or
+
+165
+00:06:54,630 --> 00:06:55,510
+committed to disk.
+
+166
+00:06:55,510 --> 00:06:57,490
+And that you can have the
+drivers do that for you.
+
+167
+00:06:57,490 --> 00:06:59,080
+And the Mongo shell does
+a little bit of
+
+168
+00:06:59,080 --> 00:07:00,460
+that for you, too.
+
+169
+00:07:00,460 --> 00:07:04,020
+It actually calls getLastError
+automatically when you call an
+
+170
+00:07:04,020 --> 00:07:05,750
+insert or an update.
+
+171
+00:07:05,750 --> 00:07:06,440
+All right.
+
+172
+00:07:06,440 --> 00:07:09,210
+So, let's do a short quiz.
+
+173
+00:07:09,210 --> 00:07:11,220
+Provided you assume that the
+disk is persistent, what are
+
+174
+00:07:11,220 --> 00:07:14,600
+the w and j settings required to
+guarantee that an insert or
+
+175
+00:07:14,600 --> 00:07:16,520
+update has been written
+all the way to disk?
+
+176
+00:07:16,520 --> 00:07:17,770

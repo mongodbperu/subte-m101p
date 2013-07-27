@@ -1,0 +1,99 @@
+1
+00:00:00,000 --> 00:00:00,490
+
+2
+00:00:00,490 --> 00:00:01,950
+Welcome to week six.
+
+3
+00:00:01,950 --> 00:00:04,315
+This week we're going to do
+application engineering.
+
+4
+00:00:04,315 --> 00:00:07,690
+The two major topics are
+replication and sharding.
+
+5
+00:00:07,690 --> 00:00:10,450
+Replication is a technique for
+introducing a degree of fault
+
+6
+00:00:10,450 --> 00:00:13,340
+tolerance to MongoDB,
+asynchronously replicating
+
+7
+00:00:13,340 --> 00:00:17,070
+your data amongst multiple
+nodes running MongoDB.
+
+8
+00:00:17,070 --> 00:00:19,370
+And what we're going to talk
+about is what you need to know
+
+9
+00:00:19,370 --> 00:00:22,440
+as an engineer, as a developer,
+dealing with a
+
+10
+00:00:22,440 --> 00:00:23,750
+replicated environment.
+
+11
+00:00:23,750 --> 00:00:25,900
+The next topic is sharding.
+
+12
+00:00:25,900 --> 00:00:29,400
+So sharding is the way we
+scale out in Mongo.
+
+13
+00:00:29,400 --> 00:00:30,980
+We allow you to split
+a collection up
+
+14
+00:00:30,980 --> 00:00:33,260
+amongst multiple instances.
+
+15
+00:00:33,260 --> 00:00:35,260
+And you're going to need to
+know a few things as a
+
+16
+00:00:35,260 --> 00:00:38,720
+developer to deal with
+sharded environments.
+
+17
+00:00:38,720 --> 00:00:40,815
+Firstly, you're going to need to
+know how to create a shard
+
+18
+00:00:40,815 --> 00:00:44,110
+key and how to write queries
+that work in a sharded
+
+19
+00:00:44,110 --> 00:00:44,950
+environment.
+
+20
+00:00:44,950 --> 00:00:46,880
+So we're going to
+talk about that.
+
+21
+00:00:46,880 --> 00:00:48,130
+So let's get started.
+
+22
+00:00:48,130 --> 00:00:49,050
