@@ -1,0 +1,135 @@
+[
+    {
+        "concept": "Introduction to Week 4",
+        "lecture": "8qBXI8ggV88"
+    },
+    {
+        "concept": "Indexes",
+        "lecture": "kkIAqyqYOCc",
+        "answer": "5Z6V8mJ8eS4"
+    },
+    {
+        "concept": "Creating indexes",
+        "lecture": "tRqenx45UAM",
+        "answer": "h1VdrcOjFm8"
+    },
+    {
+        "concept": "Discovering indexes",
+        "lecture": "hH7kYu_-FXg"
+    },
+    {
+        "concept": "Multikey Indexes",
+        "lecture": "JO_puGONaLc",
+        "answer": "CeE6hZ90Uzk"
+    },
+    {
+        "concept": "Multikey Continued",
+        "lecture": "mPSGG2p33RQ"
+    },
+    {
+        "concept": "Index creation options, unique",
+        "lecture": "764mQG1iL8E",
+        "answer": "cCO7b-fcj0I"
+    },
+    {
+        "concept": "Index creation options, remove dups",
+        "lecture": "YJaWPXNGvoU",
+        "answer": "s46y1rJAvVs"
+    },
+    {
+        "concept": "Index creation options, sparse",
+        "lecture": "s4sYwLndtTI",
+        "answer": "_MJYRlianas"
+    },
+    {
+        "concept": "Index creation options, background",
+        "lecture": "28wCvoXmY7A",
+        "answer": "aNSHjG_LnSc"
+    },
+    {
+        "concept": "Using Explain",
+        "lecture": "r5YeICVzDjQ",
+        "answer": "Gpj_s49H_rQ"
+    },
+    {
+        "concept": "When is an index used?",
+        "lecture": "Lwms58Y_3Jc",
+        "answer": "imHqsvqx-GA"
+    },
+    {
+        "concept": "How large is your index?",
+        "lecture": "oywrqWNY46s",
+        "answer": "mXHUIghDkFw"
+    },
+    {
+        "concept": "Index Cardinality",
+        "lecture": "xiujksUfzUA",
+        "answer": "4UW_oMSswTo"
+    },
+    {
+        "concept": "Index Selectivity",
+        "lecture": "On8HHR1agsI",
+        "answer": "BT95omWR2nw"
+    },
+    {
+        "concept": "Hinting an index",
+        "lecture": "ksOn-SkaIcg",
+        "answer": "WHc_qRSxGM0"
+    },
+    {
+        "concept": "Hinting in Pymongo",
+        "lecture": "dlKcfo7WtGU"
+    },
+    {
+        "concept": "Efficiency of Index use",
+        "lecture": "1sADN-NKwhY"
+    },
+    {
+        "concept": "Geospacial Indexes",
+        "lecture": "UKUDYqNVL6I",
+        "answer": "hVLa0H7Oe98"
+    },
+    {
+        "concept": "Geospacial Spherical",
+        "lecture": "vY3_H4MzkIY"
+    },
+    {
+        "concept": "Logging Slow Queries",
+        "lecture": "aWuvC-O7Qkk"
+    },
+    {
+        "concept": "Profiling",
+        "lecture": "pN1Yhrup9-I",
+        "answer": "A4x4kE02pSc"
+    },
+    {
+        "concept": "Mongotop",
+        "lecture": "D9YLXgy7NYo"
+    },
+    {
+        "concept": "Mongostat",
+        "lecture": "eLWQO_AJmrI"
+    },
+    {
+        "concept": "Sharding Overview",
+        "lecture": "BDxT-VZdYqc"
+    },
+    {
+        "concept": "HW 4.1",
+        "lecture": "0tpXSPgYk4I",
+        "answer": "ecMrwMMBqIg"
+    },
+    {
+        "concept": "HW 4.2",
+        "lecture": "Zz8TerE95Ss",
+        "answer": "LrsbQkNztMY"
+    },
+    {
+        "concept": "HW 4.3",
+        "lecture": "K-oXNC7voR8",
+        "answer": "pDtSL7gbQa4"
+    },
+    {
+        "concept": "HW 4.4"
+    }
+]
