@@ -1,0 +1,95 @@
+1
+00:00:00,000 --> 00:00:01,080
+
+2
+00:00:01,080 --> 00:00:03,980
+And the answer is that it would
+return the document with
+
+3
+00:00:03,980 --> 00:00:05,980
+id equals 2.
+
+4
+00:00:05,980 --> 00:00:07,530
+So how would you reason
+that out?
+
+5
+00:00:07,530 --> 00:00:09,340
+Remember, the sort
+happens first.
+
+6
+00:00:09,340 --> 00:00:12,490
+So the first thing it's going
+to do is sort them in value
+
+7
+00:00:12,490 --> 00:00:17,010
+descending, which means that
+it's going to sort them with
+
+8
+00:00:17,010 --> 00:00:23,340
+this document first, then this,
+then this, then this.
+
+9
+00:00:23,340 --> 00:00:25,920
+And then after it does
+that it's going to
+
+10
+00:00:25,920 --> 00:00:26,910
+skip three of them.
+
+11
+00:00:26,910 --> 00:00:31,080
+So remember, it was this one,
+then this one, then this one.
+
+12
+00:00:31,080 --> 00:00:33,920
+So if it skips three of them,
+it's going to skip these.
+
+13
+00:00:33,920 --> 00:00:39,340
+It's going to skip 10, 20, and
+7, after it sorts, leaving the
+
+14
+00:00:39,340 --> 00:00:42,510
+one with value 5, which
+is id equals 2.
+
+15
+00:00:42,510 --> 00:00:44,340
+And then it's just going to show
+1, which is all that's
+
+16
+00:00:44,340 --> 00:00:45,190
+left anyway.
+
+17
+00:00:45,190 --> 00:00:47,575
+And so as a result, the answer
+is that it's going to return
+
+18
+00:00:47,575 --> 00:00:51,840
+the document with id equals 2.
+
+19
+00:00:51,840 --> 00:00:54,080
+Because the sort always
+happens before the
+
+20
+00:00:54,080 --> 00:00:55,330
+limit and the skip.
+
+21
+00:00:55,330 --> 00:00:57,457

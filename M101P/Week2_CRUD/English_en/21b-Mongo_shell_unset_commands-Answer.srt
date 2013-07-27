@@ -1,0 +1,34 @@
+1
+00:00:00,000 --> 00:00:00,150
+
+2
+00:00:00,150 --> 00:00:02,040
+So this code should do it.
+
+3
+00:00:02,040 --> 00:00:03,250
+db.users.update.
+
+4
+00:00:03,250 --> 00:00:05,200
+user name colon Jimmy.
+
+5
+00:00:05,200 --> 00:00:06,830
+$unset.
+
+6
+00:00:06,830 --> 00:00:08,370
+Interests colon 1.
+
+7
+00:00:08,370 --> 00:00:10,670
+This will remove the interest
+field and all of the data in
+
+8
+00:00:10,670 --> 00:00:11,920
+it from the document.
+
+9
+00:00:11,920 --> 00:00:13,010

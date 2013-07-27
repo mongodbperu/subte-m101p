@@ -1,0 +1,119 @@
+1
+00:00:00,000 --> 00:00:00,300
+
+2
+00:00:00,300 --> 00:00:02,890
+The resulting document should
+look something like this.
+
+3
+00:00:02,890 --> 00:00:04,320
+The underscore ID is
+Mike, of course.
+
+4
+00:00:04,320 --> 00:00:07,590
+And the interests should be
+botany, then skydiving, then
+
+5
+00:00:07,590 --> 00:00:10,360
+skydiving again, then skiing.
+
+6
+00:00:10,360 --> 00:00:13,640
+The first push changes
+the array to
+
+7
+00:00:13,640 --> 00:00:16,460
+chess, botany, skydiving.
+
+8
+00:00:16,460 --> 00:00:19,060
+Then the pop removes the
+leftmost element of the array
+
+9
+00:00:19,060 --> 00:00:21,280
+because the argument to
+the pop is negative.
+
+10
+00:00:21,280 --> 00:00:24,590
+This leaves us with just
+botany and skydiving.
+
+11
+00:00:24,590 --> 00:00:28,760
+Then we had to set would add
+skydiving to the array if
+
+12
+00:00:28,760 --> 00:00:30,880
+skydiving were not
+already there.
+
+13
+00:00:30,880 --> 00:00:33,300
+But skydiving is already present
+because of the results
+
+14
+00:00:33,300 --> 00:00:34,640
+of the first update.
+
+15
+00:00:34,640 --> 00:00:36,720
+And so that add to
+set does nothing.
+
+16
+00:00:36,720 --> 00:00:40,270
+Finally, the push all appends to
+the array on the right-hand
+
+17
+00:00:40,270 --> 00:00:43,540
+side skydiving and skiing,
+leaving us two duplicates of
+
+18
+00:00:43,540 --> 00:00:47,030
+skydiving and this the
+resulting answer.
+
+19
+00:00:47,030 --> 00:00:50,990
+It's unusual to mix add to set
+and push operations in the
+
+20
+00:00:50,990 --> 00:00:52,460
+same document.
+
+21
+00:00:52,460 --> 00:00:54,730
+Typically, if you're using add
+to set you want to treat the
+
+22
+00:00:54,730 --> 00:00:58,060
+array as a set which should not
+contain duplicates of the
+
+23
+00:00:58,060 --> 00:00:59,190
+same value.
+
+24
+00:00:59,190 --> 00:01:02,280
+The push operator simply treats
+the array as regular
+
+25
+00:01:02,280 --> 00:01:03,530
+old sequence of values.
+
+26
+00:01:03,530 --> 00:01:04,510

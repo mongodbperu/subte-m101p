@@ -1,0 +1,75 @@
+1
+00:00:00,000 --> 00:00:00,190
+
+2
+00:00:00,190 --> 00:00:03,780
+OK, and the answer is that the
+third and fourth are correct,
+
+3
+00:00:03,780 --> 00:00:05,420
+and the first and second
+are wrong.
+
+4
+00:00:05,420 --> 00:00:08,750
+So in the third, that we do
+stuff dot update underscore ID
+
+5
+00:00:08,750 --> 00:00:13,680
+bat, and then we set the
+document, I underscore ID bat,
+
+6
+00:00:13,680 --> 00:00:16,560
+friend ball, cousin glove,
+upsert true.
+
+7
+00:00:16,560 --> 00:00:20,130
+And in the last one, we take
+advantage of using the dollar
+
+8
+00:00:20,130 --> 00:00:21,700
+set command here.
+
+9
+00:00:21,700 --> 00:00:23,860
+So we don't have to specify
+the underscore
+
+10
+00:00:23,860 --> 00:00:25,170
+ID bat on the right.
+
+11
+00:00:25,170 --> 00:00:26,640
+And again, upsert true.
+
+12
+00:00:26,640 --> 00:00:30,470
+The first one is wrong because
+we don't specify the
+
+13
+00:00:30,470 --> 00:00:33,430
+underscore ID bat on the right
+hand side in the document that
+
+14
+00:00:33,430 --> 00:00:34,530
+we're setting.
+
+15
+00:00:34,530 --> 00:00:37,690
+And the second one is wrong
+because we don't
+
+16
+00:00:37,690 --> 00:00:38,940
+set upsert to true.
+
+17
+00:00:38,940 --> 00:00:40,107

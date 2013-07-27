@@ -1,0 +1,719 @@
+1
+00:00:00,000 --> 00:00:00,210
+
+2
+00:00:00,210 --> 00:00:04,000
+Let's go over some of the
+internals of the blog project.
+
+3
+00:00:04,000 --> 00:00:07,470
+There are only three collections
+that will ever be
+
+4
+00:00:07,470 --> 00:00:09,710
+created in this project
+during the course.
+
+5
+00:00:09,710 --> 00:00:11,700
+One is the post collection.
+
+6
+00:00:11,700 --> 00:00:13,510
+The other is the users
+collection.
+
+7
+00:00:13,510 --> 00:00:16,460
+And the final one is the
+sessions collection.
+
+8
+00:00:16,460 --> 00:00:19,050
+You'll see that in this
+week's homework you
+
+9
+00:00:19,050 --> 00:00:20,130
+don't yet have posts.
+
+10
+00:00:20,130 --> 00:00:22,760
+So just users and sessions.
+
+11
+00:00:22,760 --> 00:00:24,800
+Let's go through the files.
+
+12
+00:00:24,800 --> 00:00:28,120
+Let's see what's in
+the directory.
+
+13
+00:00:28,120 --> 00:00:29,750
+There's a blog.py file.
+
+14
+00:00:29,750 --> 00:00:32,570
+That's the main file that's got
+the controller in it that
+
+15
+00:00:32,570 --> 00:00:34,700
+controls your UI for the blog.
+
+16
+00:00:34,700 --> 00:00:36,840
+And then there's a session
+data access object,
+
+17
+00:00:36,840 --> 00:00:38,800
+abbreviated sessionDAO.
+
+18
+00:00:38,800 --> 00:00:42,450
+And then there's a userDAO file,
+contains all the code
+
+19
+00:00:42,450 --> 00:00:44,910
+for accessing the user's
+collection.
+
+20
+00:00:44,910 --> 00:00:47,920
+And then there's a bunch of
+views in the views directory,
+
+21
+00:00:47,920 --> 00:00:50,390
+which are the HTML templates
+that we're going to be
+
+22
+00:00:50,390 --> 00:00:53,260
+combining with some of the
+outputs from your functions to
+
+23
+00:00:53,260 --> 00:00:54,610
+produce the UI.
+
+24
+00:00:54,610 --> 00:00:56,490
+And then you'll also have
+a validation program to
+
+25
+00:00:56,490 --> 00:00:57,990
+validate the blog.
+
+26
+00:00:57,990 --> 00:01:00,890
+I'm going to take you through
+these using PyCharm.
+
+27
+00:01:00,890 --> 00:01:04,849
+And PyCharm is an IDE
+from JetBrains
+
+28
+00:01:04,849 --> 00:01:06,030
+that you can download.
+
+29
+00:01:06,030 --> 00:01:07,320
+It's not free.
+
+30
+00:01:07,320 --> 00:01:10,820
+But we actually have an
+evaluation license for the use
+
+31
+00:01:10,820 --> 00:01:14,050
+of the students, which is in
+the forms for the course
+
+32
+00:01:14,050 --> 00:01:15,240
+starting in April.
+
+33
+00:01:15,240 --> 00:01:17,920
+Hopefully JetBrains will give
+us another one for the
+
+34
+00:01:17,920 --> 00:01:19,500
+subsequent courses.
+
+35
+00:01:19,500 --> 00:01:20,970
+It's a 90-day license.
+
+36
+00:01:20,970 --> 00:01:22,210
+So you can play with it.
+
+37
+00:01:22,210 --> 00:01:23,730
+And then if you like
+it you can buy it.
+
+38
+00:01:23,730 --> 00:01:25,540
+And if you like it you
+don't need to use it.
+
+39
+00:01:25,540 --> 00:01:27,660
+You don't need to use PyCharm.
+
+40
+00:01:27,660 --> 00:01:32,460
+You can also use Emacs or
+Vim or Sublime Text.
+
+41
+00:01:32,460 --> 00:01:33,135
+They'll all work.
+
+42
+00:01:33,135 --> 00:01:35,370
+But the nice thing about PyCharm
+is that, aside from
+
+43
+00:01:35,370 --> 00:01:37,630
+the syntax highlighting that you
+get from all editors, it
+
+44
+00:01:37,630 --> 00:01:39,865
+gives you some feedback when
+variables aren't used.
+
+45
+00:01:39,865 --> 00:01:42,290
+And it tells you about
+code doesn't
+
+46
+00:01:42,290 --> 00:01:44,300
+follow Pythonic idioms.
+
+47
+00:01:44,300 --> 00:01:48,060
+For instance, if you say if
+something equals none--
+
+48
+00:01:48,060 --> 00:01:51,260
+and typically you'd write if
+something is none in Python--
+
+49
+00:01:51,260 --> 00:01:52,510
+it'll point those out.
+
+50
+00:01:52,510 --> 00:01:54,230
+You can see them along
+the right here.
+
+51
+00:01:54,230 --> 00:01:56,260
+There's these little yellow
+things that tell
+
+52
+00:01:56,260 --> 00:01:57,470
+you and warn you.
+
+53
+00:01:57,470 --> 00:01:59,800
+Some of the warnings are
+not actually correct.
+
+54
+00:01:59,800 --> 00:02:01,870
+But a lot of them are
+useful warnings.
+
+55
+00:02:01,870 --> 00:02:04,940
+And as a novice Python user, I
+think this stuff can be really
+
+56
+00:02:04,940 --> 00:02:05,920
+interesting.
+
+57
+00:02:05,920 --> 00:02:07,740
+If you're experienced in Python,
+you probably already
+
+58
+00:02:07,740 --> 00:02:08,710
+have your habits set.
+
+59
+00:02:08,710 --> 00:02:11,510
+And it probably doesn't
+matter.
+
+60
+00:02:11,510 --> 00:02:12,870
+Let's go through the code.
+
+61
+00:02:12,870 --> 00:02:15,800
+The first thing I wanted to
+show you was blog.py.
+
+62
+00:02:15,800 --> 00:02:18,920
+And blog.py is the controller.
+
+63
+00:02:18,920 --> 00:02:22,750
+It has all of these different
+functions that get called as
+
+64
+00:02:22,750 --> 00:02:27,060
+handlers for requests to
+particular URLs for your blog.
+
+65
+00:02:27,060 --> 00:02:30,050
+And the way these are done
+in Bottle is again these
+
+66
+00:02:30,050 --> 00:02:33,660
+decorators, where the function
+is decorated.
+
+67
+00:02:33,660 --> 00:02:37,710
+You can see right here, this
+decorator bottle.route slash
+
+68
+00:02:37,710 --> 00:02:41,670
+says that this next function
+that follows is going to be
+
+69
+00:02:41,670 --> 00:02:45,500
+used to handle calls to the
+main URL of your blog.
+
+70
+00:02:45,500 --> 00:02:47,770
+This particular function is not
+yet implemented in this
+
+71
+00:02:47,770 --> 00:02:48,800
+part of the class.
+
+72
+00:02:48,800 --> 00:02:50,270
+We're going to get
+to it later on.
+
+73
+00:02:50,270 --> 00:02:51,840
+It's just a placeholder.
+
+74
+00:02:51,840 --> 00:02:55,070
+Although it is going to return
+a template file.
+
+75
+00:02:55,070 --> 00:02:57,100
+A template says this
+is a place holder.
+
+76
+00:02:57,100 --> 00:02:59,350
+And I'll get to those templates
+in a second.
+
+77
+00:02:59,350 --> 00:03:02,710
+You can see here that in order
+to have a user sign up for the
+
+78
+00:03:02,710 --> 00:03:05,100
+blog, this is the
+sign up route.
+
+79
+00:03:05,100 --> 00:03:09,100
+Then, in this case, there's
+nothing to do except return
+
+80
+00:03:09,100 --> 00:03:10,490
+the sign of template.
+
+81
+00:03:10,490 --> 00:03:13,500
+And actually it sets some
+starting values, and gives
+
+82
+00:03:13,500 --> 00:03:14,940
+them to the template
+as a dict.
+
+83
+00:03:14,940 --> 00:03:15,980
+That's the sign up template.
+
+84
+00:03:15,980 --> 00:03:17,320
+Let's look at the sign
+up template.
+
+85
+00:03:17,320 --> 00:03:19,150
+So that'll call this template.
+
+86
+00:03:19,150 --> 00:03:22,010
+And you can see this template
+has some minimal styling
+
+87
+00:03:22,010 --> 00:03:22,750
+information.
+
+88
+00:03:22,750 --> 00:03:24,880
+And it's an HTML template.
+
+89
+00:03:24,880 --> 00:03:28,250
+And then you can see
+here that this is
+
+90
+00:03:28,250 --> 00:03:29,420
+basically an HTML file.
+
+91
+00:03:29,420 --> 00:03:33,330
+But there are particular places
+where bottle will make
+
+92
+00:03:33,330 --> 00:03:35,230
+substitutions for Python
+variables.
+
+93
+00:03:35,230 --> 00:03:38,530
+In particular, this double brace
+is an indication that
+
+94
+00:03:38,530 --> 00:03:41,020
+this value is going to be
+replaced by the variable value
+
+95
+00:03:41,020 --> 00:03:42,440
+when it runs.
+
+96
+00:03:42,440 --> 00:03:45,170
+So that's the way that works.
+
+97
+00:03:45,170 --> 00:03:47,460
+Let's go back to
+blog.py again.
+
+98
+00:03:47,460 --> 00:03:50,690
+And then when the user does
+something, typically it'll
+
+99
+00:03:50,690 --> 00:03:54,750
+call into one of these
+other classes.
+
+100
+00:03:54,750 --> 00:03:57,170
+For instance, this right
+here is the log in.
+
+101
+00:03:57,170 --> 00:03:57,930
+It takes a log in.
+
+102
+00:03:57,930 --> 00:03:59,100
+It gets username and password.
+
+103
+00:03:59,100 --> 00:04:01,190
+It calls validate login.
+
+104
+00:04:01,190 --> 00:04:04,990
+And to do that it calls
+users.validate_login.
+
+105
+00:04:04,990 --> 00:04:07,060
+And users will set up--
+
+106
+00:04:07,060 --> 00:04:08,540
+this looks a little confusing,
+actually.
+
+107
+00:04:08,540 --> 00:04:10,330
+Let me explain that.
+
+108
+00:04:10,330 --> 00:04:13,730
+The very bottom of the program,
+you can see that this
+
+109
+00:04:13,730 --> 00:04:16,300
+essentially [INAUDIBLE]
+in bottle.py.
+
+110
+00:04:16,300 --> 00:04:18,480
+You can see that it sets
+up a user's variable.
+
+111
+00:04:18,480 --> 00:04:21,279
+And it creates a new instance of
+the class user Data Access
+
+112
+00:04:21,279 --> 00:04:24,620
+Object, user DAO, giving
+it the database.
+
+113
+00:04:24,620 --> 00:04:26,480
+And the same thing
+for sessions.
+
+114
+00:04:26,480 --> 00:04:29,880
+And so when you see it call to
+users like that, for instance,
+
+115
+00:04:29,880 --> 00:04:33,890
+in process log in, what you're
+seeing is a call into this
+
+116
+00:04:33,890 --> 00:04:35,870
+user DAO object.
+
+117
+00:04:35,870 --> 00:04:37,900
+I'm not going to show you
+that object right now.
+
+118
+00:04:37,900 --> 00:04:39,810
+Because that's what you
+have to work this
+
+119
+00:04:39,810 --> 00:04:41,120
+week for the homework.
+
+120
+00:04:41,120 --> 00:04:42,840
+And the code is completed
+in my version.
+
+121
+00:04:42,840 --> 00:04:44,430
+So I'm not going to
+show you that.
+
+122
+00:04:44,430 --> 00:04:47,130
+I will show you the session
+DAO object.
+
+123
+00:04:47,130 --> 00:04:49,970
+And the session DAO object you
+will not need to work in.
+
+124
+00:04:49,970 --> 00:04:51,440
+You can see how it works.
+
+125
+00:04:51,440 --> 00:04:52,350
+We haven't really gone over how
+
+126
+00:04:52,350 --> 00:04:54,130
+classes work inside Python.
+
+127
+00:04:54,130 --> 00:04:56,480
+So if you are new to Python,
+I'll explain it.
+
+128
+00:04:56,480 --> 00:04:58,230
+This is the class declaration.
+
+129
+00:04:58,230 --> 00:05:01,820
+This _init, this is the
+constructor for the class.
+
+130
+00:05:01,820 --> 00:05:05,050
+This is what gets called when
+you create a new instance of a
+
+131
+00:05:05,050 --> 00:05:06,170
+session DAO.
+
+132
+00:05:06,170 --> 00:05:08,390
+And you can see we passed
+in a handle [INAUDIBLE]
+
+133
+00:05:08,390 --> 00:05:08,900
+database.
+
+134
+00:05:08,900 --> 00:05:11,320
+So it just saves it off, and
+then creates a handle to the
+
+135
+00:05:11,320 --> 00:05:13,380
+sessions collection.
+
+136
+00:05:13,380 --> 00:05:15,500
+Start session does something
+pretty straightforward.
+
+137
+00:05:15,500 --> 00:05:19,600
+It creates a new dictionary with
+username and session ID.
+
+138
+00:05:19,600 --> 00:05:21,340
+Session ID is a long,
+random number.
+
+139
+00:05:21,340 --> 00:05:23,210
+And it tries to insert
+it into the sessions
+
+140
+00:05:23,210 --> 00:05:25,760
+collection, for example.
+
+141
+00:05:25,760 --> 00:05:28,750
+I think that's the basics
+of how this works.
+
+142
+00:05:28,750 --> 00:05:31,230
+You can see this week that
+there's templates for some
+
+143
+00:05:31,230 --> 00:05:33,810
+paths that you'll need to get
+working, like the login, and
+
+144
+00:05:33,810 --> 00:05:36,490
+the sign up, and the
+welcome page.
+
+145
+00:05:36,490 --> 00:05:40,100
+But there aren't templates for
+displaying blog posts, or
+
+146
+00:05:40,100 --> 00:05:41,570
+adding comments.
+
+147
+00:05:41,570 --> 00:05:43,670
+Because that comes
+in later weeks.
+
+148
+00:05:43,670 --> 00:05:45,510
+So we don't have
+those here yet.
+
+149
+00:05:45,510 --> 00:05:47,680
+And there's also a missing
+DAO object.
+
+150
+00:05:47,680 --> 00:05:50,850
+The blog post DAO object is
+not yet given to you.
+
+151
+00:05:50,850 --> 00:05:53,970
+Because you're going to get that
+in a later week, as well.
+
+152
+00:05:53,970 --> 00:05:57,640
+And again, I was working inside
+PyCharm here, which you
+
+153
+00:05:57,640 --> 00:05:58,740
+can download if you'd like.
+
+154
+00:05:58,740 --> 00:06:01,570
+Or you can use a regular text
+editor to do your work.
+
+155
+00:06:01,570 --> 00:06:02,820

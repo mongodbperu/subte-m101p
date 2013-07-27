@@ -1,0 +1,53 @@
+1
+00:00:00,000 --> 00:00:00,240
+
+2
+00:00:00,240 --> 00:00:04,570
+And the answer is, and you
+really could just experiment
+
+3
+00:00:04,570 --> 00:00:06,170
+to find out this answer.
+
+4
+00:00:06,170 --> 00:00:08,930
+Pymongo will return
+an empty document.
+
+5
+00:00:08,930 --> 00:00:10,090
+And this is generally true.
+
+6
+00:00:10,090 --> 00:00:13,970
+We haven't really shown this,
+but any time you project onto
+
+7
+00:00:13,970 --> 00:00:18,540
+a key that doesn't exist, it's
+essentially ignored by Mongo.
+
+8
+00:00:18,540 --> 00:00:20,230
+And nothing is returned
+for that.
+
+9
+00:00:20,230 --> 00:00:22,320
+And of course if there's nothing
+returned at all, then
+
+10
+00:00:22,320 --> 00:00:24,040
+what you get is an
+empty document.
+
+11
+00:00:24,040 --> 00:00:25,910
+That's what you get the
+answer to the query.
+
+12
+00:00:25,910 --> 00:00:27,160

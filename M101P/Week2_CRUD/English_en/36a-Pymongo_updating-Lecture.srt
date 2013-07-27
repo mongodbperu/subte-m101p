@@ -1,0 +1,830 @@
+1
+00:00:00,000 --> 00:00:00,140
+
+2
+00:00:00,140 --> 00:00:00,400
+OK.
+
+3
+00:00:00,400 --> 00:00:03,930
+Now we're going to talk about
+updating data in PyMongo.
+
+4
+00:00:03,930 --> 00:00:07,010
+And there are several different
+ways to do that.
+
+5
+00:00:07,010 --> 00:00:09,550
+One is to use the Save
+command, which is a
+
+6
+00:00:09,550 --> 00:00:11,730
+convenience method
+that combines
+
+7
+00:00:11,730 --> 00:00:13,860
+inserting and updating.
+
+8
+00:00:13,860 --> 00:00:16,890
+If there's an ID set, it
+assumes it's an update.
+
+9
+00:00:16,890 --> 00:00:20,450
+But if there's no underscore
+ID set when you call Save,
+
+10
+00:00:20,450 --> 00:00:23,400
+then it assumes it's
+an insert.
+
+11
+00:00:23,400 --> 00:00:25,390
+The other way is to do
+a wholesale update.
+
+12
+00:00:25,390 --> 00:00:27,390
+And we've seen those
+in the Mongo shell.
+
+13
+00:00:27,390 --> 00:00:29,780
+This is where you identify which
+document you want to
+
+14
+00:00:29,780 --> 00:00:32,170
+update, and then set the entire
+
+15
+00:00:32,170 --> 00:00:34,570
+document to the new value.
+
+16
+00:00:34,570 --> 00:00:37,710
+And finally, you can do a
+selective update using a bunch
+
+17
+00:00:37,710 --> 00:00:39,010
+of different modifiers.
+
+18
+00:00:39,010 --> 00:00:40,790
+And in this little lesson,
+I'm going to
+
+19
+00:00:40,790 --> 00:00:42,940
+focus on the set modifier.
+
+20
+00:00:42,940 --> 00:00:45,040
+So let's talk about
+the little scores
+
+21
+00:00:45,040 --> 00:00:46,060
+collection we've been using.
+
+22
+00:00:46,060 --> 00:00:49,040
+I'm going to show you a program
+I've written that
+
+23
+00:00:49,040 --> 00:00:50,390
+looks at the scores collection
+and makes some
+
+24
+00:00:50,390 --> 00:00:51,920
+modifications to it.
+
+25
+00:00:51,920 --> 00:00:54,840
+So here's what I want to do with
+the scores collection.
+
+26
+00:00:54,840 --> 00:00:58,220
+I want to add a review date.
+
+27
+00:00:58,220 --> 00:01:00,520
+And I want to do that in
+three different ways.
+
+28
+00:01:00,520 --> 00:01:03,100
+So first, let's do it using
+Save, and I'll show you how
+
+29
+00:01:03,100 --> 00:01:04,150
+that works.
+
+30
+00:01:04,150 --> 00:01:06,920
+So what I'm going to do is I'm
+going to find a document where
+
+31
+00:01:06,920 --> 00:01:08,890
+student ID is 1, and
+type is homework.
+
+32
+00:01:08,890 --> 00:01:11,160
+And I'm going to get that
+document and I'm going to put
+
+33
+00:01:11,160 --> 00:01:13,020
+it into the score variable.
+
+34
+00:01:13,020 --> 00:01:17,020
+And then I'm going to use Python
+to set a review date in
+
+35
+00:01:17,020 --> 00:01:20,200
+the dict that comes back
+from the find_one.
+
+36
+00:01:20,200 --> 00:01:22,550
+So I set it up, and now
+I'm actually calling
+
+37
+00:01:22,550 --> 00:01:24,900
+datetime.datetime.utcnow.
+
+38
+00:01:24,900 --> 00:01:27,210
+I've imported datetime at
+the top of this file.
+
+39
+00:01:27,210 --> 00:01:28,720
+I haven't shown you that before,
+but that's how you'd
+
+40
+00:01:28,720 --> 00:01:32,230
+get a date that will wind up
+being an ISODate and BSON
+
+41
+00:01:32,230 --> 00:01:33,830
+inside MongoDB.
+
+42
+00:01:33,830 --> 00:01:35,690
+So it's a good function
+to know about.
+
+43
+00:01:35,690 --> 00:01:39,160
+And then I'm going to update
+the record with the
+
+44
+00:01:39,160 --> 00:01:41,440
+convenience method Save.
+
+45
+00:01:41,440 --> 00:01:43,350
+So I'm just going
+to call Save.
+
+46
+00:01:43,350 --> 00:01:47,970
+And what you'd expect that to
+do is you'd expect that to--
+
+47
+00:01:47,970 --> 00:01:51,780
+since there is going to be an
+underscore ID field from this
+
+48
+00:01:51,780 --> 00:01:54,910
+find_one, it will do a wholesale
+replacement of
+
+49
+00:01:54,910 --> 00:01:58,380
+everything except for the ID
+itself, which is underscore
+
+50
+00:01:58,380 --> 00:02:00,840
+ID, which is immutable
+inside Mongo.
+
+51
+00:02:00,840 --> 00:02:03,110
+And then it's going to do a
+find_one to find the same
+
+52
+00:02:03,110 --> 00:02:05,240
+record, and it's going
+to print it out.
+
+53
+00:02:05,240 --> 00:02:07,160
+And it's going to
+show you that.
+
+54
+00:02:07,160 --> 00:02:07,810
+OK?
+
+55
+00:02:07,810 --> 00:02:10,620
+So that's one way of
+accomplishing adding a review
+
+56
+00:02:10,620 --> 00:02:12,990
+date to a document.
+
+57
+00:02:12,990 --> 00:02:15,700
+That's with the Save command.
+
+58
+00:02:15,700 --> 00:02:18,240
+But let's look, there's another
+way of doing it, which
+
+59
+00:02:18,240 --> 00:02:19,810
+is using a traditional update.
+
+60
+00:02:19,810 --> 00:02:23,370
+So to do that, it's
+very similar.
+
+61
+00:02:23,370 --> 00:02:26,790
+We're going to call score
+= scores.find_one.
+
+62
+00:02:26,790 --> 00:02:30,580
+Find the homework with
+the student ID 1.
+
+63
+00:02:30,580 --> 00:02:35,760
+And then, again, we're going
+to set a review date.
+
+64
+00:02:35,760 --> 00:02:38,060
+But now, rather than
+call Save, we're
+
+65
+00:02:38,060 --> 00:02:39,270
+going to call Update.
+
+66
+00:02:39,270 --> 00:02:41,290
+And we're going to call Update,
+we're going to specify
+
+67
+00:02:41,290 --> 00:02:43,230
+our criteria that we're
+looking for this
+
+68
+00:02:43,230 --> 00:02:44,830
+record right here .
+
+69
+00:02:44,830 --> 00:02:46,790
+And then after that--
+
+70
+00:02:46,790 --> 00:02:48,280
+right here, this record--
+
+71
+00:02:48,280 --> 00:02:51,840
+and then after that we're going
+to set the document to
+
+72
+00:02:51,840 --> 00:02:54,630
+what is in the score dict
+right here, which is
+
+73
+00:02:54,630 --> 00:02:56,360
+everything I got out before.
+
+74
+00:02:56,360 --> 00:02:58,800
+Now, if you've thought about
+this carefully, you'd realize
+
+75
+00:02:58,800 --> 00:03:03,700
+that there's actually an
+underscore ID in this dict.
+
+76
+00:03:03,700 --> 00:03:06,130
+And so it looks like I'm
+trying to update the
+
+77
+00:03:06,130 --> 00:03:11,170
+underscore ID, but Mongo is OK
+with you trying to do that, as
+
+78
+00:03:11,170 --> 00:03:14,560
+long as the underscore ID you
+put in here is the same one
+
+79
+00:03:14,560 --> 00:03:17,050
+that exists in the
+document already.
+
+80
+00:03:17,050 --> 00:03:19,740
+And that is the same one, so
+it won't cause an error.
+
+81
+00:03:19,740 --> 00:03:22,230
+If you tried to set an
+underscore ID that was
+
+82
+00:03:22,230 --> 00:03:26,520
+different in this document, then
+it would actually fail.
+
+83
+00:03:26,520 --> 00:03:28,190
+And after that we're going
+to find it, and see if we
+
+84
+00:03:28,190 --> 00:03:32,240
+successfully added a review
+date to that document.
+
+85
+00:03:32,240 --> 00:03:37,650
+And then, the final way of
+doing this is using Set.
+
+86
+00:03:37,650 --> 00:03:41,110
+Now, using Set is more efficient
+in the sense that
+
+87
+00:03:41,110 --> 00:03:44,360
+we're only going to update one
+small part of the document,
+
+88
+00:03:44,360 --> 00:03:46,070
+rather than writing the
+entire document.
+
+89
+00:03:46,070 --> 00:03:48,450
+Now, these documents are very
+small, and it really doesn't
+
+90
+00:03:48,450 --> 00:03:51,310
+matter whether you write the
+entire document or write a
+
+91
+00:03:51,310 --> 00:03:52,270
+small part of it.
+
+92
+00:03:52,270 --> 00:03:54,430
+But if the document were very
+large, you wouldn't want to
+
+93
+00:03:54,430 --> 00:03:57,070
+write the entire document when
+you could just be writing a
+
+94
+00:03:57,070 --> 00:03:58,190
+small part of it.
+
+95
+00:03:58,190 --> 00:04:00,130
+So let's see how you do that.
+
+96
+00:04:00,130 --> 00:04:02,370
+Well, if you're going to use Set
+to do it, again, you do a
+
+97
+00:04:02,370 --> 00:04:07,430
+find_one to find the document
+where student ID is 1.
+
+98
+00:04:07,430 --> 00:04:10,850
+Then we're going to, once again,
+use Update, but this
+
+99
+00:04:10,850 --> 00:04:13,690
+time we're going to use
+the set operator.
+
+100
+00:04:13,690 --> 00:04:15,390
+So the criteria is the same.
+
+101
+00:04:15,390 --> 00:04:18,060
+We're going to find the document
+with student ID 1,
+
+102
+00:04:18,060 --> 00:04:19,190
+type homework.
+
+103
+00:04:19,190 --> 00:04:20,640
+But now we're using Set.
+
+104
+00:04:20,640 --> 00:04:23,410
+And notice the single quotes
+around the $set.
+
+105
+00:04:23,410 --> 00:04:28,600
+And we're going to set
+review_date equal to utcnow.
+
+106
+00:04:28,600 --> 00:04:32,140
+And then, once again, we're
+going to find the record and
+
+107
+00:04:32,140 --> 00:04:34,380
+we're going to print it out.
+
+108
+00:04:34,380 --> 00:04:39,630
+So I have this program set up
+to run three different ways,
+
+109
+00:04:39,630 --> 00:04:41,970
+using Save, using Update,
+using Set.
+
+110
+00:04:41,970 --> 00:04:43,680
+And then there was that
+one small function--
+
+111
+00:04:43,680 --> 00:04:46,010
+there is one other function
+I wrote called
+
+112
+00:04:46,010 --> 00:04:47,290
+remove_review_date.
+
+113
+00:04:47,290 --> 00:04:49,040
+And that's just going to remove
+every review date from
+
+114
+00:04:49,040 --> 00:04:49,475
+every record.
+
+115
+00:04:49,475 --> 00:04:50,970
+And I'll show you
+how that works.
+
+116
+00:04:50,970 --> 00:04:53,840
+It actually demonstrates
+the use of multi.
+
+117
+00:04:53,840 --> 00:04:56,280
+So I'll show you that.
+
+118
+00:04:56,280 --> 00:04:58,310
+Here's remove_review_date.
+
+119
+00:04:58,310 --> 00:05:00,640
+We're going to, again, get
+a handle to the database.
+
+120
+00:05:00,640 --> 00:05:05,440
+And then we're going to call
+score.update, all documents,
+
+121
+00:05:05,440 --> 00:05:08,265
+unset, review_date,
+multi=true.
+
+122
+00:05:08,265 --> 00:05:10,950
+
+123
+00:05:10,950 --> 00:05:14,740
+And this is a slightly different
+syntax than doing in
+
+124
+00:05:14,740 --> 00:05:15,770
+a Mongo shell.
+
+125
+00:05:15,770 --> 00:05:18,050
+It's a named parameter here.
+
+126
+00:05:18,050 --> 00:05:20,950
+If you remember, in the Mongo
+shell, it's the fourth
+
+127
+00:05:20,950 --> 00:05:22,490
+argument to the update.
+
+128
+00:05:22,490 --> 00:05:24,570
+The third one is whether it's
+an upsert, and the fourth is
+
+129
+00:05:24,570 --> 00:05:26,710
+whether it's a multi-update.
+
+130
+00:05:26,710 --> 00:05:29,230
+So this is just to remove the
+review dates from all the
+
+131
+00:05:29,230 --> 00:05:31,910
+records, all the documents, to
+make sure that it's clean.
+
+132
+00:05:31,910 --> 00:05:32,390
+All right.
+
+133
+00:05:32,390 --> 00:05:36,080
+So let's run it, and let's
+see what happens.
+
+134
+00:05:36,080 --> 00:05:36,900
+OK.
+
+135
+00:05:36,900 --> 00:05:38,630
+So what happened?
+
+136
+00:05:38,630 --> 00:05:41,030
+Well, it removed all
+the review dates.
+
+137
+00:05:41,030 --> 00:05:43,820
+Now it's going to try another
+command using Save.
+
+138
+00:05:43,820 --> 00:05:47,100
+Before it pulls out this
+document, you can see that it
+
+139
+00:05:47,100 --> 00:05:49,040
+doesn't have a review
+date on it.
+
+140
+00:05:49,040 --> 00:05:52,690
+It has a score of 21.995,
+et cetera.
+
+141
+00:05:52,690 --> 00:05:57,440
+And then after I do it using
+Save, now it's got a review
+
+142
+00:05:57,440 --> 00:05:58,490
+date with a datetime.
+
+143
+00:05:58,490 --> 00:06:01,385
+And you can see the way that's
+displayed inside Python.
+
+144
+00:06:01,385 --> 00:06:04,150
+It looks slightly different if
+you do it in the Mongo shell.
+
+145
+00:06:04,150 --> 00:06:06,090
+So that worked just fine.
+
+146
+00:06:06,090 --> 00:06:08,910
+And then, removing all
+review dates again.
+
+147
+00:06:08,910 --> 00:06:12,810
+And now, not using Save, but
+using a wholesale update, you
+
+148
+00:06:12,810 --> 00:06:16,290
+can see that, again, the review
+date is missing when I
+
+149
+00:06:16,290 --> 00:06:20,030
+first pull the document out,
+And present when I do the
+
+150
+00:06:20,030 --> 00:06:21,570
+second find_one.
+
+151
+00:06:21,570 --> 00:06:24,120
+And you can see the time is
+changing, which is fine.
+
+152
+00:06:24,120 --> 00:06:25,990
+That's what you'd expect,
+because this is happening over
+
+153
+00:06:25,990 --> 00:06:27,660
+and over again that I'm removing
+the review dates, and
+
+154
+00:06:27,660 --> 00:06:29,190
+then adding a new review date.
+
+155
+00:06:29,190 --> 00:06:32,260
+And then finally, using a Set
+command, where I'm only
+
+156
+00:06:32,260 --> 00:06:34,060
+setting that one key.
+
+157
+00:06:34,060 --> 00:06:35,960
+It works exactly the same way.
+
+158
+00:06:35,960 --> 00:06:37,200
+I pull out the document.
+
+159
+00:06:37,200 --> 00:06:38,930
+Again, the review date is
+missing because I've already
+
+160
+00:06:38,930 --> 00:06:39,710
+removed it.
+
+161
+00:06:39,710 --> 00:06:42,600
+And then after that, I set it,
+and then I can see that the
+
+162
+00:06:42,600 --> 00:06:43,490
+date has been set.
+
+163
+00:06:43,490 --> 00:06:45,280
+And once again, the date is
+slightly different because
+
+164
+00:06:45,280 --> 00:06:48,170
+some time has passed between
+those updates.
+
+165
+00:06:48,170 --> 00:06:48,560
+All right.
+
+166
+00:06:48,560 --> 00:06:50,860
+So now it's time for a quiz.
+
+167
+00:06:50,860 --> 00:06:53,080
+So here's the quiz.
+
+168
+00:06:53,080 --> 00:06:55,200
+In the following code fragment,
+what is the Python
+
+169
+00:06:55,200 --> 00:06:58,870
+expression in place of xxxxx
+to set a new key
+
+170
+00:06:58,870 --> 00:07:01,050
+"examiner" to be Jones?
+
+171
+00:07:01,050 --> 00:07:03,140
+Please use the Set operator.
+
+172
+00:07:03,140 --> 00:07:06,720
+And you can see this is
+very similar to the
+
+173
+00:07:06,720 --> 00:07:08,600
+code I showed you.
+
+174
+00:07:08,600 --> 00:07:12,410
+But now, there's an update here,
+and we've left out what
+
+175
+00:07:12,410 --> 00:07:17,310
+you need to put in here
+in Python to set the
+
+176
+00:07:17,310 --> 00:07:19,970
+examiner key to Jones.
+
+177
+00:07:19,970 --> 00:07:23,370
+So you're going to
+put that in here.
+
+178
+00:07:23,370 --> 00:07:24,620
+And that's the question.
+
+179
+00:07:24,620 --> 00:07:25,430

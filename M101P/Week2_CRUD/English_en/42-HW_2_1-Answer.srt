@@ -1,0 +1,128 @@
+1
+00:00:00,000 --> 00:00:00,160
+
+2
+00:00:00,160 --> 00:00:04,900
+OK, in this problem, we asked
+you to work with the grades.gs
+
+3
+00:00:04,900 --> 00:00:08,930
+collection and to import it into
+your MongoDB instance.
+
+4
+00:00:08,930 --> 00:00:14,630
+So let's start by doing that by
+running mongoimport minus d
+
+5
+00:00:14,630 --> 00:00:21,070
+students minus c grades,
+bringing in grades.gs.
+
+6
+00:00:21,070 --> 00:00:24,410
+We did that, and it says it
+imported 800 objects.
+
+7
+00:00:24,410 --> 00:00:25,330
+Excellent.
+
+8
+00:00:25,330 --> 00:00:29,570
+Let's connect to the database
+and use students, and then
+
+9
+00:00:29,570 --> 00:00:32,710
+we're going to show
+collections.
+
+10
+00:00:32,710 --> 00:00:39,076
+OK, let's look at
+db.grades.find.limit 1 pretty.
+
+11
+00:00:39,076 --> 00:00:39,510
+Pretty.
+
+12
+00:00:39,510 --> 00:00:40,900
+Print it.
+
+13
+00:00:40,900 --> 00:00:42,110
+We can see what the
+data looks like.
+
+14
+00:00:42,110 --> 00:00:43,530
+It looks like there's
+a student ID and
+
+15
+00:00:43,530 --> 00:00:45,625
+a type and a score.
+
+16
+00:00:45,625 --> 00:00:46,020
+All right.
+
+17
+00:00:46,020 --> 00:00:49,380
+We asked you to find the lowest
+student's score above
+
+18
+00:00:49,380 --> 00:00:51,240
+or equal to 65.
+
+19
+00:00:51,240 --> 00:00:53,480
+So to do that, here is
+the query right here.
+
+20
+00:00:53,480 --> 00:00:54,590
+I'll take you through it.
+
+21
+00:00:54,590 --> 00:00:59,080
+We're going to look for
+everything with type exam and
+
+22
+00:00:59,080 --> 00:01:02,980
+with a score that is greater
+than or equal to, using gte
+
+23
+00:01:02,980 --> 00:01:04,989
+operator 65.
+
+24
+00:01:04,989 --> 00:01:08,030
+Then we're going to sort it by
+score ascending, and we're
+
+25
+00:01:08,030 --> 00:01:09,560
+going to limit it to five.
+
+26
+00:01:09,560 --> 00:01:13,730
+We do that, and we see that
+the student that has the
+
+27
+00:01:13,730 --> 00:01:19,170
+lowest score greater than or
+equal to 65 is student ID 22.
+
+28
+00:01:19,170 --> 00:01:23,680
+And that is the answer
+to this problem, 22.
