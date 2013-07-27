@@ -1,0 +1,11 @@
+1
+00:00:00,000 --> 00:00:00,220
+
+2
+00:00:00,220 --> 00:00:03,990
+And the answer is index, and
+if you watch the video you
+
+3
+00:00:03,990 --> 00:00:05,240
+certainly know that.

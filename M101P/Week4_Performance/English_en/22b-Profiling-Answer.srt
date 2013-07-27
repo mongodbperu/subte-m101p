@@ -1,0 +1,29 @@
+1
+00:00:00,000 --> 00:00:00,190
+
+2
+00:00:00,190 --> 00:00:03,860
+All right, and the answer is, db
+dot system dot profile dot
+
+3
+00:00:03,860 --> 00:00:09,030
+find and milliseconds greater
+than 1,000 sort by time stamp
+
+4
+00:00:09,030 --> 00:00:09,410
+to sending.
+
+5
+00:00:09,410 --> 00:00:11,800
+It's a little cut off on the
+screen but you'll be able to
+
+6
+00:00:11,800 --> 00:00:13,200
+see it in the actual
+courseware.
+
+7
+00:00:13,200 --> 00:00:14,450

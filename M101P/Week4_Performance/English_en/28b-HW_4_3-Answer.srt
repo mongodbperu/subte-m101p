@@ -1,0 +1,102 @@
+1
+00:00:00,000 --> 00:00:00,250
+
+2
+00:00:00,250 --> 00:00:00,980
+OK.
+
+3
+00:00:00,980 --> 00:00:03,990
+And the answer is that in order
+to make the queries
+
+4
+00:00:03,990 --> 00:00:08,039
+fast, the home page, the look
+up by tag, and the permalink
+
+5
+00:00:08,039 --> 00:00:11,310
+page, you need three
+different indexes.
+
+6
+00:00:11,310 --> 00:00:14,550
+So, to make the homepage fast,
+you need an index on just the
+
+7
+00:00:14,550 --> 00:00:17,070
+date field because that's
+what the homepage does.
+
+8
+00:00:17,070 --> 00:00:20,630
+And I did it date descending,
+although you could do it date
+
+9
+00:00:20,630 --> 00:00:23,780
+ascending and it will reverse
+it for that purpose.
+
+10
+00:00:23,780 --> 00:00:27,590
+To make the permalink page look
+up fast, you just need a
+
+11
+00:00:27,590 --> 00:00:29,110
+index on permalink.
+
+12
+00:00:29,110 --> 00:00:32,060
+And to make it fast to look
+up all the posts from a
+
+13
+00:00:32,060 --> 00:00:34,770
+particular tag and then order
+them by date, you need a
+
+14
+00:00:34,770 --> 00:00:37,580
+compound index on
+tags comma date.
+
+15
+00:00:37,580 --> 00:00:40,940
+And I made it descending on
+date, reflecting that we're
+
+16
+00:00:40,940 --> 00:00:42,320
+going to show them
+in reverse order.
+
+17
+00:00:42,320 --> 00:00:45,360
+Although, if you had made it
+ascending on date, Mongo can
+
+18
+00:00:45,360 --> 00:00:49,530
+still manage to use that index
+in the case where you're
+
+19
+00:00:49,530 --> 00:00:51,020
+sorting only by date and you're
+
+20
+00:00:51,020 --> 00:00:52,720
+looking up only one tag.
+
+21
+00:00:52,720 --> 00:00:55,920
+So that's the answer to
+this problem, and I
+
+22
+00:00:55,920 --> 00:00:57,170
+hope you got it right.

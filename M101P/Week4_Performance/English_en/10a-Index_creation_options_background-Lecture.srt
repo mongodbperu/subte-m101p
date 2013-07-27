@@ -1,0 +1,357 @@
+1
+00:00:00,000 --> 00:00:00,120
+
+2
+00:00:00,120 --> 00:00:03,360
+I want to talk about one last
+option when creating an index,
+
+3
+00:00:03,360 --> 00:00:05,480
+and that is whether or not
+you want to have it be
+
+4
+00:00:05,480 --> 00:00:06,990
+backgrounded.
+
+5
+00:00:06,990 --> 00:00:08,770
+By default, an index
+is created in the
+
+6
+00:00:08,770 --> 00:00:10,630
+foreground in Mongo.
+
+7
+00:00:10,630 --> 00:00:13,330
+And when it's created in the
+foreground, it blocks all
+
+8
+00:00:13,330 --> 00:00:14,390
+other writers.
+
+9
+00:00:14,390 --> 00:00:16,980
+If you want, you can run it in
+the background, in which case
+
+10
+00:00:16,980 --> 00:00:18,830
+it won't block other writers.
+
+11
+00:00:18,830 --> 00:00:20,700
+So if you run it in
+the foreground,
+
+12
+00:00:20,700 --> 00:00:22,370
+it's going to be faster.
+
+13
+00:00:22,370 --> 00:00:24,370
+Foreground index creations
+are fast.
+
+14
+00:00:24,370 --> 00:00:26,220
+But it's going to
+block writers.
+
+15
+00:00:26,220 --> 00:00:30,660
+In Mongo 2.2 and above there
+is a per database lock.
+
+16
+00:00:30,660 --> 00:00:34,310
+So it will block writers only
+in the same database.
+
+17
+00:00:34,310 --> 00:00:36,360
+On the other hand, if you
+prefer, you can use the
+
+18
+00:00:36,360 --> 00:00:38,810
+background:true option,
+in which case
+
+19
+00:00:38,810 --> 00:00:41,090
+it'll be a bit slow.
+
+20
+00:00:41,090 --> 00:00:42,270
+And sometimes as much as--
+
+21
+00:00:42,270 --> 00:00:44,500
+we've heard reports of anywhere
+from twice as slow to
+
+22
+00:00:44,500 --> 00:00:46,090
+three, four, or five
+times as slow.
+
+23
+00:00:46,090 --> 00:00:49,000
+But writes can happen
+concurrently.
+
+24
+00:00:49,000 --> 00:00:50,750
+It does not block the writers.
+
+25
+00:00:50,750 --> 00:00:53,180
+You can run one background
+creation at a
+
+26
+00:00:53,180 --> 00:00:54,930
+time within the database.
+
+27
+00:00:54,930 --> 00:00:57,820
+Now the question is, which
+one should you choose?
+
+28
+00:00:57,820 --> 00:00:59,500
+Well, it depends on
+your situation.
+
+29
+00:00:59,500 --> 00:01:02,390
+But if you're all by yourself
+and you're just working in
+
+30
+00:01:02,390 --> 00:01:03,440
+development--
+
+31
+00:01:03,440 --> 00:01:05,190
+there isn't a production
+system--
+
+32
+00:01:05,190 --> 00:01:07,880
+pretty good chance you'd prefer
+to use a foreground
+
+33
+00:01:07,880 --> 00:01:09,790
+index because it's
+going to be fast.
+
+34
+00:01:09,790 --> 00:01:12,000
+And that's the default when
+you create an index.
+
+35
+00:01:12,000 --> 00:01:15,580
+EnsureIndex in the second
+document background--
+
+36
+00:01:15,580 --> 00:01:17,940
+you just leave background out
+and it'll be false by default
+
+37
+00:01:17,940 --> 00:01:21,360
+in which case it'll be running
+in the foreground.
+
+38
+00:01:21,360 --> 00:01:23,010
+On the other hand, if you're
+running in a production
+
+39
+00:01:23,010 --> 00:01:25,510
+system, and you know that there
+are other writers in the
+
+40
+00:01:25,510 --> 00:01:28,570
+same database, you basically
+have to run it in the
+
+41
+00:01:28,570 --> 00:01:30,300
+background or you're going
+to block everyone else.
+
+42
+00:01:30,300 --> 00:01:32,120
+And that's going
+to be terrible.
+
+43
+00:01:32,120 --> 00:01:34,890
+There is a way around that, and
+we haven't gotten to yet.
+
+44
+00:01:34,890 --> 00:01:36,670
+It's kind of in the DBA zone and
+we're not going to talk a
+
+45
+00:01:36,670 --> 00:01:37,920
+lot about it in this course.
+
+46
+00:01:37,920 --> 00:01:42,070
+But if you are running in a
+replicated system, which is
+
+47
+00:01:42,070 --> 00:01:44,410
+the way we recommend running
+production systems in Mongo--
+
+48
+00:01:44,410 --> 00:01:48,330
+a replica set, where you've
+got multiple instances of
+
+49
+00:01:48,330 --> 00:01:50,330
+mongod with the same data.
+
+50
+00:01:50,330 --> 00:01:53,470
+And they're all being kept in
+sync through replication.
+
+51
+00:01:53,470 --> 00:01:55,780
+Then it's possible, if you
+want to get fast index
+
+52
+00:01:55,780 --> 00:01:59,400
+creation, that you can pull one
+of your servers out of the
+
+53
+00:01:59,400 --> 00:02:02,600
+replica set and then the
+requests will only go to these
+
+54
+00:02:02,600 --> 00:02:03,300
+two servers.
+
+55
+00:02:03,300 --> 00:02:07,200
+And while that's happening, you
+can build the index here
+
+56
+00:02:07,200 --> 00:02:09,860
+in the foreground where it's
+fast, and you can bring this
+
+57
+00:02:09,860 --> 00:02:12,320
+instance back into the replica
+set and it'll get updated.
+
+58
+00:02:12,320 --> 00:02:15,970
+So that would be a way to run it
+in the foreground even on a
+
+59
+00:02:15,970 --> 00:02:18,310
+production system and get great
+performance but not
+
+60
+00:02:18,310 --> 00:02:19,440
+block your other writers.
+
+61
+00:02:19,440 --> 00:02:22,800
+But beyond that possibility, you
+probably, in a production
+
+62
+00:02:22,800 --> 00:02:25,320
+system, are going to run it in
+the background, and if you're
+
+63
+00:02:25,320 --> 00:02:27,910
+just in development, likely
+in the foreground.
+
+64
+00:02:27,910 --> 00:02:30,500
+OK, it is time for a quiz.
+
+65
+00:02:30,500 --> 00:02:32,160
+Which things are true about
+creating an index in the
+
+66
+00:02:32,160 --> 00:02:33,350
+background in MongoDB?
+
+67
+00:02:33,350 --> 00:02:34,890
+Check all that apply.
+
+68
+00:02:34,890 --> 00:02:37,060
+A mongod instance can only build
+one background index at
+
+69
+00:02:37,060 --> 00:02:39,040
+a time per database.
+
+70
+00:02:39,040 --> 00:02:40,640
+Although the database server
+will continue to take
+
+71
+00:02:40,640 --> 00:02:42,920
+requests, a background index
+creation still blocks the
+
+72
+00:02:42,920 --> 00:02:45,510
+mongo shell that you are using
+to create the index.
+
+73
+00:02:45,510 --> 00:02:47,160
+Creating an index in the
+background takes longer than
+
+74
+00:02:47,160 --> 00:02:48,980
+creating it in the foreground.
+
+75
+00:02:48,980 --> 00:02:51,050
+In Mongo 2.2 and above, indexes
+are created in the
+
+76
+00:02:51,050 --> 00:02:52,300
+background by default.
