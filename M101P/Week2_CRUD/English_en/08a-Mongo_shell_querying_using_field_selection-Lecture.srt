@@ -1,0 +1,229 @@
+1
+00:00:00,000 --> 00:00:00,110
+
+2
+00:00:00,110 --> 00:00:02,180
+Let's learn more about
+the Find method.
+
+3
+00:00:02,180 --> 00:00:04,180
+As we already learned about
+"findone" method, the Find
+
+4
+00:00:04,180 --> 00:00:05,740
+method can take a couple
+of arguments.
+
+5
+00:00:05,740 --> 00:00:08,530
+The first argument specifies
+what documents to return in
+
+6
+00:00:08,530 --> 00:00:11,140
+the query, similar to a
+WHERE clause in SQL.
+
+7
+00:00:11,140 --> 00:00:13,680
+For instance, I can retrieve
+just those documents where the
+
+8
+00:00:13,680 --> 00:00:16,320
+field type is "essay." And here
+we see a bunch of essays
+
+9
+00:00:16,320 --> 00:00:17,280
+with scores.
+
+10
+00:00:17,280 --> 00:00:20,370
+Alternatively, I could select
+just those where the student
+
+11
+00:00:20,370 --> 00:00:21,650
+is student number 19.
+
+12
+00:00:21,650 --> 00:00:23,950
+And there are three of those, as
+the logic of the insertion
+
+13
+00:00:23,950 --> 00:00:25,510
+that we did before provides.
+
+14
+00:00:25,510 --> 00:00:29,330
+If I want to conjoin multiple
+clauses, I can by specifying
+
+15
+00:00:29,330 --> 00:00:31,650
+multiple field and value
+pairs in the first
+
+16
+00:00:31,650 --> 00:00:32,680
+argument to the Find.
+
+17
+00:00:32,680 --> 00:00:34,695
+In this case, I'm getting the
+document where the student ID
+
+18
+00:00:34,695 --> 00:00:36,980
+is 19 and the type is "essay."
+
+19
+00:00:36,980 --> 00:00:39,250
+In fact, this is an
+important detail.
+
+20
+00:00:39,250 --> 00:00:41,460
+When multiple fields are given
+in the document that's in the
+
+21
+00:00:41,460 --> 00:00:44,610
+first argument to find, the
+meaning of that query, to the
+
+22
+00:00:44,610 --> 00:00:47,950
+Find, is that both the fields
+have to match whatever the
+
+23
+00:00:47,950 --> 00:00:49,320
+specified criteria are.
+
+24
+00:00:49,320 --> 00:00:51,770
+In this case, the student must
+be equal to 19, and the type
+
+25
+00:00:51,770 --> 00:00:54,740
+must be equal to the string
+"essay." Further, Find can
+
+26
+00:00:54,740 --> 00:00:57,260
+take a second argument just
+as "findone" can.
+
+27
+00:00:57,260 --> 00:01:00,090
+The second argument to find
+is also a document and can
+
+28
+00:01:00,090 --> 00:01:03,850
+specify what fields should be
+retrieved from the database.
+
+29
+00:01:03,850 --> 00:01:06,080
+Only those fields will actually
+be sent back to the
+
+30
+00:01:06,080 --> 00:01:08,120
+client application, in
+this case, the shell.
+
+31
+00:01:08,120 --> 00:01:11,580
+For example, I might want to
+retrieve just the score.
+
+32
+00:01:11,580 --> 00:01:14,780
+Again, by default, the _ID will
+be returned, even if I
+
+33
+00:01:14,780 --> 00:01:15,700
+don't ask for it.
+
+34
+00:01:15,700 --> 00:01:18,620
+If I would like not to get the
+_ID back, I can ask for the
+
+35
+00:01:18,620 --> 00:01:23,050
+_ID to be excluded by specifying
+_ID" "false."
+
+36
+00:01:23,050 --> 00:01:25,900
+In this case, I get back just
+the score field from the
+
+37
+00:01:25,900 --> 00:01:29,510
+document where the student ID is
+19 and the type is "essay."
+
+38
+00:01:29,510 --> 00:01:32,870
+There's a lot more to be said
+about the query facilities
+
+39
+00:01:32,870 --> 00:01:35,090
+that are available for the first
+argument to find, but
+
+40
+00:01:35,090 --> 00:01:37,690
+not a whole lot more to be said
+about the second argument
+
+41
+00:01:37,690 --> 00:01:40,220
+to find, so we might not be
+revisiting it very much for
+
+42
+00:01:40,220 --> 00:01:41,720
+the rest of this course.
+
+43
+00:01:41,720 --> 00:01:42,020
+OK.
+
+44
+00:01:42,020 --> 00:01:43,190
+Let's have a quiz.
+
+45
+00:01:43,190 --> 00:01:45,740
+Supposing a scores collection
+similar to the one that we've
+
+46
+00:01:45,740 --> 00:01:48,030
+just presented, how would you
+find all documents with an
+
+47
+00:01:48,030 --> 00:01:51,550
+essay score that's equal to 50
+and retrieve only the student
+
+48
+00:01:51,550 --> 00:01:52,800
+field from these documents?
+
+49
+00:01:52,800 --> 00:01:54,040

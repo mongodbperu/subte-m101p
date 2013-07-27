@@ -1,0 +1,393 @@
+1
+00:00:00,000 --> 00:00:00,420
+
+2
+00:00:00,420 --> 00:00:02,270
+Let's learn how to put multiple
+queries together with
+
+3
+00:00:02,270 --> 00:00:03,780
+a logical connective.
+
+4
+00:00:03,780 --> 00:00:06,250
+We've already seen how you can
+perform queries based on
+
+5
+00:00:06,250 --> 00:00:09,610
+numeric equality and numeric
+inequality, string equality,
+
+6
+00:00:09,610 --> 00:00:13,530
+string inequality, regular
+expressions over strings, and
+
+7
+00:00:13,530 --> 00:00:16,360
+comparisons of whether a field
+has a particular type, and
+
+8
+00:00:16,360 --> 00:00:17,940
+whether a field exists.
+
+9
+00:00:17,940 --> 00:00:19,950
+Sometimes you want a union
+of these sorts
+
+10
+00:00:19,950 --> 00:00:20,970
+of complicated queries.
+
+11
+00:00:20,970 --> 00:00:24,580
+That is, any document that
+matches some criteria, or some
+
+12
+00:00:24,580 --> 00:00:25,460
+other criteria.
+
+13
+00:00:25,460 --> 00:00:28,710
+And indeed, MongoDB offers you
+an operator to do this.
+
+14
+00:00:28,710 --> 00:00:31,160
+For example, in the people
+collection, if you wanted to
+
+15
+00:00:31,160 --> 00:00:34,680
+find all of those people whose
+names ended with an e, or who
+
+16
+00:00:34,680 --> 00:00:38,610
+had an age, you can do so using
+the dollar or operator.
+
+17
+00:00:38,610 --> 00:00:41,460
+What that looks like is
+something like this.
+
+18
+00:00:41,460 --> 00:00:43,780
+The dollar or operator, unlike
+the rest of the query
+
+19
+00:00:43,780 --> 00:00:47,060
+operators that we've seen so
+far, is a prefix operator.
+
+20
+00:00:47,060 --> 00:00:49,520
+It comes before the sub-queries
+that it's going to
+
+21
+00:00:49,520 --> 00:00:50,690
+connect together.
+
+22
+00:00:50,690 --> 00:00:54,370
+It takes as a kind of operand,
+an array whose elements are
+
+23
+00:00:54,370 --> 00:00:56,840
+themselves queries that you
+could give separately, and it
+
+24
+00:00:56,840 --> 00:00:59,680
+computes the set of all those
+documents that match any of
+
+25
+00:00:59,680 --> 00:01:01,670
+the queries in the array.
+
+26
+00:01:01,670 --> 00:01:04,769
+So for example, what's on the
+screen shows that the name
+
+27
+00:01:04,769 --> 00:01:07,600
+should match the regular
+expression ends with e, and
+
+28
+00:01:07,600 --> 00:01:09,540
+the age should exist.
+
+29
+00:01:09,540 --> 00:01:11,800
+So either of those criteria
+must hold in order for a
+
+30
+00:01:11,800 --> 00:01:13,360
+document to be returned.
+
+31
+00:01:13,360 --> 00:01:16,820
+And so we see the result has the
+documents where the ages
+
+32
+00:01:16,820 --> 00:01:19,320
+is 30 or 35, that's
+Smith and Jones.
+
+33
+00:01:19,320 --> 00:01:22,370
+And it has those documents whose
+names end with e, such
+
+34
+00:01:22,370 --> 00:01:23,950
+as Alice, Charlie, and Dave.
+
+35
+00:01:23,950 --> 00:01:26,360
+As you can see, our query
+documents get somewhat
+
+36
+00:01:26,360 --> 00:01:27,320
+complicated here.
+
+37
+00:01:27,320 --> 00:01:29,930
+There's a bit of closed
+bracketing messiness on the
+
+38
+00:01:29,930 --> 00:01:31,670
+right hand side of the screen.
+
+39
+00:01:31,670 --> 00:01:33,710
+Some people find this stuff a
+little bit difficult to adjust
+
+40
+00:01:33,710 --> 00:01:36,620
+to, but it only takes, in my
+experience, a few hours, or
+
+41
+00:01:36,620 --> 00:01:38,960
+perhaps a couple of days to
+become familiar with what you
+
+42
+00:01:38,960 --> 00:01:40,070
+need to key in here.
+
+43
+00:01:40,070 --> 00:01:43,790
+Remember that the goal is to
+close off JSON objects in a
+
+44
+00:01:43,790 --> 00:01:45,510
+syntactically correct manner.
+
+45
+00:01:45,510 --> 00:01:47,680
+The shell, in fact, can
+help you with this.
+
+46
+00:01:47,680 --> 00:01:50,020
+You may or may not have noticed,
+but as the cursor
+
+47
+00:01:50,020 --> 00:01:53,170
+moves around, when the cursor
+is over a grouping symbol,
+
+48
+00:01:53,170 --> 00:01:56,470
+such as a parenthesis, or a
+brace or a bracket, the
+
+49
+00:01:56,470 --> 00:01:59,570
+corresponding grouping symbol
+is highlighted in a
+
+50
+00:01:59,570 --> 00:02:01,190
+kind of dark blue.
+
+51
+00:02:01,190 --> 00:02:03,820
+At the moment, my cursor is over
+the left parenthesis at
+
+52
+00:02:03,820 --> 00:02:07,010
+the right hand side of this
+JavaScript line, and the
+
+53
+00:02:07,010 --> 00:02:08,930
+corresponding open parenthesis
+on the left
+
+54
+00:02:08,930 --> 00:02:10,570
+hand side is in blue.
+
+55
+00:02:10,570 --> 00:02:13,680
+As I continue to move backwards,
+further and further
+
+56
+00:02:13,680 --> 00:02:16,600
+grouping symbols inside the
+JavaScript expression are
+
+57
+00:02:16,600 --> 00:02:18,270
+being highlighted in blue.
+
+58
+00:02:18,270 --> 00:02:20,280
+This can be somewhat useful to
+help you check some whether
+
+59
+00:02:20,280 --> 00:02:21,820
+you've gotten the
+matching right.
+
+60
+00:02:21,820 --> 00:02:24,420
+As a side detail, if you get
+the matching wrong, for
+
+61
+00:02:24,420 --> 00:02:27,590
+example, if I take out, say
+the square bracket that's
+
+62
+00:02:27,590 --> 00:02:29,690
+supposed to close off the array
+that goes along with the
+
+63
+00:02:29,690 --> 00:02:32,680
+or, JavaScript will print
+out dot, dot, dot.
+
+64
+00:02:32,680 --> 00:02:35,680
+This dot, dot, dot means that
+its input was incomplete.
+
+65
+00:02:35,680 --> 00:02:38,590
+As it happens, there's no way
+that I can correctly complete
+
+66
+00:02:38,590 --> 00:02:40,940
+this expression, because I've
+left out a grouping symbol
+
+67
+00:02:40,940 --> 00:02:43,160
+that was very deep inside
+the document that I
+
+68
+00:02:43,160 --> 00:02:44,530
+was trying to construct.
+
+69
+00:02:44,530 --> 00:02:46,940
+In order to exit from
+JavaScript's attempts to parse
+
+70
+00:02:46,940 --> 00:02:50,080
+this fragment, I can hit enter
+twice, in which case the
+
+71
+00:02:50,080 --> 00:02:51,340
+prompt will return.
+
+72
+00:02:51,340 --> 00:02:53,840
+At that point, I could try to
+re-key the query, or whatever
+
+73
+00:02:53,840 --> 00:02:56,290
+it was that I was not able
+to complete correctly.
+
+74
+00:02:56,290 --> 00:03:00,730
+So again, to recap, the dollar
+or operator takes an array,
+
+75
+00:03:00,730 --> 00:03:03,160
+and the array contains
+documents.
+
+76
+00:03:03,160 --> 00:03:05,990
+Each document is treated
+as a separate query.
+
+77
+00:03:05,990 --> 00:03:08,900
+And the dollar or operator
+matches is any document that
+
+78
+00:03:08,900 --> 00:03:11,530
+matches any of those queries
+inside the array.
+
+79
+00:03:11,530 --> 00:03:15,080
+And so it in effect computes
+the union of these queries.
+
+80
+00:03:15,080 --> 00:03:16,680
+If you've got all that,
+let's have a quiz.
+
+81
+00:03:16,680 --> 00:03:19,770
+How would you write a query to
+find all documents in the
+
+82
+00:03:19,770 --> 00:03:23,490
+scores collection, where the
+score field is less than 50,
+
+83
+00:03:23,490 --> 00:03:26,150
+or greater than 90?

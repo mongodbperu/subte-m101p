@@ -1,0 +1,67 @@
+1
+00:00:00,000 --> 00:00:00,800
+That's right.
+
+2
+00:00:00,800 --> 00:00:02,660
+This week, we're going to go
+over the basic document
+
+3
+00:00:02,660 --> 00:00:05,260
+Creation Retrieval Modification
+and Removal
+
+4
+00:00:05,260 --> 00:00:08,000
+Operations, AKA the
+CRUD operations.
+
+5
+00:00:08,000 --> 00:00:10,170
+We will learn some features of
+the MongoDB shell, which is
+
+6
+00:00:10,170 --> 00:00:12,600
+called Mongo, and we'll
+understand how to manipulate
+
+7
+00:00:12,600 --> 00:00:14,190
+documents from Python.
+
+8
+00:00:14,190 --> 00:00:16,900
+We're not going to go into
+detail this week of the
+
+9
+00:00:16,900 --> 00:00:19,060
+performance of MongoDB
+operations or how to measure
+
+10
+00:00:19,060 --> 00:00:22,820
+that performance, or how to do
+analytic-type operations over
+
+11
+00:00:22,820 --> 00:00:23,680
+MongoDB collections--
+
+12
+00:00:23,680 --> 00:00:25,050
+that is to say aggregation-type
+
+13
+00:00:25,050 --> 00:00:25,890
+functionality.
+
+14
+00:00:25,890 --> 00:00:27,140
+We'll cover those later
+in the course.
+
+15
+00:00:27,140 --> 00:00:28,360

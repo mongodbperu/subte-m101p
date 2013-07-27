@@ -1,0 +1,278 @@
+1
+00:00:00,000 --> 00:00:00,420
+
+2
+00:00:00,420 --> 00:00:02,380
+Let's go a little bit further
+into our examination of
+
+3
+00:00:02,380 --> 00:00:05,770
+querying for arrays by finding
+out about one more operator
+
+4
+00:00:05,770 --> 00:00:08,580
+that's specific to looking
+at array contents.
+
+5
+00:00:08,580 --> 00:00:11,080
+Just as a reminder, we have the
+following in our accounts
+
+6
+00:00:11,080 --> 00:00:12,080
+collection.
+
+7
+00:00:12,080 --> 00:00:14,700
+Let's embellish it slightly
+by adding some more data.
+
+8
+00:00:14,700 --> 00:00:17,500
+At this point, we have a handful
+of accounts containing
+
+9
+00:00:17,500 --> 00:00:20,200
+various combinations
+of favorites.
+
+10
+00:00:20,200 --> 00:00:22,640
+Again, as a reminder, if it's
+a little hard to read these
+
+11
+00:00:22,640 --> 00:00:24,560
+things because they're longer
+than the width of the
+
+12
+00:00:24,560 --> 00:00:27,920
+terminal, you can tack dot
+pretty on to the Find
+
+13
+00:00:27,920 --> 00:00:30,790
+operation in order to get them
+to print out in a slightly
+
+14
+00:00:30,790 --> 00:00:32,270
+more indented format.
+
+15
+00:00:32,270 --> 00:00:35,120
+So we have a variety of
+combinations of favorites.
+
+16
+00:00:35,120 --> 00:00:37,320
+Suppose you wanted to query for
+all those documents that
+
+17
+00:00:37,320 --> 00:00:40,950
+have both pretzels and beer
+in the favorites array.
+
+18
+00:00:40,950 --> 00:00:42,800
+Well, there's an operator
+for that.
+
+19
+00:00:42,800 --> 00:00:48,570
+The $all operator matches any
+document that has all of the
+
+20
+00:00:48,570 --> 00:00:51,730
+specified elements inside the
+array in the field that you're
+
+21
+00:00:51,730 --> 00:00:52,760
+looking at.
+
+22
+00:00:52,760 --> 00:00:55,960
+And the operand to the $all
+operator is a array.
+
+23
+00:00:55,960 --> 00:00:58,510
+And the elements inside that
+array can occur in any order
+
+24
+00:00:58,510 --> 00:01:01,050
+in the corresponding field
+in the documents.
+
+25
+00:01:01,050 --> 00:01:05,069
+So for example, Howard has
+favorites pretzels comma beer
+
+26
+00:01:05,069 --> 00:01:06,060
+in that order.
+
+27
+00:01:06,060 --> 00:01:09,240
+But Irving has favorites beer
+comma pretzels comma cheese in
+
+28
+00:01:09,240 --> 00:01:10,320
+that order.
+
+29
+00:01:10,320 --> 00:01:12,940
+Another way of putting it is
+that the operand on the
+
+30
+00:01:12,940 --> 00:01:17,160
+right-hand side of the $all in
+the query has to be a subset--
+
+31
+00:01:17,160 --> 00:01:20,920
+possibly not a strict subset,
+possibly equal to the set--
+
+32
+00:01:20,920 --> 00:01:24,220
+of the things that are the
+values in the field that's
+
+33
+00:01:24,220 --> 00:01:26,480
+queried for in the Find.
+
+34
+00:01:26,480 --> 00:01:29,770
+That is to say, Favorites has
+to contain beer and pretzels
+
+35
+00:01:29,770 --> 00:01:32,550
+in any order and may contain
+some other things.
+
+36
+00:01:32,550 --> 00:01:34,910
+Finally, there's one more
+operator that has to do
+
+37
+00:01:34,910 --> 00:01:36,120
+tangentially with arrays.
+
+38
+00:01:36,120 --> 00:01:38,230
+Although it's not specifically
+about querying inside of
+
+39
+00:01:38,230 --> 00:01:41,330
+arrays, although you can use it
+with the feature that Mongo
+
+40
+00:01:41,330 --> 00:01:43,050
+has to look into arrays.
+
+41
+00:01:43,050 --> 00:01:46,450
+Specifically, just like in SQL,
+Mongo's query language
+
+42
+00:01:46,450 --> 00:01:50,320
+has an operator $in, which takes
+a list of strings and
+
+43
+00:01:50,320 --> 00:01:53,040
+returns only those documents
+where the corresponding
+
+44
+00:01:53,040 --> 00:01:54,890
+field-- in this case, Name--
+
+45
+00:01:54,890 --> 00:01:57,330
+has a value that's either
+Howard or John.
+
+46
+00:01:57,330 --> 00:01:59,550
+That is to say, it's an
+enumeration of all the values
+
+47
+00:01:59,550 --> 00:02:01,450
+that you're looking for
+for the given field.
+
+48
+00:02:01,450 --> 00:02:04,570
+This feature composes, in a
+hopefully intuitive fashion,
+
+49
+00:02:04,570 --> 00:02:07,790
+with the examination inside
+of arrays that you've just
+
+50
+00:02:07,790 --> 00:02:09,639
+learned that MongoDB does.
+
+51
+00:02:09,639 --> 00:02:13,380
+So for example, if I look for
+favorites $in beer or ice
+
+52
+00:02:13,380 --> 00:02:16,500
+cream, I should find any
+document having a Favorites
+
+53
+00:02:16,500 --> 00:02:20,790
+field that contains beer
+or contains ice cream.
+
+54
+00:02:20,790 --> 00:02:23,140
+And that appears to
+specify everybody.
+
+55
+00:02:23,140 --> 00:02:25,110
+OK, let's have a quiz.
+
+56
+00:02:25,110 --> 00:02:28,100
+Which of the following documents
+matches this query?
+
+57
+00:02:28,100 --> 00:02:35,230
+db.users.find, friends, $all
+of Joe, Bob, favorites $in
+
+58
+00:02:35,230 --> 00:02:36,480
+running, pickles.
+
+59
+00:02:36,480 --> 00:02:37,400

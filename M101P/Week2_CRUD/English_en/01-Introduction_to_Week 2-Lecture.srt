@@ -1,0 +1,59 @@
+1
+00:00:00,000 --> 00:00:00,510
+
+2
+00:00:00,510 --> 00:00:04,550
+Welcome to week 2 of M101P,
+MongoDB for Developers.
+
+3
+00:00:04,550 --> 00:00:07,430
+This week, we're going to be
+going over how to get data
+
+4
+00:00:07,430 --> 00:00:09,740
+into the database and how to
+take it back out, how to
+
+5
+00:00:09,740 --> 00:00:11,590
+update it, and how
+to delete it.
+
+6
+00:00:11,590 --> 00:00:14,590
+I'm doing this week by Richard
+Kreuter one of our lead
+
+7
+00:00:14,590 --> 00:00:16,219
+consulting engineers.
+
+8
+00:00:16,219 --> 00:00:19,050
+He's going to go through how to
+put data in a database and
+
+9
+00:00:19,050 --> 00:00:21,670
+take it back out from
+the Mongo shell.
+
+10
+00:00:21,670 --> 00:00:24,240
+And then after that, I'm going
+to go through the same
+
+11
+00:00:24,240 --> 00:00:27,900
+operations but using
+Python and PyMongo.
+
+12
+00:00:27,900 --> 00:00:30,210
+It should be a fun week,
+so let's get started.
+
+13
+00:00:30,210 --> 00:00:31,460

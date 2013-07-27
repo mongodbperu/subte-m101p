@@ -1,0 +1,575 @@
+1
+00:00:00,000 --> 00:00:00,130
+
+2
+00:00:00,130 --> 00:00:02,420
+Now before we go into too much
+detail about how you can do
+
+3
+00:00:02,420 --> 00:00:04,976
+things in the database using
+the Mongo shell, we have to
+
+4
+00:00:04,976 --> 00:00:07,630
+talk a little bit about how
+MongoDB actually represents
+
+5
+00:00:07,630 --> 00:00:10,820
+data, and how you can understand
+how the Mongo shell
+
+6
+00:00:10,820 --> 00:00:12,170
+interprets that data
+when it gets it
+
+7
+00:00:12,170 --> 00:00:13,380
+back from the database.
+
+8
+00:00:13,380 --> 00:00:15,290
+As you already know,
+MongoDB is a
+
+9
+00:00:15,290 --> 00:00:16,690
+document-oriented database.
+
+10
+00:00:16,690 --> 00:00:19,300
+What this actually means is
+that MongoDB's fundamental
+
+11
+00:00:19,300 --> 00:00:22,510
+record type is a kind of nested
+dictionary of key value
+
+12
+00:00:22,510 --> 00:00:23,430
+associations.
+
+13
+00:00:23,430 --> 00:00:26,500
+As a matter of programming
+language convenience, we map
+
+14
+00:00:26,500 --> 00:00:29,150
+the documents that come out of
+MongoDB to objects in the
+
+15
+00:00:29,150 --> 00:00:31,890
+programming language that can
+represent these kinds of key
+
+16
+00:00:31,890 --> 00:00:33,200
+value associations.
+
+17
+00:00:33,200 --> 00:00:36,110
+In JavaScript, the type of
+object that represents these
+
+18
+00:00:36,110 --> 00:00:37,890
+kinds of key value associations
+is called a
+
+19
+00:00:37,890 --> 00:00:39,220
+JavaScript object.
+
+20
+00:00:39,220 --> 00:00:43,420
+So, for example, if I define the
+variable "obj," O-B-J, to
+
+21
+00:00:43,420 --> 00:00:48,470
+be equal to a "1," b "hello," c
+"apples, tomatoes," then the
+
+22
+00:00:48,470 --> 00:00:52,020
+value of the variable "obj"
+is suitable for use
+
+23
+00:00:52,020 --> 00:00:53,900
+as a MongoDB document.
+
+24
+00:00:53,900 --> 00:00:56,440
+What I mean by that is that we
+can take this JavaScript
+
+25
+00:00:56,440 --> 00:00:59,790
+object and put it into the
+database for safekeeping.
+
+26
+00:00:59,790 --> 00:01:03,280
+As it happens, though JavaScript
+uses a syntax
+
+27
+00:01:03,280 --> 00:01:05,630
+that's very similar to
+the JSON Syntax--
+
+28
+00:01:05,630 --> 00:01:08,220
+in fact, JSON Syntax was
+inspired by the syntax of
+
+29
+00:01:08,220 --> 00:01:09,300
+JavaScript--
+
+30
+00:01:09,300 --> 00:01:13,110
+MongoDB internally, doesn't use
+this stringy syntax for
+
+31
+00:01:13,110 --> 00:01:14,540
+storing or retrieving data.
+
+32
+00:01:14,540 --> 00:01:17,920
+Instead, MongoDB uses a binary
+representation for the data
+
+33
+00:01:17,920 --> 00:01:19,100
+inside of documents.
+
+34
+00:01:19,100 --> 00:01:21,680
+The specification for the binary
+representation that
+
+35
+00:01:21,680 --> 00:01:24,590
+MongoDB uses is given
+at BSONspec.org.
+
+36
+00:01:24,590 --> 00:01:27,610
+We call our binary format BSON,
+which stands for Binary
+
+37
+00:01:27,610 --> 00:01:30,480
+JSON, and in effect, this is a
+serialization format that's
+
+38
+00:01:30,480 --> 00:01:32,730
+designed to represent a superset
+of what can be
+
+39
+00:01:32,730 --> 00:01:34,760
+transcribed in JSON Syntax.
+
+40
+00:01:34,760 --> 00:01:37,360
+The exact specification
+is given here.
+
+41
+00:01:37,360 --> 00:01:40,560
+The basic data types that BSON
+supports are, of course, a
+
+42
+00:01:40,560 --> 00:01:42,700
+superset of those that
+JSON supports--
+
+43
+00:01:42,700 --> 00:01:45,840
+double precision floating point
+numbers, string values,
+
+44
+00:01:45,840 --> 00:01:49,280
+where string means a sequence of
+validly encoded UTF-8 code
+
+45
+00:01:49,280 --> 00:01:53,070
+units, embedded documents,
+that is to say, nested
+
+46
+00:01:53,070 --> 00:01:57,380
+objects, embedded arrays, that
+is to say, nested objects
+
+47
+00:01:57,380 --> 00:02:02,030
+whose keys are the integers
+0, 1, 2, 3, et cetera, the
+
+48
+00:02:02,030 --> 00:02:05,550
+Boolean Values false and true,
+and the null value.
+
+49
+00:02:05,550 --> 00:02:07,770
+These are the basic data
+types of JSON.
+
+50
+00:02:07,770 --> 00:02:10,520
+But BSON goes a little bit
+further by adding a binary
+
+51
+00:02:10,520 --> 00:02:13,940
+data type, a data type called
+Object ID, which is used for
+
+52
+00:02:13,940 --> 00:02:16,940
+unique identification of things,
+a date-time type,
+
+53
+00:02:16,940 --> 00:02:21,250
+which represents time since
+January 1, 1970, a 32-bit
+
+54
+00:02:21,250 --> 00:02:24,950
+integer type and a 64-bit
+integer type, and a few other
+
+55
+00:02:24,950 --> 00:02:28,080
+types, which are mostly only
+used for internal purposes,
+
+56
+00:02:28,080 --> 00:02:31,180
+such as regular expressions in
+the query protocol and time
+
+57
+00:02:31,180 --> 00:02:33,410
+stamps for replication
+purposes.
+
+58
+00:02:33,410 --> 00:02:37,240
+These data types, which go
+beyond the JSON specification,
+
+59
+00:02:37,240 --> 00:02:39,450
+correspond to types available
+in various programming
+
+60
+00:02:39,450 --> 00:02:42,390
+languages or else have some sort
+of special handling in
+
+61
+00:02:42,390 --> 00:02:43,880
+those programming languages.
+
+62
+00:02:43,880 --> 00:02:45,470
+Let me show you what
+I mean by that.
+
+63
+00:02:45,470 --> 00:02:48,060
+In the shell, we use the
+JavaScript language.
+
+64
+00:02:48,060 --> 00:02:51,090
+The JavaScript language has
+support for numbers, which are
+
+65
+00:02:51,090 --> 00:02:55,280
+interpreted as double floats,
+strings, which are interpreted
+
+66
+00:02:55,280 --> 00:02:58,850
+as UTF-8 strings, arrays,
+objects, true, false,
+
+67
+00:02:58,850 --> 00:03:00,270
+null, and so on.
+
+68
+00:03:00,270 --> 00:03:03,950
+To represent an exact integer
+value in the Mongo shell, we
+
+69
+00:03:03,950 --> 00:03:05,270
+provide a constructor.
+
+70
+00:03:05,270 --> 00:03:08,890
+"Number/Int" gives you a 32-bit
+value and prints out
+
+71
+00:03:08,890 --> 00:03:12,140
+using the constructor syntax so
+that you can cut and paste
+
+72
+00:03:12,140 --> 00:03:14,950
+easily without losing any
+numeric precision.
+
+73
+00:03:14,950 --> 00:03:18,330
+"Number/Long" gets you 64-bit
+integer values.
+
+74
+00:03:18,330 --> 00:03:20,500
+And we support at least some
+arithmetic on these things, as
+
+75
+00:03:20,500 --> 00:03:23,400
+well, though we might not
+exactly round trip without
+
+76
+00:03:23,400 --> 00:03:24,480
+some loss of precision.
+
+77
+00:03:24,480 --> 00:03:27,550
+For instance, adding two
+Number/Longs appears to give
+
+78
+00:03:27,550 --> 00:03:30,210
+us a regular old JavaScript
+number, which will be a double
+
+79
+00:03:30,210 --> 00:03:31,700
+precision floating point
+value when it gets
+
+80
+00:03:31,700 --> 00:03:32,890
+back into the database.
+
+81
+00:03:32,890 --> 00:03:35,820
+So be careful when you use
+programs in a language like
+
+82
+00:03:35,820 --> 00:03:39,650
+JavaScript or Perl which might
+not have the expressiveness or
+
+83
+00:03:39,650 --> 00:03:42,070
+the type expressiveness to
+faithfully represent all of
+
+84
+00:03:42,070 --> 00:03:44,060
+the types that MongoDB
+can store.
+
+85
+00:03:44,060 --> 00:03:47,090
+Similarly, JavaScript's
+date-time types are
+
+86
+00:03:47,090 --> 00:03:49,880
+represented with a JavaScript
+date object, which, for
+
+87
+00:03:49,880 --> 00:03:51,910
+reasons having to do with
+esoteric details of
+
+88
+00:03:51,910 --> 00:03:53,820
+JavaScript, we print
+out with the
+
+89
+00:03:53,820 --> 00:03:55,450
+constructor we call ISO date.
+
+90
+00:03:55,450 --> 00:03:58,890
+This constructor always gets you
+a new date object with a
+
+91
+00:03:58,890 --> 00:04:00,780
+particular timestamp inside
+it, which is somewhat
+
+92
+00:04:00,780 --> 00:04:02,810
+different from what the apparent
+date constructor does
+
+93
+00:04:02,810 --> 00:04:04,200
+in the JavaScript language.
+
+94
+00:04:04,200 --> 00:04:06,980
+So to construct an object in
+JavaScript that contains
+
+95
+00:04:06,980 --> 00:04:10,000
+numbers that are fixed precision
+integers or that
+
+96
+00:04:10,000 --> 00:04:12,990
+contain dates such as the one
+that's currently on the
+
+97
+00:04:12,990 --> 00:04:15,680
+screen, you can use these
+constructor syntax's.
+
+98
+00:04:15,680 --> 00:04:18,450
+In this way, the JavaScript
+shell can, more or less,
+
+99
+00:04:18,450 --> 00:04:20,250
+faithfully handle all of the
+data that comes out of the
+
+100
+00:04:20,250 --> 00:04:22,710
+database, and allow you to
+input, more or less, all of
+
+101
+00:04:22,710 --> 00:04:23,910
+the data types that you're
+likely to want
+
+102
+00:04:23,910 --> 00:04:24,930
+to store the database.
+
+103
+00:04:24,930 --> 00:04:27,450
+I say more or less only in
+that it appears that the
+
+104
+00:04:27,450 --> 00:04:29,590
+arithmetic operations that are
+available might not preserve
+
+105
+00:04:29,590 --> 00:04:31,020
+numeric type information.
+
+106
+00:04:31,020 --> 00:04:34,410
+In any case, the main idea is
+that MongoDB actually traffics
+
+107
+00:04:34,410 --> 00:04:36,230
+internally in a binary
+representation
+
+108
+00:04:36,230 --> 00:04:37,410
+which we call BSON.
+
+109
+00:04:37,410 --> 00:04:39,850
+The BSON representation supports
+the basic data types
+
+110
+00:04:39,850 --> 00:04:41,210
+that MongoDB contains.
+
+111
+00:04:41,210 --> 00:04:43,700
+The BSON specification
+incorporates all of the types
+
+112
+00:04:43,700 --> 00:04:47,270
+that JSON can contain, plus a
+few more, and the Mongo shell,
+
+113
+00:04:47,270 --> 00:04:50,440
+as well as all of the drivers
+that can talk to MongoDB,
+
+114
+00:04:50,440 --> 00:04:53,310
+support the various data types
+that BSON supports in some way
+
+115
+00:04:53,310 --> 00:04:54,320
+or another.
+
+116
+00:04:54,320 --> 00:04:54,780
+OK.
+
+117
+00:04:54,780 --> 00:04:55,790
+Let's have a quiz.
+
+118
+00:04:55,790 --> 00:04:57,990
+Which of the following types
+are available in BSON?
+
+119
+00:04:57,990 --> 00:05:01,170
+Strings, floating point numbers,
+complex numbers,
+
+120
+00:05:01,170 --> 00:05:03,160
+arrays, objects, time stamps.
+
+121
+00:05:03,160 --> 00:05:04,410

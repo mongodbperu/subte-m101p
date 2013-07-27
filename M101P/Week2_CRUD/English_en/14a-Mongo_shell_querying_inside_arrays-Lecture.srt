@@ -1,0 +1,362 @@
+1
+00:00:00,000 --> 00:00:00,250
+
+2
+00:00:00,250 --> 00:00:00,830
+OK.
+
+3
+00:00:00,830 --> 00:00:02,440
+Let's start working with
+documents that are slightly
+
+4
+00:00:02,440 --> 00:00:03,960
+more complicated in structure.
+
+5
+00:00:03,960 --> 00:00:06,410
+First, let's create a document
+that has an embedded array
+
+6
+00:00:06,410 --> 00:00:07,620
+inside it somewhere.
+
+7
+00:00:07,620 --> 00:00:11,330
+For example, I've now got two
+documents in a collection
+
+8
+00:00:11,330 --> 00:00:14,230
+called accounts, one for George
+and one for Howard.
+
+9
+00:00:14,230 --> 00:00:17,720
+And George has an embedded
+array for favorites.
+
+10
+00:00:17,720 --> 00:00:19,110
+And the array contains
+the strings
+
+11
+00:00:19,110 --> 00:00:20,630
+ice cream and pretzels.
+
+12
+00:00:20,630 --> 00:00:23,790
+Whereas Howard has an embedded
+array for favorites containing
+
+13
+00:00:23,790 --> 00:00:25,030
+pretzels and beer.
+
+14
+00:00:25,030 --> 00:00:27,510
+Suppose I wanted to query for
+all documents where the
+
+15
+00:00:27,510 --> 00:00:30,300
+favorites array contained
+pretzels.
+
+16
+00:00:30,300 --> 00:00:34,190
+As it happens, MongoDB, in its
+query operations, is somewhat
+
+17
+00:00:34,190 --> 00:00:35,290
+polymorphic.
+
+18
+00:00:35,290 --> 00:00:37,990
+In particular, if I write in the
+following query then you
+
+19
+00:00:37,990 --> 00:00:39,700
+can think of the execution
+of this query as
+
+20
+00:00:39,700 --> 00:00:41,100
+happening as follows--
+
+21
+00:00:41,100 --> 00:00:43,890
+for every document in the
+accounts collection find the
+
+22
+00:00:43,890 --> 00:00:45,440
+field called favorites.
+
+23
+00:00:45,440 --> 00:00:48,580
+If the field called favorites
+has a string value and the
+
+24
+00:00:48,580 --> 00:00:51,580
+string value equals pretzels,
+then the document matches and
+
+25
+00:00:51,580 --> 00:00:53,320
+should be returned
+from this query.
+
+26
+00:00:53,320 --> 00:00:56,120
+If the document has a field
+called favorites and the value
+
+27
+00:00:56,120 --> 00:00:59,630
+of the field favorites is an
+array, then check inside that
+
+28
+00:00:59,630 --> 00:01:02,530
+array to see if any of the
+elements in the array is a
+
+29
+00:01:02,530 --> 00:01:05,160
+string that's equal to
+the string pretzels.
+
+30
+00:01:05,160 --> 00:01:07,500
+In which case, the
+document matches.
+
+31
+00:01:07,500 --> 00:01:11,160
+That is to say, our matching is
+polymorphic over arrays and
+
+32
+00:01:11,160 --> 00:01:12,910
+non-array type values.
+
+33
+00:01:12,910 --> 00:01:15,920
+So when I hit enter, you will
+see querying for pretzels
+
+34
+00:01:15,920 --> 00:01:17,640
+returns both documents.
+
+35
+00:01:17,640 --> 00:01:21,650
+By contrast, querying for beer
+returns only Howard.
+
+36
+00:01:21,650 --> 00:01:25,250
+This is a very common idiom in
+MongoDB to embed an array of
+
+37
+00:01:25,250 --> 00:01:28,990
+things like strings or IDs and
+to query in exactly this
+
+38
+00:01:28,990 --> 00:01:31,830
+fashion for any document that
+has a particular element
+
+39
+00:01:31,830 --> 00:01:33,460
+inside of a particular array.
+
+40
+00:01:33,460 --> 00:01:35,010
+We do this automatically.
+
+41
+00:01:35,010 --> 00:01:37,680
+Now an important thing to
+understand is that there's no
+
+42
+00:01:37,680 --> 00:01:40,010
+generalized recursion
+going on here.
+
+43
+00:01:40,010 --> 00:01:42,120
+The matching is more or
+less exactly as I just
+
+44
+00:01:42,120 --> 00:01:43,110
+described to you.
+
+45
+00:01:43,110 --> 00:01:46,540
+If the field favorites has as
+its corresponding value an
+
+46
+00:01:46,540 --> 00:01:50,070
+array that contains nested
+content within it, none of
+
+47
+00:01:50,070 --> 00:01:53,940
+those nested content is going to
+match the string pretzel or
+
+48
+00:01:53,940 --> 00:01:54,920
+the string beer.
+
+49
+00:01:54,920 --> 00:01:55,300
+are
+
+50
+00:01:55,300 --> 00:01:58,210
+The only level of depth that
+you might say we look at is
+
+51
+00:01:58,210 --> 00:02:02,080
+the top level within the array
+that's the value of favorites.
+
+52
+00:02:02,080 --> 00:02:04,770
+We don't recurse into any
+kind of arbitrary depth.
+
+53
+00:02:04,770 --> 00:02:08,550
+There is no operation in MongoDB
+for recursing to find
+
+54
+00:02:08,550 --> 00:02:10,990
+a particular field with a
+particular value at an
+
+55
+00:02:10,990 --> 00:02:13,190
+arbitrary depth in
+the document.
+
+56
+00:02:13,190 --> 00:02:16,360
+We will look only at the fields
+that you specify or if
+
+57
+00:02:16,360 --> 00:02:19,320
+the corresponding value of the
+field is an array at the top
+
+58
+00:02:19,320 --> 00:02:22,070
+level elements of the array
+that's the value of the field
+
+59
+00:02:22,070 --> 00:02:23,280
+that you specify.
+
+60
+00:02:23,280 --> 00:02:24,770
+Nevertheless, this
+is a very common
+
+61
+00:02:24,770 --> 00:02:26,420
+idiom to use in MongoDB.
+
+62
+00:02:26,420 --> 00:02:28,660
+Of course, this matching can be
+combined with other sorts
+
+63
+00:02:28,660 --> 00:02:32,490
+of matching, for example
+favorites is beer and name
+
+64
+00:02:32,490 --> 00:02:36,720
+greater than H or favorites
+includes pretzels and name is
+
+65
+00:02:36,720 --> 00:02:39,180
+greater than H. And so it
+combines with other query
+
+66
+00:02:39,180 --> 00:02:42,250
+operators or operators on other
+fields in a hopefully
+
+67
+00:02:42,250 --> 00:02:43,910
+intuitive fashion.
+
+68
+00:02:43,910 --> 00:02:44,650
+Did you get that?
+
+69
+00:02:44,650 --> 00:02:46,010
+OK, let's have a quiz.
+
+70
+00:02:46,010 --> 00:02:48,600
+Which of the following four
+documents would be returned by
+
+71
+00:02:48,600 --> 00:02:49,780
+this query?
+
+72
+00:02:49,780 --> 00:02:54,330
+db.product.find tag
+colon shiny.
+
+73
+00:02:54,330 --> 00:03:00,530
+ID 42 name Whizzy Wiz-o-matic
+tags awesome shiny green.
+
+74
+00:03:00,530 --> 00:03:06,770
+ID 704 name Fooey Foo-o-tron
+tags blue mediocre.
+
+75
+00:03:06,770 --> 00:03:13,370
+ID 1040 name Snappy Snap-o-lux
+tags shiny.
+
+76
+00:03:13,370 --> 00:03:16,460
+ID 12345 [? Quaxinator ?]
+
+77
+00:03:16,460 --> 00:03:17,710
+tags the empty array.
+
+78
+00:03:17,710 --> 00:03:18,890

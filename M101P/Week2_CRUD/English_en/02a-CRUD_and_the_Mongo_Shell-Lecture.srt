@@ -1,0 +1,230 @@
+1
+00:00:00,000 --> 00:00:00,210
+
+2
+00:00:00,210 --> 00:00:02,510
+Welcome back to MongoDB
+for developers.
+
+3
+00:00:02,510 --> 00:00:04,350
+This week, we're going
+to cover CRUD
+
+4
+00:00:04,350 --> 00:00:05,610
+and the Mongo shell.
+
+5
+00:00:05,610 --> 00:00:10,860
+CRUD, which stands for create,
+read, update, delete, is a
+
+6
+00:00:10,860 --> 00:00:12,960
+pretty common acronym for
+describing the kinds of
+
+7
+00:00:12,960 --> 00:00:14,510
+manipulations that you
+can perform on
+
+8
+00:00:14,510 --> 00:00:16,280
+the database's records.
+
+9
+00:00:16,280 --> 00:00:20,280
+In MongoDB terminology, we call
+create "insert," we call
+
+10
+00:00:20,280 --> 00:00:24,850
+read "find," we call update
+"update," and we call delete
+
+11
+00:00:24,850 --> 00:00:29,320
+"remove." these are analogous,
+respectively, to SQL operators
+
+12
+00:00:29,320 --> 00:00:32,470
+"insert," "select," "update,"
+and "delete."
+
+13
+00:00:32,470 --> 00:00:35,900
+Now one thing that's important
+to know about MongoDB is that
+
+14
+00:00:35,900 --> 00:00:39,330
+CRUD operations, and indeed, all
+operations that manipulate
+
+15
+00:00:39,330 --> 00:00:43,430
+data in the database, exist
+as methods or functions in
+
+16
+00:00:43,430 --> 00:00:45,430
+programming language APIs.
+
+17
+00:00:45,430 --> 00:00:48,600
+MongoDB does not have its own
+query language analogous to
+
+18
+00:00:48,600 --> 00:00:51,650
+the SQL language that needs to
+be expressed as a string
+
+19
+00:00:51,650 --> 00:00:53,430
+embedded inside a program.
+
+20
+00:00:53,430 --> 00:00:56,750
+Instead, MongoDB has a wire
+protocol, which is relatively
+
+21
+00:00:56,750 --> 00:01:00,420
+simple, that incorporates an
+operation code and arguments
+
+22
+00:01:00,420 --> 00:01:02,580
+that operation, transmitted
+as a sequence of
+
+23
+00:01:02,580 --> 00:01:04,379
+bytes over the network.
+
+24
+00:01:04,379 --> 00:01:06,380
+From a programmer's perspective,
+you instead
+
+25
+00:01:06,380 --> 00:01:08,250
+manipulate documents
+in the database
+
+26
+00:01:08,250 --> 00:01:09,900
+using methods on objects--
+
+27
+00:01:09,900 --> 00:01:13,130
+or functions, if your language
+isn't object-oriented--
+
+28
+00:01:13,130 --> 00:01:15,540
+and those methods transmit
+data over the network
+
+29
+00:01:15,540 --> 00:01:17,480
+according to the
+wire protocol.
+
+30
+00:01:17,480 --> 00:01:19,930
+The actual experience of
+programming to MongoDB's CRUD
+
+31
+00:01:19,930 --> 00:01:23,430
+operations is relatively
+pleasant for most programmers,
+
+32
+00:01:23,430 --> 00:01:26,090
+precisely because you don't have
+to manipulate a stringy
+
+33
+00:01:26,090 --> 00:01:29,230
+language in the way that you
+have to manipulate SQL in
+
+34
+00:01:29,230 --> 00:01:30,980
+customary databases.
+
+35
+00:01:30,980 --> 00:01:32,780
+The meaning of this will
+become clearer as we go
+
+36
+00:01:32,780 --> 00:01:34,340
+through the rest of this week.
+
+37
+00:01:34,340 --> 00:01:36,430
+This week, we'll learn the
+basic CRUD APIs that are
+
+38
+00:01:36,430 --> 00:01:38,830
+available in the Mongo shell,
+and then the analogous
+
+39
+00:01:38,830 --> 00:01:43,240
+functionality exposed via the
+pymongo bindings in Python.
+
+40
+00:01:43,240 --> 00:01:43,610
+OK.
+
+41
+00:01:43,610 --> 00:01:44,800
+Let's have a quiz.
+
+42
+00:01:44,800 --> 00:01:46,470
+By the end of this week, you'll
+know which of the
+
+43
+00:01:46,470 --> 00:01:47,460
+following--
+
+44
+00:01:47,460 --> 00:01:50,110
+MondoDB's basic document
+creation retrieval
+
+45
+00:01:50,110 --> 00:01:53,000
+modification and removal
+operations, some features of
+
+46
+00:01:53,000 --> 00:01:56,110
+the MongoDB shell, Mongo, how
+to measure performance of
+
+47
+00:01:56,110 --> 00:01:59,480
+MongoDB operations, how to
+manipulate MongoDB documents
+
+48
+00:01:59,480 --> 00:02:02,680
+from Python, and how to analyze
+data in MongoDB
+
+49
+00:02:02,680 --> 00:02:03,930
+collections.

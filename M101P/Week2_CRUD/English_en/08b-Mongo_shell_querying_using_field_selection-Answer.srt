@@ -1,0 +1,34 @@
+1
+00:00:00,000 --> 00:00:00,190
+
+2
+00:00:00,190 --> 00:00:02,150
+If you keep this in,
+that's correct.
+
+3
+00:00:02,150 --> 00:00:05,520
+DB.scores.find and then the
+first argument to find being a
+
+4
+00:00:05,520 --> 00:00:08,320
+document with type "essay"
+and score 50.
+
+5
+00:00:08,320 --> 00:00:11,140
+And then a second argument
+defined that has the document
+
+6
+00:00:11,140 --> 00:00:15,260
+"studenttrue_IDfalse."
+Alternatively, you could
+
+7
+00:00:15,260 --> 00:00:17,050
+specify "student1_ID0."
+
+8
+00:00:17,050 --> 00:00:18,967

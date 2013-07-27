@@ -1,0 +1,174 @@
+1
+00:00:00,000 --> 00:00:00,220
+
+2
+00:00:00,220 --> 00:00:03,150
+Let's learn another query
+operator, $ and.
+
+3
+00:00:03,150 --> 00:00:05,640
+Occasionally, but not very
+often, you might want to
+
+4
+00:00:05,640 --> 00:00:08,380
+specify the logical conjunction
+of some criteria
+
+5
+00:00:08,380 --> 00:00:10,850
+with an explicit
+$ and operator.
+
+6
+00:00:10,850 --> 00:00:13,450
+For example, the query that's
+now on my screen--
+
+7
+00:00:13,450 --> 00:00:19,552
+db.people.find $ and and then
+the array name greater than C
+
+8
+00:00:19,552 --> 00:00:22,170
+name regx A--
+
+9
+00:00:22,170 --> 00:00:25,050
+should match only those
+documents where the name sorts
+
+10
+00:00:25,050 --> 00:00:27,610
+after the letter C
+and contains the
+
+11
+00:00:27,610 --> 00:00:29,280
+letter A in it somewhere.
+
+12
+00:00:29,280 --> 00:00:30,190
+And there we are.
+
+13
+00:00:30,190 --> 00:00:31,720
+Charlie, Dave, and Edgar.
+
+14
+00:00:31,720 --> 00:00:34,180
+As I said, this is a somewhat
+infrequently used operator
+
+15
+00:00:34,180 --> 00:00:37,470
+because most cases where you
+might be tempted to use $ and
+
+16
+00:00:37,470 --> 00:00:40,230
+can be expressed more simply
+using the fact you could put
+
+17
+00:00:40,230 --> 00:00:43,170
+multiple constraints on the
+same field in a more
+
+18
+00:00:43,170 --> 00:00:45,170
+straightforward fashion
+like this.
+
+19
+00:00:45,170 --> 00:00:50,590
+name colon $ greater than C,
+regx x A has exactly the same
+
+20
+00:00:50,590 --> 00:00:52,860
+effect as the preceding
+query but doesn't
+
+21
+00:00:52,860 --> 00:00:54,570
+require the $ and operator.
+
+22
+00:00:54,570 --> 00:00:57,040
+In fact, there's some
+implementation differences
+
+23
+00:00:57,040 --> 00:01:00,170
+between these two queries in how
+MongoDB executes the two.
+
+24
+00:01:00,170 --> 00:01:03,180
+This query is not particularly
+optimizable in any case, but
+
+25
+00:01:03,180 --> 00:01:05,485
+if it were the second example
+would be a bit more performant
+
+26
+00:01:05,485 --> 00:01:06,920
+than the first.
+
+27
+00:01:06,920 --> 00:01:09,720
+In any case, $ and is available
+and simplifies, to a
+
+28
+00:01:09,720 --> 00:01:10,340
+certain extent, the
+
+29
+00:01:10,340 --> 00:01:13,340
+construction of dynamic queries.
+
+30
+00:01:13,340 --> 00:01:14,840
+Let's have a quiz.
+
+31
+00:01:14,840 --> 00:01:16,035
+This one's slightly tricky.
+
+32
+00:01:16,035 --> 00:01:17,660
+What will the following
+query do?
+
+33
+00:01:17,660 --> 00:01:20,790
+Define all documents with scores
+between 50 and 60, find
+
+34
+00:01:20,790 --> 00:01:23,750
+all documents with scores
+greater than 50, find all
+
+35
+00:01:23,750 --> 00:01:26,970
+documents with score less than
+60, explode like the Death
+
+36
+00:01:26,970 --> 00:01:29,480
+Star-- at the end of Episode
+4.6, I guess--
+
+37
+00:01:29,480 --> 00:01:30,730
+none of the above?
+
+38
+00:01:30,730 --> 00:01:31,330

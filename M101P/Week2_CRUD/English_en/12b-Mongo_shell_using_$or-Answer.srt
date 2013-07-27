@@ -1,0 +1,34 @@
+1
+00:00:00,000 --> 00:00:00,160
+
+2
+00:00:00,160 --> 00:00:01,730
+So it goes like this.
+
+3
+00:00:01,730 --> 00:00:06,820
+db.scores.find, $or and then the
+array, having as the first
+
+4
+00:00:06,820 --> 00:00:11,690
+element, score $ less than
+50, and then score $
+
+5
+00:00:11,690 --> 00:00:12,650
+greater than 90.
+
+6
+00:00:12,650 --> 00:00:15,500
+This query will return all those
+documents that have the
+
+7
+00:00:15,500 --> 00:00:17,760
+score that's less than 50 or
+that have the score that's
+
+8
+00:00:17,760 --> 00:00:19,640
+greater than 90.

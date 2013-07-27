@@ -1,0 +1,37 @@
+1
+00:00:00,000 --> 00:00:00,130
+
+2
+00:00:00,130 --> 00:00:00,740
+That's right.
+
+3
+00:00:00,740 --> 00:00:02,430
+BSON supports strings--
+
+4
+00:00:02,430 --> 00:00:05,240
+which have to be validly
+encoded coded UTF-8--
+
+5
+00:00:05,240 --> 00:00:06,410
+floating point numbers--
+
+6
+00:00:06,410 --> 00:00:08,750
+specifically, double-precision
+floats-- if that matters to
+
+7
+00:00:08,750 --> 00:00:12,510
+you, arrays, objects,
+and time stamps.
+
+8
+00:00:12,510 --> 00:00:15,110
+BSON does not support complex
+numbers at the moment.
+
+9
+00:00:15,110 --> 00:00:16,360

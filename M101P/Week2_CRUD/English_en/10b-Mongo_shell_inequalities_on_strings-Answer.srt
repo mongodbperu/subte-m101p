@@ -1,0 +1,34 @@
+1
+00:00:00,000 --> 00:00:00,350
+
+2
+00:00:00,350 --> 00:00:00,820
+That's right.
+
+3
+00:00:00,820 --> 00:00:04,120
+The first two will, In fact, the
+order of these operations,
+
+4
+00:00:04,120 --> 00:00:07,540
+$lte, $gte, does not matter.
+
+5
+00:00:07,540 --> 00:00:11,530
+Again, this third option here
+doesn't work, in fact, because
+
+6
+00:00:11,530 --> 00:00:15,600
+MongoDB's sorting and range
+comparison operations are
+
+7
+00:00:15,600 --> 00:00:19,290
+case-sensitive, in effect, and
+only compare in an Ascii sort
+
+8
+00:00:19,290 --> 00:00:20,540
+of fashion.
