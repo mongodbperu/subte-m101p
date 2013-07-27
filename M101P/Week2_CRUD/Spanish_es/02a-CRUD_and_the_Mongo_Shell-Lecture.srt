@@ -1,0 +1,227 @@
+1
+00:00:00,000 --> 00:00:00,210
+
+2
+00:00:00,210 --> 00:00:02,510
+Bienvenidos una vez más a
+MongoDB para desarrolladores. 
+
+3
+00:00:02,510 --> 00:00:04,350
+Está semana vamos a cubrir CRUD
+
+4
+00:00:04,350 --> 00:00:05,610
+y el shell Mongo.
+
+5
+00:00:05,610 --> 00:00:10,860
+CRUD, que significa create (crear), read (leer),
+update (actualizar), delete (eliminar), es un
+
+6
+00:00:10,860 --> 00:00:12,960
+acrónimo que describe el tipo de
+
+7
+00:00:12,960 --> 00:00:14,510
+manipulaciones que puedes hacer
+
+8
+00:00:14,510 --> 00:00:16,280
+a los registros de la base
+de datos.
+
+9
+00:00:16,280 --> 00:00:20,280
+En la terminología de MongoDB, llamamos
+create "insert" (insertar),  
+
+10
+00:00:20,280 --> 00:00:24,850
+read "find" (buscar), llamamos update
+"update" (actualizar) y llamamos delete
+
+11
+00:00:24,850 --> 00:00:29,320
+"remove" (remover). Éstos son ánalogos,
+respectivamente a los operadores de SQL
+
+12
+00:00:29,320 --> 00:00:32,470
+"insert", "select", "update"
+y "delete".
+
+13
+00:00:32,470 --> 00:00:35,900
+Ahora, algo que es importante saber
+sobre MongoDB es que las
+
+14
+00:00:35,900 --> 00:00:39,330
+operaciones CRUD y en efecto, todas
+las operaciones que manipulan
+
+15
+00:00:39,330 --> 00:00:43,430
+datos en la base de datos, existen
+como métodos o funciones en
+
+16
+00:00:43,430 --> 00:00:45,430
+los APIs de los diferentes
+lenguajes de programación.
+
+17
+00:00:45,430 --> 00:00:48,600
+MongoDB no tiene su propio
+lenguaje de consultas análogo
+
+18
+00:00:48,600 --> 00:00:51,650
+al lenguaje SQL que tiene que
+ser expresado como una cadena
+
+19
+00:00:51,650 --> 00:00:53,430
+dentro de un programa.
+
+20
+00:00:53,430 --> 00:00:56,750
+En vez de eso, MongoDB tiene un protocolo
+de conexión que es relativamente
+
+21
+00:00:56,750 --> 00:01:00,420
+simple, que incorpora un
+código de operación y argumentos
+
+22
+00:01:00,420 --> 00:01:02,580
+para esa operación, transmitidos
+como una secuencia de
+
+23
+00:01:02,580 --> 00:01:04,379
+bytes a través de la red.
+
+24
+00:01:04,379 --> 00:01:06,380
+De la perspectiva de un
+programador, en lugar de
+
+25
+00:01:06,380 --> 00:01:08,250
+manipular documentos
+en la base de datos
+
+26
+00:01:08,250 --> 00:01:09,900
+usas métodos sobre objetos--
+
+27
+00:01:09,900 --> 00:01:13,130
+o funciones si tu lenguaje no
+es orientado a objetos--
+
+28
+00:01:13,130 --> 00:01:15,540
+y esos métodos transmiten
+datos a través de la red
+
+29
+00:01:15,540 --> 00:01:17,480
+de acuerdo al protocolo de
+conexión.
+
+30
+00:01:17,480 --> 00:01:19,930
+La experiencia de programar
+para las operaciones CRUD
+
+31
+00:01:19,930 --> 00:01:23,430
+de MongoDB es relativamente placentera
+para la mayoría de programadores
+
+32
+00:01:23,430 --> 00:01:26,090
+precisamente porque no tienes
+que manipular un lenguaje de
+
+33
+00:01:26,090 --> 00:01:29,230
+cadenas en la manera en que
+tienes que manipular SQL en 
+
+34
+00:01:29,230 --> 00:01:30,980
+bases de datos comunes.
+
+35
+00:01:30,980 --> 00:01:32,780
+El significado de esto va a
+aclararse mientras vayamos
+
+36
+00:01:32,780 --> 00:01:34,340
+avanzando esta semana.
+
+37
+00:01:34,340 --> 00:01:36,430
+Esta semana, aprenderemos los
+APIs CRUD básicos que están 
+
+38
+00:01:36,430 --> 00:01:38,830
+disponibles en el shell Mongo
+y luego la funcionalidad
+
+39
+00:01:38,830 --> 00:01:43,240
+análoga expuesta vía los enlaces
+de pymongo en Python.
+
+40
+00:01:43,240 --> 00:01:43,610
+OK.
+
+41
+00:01:43,610 --> 00:01:44,800
+Hay que hacer un cuestionario.
+
+42
+00:01:44,800 --> 00:01:46,470
+Para el final de esta semana, ¿qué
+de lo siguiente habrás aprendido?
+
+43
+00:01:46,470 --> 00:01:47,460
+
+44
+00:01:47,460 --> 00:01:50,110
+La operaciones básicas de MongoDB
+para crear, acceder,
+
+45
+00:01:50,110 --> 00:01:53,000
+modificar y remover documentos;
+algunas funcionalidades del
+
+46
+00:01:53,000 --> 00:01:56,110
+shell Mongo de MongoDB; cómo
+medir la performance de
+
+47
+00:01:56,110 --> 00:01:59,480
+operaciones de MongoDB; cómo
+manipular documentos de MongoDB
+
+48
+00:01:59,480 --> 00:02:02,680
+desde Python; y cómo analizar
+datos en colecciones de MongoDB.
+
+49
+00:02:02,680 --> 00:02:03,930
