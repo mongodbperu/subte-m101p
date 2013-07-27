@@ -1,0 +1,400 @@
+1
+00:00:00,000 --> 00:00:00,100
+
+2
+00:00:00,100 --> 00:00:02,029
+The next aggregation expression
+we're going to go
+
+3
+00:00:02,029 --> 00:00:03,780
+over is addToSet.
+
+4
+00:00:03,780 --> 00:00:06,360
+Now addToSet is interesting
+because there is no direct
+
+5
+00:00:06,360 --> 00:00:09,680
+parallel from the world
+of SQL to do what
+
+6
+00:00:09,680 --> 00:00:11,560
+you can do with addToSet.
+
+7
+00:00:11,560 --> 00:00:14,070
+And let me give you an example
+of how it works.
+
+8
+00:00:14,070 --> 00:00:17,560
+Let's go back to our
+little data set
+
+9
+00:00:17,560 --> 00:00:19,470
+of electronics products.
+
+10
+00:00:19,470 --> 00:00:22,460
+And imagine that what we want
+to do is figure out, what
+
+11
+00:00:22,460 --> 00:00:25,980
+products does each manufacturer
+sell?
+
+12
+00:00:25,980 --> 00:00:29,890
+So to do that, we basically want
+to group by manufacturer.
+
+13
+00:00:29,890 --> 00:00:33,690
+And then, for each of the
+manufacturers, we want to
+
+14
+00:00:33,690 --> 00:00:37,260
+create a new array of categories
+they sell in.
+
+15
+00:00:37,260 --> 00:00:39,050
+And it looks just like this.
+
+16
+00:00:39,050 --> 00:00:41,710
+Here we are using the
+aggregation database again,
+
+17
+00:00:41,710 --> 00:00:43,800
+which is where I put
+my little data set.
+
+18
+00:00:43,800 --> 00:00:45,670
+We have db products
+that aggregate.
+
+19
+00:00:45,670 --> 00:00:47,110
+We're grouping again.
+
+20
+00:00:47,110 --> 00:00:51,260
+That's a stage we're invoking
+from the aggregation pipeline.
+
+21
+00:00:51,260 --> 00:00:55,310
+And we're going to group on
+_id maker manufacturer.
+
+22
+00:00:55,310 --> 00:00:56,890
+Maker is my name.
+
+23
+00:00:56,890 --> 00:00:58,800
+Manufacturer is the key piece
+of information here--
+
+24
+00:00:58,800 --> 00:00:59,810
+$manufacturer--
+
+25
+00:00:59,810 --> 00:01:04,010
+to pull the manufacturer value
+out from the manufacturer key.
+
+26
+00:01:04,010 --> 00:01:08,670
+And then, we're creating a new
+key in the resulting document
+
+27
+00:01:08,670 --> 00:01:10,810
+set, called categories.
+
+28
+00:01:10,810 --> 00:01:14,090
+And we're using addToSet
+$category.
+
+29
+00:01:14,090 --> 00:01:15,290
+And if you recall,
+each of these
+
+30
+00:01:15,290 --> 00:01:17,310
+documents had a category.
+
+31
+00:01:17,310 --> 00:01:19,770
+And what this will do is, it's
+building a new set of
+
+32
+00:01:19,770 --> 00:01:22,230
+documents, grouped
+by manufacturer.
+
+33
+00:01:22,230 --> 00:01:27,420
+And if the category is not in
+this category's array, it's
+
+34
+00:01:27,420 --> 00:01:28,270
+going to add it.
+
+35
+00:01:28,270 --> 00:01:31,240
+AddToSet adds it, only if
+it's not already there.
+
+36
+00:01:31,240 --> 00:01:34,480
+And the answer get
+looks like this.
+
+37
+00:01:34,480 --> 00:01:38,190
+So this will give us documents
+for each manufacturer, which I
+
+38
+00:01:38,190 --> 00:01:41,300
+called maker, like Google makes
+tablets, Amazon makes
+
+39
+00:01:41,300 --> 00:01:43,670
+tablets, Sony makes laptops.
+
+40
+00:01:43,670 --> 00:01:46,800
+They make other things, too,
+but not in my data set.
+
+41
+00:01:46,800 --> 00:01:50,320
+Samsung makes tablets
+and cell phones.
+
+42
+00:01:50,320 --> 00:01:53,930
+And Apple makes laptops
+and tablets.
+
+43
+00:01:53,930 --> 00:01:55,585
+They also make cell phones,
+but I didn't put
+
+44
+00:01:55,585 --> 00:01:56,870
+it in the data set.
+
+45
+00:01:56,870 --> 00:01:59,640
+So you can see how that works,
+so that you can build up an
+
+46
+00:01:59,640 --> 00:02:02,690
+array, while grouping by
+another key, like, for
+
+47
+00:02:02,690 --> 00:02:04,420
+instance, manufacturer.
+
+48
+00:02:04,420 --> 00:02:05,660
+Time for a quiz.
+
+49
+00:02:05,660 --> 00:02:07,650
+Now you're going to write
+a query using addToSet.
+
+50
+00:02:07,650 --> 00:02:10,430
+This uses the zip
+code database--
+
+51
+00:02:10,430 --> 00:02:12,460
+the population by zip code--
+
+52
+00:02:12,460 --> 00:02:14,140
+that we've been using in
+the last few problems.
+
+53
+00:02:14,140 --> 00:02:18,040
+You can see it in using sum
+quiz, if you're not
+
+54
+00:02:18,040 --> 00:02:19,240
+familiar with it.
+
+55
+00:02:19,240 --> 00:02:22,140
+And I showed you some data
+out of that data set.
+
+56
+00:02:22,140 --> 00:02:24,580
+Again, you can download to your
+computer if you want.
+
+57
+00:02:24,580 --> 00:02:27,850
+In this case, I just found in
+California, the city, Palo
+
+58
+00:02:27,850 --> 00:02:30,650
+Alto, and I got all of the
+different documents out that
+
+59
+00:02:30,650 --> 00:02:33,180
+correspond to that city
+and that state.
+
+60
+00:02:33,180 --> 00:02:36,160
+And now you can see there's
+three different zip codes,
+
+61
+00:02:36,160 --> 00:02:42,750
+94301, 94303, and 94306, that
+all correspond to Palo Alto.
+
+62
+00:02:42,750 --> 00:02:44,140
+That is correct.
+
+63
+00:02:44,140 --> 00:02:47,660
+So what I'd like you do, is
+write aggregation query that
+
+64
+00:02:47,660 --> 00:02:49,590
+will return the postal codes--
+
+65
+00:02:49,590 --> 00:02:51,060
+that is zip codes--
+
+66
+00:02:51,060 --> 00:02:53,840
+that cover each city in
+the United States.
+
+67
+00:02:53,840 --> 00:02:57,320
+And the result should look
+something like this, where
+
+68
+00:02:57,320 --> 00:02:58,970
+grouping by the--
+
+69
+00:02:58,970 --> 00:03:00,680
+you can see we have
+the city here.
+
+70
+00:03:00,680 --> 00:03:04,670
+And then we have a list of the
+postal codes that corresponds
+
+71
+00:03:04,670 --> 00:03:05,830
+to that city.
+
+72
+00:03:05,830 --> 00:03:09,190
+And, for the purpose of this
+problem, we'll ignore the fact
+
+73
+00:03:09,190 --> 00:03:11,480
+that cities do appear
+in multiple states.
+
+74
+00:03:11,480 --> 00:03:13,430
+And that most people consider
+them to be different cities,
+
+75
+00:03:13,430 --> 00:03:15,600
+especially when they're
+thousands of miles apart.
+
+76
+00:03:15,600 --> 00:03:18,070
+For instance, Springfield,
+Missouri, and Springfield,
+
+77
+00:03:18,070 --> 00:03:19,900
+Massachusetts are not
+close together.
+
+78
+00:03:19,900 --> 00:03:22,510
+And they're not the same place,
+but for our purposes,
+
+79
+00:03:22,510 --> 00:03:24,010
+they'll be the same place.
+
+80
+00:03:24,010 --> 00:03:25,770
+So write a query
+that does that.
+
+81
+00:03:25,770 --> 00:03:28,070
+You can deduce what you need to
+do, in terms of the names
+
+82
+00:03:28,070 --> 00:03:30,590
+of the keys in the result
+document, based on
+
+83
+00:03:30,590 --> 00:03:31,930
+what you see here.
+
+84
+00:03:31,930 --> 00:03:33,650
+Again, it's called zips.
+
+85
+00:03:33,650 --> 00:03:34,900
+And write your query below.
+
+86
+00:03:34,900 --> 00:03:36,315

@@ -1,0 +1,238 @@
+1
+00:00:00,000 --> 00:00:00,350
+
+2
+00:00:00,350 --> 00:00:03,650
+Skip and limit inside the
+aggregation pipeline work
+
+3
+00:00:03,650 --> 00:00:06,770
+pretty much the same way skip
+and limit work when you do a
+
+4
+00:00:06,770 --> 00:00:07,550
+simple find.
+
+5
+00:00:07,550 --> 00:00:11,240
+So it doesn't make any sense to
+skip and limit unless you
+
+6
+00:00:11,240 --> 00:00:15,880
+first sort, otherwise, the
+result is undefined.
+
+7
+00:00:15,880 --> 00:00:20,500
+And what you want to do is first
+skip and then you limit.
+
+8
+00:00:20,500 --> 00:00:24,180
+Doesn't usually make a lot of
+sense to limit and then skip.
+
+9
+00:00:24,180 --> 00:00:27,420
+And skip forward just skips
+forward to the document set.
+
+10
+00:00:27,420 --> 00:00:31,310
+So if you have a set of ordered
+documents, and it's
+
+11
+00:00:31,310 --> 00:00:34,940
+coming at you, let's say, in
+this direction, and you want
+
+12
+00:00:34,940 --> 00:00:36,150
+to skip forward--
+
+13
+00:00:36,150 --> 00:00:40,740
+So if you skip five, you skip
+one two, three, four, five.
+
+14
+00:00:40,740 --> 00:00:42,370
+And then you start here.
+
+15
+00:00:42,370 --> 00:00:44,970
+And then if you limit it to
+three, you get one, two,
+
+16
+00:00:44,970 --> 00:00:47,040
+three, the next three
+documents.
+
+17
+00:00:47,040 --> 00:00:50,790
+If you recall when we did a
+find, the order in which you
+
+18
+00:00:50,790 --> 00:00:54,010
+gave skip and limit didn't even
+matter because the server
+
+19
+00:00:54,010 --> 00:00:57,740
+would automatically, or the
+drivers, would reorder it so
+
+20
+00:00:57,740 --> 00:01:00,720
+that it first sorted,
+and then it
+
+21
+00:01:00,720 --> 00:01:02,460
+skipped, and then a limited.
+
+22
+00:01:02,460 --> 00:01:05,459
+But in the case of the
+aggregation framework where
+
+23
+00:01:05,459 --> 00:01:08,520
+you are given an ordered list of
+stages, the order in which
+
+24
+00:01:08,520 --> 00:01:10,770
+you specify skip and
+limit do matter.
+
+25
+00:01:10,770 --> 00:01:14,160
+Let's look at an example of
+using skip and limit.
+
+26
+00:01:14,160 --> 00:01:17,530
+We're going to go back to our
+query that we've been working
+
+27
+00:01:17,530 --> 00:01:19,750
+with in the last few lessons
+where we were going through
+
+28
+00:01:19,750 --> 00:01:22,580
+that zip code data and searching
+for all of the zip
+
+29
+00:01:22,580 --> 00:01:26,750
+codes in New York, and finding
+the population for each city,
+
+30
+00:01:26,750 --> 00:01:30,030
+projecting the information,
+sorting it by population, and
+
+31
+00:01:30,030 --> 00:01:33,630
+then skipping forward 10, and
+then limiting it to the next
+
+32
+00:01:33,630 --> 00:01:35,150
+five items.
+
+33
+00:01:35,150 --> 00:01:39,450
+So if we do that, then we get
+these items right here, which
+
+34
+00:01:39,450 --> 00:01:41,480
+are still some big population
+places.
+
+35
+00:01:41,480 --> 00:01:44,860
+But the first 10 are missing
+from the list, and then we get
+
+36
+00:01:44,860 --> 00:01:47,570
+the next five from the list,
+which is Astoria, which in
+
+37
+00:01:47,570 --> 00:01:53,540
+Queens, Jackson Heights, Far
+Rockaway, also Queens,
+
+38
+00:01:53,540 --> 00:01:55,110
+Ridgewood, and Binghamton.
+
+39
+00:01:55,110 --> 00:01:57,880
+These are not in Queens,
+and Jackson Heights
+
+40
+00:01:57,880 --> 00:01:59,570
+I think is in Queens.
+
+41
+00:01:59,570 --> 00:02:00,510
+So all right.
+
+42
+00:02:00,510 --> 00:02:03,110
+That is how you skip
+and limit.
+
+43
+00:02:03,110 --> 00:02:05,120
+Now, it is time for quiz.
+
+44
+00:02:05,120 --> 00:02:06,100
+Here's the quiz.
+
+45
+00:02:06,100 --> 00:02:09,949
+Suppose that you change the
+order of skip and limit in the
+
+46
+00:02:09,949 --> 00:02:11,940
+query shown in the lesson
+to look like this.
+
+47
+00:02:11,940 --> 00:02:17,260
+So rather than skipping first
+and then limiting, you limit
+
+48
+00:02:17,260 --> 00:02:18,910
+and then you skip.
+
+49
+00:02:18,910 --> 00:02:20,750
+How many documents do
+you think will be
+
+50
+00:02:20,750 --> 00:02:22,000
+in the result set?
+
+51
+00:02:22,000 --> 00:02:22,850

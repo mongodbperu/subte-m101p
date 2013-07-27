@@ -1,0 +1,369 @@
+1
+00:00:00,000 --> 00:00:03,680
+All right, let's talk about the
+dollar sort pipeline stage
+
+2
+00:00:03,680 --> 00:00:05,070
+when you're aggregating.
+
+3
+00:00:05,070 --> 00:00:07,350
+Now, dollar sort does pretty
+much what you'd expect.
+
+4
+00:00:07,350 --> 00:00:10,990
+It sorts the documents, but a
+few things to keep in mind
+
+5
+00:00:10,990 --> 00:00:12,250
+when you sort.
+
+6
+00:00:12,250 --> 00:00:16,630
+The first is that it can
+be a real memory hog.
+
+7
+00:00:16,630 --> 00:00:19,880
+The aggregation framework
+doesn't go to disk for sorting
+
+8
+00:00:19,880 --> 00:00:20,820
+as far as I know.
+
+9
+00:00:20,820 --> 00:00:23,140
+And so it's going to
+sort in memory.
+
+10
+00:00:23,140 --> 00:00:26,940
+If the sort is before a grouping
+and after a match, I
+
+11
+00:00:26,940 --> 00:00:28,310
+think it can use an index.
+
+12
+00:00:28,310 --> 00:00:30,480
+But if it's after the grouping
+phase, I don't believe it can
+
+13
+00:00:30,480 --> 00:00:31,650
+use an index.
+
+14
+00:00:31,650 --> 00:00:34,300
+And the second thing to remember
+about dollar sort is
+
+15
+00:00:34,300 --> 00:00:38,270
+it can go before or after
+the group phase.
+
+16
+00:00:38,270 --> 00:00:41,170
+You can sort multiple
+times if you'd like.
+
+17
+00:00:41,170 --> 00:00:44,040
+And it's going to be
+really useful.
+
+18
+00:00:44,040 --> 00:00:47,330
+Now, I'm going to show you
+a sort at the end of the
+
+19
+00:00:47,330 --> 00:00:50,740
+pipeline, which is good for
+formatting a report.
+
+20
+00:00:50,740 --> 00:00:54,220
+But sorting before you do a
+grouping is even more useful
+
+21
+00:00:54,220 --> 00:00:56,830
+in terms of aggregating
+different pieces of data from
+
+22
+00:00:56,830 --> 00:00:57,820
+the collection.
+
+23
+00:00:57,820 --> 00:01:00,260
+So let's look at sorting at
+the end of the pipeline.
+
+24
+00:01:00,260 --> 00:01:02,150
+We're going to go back to
+our zip code data set.
+
+25
+00:01:02,150 --> 00:01:05,390
+And each document looks like
+this, if you recall.
+
+26
+00:01:05,390 --> 00:01:10,490
+And then we're going to just add
+a sort at the end of this
+
+27
+00:01:10,490 --> 00:01:12,170
+query that we did before.
+
+28
+00:01:12,170 --> 00:01:13,480
+Makes it a little bit
+more useful though.
+
+29
+00:01:13,480 --> 00:01:16,610
+We're going to match on all
+of the zip codes in the
+
+30
+00:01:16,610 --> 00:01:17,400
+state of New York.
+
+31
+00:01:17,400 --> 00:01:20,490
+We're going to group by the
+city and sum up the
+
+32
+00:01:20,490 --> 00:01:21,580
+population.
+
+33
+00:01:21,580 --> 00:01:24,150
+And then we're going to project,
+just to make it a
+
+34
+00:01:24,150 --> 00:01:25,460
+little bit neater.
+
+35
+00:01:25,460 --> 00:01:28,600
+We're going to rename the
+underscore ID field to be
+
+36
+00:01:28,600 --> 00:01:30,240
+city, essentially through
+these two operations,
+
+37
+00:01:30,240 --> 00:01:32,220
+suppressing the underscore ID
+and then creating a new key
+
+38
+00:01:32,220 --> 00:01:33,240
+called city.
+
+39
+00:01:33,240 --> 00:01:35,140
+And then we're going to include
+the population.
+
+40
+00:01:35,140 --> 00:01:38,040
+And then we're going to sort
+by population descending.
+
+41
+00:01:38,040 --> 00:01:40,390
+And of course this can
+be a compound key.
+
+42
+00:01:40,390 --> 00:01:42,830
+It doesn't need to be just
+a single key here.
+
+43
+00:01:42,830 --> 00:01:45,610
+But, in this case, I just want
+to sort by the population
+
+44
+00:01:45,610 --> 00:01:46,480
+descending.
+
+45
+00:01:46,480 --> 00:01:48,230
+Let's see what that
+looks like.
+
+46
+00:01:48,230 --> 00:01:51,360
+All right, so it looks
+like this.
+
+47
+00:01:51,360 --> 00:01:53,640
+I'll just make sure I'm running
+the right one here.
+
+48
+00:01:53,640 --> 00:01:54,750
+There we go.
+
+49
+00:01:54,750 --> 00:01:55,830
+It looks like this.
+
+50
+00:01:55,830 --> 00:02:00,370
+And you can see that now we've
+got the result in descending
+
+51
+00:02:00,370 --> 00:02:01,170
+population order.
+
+52
+00:02:01,170 --> 00:02:03,720
+So we could see the biggest
+cities in New York.
+
+53
+00:02:03,720 --> 00:02:05,730
+And the biggest city in New York
+is considered Brooklyn,
+
+54
+00:02:05,730 --> 00:02:08,380
+which is one of the five
+boroughs in New York City.
+
+55
+00:02:08,380 --> 00:02:10,270
+And again, as I told you before,
+it looks like in this
+
+56
+00:02:10,270 --> 00:02:12,700
+data set each borough
+its own city.
+
+57
+00:02:12,700 --> 00:02:16,210
+And actually, beyond that, so
+this is Manhattan right here.
+
+58
+00:02:16,210 --> 00:02:17,530
+This is the Bronx.
+
+59
+00:02:17,530 --> 00:02:19,010
+This is the city of Rochester.
+
+60
+00:02:19,010 --> 00:02:21,490
+And then this is Staten
+Island, which is
+
+61
+00:02:21,490 --> 00:02:22,970
+where I grew up.
+
+62
+00:02:22,970 --> 00:02:26,440
+And then you can see that Queens
+has been broken up into
+
+63
+00:02:26,440 --> 00:02:27,480
+multiple pieces.
+
+64
+00:02:27,480 --> 00:02:30,030
+Buffalo is a separate city, but
+the borough of Queens is
+
+65
+00:02:30,030 --> 00:02:31,170
+not even a city.
+
+66
+00:02:31,170 --> 00:02:33,700
+It's put in as Flushing,
+and Jamaica,
+
+67
+00:02:33,700 --> 00:02:35,000
+and a few other places.
+
+68
+00:02:35,000 --> 00:02:38,860
+I guess the post office of the
+United States has its own
+
+69
+00:02:38,860 --> 00:02:42,000
+notion of what a city is,
+interestingly enough.
+
+70
+00:02:42,000 --> 00:02:43,820
+So that's news to me.
+
+71
+00:02:43,820 --> 00:02:47,740
+I consider New York to be one
+city since it has one mayor.
+
+72
+00:02:47,740 --> 00:02:52,240
+All right, so let's now
+do a quiz on sorting.
+
+73
+00:02:52,240 --> 00:02:55,290
+So again, considering the zip
+code collection, which has the
+
+74
+00:02:55,290 --> 00:02:57,090
+documents that look like that.
+
+75
+00:02:57,090 --> 00:03:01,900
+Write an aggregation query to
+sort by state comma city,
+
+76
+00:03:01,900 --> 00:03:03,470
+ascending, both of
+them ascending.
+
+77
+00:03:03,470 --> 00:03:05,700
+And assume the collection
+is called zips.
+
+78
+00:03:05,700 --> 00:03:07,410
+And put your answer
+right there.
+
+79
+00:03:07,410 --> 00:03:08,660

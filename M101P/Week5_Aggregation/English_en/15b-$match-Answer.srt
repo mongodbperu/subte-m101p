@@ -1,0 +1,29 @@
+1
+00:00:00,000 --> 00:00:00,970
+OK.
+
+2
+00:00:00,970 --> 00:00:05,890
+And the answer is
+db.zips.aggregate, and then we
+
+3
+00:00:05,890 --> 00:00:11,590
+use a $match phase in the
+pipeline and ask for the
+
+4
+00:00:11,590 --> 00:00:16,840
+documents where pop is dollar
+sign greater than 100,000.
+
+5
+00:00:16,840 --> 00:00:17,350
+That's it.
+
+6
+00:00:17,350 --> 00:00:18,600
+Just like a find.
+
+7
+00:00:18,600 --> 00:00:19,250

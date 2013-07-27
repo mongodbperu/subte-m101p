@@ -1,0 +1,389 @@
+1
+00:00:00,000 --> 00:00:00,170
+
+2
+00:00:00,170 --> 00:00:00,790
+OK.
+
+3
+00:00:00,790 --> 00:00:03,550
+Now that we understand the
+aggregation framework, we can
+
+4
+00:00:03,550 --> 00:00:07,420
+go through some common SQL
+examples and see how they map
+
+5
+00:00:07,420 --> 00:00:08,820
+to Mongo DB.
+
+6
+00:00:08,820 --> 00:00:10,760
+Now these are in the
+documentation and I'm not
+
+7
+00:00:10,760 --> 00:00:12,300
+going to go over all of
+them, but I'll go over
+
+8
+00:00:12,300 --> 00:00:14,040
+just a couple of them.
+
+9
+00:00:14,040 --> 00:00:16,260
+This is in the same page, the
+SQL to aggregation framework
+
+10
+00:00:16,260 --> 00:00:17,610
+mapping chart.
+
+11
+00:00:17,610 --> 00:00:21,900
+We assume that we have
+a Mongo DB collection
+
+12
+00:00:21,900 --> 00:00:23,140
+that contains orders.
+
+13
+00:00:23,140 --> 00:00:25,960
+They have line items in
+this array right here.
+
+14
+00:00:25,960 --> 00:00:28,845
+So you can see the line items
+for the order are in this
+
+15
+00:00:28,845 --> 00:00:31,250
+array with SKU, quantity,
+and price.
+
+16
+00:00:31,250 --> 00:00:35,580
+And there's also the overall
+order info right here very
+
+17
+00:00:35,580 --> 00:00:37,700
+naturally kept together
+in one document.
+
+18
+00:00:37,700 --> 00:00:41,390
+In the world of SQL, this
+would be three tables.
+
+19
+00:00:41,390 --> 00:00:43,390
+There'd be an orders table that
+would have this outermost
+
+20
+00:00:43,390 --> 00:00:44,420
+information.
+
+21
+00:00:44,420 --> 00:00:47,430
+They'd have an order line items
+table that has this
+
+22
+00:00:47,430 --> 00:00:48,380
+information.
+
+23
+00:00:48,380 --> 00:00:51,460
+And then there'd be a table
+tying it together probably
+
+24
+00:00:51,460 --> 00:00:54,690
+order line item, item order
+ID, which you could use to
+
+25
+00:00:54,690 --> 00:00:56,700
+join those two tables together
+to tie the line
+
+26
+00:00:56,700 --> 00:00:58,260
+items to the orders.
+
+27
+00:00:58,260 --> 00:01:02,830
+So let's say I wanted to count
+the number of orders.
+
+28
+00:01:02,830 --> 00:01:04,670
+The way that would work
+in SQL is just select
+
+29
+00:01:04,670 --> 00:01:06,940
+count star from orders.
+
+30
+00:01:06,940 --> 00:01:11,580
+And if I wanted to do it in
+Mongo DB, now there is
+
+31
+00:01:11,580 --> 00:01:13,220
+actually a count command.
+
+32
+00:01:13,220 --> 00:01:15,090
+So we could just do
+db.orders.count.
+
+33
+00:01:15,090 --> 00:01:18,140
+But to keep in the spirit of
+the aggregation framework
+
+34
+00:01:18,140 --> 00:01:19,190
+we'll do it this way.
+
+35
+00:01:19,190 --> 00:01:22,080
+We're going to aggregate
+grouping on something we
+
+36
+00:01:22,080 --> 00:01:23,260
+haven't done before.
+
+37
+00:01:23,260 --> 00:01:25,330
+the group is going
+to be on null.
+
+38
+00:01:25,330 --> 00:01:27,630
+And then we're going to count
+indicate a new count
+
+39
+00:01:27,630 --> 00:01:30,110
+key with sum one.
+
+40
+00:01:30,110 --> 00:01:32,970
+I think this is just to
+show you how it maps.
+
+41
+00:01:32,970 --> 00:01:35,870
+Although it might not be exact
+way you do the calculation.
+
+42
+00:01:35,870 --> 00:01:37,460
+You probably use the count.
+
+43
+00:01:37,460 --> 00:01:39,300
+I would probably just called
+the order account on the
+
+44
+00:01:39,300 --> 00:01:40,930
+orders collection to get this
+particular piece of
+
+45
+00:01:40,930 --> 00:01:42,190
+information.
+
+46
+00:01:42,190 --> 00:01:45,240
+Next one is, let's see what the
+sum of the price is across
+
+47
+00:01:45,240 --> 00:01:46,250
+all the orders.
+
+48
+00:01:46,250 --> 00:01:47,800
+sum price from the orders.
+
+49
+00:01:47,800 --> 00:01:50,340
+That's the SQL expression
+right there.
+
+50
+00:01:50,340 --> 00:01:52,190
+I can do that using
+aggregation.
+
+51
+00:01:52,190 --> 00:01:55,560
+Again I'm going to group
+by underscore id null.
+
+52
+00:01:55,560 --> 00:01:58,100
+And this time, there is no other
+way to do it that I know
+
+53
+00:01:58,100 --> 00:01:59,250
+of so this is useful.
+
+54
+00:01:59,250 --> 00:02:02,850
+You group by underscore id null,
+and then every single
+
+55
+00:02:02,850 --> 00:02:04,320
+document's going to
+get aggregated to
+
+56
+00:02:04,320 --> 00:02:05,840
+the same result document.
+
+57
+00:02:05,840 --> 00:02:07,980
+And we're going to calculate
+the running total, which is
+
+58
+00:02:07,980 --> 00:02:11,030
+the sum of the prices.
+
+59
+00:02:11,030 --> 00:02:14,510
+Now, let's skip forward a little
+bit and figure out one
+
+60
+00:02:14,510 --> 00:02:16,920
+that actually uses an unwind
+so you can see
+
+61
+00:02:16,920 --> 00:02:18,240
+what that looks like.
+
+62
+00:02:18,240 --> 00:02:21,180
+So here's one that
+uses an unwind.
+
+63
+00:02:21,180 --> 00:02:24,720
+what we're doing here is we're
+unwinding this collection on
+
+64
+00:02:24,720 --> 00:02:27,240
+the items and then we're
+grouping to by the customer ID
+
+65
+00:02:27,240 --> 00:02:29,780
+and figuring out how many
+items they purchased.
+
+66
+00:02:29,780 --> 00:02:31,960
+So this is the number of unique
+line items that a
+
+67
+00:02:31,960 --> 00:02:33,220
+customer purchased.
+
+68
+00:02:33,220 --> 00:02:36,060
+That's pretty easy to express
+in the aggregation query.
+
+69
+00:02:36,060 --> 00:02:40,470
+And then in SQL it's expressed
+like this, we're getting the
+
+70
+00:02:40,470 --> 00:02:43,720
+sum of a line item, that
+quantity and we're joining the
+
+71
+00:02:43,720 --> 00:02:46,240
+orders table and the order
+line item table--
+
+72
+00:02:46,240 --> 00:02:48,160
+this is the join where
+we join it--
+
+73
+00:02:48,160 --> 00:02:50,150
+and doing it by customer ID.
+
+74
+00:02:50,150 --> 00:02:52,540
+So it's kind of different.
+
+75
+00:02:52,540 --> 00:02:54,280
+To be honest now that I've been
+doing this for a while, I
+
+76
+00:02:54,280 --> 00:02:57,370
+almost feel like this one feels
+more natural for me.
+
+77
+00:02:57,370 --> 00:02:59,740
+I can decode it more quickly
+than this one.
+
+78
+00:02:59,740 --> 00:03:01,172
+Thinking about it as a
+pipeline makes it a
+
+79
+00:03:01,172 --> 00:03:03,470
+bit easier for me.
+
+80
+00:03:03,470 --> 00:03:06,660
+you can go through all these
+if you want on the page.
+
+81
+00:03:06,660 --> 00:03:09,465
+You should be able to reason out
+what all of these do now
+
+82
+00:03:09,465 --> 00:03:11,080
+that you understand the
+different parts of the
+
+83
+00:03:11,080 --> 00:03:12,330
+aggregation framework.
+
+84
+00:03:12,330 --> 00:03:13,100

@@ -1,0 +1,45 @@
+1
+00:00:00,000 --> 00:00:00,180
+
+2
+00:00:00,180 --> 00:00:00,720
+OK.
+
+3
+00:00:00,720 --> 00:00:02,150
+And the answer is, you're going
+to wind up with six
+
+4
+00:00:02,150 --> 00:00:04,550
+documents, because you're
+going to wind up with a
+
+5
+00:00:04,550 --> 00:00:08,580
+document for Barack Obama and
+likes social justice, Barack
+
+6
+00:00:08,580 --> 00:00:11,630
+Obama and likes health care,
+Barack Obama and likes taxes.
+
+7
+00:00:11,630 --> 00:00:12,780
+And the same thing
+with Mitt Romney.
+
+8
+00:00:12,780 --> 00:00:15,210
+He has three elements in his
+array, so we get another three
+
+9
+00:00:15,210 --> 00:00:18,640
+documents there, for a total
+of six documents after the
+
+10
+00:00:18,640 --> 00:00:19,890
+unwind stage.

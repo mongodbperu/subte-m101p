@@ -1,0 +1,585 @@
+1
+00:00:00,000 --> 00:00:00,120
+
+2
+00:00:00,120 --> 00:00:02,820
+Now that we've gone over how a
+sort works in the aggregation
+
+3
+00:00:02,820 --> 00:00:05,810
+pipeline, we can talk about
+first and last.
+
+4
+00:00:05,810 --> 00:00:08,480
+First and last are group
+operators, and they're going
+
+5
+00:00:08,480 --> 00:00:13,500
+to allow us to get the first or
+last value in each group as
+
+6
+00:00:13,500 --> 00:00:16,470
+the aggregation pipeline
+processes the documents.
+
+7
+00:00:16,470 --> 00:00:19,640
+So, I think a little example
+will make it more clear how
+
+8
+00:00:19,640 --> 00:00:20,680
+this works.
+
+9
+00:00:20,680 --> 00:00:23,000
+So, let's say we have
+a set of documents.
+
+10
+00:00:23,000 --> 00:00:24,940
+And these are the
+documents here.
+
+11
+00:00:24,940 --> 00:00:28,260
+And they've been
+sorted by a, b.
+
+12
+00:00:28,260 --> 00:00:31,360
+So they've been sorted by a, b,
+for instance we have this
+
+13
+00:00:31,360 --> 00:00:38,230
+document with value a, 0, b,
+23, then 0 b, 45, 0, b, 97.
+
+14
+00:00:38,230 --> 00:00:42,110
+And again, here we
+have 0, b, 17--
+
+15
+00:00:42,110 --> 00:00:44,470
+excuse me, I wanted
+to make this a 1.
+
+16
+00:00:44,470 --> 00:00:48,830
+1, b, 17, 1, 68, and 1, 73.
+
+17
+00:00:48,830 --> 00:00:51,720
+So you can see how they're
+sorted a, b.
+
+18
+00:00:51,720 --> 00:00:54,570
+Now let's say I want
+to group by a.
+
+19
+00:00:54,570 --> 00:00:58,630
+If I group by a then I'm going
+to process the documents
+
+20
+00:00:58,630 --> 00:01:01,980
+logically on this set and
+logically on this set.
+
+21
+00:01:01,980 --> 00:01:06,450
+And then if I ask for the first
+of b as I'm grouping by
+
+22
+00:01:06,450 --> 00:01:09,160
+a, I'm going to get this value,
+and I'm going to get
+
+23
+00:01:09,160 --> 00:01:10,220
+this value.
+
+24
+00:01:10,220 --> 00:01:13,380
+So, in the grouping by a where
+a is 0, I'm going to get the
+
+25
+00:01:13,380 --> 00:01:18,370
+first of b is 23, and a where
+a is 1 the first of b is 17.
+
+26
+00:01:18,370 --> 00:01:21,530
+On the other hand, if I ask for
+last, then I'm going to
+
+27
+00:01:21,530 --> 00:01:25,150
+get this value and this value.
+
+28
+00:01:25,150 --> 00:01:29,390
+So, after a sort phase, these
+first and last operators can
+
+29
+00:01:29,390 --> 00:01:32,510
+find the first or last document
+in sorted order in
+
+30
+00:01:32,510 --> 00:01:33,760
+each group.
+
+31
+00:01:33,760 --> 00:01:37,590
+So, let's see how we would use
+this in a practical situation.
+
+32
+00:01:37,590 --> 00:01:38,550
+All right.
+
+33
+00:01:38,550 --> 00:01:41,560
+Let's say we wanted to
+find the largest
+
+34
+00:01:41,560 --> 00:01:43,520
+city in every state.
+
+35
+00:01:43,520 --> 00:01:45,010
+So, how would we do this?
+
+36
+00:01:45,010 --> 00:01:49,210
+Well, we would have to find the
+population of the city in
+
+37
+00:01:49,210 --> 00:01:53,280
+every state, and I do this here
+in this first grouping
+
+38
+00:01:53,280 --> 00:01:57,570
+where I'm looking at a group
+by state and city.
+
+39
+00:01:57,570 --> 00:02:02,130
+And then I get the population
+as the sum of the pop in a
+
+40
+00:02:02,130 --> 00:02:03,540
+group by state and city.
+
+41
+00:02:03,540 --> 00:02:06,540
+And I actually have just this
+part of the query and I'll
+
+42
+00:02:06,540 --> 00:02:07,380
+show you the results.
+
+43
+00:02:07,380 --> 00:02:09,539
+You can visualize what it does
+before we can move on.
+
+44
+00:02:09,539 --> 00:02:11,295
+I call that phase one.
+
+45
+00:02:11,295 --> 00:02:12,675
+Let's look at that.
+
+46
+00:02:12,675 --> 00:02:14,920
+I'm going to pipe it some more,
+just to make it a little
+
+47
+00:02:14,920 --> 00:02:16,280
+cleaner on the eyes.
+
+48
+00:02:16,280 --> 00:02:20,990
+So you can see that what we get
+is basically every city in
+
+49
+00:02:20,990 --> 00:02:23,340
+every state we get
+the population.
+
+50
+00:02:23,340 --> 00:02:27,330
+So, Smoot, I guess, Wyoming.
+
+51
+00:02:27,330 --> 00:02:28,860
+And we do that.
+
+52
+00:02:28,860 --> 00:02:30,370
+Now we have the population
+of every city.
+
+53
+00:02:30,370 --> 00:02:31,770
+So what do we do next?
+
+54
+00:02:31,770 --> 00:02:35,480
+Well, the next thing we need to
+do is we need to sort it by
+
+55
+00:02:35,480 --> 00:02:37,680
+state comma population.
+
+56
+00:02:37,680 --> 00:02:43,320
+And remember that these
+documents have and _id of
+
+57
+00:02:43,320 --> 00:02:49,730
+state and city, so my sort has
+to be on _id.state and
+
+58
+00:02:49,730 --> 00:02:50,830
+population.
+
+59
+00:02:50,830 --> 00:02:52,580
+So we do that.
+
+60
+00:02:52,580 --> 00:02:57,300
+And you can see that we sort
+by _id.state and by
+
+61
+00:02:57,300 --> 00:02:58,750
+population.
+
+62
+00:02:58,750 --> 00:03:01,730
+And we don't need dollar signs
+here because this is a sort
+
+63
+00:03:01,730 --> 00:03:05,140
+operation and the key names
+are on the left side here.
+
+64
+00:03:05,140 --> 00:03:07,590
+So I call this phase two.
+
+65
+00:03:07,590 --> 00:03:10,980
+Let's see what we get out
+of the system for that.
+
+66
+00:03:10,980 --> 00:03:12,110
+All right.
+
+67
+00:03:12,110 --> 00:03:17,170
+So, in phase two, in every
+state, I have a descending
+
+68
+00:03:17,170 --> 00:03:19,660
+list of cities by population.
+
+69
+00:03:19,660 --> 00:03:23,340
+So I can already see that in
+Alaska, Anchorage is the
+
+70
+00:03:23,340 --> 00:03:24,250
+biggest city.
+
+71
+00:03:24,250 --> 00:03:25,760
+And then it's going to go
+through all the other Alaska
+
+72
+00:03:25,760 --> 00:03:33,110
+cities, and eventually it'll
+go on to another state.
+
+73
+00:03:33,110 --> 00:03:34,750
+We have a lot of cities
+in Alaska.
+
+74
+00:03:34,750 --> 00:03:37,210
+So let's go to phase three.
+
+75
+00:03:37,210 --> 00:03:42,670
+So, in phase three, now I want
+to pick out just the first one
+
+76
+00:03:42,670 --> 00:03:45,400
+when I group by state.
+
+77
+00:03:45,400 --> 00:03:47,700
+So, just to review those
+documents again to remember
+
+78
+00:03:47,700 --> 00:03:49,440
+how they look.
+
+79
+00:03:49,440 --> 00:03:53,750
+Those documents have _id, which
+is the document of state
+
+80
+00:03:53,750 --> 00:03:56,210
+and city, and a population
+here.
+
+81
+00:03:56,210 --> 00:04:00,590
+So, this next grouping is
+going to group by state.
+
+82
+00:04:00,590 --> 00:04:04,560
+For each state, we want the
+city which is the first
+
+83
+00:04:04,560 --> 00:04:06,450
+document in that grouping.
+
+84
+00:04:06,450 --> 00:04:08,420
+So the first city.
+
+85
+00:04:08,420 --> 00:04:10,840
+$_id.city.
+
+86
+00:04:10,840 --> 00:04:11,810
+First one.
+
+87
+00:04:11,810 --> 00:04:14,640
+And population, first
+population.
+
+88
+00:04:14,640 --> 00:04:17,910
+And that's going to be what we
+need to get the information
+
+89
+00:04:17,910 --> 00:04:18,620
+we're looking for.
+
+90
+00:04:18,620 --> 00:04:19,769
+So that's called phase three.
+
+91
+00:04:19,769 --> 00:04:21,690
+Let's take a look at that.
+
+92
+00:04:21,690 --> 00:04:22,340
+All right.
+
+93
+00:04:22,340 --> 00:04:25,810
+In phase three, I now have
+filtered it down to the
+
+94
+00:04:25,810 --> 00:04:30,330
+biggest cities in every single
+state by using my first
+
+95
+00:04:30,330 --> 00:04:34,140
+operator on what was previously
+a descending sort
+
+96
+00:04:34,140 --> 00:04:37,180
+by state comma population.
+
+97
+00:04:37,180 --> 00:04:40,440
+But they're not in any
+particular order, which is
+
+98
+00:04:40,440 --> 00:04:42,790
+interesting, because they were
+sorted by state before and
+
+99
+00:04:42,790 --> 00:04:44,420
+after the group by phase,
+they seem to
+
+100
+00:04:44,420 --> 00:04:47,290
+be arbitrarily ordered.
+
+101
+00:04:47,290 --> 00:04:51,150
+So to fix that up, what we're
+going to do is finally we're
+
+102
+00:04:51,150 --> 00:04:52,510
+going to sort it
+by state again.
+
+103
+00:04:52,510 --> 00:04:55,480
+And the final part of this is
+that we're going to sort it by
+
+104
+00:04:55,480 --> 00:04:59,300
+state and that's going to give
+us the final result.
+
+105
+00:04:59,300 --> 00:05:00,920
+Let's take a look at that.
+
+106
+00:05:00,920 --> 00:05:04,660
+Now we can see that in Alaska
+it's Anchorage, in Alabama
+
+107
+00:05:04,660 --> 00:05:09,240
+it's Birmingham, and so forth
+all the way down.
+
+108
+00:05:09,240 --> 00:05:12,820
+Now we have the largest
+city in every
+
+109
+00:05:12,820 --> 00:05:15,640
+state ordered by state.
+
+110
+00:05:15,640 --> 00:05:17,150
+If we wanted to clean it up a
+little bit more, we could do a
+
+111
+00:05:17,150 --> 00:05:22,010
+project, and we could rename
+this _id operator to be state,
+
+112
+00:05:22,010 --> 00:05:24,190
+but I didn't do that.
+
+113
+00:05:24,190 --> 00:05:24,560
+All right.
+
+114
+00:05:24,560 --> 00:05:26,090
+So, let's do a quiz.
+
+115
+00:05:26,090 --> 00:05:27,990
+Given the following
+collection--
+
+116
+00:05:27,990 --> 00:05:31,430
+and this is a collection we used
+on an earlier problem, a
+
+117
+00:05:31,430 --> 00:05:32,780
+little collection--
+
+118
+00:05:32,780 --> 00:05:35,470
+what would be the value of
+c in the result from this
+
+119
+00:05:35,470 --> 00:05:37,170
+aggregation query?
+
+120
+00:05:37,170 --> 00:05:39,660
+And you can see what we're doing
+here is, well, you can
+
+121
+00:05:39,660 --> 00:05:42,540
+read it, but we're matching on a
+being 0 and we're sorting by
+
+122
+00:05:42,540 --> 00:05:45,670
+c descending, and then we're
+doing a group where we look at
+
+123
+00:05:45,670 --> 00:05:47,160
+the first value of c.
+
+124
+00:05:47,160 --> 00:05:51,250
+And to figure that out,
+what's the value of c.
+
+125
+00:05:51,250 --> 00:05:53,160
+I'll just tell you, there's
+only one value of c.
+
+126
+00:05:53,160 --> 00:05:55,300
+There's only one document
+in the result set.
+
+127
+00:05:55,300 --> 00:05:56,550

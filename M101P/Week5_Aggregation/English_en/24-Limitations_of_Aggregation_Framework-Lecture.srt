@@ -1,0 +1,467 @@
+1
+00:00:00,000 --> 00:00:00,160
+
+2
+00:00:00,160 --> 00:00:02,170
+The aggregation framework
+is super cool.
+
+3
+00:00:02,170 --> 00:00:03,669
+But it is subject to certain
+limitations.
+
+4
+00:00:03,669 --> 00:00:06,370
+And I want to discuss those
+with you right now so that
+
+5
+00:00:06,370 --> 00:00:07,830
+you're aware of them.
+
+6
+00:00:07,830 --> 00:00:11,620
+The first one is that the
+results set is limited to 16
+
+7
+00:00:11,620 --> 00:00:15,400
+megabytes of memory because, as
+you know, it's returned in
+
+8
+00:00:15,400 --> 00:00:16,250
+a single document.
+
+9
+00:00:16,250 --> 00:00:19,360
+And a single document in MongoDB
+is limited to 16
+
+10
+00:00:19,360 --> 00:00:20,940
+megabytes of memory.
+
+11
+00:00:20,940 --> 00:00:22,280
+So that's pretty large.
+
+12
+00:00:22,280 --> 00:00:24,080
+But for a very large collection,
+that could be a
+
+13
+00:00:24,080 --> 00:00:26,120
+limitation if it's going to
+run across the entire
+
+14
+00:00:26,120 --> 00:00:27,450
+collection.
+
+15
+00:00:27,450 --> 00:00:30,870
+Another limitation is that you
+can't use more than 10% of the
+
+16
+00:00:30,870 --> 00:00:32,040
+memory on a machine.
+
+17
+00:00:32,040 --> 00:00:33,920
+Now that's a lot of memory.
+
+18
+00:00:33,920 --> 00:00:37,730
+But these aggregations can be
+quite complicated, especially
+
+19
+00:00:37,730 --> 00:00:39,710
+if they're going across
+the entire collection.
+
+20
+00:00:39,710 --> 00:00:42,500
+Now you can reduce the size of
+your aggregations by doing
+
+21
+00:00:42,500 --> 00:00:45,540
+early matches to do filtering,
+if you don't need to do
+
+22
+00:00:45,540 --> 00:00:47,500
+calculations across
+all the documents.
+
+23
+00:00:47,500 --> 00:00:50,960
+Similarly, you could use Project
+to filter out some of
+
+24
+00:00:50,960 --> 00:00:53,360
+the fields so that
+you're using--
+
+25
+00:00:53,360 --> 00:00:54,760
+processing less data.
+
+26
+00:00:54,760 --> 00:00:57,640
+But these are two things
+to keep in mind.
+
+27
+00:00:57,640 --> 00:01:02,080
+And the last one is how
+it works in a sharded
+
+28
+00:01:02,080 --> 00:01:03,080
+environment.
+
+29
+00:01:03,080 --> 00:01:05,690
+So let's go through a
+sharded environment.
+
+30
+00:01:05,690 --> 00:01:09,240
+So in a sharded environment, if
+you remember, you typically
+
+31
+00:01:09,240 --> 00:01:10,710
+have your collection.
+
+32
+00:01:10,710 --> 00:01:11,650
+We're not going to go over this
+
+33
+00:01:11,650 --> 00:01:13,900
+extensively in this class.
+
+34
+00:01:13,900 --> 00:01:17,280
+Collections split amongst
+multiple Mongo instances.
+
+35
+00:01:17,280 --> 00:01:19,300
+And these are often
+replica sets.
+
+36
+00:01:19,300 --> 00:01:22,590
+So there might be three servers
+here and three servers
+
+37
+00:01:22,590 --> 00:01:26,170
+here and three servers here that
+are all handling the same
+
+38
+00:01:26,170 --> 00:01:27,480
+part of the collection.
+
+39
+00:01:27,480 --> 00:01:29,960
+And then rather than sending
+your query directly to a
+
+40
+00:01:29,960 --> 00:01:31,610
+MongoD process.
+
+41
+00:01:31,610 --> 00:01:34,500
+And these all have MongoDs
+running on them.
+
+42
+00:01:34,500 --> 00:01:37,720
+You send it to a
+MongoS process.
+
+43
+00:01:37,720 --> 00:01:38,600
+It's a router.
+
+44
+00:01:38,600 --> 00:01:41,050
+So your application is here.
+
+45
+00:01:41,050 --> 00:01:45,660
+And it talks to MongoS, which
+then talks to MongoD.
+
+46
+00:01:45,660 --> 00:01:47,750
+And each of these is a shard.
+
+47
+00:01:47,750 --> 00:01:51,240
+So aggregation does work in
+a sharded environment.
+
+48
+00:01:51,240 --> 00:01:56,570
+But after the first group, or
+the first sort phase, the
+
+49
+00:01:56,570 --> 00:01:58,930
+aggregation has to be brought
+back to the MongoS.
+
+50
+00:01:58,930 --> 00:02:02,990
+So the first group in Sort can
+be split up to run here on a
+
+51
+00:02:02,990 --> 00:02:03,835
+particular--
+
+52
+00:02:03,835 --> 00:02:06,060
+well if you're going to run an
+aggregation across the entire
+
+53
+00:02:06,060 --> 00:02:08,730
+collection, the MongoS will send
+group and sort to all the
+
+54
+00:02:08,730 --> 00:02:09,870
+shards, and it will do them.
+
+55
+00:02:09,870 --> 00:02:12,270
+But after the first group and
+sort, they need to be gathered
+
+56
+00:02:12,270 --> 00:02:14,480
+here in the MongoS, brought
+together for final result
+
+57
+00:02:14,480 --> 00:02:17,030
+before they're sent to the next
+stage of the pipeline.
+
+58
+00:02:17,030 --> 00:02:18,530
+Because the next stage of the
+pipeline needs to see the
+
+59
+00:02:18,530 --> 00:02:19,530
+finished result.
+
+60
+00:02:19,530 --> 00:02:22,900
+So as a result, if you have a
+very long pipeline, you can
+
+61
+00:02:22,900 --> 00:02:24,850
+easily wind up where
+your calculation is
+
+62
+00:02:24,850 --> 00:02:26,460
+running on your MongoS.
+
+63
+00:02:26,460 --> 00:02:29,250
+Now in terms of application
+engineering, usually the
+
+64
+00:02:29,250 --> 00:02:32,290
+MongoS process is running on
+the same computer as your
+
+65
+00:02:32,290 --> 00:02:32,960
+applications.
+
+66
+00:02:32,960 --> 00:02:35,980
+So as your app is running, and
+then you put a little MongoS
+
+67
+00:02:35,980 --> 00:02:37,270
+on the same box.
+
+68
+00:02:37,270 --> 00:02:39,540
+And that box might be
+sized differently,
+
+69
+00:02:39,540 --> 00:02:40,550
+relative to the database.
+
+70
+00:02:40,550 --> 00:02:41,690
+Might be smaller.
+
+71
+00:02:41,690 --> 00:02:44,090
+And this aggregation
+might be gigantic.
+
+72
+00:02:44,090 --> 00:02:46,960
+So keep in mind that when
+you're in a sharded
+
+73
+00:02:46,960 --> 00:02:49,970
+environment and you're doing
+allegations, that your
+
+74
+00:02:49,970 --> 00:02:51,210
+calculations probably happening
+
+75
+00:02:51,210 --> 00:02:52,310
+in your MongoS router.
+
+76
+00:02:52,310 --> 00:02:53,970
+And that might have an effect
+on other application
+
+77
+00:02:53,970 --> 00:02:56,250
+performance if MongoS is
+co-located with the
+
+78
+00:02:56,250 --> 00:02:57,130
+application.
+
+79
+00:02:57,130 --> 00:02:58,730
+Kind of beyond the scope
+of this course.
+
+80
+00:02:58,730 --> 00:03:01,750
+But I just want to mention it
+because I know that some of
+
+81
+00:03:01,750 --> 00:03:04,190
+you probably do work in sharded
+environments on large
+
+82
+00:03:04,190 --> 00:03:05,850
+production systems.
+
+83
+00:03:05,850 --> 00:03:07,580
+And we're going to talk a little
+bit more about the
+
+84
+00:03:07,580 --> 00:03:10,460
+implications of sharding and
+replication and other aspects
+
+85
+00:03:10,460 --> 00:03:13,850
+of system architecture as
+a developer next week.
+
+86
+00:03:13,850 --> 00:03:15,230
+Now there are other alternatives
+to the
+
+87
+00:03:15,230 --> 00:03:18,470
+aggregation framework if you
+don't want to use it, or can't
+
+88
+00:03:18,470 --> 00:03:20,350
+use it because of some
+of the limitations.
+
+89
+00:03:20,350 --> 00:03:21,920
+You can use MapReduce.
+
+90
+00:03:21,920 --> 00:03:23,710
+There's a version of that
+built into Mongo.
+
+91
+00:03:23,710 --> 00:03:26,220
+And we haven't talked about
+it in this course.
+
+92
+00:03:26,220 --> 00:03:27,660
+But you could use it.
+
+93
+00:03:27,660 --> 00:03:29,762
+You could also use Hadoop.
+
+94
+00:03:29,762 --> 00:03:31,800
+And the Hadoop framework
+is basically an
+
+95
+00:03:31,800 --> 00:03:33,610
+implementation of MapReduce.
+
+96
+00:03:33,610 --> 00:03:35,500
+And if you want to do that,
+there's a Hadoop connector
+
+97
+00:03:35,500 --> 00:03:39,460
+that can connect between
+Hadoop and MongoDB.
+
+98
+00:03:39,460 --> 00:03:42,400
+So those are some other options
+if you can't use the
+
+99
+00:03:42,400 --> 00:03:44,660
+aggregation framework for
+a particular query.
+
+100
+00:03:44,660 --> 00:03:45,100
+All right.
+
+101
+00:03:45,100 --> 00:03:46,350
+So that's it.

@@ -1,0 +1,600 @@
+1
+00:00:00,000 --> 00:00:00,100
+
+2
+00:00:00,100 --> 00:00:02,320
+Let's go through that simple
+aggregation example I showed
+
+3
+00:00:02,320 --> 00:00:05,010
+you in the first lesson,
+in a detailed way.
+
+4
+00:00:05,010 --> 00:00:08,050
+So, if you recall, we started
+with a products collection.
+
+5
+00:00:08,050 --> 00:00:10,440
+And then we did some grouping
+on that collection to get a
+
+6
+00:00:10,440 --> 00:00:12,922
+results collection that
+was shown from
+
+7
+00:00:12,922 --> 00:00:14,530
+the aggregation function.
+
+8
+00:00:14,530 --> 00:00:16,980
+Now, here is the collection,
+if you recall.
+
+9
+00:00:16,980 --> 00:00:19,840
+It was this list of products.
+
+10
+00:00:19,840 --> 00:00:22,710
+And the products have a
+manufacturer, and a name, and
+
+11
+00:00:22,710 --> 00:00:23,920
+a category.
+
+12
+00:00:23,920 --> 00:00:25,940
+And we wanted to get the number
+of products by each
+
+13
+00:00:25,940 --> 00:00:27,540
+manufacturer.
+
+14
+00:00:27,540 --> 00:00:30,370
+This was the query, over
+here, that we used.
+
+15
+00:00:30,370 --> 00:00:33,120
+We called db.products.aggregate.
+
+16
+00:00:33,120 --> 00:00:34,650
+We put it through--
+
+17
+00:00:34,650 --> 00:00:36,840
+there's only one stage to our
+aggregation pipeline.
+
+18
+00:00:36,840 --> 00:00:40,500
+It was a dollar group, where
+we asked to group by
+
+19
+00:00:40,500 --> 00:00:41,470
+manufacturer.
+
+20
+00:00:41,470 --> 00:00:45,270
+And we do that by
+specifying _id.
+
+21
+00:00:45,270 --> 00:00:49,470
+And then, we were creating a new
+key, called num_products
+
+22
+00:00:49,470 --> 00:00:52,160
+with the operator dollar sum.
+
+23
+00:00:52,160 --> 00:00:54,550
+So what logically
+happens here?
+
+24
+00:00:54,550 --> 00:00:55,340
+All right.
+
+25
+00:00:55,340 --> 00:00:57,840
+So the aggregation framework is
+going to run through every
+
+26
+00:00:57,840 --> 00:00:58,730
+one of these documents.
+
+27
+00:00:58,730 --> 00:01:01,380
+So the first document it's going
+to consider is this one.
+
+28
+00:01:01,380 --> 00:01:05,019
+And this document has a
+manufacturer of Apple.
+
+29
+00:01:05,019 --> 00:01:07,440
+And, if you recall, we're
+going to create-- in our
+
+30
+00:01:07,440 --> 00:01:10,060
+result set-- we're going to look
+for a resulting document
+
+31
+00:01:10,060 --> 00:01:12,750
+with an _id of the
+manufacturer.
+
+32
+00:01:12,750 --> 00:01:15,060
+And, in this case, it's Apple.
+
+33
+00:01:15,060 --> 00:01:17,640
+So, as we go through that first
+document, we're going to
+
+34
+00:01:17,640 --> 00:01:19,080
+look and we're going to
+say, is there one
+
+35
+00:01:19,080 --> 00:01:20,640
+with an _id of Apple?
+
+36
+00:01:20,640 --> 00:01:21,990
+No.
+
+37
+00:01:21,990 --> 00:01:22,600
+Let's create [INAUDIBLE]
+
+38
+00:01:22,600 --> 00:01:27,280
+my result set, called
+_id Apple.
+
+39
+00:01:27,280 --> 00:01:31,550
+And then, it also asked to
+create a num_products key.
+
+40
+00:01:31,550 --> 00:01:33,500
+And, what does the num_products
+key do?
+
+41
+00:01:33,500 --> 00:01:36,070
+Well, it said, create
+a num_products key
+
+42
+00:01:36,070 --> 00:01:37,300
+in my result set.
+
+43
+00:01:37,300 --> 00:01:40,540
+And I want you to add one--
+
+44
+00:01:40,540 --> 00:01:42,760
+run a sum and add one to
+whatever is there.
+
+45
+00:01:42,760 --> 00:01:44,680
+There's nothing there
+to start.
+
+46
+00:01:44,680 --> 00:01:47,860
+And it seeds it at zero, so
+it'll start it-- by adding
+
+47
+00:01:47,860 --> 00:01:50,340
+one, it'll put it right
+there-- one.
+
+48
+00:01:50,340 --> 00:01:52,500
+So, again, as it's running
+through these products, it's
+
+49
+00:01:52,500 --> 00:01:55,080
+creating a new collection
+of the results.
+
+50
+00:01:55,080 --> 00:01:58,630
+So the group phase doesn't
+run the documents from
+
+51
+00:01:58,630 --> 00:02:00,080
+one end to the other.
+
+52
+00:02:00,080 --> 00:02:02,970
+It actually processes each one,
+grouping it, and then
+
+53
+00:02:02,970 --> 00:02:05,690
+creating a new set of aggregated
+documents.
+
+54
+00:02:05,690 --> 00:02:07,620
+Let's look at the
+second document.
+
+55
+00:02:07,620 --> 00:02:10,900
+Second document has a
+manufacturer of Apple.
+
+56
+00:02:10,900 --> 00:02:13,680
+And, again, it would go
+through, and they
+
+57
+00:02:13,680 --> 00:02:14,370
+would say, all right.
+
+58
+00:02:14,370 --> 00:02:15,180
+It's almost like an upsert.
+
+59
+00:02:15,180 --> 00:02:16,570
+It would look and say,
+is there something
+
+60
+00:02:16,570 --> 00:02:18,350
+with an _id of Apple?
+
+61
+00:02:18,350 --> 00:02:19,580
+Yes, there is.
+
+62
+00:02:19,580 --> 00:02:21,320
+Run that sum on it.
+
+63
+00:02:21,320 --> 00:02:23,940
+It said add one to num_products,
+so that's going
+
+64
+00:02:23,940 --> 00:02:26,680
+to update the num_products
+to two.
+
+65
+00:02:26,680 --> 00:02:29,570
+And it's going to run to the
+third document in the
+
+66
+00:02:29,570 --> 00:02:30,260
+collection.
+
+67
+00:02:30,260 --> 00:02:34,000
+The third document collection
+has a manufacturer of Apple.
+
+68
+00:02:34,000 --> 00:02:36,520
+So remember we were looking for
+a document in the result
+
+69
+00:02:36,520 --> 00:02:38,740
+set with an _id of Apple.
+
+70
+00:02:38,740 --> 00:02:39,670
+We do have one.
+
+71
+00:02:39,670 --> 00:02:41,270
+We're going to add one,
+again, to it.
+
+72
+00:02:41,270 --> 00:02:44,210
+And now we're going to
+wind up with three.
+
+73
+00:02:44,210 --> 00:02:48,050
+Now, the fourth document in this
+products collection has a
+
+74
+00:02:48,050 --> 00:02:49,850
+manufacturer of Samsung.
+
+75
+00:02:49,850 --> 00:02:51,910
+We're going to look for a
+document in the result set
+
+76
+00:02:51,910 --> 00:02:53,480
+that has an _id of Samsung.
+
+77
+00:02:53,480 --> 00:02:55,300
+We're not going to find one.
+
+78
+00:02:55,300 --> 00:02:58,020
+So we're, essentially, going
+to, if you will, upsert it,
+
+79
+00:02:58,020 --> 00:03:03,510
+put something in the result set
+with Samsung, as an _id.
+
+80
+00:03:03,510 --> 00:03:06,880
+And we're going to, again,
+create a num_products key.
+
+81
+00:03:06,880 --> 00:03:09,390
+And this was my name,
+it's arbitrary.
+
+82
+00:03:09,390 --> 00:03:11,100
+And we're going to add
+one to what was
+
+83
+00:03:11,100 --> 00:03:11,810
+there, which is nothing.
+
+84
+00:03:11,810 --> 00:03:13,740
+So we're going to get one.
+
+85
+00:03:13,740 --> 00:03:16,330
+And so on and so forth, as we
+run through this collection,
+
+86
+00:03:16,330 --> 00:03:19,150
+the next one is a product
+from Sony.
+
+87
+00:03:19,150 --> 00:03:23,250
+So we're going to look for a
+document with an _id of Sony.
+
+88
+00:03:23,250 --> 00:03:24,880
+We're not going to find one.
+
+89
+00:03:24,880 --> 00:03:26,330
+So we're going to create it--
+
+90
+00:03:26,330 --> 00:03:28,470
+_id of Sony.
+
+91
+00:03:28,470 --> 00:03:32,090
+And then initialize it to be
+num_products one because of
+
+92
+00:03:32,090 --> 00:03:33,940
+that sum operator again.
+
+93
+00:03:33,940 --> 00:03:36,020
+When we're done, we're going
+to get a resulting set of
+
+94
+00:03:36,020 --> 00:03:38,150
+documents that's going
+to run to the next
+
+95
+00:03:38,150 --> 00:03:39,310
+stage of the pipeline.
+
+96
+00:03:39,310 --> 00:03:42,550
+And that set of documents is
+going to have an _id equal to
+
+97
+00:03:42,550 --> 00:03:44,740
+the manufacturer of each
+of these products.
+
+98
+00:03:44,740 --> 00:03:48,050
+And num_products is going to be
+the number of products that
+
+99
+00:03:48,050 --> 00:03:50,180
+each manufacturer
+manufactured.
+
+100
+00:03:50,180 --> 00:03:52,965
+You can almost look at this,
+again, as an upsert-- or I
+
+101
+00:03:52,965 --> 00:03:54,300
+like to think of it
+as an upsert--
+
+102
+00:03:54,300 --> 00:03:56,980
+because it's creating documents
+in the result set,
+
+103
+00:03:56,980 --> 00:03:58,690
+if they don't already exist.
+
+104
+00:03:58,690 --> 00:04:01,140
+If they do exist, it's
+just updating them.
+
+105
+00:04:01,140 --> 00:04:04,240
+It's running that aggregation
+operator against the field,
+
+106
+00:04:04,240 --> 00:04:07,100
+other than _id.
+
+107
+00:04:07,100 --> 00:04:07,360
+All right.
+
+108
+00:04:07,360 --> 00:04:10,640
+So that's the way aggregation
+works, in a detailed way.
+
+109
+00:04:10,640 --> 00:04:13,390
+And they all build on this
+basic concept of running
+
+110
+00:04:13,390 --> 00:04:15,230
+through the source collection.
+
+111
+00:04:15,230 --> 00:04:17,470
+Or the collection is known as
+a source collection because
+
+112
+00:04:17,470 --> 00:04:17,870
+they [INAUDIBLE]
+
+113
+00:04:17,870 --> 00:04:18,959
+other stages of the pipeline.
+
+114
+00:04:18,959 --> 00:04:22,510
+But running through documents
+that existed, prior to that
+
+115
+00:04:22,510 --> 00:04:25,460
+stage of the pipeline, and then
+building a new set of
+
+116
+00:04:25,460 --> 00:04:27,400
+documents with an _id,
+as specified.
+
+117
+00:04:27,400 --> 00:04:31,275
+In this case, we called upon
+dollar manufacturer to be our
+
+118
+00:04:31,275 --> 00:04:34,460
+_id, and then running the
+aggregation operators on the
+
+119
+00:04:34,460 --> 00:04:37,110
+other fields that we've created,
+other keys, and
+
+120
+00:04:37,110 --> 00:04:38,360
+values that we've created.
+
+121
+00:04:38,360 --> 00:04:39,300
+OK.
+
+122
+00:04:39,300 --> 00:04:41,320
+So let's have a quiz.
+
+123
+00:04:41,320 --> 00:04:43,650
+Let's say we have the following
+collection of stuff.
+
+124
+00:04:43,650 --> 00:04:46,410
+And you can see here it has some
+documents with a, b, and
+
+125
+00:04:46,410 --> 00:04:49,005
+c, specified for each
+of these documents.
+
+126
+00:04:49,005 --> 00:04:51,330
+And we perform the following
+aggregation,
+
+127
+00:04:51,330 --> 00:04:55,510
+db.stuff.aggregate, group
+_id dollar c.
+
+128
+00:04:55,510 --> 00:04:57,940
+How many documents will be in
+the result set from the
+
+129
+00:04:57,940 --> 00:04:59,190
+aggregate function?
+
+130
+00:04:59,190 --> 00:05:00,165

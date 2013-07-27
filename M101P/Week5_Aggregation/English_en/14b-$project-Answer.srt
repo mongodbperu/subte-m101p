@@ -1,0 +1,99 @@
+1
+00:00:00,000 --> 00:00:00,370
+
+2
+00:00:00,370 --> 00:00:01,110
+All right.
+
+3
+00:00:01,110 --> 00:00:06,000
+And the answer is
+db.zips.aggregate $project,
+
+4
+00:00:06,000 --> 00:00:10,220
+suppress the _id, and then
+give me the city.
+
+5
+00:00:10,220 --> 00:00:14,330
+And the city is a lowercase
+version of the current city,
+
+6
+00:00:14,330 --> 00:00:16,480
+the $city from documents.
+
+7
+00:00:16,480 --> 00:00:19,630
+Population is just included,
+so we just do that
+
+8
+00:00:19,630 --> 00:00:21,620
+with a colon one.
+
+9
+00:00:21,620 --> 00:00:25,290
+And that's similar to the way
+we do it when we do a find.
+
+10
+00:00:25,290 --> 00:00:32,030
+State is included, and zip is
+equal to the $_id value from
+
+11
+00:00:32,030 --> 00:00:33,340
+the document.
+
+12
+00:00:33,340 --> 00:00:37,260
+Maybe it's a little bit tricky,
+but totally legal, and
+
+13
+00:00:37,260 --> 00:00:38,860
+that's the answer.
+
+14
+00:00:38,860 --> 00:00:41,070
+It's a little bit interesting
+the way this gets parsed,
+
+15
+00:00:41,070 --> 00:00:45,090
+because if there's a one here,
+then Mongo takes to mean just
+
+16
+00:00:45,090 --> 00:00:48,720
+included, but if it's something
+more complex like a
+
+17
+00:00:48,720 --> 00:00:53,010
+JSON document or a dollar sign,
+then it winds up having
+
+18
+00:00:53,010 --> 00:00:55,060
+to do something more complex.
+
+19
+00:00:55,060 --> 00:00:57,670
+So it seems like there's a
+pretty big switch on whether
+
+20
+00:00:57,670 --> 00:01:00,060
+or not there's a simple integer
+here or something more
+
+21
+00:01:00,060 --> 00:01:03,670
+complex when it's parsing what
+to do with each of these keys.
+
+22
+00:01:03,670 --> 00:01:04,920
