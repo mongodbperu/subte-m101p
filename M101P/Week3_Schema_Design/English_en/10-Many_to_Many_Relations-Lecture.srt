@@ -1,0 +1,523 @@
+1
+00:00:00,000 --> 00:00:00,140
+
+2
+00:00:00,140 --> 00:00:01,900
+The next relation we're going
+to go over is the
+
+3
+00:00:01,900 --> 00:00:03,960
+many-to-many relation.
+
+4
+00:00:03,960 --> 00:00:05,550
+An example of a many-to-many
+relation
+
+5
+00:00:05,550 --> 00:00:07,350
+would be books to authors.
+
+6
+00:00:07,350 --> 00:00:09,840
+Each book could have more
+than one author.
+
+7
+00:00:09,840 --> 00:00:12,860
+And each author could have
+more than one book.
+
+8
+00:00:12,860 --> 00:00:16,079
+Or another example would be
+students and teachers.
+
+9
+00:00:16,079 --> 00:00:18,380
+A student has multiple teachers,
+and a teacher has
+
+10
+00:00:18,380 --> 00:00:19,820
+multiple students.
+
+11
+00:00:19,820 --> 00:00:23,330
+So the thing to note in both
+these cases and in many world
+
+12
+00:00:23,330 --> 00:00:27,890
+cases is that, although it is a
+many-to-many relation, there
+
+13
+00:00:27,890 --> 00:00:31,530
+are not a very large number of
+authors for each book or a
+
+14
+00:00:31,530 --> 00:00:33,630
+very large number of books
+for each author.
+
+15
+00:00:33,630 --> 00:00:38,220
+Instead, it tends to
+be few to few.
+
+16
+00:00:38,220 --> 00:00:42,840
+And that's going to allow us to
+use the hierarchy and the
+
+17
+00:00:42,840 --> 00:00:46,950
+rich document structure of
+MongoDB pretty easily, whereas
+
+18
+00:00:46,950 --> 00:00:50,320
+it wouldn't be possible if it
+were truly many-to-many.
+
+19
+00:00:50,320 --> 00:00:52,560
+So let's look at books
+to authors.
+
+20
+00:00:52,560 --> 00:00:54,820
+Although there are probably a
+large number of books and
+
+21
+00:00:54,820 --> 00:00:57,980
+there are probably a large
+number of authors, as we said,
+
+22
+00:00:57,980 --> 00:01:02,550
+each book probably has a small
+number of authors, and each
+
+23
+00:01:02,550 --> 00:01:04,459
+author has a small
+number of books.
+
+24
+00:01:04,459 --> 00:01:09,200
+And so what we can do is we can
+link them by creating an
+
+25
+00:01:09,200 --> 00:01:11,340
+array, write the document.
+
+26
+00:01:11,340 --> 00:01:14,690
+So for instance, in this
+author's document that I'm
+
+27
+00:01:14,690 --> 00:01:18,150
+showing on the right, I can put
+a book ID right in here,
+
+28
+00:01:18,150 --> 00:01:21,570
+plus the book ID of other books
+that this author might
+
+29
+00:01:21,570 --> 00:01:22,150
+have written.
+
+30
+00:01:22,150 --> 00:01:24,760
+Now, I could go in
+both directions.
+
+31
+00:01:24,760 --> 00:01:28,770
+And I could, if I wanted, also
+create an author's key in the
+
+32
+00:01:28,770 --> 00:01:31,530
+books collection and
+have an array of
+
+33
+00:01:31,530 --> 00:01:32,730
+authors for each book.
+
+34
+00:01:32,730 --> 00:01:34,550
+In this case, this particular
+book, Gone with the Wind,
+
+35
+00:01:34,550 --> 00:01:36,940
+written by Margaret Mitchell,
+has only a single author.
+
+36
+00:01:36,940 --> 00:01:38,830
+So I'll just put a single
+author in here.
+
+37
+00:01:38,830 --> 00:01:40,450
+And whether this makes
+sense depends a lot
+
+38
+00:01:40,450 --> 00:01:41,980
+on the access patterns.
+
+39
+00:01:41,980 --> 00:01:44,740
+If you want to be able to
+quickly traverse from a book
+
+40
+00:01:44,740 --> 00:01:47,830
+to its authors, then it could
+make sense, without doing
+
+41
+00:01:47,830 --> 00:01:50,300
+additional query, to have it
+link in that direction.
+
+42
+00:01:50,300 --> 00:01:52,760
+And vice versa if you want to
+start with authors and get
+
+43
+00:01:52,760 --> 00:01:53,920
+quickly to books.
+
+44
+00:01:53,920 --> 00:01:57,610
+Now, having them linked in
+both directions probably
+
+45
+00:01:57,610 --> 00:01:59,810
+wouldn't be my preference,
+because it creates the
+
+46
+00:01:59,810 --> 00:02:03,740
+opportunity to have the data
+be inconsistent if it's not
+
+47
+00:02:03,740 --> 00:02:05,130
+tied together well.
+
+48
+00:02:05,130 --> 00:02:08,990
+But you can do it, if you want
+to, for performance reasons.
+
+49
+00:02:08,990 --> 00:02:11,170
+Now, the other option is you
+could just embed it.
+
+50
+00:02:11,170 --> 00:02:14,680
+So you could, for instance,
+rather than have this array
+
+51
+00:02:14,680 --> 00:02:17,440
+here, we could just
+embed the book--
+
+52
+00:02:17,440 --> 00:02:18,960
+I'm going to cross this out.
+
+53
+00:02:18,960 --> 00:02:23,880
+And you could embed the book
+right in the author collection
+
+54
+00:02:23,880 --> 00:02:26,140
+and put information about the
+book that the author has
+
+55
+00:02:26,140 --> 00:02:28,270
+written right in here.
+
+56
+00:02:28,270 --> 00:02:32,710
+But I don't love that, because
+what's going to happen is that
+
+57
+00:02:32,710 --> 00:02:34,960
+the book is going to wind up--
+
+58
+00:02:34,960 --> 00:02:36,950
+not often, because it doesn't
+usually have multiple
+
+59
+00:02:36,950 --> 00:02:39,440
+authors-- but it could wind up
+in the author's collection
+
+60
+00:02:39,440 --> 00:02:44,270
+multiple times, duplicated,
+and open this up to having
+
+61
+00:02:44,270 --> 00:02:48,680
+update anomalies, modification
+anomalies, where the
+
+62
+00:02:48,680 --> 00:02:50,540
+information doesn't
+stay consistent.
+
+63
+00:02:50,540 --> 00:02:52,440
+Now, if that's what you need for
+performance reasons, you
+
+64
+00:02:52,440 --> 00:02:55,882
+need to embed the book inside
+the author collection, then by
+
+65
+00:02:55,882 --> 00:02:57,140
+all means, do it.
+
+66
+00:02:57,140 --> 00:02:59,220
+But I'd avoid it unless
+you need to do it
+
+67
+00:02:59,220 --> 00:03:00,650
+for performance reasons.
+
+68
+00:03:00,650 --> 00:03:03,470
+In this particular case, I'd
+make books and authors both a
+
+69
+00:03:03,470 --> 00:03:05,390
+first-class object.
+
+70
+00:03:05,390 --> 00:03:08,030
+It's also important to remember
+that there are no
+
+71
+00:03:08,030 --> 00:03:11,150
+foreign key constraints
+inside MongoDB, as we
+
+72
+00:03:11,150 --> 00:03:11,870
+talked about earlier.
+
+73
+00:03:11,870 --> 00:03:16,170
+So there's no guarantee that,
+if you put an ID here, that
+
+74
+00:03:16,170 --> 00:03:18,490
+it's going to appear
+over here.
+
+75
+00:03:18,490 --> 00:03:20,850
+All right, so next, let's talk
+about the students and
+
+76
+00:03:20,850 --> 00:03:23,600
+teachers relationship.
+
+77
+00:03:23,600 --> 00:03:26,430
+So students and teachers looks
+a lot like books and authors,
+
+78
+00:03:26,430 --> 00:03:28,320
+where a teacher can have
+multiple students, and a
+
+79
+00:03:28,320 --> 00:03:29,450
+student can have multiple
+teachers.
+
+80
+00:03:29,450 --> 00:03:31,810
+And I'd probably handle
+it the same way.
+
+81
+00:03:31,810 --> 00:03:33,640
+I'd have a student collection,
+and I'd have a teachers
+
+82
+00:03:33,640 --> 00:03:34,170
+collection.
+
+83
+00:03:34,170 --> 00:03:37,450
+And I'd have the information
+about the student listed in
+
+84
+00:03:37,450 --> 00:03:40,170
+the student collection, and the
+information about teacher
+
+85
+00:03:40,170 --> 00:03:41,750
+listed in the teacher
+collection.
+
+86
+00:03:41,750 --> 00:03:45,320
+And then I would link in one
+direction or the other.
+
+87
+00:03:45,320 --> 00:03:47,740
+And I would have
+array of items.
+
+88
+00:03:47,740 --> 00:03:50,580
+If I want to know the students
+for this teacher, I could put
+
+89
+00:03:50,580 --> 00:03:53,840
+that right in here and find
+the students very quickly.
+
+90
+00:03:53,840 --> 00:03:56,180
+And I might link in both
+directions and also have an
+
+91
+00:03:56,180 --> 00:03:59,190
+array of teachers in my
+students collection.
+
+92
+00:03:59,190 --> 00:04:01,480
+Now, again, you could embed.
+
+93
+00:04:01,480 --> 00:04:03,830
+At the risk of duplicating data,
+you could decide that
+
+94
+00:04:03,830 --> 00:04:07,910
+you want to put the teachers
+inside the student collection.
+
+95
+00:04:07,910 --> 00:04:12,050
+This is instead of being an
+array of object IDs or
+
+96
+00:04:12,050 --> 00:04:14,280
+underscore IDs that need to
+then be traversed through
+
+97
+00:04:14,280 --> 00:04:16,750
+initial queries in
+the application.
+
+98
+00:04:16,750 --> 00:04:19,880
+You could just put the data
+right inside the collection.
+
+99
+00:04:19,880 --> 00:04:22,470
+Now, that wouldn't be a good
+idea in the case of embedding
+
+100
+00:04:22,470 --> 00:04:24,510
+teachers in the student
+collection.
+
+101
+00:04:24,510 --> 00:04:27,950
+And the reason this there's a
+very good chance that you want
+
+102
+00:04:27,950 --> 00:04:31,810
+to insert a teacher into the
+system before he has students.
+
+103
+00:04:31,810 --> 00:04:34,730
+And you may want to insert a
+student into the system before
+
+104
+00:04:34,730 --> 00:04:35,570
+he has teachers.
+
+105
+00:04:35,570 --> 00:04:39,660
+And if you do embed like that,
+then you are requiring that
+
+106
+00:04:39,660 --> 00:04:41,160
+the parent object exists
+in order to
+
+107
+00:04:41,160 --> 00:04:42,870
+represent the child object.
+
+108
+00:04:42,870 --> 00:04:45,170
+And that may not
+map to what the
+
+109
+00:04:45,170 --> 00:04:46,960
+application wants to permit.
+
+110
+00:04:46,960 --> 00:04:48,210

@@ -1,0 +1,391 @@
+1
+00:00:00,000 --> 00:00:00,450
+
+2
+00:00:00,450 --> 00:00:01,700
+Welcome back.
+
+3
+00:00:01,700 --> 00:00:04,930
+This week, we're going to talk
+about MongoDB schema design.
+
+4
+00:00:04,930 --> 00:00:07,620
+If you're coming from the world
+of relational databases,
+
+5
+00:00:07,620 --> 00:00:11,450
+you know that there's a best,
+ideal way to design your
+
+6
+00:00:11,450 --> 00:00:14,640
+schema, which is to keep it
+in the third normal form.
+
+7
+00:00:14,640 --> 00:00:17,860
+Now, you can keep data in the
+third normal form in MongoDB.
+
+8
+00:00:17,860 --> 00:00:19,900
+And we'll talk a little bit
+about the third normal form
+
+9
+00:00:19,900 --> 00:00:20,930
+next lesson.
+
+10
+00:00:20,930 --> 00:00:24,380
+But in Mongo, it turns out that
+it's more important to
+
+11
+00:00:24,380 --> 00:00:28,740
+keep the data in a way that's
+conducive to the application
+
+12
+00:00:28,740 --> 00:00:30,200
+using the data.
+
+13
+00:00:30,200 --> 00:00:33,000
+So you think about your
+application data patterns.
+
+14
+00:00:33,000 --> 00:00:36,670
+You think about what pieces of
+data are used together, what
+
+15
+00:00:36,670 --> 00:00:40,260
+pieces of data are used mostly
+read-only, what pieces of data
+
+16
+00:00:40,260 --> 00:00:41,560
+are written all the time.
+
+17
+00:00:41,560 --> 00:00:43,730
+And then we're going to organize
+our data within
+
+18
+00:00:43,730 --> 00:00:47,170
+MongoDB to specifically
+suit the
+
+19
+00:00:47,170 --> 00:00:49,350
+application data access patterns.
+
+20
+00:00:49,350 --> 00:00:51,640
+And that's a bit different from
+the world of relational,
+
+21
+00:00:51,640 --> 00:00:54,290
+where instead, you try to keep
+the data in a way that's
+
+22
+00:00:54,290 --> 00:00:57,580
+agnostic to the application.
+
+23
+00:00:57,580 --> 00:01:02,070
+So let's go over some of the
+basic facts about MongoDB just
+
+24
+00:01:02,070 --> 00:01:05,500
+to remind you of them as we
+talk about schema design.
+
+25
+00:01:05,500 --> 00:01:09,070
+The first is that MongoDB
+supports rich documents.
+
+26
+00:01:09,070 --> 00:01:10,900
+And by rich documents,
+I mean that it's not
+
+27
+00:01:10,900 --> 00:01:12,870
+just tabular data.
+
+28
+00:01:12,870 --> 00:01:17,730
+In MongoDB, you can store an
+array of items, or a value for
+
+29
+00:01:17,730 --> 00:01:20,890
+a certain key can be an
+entire other document.
+
+30
+00:01:20,890 --> 00:01:23,520
+And this is going to allow
+us to pre-join
+
+31
+00:01:23,520 --> 00:01:25,780
+data for fast access.
+
+32
+00:01:25,780 --> 00:01:29,090
+And that's important because,
+as you know, MongoDB doesn't
+
+33
+00:01:29,090 --> 00:01:31,870
+support joins directly
+inside the kernel.
+
+34
+00:01:31,870 --> 00:01:34,280
+Instead, if you want to do a
+join, you're going to have to
+
+35
+00:01:34,280 --> 00:01:36,680
+join in the application
+itself.
+
+36
+00:01:36,680 --> 00:01:39,030
+And of course, the reason we do
+this is because that joins
+
+37
+00:01:39,030 --> 00:01:39,880
+are very hard to scale.
+
+38
+00:01:39,880 --> 00:01:41,980
+And we want the system to
+be high performance.
+
+39
+00:01:41,980 --> 00:01:44,150
+So as a result of this, you need
+to think ahead of time
+
+40
+00:01:44,150 --> 00:01:46,450
+about what data you want to use
+together with other data.
+
+41
+00:01:46,450 --> 00:01:48,000
+And if it's possible, you
+might want to embed it
+
+42
+00:01:48,000 --> 00:01:49,560
+directly within a document.
+
+43
+00:01:49,560 --> 00:01:52,280
+And we'll talk about
+how you do that.
+
+44
+00:01:52,280 --> 00:01:54,490
+The next is that there
+are no constraints.
+
+45
+00:01:54,490 --> 00:01:56,480
+Now, if you come from the world
+of relational, you might
+
+46
+00:01:56,480 --> 00:01:59,500
+remember that you could have a
+foreign key constraint and ask
+
+47
+00:01:59,500 --> 00:02:03,430
+that a attribute of one row in
+a table would form a foreign
+
+48
+00:02:03,430 --> 00:02:04,750
+key into another table.
+
+49
+00:02:04,750 --> 00:02:06,930
+And we don't have
+that in MongoDB.
+
+50
+00:02:06,930 --> 00:02:09,120
+But it's going to turn it's not
+as important as you might
+
+51
+00:02:09,120 --> 00:02:10,600
+think because of embedding.
+
+52
+00:02:10,600 --> 00:02:13,090
+Embedding is going to make that
+a little less important
+
+53
+00:02:13,090 --> 00:02:14,740
+than it would otherwise be.
+
+54
+00:02:14,740 --> 00:02:17,090
+We're going to think about
+atomic operations.
+
+55
+00:02:17,090 --> 00:02:18,860
+We don't support transactions.
+
+56
+00:02:18,860 --> 00:02:21,570
+But we do support atomic
+operations within MongoDB
+
+57
+00:02:21,570 --> 00:02:22,780
+within one document.
+
+58
+00:02:22,780 --> 00:02:24,570
+So we're going to think about
+how to organize our data to
+
+59
+00:02:24,570 --> 00:02:27,180
+support atomic operations if
+we need them within our
+
+60
+00:02:27,180 --> 00:02:28,570
+application.
+
+61
+00:02:28,570 --> 00:02:31,980
+And the final thing is that
+there is no declared schema
+
+62
+00:02:31,980 --> 00:02:33,070
+within MongoDB.
+
+63
+00:02:33,070 --> 00:02:35,530
+But there's a pretty good chance
+that your application
+
+64
+00:02:35,530 --> 00:02:37,090
+is going to have a schema.
+
+65
+00:02:37,090 --> 00:02:39,880
+And by have a schema, I mean
+that every single document in
+
+66
+00:02:39,880 --> 00:02:41,550
+a particular collection is
+probably going to have a
+
+67
+00:02:41,550 --> 00:02:44,010
+pretty similar structure.
+
+68
+00:02:44,010 --> 00:02:46,570
+And there might be some small
+changes to that structure,
+
+69
+00:02:46,570 --> 00:02:49,120
+depending on different versions
+of your application.
+
+70
+00:02:49,120 --> 00:02:51,460
+But mostly, each document in the
+collection's going to have
+
+71
+00:02:51,460 --> 00:02:52,670
+a similar structure.
+
+72
+00:02:52,670 --> 00:02:54,950
+And even though it's not
+declared ahead of time, it's
+
+73
+00:02:54,950 --> 00:02:57,730
+important to think about that
+structure so that the data
+
+74
+00:02:57,730 --> 00:03:01,140
+schema itself supports all the
+different features of your
+
+75
+00:03:01,140 --> 00:03:03,160
+application.
+
+76
+00:03:03,160 --> 00:03:04,800
+So let's have a first quiz.
+
+77
+00:03:04,800 --> 00:03:08,590
+The first quiz for schema design
+is what's the single
+
+78
+00:03:08,590 --> 00:03:11,160
+most important factor in
+designing your application
+
+79
+00:03:11,160 --> 00:03:13,080
+schema within MongoDB?
+
+80
+00:03:13,080 --> 00:03:16,630
+Is it making the design
+extensible, making it easy to
+
+81
+00:03:16,630 --> 00:03:19,500
+read by a human, matching the
+data access patterns of your
+
+82
+00:03:19,500 --> 00:03:23,250
+application, or keeping the
+data in third normal form?
+
+83
+00:03:23,250 --> 00:03:24,590
+And just check one of those.
+
+84
+00:03:24,590 --> 00:03:25,840

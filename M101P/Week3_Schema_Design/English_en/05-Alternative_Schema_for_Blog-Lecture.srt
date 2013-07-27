@@ -1,0 +1,349 @@
+1
+00:00:00,000 --> 00:00:00,130
+
+2
+00:00:00,130 --> 00:00:02,340
+Let's say we wanted to try
+a different design
+
+3
+00:00:02,340 --> 00:00:04,000
+for our blog schema.
+
+4
+00:00:04,000 --> 00:00:06,850
+For example, rather than have
+everything in the post
+
+5
+00:00:06,850 --> 00:00:10,580
+collection embedded with an
+array for the tags and an
+
+6
+00:00:10,580 --> 00:00:12,350
+array for the comments, we
+could have a separate
+
+7
+00:00:12,350 --> 00:00:16,370
+collection for posts,
+comments, and tags.
+
+8
+00:00:16,370 --> 00:00:18,130
+And if we did that--
+
+9
+00:00:18,130 --> 00:00:19,480
+add an s here--
+
+10
+00:00:19,480 --> 00:00:22,180
+if we did that, what
+would it look like?
+
+11
+00:00:22,180 --> 00:00:24,600
+Well, we have our post
+collection again.
+
+12
+00:00:24,600 --> 00:00:26,280
+And a post would be--
+
+13
+00:00:26,280 --> 00:00:28,640
+the underscore id would probably
+be the post ID.
+
+14
+00:00:28,640 --> 00:00:30,530
+And there'd be the title of the
+post and the body and the
+
+15
+00:00:30,530 --> 00:00:32,560
+author and the date.
+
+16
+00:00:32,560 --> 00:00:36,300
+But then, for the comments, we'd
+have multiple documents
+
+17
+00:00:36,300 --> 00:00:37,510
+in the comments collection.
+
+18
+00:00:37,510 --> 00:00:41,030
+And they'd probably be tied
+together in a similar way that
+
+19
+00:00:41,030 --> 00:00:44,480
+we would in the relational
+world, which is that we would
+
+20
+00:00:44,480 --> 00:00:49,850
+have right here, this post ID
+would be the same as this ID
+
+21
+00:00:49,850 --> 00:00:51,370
+right here.
+
+22
+00:00:51,370 --> 00:00:53,840
+And then we'd have the author
+for the comment here and the
+
+23
+00:00:53,840 --> 00:00:55,790
+author email there.
+
+24
+00:00:55,790 --> 00:00:58,660
+We'd now need an order
+attribute, because, remember,
+
+25
+00:00:58,660 --> 00:01:01,590
+these comments are ordered
+on the blog post.
+
+26
+00:01:01,590 --> 00:01:04,330
+And whereas we got that for
+free when we embed them,
+
+27
+00:01:04,330 --> 00:01:06,960
+because there was an array and
+arrays are ordered, now we
+
+28
+00:01:06,960 --> 00:01:09,390
+have to have the order, because
+if there were five
+
+29
+00:01:09,390 --> 00:01:12,590
+comments, one of them would have
+an ordinal value of 0,
+
+30
+00:01:12,590 --> 00:01:15,270
+one would have an ordinal value
+of 1, 2, 3, et cetera.
+
+31
+00:01:15,270 --> 00:01:17,800
+And then, finally, for the
+tags, we'd have to have
+
+32
+00:01:17,800 --> 00:01:18,940
+multiple tag entries.
+
+33
+00:01:18,940 --> 00:01:22,670
+So to add three tags to follow
+this post and the three tags,
+
+34
+00:01:22,670 --> 00:01:24,880
+we'd have to have three
+different documents in this
+
+35
+00:01:24,880 --> 00:01:26,480
+tags collection.
+
+36
+00:01:26,480 --> 00:01:30,080
+Now, the problem is that we
+don't have any sort of joins
+
+37
+00:01:30,080 --> 00:01:32,240
+inside MongoDB.
+
+38
+00:01:32,240 --> 00:01:36,270
+So if you want to display one
+post, you're going to have to
+
+39
+00:01:36,270 --> 00:01:38,650
+manually collect this in code.
+
+40
+00:01:38,650 --> 00:01:42,560
+You're going to have to go
+through and read the post ID
+
+41
+00:01:42,560 --> 00:01:45,750
+and then use it to read the
+comments collection.
+
+42
+00:01:45,750 --> 00:01:47,550
+And then you're going to have
+to use it to read the tags
+
+43
+00:01:47,550 --> 00:01:48,610
+collection.
+
+44
+00:01:48,610 --> 00:01:50,420
+It's pretty tedious in code.
+
+45
+00:01:50,420 --> 00:01:53,540
+And there's no locality of data,
+because these are in
+
+46
+00:01:53,540 --> 00:01:56,550
+separate files on disk.
+
+47
+00:01:56,550 --> 00:01:58,190
+This is in one file, probably.
+
+48
+00:01:58,190 --> 00:01:59,870
+This is in another file.
+
+49
+00:01:59,870 --> 00:02:00,940
+This is in another file.
+
+50
+00:02:00,940 --> 00:02:04,120
+So a disk is going to seek
+in the post collection.
+
+51
+00:02:04,120 --> 00:02:04,980
+You're going to find the post.
+
+52
+00:02:04,980 --> 00:02:07,230
+You're going to read the whole
+thing into memory.
+
+53
+00:02:07,230 --> 00:02:08,539
+Same thing for the comments
+collection.
+
+54
+00:02:08,539 --> 00:02:11,640
+It's a separate disk seek to
+find the comments, and then
+
+55
+00:02:11,640 --> 00:02:12,560
+read that into memory.
+
+56
+00:02:12,560 --> 00:02:14,910
+And the same thing
+with these tags.
+
+57
+00:02:14,910 --> 00:02:17,170
+So it doesn't work particularly
+well.
+
+58
+00:02:17,170 --> 00:02:21,480
+And one good rule of thumb with
+MongoDB's schema design,
+
+59
+00:02:21,480 --> 00:02:25,130
+is if you see yourself doing it
+in exactly the same way you
+
+60
+00:02:25,130 --> 00:02:29,000
+would do it in a relational
+design, you're probably not
+
+61
+00:02:29,000 --> 00:02:30,490
+taking the best approach.
+
+62
+00:02:30,490 --> 00:02:34,750
+So always try to embed data
+where you can, prejoin it
+
+63
+00:02:34,750 --> 00:02:35,750
+where you can.
+
+64
+00:02:35,750 --> 00:02:37,200
+Now, there are some limitations
+to that that we're
+
+65
+00:02:37,200 --> 00:02:38,320
+going to get to.
+
+66
+00:02:38,320 --> 00:02:41,640
+In particular, these documents
+can only be 16
+
+67
+00:02:41,640 --> 00:02:43,150
+megabytes in size.
+
+68
+00:02:43,150 --> 00:02:47,210
+So in certain situations, it
+won't work to embed the data.
+
+69
+00:02:47,210 --> 00:02:49,660
+And you'll have to keep it
+in separate collections.
+
+70
+00:02:49,660 --> 00:02:52,840
+But there are some ways around
+that that I'll talk about in
+
+71
+00:02:52,840 --> 00:02:54,860
+some future segments.
+
+72
+00:02:54,860 --> 00:02:56,440
+But anyway, this an alternative
+
+73
+00:02:56,440 --> 00:02:57,940
+design for the blog.
+
+74
+00:02:57,940 --> 00:03:00,690
+And I think it's one that
+doesn't work particularly
+
+75
+00:03:00,690 --> 00:03:04,300
+well, although it might seem the
+most natural coming from
+
+76
+00:03:04,300 --> 00:03:05,550
+the relational world.

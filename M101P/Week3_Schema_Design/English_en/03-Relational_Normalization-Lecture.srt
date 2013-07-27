@@ -1,0 +1,498 @@
+1
+00:00:00,000 --> 00:00:00,160
+
+2
+00:00:00,160 --> 00:00:03,220
+Let's start out by reviewing
+what we try to strive for in
+
+3
+00:00:03,220 --> 00:00:06,050
+the relational world in
+the third normal form.
+
+4
+00:00:06,050 --> 00:00:09,930
+Because I think it'll motivate
+a lot of the trade offs that
+
+5
+00:00:09,930 --> 00:00:14,430
+we talk about in the
+mongoDB world.
+
+6
+00:00:14,430 --> 00:00:16,680
+This a bit of a review for
+people who come from the
+
+7
+00:00:16,680 --> 00:00:17,760
+relational world.
+
+8
+00:00:17,760 --> 00:00:21,320
+Let's look at a potential schema
+for a posts table for
+
+9
+00:00:21,320 --> 00:00:24,110
+the blog project that
+we've been talking.
+
+10
+00:00:24,110 --> 00:00:26,710
+And this isn't the whole thing,
+this is just the posts
+
+11
+00:00:26,710 --> 00:00:29,870
+itself plus the authors.
+
+12
+00:00:29,870 --> 00:00:33,070
+So let's say that you had a
+posts table and you decided to
+
+13
+00:00:33,070 --> 00:00:37,730
+have a post ID, and a title, and
+the body, so these are the
+
+14
+00:00:37,730 --> 00:00:40,210
+different titles of these posts,
+like Elvis lives, and
+
+15
+00:00:40,210 --> 00:00:42,350
+the body says, yes he does.
+
+16
+00:00:42,350 --> 00:00:44,900
+And the author of the
+post here, Andrew.
+
+17
+00:00:44,900 --> 00:00:48,290
+And then the author email andrew
+at 10gen.com The second
+
+18
+00:00:48,290 --> 00:00:51,060
+post in the table says,
+mongo rocks.
+
+19
+00:00:51,060 --> 00:00:52,800
+And it was written by Richard.
+
+20
+00:00:52,800 --> 00:00:55,230
+And has his email, richard
+at 10gen.com.
+
+21
+00:00:55,230 --> 00:00:57,800
+And the third one has the
+title, hello world.
+
+22
+00:00:57,800 --> 00:00:59,720
+And it was written by Andrew.
+
+23
+00:00:59,720 --> 00:01:03,490
+And it has the email andrew
+at 10gen.com.
+
+24
+00:01:03,490 --> 00:01:06,630
+So this is a denormalized
+table structure in the
+
+25
+00:01:06,630 --> 00:01:07,800
+relational world.
+
+26
+00:01:07,800 --> 00:01:09,970
+It's not the third
+normal form.
+
+27
+00:01:09,970 --> 00:01:11,420
+It's broken.
+
+28
+00:01:11,420 --> 00:01:16,340
+And it's broken very clearly
+because you can see right here
+
+29
+00:01:16,340 --> 00:01:20,230
+that if I want to update my
+email, let's say the email for
+
+30
+00:01:20,230 --> 00:01:26,360
+Andrew, I would have to update
+it here and also here.
+
+31
+00:01:26,360 --> 00:01:29,320
+And there's a possibility of
+leaving it inconsistent.
+
+32
+00:01:29,320 --> 00:01:32,840
+I could update it in this row,
+but not update it in this row,
+
+33
+00:01:32,840 --> 00:01:36,170
+and therefore, leave
+it inconsistent.
+
+34
+00:01:36,170 --> 00:01:40,990
+And you can pretty much
+see that this violates
+
+35
+00:01:40,990 --> 00:01:44,880
+normalization because it
+violates a common way of
+
+36
+00:01:44,880 --> 00:01:48,870
+describing normalized tables
+in the third normal form,
+
+37
+00:01:48,870 --> 00:01:52,490
+which is that every non-key
+attribute in the table must
+
+38
+00:01:52,490 --> 00:01:55,300
+provide a fact about the
+key, the whole key, and
+
+39
+00:01:55,300 --> 00:01:56,460
+nothing but the key.
+
+40
+00:01:56,460 --> 00:02:00,360
+And that's of a play on words
+for what you say in a US
+
+41
+00:02:00,360 --> 00:02:02,690
+courtroom, telling the truth,
+the whole truth, and nothing
+
+42
+00:02:02,690 --> 00:02:03,660
+but the truth.
+
+43
+00:02:03,660 --> 00:02:07,470
+And, in particular, the key
+in this is the post.
+
+44
+00:02:07,470 --> 00:02:10,120
+This is going to be the primary
+key for this table.
+
+45
+00:02:10,120 --> 00:02:13,400
+And there is the attribute, this
+non-key attribute, author
+
+46
+00:02:13,400 --> 00:02:15,970
+email, which does
+not follow that.
+
+47
+00:02:15,970 --> 00:02:19,750
+Because it does, in fact, tell
+something about the author.
+
+48
+00:02:19,750 --> 00:02:22,420
+And so it violates that
+third normal form.
+
+49
+00:02:22,420 --> 00:02:28,140
+And, if you remember, from the
+world of relational having a
+
+50
+00:02:28,140 --> 00:02:32,020
+database table in the third
+normal form there's several
+
+51
+00:02:32,020 --> 00:02:33,770
+good things about that.
+
+52
+00:02:33,770 --> 00:02:36,440
+And I'll show you
+what they are.
+
+53
+00:02:36,440 --> 00:02:40,040
+All right, so what are the goals
+of normalization in the
+
+54
+00:02:40,040 --> 00:02:40,710
+relational world?
+
+55
+00:02:40,710 --> 00:02:41,810
+Well, there's three goals.
+
+56
+00:02:41,810 --> 00:02:44,950
+One is that it frees the
+database of these modification
+
+57
+00:02:44,950 --> 00:02:47,630
+anomalies, like, for instance,
+the one I just showed you,
+
+58
+00:02:47,630 --> 00:02:50,730
+where I could update my email
+address in one row, but not
+
+59
+00:02:50,730 --> 00:02:52,280
+update it in another, and
+therefore, leave it
+
+60
+00:02:52,280 --> 00:02:55,220
+inconsistent within
+the database.
+
+61
+00:02:55,220 --> 00:02:58,090
+And the next is it's supposed to
+minimize the redesign when
+
+62
+00:02:58,090 --> 00:02:59,670
+extending the database.
+
+63
+00:02:59,670 --> 00:03:01,225
+Now this, I think, it's a
+little bit controversial
+
+64
+00:03:01,225 --> 00:03:03,010
+whether that does that or not.
+
+65
+00:03:03,010 --> 00:03:05,350
+But that's the idea
+of normalization.
+
+66
+00:03:05,350 --> 00:03:08,550
+And the final reason that you
+normalize these tables, in a
+
+67
+00:03:08,550 --> 00:03:13,440
+relational world, is this one,
+is to avoid any bias toward a
+
+68
+00:03:13,440 --> 00:03:15,940
+particular access pattern.
+
+69
+00:03:15,940 --> 00:03:20,440
+Now, when we look at building
+systems within mongoDB, and we
+
+70
+00:03:20,440 --> 00:03:23,900
+look at the schema that we
+design in mongoDB, this is the
+
+71
+00:03:23,900 --> 00:03:26,920
+one that we're not going
+to worry about.
+
+72
+00:03:26,920 --> 00:03:31,200
+And the reason is that when
+you're not biased toward any
+
+73
+00:03:31,200 --> 00:03:33,720
+particular access pattern,
+you're equally
+
+74
+00:03:33,720 --> 00:03:35,250
+bad at all of them.
+
+75
+00:03:35,250 --> 00:03:38,990
+And one of the ideas behind
+mongoDB is to tune up your
+
+76
+00:03:38,990 --> 00:03:43,120
+database to the applications
+that you're trying to write
+
+77
+00:03:43,120 --> 00:03:44,900
+and the problem that you're
+trying to solve.
+
+78
+00:03:44,900 --> 00:03:47,920
+And so, we're not going to worry
+about avoiding the bias
+
+79
+00:03:47,920 --> 00:03:50,210
+toward any particular
+access pattern.
+
+80
+00:03:50,210 --> 00:03:52,460
+Now, we are going to
+worry about this.
+
+81
+00:03:52,460 --> 00:03:54,520
+We don't want to have to
+redesign the whole system
+
+82
+00:03:54,520 --> 00:03:56,190
+every time we change
+something.
+
+83
+00:03:56,190 --> 00:03:58,990
+And mongoDB is very flexible
+that way because we can add
+
+84
+00:03:58,990 --> 00:04:02,240
+keys and attributes to documents
+without changing
+
+85
+00:04:02,240 --> 00:04:04,310
+every existing document.
+
+86
+00:04:04,310 --> 00:04:07,710
+And then, the last one is
+freeing the database of these
+
+87
+00:04:07,710 --> 00:04:09,430
+modification anomalies.
+
+88
+00:04:09,430 --> 00:04:13,370
+and, although you might think
+that embedding the data would
+
+89
+00:04:13,370 --> 00:04:15,070
+cause these, it doesn't
+have to.
+
+90
+00:04:15,070 --> 00:04:19,130
+And, in fact, we're mostly going
+to avoid embedding data
+
+91
+00:04:19,130 --> 00:04:22,830
+in documents in mongoDB
+In ways that
+
+92
+00:04:22,830 --> 00:04:24,130
+create these anomalies.
+
+93
+00:04:24,130 --> 00:04:27,020
+So we're going to be careful
+not to create them
+
+94
+00:04:27,020 --> 00:04:28,530
+for the most part.
+
+95
+00:04:28,530 --> 00:04:31,870
+Occasionally, for performance
+reasons, we're going to decide
+
+96
+00:04:31,870 --> 00:04:35,140
+that we do want to duplicate the
+data within the document.
+
+97
+00:04:35,140 --> 00:04:36,760
+But that's not going
+to be the default.
+
+98
+00:04:36,760 --> 00:04:40,540
+The default is that we're going
+to avoid it, so that we
+
+99
+00:04:40,540 --> 00:04:42,550
+don't have these types of
+anomalies where data can be
+
+100
+00:04:42,550 --> 00:04:45,260
+inconsistently changed.
+
+101
+00:04:45,260 --> 00:04:47,680
+And in some applications, you
+might want to allow it and it
+
+102
+00:04:47,680 --> 00:04:48,570
+doesn't matter.
+
+103
+00:04:48,570 --> 00:04:51,760
+Or you might want to keep it
+up-to-date in the application,
+
+104
+00:04:51,760 --> 00:04:53,530
+but mostly we're going
+to avoid it.
+
+105
+00:04:53,530 --> 00:04:54,780

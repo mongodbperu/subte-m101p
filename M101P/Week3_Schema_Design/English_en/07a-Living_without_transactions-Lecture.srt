@@ -1,0 +1,457 @@
+1
+00:00:00,000 --> 00:00:00,170
+
+2
+00:00:00,170 --> 00:00:04,700
+We talked a little bit early on
+in the first week about the
+
+3
+00:00:04,700 --> 00:00:08,570
+lack of transactions support
+within MongoDB.
+
+4
+00:00:08,570 --> 00:00:11,650
+And from the relational world
+a lot of you know that
+
+5
+00:00:11,650 --> 00:00:16,219
+transactions offer atomicity,
+consistency, isolation, and
+
+6
+00:00:16,219 --> 00:00:17,450
+durability.
+
+7
+00:00:17,450 --> 00:00:20,820
+But, although we don't have
+transactions within MongoDB,
+
+8
+00:00:20,820 --> 00:00:24,040
+we do have atomic operations.
+
+9
+00:00:24,040 --> 00:00:25,530
+So what does that mean?
+
+10
+00:00:25,530 --> 00:00:29,990
+Well, atomic operations mean
+that when you work on a single
+
+11
+00:00:29,990 --> 00:00:33,880
+document that that work will
+be completed before anyone
+
+12
+00:00:33,880 --> 00:00:35,200
+else sees the document.
+
+13
+00:00:35,200 --> 00:00:36,930
+They'll either see all
+the changes that you
+
+14
+00:00:36,930 --> 00:00:38,490
+make or none of them.
+
+15
+00:00:38,490 --> 00:00:43,370
+And using atomic operations, you
+can often accomplish the
+
+16
+00:00:43,370 --> 00:00:44,910
+same thing you would have
+accomplished using
+
+17
+00:00:44,910 --> 00:00:47,090
+transactions in a relational
+database.
+
+18
+00:00:47,090 --> 00:00:51,940
+And the reason is, that in a
+relational database, you need
+
+19
+00:00:51,940 --> 00:00:56,680
+to make changes across multiple
+tables, usually
+
+20
+00:00:56,680 --> 00:00:59,820
+tables that need to be joined,
+and so you want to
+
+21
+00:00:59,820 --> 00:01:00,820
+do that all at once.
+
+22
+00:01:00,820 --> 00:01:03,530
+And to do it, since there are
+multiple tables, you'll have
+
+23
+00:01:03,530 --> 00:01:07,060
+to begin a transaction and do
+all those updates and then end
+
+24
+00:01:07,060 --> 00:01:08,860
+the transaction.
+
+25
+00:01:08,860 --> 00:01:12,490
+But with MongoDB, since you're
+going to embed the data, since
+
+26
+00:01:12,490 --> 00:01:15,160
+you're going to pre-join
+it in documents--
+
+27
+00:01:15,160 --> 00:01:16,950
+and they're these rich
+documents that have
+
+28
+00:01:16,950 --> 00:01:17,810
+hierarchy--
+
+29
+00:01:17,810 --> 00:01:20,180
+you often cam accomplish
+the same thing.
+
+30
+00:01:20,180 --> 00:01:22,570
+For instance, in the blog
+example, if you wanted to make
+
+31
+00:01:22,570 --> 00:01:25,600
+sure that you updated a blog
+post atomically, you can do
+
+32
+00:01:25,600 --> 00:01:28,430
+that because you can update the
+entire blog post at once.
+
+33
+00:01:28,430 --> 00:01:30,890
+Whereas, if it was a bunch of
+relational tables, you'd
+
+34
+00:01:30,890 --> 00:01:33,690
+probably have to open a
+transaction so that you can
+
+35
+00:01:33,690 --> 00:01:37,040
+update the post collection and
+the comments collection.
+
+36
+00:01:37,040 --> 00:01:40,650
+So what are your approaches that
+you can take in MongoDB
+
+37
+00:01:40,650 --> 00:01:42,340
+to overcome a lack
+of transactions?
+
+38
+00:01:42,340 --> 00:01:44,470
+And the answer is there are
+really three different
+
+39
+00:01:44,470 --> 00:01:44,910
+approaches.
+
+40
+00:01:44,910 --> 00:01:46,860
+And I want to go over
+them real quickly.
+
+41
+00:01:46,860 --> 00:01:50,720
+The first is that you can
+restructure your code so that
+
+42
+00:01:50,720 --> 00:01:53,340
+you're working within a single
+document and taking advantage
+
+43
+00:01:53,340 --> 00:01:57,020
+of the atomic operations that we
+offer within that document.
+
+44
+00:01:57,020 --> 00:02:00,690
+And if you do that, then
+usually you're all set.
+
+45
+00:02:00,690 --> 00:02:03,720
+And you won't miss the
+transactions at all.
+
+46
+00:02:03,720 --> 00:02:07,590
+The second thing you can do,
+if you'd like, is you can
+
+47
+00:02:07,590 --> 00:02:10,930
+essentially implement some sort
+of locking in software.
+
+48
+00:02:10,930 --> 00:02:14,240
+You can do this by creating
+a critical section.
+
+49
+00:02:14,240 --> 00:02:17,040
+You can essentially build a
+test, test, and set using find
+
+50
+00:02:17,040 --> 00:02:18,310
+and modify.
+
+51
+00:02:18,310 --> 00:02:20,680
+You can build semaphores
+if you want to.
+
+52
+00:02:20,680 --> 00:02:25,060
+And, in a way, this is the way
+the larger world works anyway.
+
+53
+00:02:25,060 --> 00:02:27,860
+If you think about it, if one
+bank needs to transfer money
+
+54
+00:02:27,860 --> 00:02:29,710
+to another bank, they're
+not living in the
+
+55
+00:02:29,710 --> 00:02:31,460
+same relational system.
+
+56
+00:02:31,460 --> 00:02:34,250
+And they each have their own
+relational databases often.
+
+57
+00:02:34,250 --> 00:02:37,350
+And they have to be able to
+coordinate that operation,
+
+58
+00:02:37,350 --> 00:02:39,260
+even though you can't begin
+transaction and end
+
+59
+00:02:39,260 --> 00:02:42,610
+transaction across those
+database systems, only within
+
+60
+00:02:42,610 --> 00:02:44,040
+one system within one bank.
+
+61
+00:02:44,040 --> 00:02:46,070
+So there's certainly
+ways in software to
+
+62
+00:02:46,070 --> 00:02:47,900
+get around the problem.
+
+63
+00:02:47,900 --> 00:02:51,680
+And the final approach, which
+often works in modern web
+
+64
+00:02:51,680 --> 00:02:54,810
+applications and other
+applications that take in a
+
+65
+00:02:54,810 --> 00:02:58,800
+tremendous amount of data, is to
+just tolerate a little bit
+
+66
+00:02:58,800 --> 00:03:01,020
+of inconsistency.
+
+67
+00:03:01,020 --> 00:03:05,790
+An example would be if you're
+talking about a friend feed in
+
+68
+00:03:05,790 --> 00:03:09,740
+Facebook, it doesn't matter if
+everybody sees your wall
+
+69
+00:03:09,740 --> 00:03:12,090
+update simultaneously.
+
+70
+00:03:12,090 --> 00:03:14,270
+It's OK if one person's
+a few beats
+
+71
+00:03:14,270 --> 00:03:16,080
+behind for a few seconds.
+
+72
+00:03:16,080 --> 00:03:18,530
+And then they catch up.
+
+73
+00:03:18,530 --> 00:03:23,040
+It often isn't critical in a
+lot of system designs that
+
+74
+00:03:23,040 --> 00:03:25,050
+everything be kept perfectly
+consistent and that everyone
+
+75
+00:03:25,050 --> 00:03:27,120
+have a perfectly consistent
+and the
+
+76
+00:03:27,120 --> 00:03:28,630
+same view of the database.
+
+77
+00:03:28,630 --> 00:03:32,580
+So you could simply tolerate a
+little bit of inconsistency
+
+78
+00:03:32,580 --> 00:03:33,890
+that's somewhat temporary.
+
+79
+00:03:33,890 --> 00:03:34,950
+So those are three approaches.
+
+80
+00:03:34,950 --> 00:03:36,970
+You can restructure to make sure
+that everything happens
+
+81
+00:03:36,970 --> 00:03:40,300
+within a single document so that
+you get the advantages of
+
+82
+00:03:40,300 --> 00:03:41,790
+atomic operations.
+
+83
+00:03:41,790 --> 00:03:42,900
+You can implement
+whatever you're
+
+84
+00:03:42,900 --> 00:03:43,950
+looking for in software.
+
+85
+00:03:43,950 --> 00:03:46,720
+Or you can tolerate a little bit
+of a consistency that you
+
+86
+00:03:46,720 --> 00:03:48,810
+might get without
+transactions.
+
+87
+00:03:48,810 --> 00:03:52,390
+All right, so, let's
+do a quiz.
+
+88
+00:03:52,390 --> 00:03:53,510
+So here's the quiz.
+
+89
+00:03:53,510 --> 00:03:56,560
+Which of the following
+operations operate atomically
+
+90
+00:03:56,560 --> 00:03:59,180
+within a single document
+in MongoDB?
+
+91
+00:03:59,180 --> 00:04:00,420
+Check all that apply.
+
+92
+00:04:00,420 --> 00:04:02,990
+And the choices are, the update
+command, the find and
+
+93
+00:04:02,990 --> 00:04:06,870
+modify command, the add to set
+command within an update, or
+
+94
+00:04:06,870 --> 00:04:09,440
+the push, again within
+an update.
+
+95
+00:04:09,440 --> 00:04:11,990
+And if you remember add to set,
+add something to an array
+
+96
+00:04:11,990 --> 00:04:14,740
+list, if it's not there,
+push, push, is at
+
+97
+00:04:14,740 --> 00:04:15,990
+the end of the list.

@@ -1,0 +1,221 @@
+1
+00:00:00,000 --> 00:00:00,150
+
+2
+00:00:00,150 --> 00:00:04,170
+We started out this unit talking
+about the third normal
+
+3
+00:00:04,170 --> 00:00:07,010
+form and denormalization.
+
+4
+00:00:07,010 --> 00:00:12,680
+And if you recall, one of the
+reasons why you normalize data
+
+5
+00:00:12,680 --> 00:00:17,250
+in the relational world is
+because you want to avoid
+
+6
+00:00:17,250 --> 00:00:19,240
+modification anomalies
+that come with the
+
+7
+00:00:19,240 --> 00:00:20,470
+duplication of data.
+
+8
+00:00:20,470 --> 00:00:24,890
+And when you look at MongoDB
+and how it's structured,
+
+9
+00:00:24,890 --> 00:00:28,410
+allowing these rich documents,
+it's easy to assume that what
+
+10
+00:00:28,410 --> 00:00:30,810
+we're doing is we're
+denormalizing data.
+
+11
+00:00:30,810 --> 00:00:33,340
+And to a certain extent,
+that's true.
+
+12
+00:00:33,340 --> 00:00:37,460
+But as long as we don't
+duplicate data, we don't open
+
+13
+00:00:37,460 --> 00:00:40,510
+ourselves up to modification
+anomalies.
+
+14
+00:00:40,510 --> 00:00:43,870
+So looking back at what we went
+over in this unit, we
+
+15
+00:00:43,870 --> 00:00:46,580
+talked about one-to-one
+relationships.
+
+16
+00:00:46,580 --> 00:00:48,930
+And in that case, it's perfectly
+safe to embed the
+
+17
+00:00:48,930 --> 00:00:50,400
+data if you'd like.
+
+18
+00:00:50,400 --> 00:00:53,030
+And you don't open yourself
+up to these modification
+
+19
+00:00:53,030 --> 00:00:55,260
+anomalies, because you're not
+duplicating the data.
+
+20
+00:00:55,260 --> 00:00:56,980
+You're basically just taking
+something that would normally
+
+21
+00:00:56,980 --> 00:01:00,320
+be in a separate table,
+and you're folding it
+
+22
+00:01:00,320 --> 00:01:02,150
+into another table.
+
+23
+00:01:02,150 --> 00:01:05,400
+And that doesn't necessarily
+duplicate any data.
+
+24
+00:01:05,400 --> 00:01:08,440
+Now, when you have a one-to-many
+relationship, then
+
+25
+00:01:08,440 --> 00:01:10,820
+embedding can also work well
+without duplication of data,
+
+26
+00:01:10,820 --> 00:01:13,760
+as long as you embed from
+the many to the one.
+
+27
+00:01:13,760 --> 00:01:17,350
+Now, if you want to go from
+the one to the many, then
+
+28
+00:01:17,350 --> 00:01:21,340
+linking would avoid the
+duplication of data.
+
+29
+00:01:21,340 --> 00:01:24,620
+Now, again, if you need to embed
+something, even if it
+
+30
+00:01:24,620 --> 00:01:27,100
+causes duplication of data, for
+performance reasons, to
+
+31
+00:01:27,100 --> 00:01:29,300
+match the access patterns of
+your application, then that
+
+32
+00:01:29,300 --> 00:01:32,850
+could make sense, especially if
+the data is rarely changing
+
+33
+00:01:32,850 --> 00:01:34,190
+or being updated.
+
+34
+00:01:34,190 --> 00:01:37,160
+But you can avoid it often
+enough, even in this
+
+35
+00:01:37,160 --> 00:01:40,660
+relationship, if you go from
+the many to the one.
+
+36
+00:01:40,660 --> 00:01:44,150
+So in the many-to-many relation,
+which we looked at
+
+37
+00:01:44,150 --> 00:01:47,670
+with students and teachers and
+authors and books, there, if
+
+38
+00:01:47,670 --> 00:01:49,980
+you want to avoid the
+modification anomalies that
+
+39
+00:01:49,980 --> 00:01:54,420
+come with denormalization, all
+you need to do is link through
+
+40
+00:01:54,420 --> 00:01:59,380
+these arrays of object
+IDs in the documents.
+
+41
+00:01:59,380 --> 00:02:01,570
+And if you need to, for
+performance reasons or for
+
+42
+00:02:01,570 --> 00:02:04,490
+other reasons, matching some
+type of query you have to do
+
+43
+00:02:04,490 --> 00:02:07,430
+for your application, then
+you can embed data.
+
+44
+00:02:07,430 --> 00:02:10,410
+But do realize that you might
+be duplicating some data.
+
+45
+00:02:10,410 --> 00:02:13,070
+And it's up to you as the
+application programmer to keep
+
+46
+00:02:13,070 --> 00:02:14,320
+it all up to date.

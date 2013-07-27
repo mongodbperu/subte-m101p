@@ -1,0 +1,186 @@
+1
+00:00:00,000 --> 00:00:00,240
+
+2
+00:00:00,240 --> 00:00:03,450
+And the answer is that, of
+these four, the only one
+
+3
+00:00:03,450 --> 00:00:05,190
+that's really not well-supported
+is, providing a
+
+4
+00:00:05,190 --> 00:00:07,650
+table of contents by tag.
+
+5
+00:00:07,650 --> 00:00:11,050
+To do that, we would probably
+have to use the aggregation
+
+6
+00:00:11,050 --> 00:00:13,630
+framework to do some sort
+of a group buy.
+
+7
+00:00:13,630 --> 00:00:16,040
+It wouldn't be that
+easy to do it.
+
+8
+00:00:16,040 --> 00:00:17,840
+But the other ones are pretty
+well-supported.
+
+9
+00:00:17,840 --> 00:00:21,080
+So we could certainly collect
+the most recent blog entries.
+
+10
+00:00:21,080 --> 00:00:25,000
+We would just do a find in the
+collection and order them by
+
+11
+00:00:25,000 --> 00:00:27,410
+the date and then
+just do a limit.
+
+12
+00:00:27,410 --> 00:00:29,400
+Collecting all of the
+information for a single post.
+
+13
+00:00:29,400 --> 00:00:30,470
+You saw that--
+
+14
+00:00:30,470 --> 00:00:32,750
+very well use of the
+entire document.
+
+15
+00:00:32,750 --> 00:00:34,360
+The entire blog post is
+contained in a single
+
+16
+00:00:34,360 --> 00:00:36,560
+document, so it's easy
+to display that.
+
+17
+00:00:36,560 --> 00:00:39,210
+Collecting all the comments
+by a single author.
+
+18
+00:00:39,210 --> 00:00:41,960
+This was a little tricky and
+we haven't quite told you
+
+19
+00:00:41,960 --> 00:00:43,590
+enough about this.
+
+20
+00:00:43,590 --> 00:00:47,630
+But the answer is-- and let me
+show you this document again.
+
+21
+00:00:47,630 --> 00:00:50,490
+It does support that very well,
+
+22
+00:00:50,490 --> 00:00:53,580
+provided you add an index.
+
+23
+00:00:53,580 --> 00:00:58,190
+You could actually add an index
+on comments.author and
+
+24
+00:00:58,190 --> 00:01:02,120
+it will reach inside the array
+and index that information.
+
+25
+00:01:02,120 --> 00:01:03,830
+We haven't talked too
+much about that.
+
+26
+00:01:03,830 --> 00:01:08,000
+But if you did that, then you
+could do a find and find all
+
+27
+00:01:08,000 --> 00:01:11,630
+the comments by a
+single author.
+
+28
+00:01:11,630 --> 00:01:14,480
+This is the find, is the
+author of the comment.
+
+29
+00:01:14,480 --> 00:01:19,860
+But, as I said, that last one
+is not well-supported, which
+
+30
+00:01:19,860 --> 00:01:25,050
+is providing a table of contents
+by tag, where you can
+
+31
+00:01:25,050 --> 00:01:26,370
+see all the blog posts
+that are filed
+
+32
+00:01:26,370 --> 00:01:28,100
+under a different tag.
+
+33
+00:01:28,100 --> 00:01:31,640
+There's no easy way to do that
+in this design because you'd
+
+34
+00:01:31,640 --> 00:01:33,440
+have to basically--
+
+35
+00:01:33,440 --> 00:01:35,470
+First of all, you have to look
+for the entire collection,
+
+36
+00:01:35,470 --> 00:01:38,850
+pull out every one of these
+tags, and you'd have to
+
+37
+00:01:38,850 --> 00:01:40,780
+organize it by tag.
+
+38
+00:01:40,780 --> 00:01:42,560
+You can do it with the
+aggregation framework
+
+39
+00:01:42,560 --> 00:01:44,110
+but no other way.
+
+40
+00:01:44,110 --> 00:01:45,360

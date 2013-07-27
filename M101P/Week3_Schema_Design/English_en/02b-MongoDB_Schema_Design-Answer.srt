@@ -1,0 +1,44 @@
+1
+00:00:00,000 --> 00:00:00,310
+
+2
+00:00:00,310 --> 00:00:00,620
+OK.
+
+3
+00:00:00,620 --> 00:00:03,800
+And the answer is that the
+single most important factor
+
+4
+00:00:03,800 --> 00:00:06,980
+in designing your schema within
+MongoDB is to match the
+
+5
+00:00:06,980 --> 00:00:09,880
+data access pattern of
+your application.
+
+6
+00:00:09,880 --> 00:00:12,710
+Match those data access patterns
+because that's the
+
+7
+00:00:12,710 --> 00:00:14,400
+way you're going to get
+the best performance.
+
+8
+00:00:14,400 --> 00:00:17,490
+That's the way you're going to
+get the most convenience of
+
+9
+00:00:17,490 --> 00:00:18,990
+programming within
+your application.
+
+10
+00:00:18,990 --> 00:00:20,240

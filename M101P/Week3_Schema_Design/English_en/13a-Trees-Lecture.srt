@@ -1,0 +1,281 @@
+1
+00:00:00,000 --> 00:00:00,230
+
+2
+00:00:00,230 --> 00:00:03,250
+One classic problem from the
+world of schema design is how
+
+3
+00:00:03,250 --> 00:00:06,640
+do you represent a tree
+inside the database?
+
+4
+00:00:06,640 --> 00:00:09,860
+Let's look, for example, at the
+problem of representing
+
+5
+00:00:09,860 --> 00:00:13,160
+the e-commerce categories in
+a e-commerce site, such as
+
+6
+00:00:13,160 --> 00:00:16,990
+Amazon, where you might have
+home, outdoors, winter, snow.
+
+7
+00:00:16,990 --> 00:00:19,180
+And the idea here is that you've
+got these products.
+
+8
+00:00:19,180 --> 00:00:20,430
+And they're in a products
+collection.
+
+9
+00:00:20,430 --> 00:00:21,910
+They have a product name
+and a bunch of
+
+10
+00:00:21,910 --> 00:00:23,260
+attributes in the product.
+
+11
+00:00:23,260 --> 00:00:26,880
+And they have some category,
+like say, category seven.
+
+12
+00:00:26,880 --> 00:00:30,530
+And then, you have some other
+category collection, where you
+
+13
+00:00:30,530 --> 00:00:32,590
+can look up category seven, you
+can see the category name,
+
+14
+00:00:32,590 --> 00:00:34,500
+some of the properties
+about the category.
+
+15
+00:00:34,500 --> 00:00:38,660
+And one way to model it is you
+could keep its parent ID,
+
+16
+00:00:38,660 --> 00:00:40,040
+right here.
+
+17
+00:00:40,040 --> 00:00:42,810
+And that would be the way you
+might do it in a simple
+
+18
+00:00:42,810 --> 00:00:44,140
+relational database.
+
+19
+00:00:44,140 --> 00:00:47,740
+But this doesn't make it very
+easy to find all the parents
+
+20
+00:00:47,740 --> 00:00:48,755
+to this category.
+
+21
+00:00:48,755 --> 00:00:52,190
+You'd have to iteratively query,
+find the parent of
+
+22
+00:00:52,190 --> 00:00:55,180
+this, then find the parent of
+that, until you get all the
+
+23
+00:00:55,180 --> 00:00:56,500
+way to the top.
+
+24
+00:00:56,500 --> 00:01:00,320
+So an alternative way to do it,
+inside mongoDB, is to be
+
+25
+00:01:00,320 --> 00:01:02,890
+able to list ancestors
+or children.
+
+26
+00:01:02,890 --> 00:01:06,130
+So let's think about that
+and how that would work.
+
+27
+00:01:06,130 --> 00:01:08,420
+So you could decide
+to list all the
+
+28
+00:01:08,420 --> 00:01:11,000
+children of this category.
+
+29
+00:01:11,000 --> 00:01:13,440
+But that's also fairly limiting,
+if you're looking to
+
+30
+00:01:13,440 --> 00:01:16,750
+be able to look and find the
+entire sub-tree that is above
+
+31
+00:01:16,750 --> 00:01:18,370
+a certain piece of the tree.
+
+32
+00:01:18,370 --> 00:01:21,810
+Instead, what works pretty well,
+and again, enabled by
+
+33
+00:01:21,810 --> 00:01:25,870
+the ability to put arrays
+inside mongoDB
+
+34
+00:01:25,870 --> 00:01:29,430
+is to list the ancestors.
+
+35
+00:01:29,430 --> 00:01:33,710
+So let's say I decided to list
+all the ancestors of this from
+
+36
+00:01:33,710 --> 00:01:35,490
+the top in order.
+
+37
+00:01:35,490 --> 00:01:39,360
+Now, using this one piece of
+information I can find all of
+
+38
+00:01:39,360 --> 00:01:42,610
+the parent categories
+of this category.
+
+39
+00:01:42,610 --> 00:01:44,465
+If I want to list the bread
+crumbs and make it easy for
+
+40
+00:01:44,465 --> 00:01:46,600
+the user to navigate the site.
+
+41
+00:01:46,600 --> 00:01:50,150
+And again, the ability to
+structure and express rich
+
+42
+00:01:50,150 --> 00:01:54,560
+data is one of the things that
+makes mongoDB so interesting.
+
+43
+00:01:54,560 --> 00:01:56,310
+This would be very difficult
+to do in
+
+44
+00:01:56,310 --> 00:01:57,690
+a relational database.
+
+45
+00:01:57,690 --> 00:02:00,540
+Now, in terms of how you
+represent the data for
+
+46
+00:02:00,540 --> 00:02:04,050
+something like a product
+category hierarchy, again, it
+
+47
+00:02:04,050 --> 00:02:05,300
+all depends on your
+access pattern.
+
+48
+00:02:05,300 --> 00:02:08,759
+It depends on how you believe
+you're going to need to show
+
+49
+00:02:08,759 --> 00:02:11,150
+the data, access the
+data for the user.
+
+50
+00:02:11,150 --> 00:02:14,140
+And then, based on that, you
+know how to model it.
+
+51
+00:02:14,140 --> 00:02:16,280
+All right, it's time
+for a quiz on
+
+52
+00:02:16,280 --> 00:02:19,420
+representing trees in mongoDB.
+
+53
+00:02:19,420 --> 00:02:22,400
+Given the following typical
+document for an e-commerce
+
+54
+00:02:22,400 --> 00:02:26,030
+category hierarchy called
+categories, and here's the
+
+55
+00:02:26,030 --> 00:02:29,660
+document that's in the category
+collection, which of
+
+56
+00:02:29,660 --> 00:02:32,780
+these queries will find all
+the descendants of the
+
+57
+00:02:32,780 --> 00:02:34,230
+snorkeling category?
+
+58
+00:02:34,230 --> 00:02:36,570
+And this is the snorkeling
+category right here.
+
+59
+00:02:36,570 --> 00:02:37,820
+Which of these queries?
+
+60
+00:02:37,820 --> 00:02:38,670

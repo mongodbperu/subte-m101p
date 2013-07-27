@@ -1,0 +1,15 @@
+1
+00:00:00,000 --> 00:00:00,260
+
+2
+00:00:00,260 --> 00:00:03,270
+And the answer is, keeping
+your data consistent even
+
+3
+00:00:03,270 --> 00:00:05,550
+though MongoDB lacks foreign
+key constraints.
+
+4
+00:00:05,550 --> 00:00:06,800
