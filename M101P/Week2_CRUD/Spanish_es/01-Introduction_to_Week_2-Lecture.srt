@@ -1,0 +1,58 @@
+1
+00:00:00,000 --> 00:00:00,510
+
+2
+00:00:00,510 --> 00:00:04,550
+Bienvenidos a la segunda semana de
+M101P MongoDB para desarrolladores.
+
+3
+00:00:04,550 --> 00:00:07,430
+Esta semana, vamos a aprender
+cómo insertar datos
+
+4
+00:00:07,430 --> 00:00:09,740
+a la base de datos y cómo
+acceder estos datos; cómo
+
+5
+00:00:09,740 --> 00:00:11,590
+actualizarlos y cómo
+eliminarlos.
+
+6
+00:00:11,590 --> 00:00:14,590
+Está semana nos acompaña Richard
+Kreuter, uno de nuestros principales
+
+7
+00:00:14,590 --> 00:00:16,219
+ingenieros consultores. 
+
+8
+00:00:16,219 --> 00:00:19,050
+Él nos va a explicar cómo insertar
+datos en la base de datos y
+
+9
+00:00:19,050 --> 00:00:21,670
+accederlos desde el shell Mongo.
+
+10
+00:00:21,670 --> 00:00:24,240
+Después yo voy a presentar
+las mismas
+
+11
+00:00:24,240 --> 00:00:27,900
+operaciones, pero utilizando
+Python y PyMongo.
+
+12
+00:00:27,900 --> 00:00:30,210
+Va a ser una semana divertida.
+Entonces, empecemos.
+
+13
+00:00:30,210 --> 00:00:31,460
