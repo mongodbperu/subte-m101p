@@ -1,0 +1,81 @@
+1
+00:00:00,000 --> 00:00:00,320
+
+2
+00:00:00,320 --> 00:00:02,560
+And the answer is the odometer
+mileage, right?
+
+3
+00:00:02,560 --> 00:00:05,030
+Because there's, let's
+say most people drive
+
+4
+00:00:05,030 --> 00:00:06,560
+cars 100,000 miles.
+
+5
+00:00:06,560 --> 00:00:10,030
+There's 100,000 different
+odometer readings that we
+
+6
+00:00:10,030 --> 00:00:13,900
+could choose from that might
+narrow down the car, whereas
+
+7
+00:00:13,900 --> 00:00:16,340
+the manufacturer, I don't know
+how many manufacturers of cars
+
+8
+00:00:16,340 --> 00:00:19,280
+there are, but maybe
+100 or 1,000.
+
+9
+00:00:19,280 --> 00:00:22,330
+The weight of the car, most
+cars weigh under 10,000
+
+10
+00:00:22,330 --> 00:00:25,560
+pounds, so that's 10,000,
+assuming that you don't bring
+
+11
+00:00:25,560 --> 00:00:28,000
+it out to any decimal points
+it's just 10,000 different
+
+12
+00:00:28,000 --> 00:00:30,400
+possibilities, and there aren't
+that many colors.
+
+13
+00:00:30,400 --> 00:00:31,370
+So I think the odometer mileage
+
+14
+00:00:31,370 --> 00:00:32,900
+would be the most selective.
+
+15
+00:00:32,900 --> 00:00:35,540
+So again, this is important to
+think about selectivity when
+
+16
+00:00:35,540 --> 00:00:38,010
+designing indexes because that's
+going to help you get
+
+17
+00:00:38,010 --> 00:00:39,260
+better performance.
+
+18
+00:00:39,260 --> 00:00:39,750

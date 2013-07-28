@@ -1,0 +1,36 @@
+1
+00:00:00,000 --> 00:00:00,350
+
+2
+00:00:00,350 --> 00:00:00,910
+OK.
+
+3
+00:00:00,910 --> 00:00:05,665
+And the answer is
+db.zips.aggregate, grouping by
+
+4
+00:00:05,665 --> 00:00:09,060
+_id by the state.
+
+5
+00:00:09,060 --> 00:00:12,770
+Find me the max population
+and assign it to a
+
+6
+00:00:12,770 --> 00:00:14,650
+new key called pop.
+
+7
+00:00:14,650 --> 00:00:18,040
+And that's pop, because
+it's pop there.
+
+8
+00:00:18,040 --> 00:00:19,290
+And that's the answer.
+
+9
+00:00:19,290 --> 00:00:20,200

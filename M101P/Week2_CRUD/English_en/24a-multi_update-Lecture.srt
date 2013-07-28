@@ -1,0 +1,588 @@
+1
+00:00:00,000 --> 00:00:00,250
+
+2
+00:00:00,250 --> 00:00:00,970
+OK.
+
+3
+00:00:00,970 --> 00:00:03,320
+As I mentioned, the Update
+method in the JavaScript shell
+
+4
+00:00:03,320 --> 00:00:05,050
+actually performs
+four operations.
+
+5
+00:00:05,050 --> 00:00:07,020
+We've seen three
+of them so far.
+
+6
+00:00:07,020 --> 00:00:09,700
+It can do a wholesale
+replacement of a document, it
+
+7
+00:00:09,700 --> 00:00:12,790
+can manipulate individual fields
+within a document, it
+
+8
+00:00:12,790 --> 00:00:14,550
+can perform an upsert
+operation--
+
+9
+00:00:14,550 --> 00:00:17,190
+which is either an update or
+an insert if no document
+
+10
+00:00:17,190 --> 00:00:20,270
+already exists that matches
+the specified criteria--
+
+11
+00:00:20,270 --> 00:00:23,740
+and finally, it can update
+multiple documents.
+
+12
+00:00:23,740 --> 00:00:27,190
+I've been intentionally sneaky
+and always performing updates
+
+13
+00:00:27,190 --> 00:00:30,930
+specifying a criteria that
+matches exactly one document
+
+14
+00:00:30,930 --> 00:00:33,370
+or zero documents in a
+collection so far.
+
+15
+00:00:33,370 --> 00:00:36,500
+But, in fact, the update
+operator can affect more than
+
+16
+00:00:36,500 --> 00:00:38,220
+one document at a time.
+
+17
+00:00:38,220 --> 00:00:40,980
+So again, to look at the People
+collection, we have a
+
+18
+00:00:40,980 --> 00:00:43,070
+variety of people with
+various names.
+
+19
+00:00:43,070 --> 00:00:46,900
+If I wanted to give every person
+some new field, I can.
+
+20
+00:00:46,900 --> 00:00:50,880
+The empty document acts as a
+selector which matches every
+
+21
+00:00:50,880 --> 00:00:52,150
+document in the collection.
+
+22
+00:00:52,150 --> 00:00:53,970
+This is also true for Find.
+
+23
+00:00:53,970 --> 00:00:56,830
+And, for instance, I might
+want to set a new field.
+
+24
+00:00:56,830 --> 00:00:58,850
+Maybe everyone here
+is a doctor.
+
+25
+00:00:58,850 --> 00:01:02,270
+Now, an important difference
+between MongoDB and relational
+
+26
+00:01:02,270 --> 00:01:07,070
+databases is that by default,
+even if the first argument to
+
+27
+00:01:07,070 --> 00:01:09,790
+update is a query specification
+that would match
+
+28
+00:01:09,790 --> 00:01:13,930
+every document, the Update
+method only actually affects a
+
+29
+00:01:13,930 --> 00:01:17,010
+single document, namely,
+whichever one happens to be
+
+30
+00:01:17,010 --> 00:01:18,830
+the first one that it finds.
+
+31
+00:01:18,830 --> 00:01:22,040
+If I want the update method to
+affect all documents in the
+
+32
+00:01:22,040 --> 00:01:24,250
+collection, I have to
+supply an option.
+
+33
+00:01:24,250 --> 00:01:26,540
+And from the JavaScript
+shell, that option is
+
+34
+00:01:26,540 --> 00:01:28,500
+called "multi" "true".
+
+35
+00:01:28,500 --> 00:01:32,220
+If I do not supply the Multi
+option to the Update method,
+
+36
+00:01:32,220 --> 00:01:35,420
+then the Update method will
+affect just one document.
+
+37
+00:01:35,420 --> 00:01:37,700
+In fact, which document
+it effects is somewhat
+
+38
+00:01:37,700 --> 00:01:38,520
+underdefined.
+
+39
+00:01:38,520 --> 00:01:42,090
+By specifying multi:true, then
+this update will traverse
+
+40
+00:01:42,090 --> 00:01:43,870
+every document in
+the collection
+
+41
+00:01:43,870 --> 00:01:45,900
+and add a new field.
+
+42
+00:01:45,900 --> 00:01:47,930
+And now, everyone has a title.
+
+43
+00:01:47,930 --> 00:01:50,040
+It's important to understand
+this detail.
+
+44
+00:01:50,040 --> 00:01:53,380
+The default behavior of an
+updates query in SQL is to
+
+45
+00:01:53,380 --> 00:01:55,970
+update every record the matches
+the where clause, or
+
+46
+00:01:55,970 --> 00:01:59,660
+every record in the table if no
+where clause is specified.
+
+47
+00:01:59,660 --> 00:02:03,790
+The default behavior to update
+in MongoDB is to update just
+
+48
+00:02:03,790 --> 00:02:05,850
+one document in the
+collection.
+
+49
+00:02:05,850 --> 00:02:08,610
+You must specify an extra
+argument in the JavaScript
+
+50
+00:02:08,610 --> 00:02:11,480
+shell in order to update
+multiple documents in a
+
+51
+00:02:11,480 --> 00:02:12,870
+collection.
+
+52
+00:02:12,870 --> 00:02:15,450
+Some of our drivers for
+different programming
+
+53
+00:02:15,450 --> 00:02:19,000
+languages actually split this up
+into two separate methods.
+
+54
+00:02:19,000 --> 00:02:22,160
+One perhaps called Update and
+the other called Multi Update.
+
+55
+00:02:22,160 --> 00:02:24,060
+In the JavaScript shell,
+you simply have to
+
+56
+00:02:24,060 --> 00:02:25,500
+add an extra argument.
+
+57
+00:02:25,500 --> 00:02:27,440
+Now, let me say something
+further about the actual
+
+58
+00:02:27,440 --> 00:02:29,870
+semantics of what happens when
+you perform a multi-document
+
+59
+00:02:29,870 --> 00:02:32,440
+write operation such
+as a Multi Update.
+
+60
+00:02:32,440 --> 00:02:35,690
+Inside of MongoDB, there's
+a single thread for each
+
+61
+00:02:35,690 --> 00:02:37,760
+operation that's
+being executed.
+
+62
+00:02:37,760 --> 00:02:40,960
+So, for instance, this Update
+operation will happen
+
+63
+00:02:40,960 --> 00:02:43,420
+sequentially inside of
+a single thread.
+
+64
+00:02:43,420 --> 00:02:47,050
+However, every write operation
+that affects more than one
+
+65
+00:02:47,050 --> 00:02:51,550
+document is carefully coded in
+a cooperative multitasking
+
+66
+00:02:51,550 --> 00:02:55,310
+fashion to occasionally yield
+control to allow other
+
+67
+00:02:55,310 --> 00:02:58,350
+operations to affect
+the same data set.
+
+68
+00:02:58,350 --> 00:03:01,140
+In particular, the Multi Update
+that you see on the
+
+69
+00:03:01,140 --> 00:03:04,320
+screen affected approximately
+10 documents.
+
+70
+00:03:04,320 --> 00:03:07,070
+It would be possible if there
+were other write operations
+
+71
+00:03:07,070 --> 00:03:11,020
+coming into the system for that
+specific update operation
+
+72
+00:03:11,020 --> 00:03:14,420
+to affect, say, three documents,
+and then pause to
+
+73
+00:03:14,420 --> 00:03:17,250
+allow other operations to
+proceed, and then pick up
+
+74
+00:03:17,250 --> 00:03:20,530
+again, affect our more
+documents, and then pause, to
+
+75
+00:03:20,530 --> 00:03:23,350
+allow other operations to
+proceed, and then, finally, to
+
+76
+00:03:23,350 --> 00:03:25,910
+finish out the last three
+remaining documents.
+
+77
+00:03:25,910 --> 00:03:29,020
+We call this pausing yielding
+because in point of fact,
+
+78
+00:03:29,020 --> 00:03:31,560
+there's a shared resource that
+different write operations
+
+79
+00:03:31,560 --> 00:03:34,970
+share, which we use to sequence
+write operations.
+
+80
+00:03:34,970 --> 00:03:37,020
+It's basically a kind
+of Mutex Lock.
+
+81
+00:03:37,020 --> 00:03:39,950
+Now, what's important to
+understand about the
+
+82
+00:03:39,950 --> 00:03:43,250
+concurrency consequences of what
+I'm describing is that
+
+83
+00:03:43,250 --> 00:03:46,420
+write operations, even if they
+affect multiple documents, are
+
+84
+00:03:46,420 --> 00:03:48,540
+not isolated transactions.
+
+85
+00:03:48,540 --> 00:03:51,940
+Instead, they might affect an
+arbitrary number of documents,
+
+86
+00:03:51,940 --> 00:03:55,300
+then yield, allow other readers
+or writers to operate,
+
+87
+00:03:55,300 --> 00:03:58,090
+and then pick up again to affect
+some more documents.
+
+88
+00:03:58,090 --> 00:04:01,320
+In general, it's not possible
+to have an isolated write
+
+89
+00:04:01,320 --> 00:04:02,620
+operation that affects multiple
+
+90
+00:04:02,620 --> 00:04:04,710
+documents inside of MongoDB.
+
+91
+00:04:04,710 --> 00:04:08,070
+However, we do guarantee that
+an individual document
+
+92
+00:04:08,070 --> 00:04:11,440
+manipulation is always atomic
+with respect to any concurrent
+
+93
+00:04:11,440 --> 00:04:13,030
+readers or writers.
+
+94
+00:04:13,030 --> 00:04:16,180
+That is to say if you send an
+update to the system that will
+
+95
+00:04:16,180 --> 00:04:19,300
+affect 10 documents, then
+whenever that update operation
+
+96
+00:04:19,300 --> 00:04:23,080
+is affecting any individual
+document, no reader or writer
+
+97
+00:04:23,080 --> 00:04:27,280
+operation in the system will see
+the document half updated.
+
+98
+00:04:27,280 --> 00:04:29,660
+This atomicity guarantee allows
+you to build things on
+
+99
+00:04:29,660 --> 00:04:31,090
+top of MongoDB.
+
+100
+00:04:31,090 --> 00:04:33,400
+For example, if it were strictly
+necessary for your
+
+101
+00:04:33,400 --> 00:04:36,900
+application to have some kind of
+isolation between different
+
+102
+00:04:36,900 --> 00:04:39,120
+threads, you could, for
+instance, construct a locking
+
+103
+00:04:39,120 --> 00:04:42,120
+tight mechanism, treating a
+designated document in the
+
+104
+00:04:42,120 --> 00:04:45,670
+database as a shared resource
+that writer operations needed
+
+105
+00:04:45,670 --> 00:04:46,910
+to acquire--
+
+106
+00:04:46,910 --> 00:04:48,400
+perhaps by updating it--
+
+107
+00:04:48,400 --> 00:04:50,170
+before they performed
+any operation on
+
+108
+00:04:50,170 --> 00:04:51,750
+the ordinary data.
+
+109
+00:04:51,750 --> 00:04:54,230
+And indeed, this actually turns
+out to be a trick that
+
+110
+00:04:54,230 --> 00:04:56,620
+goes on inside of sharding
+architecture.
+
+111
+00:04:56,620 --> 00:05:00,000
+In any case, from a semantic
+point of view, a Multi Update
+
+112
+00:05:00,000 --> 00:05:01,930
+operation is simply
+an update that
+
+113
+00:05:01,930 --> 00:05:03,670
+affects multiple documents.
+
+114
+00:05:03,670 --> 00:05:05,820
+From a concurrency perspective,
+it's important to
+
+115
+00:05:05,820 --> 00:05:09,670
+remember that MongoDB does not
+offer isolated transactions
+
+116
+00:05:09,670 --> 00:05:11,710
+while these updates
+are happening.
+
+117
+00:05:11,710 --> 00:05:12,390
+OK.
+
+118
+00:05:12,390 --> 00:05:13,570
+Let's have a quiz.
+
+119
+00:05:13,570 --> 00:05:15,850
+Recall the schema of the
+"scores" collection.
+
+120
+00:05:15,850 --> 00:05:19,280
+Documents have an _id, of
+course, a student number, a
+
+121
+00:05:19,280 --> 00:05:21,750
+type field, and a score field.
+
+122
+00:05:21,750 --> 00:05:23,870
+How would you give every record
+whose score was less
+
+123
+00:05:23,870 --> 00:05:26,900
+than 70 an extra 20 points?

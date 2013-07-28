@@ -1,0 +1,753 @@
+1
+00:00:00,000 --> 00:00:00,130
+
+2
+00:00:00,130 --> 00:00:01,310
+OK, congratulations.
+
+3
+00:00:01,310 --> 00:00:04,019
+We are about to talk about
+sharding, which is our
+
+4
+00:00:04,019 --> 00:00:06,530
+approach to horizontal
+scalability.
+
+5
+00:00:06,530 --> 00:00:11,010
+But more importantly, sharding
+is the final topic, the final
+
+6
+00:00:11,010 --> 00:00:14,460
+real, substantive topic, of
+the developer course.
+
+7
+00:00:14,460 --> 00:00:17,360
+So you have made it a tremendous
+distance in the
+
+8
+00:00:17,360 --> 00:00:20,410
+last six weeks, so
+congratulations.
+
+9
+00:00:20,410 --> 00:00:22,720
+At the beginning of this, you
+may not have known anything
+
+10
+00:00:22,720 --> 00:00:27,440
+about MongoDB, and now you can
+write programs in MongoDB, and
+
+11
+00:00:27,440 --> 00:00:30,750
+you understand the aggregation
+framework and performance and
+
+12
+00:00:30,750 --> 00:00:34,910
+replication, and so now the last
+big topic is sharding.
+
+13
+00:00:34,910 --> 00:00:39,040
+So as I said, sharding is the
+way we handle scaling out.
+
+14
+00:00:39,040 --> 00:00:44,020
+And basically, rather than just
+have your collection be
+
+15
+00:00:44,020 --> 00:00:48,060
+on one database, you want to
+put it on, let's say, some
+
+16
+00:00:48,060 --> 00:00:48,970
+number of databases.
+
+17
+00:00:48,970 --> 00:00:51,290
+It could be quite a large
+number of databases.
+
+18
+00:00:51,290 --> 00:00:54,080
+And the goal is that it be
+transparent, that when you do
+
+19
+00:00:54,080 --> 00:00:55,920
+axes to some collection.
+
+20
+00:00:55,920 --> 00:01:00,260
+Let's say you had some large
+orders collection and there
+
+21
+00:01:00,260 --> 00:01:03,480
+were billions and billions of
+these items, that somehow you
+
+22
+00:01:03,480 --> 00:01:05,430
+wouldn't need to have
+to figure out where
+
+23
+00:01:05,430 --> 00:01:06,770
+it is in the system.
+
+24
+00:01:06,770 --> 00:01:08,590
+And it would just work
+transparently.
+
+25
+00:01:08,590 --> 00:01:11,840
+So the high-level approach
+to this is that you
+
+26
+00:01:11,840 --> 00:01:13,210
+set up these shards.
+
+27
+00:01:13,210 --> 00:01:19,300
+And I'll call them S1,
+S2, S3, S4, S5.
+
+28
+00:01:19,300 --> 00:01:23,220
+And these shards are meant to
+split the data up from a
+
+29
+00:01:23,220 --> 00:01:25,000
+particular collection.
+
+30
+00:01:25,000 --> 00:01:27,470
+Now, the shards are typically,
+in and of
+
+31
+00:01:27,470 --> 00:01:29,480
+themselves, replica sets.
+
+32
+00:01:29,480 --> 00:01:31,890
+So we talked about what
+a replica set is.
+
+33
+00:01:31,890 --> 00:01:36,330
+So there might be three hosts
+within a shard that make up
+
+34
+00:01:36,330 --> 00:01:38,610
+this replica set,
+let's say R0.
+
+35
+00:01:38,610 --> 00:01:41,940
+And the shard 1 is actually all
+part of this replica set.
+
+36
+00:01:41,940 --> 00:01:45,650
+So in this case, I showed one,
+two, three, four, five of
+
+37
+00:01:45,650 --> 00:01:47,040
+these shards.
+
+38
+00:01:47,040 --> 00:01:52,040
+And it might be actually 15
+hosts involved, because the
+
+39
+00:01:52,040 --> 00:01:55,560
+shards are each a replica set.
+
+40
+00:01:55,560 --> 00:01:57,030
+So you're going to
+make queries.
+
+41
+00:01:57,030 --> 00:01:59,470
+And somehow, these queries are
+going to get distributed.
+
+42
+00:01:59,470 --> 00:02:03,580
+Now the way this works is that
+there is a router that came
+
+43
+00:02:03,580 --> 00:02:08,350
+with your installation and it
+is called MongoS, all right?
+
+44
+00:02:08,350 --> 00:02:11,780
+And you probably saw that
+binary when you unpacked
+
+45
+00:02:11,780 --> 00:02:13,890
+installation for MongoDB.
+
+46
+00:02:13,890 --> 00:02:18,160
+And that router is what's going
+to take care of this
+
+47
+00:02:18,160 --> 00:02:19,100
+distribution for you.
+
+48
+00:02:19,100 --> 00:02:23,410
+So it's going to keep some sort
+of connection pool or
+
+49
+00:02:23,410 --> 00:02:27,210
+knowledge of all the different
+hosts, and it's going to route
+
+50
+00:02:27,210 --> 00:02:28,480
+them properly.
+
+51
+00:02:28,480 --> 00:02:31,100
+So the way we do sharding
+is we use it
+
+52
+00:02:31,100 --> 00:02:33,380
+a range-based approach.
+
+53
+00:02:33,380 --> 00:02:37,340
+And there's a concept
+of a shard_key.
+
+54
+00:02:37,340 --> 00:02:41,590
+So let's say you have the orders
+collection and maybe--
+
+55
+00:02:41,590 --> 00:02:44,380
+you could imagine a
+trivial sharding
+
+56
+00:02:44,380 --> 00:02:46,290
+might be on the order_id.
+
+57
+00:02:46,290 --> 00:02:50,580
+And we'll talk more about why
+that may or may not be a good
+
+58
+00:02:50,580 --> 00:02:53,040
+idea as we get further
+on in this lesson.
+
+59
+00:02:53,040 --> 00:02:56,730
+But if you were sharding on an
+order_id, let's say that you
+
+60
+00:02:56,730 --> 00:03:00,680
+queried, and you ask for
+a certain order number.
+
+61
+00:03:00,680 --> 00:03:05,260
+Then the MongoS would have some
+sort of notion of the
+
+62
+00:03:05,260 --> 00:03:10,040
+ranges of order numbers that
+are assigned to each shard.
+
+63
+00:03:10,040 --> 00:03:14,430
+And this is done by way
+of mapping to chunks.
+
+64
+00:03:14,430 --> 00:03:17,710
+So the idea is that your orders
+table would be broken
+
+65
+00:03:17,710 --> 00:03:19,000
+up into chunks.
+
+66
+00:03:19,000 --> 00:03:21,800
+And those chunks would
+have homes.
+
+67
+00:03:21,800 --> 00:03:24,740
+And they could be potentially
+migrated by balancer to make
+
+68
+00:03:24,740 --> 00:03:27,030
+sure that it's going
+to stay balanced.
+
+69
+00:03:27,030 --> 00:03:29,030
+And again, this is not the DBA
+course, so we're not going to
+
+70
+00:03:29,030 --> 00:03:31,980
+extensively ask you to do
+administration on this, but
+
+71
+00:03:31,980 --> 00:03:33,360
+just so you understand.
+
+72
+00:03:33,360 --> 00:03:36,120
+So you have the orders
+collection and it's broken up
+
+73
+00:03:36,120 --> 00:03:41,050
+into these chunks of orders
+based on ranges of order_ids.
+
+74
+00:03:41,050 --> 00:03:45,150
+And each of these chunks lives
+on a particular shard.
+
+75
+00:03:45,150 --> 00:03:48,020
+And then when you do a query and
+the application sends that
+
+76
+00:03:48,020 --> 00:03:52,700
+query to a MongoS, and these
+MongoSs are then talking to
+
+77
+00:03:52,700 --> 00:03:54,980
+replica sets, of course, that
+are running MongoDs.
+
+78
+00:03:54,980 --> 00:03:56,650
+These are all MongoDs.
+
+79
+00:03:56,650 --> 00:04:01,060
+If the query can be satisfied by
+a particular shard-- let's
+
+80
+00:04:01,060 --> 00:04:02,670
+say you say, I want
+order_id 10.
+
+81
+00:04:02,670 --> 00:04:05,110
+It says, OK, let's look
+at my mapping.
+
+82
+00:04:05,110 --> 00:04:09,080
+Order_id 10 maps to this chunk,
+this chunk maps to this
+
+83
+00:04:09,080 --> 00:04:12,860
+shard, and it will route it
+directly to the shard.
+
+84
+00:04:12,860 --> 00:04:15,890
+And then you'll get back a
+response pretty quickly.
+
+85
+00:04:15,890 --> 00:04:18,940
+And the other hand, if the
+query doesn't include the
+
+86
+00:04:18,940 --> 00:04:22,980
+shard_key, and in this case,
+the shard_key was order_id,
+
+87
+00:04:22,980 --> 00:04:25,870
+then what it'll do, it'll have
+to scatter this request to all
+
+88
+00:04:25,870 --> 00:04:28,780
+the servers, send them to all
+the servers, and then gather
+
+89
+00:04:28,780 --> 00:04:31,400
+back the answer and then
+respond back to the
+
+90
+00:04:31,400 --> 00:04:32,860
+application.
+
+91
+00:04:32,860 --> 00:04:36,100
+So that's the way it would work
+if it could not utilize
+
+92
+00:04:36,100 --> 00:04:37,440
+the shard_key.
+
+93
+00:04:37,440 --> 00:04:39,530
+In addition, when you're
+dealing with a sharded
+
+94
+00:04:39,530 --> 00:04:40,030
+environment--
+
+95
+00:04:40,030 --> 00:04:41,640
+and we're going to go through
+this a little bit more--
+
+96
+00:04:41,640 --> 00:04:44,370
+you have to include the
+shard_key on any insert.
+
+97
+00:04:44,370 --> 00:04:47,110
+Because it needs to know where
+to put this thing.
+
+98
+00:04:47,110 --> 00:04:49,490
+So once you declare that
+order_id, let's say as a
+
+99
+00:04:49,490 --> 00:04:53,650
+shard_key it's now illegal to
+have a document inside the
+
+100
+00:04:53,650 --> 00:04:55,840
+orders collection that doesn't
+have an order_id, because it
+
+101
+00:04:55,840 --> 00:04:58,280
+wouldn't know what to
+shard to put it in.
+
+102
+00:04:58,280 --> 00:05:00,680
+Now, sharding is at
+a database level.
+
+103
+00:05:00,680 --> 00:05:02,660
+You could say, I want to shard
+or not shard a database.
+
+104
+00:05:02,660 --> 00:05:05,580
+And even beyond that, whether
+you want to shard or not shard
+
+105
+00:05:05,580 --> 00:05:06,700
+a collection.
+
+106
+00:05:06,700 --> 00:05:10,630
+And collections that aren't
+sharded are going to wind up
+
+107
+00:05:10,630 --> 00:05:14,390
+right here in shard 0, in
+the left-most shard.
+
+108
+00:05:14,390 --> 00:05:16,500
+And that may change in a future
+release of MongoDB, but
+
+109
+00:05:16,500 --> 00:05:18,350
+that's the way it works today.
+
+110
+00:05:18,350 --> 00:05:21,620
+So just to review at a high
+level, to get horizontal
+
+111
+00:05:21,620 --> 00:05:24,770
+scalability, what we do is we
+shard, which means we break up
+
+112
+00:05:24,770 --> 00:05:29,210
+a collection onto multiple
+logical hosts and that we do
+
+113
+00:05:29,210 --> 00:05:30,860
+that according to a shard_key.
+
+114
+00:05:30,860 --> 00:05:32,890
+The shard_key is something
+you're going to determine.
+
+115
+00:05:32,890 --> 00:05:36,700
+The shard_key is some part
+of the document itself.
+
+116
+00:05:36,700 --> 00:05:39,510
+If it was an orders table,
+it could be the order_id.
+
+117
+00:05:39,510 --> 00:05:42,510
+You could also shard_id, which
+some people do for certain
+
+118
+00:05:42,510 --> 00:05:42,835
+collections.
+
+119
+00:05:42,835 --> 00:05:45,280
+We'll talk about why that may
+or may not be a good thing.
+
+120
+00:05:45,280 --> 00:05:48,900
+Now, for a blog post table, it
+could be the post id, anything
+
+121
+00:05:48,900 --> 00:05:50,300
+you want, pretty much.
+
+122
+00:05:50,300 --> 00:05:54,170
+And once you make that decision,
+then Mongo will then
+
+123
+00:05:54,170 --> 00:05:58,350
+break up that collection into
+chunks and decide what shard
+
+124
+00:05:58,350 --> 00:06:01,000
+each of the chunks lives on in
+a range-based way, and then
+
+125
+00:06:01,000 --> 00:06:04,075
+any query that you make, which
+now has to be routed to a
+
+126
+00:06:04,075 --> 00:06:07,440
+Mongo OS, will then go to the
+appropriate shards to answer
+
+127
+00:06:07,440 --> 00:06:08,680
+your query.
+
+128
+00:06:08,680 --> 00:06:12,270
+And by the way, in case you were
+wondering, yes, there can
+
+129
+00:06:12,270 --> 00:06:14,090
+be more than one MongoS.
+
+130
+00:06:14,090 --> 00:06:16,260
+They're really stateless and
+they typically run on the same
+
+131
+00:06:16,260 --> 00:06:18,080
+server as the application.
+
+132
+00:06:18,080 --> 00:06:21,330
+And they're handled very
+much the same way--
+
+133
+00:06:21,330 --> 00:06:24,200
+similar to the way a replica set
+would be handled, which is
+
+134
+00:06:24,200 --> 00:06:28,090
+that if one of them goes down,
+then it will connect to a
+
+135
+00:06:28,090 --> 00:06:28,780
+different one.
+
+136
+00:06:28,780 --> 00:06:30,500
+They're pretty stateless.
+
+137
+00:06:30,500 --> 00:06:33,200
+So that's not too
+difficult to do.
+
+138
+00:06:33,200 --> 00:06:35,330
+And the MongoSs now
+talk to a MongoD.
+
+139
+00:06:35,330 --> 00:06:38,310
+Once you're in a sharded
+environment like this, and the
+
+140
+00:06:38,310 --> 00:06:41,570
+shards, again, are probably
+almost always replica sets,
+
+141
+00:06:41,570 --> 00:06:45,460
+you no longer connect directly
+to the MongoD with your
+
+142
+00:06:45,460 --> 00:06:46,610
+application.
+
+143
+00:06:46,610 --> 00:06:48,820
+You may, for administrative
+purposes, need to connect to
+
+144
+00:06:48,820 --> 00:06:51,800
+this MongoD, but generally
+you don't.
+
+145
+00:06:51,800 --> 00:06:55,590
+And if you use the Mongo shell,
+which is really just
+
+146
+00:06:55,590 --> 00:06:57,110
+another application, kind
+of equivalent to this
+
+147
+00:06:57,110 --> 00:07:00,520
+application, then rather than
+talk to a replica, you
+
+148
+00:07:00,520 --> 00:07:03,980
+typically would connect
+it directly to MongoS.
+
+149
+00:07:03,980 --> 00:07:06,410
+And it has a special indication,
+in terms of its
+
+150
+00:07:06,410 --> 00:07:09,160
+prompt, to tell you that you're
+connected to a MongoS
+
+151
+00:07:09,160 --> 00:07:11,030
+versus a MongoD.
+
+152
+00:07:11,030 --> 00:07:13,370
+So all right, that's sharding
+at a high level.
+
+153
+00:07:13,370 --> 00:07:15,130
+Let's do a quiz about that.
+
+154
+00:07:15,130 --> 00:07:18,030
+All right, so, the quiz is,
+"If the shard_key is not
+
+155
+00:07:18,030 --> 00:07:21,280
+included in a find operation and
+there are 3 shards, each
+
+156
+00:07:21,280 --> 00:07:25,070
+with a replica set with 3 nodes,
+how many nodes will see
+
+157
+00:07:25,070 --> 00:07:29,410
+the find operation?" And the
+answers are 1, 3, 9, and 6.
+
+158
+00:07:29,410 --> 00:07:30,660
+Choose your answer here.

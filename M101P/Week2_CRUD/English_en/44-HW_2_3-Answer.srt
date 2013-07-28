@@ -1,0 +1,236 @@
+1
+00:00:00,000 --> 00:00:00,180
+
+2
+00:00:00,180 --> 00:00:03,620
+In this problem, we asked you
+to add the code to the blog
+
+3
+00:00:03,620 --> 00:00:06,550
+that would allow people to sign
+up for the blog and log
+
+4
+00:00:06,550 --> 00:00:07,740
+in to the blog.
+
+5
+00:00:07,740 --> 00:00:09,190
+You needed to work
+in two places.
+
+6
+00:00:09,190 --> 00:00:13,730
+The first one was in this add
+user code in userDAO.py.
+
+7
+00:00:13,730 --> 00:00:16,820
+You needed to add this statement
+right here and
+
+8
+00:00:16,820 --> 00:00:20,450
+insert the user record right
+here, self.users.insert(user).
+
+9
+00:00:20,450 --> 00:00:23,170
+
+10
+00:00:23,170 --> 00:00:26,790
+And the second place you needed
+to work over here in
+
+11
+00:00:26,790 --> 00:00:28,540
+validate_login.
+
+12
+00:00:28,540 --> 00:00:31,200
+You needed to find the user
+and the user collection.
+
+13
+00:00:31,200 --> 00:00:34,520
+And the way you do that is
+self.users.find_one.
+
+14
+00:00:34,520 --> 00:00:36,830
+And then you specify underscore
+ID and the user
+
+15
+00:00:36,830 --> 00:00:39,510
+name that was given
+by the user.
+
+16
+00:00:39,510 --> 00:00:40,900
+That pulls out the document.
+
+17
+00:00:40,900 --> 00:00:42,765
+Then you compare
+the passwords.
+
+18
+00:00:42,765 --> 00:00:44,530
+And that's where you
+needed to work.
+
+19
+00:00:44,530 --> 00:00:45,740
+So this is the finished
+solution.
+
+20
+00:00:45,740 --> 00:00:46,860
+Let's see if it works.
+
+21
+00:00:46,860 --> 00:00:48,270
+So we'll go here.
+
+22
+00:00:48,270 --> 00:00:51,090
+And we're going to run it.
+
+23
+00:00:51,090 --> 00:00:51,690
+Oh.
+
+24
+00:00:51,690 --> 00:00:54,510
+It looks like Python's
+already running.
+
+25
+00:00:54,510 --> 00:00:58,140
+So let's just kill all Python
+and see if that does it.
+
+26
+00:00:58,140 --> 00:00:58,555
+Yup.
+
+27
+00:00:58,555 --> 00:01:01,110
+And then right here,
+we're going to run
+
+28
+00:01:01,110 --> 00:01:03,870
+the validation script.
+
+29
+00:01:03,870 --> 00:01:06,030
+And you can see that
+it did work.
+
+30
+00:01:06,030 --> 00:01:09,220
+And it got a validation code,
+which is blanked out here.
+
+31
+00:01:09,220 --> 00:01:11,900
+But you'll get the real
+one when you run it.
+
+32
+00:01:11,900 --> 00:01:14,660
+And let's see if
+the blog works.
+
+33
+00:01:14,660 --> 00:01:15,580
+Here we go.
+
+34
+00:01:15,580 --> 00:01:16,360
+Let's log out.
+
+35
+00:01:16,360 --> 00:01:18,810
+Let's create a new user.
+
+36
+00:01:18,810 --> 00:01:25,822
+Test101, password test,
+verify test.
+
+37
+00:01:25,822 --> 00:01:26,300
+All right.
+
+38
+00:01:26,300 --> 00:01:33,460
+Now let's log out and log
+in as this test101 user.
+
+39
+00:01:33,460 --> 00:01:34,790
+And we're able to log in.
+
+40
+00:01:34,790 --> 00:01:36,560
+So it seems to work properly.
+
+41
+00:01:36,560 --> 00:01:41,780
+And the final part of that, of
+course, would be to go into
+
+42
+00:01:41,780 --> 00:01:44,160
+the users collection,
+so db.users.find.
+
+43
+00:01:44,160 --> 00:01:46,980
+
+44
+00:01:46,980 --> 00:01:49,640
+And oh, there's a whole bunch of
+test entries that were put
+
+45
+00:01:49,640 --> 00:01:50,880
+here by the program.
+
+46
+00:01:50,880 --> 00:01:55,230
+Let's do a find where
+the underscore ID is
+
+47
+00:01:55,230 --> 00:01:57,250
+this test101 user.
+
+48
+00:01:57,250 --> 00:01:58,640
+Pretty, print that out.
+
+49
+00:01:58,640 --> 00:01:59,690
+There we go.
+
+50
+00:01:59,690 --> 00:02:02,470
+You can see test101
+is the user.
+
+51
+00:02:02,470 --> 00:02:04,820
+And here's the hashed
+password.
+
+52
+00:02:04,820 --> 00:02:06,090
+So that all seems to work.
+
+53
+00:02:06,090 --> 00:02:07,340

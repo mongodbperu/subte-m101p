@@ -1,0 +1,43 @@
+1
+00:00:00,000 --> 00:00:00,150
+
+2
+00:00:00,150 --> 00:00:04,900
+And the answer is that the final
+one will find all of the
+
+3
+00:00:04,900 --> 00:00:05,750
+descendants.
+
+4
+00:00:05,750 --> 00:00:07,890
+So that might be a little
+surprising.
+
+5
+00:00:07,890 --> 00:00:14,080
+It looks for all documents where
+ancestors is 34, and due
+
+6
+00:00:14,080 --> 00:00:18,640
+to the polymorphism around the
+way our Razor handled, it will
+
+7
+00:00:18,640 --> 00:00:23,700
+look for all the documents where
+34 is an element in the
+
+8
+00:00:23,700 --> 00:00:26,920
+ancestors array, which will give
+you all the descendants
+
+9
+00:00:26,920 --> 00:00:28,170
+to the snorkeling document.
+
+10
+00:00:28,170 --> 00:00:28,950

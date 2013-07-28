@@ -1,0 +1,320 @@
+1
+00:00:00,000 --> 00:00:00,140
+
+2
+00:00:00,140 --> 00:00:03,830
+One of the neat things about
+the aggregation framework
+
+3
+00:00:03,830 --> 00:00:06,930
+that's even better than what you
+have available using SQL
+
+4
+00:00:06,930 --> 00:00:10,830
+with group by is that you can
+run a particular aggregation
+
+5
+00:00:10,830 --> 00:00:12,450
+stage more than once.
+
+6
+00:00:12,450 --> 00:00:15,680
+For instance, we can group more
+than once in the same
+
+7
+00:00:15,680 --> 00:00:19,010
+aggregation query, what I'll
+call double grouping.
+
+8
+00:00:19,010 --> 00:00:20,940
+Now, when would this
+be useful?
+
+9
+00:00:20,940 --> 00:00:26,150
+Let me show you a data set that
+contains scores for each
+
+10
+00:00:26,150 --> 00:00:28,180
+student in each class.
+
+11
+00:00:28,180 --> 00:00:34,550
+So for example, I might have
+student ID 1, class ID 397.
+
+12
+00:00:34,550 --> 00:00:36,690
+He may have several entries--
+
+13
+00:00:36,690 --> 00:00:39,450
+one for a homework,
+one for a quiz.
+
+14
+00:00:39,450 --> 00:00:44,780
+And let's say that we want to
+figure out what's the average
+
+15
+00:00:44,780 --> 00:00:47,440
+class grade in each class.
+
+16
+00:00:47,440 --> 00:00:50,290
+To do that, first, we need to
+average all the students'
+
+17
+00:00:50,290 --> 00:00:51,840
+grades within the class.
+
+18
+00:00:51,840 --> 00:00:54,630
+And after that, we need to
+average those grades.
+
+19
+00:00:54,630 --> 00:00:57,270
+So that looks like this.
+
+20
+00:00:57,270 --> 00:00:58,880
+db.grades.aggregate.
+
+21
+00:00:58,880 --> 00:01:01,810
+I'm going to first do a grouping
+where I group by
+
+22
+00:01:01,810 --> 00:01:03,935
+class ID and Student ID.
+
+23
+00:01:03,935 --> 00:01:06,730
+And I'm going to average
+all those scores.
+
+24
+00:01:06,730 --> 00:01:08,610
+So I'm going to average
+all those scores.
+
+25
+00:01:08,610 --> 00:01:11,290
+And that's going to give me a
+bunch of documents that have
+
+26
+00:01:11,290 --> 00:01:15,730
+the class ID and the student ID
+as an underscore ID and the
+
+27
+00:01:15,730 --> 00:01:18,280
+average for those assessments.
+
+28
+00:01:18,280 --> 00:01:20,980
+And then we're going to pipe
+that to the secondary
+
+29
+00:01:20,980 --> 00:01:25,770
+grouping, which is going to use
+as its underscore ID for
+
+30
+00:01:25,770 --> 00:01:29,300
+grouping purposes the underscore
+ID dot class ID of
+
+31
+00:01:29,300 --> 00:01:31,250
+the previous stage.
+
+32
+00:01:31,250 --> 00:01:35,050
+And then it's going to average
+those to get a final average.
+
+33
+00:01:35,050 --> 00:01:38,770
+So let's run that and see
+what it looks like.
+
+34
+00:01:38,770 --> 00:01:40,560
+So it looks like this.
+
+35
+00:01:40,560 --> 00:01:42,650
+You can see for each
+of these class
+
+36
+00:01:42,650 --> 00:01:45,070
+IDs, I've got an average.
+
+37
+00:01:45,070 --> 00:01:47,800
+Now, what did it look like
+after the first stage?
+
+38
+00:01:47,800 --> 00:01:48,700
+Let's do this.
+
+39
+00:01:48,700 --> 00:01:49,850
+Let's just--
+
+40
+00:01:49,850 --> 00:01:52,310
+going to write this as
+a secondary file--
+
+41
+00:01:52,310 --> 00:01:54,745
+take this out.
+
+42
+00:01:54,745 --> 00:01:57,370
+I'll take the second
+stage out.
+
+43
+00:01:57,370 --> 00:01:58,510
+All right.
+
+44
+00:01:58,510 --> 00:02:01,640
+Now, we'll run that.
+
+45
+00:02:01,640 --> 00:02:06,330
+So after the first stage, what
+I have is for each class and
+
+46
+00:02:06,330 --> 00:02:08,910
+each student, I have
+an average.
+
+47
+00:02:08,910 --> 00:02:13,120
+And then what I need to do is
+aggregate on the class and
+
+48
+00:02:13,120 --> 00:02:14,630
+average those averages.
+
+49
+00:02:14,630 --> 00:02:15,570
+And there might be a
+different number of
+
+50
+00:02:15,570 --> 00:02:16,960
+assessments for each student.
+
+51
+00:02:16,960 --> 00:02:18,780
+So I can't just take an average
+of everything for the
+
+52
+00:02:18,780 --> 00:02:23,070
+class ID, I need to do two
+separate aggregation stages to
+
+53
+00:02:23,070 --> 00:02:23,655
+get the answer.
+
+54
+00:02:23,655 --> 00:02:26,990
+A little tricky, but it's very
+useful to be able to do this
+
+55
+00:02:26,990 --> 00:02:29,970
+as we'll see in other
+assignments.
+
+56
+00:02:29,970 --> 00:02:31,170
+Now, let's do a quiz.
+
+57
+00:02:31,170 --> 00:02:33,140
+Given the following collection--
+and I've just
+
+58
+00:02:33,140 --> 00:02:34,260
+created this collection--
+
+59
+00:02:34,260 --> 00:02:37,600
+with the following documents and
+the following aggregation
+
+60
+00:02:37,600 --> 00:02:40,330
+query which has a
+double grouping,
+
+61
+00:02:40,330 --> 00:02:42,190
+what values are returned?
+
+62
+00:02:42,190 --> 00:02:45,310
+And I'll just go ahead and tell
+you that there are two
+
+63
+00:02:45,310 --> 00:02:48,790
+values of interest in the
+final result document.
+
+64
+00:02:48,790 --> 00:02:50,600
+What values are returned?
+
+65
+00:02:50,600 --> 00:02:52,470
+Now, you can do this by
+reasoning your way through it.
+
+66
+00:02:52,470 --> 00:02:55,062
+Or if you really want, you can
+set up my MongoDB and put all
+
+67
+00:02:55,062 --> 00:02:57,810
+these documents in and it'll
+just tell you the answer.
+
+68
+00:02:57,810 --> 00:02:59,650
+But it'd be better if you could
+sort of reason your way
+
+69
+00:02:59,650 --> 00:03:00,900
+through it.
+
+70
+00:03:00,900 --> 00:03:02,715

@@ -1,0 +1,799 @@
+1
+00:00:00,000 --> 00:00:00,750
+
+2
+00:00:00,750 --> 00:00:02,990
+This is Andrew Erlichson
+here again.
+
+3
+00:00:02,990 --> 00:00:06,670
+I'm going to take you through
+the same CRUD operations that
+
+4
+00:00:06,670 --> 00:00:07,400
+Richard showed you.
+
+5
+00:00:07,400 --> 00:00:11,000
+But I'm going to show them to
+you using Python and PyMongo,
+
+6
+00:00:11,000 --> 00:00:13,030
+and then get you ready for your
+homework for this week,
+
+7
+00:00:13,030 --> 00:00:16,890
+which is starting to build
+that blog project that we
+
+8
+00:00:16,890 --> 00:00:18,270
+talked about earlier.
+
+9
+00:00:18,270 --> 00:00:21,180
+So just to review real quickly
+what we're going to do here.
+
+10
+00:00:21,180 --> 00:00:23,660
+You've just gone through in the
+Mongo shell and learned to
+
+11
+00:00:23,660 --> 00:00:27,730
+create, read, update, and delete
+operators from Mongo.
+
+12
+00:00:27,730 --> 00:00:30,610
+The Mongo shell talks
+BSON to MongoD.
+
+13
+00:00:30,610 --> 00:00:32,100
+And now we're going to
+do the same thing in
+
+14
+00:00:32,100 --> 00:00:34,080
+Python using PyMongo.
+
+15
+00:00:34,080 --> 00:00:37,330
+PyMongo also talks by
+BSON to MongoD.
+
+16
+00:00:37,330 --> 00:00:39,340
+And we're going to write
+some code here.
+
+17
+00:00:39,340 --> 00:00:41,880
+So to get started with that, the
+first thing we have to do
+
+18
+00:00:41,880 --> 00:00:44,410
+is get some data into
+the database.
+
+19
+00:00:44,410 --> 00:00:47,773
+This is something that already
+exists in your world because
+
+20
+00:00:47,773 --> 00:00:50,000
+you've been watching the
+lectures linearly.
+
+21
+00:00:50,000 --> 00:00:52,330
+But I don't have it on my
+computer, so I'm going to do
+
+22
+00:00:52,330 --> 00:00:53,430
+it real fast.
+
+23
+00:00:53,430 --> 00:00:57,040
+So this is a JavaScript program
+that I'm going to pipe
+
+24
+00:00:57,040 --> 00:00:58,570
+into the Mongo shell.
+
+25
+00:00:58,570 --> 00:01:01,960
+It's just going to create 100
+students and create three
+
+26
+00:01:01,960 --> 00:01:04,030
+different types of assessments
+for them, example, homework,
+
+27
+00:01:04,030 --> 00:01:06,460
+and quiz, and randomly
+assign them some
+
+28
+00:01:06,460 --> 00:01:09,060
+scores insert them in.
+
+29
+00:01:09,060 --> 00:01:10,310
+Let's do that together.
+
+30
+00:01:10,310 --> 00:01:14,800
+
+31
+00:01:14,800 --> 00:01:20,330
+I'll run Mongo and redirect
+standard into the file.
+
+32
+00:01:20,330 --> 00:01:22,540
+This is something that is
+probably pretty familiar to
+
+33
+00:01:22,540 --> 00:01:25,400
+anyone in the Mac
+or Unix world.
+
+34
+00:01:25,400 --> 00:01:26,590
+So we'll do that.
+
+35
+00:01:26,590 --> 00:01:28,260
+And we get back the
+standard out.
+
+36
+00:01:28,260 --> 00:01:30,840
+It connected to the 2.2 version
+of the database,
+
+37
+00:01:30,840 --> 00:01:32,990
+switched to the school database,
+and then said
+
+38
+00:01:32,990 --> 00:01:34,210
+goodbye to us.
+
+39
+00:01:34,210 --> 00:01:36,320
+Let's confirm the data
+is in there.
+
+40
+00:01:36,320 --> 00:01:39,710
+And let's use school, and
+then do db.scores.find.
+
+41
+00:01:39,710 --> 00:01:42,470
+
+42
+00:01:42,470 --> 00:01:45,650
+And there there's
+data right here.
+
+43
+00:01:45,650 --> 00:01:48,880
+And then we'll pretty
+print it.
+
+44
+00:01:48,880 --> 00:01:50,060
+We can see here it is.
+
+45
+00:01:50,060 --> 00:01:53,180
+Just a bunch of students, and
+each of the students has a
+
+46
+00:01:53,180 --> 00:01:56,450
+different type of grade, a
+homework grade, an exam grade.
+
+47
+00:01:56,450 --> 00:01:58,580
+These are some random numbers.
+
+48
+00:01:58,580 --> 00:02:01,940
+And we let the driver assign
+IDs for the objects.
+
+49
+00:02:01,940 --> 00:02:05,310
+And these are just BSON object
+IDs in each of these.
+
+50
+00:02:05,310 --> 00:02:06,930
+So let's get started.
+
+51
+00:02:06,930 --> 00:02:11,220
+We're going to show you a small
+file that I wrote to do
+
+52
+00:02:11,220 --> 00:02:12,850
+Find and Find One.
+
+53
+00:02:12,850 --> 00:02:16,740
+Let's start with the
+Find One code.
+
+54
+00:02:16,740 --> 00:02:18,150
+This is the top of the file.
+
+55
+00:02:18,150 --> 00:02:20,010
+Using _Find.py.
+
+56
+00:02:20,010 --> 00:02:22,740
+I know a lot of folks have
+requested that we give you the
+
+57
+00:02:22,740 --> 00:02:25,620
+code that we're using in the
+lessons, and I will try to do
+
+58
+00:02:25,620 --> 00:02:27,600
+that this week.
+
+59
+00:02:27,600 --> 00:02:30,270
+So we start by importing
+PyMongo, importing sys, do
+
+60
+00:02:30,270 --> 00:02:34,060
+some error reporting, getting a
+connection to the database,
+
+61
+00:02:34,060 --> 00:02:35,070
+local host.
+
+62
+00:02:35,070 --> 00:02:37,390
+Safe equals True, so that the
+calls get less error on our
+
+63
+00:02:37,390 --> 00:02:41,300
+behalf and gives us any errors
+that occur during our queries.
+
+64
+00:02:41,300 --> 00:02:44,340
+We connect to the school
+database, and then to the
+
+65
+00:02:44,340 --> 00:02:46,790
+scores collection right here.
+
+66
+00:02:46,790 --> 00:02:49,060
+And then this is the
+Find One code.
+
+67
+00:02:49,060 --> 00:02:51,110
+We'll go back to Find
+code in a second.
+
+68
+00:02:51,110 --> 00:02:54,560
+The Find One code, it
+sets up a query.
+
+69
+00:02:54,560 --> 00:02:58,470
+It sets up a dictionary which
+student ID being 10.
+
+70
+00:02:58,470 --> 00:03:00,360
+Some things to note on this.
+
+71
+00:03:00,360 --> 00:03:03,280
+One is that 10 has no decimal
+point after it because we want
+
+72
+00:03:03,280 --> 00:03:05,150
+it to be an integer in Python.
+
+73
+00:03:05,150 --> 00:03:08,750
+The second is that student
+ID is in single quotes.
+
+74
+00:03:08,750 --> 00:03:11,190
+Now that would not need to be
+the case in the Mongo shell.
+
+75
+00:03:11,190 --> 00:03:12,430
+It would be optional.
+
+76
+00:03:12,430 --> 00:03:15,060
+But in Python it is
+not optional.
+
+77
+00:03:15,060 --> 00:03:16,870
+A string literal that
+is the key to a
+
+78
+00:03:16,870 --> 00:03:18,400
+dictionary must be in quotes.
+
+79
+00:03:18,400 --> 00:03:20,230
+So we put in quotes.
+
+80
+00:03:20,230 --> 00:03:22,630
+Then we're going to
+get the document.
+
+81
+00:03:22,630 --> 00:03:25,850
+We're going to assign the result
+to this variable doc.
+
+82
+00:03:25,850 --> 00:03:27,030
+We're going to call Scores--
+
+83
+00:03:27,030 --> 00:03:28,720
+which is a handle to
+the collection--
+
+84
+00:03:28,720 --> 00:03:29,970
+.Find_one(query).
+
+85
+00:03:29,970 --> 00:03:31,810
+
+86
+00:03:31,810 --> 00:03:37,290
+Things to note here is that the
+function to get a single
+
+87
+00:03:37,290 --> 00:03:40,910
+document from the database using
+Find One is find_one.
+
+88
+00:03:40,910 --> 00:03:45,730
+If you recall on the Mongo
+shell, it was findOne, all one
+
+89
+00:03:45,730 --> 00:03:50,470
+word, uppercase on the O. That's
+one of the pluses and
+
+90
+00:03:50,470 --> 00:03:52,770
+minuses to the drivers
+inside Mongo.
+
+91
+00:03:52,770 --> 00:03:55,790
+The plus is that they are
+written using local
+
+92
+00:03:55,790 --> 00:03:57,300
+conventions for each language.
+
+93
+00:03:57,300 --> 00:04:00,320
+So if it's typical to use
+underscores in a language,
+
+94
+00:04:00,320 --> 00:04:02,910
+then that's the way the driver
+is written so it seems
+
+95
+00:04:02,910 --> 00:04:05,140
+familiar to the people who
+know the language well.
+
+96
+00:04:05,140 --> 00:04:08,230
+On the minus side, the
+drivers vary a bit.
+
+97
+00:04:08,230 --> 00:04:11,220
+So you might need to look in the
+API documentation to learn
+
+98
+00:04:11,220 --> 00:04:15,370
+how to do any particular thing
+inside your driver.
+
+99
+00:04:15,370 --> 00:04:17,750
+This exception only gets
+called if it fails.
+
+100
+00:04:17,750 --> 00:04:19,329
+We won't worry about it.
+
+101
+00:04:19,329 --> 00:04:21,410
+And then it prints the
+doc right here.
+
+102
+00:04:21,410 --> 00:04:24,020
+One of the great things about
+Python is that it's pretty
+
+103
+00:04:24,020 --> 00:04:26,660
+flexible about printing
+complex objects.
+
+104
+00:04:26,660 --> 00:04:30,190
+So let's give that a call
+and see what happens.
+
+105
+00:04:30,190 --> 00:04:32,200
+I'm going to go back
+to my terminal.
+
+106
+00:04:32,200 --> 00:04:34,820
+I'm still in Mongo here so
+I'm just going to quit.
+
+107
+00:04:34,820 --> 00:04:39,110
+And now I'm going to call
+Python using Find.py.
+
+108
+00:04:39,110 --> 00:04:43,580
+And we can see it calls
+Find One right here--
+
+109
+00:04:43,580 --> 00:04:44,730
+just get that up
+on the screen--
+
+110
+00:04:44,730 --> 00:04:47,430
+calls Find One, which prints
+out Reporting For Duty.
+
+111
+00:04:47,430 --> 00:04:50,960
+And then it prints out one
+document that got from the
+
+112
+00:04:50,960 --> 00:04:55,440
+collection Student ID 10 with an
+ID of a BSON object ID and
+
+113
+00:04:55,440 --> 00:04:57,120
+the type being exam.
+
+114
+00:04:57,120 --> 00:05:00,080
+You'll notice that it printed
+it out as a floating point.
+
+115
+00:05:00,080 --> 00:05:02,080
+And I think that's an automatic
+conversion that
+
+116
+00:05:02,080 --> 00:05:03,980
+happened during the
+string conversion.
+
+117
+00:05:03,980 --> 00:05:07,730
+But that's not indicative of it
+actually coming out of the
+
+118
+00:05:07,730 --> 00:05:08,270
+floating point.
+
+119
+00:05:08,270 --> 00:05:09,650
+I believe was converted
+for the printing.
+
+120
+00:05:09,650 --> 00:05:13,830
+Because in fact, that is a
+integer inside the database.
+
+121
+00:05:13,830 --> 00:05:16,210
+If you recall here, you can
+actually see them right here.
+
+122
+00:05:16,210 --> 00:05:16,880
+They're integers.
+
+123
+00:05:16,880 --> 00:05:19,810
+They're not floating
+point numbers.
+
+124
+00:05:19,810 --> 00:05:21,400
+That's how Find One works.
+
+125
+00:05:21,400 --> 00:05:24,710
+So the next question is, well,
+how does Find work?
+
+126
+00:05:24,710 --> 00:05:26,670
+So Find, as we talked about--
+
+127
+00:05:26,670 --> 00:05:29,720
+let's change our function
+here to call Find.
+
+128
+00:05:29,720 --> 00:05:31,710
+There's another function
+that we wrote.
+
+129
+00:05:31,710 --> 00:05:37,490
+And Find sets up a query where
+the type is an exam.
+
+130
+00:05:37,490 --> 00:05:42,130
+And again, Type is quoted,
+and then Exam is quoted.
+
+131
+00:05:42,130 --> 00:05:49,730
+And now we're going to do
+scores.find, the collection
+
+132
+00:05:49,730 --> 00:05:51,850
+name .Find in the query.
+
+133
+00:05:51,850 --> 00:05:55,240
+And that's actually going to
+give us back a cursor.
+
+134
+00:05:55,240 --> 00:05:56,270
+Not an integrator.
+
+135
+00:05:56,270 --> 00:05:57,700
+I shouldn't have really
+named it that.
+
+136
+00:05:57,700 --> 00:05:59,440
+I probably should have
+named it a cursor.
+
+137
+00:05:59,440 --> 00:06:01,720
+And I can change that.
+
+138
+00:06:01,720 --> 00:06:03,550
+So it gives us back a cursor.
+
+139
+00:06:03,550 --> 00:06:10,060
+And then right here we go
+through and we iterate through
+
+140
+00:06:10,060 --> 00:06:11,200
+that cursor.
+
+141
+00:06:11,200 --> 00:06:15,050
+So for every document in the
+cursor we just print the doc.
+
+142
+00:06:15,050 --> 00:06:17,060
+Now I don't want to print out
+hundreds of things, so I just
+
+143
+00:06:17,060 --> 00:06:17,740
+have little check.
+
+144
+00:06:17,740 --> 00:06:21,500
+And once it prints ten of them,
+it breaks from the loop.
+
+145
+00:06:21,500 --> 00:06:24,750
+So it just sets sanity to
+zero, and increments it.
+
+146
+00:06:24,750 --> 00:06:26,960
+And then if it's greater than
+ten it breaks, just make sure
+
+147
+00:06:26,960 --> 00:06:29,220
+that not too much gets printed
+to the screen.
+
+148
+00:06:29,220 --> 00:06:31,660
+So let's run that and
+see what happens.
+
+149
+00:06:31,660 --> 00:06:36,150
+So we're going to call
+Python using find.py.
+
+150
+00:06:36,150 --> 00:06:40,410
+And now you can see in this case
+that we get a whole bunch
+
+151
+00:06:40,410 --> 00:06:44,580
+of documents, and the documents
+are all type Exam,
+
+152
+00:06:44,580 --> 00:06:46,150
+because that's what
+we queried on.
+
+153
+00:06:46,150 --> 00:06:48,290
+And a bunch of different
+scores come out.
+
+154
+00:06:48,290 --> 00:06:51,950
+So that's how you use the
+Find commanding and
+
+155
+00:06:51,950 --> 00:06:54,390
+iterate through a cursor.
+
+156
+00:06:54,390 --> 00:06:57,820
+So it is now time for a quiz.
+
+157
+00:06:57,820 --> 00:06:59,140
+And here is the quiz.
+
+158
+00:06:59,140 --> 00:07:02,820
+So here's a code snippet right
+here that should be familiar
+
+159
+00:07:02,820 --> 00:07:04,690
+to you from this lesson.
+
+160
+00:07:04,690 --> 00:07:06,680
+It's going to establish a
+connection to the database,
+
+161
+00:07:06,680 --> 00:07:09,330
+and it's going to get a handle
+to the school's database, and
+
+162
+00:07:09,330 --> 00:07:10,790
+then scores collection.
+
+163
+00:07:10,790 --> 00:07:15,380
+And then it's going to
+do something here.
+
+164
+00:07:15,380 --> 00:07:18,330
+and then it's going to print
+the document that it gets.
+
+165
+00:07:18,330 --> 00:07:20,760
+Now, this is a test
+of a Find One.
+
+166
+00:07:20,760 --> 00:07:22,930
+So what would be the line of
+code that would have to
+
+167
+00:07:22,930 --> 00:07:27,280
+replace this XXX so that
+we could put the
+
+168
+00:07:27,280 --> 00:07:28,270
+document right here?
+
+169
+00:07:28,270 --> 00:07:30,690
+So if you put that line
+of code right in
+
+170
+00:07:30,690 --> 00:07:31,940
+here, that's the quiz.
+
+171
+00:07:31,940 --> 00:07:33,252

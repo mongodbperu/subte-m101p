@@ -28,7 +28,7 @@ __MAPPING_FORMAT2 = {
         True: '%(number)02d-%(flat_concept)s-Lecture.%(extension)s',
         False: '%(number)02d-%(flat_concept)s-Answer.%(extension)s'
     }
-__RE_FLAT_CONCEPT = re.compile(r'[\t !"#$%&\'*\:\;\-/<=>?@\[\\\]^_`{|},.]+')
+__RE_FLAT_CONCEPT = re.compile(r'[\t !"#%&\'*\:\;\-/<=>?@\[\\\]^_`{|},.]+')
 
 
 loop = ioloop.IOLoop.current()

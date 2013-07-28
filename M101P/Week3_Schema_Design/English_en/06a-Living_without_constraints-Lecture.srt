@@ -1,0 +1,301 @@
+1
+00:00:00,000 --> 00:00:00,210
+
+2
+00:00:00,210 --> 00:00:04,310
+One thing I think about a lot
+with mongoDB, because I come
+
+3
+00:00:04,310 --> 00:00:06,570
+from the world of relational
+before I started working at
+
+4
+00:00:06,570 --> 00:00:10,030
+10Gen and thinking a lot about
+the advantages of mongoDB, is
+
+5
+00:00:10,030 --> 00:00:12,230
+that there are a lot of great
+things about relational.
+
+6
+00:00:12,230 --> 00:00:14,020
+And one of the great things
+about relational is that it's
+
+7
+00:00:14,020 --> 00:00:16,129
+really good at keeping
+your data
+
+8
+00:00:16,129 --> 00:00:18,090
+consistent within the database.
+
+9
+00:00:18,090 --> 00:00:20,750
+And one of the ways it does
+that is with foreign key
+
+10
+00:00:20,750 --> 00:00:21,920
+constraints.
+
+11
+00:00:21,920 --> 00:00:23,290
+So what is a foreign
+key constraint?
+
+12
+00:00:23,290 --> 00:00:27,800
+Well, a foreign key constraint
+is that let's say these are
+
+13
+00:00:27,800 --> 00:00:30,950
+actually more like tables, but
+these are collections in the
+
+14
+00:00:30,950 --> 00:00:34,640
+case that we showed, what
+guarantee is it that when you
+
+15
+00:00:34,640 --> 00:00:38,010
+insert a document into the
+comments collection, that this
+
+16
+00:00:38,010 --> 00:00:43,610
+post ID will actually appear
+in this post collection.
+
+17
+00:00:43,610 --> 00:00:45,340
+That's a foreign
+key constraint.
+
+18
+00:00:45,340 --> 00:00:49,470
+And the answer in mongoDB
+is there's no guarantee.
+
+19
+00:00:49,470 --> 00:00:52,450
+It's really up to you as the
+programmer to make sure that
+
+20
+00:00:52,450 --> 00:00:54,490
+your data is consistent
+in that manner.
+
+21
+00:00:54,490 --> 00:00:56,440
+And that when you store
+something in a collection, if
+
+22
+00:00:56,440 --> 00:01:00,900
+you mean for this to be an index
+into the post collection
+
+23
+00:01:00,900 --> 00:01:02,880
+that you guarantee that.
+
+24
+00:01:02,880 --> 00:01:05,420
+Because the database won't
+guarantee that for you.
+
+25
+00:01:05,420 --> 00:01:08,800
+And maybe in a future version of
+mongoDB, we will guarantee
+
+26
+00:01:08,800 --> 00:01:11,430
+it, but we don't offer a
+way to do that today.
+
+27
+00:01:11,430 --> 00:01:13,920
+Same thing with this.
+
+28
+00:01:13,920 --> 00:01:18,300
+And so, how do you live in a
+world without these foreign
+
+29
+00:01:18,300 --> 00:01:21,410
+key constraints without
+constraints and keep your data
+
+30
+00:01:21,410 --> 00:01:23,370
+intact and consistent?
+
+31
+00:01:23,370 --> 00:01:26,820
+And the answer is that embedding
+actually helps.
+
+32
+00:01:26,820 --> 00:01:29,500
+And that's why this alternative
+design that I
+
+33
+00:01:29,500 --> 00:01:31,640
+showed isn't a particularly
+good one.
+
+34
+00:01:31,640 --> 00:01:33,560
+So let's look at the particular
+case we just talked
+
+35
+00:01:33,560 --> 00:01:36,960
+about, which is that we had this
+comments collection and
+
+36
+00:01:36,960 --> 00:01:40,960
+it had a post ID that we could
+not guarantee was in the post
+
+37
+00:01:40,960 --> 00:01:42,520
+collection.
+
+38
+00:01:42,520 --> 00:01:45,270
+Notice, when we embedded the
+data, we've solved this
+
+39
+00:01:45,270 --> 00:01:46,790
+problem entirely.
+
+40
+00:01:46,790 --> 00:01:51,940
+Because now, since the data
+appears directly inside the
+
+41
+00:01:51,940 --> 00:01:54,240
+document, like the comment
+appeared directly inside the
+
+42
+00:01:54,240 --> 00:01:58,800
+document, there's no way for me
+to insert something where
+
+43
+00:01:58,800 --> 00:02:02,590
+the comment's post ID isn't
+in the post collection.
+
+44
+00:02:02,590 --> 00:02:05,730
+That information is already
+tied together when you
+
+45
+00:02:05,730 --> 00:02:07,490
+pre-join this data.
+
+46
+00:02:07,490 --> 00:02:09,690
+Same thing with the tags.
+
+47
+00:02:09,690 --> 00:02:13,160
+There's no way that we can
+accidentally store a tag into
+
+48
+00:02:13,160 --> 00:02:16,180
+the tag collection where the
+post ID isn't in the post
+
+49
+00:02:16,180 --> 00:02:18,060
+collection because I've already
+pre-joined the data
+
+50
+00:02:18,060 --> 00:02:19,060
+and it's in here.
+
+51
+00:02:19,060 --> 00:02:23,480
+And so, what I just wanted to
+point out is that you should
+
+52
+00:02:23,480 --> 00:02:24,240
+pre-join the data.
+
+53
+00:02:24,240 --> 00:02:27,210
+You should embed the data in
+ways that make sense for your
+
+54
+00:02:27,210 --> 00:02:30,030
+application for lots of
+different reasons.
+
+55
+00:02:30,030 --> 00:02:33,200
+And one of them is, it makes
+it a lot easier to keep the
+
+56
+00:02:33,200 --> 00:02:35,030
+data intact and consistent.
+
+57
+00:02:35,030 --> 00:02:37,800
+All right, so time
+for a quick quiz.
+
+58
+00:02:37,800 --> 00:02:41,130
+And the quiz is, what
+does living without
+
+59
+00:02:41,130 --> 00:02:44,040
+constraints refer to?
+
+60
+00:02:44,040 --> 00:02:48,890
+And the answers are, living
+every day like it's your last,
+
+61
+00:02:48,890 --> 00:02:53,020
+saying whatever you want when
+you want to, keeping your data
+
+62
+00:02:53,020 --> 00:02:57,530
+consistent even though mongoDB
+lacks foreign key constraints,
+
+63
+00:02:57,530 --> 00:02:59,330
+or wearing no belt.
+
+64
+00:02:59,330 --> 00:03:00,580

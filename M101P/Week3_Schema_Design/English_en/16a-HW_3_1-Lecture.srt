@@ -1,0 +1,208 @@
+1
+00:00:00,000 --> 00:00:00,170
+
+2
+00:00:00,170 --> 00:00:00,410
+All right.
+
+3
+00:00:00,410 --> 00:00:03,390
+For the first problem this week,
+you're going to analyze
+
+4
+00:00:03,390 --> 00:00:07,800
+a data set, similar to last
+week, and remove the lowest
+
+5
+00:00:07,800 --> 00:00:09,590
+homework score for
+each student.
+
+6
+00:00:09,590 --> 00:00:13,350
+Now, last week we had a
+collection where there was a
+
+7
+00:00:13,350 --> 00:00:15,860
+document for each assessment.
+
+8
+00:00:15,860 --> 00:00:18,570
+So there were four documents
+per student.
+
+9
+00:00:18,570 --> 00:00:20,930
+This week, there's going
+to be only a single
+
+10
+00:00:20,930 --> 00:00:21,890
+document per student.
+
+11
+00:00:21,890 --> 00:00:23,440
+And it's a student's
+collection.
+
+12
+00:00:23,440 --> 00:00:25,470
+And you're going to need to
+find the lowest homework
+
+13
+00:00:25,470 --> 00:00:29,310
+score, and remove it, and keep
+the whole data set intact.
+
+14
+00:00:29,310 --> 00:00:33,950
+Now, it's a little more
+complicated because of the way
+
+15
+00:00:33,950 --> 00:00:35,570
+the scheme is arranged
+this week.
+
+16
+00:00:35,570 --> 00:00:37,700
+And that is the idea.
+
+17
+00:00:37,700 --> 00:00:39,660
+Now, just like last week, you
+don't need to write this
+
+18
+00:00:39,660 --> 00:00:41,160
+program in Python.
+
+19
+00:00:41,160 --> 00:00:42,820
+You can write it in
+anything you want.
+
+20
+00:00:42,820 --> 00:00:44,470
+Here's the problem
+description.
+
+21
+00:00:44,470 --> 00:00:47,730
+You're going to start out by
+downloading the students.js
+
+22
+00:00:47,730 --> 00:00:48,350
+collection.
+
+23
+00:00:48,350 --> 00:00:51,730
+You're going to import it into
+a database called school.
+
+24
+00:00:51,730 --> 00:00:54,980
+And then after that, you're
+going to write your program.
+
+25
+00:00:54,980 --> 00:00:57,660
+Now, to help you verify that
+you've got the right answer,
+
+26
+00:00:57,660 --> 00:01:00,640
+we have some queries and the
+answers to those queries after
+
+27
+00:01:00,640 --> 00:01:01,500
+you do the work.
+
+28
+00:01:01,500 --> 00:01:04,000
+So there should be 200 students
+in the database after
+
+29
+00:01:04,000 --> 00:01:04,690
+you do the work.
+
+30
+00:01:04,690 --> 00:01:06,370
+You shouldn't be removing
+any students.
+
+31
+00:01:06,370 --> 00:01:10,430
+And we also give you what the
+record will look like, the
+
+32
+00:01:10,430 --> 00:01:15,130
+document will look like, for
+student _ID 100, which is
+
+33
+00:01:15,130 --> 00:01:16,920
+Demarcus Audette's record.
+
+34
+00:01:16,920 --> 00:01:20,040
+And you can see, at this point,
+Demarcus has only three
+
+35
+00:01:20,040 --> 00:01:23,820
+grades left because the lowest
+homework has been removed.
+
+36
+00:01:23,820 --> 00:01:26,640
+And then after you finish all
+the work, to verify that you
+
+37
+00:01:26,640 --> 00:01:29,050
+got the right answer, we're
+going to have you run this
+
+38
+00:01:29,050 --> 00:01:31,820
+query which uses the aggregation
+framework, does
+
+39
+00:01:31,820 --> 00:01:34,370
+require MongoDB 2.2.
+
+40
+00:01:34,370 --> 00:01:36,810
+And it's going to print
+out a document.
+
+41
+00:01:36,810 --> 00:01:40,810
+And the _ID field is going to be
+the _ID of the student with
+
+42
+00:01:40,810 --> 00:01:41,860
+the highest average.
+
+43
+00:01:41,860 --> 00:01:44,360
+And that's the answer
+to the problem, just
+
+44
+00:01:44,360 --> 00:01:45,610
+that numeric number.
+
+45
+00:01:45,610 --> 00:01:47,107

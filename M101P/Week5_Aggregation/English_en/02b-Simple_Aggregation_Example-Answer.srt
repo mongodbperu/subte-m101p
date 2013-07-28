@@ -1,0 +1,46 @@
+1
+00:00:00,000 --> 00:00:00,120
+
+2
+00:00:00,120 --> 00:00:00,700
+OK.
+
+3
+00:00:00,700 --> 00:00:05,170
+And the answer is
+db.products.aggregate, and it
+
+4
+00:00:05,170 --> 00:00:09,170
+looks exactly like I did before
+where we $group and
+
+5
+00:00:09,170 --> 00:00:11,795
+then we have an _id
+of category.
+
+6
+00:00:11,795 --> 00:00:12,570
+[INAUDIBLE]
+
+7
+00:00:12,570 --> 00:00:13,750
+manufacturer.
+
+8
+00:00:13,750 --> 00:00:16,370
+And we built a new item called
+num_products, a new key called
+
+9
+00:00:16,370 --> 00:00:21,150
+num_products, where we sum 1
+for each one by category.
+
+10
+00:00:21,150 --> 00:00:22,400
+That's the answer.
+
+11
+00:00:22,400 --> 00:00:23,122

@@ -1,0 +1,445 @@
+1
+00:00:00,000 --> 00:00:00,180
+
+2
+00:00:00,180 --> 00:00:04,240
+If you want to tell MongoDB
+exactly what index to use, you
+
+3
+00:00:04,240 --> 00:00:07,520
+can do that using
+a hint command.
+
+4
+00:00:07,520 --> 00:00:10,710
+Normally, Mongo makes it's own
+decisions of what index to use
+
+5
+00:00:10,710 --> 00:00:13,720
+based on analysis it's done of
+the various query plans, but
+
+6
+00:00:13,720 --> 00:00:15,630
+you can tell it what to use.
+
+7
+00:00:15,630 --> 00:00:18,740
+And the way the hint command
+works is, in the shell, you
+
+8
+00:00:18,740 --> 00:00:21,120
+would append it to the
+end of the query.
+
+9
+00:00:21,120 --> 00:00:24,860
+And you'd say hint, and then
+you'd give a JSON document
+
+10
+00:00:24,860 --> 00:00:26,985
+that specifies what
+index you want.
+
+11
+00:00:26,985 --> 00:00:27,920
+So this would be--
+
+12
+00:00:27,920 --> 00:00:30,300
+I want the a ascending index--
+
+13
+00:00:30,300 --> 00:00:33,270
+the comp index is a ascending,
+b ascending,
+
+14
+00:00:33,270 --> 00:00:36,160
+and let's say c ascending.
+
+15
+00:00:36,160 --> 00:00:38,270
+Use that index, please.
+
+16
+00:00:38,270 --> 00:00:40,580
+And if you want the database
+to use no index, and to use
+
+17
+00:00:40,580 --> 00:00:43,600
+the cursor that goes through
+every single document in the
+
+18
+00:00:43,600 --> 00:00:46,600
+collection, you can hint that
+you want it to use what's
+
+19
+00:00:46,600 --> 00:00:48,600
+called the natural index.
+
+20
+00:00:48,600 --> 00:00:52,830
+And that is specified with
+$natural:1, ascending.
+
+21
+00:00:52,830 --> 00:00:55,270
+That's my curly brace,
+sorry about that.
+
+22
+00:00:55,270 --> 00:00:57,240
+Now, let's see what that looks
+like in the shell.
+
+23
+00:00:57,240 --> 00:01:00,630
+I have the foo collection again
+in the test database.
+
+24
+00:01:00,630 --> 00:01:01,950
+It's got 10,000 documents
+in it.
+
+25
+00:01:01,950 --> 00:01:03,530
+Every one of them has
+an a, b, and c key.
+
+26
+00:01:03,530 --> 00:01:06,620
+And you can see the pattern of
+the data here, where a is
+
+27
+00:01:06,620 --> 00:01:08,690
+zero, b is zero, c is zero.
+
+28
+00:01:08,690 --> 00:01:11,380
+I've created some
+indexes already.
+
+29
+00:01:11,380 --> 00:01:13,920
+Now I'm going to find
+those for you.
+
+30
+00:01:13,920 --> 00:01:15,350
+And here they are.
+
+31
+00:01:15,350 --> 00:01:18,830
+You can see there's an index on
+just a, there's an index on
+
+32
+00:01:18,830 --> 00:01:21,720
+just b, and there's an
+index on just c.
+
+33
+00:01:21,720 --> 00:01:23,330
+There's also an index on d.
+
+34
+00:01:23,330 --> 00:01:25,360
+And there are no documents
+with d in it,
+
+35
+00:01:25,360 --> 00:01:26,810
+interestingly enough.
+
+36
+00:01:26,810 --> 00:01:29,120
+So now let's do a find.
+
+37
+00:01:29,120 --> 00:01:31,880
+And if we just use a go
+find and we don't
+
+38
+00:01:31,880 --> 00:01:32,720
+give any hint command--
+
+39
+00:01:32,720 --> 00:01:34,110
+I'll do that first.
+
+40
+00:01:34,110 --> 00:01:37,480
+And this query that I'm using
+prints out one document.
+
+41
+00:01:37,480 --> 00:01:41,070
+Let's explain that query.
+
+42
+00:01:41,070 --> 00:01:44,090
+We can see that it uses
+the BtreeCursor a.
+
+43
+00:01:44,090 --> 00:01:46,150
+So it uses the a index--
+
+44
+00:01:46,150 --> 00:01:48,320
+the index on just a.
+
+45
+00:01:48,320 --> 00:01:53,130
+But if we don't like that, we
+can tell it to, let's say, use
+
+46
+00:01:53,130 --> 00:01:56,720
+no index, and then it will use
+the basic cursor, and inspect
+
+47
+00:01:56,720 --> 00:01:57,165
+every document.
+
+48
+00:01:57,165 --> 00:01:58,740
+It inspects 10,000 documents--
+
+49
+00:01:58,740 --> 00:01:59,770
+kind of slow.
+
+50
+00:01:59,770 --> 00:02:05,340
+Or we can say, we really want
+it to use the c index, which
+
+51
+00:02:05,340 --> 00:02:07,300
+is also a find index.
+
+52
+00:02:07,300 --> 00:02:09,180
+And if we do that, it'll
+find one object.
+
+53
+00:02:09,180 --> 00:02:10,919
+Again, it's really fast because
+those are all really
+
+54
+00:02:10,919 --> 00:02:14,810
+equally good indexes for
+this particular query.
+
+55
+00:02:14,810 --> 00:02:17,410
+So we use the c index
+with those bounds.
+
+56
+00:02:17,410 --> 00:02:19,250
+What if I tell to use
+it the d index?
+
+57
+00:02:19,250 --> 00:02:22,960
+Now, d index doesn't have any
+documents that satisfy the
+
+58
+00:02:22,960 --> 00:02:24,580
+criteria, so I'm going
+to do that.
+
+59
+00:02:24,580 --> 00:02:26,900
+I'm going to say hint, let's
+use the d index, please.
+
+60
+00:02:26,900 --> 00:02:28,090
+Let's find it using
+the d index.
+
+61
+00:02:28,090 --> 00:02:34,230
+If I do that, then I find it
+uses the d index and it still
+
+62
+00:02:34,230 --> 00:02:36,750
+returns the document.
+
+63
+00:02:36,750 --> 00:02:40,370
+And what if I do a new
+ensureIndex command and I say,
+
+64
+00:02:40,370 --> 00:02:45,520
+give me an index on e, but let's
+make that one sparse?
+
+65
+00:02:45,520 --> 00:02:47,740
+So I'm going to say, create
+an index on e
+
+66
+00:02:47,740 --> 00:02:49,100
+and make that sparse.
+
+67
+00:02:49,100 --> 00:02:51,450
+It's actually going to take a
+little bit of time because it
+
+68
+00:02:51,450 --> 00:02:53,210
+has to go through all
+10,000 documents.
+
+69
+00:02:53,210 --> 00:02:57,485
+It did that, and now I'm going
+to hint on e, say I want you
+
+70
+00:02:57,485 --> 00:02:59,750
+to use the e index to
+satisfy this query.
+
+71
+00:02:59,750 --> 00:03:00,940
+Oh, look at that.
+
+72
+00:03:00,940 --> 00:03:03,530
+I actually get the
+wrong answer.
+
+73
+00:03:03,530 --> 00:03:05,320
+All a sudden, I've
+got no document.
+
+74
+00:03:05,320 --> 00:03:08,490
+If I hadn't given any hint,
+I get one document.
+
+75
+00:03:08,490 --> 00:03:12,030
+But if I hint on the e index--
+
+76
+00:03:12,030 --> 00:03:13,280
+I mean, you could argue whether
+that's the wrong
+
+77
+00:03:13,280 --> 00:03:14,060
+answer or not.
+
+78
+00:03:14,060 --> 00:03:17,120
+But the reason is because the
+e index is sparse, and it
+
+79
+00:03:17,120 --> 00:03:20,620
+doesn't have any entries in
+it for documents where
+
+80
+00:03:20,620 --> 00:03:22,070
+there is no e key.
+
+81
+00:03:22,070 --> 00:03:25,580
+And if you recall, none of these
+documents have an e key.
+
+82
+00:03:25,580 --> 00:03:28,500
+There's not a single e key in
+any of these documents, so it
+
+83
+00:03:28,500 --> 00:03:31,900
+returns nothing, interestingly
+enough.
+
+84
+00:03:31,900 --> 00:03:32,580
+OK.
+
+85
+00:03:32,580 --> 00:03:35,690
+Now it is time for a quiz.
+
+86
+00:03:35,690 --> 00:03:37,570
+Here's the quiz.
+
+87
+00:03:37,570 --> 00:03:39,890
+Given the following data
+in a collection--
+
+88
+00:03:39,890 --> 00:03:42,490
+and we have this people
+collection with three
+
+89
+00:03:42,490 --> 00:03:43,470
+documents--
+
+90
+00:03:43,470 --> 00:03:46,950
+name Andrew, title Jester, name
+Dwight, title CEO, and
+
+91
+00:03:46,950 --> 00:03:48,890
+the third document just
+has the name John.
+
+92
+00:03:48,890 --> 00:03:50,870
+In the following indexes--
+
+93
+00:03:50,870 --> 00:03:54,190
+so you can see the indexes that
+are on the collection--
+
+94
+00:03:54,190 --> 00:03:57,190
+which query below will return
+the most documents?
+
+95
+00:03:57,190 --> 00:03:59,370
+And I won't go through them
+verbally, because you can read
+
+96
+00:03:59,370 --> 00:04:00,620
+them on the screen.

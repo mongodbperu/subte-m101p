@@ -1,0 +1,362 @@
+1
+00:00:00,000 --> 00:00:00,160
+
+2
+00:00:00,160 --> 00:00:01,070
+All right.
+
+3
+00:00:01,070 --> 00:00:03,350
+Let's talk about using
+dot notation inside
+
+4
+00:00:03,350 --> 00:00:05,620
+PyMongo in our queries.
+
+5
+00:00:05,620 --> 00:00:07,940
+Right here, I'm in the Mongo
+shell, and I pretty printed
+
+6
+00:00:07,940 --> 00:00:11,910
+these stories that are on the
+Reddit Technology homepage.
+
+7
+00:00:11,910 --> 00:00:14,500
+And I noticed that some of them
+have a subtype called
+
+8
+00:00:14,500 --> 00:00:18,580
+media, and another subdocument
+called oembed.
+
+9
+00:00:18,580 --> 00:00:21,460
+And right here is a subdocument,
+and it has a type
+
+10
+00:00:21,460 --> 00:00:24,100
+key with a type of video.
+
+11
+00:00:24,100 --> 00:00:27,020
+I said, all right, so I guess
+some of these stories are
+
+12
+00:00:27,020 --> 00:00:28,830
+videos, and this is the
+way it's expressed in
+
+13
+00:00:28,830 --> 00:00:30,670
+Reddit in the JSON.
+
+14
+00:00:30,670 --> 00:00:34,800
+So let's find all the stories
+that are videos.
+
+15
+00:00:34,800 --> 00:00:37,410
+So to do that, we're
+going to go here.
+
+16
+00:00:37,410 --> 00:00:41,920
+And we wrote a small script
+called using dot notation.
+
+17
+00:00:41,920 --> 00:00:44,840
+And it's similar to the other
+ones that we showed.
+
+18
+00:00:44,840 --> 00:00:48,040
+Import pymongo, import sys,
+get a connection to local
+
+19
+00:00:48,040 --> 00:00:50,670
+host, and then here, connect
+to the Reddit database, and
+
+20
+00:00:50,670 --> 00:00:52,450
+the stories collection.
+
+21
+00:00:52,450 --> 00:00:56,740
+And then, what I want to do is
+do a query, where I'm looking
+
+22
+00:00:56,740 --> 00:01:01,300
+for media.oembed.type
+is video.
+
+23
+00:01:01,300 --> 00:01:04,420
+And you can see here,
+I single quoted this
+
+24
+00:01:04,420 --> 00:01:08,350
+media.oembed.type key.
+
+25
+00:01:08,350 --> 00:01:10,960
+It's going to reach into the
+document and look and find
+
+26
+00:01:10,960 --> 00:01:13,280
+things that are of type media.
+
+27
+00:01:13,280 --> 00:01:15,190
+Now, the interesting thing about
+this, of course, is not
+
+28
+00:01:15,190 --> 00:01:17,570
+all the documents
+even have these
+
+29
+00:01:17,570 --> 00:01:19,060
+subdocuments inside them.
+
+30
+00:01:19,060 --> 00:01:23,260
+So it's pretty flexible, and it
+can do a query and look for
+
+31
+00:01:23,260 --> 00:01:27,320
+the ones that, where there is
+no subdocuments of this
+
+32
+00:01:27,320 --> 00:01:30,540
+structure, it simply won't
+return anything.
+
+33
+00:01:30,540 --> 00:01:33,860
+And then, we're going to project
+and select out the
+
+34
+00:01:33,860 --> 00:01:36,730
+fields media.oembed.url.
+
+35
+00:01:36,730 --> 00:01:40,530
+We want to see the URL and
+suppress the underscore ID.
+
+36
+00:01:40,530 --> 00:01:41,860
+Standard notation here.
+
+37
+00:01:41,860 --> 00:01:44,230
+We're going to do a find, with
+the query and the projection
+
+38
+00:01:44,230 --> 00:01:45,950
+in a try-catch block.
+
+39
+00:01:45,950 --> 00:01:50,110
+And then I'm going to print
+out the first 10 of them.
+
+40
+00:01:50,110 --> 00:01:54,102
+So let's do that using
+underscore notation dot py.
+
+41
+00:01:54,102 --> 00:01:55,650
+I'm in the Mongo shell here.
+
+42
+00:01:55,650 --> 00:02:01,640
+I'm going to quit, and then,
+let's see, Python using dot
+
+43
+00:02:01,640 --> 00:02:03,285
+notation dot py.
+
+44
+00:02:03,285 --> 00:02:04,790
+And I do that.
+
+45
+00:02:04,790 --> 00:02:08,690
+And then you can see that what
+I get is I get the two
+
+46
+00:02:08,690 --> 00:02:10,729
+documents returned.
+
+47
+00:02:10,729 --> 00:02:16,900
+And what it returns is a
+document that has a media key,
+
+48
+00:02:16,900 --> 00:02:21,550
+and the value is another
+document with an oembed key.
+
+49
+00:02:21,550 --> 00:02:23,420
+And the value of that
+is another document
+
+50
+00:02:23,420 --> 00:02:25,530
+who has a URL key.
+
+51
+00:02:25,530 --> 00:02:27,160
+And then these are the URLs.
+
+52
+00:02:27,160 --> 00:02:31,030
+And they're YouTube URLs, just
+to watch these videos.
+
+53
+00:02:31,030 --> 00:02:34,000
+So we were able to look into
+the structure of the Reddit
+
+54
+00:02:34,000 --> 00:02:37,485
+pages posted on the technology
+page, and find the ones that
+
+55
+00:02:37,485 --> 00:02:40,200
+were videos, and print out
+the links to the videos.
+
+56
+00:02:40,200 --> 00:02:40,940
+So OK.
+
+57
+00:02:40,940 --> 00:02:42,800
+It's time for a quiz.
+
+58
+00:02:42,800 --> 00:02:43,460
+All right.
+
+59
+00:02:43,460 --> 00:02:46,340
+So we haven't exactly gone over
+this, so you'll have to
+
+60
+00:02:46,340 --> 00:02:47,810
+kind of figure it out.
+
+61
+00:02:47,810 --> 00:02:51,710
+In the following code, which is
+essentially the code that I
+
+62
+00:02:51,710 --> 00:02:54,420
+just showed you, what do you
+think will happen if the
+
+63
+00:02:54,420 --> 00:02:57,780
+document that matches the
+query doesn't have a key
+
+64
+00:02:57,780 --> 00:03:00,370
+called media.oembed.url?
+
+65
+00:03:00,370 --> 00:03:03,410
+So for some reason, there is a
+document with a type "video,"
+
+66
+00:03:03,410 --> 00:03:08,130
+but it doesn't have a URL
+inside that subdocument.
+
+67
+00:03:08,130 --> 00:03:09,930
+So the question is,
+what happens?
+
+68
+00:03:09,930 --> 00:03:12,850
+And the choices are
+multiple choice.
+
+69
+00:03:12,850 --> 00:03:15,130
+That PyMongo will throw
+an exception.
+
+70
+00:03:15,130 --> 00:03:17,940
+Or maybe PyMongo will return
+an empty document.
+
+71
+00:03:17,940 --> 00:03:20,510
+Or maybe PyMongo will return a
+document with the following
+
+72
+00:03:20,510 --> 00:03:21,690
+structure--
+
+73
+00:03:21,690 --> 00:03:24,825
+media, oembed, URL with
+an empty document.
+
+74
+00:03:24,825 --> 00:03:28,340
+So basically, it'll show you the
+full set of subdocuments,
+
+75
+00:03:28,340 --> 00:03:30,110
+but then and empty document
+in the very center.
+
+76
+00:03:30,110 --> 00:03:33,050
+Or there's not enough
+information to know.
+
+77
+00:03:33,050 --> 00:03:35,920
+So please check the answer
+that is correct.
+
+78
+00:03:35,920 --> 00:03:37,170

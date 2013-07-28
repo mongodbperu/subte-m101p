@@ -1,0 +1,269 @@
+1
+00:00:00,000 --> 00:00:00,100
+
+2
+00:00:00,100 --> 00:00:03,120
+Now let's turn our attention
+to the way that drivers
+
+3
+00:00:03,120 --> 00:00:04,840
+connect to these replica sets.
+
+4
+00:00:04,840 --> 00:00:10,050
+I have a program here--
+pymongo_to_replset.py, and I'm
+
+5
+00:00:10,050 --> 00:00:12,240
+using the new MongoClient
+client class.
+
+6
+00:00:12,240 --> 00:00:18,050
+And what I'm doing here is
+connecting to a host in a
+
+7
+00:00:18,050 --> 00:00:23,790
+replica set, and naming it
+to replicaSet, and then
+
+8
+00:00:23,790 --> 00:00:26,240
+specifying that w equals
+1, j equals True.
+
+9
+00:00:26,240 --> 00:00:29,090
+Now this host is what's
+called a seedlist.
+
+10
+00:00:29,090 --> 00:00:32,340
+And you'll notice that I only
+listed one of them, and it
+
+11
+00:00:32,340 --> 00:00:35,460
+should be enough to connect
+to the entire replica set.
+
+12
+00:00:35,460 --> 00:00:37,590
+If you want to be sure that
+you're going to connect, you
+
+13
+00:00:37,590 --> 00:00:40,540
+can list all of them
+as a list.
+
+14
+00:00:40,540 --> 00:00:42,830
+But here, I'll just show you
+when I'm listing one.
+
+15
+00:00:42,830 --> 00:00:45,750
+So I'm using c.m101--
+
+16
+00:00:45,750 --> 00:00:47,660
+I'm sorry, the m101 database,
+and the people
+
+17
+00:00:47,660 --> 00:00:48,640
+collection in it.
+
+18
+00:00:48,640 --> 00:00:51,020
+And I'm trying to put these
+three items in it.
+
+19
+00:00:51,020 --> 00:00:54,310
+So let's see if that works.
+
+20
+00:00:54,310 --> 00:00:55,750
+OK, and it works just fine.
+
+21
+00:00:55,750 --> 00:01:00,350
+And you can see you can also
+list all the hosts right here.
+
+22
+00:01:00,350 --> 00:01:02,630
+So I'll do that just to
+show you how it works.
+
+23
+00:01:02,630 --> 00:01:05,600
+So now I've listed all
+three hosts in the
+
+24
+00:01:05,600 --> 00:01:07,720
+replica set as a list.
+
+25
+00:01:07,720 --> 00:01:08,860
+And normally, these would
+probably be three hosts
+
+26
+00:01:08,860 --> 00:01:10,710
+running on the standard port,
+but we're just running on
+
+27
+00:01:10,710 --> 00:01:12,170
+localhost here.
+
+28
+00:01:12,170 --> 00:01:13,610
+And here I'm using localhost.
+
+29
+00:01:13,610 --> 00:01:16,010
+It seems to work fine connecting
+using the driver,
+
+30
+00:01:16,010 --> 00:01:18,400
+using the localhost
+name, which is the
+
+31
+00:01:18,400 --> 00:01:20,300
+local IP of the machine.
+
+32
+00:01:20,300 --> 00:01:21,590
+This is all in the
+same machine.
+
+33
+00:01:21,590 --> 00:01:24,280
+All right, so we're going
+to do this again.
+
+34
+00:01:24,280 --> 00:01:27,580
+Now we're connected with a
+seedlist of all three, and
+
+35
+00:01:27,580 --> 00:01:28,730
+we're going to run it again.
+
+36
+00:01:28,730 --> 00:01:31,670
+And, it works fine again.
+
+37
+00:01:31,670 --> 00:01:35,850
+And by the way, if you want to
+see what's in this collection,
+
+38
+00:01:35,850 --> 00:01:39,190
+you can see that the three
+items I put in times two,
+
+39
+00:01:39,190 --> 00:01:40,980
+because I did it twice.
+
+40
+00:01:40,980 --> 00:01:45,140
+So that is the way a seedlist
+works, and the way the driver
+
+41
+00:01:45,140 --> 00:01:47,110
+works inside Python.
+
+42
+00:01:47,110 --> 00:01:48,310
+And the other ones are
+pretty similar.
+
+43
+00:01:48,310 --> 00:01:49,870
+Java is pretty similar.
+
+44
+00:01:49,870 --> 00:01:52,510
+They're all pretty much the same
+thing, in terms of the
+
+45
+00:01:52,510 --> 00:01:56,070
+use of a seedlist to specify
+the hosts that are in the
+
+46
+00:01:56,070 --> 00:01:59,030
+replica set, and handling
+the automatic failover
+
+47
+00:01:59,030 --> 00:02:00,800
+as they need to.
+
+48
+00:02:00,800 --> 00:02:03,140
+OK, let's do a quiz.
+
+49
+00:02:03,140 --> 00:02:04,420
+So the quiz is--
+
+50
+00:02:04,420 --> 00:02:07,440
+if you leave replica set node
+out of the seedlist within the
+
+51
+00:02:07,440 --> 00:02:09,100
+driver, what will happen?
+
+52
+00:02:09,100 --> 00:02:11,910
+The missing node will not be
+used for the application.
+
+53
+00:02:11,910 --> 00:02:13,790
+The missing node will be
+discovered as long as you list
+
+54
+00:02:13,790 --> 00:02:15,700
+it at least one valid node.
+
+55
+00:02:15,700 --> 00:02:19,210
+The missing node will be used
+for reads, but not for writes.
+
+56
+00:02:19,210 --> 00:02:20,580
+Or, the missing node
+will be used for
+
+57
+00:02:20,580 --> 00:02:22,050
+writes, but not for reads.
+
+58
+00:02:22,050 --> 00:02:23,300
+So check the right answer.
+
+59
+00:02:23,300 --> 00:02:24,330

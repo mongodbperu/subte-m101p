@@ -1,0 +1,75 @@
+1
+00:00:00,000 --> 00:00:00,200
+
+2
+00:00:00,200 --> 00:00:05,110
+And the answer is
+that it is 54.
+
+3
+00:00:05,110 --> 00:00:08,280
+And you can probably pretty much
+reason this out, but I'll
+
+4
+00:00:08,280 --> 00:00:09,500
+work on it with you.
+
+5
+00:00:09,500 --> 00:00:11,720
+So, match a 0.
+
+6
+00:00:11,720 --> 00:00:15,220
+So that matches only the first
+four documents here.
+
+7
+00:00:15,220 --> 00:00:18,140
+So the first four documents
+have an a value of 0.
+
+8
+00:00:18,140 --> 00:00:23,260
+We're going to sort
+by c descending.
+
+9
+00:00:23,260 --> 00:00:24,660
+So, c descending.
+
+10
+00:00:24,660 --> 00:00:26,850
+So, let's see.
+
+11
+00:00:26,850 --> 00:00:33,200
+The larges c value is 54, then
+52, then 17, then 21.
+
+12
+00:00:33,200 --> 00:00:35,640
+And then we're going
+to do a group on a.
+
+13
+00:00:35,640 --> 00:00:37,670
+We only have 80 values left
+that are zero, so that's
+
+14
+00:00:37,670 --> 00:00:39,120
+pretty trivial.
+
+15
+00:00:39,120 --> 00:00:41,260
+And we're going to get the first
+c value, and so that
+
+16
+00:00:41,260 --> 00:00:43,760
+will be 54, and that
+was the answer.
+
+17
+00:00:43,760 --> 00:00:45,010

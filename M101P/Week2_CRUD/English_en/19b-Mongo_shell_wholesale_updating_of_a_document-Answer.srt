@@ -1,0 +1,48 @@
+1
+00:00:00,000 --> 00:00:00,190
+
+2
+00:00:00,190 --> 00:00:01,230
+Well, it would be this one.
+
+3
+00:00:01,230 --> 00:00:05,010
+The update will discard any
+information that exists in the
+
+4
+00:00:05,010 --> 00:00:08,390
+document with underscore ID
+Texas and deposit only the
+
+5
+00:00:08,390 --> 00:00:10,990
+information that's present
+in the second
+
+6
+00:00:10,990 --> 00:00:12,560
+argument to the update.
+
+7
+00:00:12,560 --> 00:00:15,380
+So in this case, you'll have
+a population value, but
+
+8
+00:00:15,380 --> 00:00:17,260
+landlocked will be discarded.
+
+9
+00:00:17,260 --> 00:00:19,950
+Again, you can't change the
+underscore ID value of a
+
+10
+00:00:19,950 --> 00:00:22,710
+particular document, so that
+will never be touched by an
+
+11
+00:00:22,710 --> 00:00:23,960
+update of this sort.

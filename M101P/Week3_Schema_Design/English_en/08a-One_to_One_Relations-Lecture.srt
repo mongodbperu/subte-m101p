@@ -1,0 +1,424 @@
+1
+00:00:00,000 --> 00:00:00,210
+
+2
+00:00:00,210 --> 00:00:02,450
+Let's talk about 1
+to 1 relations.
+
+3
+00:00:02,450 --> 00:00:07,110
+1 to 1 relations are relations
+where each item corresponds to
+
+4
+00:00:07,110 --> 00:00:08,920
+exactly one other item.
+
+5
+00:00:08,920 --> 00:00:12,280
+So, for example, an employee
+has a resume.
+
+6
+00:00:12,280 --> 00:00:14,500
+There is one employee
+has one resume.
+
+7
+00:00:14,500 --> 00:00:16,460
+One resume has one employee.
+
+8
+00:00:16,460 --> 00:00:17,890
+A building has a floor plan.
+
+9
+00:00:17,890 --> 00:00:19,950
+A floor plan has a building.
+
+10
+00:00:19,950 --> 00:00:21,810
+A patient has a medical history,
+and the medical
+
+11
+00:00:21,810 --> 00:00:24,650
+history corresponds
+to the patient.
+
+12
+00:00:24,650 --> 00:00:28,270
+Let's look at this first case,
+the employee-resume example.
+
+13
+00:00:28,270 --> 00:00:31,080
+We can model this in several
+different ways
+
+14
+00:00:31,080 --> 00:00:32,380
+to talk about that.
+
+15
+00:00:32,380 --> 00:00:33,060
+All right.
+
+16
+00:00:33,060 --> 00:00:36,570
+So we can model the
+employee-resume relation by
+
+17
+00:00:36,570 --> 00:00:39,160
+having a collection of employees
+and a collection of
+
+18
+00:00:39,160 --> 00:00:42,460
+resumes and having the employee
+point to the resume
+
+19
+00:00:42,460 --> 00:00:47,610
+through linking, where we have
+an ID that corresponds to an
+
+20
+00:00:47,610 --> 00:00:49,380
+ID in the resume collection.
+
+21
+00:00:49,380 --> 00:00:54,740
+Or if we prefer, we can link in
+the other direction, where
+
+22
+00:00:54,740 --> 00:00:58,440
+we have an employee key inside
+the resume collection, and it
+
+23
+00:00:58,440 --> 00:01:01,180
+may point to the employee
+itself.
+
+24
+00:01:01,180 --> 00:01:03,920
+Or if we want, we could embed.
+
+25
+00:01:03,920 --> 00:01:08,400
+So, we could take this entire
+resume document, and we could
+
+26
+00:01:08,400 --> 00:01:13,330
+embed it right here inside
+the employee document.
+
+27
+00:01:13,330 --> 00:01:15,620
+Put it right there
+or vice versa.
+
+28
+00:01:15,620 --> 00:01:18,760
+We can embed the employee
+information inside the resume
+
+29
+00:01:18,760 --> 00:01:20,170
+document itself.
+
+30
+00:01:20,170 --> 00:01:23,690
+So, we have all the different
+choices, and how you probably
+
+31
+00:01:23,690 --> 00:01:27,250
+want to do it depends on how
+you access the data and how
+
+32
+00:01:27,250 --> 00:01:29,810
+frequently you access each
+piece of the data.
+
+33
+00:01:29,810 --> 00:01:32,830
+So, some of the considerations
+are as follows.
+
+34
+00:01:32,830 --> 00:01:35,890
+The first one is frequency
+of access.
+
+35
+00:01:35,890 --> 00:01:39,850
+Let's say, for example, that
+you constantly access the
+
+36
+00:01:39,850 --> 00:01:42,540
+employee information and their
+biographical information and
+
+37
+00:01:42,540 --> 00:01:45,220
+other information about the
+employee, but you very rarely
+
+38
+00:01:45,220 --> 00:01:46,160
+access their resume.
+
+39
+00:01:46,160 --> 00:01:48,340
+And let's say it's a very large
+collection, and you're
+
+40
+00:01:48,340 --> 00:01:51,090
+concerned about locality
+and working set size.
+
+41
+00:01:51,090 --> 00:01:53,640
+Well, you may decide to keep
+them in separate collections,
+
+42
+00:01:53,640 --> 00:01:56,340
+because you don't want to pull
+a resume into memory every
+
+43
+00:01:56,340 --> 00:01:59,330
+single time you pull the
+employee record-- employee
+
+44
+00:01:59,330 --> 00:02:00,730
+document-- into memory.
+
+45
+00:02:00,730 --> 00:02:03,750
+So, frequency of access has a
+lot of impact on how you'd
+
+46
+00:02:03,750 --> 00:02:06,900
+arrange this in terms of whether
+you'd embed it or not.
+
+47
+00:02:06,900 --> 00:02:09,900
+The second consideration is
+which of these are growing all
+
+48
+00:02:09,900 --> 00:02:12,980
+the time or not growing,
+the size of the items.
+
+49
+00:02:12,980 --> 00:02:15,710
+So, every time you add something
+to a document, there
+
+50
+00:02:15,710 --> 00:02:18,370
+is a point beyond which the
+document will need to be moved
+
+51
+00:02:18,370 --> 00:02:19,240
+in the collection.
+
+52
+00:02:19,240 --> 00:02:22,230
+And if you knew this was true
+for some of the documents but
+
+53
+00:02:22,230 --> 00:02:24,010
+not for other documents--
+
+54
+00:02:24,010 --> 00:02:25,730
+for instance , if you were
+never going to update the
+
+55
+00:02:25,730 --> 00:02:27,680
+employee record, but you were
+going to update the resume
+
+56
+00:02:27,680 --> 00:02:28,470
+part of it--
+
+57
+00:02:28,470 --> 00:02:31,700
+you might decide that you
+don't want to incur that
+
+58
+00:02:31,700 --> 00:02:35,780
+overhead when you write to the
+employee record if you're only
+
+59
+00:02:35,780 --> 00:02:36,910
+going to be updating
+the resume.
+
+60
+00:02:36,910 --> 00:02:39,290
+So that might be another reason
+why you decide to keep
+
+61
+00:02:39,290 --> 00:02:42,030
+them separate versus the same.
+
+62
+00:02:42,030 --> 00:02:44,230
+And, of course, if the
+resume is so large--
+
+63
+00:02:44,230 --> 00:02:47,110
+if it's actually larger than
+16 megabytes, which is the
+
+64
+00:02:47,110 --> 00:02:48,610
+size of a document--
+
+65
+00:02:48,610 --> 00:02:49,930
+you might not be able
+to embed it.
+
+66
+00:02:49,930 --> 00:02:52,070
+I mean, it's not likely that
+it would be larger than 16
+
+67
+00:02:52,070 --> 00:02:55,650
+megabytes, but maybe it has some
+multimedia information or
+
+68
+00:02:55,650 --> 00:02:57,610
+there's a lot of historical
+information about the person
+
+69
+00:02:57,610 --> 00:03:00,850
+or event history, it
+could have that.
+
+70
+00:03:00,850 --> 00:03:04,520
+And the final consideration
+is atomicity of data.
+
+71
+00:03:04,520 --> 00:03:06,800
+Well, now there are no
+transactions in MongoDB, but
+
+72
+00:03:06,800 --> 00:03:09,380
+there are atomic operations
+on individual documents.
+
+73
+00:03:09,380 --> 00:03:12,830
+So, if you knew that you
+couldn't withstand any
+
+74
+00:03:12,830 --> 00:03:15,000
+inconsistency and that you
+wanted to be able to update
+
+75
+00:03:15,000 --> 00:03:19,030
+the entire employee plus the
+resume all the same time, you
+
+76
+00:03:19,030 --> 00:03:21,390
+may decide to put them into the
+same document and embed
+
+77
+00:03:21,390 --> 00:03:24,040
+them one way or the other
+so that you can
+
+78
+00:03:24,040 --> 00:03:25,890
+update it all at once.
+
+79
+00:03:25,890 --> 00:03:26,455
+All right.
+
+80
+00:03:26,455 --> 00:03:27,660
+It's time for a quiz.
+
+81
+00:03:27,660 --> 00:03:30,310
+What's a good reason you might
+want to keep two documents
+
+82
+00:03:30,310 --> 00:03:33,740
+that are related to each other
+in a 1 to 1 relationship in
+
+83
+00:03:33,740 --> 00:03:34,730
+separate collections?
+
+84
+00:03:34,730 --> 00:03:36,600
+Check all that apply.
+
+85
+00:03:36,600 --> 00:03:38,370
+Because you want to allow
+atomic update of both
+
+86
+00:03:38,370 --> 00:03:39,590
+documents at once.
+
+87
+00:03:39,590 --> 00:03:42,300
+To reduce the working set size
+of your application.
+
+88
+00:03:42,300 --> 00:03:44,750
+To enforce foreign
+key constraints.
+
+89
+00:03:44,750 --> 00:03:47,420
+Because the combined size of the
+documents would be larger
+
+90
+00:03:47,420 --> 00:03:49,660
+than 16 megabytes.

@@ -1,0 +1,646 @@
+1
+00:00:00,000 --> 00:00:00,160
+
+2
+00:00:00,160 --> 00:00:03,330
+Let's start out with a simple
+example of aggregation in
+
+3
+00:00:03,330 --> 00:00:07,350
+MongoDB to motivate how
+this stuff works.
+
+4
+00:00:07,350 --> 00:00:08,870
+Now I'm going to start
+out with an example
+
+5
+00:00:08,870 --> 00:00:10,570
+from the SQL world--
+
+6
+00:00:10,570 --> 00:00:12,110
+SQL world of relational.
+
+7
+00:00:12,110 --> 00:00:13,570
+Let's say we had a
+products table.
+
+8
+00:00:13,570 --> 00:00:17,365
+And that products table had a
+name, category, manufacturer,
+
+9
+00:00:17,365 --> 00:00:19,610
+and price for each item.
+
+10
+00:00:19,610 --> 00:00:22,510
+So this is a table of
+electronics items.
+
+11
+00:00:22,510 --> 00:00:25,780
+It might be iPad, which is a
+tablet from Apple, with a
+
+12
+00:00:25,780 --> 00:00:27,550
+price of 499.
+
+13
+00:00:27,550 --> 00:00:30,540
+If I wanted to get a report of
+how many products there were
+
+14
+00:00:30,540 --> 00:00:31,700
+from each manufacturer--
+
+15
+00:00:31,700 --> 00:00:35,940
+the way I would do that in SQL,
+is select manufacturer
+
+16
+00:00:35,940 --> 00:00:41,500
+comma count star from products,
+where I group by
+
+17
+00:00:41,500 --> 00:00:42,690
+manufacturer.
+
+18
+00:00:42,690 --> 00:00:46,490
+And this would give me a report
+that would provide me
+
+19
+00:00:46,490 --> 00:00:48,940
+the number of products from
+each manufacturer.
+
+20
+00:00:48,940 --> 00:00:51,450
+Again, that's select
+manufacturer, count star from
+
+21
+00:00:51,450 --> 00:00:53,790
+products, group by
+manufacturer.
+
+22
+00:00:53,790 --> 00:00:55,580
+There is a comma right here.
+
+23
+00:00:55,580 --> 00:00:57,000
+Now if you don't understand
+SQL, this is
+
+24
+00:00:57,000 --> 00:00:58,040
+not critically important.
+
+25
+00:00:58,040 --> 00:00:59,650
+But, if you do, it
+might help you.
+
+26
+00:00:59,650 --> 00:01:02,860
+The report that we'd get would
+look something like this.
+
+27
+00:01:02,860 --> 00:01:06,740
+We would have a manufacturer
+and then the count
+
+28
+00:01:06,740 --> 00:01:08,060
+star for each one.
+
+29
+00:01:08,060 --> 00:01:11,490
+So we would have a little
+report that said, OK.
+
+30
+00:01:11,490 --> 00:01:16,820
+Apple has two products and
+Samsung has three products.
+
+31
+00:01:16,820 --> 00:01:20,280
+So it's this group by clause
+that is very interesting,
+
+32
+00:01:20,280 --> 00:01:24,830
+along with this aggregation
+function, which in SQL, was
+
+33
+00:01:24,830 --> 00:01:26,400
+count star.
+
+34
+00:01:26,400 --> 00:01:29,750
+Now how do we do that
+in MongoDB?
+
+35
+00:01:29,750 --> 00:01:34,190
+Let's go and look at a
+collection that is very
+
+36
+00:01:34,190 --> 00:01:37,640
+similar to that table from
+the relational world.
+
+37
+00:01:37,640 --> 00:01:41,860
+Here we have a table of items
+that are exactly the same as
+
+38
+00:01:41,860 --> 00:01:45,060
+ones that were in the other
+relational table, where each
+
+39
+00:01:45,060 --> 00:01:46,110
+one has a name.
+
+40
+00:01:46,110 --> 00:01:46,950
+And it's--
+
+41
+00:01:46,950 --> 00:01:48,890
+Kindle paper white,
+in the category--
+
+42
+00:01:48,890 --> 00:01:50,160
+tablets, in the manufacture--
+
+43
+00:01:50,160 --> 00:01:50,750
+Amazon.
+
+44
+00:01:50,750 --> 00:01:52,910
+And there's like six or seven
+things in this collection.
+
+45
+00:01:52,910 --> 00:01:53,960
+It's pretty small.
+
+46
+00:01:53,960 --> 00:01:55,510
+I just created it now.
+
+47
+00:01:55,510 --> 00:01:58,580
+How would we aggregate so that
+we could find out the number
+
+48
+00:01:58,580 --> 00:02:00,910
+of products from each
+manufacturer?
+
+49
+00:02:00,910 --> 00:02:02,970
+The way we do that
+is as follows.
+
+50
+00:02:02,970 --> 00:02:06,050
+I put this collection in a
+database called aggregation.
+
+51
+00:02:06,050 --> 00:02:07,030
+So that doesn't matter.
+
+52
+00:02:07,030 --> 00:02:08,870
+That's where I put
+the collection.
+
+53
+00:02:08,870 --> 00:02:10,550
+We would call the aggregate
+function.
+
+54
+00:02:10,550 --> 00:02:12,500
+And this is how you would do
+it in the Mongo shell.
+
+55
+00:02:12,500 --> 00:02:15,400
+And, in this unit, we're going
+to focus mostly on the Mongo
+
+56
+00:02:15,400 --> 00:02:18,760
+shell because it maps very
+cleanly to the drivers.
+
+57
+00:02:18,760 --> 00:02:20,760
+And I don't think it adds a lot
+to explain how it works in
+
+58
+00:02:20,760 --> 00:02:22,070
+the drivers.
+
+59
+00:02:22,070 --> 00:02:25,810
+But let's say we do
+db.products.aggregate, and,
+
+60
+00:02:25,810 --> 00:02:27,910
+again, products of
+the collection.
+
+61
+00:02:27,910 --> 00:02:30,960
+I want to do a group by, and
+then I would have a dollar
+
+62
+00:02:30,960 --> 00:02:32,340
+group operator.
+
+63
+00:02:32,340 --> 00:02:34,940
+And then I want to group
+by manufacturer.
+
+64
+00:02:34,940 --> 00:02:36,480
+And I want to get the count.
+
+65
+00:02:36,480 --> 00:02:37,690
+And the way I do that--
+
+66
+00:02:37,690 --> 00:02:39,620
+we'll explain how this
+works a bit later--
+
+67
+00:02:39,620 --> 00:02:44,860
+is we create a new key, called
+num_products, and we sum for
+
+68
+00:02:44,860 --> 00:02:46,720
+each one, 1.
+
+69
+00:02:46,720 --> 00:02:49,130
+And we're not going to explain
+exactly how this works right
+
+70
+00:02:49,130 --> 00:02:50,630
+now because I want to
+go through it in
+
+71
+00:02:50,630 --> 00:02:51,400
+the following lessons.
+
+72
+00:02:51,400 --> 00:02:52,890
+I just wanted to give you a
+high level overview of the
+
+73
+00:02:52,890 --> 00:02:54,680
+aggregation framework
+right now.
+
+74
+00:02:54,680 --> 00:02:56,340
+But I want you to just
+notice a few
+
+75
+00:02:56,340 --> 00:02:58,170
+things about this command.
+
+76
+00:02:58,170 --> 00:03:01,780
+The first is that the dollar
+group operator
+
+77
+00:03:01,780 --> 00:03:03,260
+is in its own document.
+
+78
+00:03:03,260 --> 00:03:05,350
+So dollar group right here.
+
+79
+00:03:05,350 --> 00:03:07,540
+The second is, this
+is an array.
+
+80
+00:03:07,540 --> 00:03:09,140
+And there can be other
+operators.
+
+81
+00:03:09,140 --> 00:03:11,000
+And we're going to go through
+how that works.
+
+82
+00:03:11,000 --> 00:03:12,820
+But, for right now, we
+just have the one.
+
+83
+00:03:12,820 --> 00:03:16,310
+So I had open parenthesis and
+I had an open array here.
+
+84
+00:03:16,310 --> 00:03:19,380
+And then I have a document
+with dollar group.
+
+85
+00:03:19,380 --> 00:03:22,020
+The value for the dollar group
+operator has a couple
+
+86
+00:03:22,020 --> 00:03:22,640
+different parts.
+
+87
+00:03:22,640 --> 00:03:25,240
+The first part is _id.
+
+88
+00:03:25,240 --> 00:03:26,840
+And you can kind of think of
+this as creating a new
+
+89
+00:03:26,840 --> 00:03:30,330
+collection, where we're going
+to group by manufacturer.
+
+90
+00:03:30,330 --> 00:03:32,990
+Manufacturer was a key in
+my collection, but now
+
+91
+00:03:32,990 --> 00:03:35,360
+it's data to this--
+
+92
+00:03:35,360 --> 00:03:36,380
+it's a field.
+
+93
+00:03:36,380 --> 00:03:39,600
+And, as a result, we have to
+prepend this dollar sign, and
+
+94
+00:03:39,600 --> 00:03:41,750
+the whole thing needs
+to be quoted.
+
+95
+00:03:41,750 --> 00:03:43,940
+And then it's going to create
+a new field called
+
+96
+00:03:43,940 --> 00:03:47,425
+num_products that is going to
+call the dollar sum operator
+
+97
+00:03:47,425 --> 00:03:48,800
+and add one for each one.
+
+98
+00:03:48,800 --> 00:03:50,310
+We'll go through exactly
+how this works.
+
+99
+00:03:50,310 --> 00:03:52,770
+But let's just see it work,
+and see what we get.
+
+100
+00:03:52,770 --> 00:03:55,600
+So I just call that aggregation
+function.
+
+101
+00:03:55,600 --> 00:03:58,210
+And what I get is a result.
+
+102
+00:03:58,210 --> 00:04:02,000
+And the MongoDB aggregation
+framework returns its results
+
+103
+00:04:02,000 --> 00:04:05,340
+as a document inside MongoDB.
+
+104
+00:04:05,340 --> 00:04:07,760
+So that's one limitation of the
+aggregation framework, is
+
+105
+00:04:07,760 --> 00:04:11,110
+that the document can't be
+larger than 16 megabytes, just
+
+106
+00:04:11,110 --> 00:04:12,360
+like a normal document.
+
+107
+00:04:12,360 --> 00:04:15,360
+But you can see there's an array
+of documents, actually,
+
+108
+00:04:15,360 --> 00:04:16,230
+in the result.
+
+109
+00:04:16,230 --> 00:04:18,974
+And each one is a row of that
+table we would have seen from
+
+110
+00:04:18,974 --> 00:04:20,040
+the SQL world.
+
+111
+00:04:20,040 --> 00:04:24,850
+So Google num_products one,
+Amazon num_products two, Sony
+
+112
+00:04:24,850 --> 00:04:26,480
+num_products one.
+
+113
+00:04:26,480 --> 00:04:26,990
+All right.
+
+114
+00:04:26,990 --> 00:04:29,790
+So that's the overview of the
+way you would do a simple
+
+115
+00:04:29,790 --> 00:04:33,570
+group by and get the number of
+items by manufacturer in the
+
+116
+00:04:33,570 --> 00:04:35,240
+small collection.
+
+117
+00:04:35,240 --> 00:04:38,200
+Now it's your turn to write one
+of these, so you can get a
+
+118
+00:04:38,200 --> 00:04:39,700
+feeling for how it goes.
+
+119
+00:04:39,700 --> 00:04:40,880
+Here's the quiz.
+
+120
+00:04:40,880 --> 00:04:44,610
+Let's say you had a collection
+of products, just like the one
+
+121
+00:04:44,610 --> 00:04:45,870
+I just showed you.
+
+122
+00:04:45,870 --> 00:04:49,440
+And you wanted to count the
+number of products, not by
+
+123
+00:04:49,440 --> 00:04:52,370
+manufacturer, as I just
+did, but by category.
+
+124
+00:04:52,370 --> 00:04:55,410
+So you just need to go back and
+look how that query works.
+
+125
+00:04:55,410 --> 00:04:56,750
+Have the resulting
+key be called
+
+126
+00:04:56,750 --> 00:04:58,780
+num_products, just as I did.
+
+127
+00:04:58,780 --> 00:05:01,540
+You just need to change the
+column name here, from
+
+128
+00:05:01,540 --> 00:05:02,960
+manufacturer to category.
+
+129
+00:05:02,960 --> 00:05:04,840
+Or I should say, the key name.
+
+130
+00:05:04,840 --> 00:05:07,570
+That's all that's required
+to get this to work.
+
+131
+00:05:07,570 --> 00:05:10,630
+And we'll explain how it works
+in subsequent lessons.
+
+132
+00:05:10,630 --> 00:05:13,000
+But I'd like you to
+type that below.
+
+133
+00:05:13,000 --> 00:05:15,800
+And, just so it makes it easier
+for us to grade it, if
+
+134
+00:05:15,800 --> 00:05:19,220
+you could double quote
+all of the key names,
+
+135
+00:05:19,220 --> 00:05:20,300
+that would be helpful.
+
+136
+00:05:20,300 --> 00:05:22,550
+That's not, strictly speaking,
+necessary, and I didn't double
+
+137
+00:05:22,550 --> 00:05:23,090
+quote everything.
+
+138
+00:05:23,090 --> 00:05:24,430
+But just double quote it all.
+
+139
+00:05:24,430 --> 00:05:25,680
+That will make it better.
+
+140
+00:05:25,680 --> 00:05:26,792

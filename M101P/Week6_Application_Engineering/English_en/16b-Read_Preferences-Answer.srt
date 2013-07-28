@@ -1,0 +1,91 @@
+1
+00:00:00,000 --> 00:00:00,840
+All right.
+
+2
+00:00:00,840 --> 00:00:03,100
+And the first three are true.
+
+3
+00:00:03,100 --> 00:00:05,690
+These are all potential reasons
+why you might not want
+
+4
+00:00:05,690 --> 00:00:07,220
+to read from secondaries.
+
+5
+00:00:07,220 --> 00:00:08,439
+The last one is not true.
+
+6
+00:00:08,439 --> 00:00:10,620
+Reading from a secondary does
+not prevent it from being
+
+7
+00:00:10,620 --> 00:00:12,550
+promoted to a primary
+
+8
+00:00:12,550 --> 00:00:15,270
+The other thing to consider is
+that sometimes, if you're
+
+9
+00:00:15,270 --> 00:00:17,085
+deploying hardware, you need to
+make sure that the hardware
+
+10
+00:00:17,085 --> 00:00:20,530
+you're deploying for your
+secondary is the same level of
+
+11
+00:00:20,530 --> 00:00:22,530
+performance as your primary.
+
+12
+00:00:22,530 --> 00:00:24,900
+Otherwise, it could be
+impossible for it to satisfy
+
+13
+00:00:24,900 --> 00:00:25,910
+those reads.
+
+14
+00:00:25,910 --> 00:00:28,210
+So anyway, it's OK to read from
+secondaries, as long as
+
+15
+00:00:28,210 --> 00:00:29,940
+it's a thoughtful thing to do,
+and it's something that you
+
+16
+00:00:29,940 --> 00:00:34,410
+did based on deliberate reasons,
+versus just thinking,
+
+17
+00:00:34,410 --> 00:00:36,080
+well, it's a generally
+good thing.
+
+18
+00:00:36,080 --> 00:00:38,230
+Because if you have no reason
+to do it, you probably just
+
+19
+00:00:38,230 --> 00:00:40,450
+have your reads go
+to the primary.
+
+20
+00:00:40,450 --> 00:00:41,700
+OK.

@@ -1,0 +1,443 @@
+1
+00:00:00,000 --> 00:00:00,160
+
+2
+00:00:00,160 --> 00:00:02,840
+All right, in this homework
+problem, we asked you to go
+
+3
+00:00:02,840 --> 00:00:06,150
+through a collection of student
+grades and remove the
+
+4
+00:00:06,150 --> 00:00:07,770
+lowest score for each student.
+
+5
+00:00:07,770 --> 00:00:10,670
+We start out by importing
+the collection.
+
+6
+00:00:10,670 --> 00:00:12,650
+I'll do that now.
+
+7
+00:00:12,650 --> 00:00:17,390
+And now I'll connect to Mongo
+and use the school database
+
+8
+00:00:17,390 --> 00:00:21,320
+and look at the data.
+
+9
+00:00:21,320 --> 00:00:23,460
+OK, here's a document.
+
+10
+00:00:23,460 --> 00:00:27,710
+So we asked you to remove the
+lowest homework score, and our
+
+11
+00:00:27,710 --> 00:00:30,490
+strategy is going to be to
+iterate through the entire
+
+12
+00:00:30,490 --> 00:00:34,300
+collection, to look at the
+scores, to find the lowest
+
+13
+00:00:34,300 --> 00:00:37,540
+homework score-- for instance,
+in this case, it'd be the
+
+14
+00:00:37,540 --> 00:00:38,890
+score right here--
+
+15
+00:00:38,890 --> 00:00:42,830
+and then we're going to write
+back out the score's array
+
+16
+00:00:42,830 --> 00:00:43,960
+into the document.
+
+17
+00:00:43,960 --> 00:00:47,350
+And that's my strategy for
+solving the problem.
+
+18
+00:00:47,350 --> 00:00:51,060
+I do not know of a way to just
+remove this item from the
+
+19
+00:00:51,060 --> 00:00:54,780
+array inside mongod and even
+if I did, I'd probably be a
+
+20
+00:00:54,780 --> 00:00:57,610
+little hesitant to use it
+because I don't know that the
+
+21
+00:00:57,610 --> 00:00:59,980
+intervening record
+has not changed.
+
+22
+00:00:59,980 --> 00:01:03,020
+So I feel more comfortable
+just rewriting the entire
+
+23
+00:01:03,020 --> 00:01:06,165
+array, because I'm not
+sure that if I see it
+
+24
+00:01:06,165 --> 00:01:07,990
+as the third item--
+
+25
+00:01:07,990 --> 00:01:09,690
+zero, one, two, three--
+
+26
+00:01:09,690 --> 00:01:12,020
+that it's still going to be the
+third item when I go back
+
+27
+00:01:12,020 --> 00:01:14,680
+there, in a real
+running system.
+
+28
+00:01:14,680 --> 00:01:18,380
+OK, so let's go through
+the program I wrote
+
+29
+00:01:18,380 --> 00:01:20,100
+to solve this problem.
+
+30
+00:01:20,100 --> 00:01:21,330
+I call it drop_lowest.
+
+31
+00:01:21,330 --> 00:01:22,900
+It's written in Python.
+
+32
+00:01:22,900 --> 00:01:25,560
+You can see here, the first
+thing it does is call
+
+33
+00:01:25,560 --> 00:01:27,200
+remove_lowest.
+
+34
+00:01:27,200 --> 00:01:29,180
+It gets a cursor to
+students.find--
+
+35
+00:01:29,180 --> 00:01:33,410
+it basically just finds every
+record, every document in the
+
+36
+00:01:33,410 --> 00:01:34,220
+students' collection--
+
+37
+00:01:34,220 --> 00:01:36,740
+it goes through them and it
+prints out some debugging
+
+38
+00:01:36,740 --> 00:01:37,610
+information.
+
+39
+00:01:37,610 --> 00:01:40,130
+I solve the problem just like
+you, so I often put print
+
+40
+00:01:40,130 --> 00:01:42,080
+information in my programs.
+
+41
+00:01:42,080 --> 00:01:45,080
+And then what it does, is it
+finds the scores in the
+
+42
+00:01:45,080 --> 00:01:48,170
+document, and then it has a
+helper function to find the
+
+43
+00:01:48,170 --> 00:01:53,310
+lowest score item, and if
+lowest is not none--
+
+44
+00:01:53,310 --> 00:01:55,760
+OK, this is really just an error
+checking, because find
+
+45
+00:01:55,760 --> 00:01:57,670
+lowest should always find the
+lowest score, but if for some
+
+46
+00:01:57,670 --> 00:01:59,390
+reason it couldn't, it would
+just print out an error
+
+47
+00:01:59,390 --> 00:02:00,700
+message here.
+
+48
+00:02:00,700 --> 00:02:03,110
+If lowest is not none, then
+it says it's going
+
+49
+00:02:03,110 --> 00:02:05,010
+to remove this grade--
+
+50
+00:02:05,010 --> 00:02:06,910
+again, this is error
+checking--
+
+51
+00:02:06,910 --> 00:02:08,479
+and then it calls
+scores.remove.
+
+52
+00:02:08,479 --> 00:02:13,380
+This is a Python function
+telling it to remove the
+
+53
+00:02:13,380 --> 00:02:16,760
+element lowest from
+the score's array.
+
+54
+00:02:16,760 --> 00:02:19,420
+And then it just calls update.
+
+55
+00:02:19,420 --> 00:02:23,760
+So updates for the
+_id student _id--
+
+56
+00:02:23,760 --> 00:02:25,880
+just updating the record
+we're looking at--
+
+57
+00:02:25,880 --> 00:02:29,560
+set the scores to the scores
+and that's it.
+
+58
+00:02:29,560 --> 00:02:31,480
+Now one thing I didn't show you
+is the helper function,
+
+59
+00:02:31,480 --> 00:02:33,090
+find_lowest.
+
+60
+00:02:33,090 --> 00:02:35,380
+It finds the lowest score in
+an array, but it's not
+
+61
+00:02:35,380 --> 00:02:37,810
+particularly hard to figure
+out how that works.
+
+62
+00:02:37,810 --> 00:02:40,870
+It sets lowest to
+none to start.
+
+63
+00:02:40,870 --> 00:02:43,270
+It has a sentinel value of 101,
+because it knows it's
+
+64
+00:02:43,270 --> 00:02:45,120
+going to find something
+lower than 101--
+
+65
+00:02:45,120 --> 00:02:47,030
+because I know what the
+bounds of the scores
+
+66
+00:02:47,030 --> 00:02:48,540
+are on these records--
+
+67
+00:02:48,540 --> 00:02:52,630
+and then it iterates through the
+scores and if the one it's
+
+68
+00:02:52,630 --> 00:02:56,005
+looking at is of type homework
+and lower than the bound, then
+
+69
+00:02:56,005 --> 00:02:58,560
+it found a new bound and it sets
+lowest to the item and
+
+70
+00:02:58,560 --> 00:03:00,550
+lowest score to the score.
+
+71
+00:03:00,550 --> 00:03:03,370
+So it just goes through this
+and when it returns, it's
+
+72
+00:03:03,370 --> 00:03:06,110
+going to return either none, if
+it couldn't find even one
+
+73
+00:03:06,110 --> 00:03:09,010
+homework, or it's going to
+return the lowest homework.
+
+74
+00:03:09,010 --> 00:03:10,720
+So that's how the
+program works.
+
+75
+00:03:10,720 --> 00:03:13,170
+Let's run it.
+
+76
+00:03:13,170 --> 00:03:15,380
+All right, it removed
+a bunch of data.
+
+77
+00:03:15,380 --> 00:03:20,270
+And then I go back to my
+homework assignments and there
+
+78
+00:03:20,270 --> 00:03:23,390
+was some validation here, it
+told me I should find 200
+
+79
+00:03:23,390 --> 00:03:28,510
+students, and that if it did the
+work correctly that this
+
+80
+00:03:28,510 --> 00:03:32,640
+should be the record
+for Demarcus.
+
+81
+00:03:32,640 --> 00:03:36,600
+So we will see if
+that is true.
+
+82
+00:03:36,600 --> 00:03:40,560
+And the scores I should find
+are 47, 44, and 39--
+
+83
+00:03:40,560 --> 00:03:43,430
+and 47, 44, and 39--
+
+84
+00:03:43,430 --> 00:03:46,110
+indeed, I do find those.
+
+85
+00:03:46,110 --> 00:03:49,060
+And then it suggests that I run
+this aggregation query--
+
+86
+00:03:49,060 --> 00:03:51,500
+and we're going to go over
+aggregation next week, so I'm
+
+87
+00:03:51,500 --> 00:03:53,580
+not going to really go over
+how this works, but it's
+
+88
+00:03:53,580 --> 00:03:59,970
+basically the equivalent of
+doing a GROUP BY in SQL--
+
+89
+00:03:59,970 --> 00:04:03,520
+and we find that now the highest
+average in the class
+
+90
+00:04:03,520 --> 00:04:08,600
+is this student with _id 13 and
+they have a 91 average.
+
+91
+00:04:08,600 --> 00:04:12,760
+And that is the answer
+to the problem--
+
+92
+00:04:12,760 --> 00:04:13,170
+13.
+
+93
+00:04:13,170 --> 00:04:14,530
+All right.
+
+94
+00:04:14,530 --> 00:04:15,820
+So that's how that works.
+
+95
+00:04:15,820 --> 00:04:17,070

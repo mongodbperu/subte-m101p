@@ -1,0 +1,142 @@
+1
+00:00:00,000 --> 00:00:00,130
+
+2
+00:00:00,130 --> 00:00:01,950
+In the third homework this
+week, you're going to
+
+3
+00:00:01,950 --> 00:00:03,190
+implement comments.
+
+4
+00:00:03,190 --> 00:00:06,620
+So you're just going to extend
+the system that you wrote to
+
+5
+00:00:06,620 --> 00:00:08,990
+permit a person to comment
+on the blog post.
+
+6
+00:00:08,990 --> 00:00:12,480
+So if you click on a post,
+you'll go to the permalink
+
+7
+00:00:12,480 --> 00:00:13,580
+page for the post.
+
+8
+00:00:13,580 --> 00:00:15,550
+And it says my second post.
+
+9
+00:00:15,550 --> 00:00:19,870
+And then the person should be
+able to add a name, and
+
+10
+00:00:19,870 --> 00:00:23,350
+optionally an email,
+and submit that.
+
+11
+00:00:23,350 --> 00:00:25,710
+And then you'll see that on the
+bottom of this, there's
+
+12
+00:00:25,710 --> 00:00:26,790
+now a comment.
+
+13
+00:00:26,790 --> 00:00:28,670
+And I can add multiple
+comments.
+
+14
+00:00:28,670 --> 00:00:30,720
+And of course, it should
+support that.
+
+15
+00:00:30,720 --> 00:00:32,189
+It brought me back to
+permalink page.
+
+16
+00:00:32,189 --> 00:00:35,735
+So you can just keep adding
+comments over and over again.
+
+17
+00:00:35,735 --> 00:00:37,220
+And then you can submit it.
+
+18
+00:00:37,220 --> 00:00:39,250
+Don't worry about the
+UI being rough.
+
+19
+00:00:39,250 --> 00:00:41,870
+The real point of this project
+was to show you the mongo
+
+20
+00:00:41,870 --> 00:00:44,130
+parts of it, not to have
+you worry about user
+
+21
+00:00:44,130 --> 00:00:45,250
+interface too much.
+
+22
+00:00:45,250 --> 00:00:48,310
+So that's the basic idea
+of this homework.
+
+23
+00:00:48,310 --> 00:00:51,700
+And for this homework, just like
+the last one, we've given
+
+24
+00:00:51,700 --> 00:00:52,610
+you a validation script.
+
+25
+00:00:52,610 --> 00:00:55,140
+And it's going to insert
+comments into your blog.
+
+26
+00:00:55,140 --> 00:00:56,460
+And it's going to go check
+and make sure that
+
+27
+00:00:56,460 --> 00:00:57,530
+they can read them.
+
+28
+00:00:57,530 --> 00:00:59,450
+And then it's also going to
+check the collections to make
+
+29
+00:00:59,450 --> 00:01:02,850
+sure that they seem to be in
+the collections properly.
+
+30
+00:01:02,850 --> 00:01:03,230
+All right.
+
+31
+00:01:03,230 --> 00:01:04,480
+That's it.

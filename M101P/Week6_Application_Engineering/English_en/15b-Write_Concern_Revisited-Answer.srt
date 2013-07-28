@@ -1,0 +1,54 @@
+1
+00:00:00,000 --> 00:00:00,760
+
+2
+00:00:00,760 --> 00:00:03,160
+And the answer is yes, we went
+through that earlier, which is
+
+3
+00:00:03,160 --> 00:00:07,140
+basically that if you set that
+to be equal to one, j equal to
+
+4
+00:00:07,140 --> 00:00:10,740
+one, and the right one to the
+primary, and the primary goes
+
+5
+00:00:10,740 --> 00:00:13,320
+down before it propagates the
+right to the secondary, and
+
+6
+00:00:13,320 --> 00:00:16,640
+the secondary comes back, the
+secondary becomes primary.
+
+7
+00:00:16,640 --> 00:00:19,130
+Then when the original primary
+returns, he's going to roll
+
+8
+00:00:19,130 --> 00:00:21,790
+himself back because he's a
+head of the other primary.
+
+9
+00:00:21,790 --> 00:00:23,370
+He's not going to
+send that one.
+
+10
+00:00:23,370 --> 00:00:24,950
+And he'll put that
+into a file.
+
+11
+00:00:24,950 --> 00:00:26,670
+So yes, it is possible.
+
+12
+00:00:26,670 --> 00:00:28,093

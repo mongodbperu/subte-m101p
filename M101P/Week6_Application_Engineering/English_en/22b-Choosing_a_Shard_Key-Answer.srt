@@ -1,0 +1,89 @@
+1
+00:00:00,000 --> 00:00:00,360
+
+2
+00:00:00,360 --> 00:00:03,660
+And the answer is that the
+first three are true.
+
+3
+00:00:03,660 --> 00:00:06,110
+The posttime will cause
+hotspotting because it's
+
+4
+00:00:06,110 --> 00:00:07,240
+monotonically increasing.
+
+5
+00:00:07,240 --> 00:00:11,130
+The username should be posts
+well across the shards.
+
+6
+00:00:11,130 --> 00:00:13,090
+I think that would actually
+be a good choice.
+
+7
+00:00:13,090 --> 00:00:17,470
+And choosing visible_to is
+illegal because, remember, you
+
+8
+00:00:17,470 --> 00:00:21,740
+can index that is going to be
+on the shard or the starting
+
+9
+00:00:21,740 --> 00:00:24,180
+part of the shard key and
+visible_to will acquire a
+
+10
+00:00:24,180 --> 00:00:26,480
+multi-key index and
+that's illegal.
+
+11
+00:00:26,480 --> 00:00:28,730
+And then, choosing posttime as
+a shard key suffers from low
+
+12
+00:00:28,730 --> 00:00:29,320
+cardinality.
+
+13
+00:00:29,320 --> 00:00:30,540
+It does not.
+
+14
+00:00:30,540 --> 00:00:32,780
+Posttimes are going to
+be very varied, lots
+
+15
+00:00:32,780 --> 00:00:33,420
+of different values.
+
+16
+00:00:33,420 --> 00:00:35,070
+It just happens to be that
+they are monotonically
+
+17
+00:00:35,070 --> 00:00:35,630
+increasing.
+
+18
+00:00:35,630 --> 00:00:38,580
+It's going to cause hotspotting
+on the inserts.
+
+19
+00:00:38,580 --> 00:00:39,830
+So that's the answer.
+
+20
+00:00:39,830 --> 00:00:40,690

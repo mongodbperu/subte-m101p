@@ -1,0 +1,158 @@
+1
+00:00:00,000 --> 00:00:00,190
+
+2
+00:00:00,190 --> 00:00:03,390
+Next, let's talk about how we
+use the dollar greater than
+
+3
+00:00:03,390 --> 00:00:07,400
+and dollar less than operators
+from inside Pi Mongo.
+
+4
+00:00:07,400 --> 00:00:09,570
+Here's the same function
+I had before.
+
+5
+00:00:09,570 --> 00:00:11,840
+I defined my own find
+command here.
+
+6
+00:00:11,840 --> 00:00:17,060
+And here, I defined a query,
+this is a Python dictionary.
+
+7
+00:00:17,060 --> 00:00:19,860
+Again, we're going to look for
+things with type is exam.
+
+8
+00:00:19,860 --> 00:00:23,310
+In this case, we're going to
+also constrain it to have a
+
+9
+00:00:23,310 --> 00:00:26,760
+score which is a dollar
+greater than 50
+
+10
+00:00:26,760 --> 00:00:28,900
+and less than 70.
+
+11
+00:00:28,900 --> 00:00:30,880
+Now, you'll notice again, that
+the quotes are around these
+
+12
+00:00:30,880 --> 00:00:34,250
+operators in the dollar GT and
+the dollar LT to make it work.
+
+13
+00:00:34,250 --> 00:00:36,940
+And then, we just go through
+and we do the find on the
+
+14
+00:00:36,940 --> 00:00:37,920
+collection.
+
+15
+00:00:37,920 --> 00:00:41,370
+Which, of course, collection
+is defined for the file.
+
+16
+00:00:41,370 --> 00:00:44,190
+Get a cursor and then go through
+it one by one and
+
+17
+00:00:44,190 --> 00:00:45,240
+print it out.
+
+18
+00:00:45,240 --> 00:00:47,420
+And if we do that--
+
+19
+00:00:47,420 --> 00:00:49,290
+This is the file I was using
+find using greater
+
+20
+00:00:49,290 --> 00:00:51,310
+than and less than.
+
+21
+00:00:51,310 --> 00:00:52,730
+That's the file.
+
+22
+00:00:52,730 --> 00:00:56,230
+You can see that it will print
+out the documents that are
+
+23
+00:00:56,230 --> 00:00:58,190
+satisfied by the query.
+
+24
+00:00:58,190 --> 00:00:59,530
+So there you go.
+
+25
+00:00:59,530 --> 00:01:02,740
+So time for a quiz.
+
+26
+00:01:02,740 --> 00:01:06,270
+Here's a snippet of code very
+similar to the code I was just
+
+27
+00:01:06,270 --> 00:01:09,300
+showing you, and let's
+see how carefully
+
+28
+00:01:09,300 --> 00:01:10,530
+you're paying attention.
+
+29
+00:01:10,530 --> 00:01:13,500
+You have to substitute and
+figure out what you should put
+
+30
+00:01:13,500 --> 00:01:18,170
+in to do a query for all of the
+quiz scores in that scores
+
+31
+00:01:18,170 --> 00:01:21,430
+collection where the score
+is greater than 20
+
+32
+00:01:21,430 --> 00:01:23,100
+and less than 90.
+
+33
+00:01:23,100 --> 00:01:26,210
+And it's a multiple choice
+question, you could just
+
+34
+00:01:26,210 --> 00:01:27,460
+choose one.
+
+35
+00:01:27,460 --> 00:01:28,788

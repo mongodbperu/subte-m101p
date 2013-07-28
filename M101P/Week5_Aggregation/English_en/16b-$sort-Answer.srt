@@ -1,0 +1,20 @@
+1
+00:00:00,000 --> 00:00:00,270
+
+2
+00:00:00,270 --> 00:00:00,870
+OK.
+
+3
+00:00:00,870 --> 00:00:04,760
+And the answer is
+db.zips.aggregate, sort by
+
+4
+00:00:04,760 --> 00:00:06,840
+state and city, both descending,
+and that's how
+
+5
+00:00:06,840 --> 00:00:08,090
+that works.

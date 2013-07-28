@@ -1,0 +1,367 @@
+1
+00:00:00,000 --> 00:00:00,190
+
+2
+00:00:00,190 --> 00:00:00,790
+OK.
+
+3
+00:00:00,790 --> 00:00:02,460
+We've covered most of the
+operations that you can
+
+4
+00:00:02,460 --> 00:00:06,010
+perform through Insert,
+Find, Update.
+
+5
+00:00:06,010 --> 00:00:08,390
+Let's move on to deleting
+documents from the database.
+
+6
+00:00:08,390 --> 00:00:10,410
+This is actually relatively
+simple.
+
+7
+00:00:10,410 --> 00:00:12,830
+You have essentially
+three options.
+
+8
+00:00:12,830 --> 00:00:15,650
+First, each collection has
+a method called Remove.
+
+9
+00:00:15,650 --> 00:00:17,830
+And Remove works very
+much like Find.
+
+10
+00:00:17,830 --> 00:00:20,540
+It takes an optional first
+argument which specifies what
+
+11
+00:00:20,540 --> 00:00:22,630
+documents to remove.
+
+12
+00:00:22,630 --> 00:00:24,980
+That argument has exactly the
+same semantics as the first
+
+13
+00:00:24,980 --> 00:00:26,360
+argument to Find.
+
+14
+00:00:26,360 --> 00:00:29,110
+If you specify no argument, then
+all the documents in the
+
+15
+00:00:29,110 --> 00:00:31,190
+collection will be removed
+one by one.
+
+16
+00:00:31,190 --> 00:00:36,060
+If I specify an argument-- for
+example, name colon Alice--
+
+17
+00:00:36,060 --> 00:00:38,450
+then the Alice document
+gets removed.
+
+18
+00:00:38,450 --> 00:00:41,930
+Or I could give a range, name
+greater than the capital
+
+19
+00:00:41,930 --> 00:00:45,370
+letter M, in which case,
+say, William is
+
+20
+00:00:45,370 --> 00:00:48,370
+removed, as well as Thompson.
+
+21
+00:00:48,370 --> 00:00:51,490
+Further, as mentioned, if no
+argument is specified to
+
+22
+00:00:51,490 --> 00:00:54,340
+remove, then the documents are
+removed from the collection
+
+23
+00:00:54,340 --> 00:00:56,350
+one by one until the
+collection has
+
+24
+00:00:56,350 --> 00:00:58,300
+no documents left.
+
+25
+00:00:58,300 --> 00:01:00,940
+Next, if you want to remove
+all documents in a single
+
+26
+00:01:00,940 --> 00:01:03,480
+pass, in a somewhat more
+efficient manner even if the
+
+27
+00:01:03,480 --> 00:01:06,100
+collection is very large, you
+can drop a collection.
+
+28
+00:01:06,100 --> 00:01:07,700
+The difference between dropping
+a collection and
+
+29
+00:01:07,700 --> 00:01:10,000
+removing all the documents in
+the collection is really
+
+30
+00:01:10,000 --> 00:01:11,870
+mostly an implementation
+detail.
+
+31
+00:01:11,870 --> 00:01:14,320
+Removing all the documents in
+the collection requires a
+
+32
+00:01:14,320 --> 00:01:18,270
+one-by-one update of internal
+state for each document that
+
+33
+00:01:18,270 --> 00:01:20,240
+happens to exist in
+the collection.
+
+34
+00:01:20,240 --> 00:01:23,250
+Whereas dropping the collection
+requires freeing up
+
+35
+00:01:23,250 --> 00:01:26,460
+some much larger data structures
+inside of the
+
+36
+00:01:26,460 --> 00:01:28,140
+database's data files.
+
+37
+00:01:28,140 --> 00:01:30,790
+Which, although still
+proportional to the size of
+
+38
+00:01:30,790 --> 00:01:33,930
+the collection in terms of the
+number of documents, is going
+
+39
+00:01:33,930 --> 00:01:35,980
+to have constant factors that
+will make dropping the
+
+40
+00:01:35,980 --> 00:01:39,040
+collection vastly faster than
+removing documents from the
+
+41
+00:01:39,040 --> 00:01:42,000
+collection one by one until
+the collection is empty.
+
+42
+00:01:42,000 --> 00:01:44,490
+However, collections can
+have some metadata
+
+43
+00:01:44,490 --> 00:01:45,950
+associated with them--
+
+44
+00:01:45,950 --> 00:01:47,530
+for instance, indexes--
+
+45
+00:01:47,530 --> 00:01:50,550
+which get discarded when the
+collection is dropped but
+
+46
+00:01:50,550 --> 00:01:53,290
+which remain in existence when
+a collection has all of its
+
+47
+00:01:53,290 --> 00:01:54,590
+documents removed.
+
+48
+00:01:54,590 --> 00:01:56,970
+If you have an unusual situation
+where you need to be
+
+49
+00:01:56,970 --> 00:01:58,970
+frequently getting rid of all
+of the contents of your
+
+50
+00:01:58,970 --> 00:02:01,670
+collection, the most efficient
+way to do so would be to drop
+
+51
+00:02:01,670 --> 00:02:04,040
+the collection and then
+immediately recreate the
+
+52
+00:02:04,040 --> 00:02:06,610
+indexes that ought to exist
+on that collection.
+
+53
+00:02:06,610 --> 00:02:10,570
+As a further detail, Remove,
+just like a multi-document
+
+54
+00:02:10,570 --> 00:02:13,390
+update, can affect an arbitrary
+number of documents,
+
+55
+00:02:13,390 --> 00:02:16,240
+namely whichever documents
+happen to match the first
+
+56
+00:02:16,240 --> 00:02:17,860
+argument to the Remove.
+
+57
+00:02:17,860 --> 00:02:20,640
+Just like a multi-update,
+multi-document remove
+
+58
+00:02:20,640 --> 00:02:24,470
+operations are not atomic
+isolated transactions with
+
+59
+00:02:24,470 --> 00:02:26,600
+respect to other readers
+or writers.
+
+60
+00:02:26,600 --> 00:02:30,210
+That is to say, if you happen
+to remove, say, 10 documents
+
+61
+00:02:30,210 --> 00:02:32,660
+from a collection, a concurrent
+read or write
+
+62
+00:02:32,660 --> 00:02:35,870
+operation might see the state
+of that collection halfway
+
+63
+00:02:35,870 --> 00:02:37,690
+through that Remove operation.
+
+64
+00:02:37,690 --> 00:02:40,840
+That is, after five of the
+documents have been removed.
+
+65
+00:02:40,840 --> 00:02:43,400
+You'll need to take some
+measures of your own if you
+
+66
+00:02:43,400 --> 00:02:45,340
+really need to isolate readers
+and writers from
+
+67
+00:02:45,340 --> 00:02:47,240
+each other in MongoDB.
+
+68
+00:02:47,240 --> 00:02:49,810
+However, as mentioned in the
+case with Update, each
+
+69
+00:02:49,810 --> 00:02:52,690
+individual document removal is
+atomic with respect to a
+
+70
+00:02:52,690 --> 00:02:54,420
+concurrent reader or writer.
+
+71
+00:02:54,420 --> 00:02:58,180
+No client will see a document
+half removed.
+
+72
+00:02:58,180 --> 00:03:00,130
+Let's have a quiz about
+deleting documents.
+
+73
+00:03:00,130 --> 00:03:02,360
+Recall again the schema of
+the scores collection.
+
+74
+00:03:02,360 --> 00:03:06,090
+There's an _id, a Student field,
+a Type field, and a
+
+75
+00:03:06,090 --> 00:03:07,090
+Score field.
+
+76
+00:03:07,090 --> 00:03:08,980
+How would you delete every
+record whose score
+
+77
+00:03:08,980 --> 00:03:11,000
+was less than 60?

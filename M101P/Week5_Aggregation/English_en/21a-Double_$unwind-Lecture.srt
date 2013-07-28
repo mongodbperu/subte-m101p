@@ -1,0 +1,292 @@
+1
+00:00:00,000 --> 00:00:00,210
+
+2
+00:00:00,210 --> 00:00:03,290
+Sometimes you have more than
+one array in a document.
+
+3
+00:00:03,290 --> 00:00:06,850
+And in that case, you may
+want to double unwind.
+
+4
+00:00:06,850 --> 00:00:11,270
+And therefore create a Cartesian
+product of the two
+
+5
+00:00:11,270 --> 00:00:14,820
+arrays, as well as the
+rest of the document.
+
+6
+00:00:14,820 --> 00:00:16,840
+Let me give you an
+example of that.
+
+7
+00:00:16,840 --> 00:00:20,300
+I've created a little e-commerce
+inventory, where
+
+8
+00:00:20,300 --> 00:00:23,820
+I've got these items, like, for
+instance, a t-shirt that
+
+9
+00:00:23,820 --> 00:00:27,460
+come in a list of sizes as
+well as a list of colors.
+
+10
+00:00:27,460 --> 00:00:30,660
+So here's some chino pants
+in sizes and colors.
+
+11
+00:00:30,660 --> 00:00:35,470
+Now what if we want to figure
+out the number of items that
+
+12
+00:00:35,470 --> 00:00:39,140
+are available at any given size
+and color, regardless of
+
+13
+00:00:39,140 --> 00:00:41,190
+what the name of
+the product is?
+
+14
+00:00:41,190 --> 00:00:44,420
+How would we do that using the
+aggregation framework?
+
+15
+00:00:44,420 --> 00:00:45,740
+I'll show that to you.
+
+16
+00:00:45,740 --> 00:00:48,350
+So ignore the top
+of this file.
+
+17
+00:00:48,350 --> 00:00:51,890
+This JavaScript program first
+creates the collection.
+
+18
+00:00:51,890 --> 00:00:54,500
+And here is where the
+interesting stuff starts.
+
+19
+00:00:54,500 --> 00:00:57,820
+We call db.inventory.aggregate.
+
+20
+00:00:57,820 --> 00:01:00,110
+We're going to unwind
+by sizes.
+
+21
+00:01:00,110 --> 00:01:03,820
+And then right after we unwind
+by sizes, we're just going to
+
+22
+00:01:03,820 --> 00:01:08,230
+create a new set of documents
+where each size is with the
+
+23
+00:01:08,230 --> 00:01:09,630
+rest of the document.
+
+24
+00:01:09,630 --> 00:01:12,090
+And each size will have
+a colors array.
+
+25
+00:01:12,090 --> 00:01:14,090
+And then we're going to
+unwind by colors.
+
+26
+00:01:14,090 --> 00:01:18,150
+And at this point, we
+have a list of names
+
+27
+00:01:18,150 --> 00:01:20,490
+and sizes and colors.
+
+28
+00:01:20,490 --> 00:01:25,380
+So it might be polo shirt,
+small, navy, and polo shirt,
+
+29
+00:01:25,380 --> 00:01:27,010
+small, white.
+
+30
+00:01:27,010 --> 00:01:29,280
+That's what we're going to get
+at the end of the second
+
+31
+00:01:29,280 --> 00:01:30,700
+unwind phase.
+
+32
+00:01:30,700 --> 00:01:32,470
+If we want to group it,
+we do it like this.
+
+33
+00:01:32,470 --> 00:01:36,120
+We do a grouping, where the
+"_id" is set to the size,
+
+34
+00:01:36,120 --> 00:01:39,650
+$sizes, and color, $colors.
+
+35
+00:01:39,650 --> 00:01:41,750
+Don't be fooled by the
+fact this is plural.
+
+36
+00:01:41,750 --> 00:01:45,070
+After the unwind happens, this
+is now, in a sense, singular
+
+37
+00:01:45,070 --> 00:01:46,460
+because there's going to
+be one item in each
+
+38
+00:01:46,460 --> 00:01:48,390
+document for these.
+
+39
+00:01:48,390 --> 00:01:52,500
+And then I can just count it
+using $sum, adding one.
+
+40
+00:01:52,500 --> 00:01:55,040
+And if I do that,
+what do I get?
+
+41
+00:01:55,040 --> 00:01:57,350
+I get pretty much what
+you'd expect.
+
+42
+00:01:57,350 --> 00:02:01,410
+In the "_id" field of each of
+these result documents, I see
+
+43
+00:02:01,410 --> 00:02:03,300
+there's a size and a color.
+
+44
+00:02:03,300 --> 00:02:05,960
+And I'm going to count the
+number of times they appear.
+
+45
+00:02:05,960 --> 00:02:08,910
+So size small, color red,
+there's two items.
+
+46
+00:02:08,910 --> 00:02:12,920
+And size 32 by 32, and these
+are inches for pants in the
+
+47
+00:02:12,920 --> 00:02:14,090
+United States.
+
+48
+00:02:14,090 --> 00:02:16,400
+Color white, there's one item.
+
+49
+00:02:16,400 --> 00:02:17,150
+All right.
+
+50
+00:02:17,150 --> 00:02:19,640
+So that's how you double unwind
+if there's more than
+
+51
+00:02:19,640 --> 00:02:23,090
+one array, and you want to
+expand both arrays out and do
+
+52
+00:02:23,090 --> 00:02:25,510
+aggregation on the items.
+
+53
+00:02:25,510 --> 00:02:27,210
+Let's do a quiz.
+
+54
+00:02:27,210 --> 00:02:31,450
+Can you reverse the effects of
+a double unwind, two unwinds
+
+55
+00:02:31,450 --> 00:02:32,605
+in a row like I showed you?
+
+56
+00:02:32,605 --> 00:02:35,660
+Can you reverse the effects of
+double unwind in our inventory
+
+57
+00:02:35,660 --> 00:02:37,820
+collection, shown
+in the lesson,
+
+58
+00:02:37,820 --> 00:02:39,430
+with the $push operator?
+
+59
+00:02:39,430 --> 00:02:43,340
+We talked about the $push
+operator being able to reverse
+
+60
+00:02:43,340 --> 00:02:45,040
+the effects of an unwind.
+
+61
+00:02:45,040 --> 00:02:49,310
+Can you reverse two unwinds
+using the $push operator?
+
+62
+00:02:49,310 --> 00:02:50,560
+So think about that.
+
+63
+00:02:50,560 --> 00:02:51,540

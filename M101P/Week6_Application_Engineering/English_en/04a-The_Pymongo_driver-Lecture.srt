@@ -1,0 +1,659 @@
+1
+00:00:00,000 --> 00:00:00,330
+
+2
+00:00:00,330 --> 00:00:02,570
+A site that you should
+definitely know about now that
+
+3
+00:00:02,570 --> 00:00:07,160
+you're leaving our course
+is api.mongodb.org.
+
+4
+00:00:07,160 --> 00:00:11,320
+This is the main directory of
+all the drivers and the
+
+5
+00:00:11,320 --> 00:00:13,820
+various versions of the drivers
+that you'll be using
+
+6
+00:00:13,820 --> 00:00:15,010
+as a developer.
+
+7
+00:00:15,010 --> 00:00:17,310
+Now, I didn't tell you about
+that earlier on in the course
+
+8
+00:00:17,310 --> 00:00:19,040
+because I didn't
+know about it.
+
+9
+00:00:19,040 --> 00:00:21,560
+And I didn't know about it
+because I myself have been
+
+10
+00:00:21,560 --> 00:00:26,400
+learning MongoDB for the last
+few months, and I wasn't aware
+
+11
+00:00:26,400 --> 00:00:28,770
+that we had this high
+level site.
+
+12
+00:00:28,770 --> 00:00:31,680
+So I want to take you through
+that now and show you the
+
+13
+00:00:31,680 --> 00:00:34,000
+changes that have occurred to
+the Python driver in the last
+
+14
+00:00:34,000 --> 00:00:36,170
+two weeks, and also just
+about every other
+
+15
+00:00:36,170 --> 00:00:38,110
+driver that we support.
+
+16
+00:00:38,110 --> 00:00:41,510
+So if you go to api.mongodb.org,
+you can see
+
+17
+00:00:41,510 --> 00:00:42,755
+all the different
+drivers listed.
+
+18
+00:00:42,755 --> 00:00:45,090
+I'm going to click on Python.
+
+19
+00:00:45,090 --> 00:00:47,250
+You can see that the current
+version is 2.4.
+
+20
+00:00:47,250 --> 00:00:49,670
+You probably have
+2.3 installed.
+
+21
+00:00:49,670 --> 00:00:53,210
+You should update to 2.4 using
+the instructions on the page.
+
+22
+00:00:53,210 --> 00:00:56,690
+I think it's easy_install
+-U for Mac users.
+
+23
+00:00:56,690 --> 00:00:57,910
+I did it earlier.
+
+24
+00:00:57,910 --> 00:01:01,520
+If you click on 2.4, that
+looks familiar to you.
+
+25
+00:01:01,520 --> 00:01:03,500
+But sometimes Google will point
+to the older driver, so
+
+26
+00:01:03,500 --> 00:01:06,220
+it's good to start at
+api.mongodb.org.
+
+27
+00:01:06,220 --> 00:01:09,300
+And now I'm going to
+go down to API.
+
+28
+00:01:09,300 --> 00:01:12,830
+And you can see that one of
+the major classes is the
+
+29
+00:01:12,830 --> 00:01:15,850
+connection class that we used
+earlier in the class to
+
+30
+00:01:15,850 --> 00:01:18,060
+connect using Python.
+
+31
+00:01:18,060 --> 00:01:20,850
+And if we click on that, it
+warns us that, in fact, it is
+
+32
+00:01:20,850 --> 00:01:23,960
+deprecated and that we should
+use mongo_client instead.
+
+33
+00:01:23,960 --> 00:01:28,120
+Now, there is some version of
+mongo_client for every single
+
+34
+00:01:28,120 --> 00:01:29,580
+one of the drivers we support.
+
+35
+00:01:29,580 --> 00:01:33,550
+This was a major roll out last
+week to change our defaults so
+
+36
+00:01:33,550 --> 00:01:37,150
+that we acknowledge rights to
+the database and don't fire
+
+37
+00:01:37,150 --> 00:01:38,395
+and forget anymore.
+
+38
+00:01:38,395 --> 00:01:42,070
+If we click there onto
+mongo_client, we get all the
+
+39
+00:01:42,070 --> 00:01:44,740
+various options for that.
+
+40
+00:01:44,740 --> 00:01:47,940
+Now, in the Python driver,
+you don't see the words
+
+41
+00:01:47,940 --> 00:01:49,720
+WriteConcern very often.
+
+42
+00:01:49,720 --> 00:01:51,630
+And WriteConcern is not used
+consistently in our
+
+43
+00:01:51,630 --> 00:01:54,940
+documentation, but it's taken to
+mean, as far as I can tell,
+
+44
+00:01:54,940 --> 00:01:56,540
+the combination of [? WJ ?]
+
+45
+00:01:56,540 --> 00:02:00,710
+and sometimes wtimeout
+parameters taken together.
+
+46
+00:02:00,710 --> 00:02:03,790
+But you can see all the
+different options that you can
+
+47
+00:02:03,790 --> 00:02:05,330
+give the driver.
+
+48
+00:02:05,330 --> 00:02:07,430
+W is the one we've been talking
+about, acknowledging
+
+49
+00:02:07,430 --> 00:02:08,410
+the writes.
+
+50
+00:02:08,410 --> 00:02:11,410
+We'll get to wtimeout as soon as
+we get to replication, talk
+
+51
+00:02:11,410 --> 00:02:12,750
+about what that is.
+
+52
+00:02:12,750 --> 00:02:13,822
+J is whether or not you're
+going to wait
+
+53
+00:02:13,822 --> 00:02:15,195
+for it to be journaled.
+
+54
+00:02:15,195 --> 00:02:16,490
+And there's a few others,
+and I want to go
+
+55
+00:02:16,490 --> 00:02:17,820
+over them right now.
+
+56
+00:02:17,820 --> 00:02:22,110
+But let's go over a program so
+you can see what a program
+
+57
+00:02:22,110 --> 00:02:25,040
+looks like using the
+new drivers.
+
+58
+00:02:25,040 --> 00:02:29,510
+Since we've been writing in a
+different style for the entire
+
+59
+00:02:29,510 --> 00:02:32,590
+course, I want to make sure you
+guys get to see the most
+
+60
+00:02:32,590 --> 00:02:33,390
+recent one.
+
+61
+00:02:33,390 --> 00:02:35,880
+So here's a small program that's
+written using the new
+
+62
+00:02:35,880 --> 00:02:38,260
+MongoClient class versus the
+connection class that we used
+
+63
+00:02:38,260 --> 00:02:39,370
+earlier on in the course.
+
+64
+00:02:39,370 --> 00:02:41,470
+C equals Pymongo.mongoclient.
+
+65
+00:02:41,470 --> 00:02:43,930
+The host is the host
+I'm connecting to.
+
+66
+00:02:43,930 --> 00:02:46,890
+W equals 2, and J equals true.
+
+67
+00:02:46,890 --> 00:02:49,860
+DB equals CMO101.
+
+68
+00:02:49,860 --> 00:02:51,150
+People equals DB.people.
+
+69
+00:02:51,150 --> 00:02:52,600
+And then I do some inserts.
+
+70
+00:02:52,600 --> 00:02:55,600
+And this is an alternative to
+using the connection class.
+
+71
+00:02:55,600 --> 00:02:59,030
+The difference here is that even
+if I gave no W equals 2,
+
+72
+00:02:59,030 --> 00:03:02,060
+if I did not specify w equals
+2 or J equals true--
+
+73
+00:03:02,060 --> 00:03:04,970
+and I'll specify W equals 1,
+since we've haven't gone over
+
+74
+00:03:04,970 --> 00:03:06,070
+replication yet--
+
+75
+00:03:06,070 --> 00:03:09,090
+even if I just left this blank,
+the default would be
+
+76
+00:03:09,090 --> 00:03:11,050
+[? w=1, j=false. ?]
+
+77
+00:03:11,050 --> 00:03:13,040
+And that's a change
+from before.
+
+78
+00:03:13,040 --> 00:03:15,210
+Before we specified safe mode
+using the old connection
+
+79
+00:03:15,210 --> 00:03:18,830
+class, which gave us
+[? w=1, j=false. ?]
+
+80
+00:03:18,830 --> 00:03:20,220
+And now [? w=1, j=false ?]
+
+81
+00:03:20,220 --> 00:03:22,510
+is the default for
+all connections.
+
+82
+00:03:22,510 --> 00:03:24,830
+And the old connection class
+is going to deprecated, so
+
+83
+00:03:24,830 --> 00:03:26,710
+you're encouraged to
+use this new one.
+
+84
+00:03:26,710 --> 00:03:29,560
+OK, hope that wasn't
+overly complicated.
+
+85
+00:03:29,560 --> 00:03:31,140
+I want to go back to the
+driver site now.
+
+86
+00:03:31,140 --> 00:03:33,560
+I want to show you some of the
+other drivers, in particular--
+
+87
+00:03:33,560 --> 00:03:35,580
+and there's a little bit of
+inconsistency around this, so
+
+88
+00:03:35,580 --> 00:03:36,980
+you should realize it.
+
+89
+00:03:36,980 --> 00:03:40,040
+If you go into the Java driver,
+it too now has a new
+
+90
+00:03:40,040 --> 00:03:41,550
+MongoClient class.
+
+91
+00:03:41,550 --> 00:03:44,780
+I'm going to click on
+there for you fans.
+
+92
+00:03:44,780 --> 00:03:46,000
+Here's MongoClient.
+
+93
+00:03:46,000 --> 00:03:48,770
+It's a new class that was
+released just last week.
+
+94
+00:03:48,770 --> 00:03:51,790
+Again, it's the new suggested
+default so that you get J
+
+95
+00:03:51,790 --> 00:03:54,520
+equals 0, W equals 1
+on new connections.
+
+96
+00:03:54,520 --> 00:03:58,720
+Now, to build the options
+to MongoClient, do this.
+
+97
+00:03:58,720 --> 00:04:01,550
+And you can see one
+of the options--
+
+98
+00:04:01,550 --> 00:04:03,070
+there's actually a
+builder for this.
+
+99
+00:04:03,070 --> 00:04:04,570
+We haven't gone through
+Java in this class.
+
+100
+00:04:04,570 --> 00:04:05,630
+Some of you are Java
+developers--
+
+101
+00:04:05,630 --> 00:04:08,200
+I'm sure you're familiar
+with this idiom.
+
+102
+00:04:08,200 --> 00:04:11,550
+But if you look here, there's
+this concept of WriteConcern.
+
+103
+00:04:11,550 --> 00:04:15,810
+And this WriteConcern here,
+again, this is a further
+
+104
+00:04:15,810 --> 00:04:17,680
+elaboration of what those
+different modes do.
+
+105
+00:04:17,680 --> 00:04:19,910
+I've gone over W equals
+0 and W equals 1.
+
+106
+00:04:19,910 --> 00:04:22,750
+You can see there's actually a
+meaning for W equals minus 1,
+
+107
+00:04:22,750 --> 00:04:24,530
+don't even report
+network errors.
+
+108
+00:04:24,530 --> 00:04:26,640
+And 2+, waiting for
+the secondaries
+
+109
+00:04:26,640 --> 00:04:27,590
+and the replica sets.
+
+110
+00:04:27,590 --> 00:04:29,140
+We'll get to that in a second.
+
+111
+00:04:29,140 --> 00:04:31,470
+wtimeout, which we'll
+talk about later.
+
+112
+00:04:31,470 --> 00:04:33,670
+And the J option.
+
+113
+00:04:33,670 --> 00:04:35,490
+So the interesting thing about
+this for me is that it's
+
+114
+00:04:35,490 --> 00:04:39,810
+called WriteConcern, which sort
+of grabs it all together
+
+115
+00:04:39,810 --> 00:04:40,980
+as a concept.
+
+116
+00:04:40,980 --> 00:04:44,720
+And I haven't seen that in the
+Python driver, per se.
+
+117
+00:04:44,720 --> 00:04:47,050
+But generally speaking, when
+people talk about WriteConcern
+
+118
+00:04:47,050 --> 00:04:50,950
+in MongoDB, they're talking
+about the J and W parameters,
+
+119
+00:04:50,950 --> 00:04:53,500
+and maybe the wtimeout
+parameter.
+
+120
+00:04:53,500 --> 00:04:55,410
+Talking about whether or not
+you wait for writes to be
+
+121
+00:04:55,410 --> 00:04:57,920
+acknowledged, and whether you
+wait for journaling on the
+
+122
+00:04:57,920 --> 00:04:59,280
+primary node that
+you're hitting.
+
+123
+00:04:59,280 --> 00:05:01,520
+And then we'll get to the rest
+when we get to replication.
+
+124
+00:05:01,520 --> 00:05:03,990
+All right, so just to summarize,
+there is a new
+
+125
+00:05:03,990 --> 00:05:07,520
+class out there, I think in
+all the drivers, actually,
+
+126
+00:05:07,520 --> 00:05:09,590
+called MongoClient.
+
+127
+00:05:09,590 --> 00:05:13,520
+And it replaces the previous
+connection methods.
+
+128
+00:05:13,520 --> 00:05:16,660
+And the difference is that it
+by default calls get last
+
+129
+00:05:16,660 --> 00:05:19,350
+error with W equals
+1, J equals o.
+
+130
+00:05:19,350 --> 00:05:19,710
+All right.
+
+131
+00:05:19,710 --> 00:05:22,400
+Let's do a quiz.
+
+132
+00:05:22,400 --> 00:05:25,540
+In a 2.4 release of Pymongo
+a new connection class is
+
+133
+00:05:25,540 --> 00:05:27,370
+introduced that automatically
+sets W equals 1
+
+134
+00:05:27,370 --> 00:05:27,970
+and J equals 0.
+
+135
+00:05:27,970 --> 00:05:30,130
+It essentially defaults to what
+used to be called safe
+
+136
+00:05:30,130 --> 00:05:32,110
+mode and replaces the old
+connection class.
+
+137
+00:05:32,110 --> 00:05:34,540
+What is the name
+of that class?
+
+138
+00:05:34,540 --> 00:05:39,000
+MongoSafe, SafeConnection,
+MongoClient, or
+
+139
+00:05:39,000 --> 00:05:40,940
+FireAndRemember?
+
+140
+00:05:40,940 --> 00:05:42,190
+Check the right answer.

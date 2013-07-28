@@ -1,0 +1,40 @@
+1
+00:00:00,000 --> 00:00:00,180
+
+2
+00:00:00,180 --> 00:00:04,310
+All right, in this problem you
+are given the query and the
+
+3
+00:00:04,310 --> 00:00:06,980
+explain output and you have
+to figure out which of the
+
+4
+00:00:06,980 --> 00:00:10,880
+following facts are true from
+the explain command.
+
+5
+00:00:10,880 --> 00:00:14,100
+It's a little subtle because we
+aren't shown the index and
+
+6
+00:00:14,100 --> 00:00:17,130
+to figure it out you have to
+look at the actual names of
+
+7
+00:00:17,130 --> 00:00:20,700
+the index, over here, and the
+names of the index that are
+
+8
+00:00:20,700 --> 00:00:23,050
+used can tell you a lot
+about what's going on.
+
+9
+00:00:23,050 --> 00:00:24,300

@@ -1,0 +1,102 @@
+1
+00:00:00,000 --> 00:00:00,120
+
+2
+00:00:00,120 --> 00:00:03,420
+OK, and the answer is only
+the third one is correct.
+
+3
+00:00:03,420 --> 00:00:06,940
+And in the third one, notice
+that there's two documents
+
+4
+00:00:06,940 --> 00:00:07,700
+sent to the find command.
+
+5
+00:00:07,700 --> 00:00:10,970
+The first one is empty, which
+finds all of the students.
+
+6
+00:00:10,970 --> 00:00:13,980
+And it projects out that it
+wants the student underscore
+
+7
+00:00:13,980 --> 00:00:17,490
+ID field key from the document,
+and suppress the
+
+8
+00:00:17,490 --> 00:00:18,620
+underscore ID.
+
+9
+00:00:18,620 --> 00:00:20,810
+The first one is wrong because,
+if you'll notice,
+
+10
+00:00:20,810 --> 00:00:22,480
+there is no query
+document here.
+
+11
+00:00:22,480 --> 00:00:23,900
+It actually puts the projection
+
+12
+00:00:23,900 --> 00:00:25,080
+as the first document.
+
+13
+00:00:25,080 --> 00:00:28,000
+This is going to find everything
+with student ID one
+
+14
+00:00:28,000 --> 00:00:30,850
+and underscore ID zero.
+
+15
+00:00:30,850 --> 00:00:34,240
+And then the second one is
+wrong for two reasons.
+
+16
+00:00:34,240 --> 00:00:37,260
+First, it doesn't put this
+projection document as a
+
+17
+00:00:37,260 --> 00:00:41,100
+second argument to find, and
+also, it doesn't suppress
+
+18
+00:00:41,100 --> 00:00:41,900
+underscore ID.
+
+19
+00:00:41,900 --> 00:00:43,280
+Our third one is correct.
+
+20
+00:00:43,280 --> 00:00:47,520
+And the fourth one is wrong only
+because it doesn't quote
+
+21
+00:00:47,520 --> 00:00:50,360
+these literals, the student
+underscore ID and the
+
+22
+00:00:50,360 --> 00:00:51,610
+underscore ID.
+
+23
+00:00:51,610 --> 00:00:52,310

@@ -1,0 +1,385 @@
+1
+00:00:00,000 --> 00:00:00,190
+
+2
+00:00:00,190 --> 00:00:01,110
+OK.
+
+3
+00:00:01,110 --> 00:00:03,250
+Now we've learned almost
+everything there is to learn
+
+4
+00:00:03,250 --> 00:00:06,120
+about querying the database, so
+we're going to move on to
+
+5
+00:00:06,120 --> 00:00:08,020
+updating documents
+in the database.
+
+6
+00:00:08,020 --> 00:00:10,310
+Let's take a look at our
+"people" collection.
+
+7
+00:00:10,310 --> 00:00:13,400
+In this collection, we have
+documents for users named
+
+8
+00:00:13,400 --> 00:00:16,980
+Smith, Jones, Alice, Bob,
+Charlie, Dave, Edgar, Fred,
+
+9
+00:00:16,980 --> 00:00:18,750
+and, well, Name 42.
+
+10
+00:00:18,750 --> 00:00:20,540
+Once you have some documents
+in the database, it's quite
+
+11
+00:00:20,540 --> 00:00:22,830
+common to want to be able to
+modify those documents.
+
+12
+00:00:22,830 --> 00:00:25,860
+And so just like we have a
+method for requiring documents
+
+13
+00:00:25,860 --> 00:00:27,990
+called Find, we have a
+method for changing
+
+14
+00:00:27,990 --> 00:00:29,790
+documents called Update.
+
+15
+00:00:29,790 --> 00:00:34,670
+Now, in the Mongo shell, the API
+for updating actually does
+
+16
+00:00:34,670 --> 00:00:36,500
+four different things.
+
+17
+00:00:36,500 --> 00:00:38,505
+Right now, we're going to learn
+about one of them and
+
+18
+00:00:38,505 --> 00:00:40,510
+we'll learn about the
+rest as we go.
+
+19
+00:00:40,510 --> 00:00:43,830
+Just like queries are methods
+on a collection, updates are
+
+20
+00:00:43,830 --> 00:00:45,270
+methods on a collection.
+
+21
+00:00:45,270 --> 00:00:48,710
+And updates take at least
+two arguments.
+
+22
+00:00:48,710 --> 00:00:51,510
+The first argument is a query,
+analogous to the
+
+23
+00:00:51,510 --> 00:00:53,550
+WHERE clause in SQL.
+
+24
+00:00:53,550 --> 00:00:56,510
+So everything you've learned
+about Find is applicable to
+
+25
+00:00:56,510 --> 00:00:58,850
+querying for documents in order
+to perform updates.
+
+26
+00:00:58,850 --> 00:01:02,740
+So, for instance, let's say I
+want to update "Smith." The
+
+27
+00:01:02,740 --> 00:01:05,470
+second argument to update is a
+document, and in the simple
+
+28
+00:01:05,470 --> 00:01:08,990
+case, whatever you put inside
+that document will replace
+
+29
+00:01:08,990 --> 00:01:12,610
+everything but the primary key
+of the document being updated.
+
+30
+00:01:12,610 --> 00:01:16,890
+So if I say find a document with
+name "Smith" and I put
+
+31
+00:01:16,890 --> 00:01:22,120
+some fields in here, let's say
+"name" "Thompson" and "salary"
+
+32
+00:01:22,120 --> 00:01:26,170
+"50,000," then this update will
+replace whatever is in
+
+33
+00:01:26,170 --> 00:01:29,170
+the document that currently
+exists where the name is Smith
+
+34
+00:01:29,170 --> 00:01:31,530
+with those fields
+that I specify
+
+35
+00:01:31,530 --> 00:01:33,250
+in the second argument.
+
+36
+00:01:33,250 --> 00:01:36,650
+As you can see, the top line
+of my terminal window shows
+
+37
+00:01:36,650 --> 00:01:40,170
+the _id with a particular object
+ID and that had the
+
+38
+00:01:40,170 --> 00:01:41,740
+name Smith.
+
+39
+00:01:41,740 --> 00:01:44,700
+The 10th line up from the bottom
+of my terminal window
+
+40
+00:01:44,700 --> 00:01:48,650
+has the same object ID but now
+the name is Thompson and the
+
+41
+00:01:48,650 --> 00:01:50,240
+salary is 50,000.
+
+42
+00:01:50,240 --> 00:01:52,500
+The other two fields of
+information that existed about
+
+43
+00:01:52,500 --> 00:01:54,300
+Smith are gone.
+
+44
+00:01:54,300 --> 00:01:55,500
+This use of the update
+
+45
+00:01:55,500 --> 00:01:57,720
+operator is somewhat vestigial.
+
+46
+00:01:57,720 --> 00:01:59,400
+MongoDB was originally
+designed as a
+
+47
+00:01:59,400 --> 00:02:00,840
+kind of object store.
+
+48
+00:02:00,840 --> 00:02:03,440
+And in an object store,
+especially for a
+
+49
+00:02:03,440 --> 00:02:05,910
+dynamically-typed language, such
+as, say, JavaScript or
+
+50
+00:02:05,910 --> 00:02:09,440
+Python, it's sort of convenient
+to be able to say I
+
+51
+00:02:09,440 --> 00:02:12,000
+have a document in the
+application, manipulate the
+
+52
+00:02:12,000 --> 00:02:14,290
+document in the application,
+and put it back into the
+
+53
+00:02:14,290 --> 00:02:17,190
+database disregarding whatever
+happens to be in the database
+
+54
+00:02:17,190 --> 00:02:19,910
+for that document, storing only
+those things that the
+
+55
+00:02:19,910 --> 00:02:22,940
+application currently has
+for the document.
+
+56
+00:02:22,940 --> 00:02:25,380
+This use, however, is somewhat
+dangerous, and so in a
+
+57
+00:02:25,380 --> 00:02:28,060
+subsequent section, we'll show
+a somewhat more constrained
+
+58
+00:02:28,060 --> 00:02:31,000
+way of manipulating fields
+inside of a document.
+
+59
+00:02:31,000 --> 00:02:33,320
+In any case, this wholesale
+replacement is
+
+60
+00:02:33,320 --> 00:02:34,450
+occasionally useful.
+
+61
+00:02:34,450 --> 00:02:37,680
+For example, if you're merging
+data into the database and you
+
+62
+00:02:37,680 --> 00:02:40,890
+don't know how or can't
+conveniently compute the delta
+
+63
+00:02:40,890 --> 00:02:43,380
+between what's in the database
+and what you have from an
+
+64
+00:02:43,380 --> 00:02:46,400
+external source, then you might
+just send the data from
+
+65
+00:02:46,400 --> 00:02:50,360
+the external source into the
+database keyed using, say, a
+
+66
+00:02:50,360 --> 00:02:51,610
+primary key.
+
+67
+00:02:51,610 --> 00:02:54,210
+This is not an infrequent
+use for this
+
+68
+00:02:54,210 --> 00:02:56,500
+replacing version of update.
+
+69
+00:02:56,500 --> 00:02:59,240
+Nevertheless, it's a somewhat
+blunderbuss approach to
+
+70
+00:02:59,240 --> 00:03:01,540
+changing data in the database,
+so if you don't need this
+
+71
+00:03:01,540 --> 00:03:03,720
+approach, you might not
+want to use it.
+
+72
+00:03:03,720 --> 00:03:04,070
+OK.
+
+73
+00:03:04,070 --> 00:03:05,760
+So let's have a quiz
+on this subject.
+
+74
+00:03:05,760 --> 00:03:06,890
+Let's say you had a collection
+with the
+
+75
+00:03:06,890 --> 00:03:09,180
+following document in it.
+
+76
+00:03:09,180 --> 00:03:15,930
+_id:Texas, "population"
+"2500000," "landlocked:1", and
+
+77
+00:03:15,930 --> 00:03:19,970
+you issued this operation,
+db.foo, where "foo" is the
+
+78
+00:03:19,970 --> 00:03:24,070
+name of your collection,
+.update _id "Texas"
+
+79
+00:03:24,070 --> 00:03:28,900
+"population" "30000000".
+
+80
+00:03:28,900 --> 00:03:31,670
+What would be the state of the
+document in this collection
+
+81
+00:03:31,670 --> 00:03:32,920
+after the update?
+
+82
+00:03:32,920 --> 00:03:33,750

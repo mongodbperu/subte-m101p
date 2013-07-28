@@ -1,0 +1,111 @@
+1
+00:00:00,000 --> 00:00:00,160
+
+2
+00:00:00,160 --> 00:00:04,480
+OK, and the answer is that the
+first one can't use an index
+
+3
+00:00:04,480 --> 00:00:09,700
+because it asks for brand GE,
+and as you can see, the only
+
+4
+00:00:09,700 --> 00:00:14,360
+index that has brand in it is
+a compound index and it's in
+
+5
+00:00:14,360 --> 00:00:17,210
+the second column, so
+it can't use it.
+
+6
+00:00:17,210 --> 00:00:20,880
+And then the next one is brand
+GE as well, so that won't use
+
+7
+00:00:20,880 --> 00:00:24,920
+the index, but it sorts by
+price, and there is a
+
+8
+00:00:24,920 --> 00:00:26,210
+index on the price.
+
+9
+00:00:26,210 --> 00:00:29,030
+So that second query can
+utilize an index.
+
+10
+00:00:29,030 --> 00:00:32,890
+The next one looks for prices
+that are greater than 30 and
+
+11
+00:00:32,890 --> 00:00:36,600
+less than 50, and it
+sorts by brand.
+
+12
+00:00:36,600 --> 00:00:39,075
+So this can use an index because
+the price query can
+
+13
+00:00:39,075 --> 00:00:42,820
+use an index, and this sort
+won't use an index.
+
+14
+00:00:42,820 --> 00:00:46,820
+And the last one is to look up
+a brand GE, which we know
+
+15
+00:00:46,820 --> 00:00:52,720
+cannot use the index, and then
+sort by category and brand in
+
+16
+00:00:52,720 --> 00:00:53,230
+that order.
+
+17
+00:00:53,230 --> 00:00:54,620
+Category and brand.
+
+18
+00:00:54,620 --> 00:00:58,040
+And you can see here that there
+is a category and brand
+
+19
+00:00:58,040 --> 00:01:02,300
+index, but the issue is that
+it's in the wrong order.
+
+20
+00:01:02,300 --> 00:01:05,660
+So its category ascending, brand
+ascending, and we try to
+
+21
+00:01:05,660 --> 00:01:10,970
+do a category ascending, brand
+descending index, which it
+
+22
+00:01:10,970 --> 00:01:12,610
+will not do.
+
+23
+00:01:12,610 --> 00:01:15,600
+So for that reason, that
+answer is not chosen.
+
+24
+00:01:15,600 --> 00:01:17,133

@@ -1,0 +1,218 @@
+1
+00:00:00,000 --> 00:00:00,190
+
+2
+00:00:00,190 --> 00:00:02,680
+All right, in this assignment
+you're going to be
+
+3
+00:00:02,680 --> 00:00:04,310
+making the blog fast.
+
+4
+00:00:04,310 --> 00:00:07,230
+We've given you the code for
+the blog in blog.py and
+
+5
+00:00:07,230 --> 00:00:10,860
+user.py in the views, and we've
+also given you a data
+
+6
+00:00:10,860 --> 00:00:12,940
+set of 1,000 posts.
+
+7
+00:00:12,940 --> 00:00:14,700
+Very patriotic posts if
+you're an American.
+
+8
+00:00:14,700 --> 00:00:18,020
+We have the Gettysburg Address
+here, and we also have the US
+
+9
+00:00:18,020 --> 00:00:20,740
+Constitution and the Declaration
+of Independence,
+
+10
+00:00:20,740 --> 00:00:22,660
+and the Bill of Rights.
+
+11
+00:00:22,660 --> 00:00:25,680
+And all these posts have 50
+comments on them and they have
+
+12
+00:00:25,680 --> 00:00:27,800
+a bunch of tags on them.
+
+13
+00:00:27,800 --> 00:00:29,640
+Now, there's three pages
+you need to make fast.
+
+14
+00:00:29,640 --> 00:00:31,700
+You have to make the blog
+homepage fast, which gets the
+
+15
+00:00:31,700 --> 00:00:35,580
+most recent 10 blog posts
+and prints them out.
+
+16
+00:00:35,580 --> 00:00:38,170
+You also need to make
+this page fast.
+
+17
+00:00:38,170 --> 00:00:41,470
+This is a page that will search
+for the most recent 10
+
+18
+00:00:41,470 --> 00:00:43,330
+posts for any given tag.
+
+19
+00:00:43,330 --> 00:00:46,510
+I just clicked on tempo, so now
+all these posts are going
+
+20
+00:00:46,510 --> 00:00:47,850
+to have tempo in them.
+
+21
+00:00:47,850 --> 00:00:50,820
+If I click on refund, then
+all these posts will
+
+22
+00:00:50,820 --> 00:00:52,690
+have refund in them.
+
+23
+00:00:52,690 --> 00:00:55,370
+And the final page you have to
+make fast is the blog post
+
+24
+00:00:55,370 --> 00:00:58,840
+page, which is referenced
+by permalink.
+
+25
+00:00:58,840 --> 00:01:00,940
+I'll show you the permalink's
+right here.
+
+26
+00:01:00,940 --> 00:01:04,140
+And then, it brings up the post,
+just one post along with
+
+27
+00:01:04,140 --> 00:01:06,490
+the comments in the post and
+there are 50 comments.
+
+28
+00:01:06,490 --> 00:01:09,520
+You need to make this
+page fast as well.
+
+29
+00:01:09,520 --> 00:01:12,190
+Now, you don't ever need to run
+the blog project for this
+
+30
+00:01:12,190 --> 00:01:14,890
+homework assignment, but you
+might want to because you
+
+31
+00:01:14,890 --> 00:01:16,290
+might want to see the data.
+
+32
+00:01:16,290 --> 00:01:18,520
+But another reason why you want
+to take a look at it is
+
+33
+00:01:18,520 --> 00:01:21,070
+that the queries that we're
+going to check you on are the
+
+34
+00:01:21,070 --> 00:01:24,740
+ones that are inside the code
+that produced these pages.
+
+35
+00:01:24,740 --> 00:01:27,600
+And you don't need to rewrite
+them from scratch you can just
+
+36
+00:01:27,600 --> 00:01:32,140
+look in the blog.py file and
+see what the queries are.
+
+37
+00:01:32,140 --> 00:01:35,850
+Now, the idea is that these
+queries should only scan as
+
+38
+00:01:35,850 --> 00:01:37,630
+many documents as they return.
+
+39
+00:01:37,630 --> 00:01:40,630
+So if it returns 10 documents
+it should scan 10 documents.
+
+40
+00:01:40,630 --> 00:01:41,760
+If it's returning
+one document, it
+
+41
+00:01:41,760 --> 00:01:43,310
+should return one document.
+
+42
+00:01:43,310 --> 00:01:44,580
+And our validate program.
+
+43
+00:01:44,580 --> 00:01:48,290
+What it does is it runs these
+queries, it gets the explain
+
+44
+00:01:48,290 --> 00:01:50,840
+output, and it makes sure that
+you've added the right
+
+45
+00:01:50,840 --> 00:01:53,840
+indexes, so that this is fast.
+
+46
+00:01:53,840 --> 00:01:55,650
+And that's the assignment
+for this week.
+
+47
+00:01:55,650 --> 00:01:56,900

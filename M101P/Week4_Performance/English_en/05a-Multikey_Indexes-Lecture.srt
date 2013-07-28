@@ -1,0 +1,369 @@
+1
+00:00:00,000 --> 00:00:00,160
+
+2
+00:00:00,160 --> 00:00:05,250
+In MongoDB you can have a
+key that holds an array.
+
+3
+00:00:05,250 --> 00:00:07,770
+For instance, if you have tags
+keyed that hold cycling,
+
+4
+00:00:07,770 --> 00:00:09,450
+tennis, and football.
+
+5
+00:00:09,450 --> 00:00:15,370
+And you can index tags, so you
+can call ensure index, and you
+
+6
+00:00:15,370 --> 00:00:17,900
+can tell the database
+that you want the
+
+7
+00:00:17,900 --> 00:00:19,785
+tags key to be indexed.
+
+8
+00:00:19,785 --> 00:00:23,160
+Now, if you do that what MongoDB
+does is it creates
+
+9
+00:00:23,160 --> 00:00:25,540
+what's called a multikey
+index.
+
+10
+00:00:25,540 --> 00:00:30,980
+Now, what a multikey index is,
+is that rather than create one
+
+11
+00:00:30,980 --> 00:00:34,890
+index point for each document,
+if it sees an array in the
+
+12
+00:00:34,890 --> 00:00:37,840
+document, it will create
+an index point for
+
+13
+00:00:37,840 --> 00:00:40,100
+every item in the array.
+
+14
+00:00:40,100 --> 00:00:45,860
+So that if we do a Find where
+cycling is in tags, then it
+
+15
+00:00:45,860 --> 00:00:50,110
+will be fast because it's
+able to use the index.
+
+16
+00:00:50,110 --> 00:00:53,200
+And that only happens
+if it's an array.
+
+17
+00:00:53,200 --> 00:00:55,160
+That's called a multikey
+index.
+
+18
+00:00:55,160 --> 00:00:57,210
+Then you can create
+a compound index.
+
+19
+00:00:57,210 --> 00:01:02,960
+For instance, I can create a
+compound index on tags colon
+
+20
+00:01:02,960 --> 00:01:04,349
+color or something.
+
+21
+00:01:04,349 --> 00:01:06,220
+And that works just fine.
+
+22
+00:01:06,220 --> 00:01:08,890
+But Mongo restricts
+the queries.
+
+23
+00:01:08,890 --> 00:01:13,860
+You cannot have two items in a
+document that are both arrays
+
+24
+00:01:13,860 --> 00:01:15,700
+if it's a multikey index.
+
+25
+00:01:15,700 --> 00:01:17,690
+Now, this is all
+dynamic, right?
+
+26
+00:01:17,690 --> 00:01:20,950
+So when you first create an
+index on two things, MongoDB
+
+27
+00:01:20,950 --> 00:01:22,720
+doesn't know whether or not
+there are going to be arrays
+
+28
+00:01:22,720 --> 00:01:23,760
+in those items.
+
+29
+00:01:23,760 --> 00:01:27,470
+So it's when you insert the
+items that it will stop you
+
+30
+00:01:27,470 --> 00:01:28,690
+from inserting them
+if they're both
+
+31
+00:01:28,690 --> 00:01:30,240
+arrays and they're multikeys.
+
+32
+00:01:30,240 --> 00:01:34,090
+And the reason is because of the
+polynomial explosion that
+
+33
+00:01:34,090 --> 00:01:38,500
+you'd have of index points every
+single time you added
+
+34
+00:01:38,500 --> 00:01:43,430
+and subtracted something from
+the array if we allowed you to
+
+35
+00:01:43,430 --> 00:01:46,500
+compound index where both
+items were arrays.
+
+36
+00:01:46,500 --> 00:01:49,120
+So let me make this more
+concrete by showing you some
+
+37
+00:01:49,120 --> 00:01:51,270
+stuff in the shell.
+
+38
+00:01:51,270 --> 00:01:56,020
+So I'm just going to use the
+test database here and I'm
+
+39
+00:01:56,020 --> 00:02:00,140
+going to actually start by
+creating a collection and
+
+40
+00:02:00,140 --> 00:02:01,910
+insert something into
+the collection.
+
+41
+00:02:01,910 --> 00:02:05,550
+I'll call the collection BBB.
+
+42
+00:02:05,550 --> 00:02:09,570
+I inserted into BBB
+A and B being one.
+
+43
+00:02:09,570 --> 00:02:14,140
+And I can now, if I want, I can
+create an index for that.
+
+44
+00:02:14,140 --> 00:02:16,540
+At this point I have to set up
+a standard compound index.
+
+45
+00:02:16,540 --> 00:02:21,470
+But what if I tried to insert
+something into the index where
+
+46
+00:02:21,470 --> 00:02:24,060
+it was an array,
+which I can do.
+
+47
+00:02:24,060 --> 00:02:29,660
+So now I'm going to insert
+A is 1, 2, 3.
+
+48
+00:02:29,660 --> 00:02:33,610
+Now at this point it's a
+multikey index, and I can also
+
+49
+00:02:33,610 --> 00:02:38,110
+insert something where, let's
+say, B is 1, 2, 3.
+
+50
+00:02:38,110 --> 00:02:44,040
+Now A is going to be 5 in this
+case, and B is going to be the
+
+51
+00:02:44,040 --> 00:02:45,500
+array 1, 2, 3.
+
+52
+00:02:45,500 --> 00:02:48,130
+A little extra cone there.
+
+53
+00:02:48,130 --> 00:02:49,650
+Here we go.
+
+54
+00:02:49,650 --> 00:02:51,430
+So that all works just fine.
+
+55
+00:02:51,430 --> 00:02:54,870
+And there's an index in here,
+and you can see it, if you
+
+56
+00:02:54,870 --> 00:02:57,480
+call get indexes you'll see
+the indexes we created.
+
+57
+00:02:57,480 --> 00:03:01,650
+So there's the index that we
+created on A and B. But if I
+
+58
+00:03:01,650 --> 00:03:06,370
+try to insert something where
+both A and B are an array into
+
+59
+00:03:06,370 --> 00:03:10,120
+this multikey index, the
+database will cry foul.
+
+60
+00:03:10,120 --> 00:03:11,630
+It will not allow that.
+
+61
+00:03:11,630 --> 00:03:14,460
+You cannot index the parallel
+arrays B and A.
+
+62
+00:03:14,460 --> 00:03:17,990
+So there's this concept of a
+multikey index inside MongoDB.
+
+63
+00:03:17,990 --> 00:03:19,170
+Its dynamic.
+
+64
+00:03:19,170 --> 00:03:21,870
+It doesn't really know there's
+going to be array values in
+
+65
+00:03:21,870 --> 00:03:23,020
+any given key.
+
+66
+00:03:23,020 --> 00:03:26,730
+But if you start adding arrays
+into a key, it's fine.
+
+67
+00:03:26,730 --> 00:03:29,160
+If it's part of index it will
+create next point for every
+
+68
+00:03:29,160 --> 00:03:31,680
+item in the array, but you
+can't do it for parallel
+
+69
+00:03:31,680 --> 00:03:35,380
+arrays, as it calls it, if
+more than one value is an
+
+70
+00:03:35,380 --> 00:03:37,700
+array in a compound index.
+
+71
+00:03:37,700 --> 00:03:40,670
+OK, it is time for a quiz.
+
+72
+00:03:40,670 --> 00:03:44,290
+Suppose we have a collection foo
+that has an index created
+
+73
+00:03:44,290 --> 00:03:45,440
+as follows.
+
+74
+00:03:45,440 --> 00:03:49,610
+db.foo.ensureIndex A1, B1.
+
+75
+00:03:49,610 --> 00:03:52,720
+Which of the following inserts
+are valid to this collection?
+
+76
+00:03:52,720 --> 00:03:54,940
+And I won't go through
+them, because they're
+
+77
+00:03:54,940 --> 00:03:56,210
+a little bit detailed.
+
+78
+00:03:56,210 --> 00:03:58,970
+But figure out which one of
+these are valid for the
+
+79
+00:03:58,970 --> 00:04:00,220
+collection.

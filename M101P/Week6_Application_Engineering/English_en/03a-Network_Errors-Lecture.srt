@@ -1,0 +1,329 @@
+1
+00:00:00,000 --> 00:00:00,140
+
+2
+00:00:00,140 --> 00:00:03,080
+Now that you've learned how to
+use the write concern modes,
+
+3
+00:00:03,080 --> 00:00:07,050
+and you know how to set j equal
+to 1 and w equal to 1,
+
+4
+00:00:07,050 --> 00:00:10,440
+you might think that you can
+pretty much guarantee that a
+
+5
+00:00:10,440 --> 00:00:12,710
+write will complete or not
+complete inside Mongo, and
+
+6
+00:00:12,710 --> 00:00:14,150
+you'll find out whether
+it was true or not.
+
+7
+00:00:14,150 --> 00:00:16,570
+If that gives you a level of
+certainty in the world.
+
+8
+00:00:16,570 --> 00:00:19,290
+Unfortunately, it's
+not exactly true.
+
+9
+00:00:19,290 --> 00:00:22,760
+And the reason is that there
+are network errors.
+
+10
+00:00:22,760 --> 00:00:27,360
+So for instance, let's say that
+you did an insert, and
+
+11
+00:00:27,360 --> 00:00:31,500
+that insert was specified with a
+connection that had j equals
+
+12
+00:00:31,500 --> 00:00:35,340
+1 and w equals 1, such the
+driver issued a get last error
+
+13
+00:00:35,340 --> 00:00:36,590
+on your behalf.
+
+14
+00:00:36,590 --> 00:00:40,070
+And the write did complete, but
+unfortunately, before it
+
+15
+00:00:40,070 --> 00:00:42,630
+completed, the network
+connection got reset.
+
+16
+00:00:42,630 --> 00:00:46,620
+TCP reset, there's some
+intervening network problem.
+
+17
+00:00:46,620 --> 00:00:49,560
+In that particular case, you
+don't know whether your write
+
+18
+00:00:49,560 --> 00:00:52,840
+completed or not, because you
+didn't get an acknowledgement
+
+19
+00:00:52,840 --> 00:00:53,840
+that it completed.
+
+20
+00:00:53,840 --> 00:00:55,310
+So if you'd gotten the
+acknowledgement that it
+
+21
+00:00:55,310 --> 00:00:57,540
+completed, you'd be sure
+it had completed.
+
+22
+00:00:57,540 --> 00:00:59,450
+But the fact that you didn't
+get the acknowledgement
+
+23
+00:00:59,450 --> 00:01:01,580
+doesn't guarantee it
+didn't complete.
+
+24
+00:01:01,580 --> 00:01:03,960
+And this is important to
+remember in a client server
+
+25
+00:01:03,960 --> 00:01:06,630
+application, which is that
+there are these network
+
+26
+00:01:06,630 --> 00:01:09,520
+errors, and you can never
+be completely sure
+
+27
+00:01:09,520 --> 00:01:11,470
+what exactly happened.
+
+28
+00:01:11,470 --> 00:01:14,040
+Now, it depends on your
+application whether that's a
+
+29
+00:01:14,040 --> 00:01:15,060
+problem or not.
+
+30
+00:01:15,060 --> 00:01:16,770
+You can often check to see
+whether or not the write
+
+31
+00:01:16,770 --> 00:01:18,610
+happened after if you need to.
+
+32
+00:01:18,610 --> 00:01:22,670
+But even if you're protecting
+your inserts with try
+
+33
+00:01:22,670 --> 00:01:25,750
+exception blocks, and making
+sure that you get all the
+
+34
+00:01:25,750 --> 00:01:28,390
+exceptions, sometimes you'll
+get an exception, but the
+
+35
+00:01:28,390 --> 00:01:29,310
+write will complete.
+
+36
+00:01:29,310 --> 00:01:31,890
+Now, if you get no exceptions
+and it says the write
+
+37
+00:01:31,890 --> 00:01:33,920
+completed, well then
+you're fine, you
+
+38
+00:01:33,920 --> 00:01:35,460
+know the write completed.
+
+39
+00:01:35,460 --> 00:01:38,340
+By I just wanted to point out
+that there is a certain degree
+
+40
+00:01:38,340 --> 00:01:42,310
+of uncertainty in any network
+based application, such as you
+
+41
+00:01:42,310 --> 00:01:46,480
+can never be completely positive
+when something has
+
+42
+00:01:46,480 --> 00:01:47,990
+happened or not, because
+you may not have
+
+43
+00:01:47,990 --> 00:01:49,640
+received the response.
+
+44
+00:01:49,640 --> 00:01:52,800
+Now, you could build something
+on top of this to
+
+45
+00:01:52,800 --> 00:01:53,690
+protect you from it.
+
+46
+00:01:53,690 --> 00:01:56,200
+You could do another check to
+make sure and see if what you
+
+47
+00:01:56,200 --> 00:01:59,320
+put in really got committed or
+not, even know you didn't get
+
+48
+00:01:59,320 --> 00:02:00,220
+a response.
+
+49
+00:02:00,220 --> 00:02:02,370
+But most applications
+don't do that.
+
+50
+00:02:02,370 --> 00:02:05,140
+And when the network is working
+well, it's very rare
+
+51
+00:02:05,140 --> 00:02:07,370
+that you might see a network
+connection error.
+
+52
+00:02:07,370 --> 00:02:10,460
+But you could see one, and if
+you do see it, you may not
+
+53
+00:02:10,460 --> 00:02:13,170
+know whether or not your write
+committed or not, even if you
+
+54
+00:02:13,170 --> 00:02:14,840
+specified that you
+want to receive
+
+55
+00:02:14,840 --> 00:02:16,160
+acknowledgement when it did.
+
+56
+00:02:16,160 --> 00:02:18,120
+All right, let's do a quiz.
+
+57
+00:02:18,120 --> 00:02:19,560
+So here's the quiz.
+
+58
+00:02:19,560 --> 00:02:21,580
+One of the reasons why an
+application may receive an
+
+59
+00:02:21,580 --> 00:02:23,960
+error back if the write
+was successful.
+
+60
+00:02:23,960 --> 00:02:25,380
+Check all that apply.
+
+61
+00:02:25,380 --> 00:02:28,000
+The network TCP connection
+between the application and
+
+62
+00:02:28,000 --> 00:02:30,803
+the server was reset, between
+the time of the write and the
+
+63
+00:02:30,803 --> 00:02:32,480
+time of the get last
+error call.
+
+64
+00:02:32,480 --> 00:02:34,890
+The Mongodb server terminates
+between the write and the get
+
+65
+00:02:34,890 --> 00:02:36,060
+last error call.
+
+66
+00:02:36,060 --> 00:02:39,030
+The network fails between the
+time of the write and the time
+
+67
+00:02:39,030 --> 00:02:40,710
+of the get last error call.
+
+68
+00:02:40,710 --> 00:02:42,840
+Or the write violates a primary
+key constraint on the
+
+69
+00:02:42,840 --> 00:02:44,140
+collection and must
+be rolled back.
+
+70
+00:02:44,140 --> 00:02:45,390

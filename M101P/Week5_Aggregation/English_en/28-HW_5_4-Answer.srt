@@ -1,0 +1,263 @@
+1
+00:00:00,000 --> 00:00:00,110
+
+2
+00:00:00,110 --> 00:00:03,220
+OK, this problem was called
+Removing Rural Residents.
+
+3
+00:00:03,220 --> 00:00:06,650
+And in it we said, well, the
+data set has some cities that
+
+4
+00:00:06,650 --> 00:00:07,490
+start with a digit.
+
+5
+00:00:07,490 --> 00:00:10,190
+And if a city starts with a
+digit, then let's assume that
+
+6
+00:00:10,190 --> 00:00:12,990
+it's really not a city, that's
+it's just a zip code that's
+
+7
+00:00:12,990 --> 00:00:14,230
+not in a city.
+
+8
+00:00:14,230 --> 00:00:17,260
+And can we figure out the sum
+total of people who live in a
+
+9
+00:00:17,260 --> 00:00:20,690
+city that starts with a digit as
+a name, ostensively, so we
+
+10
+00:00:20,690 --> 00:00:23,330
+can remove that number from the
+overall population number?
+
+11
+00:00:23,330 --> 00:00:25,220
+So we called it Removing Rural
+Residents, although what
+
+12
+00:00:25,220 --> 00:00:27,150
+you're actually going to do in
+this problem is calculate the
+
+13
+00:00:27,150 --> 00:00:30,850
+total population of people who
+live in a rural area that's a
+
+14
+00:00:30,850 --> 00:00:32,580
+city that starts with a digit.
+
+15
+00:00:32,580 --> 00:00:36,250
+Now, to do this, we suggested
+that you might use the
+
+16
+00:00:36,250 --> 00:00:39,400
+substring operator to pull the
+first character out of the
+
+17
+00:00:39,400 --> 00:00:41,220
+city so that you
+can compare it.
+
+18
+00:00:41,220 --> 00:00:43,510
+Now, you could also do this
+with a regular expression.
+
+19
+00:00:43,510 --> 00:00:46,380
+And I specifically suggested
+a substring operator, not
+
+20
+00:00:46,380 --> 00:00:48,610
+because of efficiency or
+anything else, but just
+
+21
+00:00:48,610 --> 00:00:51,470
+because we hadn't gone over the
+substring operator, and I
+
+22
+00:00:51,470 --> 00:00:53,250
+thought it was an interesting
+operator, and I wanted to
+
+23
+00:00:53,250 --> 00:00:54,390
+expose you to it.
+
+24
+00:00:54,390 --> 00:00:56,510
+So that's why it's
+in this problem.
+
+25
+00:00:56,510 --> 00:00:58,850
+Let's look at the answer.
+
+26
+00:00:58,850 --> 00:01:01,640
+So the answer is-- as I said,
+we first do a projection to
+
+27
+00:01:01,640 --> 00:01:03,200
+the zip code database.
+
+28
+00:01:03,200 --> 00:01:06,800
+And we create the first
+character of the city.
+
+29
+00:01:06,800 --> 00:01:09,510
+We extract out just the first
+character of the city.
+
+30
+00:01:09,510 --> 00:01:13,020
+And we also carry through the
+population and the city name
+
+31
+00:01:13,020 --> 00:01:16,520
+and the zip code, which we now
+call zip, which was originally
+
+32
+00:01:16,520 --> 00:01:17,820
+the underscore ID.
+
+33
+00:01:17,820 --> 00:01:19,780
+And then we include the state.
+
+34
+00:01:19,780 --> 00:01:21,690
+I guess is also could
+have just said one.
+
+35
+00:01:21,690 --> 00:01:23,675
+Didn't need to say $city here,
+so that was sort of odd.
+
+36
+00:01:23,675 --> 00:01:26,830
+You could do it two different
+ways, but I did it this way.
+
+37
+00:01:26,830 --> 00:01:30,770
+Now, we're going to go through
+and we're going to match only
+
+38
+00:01:30,770 --> 00:01:32,940
+the cities that start
+with a digit.
+
+39
+00:01:32,940 --> 00:01:36,590
+So we're going to call match the
+first character being in
+
+40
+00:01:36,590 --> 00:01:39,020
+this array of digits.
+
+41
+00:01:39,020 --> 00:01:41,400
+At this point, we've got a set
+of documents that only
+
+42
+00:01:41,400 --> 00:01:44,110
+represent these people who live
+in the rural areas where
+
+43
+00:01:44,110 --> 00:01:45,270
+the city starts with a digit.
+
+44
+00:01:45,270 --> 00:01:48,030
+And we just want to get a sum of
+that population, so we just
+
+45
+00:01:48,030 --> 00:01:52,130
+run a grouping on id null,
+figure out the population, sum
+
+46
+00:01:52,130 --> 00:01:53,550
+of the populations that
+we see in every
+
+47
+00:01:53,550 --> 00:01:55,390
+document as it comes through.
+
+48
+00:01:55,390 --> 00:01:57,890
+And that's pretty much
+the entire answer.
+
+49
+00:01:57,890 --> 00:01:59,250
+I don't think there's
+anything more to it.
+
+50
+00:01:59,250 --> 00:02:00,580
+Nope, that's it.
+
+51
+00:02:00,580 --> 00:02:03,440
+Here we're going to run it and
+find out the population of the
+
+52
+00:02:03,440 --> 00:02:07,290
+rural areas is 298,015.
+
+53
+00:02:07,290 --> 00:02:10,979
+And let's see if that was the
+answer that was accepted.
+
+54
+00:02:10,979 --> 00:02:12,450
+And the answer is yes,
+that was the
+
+55
+00:02:12,450 --> 00:02:13,260
+answer that was accepted.
+
+56
+00:02:13,260 --> 00:02:15,420
+So that's how you
+do this problem.

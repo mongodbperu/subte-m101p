@@ -1,0 +1,215 @@
+1
+00:00:00,000 --> 00:00:00,120
+
+2
+00:00:00,120 --> 00:00:03,040
+We've talked about how you
+create indexes and we've
+
+3
+00:00:03,040 --> 00:00:06,200
+talked about how you use the
+explain command to figure out
+
+4
+00:00:06,200 --> 00:00:08,410
+what indexes are getting used
+and how they're getting used
+
+5
+00:00:08,410 --> 00:00:11,400
+in your queries, but ultimately,
+about the
+
+6
+00:00:11,400 --> 00:00:13,520
+performance of your programs
+you're going to need to do
+
+7
+00:00:13,520 --> 00:00:15,520
+some profiling to figure
+out what is
+
+8
+00:00:15,520 --> 00:00:17,500
+slow inside your programs.
+
+9
+00:00:17,500 --> 00:00:20,120
+Now, there's actually, there is
+a profiler built into Mongo
+
+10
+00:00:20,120 --> 00:00:22,760
+D and I'm going to teach you
+how to turn that on, but
+
+11
+00:00:22,760 --> 00:00:25,680
+before you even do that there's
+a default facility
+
+12
+00:00:25,680 --> 00:00:29,330
+that could help you and that
+is that Mongo automatically
+
+13
+00:00:29,330 --> 00:00:34,240
+logs slow queries of above 100
+milliseconds right to the log
+
+14
+00:00:34,240 --> 00:00:37,220
+that Mongo D writes when
+you start it up.
+
+15
+00:00:37,220 --> 00:00:39,880
+So this is a default
+logging facility
+
+16
+00:00:39,880 --> 00:00:41,360
+that can be very useful.
+
+17
+00:00:41,360 --> 00:00:43,480
+So let me show you
+how that works.
+
+18
+00:00:43,480 --> 00:00:46,760
+So I'm going to start Mongo
+D here with the default.
+
+19
+00:00:46,760 --> 00:00:48,750
+Here, I'll shut it down.
+
+20
+00:00:48,750 --> 00:00:50,800
+I have a DB path and
+nothing else set.
+
+21
+00:00:50,800 --> 00:00:55,060
+If I do that, all right, do
+nothing else and then I go
+
+22
+00:00:55,060 --> 00:00:57,540
+over here to my Mongo shell.
+
+23
+00:00:57,540 --> 00:00:59,455
+I'm going to have to reconnect,
+so the first time I
+
+24
+00:00:59,455 --> 00:01:01,990
+hit this, it's not
+going to do it.
+
+25
+00:01:01,990 --> 00:01:04,330
+And now, I'm going to do
+a find on the student's
+
+26
+00:01:04,330 --> 00:01:07,920
+collection, and student's
+collection is a 10 million
+
+27
+00:01:07,920 --> 00:01:10,170
+document collection that
+we've seen many times.
+
+28
+00:01:10,170 --> 00:01:14,230
+And I took all the indexes off
+it so it's going to be slow
+
+29
+00:01:14,230 --> 00:01:16,740
+since it has to scan the whole
+collection, if I look for
+
+30
+00:01:16,740 --> 00:01:18,720
+student ID 10,000.
+
+31
+00:01:18,720 --> 00:01:19,830
+So I'm going to do that.
+
+32
+00:01:19,830 --> 00:01:21,820
+It's going to take a while.
+
+33
+00:01:21,820 --> 00:01:24,260
+It has to spin up a disc even
+to do it because I haven't
+
+34
+00:01:24,260 --> 00:01:25,390
+done it in a while.
+
+35
+00:01:25,390 --> 00:01:27,582
+It finds the object in
+question, finds the
+
+36
+00:01:27,582 --> 00:01:29,060
+document, all good.
+
+37
+00:01:29,060 --> 00:01:35,450
+And if we go here, into the log,
+you can see, right here
+
+38
+00:01:35,450 --> 00:01:38,090
+it says that there was this
+really slow query.
+
+39
+00:01:38,090 --> 00:01:40,190
+It actually gives me the query,
+I looked for student ID
+
+40
+00:01:40,190 --> 00:01:44,910
+10,000 and it was in school dot
+students and it took about
+
+41
+00:01:44,910 --> 00:01:46,110
+four seconds.
+
+42
+00:01:46,110 --> 00:01:50,000
+Very useful and certainly, you
+should be checking your logs
+
+43
+00:01:50,000 --> 00:01:53,275
+to make sure you don't have a
+lot of slow queries and this
+
+44
+00:01:53,275 --> 00:01:55,180
+is something that's built in
+and you don't need to do
+
+45
+00:01:55,180 --> 00:01:56,880
+anything to get this.
+
+46
+00:01:56,880 --> 00:01:58,130
+It's automatic.

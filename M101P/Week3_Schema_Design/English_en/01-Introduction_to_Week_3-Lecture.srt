@@ -1,0 +1,75 @@
+1
+00:00:00,000 --> 00:00:00,680
+
+2
+00:00:00,680 --> 00:00:03,080
+Welcome to week 3 of M101P.
+
+3
+00:00:03,080 --> 00:00:05,570
+This week, we're going to
+go over schema design.
+
+4
+00:00:05,570 --> 00:00:08,610
+Now, I've told you that MongoDB
+has a dynamic schema,
+
+5
+00:00:08,610 --> 00:00:10,980
+and that each document can
+have its own schema.
+
+6
+00:00:10,980 --> 00:00:14,420
+And that makes it a little bit
+tough to decide what schema
+
+7
+00:00:14,420 --> 00:00:16,180
+each document should have.
+
+8
+00:00:16,180 --> 00:00:19,120
+In most applications, every
+document has the same schema.
+
+9
+00:00:19,120 --> 00:00:20,860
+But there's still choices
+to be made.
+
+10
+00:00:20,860 --> 00:00:23,030
+You can embed data in a
+document, or you could put
+
+11
+00:00:23,030 --> 00:00:24,690
+into its own collection.
+
+12
+00:00:24,690 --> 00:00:27,430
+And these decisions will have
+an impact on performance and
+
+13
+00:00:27,430 --> 00:00:28,940
+ease of programming.
+
+14
+00:00:28,940 --> 00:00:31,500
+So for a series of use cases,
+we're going to take you
+
+15
+00:00:31,500 --> 00:00:33,920
+through MongoDB's
+schema design.
+
+16
+00:00:33,920 --> 00:00:35,170
+Let's get started.
+
+17
+00:00:35,170 --> 00:00:35,840

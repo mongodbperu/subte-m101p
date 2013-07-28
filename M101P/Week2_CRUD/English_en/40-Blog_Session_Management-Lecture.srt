@@ -1,0 +1,390 @@
+1
+00:00:00,000 --> 00:00:00,210
+
+2
+00:00:00,210 --> 00:00:02,230
+OK, so I've created a
+user in the blog.
+
+3
+00:00:02,230 --> 00:00:04,050
+That user is me, erlichson.
+
+4
+00:00:04,050 --> 00:00:06,510
+And now I want to go through
+some of the session management
+
+5
+00:00:06,510 --> 00:00:10,680
+that goes on behind the scenes
+to present this welcome page
+
+6
+00:00:10,680 --> 00:00:12,880
+with the name erlichson on it.
+
+7
+00:00:12,880 --> 00:00:15,830
+So it all happens
+through cookies.
+
+8
+00:00:15,830 --> 00:00:20,510
+And if you go into MongoDB after
+you create a user when
+
+9
+00:00:20,510 --> 00:00:22,680
+you've completed the first
+part of the homework this
+
+10
+00:00:22,680 --> 00:00:25,880
+week, you should see
+the following.
+
+11
+00:00:25,880 --> 00:00:28,100
+I'm going to use blog, and
+then I'm going to show
+
+12
+00:00:28,100 --> 00:00:30,040
+collections.
+
+13
+00:00:30,040 --> 00:00:31,650
+And you're going to see
+three collections--
+
+14
+00:00:31,650 --> 00:00:34,360
+sessions, system.indexes,
+and users.
+
+15
+00:00:34,360 --> 00:00:37,823
+Let's focus on the sessions
+and users collections.
+
+16
+00:00:37,823 --> 00:00:40,880
+So, db.users.find--
+
+17
+00:00:40,880 --> 00:00:44,580
+you can see here that there's a
+user in this collection with
+
+18
+00:00:44,580 --> 00:00:46,880
+the ID erlichson, and that's
+me, with a hash
+
+19
+00:00:46,880 --> 00:00:48,390
+version of my password.
+
+20
+00:00:48,390 --> 00:00:51,010
+And we're going to give you the
+logic to do the hashing.
+
+21
+00:00:51,010 --> 00:00:55,260
+And there's also something in
+the sessions collection.
+
+22
+00:00:55,260 --> 00:00:58,290
+And that is an association
+between my web
+
+23
+00:00:58,290 --> 00:00:59,870
+session and my username.
+
+24
+00:00:59,870 --> 00:01:02,640
+So there's this long random,
+and that's going to be put
+
+25
+00:01:02,640 --> 00:01:04,030
+into the browser cookie.
+
+26
+00:01:04,030 --> 00:01:06,350
+And then it's associated
+with my username.
+
+27
+00:01:06,350 --> 00:01:10,430
+Now if we go here into the web
+browser, I've installed a
+
+28
+00:01:10,430 --> 00:01:11,530
+cookie utility.
+
+29
+00:01:11,530 --> 00:01:13,780
+And if you click on it, you
+can see the cookie that my
+
+30
+00:01:13,780 --> 00:01:16,590
+browser is presenting
+in this session.
+
+31
+00:01:16,590 --> 00:01:21,010
+And you can see that it starts
+with ab and ends with f.
+
+32
+00:01:21,010 --> 00:01:25,840
+And if you go here, you can see
+ab ends with f, that's the
+
+33
+00:01:25,840 --> 00:01:28,550
+exact same string that's
+in the sessions table.
+
+34
+00:01:28,550 --> 00:01:31,070
+So how does this session
+management work?
+
+35
+00:01:31,070 --> 00:01:32,390
+Let's go over it.
+
+36
+00:01:32,390 --> 00:01:35,220
+When the welcome page is
+presented, it's done through a
+
+37
+00:01:35,220 --> 00:01:36,450
+get request.
+
+38
+00:01:36,450 --> 00:01:40,370
+And what happens is the browser
+sends a request via
+
+39
+00:01:40,370 --> 00:01:44,410
+HTTP with the cookie present to
+your application, which is
+
+40
+00:01:44,410 --> 00:01:45,620
+written in Python.
+
+41
+00:01:45,620 --> 00:01:48,130
+And this is the blog
+application, and, of course,
+
+42
+00:01:48,130 --> 00:01:50,780
+it uses Bottle to take
+the HTTP requests.
+
+43
+00:01:50,780 --> 00:01:54,570
+And then the application
+makes a request
+
+44
+00:01:54,570 --> 00:01:58,020
+using PyMongo to MongoDB.
+
+45
+00:01:58,020 --> 00:02:03,010
+And it presents this session
+identifier, this session ID,
+
+46
+00:02:03,010 --> 00:02:05,430
+and then it gets back
+a username.
+
+47
+00:02:05,430 --> 00:02:11,100
+And then when the application
+responds, it responds with the
+
+48
+00:02:11,100 --> 00:02:14,330
+username embedded in
+the HTML page.
+
+49
+00:02:14,330 --> 00:02:18,300
+And then it says "welcome
+erlichson." And it does this
+
+50
+00:02:18,300 --> 00:02:19,700
+through this process.
+
+51
+00:02:19,700 --> 00:02:22,720
+Now let's look at one other
+flow, which is the flow for
+
+52
+00:02:22,720 --> 00:02:24,050
+logging in.
+
+53
+00:02:24,050 --> 00:02:25,750
+So let's go through that.
+
+54
+00:02:25,750 --> 00:02:28,110
+When you log in, there's
+a login page.
+
+55
+00:02:28,110 --> 00:02:31,190
+And that login page
+has a username and
+
+56
+00:02:31,190 --> 00:02:33,100
+password field on it.
+
+57
+00:02:33,100 --> 00:02:37,370
+And it's presented via
+a get request.
+
+58
+00:02:37,370 --> 00:02:39,910
+You're going to put username
+and password in, and it's
+
+59
+00:02:39,910 --> 00:02:43,540
+going to be sent via a post
+request to your blog.
+
+60
+00:02:43,540 --> 00:02:47,280
+And what the blog is going to
+do is check it against the
+
+61
+00:02:47,280 --> 00:02:52,130
+credentials inside the users
+collection inside MongoDB.
+
+62
+00:02:52,130 --> 00:02:55,950
+And if it looks like a valid
+login, it's going to create an
+
+63
+00:02:55,950 --> 00:02:57,440
+entry in the sessions
+collection.
+
+64
+00:02:57,440 --> 00:02:59,100
+And that's sessions collection,
+it's going to have
+
+65
+00:02:59,100 --> 00:03:02,000
+this long session ID which is
+going to become the cookie.
+
+66
+00:03:02,000 --> 00:03:05,430
+So it's going to respond back
+with the session information
+
+67
+00:03:05,430 --> 00:03:07,370
+if it's a valid login.
+
+68
+00:03:07,370 --> 00:03:11,320
+And then what's sent back your
+browser is actually a redirect
+
+69
+00:03:11,320 --> 00:03:13,890
+to the welcome page with
+the cookie set.
+
+70
+00:03:13,890 --> 00:03:16,465
+And so your browser is going
+to round trip that, and say
+
+71
+00:03:16,465 --> 00:03:18,525
+all right, and then redirects
+this to the welcome page so
+
+72
+00:03:18,525 --> 00:03:20,950
+then it's going to get
+on the welcome page.
+
+73
+00:03:20,950 --> 00:03:25,250
+And so this is a round trip
+because the browser gets a
+
+74
+00:03:25,250 --> 00:03:27,610
+redirect and then does a get
+on the welcome page.
+
+75
+00:03:27,610 --> 00:03:28,570
+And what does that get?
+
+76
+00:03:28,570 --> 00:03:31,210
+It's now going to present the
+cookie that it saw during the
+
+77
+00:03:31,210 --> 00:03:34,640
+redirect, and that's going
+to produce this "welcome
+
+78
+00:03:34,640 --> 00:03:35,525
+erlichson."
+
+79
+00:03:35,525 --> 00:03:37,790
+All right, so that's the flow
+of how session management
+
+80
+00:03:37,790 --> 00:03:39,550
+works inside the blog.
+
+81
+00:03:39,550 --> 00:03:41,790
+And now I'm going to show you
+some of the internals of the
+
+82
+00:03:41,790 --> 00:03:43,530
+blog so you're ready for
+this week's homework.
+
+83
+00:03:43,530 --> 00:03:44,780

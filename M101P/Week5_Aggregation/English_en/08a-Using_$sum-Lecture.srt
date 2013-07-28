@@ -1,0 +1,397 @@
+1
+00:00:00,000 --> 00:00:00,210
+
+2
+00:00:00,210 --> 00:00:03,330
+We've already showed you how to
+use sum to count the number
+
+3
+00:00:03,330 --> 00:00:05,380
+of products from each
+manufacturer.
+
+4
+00:00:05,380 --> 00:00:07,930
+What if we just want to sum
+up the prices that each
+
+5
+00:00:07,930 --> 00:00:09,400
+manufacturer charges?
+
+6
+00:00:09,400 --> 00:00:11,320
+That's a little bit of a strange
+thing to ask, but it's
+
+7
+00:00:11,320 --> 00:00:12,550
+not too hard to figure
+out, using
+
+8
+00:00:12,550 --> 00:00:14,260
+the aggregation framework.
+
+9
+00:00:14,260 --> 00:00:17,820
+Here's the original program that
+aggregated these number
+
+10
+00:00:17,820 --> 00:00:19,480
+of products by manufacturer.
+
+11
+00:00:19,480 --> 00:00:23,265
+And, in that case, we were using
+$sum, and we were using
+
+12
+00:00:23,265 --> 00:00:25,010
+the integer one here.
+
+13
+00:00:25,010 --> 00:00:26,480
+But if we want to sum
+the prices, we
+
+14
+00:00:26,480 --> 00:00:27,590
+just change it slightly.
+
+15
+00:00:27,590 --> 00:00:33,140
+And what we do is, we create a
+new key, called sum_prices.
+
+16
+00:00:33,140 --> 00:00:35,520
+And use the $sum operator.
+
+17
+00:00:35,520 --> 00:00:39,280
+And then, here, give $price,
+which is the column name from
+
+18
+00:00:39,280 --> 00:00:42,420
+the documents that are coming
+into the pipeline.
+
+19
+00:00:42,420 --> 00:00:44,140
+And, of course, we have
+quotes around it.
+
+20
+00:00:44,140 --> 00:00:47,940
+And we have to use $price so
+that MongoDB knows that it's
+
+21
+00:00:47,940 --> 00:00:50,810
+the price document key
+we're looking for.
+
+22
+00:00:50,810 --> 00:00:52,620
+Let's run that and
+see what we get.
+
+23
+00:00:52,620 --> 00:00:52,850
+All right.
+
+24
+00:00:52,850 --> 00:00:54,260
+This is the result right here.
+
+25
+00:00:54,260 --> 00:00:56,710
+I'll just bring it up and show
+you that I ran it here.
+
+26
+00:00:56,710 --> 00:00:57,210
+All right.
+
+27
+00:00:57,210 --> 00:00:59,330
+So Mongo, using_sum.js--
+
+28
+00:00:59,330 --> 00:01:01,250
+that was the file that
+I just showed you.
+
+29
+00:01:01,250 --> 00:01:04,970
+You can see that it just gives
+you a document in the result
+
+30
+00:01:04,970 --> 00:01:07,660
+set for each manufacturer and
+sums their prices up--
+
+31
+00:01:07,660 --> 00:01:09,470
+pretty straightforward.
+
+32
+00:01:09,470 --> 00:01:09,810
+All right.
+
+33
+00:01:09,810 --> 00:01:11,115
+Let's do a quiz.
+
+34
+00:01:11,115 --> 00:01:14,840
+For this quiz, we're going to
+have you write an aggregation
+
+35
+00:01:14,840 --> 00:01:16,380
+query using sum.
+
+36
+00:01:16,380 --> 00:01:19,570
+If you'd like, you can download
+the data set that I'm
+
+37
+00:01:19,570 --> 00:01:20,680
+going to use for this.
+
+38
+00:01:20,680 --> 00:01:22,400
+You don't need because I've
+given you enough information
+
+39
+00:01:22,400 --> 00:01:25,590
+to do it right here, but it
+might be useful to you to have
+
+40
+00:01:25,590 --> 00:01:27,660
+a data set on your local machine
+so you can play with
+
+41
+00:01:27,660 --> 00:01:28,710
+these queries.
+
+42
+00:01:28,710 --> 00:01:32,730
+This is a data set of zip code
+and population information in
+
+43
+00:01:32,730 --> 00:01:33,940
+the United States.
+
+44
+00:01:33,940 --> 00:01:37,970
+You can get it from
+media.mongodb.org/zips/json,
+
+45
+00:01:37,970 --> 00:01:42,400
+and you can import it using
+Mongo import into a zips
+
+46
+00:01:42,400 --> 00:01:45,210
+collection, inside any database
+of your choosing.
+
+47
+00:01:45,210 --> 00:01:48,370
+Now, just to give you folks
+from outside the US some
+
+48
+00:01:48,370 --> 00:01:50,700
+background on the way
+this data looks,
+
+49
+00:01:50,700 --> 00:01:52,450
+this is a city name.
+
+50
+00:01:52,450 --> 00:01:54,080
+This is the state.
+
+51
+00:01:54,080 --> 00:01:56,805
+There's 50 states in the United
+States, and each one of
+
+52
+00:01:56,805 --> 00:01:58,230
+them has a two letter
+abbreviation.
+
+53
+00:01:58,230 --> 00:01:59,770
+So LA is Alabama.
+
+54
+00:01:59,770 --> 00:02:01,570
+NY would be New York.
+
+55
+00:02:01,570 --> 00:02:04,040
+The states are non-overlapping.
+
+56
+00:02:04,040 --> 00:02:05,980
+These are postal codes,
+right here.
+
+57
+00:02:05,980 --> 00:02:09,680
+We call this a zip code, but
+it's also just a postal code.
+
+58
+00:02:09,680 --> 00:02:13,050
+The postal codes are
+non-overlapping; although, a
+
+59
+00:02:13,050 --> 00:02:16,750
+city may span multiple
+zip codes--
+
+60
+00:02:16,750 --> 00:02:18,680
+multiple postal codes.
+
+61
+00:02:18,680 --> 00:02:20,850
+This is some geolocation
+information about
+
+62
+00:02:20,850 --> 00:02:21,710
+where the city is.
+
+63
+00:02:21,710 --> 00:02:22,930
+We're not going to use
+that right now.
+
+64
+00:02:22,930 --> 00:02:26,210
+This is the population
+of this postal code--
+
+65
+00:02:26,210 --> 00:02:27,740
+that is the zip code.
+
+66
+00:02:27,740 --> 00:02:29,170
+So that's the way this
+data set looks.
+
+67
+00:02:29,170 --> 00:02:32,330
+And what I'd like you to do, is
+write an aggregation query
+
+68
+00:02:32,330 --> 00:02:35,450
+to sum up the population
+by state.
+
+69
+00:02:35,450 --> 00:02:39,740
+So you need to group by state
+and sum up the population.
+
+70
+00:02:39,740 --> 00:02:42,410
+Now, so that our quiz checker
+can check it-- our quiz
+
+71
+00:02:42,410 --> 00:02:43,940
+checker isn't that
+sophisticated--
+
+72
+00:02:43,940 --> 00:02:47,230
+make sure that you call the key
+that's going to hold the
+
+73
+00:02:47,230 --> 00:02:49,530
+population and the resulting
+documents--
+
+74
+00:02:49,530 --> 00:02:51,000
+call it population.
+
+75
+00:02:51,000 --> 00:02:54,370
+And it'd be helpful if you could
+put quotes around the
+
+76
+00:02:54,370 --> 00:02:56,890
+different key names and the
+different operators.
+
+77
+00:02:56,890 --> 00:02:59,340
+That'll probably work
+better for you.
+
+78
+00:02:59,340 --> 00:03:01,380
+The collection is assumed
+to be called zips.
+
+79
+00:03:01,380 --> 00:03:03,000
+So it's going to be something
+along the lines of
+
+80
+00:03:03,000 --> 00:03:07,220
+db.zips.aggregate, and then
+open parenthesis, and your
+
+81
+00:03:07,220 --> 00:03:09,180
+long expression, and
+close parentheses.
+
+82
+00:03:09,180 --> 00:03:11,680
+So we want an aggregation query
+that'll tell us the
+
+83
+00:03:11,680 --> 00:03:12,480
+population--
+
+84
+00:03:12,480 --> 00:03:13,800
+sum of the population--
+
+85
+00:03:13,800 --> 00:03:16,520
+by each of the 50 states
+of the United States.
+
+86
+00:03:16,520 --> 00:03:17,770
