@@ -1,320 +1,320 @@
-1
+﻿1
 00:00:00,000 --> 00:00:00,290
 
 2
 00:00:00,290 --> 00:00:01,770
-In this class, we're
-going to build a
+En esta clase vamos
+a crear un
 
 3
 00:00:01,770 --> 00:00:04,160
-blog backed by MongoDB.
+un blog respaldado por MongoDB.
 
 4
 00:00:04,160 --> 00:00:06,190
-And that's going to be a web
-application, and we're going
+Y va a ser una aplicación
+web, que vamos a 
 
 5
 00:00:06,190 --> 00:00:07,900
-to do it using Python.
+hacer usando Python.
 
 6
 00:00:07,900 --> 00:00:10,630
-We need a web framework to do
-this in, and one of the
+Necesitamos un framework web en
+el que hacer esto, y uno de los
 
 7
 00:00:10,630 --> 00:00:13,620
-simplest web frameworks out
-there, which I like because it
+frameworks web más simples
+que hay por ahí, que me gusta porque
 
 8
 00:00:13,620 --> 00:00:14,590
-is pretty simple and
+es bastante simple y 
 
 9
 00:00:14,590 --> 00:00:16,780
-straightforward, is called Bottle.
+sencillo, se llama Bottle.
 
 10
 00:00:16,780 --> 00:00:21,640
-And Bottle is basically one
-Python file that can run a web
+Y Bottle es básicamente un
+fichero Python que puede ejecutar
 
 11
 00:00:21,640 --> 00:00:25,445
-server and let you take requests
-at certain URLs and
+un servidor web que permite recibir
+peticiones a ciertas URLs,
 
 12
 00:00:25,445 --> 00:00:29,120
-do basic form processing, get
-some templates for returning
+hacer procesamiento básico de formularios y
+recuperar algunas plantillas para devolver
 
 13
 00:00:29,120 --> 00:00:30,580
-information to the user.
+información al usuario.
 
 14
 00:00:30,580 --> 00:00:33,020
-So let's go through and
-take a look at that.
+Así que continuemos y 
+echémosle un vistazo.
 
 15
 00:00:33,020 --> 00:00:37,400
-You can go to
-bottle.py.org/doc/dev and you
+Puedes ir a
+bottlepy.org/doc/dev y
 
 16
 00:00:37,400 --> 00:00:41,000
-can see that it talks about
-Bottle and how it works and
+verás que habla sobre
+Bottle, cómo funciona y 
 
 17
 00:00:41,000 --> 00:00:41,930
-what its features are.
+qué características tiene.
 
 18
 00:00:41,930 --> 00:00:44,330
-And we're not going to get too
-much into that in this course.
+Y no vamos a profundizar
+mucho en eso en este curso.
 
 19
 00:00:44,330 --> 00:00:46,130
-We're going to give you a lot
-of the code and we're not
+Te vamos a dar un montón
+de código y no vamos a 
 
 20
 00:00:46,130 --> 00:00:47,740
-going to heavily test
-you on that.
+examinarte en profundidad
+en eso.
 
 21
 00:00:47,740 --> 00:00:51,200
-But you can see, they have a
-listed Hello World program,
+Como puedes ver, tienen listado
+un programa Hello World
 
 22
 00:00:51,200 --> 00:00:53,410
-and they also have a suggestion
-that you use easy
+y también sugieren que
+uses easy_install
 
 23
 00:00:53,410 --> 00:00:55,900
-install to install Bottle.
+para instalar Bottle.
 
 24
 00:00:55,900 --> 00:00:58,410
-So I am going to try that,
-and we're going to
+Así que voy a probar eso,
+y vamos a ver
 
 25
 00:00:58,410 --> 00:01:00,150
-see how that goes.
+qué tal va.
 
 26
 00:01:00,150 --> 00:01:05,019
-So here I am in my window, and
-I'm going to run easy_install.
+Aquí estoy en mi ventana y
+voy a ejecutar easy_install.
 
 27
 00:01:05,019 --> 00:01:07,390
-Actually, I'm already in root,
-which I know you need to be to
+En realidad ya estoy como root,
+porque sé que necesito serlo para
 
 28
 00:01:07,390 --> 00:01:10,080
-make this work, and I'm going
-to run easy_install.
+que esto funcione, y voy a 
+ejecutar easy_install.
 
 29
 00:01:10,080 --> 00:01:13,110
-And let's see, it seems
-to have worked.
+Y veamos, parece que
+ha funcionado.
 
 30
 00:01:13,110 --> 00:01:16,640
-So if that's true, then I should
-be able to run their
+Por lo que si es cierto, entonces
+debería poder ejecutar su
 
 31
 00:01:16,640 --> 00:01:17,480
-Hello World program.
+programa Hello World.
 
 32
 00:01:17,480 --> 00:01:18,900
-Let's see if that works.
+Veamos si funciona.
 
 33
 00:01:18,900 --> 00:01:21,570
-So you can use any text
-editor you want.
+Puedes usar el editor
+de texto que prefieras.
 
 34
 00:01:21,570 --> 00:01:23,660
-I'm most comfortable
-with Emacs.
+Yo me siento más cómodo
+con Emacs.
 
 35
 00:01:23,660 --> 00:01:27,480
-What I've done here is, I've
-copied the Hello World program
+Lo que he hecho aquí es, he 
+copiado el programa Hello World
 
 36
 00:01:27,480 --> 00:01:28,545
-into my text window.
+en mi ventana de texto.
 
 37
 00:01:28,545 --> 00:01:30,130
-And it's pretty straightforward.
+Y es bastante sencillo.
 
 38
 00:01:30,130 --> 00:01:31,130
-We'll see what it does.
+Veremos qué hace.
 
 39
 00:01:31,130 --> 00:01:34,970
-Basically, it looks like it
-creates a route, which is a
+Básicamente, parece que 
+crea una ruta, que es una
 
 40
 00:01:34,970 --> 00:01:41,110
-URL that's going to watch at
-/hello/name, where it will
+URL que va a apuntar a
+/hello/name, donde encontrará
 
 41
 00:01:41,110 --> 00:01:45,290
-find that name from the URL,
-and it will print out a web
+ese nombre en la URL,
+y lo mostrará en una página
 
 42
 00:01:45,290 --> 00:01:48,380
-page with hello your name.
+web con "hello tu nombre".
 
 43
 00:01:48,380 --> 00:01:50,480
-And it runs it at port 8080.
+Y lo ejecuta en el puerto 8080.
 
 44
 00:01:50,480 --> 00:01:52,210
-So that's the entire program.
+Así que ése es el programa completo.
 
 45
 00:01:52,210 --> 00:01:54,350
-So let's see if that works.
+Veamos si funciona.
 
 46
 00:01:54,350 --> 00:01:58,510
-So we'll go into the terminal
-window, and we'll go into our
+Entonces vamos a la ventana
+del terminal y entraremos en
 
 47
 00:01:58,510 --> 00:02:01,450
-program and we'll
-run Hello World.
+nuestro programa y 
+ejecutaremos Hello World.
 
 48
 00:02:01,450 --> 00:02:04,930
-It says it's listening
-on port 8080.
+Dice que está escuchando
+en el puerto 8080.
 
 49
 00:02:04,930 --> 00:02:07,040
-So we're going to go into our
-web browser and we're going to
+Así que vamos a abrir nuestro
+navegador web e iremos a la
 
 50
 00:02:07,040 --> 00:02:11,560
-go to URL /hello/name and
-see if that works.
+URL /hello/name y
+veremos si funciona.
 
 51
 00:02:11,560 --> 00:02:15,220
-So here we go; hello Andrew.
+Y aquí vamos; "hello Andrew".
 
 52
 00:02:15,220 --> 00:02:19,100
-And here we go; hello
-Bob, hello
+Y aquí vamos; "hello
+Bob", "hello
 
 53
 00:02:19,100 --> 00:02:23,560
-Richard, and hello Dwight.
+Richard" y "hello Dwight".
 
 54
 00:02:23,560 --> 00:02:24,510
-So that works.
+Así que funciona.
 
 55
 00:02:24,510 --> 00:02:25,770
-And you're welcome to
-try to get this
+Y te invitamos a 
+probar a ejecutarlo
 
 56
 00:02:25,770 --> 00:02:27,280
-running on your own computer.
+en tu propio ordenador.
 
 57
 00:02:27,280 --> 00:02:29,010
-You're going to have to that
-for your first homework
+Vas a tener que hacer 
+eso para tu primera
 
 58
 00:02:29,010 --> 00:02:29,650
-assignment.
+tarea.
 
 59
 00:02:29,650 --> 00:02:33,870
-But again, this is a basic
-Python program that imports
+Pero de nuevo, éste es un programa
+Python básico que importa
 
 60
 00:02:33,870 --> 00:02:36,485
-certain methods from
-the module Bottle.
+ciertos métodos del
+módulo Bottle.
 
 61
 00:02:36,485 --> 00:02:38,590
-It imports the route method,
-the run method,
+Importa el método "route",
+el método "run",
 
 62
 00:02:38,590 --> 00:02:39,920
-the temporal method.
+el método "temporal".
 
 63
 00:02:39,920 --> 00:02:42,625
-It creates a route, which means
-it's a URL path that
+Crea una ruta, que significa
+que es una URL sobre
 
 64
 00:02:42,625 --> 00:02:46,290
-it's going to listen on and
-answer requests for.
+la que va a escuchar y
+responder a las peticiones.
 
 65
 00:02:46,290 --> 00:02:49,040
-In this case, it's dynamic
-ones, so it teaches us
+En este caso, es una ruta
+dinámica, por lo que nos enseña
 
 66
 00:02:49,040 --> 00:02:52,470
-something about dynamic URLs,
-that it can take requests for
+algo sobre URLs dinámicas,
+que pueden aceptar peticiones por
 
 67
 00:02:52,470 --> 00:02:56,530
-/hello/ any string name and then
-it will return an HTML
+/hello/ y cualquier nombre y 
+devolverá un documento
 
 68
 00:02:56,530 --> 00:02:58,380
-document with your name in it.
+HTML con tu nombre dentro.
 
 69
 00:02:58,380 --> 00:02:59,740
-So that's the way Bottle works.
+Y así es como funciona Bottle.
 
 70
 00:02:59,740 --> 00:03:00,990
