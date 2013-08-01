@@ -1,0 +1,234 @@
+﻿1
+00:00:00,000 --> 00:00:01,290
+
+2
+00:00:01,290 --> 00:00:03,800
+Ahora que tenemos MongoDB
+instalado en nuestra máquina
+
+3
+00:00:03,800 --> 00:00:06,910
+Windows, a continuación necesitamos
+instalar Python, porque
+
+4
+00:00:06,910 --> 00:00:08,700
+vamos a usar Python
+en este curso.
+
+5
+00:00:08,700 --> 00:00:10,690
+Podrías tener Python
+ya instalado.
+
+6
+00:00:10,690 --> 00:00:13,210
+Y si tienes Python
+instalado, genial.
+
+7
+00:00:13,210 --> 00:00:15,490
+No necesitas instalarlo
+de nuevo.
+
+8
+00:00:15,490 --> 00:00:18,050
+Pero si no lo tienes, 
+simplemente usarás Google
+
+9
+00:00:18,050 --> 00:00:19,700
+para descargar Python.
+
+10
+00:00:19,700 --> 00:00:23,610
+Y entonces si vas al primer
+enlace justo aquí, verás
+
+11
+00:00:23,610 --> 00:00:27,890
+que es la
+página python.org.
+
+12
+00:00:27,890 --> 00:00:30,000
+Y vamos a ir a por
+el instalador
+
+13
+00:00:30,000 --> 00:00:32,920
+de Windows justo aquí, 2.7.3.
+
+14
+00:00:32,920 --> 00:00:35,690
+Voy a hacer click en él
+y descargarlo.
+
+15
+00:00:35,690 --> 00:00:37,980
+Y entonces voy a mostrarlo
+en la carpeta.
+
+16
+00:00:37,980 --> 00:00:40,290
+Y voy a hacer doble
+click en él.
+
+17
+00:00:40,290 --> 00:00:41,650
+En realidad lo descargué
+previamente.
+
+18
+00:00:41,650 --> 00:00:43,060
+Voy a ejecutarlo.
+
+19
+00:00:43,060 --> 00:00:44,560
+Instalar para todos los usuarios.
+
+20
+00:00:44,560 --> 00:00:48,030
+Python, Python, chequear
+seguridad.
+
+21
+00:00:48,030 --> 00:00:49,460
+Di que sí.
+
+22
+00:00:49,460 --> 00:00:51,170
+Muy bien, genial.
+
+23
+00:00:51,170 --> 00:00:55,090
+Ahora, lo que hace por defecto
+es ponerlo justo en la unidad
+
+24
+00:00:55,090 --> 00:00:57,110
+C, Python 2.7.
+
+25
+00:00:57,110 --> 00:01:03,340
+Y lo que vas a querer hacer
+es añadir ese directorio a
+
+26
+00:01:03,340 --> 00:01:05,950
+tu path tal y como 
+hicimos antes para que
+
+27
+00:01:05,950 --> 00:01:06,960
+podamos acceder a él.
+
+28
+00:01:06,960 --> 00:01:08,910
+Así que hagamos eso.
+
+29
+00:01:08,910 --> 00:01:12,030
+Por lo que vamos a ir aquí,
+escribe "Computer".
+
+30
+00:01:12,030 --> 00:01:15,240
+Y ve a "System Properties".
+
+31
+00:01:15,240 --> 00:01:18,780
+Voy a ir a "Advanced
+System Settings" por aquí y
+
+32
+00:01:18,780 --> 00:01:20,790
+a "Environment Variables".
+
+33
+00:01:20,790 --> 00:01:23,625
+Bajo hasta mi variable "Path".
+
+34
+00:01:23,625 --> 00:01:24,900
+Está justo aquí.
+
+35
+00:01:24,900 --> 00:01:26,150
+Y voy a editarla.
+
+36
+00:01:26,150 --> 00:01:27,060
+Iré hasta el final.
+
+37
+00:01:27,060 --> 00:01:30,410
+El separador, de nuevo, parece
+ser un punto y coma.
+
+38
+00:01:30,410 --> 00:01:34,930
+Entoces escribe unidad C, para
+que vaya a la unidad C, dos puntos
+
+39
+00:01:34,930 --> 00:01:38,230
+barra Python 2.7.
+
+40
+00:01:38,230 --> 00:01:39,780
+Ya lo he hecho.
+
+41
+00:01:39,780 --> 00:01:45,650
+Voy a decir, OK, OK,
+OK, y cierra eso.
+
+42
+00:01:45,650 --> 00:01:49,780
+Ahora, si abres un terminal,
+con el indicador del sistema, y
+
+43
+00:01:49,780 --> 00:01:52,870
+escribes Python, accedes al
+intérprete de Python.
+
+44
+00:01:52,870 --> 00:01:55,690
+Print hello world.
+
+45
+00:01:55,690 --> 00:01:57,560
+E imprime "hello world".
+
+46
+00:01:57,560 --> 00:01:58,260
+Excelente.
+
+47
+00:01:58,260 --> 00:02:02,600
+Ahora ya tenemos Python instalado
+en nuestro equipo.
+
+48
+00:02:02,600 --> 00:02:05,940
+El siguiente paso que necesitamos es
+instalar PyMongo.
+
+49
+00:02:05,940 --> 00:02:09,320
+Y necesitamos instalar el pequeño
+framework "bottle".
+
+50
+00:02:09,320 --> 00:02:12,550
+Así que en la siguiente lección te
+enseñaré cómo hacerlo en un
+
+51
+00:02:12,550 --> 00:02:13,800
+equipo Windows.
+
+52
+00:02:13,800 --> 00:02:14,420
