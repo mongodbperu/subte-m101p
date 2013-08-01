@@ -1,14 +1,14 @@
-1
+ï»¿1
 00:00:00,000 --> 00:00:01,830
 
 2
 00:00:01,830 --> 00:00:05,090
 Vamos a hablar sobre la 
-instalación de MongoDB en Windows,
+instalaciÃ³n de MongoDB en Windows,
 
 3
 00:00:05,090 --> 00:00:07,530
-así que vamos a ello.
+asÃ­ que vamos a ello.
 
 4
 00:00:07,530 --> 00:00:09,960
@@ -27,7 +27,7 @@ los binarios de MongoDB.
 7
 00:00:15,240 --> 00:00:18,910
 Vamos a las descargas en el site de MongoDB,
-y luego elegiremos cuál
+y luego elegiremos cuÃ¡l
 
 8
 00:00:18,910 --> 00:00:20,340
@@ -35,23 +35,23 @@ queremos descargar.
 
 9
 00:00:20,340 --> 00:00:22,320
-Verás las diferentes
-versiones aquí.
+VerÃ¡s las diferentes
+versiones aquÃ­.
 
 10
 00:00:22,320 --> 00:00:24,960
 Generalmente, vas a querer
-la primera, que será
+la primera, que serÃ¡
 
 11
 00:00:24,960 --> 00:00:26,680
-la versión actual
-de producción.
+la versiÃ³n actual
+de producciÃ³n.
 
 12
 00:00:26,680 --> 00:00:28,470
-Los números pares para
-el dígito central
+Los nÃºmeros pares para
+el dÃ­gito central
 
 13
 00:00:28,470 --> 00:00:30,040
@@ -59,21 +59,21 @@ son las versiones estables.
 
 14
 00:00:30,040 --> 00:00:33,220
-Los números impares para el dígito
+Los nÃºmeros impares para el dÃ­gito
 central son la rama de desarrollo.
 
 15
 00:00:33,220 --> 00:00:36,550
-Y aquí vemos la versión
-candidata para la próxima versión
+Y aquÃ­ vemos la versiÃ³n
+candidata para la prÃ³xima versiÃ³n
 
 16
 00:00:36,550 --> 00:00:38,860
-estable, que será la 2.2.1.
+estable, que serÃ¡ la 2.2.1.
 
 17
 00:00:38,860 --> 00:00:40,720
-Pero esa es aún una versión
+Pero esa es aÃºn una versiÃ³n
 candidata, por lo que
 
 18
@@ -82,12 +82,12 @@ elegiremos la 2.2.0.
 
 19
 00:00:43,630 --> 00:00:45,380
-Por aquí están los 
+Por aquÃ­ estÃ¡n los 
 binarios para Windows.
 
 20
 00:00:45,380 --> 00:00:49,310
-Normalmente, siempre querrás
+Normalmente, siempre querrÃ¡s
 obtener el binario de 64 bits.
 
 21
@@ -97,35 +97,35 @@ usa ficheros de mapas de memoria, por lo que
 
 22
 00:00:53,250 --> 00:00:55,990
-para bases de datos más grandes, necesitas
+para bases de datos mÃ¡s grandes, necesitas
 el binario de 64 bits.
 
 23
 00:00:55,990 --> 00:00:57,840
-Por lo tanto, siempre por defecto ése.
+Por lo tanto, siempre por defecto Ã©se.
 
 24
 00:00:57,840 --> 00:00:59,630
-Usa ése en producción.
+Usa Ã©se en producciÃ³n.
 
 25
 00:00:59,630 --> 00:01:02,670
-Si tu máquina de desarrollo
+Si tu mÃ¡quina de desarrollo
 de escritorio es
 
 26
 00:01:02,670 --> 00:01:05,330
-de 64 bits, usa esta versión.
+de 64 bits, usa esta versiÃ³n.
 
 27
 00:01:05,330 --> 00:01:08,310
-Porque si ése fuera el caso,
-ambas funcionarán en
+Porque si Ã©se fuera el caso,
+ambas funcionarÃ¡n en
 
 28
 00:01:08,310 --> 00:01:10,020
-tu escritorio, pero querrás
-usar ésta
+tu escritorio, pero querrÃ¡s
+usar Ã©sta
 to use this and just be
 
 29
@@ -139,22 +139,22 @@ de 32 bits en tu
 
 31
 00:01:13,250 --> 00:01:14,680
-escritorio, está bien.
+escritorio, estÃ¡ bien.
 
 32
 00:01:14,680 --> 00:01:16,360
 Para desarrollo, esto
-está bien.
+estÃ¡ bien.
 
 33
 00:01:16,360 --> 00:01:18,530
-Así que cualquiera de ellos
+AsÃ­ que cualquiera de ellos
 es apropiado.
 
 34
 00:01:18,530 --> 00:01:21,050
-Y de estos dos, verás que
-hay un binario especial aquí
+Y de estos dos, verÃ¡s que
+hay un binario especial aquÃ­
 
 35
 00:01:21,050 --> 00:01:23,130
@@ -163,21 +163,21 @@ bajo 64 bits llamado 2008+.
 36
 00:01:23,130 --> 00:01:25,730
 Si miras en la parte inferior de
-la página, por el asterisco,
+la pÃ¡gina, por el asterisco,
 
 37
 00:01:25,730 --> 00:01:27,870
-te dará más detalles
-sobre esta versión.
+te darÃ¡ mÃ¡s detalles
+sobre esta versiÃ³n.
 
 38
 00:01:27,870 --> 00:01:29,620
 Si haces click, se 
-descargará.
+descargarÃ¡.
 
 39
 00:01:29,620 --> 00:01:32,590
-Esta versión usa una API nueva
+Esta versiÃ³n usa una API nueva
 en Windows llamada Slim
 
 40
@@ -192,11 +192,11 @@ si tienes una
 
 42
 00:01:37,150 --> 00:01:38,185
-versión reciente de Windows.
+versiÃ³n reciente de Windows.
 
 43
 00:01:38,185 --> 00:01:43,150
-Eso sería Windows Server
+Eso serÃ­a Windows Server
 2008 R2 y superiores y Windows
 
 44
@@ -206,7 +206,7 @@ de escritorio.
 
 45
 00:01:46,590 --> 00:01:49,580
-Así que yo tengo Windows 7 aquí,
+AsÃ­ que yo tengo Windows 7 aquÃ­,
 creo, por lo que acabo de 
 
 46
@@ -215,8 +215,8 @@ descargar esto.
 
 47
 00:01:51,140 --> 00:01:53,070
-Ahora, si haces click aquí,
-se descargará.
+Ahora, si haces click aquÃ­,
+se descargarÃ¡.
 
 48
 00:01:53,070 --> 00:01:56,380
@@ -229,40 +229,40 @@ lo que he descargado.
 
 50
 00:01:58,310 --> 00:02:01,940
-Y aquí está, bajo mi
+Y aquÃ­ estÃ¡, bajo mi
 directorio "downloads".
 
 51
 00:02:01,940 --> 00:02:05,520
 Entonces, dentro de un fichero zip, tiene
-el "readme" y demás, y los
+el "readme" y demÃ¡s, y los
 
 52
 00:02:05,520 --> 00:02:06,930
-binarios están aquí también.
+binarios estÃ¡n aquÃ­ tambiÃ©n.
 
 53
 00:02:06,930 --> 00:02:09,229
 Lo que voy a hacer es poner
-esto en una ubicación más
+esto en una ubicaciÃ³n mÃ¡s
 
 54
 00:02:09,229 --> 00:02:11,720
-conveniente, así que 
-vamos allá.
+conveniente, asÃ­ que 
+vamos allÃ¡.
 
 55
 00:02:11,720 --> 00:02:13,760
-Sólo haré un directorio.
+SÃ³lo harÃ© un directorio.
 
 56
 00:02:13,760 --> 00:02:17,370
-Podrías poner esto donde
+PodrÃ­as poner esto donde
 prefieras.
 
 57
 00:02:17,370 --> 00:02:19,602
-No podrías ponerlo en
+No podrÃ­as ponerlo en
 un directorio superior si no
 
 58
@@ -281,7 +281,7 @@ Mongodb2_2.
 61
 00:02:24,080 --> 00:02:29,060
 Y luego volveremos por
-aquí, y abriré realemente una
+aquÃ­, y abrirÃ© realemente una
 
 62
 00:02:29,060 --> 00:02:29,920
@@ -289,17 +289,17 @@ ventana para eso.
 
 63
 00:02:29,920 --> 00:02:31,950
-Simplemente arrastraré y 
-soltaré sobre esto.
+Simplemente arrastrarÃ© y 
+soltarÃ© sobre esto.
 
 64
 00:02:31,950 --> 00:02:35,640
-Así que voy a seleccionar todo esto,
-y lo arrastraré aquí dentro.
+AsÃ­ que voy a seleccionar todo esto,
+y lo arrastrarÃ© aquÃ­ dentro.
 
 65
 00:02:35,640 --> 00:02:38,900
-Los extraeré del fichero
+Los extraerÃ© del fichero
 zip de forma permanente.
 
 66
@@ -317,16 +317,16 @@ y ya podemos ejecutarlo.
 
 69
 00:02:46,760 --> 00:02:48,965
-Así que es bastante
+AsÃ­ que es bastante
 simple.
 
 70
 00:02:48,965 --> 00:02:51,860
-Veremos los ficeros aquí.
+Veremos los ficeros aquÃ­.
 
 71
 00:02:51,860 --> 00:02:55,510
-Creo que los ficheros clave aquí son
+Creo que los ficheros clave aquÃ­ son
 mongod.exe, que es la
 
 72
@@ -355,7 +355,7 @@ y de DBA, utiliza mongo.exe.
 
 77
 00:03:11,030 --> 00:03:12,550
-Así que hagamos eso.
+AsÃ­ que hagamos eso.
 
 78
 00:03:12,550 --> 00:03:15,490
@@ -370,26 +370,26 @@ data barra db.
 80
 00:03:19,290 --> 00:03:22,390
 Puedes usar el que quieras si
-indicas el parámetro db path
+indicas el parÃ¡metro db path
 
 81
 00:03:22,390 --> 00:03:24,360
-en la línea de comandos,
-pero usemos aquí
+en la lÃ­nea de comandos,
+pero usemos aquÃ­
 
 82
 00:03:24,360 --> 00:03:25,210
-sólo el parámetro por defecto.
+sÃ³lo el parÃ¡metro por defecto.
 
 83
 00:03:25,210 --> 00:03:27,820
-Así que voy a hacer eso, y 
+AsÃ­ que voy a hacer eso, y 
 luego voy a crear un
 
 84
 00:03:27,820 --> 00:03:29,490
-subdirectorio bajo éste
-llamado así.
+subdirectorio bajo Ã©ste
+llamado asÃ­.
 
 85
 00:03:29,490 --> 00:03:32,490
@@ -415,35 +415,35 @@ la "D" viene de "daemon" --
 
 90
 00:03:38,830 --> 00:03:40,490
-Ahí está.
+AhÃ­ estÃ¡.
 
 91
 00:03:40,490 --> 00:03:42,680
-Si quieres, podrías
+Si quieres, podrÃ­as
 hacer esto.
 
 92
 00:03:42,680 --> 00:03:45,280
-Puedes ver qué versión
+Puedes ver quÃ© versiÃ³n
 tienes.
 
 93
 00:03:45,280 --> 00:03:49,230
-También puedes poner --help y
-obtener un montón de detalles sobre
+TambiÃ©n puedes poner --help y
+obtener un montÃ³n de detalles sobre
 
 94
 00:03:49,230 --> 00:03:50,950
-las opciones de línea de comandos.
+las opciones de lÃ­nea de comandos.
 
 95
 00:03:50,950 --> 00:03:55,690
-Ejecutaré esto ahora, sólo
-mongod.exe, tal que así.
+EjecutarÃ© esto ahora, sÃ³lo
+mongod.exe, tal que asÃ­.
 
 96
 00:03:55,690 --> 00:03:56,910
-Ejecútalo.
+EjecÃºtalo.
 
 97
 00:03:56,910 --> 00:03:59,615
@@ -452,36 +452,36 @@ de datos, creo.
 
 98
 00:03:59,615 --> 00:04:03,320
-Sí, datadb existe, por lo que
+SÃ­, datadb existe, por lo que
 vamos a probarla.
 
 99
 00:04:03,320 --> 00:04:06,872
-Accede, y ahí estamos.
+Accede, y ahÃ­ estamos.
 
 100
 00:04:06,872 --> 00:04:10,190
-Así que la base de datos está ahora
-ejecutándose en mi máquina local.
+AsÃ­ que la base de datos estÃ¡ ahora
+ejecutÃ¡ndose en mi mÃ¡quina local.
 
 101
 00:04:10,190 --> 00:04:14,220
-Resulta que éste es un equipo de 
+Resulta que Ã©ste es un equipo de 
 32 bits, por lo que en realidad fui 
 
 102
 00:04:14,220 --> 00:04:18,779
-y seleccioné la versión de 32 bits 
+y seleccionÃ© la versiÃ³n de 32 bits 
 de los binarios, ya que el
 
 103
 00:04:18,779 --> 00:04:21,300
-sistema operativo aquí 
+sistema operativo aquÃ­ 
 es de 32 bits.
 
 104
 00:04:21,300 --> 00:04:22,540
-Pero está en marcha y funcionando.
+Pero estÃ¡ en marcha y funcionando.
 
 105
 00:04:22,540 --> 00:04:24,100
@@ -499,13 +499,13 @@ de desarrollo y clientes
 
 108
 00:04:30,630 --> 00:04:32,890
-para tu lenguaje de programación,
-podrías probar esto ahora.
+para tu lenguaje de programaciÃ³n,
+podrÃ­as probar esto ahora.
 
 109
 00:04:32,890 --> 00:04:35,300
-Además, simplemente podemos entrar
-al shell de administración,
+AdemÃ¡s, simplemente podemos entrar
+al shell de administraciÃ³n,
 
 110
 00:04:35,300 --> 00:04:39,090
@@ -514,32 +514,32 @@ y conectarnos.
 
 111
 00:04:39,090 --> 00:04:43,370
-Así que el mongo shell es sólo 
+AsÃ­ que el mongo shell es sÃ³lo 
 una especie de shell administrativo
 
 112
 00:04:43,370 --> 00:04:45,400
-que se podría utilizar con 
+que se podrÃ­a utilizar con 
 otra base de datos.
 
 113
 00:04:45,400 --> 00:04:46,930
 Entonces, simplemente vamos a
-a conectarnos aquí
+a conectarnos aquÃ­
 
 114
 00:04:46,930 --> 00:04:48,780
-a la máquina local.
+a la mÃ¡quina local.
 
 115
 00:04:48,780 --> 00:04:50,770
-Por defecto, se conectará
-a la máquina local y a la 
+Por defecto, se conectarÃ¡
+a la mÃ¡quina local y a la 
 
 116
 00:04:50,770 --> 00:04:53,440
 base de datos "test", y luego 
-puedes ver las opciones aquí para
+puedes ver las opciones aquÃ­ para
 
 117
 00:04:53,440 --> 00:04:54,540
@@ -548,21 +548,21 @@ que desees.
 
 118
 00:04:54,540 --> 00:05:00,450
-Así que si hago esto, eso es 
+AsÃ­ que si hago esto, eso es 
 equivalente a simplemente ejecutarlo
 
 119
 00:05:00,450 --> 00:05:01,390
-por sí mismo.
+por sÃ­ mismo.
 
 120
 00:05:01,390 --> 00:05:03,460
-Y aquí estamos, conectados.
+Y aquÃ­ estamos, conectados.
 
 121
 00:05:03,460 --> 00:05:08,600
 Nos hemos conectado a nuestro servidor
-aquí, y hay una
+aquÃ­, y hay una
 
 122
 00:05:08,600 --> 00:05:11,610
@@ -571,11 +571,11 @@ variable predefinida llamada
 
 123
 00:05:11,610 --> 00:05:12,990
-conexión al servidor.
+conexiÃ³n al servidor.
 
 124
 00:05:12,990 --> 00:05:17,930
-En este punto, podríamos hacer
+En este punto, podrÃ­amos hacer
 algo como "show dbs" o
 
 125
@@ -589,12 +589,12 @@ no hay ninguna.
 
 127
 00:05:22,720 --> 00:05:25,100
-Por lo que podríamos hacer algo -- 
+Por lo que podrÃ­amos hacer algo -- 
 tenemos la base de datos "test" con
 
 128
 00:05:25,100 --> 00:05:26,780
-la que estamos trabajando aquí,
+la que estamos trabajando aquÃ­,
 "db.mycollection.insert".
 
 129
@@ -602,17 +602,17 @@ la que estamos trabajando aquí,
 
 130
 00:05:33,960 --> 00:05:36,350
-Y ahí tenemos algunos datos,
+Y ahÃ­ tenemos algunos datos,
 y esos son.
 
 131
 00:05:36,350 --> 00:05:38,160
-Ahora podríamos salir del shell
+Ahora podrÃ­amos salir del shell
 con Control C, o
 
 132
 00:05:38,160 --> 00:05:39,310
-podríamos escribir "exit".
+podrÃ­amos escribir "exit".
 
 133
 00:05:39,310 --> 00:05:42,580
@@ -621,7 +621,7 @@ veremos que hay
 
 134
 00:05:42,580 --> 00:05:44,280
-algunos ficheros ahí.
+algunos ficheros ahÃ­.
 
 135
 00:05:44,280 --> 00:05:47,720
@@ -639,21 +639,21 @@ Hay un servicio Windows.
 138
 00:05:50,670 --> 00:05:53,500
 Hay algunas opciones de 
-línea de comandos para ello.
+lÃ­nea de comandos para ello.
 
 139
 00:05:53,500 --> 00:05:55,340
 Y si miramos en la Ayuda,
-o también podrías mirar en la 
+o tambiÃ©n podrÃ­as mirar en la 
 
 140
 00:05:55,340 --> 00:05:57,980
-documentación, podrías
+documentaciÃ³n, podrÃ­as
 encontrar eso.
 
 141
 00:05:57,980 --> 00:06:00,990
-Creo que los verás --
+Creo que los verÃ¡s --
 
 142
 00:06:00,990 --> 00:06:01,750
@@ -661,7 +661,7 @@ desplaza hacia arriba.
 
 143
 00:06:01,750 --> 00:06:05,870
-Ahí lo tienes, Windows Service
+AhÃ­ lo tienes, Windows Service
 Control Manager Options.
 
 144
@@ -685,7 +685,7 @@ lo ejecutes como un servicio.
 
 148
 00:06:16,470 --> 00:06:20,420
-Así que hacer simplemente algo como
+AsÃ­ que hacer simplemente algo como
 esto es perfectamente adecuado
 
 149
