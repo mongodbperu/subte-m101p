@@ -125,12 +125,11 @@ ambas funcionarán en
 28
 00:01:08,310 --> 00:01:10,020
 tu escritorio, pero querrás
-usar ésta
-to use this and just be
+usar ésta si estás
 
 29
 00:01:10,020 --> 00:01:11,170
-[? cluster ?] reduction.
+en producción.
 
 30
 00:01:11,170 --> 00:01:13,250
@@ -452,12 +451,12 @@ de datos, creo.
 
 98
 00:03:59,615 --> 00:04:03,320
-Sí, datadb existe, por lo que
+Sí, data\db existe, por lo que
 vamos a probarla.
 
 99
 00:04:03,320 --> 00:04:06,872
-Accede, y ahí estamos.
+Acceso, y ahí estamos.
 
 100
 00:04:06,872 --> 00:04:10,190
@@ -616,7 +615,7 @@ podríamos escribir "exit".
 
 133
 00:05:39,310 --> 00:05:42,580
-Y si miramos en data/db, ahora
+Y si miramos en data\db, ahora
 veremos que hay 
 
 134
