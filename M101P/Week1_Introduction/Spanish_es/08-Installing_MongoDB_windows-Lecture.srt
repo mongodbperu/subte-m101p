@@ -12,7 +12,7 @@ así que vamos a ello.
 
 4
 00:00:07,530 --> 00:00:09,960
-Entonces vamos a ir al site
+Entonces vamos a ir al sitio web
 de MongoDB y vamos a 
 
 5
@@ -321,7 +321,7 @@ simple.
 
 70
 00:02:48,965 --> 00:02:51,860
-Veremos los ficeros aquí.
+Veremos los ficheros aquí.
 
 71
 00:02:51,860 --> 00:02:55,510
@@ -456,7 +456,7 @@ vamos a probarla.
 
 99
 00:04:03,320 --> 00:04:06,872
-Acceso, y ahí estamos.
+Permitir acceso, y ahí estamos.
 
 100
 00:04:06,872 --> 00:04:10,190
