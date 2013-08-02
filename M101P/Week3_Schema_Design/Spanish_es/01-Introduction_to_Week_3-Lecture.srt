@@ -1,0 +1,75 @@
+1
+00:00:00,000 --> 00:00:00,680
+
+2
+00:00:00,680 --> 00:00:03,080
+Bienvenido a la semana 3 de M101P.
+
+3
+00:00:03,080 --> 00:00:05,570
+Esta semana, vamos a
+ver acerca de diseño de esquemas.
+
+4
+00:00:05,570 --> 00:00:08,610
+Ahora, te he dicho que MongoDB
+tiene un esquema dinámico,
+
+5
+00:00:08,610 --> 00:00:10,980
+y que cada documento puede
+tener su propio esquema.
+
+6
+00:00:10,980 --> 00:00:14,420
+Y que eso hace un poco
+difícil decidir qué esquema
+
+7
+00:00:14,420 --> 00:00:16,180
+debería tener cada documento.
+
+8
+00:00:16,180 --> 00:00:19,120
+En muchas aplicaciones, todos los
+documentos tienen el mismo esquema.
+
+9
+00:00:19,120 --> 00:00:20,860
+Pero aún hay decisiones
+que tomar.
+
+10
+00:00:20,860 --> 00:00:23,030
+Puedes embeber datos en un
+documento, o podrías ponerlos
+
+11
+00:00:23,030 --> 00:00:24,690
+en su propia colección.
+
+12
+00:00:24,690 --> 00:00:27,430
+Y estas decisiones tendrán
+un impacto en el rendimiento y
+
+13
+00:00:27,430 --> 00:00:28,940
+en la facilidad de programación.
+
+14
+00:00:28,940 --> 00:00:31,500
+Así que por una serie de casos de uso,
+vamos a llevarte
+
+15
+00:00:31,500 --> 00:00:33,920
+a través del diseño de esquemas
+en MongoDB.
+
+16
+00:00:33,920 --> 00:00:35,170
+Empecemos.
+
+17
+00:00:35,170 --> 00:00:35,840
