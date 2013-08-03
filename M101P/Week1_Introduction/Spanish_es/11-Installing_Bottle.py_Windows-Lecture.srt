@@ -112,7 +112,7 @@ instalar Bottle?
 
 25
 00:00:59,720 --> 00:01:05,519
-Bien, "download setup tools."
+Bien, "download setup tools".
 Como hice eso en mi
 
 26
@@ -131,7 +131,7 @@ ligeramente diferentes.
 
 29
 00:01:09,710 --> 00:01:11,720
-Pero necesitar ir justo aquí.
+Pero necesitas ir justo aquí.
 
 30
 00:01:11,720 --> 00:01:14,230
@@ -146,7 +146,7 @@ te van a ofrecer easy_install.
 32
 00:01:16,690 --> 00:01:19,380
 Probablemente tengas una versión
-de Python de 32 buts, incluso si
+de Python de 32 bits, incluso si
 
 33
 00:01:19,380 --> 00:01:20,330
@@ -213,8 +213,8 @@ Python 2.7.
 
 47
 00:01:47,200 --> 00:01:50,470
-And it's going to put this stuff
-in lib site-packages.
+Y va a poner todo esto
+en lib\site-packages.
 
 48
 00:01:50,470 --> 00:01:51,990
@@ -240,7 +240,7 @@ y ver qué dijo.
 53
 00:01:59,660 --> 00:02:03,190
 Dijo, "easy_install
--U bottle." OK.
+-U bottle". OK.
 
 54
 00:02:03,190 --> 00:02:06,125
@@ -262,7 +262,7 @@ Está en el directorio Python.
 58
 00:02:09,389 --> 00:02:15,620
 Así que vamos a entrar ahí, cd
-\, cd Python 27, cd--
+\, cd Python27, cd --
 
 59
 00:02:15,620 --> 00:02:16,190
@@ -318,7 +318,7 @@ instaló?
 
 71
 00:02:35,370 --> 00:02:39,180
-Dijo que tenía instalada
+Dijo que ha instalado
 la versión 0.11.3.
 
 72
