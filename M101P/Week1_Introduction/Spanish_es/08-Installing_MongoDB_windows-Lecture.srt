@@ -26,7 +26,7 @@ los binarios de MongoDB.
 
 7
 00:00:15,240 --> 00:00:18,910
-Vamos a las descargas en el site de MongoDB,
+Vamos a las descargas en el sitio web de MongoDB,
 y luego elegiremos cuál
 
 8
