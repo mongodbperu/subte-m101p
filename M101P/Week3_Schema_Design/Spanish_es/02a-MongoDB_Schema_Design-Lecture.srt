@@ -35,10 +35,9 @@ tercera forma normal en MongoDB.
 Y hablaremos un poco
 acerca de la tercera forma normal
 
-
 9
 00:00:19,900 --> 00:00:20,930
-la siguiente lección.
+en la siguiente lección.
 
 10
 00:00:20,930 --> 00:00:24,380
@@ -240,7 +239,7 @@ tan importante como se
 51
 00:02:09,120 --> 00:02:10,600
 piensa debido a que se puede
-embebeber.
+embeber.
 
 52
 00:02:10,600 --> 00:02:13,090
@@ -318,7 +317,7 @@ estructura muy similar.
 68
 00:02:44,010 --> 00:02:46,570
 Y podría haber algunos
-cambios en aquel estructura,
+cambios en aquella estructura,
 
 69
 00:02:46,570 --> 00:02:49,120
@@ -360,7 +359,7 @@ Así que vayamos al primer cuestionario.
 77
 00:03:04,800 --> 00:03:08,590
 El primer cuestionario para diseño de
-esquemas es cuál es el único
+esquemas es �cuál es el único
 
 78
 00:03:08,590 --> 00:03:11,160
