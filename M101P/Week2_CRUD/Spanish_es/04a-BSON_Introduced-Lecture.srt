@@ -21,9 +21,6 @@ realidad MongoDB representa
 datos y cómo puedes comprender
 lo que hace el shell Mongo para
 
-data, and how you can understand
-how the Mongo shell
-
 6
 00:00:10,820 --> 00:00:12,170
 interpretar los datos
@@ -219,7 +216,7 @@ anidados, es decir, objetos
 
 46
 00:01:53,070 --> 00:01:57,380
-anidados, arreglos anidados,
+anidados, arrays anidados,
 es decir, objetos anidados
 
 47
@@ -249,7 +246,7 @@ binario, un tipo de dato llamado
 
 52
 00:02:13,940 --> 00:02:16,940
-la identifación única de cosas,
+la identificación única de cosas,
 un tipo de fecha y tiempo,
 
 53
@@ -270,11 +267,11 @@ mayormente para propósitos internos,
 56
 00:02:28,080 --> 00:02:31,180
 expresiones regulares en el
-protocolo de consultas y estampas 
+protocolo de consultas y timestamps 
 
 57
 00:02:31,180 --> 00:02:33,410
-de tiempo para propósitos de
+para propósitos de
 replicación.
 
 58
@@ -318,7 +315,7 @@ cadenas, que son interpretadas
 
 66
 00:02:55,280 --> 00:02:58,850
-como cadenas UTF-8, arreglos,
+como cadenas UTF-8, arrays,
 objetos, verdadero, falso,
 
 67
@@ -439,8 +436,8 @@ devuelve un nuevo objeto de fecha
 
 91
 00:03:58,890 --> 00:04:00,780
-el cual contiene una respectiva
-estampa de tiempo, lo cual es algo
+el cual contiene un respectivo
+timestamp, lo cual es algo
 
 92
 00:04:00,780 --> 00:04:02,810
@@ -577,8 +574,7 @@ números complejos,
 
 120
 00:05:01,170 --> 00:05:03,160
-arreglos, objetos, estampas
-de tiempo.
+arrays, objetos, timestamps.
 
 121
 00:05:03,160 --> 00:05:04,410

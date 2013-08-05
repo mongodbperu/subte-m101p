@@ -25,8 +25,8 @@ doble precisión--si eso te es
 
 7
 00:00:08,750 --> 00:00:12,510
-importante, arreglos, objetos
-y estampas de tiempo.
+importante, arrays, objetos
+y timestamps.
 
 8
 00:00:12,510 --> 00:00:15,110
