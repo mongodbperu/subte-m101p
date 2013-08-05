@@ -1,0 +1,44 @@
+1
+00:00:00,000 --> 00:00:00,310
+
+2
+00:00:00,310 --> 00:00:00,620
+Bien.
+
+3
+00:00:00,620 --> 00:00:03,800
+Y la respuesta es que el
+único factor más importante
+
+4
+00:00:03,800 --> 00:00:06,980
+para diseñar tu esquema en
+MongoDB es coincidir los
+
+5
+00:00:06,980 --> 00:00:09,880
+patrones de acceso a datos de
+tu aplicación.
+
+6
+00:00:09,880 --> 00:00:12,710
+Coincidir estos patrones de acceso a datos
+porque esa es la
+
+7
+00:00:12,710 --> 00:00:14,400
+manera en la que obtendrás
+el mejor rendimiento.
+
+8
+00:00:14,400 --> 00:00:17,490
+Esa es la forma en que vamos a
+obtener la mayor conveniencia de
+
+9
+00:00:17,490 --> 00:00:18,990
+programación en
+tu aplicación.
+
+10
+00:00:18,990 --> 00:00:20,240
