@@ -13,10 +13,11 @@ from unicodedata import normalize
 from tornado import gen, ioloop
 from tornado.options import define, options, parse_command_line
 
-define('mapping', type=str)
+define('mapping', type=str, help='Mapping file')
 define('source_dir', type=str, help='Source directory')
 define('destination_dir', type=str, help='Destination directory')
 define('caption_extension', type=str, default='srt', help='Caption extension')
+define('reverse', type=bool, default=False, help='Perform the reverse process')
 define('force', type=bool, help=('To force the creation of destination '
                                  'directory'))
 
@@ -85,13 +86,13 @@ def get_filename(filename_format, number, flat_concept, callback):
 
 
 @gen.engine
-def copy_file(source, filename_format, number, flat_concept, callback):
-    filename = yield gen.Task(get_filename, filename_format, number,
-        flat_concept)
+def copy_file(origin, destination, callback):
+    if options.reverse:
+        destination, origin = origin, destination
     try:
-        shutil.copy(os.path.join(options.source_dir, source),
-            os.path.join(options.destination_dir, filename))
-        logging.info('Copied %s to %s' % (source, filename))
+        shutil.copy(os.path.join(options.source_dir, origin),
+            os.path.join(options.destination_dir, destination))
+        logging.info('Copied %s to %s' % (origin, destination))
     except Exception as e:
         logging.error(e)
     callback()
@@ -108,17 +109,20 @@ def process_item(number, item, callback):
         source = '%s.%s' % (
             item[{True: 'lecture', False: 'answer'}[has_lecture]],
             options.caption_extension)
-        yield gen.Task(copy_file, source, __MAPPING_FORMAT2[has_lecture],
+        filename = yield gen.Task(get_filename, __MAPPING_FORMAT2[has_lecture],
             number, flat_concept)
+        yield gen.Task(copy_file, source, filename)
     else:
         if has_lecture:
             source = '%s.%s' % (item['lecture'], options.caption_extension)
-            yield gen.Task(copy_file, source, __MAPPING_FORMAT['lecture'],
+            filename = yield gen.Task(get_filename, __MAPPING_FORMAT['lecture'],
                 number, flat_concept)
+            yield gen.Task(copy_file, source, filename)
         if has_answer:
             source = '%s.%s' % (item['answer'], options.caption_extension)
-            yield gen.Task(copy_file, source, __MAPPING_FORMAT['answer'],
+            filename = yield gen.Task(get_filename, __MAPPING_FORMAT['answer'],
                 number, flat_concept)
+            yield gen.Task(copy_file, source, filename)
     callback()
 
 
