@@ -45,7 +45,8 @@ una forma de esquema.
 
 11
 00:00:21,270 --> 00:00:23,040
-But we call it schemaless.
+Pero nosotros lo llamamos
+"schemaless".
 
 12
 00:00:23,040 --> 00:00:25,920
