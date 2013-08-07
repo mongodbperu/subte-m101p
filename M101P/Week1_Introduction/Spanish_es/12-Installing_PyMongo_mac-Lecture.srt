@@ -22,7 +22,7 @@ MongoDB.
 
 6
 00:00:09,580 --> 00:00:14,570
-Y se está ejecutnado como un proceso
+Y se está ejecutando como un proceso
 mongod en nuestro equipo.
 
 7
