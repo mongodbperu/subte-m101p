@@ -262,7 +262,7 @@ con anterioridad.
 58
 00:02:31,260 --> 00:02:36,320
 Así que ejecuto "python
-pymongo_getting_starged.py",
+pymongo_getting_started.py",
 
 59
 00:02:36,320 --> 00:02:39,990
@@ -281,12 +281,12 @@ puedes verlo justo aquí.
 62
 00:02:44,790 --> 00:02:49,210
 Dice "Andrew", que es lo 
-está en la colección.
+que está en la colección.
 
 63
 00:02:49,210 --> 00:02:53,930
 Si entro aquí, ejecutamos
-Mongo y db.names.find.
+Mongo y db.names.find().
 
 64
 00:02:53,930 --> 00:02:56,830
@@ -312,7 +312,7 @@ y a continuación el nombre "Andrew".
 69
 00:03:08,300 --> 00:03:12,200
 Y el programa imprimió mi
-nombre justó ahí cuando ejecuté
+nombre justo ahí cuando ejecuté
 
 70
 00:03:12,200 --> 00:03:12,980
