@@ -80,11 +80,11 @@ a la base de datos "test".
 
 19
 00:00:32,610 --> 00:00:36,810
-Veamos qué devuelve "db.names.find".
+Veamos qué devuelve "db.names.find()".
 
 20
 00:00:36,810 --> 00:00:39,180
-Hay está el único objeto
+Ahí está el único objeto
 de la colección.
 
 21
@@ -147,7 +147,7 @@ Aquí vamos.
 
 34
 00:01:09,430 --> 00:01:10,930
-Hay está un "find" o "findOne".
+Ahí está, un "find" o "findOne".
 
 35
 00:01:10,930 --> 00:01:14,230
@@ -230,7 +230,7 @@ entonces hace un "update".
 
 52
 00:01:55,030 --> 00:02:01,490
-Y si recuerda, cuando hicimos
+Y si recuerdas, cuando hicimos
 ese "findOne" como éste y
 
 53
@@ -240,7 +240,7 @@ el ID del objeto aquí.
 
 54
 00:02:05,930 --> 00:02:10,270
-Así que cuando llamamos a "db.names.save"
+Así que cuando llamamos a "db.names.save(j)"
 con "j" de esa
 
 55
