@@ -8,7 +8,7 @@ proporciona a todos los usuarios
 
 3
 00:00:03,420 --> 00:00:06,930
-de Windows por ahí que quieran 
+de Windows que por ahí quieran 
 un poco de ayuda para instalar 
 
 4
@@ -68,7 +68,7 @@ soportados y los drivers.
 16
 00:00:35,050 --> 00:00:39,030
 Y vamos a ir al driver para
-Python driver justo aquí, a la
+Python, justo aquí, a la
 
 17
 00:00:39,030 --> 00:00:41,950
