@@ -208,7 +208,7 @@ interesante.
 47
 00:01:42,870 --> 00:01:46,570
 Comprueba si ya hay realmente
-un ID de objeto
+un ObjectId
 
 48
 00:01:46,570 --> 00:01:47,870
@@ -216,8 +216,8 @@ asociado.
 
 49
 00:01:47,870 --> 00:01:50,350
-Y si no hay un ID
-de objeto, le asigna
+Y si no hay un 
+ObjectId, le asigna
 
 50
 00:01:50,350 --> 00:01:51,850
@@ -225,7 +225,7 @@ uno y hace un "insert".
 
 51
 00:01:51,850 --> 00:01:55,030
-Y si hay un ID de objeto,
+Y si hay un ObjectId,
 entonces hace un "update".
 
 52
@@ -236,7 +236,7 @@ ese "findOne" como éste y
 53
 00:02:01,490 --> 00:02:05,930
 luego miramos a "j", teníamos
-el ID del objeto aquí.
+el ObjectId aquí.
 
 54
 00:02:05,930 --> 00:02:10,270
@@ -251,7 +251,7 @@ a través del comando "save".
 56
 00:02:13,750 --> 00:02:15,520
 Es decir, existe
-un ID de objeto.
+un ObjectId.
 
 57
 00:02:15,520 --> 00:02:20,270
