@@ -1,0 +1,291 @@
+﻿1
+00:00:00,000 --> 00:00:00,180
+
+2
+00:00:00,180 --> 00:00:00,520
+De acuerdo.
+
+3
+00:00:00,520 --> 00:00:03,160
+Así que hemos escrito un pequeño
+programa que obtiene datos de
+
+4
+00:00:03,160 --> 00:00:04,820
+la base de datos y los imprime
+en la pantalla.
+
+5
+00:00:04,820 --> 00:00:06,880
+Revisemos ese
+programa otra vez.
+
+6
+00:00:06,880 --> 00:00:08,900
+El programa "Empezando con
+PyMongo".
+
+7
+00:00:08,900 --> 00:00:12,960
+Y puedes ver aquí que
+importamos la clase MongoClient
+
+8
+00:00:12,960 --> 00:00:14,410
+del paquete pymongo.
+
+9
+00:00:14,410 --> 00:00:16,470
+Y luego nos conectamos al
+servidor de base de datos.
+
+10
+00:00:16,470 --> 00:00:17,310
+Nos conectamos a la base de datos "test".
+
+11
+00:00:17,310 --> 00:00:18,680
+La colección "names".
+
+12
+00:00:18,680 --> 00:00:20,310
+Y hacemos un "find_one".
+
+13
+00:00:20,310 --> 00:00:23,100
+Y si hacemos "print",
+imprime "Andrew".
+
+14
+00:00:23,100 --> 00:00:25,590
+Bien, digamos que queremos
+cambiar datos en la colección
+
+15
+00:00:25,590 --> 00:00:26,950
+y verlos actualizados.
+
+16
+00:00:26,950 --> 00:00:27,780
+¿Cómo lo hacemos?
+
+17
+00:00:27,780 --> 00:00:29,980
+Bien, abramos Mongo.
+
+18
+00:00:29,980 --> 00:00:32,610
+Ya estamos conectados
+a la base de datos "test".
+
+19
+00:00:32,610 --> 00:00:36,810
+Veamos qué devuelve "db.names.find()".
+
+20
+00:00:36,810 --> 00:00:39,180
+Ahí está el único objeto
+de la colección.
+
+21
+00:00:39,180 --> 00:00:42,610
+Vamos a asignarlo a una
+variable JavaScript.
+
+22
+00:00:42,610 --> 00:00:45,720
+Y vamos a hacer un "findOne"
+de forma que recuperemos un
+
+23
+00:00:45,720 --> 00:00:47,350
+documento de la colección.
+
+24
+00:00:47,350 --> 00:00:48,590
+Podemos echar un vistazo al documento.
+
+25
+00:00:48,590 --> 00:00:49,830
+Aquí está.
+
+26
+00:00:49,830 --> 00:00:54,610
+Podemos modificarlo en
+el shell JavaScript.
+
+27
+00:00:54,610 --> 00:00:57,640
+Y podemos salvarlo 
+de esta manera
+
+28
+00:00:57,640 --> 00:00:59,190
+usando el comando "save".
+
+29
+00:00:59,190 --> 00:01:02,970
+Y si hacemos eso, entonces 
+veremos que ahora es "Dwight".
+
+30
+00:01:02,970 --> 00:01:04,730
+O podríamos hacer simplemente
+el "findOne" sin
+
+31
+00:01:04,730 --> 00:01:05,950
+asignarlo a una variable.
+
+32
+00:01:05,950 --> 00:01:08,680
+Vamos a hacerlo.
+
+33
+00:01:08,680 --> 00:01:09,430
+Aquí vamos.
+
+34
+00:01:09,430 --> 00:01:10,930
+Ahí está, un "find" o "findOne".
+
+35
+00:01:10,930 --> 00:01:14,230
+Si hacemos un "findOne"
+veremos que devuelve lo mismo.
+
+36
+00:01:14,230 --> 00:01:15,880
+Mira, el nombre es "Dwight".
+
+37
+00:01:15,880 --> 00:01:19,775
+Y si salimos y ejecutamos el
+programa de nuevo, podemos ver que
+
+38
+00:01:19,775 --> 00:01:21,440
+ahora imprime "Dwight".
+
+39
+00:01:21,440 --> 00:01:23,530
+Entonces podrías preguntarte cómo
+funciona ese comando "save".
+
+40
+00:01:23,530 --> 00:01:25,300
+Y vamos a ir 
+a ello más tarde.
+
+41
+00:01:25,300 --> 00:01:28,180
+Pero antes te daré una 
+breve introducción.
+
+42
+00:01:28,180 --> 00:01:34,600
+"db.names.save", si lo llamas
+sin paréntesis, entonces
+
+43
+00:01:34,600 --> 00:01:37,940
+verás el código JavaScript
+real que hace la función
+
+44
+00:01:37,940 --> 00:01:39,400
+dentro del shell Mongo.
+
+45
+00:01:39,400 --> 00:01:42,010
+Y puedes ver que el comando
+"save" hace algo
+
+46
+00:01:42,010 --> 00:01:42,870
+interesante.
+
+47
+00:01:42,870 --> 00:01:46,570
+Comprueba si ya hay realmente
+un ObjectId
+
+48
+00:01:46,570 --> 00:01:47,870
+asociado.
+
+49
+00:01:47,870 --> 00:01:50,350
+Y si no hay un 
+ObjectId, le asigna
+
+50
+00:01:50,350 --> 00:01:51,850
+uno y hace un "insert".
+
+51
+00:01:51,850 --> 00:01:55,030
+Y si hay un ObjectId,
+entonces hace un "update".
+
+52
+00:01:55,030 --> 00:02:01,490
+Y si recuerdas, cuando hicimos
+ese "findOne" como éste y
+
+53
+00:02:01,490 --> 00:02:05,930
+luego miramos a "j", teníamos
+el ObjectId aquí.
+
+54
+00:02:05,930 --> 00:02:10,270
+Así que cuando llamamos a "db.names.save(j)"
+con "j" de esa
+
+55
+00:02:10,270 --> 00:02:13,750
+forma, lo que hicimos fue ir
+a través del comando "save".
+
+56
+00:02:13,750 --> 00:02:15,520
+Es decir, existe
+un ObjectId.
+
+57
+00:02:15,520 --> 00:02:20,270
+Por lo que debe hacer un "update" del
+objeto, no un "insert" de un
+
+58
+00:02:20,270 --> 00:02:21,110
+nuevo objeto.
+
+59
+00:02:21,110 --> 00:02:24,320
+Y así es como funciona el comando
+"save" en el shell.
+
+60
+00:02:24,320 --> 00:02:24,740
+Bien.
+
+61
+00:02:24,740 --> 00:02:27,590
+En la siguiente parte vamos a
+juntarlo todo y a mostrar
+
+62
+00:02:27,590 --> 00:02:30,790
+cómo hacer todo esto usando
+Bottle de forma que haya una
+
+63
+00:02:30,790 --> 00:02:33,290
+aplicación web detrás de esto 
+en lugar de una aplicación
+
+64
+00:02:33,290 --> 00:02:34,540
+de línea de comandos.
