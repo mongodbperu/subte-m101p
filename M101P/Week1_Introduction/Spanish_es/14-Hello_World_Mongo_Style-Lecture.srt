@@ -116,7 +116,7 @@ el shell JavaScript.
 
 27
 00:00:54,610 --> 00:00:57,640
-Y podemos salvarlo 
+Y podemos guardarlo 
 de esta manera
 
 28
