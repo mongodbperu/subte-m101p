@@ -1,0 +1,497 @@
+1
+00:00:00,000 --> 00:00:00,160
+
+2
+00:00:00,160 --> 00:00:03,220
+Empecemos por revisar
+qué es lo que intentamos hacer en
+
+3
+00:00:03,220 --> 00:00:06,050
+el mundo relacional con
+la tercera forma normal.
+
+4
+00:00:06,050 --> 00:00:09,930
+Ya que pienso que esto motivará
+mucho de los tradeoffs que
+
+5
+00:00:09,930 --> 00:00:14,430
+hablamos en el
+mundo de MongoDB.
+
+6
+00:00:14,430 --> 00:00:16,680
+Esto es un poco de revisión para
+aquellos que vienen del
+
+7
+00:00:16,680 --> 00:00:17,760
+mundo relacional.
+
+8
+00:00:17,760 --> 00:00:21,320
+Veamos un potencial esquema
+para una tabla de posts para
+
+9
+00:00:21,320 --> 00:00:24,110
+el proyecto de blog que
+hemos estado hablando.
+
+10
+00:00:24,110 --> 00:00:26,710
+Y esto no es todo,
+es sólo los posts
+
+11
+00:00:26,710 --> 00:00:29,870
+más los autores.
+
+12
+00:00:29,870 --> 00:00:33,070
+Digamos que tenías una
+tabla de posts y que decidiste
+
+13
+00:00:33,070 --> 00:00:37,730
+tener un ID del post, un título y
+el cuerpo, por lo que estos son los
+
+14
+00:00:37,730 --> 00:00:40,210
+distintos títulos de estos posts,
+como "Elvis lives" y
+
+15
+00:00:40,210 --> 00:00:42,350
+el cuerpo dice "yes he does".
+
+16
+00:00:42,350 --> 00:00:44,900
+Y el autor de este
+post aquí, "Andrew".
+
+17
+00:00:44,900 --> 00:00:48,290
+Y luego el correo del autor "andrew
+arroba 10gen.com", el segundo
+
+18
+00:00:48,290 --> 00:00:51,060
+post en la tabla dice
+"MongoRocks".
+
+19
+00:00:51,060 --> 00:00:52,800
+Y fue escrito por "Richard".
+
+20
+00:00:52,800 --> 00:00:55,230
+Y su correo, "richard
+arroba 10gen.com"
+
+21
+00:00:55,230 --> 00:00:57,800
+Y el tercero tiene el
+título "hello world".
+
+22
+00:00:57,800 --> 00:00:59,720
+Y fue escrito por "Andrew".
+
+23
+00:00:59,720 --> 00:01:03,490
+Y tiene el correo "andrew
+arroba 10gen.com".
+
+24
+00:01:03,490 --> 00:01:06,630
+Por lo que es una estructura
+de tabla denormalizada en el
+
+25
+00:01:06,630 --> 00:01:07,800
+mundo relacional.
+
+26
+00:01:07,800 --> 00:01:09,970
+Esto no es la tercera
+forma normal.
+
+27
+00:01:09,970 --> 00:01:11,420
+No ha sido cumplido.
+
+28
+00:01:11,420 --> 00:01:16,340
+Y no ha sido cumplido claramente
+porque puedes ver aquí
+
+29
+00:01:16,340 --> 00:01:20,230
+que si deseas actualizar mi
+correo, digamos que el correo para
+
+30
+00:01:20,230 --> 00:01:26,360
+Andrew, tendrías que actualizar
+aquí y aquí también.
+
+31
+00:01:26,360 --> 00:01:29,320
+Y hay una posibilidad de
+dejarlo inconsistente.
+
+32
+00:01:29,320 --> 00:01:32,840
+Podría actualizarlo en esta fila,
+pero no en esta fila,
+
+33
+00:01:32,840 --> 00:01:36,170
+y por lo tanto, dejarlo
+inconsistente.
+
+34
+00:01:36,170 --> 00:01:40,990
+Y puedes ver que
+esto contraviene
+
+35
+00:01:40,990 --> 00:01:44,880
+la normalización porque
+viola una manera común de
+
+36
+00:01:44,880 --> 00:01:48,870
+describir tablas normalizadas
+en la tercera forma normal,
+
+37
+00:01:48,870 --> 00:01:52,490
+que es que todo atributo que no
+es clave en la tabla debe
+
+38
+00:01:52,490 --> 00:01:55,300
+proveer un hecho sobre la
+clave, toda la clave, y
+
+39
+00:01:55,300 --> 00:01:56,460
+nada más que la clave.
+
+40
+00:01:56,460 --> 00:02:00,360
+Y eso es un juego de palabras,
+así como decir en una corte de los
+
+41
+00:02:00,360 --> 00:02:02,690
+Estados Unidos: "decir la verdad,
+toda la verdad, y nada más
+
+42
+00:02:02,690 --> 00:02:03,660
+que la verdad".
+
+43
+00:02:03,660 --> 00:02:07,470
+Y, en particular, la clave
+en éste es el post.
+
+44
+00:02:07,470 --> 00:02:10,120
+Esto va a ser la clave
+primaria para esta tabla.
+
+45
+00:02:10,120 --> 00:02:13,400
+Y tenemos este atributo que
+no es una clave, el correo
+
+46
+00:02:13,400 --> 00:02:15,970
+de autor, que no
+sigue a eso.
+
+47
+00:02:15,970 --> 00:02:19,750
+Porque, de hecho, dice
+algo sobre el autor.
+
+48
+00:02:19,750 --> 00:02:22,420
+Y así afecta la
+tercera forma normal.
+
+49
+00:02:22,420 --> 00:02:28,140
+Y si recuerdas, del mundo
+relacional teniendo una
+
+50
+00:02:28,140 --> 00:02:32,020
+tabla de base de datos en la tercera
+forma normal, hay varias
+
+51
+00:02:32,020 --> 00:02:33,770
+buenas cosas acerca de eso.
+
+52
+00:02:33,770 --> 00:02:36,440
+Y te mostraré
+cuáles son.
+
+53
+00:02:36,440 --> 00:02:40,040
+De acuerdo, entonces �cuáles son los
+objetivos de la normalización en el
+
+54
+00:02:40,040 --> 00:02:40,710
+mundo relacional?
+
+55
+00:02:40,710 --> 00:02:41,810
+Bueno, hay tres objetivos.
+
+56
+00:02:41,810 --> 00:02:44,950
+Uno de ellos es que libera la
+base de datos de estas anomalías
+
+57
+00:02:44,950 --> 00:02:47,630
+de modificación, como, por ejemplo,
+el que te acabo de mostrar,
+
+58
+00:02:47,630 --> 00:02:50,730
+donde pude actualizar mi dirección
+de correo en una fila, pero no
+
+59
+00:02:50,730 --> 00:02:52,280
+actualizarlo en otro, y
+por lo tanto, dejarlo
+
+60
+00:02:52,280 --> 00:02:55,220
+inconsistente en
+la base de datos.
+
+61
+00:02:55,220 --> 00:02:58,090
+Y el siguiente es supuestamente
+minimizar el rediseño al
+
+62
+00:02:58,090 --> 00:02:59,670
+extender la base de datos.
+
+63
+00:02:59,670 --> 00:03:01,225
+Ahora, esto pienso que es un
+poco controversial
+
+64
+00:03:01,225 --> 00:03:03,010
+si se hace eso o no.
+
+65
+00:03:03,010 --> 00:03:05,350
+Pero esa es la idea
+de la normalización.
+
+66
+00:03:05,350 --> 00:03:08,550
+Y la razón final para
+normalizar estas tablas, en el
+
+67
+00:03:08,550 --> 00:03:13,440
+mundo relacional, es ésta, es
+evitar cualquier tendencia hacia un
+
+68
+00:03:13,440 --> 00:03:15,940
+patrón de acceso particular.
+
+69
+00:03:15,940 --> 00:03:20,440
+Ahora, cuando vemos desarrollar
+sistemas en MongoDB, y
+
+70
+00:03:20,440 --> 00:03:23,900
+veamos el esquema que
+diseñamos en MongoDB, éste es el
+
+71
+00:03:23,900 --> 00:03:26,920
+que no nos preocuparemos.
+
+72
+00:03:26,920 --> 00:03:31,200
+Y la razón es que cuando
+no tiendes a algún
+
+73
+00:03:31,200 --> 00:03:33,720
+patrón de acceso particular,
+estás igualmente
+
+74
+00:03:33,720 --> 00:03:35,250
+mal en todo esto.
+
+75
+00:03:35,250 --> 00:03:38,990
+Y una de las ideas en
+MongoDB es adaptar tu
+
+76
+00:03:38,990 --> 00:03:43,120
+base de datos a las aplicaciones
+que estás intentado escribir
+
+77
+00:03:43,120 --> 00:03:44,900
+y al problema que estás
+intentando resolver.
+
+78
+00:03:44,900 --> 00:03:47,920
+Y así, no nos preocuparemos
+por evitar la tendencia
+
+79
+00:03:47,920 --> 00:03:50,210
+hacia algún patrón
+de acceso particular.
+
+80
+00:03:50,210 --> 00:03:52,460
+Ahora, vamos a
+precuparnos de esto.
+
+81
+00:03:52,460 --> 00:03:54,520
+No quiero tener que
+rediseñar el sistema completo
+
+82
+00:03:54,520 --> 00:03:56,190
+cada vez que cambiamos
+algo.
+
+83
+00:03:56,190 --> 00:03:58,990
+Y MongoDB es muy flexible
+porque podemos añadir
+
+84
+00:03:58,990 --> 00:04:02,240
+claves y atributos a documentos
+sin necesidad de cambiar
+
+85
+00:04:02,240 --> 00:04:04,310
+todo el documento existente.
+
+86
+00:04:04,310 --> 00:04:07,710
+Y entonces, lo último es
+liberar la base de datos de estas
+
+87
+00:04:07,710 --> 00:04:09,430
+anomalías de modificación.
+
+88
+00:04:09,430 --> 00:04:13,370
+y si bien podrías pensar
+que embeber los datos
+
+89
+00:04:13,370 --> 00:04:15,070
+causaría esto, no lo
+hace.
+
+90
+00:04:15,070 --> 00:04:19,130
+Y, de hecho, principalmente
+evitaremos embeber datos
+
+91
+00:04:19,130 --> 00:04:22,830
+en documentos en MongoDB
+de manera que
+
+92
+00:04:22,830 --> 00:04:24,130
+se creen estas anomalías.
+
+93
+00:04:24,130 --> 00:04:27,020
+Así que vamos a tener cuidado
+de no crearlos
+
+94
+00:04:27,020 --> 00:04:28,530
+en muchas partes.
+
+95
+00:04:28,530 --> 00:04:31,870
+Ocasionalmente, por razones de
+rendimiento, vamos a decidir
+
+96
+00:04:31,870 --> 00:04:35,140
+si deseamos duplicar los
+datos en el documento.
+
+97
+00:04:35,140 --> 00:04:36,760
+Pero no va a ser
+lo predeterminado.
+
+98
+00:04:36,760 --> 00:04:40,540
+Lo predeterminado es que vamos
+a evitarlo, de modo que
+
+99
+00:04:40,540 --> 00:04:42,550
+no tenemos estos tipos de
+anomalías donde los datos pueden
+
+100
+00:04:42,550 --> 00:04:45,260
+cambiar de manera inconsistente.
+
+101
+00:04:45,260 --> 00:04:47,680
+Y en algunas aplicaciones,
+podrías desear permitirlo y
+
+102
+00:04:47,680 --> 00:04:48,570
+no importa.
+
+103
+00:04:48,570 --> 00:04:51,760
+O puede que desees mantenerlos
+actualizados en la aplicación,
+
+104
+00:04:51,760 --> 00:04:53,530
+pero muchas veces
+lo evitaremos.
+
+105
+00:04:53,530 --> 00:04:54,780
