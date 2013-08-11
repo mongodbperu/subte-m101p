@@ -3,7 +3,7 @@
 
 2
 00:00:00,160 --> 00:00:03,220
-Empecemos por revisar con
+Empecemos por revisar
 qué es lo que intentamos hacer en
 
 3
@@ -76,7 +76,7 @@ post aquí, "Andrew".
 17
 00:00:44,900 --> 00:00:48,290
 Y luego el correo del autor "andrew
-arroba 10gen.com", El segundo
+arroba 10gen.com", el segundo
 
 18
 00:00:48,290 --> 00:00:51,060
@@ -248,7 +248,7 @@ cuáles son.
 
 53
 00:02:36,440 --> 00:02:40,040
-De acuerdo, entonces cuáles son los
+De acuerdo, entonces �cuáles son los
 objetivos de la normalización en el
 
 54
@@ -314,7 +314,7 @@ normalizar estas tablas, en el
 
 67
 00:03:08,550 --> 00:03:13,440
-mundo relacional, es éste, es
+mundo relacional, es ésta, es
 evitar cualquier tendencia hacia un
 
 68
