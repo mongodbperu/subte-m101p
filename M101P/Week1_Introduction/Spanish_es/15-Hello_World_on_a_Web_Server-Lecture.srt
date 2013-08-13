@@ -8,7 +8,7 @@ OK.
 3
 00:00:01,010 --> 00:00:03,440
 Ahora vamos a juntarlo todo
-y contruiremos una aplicación
+y construiremos una aplicación
 
 4
 00:00:03,440 --> 00:00:04,830
@@ -198,7 +198,7 @@ el signo de porcentaje.
 
 44
 00:01:51,690 --> 00:01:53,730
-En este caso, el nombre "item".
+En este caso, item['name'].
 
 45
 00:01:53,730 --> 00:01:54,830
@@ -267,7 +267,7 @@ Y pongamos esa URL.
 59
 00:02:28,620 --> 00:02:31,150
 Podemos ver que dice
-"Hello Dwight".
+"Hello Dwight!".
 
 60
 00:02:31,150 --> 00:02:33,970
