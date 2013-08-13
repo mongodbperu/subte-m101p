@@ -1,0 +1,350 @@
+1
+00:00:00,000 --> 00:00:00,130
+
+2
+00:00:00,130 --> 00:00:02,340
+Digamos que deseamos probar
+un diseño distinto
+
+3
+00:00:02,340 --> 00:00:04,000
+para nuestro esquema de blog.
+
+4
+00:00:04,000 --> 00:00:06,850
+Por ejemplo, en lugar de tener
+todo en la colección
+
+5
+00:00:06,850 --> 00:00:10,580
+de post embebidos con un
+array para las etiquetas y un
+
+6
+00:00:10,580 --> 00:00:12,350
+array para los comentarios,
+podríamos tener una colección
+
+7
+00:00:12,350 --> 00:00:16,370
+separada para posts,
+comentarios y etiquetas.
+
+8
+00:00:16,370 --> 00:00:18,130
+Y si hicieramos eso--
+
+9
+00:00:18,130 --> 00:00:19,480
+añado una "s" aquí--
+
+10
+00:00:19,480 --> 00:00:22,180
+Si lo hacemos, ¿cómo
+se vería?
+
+11
+00:00:22,180 --> 00:00:24,600
+Bien, tenemos nuestra colección
+de posts otra vez.
+
+12
+00:00:24,600 --> 00:00:26,280
+Y un post sería--
+
+13
+00:00:26,280 --> 00:00:28,640
+el _id sería probablemente
+el ID del post.
+
+14
+00:00:28,640 --> 00:00:30,530
+Y habría el título del
+post y el cuerpo y el
+
+15
+00:00:30,530 --> 00:00:32,560
+autor y la fecha.
+
+16
+00:00:32,560 --> 00:00:36,300
+Y luego para los comentarios, nos
+gustaría tener múltiples documentos
+
+17
+00:00:36,300 --> 00:00:37,510
+en la colección de comentarios.
+
+18
+00:00:37,510 --> 00:00:41,030
+Y probablemente estarían
+unidos en una manera similar a cómo
+
+19
+00:00:41,030 --> 00:00:44,480
+lo haríamos en el mundo
+relacional, que es cómo lo
+
+20
+00:00:44,480 --> 00:00:49,850
+tendríamos aquí, este ID de post
+sería el mismo que el ID
+
+21
+00:00:49,850 --> 00:00:51,370
+aquí.
+
+22
+00:00:51,370 --> 00:00:53,840
+Y entonces tendríamos el autor
+del comentario aquí y el
+
+23
+00:00:53,840 --> 00:00:55,790
+correo del autor allí.
+
+24
+00:00:55,790 --> 00:00:58,660
+Ahora necesitaríamos un atributo
+para el orden, ya que, recuerda,
+
+25
+00:00:58,660 --> 00:01:01,590
+estos comentarios son ordenados
+en el post de blog.
+
+26
+00:01:01,590 --> 00:01:04,330
+Y lo tenemos disponible
+cuando los embebemos,
+
+27
+00:01:04,330 --> 00:01:06,960
+porque hubo un array y
+los arrays son ordenados, ahora
+
+28
+00:01:06,960 --> 00:01:09,390
+debemos tener el orden, porque
+si hubiera cinco
+
+29
+00:01:09,390 --> 00:01:12,590
+comentarios, uno de ellos tendría
+un valor ordinal de 0,
+
+30
+00:01:12,590 --> 00:01:15,270
+uno tendría un valor ordinal
+de 1, 2, 3, etcétera.
+
+31
+00:01:15,270 --> 00:01:17,800
+Y luego, finalmente, para las
+etiquetas, deberíamos tener
+
+
+32
+00:01:17,800 --> 00:01:18,940
+múltiples entradas de etiquetas.
+
+33
+00:01:18,940 --> 00:01:22,670
+Así que para añadir tres etiquetas para
+clasificar este post y las tres etiquetas,
+
+34
+00:01:22,670 --> 00:01:24,880
+Deberíamos tener tres
+documentos distintos en esta
+
+35
+00:01:24,880 --> 00:01:26,480
+colección de etiquetas.
+
+36
+00:01:26,480 --> 00:01:30,080
+Ahora, el problema es que
+no tenemos ningún tipo de relación
+
+37
+00:01:30,080 --> 00:01:32,240
+en MongoDB.
+
+38
+00:01:32,240 --> 00:01:36,270
+Así que si deseas mostrar un
+post, vas a tener que
+
+39
+00:01:36,270 --> 00:01:38,650
+juntar manualmente esto en el código.
+
+40
+00:01:38,650 --> 00:01:42,560
+Vas a tener que ir
+a través y leer el ID del post
+
+41
+00:01:42,560 --> 00:01:45,750
+y luego usarlo para leer la
+colección de comentarios.
+
+42
+00:01:45,750 --> 00:01:47,550
+Y luego vas a tener
+que usarlo para leer la colección
+
+43
+00:01:47,550 --> 00:01:48,610
+de etiquetas.
+
+44
+00:01:48,610 --> 00:01:50,420
+Es muy tedioso en código.
+
+45
+00:01:50,420 --> 00:01:53,540
+Y no hay localidad de datos,
+ya que estos están en
+
+46
+00:01:53,540 --> 00:01:56,550
+archivos separados en disco.
+
+47
+00:01:56,550 --> 00:01:58,190
+Esto está en un archivo, probablemente.
+
+48
+00:01:58,190 --> 00:01:59,870
+Esto está en otro archivo.
+
+49
+00:01:59,870 --> 00:02:00,940
+Esto está en otro archivo.
+
+50
+00:02:00,940 --> 00:02:04,120
+Así que un disco va a buscar
+en la colección de posts.
+
+51
+00:02:04,120 --> 00:02:04,980
+Encontrarás el post.
+
+52
+00:02:04,980 --> 00:02:07,230
+Vas a leer todo
+esto en memoria.
+
+53
+00:02:07,230 --> 00:02:08,539
+Lo mismo para la colección
+de comentarios.
+
+54
+00:02:08,539 --> 00:02:11,640
+Es una búsqueda separada en disco para
+encontrar los comentarios, y luego
+
+55
+00:02:11,640 --> 00:02:12,560
+leerlos en memoria.
+
+56
+00:02:12,560 --> 00:02:14,910
+Y lo mismo
+con estas etiquetas.
+
+57
+00:02:14,910 --> 00:02:17,170
+Por lo tanto, no funciona muy
+bien.
+
+58
+00:02:17,170 --> 00:02:21,480
+Y una buena regla de oro para
+el diseño de esquema de MongoDB,
+
+59
+00:02:21,480 --> 00:02:25,130
+es que si te ves haciendo
+exactamente de la misma manera que
+
+60
+00:02:25,130 --> 00:02:29,000
+lo harías en un diseño
+relacional, probablemente no estás
+
+61
+00:02:29,000 --> 00:02:30,490
+tomando el mejor enfoque.
+
+62
+00:02:30,490 --> 00:02:34,750
+Así que siempre trata de embeber datos
+donde puedas, relaciona previamente
+
+63
+00:02:34,750 --> 00:02:35,750
+donde puedas.
+
+64
+00:02:35,750 --> 00:02:37,200
+Ahora, hay algunas limitaciones
+para lo que vamos
+
+65
+00:02:37,200 --> 00:02:38,320
+a llegar hacer.
+
+66
+00:02:38,320 --> 00:02:41,640
+En particular, estos documentos
+pueden sólo ser de 16
+
+67
+00:02:41,640 --> 00:02:43,150
+megabytes de tamaño.
+
+68
+00:02:43,150 --> 00:02:47,210
+Por lo que en ciertas ocasiones
+no va a funcionar embeber los datos.
+
+69
+00:02:47,210 --> 00:02:49,660
+Y tienes que mantenerlos
+en colecciones separadas.
+
+70
+00:02:49,660 --> 00:02:52,840
+Pero hay algunas maneras de evitar
+esto, hablaré de esto en
+
+71
+00:02:52,840 --> 00:02:54,860
+algunos segmentos futuros.
+
+72
+00:02:54,860 --> 00:02:56,440
+Pero de todos modos, este diseño es
+
+73
+00:02:56,440 --> 00:02:57,940
+alternativo para el blog.
+
+74
+00:02:57,940 --> 00:03:00,690
+Y pienso que no
+funciona muy
+
+75
+00:03:00,690 --> 00:03:04,300
+bien, a pesar que pueda parecer
+lo más natural del
+
+76
+00:03:04,300 --> 00:03:05,550
+mundo relacional.
