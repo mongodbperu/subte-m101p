@@ -1,0 +1,301 @@
+1
+00:00:00,000 --> 00:00:00,210
+
+2
+00:00:00,210 --> 00:00:04,310
+Algo de lo que pensaba mucho
+con MongoDB, porque yo vengo
+
+3
+00:00:04,310 --> 00:00:06,570
+del mundo relacional
+antes de empezar a trabajar en
+
+4
+00:00:06,570 --> 00:00:10,030
+10gen y pensaba mucho acerca de
+las ventajas de MongoDB, es
+
+5
+00:00:10,030 --> 00:00:12,230
+que hay muchas cosas
+geniales acerca de relaciones.
+
+6
+00:00:12,230 --> 00:00:14,020
+Y una de estas geniales cosas
+acerca de relaciones es que es
+
+7
+00:00:14,020 --> 00:00:16,129
+realmente bueno en mantener
+tus datos
+
+8
+00:00:16,129 --> 00:00:18,090
+consistentes en la base de datos.
+
+9
+00:00:18,090 --> 00:00:20,750
+Y una de las maneras en que lo hace
+es con restricciones de claves
+
+10
+00:00:20,750 --> 00:00:21,920
+foráneas.
+
+11
+00:00:21,920 --> 00:00:23,290
+Entonces, ¿qué es una restricción
+de clave foránea?
+
+12
+00:00:23,290 --> 00:00:27,800
+Bueno, una restricción de clave foránea
+es que digamos que éstos son
+
+13
+00:00:27,800 --> 00:00:30,950
+en realidad más como tablas, pero
+éstas son colecciones en el
+
+14
+00:00:30,950 --> 00:00:34,640
+caso que te mostramos, lo que
+garantiza que cuando
+
+15
+00:00:34,640 --> 00:00:38,010
+insertas un documento en la
+colección de comentarios, que este
+
+16
+00:00:38,010 --> 00:00:43,610
+ID de post en realidad aparecerá
+en esta colección de posts.
+
+17
+00:00:43,610 --> 00:00:45,340
+Esa es una restricción
+de clave foránea.
+
+18
+00:00:45,340 --> 00:00:49,470
+Y la respuesta en MongoDB
+es que no se garantiza.
+
+19
+00:00:49,470 --> 00:00:52,450
+Esto realmente depende de ti
+como programador para asegurarte que
+
+20
+00:00:52,450 --> 00:00:54,490
+tus datos son consistentes
+de esa manera.
+
+21
+00:00:54,490 --> 00:00:56,440
+Y que cuando vayas a guardar
+algo en una colección, si
+
+22
+00:00:56,440 --> 00:01:00,900
+te refieres a que se trata de un índice
+en la colección de posts
+
+23
+00:01:00,900 --> 00:01:02,880
+que lo garantice.
+
+24
+00:01:02,880 --> 00:01:05,420
+Debido a que la base de datos
+no lo garantiza por ti.
+
+25
+00:01:05,420 --> 00:01:08,800
+Y tal vez en una futura versión de
+MongoDB, lo garanticemos,
+
+26
+00:01:08,800 --> 00:01:11,430
+pero no ofrecemos una
+manera de hacer eso hoy.
+
+27
+00:01:11,430 --> 00:01:13,920
+Lo mismo con esto.
+
+28
+00:01:13,920 --> 00:01:18,300
+Y así, ¿cómo se vive en un
+mundo sin estas restricciones
+
+29
+00:01:18,300 --> 00:01:21,410
+de claves foráneas, sin
+restricciones y mantener tus datos
+
+30
+00:01:21,410 --> 00:01:23,370
+intactos y consistentes?
+
+31
+00:01:23,370 --> 00:01:26,820
+Y la respuesta es que embeber
+en realidad ayuda.
+
+32
+00:01:26,820 --> 00:01:29,500
+Y es por eso que este diseño
+alternativo que
+
+33
+00:01:29,500 --> 00:01:31,640
+mostré no es particularmente
+bueno.
+
+34
+00:01:31,640 --> 00:01:33,560
+Así que vamos a ver el caso
+particular que acabamos de hablar,
+
+35
+00:01:33,560 --> 00:01:36,960
+y es que hemos tenido esta
+colección de comentarios y
+
+36
+00:01:36,960 --> 00:01:40,960
+esto tenía un ID del post y
+no podíamos garantizar en la
+
+37
+00:01:40,960 --> 00:01:42,520
+colección de posts.
+
+38
+00:01:42,520 --> 00:01:45,270
+Fíjate, cuando embebemos los
+datos, hemos resuelto este
+
+39
+00:01:45,270 --> 00:01:46,790
+problema por completo.
+
+40
+00:01:46,790 --> 00:01:51,940
+Porque ahora, ya que los datos
+aparecen directamente en el
+
+41
+00:01:51,940 --> 00:01:54,240
+documento, como el comentario
+apareció directamente en el
+
+42
+00:01:54,240 --> 00:01:58,800
+documento, no hay forma de
+insertar algo donde
+
+43
+00:01:58,800 --> 00:02:02,590
+el comentario del ID del post no está
+en la colección de posts.
+
+44
+00:02:02,590 --> 00:02:05,730
+Esa información ya se
+une cuando
+
+45
+00:02:05,730 --> 00:02:07,490
+vinculas previamente estos datos.
+
+46
+00:02:07,490 --> 00:02:09,690
+Lo mismo con las etiquetas.
+
+47
+00:02:09,690 --> 00:02:13,160
+No hay manera que podamos
+almacenar accidentalmente una etiqueta en
+
+48
+00:02:13,160 --> 00:02:16,180
+la colección de tags donde el ID
+del post no está en la colección de
+
+49
+00:02:16,180 --> 00:02:18,060
+posts porque ya he
+vinculado previamente los datos
+
+50
+00:02:18,060 --> 00:02:19,060
+y está aquí.
+
+51
+00:02:19,060 --> 00:02:23,480
+Y es por eso que quería
+señalarte que deberías
+
+52
+00:02:23,480 --> 00:02:24,240
+vincular previamente los datos.
+
+53
+00:02:24,240 --> 00:02:27,210
+Deberías embeber los datos de
+forma que tenga sentido para tu
+
+54
+00:02:27,210 --> 00:02:30,030
+aplicación por muchas
+distintas razones.
+
+55
+00:02:30,030 --> 00:02:33,200
+Y una de ellas es, que hace que
+sea mucho más fácil mantener los
+
+56
+00:02:33,200 --> 00:02:35,030
+datos intactos y consistentes.
+
+57
+00:02:35,030 --> 00:02:37,800
+Muy bien, es tiempo
+para un cuestionario rápido.
+
+58
+00:02:37,800 --> 00:02:41,130
+Y la pregunta es, ¿a qué
+se refiere vivir sin
+
+59
+00:02:41,130 --> 00:02:44,040
+restricciones?
+
+60
+00:02:44,040 --> 00:02:48,890
+Y las respuestas son, vivir
+todos los días como si fuera el último,
+
+61
+00:02:48,890 --> 00:02:53,020
+diciendo lo que quieras cuando
+lo deseas, manteniendo tus datos
+
+62
+00:02:53,020 --> 00:02:57,530
+consistentes a pesar que MongoDB
+carece de restricciones de clave foráneas,
+
+63
+00:02:57,530 --> 00:02:59,330
+o no usar cinturón.
+
+64
+00:02:59,330 --> 00:03:00,580
