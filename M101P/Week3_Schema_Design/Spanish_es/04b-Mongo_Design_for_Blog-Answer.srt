@@ -1,0 +1,186 @@
+1
+00:00:00,000 --> 00:00:00,240
+
+2
+00:00:00,240 --> 00:00:03,450
+Y la respuesta es que, de
+estas cuatro, la única
+
+3
+00:00:03,450 --> 00:00:05,190
+que no está realmente bien soportada
+es, proveer una
+
+4
+00:00:05,190 --> 00:00:07,650
+tabla de contenidos por etiqueta.
+
+5
+00:00:07,650 --> 00:00:11,050
+Para hacer esto, probablemente
+tendrías que usar aggregation
+
+6
+00:00:11,050 --> 00:00:13,630
+framework para hacer algún tipo
+de agrupación.
+
+7
+00:00:13,630 --> 00:00:16,040
+Y no sería tan
+fácil de hacerlo.
+
+8
+00:00:16,040 --> 00:00:17,840
+Pero los otros están muy
+bien soportados.
+
+9
+00:00:17,840 --> 00:00:21,080
+Así que, sin duda, podríamos reunir
+las entradas más recientes del blog.
+
+10
+00:00:21,080 --> 00:00:25,000
+Nosotros podríamos hacer una búsqueda
+en la colección y ordenarlos por
+
+11
+00:00:25,000 --> 00:00:27,410
+por la fecha y luego
+dar un límite.
+
+12
+00:00:27,410 --> 00:00:29,400
+Reunir toda la
+información para un solo post.
+
+13
+00:00:29,400 --> 00:00:30,470
+Viste --
+
+14
+00:00:30,470 --> 00:00:32,750
+muy bien el uso de
+todo el documento.
+
+15
+00:00:32,750 --> 00:00:34,360
+Todo el post está
+contenido en un único
+
+16
+00:00:34,360 --> 00:00:36,560
+documento, así que es fácil
+mostrarlo.
+
+17
+00:00:36,560 --> 00:00:39,210
+Reunir todos los comentarios
+de un solo autor.
+
+18
+00:00:39,210 --> 00:00:41,960
+Ésto fue un poco difícil y
+no hemos dicho lo
+
+19
+00:00:41,960 --> 00:00:43,590
+suficiente acerca de esto.
+
+20
+00:00:43,590 --> 00:00:47,630
+Pero la respuesta es-- y permíteme
+mostrate este documento una vez más.
+
+21
+00:00:47,630 --> 00:00:50,490
+Está soportado muy bien,
+
+22
+00:00:50,490 --> 00:00:53,580
+siempre que agregues un índice.
+
+23
+00:00:53,580 --> 00:00:58,190
+Tú podrías añadir un índice
+en comments.author y
+
+24
+00:00:58,190 --> 00:01:02,120
+llegar al interior del array
+e indexar aquella información.
+
+25
+00:01:02,120 --> 00:01:03,830
+No hemos hablado
+mucho acerca de eso.
+
+26
+00:01:03,830 --> 00:01:08,000
+Pero si lo hiciste, entonces
+podrías buscar y encontrar todos
+
+27
+00:01:08,000 --> 00:01:11,630
+los comentarios de un
+solo autor.
+
+28
+00:01:11,630 --> 00:01:14,480
+Esto es la búsqueda, es el
+autor del comentario.
+
+29
+00:01:14,480 --> 00:01:19,860
+Pero como dije, ésto último
+no está bien soportado, que
+
+30
+00:01:19,860 --> 00:01:25,050
+es proveer una tabla de contenidos
+por etiqueta, donde puedes
+
+31
+00:01:25,050 --> 00:01:26,370
+ver todos los posts del blog
+que son clasificados
+
+32
+00:01:26,370 --> 00:01:28,100
+en una etiqueta distinta.
+
+33
+00:01:28,100 --> 00:01:31,640
+No hay manera fácil de hacerlo
+en ésto ya que
+
+34
+00:01:31,640 --> 00:01:33,440
+tendrías que basicamente--
+
+35
+00:01:33,440 --> 00:01:35,470
+En primer lugar, tienes que mirar
+la colección completa,
+
+36
+00:01:35,470 --> 00:01:38,850
+sacar cada una de estos posts por
+etiquetas, y tienes que
+
+37
+00:01:38,850 --> 00:01:40,780
+organizarlos por etiqueta.
+
+38
+00:01:40,780 --> 00:01:42,560
+Puedes hacerlo con
+aggregation framework
+
+39
+00:01:42,560 --> 00:01:44,110
+pero no hay otra manera.
+
+40
+00:01:44,110 --> 00:01:45,360
