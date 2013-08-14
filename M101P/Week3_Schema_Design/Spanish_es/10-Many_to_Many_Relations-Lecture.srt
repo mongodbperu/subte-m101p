@@ -1,0 +1,523 @@
+1
+00:00:00,000 --> 00:00:00,140
+
+2
+00:00:00,140 --> 00:00:01,900
+La siguiente relación que vamos
+a ir por ella es
+
+3
+00:00:01,900 --> 00:00:03,960
+la relación de muchos a muchos.
+
+4
+00:00:03,960 --> 00:00:05,550
+Un ejemplo de relación de
+muchos a muchos
+
+5
+00:00:05,550 --> 00:00:07,350
+sería libros a autores.
+
+6
+00:00:07,350 --> 00:00:09,840
+Cada libro podría tener más
+de un autor.
+
+7
+00:00:09,840 --> 00:00:12,860
+Y cada autor podría tener
+más de un libro.
+
+8
+00:00:12,860 --> 00:00:16,079
+U otro ejemplo sería
+alumnos y profesores.
+
+9
+00:00:16,079 --> 00:00:18,380
+Un estudiante tiene muchos profesores
+y un profesor tiene
+
+10
+00:00:18,380 --> 00:00:19,820
+muchos alumnos.
+
+11
+00:00:19,820 --> 00:00:23,330
+Así, lo que se nota en estos
+dos casos y en muchos casos
+
+12
+00:00:23,330 --> 00:00:27,890
+del mundo es que, a pesar de ser
+una relación de muchos a muchos,
+
+13
+00:00:27,890 --> 00:00:31,530
+no hay un gran número de
+autores para cada libro o
+
+14
+00:00:31,530 --> 00:00:33,630
+un gran número de libros
+para cada autor.
+
+15
+00:00:33,630 --> 00:00:38,220
+Por el contrario, tiende a ser
+"pocos a pocos".
+
+16
+00:00:38,220 --> 00:00:42,840
+Y eso va a permitirnos
+usar la jerarquía y la
+
+17
+00:00:42,840 --> 00:00:46,950
+estructura enriquecida de documentos de
+MongoDB con bastante facilidad, mientras
+
+18
+00:00:46,950 --> 00:00:50,320
+que no sería posible si esto
+fuera realmente "muchos a muchos".
+
+19
+00:00:50,320 --> 00:00:52,560
+Así que echemos un vistazo en libros
+a autores.
+
+20
+00:00:52,560 --> 00:00:54,820
+Aunque es probable que haya un
+gran número de libros y
+
+21
+00:00:54,820 --> 00:00:57,980
+un gran número de
+autores, como hemos dicho,
+
+22
+00:00:57,980 --> 00:01:02,550
+cada libro tiene un pequeño
+número de autores y cada
+
+23
+00:01:02,550 --> 00:01:04,459
+autor tiene un pequeño
+numero de libros.
+
+24
+00:01:04,459 --> 00:01:09,200
+Y así lo que podemos hacer es que podemos
+vincularlos mediante la creación de un
+
+25
+00:01:09,200 --> 00:01:11,340
+array, en el documento.
+
+26
+00:01:11,340 --> 00:01:14,690
+Así por ejemplo, en este
+documento del autor que
+
+27
+00:01:14,690 --> 00:01:18,150
+muestro aquí, puedo poner
+un ID del libro justo aquí,
+
+28
+00:01:18,150 --> 00:01:21,570
+más el ID del libro de otros libros
+que este autor podría
+
+29
+00:01:21,570 --> 00:01:22,150
+haber escrito.
+
+30
+00:01:22,150 --> 00:01:24,760
+Ahora, podría ir en
+ambas direcciones.
+
+31
+00:01:24,760 --> 00:01:28,770
+Y podría, si deseo, también
+crear una clave de autor en la
+
+32
+00:01:28,770 --> 00:01:31,530
+colección de libros y
+tener un array de
+
+33
+00:01:31,530 --> 00:01:32,730
+autores para cada libro.
+
+34
+00:01:32,730 --> 00:01:34,550
+En este caso, este libro en
+particular "Gone with the Wind",
+
+35
+00:01:34,550 --> 00:01:36,940
+escrito por Margaret Mitchell,
+tiene un solo autor.
+
+36
+00:01:36,940 --> 00:01:38,830
+Así que voy a poner un solo
+autor aquí.
+
+37
+00:01:38,830 --> 00:01:40,450
+Y si esto tiene
+sentido, depende mucho
+
+38
+00:01:40,450 --> 00:01:41,980
+de los patrones de acceso.
+
+39
+00:01:41,980 --> 00:01:44,740
+Si deseas ser capaz de
+ir rápidamente a través de un libro
+
+40
+00:01:44,740 --> 00:01:47,830
+a sus autores, entonces podría
+tener sentido, sin hacer
+
+41
+00:01:47,830 --> 00:01:50,300
+consultas adicionales, tenerlo
+vinculado en aquella dirección.
+
+42
+00:01:50,300 --> 00:01:52,760
+Y viceversa si deseas
+empezar con autores y obtener
+
+43
+00:01:52,760 --> 00:01:53,920
+rápidamente a los libros.
+
+44
+00:01:53,920 --> 00:01:57,610
+Ahora, teniéndolos vinculados en
+ambas direcciones probablemente
+
+45
+00:01:57,610 --> 00:01:59,810
+no sería mi preferencia,
+porque crea la
+
+46
+00:01:59,810 --> 00:02:03,740
+oportunidad de tener los datos
+inconsistentes si no está
+
+47
+00:02:03,740 --> 00:02:05,130
+bien unidos juntos.
+
+48
+00:02:05,130 --> 00:02:08,990
+Pero puedes hacerlo, si deseas,
+por razones de rendimiento.
+
+49
+00:02:08,990 --> 00:02:11,170
+Ahora, la otra opción es que
+podrías embeberlo.
+
+50
+00:02:11,170 --> 00:02:14,680
+Así por ejemplo, podrías
+en lugar de tener este array
+
+51
+00:02:14,680 --> 00:02:17,440
+aquí, podrías tener
+embebido el libro--
+
+52
+00:02:17,440 --> 00:02:18,960
+Y voy a tachar esto.
+
+53
+00:02:18,960 --> 00:02:23,880
+Y tu podrías embeber el libro
+aquí en la colección de autores
+
+54
+00:02:23,880 --> 00:02:26,140
+y poner la información acerca del
+libro que el autor haya
+
+55
+00:02:26,140 --> 00:02:28,270
+escrito justo aquí.
+
+56
+00:02:28,270 --> 00:02:32,710
+Pero no quiero eso, porque lo
+que va a suceder es que
+
+57
+00:02:32,710 --> 00:02:34,960
+el libro va a terminar--
+
+58
+00:02:34,960 --> 00:02:36,950
+no a menudo, porque no es
+usual tener múltiples
+
+59
+00:02:36,950 --> 00:02:39,440
+autores-- pero podría terminar
+en la colección de autores
+
+60
+00:02:39,440 --> 00:02:44,270
+muchas veces, duplicados,
+y abrir esto para tener
+
+61
+00:02:44,270 --> 00:02:48,680
+anomalías de actualización, anomalías
+de modificación, donde la
+
+62
+00:02:48,680 --> 00:02:50,540
+información no se
+mantiene consistente.
+
+63
+00:02:50,540 --> 00:02:52,440
+Ahora, si eso es lo que necesitas
+por razones de rendimiento,
+
+64
+00:02:52,440 --> 00:02:55,882
+necesitas embeber el libro en
+la colección de autores, luego
+
+65
+00:02:55,882 --> 00:02:57,140
+claro que sí, hacerlo.
+
+66
+00:02:57,140 --> 00:02:59,220
+Pero lo evitaría a menos
+que necesites hacerlo
+
+67
+00:02:59,220 --> 00:03:00,650
+por razones de rendimiento.
+
+68
+00:03:00,650 --> 00:03:03,470
+En este caso en particular, había
+hecho libros y autores, ambos
+
+69
+00:03:03,470 --> 00:03:05,390
+objetos de primera clase.
+
+70
+00:03:05,390 --> 00:03:08,030
+También es importante recordar
+que no hay
+
+71
+00:03:08,030 --> 00:03:11,150
+restricciones de clave foránea
+en MongoDB, como hemos
+
+72
+00:03:11,150 --> 00:03:11,870
+hablado de ello antes.
+
+73
+00:03:11,870 --> 00:03:16,170
+Así que no hay garantía que,
+si pones un ID aquí,
+
+74
+00:03:16,170 --> 00:03:18,490
+vaya a aparecer
+por aquí.
+
+75
+00:03:18,490 --> 00:03:20,850
+Muy bien, lo siguiente, hablemos
+acerca de la relación de
+
+76
+00:03:20,850 --> 00:03:23,600
+alumnos y profesores.
+
+77
+00:03:23,600 --> 00:03:26,430
+Así, los alumnos y profesores se
+parecen mucho a libros y autores,
+
+78
+00:03:26,430 --> 00:03:28,320
+donde un profesor puede tener
+muchos alumnos y un
+
+79
+00:03:28,320 --> 00:03:29,450
+alumno puede tener muchos
+profesores.
+
+80
+00:03:29,450 --> 00:03:31,810
+Y probablemente maneje
+el mismo camino.
+
+81
+00:03:31,810 --> 00:03:33,640
+Tengo una colección de alumnos
+y una colección de
+
+82
+00:03:33,640 --> 00:03:34,170
+profesores.
+
+83
+00:03:34,170 --> 00:03:37,450
+Y tengo la información
+del alumno listada en
+
+84
+00:03:37,450 --> 00:03:40,170
+la colección de alumnos, y la
+información de profesores
+
+85
+00:03:40,170 --> 00:03:41,750
+listada en la colección
+de profesores.
+
+86
+00:03:41,750 --> 00:03:45,320
+Y entonces yo enlazaría en una
+dirección u otra.
+
+87
+00:03:45,320 --> 00:03:47,740
+Y tendría un
+array de elementos.
+
+88
+00:03:47,740 --> 00:03:50,580
+Si quiero conocer los alumnos
+para este profesor, podría poner
+
+89
+00:03:50,580 --> 00:03:53,840
+aquí y encontrar
+los alumnos muy rápido.
+
+90
+00:03:53,840 --> 00:03:56,180
+Y podría vincular en ambas
+direcciones y también tener un
+
+91
+00:03:56,180 --> 00:03:59,190
+array de alumnos en mi
+colección de estudiantes.
+
+92
+00:03:59,190 --> 00:04:01,480
+Ahora, otra vez, podrías embeber.
+
+93
+00:04:01,480 --> 00:04:03,830
+En el riesgo de duplicar datos,
+podrías decidir
+
+94
+00:04:03,830 --> 00:04:07,910
+desear poner los profesores
+en la colección de estudiantes.
+
+95
+00:04:07,910 --> 00:04:12,050
+Esto es en lugar de ser un
+array de ObjectIds o
+
+96
+00:04:12,050 --> 00:04:14,280
+_ids que necesitas para
+luego ir a través de
+
+97
+00:04:14,280 --> 00:04:16,750
+consultas iniciales en
+la aplicación.
+
+98
+00:04:16,750 --> 00:04:19,880
+Podrías poner los datos
+dentro de la colección.
+
+99
+00:04:19,880 --> 00:04:22,470
+Ahora, eso no sería buena
+idea en el caso de embeber
+
+100
+00:04:22,470 --> 00:04:24,510
+los profesores en la colección
+de alumnos.
+
+101
+00:04:24,510 --> 00:04:27,950
+Y la razón de esto es que hay una
+gran posibilidad que desees
+
+102
+00:04:27,950 --> 00:04:31,810
+insertar un profesor en el sistema
+antes que tenga alumnos.
+
+103
+00:04:31,810 --> 00:04:34,730
+Y es posible desear insertar un
+alumno en el sistema antes
+
+104
+00:04:34,730 --> 00:04:35,570
+de tener profesores.
+
+105
+00:04:35,570 --> 00:04:39,660
+Y si los embebes así,
+entonces estás requiriendo que
+
+106
+00:04:39,660 --> 00:04:41,160
+el objeto padre exista
+para poder
+
+107
+00:04:41,160 --> 00:04:42,870
+representar el objeto hijo.
+
+108
+00:04:42,870 --> 00:04:45,170
+Y eso no se puede
+hacer para lo que la
+
+109
+00:04:45,170 --> 00:04:46,960
+aplicación desea permitir.
+
+110
+00:04:46,960 --> 00:04:48,210
