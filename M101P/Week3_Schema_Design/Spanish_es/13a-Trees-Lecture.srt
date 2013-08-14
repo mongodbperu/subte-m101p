@@ -1,0 +1,281 @@
+1
+00:00:00,000 --> 00:00:00,230
+
+2
+00:00:00,230 --> 00:00:03,250
+Un clásico problema del
+mundo de diseño de esquemas es cómo
+
+3
+00:00:03,250 --> 00:00:06,640
+representar un árbol
+dentro de una base de datos.
+
+4
+00:00:06,640 --> 00:00:09,860
+Veamos, por ejemplo, en el
+problema de representar
+
+5
+00:00:09,860 --> 00:00:13,160
+las categorías de e-commerce en
+un sitio e-commerce, tal como
+
+6
+00:00:13,160 --> 00:00:16,990
+Amazon, donde se puede tener
+casa, aire libre, invierno, nieve.
+
+7
+00:00:16,990 --> 00:00:19,180
+Y la idea aquí es que tienes
+estos documentos.
+
+8
+00:00:19,180 --> 00:00:20,430
+Y están en una colección
+de productos.
+
+9
+00:00:20,430 --> 00:00:21,910
+Ellos tiene un nombre de producto
+y un montón de
+
+10
+00:00:21,910 --> 00:00:23,260
+atributos en el producto.
+
+11
+00:00:23,260 --> 00:00:26,880
+Y tienen alguna categoría,
+como dice, categoría siete.
+
+12
+00:00:26,880 --> 00:00:30,530
+Y entonces, tiene alguna otra
+colección de categorías, donde
+
+13
+00:00:30,530 --> 00:00:32,590
+puedes ver la categoría siete,
+puedes ver el nombre de la categoría,
+
+14
+00:00:32,590 --> 00:00:34,500
+algunas de las propiedades
+acerca de la categoría.
+
+15
+00:00:34,500 --> 00:00:38,660
+Y una manera de modelarlo es que
+podrías mantener su ID padre,
+
+16
+00:00:38,660 --> 00:00:40,040
+justo aquí.
+
+17
+00:00:40,040 --> 00:00:42,810
+Y eso sería la forma en que
+podrías hacerlo en una simple
+
+18
+00:00:42,810 --> 00:00:44,140
+base de datos relacional.
+
+19
+00:00:44,140 --> 00:00:47,740
+Pero no significa que sea muy
+fácil encontrar todos los padres
+
+20
+00:00:47,740 --> 00:00:48,755
+para esta categoría.
+
+21
+00:00:48,755 --> 00:00:52,190
+Tendrías que consultar interactivamente,
+encontrar el padre de
+
+22
+00:00:52,190 --> 00:00:55,180
+ésta, luego encontrar el padre de
+aquella, hasta obtener todas
+
+23
+00:00:55,180 --> 00:00:56,500
+hacia arriba.
+
+24
+00:00:56,500 --> 00:01:00,320
+Por lo que una forma alternativa de hacerlo,
+en MongoDB, es ser
+
+25
+00:01:00,320 --> 00:01:02,890
+capaz de listar ancestros
+o hijos.
+
+26
+00:01:02,890 --> 00:01:06,130
+Pensemos acerca de ésto
+y de cómo funcionaría.
+
+27
+00:01:06,130 --> 00:01:08,420
+Así que podrías decidir
+listar todos los
+
+28
+00:01:08,420 --> 00:01:11,000
+hijos de esta categoría.
+
+29
+00:01:11,000 --> 00:01:13,440
+Pero eso es también bastante limitante,
+si estás deseando
+
+30
+00:01:13,440 --> 00:01:16,750
+poder buscar y encontrar
+todo el sub-árbol que está por encima
+
+31
+00:01:16,750 --> 00:01:18,370
+en una cierta parte del árbol.
+
+32
+00:01:18,370 --> 00:01:21,810
+En cambio, lo que funciona bastante bien,
+una vez más, es permitir
+
+33
+00:01:21,810 --> 00:01:25,870
+la capacidad de poner arrays
+en MongoDB
+
+34
+00:01:25,870 --> 00:01:29,430
+para listar los ancestros.
+
+35
+00:01:29,430 --> 00:01:33,710
+Así que digamos que decidimos listar
+todos los ancestros de éste desde
+
+36
+00:01:33,710 --> 00:01:35,490
+la parte superior en orden.
+
+37
+00:01:35,490 --> 00:01:39,360
+Ahora, usando una pieza de
+información puedo encontrar todas las
+
+38
+00:01:39,360 --> 00:01:42,610
+categorías padre
+de esta categoría.
+
+39
+00:01:42,610 --> 00:01:44,465
+Si deseas listar el "breadcrumbs"
+y hacerlo fácil para
+
+40
+00:01:44,465 --> 00:01:46,600
+el usuario en navegar el sitio.
+
+41
+00:01:46,600 --> 00:01:50,150
+Y una vez más, la capacidad de
+estructurar y expresar datos
+
+42
+00:01:50,150 --> 00:01:54,560
+enriquecidos es una de las cosas que
+hace a MongoDB tan interesante.
+
+43
+00:01:54,560 --> 00:01:56,310
+Esto sería muy difícil
+de hacer en
+
+44
+00:01:56,310 --> 00:01:57,690
+una base de datos relacional.
+
+45
+00:01:57,690 --> 00:02:00,540
+Ahora, en cuanto a la forma de
+representar los datos para
+
+46
+00:02:00,540 --> 00:02:04,050
+algo como una jerarquía de
+categoría de productos, otra vez,
+
+47
+00:02:04,050 --> 00:02:05,300
+depende de tus
+patrones de acceso.
+
+48
+00:02:05,300 --> 00:02:08,759
+Depende de cómo crees
+que vas a necesitar mostrar
+
+49
+00:02:08,759 --> 00:02:11,150
+los datos, acceder a los
+datos para el usuario.
+
+50
+00:02:11,150 --> 00:02:14,140
+Y luego, en base a eso,
+saber cómo modelarlo.
+
+51
+00:02:14,140 --> 00:02:16,280
+Muy bien, es tiempo
+para un cuestionario para
+
+52
+00:02:16,280 --> 00:02:19,420
+representar árboles en MongoDB.
+
+53
+00:02:19,420 --> 00:02:22,400
+Dado el siguiente típico
+documento para una jerarquía de
+
+54
+00:02:22,400 --> 00:02:26,030
+de categorías e-commerce llamado
+categorías y aquí está el
+
+55
+00:02:26,030 --> 00:02:29,660
+documento que está en la colección
+de categorías, ¿cuáles de
+
+56
+00:02:29,660 --> 00:02:32,780
+estas consultas encontrará todos
+los descendientes de la
+
+57
+00:02:32,780 --> 00:02:34,230
+categoría "snorkeling" (buceo)?
+
+58
+00:02:34,230 --> 00:02:36,570
+Y ésta es la categoría de
+buceo, justo aquí.
+
+59
+00:02:36,570 --> 00:02:37,820
+¿Cuáles de estas consultas?
+
+60
+00:02:37,820 --> 00:02:38,670
