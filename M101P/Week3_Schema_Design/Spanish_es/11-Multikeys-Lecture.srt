@@ -227,7 +227,7 @@ para todos los documentos.
 
 49
 00:02:03,920 --> 00:02:07,490
-Así que quiero mostrarte como
+Así que quiero mostrarte cómo
 luce en el shell mongo.
 
 50
@@ -308,8 +308,8 @@ yo estaba allí--
 
 66
 00:02:45,010 --> 00:02:47,940
-y puedes ver que los profesores
-de cada de uno de estos alumnos tiene.
+y puedes ver los profesores
+que cada de uno de estos alumnos tiene.
 
 67
 00:02:47,940 --> 00:02:50,830
@@ -324,7 +324,7 @@ a través de este comando,
 69
 00:02:54,080 --> 00:02:58,395
 db.students.ensureIndex
-espeficicando "teachers".
+especificando "teachers".
 
 70
 00:02:58,395 --> 00:03:00,360
@@ -333,7 +333,7 @@ luego, pero sólo deseo mostrarte
 
 71
 00:03:00,360 --> 00:03:01,882
-esto.
+ésto.
 
 72
 00:03:01,882 --> 00:03:05,470
@@ -367,7 +367,7 @@ John Hennessy y James
 78
 00:03:24,385 --> 00:03:28,240
 Plummer como profesores y
-retornar estos docuemntos.
+retornar estos documentos.
 
 79
 00:03:28,240 --> 00:03:31,370
@@ -418,13 +418,13 @@ significa que MongoDB, en efecto,
 
 89
 00:04:00,030 --> 00:04:02,280
-utilizó un índices para realizar
+utilizó un índice para realizar
 esta consulta.
 
 90
 00:04:02,280 --> 00:04:05,490
 Y la existencia de estos
-índices multclaves es una de las
+índices multiclaves es una de las
 
 91
 00:04:05,490 --> 00:04:07,510
@@ -437,7 +437,7 @@ funcionen tan bien en MongoDB.
 
 93
 00:04:09,980 --> 00:04:12,230
-Debido a que puedes hacer los
+Ya que puedes hacer los
 tipos de consulta que podrías
 
 94
