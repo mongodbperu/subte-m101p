@@ -1,0 +1,503 @@
+1
+00:00:00,000 --> 00:00:02,870
+Let's talk about one to
+many relationships.
+
+2
+00:00:02,870 --> 00:00:06,840
+So a one to many relationship is
+where there's two entities
+
+3
+00:00:06,840 --> 00:00:10,090
+and there's many, many entities
+or many entities that
+
+4
+00:00:10,090 --> 00:00:11,740
+map to the one entity.
+
+5
+00:00:11,740 --> 00:00:14,770
+So for an example, you have a
+city and you have the people
+
+6
+00:00:14,770 --> 00:00:16,950
+or persons who live
+in that city.
+
+7
+00:00:16,950 --> 00:00:22,530
+So an example would be New York
+City, which has 8 million
+
+8
+00:00:22,530 --> 00:00:24,020
+people in it.
+
+9
+00:00:24,020 --> 00:00:25,280
+How are you going
+to model that?
+
+10
+00:00:25,280 --> 00:00:27,900
+Well, we could go through it and
+think about different ways
+
+11
+00:00:27,900 --> 00:00:29,120
+you might want to do it.
+
+12
+00:00:29,120 --> 00:00:31,920
+So, you might say, well, I'm
+going to have a city
+
+13
+00:00:31,920 --> 00:00:33,030
+collection.
+
+14
+00:00:33,030 --> 00:00:35,970
+And in that city collection,
+I'm going to have the
+
+15
+00:00:35,970 --> 00:00:37,530
+attributes of the city,
+like the name of the
+
+16
+00:00:37,530 --> 00:00:40,700
+city, and its area.
+
+17
+00:00:40,700 --> 00:00:44,560
+And then I'm going to have the
+people that live in the city
+
+18
+00:00:44,560 --> 00:00:46,680
+as an array.
+
+19
+00:00:46,680 --> 00:00:47,790
+But that won't work.
+
+20
+00:00:47,790 --> 00:00:52,420
+Because, of course, there
+are way too many people.
+
+21
+00:00:52,420 --> 00:00:54,680
+8 million people and all their
+documents and all their
+
+22
+00:00:54,680 --> 00:00:58,290
+information, it isn't going
+to fit inside this.
+
+23
+00:00:58,290 --> 00:01:01,780
+So, as a result, you
+can't do that.
+
+24
+00:01:01,780 --> 00:01:03,850
+You could say, well, I'll
+flip it on its head.
+
+25
+00:01:03,850 --> 00:01:05,780
+So instead, I could say, well,
+I'm going to have a people
+
+26
+00:01:05,780 --> 00:01:07,770
+collection.
+
+27
+00:01:07,770 --> 00:01:11,230
+And the people collection, in
+each document, I'm going to
+
+28
+00:01:11,230 --> 00:01:14,580
+have a name, like Andrew.
+
+29
+00:01:14,580 --> 00:01:17,560
+And then I'm going
+to have the city.
+
+30
+00:01:17,560 --> 00:01:19,630
+And that's going to be
+another document.
+
+31
+00:01:19,630 --> 00:01:24,532
+And it's going to have a name,
+like New York, and an area,
+
+32
+00:01:24,532 --> 00:01:26,230
+and everything else.
+
+33
+00:01:26,230 --> 00:01:30,630
+Now the problem with this design
+is that if there are
+
+34
+00:01:30,630 --> 00:01:33,510
+obviously multiple living in New
+York, so what I've done is
+
+35
+00:01:33,510 --> 00:01:39,490
+I've duplicated this data in
+multiple documents, which is
+
+36
+00:01:39,490 --> 00:01:42,620
+going to open me up to
+inconsistencies because I have
+
+37
+00:01:42,620 --> 00:01:46,490
+to keep the city information
+updated across all the people
+
+38
+00:01:46,490 --> 00:01:47,170
+who live in the city.
+
+39
+00:01:47,170 --> 00:01:49,800
+Now, in certain designs, that
+might be acceptable.
+
+40
+00:01:49,800 --> 00:01:52,800
+But I probably wouldn't
+recommend it in general.
+
+41
+00:01:52,800 --> 00:01:55,740
+So given that, what's the
+best way to do it?
+
+42
+00:01:55,740 --> 00:01:59,170
+Well, in this case, where there
+truly is one to many,
+
+43
+00:01:59,170 --> 00:02:03,620
+one city with many people, the
+best way to do it is probably
+
+44
+00:02:03,620 --> 00:02:06,530
+to use true linking.
+
+45
+00:02:06,530 --> 00:02:08,229
+So we'll use true linking.
+
+46
+00:02:08,229 --> 00:02:10,919
+So for true linking, we're
+going to have a people
+
+47
+00:02:10,919 --> 00:02:11,950
+collection.
+
+48
+00:02:11,950 --> 00:02:14,030
+And in that people collection,
+we're going to have something
+
+49
+00:02:14,030 --> 00:02:18,510
+like the name of the person,
+like Andrew, and then,
+
+50
+00:02:18,510 --> 00:02:23,770
+probably, my city, which let's
+assume that the city names are
+
+51
+00:02:23,770 --> 00:02:27,870
+unique, New York City being
+unique, and other
+
+52
+00:02:27,870 --> 00:02:29,390
+attributes about me.
+
+53
+00:02:29,390 --> 00:02:32,770
+And then, in the city
+collection, I would have an
+
+54
+00:02:32,770 --> 00:02:37,200
+underscore ID being New York
+City, and other attributes
+
+55
+00:02:37,200 --> 00:02:39,880
+about the city listed out.
+
+56
+00:02:39,880 --> 00:02:43,660
+So, in this case, I would
+link from the item
+
+57
+00:02:43,660 --> 00:02:44,560
+where there was many.
+
+58
+00:02:44,560 --> 00:02:48,380
+So, I would have a collection
+of the many, the people.
+
+59
+00:02:48,380 --> 00:02:51,430
+And I would link into the
+one, into the city.
+
+60
+00:02:51,430 --> 00:02:53,625
+And again, knowing we have no
+foreign key constraints, you
+
+61
+00:02:53,625 --> 00:02:55,080
+just have to make sure that
+you're consistent about it and
+
+62
+00:02:55,080 --> 00:02:57,690
+that you don't put a city in
+that isn't also an underscore
+
+63
+00:02:57,690 --> 00:03:00,810
+ID for the collection
+that it refers to.
+
+64
+00:03:00,810 --> 00:03:03,240
+So that's a fine solution
+for one to many.
+
+65
+00:03:03,240 --> 00:03:05,290
+And it requires two
+collections.
+
+66
+00:03:05,290 --> 00:03:08,110
+So that requires two
+collections.
+
+67
+00:03:08,110 --> 00:03:11,610
+But what if it isn't
+one to many, but
+
+68
+00:03:11,610 --> 00:03:15,050
+instead it's one to few?
+
+69
+00:03:15,050 --> 00:03:18,450
+Which is still a one to many
+relationship, but is actually
+
+70
+00:03:18,450 --> 00:03:20,640
+a lot easier to model
+inside mongoDB.
+
+71
+00:03:20,640 --> 00:03:24,600
+So the example I gave you before
+was these blog posts
+
+72
+00:03:24,600 --> 00:03:25,740
+and the comments.
+
+73
+00:03:25,740 --> 00:03:30,170
+And you saw, when we went over
+the schema for the blog, that
+
+74
+00:03:30,170 --> 00:03:33,920
+there are multiple comments
+that go to one blog post.
+
+75
+00:03:33,920 --> 00:03:36,000
+But it isn't very
+many of them.
+
+76
+00:03:36,000 --> 00:03:38,960
+So it's blog post, sorry,
+to comment.
+
+77
+00:03:38,960 --> 00:03:42,090
+There's is one of these
+and maybe 10 of these.
+
+78
+00:03:42,090 --> 00:03:46,110
+And, so in that case, it's
+feasible to have a collection
+
+79
+00:03:46,110 --> 00:03:47,210
+of the one.
+
+80
+00:03:47,210 --> 00:03:49,770
+So to have a post collection,
+which is what we did.
+
+81
+00:03:49,770 --> 00:03:54,620
+And then, within each post, you
+had the name of the posts,
+
+82
+00:03:54,620 --> 00:03:58,100
+and then somewhere you had
+an array of the comments.
+
+83
+00:03:58,100 --> 00:04:02,470
+And then, that array contained
+all the comments, but there's
+
+84
+00:04:02,470 --> 00:04:04,620
+only a few of them
+for each post.
+
+85
+00:04:04,620 --> 00:04:06,940
+And again, we don't have the
+duplication of data problem
+
+86
+00:04:06,940 --> 00:04:11,920
+because every comment is only
+within a single post.
+
+87
+00:04:11,920 --> 00:04:15,490
+So in this particular model, it
+works very well to have a
+
+88
+00:04:15,490 --> 00:04:17,100
+single collection.
+
+89
+00:04:17,100 --> 00:04:20,079
+And we're going to have a single
+collection of the one,
+
+90
+00:04:20,079 --> 00:04:21,149
+of the posts.
+
+91
+00:04:21,149 --> 00:04:23,640
+And then put the
+many embedded.
+
+92
+00:04:23,640 --> 00:04:27,110
+So those are the two different
+ways to handle the one to many
+
+93
+00:04:27,110 --> 00:04:29,980
+relationship, depending on
+whether it's one to few, or
+
+94
+00:04:29,980 --> 00:04:30,740
+one to many.
+
+95
+00:04:30,740 --> 00:04:33,860
+If it's truly one to many than
+two collections works best
+
+96
+00:04:33,860 --> 00:04:35,110
+with linking.
+
+97
+00:04:35,110 --> 00:04:38,440
+And if it's just one to few,
+well, then you could probably
+
+98
+00:04:38,440 --> 00:04:41,050
+get away with a single
+collection, like we did in the
+
+99
+00:04:41,050 --> 00:04:44,100
+blogging example, where
+you just embed the
+
+100
+00:04:44,100 --> 00:04:45,640
+items within it.
+
+101
+00:04:45,640 --> 00:04:47,890
+All right, so it's
+time for a quiz.
+
+102
+00:04:47,890 --> 00:04:51,800
+So, when is it recommended to
+represent a one to many
+
+103
+00:04:51,800 --> 00:04:54,320
+relationship in multiple
+collections?
+
+104
+00:04:54,320 --> 00:04:59,190
+And the answers are, always,
+whenever the many is large,
+
+105
+00:04:59,190 --> 00:05:03,630
+whenever the many is actually
+few, or never.
+
+106
+00:05:03,630 --> 00:05:04,880
+What's the answer?

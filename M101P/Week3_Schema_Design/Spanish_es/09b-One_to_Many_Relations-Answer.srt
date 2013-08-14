@@ -1,0 +1,40 @@
+1
+00:00:00,000 --> 00:00:00,320
+
+2
+00:00:00,320 --> 00:00:03,010
+And the answer is that, you're
+going to need to use multiple
+
+3
+00:00:03,010 --> 00:00:06,020
+collections to represent a one
+to many relationship, or I'd
+
+4
+00:00:06,020 --> 00:00:08,450
+recommend it whenever
+the many is large.
+
+5
+00:00:08,450 --> 00:00:12,530
+For instance, in the example we
+gave, people in the city,
+
+6
+00:00:12,530 --> 00:00:15,720
+it would be best if you brought
+up people to be a
+
+7
+00:00:15,720 --> 00:00:17,920
+first class object, gave it its
+own collection, and have
+
+8
+00:00:17,920 --> 00:00:19,340
+the city be its own collection
+as well.
+
+9
+00:00:19,340 --> 00:00:20,590

@@ -1,0 +1,129 @@
+1
+00:00:00,000 --> 00:00:00,130
+
+2
+00:00:00,130 --> 00:00:00,830
+OK.
+
+3
+00:00:00,830 --> 00:00:03,770
+And the answer that you might
+want to keep them in separate
+
+4
+00:00:03,770 --> 00:00:05,600
+collections to reduce the
+working set size of your
+
+5
+00:00:05,600 --> 00:00:06,630
+application.
+
+6
+00:00:06,630 --> 00:00:09,120
+Because if you're only going
+to be accessing part of the
+
+7
+00:00:09,120 --> 00:00:12,100
+data, you don't want to bring in
+both parts of the data set
+
+8
+00:00:12,100 --> 00:00:13,220
+into memory.
+
+9
+00:00:13,220 --> 00:00:16,420
+Or you may have a concern that
+the combined document is going
+
+10
+00:00:16,420 --> 00:00:18,710
+to be over 16 megabytes
+in size.
+
+11
+00:00:18,710 --> 00:00:20,830
+Now, this third one here--
+to enforce foreign key
+
+12
+00:00:20,830 --> 00:00:22,010
+constraints.
+
+13
+00:00:22,010 --> 00:00:24,300
+Now, that's actually a reason
+why you might combine them.
+
+14
+00:00:24,300 --> 00:00:27,450
+Since MongoDB doesn't have
+foreign key constraints, well
+
+15
+00:00:27,450 --> 00:00:29,150
+you keep things a separate
+documents.
+
+16
+00:00:29,150 --> 00:00:33,500
+You know, looking at this case
+before, there was no guarantee
+
+17
+00:00:33,500 --> 00:00:38,130
+that this ID here is a foreign
+key into this collection here.
+
+18
+00:00:38,130 --> 00:00:40,530
+And so it's possible to let
+these things become
+
+19
+00:00:40,530 --> 00:00:42,830
+inconsistent if your program
+is not careful.
+
+20
+00:00:42,830 --> 00:00:46,830
+And that's not an issue if you
+have them embedded because
+
+21
+00:00:46,830 --> 00:00:49,220
+then this relationship that
+depends on the IDs being
+
+22
+00:00:49,220 --> 00:00:51,380
+correct here to tie these
+two documents
+
+23
+00:00:51,380 --> 00:00:53,250
+together wouldn't exist.
+
+24
+00:00:53,250 --> 00:00:55,850
+So that is not an answer
+because, in fact, foreign key
+
+25
+00:00:55,850 --> 00:00:57,710
+constraints don't exist.
+
+26
+00:00:57,710 --> 00:00:59,420
+And if you want to avoid the
+problem, you would actually
+
+27
+00:00:59,420 --> 00:01:01,110
+put them together, not
+keep them apart.
+
+28
+00:01:01,110 --> 00:01:02,360
