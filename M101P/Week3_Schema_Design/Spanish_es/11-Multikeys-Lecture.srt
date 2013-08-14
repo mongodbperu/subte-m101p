@@ -443,7 +443,7 @@ tipos de consulta que podrías
 94
 00:04:12,230 --> 00:04:15,260
 esperar hacer en una base de datos
-relacional y hacerlo rápido.
+relacional y hacerlos rápido.
 
 95
 00:04:15,260 --> 00:04:16,588
