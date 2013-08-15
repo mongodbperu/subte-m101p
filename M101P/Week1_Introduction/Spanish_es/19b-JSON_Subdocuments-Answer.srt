@@ -1,0 +1,34 @@
+1
+00:00:00,000 --> 00:00:00,220
+
+2
+00:00:00,220 --> 00:00:02,220
+OK, y la respuesta 
+la mostramos aquí.
+
+3
+00:00:02,220 --> 00:00:05,220
+Como puedes ver, tenemos una 
+llave, luego la clave
+
+4
+00:00:05,220 --> 00:00:08,500
+"address" y a continuación otra llave
+inmediatamente seguida por
+
+5
+00:00:08,500 --> 00:00:10,990
+los datos, "street address",
+es "Elm Drive".
+
+6
+00:00:10,990 --> 00:00:14,890
+"city" es "Palo Alto", "state" es
+"California" y "zip" es "94305".
+
+7
+00:00:14,890 --> 00:00:16,650
+Y dos llaves para finalizar.
+
+8
+00:00:16,650 --> 00:00:17,900
