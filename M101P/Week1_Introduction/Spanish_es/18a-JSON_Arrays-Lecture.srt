@@ -21,7 +21,7 @@ valor un array que contiene
 
 6
 00:00:10,230 --> 00:00:11,200
-tres strings--
+tres cadenas--
 
 7
 00:00:11,200 --> 00:00:13,270
