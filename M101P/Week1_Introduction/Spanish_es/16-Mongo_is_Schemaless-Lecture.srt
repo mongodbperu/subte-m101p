@@ -61,7 +61,7 @@ Por ejemplo, "nombre",
 14
 00:00:29,890 --> 00:00:31,480
 "ciudad de nacimiento" o algo así.
- 
+
 15
 00:00:31,480 --> 00:00:33,630
 Y a medida que pasa el tiempo, podrías
@@ -83,7 +83,7 @@ Y ejecutar un comando "ALTER TABLE".
 
 19
 00:00:39,120 --> 00:00:40,920
-Así es cómo funciona en el
+Así es como funciona en el
 mundo relacional.
 
 20
@@ -150,7 +150,7 @@ mi nombre completo.
 33
 00:01:06,100 --> 00:01:09,950
 Y luego digamos que quiero
-poner mi ciudad de nacimiento en él.
+poner mi ciudad de nacimiento en ella.
 
 34
 00:01:09,950 --> 00:01:11,540
@@ -239,135 +239,135 @@ me la voy a inventar.
 
 53
 00:01:40,050 --> 00:01:42,195
-But I also want to store his
-favorite color, which I
+Pero también quiero almacenar su
+color favorito, el cual 
 
 54
 00:01:42,195 --> 00:01:45,390
-believe is red, based on
-nothing, just a guess.
+creo que es rojo, basándome en
+nada, sólo una suposición.
 
 55
 00:01:45,390 --> 00:01:48,660
-Now, if I look in that
-collection, I can see that
+Ahora, si miro en esa
+colección, puedo ver que
 
 56
 00:01:48,660 --> 00:01:50,290
-I've got two different
-documents.
+tengo dos documentos
+distintos.
 
 57
 00:01:50,290 --> 00:01:52,760
-And these two different
-documents, one of them has
+Y de estos dos documentos
+distintos, uno sólo tiene
 
 58
 00:01:52,760 --> 00:01:54,860
-just a name, and city of birth,
-and of course this
+un nombre, ciudad de nacimiento
+y por supuesto este
 
 59
 00:01:54,860 --> 00:01:57,080
-interesting object ID that
-we'll talk about later.
+interesante ObjectId del que
+hablaremos más adelante.
 
 60
 00:01:57,080 --> 00:01:59,870
-And the other one has
-name, city of birth,
+Y el otro tiene
+nombre, ciudad de nacimiento
 
 61
 00:01:59,870 --> 00:02:01,050
-and favorite color.
+y color favorito.
 
 62
 00:02:01,050 --> 00:02:04,140
-So this permits Mongo to be very
-agile because you don't
+Así que Mongo permite ser muy
+ágiles porque no necesitas
 
 63
 00:02:04,140 --> 00:02:07,280
-need to have exactly the same
-keys in each of the documents.
+tener exactamente las mismas
+claves en cada documento.
 
 64
 00:02:07,280 --> 00:02:09,410
-And I can evolve it
-over time, too.
+Y puedo evolucionar esto
+con el tiempo, también.
 
 65
 00:02:09,410 --> 00:02:11,910
-And I can change to schema
-of an existing document.
+Puedo cambiar el esquema
+de un documento existente.
 
 66
 00:02:11,910 --> 00:02:15,420
-So for instance, I
-can do db.users.
+Así que por ejemplo,
+puedo referenciar db.users.
 
 67
 00:02:15,420 --> 00:02:16,470
-put it into a variable.
+todo esto con una variable.
 
 68
 00:02:16,470 --> 00:02:18,330
-And I'm looking for the
-object with the
+Y estoy buscando el
+objeto cuyo 
 
 69
 00:02:18,330 --> 00:02:20,050
-name of Andrew Erlichson.
+nombre es Andrew Erlichson.
 
 70
 00:02:20,050 --> 00:02:21,730
-And I can see the object.
+Y puedo ver el objeto.
 
 71
 00:02:21,730 --> 00:02:22,440
-There it is.
+Ahí está.
 
 72
 00:02:22,440 --> 00:02:24,240
-Put my favorite color in.
+Pongo mi color favorito.
 
 73
 00:02:24,240 --> 00:02:26,190
-And now, I can look at
-Jay, and you can see
+Y ahora, puedo echar un vistazo 
+a "j", y puedes ver 
 
 74
 00:02:26,190 --> 00:02:27,740
-that it's been updated.
+que se ha actualizado.
 
 75
 00:02:27,740 --> 00:02:31,270
-And now I could do a
-db.users.save of Jay.
+Y ahora podría hacer un
+"db.users.save(j)".
 
 76
 00:02:31,270 --> 00:02:34,260
-And now, if I look at this
-collection, you can see that
+Ahora, si echas un vistazo a
+esta colección, puedes ver que
 
 77
 00:02:34,260 --> 00:02:37,330
-my object has now been
-updated to include a
+mi objeto ha sido ahora 
+actualizado para incluir
 
 78
 00:02:37,330 --> 00:02:39,170
-favorite color as well.
+también un color favorito.
 
 79
 00:02:39,170 --> 00:02:41,360
-This is flexibility that we're
-going to take advantage of a
+Ésta es la flexibilidad que
+vamos a aprovechar un montón
 
 80
 00:02:41,360 --> 00:02:43,640
-lot as we build systems
-using MongoDB.
+a medida que construimos sistemas
+usando MongoDB.
 
 81
 00:02:43,640 --> 00:02:44,890
