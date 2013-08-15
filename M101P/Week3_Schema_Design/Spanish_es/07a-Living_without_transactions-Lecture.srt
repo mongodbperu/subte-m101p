@@ -103,7 +103,7 @@ varias tablas, tendrás que
 23
 00:01:03,530 --> 00:01:07,060
 iniciar una transacción y hacer
-todos esas modificaciones y luego finalizar
+todas esas modificaciones y luego finalizar
 
 24
 00:01:07,060 --> 00:01:08,860
