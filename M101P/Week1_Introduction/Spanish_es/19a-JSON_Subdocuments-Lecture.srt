@@ -21,8 +21,8 @@ otro documento con las claves
 
 6
 00:00:08,160 --> 00:00:11,070
-"street address", "city", "state" y
-"zip code", en este orden.
+"street_address", "city", "state" y
+"zipcode", en este orden.
 
 7
 00:00:11,070 --> 00:00:13,250
@@ -43,7 +43,7 @@ valores--
 
 11
 00:00:18,670 --> 00:00:20,830
-"zip code" es "94305".
+"zipcode" es "94305".
 
 12
 00:00:20,830 --> 00:00:23,620
