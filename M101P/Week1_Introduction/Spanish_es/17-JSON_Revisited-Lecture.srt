@@ -20,8 +20,8 @@ puede representarlo.
 
 6
 00:00:05,570 --> 00:00:09,130
-Hay sólo dos estructuras de datos
-básicas dentro de JSON,
+Hay sólo dos estructuras básicas
+de datos dentro de JSON,
 
 7
 00:00:09,130 --> 00:00:11,920
@@ -174,7 +174,7 @@ todo a partir de estas dos
 
 38
 00:01:21,370 --> 00:01:22,720
-estructuras de datos básicas.
+estructuras básicas de datos.
 
 39
 00:01:22,720 --> 00:01:26,720
