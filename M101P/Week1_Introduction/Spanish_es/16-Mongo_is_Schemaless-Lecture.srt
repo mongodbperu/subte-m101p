@@ -8,7 +8,7 @@ antes acerca de que MongoDB
 
 3
 00:00:03,390 --> 00:00:04,230
-es sin esquema.
+es "schemaless".
 
 4
 00:00:04,230 --> 00:00:06,940
