@@ -56,7 +56,7 @@ para modelarlo fue tener una
 13
 00:00:28,870 --> 00:00:31,400
 colección de alumnos donde
-tenermos un _id para cada
+tenemos un _id para cada
 
 14
 00:00:31,400 --> 00:00:33,860
@@ -66,7 +66,7 @@ para cada alumno.
 15
 00:00:33,860 --> 00:00:36,390
 Y una colección de profesores donde
-tenermos un _id
+tenemos un _id
 
 16
 00:00:36,390 --> 00:00:38,320
@@ -204,7 +204,7 @@ sobre rendimiento en un futuro,
 44
 00:01:45,520 --> 00:01:50,760
 pero resulta que
-Mongo soportar la adición de un índice
+Mongo soporta la adición de un índice
 
 45
 00:01:50,760 --> 00:01:52,900
@@ -285,11 +285,11 @@ y Mark.
 61
 00:02:33,930 --> 00:02:36,710
 Y tiene un array "teachers"
-indicando qué profesores que
+indicando qué profesores
 
 62
 00:02:36,710 --> 00:02:38,050
-cada uno de ellos tiene.
+tiene cada uno de ellos.
 
 63
 00:02:38,050 --> 00:02:41,340
@@ -308,8 +308,8 @@ yo estaba allí--
 
 66
 00:02:45,010 --> 00:02:47,940
-y puedes ver los profesores
-que cada de uno de estos alumnos tiene.
+y puedes ver qué profesores
+tiene cada uno de estos alumnos.
 
 67
 00:02:47,940 --> 00:02:50,830
