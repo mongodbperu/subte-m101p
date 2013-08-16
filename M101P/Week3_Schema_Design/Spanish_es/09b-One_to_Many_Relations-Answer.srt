@@ -3,38 +3,37 @@
 
 2
 00:00:00,320 --> 00:00:03,010
-And the answer is that, you're
-going to need to use multiple
+Y la respuesta es que, vas
+a necesitar usar múltiples
 
 3
 00:00:03,010 --> 00:00:06,020
-collections to represent a one
-to many relationship, or I'd
+colecciones para representar una
+relación de uno a muchos, o
 
 4
 00:00:06,020 --> 00:00:08,450
-recommend it whenever
-the many is large.
+se lo recomiendo siempre que
+el número es grande.
 
 5
 00:00:08,450 --> 00:00:12,530
-For instance, in the example we
-gave, people in the city,
+Por ejemplo, en el ejemplo que
+dimos, personas en la ciudad,
 
 6
 00:00:12,530 --> 00:00:15,720
-it would be best if you brought
-up people to be a
+sería mejor si llevas
+a las personas a ser
 
 7
 00:00:15,720 --> 00:00:17,920
-first class object, gave it its
-own collection, and have
-
+el objeto de primera clase, le das
+su propia colección y tener
 8
 00:00:17,920 --> 00:00:19,340
-the city be its own collection
-as well.
+la ciudad en su propia colección
+también.
 
 9
 00:00:19,340 --> 00:00:20,590

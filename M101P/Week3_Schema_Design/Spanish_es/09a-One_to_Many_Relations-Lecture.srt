@@ -1,503 +1,503 @@
 1
 00:00:00,000 --> 00:00:02,870
-Let's talk about one to
-many relationships.
+Hablemos de uno de las
+relaciones de uno a muchos.
 
 2
 00:00:02,870 --> 00:00:06,840
-So a one to many relationship is
-where there's two entities
+Por lo que una relación de uno a muchos es
+donde hay dos entidades
 
 3
 00:00:06,840 --> 00:00:10,090
-and there's many, many entities
-or many entities that
+y hay muchas, muchas entidades
+o muchas entidades que
 
 4
 00:00:10,090 --> 00:00:11,740
-map to the one entity.
+se relacionan a una entidad.
 
 5
 00:00:11,740 --> 00:00:14,770
-So for an example, you have a
-city and you have the people
+Por ejemplo, tú tienes una
+ciudad y tienes a la gente
 
 6
 00:00:14,770 --> 00:00:16,950
-or persons who live
-in that city.
+o personas que viven
+en aquella ciudad.
 
 7
 00:00:16,950 --> 00:00:22,530
-So an example would be New York
-City, which has 8 million
+Así por ejemplo sería la ciudad
+de Nueva York, que tiene 8 millones
 
 8
 00:00:22,530 --> 00:00:24,020
-people in it.
+de personas.
 
 9
 00:00:24,020 --> 00:00:25,280
-How are you going
-to model that?
+¿Cómo tú
+modelas esto?
 
 10
 00:00:25,280 --> 00:00:27,900
-Well, we could go through it and
-think about different ways
+Bueno, podríamos abordar esto y
+pensar acerca de distintas maneras
 
 11
 00:00:27,900 --> 00:00:29,120
-you might want to do it.
+en que puedes hacerlo.
 
 12
 00:00:29,120 --> 00:00:31,920
-So, you might say, well, I'm
-going to have a city
+Por lo tanto, podrías decir,
+Voy a tener una colección
 
 13
 00:00:31,920 --> 00:00:33,030
-collection.
+de ciudades.
 
 14
 00:00:33,030 --> 00:00:35,970
-And in that city collection,
-I'm going to have the
+Y en esa colección de ciudades,
+voy a tener los
 
 15
 00:00:35,970 --> 00:00:37,530
-attributes of the city,
-like the name of the
+atributos de la ciudad,
+como el nombre de la
 
 16
 00:00:37,530 --> 00:00:40,700
-city, and its area.
+ciudad y su área.
 
 17
 00:00:40,700 --> 00:00:44,560
-And then I'm going to have the
-people that live in the city
+Y entonces voy a tener a la
+gente que vive en la ciudad
 
 18
 00:00:44,560 --> 00:00:46,680
-as an array.
+como un array.
 
 19
 00:00:46,680 --> 00:00:47,790
-But that won't work.
+Pero eso no funcionará.
 
 20
 00:00:47,790 --> 00:00:52,420
-Because, of course, there
-are way too many people.
+Porque, por supuesto, hay
+demasiada gente.
 
 21
 00:00:52,420 --> 00:00:54,680
-8 million people and all their
-documents and all their
+8 millones de personas y todos sus
+documentos y toda su
 
 22
 00:00:54,680 --> 00:00:58,290
-information, it isn't going
-to fit inside this.
+información, no va
+a caber dentro de ésto.
 
 23
 00:00:58,290 --> 00:01:01,780
-So, as a result, you
-can't do that.
+Así que, como resultado, no
+puedes hacer eso.
 
 24
 00:01:01,780 --> 00:01:03,850
-You could say, well, I'll
-flip it on its head.
+Podrías decir, bueno, voy
+a ponerlo de cabeza.
 
 25
 00:01:03,850 --> 00:01:05,780
-So instead, I could say, well,
-I'm going to have a people
+Así que en lugar, podría decir, bueno,
+voy a tener una colección
 
 26
 00:01:05,780 --> 00:01:07,770
-collection.
+de personas.
 
 27
 00:01:07,770 --> 00:01:11,230
-And the people collection, in
-each document, I'm going to
+Y la colección de personas, en
+cada documento, voy a
 
 28
 00:01:11,230 --> 00:01:14,580
-have a name, like Andrew.
+tener un nombre, como "Andrew".
 
 29
 00:01:14,580 --> 00:01:17,560
-And then I'm going
-to have the city.
+Y entonces voy
+a tener la ciudad.
 
 30
 00:01:17,560 --> 00:01:19,630
-And that's going to be
-another document.
+Y esto va a ser
+otro documento.
 
 31
 00:01:19,630 --> 00:01:24,532
-And it's going to have a name,
-like New York, and an area,
+Y va a tener un nombre,
+como "Nueva York" y un área
 
 32
 00:01:24,532 --> 00:01:26,230
-and everything else.
+y todo lo demás.
 
 33
 00:01:26,230 --> 00:01:30,630
-Now the problem with this design
-is that if there are
+Ahora, el problema con este diseño
+es que si hay
 
 34
 00:01:30,630 --> 00:01:33,510
-obviously multiple living in New
-York, so what I've done is
+obviamente muchos viviendo en Nueva
+York, lo que he hecho es
 
 35
 00:01:33,510 --> 00:01:39,490
-I've duplicated this data in
-multiple documents, which is
+he duplicado estos datos en
+múltiples documentos, que está
 
 36
 00:01:39,490 --> 00:01:42,620
-going to open me up to
-inconsistencies because I have
+abriendo a
+inconsistencias porque tengo
 
 37
 00:01:42,620 --> 00:01:46,490
-to keep the city information
-updated across all the people
+que mantener la información de la ciudad
+actualizada a través de toda la gente
 
 38
 00:01:46,490 --> 00:01:47,170
-who live in the city.
+que vive en la ciudad.
 
 39
 00:01:47,170 --> 00:01:49,800
-Now, in certain designs, that
-might be acceptable.
+Ahora, en ciertos diseños,
+podría ser aceptable.
 
 40
 00:01:49,800 --> 00:01:52,800
-But I probably wouldn't
-recommend it in general.
+Pero probablemente no
+lo recomendaría en general.
 
 41
 00:01:52,800 --> 00:01:55,740
-So given that, what's the
-best way to do it?
+Así que teniendo en cuenta, ¿cuál es la
+mejor manera de hacerlo?
 
 42
 00:01:55,740 --> 00:01:59,170
-Well, in this case, where there
-truly is one to many,
+Bueno, en este caso, donde
+realmente es uno a muchos,
 
 43
 00:01:59,170 --> 00:02:03,620
-one city with many people, the
-best way to do it is probably
+una ciudad con mucha gente, la
+mejor manera de hacerlo es probablemente
 
 44
 00:02:03,620 --> 00:02:06,530
-to use true linking.
+usar verdadera vinculación.
 
 45
 00:02:06,530 --> 00:02:08,229
-So we'll use true linking.
+Así que usaremos verdadera vinculación.
 
 46
 00:02:08,229 --> 00:02:10,919
-So for true linking, we're
-going to have a people
+Así que para la verdadera vinculación,
+vamos a tener una colección
 
 47
 00:02:10,919 --> 00:02:11,950
-collection.
+de personas.
 
 48
 00:02:11,950 --> 00:02:14,030
-And in that people collection,
-we're going to have something
+Y en esta colección de personas,
+vamos a tener algo
 
 49
 00:02:14,030 --> 00:02:18,510
-like the name of the person,
-like Andrew, and then,
+como el nombre de la persona,
+como "Andrew" y luego
 
 50
 00:02:18,510 --> 00:02:23,770
-probably, my city, which let's
-assume that the city names are
+probablemente, mi ciudad, que vamos
+a suponer que los nombres de la ciudades son
 
 51
 00:02:23,770 --> 00:02:27,870
-unique, New York City being
-unique, and other
+unicas, "Nueva York" es
+única y otros
 
 52
 00:02:27,870 --> 00:02:29,390
-attributes about me.
+atributos acerca de mi.
 
 53
 00:02:29,390 --> 00:02:32,770
-And then, in the city
-collection, I would have an
+Y luego, en la colección de
+ciudades, tendré un
 
 54
 00:02:32,770 --> 00:02:37,200
-underscore ID being New York
-City, and other attributes
+_id que será "New York
+City" y otros atributos
 
 55
 00:02:37,200 --> 00:02:39,880
-about the city listed out.
+listados acerca de la ciudad.
 
 56
 00:02:39,880 --> 00:02:43,660
-So, in this case, I would
-link from the item
+Por eso, en este caso,
+enlazaría desde el elemento
 
 57
 00:02:43,660 --> 00:02:44,560
-where there was many.
+donde hubo muchos.
 
 58
 00:02:44,560 --> 00:02:48,380
-So, I would have a collection
-of the many, the people.
+Así, tendría una colección
+de "los muchos", las personas.
 
 59
 00:02:48,380 --> 00:02:51,430
-And I would link into the
-one, into the city.
+Y enlazaría a
+"el uno", en la ciudad.
 
 60
 00:02:51,430 --> 00:02:53,625
-And again, knowing we have no
-foreign key constraints, you
+Y otra vez, sabiendo que no tenemos
+restricciones de clave foráneas,
 
 61
 00:02:53,625 --> 00:02:55,080
-just have to make sure that
-you're consistent about it and
+sólo asegúrate de
+ser consistente al respecto y
 
 62
 00:02:55,080 --> 00:02:57,690
-that you don't put a city in
-that isn't also an underscore
+que no pones una ciudad en
+él no es también un
 
 63
 00:02:57,690 --> 00:03:00,810
-ID for the collection
-that it refers to.
+_id para la colección
+a la que se refiere.
 
 64
 00:03:00,810 --> 00:03:03,240
-So that's a fine solution
-for one to many.
+Por lo que es una buena solución
+para "uno uno a muchos".
 
 65
 00:03:03,240 --> 00:03:05,290
-And it requires two
-collections.
+Y esto requiere dos
+colecciones.
 
 66
 00:03:05,290 --> 00:03:08,110
-So that requires two
-collections.
+Para esto requiere dos
+colecciones.
 
 67
 00:03:08,110 --> 00:03:11,610
-But what if it isn't
-one to many, but
+¿Pero qué si no es
+"uno a muchos"
 
 68
 00:03:11,610 --> 00:03:15,050
-instead it's one to few?
+sino "uno a pocos"?
 
 69
 00:03:15,050 --> 00:03:18,450
-Which is still a one to many
-relationship, but is actually
+Que sigue siendo una relación de
+uno a muchos, pero en realidad
 
 70
 00:03:18,450 --> 00:03:20,640
-a lot easier to model
-inside mongoDB.
+es mucho más fácil de modelar
+en MongoDB.
 
 71
 00:03:20,640 --> 00:03:24,600
-So the example I gave you before
-was these blog posts
+Así por ejemplo antes te di
+estos ejemplos de los posts
 
 72
 00:03:24,600 --> 00:03:25,740
-and the comments.
+y los commentarios.
 
 73
 00:03:25,740 --> 00:03:30,170
-And you saw, when we went over
-the schema for the blog, that
+Y viste, que cuando hicimos
+el esquema para el blog,
 
 74
 00:03:30,170 --> 00:03:33,920
-there are multiple comments
-that go to one blog post.
+hay muchos comentarios
+que van a un post.
 
 75
 00:03:33,920 --> 00:03:36,000
-But it isn't very
-many of them.
+Pero no es
+mucho de ellos
 
 76
 00:03:36,000 --> 00:03:38,960
-So it's blog post, sorry,
-to comment.
+Así que es post, perdón,
+a comentarios.
 
 77
 00:03:38,960 --> 00:03:42,090
-There's is one of these
-and maybe 10 of these.
+Es uno de ellos
+y tal vez 10 de ellos.
 
 78
 00:03:42,090 --> 00:03:46,110
-And, so in that case, it's
-feasible to have a collection
+Y por lo que en este caso, es
+posible tener una colección
 
 79
 00:03:46,110 --> 00:03:47,210
-of the one.
+de "los unos".
 
 80
 00:03:47,210 --> 00:03:49,770
-So to have a post collection,
-which is what we did.
+Así que para tener una colección de posts,
+que es lo que hicimos.
 
 81
 00:03:49,770 --> 00:03:54,620
-And then, within each post, you
-had the name of the posts,
+Y entonces, dentro de cada post,
+tenías el nombre de los posts,
 
 82
 00:03:54,620 --> 00:03:58,100
-and then somewhere you had
-an array of the comments.
+y luego en algún lugar tenías
+un array de los comentarios.
 
 83
 00:03:58,100 --> 00:04:02,470
-And then, that array contained
-all the comments, but there's
+Y después, el array que contiene
+todos los comentarios, pero hay
 
 84
 00:04:02,470 --> 00:04:04,620
-only a few of them
-for each post.
+sólo unos pocos de éstos
+para cada post.
 
 85
 00:04:04,620 --> 00:04:06,940
-And again, we don't have the
-duplication of data problem
+Y de nuevo, no tenemos el
+problema de duplicación de datos
 
 86
 00:04:06,940 --> 00:04:11,920
-because every comment is only
-within a single post.
+porque cada comentario está sólo
+en un único post.
 
 87
 00:04:11,920 --> 00:04:15,490
-So in this particular model, it
-works very well to have a
+Así que en este modelo en particular,
+funciona muy bien para tener una
 
 88
 00:04:15,490 --> 00:04:17,100
-single collection.
+sola colección.
 
 89
 00:04:17,100 --> 00:04:20,079
-And we're going to have a single
-collection of the one,
+Y vamos a tener una sola
+colección de "los unos",
 
 90
 00:04:20,079 --> 00:04:21,149
-of the posts.
+de los posts.
 
 91
 00:04:21,149 --> 00:04:23,640
-And then put the
-many embedded.
+Y a continuación poner "los
+muchos" embebidos.
 
 92
 00:04:23,640 --> 00:04:27,110
-So those are the two different
-ways to handle the one to many
+Así esas son las dos diferentes
+formas de manejar la relación de
 
 93
 00:04:27,110 --> 00:04:29,980
-relationship, depending on
-whether it's one to few, or
+uno a muchos, dependiendo si
+se trata de "uno a pocos" o
 
 94
 00:04:29,980 --> 00:04:30,740
-one to many.
+"uno a muchos".
 
 95
 00:04:30,740 --> 00:04:33,860
-If it's truly one to many than
-two collections works best
+Si es verdaderamente "uno a muchos" de
+dos colecciones funciona mejor
 
 96
 00:04:33,860 --> 00:04:35,110
-with linking.
+con vinculación.
 
 97
 00:04:35,110 --> 00:04:38,440
-And if it's just one to few,
-well, then you could probably
+Y si es sólo "uno a pocos",
+bueno, entonces probablemente podrías
 
 98
 00:04:38,440 --> 00:04:41,050
-get away with a single
-collection, like we did in the
+hacerlo con una sola
+colección, al igual que lo hicimos en el
 
 99
 00:04:41,050 --> 00:04:44,100
-blogging example, where
-you just embed the
+ejemplo de blog, donde
+sólo embebes los
 
 100
 00:04:44,100 --> 00:04:45,640
-items within it.
+elementos en él.
 
 101
 00:04:45,640 --> 00:04:47,890
-All right, so it's
-time for a quiz.
+Muy bien, ahora es
+tiempo para un cuestionario.
 
 102
 00:04:47,890 --> 00:04:51,800
-So, when is it recommended to
-represent a one to many
+¿Cuándo se recomienda
+representar una relación
 
 103
 00:04:51,800 --> 00:04:54,320
-relationship in multiple
-collections?
+de uno a muchos en múltiples
+colecciones?
 
 104
 00:04:54,320 --> 00:04:59,190
-And the answers are, always,
-whenever the many is large,
+Y las respuestas son: siempre,
+siempre que el número es grande,
 
 105
 00:04:59,190 --> 00:05:03,630
-whenever the many is actually
-few, or never.
+cada vez que "los muchos" son realmente
+pocos o nunca.
 
 106
 00:05:03,630 --> 00:05:04,880
-What's the answer?
+¿Cuál es la respuesta?
