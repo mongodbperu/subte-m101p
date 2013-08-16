@@ -1,0 +1,43 @@
+1
+00:00:00,000 --> 00:00:00,150
+
+2
+00:00:00,150 --> 00:00:04,900
+Y la respuesta es que al final
+encontrarás todos los
+
+3
+00:00:04,900 --> 00:00:05,750
+descendientes.
+
+4
+00:00:05,750 --> 00:00:07,890
+Así que podría ser un poco
+sorprendente.
+
+5
+00:00:07,890 --> 00:00:14,080
+Al parecer todos los documentos donde
+el ancestro es 34, ya que
+
+6
+00:00:14,080 --> 00:00:18,640
+al polimorfismo en torno a la
+forma en que nuestro array lo maneja, esto
+
+7
+00:00:18,640 --> 00:00:23,700
+buscará todos los documentos donde
+34 es un elemento en el
+
+8
+00:00:23,700 --> 00:00:26,920
+array de ancestros, que te dará
+todos los descendientes
+
+9
+00:00:26,920 --> 00:00:28,170
+para el documento "snorkeling" (buceo).
+
+10
+00:00:28,170 --> 00:00:28,950
