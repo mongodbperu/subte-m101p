@@ -1,0 +1,449 @@
+1
+00:00:00,000 --> 00:00:00,120
+
+2
+00:00:00,120 --> 00:00:03,590
+Una de las razones de por qué vincular
+y embeber funcionan tan bien
+
+3
+00:00:03,590 --> 00:00:06,380
+en MongoDB es
+porque MongoDB
+
+4
+00:00:06,380 --> 00:00:09,090
+soporta índices de múltiples claves.
+
+5
+00:00:09,090 --> 00:00:12,100
+Quiero hablar un poco acerca de
+índices de múltiples claves y por qué
+
+6
+00:00:12,100 --> 00:00:15,060
+son útiles en un
+esquema de MongoDB.
+
+7
+00:00:15,060 --> 00:00:18,380
+Por eso, antes hablábamos acerca
+de la estructura de alumnos y profesores,
+
+8
+00:00:18,380 --> 00:00:20,820
+donde hay una relación
+de muchos a muchos
+
+9
+00:00:20,820 --> 00:00:22,330
+entre alumnos y profesores.
+
+10
+00:00:22,330 --> 00:00:24,540
+Donde un alumno tiene muchos
+profesores y un profesor tiene
+
+11
+00:00:24,540 --> 00:00:25,770
+muchos alumnos.
+
+12
+00:00:25,770 --> 00:00:28,870
+Y una de las maneras que hablamos
+para modelarlo fue tener una
+
+13
+00:00:28,870 --> 00:00:31,400
+colección de alumnos donde
+tenemos un _id para cada
+
+14
+00:00:31,400 --> 00:00:33,860
+alumno y un nombre
+para cada alumno.
+
+15
+00:00:33,860 --> 00:00:36,390
+Y una colección de profesores donde
+tenemos un _id
+
+16
+00:00:36,390 --> 00:00:38,320
+para cada profesor y un nombre
+para cada profesor.
+
+17
+00:00:38,320 --> 00:00:41,820
+Y luego relacionamos éstas dos
+teniendo un array de
+
+18
+00:00:41,820 --> 00:00:44,560
+profesores en la colección
+de alumnos, justo aquí,
+
+19
+00:00:44,560 --> 00:00:46,590
+un array de profesores.
+
+20
+00:00:46,590 --> 00:00:49,730
+Y en este array de profesores,
+listamos un array de todos los
+
+21
+00:00:49,730 --> 00:00:52,640
+_ids que representan a
+los profesores que
+
+22
+00:00:52,640 --> 00:00:53,470
+el alumno tiene.
+
+23
+00:00:53,470 --> 00:00:56,320
+Ahora hay dos evidentes tipos
+de consultas que puedes
+
+24
+00:00:56,320 --> 00:00:58,160
+desear hacer de estas
+colecciones.
+
+25
+00:00:58,160 --> 00:01:01,675
+Y una es, dime todos
+los profesores de
+
+26
+00:01:01,675 --> 00:01:02,445
+un alumno en particular.
+
+27
+00:01:02,445 --> 00:01:04,129
+Ahora ésto es bastante
+sencillo.
+
+28
+00:01:04,129 --> 00:01:07,820
+Sólo harías un "db.find" en
+la colección de alumnos.
+
+29
+00:01:07,820 --> 00:01:09,980
+Y extraería el
+array de profesores y luego
+
+30
+00:01:09,980 --> 00:01:13,730
+tendrás este array en mi mano
+de todos estos profesores.
+
+31
+00:01:13,730 --> 00:01:17,540
+Pero es un poco menos claro
+cómo podrías encontrar todos
+
+32
+00:01:17,540 --> 00:01:19,670
+los alumnos que tienen
+un profesor en particular.
+
+33
+00:01:19,670 --> 00:01:22,060
+¿Cómo podrías encontrar todos
+los alumnos que tengan un
+
+34
+00:01:22,060 --> 00:01:23,650
+profesor en particular?
+
+35
+00:01:23,650 --> 00:01:26,520
+Por lo que la forma en que lo harías
+es buscando en la
+
+36
+00:01:26,520 --> 00:01:30,210
+colección de alumnos, usando uno
+de nuestros operadores de "set", para encontrar
+
+37
+00:01:30,210 --> 00:01:34,260
+todos los documentos donde,
+digamos, este valor y este
+
+38
+00:01:34,260 --> 00:01:35,850
+valor aparecen.
+
+39
+00:01:35,850 --> 00:01:37,850
+Pero deseas que sea rápido.
+
+40
+00:01:37,850 --> 00:01:39,560
+Y para que
+sea rápido, tiene que
+
+41
+00:01:39,560 --> 00:01:41,300
+haber un índice en eso.
+
+42
+00:01:41,300 --> 00:01:43,460
+Ahora, no hablamos mucho
+acerca de índices.
+
+43
+00:01:43,460 --> 00:01:45,520
+Y vamos a hablar más
+sobre rendimiento en un futuro,
+
+44
+00:01:45,520 --> 00:01:50,760
+pero resulta que
+Mongo soporta la adición de un índice
+
+45
+00:01:50,760 --> 00:01:52,900
+en la clave "teachers".
+
+46
+00:01:52,900 --> 00:01:55,800
+Y cuando tu índice
+es un array, lo que obtendrás
+
+47
+00:01:55,800 --> 00:02:00,470
+es un índice multiclave donde Mongo
+en realidad indexa todos
+
+48
+00:02:00,470 --> 00:02:03,920
+los valores en el array
+para todos los documentos.
+
+49
+00:02:03,920 --> 00:02:07,490
+Así que quiero mostrarte cómo
+luce en el shell mongo.
+
+50
+00:02:07,490 --> 00:02:10,100
+Y mostrarte la base de datos en
+acción cuando ésto consulte
+
+51
+00:02:10,100 --> 00:02:12,570
+algo que tiene
+un multiclave en él.
+
+52
+00:02:12,570 --> 00:02:14,290
+Entonces, estoy en el shell
+mongo ahora mismo.
+
+53
+00:02:14,290 --> 00:02:20,430
+Y voy a usar la
+colección "school".
+
+54
+00:02:20,430 --> 00:02:22,310
+He creado dos colecciones.
+
+55
+00:02:22,310 --> 00:02:24,420
+He creado una coleccción de
+alumnos y una de colección de
+
+56
+00:02:24,420 --> 00:02:25,020
+profesores.
+
+57
+00:02:25,020 --> 00:02:27,990
+Y se ven muy similares a
+lo que te acabo de mostrar en
+
+58
+00:02:27,990 --> 00:02:28,920
+la pizarra.
+
+59
+00:02:28,920 --> 00:02:31,980
+Así, en la colección de alumnos,
+tenemos cuatro alumnos,
+
+60
+00:02:31,980 --> 00:02:33,930
+Andrew, Richard, Elliot
+y Mark.
+
+61
+00:02:33,930 --> 00:02:36,710
+Y tiene un array "teachers"
+indicando qué profesores
+
+62
+00:02:36,710 --> 00:02:38,050
+tiene cada uno de ellos.
+
+63
+00:02:38,050 --> 00:02:41,340
+Y en la colección de profesores,
+tengo los nombres
+
+64
+00:02:41,340 --> 00:02:43,540
+de los cuatro profesores-- éstos son
+en realidad profesores de Stanford
+
+65
+00:02:43,540 --> 00:02:45,010
+que estaban allí cuando
+yo estaba allí--
+
+66
+00:02:45,010 --> 00:02:47,940
+y puedes ver qué profesores
+tiene cada uno de estos alumnos.
+
+67
+00:02:47,940 --> 00:02:50,830
+Si quisiera indexar y
+crear un índice multiclave en el
+
+68
+00:02:50,830 --> 00:02:54,080
+array de profesores, lo puedo hacer
+a través de este comando,
+
+69
+00:02:54,080 --> 00:02:58,395
+db.students.ensureIndex
+especificando "teachers".
+
+70
+00:02:58,395 --> 00:03:00,360
+Y vamos a tener índices
+luego, pero sólo deseo mostrarte
+
+71
+00:03:00,360 --> 00:03:01,882
+ésto.
+
+72
+00:03:01,882 --> 00:03:05,470
+Y una vez que lo hago,
+puedo consultar y
+
+73
+00:03:05,470 --> 00:03:07,190
+llegar al índice.
+
+74
+00:03:07,190 --> 00:03:11,780
+Así que aquí está la consulta donde
+pido la colección de alumnos
+
+75
+00:03:11,780 --> 00:03:16,080
+para encontrar todos los documentos
+de alumnos donde el array de
+
+76
+00:03:16,080 --> 00:03:20,620
+profesores tiene valores entre 1 y
+3 en él, lo que significa que estoy
+
+77
+00:03:20,620 --> 00:03:24,385
+buscando gente que tenga a
+John Hennessy y James
+
+78
+00:03:24,385 --> 00:03:28,240
+Plummer como profesores y
+retornar estos documentos.
+
+79
+00:03:28,240 --> 00:03:31,370
+Si hago eso, puedes ver,
+me parece que Richard y
+
+80
+00:03:31,370 --> 00:03:35,550
+Elliot tienen profesores 1
+y 3, que son John
+
+81
+00:03:35,550 --> 00:03:38,750
+Hennessy y James Plummer.
+
+82
+00:03:38,750 --> 00:03:40,930
+Ahora ¿qué hizo el uso de un índice?
+
+83
+00:03:40,930 --> 00:03:45,010
+Podrías averiguarlo
+llamando a .explain al
+
+84
+00:03:45,010 --> 00:03:47,790
+final de la consulta.
+
+85
+00:03:47,790 --> 00:03:49,950
+No lo hemos mostrado, pero
+lo haremos en un futuro.
+
+86
+00:03:49,950 --> 00:03:52,780
+.explain muestra
+tu plan de consulta.
+
+87
+00:03:52,780 --> 00:03:55,460
+Y puedes ver justo
+arriba, dice cursor
+
+88
+00:03:55,460 --> 00:04:00,030
+BtreeCursor teachers_1 que
+significa que MongoDB, en efecto,
+
+89
+00:04:00,030 --> 00:04:02,280
+utilizó un índice para realizar
+esta consulta.
+
+90
+00:04:02,280 --> 00:04:05,490
+Y la existencia de estos
+índices multiclaves es una de las
+
+91
+00:04:05,490 --> 00:04:07,510
+razones para que embeber
+o relacionar
+
+92
+00:04:07,510 --> 00:04:09,980
+funcionen tan bien en MongoDB.
+
+93
+00:04:09,980 --> 00:04:12,230
+Ya que puedes hacer los
+tipos de consulta que podrías
+
+94
+00:04:12,230 --> 00:04:15,260
+esperar hacer en una base de datos
+relacional y hacerlas rápido.
+
+95
+00:04:15,260 --> 00:04:16,588
