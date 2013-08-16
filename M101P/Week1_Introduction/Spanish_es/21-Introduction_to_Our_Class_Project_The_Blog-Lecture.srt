@@ -1,0 +1,154 @@
+1
+00:00:00,000 --> 00:00:00,160
+
+2
+00:00:00,160 --> 00:00:04,130
+Quiero volver ahora y
+enseñarte el blog que vamos
+
+3
+00:00:04,130 --> 00:00:05,930
+a estar construyendo
+en este curso.
+
+4
+00:00:05,930 --> 00:00:08,020
+He construido la mayor parte aquí,
+y voy a guiarte por
+
+5
+00:00:08,020 --> 00:00:09,230
+él rápidamente.
+
+6
+00:00:09,230 --> 00:00:11,290
+Creo que la mayoría de la gente
+sabe qué es un blog.
+
+7
+00:00:11,290 --> 00:00:16,219
+Es un formato largo para
+escribir artículos con títulos.
+
+8
+00:00:16,219 --> 00:00:17,940
+Puedes ver aquí que he
+copiado algunos artículos
+
+9
+00:00:17,940 --> 00:00:19,270
+del blog de 10gen.
+
+10
+00:00:19,270 --> 00:00:22,630
+Y aquí, haré click en uno,
+este "Free Online MongoDB
+
+11
+00:00:22,630 --> 00:00:23,660
+Classes".
+
+12
+00:00:23,660 --> 00:00:27,840
+Y puedes ver que hay un
+nombre corto que está en la URL junto
+
+13
+00:00:27,840 --> 00:00:30,700
+con un pie de autor con mi
+nombre y una fecha.
+
+14
+00:00:30,700 --> 00:00:33,450
+Y en la parte inferior, puedes 
+ver las etiquetas con las que se
+
+15
+00:00:33,450 --> 00:00:34,500
+ha catalogado.
+
+16
+00:00:34,500 --> 00:00:37,080
+Y a continuación hay algunos comentarios
+de algunos lectores y
+
+17
+00:00:37,080 --> 00:00:39,860
+podemos añadir otros comentarios
+justo aquí.
+
+18
+00:00:39,860 --> 00:00:42,670
+Tras añadir ese comentario, 
+podemos enviarlo, y será
+
+19
+00:00:42,670 --> 00:00:44,280
+parte de la entrada del blog.
+
+20
+00:00:44,280 --> 00:00:47,340
+Y si luego vamos aquí al
+inicio del blog, veremos
+
+21
+00:00:47,340 --> 00:00:48,160
+todos los artículos otra vez.
+
+22
+00:00:48,160 --> 00:00:50,930
+Podemos también añadir una entrada
+nueva al blog.
+
+23
+00:00:50,930 --> 00:00:52,930
+No voy a añadir una entrada nueva
+justo ahora, pero ésta es
+
+24
+00:00:52,930 --> 00:00:55,480
+una de las páginas que 
+implementaremos junto con una
+
+25
+00:00:55,480 --> 00:00:57,680
+página de registro y
+una página de desconexión.
+
+26
+00:00:57,680 --> 00:00:59,860
+Así que estarás construyendo esto
+tú mismo así como extendiéndolo,
+
+27
+00:00:59,860 --> 00:01:03,050
+y te enseñaremos cómo
+construir un esquema para esto
+
+28
+00:01:03,050 --> 00:01:05,600
+y te ayudaremos con
+la escritura del código.
+
+29
+00:01:05,600 --> 00:01:07,720
+Por lo que así es cómo se verá
+cuando esté todo terminado, pero
+
+30
+00:01:07,720 --> 00:01:09,660
+quería darte esta
+visión de alto nivel para
+
+31
+00:01:09,660 --> 00:01:11,990
+explicar concretamente lo que
+vamos a estar usando como
+
+32
+00:01:11,990 --> 00:01:13,350
+vehículo para enseñar
+en el curso.
+
+33
+00:01:13,350 --> 00:01:14,600
