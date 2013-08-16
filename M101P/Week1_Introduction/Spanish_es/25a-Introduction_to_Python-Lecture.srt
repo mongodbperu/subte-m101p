@@ -1,0 +1,284 @@
+1
+00:00:00,000 --> 00:00:00,430
+
+2
+00:00:00,430 --> 00:00:02,990
+Muy bien, así que vamos a
+usar Python en este curso para
+
+3
+00:00:02,990 --> 00:00:03,770
+crear un blog.
+
+4
+00:00:03,770 --> 00:00:06,230
+Y puedes usar cualquier
+lenguaje que desees, pero Python
+
+5
+00:00:06,230 --> 00:00:08,890
+va a ser el lenguaje que utilicemos
+para todos los ejemplos de código.
+
+6
+00:00:08,890 --> 00:00:11,000
+Y va a ser el único que
+veremos más profundamente en
+
+7
+00:00:11,000 --> 00:00:12,110
+cuanto a drivers.
+
+8
+00:00:12,110 --> 00:00:13,890
+Así que si conoces Python,
+eso es genial.
+
+9
+00:00:13,890 --> 00:00:14,840
+Puedes saltar esta parte.
+
+10
+00:00:14,840 --> 00:00:16,020
+Es completamente opcional.
+
+11
+00:00:16,020 --> 00:00:18,150
+Si no sabes Python, entonces
+vamos a hacer un pequeño
+
+12
+00:00:18,150 --> 00:00:21,120
+tutorial en Python en las
+próximas lecciones.
+
+13
+00:00:21,120 --> 00:00:23,640
+Puedes aprenderlo aquí, o hay
+muchos recursos en línea para
+
+14
+00:00:23,640 --> 00:00:24,520
+aprender Python.
+
+15
+00:00:24,520 --> 00:00:26,870
+Pero ésto debería ser suficiente
+para empezar y usar el
+
+16
+00:00:26,870 --> 00:00:29,400
+lenguaje si eres un
+programador experimentado en cualquier
+
+17
+00:00:29,400 --> 00:00:30,490
+otro lenguaje.
+
+18
+00:00:30,490 --> 00:00:32,759
+Así que Python es un lenguaje
+de scripting.
+
+19
+00:00:32,759 --> 00:00:35,450
+Fue creado por Guido
+van Rossum.
+
+20
+00:00:35,450 --> 00:00:38,870
+Lleva el nombre de "Monty Python's
+Flying Circus".
+
+21
+00:00:38,870 --> 00:00:40,280
+Se esfuerza por ser legible.
+
+22
+00:00:40,280 --> 00:00:42,200
+Y creo que en realidad es bastante
+legible comparado a
+
+23
+00:00:42,200 --> 00:00:43,740
+muchos otros lenguajes.
+
+24
+00:00:43,740 --> 00:00:46,500
+Tiene un garbage collector, por lo
+que no necesitas preocuparte
+
+25
+00:00:46,500 --> 00:00:49,290
+de manejar tu propia
+memoria, que es agradable.
+
+26
+00:00:49,290 --> 00:00:51,010
+Y es dinámicamente tipado.
+
+27
+00:00:51,010 --> 00:00:55,260
+Y hay un montón de otras
+funcionalidades y aspectos de
+
+28
+00:00:55,260 --> 00:00:58,140
+Python, pero no voy a entrar
+en ellos en este instante.
+
+29
+00:00:58,140 --> 00:01:01,300
+Además, sólo en términos generales,
+si tienes experiencia con Perl,
+
+30
+00:01:01,300 --> 00:01:03,350
+Perl pretende creer que
+siempre hay más de una
+
+31
+00:01:03,350 --> 00:01:04,440
+manera para hacer todo.
+
+32
+00:01:04,440 --> 00:01:07,970
+Y Python luce más para
+crear idiomas para hacer cosas
+
+33
+00:01:07,970 --> 00:01:11,020
+en una manera estándar para que
+el código sea legible y
+
+34
+00:01:11,020 --> 00:01:12,390
+entendible por
+otra persona.
+
+35
+00:01:12,390 --> 00:01:13,810
+Así que empecemos.
+
+36
+00:01:13,810 --> 00:01:16,220
+La primera cosa que vamos
+a hacer es correr el intérprete
+
+37
+00:01:16,220 --> 00:01:18,080
+de Python interactivamente.
+
+38
+00:01:18,080 --> 00:01:20,420
+Y normalmente, vas a
+crear un script de Python y
+
+39
+00:01:20,420 --> 00:01:21,760
+vas a editarlo
+con un editor de texto.
+
+40
+00:01:21,760 --> 00:01:22,620
+Y luego lo ejecutas.
+
+41
+00:01:22,620 --> 00:01:24,770
+Pero en este caso, para esta
+lección, en realidad vamos
+
+42
+00:01:24,770 --> 00:01:25,980
+a ejecutar de forma interactiva.
+
+43
+00:01:25,980 --> 00:01:29,390
+Así que inicio el intérprete de
+Python escribiendo "python".
+
+44
+00:01:29,390 --> 00:01:31,980
+Y entonces voy a utilizar
+el comando "print" para
+
+45
+00:01:31,980 --> 00:01:33,820
+imprimir "Hello, world!".
+
+46
+00:01:33,820 --> 00:01:35,290
+Y puedes ver cómo
+funciona.
+
+47
+00:01:35,290 --> 00:01:37,770
+Y puedes ver que las cadenas
+en Python son representadas
+
+48
+00:01:37,770 --> 00:01:39,140
+entre comillas dobles.
+
+49
+00:01:39,140 --> 00:01:42,610
+Si deseas concatenar dos
+cadenas, puedes hacerlo usando
+
+50
+00:01:42,610 --> 00:01:43,860
+el operador "más" (+).
+
+51
+00:01:43,860 --> 00:01:45,910
+Así "Hello Dwight".
+
+52
+00:01:45,910 --> 00:01:49,520
+Y puedes hacer ésto usando
+múltiples cadenas.
+
+53
+00:01:49,520 --> 00:01:51,770
+Puedes ver cómo esto pone algunos
+espacios para hacer esto un
+
+54
+00:01:51,770 --> 00:01:53,390
+poco más fácil de leer.
+
+55
+00:01:53,390 --> 00:01:55,780
+"print Hello", "Dwight"
+y "Richard".
+
+56
+00:01:55,780 --> 00:01:57,330
+Esa es la primera lección.
+
+57
+00:01:57,330 --> 00:01:58,770
+Aquí está el cuestionario.
+
+58
+00:01:58,770 --> 00:02:01,390
+Haz una expresión para
+concatenar dos cadenas, "hat"
+
+59
+00:02:01,390 --> 00:02:03,830
+y "pin", en Python para
+la cadena "hatpin".
+
+60
+00:02:03,830 --> 00:02:06,160
+Y sólo estamos buscando
+la expresión aquí, no la
+
+61
+00:02:06,160 --> 00:02:07,930
+asignación a una variable
+ni cualquier otra cosa.
+
+62
+00:02:07,930 --> 00:02:09,180
