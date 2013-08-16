@@ -1,0 +1,126 @@
+1
+00:00:00,000 --> 00:00:00,230
+
+2
+00:00:00,230 --> 00:00:03,430
+Si quieres saber más acerca de
+JSON, JSON es un estándar.
+
+3
+00:00:03,430 --> 00:00:07,000
+Y puedes echarle un vistazo
+en www.json.org.
+
+4
+00:00:07,000 --> 00:00:10,150
+Y este documento por aquí,
+esta página web, te enseña JSON.
+
+5
+00:00:10,150 --> 00:00:12,830
+Es lo mismo que te he contado,
+pero hay algunas ligeras
+
+6
+00:00:12,830 --> 00:00:14,790
+diferencias en la nomenclatura
+que veremos a continuación.
+
+7
+00:00:14,790 --> 00:00:17,570
+Así que más que llamar
+documento al nivel más alto,
+
+8
+00:00:17,570 --> 00:00:18,890
+lo llaman objeto.
+
+9
+00:00:18,890 --> 00:00:22,170
+Y puedes ver que un objeto,
+o documento, puede tener
+
+10
+00:00:22,170 --> 00:00:26,050
+un número arbitrario de claves y
+valores y dos puntos entre
+
+11
+00:00:26,050 --> 00:00:27,280
+la clave y el valor.
+
+12
+00:00:27,280 --> 00:00:29,330
+Y a continuación hay una coma entre
+cada conjunto de ellos.
+
+13
+00:00:29,330 --> 00:00:32,610
+Y luego el valor puede ser un
+conjunto de cosas diferentes.
+
+14
+00:00:32,610 --> 00:00:35,540
+Si bajas en la página, puedes
+ver que un valor puede ser una
+
+15
+00:00:35,540 --> 00:00:38,950
+cadena, un número o un objeto,
+o puede ser un array.
+
+16
+00:00:38,950 --> 00:00:42,170
+Y luego se explica un array 
+justo aquí.
+
+17
+00:00:42,170 --> 00:00:45,520
+Un array es sólo una secuencia
+de valores que están separados
+
+18
+00:00:45,520 --> 00:00:46,690
+por una coma.
+
+19
+00:00:46,690 --> 00:00:49,540
+Por lo que es esencialmente una
+representación más formal de lo
+
+20
+00:00:49,540 --> 00:00:50,810
+que hemos estado hablando.
+
+21
+00:00:50,810 --> 00:00:52,570
+Pero puedes ver que este
+estándar permite un
+
+22
+00:00:52,570 --> 00:00:56,890
+anidamiento arbitrario de arrays
+y documentos, u objetos,
+
+23
+00:00:56,890 --> 00:00:58,190
+dentro del array.
+
+24
+00:00:58,190 --> 00:01:00,720
+Y el valor puede ser un
+array u otro documento.
+
+25
+00:01:00,720 --> 00:01:02,270
+Y puedes crear estas estructuras
+de datos que son bastante
+
+26
+00:01:02,270 --> 00:01:04,840
+complejas y que mapean muy
+bien lo que podrías ver
+
+27
+00:01:04,840 --> 00:01:06,090
+en tu código.
