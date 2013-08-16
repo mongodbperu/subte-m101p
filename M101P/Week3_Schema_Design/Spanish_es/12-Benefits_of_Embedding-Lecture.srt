@@ -42,7 +42,7 @@ construidos, que a menudo
 10
 00:00:20,640 --> 00:00:24,610
 tienen discos de platos giratorios, y estos
-discos de platos tienen un muy
+discos de platos tienen una muy
 
 11
 00:00:24,610 --> 00:00:28,900
@@ -84,7 +84,7 @@ co-localizar los datos que
 19
 00:00:44,850 --> 00:00:47,980
 vas a usar juntos
-en el mismo documento, embebélo,
+en el mismo documento, embébelo,
 
 20
 00:00:47,980 --> 00:00:53,120
@@ -131,7 +131,7 @@ base de datos.
 
 29
 00:01:12,300 --> 00:01:14,690
-Porque ahora, en un ida y vuelta,
+Porque ahora, en una ida y vuelta,
 puedes ir, puedes
 
 30
