@@ -38,7 +38,7 @@ de productos.
 
 9
 00:00:20,430 --> 00:00:21,910
-Ellos tiene un nombre de producto
+Ellos tienen un nombre de producto
 y un montón de
 
 10
@@ -247,7 +247,7 @@ representar árboles en MongoDB.
 53
 00:02:19,420 --> 00:02:22,400
 Dado el siguiente típico
-documento para una jerarquía de
+documento para una jerarquía
 
 54
 00:02:22,400 --> 00:02:26,030
