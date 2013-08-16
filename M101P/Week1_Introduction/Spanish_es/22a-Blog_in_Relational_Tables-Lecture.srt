@@ -1,0 +1,282 @@
+1
+00:00:00,000 --> 00:00:00,120
+
+2
+00:00:00,120 --> 00:00:02,980
+Si quisiéramos modelar este blog
+en un sistema relacional,
+
+3
+00:00:02,980 --> 00:00:05,460
+probablemente tendrías tablas
+muy parecidas a éstas.
+
+4
+00:00:05,460 --> 00:00:08,350
+Y te guiaré por cada
+tabla y qué hace.
+
+5
+00:00:08,350 --> 00:00:09,960
+Por lo que habría
+una tabla "posts".
+
+6
+00:00:09,960 --> 00:00:12,860
+Y la tabla "posts" contendría
+la propia publicación con
+
+7
+00:00:12,860 --> 00:00:15,900
+el cuerpo, así como el
+título de la publicación y la
+
+8
+00:00:15,900 --> 00:00:17,370
+fecha en que fue publicado.
+
+9
+00:00:17,370 --> 00:00:18,970
+No he puesto los tipos aquí.
+
+10
+00:00:18,970 --> 00:00:20,205
+Aunque tendríamos que
+especificar los tipos en
+
+11
+00:00:20,205 --> 00:00:21,500
+un sistema relacional.
+
+12
+00:00:21,500 --> 00:00:24,160
+Y entonces porbablemente habría
+un ID de publicación, y algún
+
+13
+00:00:24,160 --> 00:00:27,130
+tipo de ID de autor que
+apunta al autor
+
+14
+00:00:27,130 --> 00:00:29,160
+que creó la publicación.
+
+15
+00:00:29,160 --> 00:00:31,370
+La segunda tabla es
+la tabla "comments".
+
+16
+00:00:31,370 --> 00:00:32,650
+Es una tabla crítica.
+
+17
+00:00:32,650 --> 00:00:33,840
+Tendría los comentarios
+que la gente
+
+18
+00:00:33,840 --> 00:00:35,430
+hace en la publicación del blog.
+
+19
+00:00:35,430 --> 00:00:37,260
+Y éste sería el nombre del
+comentarista, el propio
+
+20
+00:00:37,260 --> 00:00:40,690
+comentario, su email, y
+probablemente un ID para identificarlo.
+
+21
+00:00:40,690 --> 00:00:44,460
+Por lo que puede ser asociado y
+relacionado a las publicaciones.
+
+22
+00:00:44,460 --> 00:00:47,130
+Y entonces ésta es la forma en que 
+esto funcionaría. También habría 
+
+23
+00:00:47,130 --> 00:00:50,100
+una tabla "tags" aquí que tendría
+el ID de etiqueta y los nombres.
+
+24
+00:00:50,100 --> 00:00:52,650
+Y éstas son tablas de 
+relaciones por aquí.
+
+25
+00:00:52,650 --> 00:00:56,350
+Así que por ejemplo, esta tabla "posts"
+conecta con esta tabla
+
+26
+00:00:56,350 --> 00:00:58,830
+"tags" a través de esta
+tabla "post_tags".
+
+27
+00:00:58,830 --> 00:01:02,260
+Esta tabla "post_tags" incluye
+las publicaciones y todas las etiquetas
+
+28
+00:01:02,260 --> 00:01:04,370
+que han sido asociadas
+con la publicación.
+
+29
+00:01:04,370 --> 00:01:07,030
+Esta tabla "post_comments"
+relacionaría esta
+
+30
+00:01:07,030 --> 00:01:09,060
+tabla con esta tabla.
+
+31
+00:01:09,060 --> 00:01:13,560
+Y luego, por aquí, este ID 
+de autor se usaría justo
+
+32
+00:01:13,560 --> 00:01:16,000
+aquí, en esta tabla.
+
+33
+00:01:16,000 --> 00:01:17,620
+Es un sistema relacional
+bastante estándar
+
+34
+00:01:17,620 --> 00:01:19,040
+para construir un blog.
+
+35
+00:01:19,040 --> 00:01:21,040
+Podrías decidir hacerlo
+un poco más compacto.
+
+36
+00:01:21,040 --> 00:01:24,050
+Ésta es la versión
+completamente denormalizada.
+
+37
+00:01:24,050 --> 00:01:28,390
+Podrías querer poner
+el ID de publicación justo en
+
+38
+00:01:28,390 --> 00:01:31,100
+el sistema de comentarios, ya que un comentario,
+probablemente, está sólo
+
+39
+00:01:31,100 --> 00:01:33,500
+asociado con una única
+publicación del blog.
+
+40
+00:01:33,500 --> 00:01:36,300
+Pero ésta es la manera básica
+en que lo construirías.
+
+41
+00:01:36,300 --> 00:01:39,220
+Así que pensando en eso, es
+hora de hacer un cuestionario, la
+
+42
+00:01:39,220 --> 00:01:43,600
+pregunta es, ¿a cuántas tablas
+necesitas acceder para 
+
+43
+00:01:43,600 --> 00:01:45,200
+presentar la página principal
+del blog?
+
+44
+00:01:45,200 --> 00:01:46,410
+Así que éste es el cuestionario.
+
+45
+00:01:46,410 --> 00:01:49,130
+Hay una, dos, tres,
+cuatro, cinco, seis
+
+46
+00:01:49,130 --> 00:01:51,830
+tablas en este sistema.
+
+47
+00:01:51,830 --> 00:01:55,610
+Y si quisieras presentar la
+página principal de este blog,
+
+48
+00:01:55,610 --> 00:01:58,220
+tendrías que hacer un conjunto
+de "selects", obviamente, y
+
+49
+00:01:58,220 --> 00:02:00,010
+"joins" entre estas 
+diferentes tablas.
+
+50
+00:02:00,010 --> 00:02:03,350
+¿A cuántas tablas tendrías
+que acceder para presentar la página
+
+51
+00:02:03,350 --> 00:02:04,440
+principal del blog?
+
+52
+00:02:04,440 --> 00:02:06,710
+OK, hora del cuestionario.
+
+53
+00:02:06,710 --> 00:02:10,220
+Volvamos a mirar el esquema
+del blog que acabamos de crear.
+
+54
+00:02:10,220 --> 00:02:12,340
+Y supongamos que nuestro blog
+se puede modelar con las
+
+55
+00:02:12,340 --> 00:02:14,040
+siguientes tablas relacionales.
+
+56
+00:02:14,040 --> 00:02:16,490
+Y puedes verlas aquí --
+tabla "authors", tabla "posts",
+
+57
+00:02:16,490 --> 00:02:20,030
+tabla "comments", "post_comments",
+"tags" y "post_tags".
+
+58
+00:02:20,030 --> 00:02:23,570
+Si quieres mostrar una publicación
+del blog con todos sus comentarios
+
+59
+00:02:23,570 --> 00:02:26,850
+y etiquetas, ¿a cuántas tablas
+necesitarías acceder
+
+60
+00:02:26,850 --> 00:02:28,100
+dentro del sistema?
