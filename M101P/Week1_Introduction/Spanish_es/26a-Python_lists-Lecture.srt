@@ -50,12 +50,12 @@ haciendo "a = ".
 
 12
 00:00:25,250 --> 00:00:28,050
-Y si deseaba una lista vacía,
+Y si deseara una lista vacía,
 podría crearla así.
 
 13
 00:00:28,050 --> 00:00:31,620
-Y si deseaba crear
+Y si deseara crear
 una lista de listas,
 
 14
