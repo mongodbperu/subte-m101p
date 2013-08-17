@@ -50,7 +50,7 @@ un sistema relacional.
 
 12
 00:00:21,500 --> 00:00:24,160
-Y entonces porbablemente habría
+Y entonces probablemente habría
 un ID de publicación, y algún
 
 13
@@ -83,7 +83,7 @@ hace en la publicación del blog.
 19
 00:00:35,430 --> 00:00:37,260
 Y éste sería el nombre del
-comentarista, el propio
+comentador, el propio
 
 20
 00:00:37,260 --> 00:00:40,690
