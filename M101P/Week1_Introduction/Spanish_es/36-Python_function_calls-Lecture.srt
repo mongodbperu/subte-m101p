@@ -1,0 +1,272 @@
+1
+00:00:00,000 --> 00:00:00,120
+
+2
+00:00:00,120 --> 00:00:02,760
+OK, pasemos a las funciones
+en Python y
+
+3
+00:00:02,760 --> 00:00:04,710
+a cómo definir una función.
+
+4
+00:00:04,710 --> 00:00:08,260
+Aquí tenemos un fragmento 
+de código que define una función.
+
+5
+00:00:08,260 --> 00:00:10,470
+Puedes ver que cada función
+en Python comienza con
+
+6
+00:00:10,470 --> 00:00:11,780
+la palabra "def".
+
+7
+00:00:11,780 --> 00:00:14,736
+Y luego tienes el nombre de la
+función seguido por paréntesis
+
+8
+00:00:14,736 --> 00:00:17,270
+y cuantos argumentos quieras
+pasar a la función.
+
+9
+00:00:17,270 --> 00:00:18,710
+Y a continuación hay dos puntos.
+
+10
+00:00:18,710 --> 00:00:21,440
+Por lo que en este caso, realmente
+he creado una función que
+
+11
+00:00:21,440 --> 00:00:23,060
+analiza una pequeña lista.
+
+12
+00:00:23,060 --> 00:00:25,840
+Tengo una lista aquí que tiene
+algunas frutas, "apple",
+
+13
+00:00:25,840 --> 00:00:27,510
+"orange", "grape", "kiwi",
+"orange", "apple".
+
+14
+00:00:27,510 --> 00:00:29,570
+Puedes ver que hay
+algunos elementos repetidos.
+
+15
+00:00:29,570 --> 00:00:32,250
+Y quiero analizar cuántas
+veces aparece cada
+
+16
+00:00:32,250 --> 00:00:34,590
+elemento en esta lista.
+
+17
+00:00:34,590 --> 00:00:38,270
+Así que para hacer eso, voy a
+inicializar un diccionario dentro
+
+18
+00:00:38,270 --> 00:00:40,830
+de esta función como un
+diccionario vacío.
+
+19
+00:00:40,830 --> 00:00:43,430
+Y luego echo un vistazo a
+cada elemento en mi lista.
+
+20
+00:00:43,430 --> 00:00:46,520
+Y después voy a incrementar
+un contador dentro del
+
+21
+00:00:46,520 --> 00:00:49,850
+diccionario para la clave que usa
+el elemento en la lista como clave
+
+22
+00:00:49,850 --> 00:00:51,920
+del diccionario, en 
+la tabla hash.
+
+23
+00:00:51,920 --> 00:00:54,210
+Sólo voy a incrementarlo en uno
+y posteriormente al final
+
+24
+00:00:54,210 --> 00:00:56,960
+devolveré el diccionario
+y podremos imprimirlo.
+
+25
+00:00:56,960 --> 00:00:58,540
+Aquí está el cuerpo
+principal del código.
+
+26
+00:00:58,540 --> 00:01:02,480
+Llama a "analyze_list" siendo
+el argumento esta lista de
+
+27
+00:01:02,480 --> 00:01:05,890
+frutas y luego imprime el
+diccionario resultante.
+
+28
+00:01:05,890 --> 00:01:08,370
+Veamos qué ocurre
+cuando lo ejecutamos.
+
+29
+00:01:08,370 --> 00:01:11,610
+Bien, entonces cuando ejecutamos
+esto, nos da un error.
+
+30
+00:01:11,610 --> 00:01:13,150
+¿Por qué?
+
+31
+00:01:13,150 --> 00:01:16,570
+Dice aquí que la clave
+"apple" no está definida.
+
+32
+00:01:16,570 --> 00:01:18,550
+Volvamos a mirar nuestro código
+e intentemos averiguar dónde
+
+33
+00:01:18,550 --> 00:01:19,680
+nos da ese error.
+
+34
+00:01:19,680 --> 00:01:23,530
+Sucede que el problema está 
+en que no puedes acceder a un elemento
+
+35
+00:01:23,530 --> 00:01:25,790
+de un diccionario antes
+de asignarlo.
+
+36
+00:01:25,790 --> 00:01:28,710
+Y la primera vez encontramos un
+elemento en la lista como "apple",
+
+37
+00:01:28,710 --> 00:01:32,470
+y cuando intentamos hacer "count['apple']
+= count['apple']
+
+38
+00:01:32,470 --> 00:01:35,450
++ 1", estamos
+referenciando algo que
+
+39
+00:01:35,450 --> 00:01:36,700
+no está definido.
+
+40
+00:01:36,700 --> 00:01:38,210
+Así que ¿cómo corregimos esto?
+
+41
+00:01:38,210 --> 00:01:39,240
+Bastante sencillo.
+
+42
+00:01:39,240 --> 00:01:41,360
+Comprobamos para ver si 
+existe o no.
+
+43
+00:01:41,360 --> 00:01:45,670
+Por lo que si está en "counts", entonces
+podemos incrementarlo en uno.
+
+44
+00:01:45,670 --> 00:01:49,180
+Si no, vamos a ponerlo
+igual a uno.
+
+45
+00:01:49,180 --> 00:01:50,210
+Y eso debería corregirlo.
+
+46
+00:01:50,210 --> 00:01:51,460
+Veamos si lo hace.
+
+47
+00:01:51,460 --> 00:01:52,330
+Lo he salvado.
+
+48
+00:01:52,330 --> 00:01:53,530
+Voy a esa ventana.
+
+49
+00:01:53,530 --> 00:01:54,570
+Y lo ejecuto de nuevo.
+
+50
+00:01:54,570 --> 00:01:57,510
+Y esta vez finaliza e
+imprime el diccionario
+
+51
+00:01:57,510 --> 00:01:58,250
+resultante.
+
+52
+00:01:58,250 --> 00:02:01,340
+Dice que "orange" aparece
+dos veces, "kiwi" una, "grape" una,
+
+53
+00:02:01,340 --> 00:02:03,240
+y "apple" dos veces.
+
+54
+00:02:03,240 --> 00:02:06,720
+Y si volvemos a echar un vistazo al
+código puedes ver que "orange"
+
+55
+00:02:06,720 --> 00:02:09,264
+aparece dos veces y "apple" 
+aparece dos veces, "grape"
+
+56
+00:02:09,264 --> 00:02:11,090
+aparece una y "kiwi"
+aparece una.
+
+57
+00:02:11,090 --> 00:02:13,070
+A mí me parece correcto.
+
+58
+00:02:13,070 --> 00:02:15,540
+Y así es como se define una
+función en Python.
+
+59
+00:02:15,540 --> 00:02:16,790
