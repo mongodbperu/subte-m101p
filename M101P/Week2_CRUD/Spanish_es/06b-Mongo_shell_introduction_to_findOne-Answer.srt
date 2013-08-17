@@ -1,0 +1,65 @@
+1
+00:00:00,000 --> 00:00:00,200
+
+2
+00:00:00,200 --> 00:00:02,050
+If you keyed in something like
+this, you got it right.
+
+3
+00:00:02,050 --> 00:00:03,300
+db.users.findone.
+
+4
+00:00:03,300 --> 00:00:05,030
+
+5
+00:00:05,030 --> 00:00:07,400
+The first argument to "findone"
+is this document
+
+6
+00:00:07,400 --> 00:00:09,710
+where the field username has
+the value "dwight" and the
+
+7
+00:00:09,710 --> 00:00:13,150
+second argument to "findone" is
+a document where the _field
+
+8
+00:00:13,150 --> 00:00:15,650
+has the value "false" and email
+field has the value
+
+9
+00:00:15,650 --> 00:00:16,270
+"true."
+
+10
+00:00:16,270 --> 00:00:20,050
+As it happens, you can
+alternatively specify _ID with
+
+11
+00:00:20,050 --> 00:00:22,990
+the value 0 and email
+with the value 1.
+
+12
+00:00:22,990 --> 00:00:26,300
+0 1 1, in this context, are
+treated as analogous to false
+
+13
+00:00:26,300 --> 00:00:27,610
+and true, respectively.
+
+14
+00:00:27,610 --> 00:00:28,900
+But those details are up
+to your preferences.
+
+15
+00:00:28,900 --> 00:00:30,150

@@ -1,0 +1,497 @@
+1
+00:00:00,000 --> 00:00:00,150
+
+2
+00:00:00,150 --> 00:00:02,090
+OK, now that we know how to
+put documents into the
+
+3
+00:00:02,090 --> 00:00:04,630
+database, let's figure out how
+to get them back out in a more
+
+4
+00:00:04,630 --> 00:00:05,990
+advanced fashion.
+
+5
+00:00:05,990 --> 00:00:08,180
+The most basic operation to
+query documents out of the
+
+6
+00:00:08,180 --> 00:00:09,920
+database is called Find.
+
+7
+00:00:09,920 --> 00:00:13,110
+However, it's often simpler to
+just look at a single document
+
+8
+00:00:13,110 --> 00:00:14,020
+out of the database.
+
+9
+00:00:14,020 --> 00:00:16,580
+And for this, we have a helper
+method called findOne.
+
+10
+00:00:16,580 --> 00:00:19,200
+All CRUD operations are
+syntactically presented as
+
+11
+00:00:19,200 --> 00:00:21,040
+methods on a collection.
+
+12
+00:00:21,040 --> 00:00:24,130
+The findOne method, when called
+with no arguments, gets
+
+13
+00:00:24,130 --> 00:00:26,820
+back essentially one document
+at random out of the
+
+14
+00:00:26,820 --> 00:00:27,420
+collection.
+
+15
+00:00:27,420 --> 00:00:30,370
+This can be helpful for
+examining what the schema are
+
+16
+00:00:30,370 --> 00:00:32,310
+of your documents in
+your collection.
+
+17
+00:00:32,310 --> 00:00:35,720
+So here we have a document with
+a field called _id, whose
+
+18
+00:00:35,720 --> 00:00:38,960
+value is an object ID; a field
+called Name, whose value is a
+
+19
+00:00:38,960 --> 00:00:42,600
+string; a field called Age,
+whose value is an integer--
+
+20
+00:00:42,600 --> 00:00:45,220
+or some kind of number anyway;
+and a field called Profession,
+
+21
+00:00:45,220 --> 00:00:46,980
+whose value is another string.
+
+22
+00:00:46,980 --> 00:00:48,760
+We can give arguments
+to findOne.
+
+23
+00:00:48,760 --> 00:00:51,370
+In this case, I will hit the
+up arrow to get my previous
+
+24
+00:00:51,370 --> 00:00:53,510
+input and move around
+with the arrow keys.
+
+25
+00:00:53,510 --> 00:00:56,790
+The first argument to findOne
+specifies what criteria I'm
+
+26
+00:00:56,790 --> 00:00:59,865
+looking for in order to count
+a document as a match.
+
+27
+00:00:59,865 --> 00:01:03,680
+That is to say, it's analogous
+to the WHERE clause portion of
+
+28
+00:01:03,680 --> 00:01:05,400
+a SELECT statement in SQL.
+
+29
+00:01:05,400 --> 00:01:08,080
+The argument that goes
+here is a document.
+
+30
+00:01:08,080 --> 00:01:11,050
+In this case, findOne will only
+return to me a document
+
+31
+00:01:11,050 --> 00:01:13,420
+where the field Name has
+the value Jones.
+
+32
+00:01:13,420 --> 00:01:15,450
+And there is the document
+with the name Jones.
+
+33
+00:01:15,450 --> 00:01:18,450
+This is our first example of
+a query into MongoDB that
+
+34
+00:01:18,450 --> 00:01:20,570
+actually has any kind of
+restriction in it.
+
+35
+00:01:20,570 --> 00:01:23,050
+As you can see, the
+specification of what
+
+36
+00:01:23,050 --> 00:01:26,870
+documents count as a match is
+given itself as a document.
+
+37
+00:01:26,870 --> 00:01:29,710
+This is quite a variation to how
+things are done in, say, a
+
+38
+00:01:29,710 --> 00:01:31,480
+traditional relational
+database.
+
+39
+00:01:31,480 --> 00:01:33,910
+Instead of having a
+string-oriented query language
+
+40
+00:01:33,910 --> 00:01:36,770
+such as the SQL query language,
+we actually send the
+
+41
+00:01:36,770 --> 00:01:40,910
+BSON encoding of this argument
+to the findOne over the wire
+
+42
+00:01:40,910 --> 00:01:43,330
+wrapped up in some message
+headers as an operation for
+
+43
+00:01:43,330 --> 00:01:44,580
+the database to execute.
+
+44
+00:01:44,580 --> 00:01:47,850
+That is to say, the query that
+gets executed in the server is
+
+45
+00:01:47,850 --> 00:01:51,270
+presented to the server in the
+form of a structured document,
+
+46
+00:01:51,270 --> 00:01:54,220
+as opposed to a sequence of text
+that it needs to parse
+
+47
+00:01:54,220 --> 00:01:54,970
+and analyze.
+
+48
+00:01:54,970 --> 00:01:57,330
+You might be wondering why I'm
+explaining these details.
+
+49
+00:01:57,330 --> 00:02:00,000
+The reason is that it's often
+rather tricky for people to
+
+50
+00:02:00,000 --> 00:02:03,100
+get used to the mindset of the
+query language in the system
+
+51
+00:02:03,100 --> 00:02:05,500
+being presented as a structured
+piece of data as
+
+52
+00:02:05,500 --> 00:02:06,460
+opposed to a string.
+
+53
+00:02:06,460 --> 00:02:10,310
+In fact, there is no use of
+string-type queries anywhere
+
+54
+00:02:10,310 --> 00:02:13,490
+within the MongoDB server
+processes at this point.
+
+55
+00:02:13,490 --> 00:02:15,830
+We'll learn a little bit more
+about the query language in a
+
+56
+00:02:15,830 --> 00:02:17,320
+subsequent section.
+
+57
+00:02:17,320 --> 00:02:19,250
+But for now, I want to tell you
+about the second argument
+
+58
+00:02:19,250 --> 00:02:21,030
+that you can give to findOne.
+
+59
+00:02:21,030 --> 00:02:23,520
+Remembering the first argument
+to findOne specifies what you
+
+60
+00:02:23,520 --> 00:02:26,970
+want to see, that is to say,
+which documents match a
+
+61
+00:02:26,970 --> 00:02:29,650
+particular kind of WHERE clause,
+the second argument to
+
+62
+00:02:29,650 --> 00:02:32,280
+findOne allows you to stipulate
+what fields you want
+
+63
+00:02:32,280 --> 00:02:33,720
+to get back from the database.
+
+64
+00:02:33,720 --> 00:02:36,640
+The second argument to findOne
+is specified, just like the
+
+65
+00:02:36,640 --> 00:02:38,070
+first one, as a document.
+
+66
+00:02:38,070 --> 00:02:41,150
+But in this case, the fields
+of this document say what
+
+67
+00:02:41,150 --> 00:02:43,880
+fields should come back from
+the query to the database.
+
+68
+00:02:43,880 --> 00:02:47,870
+So for instance, I can say that
+I'd like to see the Name
+
+69
+00:02:47,870 --> 00:02:51,740
+field by saying, for example,
+Name, True.
+
+70
+00:02:51,740 --> 00:02:54,040
+And I can say, for instance,
+that I don't want to see the
+
+71
+00:02:54,040 --> 00:02:58,390
+_id field by specifying
+_id, False.
+
+72
+00:02:58,390 --> 00:03:01,530
+When I execute this, I will get
+back any documents in the
+
+73
+00:03:01,530 --> 00:03:04,730
+People collection where the
+Name field is Jones.
+
+74
+00:03:04,730 --> 00:03:08,100
+And I will only see the Name
+field and not the _id field.
+
+75
+00:03:08,100 --> 00:03:09,870
+And of course, I'll only get one
+of them because I've asked
+
+76
+00:03:09,870 --> 00:03:11,010
+for just one of them.
+
+77
+00:03:11,010 --> 00:03:13,840
+So in this way, the second
+argument to findOne is
+
+78
+00:03:13,840 --> 00:03:16,440
+analogous to the column
+list portion of the
+
+79
+00:03:16,440 --> 00:03:18,540
+SELECT grammar in SQL.
+
+80
+00:03:18,540 --> 00:03:20,870
+That is to say, it allows you
+to specify what fields you'd
+
+81
+00:03:20,870 --> 00:03:22,860
+like to get back from
+the database.
+
+82
+00:03:22,860 --> 00:03:27,560
+Now, as a bit of a historical
+detail, the _id field defaults
+
+83
+00:03:27,560 --> 00:03:31,210
+to being present in the response
+from findOne even if
+
+84
+00:03:31,210 --> 00:03:32,450
+you don't ask for it.
+
+85
+00:03:32,450 --> 00:03:34,290
+This is a little bit of
+vestigial feature.
+
+86
+00:03:34,290 --> 00:03:36,890
+MongoDB was conceptually
+originally designed with a
+
+87
+00:03:36,890 --> 00:03:39,420
+number of goals in mind, one of
+which was to act as a kind
+
+88
+00:03:39,420 --> 00:03:40,740
+of object store.
+
+89
+00:03:40,740 --> 00:03:43,350
+And in an object-store type
+environment, it's
+
+90
+00:03:43,350 --> 00:03:47,060
+extraordinarily common to want
+to know the unique identifier
+
+91
+00:03:47,060 --> 00:03:49,150
+of the object that you're
+retrieved from the database,
+
+92
+00:03:49,150 --> 00:03:51,430
+even if you're only retrieving
+selected fields
+
+93
+00:03:51,430 --> 00:03:52,770
+back from the object.
+
+94
+00:03:52,770 --> 00:03:56,080
+And so because of that kind of
+design, the _id field is
+
+95
+00:03:56,080 --> 00:03:57,370
+included by default.
+
+96
+00:03:57,370 --> 00:04:00,590
+But as you see above, you can
+explicitly request not to
+
+97
+00:04:00,590 --> 00:04:03,330
+retrieve it from the database
+in a findOne call by
+
+98
+00:04:03,330 --> 00:04:05,660
+specifying _id, False.
+
+99
+00:04:05,660 --> 00:04:08,090
+We'll learn a lot more about the
+query language as we go.
+
+100
+00:04:08,090 --> 00:04:10,910
+FindOne was just kind
+of an introduction.
+
+101
+00:04:10,910 --> 00:04:12,450
+OK, let's have a quiz.
+
+102
+00:04:12,450 --> 00:04:16,300
+Use findOne on the collection
+Users to find one document
+
+103
+00:04:16,300 --> 00:04:19,870
+where the key username is the
+string "dwight." And retrieve
+
+104
+00:04:19,870 --> 00:04:21,600
+only the key named Email.
+
+105
+00:04:21,600 --> 00:04:22,850
