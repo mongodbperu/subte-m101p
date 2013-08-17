@@ -1,0 +1,222 @@
+1
+00:00:00,000 --> 00:00:00,150
+
+2
+00:00:00,150 --> 00:00:03,510
+Hay muchas operaciones
+que puedes hacer en una lista.
+
+3
+00:00:03,510 --> 00:00:06,890
+Volvamos a nuestro ejemplo,
+de antes, vimos en esta
+
+4
+00:00:06,890 --> 00:00:09,635
+pequeña lista, que tiene "apple",
+"pear" y "banana" en ella.
+
+5
+00:00:09,635 --> 00:00:11,550
+Y lo asignamos a "a".
+
+6
+00:00:11,550 --> 00:00:13,720
+Así que si deseamos añadir otro
+elemento a esta lista, podrías
+
+7
+00:00:13,720 --> 00:00:15,540
+usar la función "append".
+
+8
+00:00:15,540 --> 00:00:18,630
+Y podríamos añadir
+"kiwi" en ella.
+
+9
+00:00:18,630 --> 00:00:21,410
+Y si vemos en "a" ahora,
+veremos que es "apple",
+
+10
+00:00:21,410 --> 00:00:23,170
+"pear", "banana" y "kiwi".
+
+11
+00:00:23,170 --> 00:00:24,990
+Y si deseamos cambiar,
+directamente uno de los elementos en
+
+12
+00:00:24,990 --> 00:00:25,895
+la lista, podríamos hacerlo.
+
+13
+00:00:25,895 --> 00:00:28,250
+Podríamos decir "a" de "1 ="
+"grape" y están
+
+14
+00:00:28,250 --> 00:00:29,495
+ordenados desde cero.
+
+15
+00:00:29,495 --> 00:00:31,340
+Y ahora si vemos en "a",
+podemos ver que
+
+16
+00:00:31,340 --> 00:00:32,840
+fue cambiado a "grape".
+
+17
+00:00:32,840 --> 00:00:34,946
+Podemos también eliminar un
+elemento de la lista
+
+18
+00:00:34,946 --> 00:00:36,370
+usando el comando "del".
+
+19
+00:00:36,370 --> 00:00:38,490
+Hacemos "a" de "2", que
+será "banana".
+
+20
+00:00:38,490 --> 00:00:41,100
+Ahora, si vemos en "a", vemos
+que "banana" ahora no está.
+
+21
+00:00:41,100 --> 00:00:43,120
+Está "apple", "grape" y "kiwi".
+
+22
+00:00:43,120 --> 00:00:45,280
+Ahora si deseas ver todas las
+cosas que son posibles de hacer con
+
+23
+00:00:45,280 --> 00:00:49,260
+la lista, usa un comado
+"dir" en Python.
+
+24
+00:00:49,260 --> 00:00:51,500
+Y vas a ver el objeto
+y decirle todas las cosas
+
+25
+00:00:51,500 --> 00:00:52,580
+distintas que son posibles.
+
+26
+00:00:52,580 --> 00:00:53,620
+No voy a revisar por
+muchos de ellos.
+
+27
+00:00:53,620 --> 00:00:55,530
+Ellos son comandos internos
+que no necesitamos
+
+28
+00:00:55,530 --> 00:00:56,500
+entender.
+
+29
+00:00:56,500 --> 00:00:58,170
+Pero puedes ver que hay
+un "pop" y hay un
+
+30
+00:00:58,170 --> 00:01:00,520
+"remove", hay un "extend".
+
+31
+00:01:00,520 --> 00:01:02,600
+Podemos echar un vistazo a la
+documentación, pero este
+
+32
+00:01:02,600 --> 00:01:04,959
+comando "dir" es muy útil,
+especialmente dentro del shell,
+
+33
+00:01:04,959 --> 00:01:06,500
+si estás intentando entender
+lo que un método 
+
+34
+00:01:06,500 --> 00:01:08,170
+puede hacer en Python.
+
+35
+00:01:08,170 --> 00:01:11,410
+Rápida y brevemente te mostraré
+la página aquí desde
+
+36
+00:01:11,410 --> 00:01:14,430
+la documentación de Python, que muestra
+todos los comandos básicos que
+
+37
+00:01:14,430 --> 00:01:16,780
+puedes hacer, todas las funciones
+y métodos básicos que puedes
+
+38
+00:01:16,780 --> 00:01:18,060
+llamar en la lista--
+
+39
+00:01:18,060 --> 00:01:23,150
+append, extend, insert, remove,
+pop, sort, reverse.
+
+40
+00:01:23,150 --> 00:01:24,070
+Y éstos son bastante
+sencillos.
+
+41
+00:01:24,070 --> 00:01:26,090
+Pobablemente no vas a usar
+muchos de ellos cuando estés
+
+42
+00:01:26,090 --> 00:01:27,060
+desarrollando en este curso.
+
+43
+00:01:27,060 --> 00:01:28,080
+Pero es bueno saber
+que estos están
+
+44
+00:01:28,080 --> 00:01:30,160
+disponibles si los necesitas.
+
+45
+00:01:30,160 --> 00:01:32,230
+Aquí está el cuestionario.
+
+46
+00:01:32,230 --> 00:01:34,210
+Manipular una lista de Python.
+
+47
+00:01:34,210 --> 00:01:36,630
+Escribe el código para añadir
+"hammer" en
+
+48
+00:01:36,630 --> 00:01:38,080
+una lista llamada "things".
+
+49
+00:01:38,080 --> 00:01:39,667
