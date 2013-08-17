@@ -16,7 +16,7 @@ deseas ejecutar sería
 
 5
 00:00:06,540 --> 00:00:07,880
-endentada en la siguiente línea
+con sangr�a en la siguiente línea
 
 6
 00:00:07,880 --> 00:00:09,130

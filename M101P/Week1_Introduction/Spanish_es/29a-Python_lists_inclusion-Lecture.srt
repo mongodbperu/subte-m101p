@@ -73,7 +73,7 @@ condicional, "pear in a", y luego
 17
 00:00:38,140 --> 00:00:40,540
 los dos puntos al final,
-Voy a endentar,
+voy a poner sangr�a,
 
 18
 00:00:40,540 --> 00:00:42,690
@@ -114,11 +114,11 @@ no hay "grape".
 26
 00:00:57,750 --> 00:01:00,117
 Esto es muy útil cuando
-traer datos de Mongo y
+traes datos de Mongo y
 
 27
 00:01:00,117 --> 00:01:02,650
-está en un array, y desear
+están en un array, y deseas
 verificar si un elemento
 
 28
@@ -136,7 +136,7 @@ Aquí está el cuestionario.
 
 31
 00:01:07,840 --> 00:01:11,560
-Hablemas acerca de las listas de Python
+Hablemos acerca de las listas de Python
 y la verificación para inclusión.
 
 32
