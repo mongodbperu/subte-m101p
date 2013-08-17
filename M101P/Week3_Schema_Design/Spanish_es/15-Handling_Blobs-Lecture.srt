@@ -18,7 +18,7 @@ tamaño de un documento de 16 megabytes.
 
 5
 00:00:10,880 --> 00:00:15,570
-Pero, MongoDB tiene a facilidad
+Pero, MongoDB tiene una facilidad
 especial llamada GridFS, que
 
 6
@@ -245,7 +245,7 @@ Dice el ID del archivo.
 53
 00:02:17,770 --> 00:02:20,380
 Así que vamos a Mongo
-y ver lo que hay.
+y a ver lo que hay.
 
 54
 00:02:20,380 --> 00:02:21,900
@@ -266,7 +266,7 @@ colecciones allí.
 
 58
 00:02:28,710 --> 00:02:30,000
-Uno de ellas es llamada
+Una de ellas es llamada
 system.indexes.
 
 59
@@ -405,7 +405,7 @@ un montón de datos
 
 88
 00:03:44,700 --> 00:03:46,560
-datos que son codificados.
+que son codificados.
 
 89
 00:03:46,560 --> 00:03:48,630
