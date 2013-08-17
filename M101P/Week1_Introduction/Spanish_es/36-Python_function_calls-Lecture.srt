@@ -216,7 +216,7 @@ Veamos si lo hace.
 
 47
 00:01:51,460 --> 00:01:52,330
-Lo he salvado.
+Lo he guardado.
 
 48
 00:01:52,330 --> 00:01:53,530
