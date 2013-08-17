@@ -1,0 +1,30 @@
+1
+00:00:00,000 --> 00:00:00,160
+
+2
+00:00:00,160 --> 00:00:04,120
+OK, y la respuesta es 1.
+
+3
+00:00:04,120 --> 00:00:06,560
+Toda la información que necesitamos para
+mostrar la página principal de este
+
+4
+00:00:06,560 --> 00:00:10,930
+blog está contenida en la
+colección "posts".
+
+5
+00:00:10,930 --> 00:00:15,120
+No necesitamos la colección
+"authors" porque tenemos el
+
+6
+00:00:15,120 --> 00:00:17,830
+nombre del autor en la colección
+"posts" directamente.
+
+7
+00:00:17,830 --> 00:00:19,080
+¿De acuerdo?
