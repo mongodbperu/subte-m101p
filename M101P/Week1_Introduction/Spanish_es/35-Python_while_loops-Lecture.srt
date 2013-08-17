@@ -23,7 +23,7 @@ esta lista de frutas que
 
 6
 00:00:08,600 --> 00:00:10,320
-creamos con aterioridad, y 
+creamos con anterioridad, y 
 vamos a usar un bucle "while"
 
 7
