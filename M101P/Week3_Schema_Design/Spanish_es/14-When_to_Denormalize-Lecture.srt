@@ -109,7 +109,7 @@ duplica datos.
 
 24
 00:01:05,400 --> 00:01:08,440
-ahora, cuando tiene una relación
+Ahora, cuando tiene una relación
 de uno a muchos, entonces
 
 25
