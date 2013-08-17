@@ -1,0 +1,171 @@
+1
+00:00:00,000 --> 00:00:00,220
+
+2
+00:00:00,220 --> 00:00:01,890
+A continuación, vamos a hablar
+acerca de bucles "while".
+
+3
+00:00:01,890 --> 00:00:04,030
+Los bucles "while" en Python son
+bastante simples de usar.
+
+4
+00:00:04,030 --> 00:00:05,780
+Veamos un poco de
+código para usarlos.
+
+5
+00:00:05,780 --> 00:00:08,600
+Vamos a iterar por
+esta lista de frutas que
+
+6
+00:00:08,600 --> 00:00:10,320
+creamos con anterioridad, y 
+vamos a usar un bucle "while"
+
+7
+00:00:10,320 --> 00:00:11,440
+en lugar de un bucle "for".
+
+8
+00:00:11,440 --> 00:00:13,680
+Recuerda qué natural resultaba
+hacerlo en un bucle "for".
+
+9
+00:00:13,680 --> 00:00:15,100
+Simplemente decías: por cada elemento
+en "fruit", y
+
+10
+00:00:15,100 --> 00:00:16,475
+ya estaba, básicamente.
+
+11
+00:00:16,475 --> 00:00:18,740
+Pero un bucle "while" será
+ligeramente más complicado.
+
+12
+00:00:18,740 --> 00:00:22,130
+Primero, voy a tener que usar
+una variable, "i", para contar
+
+13
+00:00:22,130 --> 00:00:22,930
+a lo largo del bucle.
+
+14
+00:00:22,930 --> 00:00:25,170
+Y ahora voy a
+asignarle el valor 0.
+
+15
+00:00:25,170 --> 00:00:29,470
+Y luego voy a tener el
+condicional "while (i < 
+
+16
+00:00:29,470 --> 00:00:31,660
+len(fruit))".
+
+17
+00:00:31,660 --> 00:00:34,210
+Ahora, "len", como operador, sobre el
+que no te he hablado antes,
+
+18
+00:00:34,210 --> 00:00:35,800
+te dará la
+longitud de la lista.
+
+19
+00:00:35,800 --> 00:00:39,050
+Y la longitud, en este caso,
+será 3, y por tanto
+
+20
+00:00:39,050 --> 00:00:40,760
+iterará por los valores
+0, 1 y 2,
+
+21
+00:00:40,760 --> 00:00:42,080
+que es lo que esperamos.
+
+22
+00:00:42,080 --> 00:00:46,220
+Y entonces por cada uno, 
+imprimirá "fuit[i]".
+
+23
+00:00:46,220 --> 00:00:49,280
+Y te darás cuenta que
+entonces hice "i = i + 1".
+
+24
+00:00:49,280 --> 00:00:51,500
+Esto está dentro del cuerpo del bucle
+porque está indentado.
+
+25
+00:00:51,500 --> 00:00:54,160
+No hice "i++", que es lo que
+haría de forma más natural,
+
+26
+00:00:54,160 --> 00:00:59,090
+viniendo de C, porque "i++"
+no es legal en Python.
+
+27
+00:00:59,090 --> 00:01:01,675
+Como esto es más legible,
+ésta es la estructura y
+
+28
+00:01:01,675 --> 00:01:05,220
+y la forma que se usa
+en Python, "i = i + 1".
+
+29
+00:01:05,220 --> 00:01:05,730
+Bien.
+
+30
+00:01:05,730 --> 00:01:07,960
+Continuemos y 
+veamos si funcionó.
+
+31
+00:01:07,960 --> 00:01:11,090
+Ejecutemos "python while_loop.py",
+
+32
+00:01:11,090 --> 00:01:12,030
+¿y qué obtenemos?
+
+33
+00:01:12,030 --> 00:01:14,810
+Obtengo "apple", "orange"
+y "grape".
+
+34
+00:01:14,810 --> 00:01:17,822
+Y si recuerdas del
+programa, ése era exactamente el
+
+35
+00:01:17,822 --> 00:01:21,060
+orden en que fueron insertados, "apple",
+"orange" y "grape".
+
+36
+00:01:21,060 --> 00:01:22,400
+Por lo que así es como funcionan los bucles "while".
+
+37
+00:01:22,400 --> 00:01:23,650
