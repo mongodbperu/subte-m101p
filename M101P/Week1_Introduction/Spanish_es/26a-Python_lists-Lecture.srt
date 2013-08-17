@@ -1,0 +1,252 @@
+1
+00:00:00,000 --> 00:00:00,130
+
+2
+00:00:00,130 --> 00:00:02,430
+Hablemos acerca de listas de Python.
+
+3
+00:00:02,430 --> 00:00:05,110
+Las listas de Python son increíblemente
+útiles, muy fácil de usar.
+
+4
+00:00:05,110 --> 00:00:07,410
+Para crear una nueva lista en Python,
+empieza con un
+
+5
+00:00:07,410 --> 00:00:10,450
+corchete y
+agrega tus elementos.
+
+6
+00:00:10,450 --> 00:00:13,310
+En este caso, añado un "orange",
+"apple" y "banana", todo en
+
+7
+00:00:13,310 --> 00:00:15,990
+comillas simples, y cierra
+con un corchete.
+
+8
+00:00:15,990 --> 00:00:20,190
+Puedes notar que se parece
+a JSON, muy
+
+9
+00:00:20,190 --> 00:00:21,270
+conveniente.
+
+10
+00:00:21,270 --> 00:00:23,680
+Y si deseas asignarlo
+a una variable "a", podrías hacerlo
+
+11
+00:00:23,680 --> 00:00:25,250
+haciendo "a = ".
+
+12
+00:00:25,250 --> 00:00:28,050
+Y si deseara una lista vacía,
+podría crearla así.
+
+13
+00:00:28,050 --> 00:00:31,620
+Y si deseara crear
+una lista de listas,
+
+14
+00:00:31,620 --> 00:00:32,619
+Podría hacerlo también.
+
+15
+00:00:32,619 --> 00:00:35,320
+Podría decir, dame, el primer
+elemento va a ser
+
+16
+00:00:35,320 --> 00:00:37,580
+"orange", y puedo usar comillas
+simples o dobles para
+
+17
+00:00:37,580 --> 00:00:37,970
+estas cadenas.
+
+18
+00:00:37,970 --> 00:00:38,920
+No importa.
+
+19
+00:00:38,920 --> 00:00:41,840
+En segundo lugar, va a ser un par,
+y el tercero, por la razón que sea,
+
+20
+00:00:41,840 --> 00:00:44,425
+va a ser una
+lista de números.
+
+21
+00:00:44,425 --> 00:00:46,600
+Y en Python, si no pongo
+nada después del punto
+
+22
+00:00:46,600 --> 00:00:48,130
+decimal, éstos serán enteros.
+
+23
+00:00:48,130 --> 00:00:51,150
+Muy bien, intentemos hacer todo
+en el shell, así podemos
+
+24
+00:00:51,150 --> 00:00:52,420
+ver lo que parece.
+
+25
+00:00:52,420 --> 00:00:56,630
+Así "a =", "apple",
+"pear", "banana".
+
+26
+00:00:56,630 --> 00:00:59,410
+Y si escribo "a" y presiono
+"Enter" en el shell,
+
+27
+00:00:59,410 --> 00:01:01,480
+me dará el contenido
+de aquella variable.
+
+28
+00:01:01,480 --> 00:01:03,340
+También puedo imprimirlo
+así.
+
+29
+00:01:03,340 --> 00:01:05,605
+Si quiero crear otra
+lista, con sólo enteros en
+
+30
+00:01:05,605 --> 00:01:08,135
+él, puedo hacerlo,
+1, 2 y 3.
+
+31
+00:01:08,135 --> 00:01:10,900
+Y puedo crear una lista que
+tenga listas de listas en él.
+
+32
+00:01:10,900 --> 00:01:13,170
+Así por ejemplo, puedo crear--
+el primer elemento
+
+33
+00:01:13,170 --> 00:01:15,830
+será un "1", segundo
+elemento será una
+
+34
+00:01:15,830 --> 00:01:17,010
+lista de frutas otra vez--
+
+35
+00:01:17,010 --> 00:01:20,700
+"apple", "orange" y "pear".
+
+36
+00:01:20,700 --> 00:01:21,930
+Y luego vamos
+a tener un "3".
+
+37
+00:01:21,930 --> 00:01:23,210
+Veamos lo que hay en él.
+
+38
+00:01:23,210 --> 00:01:24,770
+Podemos ver que hay tres
+elementos en él.
+
+39
+00:01:24,770 --> 00:01:26,070
+El primero es "1".
+
+40
+00:01:26,070 --> 00:01:27,620
+El segundo es una lista.
+
+41
+00:01:27,620 --> 00:01:30,770
+Y el tercero
+es el número tres.
+
+42
+00:01:30,770 --> 00:01:34,520
+Puedes eliminar la referencia de una lista
+dándole el valor ordinal de
+
+43
+00:01:34,520 --> 00:01:35,830
+la ubicación.
+
+44
+00:01:35,830 --> 00:01:40,330
+Así que imprimo "c" de "0" es "1", "c" de
+"1" va a ser esa lista,
+
+45
+00:01:40,330 --> 00:01:42,290
+"apple", "orange" y "pear".
+
+46
+00:01:42,290 --> 00:01:46,660
+Y "c" de "2" será
+el número "3".
+
+47
+00:01:46,660 --> 00:01:49,930
+Muy fácil manipular listas
+y crear listas.
+
+48
+00:01:49,930 --> 00:01:51,610
+Muy útil porque,
+por supuesto, las listas
+
+49
+00:01:51,610 --> 00:01:53,680
+están directamente en JSON.
+
+50
+00:01:53,680 --> 00:01:55,800
+OK, tiempo para un cuestionario.
+
+51
+00:01:55,800 --> 00:01:59,800
+Las listas de Python, escribe
+el código para inicializar la lista con
+
+52
+00:01:59,800 --> 00:02:02,210
+los elementos "hammer",
+"nail" y "wall".
+
+53
+00:02:02,210 --> 00:02:05,630
+Y asigna la lista a la
+variable llamada "things".
+
+54
+00:02:05,630 --> 00:02:06,880
+Y hazlo justo aquí.
+
+55
+00:02:06,880 --> 00:02:07,930
