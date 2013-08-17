@@ -21,7 +21,7 @@ que vimos antes.
 6
 00:00:07,635 --> 00:00:09,680
 Ahora bien, hay algunas pequeñas
-diferencias, y voy
+diferencias, y voy a
 
 7
 00:00:09,680 --> 00:00:10,840
@@ -129,7 +129,7 @@ yendo a obtener el "name" de vuelta.
 29
 00:01:07,570 --> 00:01:09,200
 Y si lo usas a la izquierda
-de la expresión, Estoy
+de la expresión, estoy
 
 30
 00:01:09,200 --> 00:01:10,620
@@ -254,7 +254,7 @@ antes.
 
 56
 00:02:09,469 --> 00:02:12,325
-Me dió mi ciudad de nacimiento
+Me dio mi ciudad de nacimiento
 como primera clave-- esto
 
 57
@@ -264,7 +264,7 @@ clave es "name".
 
 58
 00:02:14,750 --> 00:02:16,880
-Esto es el órden opuesto al
+Esto es el orden opuesto al
 que le pusimos en la lista.
 
 59
