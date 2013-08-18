@@ -7,123 +7,123 @@ OK.
 
 3
 00:00:00,830 --> 00:00:03,770
-And the answer that you might
-want to keep them in separate
+Y la respuesta es que puedes
+desear mantenerlos en colecciones
 
 4
 00:00:03,770 --> 00:00:05,600
-collections to reduce the
-working set size of your
+separadas para reducir el
+tamaño del conjunto de trabajo de tu
 
 5
 00:00:05,600 --> 00:00:06,630
-application.
+aplicación.
 
 6
 00:00:06,630 --> 00:00:09,120
-Because if you're only going
-to be accessing part of the
+Porque sólo estás
+accediendo a parte de los
 
 7
 00:00:09,120 --> 00:00:12,100
-data, you don't want to bring in
-both parts of the data set
+datos, no deseas traer
+ambas partes del conjunto de datos
 
 8
 00:00:12,100 --> 00:00:13,220
-into memory.
+hacia la memoria.
 
 9
 00:00:13,220 --> 00:00:16,420
-Or you may have a concern that
-the combined document is going
+O puedes preocuparte en que
+el documento combinado va
 
 10
 00:00:16,420 --> 00:00:18,710
-to be over 16 megabytes
-in size.
+a ser más grande que
+16 megabytes.
 
 11
 00:00:18,710 --> 00:00:20,830
-Now, this third one here--
-to enforce foreign key
+Ahora bien, esta tercera opción--
+para hacer cumplir las restricciones
 
 12
 00:00:20,830 --> 00:00:22,010
-constraints.
+de clave foránea.
 
 13
 00:00:22,010 --> 00:00:24,300
-Now, that's actually a reason
-why you might combine them.
+Ahora, eso es en realidad la razón
+por la cual combinarlos.
 
 14
 00:00:24,300 --> 00:00:27,450
-Since MongoDB doesn't have
-foreign key constraints, well
+Ya que MongoDB no tiene
+restricciones de claves foráneas, así
 
 15
 00:00:27,450 --> 00:00:29,150
-you keep things a separate
-documents.
+que mantener las cosas en
+documentos independientes.
 
 16
 00:00:29,150 --> 00:00:33,500
-You know, looking at this case
-before, there was no guarantee
+Ya sabes, mirando este caso
+antes, no había ninguna garantía
 
 17
 00:00:33,500 --> 00:00:38,130
-that this ID here is a foreign
-key into this collection here.
+que este ID aquí sea una clave
+foránea en este colección aquí.
 
 18
 00:00:38,130 --> 00:00:40,530
-And so it's possible to let
-these things become
+Y lo que es posible hacer es
+que estas cosas sean
 
 19
 00:00:40,530 --> 00:00:42,830
-inconsistent if your program
-is not careful.
+inconsistentes si tu programa
+no tiene cuidado.
 
 20
 00:00:42,830 --> 00:00:46,830
-And that's not an issue if you
-have them embedded because
+Y eso no es un problema si
+los tienes embebidos porque
 
 21
 00:00:46,830 --> 00:00:49,220
-then this relationship that
-depends on the IDs being
+entonces esta relación
+dependerá que los IDs sean
 
 22
 00:00:49,220 --> 00:00:51,380
-correct here to tie these
-two documents
+correctos aquí, para unir estos
+dos documentos
 
 23
 00:00:51,380 --> 00:00:53,250
-together wouldn't exist.
+juntos.
 
 24
 00:00:53,250 --> 00:00:55,850
-So that is not an answer
-because, in fact, foreign key
+Así que no es una respuesta
+porque, en efecto, las restricciones
 
 25
 00:00:55,850 --> 00:00:57,710
-constraints don't exist.
+de clave foránea no existen.
 
 26
 00:00:57,710 --> 00:00:59,420
-And if you want to avoid the
-problem, you would actually
+Y si deseas evitar el
+problema, en realidad
 
 27
 00:00:59,420 --> 00:01:01,110
-put them together, not
-keep them apart.
+ponerlos juntos, no
+mantenerlos separados.
 
 28
 00:01:01,110 --> 00:01:02,360
