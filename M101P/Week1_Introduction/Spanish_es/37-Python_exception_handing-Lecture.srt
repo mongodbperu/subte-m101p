@@ -46,8 +46,8 @@ Aquí puedes ver que hace un
 
 11
 00:00:24,210 --> 00:00:26,330
-Y entonces intenta imprimir,
-pero la vida sigue.
+Y entonces intenta imprimir 
+"but life goes on".
 
 12
 00:00:26,330 --> 00:00:29,390
@@ -182,7 +182,7 @@ Veamos qué ocurre.
 40
 00:01:30,230 --> 00:01:32,030
 Voy a ejecutar este
-programa nuevo
+nuevo programa
 
 41
 00:01:32,030 --> 00:01:33,115
@@ -191,7 +191,7 @@ con control de excepciones.
 42
 00:01:33,115 --> 00:01:36,320
 Y en este caso, puedes ver
-que imprime "exception,
+que imprime "exceptions.
 
 43
 00:01:36,320 --> 00:01:37,480
@@ -199,8 +199,8 @@ zeroDivisionError".
 
 44
 00:01:37,480 --> 00:01:39,500
-Pero tras imprimir,
-la vida sigue.
+Pero después imprime
+"but life goes on".
 
 45
 00:01:39,500 --> 00:01:41,930
