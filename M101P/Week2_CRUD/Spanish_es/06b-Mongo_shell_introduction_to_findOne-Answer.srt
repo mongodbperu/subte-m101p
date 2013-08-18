@@ -3,63 +3,64 @@
 
 2
 00:00:00,200 --> 00:00:02,050
-If you keyed in something like
-this, you got it right.
+Si ingresaste algo como
+esto, lo acertaste.
 
 3
 00:00:02,050 --> 00:00:03,300
-db.users.findone.
+"db.users.findOne".
 
 4
 00:00:03,300 --> 00:00:05,030
 
 5
 00:00:05,030 --> 00:00:07,400
-The first argument to "findone"
-is this document
+El primer argumento de "findOne"
+es este documento,
 
 6
 00:00:07,400 --> 00:00:09,710
-where the field username has
-the value "dwight" and the
+donde el campo "username"
+tiene el valor "dwight" y el
 
 7
 00:00:09,710 --> 00:00:13,150
-second argument to "findone" is
-a document where the _field
+segundo argumento de "findOne"
+es un documento donde el campo
 
 8
 00:00:13,150 --> 00:00:15,650
-has the value "false" and email
-field has the value
+"_id" tiene el valor "false" y
+el campo "email" tiene el valor
 
 9
 00:00:15,650 --> 00:00:16,270
-"true."
+"true".
 
 10
 00:00:16,270 --> 00:00:20,050
-As it happens, you can
-alternatively specify _ID with
+En efecto, puedes alternativamente
+especificar un "_id" con 
 
 11
 00:00:20,050 --> 00:00:22,990
-the value 0 and email
-with the value 1.
+el valor "0" y "email" con
+el valor "1".
 
 12
 00:00:22,990 --> 00:00:26,300
-0 1 1, in this context, are
-treated as analogous to false
+"0 1 1", en este contexto, son
+tratados como análogos a los
 
 13
 00:00:26,300 --> 00:00:27,610
-and true, respectively.
+valores "false" y "true",
+respectivamente.
 
 14
 00:00:27,610 --> 00:00:28,900
-But those details are up
-to your preferences.
+Pero estos detalles dependen
+de tus preferencias.
 
 15
 00:00:28,900 --> 00:00:30,150

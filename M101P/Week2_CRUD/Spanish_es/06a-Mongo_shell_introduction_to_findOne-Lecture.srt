@@ -3,495 +3,493 @@
 
 2
 00:00:00,150 --> 00:00:02,090
-OK, now that we know how to
-put documents into the
+OK. Ahora que sabemos cómo
+poner documentos en la
 
 3
 00:00:02,090 --> 00:00:04,630
-database, let's figure out how
-to get them back out in a more
+base de datos, hay que aprender
+cómo accederlos de una manera 
 
 4
 00:00:04,630 --> 00:00:05,990
-advanced fashion.
+más avanzada.
 
 5
 00:00:05,990 --> 00:00:08,180
-The most basic operation to
-query documents out of the
+La operación más básica para
+recuperar documentos de la
 
 6
 00:00:08,180 --> 00:00:09,920
-database is called Find.
+base de datos se llama "find".
 
 7
 00:00:09,920 --> 00:00:13,110
-However, it's often simpler to
-just look at a single document
+Aun así, muchas veces es más
+simple buscar a un solo documento
 
 8
 00:00:13,110 --> 00:00:14,020
-out of the database.
+en la base de datos.
 
 9
 00:00:14,020 --> 00:00:16,580
-And for this, we have a helper
-method called findOne.
+Y para esto, tenemos un método
+auxiliar llamado "findOne".
 
 10
 00:00:16,580 --> 00:00:19,200
-All CRUD operations are
-syntactically presented as
+Todas las operaciones CRUD están
+sintácticamente presentadas como
 
 11
 00:00:19,200 --> 00:00:21,040
-methods on a collection.
+métodos de una colección.
 
 12
 00:00:21,040 --> 00:00:24,130
-The findOne method, when called
-with no arguments, gets
+El método "findOne", cuando es
+llamado sin argumentos, recupera
 
 13
 00:00:24,130 --> 00:00:26,820
-back essentially one document
-at random out of the
+esencialmente un documento
+al azar de la
 
 14
 00:00:26,820 --> 00:00:27,420
-collection.
+colección.
 
 15
 00:00:27,420 --> 00:00:30,370
-This can be helpful for
-examining what the schema are
+Esto puede ser útil al
+examinar qué esquemas siguen
 
 16
 00:00:30,370 --> 00:00:32,310
-of your documents in
-your collection.
+los documentos en
+tu colección.
 
 17
 00:00:32,310 --> 00:00:35,720
-So here we have a document with
-a field called _id, whose
+Entonces aquí tenemos un documento
+con un campo llamado "_id", cuyo
 
 18
 00:00:35,720 --> 00:00:38,960
-value is an object ID; a field
-called Name, whose value is a
+valor es un "object ID"; un campo
+llamado "Name", cuyo valor es una
 
 19
 00:00:38,960 --> 00:00:42,600
-string; a field called Age,
-whose value is an integer--
+cadena; un campo llamado "Age"
+cuyo valor es un entero--
 
 20
 00:00:42,600 --> 00:00:45,220
-or some kind of number anyway;
-and a field called Profession,
+o algún tipo de número; y
+un campo llamado "Profession",
 
 21
 00:00:45,220 --> 00:00:46,980
-whose value is another string.
+cuyo valor es otra cadena.
 
 22
 00:00:46,980 --> 00:00:48,760
-We can give arguments
-to findOne.
+Podemos pasarle argumentos
+a findOne.
 
 23
 00:00:48,760 --> 00:00:51,370
-In this case, I will hit the
-up arrow to get my previous
+En este caso, voy a apretar la flecha
+hacia arriba para recuperar mi comando 
 
 24
 00:00:51,370 --> 00:00:53,510
-input and move around
-with the arrow keys.
+previo y moverme con las
+flechas.
 
 25
 00:00:53,510 --> 00:00:56,790
-The first argument to findOne
-specifies what criteria I'm
+El primer argumento para findOne
+especifica qué criterios estoy 
 
 26
 00:00:56,790 --> 00:00:59,865
-looking for in order to count
-a document as a match.
+buscando para poder contar un
+documento como un resultado.
 
 27
 00:00:59,865 --> 00:01:03,680
-That is to say, it's analogous
-to the WHERE clause portion of
+Es decir, es análogo a la cláusula
+WHERE dentro de una sentencia
 
 28
 00:01:03,680 --> 00:01:05,400
-a SELECT statement in SQL.
+SELECT en SQL.
 
 29
 00:01:05,400 --> 00:01:08,080
-The argument that goes
-here is a document.
+El argumento que viene aquí
+es un documento.
 
 30
 00:01:08,080 --> 00:01:11,050
-In this case, findOne will only
-return to me a document
+En este caso, findOne me
+retornaría un documento
 
 31
 00:01:11,050 --> 00:01:13,420
-where the field Name has
-the value Jones.
+donde el campo "Name"
+tiene el valor "Jones".
 
 32
 00:01:13,420 --> 00:01:15,450
-And there is the document
-with the name Jones.
+Y hay un documento con
+el nombre "Jones".
 
 33
 00:01:15,450 --> 00:01:18,450
-This is our first example of
-a query into MongoDB that
+Este es nuestro primer ejemplo de
+una consulta a MongoDB que
 
 34
 00:01:18,450 --> 00:01:20,570
-actually has any kind of
-restriction in it.
+tiene un tipo de restricción.
 
 35
 00:01:20,570 --> 00:01:23,050
-As you can see, the
-specification of what
+Y como pueden ver, la
+especificación de qué
 
 36
 00:01:23,050 --> 00:01:26,870
-documents count as a match is
-given itself as a document.
+documentos cuentan como un resultado
+está presentado en sí como un documento.
 
 37
 00:01:26,870 --> 00:01:29,710
-This is quite a variation to how
-things are done in, say, a
+Esto es una variación considerable de
+como se hacen las cosas en, digamos,
 
 38
 00:01:29,710 --> 00:01:31,480
-traditional relational
-database.
+una tradicional base
+de datos relacional.
 
 39
 00:01:31,480 --> 00:01:33,910
-Instead of having a
-string-oriented query language
+En lugar de tener un lenguaje
+de consulta orientado a cadenas,
 
 40
 00:01:33,910 --> 00:01:36,770
-such as the SQL query language,
-we actually send the
+como el lenguaje de consulta
+SQL, nosotros enviamos la
 
 41
 00:01:36,770 --> 00:01:40,910
-BSON encoding of this argument
-to the findOne over the wire
+codificación BSON de este argumento
+al "findOne" a través de la conexión,
 
 42
 00:01:40,910 --> 00:01:43,330
-wrapped up in some message
-headers as an operation for
+envuelto en algunos encabezados de
+mensaje, como una operación, para
 
 43
 00:01:43,330 --> 00:01:44,580
-the database to execute.
+que sea ejecutada por
+la base de datos.
 
 44
 00:01:44,580 --> 00:01:47,850
-That is to say, the query that
-gets executed in the server is
+Es decir, la consulta que
+se ejecuta en el servidor es
 
 45
 00:01:47,850 --> 00:01:51,270
-presented to the server in the
-form of a structured document,
+presentada al servidor en la
+forma de un documento estructurado,
 
 46
 00:01:51,270 --> 00:01:54,220
-as opposed to a sequence of text
-that it needs to parse
+en lugar de una secuencia de texto
+que tiene que diseccionar
 
 47
 00:01:54,220 --> 00:01:54,970
-and analyze.
+y analizar.
 
 48
 00:01:54,970 --> 00:01:57,330
-You might be wondering why I'm
-explaining these details.
+Te podrías estar preguntando por qué
+te estoy explicando estos detalles.
 
 49
 00:01:57,330 --> 00:02:00,000
-The reason is that it's often
-rather tricky for people to
+La razón es que es comúnmente
+algo difícil para las personas
 
 50
 00:02:00,000 --> 00:02:03,100
-get used to the mindset of the
-query language in the system
+el acostumbrarse a la mentalidad del
+lenguaje de consulta en un sistema
 
 51
 00:02:03,100 --> 00:02:05,500
-being presented as a structured
-piece of data as
+donde se presenta como un
+pedazo de datos estructurado
 
 52
 00:02:05,500 --> 00:02:06,460
-opposed to a string.
+en lugar de una cadena.
 
 53
 00:02:06,460 --> 00:02:10,310
-In fact, there is no use of
-string-type queries anywhere
+En efecto, no hay ningún uso de
+consultas de tipo cadena en ninguna
 
 54
 00:02:10,310 --> 00:02:13,490
-within the MongoDB server
-processes at this point.
+parte dentro de los procesos del
+servidor MongoDB en este momento.
 
 55
 00:02:13,490 --> 00:02:15,830
-We'll learn a little bit more
-about the query language in a
+Aprenderemos un poco más sobre el
+lenguaje de consultas en una
 
 56
 00:02:15,830 --> 00:02:17,320
-subsequent section.
+sección posterior.
 
 57
 00:02:17,320 --> 00:02:19,250
-But for now, I want to tell you
-about the second argument
+Pero por ahora, quería contarte
+sobre el segundo argumento
 
 58
 00:02:19,250 --> 00:02:21,030
-that you can give to findOne.
+que le puedes pasar a "findOne".
 
 59
 00:02:21,030 --> 00:02:23,520
-Remembering the first argument
-to findOne specifies what you
+Tomando en cuenta que el primer
+argumento para "findOne" especifica lo
 
 60
 00:02:23,520 --> 00:02:26,970
-want to see, that is to say,
-which documents match a
+que quieres ver, es decir, qué
+documentos emparejan con un
 
 61
 00:02:26,970 --> 00:02:29,650
-particular kind of WHERE clause,
-the second argument to
+tipo particular de cláusula WHERE,
+el segundo argumento de
 
 62
 00:02:29,650 --> 00:02:32,280
-findOne allows you to stipulate
-what fields you want
+"findOne" te permite
+estipular qué campos quieres
 
 63
 00:02:32,280 --> 00:02:33,720
-to get back from the database.
+que te retorne la base de datos.
 
 64
 00:02:33,720 --> 00:02:36,640
-The second argument to findOne
-is specified, just like the
+El segundo argumento de "findOne"
+es especificado, igual que el
 
 65
 00:02:36,640 --> 00:02:38,070
-first one, as a document.
+primero, como un documento.
 
 66
 00:02:38,070 --> 00:02:41,150
-But in this case, the fields
-of this document say what
+Pero en este caso, los campos
+de este documento dicen qué
 
 67
 00:02:41,150 --> 00:02:43,880
-fields should come back from
-the query to the database.
+campos deben de ser retornados por
+esta consulta a la base de datos.
 
 68
 00:02:43,880 --> 00:02:47,870
-So for instance, I can say that
-I'd like to see the Name
+Entonces, por ejemplo, puedo
+decir que quiero ver el campo
 
 69
 00:02:47,870 --> 00:02:51,740
-field by saying, for example,
-Name, True.
+"Name" especificando, por ejemplo,
+"Name", "True".
 
 70
 00:02:51,740 --> 00:02:54,040
-And I can say, for instance,
-that I don't want to see the
+Y puedo decir, por ejemplo,
+que no quiero ver el campo
 
 71
 00:02:54,040 --> 00:02:58,390
-_id field by specifying
-_id, False.
+"_id" especificando "_id", "False".
 
 72
 00:02:58,390 --> 00:03:01,530
-When I execute this, I will get
-back any documents in the
+Cuando ejecuto esto, voy a
+recibir cualquier documento en la
 
 73
 00:03:01,530 --> 00:03:04,730
-People collection where the
-Name field is Jones.
+colección "People" donde el
+campo "Name" es "Jones".
 
 74
 00:03:04,730 --> 00:03:08,100
-And I will only see the Name
-field and not the _id field.
+Y sólo voy a ver el campo "Name"
+y no el campo "_id".
 
 75
 00:03:08,100 --> 00:03:09,870
-And of course, I'll only get one
-of them because I've asked
+Y por supuesto, recibo sólo uno
+de éstos resultados, porque sólo
 
 76
 00:03:09,870 --> 00:03:11,010
-for just one of them.
+he pedido uno.
 
 77
 00:03:11,010 --> 00:03:13,840
-So in this way, the second
-argument to findOne is
+Entonces, de esta manera, el
+segundo argumento de "findOne" es
 
 78
 00:03:13,840 --> 00:03:16,440
-analogous to the column
-list portion of the
+análogo a la lista de
+columnas de la gramática 
 
 79
 00:03:16,440 --> 00:03:18,540
-SELECT grammar in SQL.
+de SELECT en SQL.
 
 80
 00:03:18,540 --> 00:03:20,870
-That is to say, it allows you
-to specify what fields you'd
+Es decir, te ayuda a especificar
+qué campos quieres 
 
 81
 00:03:20,870 --> 00:03:22,860
-like to get back from
-the database.
+que te retorne la base de datos.
 
 82
 00:03:22,860 --> 00:03:27,560
-Now, as a bit of a historical
-detail, the _id field defaults
+Ahora, como un detalle histórico,
+el campo _id por defecto
 
 83
 00:03:27,560 --> 00:03:31,210
-to being present in the response
-from findOne even if
+está presente en la respuesta
+de findOne aunque no lo
 
 84
 00:03:31,210 --> 00:03:32,450
-you don't ask for it.
+pidas.
 
 85
 00:03:32,450 --> 00:03:34,290
-This is a little bit of
-vestigial feature.
+Esto es una funcionalidad un
+poco rudimentaria.
 
 86
 00:03:34,290 --> 00:03:36,890
-MongoDB was conceptually
-originally designed with a
+MongoDB fue conceptualmente
+diseñada con un número de
 
 87
 00:03:36,890 --> 00:03:39,420
-number of goals in mind, one of
-which was to act as a kind
+meta en mente. Una de ellas era
+que actúe como un tipo de
 
 88
 00:03:39,420 --> 00:03:40,740
-of object store.
+almacén de objetos.
 
 89
 00:03:40,740 --> 00:03:43,350
-And in an object-store type
-environment, it's
+Y en un ambiente de tipo
+almacén de objetos, es
 
 90
 00:03:43,350 --> 00:03:47,060
-extraordinarily common to want
-to know the unique identifier
+extraordinariamente común el querer
+saber el identificador único
 
 91
 00:03:47,060 --> 00:03:49,150
-of the object that you're
-retrieved from the database,
+del objeto que estás recibiendo
+de la base de datos.
 
 92
 00:03:49,150 --> 00:03:51,430
-even if you're only retrieving
-selected fields
+aun si sólo estás recibiendo
+algunos campos selectos
 
 93
 00:03:51,430 --> 00:03:52,770
-back from the object.
+del objeto.
 
 94
 00:03:52,770 --> 00:03:56,080
-And so because of that kind of
-design, the _id field is
+Entonces, dado ese tipo de
+diseño, el campo "_id" es
 
 95
 00:03:56,080 --> 00:03:57,370
-included by default.
+incluido por defecto.
 
 96
 00:03:57,370 --> 00:04:00,590
-But as you see above, you can
-explicitly request not to
+Pero como puedes ver acá arriba,
+puedes explícitamente pedir que
 
 97
 00:04:00,590 --> 00:04:03,330
-retrieve it from the database
-in a findOne call by
+no lo recupere de la base de datos
+en una llamada a "findOne" al
 
 98
 00:04:03,330 --> 00:04:05,660
-specifying _id, False.
+especificar "_id", "False".
 
 99
 00:04:05,660 --> 00:04:08,090
-We'll learn a lot more about the
-query language as we go.
+Aprenderemos mucho más sobre el lenguaje 
+de consultas mientras avanzamos.
 
 100
 00:04:08,090 --> 00:04:10,910
-FindOne was just kind
-of an introduction.
+"FindOne" fue simplemente un
+tipo de introducción.
 
 101
 00:04:10,910 --> 00:04:12,450
-OK, let's have a quiz.
+OK, hagamos un cuestionario.
 
 102
 00:04:12,450 --> 00:04:16,300
-Use findOne on the collection
-Users to find one document
+Usa "findOne" en la colección
+"Users" para encontrar un documento
 
 103
 00:04:16,300 --> 00:04:19,870
-where the key username is the
-string "dwight." And retrieve
+donde la clave "username" es
+la cadena "dwight" y recupera
 
 104
 00:04:19,870 --> 00:04:21,600
-only the key named Email.
+sólo la clave llamada "Email".
 
 105
 00:04:21,600 --> 00:04:22,850
