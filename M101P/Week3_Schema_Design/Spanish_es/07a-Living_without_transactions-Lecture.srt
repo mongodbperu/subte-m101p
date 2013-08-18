@@ -3,455 +3,456 @@
 
 2
 00:00:00,170 --> 00:00:04,700
-We talked a little bit early on
-in the first week about the
+Hablamos un poco al principo de
+la primera semana de la
 
 3
 00:00:04,700 --> 00:00:08,570
-lack of transactions support
-within MongoDB.
+falta de soporte a transacciones
+con MongoDB.
 
 4
 00:00:08,570 --> 00:00:11,650
-And from the relational world
-a lot of you know that
+Y del mundo relacional,
+muchos de ustedes saben que
 
 5
 00:00:11,650 --> 00:00:16,219
-transactions offer atomicity,
-consistency, isolation, and
+las transacciones ofrecen atomicidad,
+consistencia, aislamiento y
 
 6
 00:00:16,219 --> 00:00:17,450
-durability.
+durabilidad.
 
 7
 00:00:17,450 --> 00:00:20,820
-But, although we don't have
-transactions within MongoDB,
+Pero, a pesar que no tenemos
+transacciones en MongoDB,
 
 8
 00:00:20,820 --> 00:00:24,040
-we do have atomic operations.
+tenemos operaciones atómicas.
 
 9
 00:00:24,040 --> 00:00:25,530
-So what does that mean?
+Entonces, ¿qué significa esto?
 
 10
 00:00:25,530 --> 00:00:29,990
-Well, atomic operations mean
-that when you work on a single
+Bueno, operaciones atómicas significa
+que cuando trabajas en un solo
 
 11
 00:00:29,990 --> 00:00:33,880
-document that that work will
-be completed before anyone
+documento, este trabajo se
+completará antes que alguien
 
 12
 00:00:33,880 --> 00:00:35,200
-else sees the document.
+vea el documento.
 
 13
 00:00:35,200 --> 00:00:36,930
-They'll either see all
-the changes that you
+Ellos verán bien todos
+los cambios que
 
 14
 00:00:36,930 --> 00:00:38,490
-make or none of them.
+hagas o ninguno de éstos.
 
 15
 00:00:38,490 --> 00:00:43,370
-And using atomic operations, you
-can often accomplish the
+Y usando operaciones atómicas,
+a menudo puedes lograr lo
 
 16
 00:00:43,370 --> 00:00:44,910
-same thing you would have
-accomplished using
+mismo que hubieras
+logrado usando
 
 17
 00:00:44,910 --> 00:00:47,090
-transactions in a relational
-database.
+transacciones en una base de
+datos relacional.
 
 18
 00:00:47,090 --> 00:00:51,940
-And the reason is, that in a
-relational database, you need
+Y la razón es, que en una
+base de datos relacional, necesitas
 
 19
 00:00:51,940 --> 00:00:56,680
-to make changes across multiple
-tables, usually
+hacer cambios a través de múltiples
+tablas, usualmente
 
 20
 00:00:56,680 --> 00:00:59,820
-tables that need to be joined,
-and so you want to
+tablas que necesitan ser relacionadas,
+y así deseas
 
 21
 00:00:59,820 --> 00:01:00,820
-do that all at once.
+hacer todo a la vez.
 
 22
 00:01:00,820 --> 00:01:03,530
-And to do it, since there are
-multiple tables, you'll have
+Y para hacerlo, ya que hay
+varias tablas, tendrás que
 
 23
 00:01:03,530 --> 00:01:07,060
-to begin a transaction and do
-all those updates and then end
+iniciar una transacción y hacer
+todas esas modificaciones y luego finalizar
 
 24
 00:01:07,060 --> 00:01:08,860
-the transaction.
+la transacción.
 
 25
 00:01:08,860 --> 00:01:12,490
-But with MongoDB, since you're
-going to embed the data, since
+Pero con MongoDB, ya que
+embeberás datos, y
 
 26
 00:01:12,490 --> 00:01:15,160
-you're going to pre-join
-it in documents--
+vas a vincular previamente
+en documentos--
 
 27
 00:01:15,160 --> 00:01:16,950
-and they're these rich
-documents that have
+éstos serán documentos
+enriquecidos que tendrán
 
 28
 00:01:16,950 --> 00:01:17,810
-hierarchy--
+jerarquía--
 
 29
 00:01:17,810 --> 00:01:20,180
-you often cam accomplish
-the same thing.
+a menudo puedes lograr
+lo mismo.
 
 30
 00:01:20,180 --> 00:01:22,570
-For instance, in the blog
-example, if you wanted to make
+Por ejemplo, en el blog,
+si deseas
 
 31
 00:01:22,570 --> 00:01:25,600
-sure that you updated a blog
-post atomically, you can do
+asegurarte de actualizar
+un post atómicamente, puedes hacer
 
 32
 00:01:25,600 --> 00:01:28,430
-that because you can update the
-entire blog post at once.
+eso ya que puedes actualizar el
+post de blog completo a la vez.
 
 33
 00:01:28,430 --> 00:01:30,890
-Whereas, if it was a bunch of
-relational tables, you'd
+Considerando que, si se trataba de
+varias tablas relacionales,
 
 34
 00:01:30,890 --> 00:01:33,690
-probably have to open a
-transaction so that you can
+probablemente tendrás que abrir una
+transacción para que puedas
 
 35
 00:01:33,690 --> 00:01:37,040
-update the post collection and
-the comments collection.
+actualizar la colección de posts y
+la colección de comentarios.
 
 36
 00:01:37,040 --> 00:01:40,650
-So what are your approaches that
-you can take in MongoDB
+¿Cuáles son los enfoques que
+puedes tomar en MongoDB
 
 37
 00:01:40,650 --> 00:01:42,340
-to overcome a lack
-of transactions?
+para superar la falta
+de transacciones?
 
 38
 00:01:42,340 --> 00:01:44,470
-And the answer is there are
-really three different
+Y la respuesta es que hay
+realmente tres distintos
 
 39
 00:01:44,470 --> 00:01:44,910
-approaches.
+enfoques.
 
 40
 00:01:44,910 --> 00:01:46,860
-And I want to go over
-them real quickly.
+Y quiero ir por ello
+realmente rápido.
 
 41
 00:01:46,860 --> 00:01:50,720
-The first is that you can
-restructure your code so that
+Lo primero es que puedes
+reestructurar tu código para que
 
 42
 00:01:50,720 --> 00:01:53,340
-you're working within a single
-document and taking advantage
+trabajes con un solo
+documento y tomar ventaja
 
 43
 00:01:53,340 --> 00:01:57,020
-of the atomic operations that we
-offer within that document.
+de las operaciones atómicas que
+ofrecemos dentro del documento.
 
 44
 00:01:57,020 --> 00:02:00,690
-And if you do that, then
-usually you're all set.
+Y si lo haces, entonces
+por lo general ya está todo listo.
 
 45
 00:02:00,690 --> 00:02:03,720
-And you won't miss the
-transactions at all.
+Y no te pierdes de las
+transacciones en absoluto.
 
 46
 00:02:03,720 --> 00:02:07,590
-The second thing you can do,
-if you'd like, is you can
+Lo segundo es que puedes hacer,
+si deseas,
 
 47
 00:02:07,590 --> 00:02:10,930
-essentially implement some sort
-of locking in software.
+implementar en esencia una especie
+de bloqueo en el software.
 
 48
 00:02:10,930 --> 00:02:14,240
-You can do this by creating
-a critical section.
+Puedes hacer esto creando
+una sección crítica.
 
 49
 00:02:14,240 --> 00:02:17,040
-You can essentially build a
-test, test, and set using find
+Puedes construir en esencia una
+prueba y prueba, usando
 
 50
 00:02:17,040 --> 00:02:18,310
-and modify.
+"find and modify".
 
 51
 00:02:18,310 --> 00:02:20,680
-You can build semaphores
-if you want to.
+Puedes construir semáforos
+si lo deseas.
 
 52
 00:02:20,680 --> 00:02:25,060
-And, in a way, this is the way
-the larger world works anyway.
+Y en cierto modo, ésta es la forma
+en que el mundo en general funciona de todos modos.
+
 
 53
 00:02:25,060 --> 00:02:27,860
-If you think about it, if one
-bank needs to transfer money
+Si lo piensas bien, si un
+banco necesita transferir dinero
 
 54
 00:02:27,860 --> 00:02:29,710
-to another bank, they're
-not living in the
+a otro banco, ellos
+no viven en el
 
 55
 00:02:29,710 --> 00:02:31,460
-same relational system.
+mismo sistema relacional.
 
 56
 00:02:31,460 --> 00:02:34,250
-And they each have their own
-relational databases often.
+Y a menudo cada uno tiene sus
+propias bases de datos relacionales.
 
 57
 00:02:34,250 --> 00:02:37,350
-And they have to be able to
-coordinate that operation,
+Y tienen que ser capaces de
+coordinar la operación,
 
 58
 00:02:37,350 --> 00:02:39,260
-even though you can't begin
-transaction and end
+a pesar que no puedes iniciar
+una transacción y finalizar
 
 59
 00:02:39,260 --> 00:02:42,610
-transaction across those
-database systems, only within
+la transacción a través de estos
+sistemas de bases de datos, sólo en
 
 60
 00:02:42,610 --> 00:02:44,040
-one system within one bank.
+un sistema de un banco.
 
 61
 00:02:44,040 --> 00:02:46,070
-So there's certainly
-ways in software to
+Así que ciertamente hay
+maneras en software para
 
 62
 00:02:46,070 --> 00:02:47,900
-get around the problem.
+eludir el problema.
 
 63
 00:02:47,900 --> 00:02:51,680
-And the final approach, which
-often works in modern web
+Y el último enfoque, que
+a menudo funciona en aplicaciones
 
 64
 00:02:51,680 --> 00:02:54,810
-applications and other
-applications that take in a
+web modernas y otras
+aplicaciones que tienen una
 
 65
 00:02:54,810 --> 00:02:58,800
-tremendous amount of data, is to
-just tolerate a little bit
+enorme cantidad de datos, es
+sólo tolerar un poco
 
 66
 00:02:58,800 --> 00:03:01,020
-of inconsistency.
+de inconsistencia.
 
 67
 00:03:01,020 --> 00:03:05,790
-An example would be if you're
-talking about a friend feed in
+Un ejemplo sería si estás hablando
+de un amigo en una publicación en
 
 68
 00:03:05,790 --> 00:03:09,740
-Facebook, it doesn't matter if
-everybody sees your wall
+Facebook, no importa si
+todos ven tu muro
 
 69
 00:03:09,740 --> 00:03:12,090
-update simultaneously.
+actualizarse simultáneamente.
 
 70
 00:03:12,090 --> 00:03:14,270
-It's OK if one person's
-a few beats
+Está bien si una persona
+no lo ve
 
 71
 00:03:14,270 --> 00:03:16,080
-behind for a few seconds.
+por unos segundos.
 
 72
 00:03:16,080 --> 00:03:18,530
-And then they catch up.
+Y luego lo ve.
 
 73
 00:03:18,530 --> 00:03:23,040
-It often isn't critical in a
-lot of system designs that
+A menudo no es crítico en
+muchos diseños de sistemas que
 
 74
 00:03:23,040 --> 00:03:25,050
-everything be kept perfectly
-consistent and that everyone
+todo será perfectamente
+consistente y que todos
 
 75
 00:03:25,050 --> 00:03:27,120
-have a perfectly consistent
-and the
+tienen una perfecta consistencia
+y lo
 
 76
 00:03:27,120 --> 00:03:28,630
-same view of the database.
+mismo para la base de datos.
 
 77
 00:03:28,630 --> 00:03:32,580
-So you could simply tolerate a
-little bit of inconsistency
+Así que puedes simplemente tolerar un
+poco de inconsistencia
 
 78
 00:03:32,580 --> 00:03:33,890
-that's somewhat temporary.
+que es algo temporal.
 
 79
 00:03:33,890 --> 00:03:34,950
-So those are three approaches.
+Así que éstos son los tres enfoques.
 
 80
 00:03:34,950 --> 00:03:36,970
-You can restructure to make sure
-that everything happens
+Puedes reestructurar para asegurarte
+que todo suceda
 
 81
 00:03:36,970 --> 00:03:40,300
-within a single document so that
-you get the advantages of
+en un solo documento para que
+obtengas las ventajas de
 
 82
 00:03:40,300 --> 00:03:41,790
-atomic operations.
+operaciones atómicas.
 
 83
 00:03:41,790 --> 00:03:42,900
-You can implement
-whatever you're
+Puedes implementar
+lo que estás
 
 84
 00:03:42,900 --> 00:03:43,950
-looking for in software.
+buscando con el software.
 
 85
 00:03:43,950 --> 00:03:46,720
-Or you can tolerate a little bit
-of a consistency that you
+O puedes tolerar un poco
+de consistencia que
 
 86
 00:03:46,720 --> 00:03:48,810
-might get without
-transactions.
+puedes obtener sin
+transacciones.
 
 87
 00:03:48,810 --> 00:03:52,390
-All right, so, let's
-do a quiz.
+Muy bien, vayamos
+al cuestionario.
 
 88
 00:03:52,390 --> 00:03:53,510
-So here's the quiz.
+Aquí está el cuestionario.
 
 89
 00:03:53,510 --> 00:03:56,560
-Which of the following
-operations operate atomically
+¿Cuáles de las siguientes
+operaciones funcionan atómicamente
 
 90
 00:03:56,560 --> 00:03:59,180
-within a single document
-in MongoDB?
+en un solo documento
+en MongoDB?
 
 91
 00:03:59,180 --> 00:04:00,420
-Check all that apply.
+Marca todas las que apliquen.
 
 92
 00:04:00,420 --> 00:04:02,990
-And the choices are, the update
-command, the find and
+Y las opciones son, el comando
+"update", el comando
 
 93
 00:04:02,990 --> 00:04:06,870
-modify command, the add to set
-command within an update, or
+"find and modify", el comando
+"add to set" en un "update" o
 
 94
 00:04:06,870 --> 00:04:09,440
-the push, again within
-an update.
+"push", también en
+un "update".
 
 95
 00:04:09,440 --> 00:04:11,990
-And if you remember add to set,
-add something to an array
+Y si recuerdas "add to set",
+añade algo a un array
 
 96
 00:04:11,990 --> 00:04:14,740
-list, if it's not there,
-push, push, is at
+si no está allí,
+"push" es al
 
 97
 00:04:14,740 --> 00:04:15,990
-the end of the list.
+final de la lista.

@@ -3,16 +3,16 @@
 
 2
 00:00:00,290 --> 00:00:00,660
-OK.
+De acuerdo.
 
 3
 00:00:00,660 --> 00:00:04,610
-And the answer is all these
-operations are atomic within a
+Y la respuesta es que todas estas
+operaciones son atómicas en un
 
 4
 00:00:04,610 --> 00:00:06,400
-single document in MongoDB.
+solo documento en MongoDB.
 
 5
 00:00:06,400 --> 00:00:07,650
