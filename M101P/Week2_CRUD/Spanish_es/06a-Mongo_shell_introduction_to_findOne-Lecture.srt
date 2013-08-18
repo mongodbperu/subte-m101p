@@ -78,7 +78,7 @@ con un campo llamado "_id", cuyo
 
 18
 00:00:35,720 --> 00:00:38,960
-valor es un "object ID"; un campo
+valor es un ObjectId; un campo
 llamado "Name", cuyo valor es una
 
 19
@@ -386,7 +386,7 @@ que te retorne la base de datos.
 82
 00:03:22,860 --> 00:03:27,560
 Ahora, como un detalle histórico,
-el campo _id por defecto
+el campo "_id" por defecto
 
 83
 00:03:27,560 --> 00:03:31,210
@@ -405,11 +405,11 @@ poco rudimentaria.
 86
 00:03:34,290 --> 00:03:36,890
 MongoDB fue conceptualmente
-diseñada con un número de
+diseñado con un número de
 
 87
 00:03:36,890 --> 00:03:39,420
-meta en mente. Una de ellas era
+metas en mente. Una de ellas era
 que actúe como un tipo de
 
 88
