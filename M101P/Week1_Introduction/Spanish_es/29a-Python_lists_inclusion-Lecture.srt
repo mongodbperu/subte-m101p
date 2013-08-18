@@ -1,0 +1,157 @@
+1
+00:00:00,000 --> 00:00:00,250
+
+2
+00:00:00,250 --> 00:00:03,060
+A continuación, me gustaría mostrarte cómo
+verificar si un elemento
+
+3
+00:00:03,060 --> 00:00:04,390
+en particular está en una lista.
+
+4
+00:00:04,390 --> 00:00:07,710
+Supongamos que tenemos una
+lista de tres frutas.
+
+5
+00:00:07,710 --> 00:00:12,020
+"a=", "apple", "pear", "orange".
+
+6
+00:00:12,020 --> 00:00:14,360
+Queremos saber si "pear" aparece
+o no en la lista.
+
+7
+00:00:14,360 --> 00:00:16,230
+Podemos usar el operador "in".
+
+8
+00:00:16,230 --> 00:00:17,820
+"pear in a".
+
+9
+00:00:17,820 --> 00:00:20,650
+Que se evalúa como verdad.
+
+10
+00:00:20,650 --> 00:00:21,530
+¿Qué hay de "grape"?
+
+11
+00:00:21,530 --> 00:00:24,480
+"grape in a", evalúa
+a falso.
+
+12
+00:00:24,480 --> 00:00:27,080
+Y luego te voy a enseñar la
+sentencia condicional de probar
+
+13
+00:00:27,080 --> 00:00:29,540
+esto, ya que normalmente
+no estará en el shell.
+
+14
+00:00:29,540 --> 00:00:32,540
+Podrías decir, si "pear
+in a", dos puntos--
+
+15
+00:00:32,540 --> 00:00:34,590
+hay dos puntos requeridos al
+final de la sentencia "if".
+
+16
+00:00:34,590 --> 00:00:38,140
+Y así que aquí está nuestra sentencia
+condicional, "pear in a", y luego
+
+17
+00:00:38,140 --> 00:00:40,540
+los dos puntos al final,
+voy a poner sangr�a,
+
+18
+00:00:40,540 --> 00:00:42,690
+"print", "there is a pear".
+
+19
+00:00:42,690 --> 00:00:45,440
+Y la sentencia, luego
+imprime, "there is a pear",
+
+20
+00:00:45,440 --> 00:00:46,770
+porque esto fue "pear".
+
+21
+00:00:46,770 --> 00:00:49,400
+Y si hacemos la misma
+prueba, pero con una fruta que
+
+22
+00:00:49,400 --> 00:00:51,420
+no estuvo allí,
+como "grape", "if
+
+23
+00:00:51,420 --> 00:00:54,390
+grape in a", entonces "print".
+
+24
+00:00:54,390 --> 00:00:55,430
+"There is a grape".
+
+25
+00:00:55,430 --> 00:00:57,750
+No imprime nada porque
+no hay "grape".
+
+26
+00:00:57,750 --> 00:01:00,117
+Esto es muy útil cuando
+traes datos de Mongo y
+
+27
+00:01:00,117 --> 00:01:02,650
+están en un array, y deseas
+verificar si un elemento
+
+28
+00:01:02,650 --> 00:01:04,670
+en particular está o no en la
+estructura, puedes usar el
+
+29
+00:01:04,670 --> 00:01:06,670
+operador "in" para hacerlo.
+
+30
+00:01:06,670 --> 00:01:07,840
+Aquí está el cuestionario.
+
+31
+00:01:07,840 --> 00:01:11,560
+Hablemos acerca de las listas de Python
+y la verificación para inclusión.
+
+32
+00:01:11,560 --> 00:01:14,830
+Teniendo una lista de Python llamada
+"fruit",  escribe una sentencia "if"
+
+33
+00:01:14,830 --> 00:01:17,530
+para verificar si "apple"
+está en la lista.
+
+34
+00:01:17,530 --> 00:01:18,780
+Escribe la respuesta aquí.
+
+35
+00:01:18,780 --> 00:01:19,840
