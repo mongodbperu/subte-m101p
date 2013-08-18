@@ -3,46 +3,46 @@
 
 2
 00:00:00,140 --> 00:00:00,610
-That's right.
+Así es.
 
 3
 00:00:00,610 --> 00:00:05,820
-The answer is db.fruit.insert,
-and the argument is a document
+La respuesta es "db.fruit.insert",
+y el argumento es un documento
 
 4
 00:00:05,820 --> 00:00:08,790
-where the field name has the
-value "apple," the field color
+donde el campo "name" tiene el
+valor "apple", el campo "color"
 
 5
 00:00:08,790 --> 00:00:11,380
-has the value "red," and the
-field shape has the value
+tiene el valor "red", y el
+campo "shape" tiene el valor
 
 6
 00:00:11,380 --> 00:00:14,580
-"round." the simple act of
-inserting the document is
+"round". El simple acto de
+insertar el documento es
 
 7
 00:00:14,580 --> 00:00:16,390
-sufficient for creating
-the collection.
+suficiente para crear la
+colección.
 
 8
 00:00:16,390 --> 00:00:18,640
-And in turn, the act of
-creating a collection
+Y en su defecto, el acto de
+crear una colección
 
 9
 00:00:18,640 --> 00:00:21,750
-implicitly creates the database
-if no such database
+implícitamente crea la
+base de datos si ésta
 
 10
 00:00:21,750 --> 00:00:23,000
-already exists.
+no existe aún.
 
 11
 00:00:23,000 --> 00:00:23,650

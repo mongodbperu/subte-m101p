@@ -3,559 +3,563 @@
 
 2
 00:00:00,410 --> 00:00:03,290
-So now that we know what a
-document is in MongoDB, let's
+Entonces, ahora que sabemos lo que
+un documento es en MongoDB, hay 
 
 3
 00:00:03,290 --> 00:00:05,600
-find out how to actually put
-them into the database.
+que averiguar cómo ponerlos
+en la base de datos.
 
 4
 00:00:05,600 --> 00:00:08,590
-As we discussed, MongoDB
-documents are represented in
+Como dijimos, los documentos
+de MongoDB están representados
 
 5
 00:00:08,590 --> 00:00:10,800
-JavaScript by JavaScript
-objects.
+en JavaScript por objetos de
+JavaScript.
 
 6
 00:00:10,800 --> 00:00:12,910
-So we can create a variable
-in JavaScript--
+Entonces podemos crear una
+variable en JavaScript--
 
 7
 00:00:12,910 --> 00:00:14,030
-let's call it doc--
+llamémoslo "doc"--
 
 8
 00:00:14,030 --> 00:00:18,030
-whose value is some JavaScript
-object, such as, say, name
+cuyo valor es un objeto de
+JavaScript, digamos, "name"
 
 9
 00:00:18,030 --> 00:00:21,570
-Smith, age 30 profession
-hacker.
+"Smith", "age" "30", "profession"
+"hacker".
 
 10
 00:00:21,570 --> 00:00:23,920
-All this does is establish a
-binding between a variable in
+Lo que hace esto es establecer
+un enlace entre una variable en
 
 11
 00:00:23,920 --> 00:00:25,640
-JavaScript and a value.
+JavaScript y un valor.
 
 12
 00:00:25,640 --> 00:00:27,620
-To actually communicate with the
-database, we're going to
+Para comunicarse con la
+base de datos, tenemos que
 
 13
 00:00:27,620 --> 00:00:29,730
-have to use handle
-on the database.
+utilizar identificadores de
+conexión a la base de datos.
 
 14
 00:00:29,730 --> 00:00:33,790
-As it happens, the shell has a
-variable called db whose value
+Resulta que el shell tiene una
+variable llamada "db" cuyo valor
 
 15
 00:00:33,790 --> 00:00:35,630
-is a handle on the
-current database.
+es un identificador de conexión
+a la base de datos actual.
 
 16
 00:00:35,630 --> 00:00:38,550
-If you evaluate the variable db,
-you get back the name of
+Si evalúas la variable "db"
+te retorna el nombre de
 
 17
 00:00:38,550 --> 00:00:39,610
-the database.
+la base de datos.
 
 18
 00:00:39,610 --> 00:00:43,360
-Documents in the database live
-inside of collections, which
+Los documentos en la base de datos
+viven dentro de colecciones, las cuales
 
 19
 00:00:43,360 --> 00:00:45,350
-are simply sets of documents
-within a
+son simplemente conjuntos de
+documentos dentro de
 
 20
 00:00:45,350 --> 00:00:47,070
-particular named database.
+una base de datos en particular.
 
 21
 00:00:47,070 --> 00:00:49,370
-From a programming language
-perspective, in the JavaScript
+Desde la perspectiva de un lenguaje
+de programación, en el shell
 
 22
 00:00:49,370 --> 00:00:53,730
-shell, we present collections as
-properties of the database.
+JavaScript, presentamos colecciones
+como propiedades de la base de datos.
 
 23
 00:00:53,730 --> 00:00:57,730
-So if I type in
-db.people.insert, then the
+Entonces si ingreso
+db.people.insert,
 
 24
 00:00:57,730 --> 00:01:01,390
-shell will interpret people as
-the name of the collection
+el shell interpreta "people"
+como el nombre de la colección
 
 25
 00:01:01,390 --> 00:01:04,959
-inside the current database,
-that is, the test database.
+dentro de la base de datos actual,
+que es la base de datos "test".
 
 26
 00:01:04,959 --> 00:01:06,870
-Insert is a method
-on collections.
+"Insert" es un método
+de colecciones
 
 27
 00:01:06,870 --> 00:01:10,100
-And it takes as an argument a
-JavaScript object, such as my
+que toma como argumento un
+objeto JavaScript, como mi
 
 28
 00:01:10,100 --> 00:01:11,790
-variable doc.
+variable "doc".
 
 29
 00:01:11,790 --> 00:01:14,640
-The Insert method puts a
-document into the database.
+El método "insert" pone un documento
+dentro de la base de datos
+
 
 30
 00:01:14,640 --> 00:01:16,380
-But as you see, the shell
-doesn't print anything out
+Pero como puedes ver, el shell
+no imprime nada sobre el
 
 31
 00:01:16,380 --> 00:01:17,450
-about success or failure.
+éxito o la falla de dicha operación.
 
 32
 00:01:17,450 --> 00:01:19,410
-The shell is normally very
-terse by default.
+El shell es usualmente muy
+breve por defecto.
 
 33
 00:01:19,410 --> 00:01:21,120
-There are ways of customizing
-this, but we're going to stick
+Hay maneras de personalizar
+esto, pero vamos a adherirnos
 
 34
 00:01:21,120 --> 00:01:23,000
-to the basics during
-this course.
+a lo básico durante
+este curso.
 
 35
 00:01:23,000 --> 00:01:25,140
-To actually see that I
-accomplished something with
+Para ver que he logrado
+hacer algo con 
 
 36
 00:01:25,140 --> 00:01:27,580
-this insert method, I'm going to
-skip ahead for a second and
+este método "insert", voy a saltar
+hacia adelante por un segundo y
 
 37
 00:01:27,580 --> 00:01:28,560
-show you how to query something
+mostrarte como puedes
+hacer una consulta
 
 38
 00:01:28,560 --> 00:01:30,200
-back in a simple fashion.
+de una manera simple.
 
 39
 00:01:30,200 --> 00:01:32,720
-To query a collection, you
-input the collection, for
+Para hacer una consulta de colección,
+ingresas la colección, por ejemplo
+
 
 40
 00:01:32,720 --> 00:01:34,500
-example, db.people.
+"db.people"
 
 41
 00:01:34,500 --> 00:01:37,540
-And then you execute find method
-on that collection.
+y luego ejecutas el método "find"
+sobre esa colección.
 
 42
 00:01:37,540 --> 00:01:40,070
-If you call find with no
-arguments, you'll get back all
+Si llamas a "find" sin
+argumentos, te va a retornar todos
 
 43
 00:01:40,070 --> 00:01:41,660
-the documents in that
-collection.
+documentos en esa colección.
 
 44
 00:01:41,660 --> 00:01:42,970
-And there's my document back.
+Y ahí está mi documento.
 
 45
 00:01:42,970 --> 00:01:46,200
-That is, I get back a document
-where name is Smith, age is
+Es decir, me retorna un documento
+donde "name" es "Smith", "age"
 
 46
 00:01:46,200 --> 00:01:49,390
-30, and profession is
-the string hacker.
+es "30", y "profession" es
+la cadena "hacker".
 
 47
 00:01:49,390 --> 00:01:52,450
-But you see that there's a new
-field called underscore id,
+Pero lo que ves es que hay un
+campo llamado guión bajo "id",
 
 48
 00:01:52,450 --> 00:01:55,190
-whose value seems to be
-something called an object id,
+cuyo valor aparenta ser
+algo llamado "object id",
 
 49
 00:01:55,190 --> 00:01:57,410
-consisting of some sequence
-of somethings.
+que consiste de alguna secuencia
+de algo. 
 
 50
 00:01:57,410 --> 00:02:00,770
-As it happens, when you insert
-a document into MongoDB, the
+En efecto, cuando insertas un
+documento en MongoDB, el
 
 51
 00:02:00,770 --> 00:02:04,150
-server requires that all
-documents have a unique
+servidor requiere que todos
+los documentos tengan un
 
 52
 00:02:04,150 --> 00:02:05,450
-identifying field.
+campo con un identificador único.
 
 53
 00:02:05,450 --> 00:02:08,410
-In fact, we use the underscore
-id for this field.
+De hecho, usamos un guión bajo
+"id" para este campo.
 
 54
 00:02:08,410 --> 00:02:10,750
-The underscore id field
-within a document is
+El campo guión bajo "id"
+dentro de un documento es
 
 55
 00:02:10,750 --> 00:02:12,120
-a primary key field.
+un campo de clave primaria.
 
 56
 00:02:12,120 --> 00:02:14,740
-That is to say, it's required
-to be present, the value of
+Es decir, es un requerimiento
+que esté presente, el valor de
 
 57
 00:02:14,740 --> 00:02:17,370
-the field is required to be
-unique for that document
+este campo debe ser único
+para ese documento
 
 58
 00:02:17,370 --> 00:02:19,840
-within the collection, and we
-also go a little bit further
+dentro de la colección y también
+tenemos que ir un poco más allá
 
 59
 00:02:19,840 --> 00:02:22,580
-than some other databases do in
-that we require the primary
+de lo que van otras bases datos
+y requerir que la clave primaria
 
 60
 00:02:22,580 --> 00:02:23,720
-key to be immutable.
+sea inmutable.
 
 61
 00:02:23,720 --> 00:02:26,650
-We don't let you change the
-value of the underscore id
+No dejamos que cambies el valor
+del campo guión bajo "id" 
 
 62
 00:02:26,650 --> 00:02:28,520
-field within the document
-in the system.
+dentro del documento en
+el sistema.
 
 63
 00:02:28,520 --> 00:02:31,390
-You could simulate changing
-the underscore id field by
+Puedes simular un cambio
+del campo guión bajo "id"
 
 64
 00:02:31,390 --> 00:02:33,980
-removing the document and
-putting another document in
+removiendo el documento y
+poniendo otro documento
 
 65
 00:02:33,980 --> 00:02:37,360
-with a different value for the
-underscore id field, but the
+con un valor diferente para el
+campo guión bajo "id", pero los
 
 66
 00:02:37,360 --> 00:02:39,980
-same values for the other fields
-say though that would
+mismos valores para los otros
+cambios, aunque eso no sería
 
 67
 00:02:39,980 --> 00:02:42,920
-not be an atomic operation
-within the database.
+una operación atómica dentro
+de la base de datos.
 
 68
 00:02:42,920 --> 00:02:46,040
-So the underscore id field
-is the primary key.
+Entonces el campo guión bajo
+"id" es la clave primaria.
 
 69
 00:02:46,040 --> 00:02:49,680
-All normal collections in
-MongoDB have an underscore id
+Todas las colecciones normales
+en MongoDB requieren
 
 70
 00:02:49,680 --> 00:02:51,130
-primary key requirement.
+un guión bajo "id" como
+clave primaria.
 
 71
 00:02:51,130 --> 00:02:53,740
-We'll talk about abnormal
-collections eventually during
+Hablaremos sobre colecciones
+anormales eventualmente
 
 72
 00:02:53,740 --> 00:02:54,350
-this course.
+en este curso.
 
 73
 00:02:54,350 --> 00:02:56,720
-Now what about this object id
-business, on the right hand
+Ahora, ¿qué ocurre con esto de
+"object id", al lado derecho
 
 74
 00:02:56,720 --> 00:02:57,540
-side of the colon?
+de los dos puntos?
 
 75
 00:02:57,540 --> 00:03:01,720
-Well, in MongoDB, we require the
-underscore id to be unique
+Bueno, en MongoDB, requerimos
+que el guión bajo "id" sea único
 
 76
 00:03:01,720 --> 00:03:02,700
-within the collection.
+dentro de la colección.
 
 77
 00:03:02,700 --> 00:03:05,550
-In order to facilitate this,
-we give you a type called
+Para facilitar esto, te
+damos un tipo llamado
 
 78
 00:03:05,550 --> 00:03:08,650
-object id, the construction of
-which takes into account the
+"object id", cuya construcción
+toma en consideración el
 
 79
 00:03:08,650 --> 00:03:11,240
-current time, an identifier
-for the machine that's
+tiempo actual, un identificador
+para la máquina que está
 
 80
 00:03:11,240 --> 00:03:14,510
-constructing the object id, the
-process id of the process
+construyendo el "object id",
+el "process id" del proceso
 
 81
 00:03:14,510 --> 00:03:17,120
-on the computer that's
-constructing the object id,
+en la computadora que está
+construyendo el "object id"
 
 82
 00:03:17,120 --> 00:03:19,450
-and the counter global
-the process of
+y contador global del
+proceso que está
 
 83
 00:03:19,450 --> 00:03:21,350
-constructing the object id.
+construyendo el "object id".
 
 84
 00:03:21,350 --> 00:03:23,600
-By smooshing these pieces of
-information together, we get a
+Al juntar estás piezas de
+información, logramos tener un
 
 85
 00:03:23,600 --> 00:03:26,720
-value that has very high
-probability of being unique,
+valor que tiene una probabilidad
+alta de ser único,
 
 86
 00:03:26,720 --> 00:03:29,350
-that is to say, won't be
-generated again so long as
+es decir, que no va a ser
+generado de nuevo mientras que
 
 87
 00:03:29,350 --> 00:03:30,890
-time continues moving forward.
+el tiempo continúe.
 
 88
 00:03:30,890 --> 00:03:34,610
-In this way, an object id in
-MongoDB is intended to be a
+De esta manera, un "object id"
+en MongoDB es previsto ser un
 
 89
 00:03:34,610 --> 00:03:36,610
-global unique identifier.
+identificador global único.
 
 90
 00:03:36,610 --> 00:03:39,970
-In consequence, we can use an
-object id as an underscore id
+Por consecuencia, podemos simplemente 
+usar un "object id" como un guión bajo
 
 91
 00:03:39,970 --> 00:03:42,820
-fairly simply without any
-probability that there will be
+"id", sin ninguna
+probabilidad de que haya  
 
 92
 00:03:42,820 --> 00:03:44,790
-any collisions in the underscore
-id space within a
+alguna colisión en el espacio
+de guión bajo "id" dentro de una
 
 93
 00:03:44,790 --> 00:03:46,320
-particular collection.
+colección en particular.
 
 94
 00:03:46,320 --> 00:03:49,030
-And so in fact if your
-application does not
+Entonces, si en efecto
+tu aplicación no 
 
 95
 00:03:49,030 --> 00:03:52,510
-explicitly fill in a field
-called underscore id when it's
+llena explícitamente un campo
+llamado guión bajo "id" cuando
 
 96
 00:03:52,510 --> 00:03:55,640
-inserting a document into the
-database, an object id will be
+inserta un documento en la base
+de datos, un "object id" será
 
 97
 00:03:55,640 --> 00:03:58,470
-constructed for you that will
-be used as the underscore id
+construido para ti, el  cual será
+usado como el guión bajo "id"
 
 98
 00:03:58,470 --> 00:03:59,540
-of your documents.
+de tus documentos.
 
 99
 00:03:59,540 --> 00:04:01,010
-So let me show you that again.
+Entonces déjame enseñarte eso
+de nuevo.
 
 100
 00:04:01,010 --> 00:04:04,120
-If I put a document into the
-database, such as by typing
+Si pongo un documento dentro de la
+base de datos, tipo ingresando
 
 101
 00:04:04,120 --> 00:04:08,060
-db.people.insert and then
-construct a document, and then
+db.people.insert y luego
+construyo un documento, y luego
 
 102
 00:04:08,060 --> 00:04:10,340
-retrieve all the documents from
-the collection by calling
+recupero todos los documentos
+de una colección al llamar a
 
 103
 00:04:10,340 --> 00:04:13,400
-find with no arguments, I'll
-see that a document was
+"find" sin argumentos, voy a
+ver que un documento fue
 
 104
 00:04:13,400 --> 00:04:18,000
-created with the field name
-Jones, the field age 35, and
+creado con el campo "name"
+"Jones", el campo "age" "35"
 
 105
 00:04:18,000 --> 00:04:20,410
-the field profession baker,
-and an underscore id
+y el campo "profession" "baker",
+y que un valor para guión bajo
 
 106
 00:04:20,410 --> 00:04:22,050
-value was filled in.
+ "id" fue incluido.
 
 107
 00:04:22,050 --> 00:04:24,260
-You could use any type of value
-that you want for the
+Podrías usar cualquier tipo de
+valor que quisieres para el
 
 108
 00:04:24,260 --> 00:04:25,240
-underscore id.
+guión bajo "id".
 
 109
 00:04:25,240 --> 00:04:26,240
-You could use numbers.
+Podrías usar números.
 
 110
 00:04:26,240 --> 00:04:27,580
-You could use strings.
+Podrías usar cadenas.
 
 111
 00:04:27,580 --> 00:04:29,750
-But if you don't fill one in
-yourself, you get an object
+Pero si no quieres llenar uno
+tú mismo, vas a obtener un
 
 112
 00:04:29,750 --> 00:04:32,760
-id, which is extremely
-likely to be unique.
+"object id", el cual es extremadamente
+probable que sea único.
 
 113
 00:04:32,760 --> 00:04:34,210
-OK, let's have a quiz.
+OK, hagamos un cuestionario.
 
 114
 00:04:34,210 --> 00:04:37,030
-Insert documents into a
-collection called fruit, with
+Inserta documentos dentro de
+una colección llamada "fruit",
 
 115
 00:04:37,030 --> 00:04:40,630
-the attributes name having a
-value apple, color having the
+con los atributos "name" teniendo un
+valor "apple", "color" teniendo el
 
 116
 00:04:40,630 --> 00:04:43,960
-value red, and shape having
-a value round.
+valor "red" y "shape" teniendo un
+valor "round".
 
 117
 00:04:43,960 --> 00:04:46,150
-Assume that you're already in
-the database that you want to
+Asume que ya estás en la base
+de datos en la que quieres 
 
 118
 00:04:46,150 --> 00:04:47,400
-create the fruit collection in.
+crear la colección "fruit".
 
 119
 00:04:47,400 --> 00:04:48,630
