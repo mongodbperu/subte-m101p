@@ -3,293 +3,294 @@
 
 2
 00:00:00,120 --> 00:00:00,450
-All right.
+De acuerdo.
 
 3
 00:00:00,450 --> 00:00:02,290
-Let's learn some more general
-things about querying.
+Hay que aprender algunas cosas
+más generales sobre consultas.
 
 4
 00:00:02,290 --> 00:00:05,860
-As you already know, if you
-enter db.people.find with no
+Como ya sabes, si ingresas
+"db.people.find" sin
 
 5
 00:00:05,860 --> 00:00:08,260
-arguments, you'll retrieve all
-the documents from the
+argumentos, recuperas todos
+los documentos de la
 
 6
 00:00:08,260 --> 00:00:09,390
-"people" collection.
+colección "people".
 
 7
 00:00:09,390 --> 00:00:10,990
-At this point, the "people"
-collection has just two
+En este momento, la colección
+"people" sólo tiene dos
 
 8
 00:00:10,990 --> 00:00:13,770
-documents, so it's not that
-interesting for doing queries.
+documentos, entonces no es
+tan interesante hacerle consultas.
 
 9
 00:00:13,770 --> 00:00:16,300
-Let's construct a collection
-that has many more documents
+Hay que construir una colección
+que contiene mucho más documentos
 
 10
 00:00:16,300 --> 00:00:18,610
-in it with some more different
-data for the purpose of doing
+con datos algo más distintos
+para así poder hacer
 
 11
 00:00:18,610 --> 00:00:19,660
-some queries.
+algunas consultas.
 
 12
 00:00:19,660 --> 00:00:22,130
-Here's a fragment of JavaScript
-that contains a
+Aquí tenemos un fragmento de
+JavaScript que contiene
 
 13
 00:00:22,130 --> 00:00:22,840
-nested loop.
+un bucle embebido.
 
 14
 00:00:22,840 --> 00:00:27,090
-The outer loop iterates for
-i up from 0, up to but not
+El bucle externo itera sobre
+"i" desde 0 hasta, pero no
 
 15
 00:00:27,090 --> 00:00:31,790
-including 1,000, and the inner
-loop iterates for j up from 0,
+incluyendo 1000, y el bucle
+interno itera sobre "j" desde 0
 
 16
 00:00:31,790 --> 00:00:33,210
-up to but not including 3.
+hasta, pero no incluyendo 3.
 
 17
 00:00:33,210 --> 00:00:36,080
-And each loop iteration, for the
-inner loop, inserts a new
+Y por cada iteración del bucle, por
+el bucle interno, se inserta un nuevo
 
 18
 00:00:36,080 --> 00:00:38,910
-document with the field
-"student" having the value
+documento con el campo
+"student" conteniendo el valor
 
 19
 00:00:38,910 --> 00:00:42,890
-that's i, the field type having
-the value that's the
+de "i", el campo "type"
+conteniendo el valor del
 
 20
 00:00:42,890 --> 00:00:47,025
-element of the array names at
-the current value of j, and
+elemento del array "names" en la
+posición del valor corriente de "j"
 
 21
 00:00:47,025 --> 00:00:49,730
-the field score, that is a
-round number somewhere
+y el campo "score", que
+es un número entero
 
 22
 00:00:49,730 --> 00:00:51,650
-between 0 and 100.
+entre 0 y 100.
 
 23
 00:00:51,650 --> 00:00:54,100
-At this point, I have reason to
-believe that I have a few
+En este momento, puedo estar
+seguro de que tengo algunos
 
 24
 00:00:54,100 --> 00:00:56,250
-thousand documents in the
-"scores" collection.
+miles de documentos en la
+colección "scores".
 
 25
 00:00:56,250 --> 00:00:57,670
-Let's query for some
-of these documents
+Hay que hacer algunas consultas
+para recuperar estos documentos
 
 26
 00:00:57,670 --> 00:00:59,310
-using the Find method.
+usando el método "find".
 
 27
 00:00:59,310 --> 00:01:02,920
-As you see, when Find is called
-with no arguments, a
+Como puedes ver, cuando llamas
+a "find" sin argumentos un
 
 28
 00:01:02,920 --> 00:01:05,330
-whole bunch of documents are
-spilled to the screen.
+montón de documentos son
+presentados en la pantalla.
 
 29
 00:01:05,330 --> 00:01:08,180
-And you can see there are
-documents for student 0 with
+Como puedes ver, hay documentos
+para "student" 0 con "type"
 
 30
 00:01:08,180 --> 00:01:10,850
-type "exam" and score 64.
+"exam" y "score" 64.
 
 31
 00:01:10,850 --> 00:01:14,760
-Another for students 0 with
-type "essay" and score 24.
+Otro para "student" 0 con
+"type" "essay" y "score" 24.
 
 32
 00:01:14,760 --> 00:01:16,660
-Another for students 0
-with type "quiz" and
+Otro para "student" 0
+con "type" "quiz" y
 
 33
 00:01:16,660 --> 00:01:19,130
-score 31, and so on.
+"score" 31, etcétera.
 
 34
 00:01:19,130 --> 00:01:22,020
-In the shell, when a query is
-going to return very many
+En el shell, cuando una consulta
+va a retornar muchos
 
 35
 00:01:22,020 --> 00:01:24,510
-documents, they're retrieved
-in batches.
+documentos, son
+retornados en tandas.
 
 36
 00:01:24,510 --> 00:01:27,230
-There's actually two layers of
-batching going on, but you can
+Hay en efecto dos capas de
+selección en tandas, pero
 
 37
 00:01:27,230 --> 00:01:28,640
-just think of it as
-a batch size of
+puedes simplemente considerar
+que el tamaño de una tanda es
 
 38
 00:01:28,640 --> 00:01:30,400
-approximately 20 by default.
+aproximadamente 20 por defecto.
 
 39
 00:01:30,400 --> 00:01:32,520
-In order to page through some of
-the documents that you get
+Para poder navegar por algunos
+de los documentos que son
 
 40
 00:01:32,520 --> 00:01:35,370
-back, you can type "it" to visit
-some more documents.
+retornados, puedes ingresar "it"
+para visitar más documentos.
 
 41
 00:01:35,370 --> 00:01:38,340
-Eventually, this iteration will
-exhaust all the documents
+Eventualmente, esta iteración
+va a agotar todos los documentos
 
 42
 00:01:38,340 --> 00:01:39,990
-that come back from the query.
+que son retornados por la consulta.
 
 43
 00:01:39,990 --> 00:01:42,030
-But there are several thousand
-documents to go through, and I
+Pero hay muchos miles de
+documentos para visitar y
 
 44
 00:01:42,030 --> 00:01:44,020
-really feel like doing
-that right now.
+no me parece que debería
+hacer eso ahora.
 
 45
 00:01:44,020 --> 00:01:47,140
-In fact, for the duration of
-the time that the shell is
+Es más, durante el
+tiempo en que el shell
 
 46
 00:01:47,140 --> 00:01:50,100
-holding this query open, there's
-a cursor on the server
+mantiene esta consulta abierta,
+hay un cursor en el servidor
 
 47
 00:01:50,100 --> 00:01:52,540
-that might be open until we
-exhaust all of the documents
+que puede permanecer abierto hasta
+que agotemos todo los documentos 
 
 48
 00:01:52,540 --> 00:01:53,690
-that get iterated.
+que han sido iterados.
 
 49
 00:01:53,690 --> 00:01:56,290
-In fact, the server will close
-the cursor after 10 minutes by
+En efecto, el servidor cierra
+el cursor después de 10 minutos
 
 50
 00:01:56,290 --> 00:01:58,320
-default, so there shouldn't
-be too much of a threat of
+por defecto, así que no debe
+de haber mucho riesgo de
 
 51
 00:01:58,320 --> 00:02:00,480
-exhausting resources
-on the server side.
+agotar los recursos
+en el lado de servidor.
 
 52
 00:02:00,480 --> 00:02:03,210
-In any case, for the most part,
-iterating through these
+En todo caso, usualmente
+iterar por estos
 
 53
 00:02:03,210 --> 00:02:05,640
-documents manually is something
-that's a little
+documentos manualmente
+es algo un poco
 
 54
 00:02:05,640 --> 00:02:06,800
-tedious to do.
-
+pesado de hacer.
+4852899
 55
 00:02:06,800 --> 00:02:07,740
-One small tip.
+Un pequeño consejo.
 
 56
 00:02:07,740 --> 00:02:10,199
-If you want to execute a query
-like this, you might want to
+Si quieres ejecutar una consulta
+como esta, te podría interesar
 
 57
 00:02:10,199 --> 00:02:13,330
-tack on to the end a method
-called Pretty, which changes
+incluir al final un método
+llamado "pretty", el cual
 
 58
 00:02:13,330 --> 00:02:14,730
-the way in which the shell
-prints out the
+cambia la manera en que
+el shell imprime los
 
 59
 00:02:14,730 --> 00:02:15,770
-results of the query--
+resultados de la consulta--
 
 60
 00:02:15,770 --> 00:02:17,960
-slightly more readable,
-I think you'll say.
+algo más fácil de leer,
+creo que dirías.
+
 
 61
 00:02:17,960 --> 00:02:20,250
-For the most part, however,
-paging through huge results
+Aun así, en general, navegar
+a través de conjuntos gigantescos  
 
 62
 00:02:20,250 --> 00:02:21,880
-sets is not something
-that anybody does.
+de resultados es algo
+que nadie hace.
 
 63
 00:02:21,880 --> 00:02:23,130
