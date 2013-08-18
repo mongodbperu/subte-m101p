@@ -1,0 +1,203 @@
+1
+00:00:00,000 --> 00:00:00,150
+
+2
+00:00:00,150 --> 00:00:02,880
+Bueno, hemos visto cómo
+iterar a través de una
+
+3
+00:00:02,880 --> 00:00:04,390
+lista con un bucle "for".
+
+4
+00:00:04,390 --> 00:00:07,520
+Pero ¿cómo conseguirías iterar
+a través de un diccionario, que
+
+5
+00:00:07,520 --> 00:00:09,130
+parece a un documento JSON?
+
+6
+00:00:09,130 --> 00:00:13,090
+Así que aquí he creado un pequeño
+documento JSON como un diccionario
+
+7
+00:00:13,090 --> 00:00:16,290
+en Python, con mi nombre
+es "Andrew Erlichson", mi
+
+8
+00:00:16,290 --> 00:00:19,280
+color favorito es "azul",
+mi cabello es "marrón".
+
+9
+00:00:19,280 --> 00:00:21,940
+Y luego voy a escribir este
+bucle "for" para ir a través de
+
+10
+00:00:21,940 --> 00:00:22,940
+este diccionario.
+
+11
+00:00:22,940 --> 00:00:25,460
+Así que declaro mis propiar variables
+dinámicamente aquí.
+
+12
+00:00:25,460 --> 00:00:27,900
+"for key in person", lo he llamado
+"key" porque pensé que
+
+13
+00:00:27,900 --> 00:00:28,800
+sería intuitivo.
+
+14
+00:00:28,800 --> 00:00:30,910
+Pero podrías llamarlo
+como desees.
+
+15
+00:00:30,910 --> 00:00:33,770
+Y ahora vas a decirle a
+Python que itere a través de este
+
+16
+00:00:33,770 --> 00:00:37,190
+diccionario "person" y asignar
+"name", y luego "favorite_color",
+
+17
+00:00:37,190 --> 00:00:38,580
+y luego "hair" como claves.
+
+18
+00:00:38,580 --> 00:00:41,890
+Y luego se va a imprimir
+el valor de la clave, y luego
+
+19
+00:00:41,890 --> 00:00:45,790
+el valor de la clave
+del diccionario "person".
+
+20
+00:00:45,790 --> 00:00:47,200
+Ahora un par de cosas a tener en cuenta.
+
+21
+00:00:47,200 --> 00:00:49,750
+Primero es que estamos usando
+el operador de concatenación que
+
+22
+00:00:49,750 --> 00:00:51,830
+aprendimos antes, con las cadenas.
+
+23
+00:00:51,830 --> 00:00:55,190
+Segundo es que desde luego no
+necesitas poner esta clave entre
+
+24
+00:00:55,190 --> 00:00:57,500
+comillas porque es
+una variable.
+
+25
+00:00:57,500 --> 00:00:59,620
+Y es que no es una cadena literal
+que estás intentando
+
+26
+00:00:59,620 --> 00:01:00,920
+referenciar en "person".
+
+27
+00:01:00,920 --> 00:01:03,410
+Muy bien, así que veamos lo
+que ocurre cuando ejecutamos eso.
+
+28
+00:01:03,410 --> 00:01:06,730
+"python for_loops_dict.py".
+
+29
+00:01:06,730 --> 00:01:10,110
+Así que cuando lo ejecutamos, encontramos
+que mi cabello es marrón, mi
+
+30
+00:01:10,110 --> 00:01:12,100
+color favorito es azul.
+
+31
+00:01:12,100 --> 00:01:15,190
+Y mi nombre es Andrew
+Erlichson.
+
+32
+00:01:15,190 --> 00:01:18,250
+Y así una vez más, es
+importante señalar que
+
+33
+00:01:18,250 --> 00:01:21,050
+el orden en que vino este
+diccionario no es el
+
+34
+00:01:21,050 --> 00:01:22,840
+orden que fue en
+este diccionario.
+
+35
+00:01:22,840 --> 00:01:25,870
+Así que fue en "name",
+"favorite_color", "hair".
+
+36
+00:01:25,870 --> 00:01:29,110
+Y vino "hair",
+"favorite_color", "name".
+
+37
+00:01:29,110 --> 00:01:32,600
+Muy bien, es tiempo para un cuestionario
+acerca de bucles "for" en Python y
+
+38
+00:01:32,600 --> 00:01:33,920
+diccionarios juntos.
+
+39
+00:01:33,920 --> 00:01:36,290
+Digamos que tienes el siguiente
+código-- "people" es un
+
+40
+00:01:36,290 --> 00:01:38,610
+diccionario con estos
+valores mostrados aquí.
+
+41
+00:01:38,610 --> 00:01:42,290
+Iteramos a través de "people",
+y luego comprobamos cuando el elemento es
+
+42
+00:01:42,290 --> 00:01:45,630
+igual a "favorite_color", y
+luego imprime "people" de "item".
+
+43
+00:01:45,630 --> 00:01:47,560
+¿Qué imprime este programa?
+
+44
+00:01:47,560 --> 00:01:48,810
