@@ -136,7 +136,6 @@ variable "doc".
 El método "insert" pone un documento
 dentro de la base de datos
 
-
 30
 00:01:14,640 --> 00:01:16,380
 Pero como puedes ver, el shell
@@ -221,12 +220,12 @@ la cadena "hacker".
 47
 00:01:49,390 --> 00:01:52,450
 Pero lo que ves es que hay un
-campo llamado guión bajo "id",
+campo llamado "_id",
 
 48
 00:01:52,450 --> 00:01:55,190
 cuyo valor aparenta ser
-algo llamado "object id",
+algo llamado ObjectId,
 
 49
 00:01:55,190 --> 00:01:57,410
@@ -249,12 +248,12 @@ campo con un identificador único.
 
 53
 00:02:05,450 --> 00:02:08,410
-De hecho, usamos un guión bajo
-"id" para este campo.
+De hecho, usamos un "_id"
+para este campo.
 
 54
 00:02:08,410 --> 00:02:10,750
-El campo guión bajo "id"
+El campo "_id"
 dentro de un documento es
 
 55
@@ -288,7 +287,7 @@ sea inmutable.
 61
 00:02:23,720 --> 00:02:26,650
 No dejamos que cambies el valor
-del campo guión bajo "id" 
+del campo "_id" 
 
 62
 00:02:26,650 --> 00:02:28,520
@@ -298,7 +297,7 @@ el sistema.
 63
 00:02:28,520 --> 00:02:31,390
 Puedes simular un cambio
-del campo guión bajo "id"
+del campo "_id"
 
 64
 00:02:31,390 --> 00:02:33,980
@@ -308,7 +307,7 @@ poniendo otro documento
 65
 00:02:33,980 --> 00:02:37,360
 con un valor diferente para el
-campo guión bajo "id", pero los
+campo "_id", pero los
 
 66
 00:02:37,360 --> 00:02:39,980
@@ -322,8 +321,8 @@ de la base de datos.
 
 68
 00:02:42,920 --> 00:02:46,040
-Entonces el campo guión bajo
-"id" es la clave primaria.
+Entonces el campo "_id"
+es la clave primaria.
 
 69
 00:02:46,040 --> 00:02:49,680
@@ -332,7 +331,7 @@ en MongoDB requieren
 
 70
 00:02:49,680 --> 00:02:51,130
-un guión bajo "id" como
+un "_id" como
 clave primaria.
 
 71
@@ -347,7 +346,7 @@ en este curso.
 73
 00:02:54,350 --> 00:02:56,720
 Ahora, ¿qué ocurre con esto de
-"object id", al lado derecho
+ObjectId, al lado derecho
 
 74
 00:02:56,720 --> 00:02:57,540
@@ -356,7 +355,7 @@ de los dos puntos?
 75
 00:02:57,540 --> 00:03:01,720
 Bueno, en MongoDB, requerimos
-que el guión bajo "id" sea único
+que el "_id" sea único
 
 76
 00:03:01,720 --> 00:03:02,700
@@ -369,7 +368,7 @@ damos un tipo llamado
 
 78
 00:03:05,550 --> 00:03:08,650
-"object id", cuya construcción
+ObjectId, cuya construcción
 toma en consideración el
 
 79
@@ -379,13 +378,13 @@ para la máquina que está
 
 80
 00:03:11,240 --> 00:03:14,510
-construyendo el "object id",
-el "process id" del proceso
+construyendo el ObjectId,
+el identificador del proceso
 
 81
 00:03:14,510 --> 00:03:17,120
 en la computadora que está
-construyendo el "object id"
+construyendo el ObjectId
 
 82
 00:03:17,120 --> 00:03:19,450
@@ -394,11 +393,11 @@ proceso que está
 
 83
 00:03:19,450 --> 00:03:21,350
-construyendo el "object id".
+construyendo el ObjectId.
 
 84
 00:03:21,350 --> 00:03:23,600
-Al juntar estás piezas de
+Al juntar estas piezas de
 información, logramos tener un
 
 85
@@ -413,11 +412,11 @@ generado de nuevo mientras que
 
 87
 00:03:29,350 --> 00:03:30,890
-el tiempo continúe.
+el tiempo transcurra.
 
 88
 00:03:30,890 --> 00:03:34,610
-De esta manera, un "object id"
+De esta manera, un ObjectId
 en MongoDB es previsto ser un
 
 89
@@ -427,17 +426,17 @@ identificador global único.
 90
 00:03:36,610 --> 00:03:39,970
 Por consecuencia, podemos simplemente 
-usar un "object id" como un guión bajo
+usar un ObjectId como un "_id",
 
 91
 00:03:39,970 --> 00:03:42,820
-"id", sin ninguna
+sin ninguna
 probabilidad de que haya  
 
 92
 00:03:42,820 --> 00:03:44,790
 alguna colisión en el espacio
-de guión bajo "id" dentro de una
+de "_id" dentro de una
 
 93
 00:03:44,790 --> 00:03:46,320
@@ -451,17 +450,17 @@ tu aplicación no
 95
 00:03:49,030 --> 00:03:52,510
 llena explícitamente un campo
-llamado guión bajo "id" cuando
+llamado "_id" cuando
 
 96
 00:03:52,510 --> 00:03:55,640
 inserta un documento en la base
-de datos, un "object id" será
+de datos, un ObjectId será
 
 97
 00:03:55,640 --> 00:03:58,470
-construido para ti, el  cual será
-usado como el guión bajo "id"
+construido para ti, el cual será
+usado como el "_id"
 
 98
 00:03:58,470 --> 00:03:59,540
@@ -500,20 +499,20 @@ creado con el campo "name"
 105
 00:04:18,000 --> 00:04:20,410
 y el campo "profession" "baker",
-y que un valor para guión bajo
+y que un valor para "_id"
 
 106
 00:04:20,410 --> 00:04:22,050
- "id" fue incluido.
+fue incluido.
 
 107
 00:04:22,050 --> 00:04:24,260
 Podrías usar cualquier tipo de
-valor que quisieres para el
+valor que quisieras para el
 
 108
 00:04:24,260 --> 00:04:25,240
-guión bajo "id".
+"_id".
 
 109
 00:04:25,240 --> 00:04:26,240
@@ -530,7 +529,7 @@ tú mismo, vas a obtener un
 
 112
 00:04:29,750 --> 00:04:32,760
-"object id", el cual es extremadamente
+ObjectId, el cual es extremadamente
 probable que sea único.
 
 113
