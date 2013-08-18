@@ -1,0 +1,401 @@
+1
+00:00:00,000 --> 00:00:00,160
+
+2
+00:00:00,160 --> 00:00:01,870
+OK, let's go a little bit
+further into the query
+
+3
+00:00:01,870 --> 00:00:03,370
+facilities.
+
+4
+00:00:03,370 --> 00:00:05,710
+We've already seen how to query
+for specific values of
+
+5
+00:00:05,710 --> 00:00:09,560
+given fields, such as student
+19 and type essay, but you
+
+6
+00:00:09,560 --> 00:00:11,810
+need to do a little bit more in
+order to construct the most
+
+7
+00:00:11,810 --> 00:00:13,200
+practical applications.
+
+8
+00:00:13,200 --> 00:00:16,050
+What we've done so far we
+typically call query by
+
+9
+00:00:16,050 --> 00:00:19,240
+example queries, where you give
+an example of the fields
+
+10
+00:00:19,240 --> 00:00:20,355
+that you want to see
+in the documents
+
+11
+00:00:20,355 --> 00:00:21,820
+that you want to retrieve.
+
+12
+00:00:21,820 --> 00:00:25,130
+For instance, student
+19 and type essay.
+
+13
+00:00:25,130 --> 00:00:27,550
+But many kinds of queries need
+to go a little bit further
+
+14
+00:00:27,550 --> 00:00:29,050
+than constant values.
+
+15
+00:00:29,050 --> 00:00:31,480
+For example, if I wanted to
+get all queries where the
+
+16
+00:00:31,480 --> 00:00:36,140
+score was greater than, say, 95,
+I can do so in MongoDB by
+
+17
+00:00:36,140 --> 00:00:38,190
+means of query operators.
+
+18
+00:00:38,190 --> 00:00:40,370
+To perform a query, again, we
+start with the same kind of
+
+19
+00:00:40,370 --> 00:00:41,730
+syntax that we've used before.
+
+20
+00:00:41,730 --> 00:00:44,210
+The database handle dot
+the collection name
+
+21
+00:00:44,210 --> 00:00:45,920
+dot the find method.
+
+22
+00:00:45,920 --> 00:00:47,400
+And the first argument
+to find, again,
+
+23
+00:00:47,400 --> 00:00:48,910
+is the where clause.
+
+24
+00:00:48,910 --> 00:00:52,160
+In this case, if I want to give
+an inequality comparison
+
+25
+00:00:52,160 --> 00:00:55,070
+for a particular field, such
+as score, I can do so by
+
+26
+00:00:55,070 --> 00:00:58,500
+specifying the field name, and
+its corresponding value in
+
+27
+00:00:58,500 --> 00:01:02,030
+this first argument to find will
+be a sub document having
+
+28
+00:01:02,030 --> 00:01:04,599
+as its corresponding
+field an operator.
+
+29
+00:01:04,599 --> 00:01:09,050
+In this case dollar, gt, and
+some argument to the operator.
+
+30
+00:01:09,050 --> 00:01:12,380
+Closing off the document and
+going back to re-read this,
+
+31
+00:01:12,380 --> 00:01:14,320
+what this says is that
+the score should be
+
+32
+00:01:14,320 --> 00:01:16,020
+greater than 95.
+
+33
+00:01:16,020 --> 00:01:19,240
+This is our first departure from
+query by a constant value
+
+34
+00:01:19,240 --> 00:01:20,810
+on a field such as score.
+
+35
+00:01:20,810 --> 00:01:23,180
+In this case, we're doing an
+inequality comparison for the
+
+36
+00:01:23,180 --> 00:01:24,750
+field score.
+
+37
+00:01:24,750 --> 00:01:27,280
+And we get back a number of
+documents, and it looks on the
+
+38
+00:01:27,280 --> 00:01:29,800
+right hand side as if
+these values are all
+
+39
+00:01:29,800 --> 00:01:30,880
+greater than 95.
+
+40
+00:01:30,880 --> 00:01:37,970
+I see a 96, a 98, a 97, another
+97, 99, and so forth.
+
+41
+00:01:37,970 --> 00:01:40,550
+Again, the query looks like
+what's at the bottom of my
+
+42
+00:01:40,550 --> 00:01:41,650
+terminal window.
+
+43
+00:01:41,650 --> 00:01:44,720
+The field name, such as score,
+and then a corresponding
+
+44
+00:01:44,720 --> 00:01:47,860
+value, which is an embedded
+document having an operator,
+
+45
+00:01:47,860 --> 00:01:50,930
+in this case dollar
+gt, and 95.
+
+46
+00:01:50,930 --> 00:01:53,840
+I can go further and add another
+field to the query,
+
+47
+00:01:53,840 --> 00:01:58,820
+for example, score 95 and type
+essay, in which case I will
+
+48
+00:01:58,820 --> 00:02:01,840
+only get results where the type
+is essay and the score is
+
+49
+00:02:01,840 --> 00:02:03,030
+greater than 95.
+
+50
+00:02:03,030 --> 00:02:04,630
+Again, to show that at
+the bottom of my
+
+51
+00:02:04,630 --> 00:02:06,750
+terminal, there it is.
+
+52
+00:02:06,750 --> 00:02:10,009
+Now, you can put multiple
+constraints on the same field.
+
+53
+00:02:10,009 --> 00:02:13,410
+For example, if I want scores
+that are greater than 95 and
+
+54
+00:02:13,410 --> 00:02:15,720
+less than or equal to 98.
+
+55
+00:02:15,720 --> 00:02:18,200
+I specify it as it is at
+the bottom my screen.
+
+56
+00:02:18,200 --> 00:02:22,050
+That is, score has as its
+corresponding value inside of
+
+57
+00:02:22,050 --> 00:02:25,890
+this query document, a nested
+document with the fields
+
+58
+00:02:25,890 --> 00:02:29,870
+dollar gt and dollar lte
+with the respective
+
+59
+00:02:29,870 --> 00:02:32,430
+values 95 and 98.
+
+60
+00:02:32,430 --> 00:02:35,390
+And the meaning of this peculiar
+looking construct is
+
+61
+00:02:35,390 --> 00:02:38,600
+that the score should be
+strictly greater than 95, and
+
+62
+00:02:38,600 --> 00:02:40,620
+less than or equal to 98.
+
+63
+00:02:40,620 --> 00:02:42,960
+And additionally, the type
+should be essay.
+
+64
+00:02:42,960 --> 00:02:43,930
+And it looks good.
+
+65
+00:02:43,930 --> 00:02:46,660
+The results on the screen, at
+least, suggest that I'm seeing
+
+66
+00:02:46,660 --> 00:02:49,320
+results from 96 up to 98.
+
+67
+00:02:49,320 --> 00:02:52,570
+This is our first example of a
+query operator in the MongoDB
+
+68
+00:02:52,570 --> 00:02:53,690
+query language.
+
+69
+00:02:53,690 --> 00:02:56,000
+Well, I suppose the first
+two examples, dollar
+
+70
+00:02:56,000 --> 00:02:58,060
+gt and dollar lte.
+
+71
+00:02:58,060 --> 00:03:01,680
+Unsurprisingly, we have dollar
+gte operator, which means
+
+72
+00:03:01,680 --> 00:03:04,620
+greater than or equal, and a
+dollar lt operator, which
+
+73
+00:03:04,620 --> 00:03:06,570
+means strictly less than.
+
+74
+00:03:06,570 --> 00:03:10,550
+And again, just as a reminder,
+the two fields score and type
+
+75
+00:03:10,550 --> 00:03:13,550
+occurring at the top level of
+this query document have the
+
+76
+00:03:13,550 --> 00:03:17,160
+meaning that both the score must
+match on its criteria,
+
+77
+00:03:17,160 --> 00:03:19,360
+and the type must match
+on its criteria.
+
+78
+00:03:19,360 --> 00:03:23,450
+So this is equivalent to the
+logical end of score being in
+
+79
+00:03:23,450 --> 00:03:26,910
+the range up from 95 up to
+but not including 98.
+
+80
+00:03:26,910 --> 00:03:29,130
+And the type must be
+equal to essay.
+
+81
+00:03:29,130 --> 00:03:30,890
+And it looks good.
+
+82
+00:03:30,890 --> 00:03:33,450
+There are a number of more query
+operators in the MongoDB
+
+83
+00:03:33,450 --> 00:03:36,990
+query language, some of which
+we'll be visiting as we go.
+
+84
+00:03:36,990 --> 00:03:38,740
+OK, let's have a quiz.
+
+85
+00:03:38,740 --> 00:03:40,700
+Which of these finds documents
+with a score
+
+86
+00:03:40,700 --> 00:03:43,630
+between 50 and 60 inclusive?

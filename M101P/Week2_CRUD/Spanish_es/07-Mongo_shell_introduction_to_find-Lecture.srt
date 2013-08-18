@@ -1,0 +1,295 @@
+1
+00:00:00,000 --> 00:00:00,120
+
+2
+00:00:00,120 --> 00:00:00,450
+All right.
+
+3
+00:00:00,450 --> 00:00:02,290
+Let's learn some more general
+things about querying.
+
+4
+00:00:02,290 --> 00:00:05,860
+As you already know, if you
+enter db.people.find with no
+
+5
+00:00:05,860 --> 00:00:08,260
+arguments, you'll retrieve all
+the documents from the
+
+6
+00:00:08,260 --> 00:00:09,390
+"people" collection.
+
+7
+00:00:09,390 --> 00:00:10,990
+At this point, the "people"
+collection has just two
+
+8
+00:00:10,990 --> 00:00:13,770
+documents, so it's not that
+interesting for doing queries.
+
+9
+00:00:13,770 --> 00:00:16,300
+Let's construct a collection
+that has many more documents
+
+10
+00:00:16,300 --> 00:00:18,610
+in it with some more different
+data for the purpose of doing
+
+11
+00:00:18,610 --> 00:00:19,660
+some queries.
+
+12
+00:00:19,660 --> 00:00:22,130
+Here's a fragment of JavaScript
+that contains a
+
+13
+00:00:22,130 --> 00:00:22,840
+nested loop.
+
+14
+00:00:22,840 --> 00:00:27,090
+The outer loop iterates for
+i up from 0, up to but not
+
+15
+00:00:27,090 --> 00:00:31,790
+including 1,000, and the inner
+loop iterates for j up from 0,
+
+16
+00:00:31,790 --> 00:00:33,210
+up to but not including 3.
+
+17
+00:00:33,210 --> 00:00:36,080
+And each loop iteration, for the
+inner loop, inserts a new
+
+18
+00:00:36,080 --> 00:00:38,910
+document with the field
+"student" having the value
+
+19
+00:00:38,910 --> 00:00:42,890
+that's i, the field type having
+the value that's the
+
+20
+00:00:42,890 --> 00:00:47,025
+element of the array names at
+the current value of j, and
+
+21
+00:00:47,025 --> 00:00:49,730
+the field score, that is a
+round number somewhere
+
+22
+00:00:49,730 --> 00:00:51,650
+between 0 and 100.
+
+23
+00:00:51,650 --> 00:00:54,100
+At this point, I have reason to
+believe that I have a few
+
+24
+00:00:54,100 --> 00:00:56,250
+thousand documents in the
+"scores" collection.
+
+25
+00:00:56,250 --> 00:00:57,670
+Let's query for some
+of these documents
+
+26
+00:00:57,670 --> 00:00:59,310
+using the Find method.
+
+27
+00:00:59,310 --> 00:01:02,920
+As you see, when Find is called
+with no arguments, a
+
+28
+00:01:02,920 --> 00:01:05,330
+whole bunch of documents are
+spilled to the screen.
+
+29
+00:01:05,330 --> 00:01:08,180
+And you can see there are
+documents for student 0 with
+
+30
+00:01:08,180 --> 00:01:10,850
+type "exam" and score 64.
+
+31
+00:01:10,850 --> 00:01:14,760
+Another for students 0 with
+type "essay" and score 24.
+
+32
+00:01:14,760 --> 00:01:16,660
+Another for students 0
+with type "quiz" and
+
+33
+00:01:16,660 --> 00:01:19,130
+score 31, and so on.
+
+34
+00:01:19,130 --> 00:01:22,020
+In the shell, when a query is
+going to return very many
+
+35
+00:01:22,020 --> 00:01:24,510
+documents, they're retrieved
+in batches.
+
+36
+00:01:24,510 --> 00:01:27,230
+There's actually two layers of
+batching going on, but you can
+
+37
+00:01:27,230 --> 00:01:28,640
+just think of it as
+a batch size of
+
+38
+00:01:28,640 --> 00:01:30,400
+approximately 20 by default.
+
+39
+00:01:30,400 --> 00:01:32,520
+In order to page through some of
+the documents that you get
+
+40
+00:01:32,520 --> 00:01:35,370
+back, you can type "it" to visit
+some more documents.
+
+41
+00:01:35,370 --> 00:01:38,340
+Eventually, this iteration will
+exhaust all the documents
+
+42
+00:01:38,340 --> 00:01:39,990
+that come back from the query.
+
+43
+00:01:39,990 --> 00:01:42,030
+But there are several thousand
+documents to go through, and I
+
+44
+00:01:42,030 --> 00:01:44,020
+really feel like doing
+that right now.
+
+45
+00:01:44,020 --> 00:01:47,140
+In fact, for the duration of
+the time that the shell is
+
+46
+00:01:47,140 --> 00:01:50,100
+holding this query open, there's
+a cursor on the server
+
+47
+00:01:50,100 --> 00:01:52,540
+that might be open until we
+exhaust all of the documents
+
+48
+00:01:52,540 --> 00:01:53,690
+that get iterated.
+
+49
+00:01:53,690 --> 00:01:56,290
+In fact, the server will close
+the cursor after 10 minutes by
+
+50
+00:01:56,290 --> 00:01:58,320
+default, so there shouldn't
+be too much of a threat of
+
+51
+00:01:58,320 --> 00:02:00,480
+exhausting resources
+on the server side.
+
+52
+00:02:00,480 --> 00:02:03,210
+In any case, for the most part,
+iterating through these
+
+53
+00:02:03,210 --> 00:02:05,640
+documents manually is something
+that's a little
+
+54
+00:02:05,640 --> 00:02:06,800
+tedious to do.
+
+55
+00:02:06,800 --> 00:02:07,740
+One small tip.
+
+56
+00:02:07,740 --> 00:02:10,199
+If you want to execute a query
+like this, you might want to
+
+57
+00:02:10,199 --> 00:02:13,330
+tack on to the end a method
+called Pretty, which changes
+
+58
+00:02:13,330 --> 00:02:14,730
+the way in which the shell
+prints out the
+
+59
+00:02:14,730 --> 00:02:15,770
+results of the query--
+
+60
+00:02:15,770 --> 00:02:17,960
+slightly more readable,
+I think you'll say.
+
+61
+00:02:17,960 --> 00:02:20,250
+For the most part, however,
+paging through huge results
+
+62
+00:02:20,250 --> 00:02:21,880
+sets is not something
+that anybody does.
+
+63
+00:02:21,880 --> 00:02:23,130

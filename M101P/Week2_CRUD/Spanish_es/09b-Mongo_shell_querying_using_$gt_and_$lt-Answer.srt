@@ -1,0 +1,28 @@
+1
+00:00:00,000 --> 00:00:00,260
+
+2
+00:00:00,260 --> 00:00:00,730
+That's right.
+
+3
+00:00:00,730 --> 00:00:01,840
+The second one.
+
+4
+00:00:01,840 --> 00:00:05,060
+The other ones have
+non-inclusive strict
+
+5
+00:00:05,060 --> 00:00:08,180
+inequalities on one side or the
+other, and the last one
+
+6
+00:00:08,180 --> 00:00:09,430
+doesn't even have
+an upper bound.
+
+7
+00:00:09,430 --> 00:00:10,480
