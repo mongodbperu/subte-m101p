@@ -73,7 +73,7 @@ condicional, "pear in a", y luego
 17
 00:00:38,140 --> 00:00:40,540
 los dos puntos al final,
-voy a poner sangría,
+voy a poner sangrÃ­a,
 
 18
 00:00:40,540 --> 00:00:42,690
