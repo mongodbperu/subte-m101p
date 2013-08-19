@@ -8,7 +8,7 @@ a analizar cómo funciona
 
 3
 00:00:02,530 --> 00:00:04,940
-el framework Bottle y 
+el framework Bottle y veremos
 un poco de fundamentos de
 
 4
@@ -117,11 +117,11 @@ página principal, la página /.
 25
 00:01:00,480 --> 00:01:03,350
 Una petición para obtener una página se
-llama una petición "get".
+llama petición "get".
 
 26
 00:01:03,350 --> 00:01:06,800
-De acuerdo, vamos a revisemos cómo
+De acuerdo, vamos a revisar cómo
 crearíamos un simple programa
 
 27
@@ -140,7 +140,7 @@ somos "root" en un equipo.
 
 30
 00:01:15,510 --> 00:01:19,970
-Por lo que en los ejemplos anteriores
+Por eso en los ejemplos anteriores
 he estado usando el puerto 8082 y
 
 31
@@ -169,7 +169,7 @@ imprime "Hello World".
 36
 00:01:34,130 --> 00:01:36,760
 Y vayamos sobre las partes
-básica de este programa porque
+básicas de este programa porque
 
 37
 00:01:36,760 --> 00:01:39,040
@@ -202,7 +202,7 @@ un manejador que
 43
 00:01:48,590 --> 00:01:51,830
 mostrará páginas web cuando los usuarios
-pidar tu sitio web, sin
+pidan tu sitio web, sin
 
 44
 00:01:51,830 --> 00:01:55,990
@@ -212,16 +212,16 @@ www.google.com, o simplemente "localhost",
 45
 00:01:55,990 --> 00:02:00,140
 entonces se hace con este
-decorador "bottle.route", configurado
+decorador "@bottle.route", configurado
 
 46
 00:02:00,140 --> 00:02:02,390
-como /, y entonces tienes una
+para la /, y entonces tienes una
 función aquí, y este nombre
 
 47
 00:02:02,390 --> 00:02:04,000
-aquí en "home_page"
+aquí, "home_page",
 es arbitrario.
 
 48
@@ -249,7 +249,7 @@ podemos hacerlo también.
 
 53
 00:02:15,550 --> 00:02:18,675
-Declaramos "@Bottle.route"
+Declaramos "@bottle.route"
 y luego "/testpage".
 
 54
@@ -259,7 +259,7 @@ nombre de función es arbitrario,
 
 55
 00:02:20,740 --> 00:02:22,650
-y devuelve "testpage".
+y devuelve "this is a test page".
 
 56
 00:02:22,650 --> 00:02:25,050
@@ -318,7 +318,7 @@ caso es el puerto 8080.
 
 68
 00:02:42,790 --> 00:02:45,840
-Y la segunda es que da
+Y la segunda es que establece
 el "hostname" para el que
 
 69
@@ -342,7 +342,7 @@ ejecutarse en el mismo puerto.
 73
 00:02:54,410 --> 00:02:56,460
 Así que veamos qué ocurre
-si le llamamos.
+si lo llamamos.
 
 74
 00:02:56,460 --> 00:02:58,170
@@ -357,7 +357,7 @@ voy a reiniciarlo ya que
 76
 00:03:02,760 --> 00:03:06,450
 voy a arrancar el servidor web ahora 
-llamando a "python hello.py".
+llamando a "python hello_world.py".
 
 77
 00:03:06,450 --> 00:03:07,240
@@ -386,7 +386,7 @@ a "localhost".
 82
 00:03:16,390 --> 00:03:20,450
 Y voy a hacer esa
-petición a :8080, 8080 que es
+petición a :8080, que es
 
 83
 00:03:20,450 --> 00:03:21,685
@@ -413,12 +413,12 @@ tu petición.
 
 88
 00:03:31,250 --> 00:03:36,690
-Puedes ver que dice "get"
-justo aquí desde 127.0.0.1
+Puedes ver que dice "GET"
+justo aquí desde 1.0.0.127
 
 89
 00:03:36,690 --> 00:03:39,840
-que es el "loopback IP" 
+que es la "loopback IP" 
 para mi equipo.
 
 90
@@ -428,7 +428,7 @@ Así que de acuerdo, eso funciona bien.
 91
 00:03:41,930 --> 00:03:44,550
 Si quieres ver exactamente qué
-viajó por el cable, puedes
+viajó por la red, puedes
 
 92
 00:03:44,550 --> 00:03:47,320
@@ -452,17 +452,17 @@ desde la línea de comandos.
 96
 00:03:52,380 --> 00:03:54,990
 Así que voy a hacer un "curl -i",
-que me da las cabeceras
+que me da las cabeceras, 
 
 97
 00:03:54,990 --> 00:03:56,990
-así como 
-"localhost 8080".
+a 
+"localhost:8080".
 
 98
 00:03:56,990 --> 00:04:00,800
 Y cuando hago eso, puedes ver
-que obtengo un 200 OK,
+que obtengo un "200 OK",
 
 99
 00:04:00,800 --> 00:04:04,750
@@ -476,7 +476,7 @@ a continuación dice que el
 
 101
 00:04:08,280 --> 00:04:10,120
-contenido es text/HTML.
+contenido es "text/html".
 
 102
 00:04:10,120 --> 00:04:12,220
@@ -500,7 +500,7 @@ en un segundo.
 106
 00:04:17,720 --> 00:04:20,380
 Y luego si queremos hacer un
-cambio aquí y petición
+cambio aquí y una petición a
 
 107
 00:04:20,380 --> 00:04:23,350
@@ -528,7 +528,7 @@ fuéramos un navegador web.
 
 112
 00:04:32,800 --> 00:04:34,230
-"This is a test page".
+"this is a test page".
 
 113
 00:04:34,230 --> 00:04:37,820
@@ -547,12 +547,12 @@ es similar a esto --
 
 116
 00:04:41,850 --> 00:04:46,940
-"HTML", "title", cierre "title", "body",
-y luego cierre del "body",
+"html", "title", cierro "title", "body",
+y luego cierro el "body",
 
 117
 00:04:46,940 --> 00:04:48,980
-y después cierre del "HTML".
+y después cierro el "html".
 
 118
 00:04:48,980 --> 00:04:51,760
@@ -635,16 +635,16 @@ mucho actualmente.
 135
 00:05:22,270 --> 00:05:25,380
 Pero si vemos el código fuente,
-podemos ver que ahora tiene "HTML",
+podemos ver que ahora tiene "html",
 
 136
 00:05:25,380 --> 00:05:29,010
-"title", no title, y luego el
+"title", cierre del "title", y luego el
 "body", y a continuación el cierre de la
 
 137
 00:05:29,010 --> 00:05:30,960
-etiqueta "body", y el cierre de la etiqueta "HTML".
+etiqueta "body", y el cierre de la etiqueta "html".
 
 138
 00:05:30,960 --> 00:05:34,950
@@ -658,7 +658,7 @@ Así que haré eso.
 140
 00:05:36,130 --> 00:05:39,770
 Y entonces puedes ver que dice
-"HTML", "title" y luego "body".
+"html", "title" y luego "body".
 
 141
 00:05:39,770 --> 00:05:42,200
