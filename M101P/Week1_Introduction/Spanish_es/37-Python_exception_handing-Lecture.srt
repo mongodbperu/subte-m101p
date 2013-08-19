@@ -145,7 +145,7 @@ el tipo de excepción.
 32
 00:01:10,750 --> 00:01:15,660
 Y esta pequeña función aquí,
-la llamada "assists.exc_info",
+la llamada "sys.exc_info",
 
 33
 00:01:15,660 --> 00:01:18,450
