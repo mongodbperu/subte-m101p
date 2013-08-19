@@ -3,200 +3,201 @@
 
 2
 00:00:00,110 --> 00:00:02,180
-Let's learn more about
-the Find method.
+Hay que aprender más
+sobre el método "find".
 
 3
 00:00:02,180 --> 00:00:04,180
-As we already learned about
-"findone" method, the Find
+Al igual que el método
+"findOne", el método
 
 4
 00:00:04,180 --> 00:00:05,740
-method can take a couple
-of arguments.
+"find" puede lleva un
+par de argumentos.
 
 5
 00:00:05,740 --> 00:00:08,530
-The first argument specifies
-what documents to return in
+El primer argumento especifica
+qué documentos retornar
 
 6
 00:00:08,530 --> 00:00:11,140
-the query, similar to a
-WHERE clause in SQL.
+en la consulta, similar a lo que
+hace la cláusula WHERE en SQL.
 
 7
 00:00:11,140 --> 00:00:13,680
-For instance, I can retrieve
-just those documents where the
+Por ejemplo, puede recuperar
+sólo aquellos documentos donde
 
 8
 00:00:13,680 --> 00:00:16,320
-field type is "essay." And here
-we see a bunch of essays
+el campo "type" es "essay". Y
+aquí vemos un grupo de ensayos
 
 9
 00:00:16,320 --> 00:00:17,280
-with scores.
+con su nota.
 
 10
 00:00:17,280 --> 00:00:20,370
-Alternatively, I could select
-just those where the student
+Alternativamente, puedo seleccionar
+sólo aquellos donde el estudiante
 
 11
 00:00:20,370 --> 00:00:21,650
-is student number 19.
+es el "student" número 19.
 
 12
 00:00:21,650 --> 00:00:23,950
-And there are three of those, as
-the logic of the insertion
+Y hay tres de éstos, siguiendo
+la lógica de la inserción que
 
 13
 00:00:23,950 --> 00:00:25,510
-that we did before provides.
+hicimos anteriormente.
 
 14
 00:00:25,510 --> 00:00:29,330
-If I want to conjoin multiple
-clauses, I can by specifying
+Si quiero unir múltiples cláusulas,
+puedo hacerlo especificando
 
 15
 00:00:29,330 --> 00:00:31,650
-multiple field and value
-pairs in the first
+múltiples pares de campo
+y valor en el primer
 
 16
 00:00:31,650 --> 00:00:32,680
-argument to the Find.
+argumento de "find".
 
 17
 00:00:32,680 --> 00:00:34,695
-In this case, I'm getting the
-document where the student ID
+En este caso, estoy recibiendo
+el documento donde el identificador
 
 18
 00:00:34,695 --> 00:00:36,980
-is 19 and the type is "essay."
+de "student" es "19" y el 
+"type" es "essay."
 
 19
 00:00:36,980 --> 00:00:39,250
-In fact, this is an
-important detail.
+En efecto, este es un
+detalle importante.
 
 20
 00:00:39,250 --> 00:00:41,460
-When multiple fields are given
-in the document that's in the
+Cuando múltiples campos son
+presentados en el documento que
 
 21
 00:00:41,460 --> 00:00:44,610
-first argument to find, the
-meaning of that query, to the
+es pasado como primer argumento a "find"
+el significado de esa consulta, para
 
 22
 00:00:44,610 --> 00:00:47,950
-Find, is that both the fields
-have to match whatever the
+"find", es que ambos campos
+tienen que igualar el
 
 23
 00:00:47,950 --> 00:00:49,320
-specified criteria are.
+criterio especificado.
 
 24
 00:00:49,320 --> 00:00:51,770
-In this case, the student must
-be equal to 19, and the type
+En este caso, el "student" debe
+ser igual a "19" y el "type"
 
 25
 00:00:51,770 --> 00:00:54,740
-must be equal to the string
-"essay." Further, Find can
+debe ser igual a la cadena
+"essay". Además, "find" puede
 
 26
 00:00:54,740 --> 00:00:57,260
-take a second argument just
-as "findone" can.
+tomar un segundo argumento
+igual que "findOne".
 
 27
 00:00:57,260 --> 00:01:00,090
-The second argument to find
-is also a document and can
+El segundo argumento de "find"
+es también un documento y puede
 
 28
 00:01:00,090 --> 00:01:03,850
-specify what fields should be
-retrieved from the database.
+especificar qué campos deben
+ser recuperados de la base de datos.
 
 29
 00:01:03,850 --> 00:01:06,080
-Only those fields will actually
-be sent back to the
+Sólo esos campos serán
+retornados a la 
 
 30
 00:01:06,080 --> 00:01:08,120
-client application, in
-this case, the shell.
+aplicación cliente, en este
+caso, el shell.
 
 31
 00:01:08,120 --> 00:01:11,580
-For example, I might want to
-retrieve just the score.
+Por ejemplo, puedo querer
+recuperar sólo el "score".
 
 32
 00:01:11,580 --> 00:01:14,780
-Again, by default, the _ID will
-be returned, even if I
+Una vez más, por defecto el _id
+será retornado, aun si no lo
 
 33
 00:01:14,780 --> 00:01:15,700
-don't ask for it.
+he pedido.
 
 34
 00:01:15,700 --> 00:01:18,620
-If I would like not to get the
-_ID back, I can ask for the
+Si quisiera que no me retorne
+el _id, puedo pedir que
 
 35
 00:01:18,620 --> 00:01:23,050
-_ID to be excluded by specifying
-_ID" "false."
+el _id sea excluido
+especificando _id "false".
 
 36
 00:01:23,050 --> 00:01:25,900
-In this case, I get back just
-the score field from the
+En este caso, me retorna
+sólo el campo "score" del
 
 37
 00:01:25,900 --> 00:01:29,510
-document where the student ID is
-19 and the type is "essay."
+documento donde el identificador de
+"student" es 19 y el tipo es "essay".
 
 38
 00:01:29,510 --> 00:01:32,870
-There's a lot more to be said
-about the query facilities
+Hay muchas otras cosas que decir
+sobre las facultades del primer
 
 39
 00:01:32,870 --> 00:01:35,090
-that are available for the first
-argument to find, but
+argumento del la consulta
+usando "find", pero
 
 40
 00:01:35,090 --> 00:01:37,690
-not a whole lot more to be said
-about the second argument
+no mucho más que decir sobre
+el segundo argumento
 
 41
 00:01:37,690 --> 00:01:40,220
-to find, so we might not be
-revisiting it very much for
+de find, así que no lo vamos
+a estar repasando durante
 
 42
 00:01:40,220 --> 00:01:41,720
-the rest of this course.
+el resto de este curso.
 
 43
 00:01:41,720 --> 00:01:42,020
@@ -204,26 +205,26 @@ OK.
 
 44
 00:01:42,020 --> 00:01:43,190
-Let's have a quiz.
+Hagamos un cuestionario.
 
 45
 00:01:43,190 --> 00:01:45,740
-Supposing a scores collection
-similar to the one that we've
+Considerando una colección
+"scores", similar a la que
 
 46
 00:01:45,740 --> 00:01:48,030
-just presented, how would you
-find all documents with an
+acabamos de presentar, ¿cómo podrías
+encontrar todos los documentos con
 
 47
 00:01:48,030 --> 00:01:51,550
-essay score that's equal to 50
-and retrieve only the student
+un "score" de "essay" igual a "50"
+y recuperar sólo el campo "student"
 
 48
 00:01:51,550 --> 00:01:52,800
-field from these documents?
+de esos documentos?
 
 49
 00:01:52,800 --> 00:01:54,040

@@ -3,32 +3,33 @@
 
 2
 00:00:00,190 --> 00:00:02,150
-If you keep this in,
-that's correct.
+Si mantienes esto,
+has acertado.
 
 3
 00:00:02,150 --> 00:00:05,520
-DB.scores.find and then the
-first argument to find being a
+"db.scores.find" y luego que el
+primer argumento de "find" sea
 
 4
 00:00:05,520 --> 00:00:08,320
-document with type "essay"
-and score 50.
+un documento con "type"
+"essay" y "score" "50".
 
 5
 00:00:08,320 --> 00:00:11,140
-And then a second argument
-defined that has the document
+Y luego defines un segundo
+argumento que tenga el documento
 
 6
 00:00:11,140 --> 00:00:15,260
-"studenttrue_IDfalse."
-Alternatively, you could
+"student" "true" y "_id" "false".
+Alternativamente, puedes
 
 7
 00:00:15,260 --> 00:00:17,050
-specify "student1_ID0."
+especificar "student"
+"1" y "_id" "0".
 
 8
 00:00:17,050 --> 00:00:18,967
