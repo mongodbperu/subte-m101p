@@ -252,7 +252,7 @@ es algo un poco
 54
 00:02:05,640 --> 00:02:06,800
 pesado de hacer.
-4852899
+
 55
 00:02:06,800 --> 00:02:07,740
 Un pequeño consejo.
