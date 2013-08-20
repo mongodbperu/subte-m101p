@@ -3,131 +3,133 @@
 
 2
 00:00:00,440 --> 00:00:04,540
-As it happens, the code that's
-on the screen will find all
+Ocurre que el código que
+está en la pantalla encuentra
 
 3
 00:00:04,540 --> 00:00:06,760
-documents with score
-less than 60.
+todos los documentos con un
+"score" menor de "60".
 
 4
 00:00:06,760 --> 00:00:08,840
-This is something of a trick
-question because what's going
+Ésta es una pregunta algo
+difícil debido a que lo que
 
 5
 00:00:08,840 --> 00:00:10,580
-on here is somewhat subtle.
+está ocurriendo acá es algo sutil.
 
 6
 00:00:10,580 --> 00:00:13,610
-In fact, when JavaScript parses
-the input that's on the
+En efecto, cuando JavaScript
+interpreta el texto que está
 
 7
 00:00:13,610 --> 00:00:17,880
-screen inside the box it will
-construct a JavaScript object
+en la pantalla, dentro de la caja,
+va a construir un objeto JavaScript.
 
 8
 00:00:17,880 --> 00:00:21,120
-initially having a score with
-the corresponding value the
+Inicialmente, contiene un "score" con
+el valor correspondiente del
 
 9
 00:00:21,120 --> 00:00:23,650
-embedded document $ gt 50.
+documento embebido, "$" "gt" "50".
 
 10
 00:00:23,650 --> 00:00:27,380
-And then the second occurrence
-of score in that line will
+Y luego la segunda instancia
+de "score" en esa línea va
 
 11
 00:00:27,380 --> 00:00:29,290
-replace the first one.
+a reemplazar a la primera.
 
 12
 00:00:29,290 --> 00:00:31,650
-The reason that we ask this
-question is because it's
+La razón por la cual preguntamos
+esto es porque puede tentarte
 
 13
 00:00:31,650 --> 00:00:33,925
-tempting to code that
-sort of thing in at
+ingresar este tipo
+de texto al
 
 14
 00:00:33,925 --> 00:00:35,420
-the JavaScript prompt.
+"prompt" JavaScript.
 
 15
 00:00:35,420 --> 00:00:37,470
-In fact, that's not
-going to work.
+En efecto, esto no
+va a funcionar.
 
 16
 00:00:37,470 --> 00:00:39,880
-In order to achieve the desired
-effect, you either
+Para poder lograr el efecto
+deseado, tienes que
 
 17
 00:00:39,880 --> 00:00:44,250
-have to merge the $ gt and
-$ lt into a sub-document
+juntar el "$" "gt" y el "$"
+"lt" dentro de un sub-documento
 
 18
 00:00:44,250 --> 00:00:47,850
-embedded with the value of
-score or use the $ and
+embebido con el valor de
+"score" o usar el operador
 
 19
 00:00:47,850 --> 00:00:51,750
-operator to achieve the effect
-of the logical intersection of
+"$" "and" para lograr el efecto
+de esta intersección lógica
 
 20
 00:00:51,750 --> 00:00:53,130
-those two criteria.
+de estos dos criterios.
 
 21
 00:00:53,130 --> 00:00:56,160
-So again, the point is, although
-you can key that in
+De nuevo, el punto acá es que
+aunque puedes ingresar esto en
 
 22
 00:00:56,160 --> 00:00:59,460
-the JavaScript prompt, the parse
-is not necessarily what
+el "prompt" JavaScript, la
+interpretación no es necesariamente
 
 23
 00:00:59,460 --> 00:01:01,560
-you might naively expect.
+lo que podrías
+ingenuamente esperar.
 
 24
 00:01:01,560 --> 00:01:04,319
-In other languages that have a
-similar kind of literal syntax
+En otros lenguajes que tienen
+una sintaxis literal similar
 
 25
 00:01:04,319 --> 00:01:06,860
-for hash tables or dictionaries
-or whatever they
+para tablas "hash" o diccionarios
+o lo que sea que le
 
 26
 00:01:06,860 --> 00:01:10,100
-call them, you might find a
-similar kind of effect.
+llamen, podrías esperar
+un efecto similar.
 
 27
 00:01:10,100 --> 00:01:13,130
-The last one might win or the
-first one might win or it
+El último podría ganar o
+el primero podría ganar o
 
 28
 00:01:13,130 --> 00:01:14,380
-might be a syntax error.
+te podría retornar
+un error de sintaxis.
 
 29
 00:01:14,380 --> 00:01:15,430
