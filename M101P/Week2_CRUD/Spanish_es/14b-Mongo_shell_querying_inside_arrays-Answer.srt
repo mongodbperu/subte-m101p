@@ -1,0 +1,20 @@
+1
+00:00:00,000 --> 00:00:00,210
+
+2
+00:00:00,210 --> 00:00:00,800
+That's right.
+
+3
+00:00:00,800 --> 00:00:04,330
+The first and the third will
+match because they either
+
+4
+00:00:04,330 --> 00:00:08,700
+contain the string "shiny" or
+are string "shiny" for the
+
+5
+00:00:08,700 --> 00:00:09,950
+tags field.
