@@ -4,7 +4,7 @@
 2
 00:00:00,130 --> 00:00:01,730
 Muy bien, ahora vamos
-a ir sobre la foma en que los bucles
+a ir sobre la forma en que los bucles
 
 3
 00:00:01,730 --> 00:00:03,160
@@ -35,8 +35,8 @@ funcionan en Python.
 
 9
 00:00:13,680 --> 00:00:17,450
-Para ello, vamos a
-cambiar a editar un archivo
+Para ello, vamos a hacer un
+cambio, editaremos un archivo
 
 10
 00:00:17,450 --> 00:00:20,175
@@ -64,7 +64,7 @@ de frutas que he inicializado con
 15
 00:00:29,030 --> 00:00:31,960
 Y hay un comentario aquí,
-comenzando con un numeral, para
+comenzando con un numeral (#), para
 
 16
 00:00:31,960 --> 00:00:33,580
@@ -275,7 +275,7 @@ aquí y ejecutarlo.
 60
 00:02:07,130 --> 00:02:10,590
 Y ahora, sigo obteniendo "apple",
-"orange", "grape", per luego, cuando
+"orange", "grape", pero luego, cuando
 
 61
 00:02:10,590 --> 00:02:12,350
@@ -288,7 +288,7 @@ Entonces, ¿qué ocurre allí?
 
 63
 00:02:13,640 --> 00:02:16,740
-Y lo qué sucedió allí es que
+Y lo que sucedió allí es que
 en lugar de tener este
 
 64
@@ -344,7 +344,7 @@ está o no en su propio bloque.
 
 75
 00:02:42,750 --> 00:02:45,240
-Muy bien, ahora que saben acerca de
+Muy bien, ahora que sabes acerca de
 los bucles "for", me gustaría que
 
 76
