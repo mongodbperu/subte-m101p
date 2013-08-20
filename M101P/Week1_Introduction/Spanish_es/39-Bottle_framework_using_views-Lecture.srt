@@ -14,11 +14,11 @@ Modelo-Vista-Controlador.
 4
 00:00:06,050 --> 00:00:09,070
 Bajo el patrón Modelo-Vista-Controlador
-tu programa es dividido
+tu programa es construido
 
 5
 00:00:09,070 --> 00:00:11,570
-en tres módulos básicos
+usando tres módulos básicos
 de funcionalidad.
 
 6
@@ -104,7 +104,7 @@ es la página que se
 23
 00:00:54,220 --> 00:00:57,640
 implementará cuando alguien
-pida la URL /.
+pida la URL "/".
 
 24
 00:00:57,640 --> 00:01:00,810
@@ -169,7 +169,7 @@ voy a devolver una plantilla.
 
 37
 00:01:28,530 --> 00:01:31,470
-"@bottle.template", y esa 
+"bottle.template", y esa 
 plantilla se llama
 
 38
@@ -191,7 +191,7 @@ a la plantilla --
 
 42
 00:01:38,040 --> 00:01:42,910
-el nombre de usuario "Andrew" y un
+el "username" igual a "Andrew" y un
 valor "things" que va a
 
 43
@@ -235,7 +235,7 @@ dentro del programa.
 51
 00:02:06,100 --> 00:02:09,600
 Así por ejemplo, puede decir
-"welcome username", y
+"Welcome {{username}}", y
 
 52
 00:02:09,600 --> 00:02:11,850
@@ -358,7 +358,7 @@ aquí, esto como código
 
 77
 00:03:10,680 --> 00:03:12,330
-Python para "thing" y "things".
+Python "for thing in things".
 
 78
 00:03:12,330 --> 00:03:16,240
@@ -573,7 +573,7 @@ y usar esta línea en su lugar.
 122
 00:05:03,140 --> 00:05:05,290
 Cualquiera de estas estructuras
-funcionarán.
+funcionará.
 
 123
 00:05:05,290 --> 00:05:09,000
@@ -646,7 +646,7 @@ exactamente la misma salida.
 
 138
 00:05:40,060 --> 00:05:42,900
-Otro pequeñoi detalle que es
+Otro pequeño detalle que es
 muy importante es que
 
 139
@@ -667,7 +667,7 @@ en el que se ejecuta tu programa.
 142
 00:05:52,090 --> 00:05:55,990
 Por lo que "python hello_world.py", que
-arranca mi servidor WSGI,
+inicia mi servidor WSGI,
 
 143
 00:05:55,990 --> 00:05:58,050
