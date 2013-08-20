@@ -62,7 +62,7 @@ esas páginas haciendo peticiones
 
 14
 00:00:29,180 --> 00:00:32,055
-sobre TCP e IP, normalmente
+sobre TCP/IP, normalmente
 en el puerto 80
 
 15
@@ -72,7 +72,7 @@ usando el protocolo HTTP.
 16
 00:00:34,160 --> 00:00:37,600
 Por lo tanto, la forma en que encaja esto
-es que al fondo está IP,
+es que en el fondo es IP,
 
 17
 00:00:37,600 --> 00:00:41,055
@@ -216,7 +216,7 @@ decorador "@bottle.route", configurado
 
 46
 00:02:00,140 --> 00:02:02,390
-para la /, y entonces tienes una
+para "/", y entonces tienes una
 función aquí, y este nombre
 
 47
@@ -264,7 +264,7 @@ y devuelve "this is a test page".
 56
 00:02:22,650 --> 00:02:25,050
 Estas dos sentencias finales,
-probablemente quieras tenerlas
+probablemente querrás tenerlas
 
 57
 00:02:25,050 --> 00:02:26,780
@@ -346,7 +346,7 @@ si lo llamamos.
 
 74
 00:02:56,460 --> 00:02:58,170
-Primero, arranquemos
+Primero, iniciemos
 el servidor web.
 
 75
@@ -356,12 +356,12 @@ voy a reiniciarlo ya que
 
 76
 00:03:02,760 --> 00:03:06,450
-voy a arrancar el servidor web ahora 
+voy a iniciar el servidor web ahora 
 llamando a "python hello_world.py".
 
 77
 00:03:06,450 --> 00:03:07,240
-Lo arranca.
+Lo inicia.
 
 78
 00:03:07,240 --> 00:03:08,660
