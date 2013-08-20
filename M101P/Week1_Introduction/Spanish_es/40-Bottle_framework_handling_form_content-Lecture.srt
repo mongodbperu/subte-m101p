@@ -14,7 +14,7 @@ y Python.
 4
 00:00:06,200 --> 00:00:09,580
 Éste no es un curso completo
-de diseño web, y no vamos
+de diseño web y no vamos
 
 5
 00:00:09,580 --> 00:00:11,590
@@ -146,7 +146,7 @@ y lo envías, dice, oh,
 
 32
 00:01:10,200 --> 00:01:11,920
-tu fruta favorita es "peach".
+"Your favorite fruit is peach".
 
 33
 00:01:11,920 --> 00:01:13,580
@@ -239,8 +239,8 @@ Y el método es
 
 52
 00:01:55,480 --> 00:01:58,020
-Pregunta si tu fruta favorita,
-oh, veo a ese tipo
+Pregunta cuál es tu fruta favorita,
+oh, veo ese error
 
 53
 00:01:58,020 --> 00:01:59,220
@@ -249,7 +249,7 @@ corregiremos eso.
 
 54
 00:01:59,220 --> 00:02:00,800
-Esto es, ¿cuál es tu 
+Eso es, ¿cuál es tu 
 fruta favorita?
 
 55
@@ -350,7 +350,7 @@ que se llama
 75
 00:02:46,600 --> 00:02:50,070
 Si no está establecido, simplemente lo
-establece a "no fruit selected".
+establece a "No Fruit Selected".
 
 76
 00:02:50,070 --> 00:02:53,210
@@ -359,7 +359,7 @@ plantilla llamada
 
 77
 00:02:53,210 --> 00:02:56,510
-"fruit_selection", con
+"fruit_selection.tpl", con
 "fruit" establecido a la fruta.
 
 78
@@ -374,22 +374,22 @@ que se le pasa a la plantilla.
 80
 00:03:00,270 --> 00:03:02,510
 Por lo que sólo necesitamos mirar a esa
-plantilla "fruit_selection".
+plantilla "fruit_selection.tpl".
 
 81
 00:03:02,510 --> 00:03:04,230
-Esa plantilla "fruit_selection"
+Esa plantilla "fruit_selection.tpl"
 es muy simple.
 
 82
 00:03:04,230 --> 00:03:06,450
-Tan sólo dice "fruit selection
-confirmation".
+Tan sólo dice "Fruit Selection
+Confirmation".
 
 83
 00:03:06,450 --> 00:03:09,670
-Y entonces dice cuál es tu fruta
-favorita, y dice la fruta
+Y entonces dice "Your favorite
+fruit is", y dice la fruta
 
 84
 00:03:09,670 --> 00:03:10,520
@@ -449,7 +449,7 @@ completo de forma que
 
 96
 00:03:33,510 --> 00:03:36,760
-que puedan entender de qué estamos
+puedan entender de qué estamos
 hablando con esta
 
 97
