@@ -1,0 +1,465 @@
+1
+00:00:00,000 --> 00:00:00,250
+
+2
+00:00:00,250 --> 00:00:03,650
+OK, ahora vamos a hablar
+sobre cómo manejar las entradas
+
+3
+00:00:03,650 --> 00:00:06,200
+desde un formulario en Bottle
+y Python.
+
+4
+00:00:06,200 --> 00:00:09,580
+Éste no es un curso completo
+de diseño web, y no vamos
+
+5
+00:00:09,580 --> 00:00:11,590
+a estar comprobando exhaustivamente
+si comprendiste
+
+6
+00:00:11,590 --> 00:00:12,370
+o no este tema.
+
+7
+00:00:12,370 --> 00:00:13,960
+Y vamos a darte un 
+montón de código y contarte
+
+8
+00:00:13,960 --> 00:00:14,540
+cómo funciona.
+
+9
+00:00:14,540 --> 00:00:16,670
+Y de nuevo, este material
+es en cierto modo opcional, tan sólo
+
+10
+00:00:16,670 --> 00:00:18,760
+quiero darte nociones 
+básicas para que
+
+11
+00:00:18,760 --> 00:00:20,930
+no lo veas por 
+primera vez en alguna de
+
+12
+00:00:20,930 --> 00:00:23,370
+las prácticas más
+adelante en el curso.
+
+13
+00:00:23,370 --> 00:00:26,500
+Por lo que cuando llegas a una página,
+una página web, por ejemplo,
+
+14
+00:00:26,500 --> 00:00:29,240
+una página "index", entonces 
+generará el contenido.
+
+15
+00:00:29,240 --> 00:00:31,800
+En este caso, vamos a
+tener un pequeño formulario en la propia
+
+16
+00:00:31,800 --> 00:00:33,610
+página usando la etiqueta "form".
+
+17
+00:00:33,610 --> 00:00:36,570
+Y luego vamos a especificar 
+que, en esa página,
+
+18
+00:00:36,570 --> 00:00:39,780
+la respuesta se envíe
+a un manejador en
+
+19
+00:00:39,780 --> 00:00:42,210
+"favorite_fruit", y 
+comprenderás por qué en un segundo.
+
+20
+00:00:42,210 --> 00:00:44,900
+Y genera algo de código,
+que entonces produce 
+
+21
+00:00:44,900 --> 00:00:46,300
+salida HTML.
+
+22
+00:00:46,300 --> 00:00:50,330
+Así que ése es el flujo básico de cómo
+manejar entradas de formulario en
+
+23
+00:00:50,330 --> 00:00:51,300
+Python y Bottle.
+
+24
+00:00:51,300 --> 00:00:53,260
+Echemos un vistazo
+a un ejemplo.
+
+25
+00:00:53,260 --> 00:00:55,190
+Así que, voy a ejecutar
+este pequeño script
+
+26
+00:00:55,190 --> 00:00:56,210
+Python que he escrito.
+
+27
+00:00:56,210 --> 00:00:59,600
+Y vamos a la página de inicio del
+servidor web en el 8080.
+
+28
+00:00:59,600 --> 00:01:02,850
+Puedes ver que dice "Welcome
+Richard", y dice que
+
+29
+00:01:02,850 --> 00:01:05,090
+hay "apple", "orange",
+"banana" y "peach".
+
+30
+00:01:05,090 --> 00:01:06,470
+¿Cuál es tu fruta favorita?
+
+31
+00:01:06,470 --> 00:01:10,200
+Y luego si escribes "peach"
+y lo envías, dice, oh,
+
+32
+00:01:10,200 --> 00:01:11,920
+tu fruta favorita es "peach".
+
+33
+00:01:11,920 --> 00:01:13,580
+Así que, ¿cómo hacemos que esto funcione?
+
+34
+00:01:13,580 --> 00:01:14,690
+Muy fácil.
+
+35
+00:01:14,690 --> 00:01:15,700
+Aquí está el código.
+
+36
+00:01:15,700 --> 00:01:18,830
+Éste es el programa
+"fruit_form.py".
+
+37
+00:01:18,830 --> 00:01:22,040
+Ésta es la página de inicio en
+la ruta "/", establece esa lista
+
+38
+00:01:22,040 --> 00:01:25,210
+otra vez y devuelve esa misma
+plantilla que vimos antes donde
+
+39
+00:01:25,210 --> 00:01:27,880
+asignaba "username" a "Richard"
+y "things" a "mythings".
+
+40
+00:01:27,880 --> 00:01:29,300
+Y te enseñaré
+esa plantilla.
+
+41
+00:01:29,300 --> 00:01:30,640
+Aquí está esa plantilla
+justo ahora.
+
+42
+00:01:30,640 --> 00:01:33,410
+Puedes ver lo que esta plantilla
+imprime, el tíulo es "Hello
+
+43
+00:01:33,410 --> 00:01:36,790
+World", dice "Welcome" a la 
+persona, itera por
+
+44
+00:01:36,790 --> 00:01:38,960
+la lista de cosas,
+imprimiendo cada uno
+
+45
+00:01:38,960 --> 00:01:40,210
+de los elementos de la lista.
+
+46
+00:01:40,210 --> 00:01:41,750
+Y a continuación está la parte nueva.
+
+47
+00:01:41,750 --> 00:01:44,850
+Ahora hay un formulario dentro
+de la plantilla.
+
+48
+00:01:44,850 --> 00:01:48,660
+Y el formulario tiene como acción
+"/favorite_fruit", lo que
+
+49
+00:01:48,660 --> 00:01:51,950
+significa que el navegador web
+enviará tu respuesta a la
+
+50
+00:01:51,950 --> 00:01:53,240
+URL "favorite_fruit".
+
+51
+00:01:53,240 --> 00:01:55,480
+Y el método es
+"post", no "get".
+
+52
+00:01:55,480 --> 00:01:58,020
+Pregunta si tu fruta favorita,
+oh, veo a ese tipo
+
+53
+00:01:58,020 --> 00:01:59,220
+ahí, 
+corregiremos eso.
+
+54
+00:01:59,220 --> 00:02:00,800
+Esto es, ¿cuál es tu 
+fruta favorita?
+
+55
+00:02:00,800 --> 00:02:01,800
+Allá vamos.
+
+56
+00:02:01,800 --> 00:02:03,700
+Y tiene dos elementos de
+formulario HTML.
+
+57
+00:02:03,700 --> 00:02:07,200
+El primero es una caja de texto
+cuyo "name" es "fruit" y "size" 40.
+
+58
+00:02:07,200 --> 00:02:09,020
+"value" está vacío al
+principio.
+
+59
+00:02:09,020 --> 00:02:11,500
+Y luego, bajo él, hay
+un botón "submit".
+
+60
+00:02:11,500 --> 00:02:13,400
+Y luego se acaba el formulario,
+y el cuerpo del
+
+61
+00:02:13,400 --> 00:02:14,550
+documento HTML termina.
+
+62
+00:02:14,550 --> 00:02:16,930
+Y a continuación finalmente
+se cierra el propio HTML.
+
+63
+00:02:16,930 --> 00:02:17,990
+Así es.
+
+64
+00:02:17,990 --> 00:02:21,400
+Y luego puedes ver justo
+aquí que hay un nuevo
+
+65
+00:02:21,400 --> 00:02:24,000
+manejador definido, del que
+no hemos hablado antes.
+
+66
+00:02:24,000 --> 00:02:25,500
+Es un manejador "post".
+
+67
+00:02:25,500 --> 00:02:28,950
+Y un manejador "post" toma una petición
+"post" en lugar de una petición "get",
+
+68
+00:02:28,950 --> 00:02:32,690
+y esta petición "post" es
+hacia la URL "favorite_fruit".
+
+69
+00:02:32,690 --> 00:02:34,980
+Y define una función llamada
+"favorite_fruit".
+
+70
+00:02:34,980 --> 00:02:37,330
+Y tiene que recuperar el elemento
+del formulario, cosa que hace
+
+71
+00:02:37,330 --> 00:02:41,060
+llamando a
+"bottle.request.forms.get('fruit')",
+
+72
+00:02:41,060 --> 00:02:43,440
+con comillas alrededor de la cadena
+que está buscando.
+
+73
+00:02:43,440 --> 00:02:45,180
+Eso recupera el elemento del formulario
+que se llama
+
+74
+00:02:45,180 --> 00:02:46,600
+"fruit" en el formulario.
+
+75
+00:02:46,600 --> 00:02:50,070
+Si no está establecido, simplemente lo
+establece a "no fruit selected".
+
+76
+00:02:50,070 --> 00:02:53,210
+Y luego devuelve esta otra
+plantilla llamada
+
+77
+00:02:53,210 --> 00:02:56,510
+"fruit_selection", con
+"fruit" establecido a la fruta.
+
+78
+00:02:56,510 --> 00:02:59,010
+La cadena "fruit" establecida a la 
+fruta dentro del diccionario
+
+79
+00:02:59,010 --> 00:03:00,270
+que se le pasa a la plantilla.
+
+80
+00:03:00,270 --> 00:03:02,510
+Por lo que sólo necesitamos mirar a esa
+plantilla "fruit_selection".
+
+81
+00:03:02,510 --> 00:03:04,230
+Esa plantilla "fruit_selection"
+es muy simple.
+
+82
+00:03:04,230 --> 00:03:06,450
+Tan sólo dice "fruit selection
+confirmation".
+
+83
+00:03:06,450 --> 00:03:09,670
+Y entonces dice cuál es tu fruta
+favorita, y dice la fruta
+
+84
+00:03:09,670 --> 00:03:10,520
+justo aquí.
+
+85
+00:03:10,520 --> 00:03:13,910
+Y estas llaves rodean
+un trozo de código
+
+86
+00:03:13,910 --> 00:03:16,950
+Python, en este caso, la variable
+"fruit" que se le pasó.
+
+87
+00:03:16,950 --> 00:03:20,600
+Así que podría haber un montón que recuperar
+de una vez, pero si
+
+88
+00:03:20,600 --> 00:03:22,210
+sabes algo de programación
+web, sabes cómo funcionan
+
+89
+00:03:22,210 --> 00:03:23,000
+estas cosas.
+
+90
+00:03:23,000 --> 00:03:24,280
+Es muy sencillo.
+
+91
+00:03:24,280 --> 00:03:26,540
+Y de nuevo, para este curso,
+no necesitas realmente
+
+92
+00:03:26,540 --> 00:03:27,790
+comprender esto porque
+voy a darte
+
+93
+00:03:27,790 --> 00:03:28,800
+la mayoría del GUI.
+
+94
+00:03:28,800 --> 00:03:31,380
+Nos centraremos principalmente en las
+partes que tienen que ver con MongoDB.
+
+95
+00:03:31,380 --> 00:03:33,510
+Pero quería que este fuera un curso
+completo de forma que
+
+96
+00:03:33,510 --> 00:03:36,760
+que puedan entender de qué estamos
+hablando con esta
+
+97
+00:03:36,760 --> 00:03:38,760
+interfaz de usuario para el sistema
+de blogging que vamos a
+
+98
+00:03:38,760 --> 00:03:40,010
+crear en MongoDB.
+
+99
+00:03:40,010 --> 00:03:40,850
