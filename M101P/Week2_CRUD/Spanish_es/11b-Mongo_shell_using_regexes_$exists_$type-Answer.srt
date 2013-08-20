@@ -3,26 +3,26 @@
 
 2
 00:00:00,230 --> 00:00:02,160
-Something like this
-ought to do it.
+Algo como esto
+debería funcionar.
 
 3
 00:00:02,160 --> 00:00:04,070
-db.users.find.
+"db.users.find".
 
 4
 00:00:04,070 --> 00:00:09,990
-The field name has $regex:q for
-its value, and the field
+El campo "name" contiene
+"$regex:q" como valor y el
 
 5
 00:00:09,990 --> 00:00:12,960
-email has $exists true.
+campo "email" contiene "true".
 
 6
 00:00:12,960 --> 00:00:14,620
-You could also have
-said $exists:1.
+También hubieses podido
+ingresar "$exists:1".
 
 7
 00:00:14,620 --> 00:00:17,033

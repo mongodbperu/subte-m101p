@@ -3,457 +3,460 @@
 
 2
 00:00:00,180 --> 00:00:02,200
-Let's learn a few more
-query operators.
+Hay que aprender sobre algunos
+otros operadores de consulta.
 
 3
 00:00:02,200 --> 00:00:04,910
-As you may have noticed, the
-people collection I've created
+Como puedes haber notado, la
+colección "people" que cree
 
 4
 00:00:04,910 --> 00:00:06,940
-has a number of different
-kinds of documents.
+tiene un número de diferentes
+tipos de documentos.
 
 5
 00:00:06,940 --> 00:00:12,380
-Some documents have the fields
-_id name, age, and profession,
+Algunos documentos tienen los campos
+"_id", "name", "age" y "profession",
 
 6
 00:00:12,380 --> 00:00:16,750
-whereas other documents have the
-fields _id and name only.
+mientras que otros documentos sólo
+tienen los campos "_id" y "name".
 
 7
 00:00:16,750 --> 00:00:21,030
-Further, some documents have the
-field name that's a string
+Además, algunos documentos tienen
+el campo "name" como cadena
 
 8
 00:00:21,030 --> 00:00:22,120
-and other documents--
+y otros documentos--
 
 9
 00:00:22,120 --> 00:00:23,770
-well, just one other
-document--
+bueno, sólo uno otro documento--
 
 10
 00:00:23,770 --> 00:00:26,380
-has a field name that's
-a number.
+tiene el campo "name"
+como número.
 
 11
 00:00:26,380 --> 00:00:29,010
-MondoDB allows you to query
-based on the structure and
+MongoDB ayuda a que hagas
+consultas basadas en la estructura
 
 12
 00:00:29,010 --> 00:00:31,700
-types of information that's
-in the documents as
+y los tipos de información
+que está en los documentos
 
 13
 00:00:31,700 --> 00:00:33,490
-well as their values.
+al igual que en sus valores.
 
 14
 00:00:33,490 --> 00:00:36,230
-For example, if I want to
-retrieve those documents where
+Por ejemplo, si quiero
+recuperar todos los documentos
 
 15
 00:00:36,230 --> 00:00:40,850
-the field profession exists, I
-can say db.people.find and
+el campo "profession" existe,
+puedo decir "db.people.find" y
 
 16
 00:00:40,850 --> 00:00:42,740
-then the argument is a document
-having the field
+luego el argumento es un
+documento que contiene el campo
 
 17
 00:00:42,740 --> 00:00:44,710
-"profession," whose
-corresponding value is an
+"profession," cuyo valor
+correspondiente es un
 
 18
 00:00:44,710 --> 00:00:47,680
-embedded document having the
-field $exists with a
+documento embebido que contiene
+el campo "$exists" con un
 
 19
 00:00:47,680 --> 00:00:49,290
-corresponding value of true.
+valor correspondiente de "true".
 
 20
 00:00:49,290 --> 00:00:51,780
-And this will return just
-"Smith" and "Jones," who have
+Y esto me va a retornar sólo
+"Smith" y "Jones", quienes
 
 21
 00:00:51,780 --> 00:00:52,870
-a profession.
+tienen una profesión.
 
 22
 00:00:52,870 --> 00:00:55,590
-By contrast, I can invert the
-query and ask for only those
+Por contraste, puedo invertir
+la consulta y pedir sólo aquellos
 
 23
 00:00:55,590 --> 00:00:58,450
-documents where the profession
-field does not exist, and that
+documentos donde el campo
+"profession" no existe, y eso
 
 24
 00:00:58,450 --> 00:01:00,510
-gets me the other half dozen.
+me devuelve la otra media docena.
 
 25
 00:01:00,510 --> 00:01:03,430
-Next, I can ask for documents
-based on the type of a
+En seguida podemos pedir
+documentos en base al tipo
 
 26
 00:01:03,430 --> 00:01:04,780
-particular field.
+de un campo en particular.
 
 27
 00:01:04,780 --> 00:01:07,410
-For example, if I want to get
-only those documents where the
+Por ejemplo, si quiere recuperar
+sólo aquellos documentos donde el
 
 28
 00:01:07,410 --> 00:01:12,110
-name field is a string, I can
-specify db.people.find, then
+campo "name" es una cadena, puedo
+especificar "db.people.find" y luego
 
 29
 00:01:12,110 --> 00:01:12,810
-an argument--
+un argumento--
 
 30
 00:01:12,810 --> 00:01:15,180
-that's a document having the
-field name having the
+que es un documento que contiene
+el campo "name" con el
 
 31
 00:01:15,180 --> 00:01:17,940
-corresponding value that's an
-embedded document with the
+valor correspondiente que es
+un documento embebido con los
 
 32
 00:01:17,940 --> 00:01:20,980
-operator types-- a and then the
-types, unfortunately, are
+operadores de tipo--"a" y luego
+los tipos, desafortunadamente, son
 
 33
 00:01:20,980 --> 00:01:23,730
-specified as numbers, and the
-numbers are the corresponding
+especificados como números
+y los los números corresponden
 
 34
 00:01:23,730 --> 00:01:26,140
-type values out of the
-BSON specification.
+a los tipos de valores de
+la especificación de BSON.
 
 35
 00:01:26,140 --> 00:01:29,240
-Take at BSONspec.org in the
-specification to find the
+Consulta la especificación
+en BSONspec.org para encontrar
 
 36
 00:01:29,240 --> 00:01:32,150
-numeric encoding of the
-different types in BSON.
+las codificaciones numéricas
+de los diferentes tipos en BSON.
 
 37
 00:01:32,150 --> 00:01:35,940
-As it happens, they type for
-string is type 2, and this
+Ocurre que el tipo para cadenas
+es el tipo "2", y esto
 
 38
 00:01:35,940 --> 00:01:37,810
-gets me those documents
-where the name field
+me retorna los documentos
+donde el campo "name"
 
 39
 00:01:37,810 --> 00:01:39,440
-has a string value.
+tiene un valor de cadena.
 
 40
 00:01:39,440 --> 00:01:41,790
-Finally for this section, there
-are more complicated
+Para concluir esta sección,
+hay consultas más complicadas
 
 41
 00:01:41,790 --> 00:01:43,730
-sorts of queries that you
-might want to perform on
+que podrías querer
+llevar a cabo sobre
 
 42
 00:01:43,730 --> 00:01:47,210
-strings than just equality
-and inequality.
+cadenas, aparte de aquéllas
+de igualdad y desigualdad.
 
 43
 00:01:47,210 --> 00:01:49,080
-For example, people tend
-to like to look
+Por ejemplo, la gente
+tiende a querer encontrar
 
 44
 00:01:49,080 --> 00:01:50,840
-for patterns in strings.
+patrones dentro de cadenas.
 
 45
 00:01:50,840 --> 00:01:53,900
-MondoDB supports querying for
-string patterns using a
+MongoDB soporta hacer consultas
+por patrones de cadena usando
 
 46
 00:01:53,900 --> 00:01:55,510
-regular expression library--
+una librería de
+expresiones regulares--
 
 47
 00:01:55,510 --> 00:01:57,960
-in particular, the Perl
-Compatible Regular Expression
+en particular, la librería
+"Perl Compatible Regular
 
 48
 00:01:57,960 --> 00:02:00,160
-Library, libpcre.
+Expression Library", "libpcre".
 
 49
 00:02:00,160 --> 00:02:02,040
-Now, I don't want to spend too
-much time going into the
+Ahora, no quiero tomar mucho
+tiempo entrando en los detalles
 
 50
 00:02:02,040 --> 00:02:04,040
-details of regular expressions,
-I just want to
+de expresiones regulares.
+Solamente quiero
 
 51
 00:02:04,040 --> 00:02:05,710
-show you a couple of examples.
+mostrarte un par de ejemplos.
 
 52
 00:02:05,710 --> 00:02:09,300
-To query for those documents
-that have, say, the letter A
+Para consultar documentos que
+tienen, digamos, la letra "A"
 
 53
 00:02:09,300 --> 00:02:11,910
-in them somewhere, you can
-specify the query that's on
+en alguna parte, puedes
+utilizar la consulta que
 
 54
 00:02:11,910 --> 00:02:13,440
-the bottom of my terminal.
+está en la parte inferior
+de mi terminal.
 
 55
 00:02:13,440 --> 00:02:17,810
-db.people.find and the
-corresponding value that's a
+"db.people.find" y el valor
+correspondiente, el cual es
 
 56
 00:02:17,810 --> 00:02:20,300
-document having the field
-"name" whose value is an
+un documento con el campo
+"name" cuyo valor es un
 
 57
 00:02:20,300 --> 00:02:24,420
-embedded document with the
-operator $regex and then a
+documento embebido con el
+operador "$regex" y luego
 
 58
 00:02:24,420 --> 00:02:26,440
-string that will be understood
-as a Perl-style regular
+una cadena que va a ser
+interpretada como una 
 
 59
 00:02:26,440 --> 00:02:27,410
-expression.
+expresión regular del
+estilo Perl.
 
 60
 00:02:27,410 --> 00:02:30,495
-And as it happens, Charlie and
-Dave and Edgar all have the
+Ocurre que "Charlie" y "Dave"
+y "Edgar" tienen la letra
 
 61
 00:02:30,495 --> 00:02:32,340
-letter A somewhere
-in their name.
+"A" en alguna parte
+de sus nombres.
 
 62
 00:02:32,340 --> 00:02:34,720
-If I want to be more
-complicated, I could ask for
+Si quiero hacer algo más
+complicado, podrías pedir
 
 63
 00:02:34,720 --> 00:02:38,360
-all those documents where the
-field name ends with the
+todos los documento donde el
+campo "name" termina con la
 
 64
 00:02:38,360 --> 00:02:41,280
-letter E, and the regular
-expression for that is the
+letra "E" y la expresión
+regular para eso es la
 
 65
 00:02:41,280 --> 00:02:42,500
-string consisting
-of the letter E
+cadena que consiste
+de la letra "E"
 
 66
 00:02:42,500 --> 00:02:44,140
-followed by a dollar sign.
+seguida por un signo de dólar.
 
 67
 00:02:44,140 --> 00:02:46,610
-And there's "Alice," and
-"Charlie," and "Dave."
+Y entonces tenemos a "Alice"
+y "Charlie" y "Dave".
 
 68
 00:02:46,610 --> 00:02:48,740
-Now, we'll talk more about
-regular expressions in a later
+Ahora, hablaremos más sobre
+expresiones regulares en una
 
 69
 00:02:48,740 --> 00:02:50,660
-week when we talk about
-performance optimization.
+semana posterior, cuando hablemos
+de la optimización de rendimiento.
 
 70
 00:02:50,660 --> 00:02:53,650
-As it turns out, regular
-expressions tend not to be as
+Ocurre que las expresiones
+regular tiende a no ser tan
 
 71
 00:02:53,650 --> 00:02:57,520
-optimizable as far as the query
-processing goes as more
+optimizables en lo que concierna
+al procesamiento de consultas
 
 72
 00:02:57,520 --> 00:02:59,210
-simple string inequalities.
+como lo son la simples
+desigualdades de cadena.
 
 73
 00:02:59,210 --> 00:03:01,540
-However, a special case of
-regular expressions that can
+Aun así, un caso especial de
+expresiones regulares que pueden
 
 74
 00:03:01,540 --> 00:03:04,820
-be efficiently optimized are
-those that start with a
+ser eficientemente optimizadas
+son aquéllas que comienzan con
 
 75
 00:03:04,820 --> 00:03:07,580
-carrot, which means that the
-regular expression must begin
+un "^" el cual significa que
+la expresión regular debe
 
 76
 00:03:07,580 --> 00:03:09,280
-with whatever follows.
+comenzar con lo que
+sea que le sigue.
 
 77
 00:03:09,280 --> 00:03:11,990
-And then after the carrot
-contain non-wild card
+Y luego después del "^",
+incluir caracteres que no
 
 78
 00:03:11,990 --> 00:03:14,500
-characters, or literal
-characters, such as letters
+sean comodines, o que sean
+literales, como letras
 
 79
 00:03:14,500 --> 00:03:15,520
-and numbers.
+y números.
 
 80
 00:03:15,520 --> 00:03:18,130
-So for example, the regular
-expression at the bottom of my
+Entonces, por ejemplo, la
+expresión regular en la parte
 
 81
 00:03:18,130 --> 00:03:21,240
-screen says that the name
-field must start with a
+inferior de mi pantalla dice que
+el campo "name" debe comenzar con
 
 82
 00:03:21,240 --> 00:03:24,040
-capital letter A. We'll see in
-a subsequent week that this
+la letra mayúscula "A". Vamos a
+ver en una semana subsecuente
 
 83
 00:03:24,040 --> 00:03:27,800
-can be mechanically translated
-into a range query up from A
+que esto puede ser mecánicamente
+traducido a una consulta de rango
 
 84
 00:03:27,800 --> 00:03:31,010
-up to but not including B. And
-indeed, this is what MongoDB
+desde "A" hasta, pero no incluyendo a,
+"B". Y en efecto, esto es lo que MongoDB
 
 85
 00:03:31,010 --> 00:03:32,050
-does internally.
+hace internamente.
 
 86
 00:03:32,050 --> 00:03:35,245
-In any case, those were three
-new operators to go along with
+En cualquier caso, estos fueron
+tres nuevos operadores que van
 
 87
 00:03:35,245 --> 00:03:37,600
-the inequality operators that
-we've already learned.
+de la mano con los operadores de
+desigualdad que ya aprendimos.
 
 88
 00:03:37,600 --> 00:03:40,970
-$exists asks whether a field
-happens to exist inside of a
+"$exists" pregunta si un campo
+existe o no dentro de un
 
 89
 00:03:40,970 --> 00:03:45,070
-document, $type checks whether
-a field has a particular type
+documento, "$type" ve si un
+campo tiene un tipo de valor
 
 90
 00:03:45,070 --> 00:03:49,400
-value, and $regex allows you
-to do complicated string
+en particular y "$regex" te permite
+buscar patrones de cadena complicados
 
 91
 00:03:49,400 --> 00:03:52,290
-pattern matching inside
-of fields.
+dentro de los campos.
 
 92
 00:03:52,290 --> 00:03:52,600
-All right.
+Muy bien.
 
 93
 00:03:52,600 --> 00:03:54,155
-Let's have a quick quiz.
+Hagamos un cuestionario breve.
 
 94
 00:03:54,155 --> 00:03:56,820
-Write a query that retrieves
-documents from a collection
+Escribe una consulta que recupere
+documentos de una colección
 
 95
 00:03:56,820 --> 00:04:00,000
-called "users" where the user
-name has the letter Q in it
+llamada "users" donde el "name"
+del usuario tenga la letra "Q" 
 
 96
 00:04:00,000 --> 00:04:01,840
-and the document has
-an email field.
+y el documento tenga un
+campo "email".
 
 97
 00:04:01,840 --> 00:04:03,090
