@@ -3,374 +3,376 @@
 
 2
 00:00:00,250 --> 00:00:02,640
-Let's learn a little bit more
-about inequality comparisons
+Hay que aprender un poco más
+sobre operadores de desigualdad
 
 3
 00:00:02,640 --> 00:00:04,460
-in the query language.
+en el lenguaje de consulta.
 
 4
 00:00:04,460 --> 00:00:06,160
-We've already seen some
-examples where we do
+Ya hemos visto algunos
+ejemplos donde hacemos
 
 5
 00:00:06,160 --> 00:00:08,870
-inequality queries on
-numeric values.
+consultas de desigualdad
+sobre valores numéricos.
 
 6
 00:00:08,870 --> 00:00:11,240
-The inequality operators can
-also be applied for string
+Los operadores de desigualdad
+pueden ser también aplicados
 
 7
 00:00:11,240 --> 00:00:12,610
-valued comparisons.
+para comparaciones de cadenas.
 
 8
 00:00:12,610 --> 00:00:14,190
-Let's add a couple more
-documents to the people
+Agreguemos un par de documentos
+más a la colección "people"
 
 9
 00:00:14,190 --> 00:00:15,810
-collection so that we
-can see things in a
+para que podamos
+ver cosas de una
 
 10
 00:00:15,810 --> 00:00:17,960
-little bit clearer view.
+manera más clara.
 
 11
 00:00:17,960 --> 00:00:22,210
-db.people now has a half dozen
-or so documents in it, every
+"db.people" ahora tiene media
+docena de documentos en ella,
 
 12
 00:00:22,210 --> 00:00:23,370
-one of which has a name.
+y cada uno tiene un "name".
 
 13
 00:00:23,370 --> 00:00:24,970
-The inequality comparison--
+La comparación de desigualdad--
 
 14
 00:00:24,970 --> 00:00:28,050
-$ gt, $ lt, and so forth--
+"$gt", "$lt", etcétera--
 
 15
 00:00:28,050 --> 00:00:31,080
-can be applied to strings just
-as they can be to numbers.
+pueden ser aplicadas a cadenas
+así como se aplican a números.
 
 16
 00:00:31,080 --> 00:00:33,280
-The query on the screen
-retrieves all documents from
+La consulta en la pantalla
+recupera todos los documentos
 
 17
 00:00:33,280 --> 00:00:35,980
-the people collection where
-the name field is
+de la colección "people"
+donde el campo "name" es
 
 18
 00:00:35,980 --> 00:00:38,820
-lexicographically less than
-the capital letter D.
+lexicográficamente menos que
+la letra mayúscula "D".
 
 19
 00:00:38,820 --> 00:00:41,840
-And then likewise, you can add
-some more constraints such as
+Y luego igualmente, puedes
+agregar más restricciones, como
 
 20
 00:00:41,840 --> 00:00:45,460
-lexicographically greater than
-the letter B. Note that the
+lexicográficamente más que
+la letra "B". Nota que la
 
 21
 00:00:45,460 --> 00:00:48,000
-string Bob is lexicographically
-greater than
+cadena "Bob" es lexicográficamente
+
 
 22
 00:00:48,000 --> 00:00:50,630
-the letter B simply because
-it's longer.
+mayor que la letra "B" simplemente
+porque es más larga.
 
 23
 00:00:50,630 --> 00:00:52,620
-A couple of notes about
-locales and
+Un par de notas sobre
+localidades y
 
 24
 00:00:52,620 --> 00:00:54,200
-locale-aware sorting.
+ordenamiento consciente
+de la localidad.
 
 25
 00:00:54,200 --> 00:00:57,670
-Right now MongoDB has exactly
-zero knowledge of locales.
+Por ahora, MongoDB no tiene
+conocimiento alguno de localidades.
 
 26
 00:00:57,670 --> 00:01:01,150
-In effect, the comparisons that
-we perform for $ less
+En efecto, las comparaciones que
+hacemos para $ menor que
 
 27
 00:01:01,150 --> 00:01:04,480
-than, $ greater than and so
-forth are going to sort
+y $ mayor que, etcétera,
+van a ordenar de acuerdo
 
 28
 00:01:04,480 --> 00:01:06,320
-according to the total
-ordering of
+al ordenamiento total de
 
 29
 00:01:06,320 --> 00:01:08,110
-the UTF-8 code units.
+las unidades del código UTF-8.
 
 30
 00:01:08,110 --> 00:01:11,230
-That is to say, according to a
-lexicographic sorting of the
+Es decir, de acuerdo a un
+ordenamiento lexicográfico de
 
 31
 00:01:11,230 --> 00:01:14,320
-bytes in the UTF-8
-representation of the string.
+los bytes en la representación
+UTF-8 de la cadena.
 
 32
 00:01:14,320 --> 00:01:16,840
-This happens to be
-correct only in
+Esto es correcto sólo
+en las localidades
 
 33
 00:01:16,840 --> 00:01:18,940
-the POSIX or C locales.
+POSIX o C.
 
 34
 00:01:18,940 --> 00:01:22,670
-That is to say, MongoDB compares
-and sorts things in a
+Es decir, MongoDB compara y
+ordena cosas de una manera
 
 35
 00:01:22,670 --> 00:01:24,560
-Ascii-betically correct
-fashion.
+"ASCII-béticamente" correcta.
 
 36
 00:01:24,560 --> 00:01:27,070
-If it so happens that there's
-a locale for which sorting
+Si pasa que hay una localidad
+para la cual el ordenamiento
 
 37
 00:01:27,070 --> 00:01:30,540
-things in UTF-8 byte order
-happens to be correct, then
+de cosas siguiendo el orden de
+los bytes en UTF-8 es correcta,
 
 38
 00:01:30,540 --> 00:01:32,850
-MongoDB happens to agree
-with that as well.
+entonces MongoDB coincide
+con eso muy bien.
 
 39
 00:01:32,850 --> 00:01:35,640
-A future release of MongoDB is
-likely to have better support
+Es muy posible que una versión
+futura de MongoDB tenga mejor soporte
 
 40
 00:01:35,640 --> 00:01:38,520
-for locale-aware sorting,
-collation, and so forth.
+para ordenamiento consciente de
+localidades, colación, etcétera.
 
 41
 00:01:38,520 --> 00:01:41,240
-Further, it's important to
-understand that MongoDB is, in
+Además, es importante
+comprender que MongoDB es,
 
 42
 00:01:41,240 --> 00:01:43,420
-fact, a schema-less database.
+en efecto, una base de
+datos sin esquema.
 
 43
 00:01:43,420 --> 00:01:45,850
-That is to say, different
-documents within the same
+Es decir, que documentos
+diferentes dentro de la misma
 
 44
 00:01:45,850 --> 00:01:48,390
-collection might have different
-value types for the
+colección pueden tener
+diferente tipos de valor
 
 45
 00:01:48,390 --> 00:01:49,590
-same field.
+para el mismo campo.
 
 46
 00:01:49,590 --> 00:01:51,360
-This isn't a recommended
-pattern, but
+No es un patrón
+recomendado, pero
 
 47
 00:01:51,360 --> 00:01:52,730
-nevertheless it's possible.
+aun así es posible.
 
 48
 00:01:52,730 --> 00:01:55,690
-For example, if I insert into
-the people collection a
+Por ejemplo, si inserto,
+en la colección "people", un
 
 49
 00:01:55,690 --> 00:01:59,250
-document where the field name
-has as its corresponding value
+documento donde el campo "name"
+tiene como valor correspondiente
 
 50
 00:01:59,250 --> 00:02:01,690
-the number 42, the database
-will perfectly
+el número 42, la base de
+datos está perfectamente
 
 51
 00:02:01,690 --> 00:02:03,020
-happily store that.
+feliz de almacenarlo.
 
 52
 00:02:03,020 --> 00:02:06,170
-I now have eight or so documents
-with string values
+Ahora, tengo más o menos ocho
+documentos con valores de cadena
 
 53
 00:02:06,170 --> 00:02:09,650
-for the field name and one
-document with a numeric value
+para el campo "name" y un
+documento con un valor numérico
 
 54
 00:02:09,650 --> 00:02:11,220
-for the field name.
+para el campo "name".
 
 55
 00:02:11,220 --> 00:02:15,430
-All comparison operations in
-MongoDB are strongly typed and
+Todas las operaciones de comparación
+en MongoDB son fuertemente tipadas.
 
 56
 00:02:15,430 --> 00:02:16,800
-dynamically typed too.
+y dinámicamente tipadas también.
 
 57
 00:02:16,800 --> 00:02:19,350
-That is to say, if I perform
-the inequality comparison
+Es decir, si proceso la
+comparación de desigualdad
 
 58
 00:02:19,350 --> 00:02:22,030
-that's at the bottom of my
-terminal window, I'll only see
+que está en la parte inferior de
+la ventana de mi terminal, sólo
 
 59
 00:02:22,030 --> 00:02:26,480
-documents where the name field
-is a string that's less than
+veré documentos donde el campo
+"name" es una cadena menor que
 
 60
 00:02:26,480 --> 00:02:28,880
-the capital letter D and greater
-than the capital
+la letra mayúscula "D"
+y mayor que la letra
 
 61
 00:02:28,880 --> 00:02:32,360
-letter B. I will not see any
-documents where the field name
+mayúscula "B". Y no veré ningún
+documento donde el campo "name"
 
 62
 00:02:32,360 --> 00:02:36,100
-has the numeric value 42, or
-any other numeric value.
+tiene el valor numérico "42" o
+cualquier otro valor numérico.
 
 63
 00:02:36,100 --> 00:02:39,630
-That is to say, these sorts
-of comparisons, range type
+Es decir, este tipo de
+comparaciones, comparaciones
+
 
 64
 00:02:39,630 --> 00:02:42,700
-comparisons, do not
-span data types.
+de rango, no cruzan
+tipos de datos.
 
 65
 00:02:42,700 --> 00:02:44,630
-So if you happen to take
-advantage of MongoDB's
+Entonces si aprovechas
+el polimorfismo de MongoDB
 
 66
 00:02:44,630 --> 00:02:47,380
-polymorphism by storing
-different data types for the
+almacenando diferentes
+tipos de datos para los
 
 67
 00:02:47,380 --> 00:02:48,640
-same fields--
+mismos campos--
 
 68
 00:02:48,640 --> 00:02:51,140
-which is not a recommended
-pattern, by the way--
+lo cual, por cierto, no es un
+patrón recomendado--
 
 69
 00:02:51,140 --> 00:02:53,330
-but if you should happen to take
-advantage of it, you need
+pero si te aprovechas
+de ello, tienes
 
 70
 00:02:53,330 --> 00:02:57,010
-to understand that comparisons
-of this sort will not cross
+que comprender que las
+comparaciones de este
+
 
 71
 00:02:57,010 --> 00:02:58,270
-the data type boundaries.
+tipo no cruzan los límites
+de tipos de datos.
 
 72
 00:02:58,270 --> 00:03:01,160
-In effect, if you want to query
-for documents where the
+En efecto, si quieres recuperar
+documentos donde "name"
 
 73
 00:03:01,160 --> 00:03:04,530
-name is in a certain
-lexicographic range of strings
+está en cierto rango
+lexicográfico de cadenas
 
 74
 00:03:04,530 --> 00:03:08,120
-or in a certain numeric range of
-numbers, you'll need to use
+o en cierto rango numérico de
+números, tendrías que utilizar
 
 75
 00:03:08,120 --> 00:03:09,940
-a more complicated query
-syntax, which we'll be
+una sintaxis de consulta más
+complicada, la cual visitaremos
 
 76
 00:03:09,940 --> 00:03:12,450
-visiting in a subsequent
-section.
+en una sección subsecuente.
 
 77
 00:03:12,450 --> 00:03:14,090
-Let's have a quiz.
+Hagamos un cuestionario.
 
 78
 00:03:14,090 --> 00:03:16,870
-Which of the following will find
-all users with a username
+¿Cuál de las siguientes encuentra
+todos los usuarios con un "username"
 
 79
 00:03:16,870 --> 00:03:18,150
-between F and Q?
+entre "F" y "Q"?
 
 80
 00:03:18,150 --> 00:03:19,400
