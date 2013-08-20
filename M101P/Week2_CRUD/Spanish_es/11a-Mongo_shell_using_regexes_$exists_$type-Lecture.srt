@@ -1,0 +1,459 @@
+1
+00:00:00,000 --> 00:00:00,180
+
+2
+00:00:00,180 --> 00:00:02,200
+Let's learn a few more
+query operators.
+
+3
+00:00:02,200 --> 00:00:04,910
+As you may have noticed, the
+people collection I've created
+
+4
+00:00:04,910 --> 00:00:06,940
+has a number of different
+kinds of documents.
+
+5
+00:00:06,940 --> 00:00:12,380
+Some documents have the fields
+_id name, age, and profession,
+
+6
+00:00:12,380 --> 00:00:16,750
+whereas other documents have the
+fields _id and name only.
+
+7
+00:00:16,750 --> 00:00:21,030
+Further, some documents have the
+field name that's a string
+
+8
+00:00:21,030 --> 00:00:22,120
+and other documents--
+
+9
+00:00:22,120 --> 00:00:23,770
+well, just one other
+document--
+
+10
+00:00:23,770 --> 00:00:26,380
+has a field name that's
+a number.
+
+11
+00:00:26,380 --> 00:00:29,010
+MondoDB allows you to query
+based on the structure and
+
+12
+00:00:29,010 --> 00:00:31,700
+types of information that's
+in the documents as
+
+13
+00:00:31,700 --> 00:00:33,490
+well as their values.
+
+14
+00:00:33,490 --> 00:00:36,230
+For example, if I want to
+retrieve those documents where
+
+15
+00:00:36,230 --> 00:00:40,850
+the field profession exists, I
+can say db.people.find and
+
+16
+00:00:40,850 --> 00:00:42,740
+then the argument is a document
+having the field
+
+17
+00:00:42,740 --> 00:00:44,710
+"profession," whose
+corresponding value is an
+
+18
+00:00:44,710 --> 00:00:47,680
+embedded document having the
+field $exists with a
+
+19
+00:00:47,680 --> 00:00:49,290
+corresponding value of true.
+
+20
+00:00:49,290 --> 00:00:51,780
+And this will return just
+"Smith" and "Jones," who have
+
+21
+00:00:51,780 --> 00:00:52,870
+a profession.
+
+22
+00:00:52,870 --> 00:00:55,590
+By contrast, I can invert the
+query and ask for only those
+
+23
+00:00:55,590 --> 00:00:58,450
+documents where the profession
+field does not exist, and that
+
+24
+00:00:58,450 --> 00:01:00,510
+gets me the other half dozen.
+
+25
+00:01:00,510 --> 00:01:03,430
+Next, I can ask for documents
+based on the type of a
+
+26
+00:01:03,430 --> 00:01:04,780
+particular field.
+
+27
+00:01:04,780 --> 00:01:07,410
+For example, if I want to get
+only those documents where the
+
+28
+00:01:07,410 --> 00:01:12,110
+name field is a string, I can
+specify db.people.find, then
+
+29
+00:01:12,110 --> 00:01:12,810
+an argument--
+
+30
+00:01:12,810 --> 00:01:15,180
+that's a document having the
+field name having the
+
+31
+00:01:15,180 --> 00:01:17,940
+corresponding value that's an
+embedded document with the
+
+32
+00:01:17,940 --> 00:01:20,980
+operator types-- a and then the
+types, unfortunately, are
+
+33
+00:01:20,980 --> 00:01:23,730
+specified as numbers, and the
+numbers are the corresponding
+
+34
+00:01:23,730 --> 00:01:26,140
+type values out of the
+BSON specification.
+
+35
+00:01:26,140 --> 00:01:29,240
+Take at BSONspec.org in the
+specification to find the
+
+36
+00:01:29,240 --> 00:01:32,150
+numeric encoding of the
+different types in BSON.
+
+37
+00:01:32,150 --> 00:01:35,940
+As it happens, they type for
+string is type 2, and this
+
+38
+00:01:35,940 --> 00:01:37,810
+gets me those documents
+where the name field
+
+39
+00:01:37,810 --> 00:01:39,440
+has a string value.
+
+40
+00:01:39,440 --> 00:01:41,790
+Finally for this section, there
+are more complicated
+
+41
+00:01:41,790 --> 00:01:43,730
+sorts of queries that you
+might want to perform on
+
+42
+00:01:43,730 --> 00:01:47,210
+strings than just equality
+and inequality.
+
+43
+00:01:47,210 --> 00:01:49,080
+For example, people tend
+to like to look
+
+44
+00:01:49,080 --> 00:01:50,840
+for patterns in strings.
+
+45
+00:01:50,840 --> 00:01:53,900
+MondoDB supports querying for
+string patterns using a
+
+46
+00:01:53,900 --> 00:01:55,510
+regular expression library--
+
+47
+00:01:55,510 --> 00:01:57,960
+in particular, the Perl
+Compatible Regular Expression
+
+48
+00:01:57,960 --> 00:02:00,160
+Library, libpcre.
+
+49
+00:02:00,160 --> 00:02:02,040
+Now, I don't want to spend too
+much time going into the
+
+50
+00:02:02,040 --> 00:02:04,040
+details of regular expressions,
+I just want to
+
+51
+00:02:04,040 --> 00:02:05,710
+show you a couple of examples.
+
+52
+00:02:05,710 --> 00:02:09,300
+To query for those documents
+that have, say, the letter A
+
+53
+00:02:09,300 --> 00:02:11,910
+in them somewhere, you can
+specify the query that's on
+
+54
+00:02:11,910 --> 00:02:13,440
+the bottom of my terminal.
+
+55
+00:02:13,440 --> 00:02:17,810
+db.people.find and the
+corresponding value that's a
+
+56
+00:02:17,810 --> 00:02:20,300
+document having the field
+"name" whose value is an
+
+57
+00:02:20,300 --> 00:02:24,420
+embedded document with the
+operator $regex and then a
+
+58
+00:02:24,420 --> 00:02:26,440
+string that will be understood
+as a Perl-style regular
+
+59
+00:02:26,440 --> 00:02:27,410
+expression.
+
+60
+00:02:27,410 --> 00:02:30,495
+And as it happens, Charlie and
+Dave and Edgar all have the
+
+61
+00:02:30,495 --> 00:02:32,340
+letter A somewhere
+in their name.
+
+62
+00:02:32,340 --> 00:02:34,720
+If I want to be more
+complicated, I could ask for
+
+63
+00:02:34,720 --> 00:02:38,360
+all those documents where the
+field name ends with the
+
+64
+00:02:38,360 --> 00:02:41,280
+letter E, and the regular
+expression for that is the
+
+65
+00:02:41,280 --> 00:02:42,500
+string consisting
+of the letter E
+
+66
+00:02:42,500 --> 00:02:44,140
+followed by a dollar sign.
+
+67
+00:02:44,140 --> 00:02:46,610
+And there's "Alice," and
+"Charlie," and "Dave."
+
+68
+00:02:46,610 --> 00:02:48,740
+Now, we'll talk more about
+regular expressions in a later
+
+69
+00:02:48,740 --> 00:02:50,660
+week when we talk about
+performance optimization.
+
+70
+00:02:50,660 --> 00:02:53,650
+As it turns out, regular
+expressions tend not to be as
+
+71
+00:02:53,650 --> 00:02:57,520
+optimizable as far as the query
+processing goes as more
+
+72
+00:02:57,520 --> 00:02:59,210
+simple string inequalities.
+
+73
+00:02:59,210 --> 00:03:01,540
+However, a special case of
+regular expressions that can
+
+74
+00:03:01,540 --> 00:03:04,820
+be efficiently optimized are
+those that start with a
+
+75
+00:03:04,820 --> 00:03:07,580
+carrot, which means that the
+regular expression must begin
+
+76
+00:03:07,580 --> 00:03:09,280
+with whatever follows.
+
+77
+00:03:09,280 --> 00:03:11,990
+And then after the carrot
+contain non-wild card
+
+78
+00:03:11,990 --> 00:03:14,500
+characters, or literal
+characters, such as letters
+
+79
+00:03:14,500 --> 00:03:15,520
+and numbers.
+
+80
+00:03:15,520 --> 00:03:18,130
+So for example, the regular
+expression at the bottom of my
+
+81
+00:03:18,130 --> 00:03:21,240
+screen says that the name
+field must start with a
+
+82
+00:03:21,240 --> 00:03:24,040
+capital letter A. We'll see in
+a subsequent week that this
+
+83
+00:03:24,040 --> 00:03:27,800
+can be mechanically translated
+into a range query up from A
+
+84
+00:03:27,800 --> 00:03:31,010
+up to but not including B. And
+indeed, this is what MongoDB
+
+85
+00:03:31,010 --> 00:03:32,050
+does internally.
+
+86
+00:03:32,050 --> 00:03:35,245
+In any case, those were three
+new operators to go along with
+
+87
+00:03:35,245 --> 00:03:37,600
+the inequality operators that
+we've already learned.
+
+88
+00:03:37,600 --> 00:03:40,970
+$exists asks whether a field
+happens to exist inside of a
+
+89
+00:03:40,970 --> 00:03:45,070
+document, $type checks whether
+a field has a particular type
+
+90
+00:03:45,070 --> 00:03:49,400
+value, and $regex allows you
+to do complicated string
+
+91
+00:03:49,400 --> 00:03:52,290
+pattern matching inside
+of fields.
+
+92
+00:03:52,290 --> 00:03:52,600
+All right.
+
+93
+00:03:52,600 --> 00:03:54,155
+Let's have a quick quiz.
+
+94
+00:03:54,155 --> 00:03:56,820
+Write a query that retrieves
+documents from a collection
+
+95
+00:03:56,820 --> 00:04:00,000
+called "users" where the user
+name has the letter Q in it
+
+96
+00:04:00,000 --> 00:04:01,840
+and the document has
+an email field.
+
+97
+00:04:01,840 --> 00:04:03,090
