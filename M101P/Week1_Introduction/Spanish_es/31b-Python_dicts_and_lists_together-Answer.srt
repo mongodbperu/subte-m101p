@@ -12,7 +12,7 @@ Y aquí está la respuesta.
 
 4
 00:00:05,930 --> 00:00:08,580
-su valor que es una lista,
+su valor, que es una lista,
 "dog", "cat", "zebra".
 
 5
