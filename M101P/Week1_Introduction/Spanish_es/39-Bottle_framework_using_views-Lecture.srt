@@ -1,0 +1,724 @@
+1
+00:00:00,000 --> 00:00:00,120
+
+2
+00:00:00,120 --> 00:00:03,150
+Muchos programas que interactúan
+con usuarios usan un patrón
+
+3
+00:00:03,150 --> 00:00:06,050
+de diseño llamado
+Modelo-Vista-Controlador.
+
+4
+00:00:06,050 --> 00:00:09,070
+Bajo el patrón Modelo-Vista-Controlador
+tu programa es construido
+
+5
+00:00:09,070 --> 00:00:11,570
+usando tres módulos básicos
+de funcionalidad.
+
+6
+00:00:11,570 --> 00:00:12,700
+Uno es el modelo.
+
+7
+00:00:12,700 --> 00:00:13,940
+Y el modelo mantiene el estado.
+
+8
+00:00:13,940 --> 00:00:18,250
+Y éste es donde estaría
+MongoDB.
+
+9
+00:00:18,250 --> 00:00:20,150
+Y luego tienes una vista.
+
+10
+00:00:20,150 --> 00:00:22,440
+Y la vista es lo que
+el usuario ve.
+
+11
+00:00:22,440 --> 00:00:24,620
+Y la vista es actualizada
+por el modelo.
+
+12
+00:00:24,620 --> 00:00:26,920
+Y después tienes un controlador,
+que toma la entrada
+
+13
+00:00:26,920 --> 00:00:29,690
+del usuario y manipula
+este modelo.
+
+14
+00:00:29,690 --> 00:00:33,170
+Por lo que podrías pensar que aquí
+va tu lógica de negocio.
+
+15
+00:00:33,170 --> 00:00:35,970
+Y siendo esto en su mayoría
+código para mostrar
+
+16
+00:00:35,970 --> 00:00:37,080
+información al usuario.
+
+17
+00:00:37,080 --> 00:00:39,410
+Y siendo esto código para
+manejar la entrada del usuario.
+
+18
+00:00:39,410 --> 00:00:42,690
+Así que Bottle tiene maneras de permitir
+el uso del
+
+19
+00:00:42,690 --> 00:00:44,200
+patrón de diseño
+Modelo-Vista-Controlador.
+
+20
+00:00:44,200 --> 00:00:45,470
+Así que, ¿cómo funcionaría?
+
+21
+00:00:45,470 --> 00:00:50,260
+Bien, en una página HTML, el 
+controlador es realmente el código.
+
+22
+00:00:50,260 --> 00:00:54,220
+Por ejemplo, justo aquí, ésta 
+es la página que se
+
+23
+00:00:54,220 --> 00:00:57,640
+implementará cuando alguien
+pida la URL "/".
+
+24
+00:00:57,640 --> 00:01:00,810
+Y no quieres mezclar código,
+que corresponde a tu modelo y
+
+25
+00:01:00,810 --> 00:01:05,000
+y controlador, con tu
+vista, que contiene la mayoría
+
+26
+00:01:05,000 --> 00:01:07,200
+de la información que tiene que ver
+con la salida y la visualización
+
+27
+00:01:07,200 --> 00:01:08,730
+de información para el usuario.
+
+28
+00:01:08,730 --> 00:01:10,920
+Por tanto, ¿cómo los separas 
+en Bottle?
+
+29
+00:01:10,920 --> 00:01:12,330
+Y la respuesta es que
+tienen el
+
+30
+00:01:12,330 --> 00:01:14,300
+concepto de plantilla.
+
+31
+00:01:14,300 --> 00:01:16,130
+Y una plantilla es una vista.
+
+32
+00:01:16,130 --> 00:01:19,520
+Así que aquí he cambiado este
+programa ligeramente para que
+
+33
+00:01:19,520 --> 00:01:22,360
+configuremos una pequeña lista llamada
+"mythings", que contiene "apple",
+
+34
+00:01:22,360 --> 00:01:24,020
+"orange", "banana" y
+"peach".
+
+35
+00:01:24,020 --> 00:01:26,630
+Y en lugar de devolver simplemente
+"Hello World",
+
+36
+00:01:26,630 --> 00:01:28,530
+voy a devolver una plantilla.
+
+37
+00:01:28,530 --> 00:01:31,470
+"bottle.template", y esa 
+plantilla se llama
+
+38
+00:01:31,470 --> 00:01:32,190
+"hello_world".
+
+39
+00:01:32,190 --> 00:01:33,230
+Ése es el nombre del fichero.
+
+40
+00:01:33,230 --> 00:01:35,390
+El fichero es "hello_world.tpl".
+
+41
+00:01:35,390 --> 00:01:38,040
+Y le estoy pasando algunos argumentos
+a la plantilla --
+
+42
+00:01:38,040 --> 00:01:42,910
+el "username" igual a "Andrew" y un
+valor "things" que va a
+
+43
+00:01:42,910 --> 00:01:47,480
+contener una referencia a
+esta lista llamada "mythings".
+
+44
+00:01:47,480 --> 00:01:49,030
+Veamos esta plantilla.
+
+45
+00:01:49,030 --> 00:01:54,350
+OK, pues este fichero "hello_world.tpl"
+tiene en su mayoría HTML.
+
+46
+00:01:54,350 --> 00:01:56,890
+Por lo que puedes ver aquí, es
+básicamente una página HTML.
+
+47
+00:01:56,890 --> 00:01:59,470
+"Doctype", "html", "title",
+"Hello World!"
+
+48
+00:01:59,470 --> 00:02:02,140
+Es simplemente un documento
+HTML estándar.
+
+49
+00:02:02,140 --> 00:02:04,890
+Pero tiene acceso a algunas
+variables que fueron establecidas
+
+50
+00:02:04,890 --> 00:02:06,100
+dentro del programa.
+
+51
+00:02:06,100 --> 00:02:09,600
+Así por ejemplo, puede decir
+"Welcome {{username}}", y
+
+52
+00:02:09,600 --> 00:02:11,850
+debería imprimir el nombre de usuario
+que se le pasó.
+
+53
+00:02:11,850 --> 00:02:14,210
+Ahora estas llaves 
+dobles son especiales.
+
+54
+00:02:14,210 --> 00:02:17,270
+Le dicen al procesador de plantillas
+que lo que aparece
+
+55
+00:02:17,270 --> 00:02:21,350
+entre ellas es una variable Python o
+algún tipo de expresión Python
+
+56
+00:02:21,350 --> 00:02:23,100
+que debería ser evaluada.
+
+57
+00:02:23,100 --> 00:02:26,300
+Y por eso realmente evalúa
+"username" y lo sustituye
+
+58
+00:02:26,300 --> 00:02:29,660
+por el valor del nombre de usuario cuando
+genera esta página HTML.
+
+59
+00:02:29,660 --> 00:02:31,840
+La otra cosa que podríamos
+querer hacer dentro de una de estas
+
+60
+00:02:31,840 --> 00:02:34,000
+plantillas es escribir un
+poco de código.
+
+61
+00:02:34,000 --> 00:02:36,640
+Por ejemplo, digamos que 
+quiero imprimir
+
+62
+00:02:36,640 --> 00:02:38,930
+esa lista de cosas
+en una lista con viñetas.
+
+63
+00:02:38,930 --> 00:02:43,220
+Bien, hago eso comenzando
+con la etiqueta HTML "<ul>",
+
+64
+00:02:43,220 --> 00:02:45,170
+que me dará
+una lista numerada.
+
+65
+00:02:45,170 --> 00:02:47,140
+Y luego la cierro con un "</ul>"
+
+66
+00:02:47,140 --> 00:02:48,790
+Ésa es la etiqueta de cierre del "ul".
+
+67
+00:02:48,790 --> 00:02:51,510
+Y en medio, quiero
+iterar por esta lista
+
+68
+00:02:51,510 --> 00:02:53,660
+de cosas que se pasaron 
+a esta plantilla.
+
+69
+00:02:53,660 --> 00:02:55,200
+Y para hacer eso, quiero
+escribir código
+
+70
+00:02:55,200 --> 00:02:56,480
+Python justo en mi plantilla.
+
+71
+00:02:56,480 --> 00:02:58,550
+Y el lenguaje de plantillas
+de Bottle tiene
+
+72
+00:02:58,550 --> 00:02:59,520
+funcionalidad para eso.
+
+73
+00:02:59,520 --> 00:03:03,090
+Si pones este signo de porcentaje en
+el primer carácter de la
+
+74
+00:03:03,090 --> 00:03:05,990
+línea, entonces sabe que lo que sigue
+es código que necesita
+
+75
+00:03:05,990 --> 00:03:07,120
+ser evaluado.
+
+76
+00:03:07,120 --> 00:03:10,680
+Por lo que va a evaluar, justo
+aquí, esto como código
+
+77
+00:03:10,680 --> 00:03:12,330
+Python "for thing in things".
+
+78
+00:03:12,330 --> 00:03:16,240
+Y luego esta siguiente línea es sólo
+una línea HTML normal, pero
+
+79
+00:03:16,240 --> 00:03:18,790
+con esa lógica especial
+para sustituir donde
+
+80
+00:03:18,790 --> 00:03:22,570
+aparece la variable "thing"
+por la cadena "thing" aquí.
+
+81
+00:03:22,570 --> 00:03:26,290
+Y por último, como esta
+plantilla HTML no
+
+82
+00:03:26,290 --> 00:03:30,180
+depende de la indentación para expresar
+sus bloques de control, la
+
+83
+00:03:30,180 --> 00:03:31,900
+forma en que Python lo hace, 
+necesitamos algo, un
+
+84
+00:03:31,900 --> 00:03:32,670
+ajuste, si quieres.
+
+85
+00:03:32,670 --> 00:03:35,400
+Y el ajuste es que mientras
+antes sólo tenías
+
+86
+00:03:35,400 --> 00:03:38,190
+esta expresión indentada y
+luego Python sabía que
+
+87
+00:03:38,190 --> 00:03:40,040
+esto era donde
+el bloque termina --
+
+88
+00:03:40,040 --> 00:03:44,830
+como esto no está indentado,
+tenemos que poner este "%end".
+
+89
+00:03:44,830 --> 00:03:47,380
+Y ĺo necesitarás por cada
+sentencia de control en
+
+90
+00:03:47,380 --> 00:03:49,520
+Python donde normalmente hay
+un sub-bloque
+
+91
+00:03:49,520 --> 00:03:50,770
+que debería ser indentado.
+
+92
+00:03:50,770 --> 00:03:52,170
+Esto es un montón para asimilar.
+
+93
+00:03:52,170 --> 00:03:54,120
+Pero realmente es bastante
+sencillo.
+
+94
+00:03:54,120 --> 00:03:57,090
+Lo que sea un fichero HTML, es 
+tu vista, es todo
+
+95
+00:03:57,090 --> 00:04:00,640
+tu HTML artesanal, con un
+poco de código Python
+
+96
+00:04:00,640 --> 00:04:05,100
+intercalado entre
+estas dos llaves justo
+
+97
+00:04:05,100 --> 00:04:08,490
+aquí o código Python que empieza
+con un carácter
+
+98
+00:04:08,490 --> 00:04:10,770
+porcentaje en la primera columna,
+que le dice al procesador de
+
+99
+00:04:10,770 --> 00:04:13,130
+plantillas que esto es
+realmente código Python.
+
+100
+00:04:13,130 --> 00:04:17,209
+De acuerdo, vayamos a nuestro
+servidor web, "localhost:8080".
+
+101
+00:04:17,209 --> 00:04:20,000
+Y cuando lo hagamos, obtendremos esta
+bonita página HTML.
+
+102
+00:04:20,000 --> 00:04:21,670
+Y podemos ver el código
+fuente de esa página.
+
+103
+00:04:21,670 --> 00:04:24,440
+Y puedes ver que este código
+es exactamente lo que está
+
+104
+00:04:24,440 --> 00:04:26,710
+en este fichero, pero con algunas
+sustituciones.
+
+105
+00:04:26,710 --> 00:04:29,900
+Por ejemplo, donde estaba este
+control de flujo, aquí con
+
+106
+00:04:29,900 --> 00:04:31,970
+este código Python, ahora
+tenemos esta lista
+
+107
+00:04:31,970 --> 00:04:33,640
+que se muestra justo aquí.
+
+108
+00:04:33,640 --> 00:04:36,000
+Y ves que puse cuidadosamente
+las etiquetas de inicio y de
+
+109
+00:04:36,000 --> 00:04:37,510
+cierre para cada elemento de la lista.
+
+110
+00:04:37,510 --> 00:04:40,280
+Y esto es simplemente HTML, nada
+especial sobre eso.
+
+111
+00:04:40,280 --> 00:04:42,420
+OK, hay otra cosa más que 
+podrías haber notado sobre
+
+112
+00:04:42,420 --> 00:04:43,110
+esta plantilla.
+
+113
+00:04:43,110 --> 00:04:45,110
+Y es que hay
+dos formas diferentes de
+
+114
+00:04:45,110 --> 00:04:46,690
+llamar a esta plantilla.
+
+115
+00:04:46,690 --> 00:04:50,760
+Una es que puedes llamarla con
+parámetros nombrados, como
+
+116
+00:04:50,760 --> 00:04:53,110
+"username" es "Andrew" y
+"thing" es "mythings",
+
+117
+00:04:53,110 --> 00:04:54,120
+que es esta lista.
+
+118
+00:04:54,120 --> 00:04:58,490
+O puedes llamarla con
+un diccionario justo aquí.
+
+119
+00:04:58,490 --> 00:04:59,370
+Es igualmente válido.
+
+120
+00:04:59,370 --> 00:05:00,310
+Te lo enseñaré.
+
+121
+00:05:00,310 --> 00:05:03,140
+Puedo comentar esta línea
+y usar esta línea en su lugar.
+
+122
+00:05:03,140 --> 00:05:05,290
+Cualquiera de estas estructuras
+funcionará.
+
+123
+00:05:05,290 --> 00:05:09,000
+Aquí tengo un diccionario con
+"username" igual a "Richard" y "things"
+
+124
+00:05:09,000 --> 00:05:11,590
+igual a "mythings" y eso producirá
+el mismo resultado, donde
+
+125
+00:05:11,590 --> 00:05:14,140
+podré usar las variables
+"username" y "things"
+
+126
+00:05:14,140 --> 00:05:15,860
+en mi plantilla.
+
+127
+00:05:15,860 --> 00:05:18,300
+Ahora la razón por la que estas dos
+formas son equivalentes es que
+
+128
+00:05:18,300 --> 00:05:21,780
+tras el escenario, Python siempre
+envía tus variables
+
+129
+00:05:21,780 --> 00:05:24,590
+dentro de la función
+como un diccionario.
+
+130
+00:05:24,590 --> 00:05:26,610
+Y si ejecutas esto,
+verás que
+
+131
+00:05:26,610 --> 00:05:28,170
+dice "Welcome Richard".
+
+132
+00:05:28,170 --> 00:05:29,510
+Veamos que es cierto.
+
+133
+00:05:29,510 --> 00:05:30,780
+Vamos allá.
+
+134
+00:05:30,780 --> 00:05:33,380
+Voy a reiniciar
+el servidor y
+
+135
+00:05:33,380 --> 00:05:36,380
+luego voy a mi programa.
+
+136
+00:05:36,380 --> 00:05:38,510
+Y ahora dice "Welcome
+Richard" con
+
+137
+00:05:38,510 --> 00:05:40,060
+exactamente la misma salida.
+
+138
+00:05:40,060 --> 00:05:42,900
+Otro pequeño detalle que es
+muy importante es que
+
+139
+00:05:42,900 --> 00:05:45,490
+no te mostré esto, pero
+necesitas poner tus plantillas
+
+140
+00:05:45,490 --> 00:05:49,580
+en un diccionario llamado "views",
+que es justo un
+
+141
+00:05:49,580 --> 00:05:52,090
+subdirectorio del directorio
+en el que se ejecuta tu programa.
+
+142
+00:05:52,090 --> 00:05:55,990
+Por lo que "python hello_world.py", que
+inicia mi servidor WSGI,
+
+143
+00:05:55,990 --> 00:05:58,050
+y mi servidor web
+basado en Bottle.
+
+144
+00:05:58,050 --> 00:06:00,180
+Y entonces esas plantillas
+se supone que están en
+
+145
+00:06:00,180 --> 00:06:01,450
+un subdirectorio llamado "views".
+
+146
+00:06:01,450 --> 00:06:03,990
+Y tengo un conjunto de vistas,
+incluyendo algunas
+
+147
+00:06:03,990 --> 00:06:05,110
+del proyecto de blogging.
+
+148
+00:06:05,110 --> 00:06:07,500
+Y alguna de estas otras cosas
+que ves es que realmente usé
+
+149
+00:06:07,500 --> 00:06:10,080
+Dropbox, y algunas de estas
+cosas son copias en conflicto
+
+150
+00:06:10,080 --> 00:06:11,970
+de las copias que he
+estado moviendo.
+
+151
+00:06:11,970 --> 00:06:15,660
+Bien, pues así es como se
+usan las plantillas en Python
+
+152
+00:06:15,660 --> 00:06:17,910
+y Bottle para ajustarse a este
+
+153
+00:06:17,910 --> 00:06:19,450
+paradigma Modelo-Vista-Controlador.
+
+154
+00:06:19,450 --> 00:06:20,700
