@@ -3,399 +3,403 @@
 
 2
 00:00:00,160 --> 00:00:01,870
-OK, let's go a little bit
-further into the query
+OK, entremos un poco más en
+detalle respecto a las
 
 3
 00:00:01,870 --> 00:00:03,370
-facilities.
+facultades de las consultas.
 
 4
 00:00:03,370 --> 00:00:05,710
-We've already seen how to query
-for specific values of
+Ya hemos visto cómo hacer consultas
+usando valores específicos de
 
 5
 00:00:05,710 --> 00:00:09,560
-given fields, such as student
-19 and type essay, but you
+ciertos campos, como "student"
+"19" y "type" "essay", pero
 
 6
 00:00:09,560 --> 00:00:11,810
-need to do a little bit more in
-order to construct the most
+necesitas poder hacer un poco más
+para poder construir la mayoría
 
 7
 00:00:11,810 --> 00:00:13,200
-practical applications.
+de aplicaciones prácticas.
 
 8
 00:00:13,200 --> 00:00:16,050
-What we've done so far we
-typically call query by
+Lo que hemos hecho hasta ahora
+lo llamamos hacer consultas por
 
 9
 00:00:16,050 --> 00:00:19,240
-example queries, where you give
-an example of the fields
+consultas ejemplares, donde 
+usas un ejemplo de los campos
 
 10
 00:00:19,240 --> 00:00:20,355
-that you want to see
-in the documents
+que quieres ver en
+los documentos
 
 11
 00:00:20,355 --> 00:00:21,820
-that you want to retrieve.
+que deseas recuperar.
 
 12
 00:00:21,820 --> 00:00:25,130
-For instance, student
-19 and type essay.
+Por ejemplo, "student" "19"
+y "type" "essay".
 
 13
 00:00:25,130 --> 00:00:27,550
-But many kinds of queries need
-to go a little bit further
+Pero muchos tipos de consultas
+necesitan algo más que
 
 14
 00:00:27,550 --> 00:00:29,050
-than constant values.
+valores constantes.
 
 15
 00:00:29,050 --> 00:00:31,480
-For example, if I wanted to
-get all queries where the
+Por ejemplo, si yo quiero recuperar
+todas las consultas donde el
 
 16
 00:00:31,480 --> 00:00:36,140
-score was greater than, say, 95,
-I can do so in MongoDB by
+"score" fue más que, digamos "95",
+puedo hacerlo en MongoDB usando
 
 17
 00:00:36,140 --> 00:00:38,190
-means of query operators.
+los operadores de consulta.
 
 18
 00:00:38,190 --> 00:00:40,370
-To perform a query, again, we
-start with the same kind of
+Para hacer una consulta, una
+vez más, empezamos con la misma
 
 19
 00:00:40,370 --> 00:00:41,730
-syntax that we've used before.
+sintaxis que hemos utilizado antes.
 
 20
 00:00:41,730 --> 00:00:44,210
-The database handle dot
-the collection name
+El identificador de la base de datos,
+punto, el nombre de la colección,
 
 21
 00:00:44,210 --> 00:00:45,920
-dot the find method.
+punto, el método "find".
 
 22
 00:00:45,920 --> 00:00:47,400
-And the first argument
-to find, again,
+Y el primer argumento de
+"find", una vez más,
 
 23
 00:00:47,400 --> 00:00:48,910
-is the where clause.
+es la cláusula WHERE.
 
 24
 00:00:48,910 --> 00:00:52,160
-In this case, if I want to give
-an inequality comparison
+En este caso, si quiero pasarle
+una comparación de desigualdad 
 
 25
 00:00:52,160 --> 00:00:55,070
-for a particular field, such
-as score, I can do so by
+para un campo en particular,
+tipo "score", puedo hacerlo 
 
 26
 00:00:55,070 --> 00:00:58,500
-specifying the field name, and
-its corresponding value in
+especificando el nombre del
+campo y el valor correspondiente
 
 27
 00:00:58,500 --> 00:01:02,030
-this first argument to find will
-be a sub document having
+en este primer argumento de "find"
+va a ser un sub-documento conteniendo
 
 28
 00:01:02,030 --> 00:01:04,599
-as its corresponding
-field an operator.
+como su valor correspondiente,
+un operador.
 
 29
 00:01:04,599 --> 00:01:09,050
-In this case dollar, gt, and
-some argument to the operator.
+En este caso, dólar, "gt" y
+algún argumento para el operador.
 
 30
 00:01:09,050 --> 00:01:12,380
-Closing off the document and
-going back to re-read this,
+Cerramos el documento y retornamos
+para volver a leer esto,
 
 31
 00:01:12,380 --> 00:01:14,320
-what this says is that
-the score should be
+lo que dice esto es que
+el "score" debería ser
 
 32
 00:01:14,320 --> 00:01:16,020
-greater than 95.
+mayor a 95.
 
 33
 00:01:16,020 --> 00:01:19,240
-This is our first departure from
-query by a constant value
+Esta es nuestra primera experiencia
+con consultas no usando valores
 
 34
 00:01:19,240 --> 00:01:20,810
-on a field such as score.
+constantes en campos tipo "score".
 
 35
 00:01:20,810 --> 00:01:23,180
-In this case, we're doing an
-inequality comparison for the
+En este caso, estamos haciendo una
+comparación de desigualdad para el
 
 36
 00:01:23,180 --> 00:01:24,750
-field score.
+campo "score".
 
 37
 00:01:24,750 --> 00:01:27,280
-And we get back a number of
-documents, and it looks on the
+Y recibimos un número de
+documentos y al parecer en el
 
 38
 00:01:27,280 --> 00:01:29,800
-right hand side as if
-these values are all
+lado derecho es como si
+estos valores son todos
 
 39
 00:01:29,800 --> 00:01:30,880
-greater than 95.
+mayores a "95".
 
 40
 00:01:30,880 --> 00:01:37,970
-I see a 96, a 98, a 97, another
-97, 99, and so forth.
+Veo un "96", un "98", un "97",
+otro "97", "99", etc.
 
 41
 00:01:37,970 --> 00:01:40,550
-Again, the query looks like
-what's at the bottom of my
+Una vez más, la consulta se
+parece a lo que tengo en mi
 
 42
 00:01:40,550 --> 00:01:41,650
-terminal window.
+ventana del terminal.
 
 43
 00:01:41,650 --> 00:01:44,720
-The field name, such as score,
-and then a corresponding
+El nombre del campo, tipo "score"
+y de ahí un valor correspondiente
 
 44
 00:01:44,720 --> 00:01:47,860
-value, which is an embedded
-document having an operator,
+que es un documento embebido
+conteniendo un operador,
 
 45
 00:01:47,860 --> 00:01:50,930
-in this case dollar
-gt, and 95.
+en este caso dólar
+"gt" y "95".
 
 46
 00:01:50,930 --> 00:01:53,840
-I can go further and add another
-field to the query,
+Puedo ir más allá y agregar
+otro campo a la consulta,
 
 47
 00:01:53,840 --> 00:01:58,820
-for example, score 95 and type
-essay, in which case I will
+por ejemplo, "score" "95" y
+"type" "essay", en cuyo caso
 
 48
 00:01:58,820 --> 00:02:01,840
-only get results where the type
-is essay and the score is
+sólo recibiría resultados donde
+"type" es "essay" y "score" es
 
 49
 00:02:01,840 --> 00:02:03,030
-greater than 95.
+mayor a "95".
 
 50
 00:02:03,030 --> 00:02:04,630
-Again, to show that at
-the bottom of my
+Una vez más, veamos esto en
+la parte inferior de mi
 
 51
 00:02:04,630 --> 00:02:06,750
-terminal, there it is.
+terminal, ahí está.
 
 52
 00:02:06,750 --> 00:02:10,009
-Now, you can put multiple
-constraints on the same field.
+Ahora, puedes poner múltiples
+restricciones para el mismo campo.
 
 53
 00:02:10,009 --> 00:02:13,410
-For example, if I want scores
-that are greater than 95 and
+Por ejemplo, si quiero valores de
+"score" que son mayores a "95" y
 
 54
 00:02:13,410 --> 00:02:15,720
-less than or equal to 98.
+menores o iguales a 98,
 
 55
 00:02:15,720 --> 00:02:18,200
-I specify it as it is at
-the bottom my screen.
+lo especifico así como lo ves en
+la parte inferior de mi pantalla. 
 
 56
 00:02:18,200 --> 00:02:22,050
-That is, score has as its
-corresponding value inside of
+Es decir, "score" tiene como
+valor correspondiente dentro de
 
 57
 00:02:22,050 --> 00:02:25,890
-this query document, a nested
-document with the fields
+este documento de consulta, un
+documento embebido con los campos
 
 58
 00:02:25,890 --> 00:02:29,870
-dollar gt and dollar lte
-with the respective
+dólar "gt" y dólar "lte"
+con los respectivos
 
 59
 00:02:29,870 --> 00:02:32,430
-values 95 and 98.
+valores "95" y "98"
 
 60
 00:02:32,430 --> 00:02:35,390
-And the meaning of this peculiar
-looking construct is
+Y el significado de esta
+construcción peculiar es
 
 61
 00:02:35,390 --> 00:02:38,600
-that the score should be
-strictly greater than 95, and
+que "score" debe ser
+estrictamente mayor a "95"
 
 62
 00:02:38,600 --> 00:02:40,620
-less than or equal to 98.
+y menor o igual a "98".
 
 63
 00:02:40,620 --> 00:02:42,960
-And additionally, the type
-should be essay.
+Y, adicionalmente, "type"
+debe ser "essay".
 
 64
 00:02:42,960 --> 00:02:43,930
-And it looks good.
+Y se ven bien.
 
 65
 00:02:43,930 --> 00:02:46,660
-The results on the screen, at
-least, suggest that I'm seeing
+Los resultados en la pantalla,
+por lo menos, sugieren que estoy
 
 66
 00:02:46,660 --> 00:02:49,320
-results from 96 up to 98.
+viendo resultados desde "96"
+hasta "98".
 
 67
 00:02:49,320 --> 00:02:52,570
-This is our first example of a
-query operator in the MongoDB
+Este es nuestro primer ejemplo
+de un operador de consulta en 
 
 68
 00:02:52,570 --> 00:02:53,690
-query language.
+el lenguaje de consulta
+de MongoDB.
 
 69
 00:02:53,690 --> 00:02:56,000
-Well, I suppose the first
-two examples, dollar
+Bueno, supongo que los
+primeros dos ejemplos,
 
 70
 00:02:56,000 --> 00:02:58,060
-gt and dollar lte.
+dólar "gt" y dólar "lte".
 
 71
 00:02:58,060 --> 00:03:01,680
-Unsurprisingly, we have dollar
-gte operator, which means
+No es sorpresa que tengamos el
+operador dólar "gte", el cual 
+
 
 72
 00:03:01,680 --> 00:03:04,620
-greater than or equal, and a
-dollar lt operator, which
+significa mayor o igual a, y
+el operador dólar "lt", el cual
 
 73
 00:03:04,620 --> 00:03:06,570
-means strictly less than.
+significa estrictamente
+menor a.
 
 74
 00:03:06,570 --> 00:03:10,550
-And again, just as a reminder,
-the two fields score and type
+Y una vez más, como recordatorio,
+los dos campos "score" y "type"
 
 75
 00:03:10,550 --> 00:03:13,550
-occurring at the top level of
-this query document have the
+ocurren al nivel más alto de
+este documento de consulta,
 
 76
 00:03:13,550 --> 00:03:17,160
-meaning that both the score must
-match on its criteria,
+lo que significa que tanto "score"
+como "type" deben ser igualados
 
 77
 00:03:17,160 --> 00:03:19,360
-and the type must match
-on its criteria.
+por los resultados de acuerdo
+a sus respectivos criterios.
 
 78
 00:03:19,360 --> 00:03:23,450
-So this is equivalent to the
-logical end of score being in
+Entonces esto es equivalente al
+resultado lógico de "score"
 
 79
 00:03:23,450 --> 00:03:26,910
-the range up from 95 up to
-but not including 98.
+estando en el rango desde 95
+pero no incluyendo 98.
 
 80
 00:03:26,910 --> 00:03:29,130
-And the type must be
-equal to essay.
+Y el tipo debe ser
+igual a "essay"
 
 81
 00:03:29,130 --> 00:03:30,890
-And it looks good.
+Y se ve bien.
 
 82
 00:03:30,890 --> 00:03:33,450
-There are a number of more query
-operators in the MongoDB
+Hay un número de operadores de
+consulta en el lenguaje de consulta
 
 83
 00:03:33,450 --> 00:03:36,990
-query language, some of which
-we'll be visiting as we go.
+de MongoDB, algunos de los cuales
+iremos visitando mientras avanzamos.
 
 84
 00:03:36,990 --> 00:03:38,740
-OK, let's have a quiz.
+OK, hagamos un cuestionario.
 
 85
 00:03:38,740 --> 00:03:40,700
-Which of these finds documents
-with a score
+¿Cuál de éstos encuentra
+documentos con un "score"
 
 86
 00:03:40,700 --> 00:03:43,630
-between 50 and 60 inclusive?
+entre "50" y "60", inclusive?
