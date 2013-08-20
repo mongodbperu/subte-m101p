@@ -1,0 +1,365 @@
+1
+00:00:00,000 --> 00:00:00,130
+
+2
+00:00:00,130 --> 00:00:01,730
+Muy bien, ahora vamos
+a ir sobre la forma en que los bucles
+
+3
+00:00:01,730 --> 00:00:03,160
+"for" funcionan en Python.
+
+4
+00:00:03,160 --> 00:00:05,600
+Los bucles "for" son una
+estructura de control de flujo
+
+5
+00:00:05,600 --> 00:00:07,110
+que está en muchos lenguajes.
+
+6
+00:00:07,110 --> 00:00:09,730
+Y estoy seguro que estás familiarizado
+con bucles "for" si has usado
+
+7
+00:00:09,730 --> 00:00:11,630
+Java o C o C++.
+
+8
+00:00:11,630 --> 00:00:13,680
+Sólo vamos a ver cómo
+funcionan en Python.
+
+9
+00:00:13,680 --> 00:00:17,450
+Para ello, vamos a hacer un
+cambio, editaremos un archivo
+
+10
+00:00:17,450 --> 00:00:20,175
+en lugar de usar el intérprete
+Python
+
+11
+00:00:20,175 --> 00:00:21,160
+desde la línea de comandos.
+
+12
+00:00:21,160 --> 00:00:23,360
+Porque deseo mostrarte
+algunas cosas sobre eso.
+
+13
+00:00:23,360 --> 00:00:27,530
+Así que tenemos aquí una lista
+de frutas que he inicializado con
+
+14
+00:00:27,530 --> 00:00:29,030
+"apple", "orange" y "grape".
+
+15
+00:00:29,030 --> 00:00:31,960
+Y hay un comentario aquí,
+comenzando con un numeral (#), para
+
+16
+00:00:31,960 --> 00:00:33,580
+inicializar el array.
+
+17
+00:00:33,580 --> 00:00:36,490
+Luego tenemos un segundo array,
+"new_fruit", una segunda
+
+18
+00:00:36,490 --> 00:00:39,410
+lista que ha sido inicializada
+como vacía.
+
+19
+00:00:39,410 --> 00:00:41,210
+Y luego aquí está el bucle
+"for", justo aquí.
+
+20
+00:00:41,210 --> 00:00:43,275
+"for item in fruit", dos puntos.
+
+21
+00:00:43,275 --> 00:00:45,420
+Ahora, "item" es un nombre
+de variable que escogí.
+
+22
+00:00:45,420 --> 00:00:47,690
+Esto no ha sido declarado
+antes porque no necesito
+
+23
+00:00:47,690 --> 00:00:49,420
+declarar nada
+en Python.
+
+24
+00:00:49,420 --> 00:00:50,670
+Todo es dinámico.
+
+25
+00:00:50,670 --> 00:00:53,030
+Y dentro de este bucle,
+puedes ver, que es importante que le
+
+26
+00:00:53,030 --> 00:00:55,680
+demos sangría porque el flujo
+de control es aplicado a través
+
+27
+00:00:55,680 --> 00:00:57,255
+de la sangría en Python.
+
+28
+00:00:57,255 --> 00:01:01,020
+Y he dado sangría aquí e
+impreso cada elemento mientras lo encontraba
+
+29
+00:01:01,020 --> 00:01:01,700
+en la lista.
+
+30
+00:01:01,700 --> 00:01:03,950
+Así que espera imprimir
+"apple", "orange" y "grape".
+
+31
+00:01:03,950 --> 00:01:07,810
+Y entonces también
+añado el elemento a
+
+32
+00:01:07,810 --> 00:01:08,880
+la lista "new_fruit".
+
+33
+00:01:08,880 --> 00:01:10,760
+Así "new_fruit.append" "item".
+
+34
+00:01:10,760 --> 00:01:13,230
+Y luego, al final, acabo 
+imprimiendo "new_fruit", que depende
+
+35
+00:01:13,230 --> 00:01:16,340
+de la capacidad de Python para imprimir
+listas y diccionarios
+
+36
+00:01:16,340 --> 00:01:18,425
+sin, en realidad,
+cualquier tipo de asistencia.
+
+37
+00:01:18,425 --> 00:01:20,540
+Ahora te darás cuenta que hay
+algunos resaltados
+
+38
+00:01:20,540 --> 00:01:21,430
+de sintaxis aquí.
+
+39
+00:01:21,430 --> 00:01:23,680
+Y esto es Emacs que se ejecuta
+en modo Python.
+
+40
+00:01:23,680 --> 00:01:25,870
+Definitivamente, me gustaría
+sugerir que uses algún tipo de
+
+41
+00:01:25,870 --> 00:01:27,380
+editor que pueda hacer resaltado
+
+42
+00:01:27,380 --> 00:01:29,030
+de sintaxis, y la mayoría pueden.
+
+43
+00:01:29,030 --> 00:01:30,970
+Esto hace que sea mucho más fácil
+encontrar errores.
+
+44
+00:01:30,970 --> 00:01:32,950
+Vas a notar también que hay
+una línea extra aquí.
+
+45
+00:01:32,950 --> 00:01:36,290
+Eso no va a impactar en
+la ejecución del bucle.
+
+46
+00:01:36,290 --> 00:01:39,090
+Esto está dentro del cuerpo del bucle
+porque está con sangría en el
+
+47
+00:01:39,090 --> 00:01:40,890
+mismo nivel de la sentencia del
+procedimiento.
+
+48
+00:01:40,890 --> 00:01:42,330
+Muy bien, así que vamos
+a ver qué ocurre
+
+49
+00:01:42,330 --> 00:01:43,360
+cuando ejecutamos esto.
+
+50
+00:01:43,360 --> 00:01:45,450
+Bueno, voy a ejecutarlo
+escribiendo "python
+
+51
+00:01:45,450 --> 00:01:47,330
+for_loops.py".
+
+52
+00:01:47,330 --> 00:01:49,300
+Y hace más o menos
+lo que esperamos--
+
+53
+00:01:49,300 --> 00:01:53,420
+imprime "apple", "orange", "grape",
+y luego imprime la lista
+
+54
+00:01:53,420 --> 00:01:55,240
+"new_fruit", que es
+"apple", "orange", "grape".
+
+55
+00:01:55,240 --> 00:01:56,420
+Así que eso es genial.
+
+56
+00:01:56,420 --> 00:02:00,620
+Cambiemos esto para que
+"new_fruit" no tenga sangría.
+
+57
+00:02:00,620 --> 00:02:01,930
+Veamos qué ocurre.
+
+58
+00:02:01,930 --> 00:02:04,740
+Guardémoslo, que, en Emacs,
+es Crtl-X, Crtl-S. Luego
+
+59
+00:02:04,740 --> 00:02:07,130
+voy a volver
+aquí y ejecutarlo.
+
+60
+00:02:07,130 --> 00:02:10,590
+Y ahora, sigo obteniendo "apple",
+"orange", "grape", pero luego, cuando
+
+61
+00:02:10,590 --> 00:02:12,350
+imprimo "new_fruit",
+sólo obtengo "grape".
+
+62
+00:02:12,350 --> 00:02:13,640
+Entonces, ¿qué ocurre allí?
+
+63
+00:02:13,640 --> 00:02:16,740
+Y lo que sucedió allí es que
+en lugar de tener este
+
+64
+00:02:16,740 --> 00:02:19,850
+"append" ejecutando todo el tiempo
+en el cuerpo del bucle, es
+
+65
+00:02:19,850 --> 00:02:23,460
+sólo ejecutado una vez con
+el valor final que "item" toma
+
+66
+00:02:23,460 --> 00:02:24,770
+cuando el buble "for" termina.
+
+67
+00:02:24,770 --> 00:02:27,100
+Por eso imprime algo
+que tiene un
+
+68
+00:02:27,100 --> 00:02:28,680
+elemento en lugar de tres.
+
+69
+00:02:28,680 --> 00:02:31,650
+Así que de nuevo, en Python es
+probablemente más inusual
+
+70
+00:02:31,650 --> 00:02:34,870
+si has usado Java, C
+o C++, es que en realidad las
+
+71
+00:02:34,870 --> 00:02:36,260
+sangrías importan.
+
+72
+00:02:36,260 --> 00:02:39,060
+Esto indica al intérprete
+de Python si algo es
+
+73
+00:02:39,060 --> 00:02:40,980
+parte o no del bloque
+del procedimiento o si
+
+74
+00:02:40,980 --> 00:02:42,750
+está o no en su propio bloque.
+
+75
+00:02:42,750 --> 00:02:45,240
+Muy bien, ahora que sabes acerca de
+los bucles "for", me gustaría que
+
+76
+00:02:45,240 --> 00:02:48,880
+me dijeras lo que este
+código imprime.
+
+77
+00:02:48,880 --> 00:02:50,640
+Y ponerlo justo aquí.
+
+78
+00:02:50,640 --> 00:02:52,250
+Escribe lo que imprime
+aquí.
+
+79
+00:02:52,250 --> 00:02:53,500
