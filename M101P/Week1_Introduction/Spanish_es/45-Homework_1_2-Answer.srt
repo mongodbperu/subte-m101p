@@ -21,7 +21,7 @@ Y el programa es
 
 6
 00:00:10,220 --> 00:00:12,070
-Ejecutémolo juntos --
+Ejecutémoslo juntos --
 
 7
 00:00:12,070 --> 00:00:13,320
