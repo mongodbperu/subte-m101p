@@ -1,0 +1,254 @@
+1
+00:00:00,000 --> 00:00:00,150
+
+2
+00:00:00,150 --> 00:00:02,290
+En esta primera tarea, vamos
+a instalar
+
+3
+00:00:02,290 --> 00:00:05,790
+MongoDB tal y como vimos
+en la lección.
+
+4
+00:00:05,790 --> 00:00:09,540
+Vas a instalarlo en
+un PC o Mac dependiendo de
+
+5
+00:00:09,540 --> 00:00:11,060
+qué estés usando en casa.
+
+6
+00:00:11,060 --> 00:00:14,440
+Y vamos a tener que usar
+el comando "mongorestore" para
+
+7
+00:00:14,440 --> 00:00:18,230
+cargar la base de datos con algunos
+ficheros que han sido exportados
+
+8
+00:00:18,230 --> 00:00:20,840
+previamente usando "mongodump".
+
+9
+00:00:20,840 --> 00:00:23,440
+Y también vamos a
+conectarnos a la
+
+10
+00:00:23,440 --> 00:00:28,830
+base de datos con el shell y
+usaremos el comando "findOne" para
+
+11
+00:00:28,830 --> 00:00:32,340
+localizar un documento en
+la colección.
+
+12
+00:00:32,340 --> 00:00:34,070
+Hablemos un poco
+sobre este
+
+13
+00:00:34,070 --> 00:00:35,870
+comando "mongorestore".
+
+14
+00:00:35,870 --> 00:00:39,680
+La mayoría de las bases de datos tienen una forma
+para recuperar y restaurar los datos en la
+
+15
+00:00:39,680 --> 00:00:43,220
+base de datos, y MongoDB
+no es diferente.
+
+16
+00:00:43,220 --> 00:00:47,460
+Y tiene un comando "mongodump" y un
+comando "mongorestore" que
+
+17
+00:00:47,460 --> 00:00:50,320
+puedes usar para recuperar e insertar los datos
+en la base de datos.
+
+18
+00:00:50,320 --> 00:00:53,420
+Hemos creado algunas colecciones
+y usado "mongodump" para volcarlos,
+
+19
+00:00:53,420 --> 00:00:56,340
+y vas a 
+usar "mongorestore" para
+
+20
+00:00:56,340 --> 00:00:57,775
+volverlos a cargar.
+
+21
+00:00:57,775 --> 00:01:02,060
+Para contectarse con el shell Mongo
+se requiere que
+
+22
+00:01:02,060 --> 00:01:05,990
+tengas Mongo instalado y en 
+ejecución, por supuesto.
+
+23
+00:01:05,990 --> 00:01:08,930
+Vas a usar la colección
+"m101", que va a ser
+
+24
+00:01:08,930 --> 00:01:11,560
+restaurada por el comando
+"mongorestore".
+
+25
+00:01:11,560 --> 00:01:14,635
+Y finalmente, ejecutarás el comando
+"findOne" en el shell Mongo
+
+26
+00:01:14,635 --> 00:01:20,560
+"db.homework.findOne()" para encontrar
+el elemento de datos que necesitas para
+
+27
+00:01:20,560 --> 00:01:22,000
+responder al cuestionario.
+
+28
+00:01:22,000 --> 00:01:24,630
+De acuerdo, veamos
+cómo es.
+
+29
+00:01:24,630 --> 00:01:28,140
+Voy a hacerlo justo aquí,
+para que puedas ver cómo
+
+30
+00:01:28,140 --> 00:01:28,765
+es en un Mac.
+
+31
+00:01:28,765 --> 00:01:32,170
+Voy a hacer "tar -xvf
+homework1.tar".
+
+32
+00:01:32,170 --> 00:01:32,890
+Ya lo he hecho.
+
+33
+00:01:32,890 --> 00:01:37,530
+Ves que se ha creado un directorio
+"dump" con "m101" y algunos
+
+34
+00:01:37,530 --> 00:01:40,050
+de los datos aquí de 
+diferentes colecciones.
+
+35
+00:01:40,050 --> 00:01:41,785
+Y luego hay otros dos ficheros
+que vas a necesitas para
+
+36
+00:01:41,785 --> 00:01:43,100
+las otras dos tareas.
+
+37
+00:01:43,100 --> 00:01:46,960
+Veamos cómo
+introducir los datos.
+
+38
+00:01:46,960 --> 00:01:50,860
+Ejecutamos "mongorestore" justo
+así, y simplemente pulso "return".
+
+39
+00:01:50,860 --> 00:01:54,220
+Y se conecta al
+servidor de MongoDB 
+
+40
+00:01:54,220 --> 00:01:55,420
+local, que está en ejecución.
+
+41
+00:01:55,420 --> 00:01:58,880
+And you can see right here, it
+creates some collections.
+
+42
+00:01:58,880 --> 00:02:01,040
+Crea la base de datos "m101",
+y crea una
+
+43
+00:02:01,040 --> 00:02:03,510
+colección "funnynumbers" y la
+colección "Homework One".
+
+44
+00:02:03,510 --> 00:02:09,389
+Y si luego inicias Mongo y 
+usas "m101" y muestras las
+
+45
+00:02:09,389 --> 00:02:12,730
+colecciones, puedes ver que 
+hay una colección
+
+46
+00:02:12,730 --> 00:02:16,240
+"funnynumbers" y una colección
+"Homework One" y algunos índices.
+
+47
+00:02:16,240 --> 00:02:18,050
+Pero no te voy a enseñar
+qué hay en esas colecciones,
+
+48
+00:02:18,050 --> 00:02:20,080
+porque ése es el objetivo
+de la tarea --
+
+49
+00:02:20,080 --> 00:02:21,940
+para demostrar que eres capaz de hacerlo.
+
+50
+00:02:21,940 --> 00:02:23,980
+Pero si tienes cualquier duda,
+simplemente plantéala
+
+51
+00:02:23,980 --> 00:02:24,970
+en los foros.
+
+52
+00:02:24,970 --> 00:02:27,320
+Estoy seguro que alguien más está
+teniendo los mismos problemas
+
+53
+00:02:27,320 --> 00:02:27,990
+que tú.
+
+54
+00:02:27,990 --> 00:02:29,240
+Bien.
