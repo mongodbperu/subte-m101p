@@ -8,12 +8,12 @@ asegurarnos que tenías
 
 3
 00:00:02,330 --> 00:00:04,390
-PyMongo y Bottle instalados
-y que
+PyMongo y Bottle 
+instalados y que
 
 4
 00:00:04,390 --> 00:00:05,850
-que se ejecutarían.
+se ejecutaran.
 
 5
 00:00:05,850 --> 00:00:08,760
