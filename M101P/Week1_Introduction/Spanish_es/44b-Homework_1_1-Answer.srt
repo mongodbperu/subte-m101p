@@ -47,7 +47,7 @@ en él.
 11
 00:00:18,890 --> 00:00:21,030
 Es simplemente un fichero
-de volcado estándar que
+de volcado estándar
 
 12
 00:00:21,030 --> 00:00:22,560
@@ -59,11 +59,11 @@ Y hay 2 ficheros py.
 
 14
 00:00:25,030 --> 00:00:26,500
-Entonces ejecuto "mongorestore".
+Entonces ejecuto "mongorestore"
 
 15
 00:00:26,500 --> 00:00:31,770
-En ese volcado, se creó la
+en ese volcado, se creó la
 base de datos "m101" y se cargaron
 
 16
@@ -82,11 +82,11 @@ Voy a ejecutar "use m101" y
 19
 00:00:38,230 --> 00:00:40,735
 La colección que necesitamos se llama
-"homework1".
+"hw1".
 
 20
 00:00:40,735 --> 00:00:44,200
-Voy a echar un vistazo a "homework1"
+Voy a echar un vistazo a "hw1"
 para ver qué contiene y
 
 21
