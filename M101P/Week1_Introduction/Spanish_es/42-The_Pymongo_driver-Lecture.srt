@@ -1,0 +1,337 @@
+1
+00:00:00,000 --> 00:00:00,170
+
+2
+00:00:00,170 --> 00:00:02,190
+OK, hemos recorrido un largo camino.
+
+3
+00:00:02,190 --> 00:00:05,560
+Y ahora es el momento de hablar
+sobre guardar datos en
+
+4
+00:00:05,560 --> 00:00:08,270
+MongoDB usando PyMongo.
+
+5
+00:00:08,270 --> 00:00:10,270
+He escrito un programa para
+enseñarte cómo hacerlo.
+
+6
+00:00:10,270 --> 00:00:11,520
+Así que voy a enseñártelo.
+
+7
+00:00:11,520 --> 00:00:13,520
+Es un programa muy pequeño.
+
+8
+00:00:13,520 --> 00:00:16,420
+Y algunas de estas partes ya 
+te son familiares.
+
+9
+00:00:16,420 --> 00:00:18,850
+Puedes ver que empezamos por
+importar PyMongo.
+
+10
+00:00:18,850 --> 00:00:22,020
+Y luego nos conectamos a
+la base de datos con la
+
+11
+00:00:22,020 --> 00:00:24,050
+clase "MongoClient".
+
+12
+00:00:24,050 --> 00:00:27,610
+Nos conectamos a la base de datos "m101"
+y luego a la 
+
+13
+00:00:27,610 --> 00:00:29,140
+colección "people".
+
+14
+00:00:29,140 --> 00:00:32,580
+Y entonces por aquí, vamos
+a crear un diccionario
+
+15
+00:00:32,580 --> 00:00:36,790
+Python que tiene embebido
+un array Python.
+
+16
+00:00:36,790 --> 00:00:38,110
+Veamos cómo
+funciona.
+
+17
+00:00:38,110 --> 00:00:42,450
+Tenemos un diccionario Python
+con la clave "name" y el
+
+18
+00:00:42,450 --> 00:00:44,130
+valor "Barack Obama".
+
+19
+00:00:44,130 --> 00:00:47,800
+Tenemos otra clave aquí, "role",
+siendo el valor "president",
+
+20
+00:00:47,800 --> 00:00:51,490
+y otra clave aquí, "address",
+siendo el valor otro
+
+21
+00:00:51,490 --> 00:00:55,040
+diccionario, que tiene muchas
+partes dentro.
+
+22
+00:00:55,040 --> 00:00:59,600
+Y luego la clave final es esta
+clave "interests", y su valor
+
+23
+00:00:59,600 --> 00:01:03,790
+es una lista, una lista Python, con
+"government", "basketball" y
+
+24
+00:01:03,790 --> 00:01:05,000
+"the Middle East".
+
+25
+00:01:05,000 --> 00:01:08,300
+Y luego llamamos a "people", que 
+es el nombre de la colección,
+
+26
+00:01:08,300 --> 00:01:11,830
+es el puntero a la
+colección, y .insert,
+
+27
+00:01:11,830 --> 00:01:14,000
+y la persona que 
+creamos justo aquí.
+
+28
+00:01:14,000 --> 00:01:15,810
+Y ése es el programa completo.
+
+29
+00:01:15,810 --> 00:01:16,950
+Y al final 
+puedes ver que llamamos
+
+30
+00:01:16,950 --> 00:01:18,720
+a "main", el cual llama a esto.
+
+31
+00:01:18,720 --> 00:01:22,730
+Ejecutemos el programa
+y veamos qué ocurre.
+
+32
+00:01:22,730 --> 00:01:26,250
+De acuerdo, hagamos "use m101".
+
+33
+00:01:26,250 --> 00:01:26,790
+Bien.
+
+34
+00:01:26,790 --> 00:01:28,460
+Ahora vamos a
+ejecutar el programa.
+
+35
+00:01:28,460 --> 00:01:30,790
+Y vamos a 
+ver qué obtenemos.
+
+36
+00:01:30,790 --> 00:01:33,300
+Así que vayamos al directorio
+correcto aquí.
+
+37
+00:01:33,300 --> 00:01:36,670
+Ahora ejecutaremos este programa
+y veremos qué sucede.
+
+38
+00:01:36,670 --> 00:01:39,200
+Así que escribimos el programa
+"saving_data".
+
+39
+00:01:39,200 --> 00:01:40,200
+Voy a ejecutarlo.
+
+40
+00:01:40,200 --> 00:01:41,370
+Se ejecuta bastante rápido.
+
+41
+00:01:41,370 --> 00:01:42,520
+Ahí vamos.
+
+42
+00:01:42,520 --> 00:01:45,150
+Y ahora ejecutemos
+el shell Mongo.
+
+43
+00:01:45,150 --> 00:01:48,680
+Y vamos a usar la
+base de datos "m101" y a echar un vistazo a
+
+44
+00:01:48,680 --> 00:01:52,030
+"db.people.find" y 
+ver qué hay en ella.
+
+45
+00:01:52,030 --> 00:01:54,580
+Está el documento
+que acabamos de crear.
+
+46
+00:01:54,580 --> 00:01:56,490
+Imprimámoslo de forma elegante
+para hacerlo un poco más
+
+47
+00:01:56,490 --> 00:01:58,280
+fácil de leer.
+
+48
+00:01:58,280 --> 00:02:00,840
+De acuerdo, echemos un vistazo al
+documento que metimos
+
+49
+00:02:00,840 --> 00:02:01,910
+en la base de datos.
+
+50
+00:02:01,910 --> 00:02:05,820
+Puedes ver aquí que hay
+un ObjectId ahora.
+
+51
+00:02:05,820 --> 00:02:08,090
+Y no fue algo
+que especificamos en el
+
+52
+00:02:08,090 --> 00:02:09,650
+programa, si recuerdas.
+
+53
+00:02:09,650 --> 00:02:12,710
+Y lo que sucedió ahí es
+que el driver ha creado un
+
+54
+00:02:12,710 --> 00:02:16,130
+_id usando
+un objeto BSON ObjectID.
+
+55
+00:02:16,130 --> 00:02:18,370
+Vamos a hablar más
+de esos IDs
+
+56
+00:02:18,370 --> 00:02:20,030
+más tarde en este curso.
+
+57
+00:02:20,030 --> 00:02:23,230
+Pero cada documento individual tiene
+un valor _id.
+
+58
+00:02:23,230 --> 00:02:24,660
+Y tiene que ser único.
+
+59
+00:02:24,660 --> 00:02:27,130
+Y el driver lo insertó
+por nosotros.
+
+60
+00:02:27,130 --> 00:02:29,920
+Y luego "interests" con
+
+61
+00:02:29,920 --> 00:02:31,920
+"government", "basketball" y "the
+Middle East", y su "role"
+
+62
+00:02:31,920 --> 00:02:34,660
+es "president", y su "name"
+es "Barack Obama", y
+
+63
+00:02:34,660 --> 00:02:37,260
+"address", que tiene un
+subdocumento dentro.
+
+64
+00:02:37,260 --> 00:02:38,940
+Así que puedes ver que éstos son
+los datos que
+
+65
+00:02:38,940 --> 00:02:40,550
+guardamos desde el programa.
+
+66
+00:02:40,550 --> 00:02:44,070
+Pero también podrías notar que
+el orden de estos elementos no es
+
+67
+00:02:44,070 --> 00:02:48,080
+el mismo que especificamos
+en el programa Python.
+
+68
+00:02:48,080 --> 00:02:51,390
+Y eso es porque
+en Python 2.7,
+
+69
+00:02:51,390 --> 00:02:53,350
+los diccionarios no están ordenados.
+
+70
+00:02:53,350 --> 00:02:57,070
+Y como consecuencia, el orden en que
+se insertó en la base de datos no fue
+
+71
+00:02:57,070 --> 00:03:00,690
+el mismo orden que
+indicamos en el programa.
+
+72
+00:03:00,690 --> 00:03:04,930
+Así que ésta es la forma de añadir datos
+a MongoSB, usando PyMongo.
+
+73
+00:03:04,930 --> 00:03:06,180
