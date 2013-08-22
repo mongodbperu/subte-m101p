@@ -1,0 +1,182 @@
+1
+00:00:00,000 --> 00:00:00,130
+
+2
+00:00:00,130 --> 00:00:02,330
+El objetivo de esta tarea era
+asegurarnos que tenías
+
+3
+00:00:02,330 --> 00:00:04,390
+PyMongo y Bottle instalados
+y que
+
+4
+00:00:04,390 --> 00:00:05,850
+que se ejecutarían.
+
+5
+00:00:05,850 --> 00:00:08,760
+Para lo que te dimos un programa
+que necesitabas ejecutar desde la
+
+6
+00:00:08,760 --> 00:00:12,930
+línea de comandos, "hw1-3.py",
+que inicia un servidor
+
+7
+00:00:12,930 --> 00:00:15,000
+web en el puerto 8080.
+
+8
+00:00:15,000 --> 00:00:17,810
+Y luego pedíamos ir
+a una URL en particular.
+
+9
+00:00:17,810 --> 00:00:19,510
+Y te enseñaré esa URL.
+
+10
+00:00:19,510 --> 00:00:23,060
+Y la URL a la que pedíamos
+ir era "hw1/50".
+
+11
+00:00:23,060 --> 00:00:25,530
+Si hiciste eso, 
+imprimiría el valor 53.
+
+12
+00:00:25,530 --> 00:00:27,580
+Y ésa era la respuesta
+al ejercicio.
+
+13
+00:00:27,580 --> 00:00:29,290
+Si miramos el programa --
+
+14
+00:00:29,290 --> 00:00:30,870
+le echaremos un vistazo rápido -- 
+usa algunas
+
+15
+00:00:30,870 --> 00:00:33,090
+cosas que aún no se han
+cubierto en el curso.
+
+16
+00:00:33,090 --> 00:00:35,250
+Y el programa se suponía que 
+era un poco más
+
+17
+00:00:35,250 --> 00:00:38,260
+complicado para que fuera
+difícil ejecutarlo sin
+
+18
+00:00:38,260 --> 00:00:39,660
+hacerlo realmente funcionar --
+
+19
+00:00:39,660 --> 00:00:42,030
+es decir, difícil de ejecutar 
+desde la línea de comandos.
+
+20
+00:00:42,030 --> 00:00:44,010
+Pero no es tan difícil
+entenderlo.
+
+21
+00:00:44,010 --> 00:00:45,960
+Puedes ver que lo primero
+que hace --
+
+22
+00:00:45,960 --> 00:00:48,760
+tiene una función
+llamada "get_hw1".
+
+23
+00:00:48,760 --> 00:00:52,440
+Y es decorada con este
+decorador llamado dentro del
+
+24
+00:00:52,440 --> 00:00:56,450
+paquete "bottle", básicamente,
+diciendo que si vas a esta
+
+25
+00:00:56,450 --> 00:01:00,450
+URL "/hw1" con cualquier tipo de cadena
+añadida al final,
+
+26
+00:01:00,450 --> 00:01:02,160
+ejecutará esta función
+y manejará el
+
+27
+00:01:02,160 --> 00:01:03,910
+valor "n" como un entero.
+
+28
+00:01:03,910 --> 00:01:07,300
+Y lo convierte a un entero a partir
+de esa cadena y se conecta a
+
+29
+00:01:07,300 --> 00:01:10,520
+la colección "funnynumbers"
+en la base de datos "m101".
+
+30
+00:01:10,520 --> 00:01:13,820
+Y entonces hace un "skip" y un
+"limit" para saltarse los n primeros
+
+31
+00:01:13,820 --> 00:01:16,520
+valores, ir al siguiente valor,
+y entonces imprimirlo
+
+32
+00:01:16,520 --> 00:01:17,980
+en la página web.
+
+33
+00:01:17,980 --> 00:01:21,660
+Por lo que básicamente, cuando pides
+el elemento 53, estás diciendo,
+
+34
+00:01:21,660 --> 00:01:24,520
+salta 53 de ellos y limita 1.
+
+35
+00:01:24,520 --> 00:01:27,550
+Por lo que supongo que estás recuperando
+el elemento 54 en ese punto.
+
+36
+00:01:27,550 --> 00:01:30,200
+Y luego al final del
+programa, ejecuta Bottle en
+
+37
+00:01:30,200 --> 00:01:33,380
+modo depuración y lo ejecuta en 
+"localhost" y en el puerto "8080".
+
+38
+00:01:33,380 --> 00:01:34,790
+Y eso es lo que este
+programa está haciendo.
+
+39
+00:01:34,790 --> 00:01:36,040
