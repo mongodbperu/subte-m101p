@@ -132,7 +132,7 @@ quiera, y funciona.
 29
 00:01:07,070 --> 00:01:09,740
 Y la forma en que está hecho, es 
-una pequeña para cookies que
+una pequeña utilidad para cookies que
 
 30
 00:01:09,740 --> 00:01:11,040
