@@ -42,11 +42,11 @@ programa aquí que va a
 10
 00:00:16,600 --> 00:00:19,100
 crear un documento con
-"first_name" Andrew
+"firstname" Andrew
 
 11
 00:00:19,100 --> 00:00:20,580
-y "last_name" Erlichson.
+y "lastname" Erlichson.
 
 12
 00:00:20,580 --> 00:00:24,350
@@ -100,7 +100,7 @@ ejecutamos este programa.
 22
 00:00:51,330 --> 00:00:54,110
 Vamos a ejecutar este
-programa, que le llama
+programa, que se llama
 
 23
 00:00:54,110 --> 00:00:57,520
@@ -123,11 +123,11 @@ insertarlo justo aquí.
 27
 00:01:02,500 --> 00:01:05,660
 Y podemos ver aquí que
-"last_name" es Erlichson y
+"lastname" es Erlichson y
 
 28
 00:01:05,660 --> 00:01:06,910
-"first_name" Andrew.
+"firstname" Andrew.
 
 29
 00:01:06,910 --> 00:01:09,080
@@ -199,7 +199,7 @@ que es un
 
 44
 00:01:42,950 --> 00:01:45,080
-error de clave duplicada.
+"DuplicateKeyError".
 
 45
 00:01:45,080 --> 00:01:46,580
@@ -343,7 +343,7 @@ ir justo aquí
 
 75
 00:03:08,140 --> 00:03:11,110
-y reasignar a "doc".
+y reasignar "doc".
 
 76
 00:03:11,110 --> 00:03:15,370
