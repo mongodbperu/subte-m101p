@@ -91,8 +91,8 @@ siendo el valor otro
 
 21
 00:00:51,490 --> 00:00:55,040
-diccionario, que tiene muchas
-partes dentro.
+diccionario, que contiene
+muchas partes.
 
 22
 00:00:55,040 --> 00:00:59,600
@@ -331,7 +331,7 @@ indicamos en el programa.
 72
 00:03:00,690 --> 00:03:04,930
 Así que ésta es la forma de añadir datos
-a MongoSB, usando PyMongo.
+a MongoDB, usando PyMongo.
 
 73
 00:03:04,930 --> 00:03:06,180
