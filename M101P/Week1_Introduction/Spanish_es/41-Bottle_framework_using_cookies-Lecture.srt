@@ -1,0 +1,426 @@
+1
+00:00:00,000 --> 00:00:00,210
+
+2
+00:00:00,210 --> 00:00:01,780
+OK, hablemos acerca de las cookies.
+
+3
+00:00:01,780 --> 00:00:03,860
+Y no estoy hablando sobre el tipo
+que se come, por supuesto.
+
+4
+00:00:03,860 --> 00:00:06,050
+Estoy hablando sobre el tipo
+que usan los servidores web y
+
+5
+00:00:06,050 --> 00:00:08,060
+navegadores web para identificar
+a los usuarios.
+
+6
+00:00:08,060 --> 00:00:10,920
+Porque la mayor parte de la gestión de sesión
+en la web se hace a través
+
+7
+00:00:10,920 --> 00:00:14,530
+de cookies, donde el servidor web
+devuelve una cookie
+
+8
+00:00:14,530 --> 00:00:15,680
+al navegador web.
+
+9
+00:00:15,680 --> 00:00:18,290
+Es una pequeña pieza de
+información que el navegador
+
+10
+00:00:18,290 --> 00:00:21,520
+web almacenará para
+un dominio web particular.
+
+11
+00:00:21,520 --> 00:00:25,080
+Y cuando el usuario vaya
+a cualquier página web en ese
+
+12
+00:00:25,080 --> 00:00:28,810
+dominio, entonces el navegador web
+presentará la cookie al
+
+13
+00:00:28,810 --> 00:00:30,950
+sitio, que entonces,
+esperamos, buscará en
+
+14
+00:00:30,950 --> 00:00:34,370
+Mongo, obtendrá un montón de
+otra información y presentará
+
+15
+00:00:34,370 --> 00:00:35,860
+la sesión al usuario.
+
+16
+00:00:35,860 --> 00:00:40,230
+Así que vamos a nuestro pequeño
+programa de ejemplo y veamos cómo
+
+17
+00:00:40,230 --> 00:00:41,560
+podemos usar cookies.
+
+18
+00:00:41,560 --> 00:00:46,510
+Digamos que quiero tener 
+mi programa aquí, que dice
+
+19
+00:00:46,510 --> 00:00:48,615
+"Hello" a "Richard", lista
+cuatro frutas y te pide 
+
+20
+00:00:48,615 --> 00:00:49,670
+que elijas una fruta.
+
+21
+00:00:49,670 --> 00:00:51,750
+Voy a decir "apple"
+y envío.
+
+22
+00:00:51,750 --> 00:00:54,660
+En este punto, el navegador web
+ha sido redirigido a la
+
+23
+00:00:54,660 --> 00:00:57,100
+URL "show_fruit" y ha 
+imprimido,
+
+24
+00:00:57,100 --> 00:00:58,250
+"Your fruit is apple".
+
+25
+00:00:58,250 --> 00:01:00,510
+Parece como lo que hizo
+antes, pero la diferencia es,
+
+26
+00:01:00,510 --> 00:01:02,750
+no fue un "post", realmente
+fue una redirección a una página
+
+27
+00:01:02,750 --> 00:01:05,409
+con una petición "get", para que
+pueda recargarla tantas veces como
+
+28
+00:01:05,409 --> 00:01:07,070
+quiera, y funciona.
+
+29
+00:01:07,070 --> 00:01:09,740
+Y la forma en que está hecho, es 
+una pequeña para cookies que
+
+30
+00:01:09,740 --> 00:01:11,040
+puedes descargar de Google.
+
+31
+00:01:11,040 --> 00:01:12,450
+Esto es Google Chrome.
+
+32
+00:01:12,450 --> 00:01:15,400
+Puedes ver que hay
+una cookie
+
+33
+00:01:15,400 --> 00:01:17,010
+que se presenta al sitio.
+
+34
+00:01:17,010 --> 00:01:19,210
+Y esa cookie tiene
+la palabra "apple".
+
+35
+00:01:19,210 --> 00:01:21,570
+Entonces, ¿cómo hace el código
+que todo eso funcione?
+
+36
+00:01:21,570 --> 00:01:22,530
+Veámoslo.
+
+37
+00:01:22,530 --> 00:01:25,580
+Aquí tenemos otra vez, si 
+recuerdas, nuestro manejador,
+
+38
+00:01:25,580 --> 00:01:29,540
+el manejador "post", que tomará
+la entrada del formulario
+
+39
+00:01:29,540 --> 00:01:31,550
+que pregunta por
+la fruta favorita.
+
+40
+00:01:31,550 --> 00:01:35,150
+Y en este manejador, 
+recuperamos la fruta del
+
+41
+00:01:35,150 --> 00:01:39,160
+formulario y luego todo lo que hacemos es
+establecer la cookie, embotellar esa
+
+42
+00:01:39,160 --> 00:01:42,920
+respuesta, que establece la cookie,
+llamada "fruit", al valor
+
+43
+00:01:42,920 --> 00:01:44,280
+que obtuvimos del usuario.
+
+44
+00:01:44,280 --> 00:01:46,880
+Y luego redireccionamos --
+esto es algo que
+
+45
+00:01:46,880 --> 00:01:47,980
+no has visto antes.
+
+46
+00:01:47,980 --> 00:01:51,070
+Redireccionamos el navegador
+hacia "/show_fruit".
+
+47
+00:01:51,070 --> 00:01:54,590
+Eso envía una respuesta HTTO al
+navegador diciéndole que
+
+48
+00:01:54,590 --> 00:01:57,450
+redirija el navegador y recupere,
+usando una petición "get",
+
+49
+00:01:57,450 --> 00:01:58,670
+otra página.
+
+50
+00:01:58,670 --> 00:02:00,300
+Y si piensas sobre
+todo el mundo del 
+
+51
+00:02:00,300 --> 00:02:02,840
+Modelo-Vista-Controlador del que
+hablamos con anterioridad, tiene
+
+52
+00:02:02,840 --> 00:02:07,250
+la buena propiedad que ahora la
+vista no necesita que se le haya
+
+53
+00:02:07,250 --> 00:02:09,780
+enviado ninguna información directamente
+desde el controlador.
+
+54
+00:02:09,780 --> 00:02:11,780
+Por lo que sucede es,
+en su lugar, que redireccionamos a esta
+
+55
+00:02:11,780 --> 00:02:13,820
+vista, y la vista entonces
+recupera el
+
+56
+00:02:13,820 --> 00:02:15,810
+estado, de nuevo, por si mismo.
+
+57
+00:02:15,810 --> 00:02:17,550
+Por lo que es un poco más limpio.
+
+58
+00:02:17,550 --> 00:02:20,450
+Y particularmente en la web, si
+el usuario alguna vez vuelve a cargar
+
+59
+00:02:20,450 --> 00:02:23,880
+la página, no puedes volver a cargar una página
+que fue generada como resultado
+
+60
+00:02:23,880 --> 00:02:26,680
+de una petición "post" sin, estoy
+seguro que todos habéis visto esto,
+
+61
+00:02:26,680 --> 00:02:29,270
+diciendo, ¿quieres volver a enviar
+la información del formulario
+
+62
+00:02:29,270 --> 00:02:30,670
+y volver a procesar
+esa información?
+
+63
+00:02:30,670 --> 00:02:34,176
+Bien, usando este método con una
+redirección, usando un "get" para
+
+64
+00:02:34,176 --> 00:02:37,330
+entrar la URL, el usuario puede
+recargar la página "show_fruit".
+
+65
+00:02:37,330 --> 00:02:38,850
+Así que OK, eso es lo que sucede.
+
+66
+00:02:38,850 --> 00:02:42,110
+Y luego bajamos por la página y
+podemos ver la ruta configurada
+
+67
+00:02:42,110 --> 00:02:44,740
+para esta petición "get"
+para "show_fruit".
+
+68
+00:02:44,740 --> 00:02:45,375
+Es muy simple.
+
+69
+00:02:45,375 --> 00:02:47,480
+Y aquí está la función
+"show_fruit", cuyo
+
+70
+00:02:47,480 --> 00:02:48,420
+nombre es arbitrario.
+
+71
+00:02:48,420 --> 00:02:51,650
+Y la primera cosa que hace es
+recuperar la cookie llamada
+
+72
+00:02:51,650 --> 00:02:54,340
+"fruit" y a continuación devolver exactamente
+la misma plantilla que
+
+73
+00:02:54,340 --> 00:02:57,040
+antes, asignando a "fruit"
+la fruta.
+
+74
+00:02:57,040 --> 00:03:00,270
+Ahora lo que quizá no esté claro es
+que, cuando vamos de esta
+
+75
+00:03:00,270 --> 00:03:04,060
+línea a esta línea, que comprende
+una respuesta completa y
+
+76
+00:03:04,060 --> 00:03:05,960
+una nueva petición del
+navegador web.
+
+77
+00:03:05,960 --> 00:03:07,900
+Por lo que el control no se está pasando
+dentro del servidor
+
+78
+00:03:07,900 --> 00:03:08,560
+de aquí a aquí.
+
+79
+00:03:08,560 --> 00:03:11,230
+Lo que está ocurriendo es, hay una
+respuesta al usuario con una
+
+80
+00:03:11,230 --> 00:03:14,630
+redirección a la URL "show_fruit",
+y en esa respuesta el
+
+81
+00:03:14,630 --> 00:03:16,670
+navegador almacena una cookie.
+
+82
+00:03:16,670 --> 00:03:19,980
+El navegador hace luego una petición
+"get" a "/show_fruit".
+
+83
+00:03:19,980 --> 00:03:22,930
+Como es el mismo dominio,
+presenta la cookie.
+
+84
+00:03:22,930 --> 00:03:25,520
+Y entonces el servidor web, cuando
+procesa esta petición "get",
+
+85
+00:03:25,520 --> 00:03:27,770
+recupera la cookie
+de la petición y
+
+86
+00:03:27,770 --> 00:03:29,580
+produce el HTML.
+
+87
+00:03:29,580 --> 00:03:31,290
+Sé que quizá sea un poco
+complicado, pero así es como
+
+88
+00:03:31,290 --> 00:03:32,190
+funcionan las cookies.
+
+89
+00:03:32,190 --> 00:03:35,670
+Y en particular, ésta es la
+manera de recuperarlas y establecerlas
+
+90
+00:03:35,670 --> 00:03:36,920
+en Bottle.
+
+91
+00:03:36,920 --> 00:03:37,660
