@@ -3,7 +3,7 @@
 
 2
 00:00:00,170 --> 00:00:03,020
-Ahora que he aprendido un poco
+Ahora que hemos aprendido un poco
 acerca de los diccionarios de Python y
 
 3
