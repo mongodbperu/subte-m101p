@@ -208,7 +208,7 @@ Eso es un poco inusual.
 46
 00:01:46,580 --> 00:01:50,870
 Y luego muestra el documento
-que inténtó insertar, que
+que intentó insertar, que
 
 47
 00:01:50,870 --> 00:01:54,540
