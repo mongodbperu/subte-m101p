@@ -84,7 +84,7 @@ mi programa aquí, que dice
 
 19
 00:00:46,510 --> 00:00:48,615
-"Hello" a "Richard", lista
+hola a "Richard", lista
 cuatro frutas y te pide 
 
 20
@@ -188,12 +188,12 @@ recuperamos la fruta del
 41
 00:01:35,150 --> 00:01:39,160
 formulario y luego todo lo que hacemos es
-establecer la cookie, embotellar esa
+establecer la cookie,
 
 42
 00:01:39,160 --> 00:01:42,920
-respuesta, que establece la cookie,
-llamada "fruit", al valor
+"bottle.response.set_cookie",
+llamada "fruit" y el valor
 
 43
 00:01:42,920 --> 00:01:44,280
@@ -215,13 +215,13 @@ hacia "/show_fruit".
 
 47
 00:01:51,070 --> 00:01:54,590
-Eso envía una respuesta HTTO al
+Eso envía una respuesta HTTP al
 navegador diciéndole que
 
 48
 00:01:54,590 --> 00:01:57,450
-redirija el navegador y recupere,
-usando una petición "get",
+redirija el navegador y recupere
+usando una petición "get"
 
 49
 00:01:57,450 --> 00:01:58,670
@@ -249,7 +249,7 @@ desde el controlador.
 
 54
 00:02:09,780 --> 00:02:11,780
-Por lo que sucede es,
+Porque lo que sucede es,
 en su lugar, que redireccionamos a esta
 
 55
@@ -259,7 +259,7 @@ recupera el
 
 56
 00:02:13,820 --> 00:02:15,810
-estado, de nuevo, por si mismo.
+estado, de nuevo, por sí mismo.
 
 57
 00:02:15,810 --> 00:02:17,550
