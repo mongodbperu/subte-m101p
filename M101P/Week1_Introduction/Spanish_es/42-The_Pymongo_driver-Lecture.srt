@@ -116,7 +116,7 @@ es el nombre de la colección,
 26
 00:01:08,300 --> 00:01:11,830
 es el puntero a la
-colección, y .insert,
+colección, y ".insert",
 
 27
 00:01:11,830 --> 00:01:14,000
@@ -184,7 +184,7 @@ Se ejecuta bastante rápido.
 
 41
 00:01:41,370 --> 00:01:42,520
-Ahí vamos.
+Allá vamos.
 
 42
 00:01:42,520 --> 00:01:45,150
