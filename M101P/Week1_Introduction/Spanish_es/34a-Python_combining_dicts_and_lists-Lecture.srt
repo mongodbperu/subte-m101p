@@ -50,7 +50,7 @@ realidad es una lista de Python.
 
 12
 00:00:27,870 --> 00:00:31,200
-Y este es el código de Python
+Y éste es el código de Python
 en un archivo en mi
 
 13
@@ -115,7 +115,7 @@ condición de igualdad en
 26
 00:00:55,900 --> 00:00:59,900
 Python, si esto es igual a "interests",
-bueno sé bien que estoy
+bueno sé bien qué estoy
 
 27
 00:00:59,900 --> 00:01:01,680
@@ -147,7 +147,7 @@ de aquel bloque.
 
 33
 00:01:12,590 --> 00:01:14,780
-Y luego por cada interés, y
+Y luego por cada "interest", y
 otra vez, me inventé ese
 
 34
@@ -215,12 +215,12 @@ clave con el valor "interests",
 
 47
 00:01:53,360 --> 00:01:55,170
-bueno entonces sólo hace algo
+entonces sólo hace algo
 normal que hizo antes,
 
 48
 00:01:55,170 --> 00:01:56,690
-que es sólo, imprimir
+que es sólo imprimir
 la clave de nivel superior.
 
 49
@@ -264,7 +264,7 @@ los intereses.
 
 57
 00:02:16,060 --> 00:02:18,750
-Y es entonces itera a través
+Y entonces itera a través
 de la lista interna.
 
 58
@@ -290,11 +290,11 @@ en JSON también.
 62
 00:02:28,230 --> 00:02:30,710
 Y luego busca el color favorito
-que su valor es "blue", y el
+cuyo valor es "blue", y el
 
 63
 00:02:30,710 --> 00:02:33,140
-nombre que su valor es "Andrew
+nombre cuyo valor es "Andrew
 Erlichson".
 
 64
@@ -304,7 +304,7 @@ puedes imprimir
 
 65
 00:02:36,000 --> 00:02:39,830
-cualquier compleja estructura de
+cualquier estructura compleja de
 datos que viene desde MongoDB.
 
 66
