@@ -79,7 +79,7 @@ SQL con todos los
 
 18
 00:00:40,080 --> 00:00:43,380
-subdocumentos y subarreglos
+subdocumentos y subarrays
 que son ofrecidos con el
 
 19

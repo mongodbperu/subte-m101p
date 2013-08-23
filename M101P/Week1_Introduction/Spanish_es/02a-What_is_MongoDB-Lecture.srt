@@ -152,7 +152,7 @@ Tiene una clave a, valor
 33
 00:01:28,160 --> 00:01:32,160
 Y luego una clave llamada "fruit",
-que es un arreglo que
+que es un array que
 
 34
 00:01:32,160 --> 00:01:36,040
