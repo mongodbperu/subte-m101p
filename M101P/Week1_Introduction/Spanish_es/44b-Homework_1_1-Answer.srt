@@ -1,0 +1,117 @@
+1
+00:00:00,000 --> 00:00:00,240
+
+2
+00:00:00,240 --> 00:00:00,510
+OK.
+
+3
+00:00:00,510 --> 00:00:02,760
+Voy a ir por la
+solución a la tarea 1.
+
+4
+00:00:02,760 --> 00:00:05,670
+En la tarea 1, te pedíamos
+descargar y expandir un 
+
+5
+00:00:05,670 --> 00:00:07,780
+pequeño fichero tar.
+
+6
+00:00:07,780 --> 00:00:09,380
+Voy a hacer eso
+justo ahora.
+
+7
+00:00:09,380 --> 00:00:11,740
+Y en ese fichero, 
+verás que hay --
+
+8
+00:00:11,740 --> 00:00:14,830
+un directorio, un directorio 
+"dump", que tiene un conjunto de
+
+9
+00:00:14,830 --> 00:00:17,270
+subdirectorios y luego tiene
+un subdirectorio y 
+
+10
+00:00:17,270 --> 00:00:18,890
+algunos ficheros bson
+en él.
+
+11
+00:00:18,890 --> 00:00:21,030
+Es simplemente un fichero
+de volcado estándar
+
+12
+00:00:21,030 --> 00:00:22,560
+obtenido con "mongodump".
+
+13
+00:00:22,560 --> 00:00:25,030
+Y hay 2 ficheros py.
+
+14
+00:00:25,030 --> 00:00:26,500
+Entonces ejecuto "mongorestore"
+
+15
+00:00:26,500 --> 00:00:31,770
+en ese volcado, se creó la
+base de datos "m101" y se cargaron
+
+16
+00:00:31,770 --> 00:00:33,270
+las colecciones.
+
+17
+00:00:33,270 --> 00:00:34,480
+Voy a entrar en Mongo.
+
+18
+00:00:34,480 --> 00:00:38,230
+Voy a ejecutar "use m101" y
+"show collections".
+
+19
+00:00:38,230 --> 00:00:40,735
+La colección que necesitamos se llama
+"hw1".
+
+20
+00:00:40,735 --> 00:00:44,200
+Voy a echar un vistazo a "hw1"
+para ver qué contiene y
+
+21
+00:00:44,200 --> 00:00:47,160
+si tiene un documento
+con "answer" igual a 42.
+
+22
+00:00:47,160 --> 00:00:49,720
+Ésa es la respuesta a la
+pregunta "Lo máximo de
+
+23
+00:00:49,720 --> 00:00:51,960
+la vida, el universo y
+todo" de la "Guía
+
+24
+00:00:51,960 --> 00:00:52,950
+del autoestopista galáctico".
+
+25
+00:00:52,950 --> 00:00:54,850
+Así que ésa es la respuesta
+a la tarea 1.
+
+26
+00:00:54,850 --> 00:00:56,100
