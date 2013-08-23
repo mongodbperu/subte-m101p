@@ -122,13 +122,13 @@ no relacional--
 
 27
 00:01:11,310 --> 00:01:14,060
-because you could sort of see
-this similar to a table--
+porque podrías ver que
+es algo similar a una tabla--
 
 28
 00:01:14,060 --> 00:01:16,630
-is that they can have
-some hierarchy.
+es que pueden tener
+alguna jerarquía.
 
 29
 00:01:16,630 --> 00:01:17,770
@@ -170,8 +170,8 @@ en una tabla relacional.
 
 37
 00:01:38,760 --> 00:01:41,470
-So that's what MongoDB is
-at its highest level.
+Por eso es lo que hace que MongoDB
+esté en un alto nivel. 
 
 38
 00:01:41,470 --> 00:01:44,200
