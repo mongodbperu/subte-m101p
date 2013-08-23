@@ -8,11 +8,12 @@ que MongoDB es
 
 3
 00:00:02,400 --> 00:00:04,950
-orientado a documentos, como te mostramos.
+orientado a documentos,
+como te lo mostramos,
 
 4
 00:00:04,950 --> 00:00:07,650
-Y no soporta relaciones,
+y no soporta relaciones,
 porque éstas no son
 
 5
@@ -25,7 +26,7 @@ Es "schemaless".
 
 7
 00:00:11,510 --> 00:00:13,990
-Y técnicamente, ¿Es
+Y técnicamente, ¿es
 realmente "schemaless"?
 
 8
@@ -45,8 +46,8 @@ una forma de esquema.
 
 11
 00:00:21,270 --> 00:00:23,040
-Pero nosotros lo llamamos
-"schemaless".
+Pero nosotros lo
+llamamos "schemaless".
 
 12
 00:00:23,040 --> 00:00:25,920
@@ -55,13 +56,13 @@ flexible, y el esquema no está
 
 13
 00:00:25,920 --> 00:00:28,800
-documentado para una colección
-en particular.
+documentado para una
+colección en particular.
 
 14
 00:00:28,800 --> 00:00:31,250
-Y finalmente, MongoDB
-soporta SQL.
+Y finalmente,
+MongoDB soporta SQL.
 
 15
 00:00:31,250 --> 00:00:35,350

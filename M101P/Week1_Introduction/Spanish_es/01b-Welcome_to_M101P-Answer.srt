@@ -3,22 +3,22 @@
 
 2
 00:00:00,140 --> 00:00:03,240
-Y la respuesta es que las tareas
-y el examen final
+Y la respuesta es que las
+tareas y el examen final
 
 3
 00:00:03,240 --> 00:00:05,800
-cuentan para tu calificación final
-en el curso.
+cuentan para tu calificación
+final en el curso.
 
 4
 00:00:05,800 --> 00:00:08,600
-Los cuestionarios y la participación
-en clase no.
+Los cuestionarios y la
+participación en clase no.
 
 5
 00:00:08,600 --> 00:00:11,110
-Ahora, la participación en clase,
+Bueno, la participación en clase,
 realmente no hay manera de
 
 6
@@ -29,11 +29,11 @@ las clases en vídeo.
 7
 00:00:13,450 --> 00:00:16,000
 Pero tenemos un foro en línea
-que puedes ver en el
+que puedes acceder a través
 
 8
 00:00:16,000 --> 00:00:16,870
-material.
+de la web.
 
 9
 00:00:16,870 --> 00:00:19,520
@@ -69,7 +69,7 @@ de enseñanza que hemos contratado
 
 16
 00:00:31,070 --> 00:00:34,800
-para este ofrecimiento del curso que
+para este ofrecimiento del curso quienes
 también te podrían ayudar en los foros.
 
 17

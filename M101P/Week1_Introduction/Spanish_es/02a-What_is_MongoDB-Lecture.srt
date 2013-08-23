@@ -3,7 +3,7 @@
 
 2
 00:00:00,680 --> 00:00:03,810
-Muy bien, ¿Qué es MongoDB?
+Muy bien, ¿qué es MongoDB?
 
 3
 00:00:03,810 --> 00:00:09,090
@@ -17,8 +17,8 @@ que no almacena sus datos
 
 5
 00:00:11,990 --> 00:00:15,900
-en tablas, como lo hace una
-base de datos relacional, sino almacena
+en tablas, como lo hace una base
+de datos relacional, sino almacena
 
 6
 00:00:15,900 --> 00:00:17,192
@@ -26,7 +26,7 @@ documentos JSON.
 
 7
 00:00:17,192 --> 00:00:19,840
-Ahora todas las bases de datos, por supuesto,
+Por supuesto, todas las bases de datos
 en el mundo son representadas
 
 8
@@ -40,8 +40,8 @@ discos de estado sólido hoy en día,
 
 10
 00:00:24,680 --> 00:00:27,640
-siempre dibujamos una base de datos
-de esta manera.
+siempre dibujamos una base
+de datos de esta manera.
 
 11
 00:00:27,640 --> 00:00:29,840
@@ -58,8 +58,8 @@ y luce como esto.
 
 14
 00:00:34,560 --> 00:00:36,230
-Hay un paréntesis de apertura,
-y hay una
+Hay un paréntesis de
+apertura, y hay una
 
 15
 00:00:36,230 --> 00:00:37,810
@@ -77,8 +77,8 @@ y el valor "Andrew".
 
 18
 00:00:45,600 --> 00:00:47,275
-Puedes crear un documento JSON
-más complejo.
+Puedes crear un documento
+JSON más complejo.
 
 19
 00:00:47,275 --> 00:00:49,730
@@ -87,28 +87,28 @@ un poco más complejo.
 
 20
 00:00:49,730 --> 00:00:52,420
-He aquí un documento JSON
-más complejo.
+He aquí un documento
+JSON más complejo.
 
 21
 00:00:52,420 --> 00:00:55,860
 Este documento JSON tiene tres
-diferentes claves, a, b,
+diferentes claves, "a", "b",
 
 22
 00:00:55,860 --> 00:00:58,365
-y c, y estos son mis
+y "c", y éstos son mis
 intentos de comillas.
 
 23
 00:00:58,365 --> 00:01:02,660
-Ves que hay dos puntos aquí,
-y a tiene el valor 4, b tiene
+Ves que hay dos puntos aquí y
+"a" tiene el valor "4", "b" tiene
 
 24
 00:01:02,660 --> 00:01:05,190
-el valor 5, y c
-tiene el valor 7.
+el valor "5", y "c"
+tiene el valor "7".
 
 25
 00:01:05,190 --> 00:01:09,580
@@ -117,7 +117,7 @@ almacenados en MongoDB.
 
 26
 00:01:09,580 --> 00:01:11,310
-Pero qué lo hace
+Pero lo que lo hace
 no relacional--
 
 27
@@ -128,36 +128,37 @@ es algo similar a una tabla--
 28
 00:01:14,060 --> 00:01:16,630
 es que pueden tener
-alguna jerarquía.
+una jerarquía.
 
 29
 00:01:16,630 --> 00:01:17,770
-Permíteme mostrarte una manera--
+Permíteme mostrarte
+una manera en que 
 
 30
 00:01:17,770 --> 00:01:20,990
-un documento JSON con alguna
-jerarquía en el.
+podrías tener un documento JSON
+con alguna jerarquía en él.
 
 31
 00:01:20,990 --> 00:01:23,640
-Este es un documento JSON con
-cierta jerarquía en él.
+Éste es un documento JSON
+con cierta jerarquía.
 
 32
 00:01:23,640 --> 00:01:28,160
-Tiene una clave a, valor
-6, clave b, valor 7.
+Tiene una clave "a", valor
+"6", clave "b", valor "7".
 
 33
 00:01:28,160 --> 00:01:32,160
-Y luego una clave llamada "fruit",
-que es un array que
+Y luego una clave llamada
+"fruit", que es un array que
 
 34
 00:01:32,160 --> 00:01:36,040
-contiene los elementos apple,
-pear y banana.
+contiene los elementos
+"apple", "pear" y "banana".
 
 35
 00:01:36,040 --> 00:01:36,980
@@ -170,7 +171,7 @@ en una tabla relacional.
 
 37
 00:01:38,760 --> 00:01:41,470
-Por eso es lo que hace que MongoDB
+Eso es lo que hace que MongoDB
 esté en un alto nivel. 
 
 38
@@ -194,12 +195,12 @@ se parece mucho más a lo que
 
 42
 00:01:54,450 --> 00:01:58,650
-tienes en tus programas, que
+tienes en tus programas, que lo que tienes
 cuando usas datos relacionales, donde
 
 43
 00:01:58,650 --> 00:02:00,760
-los datos relacionales-- y
+los datos relacionales--y
 ustedes han visto
 
 44
@@ -213,13 +214,13 @@ hay nombres de columnas en la
 
 46
 00:02:06,470 --> 00:02:08,750
-fila superior y luego las
-filas de datos.
+fila superior y luego
+las filas de datos.
 
 47
 00:02:08,750 --> 00:02:12,020
 Esto no se ajusta muy bien
-con lo que se hace normalmente
+a lo que se hace normalmente
 
 48
 00:02:12,020 --> 00:02:13,620
@@ -265,12 +266,12 @@ una colección que tenga los
 
 57
 00:02:35,420 --> 00:02:37,780
-valores a y b.
+valores "a" y "b".
 
 58
 00:02:37,780 --> 00:02:41,310
 Y puedes ver aquí que he dejado
-de lado las comillas en a y b,
+de lado las comillas en "a" y "b",
 
 59
 00:02:41,310 --> 00:02:43,250
@@ -289,12 +290,12 @@ documento en la misma
 62
 00:02:46,120 --> 00:02:52,021
 colección que tenga los
-valores a, b y c.
+valores "a", "b" y "c".
 
 63
 00:02:52,021 --> 00:02:53,750
-De acuerdo, es hora de un
-cuestionario.
+De acuerdo, hay que
+hacer un cuestionario.
 
 64
 00:02:53,750 --> 00:02:55,000

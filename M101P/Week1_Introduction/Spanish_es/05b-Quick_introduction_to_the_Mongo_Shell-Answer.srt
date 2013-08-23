@@ -39,7 +39,7 @@ Esto es ilegal.
 10
 00:00:12,350 --> 00:00:16,239
 Para el tercero aquí, hay
-puntos y comas separando los
+punto y comas separando los
 
 11
 00:00:16,239 --> 00:00:17,790
@@ -47,7 +47,7 @@ pares de claves y valores.
 
 12
 00:00:17,790 --> 00:00:19,070
-Esto no es legal.
+Eso no es legal.
 
 13
 00:00:19,070 --> 00:00:21,380
@@ -56,11 +56,11 @@ en realidad hay un
 
 14
 00:00:21,380 --> 00:00:22,380
-par de cosas mal.
+par de cosas erróneas.
 
 15
 00:00:22,380 --> 00:00:26,090
-Pero es que empieza con un
+Empieza con un
 paréntesis, y
 
 16
@@ -70,17 +70,17 @@ un corchete.
 
 17
 00:00:28,420 --> 00:00:31,270
-Todo debe estar en un conjunto
-de corchetes, y
+Todo debe estar en un
+conjunto de corchetes.
 
 18
 00:00:31,270 --> 00:00:33,740
-puedes ver que los separadores también
+También puedes ver que los separadores
 están mal y son inconsistentes
 
 19
 00:00:33,740 --> 00:00:34,990
-entre las claves y valores.
+entre las claves y los valores.
 
 20
 00:00:34,990 --> 00:00:36,220

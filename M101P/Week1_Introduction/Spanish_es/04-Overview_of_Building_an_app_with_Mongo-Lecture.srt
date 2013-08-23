@@ -3,8 +3,7 @@
 
 2
 00:00:00,460 --> 00:00:02,995
-OK, hemos visto
-un poco
+OK, hemos visto un poco
 
 3
 00:00:02,995 --> 00:00:04,600
@@ -27,17 +26,17 @@ proceso mongod, que es el
 
 7
 00:00:16,490 --> 00:00:18,990
-propio servidor de base de datos que funciona 
-de fábrica.
+propio servidor de base de datos
+que funciona de fábrica.
 
 8
 00:00:18,990 --> 00:00:22,020
 Además, tenemos
-el shell Mongo.
+el shell mongo.
 
 9
 00:00:22,020 --> 00:00:24,680
-El shell Mongo, que también
+El shell mongo, que también
 veremos, se conecta a
 
 10
@@ -47,7 +46,7 @@ interactuar con él.
 
 11
 00:00:27,190 --> 00:00:30,130
-Lo siguiente -- y vamos a
+Lo siguiente--vamos a
 programar un montón en
 
 12
@@ -61,13 +60,13 @@ utilizar Bottle y PyMongo y
 
 14
 00:00:35,130 --> 00:00:39,680
-de esta forma tendremos este ecosistema
-en un servidor HTTP --
+de esta forma tendremos este
+ecosistema en un servidor HTTP--
 
 15
 00:00:39,680 --> 00:00:41,850
 y recuerda, vamos a intentar
-construir un pequeño blog --
+construir un pequeño blog--
 
 16
 00:00:41,850 --> 00:00:45,310
@@ -80,7 +79,7 @@ de Python.
 
 18
 00:00:46,320 --> 00:00:49,980
-Y dentro de todo eso, podemos 
+Y dentro de todo eso, podremos 
 ejecutar este framework Bottle 
 
 19
@@ -110,12 +109,12 @@ tenemos un usuario.
 24
 00:01:04,269 --> 00:01:06,490
 Y ese usuario está sentado
-frente al ordenador --
+frente al ordenador--
 
 25
 00:01:06,490 --> 00:01:08,760
 ésta es mi representación
-de un portátil --
+de un portátil--
 
 26
 00:01:08,760 --> 00:01:10,520
@@ -133,13 +132,13 @@ routers por aquí
 
 29
 00:01:16,570 --> 00:01:18,620
-y traducción de direcciones de red y 
-todo lo demás.
+y traducción de direcciones
+de red y todo lo demás.
 
 30
 00:01:18,620 --> 00:01:22,560
-Pero eso es, a grandes rasgos,
-cómo funciona.
+Pero eso es, a grandes
+rasgos, cómo funciona.
 
 31
 00:01:22,560 --> 00:01:26,150
@@ -149,17 +148,17 @@ JavaScript Object Notation,
 32
 00:01:26,150 --> 00:01:30,290
 me gustaría enseñarte el shell
-Mongo y luego unos cuantos
+mongo y luego unos cuantos
 
 33
 00:01:30,290 --> 00:01:32,570
-documentos para insertarlos
-en él.
+documentos para
+insertarlos en él.
 
 34
 00:01:32,570 --> 00:01:35,450
 Haremos eso y, a continuación,
-volveremos para aparender cómo
+volveremos para aprender cómo
 
 35
 00:01:35,450 --> 00:01:36,640

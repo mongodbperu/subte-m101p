@@ -13,8 +13,8 @@ instalar MongoDB en un Mac.
 
 4
 00:00:05,620 --> 00:00:08,790
-Y a continuación, en otro vídeo,
-vamos a tener a
+Y a continuación, en otro
+vídeo, vamos a tener a
 
 5
 00:00:08,790 --> 00:00:11,640
@@ -80,7 +80,7 @@ nos lleva a
 
 18
 00:00:38,385 --> 00:00:40,325
-www.mongodb.org/downloads.
+"www.mongodb.org/downloads".
 
 19
 00:00:40,325 --> 00:00:43,215
@@ -136,8 +136,8 @@ versión de 64 bits, especialmente
 
 30
 00:01:08,730 --> 00:01:13,390
-en OS X, por la mayoría de
-OS X son de 64 bits.
+en OS X, porque la mayoría
+de OS X son de 64 bits.
 
 31
 00:01:13,390 --> 00:01:16,990
@@ -170,23 +170,23 @@ descargar la versión de 64 bits.
 
 37
 00:01:29,850 --> 00:01:31,760
-Está un poco fuera de pantalla en
-términos de qué está haciendo.
+Está un poco fuera de la pantalla
+en términos de lo que está haciendo,
 
 38
 00:01:31,760 --> 00:01:35,220
-Pero está descargando alrededor
-de 60 megabytes.
+pero está descargando
+alrededor de 60 megabytes.
 
 39
 00:01:35,220 --> 00:01:37,410
-Y va a aparecer en
-nuestro directorio de descargas.
+Y va a aparecer en nuestro
+directorio de descargas.
 
 40
 00:01:37,410 --> 00:01:39,370
-Y por eso vamos a ir hacia ahí
-ahora y te enseñaré
+Y por eso vamos a ir hacia
+ahí ahora y te enseñaré
 
 41
 00:01:39,370 --> 00:01:40,880
@@ -222,8 +222,8 @@ vez mientras grababa esto.
 
 48
 00:01:53,220 --> 00:01:56,630
-Pero simplemente voy a ir a por
-la que está completa y
+Pero simplemente voy a ir
+por la que está completa y
 
 49
 00:01:56,630 --> 00:01:59,130
@@ -240,8 +240,8 @@ mongodb-osx-x86-64-bit.tgz".
 
 52
 00:02:04,180 --> 00:02:07,160
-Descomprime ese fichero y mira
-justo dentro del
+Descomprime ese fichero
+y mira justo dentro del
 
 53
 00:02:07,160 --> 00:02:08,580
@@ -250,11 +250,11 @@ directorio actual aquí.
 54
 00:02:08,580 --> 00:02:10,949
 Y ahora voy a entrar en
-ese directorio y ver qué es lo 
+ese directorio y ver qué 
 
 55
 00:02:10,949 --> 00:02:12,110
-que hay que ver.
+hay dentro.
 
 56
 00:02:12,110 --> 00:02:14,860
@@ -263,12 +263,11 @@ Y veo que hay un fichero
 
 57
 00:02:14,860 --> 00:02:17,090
-y un directorio
-binario.
+y un directorio binario.
 
 58
 00:02:17,090 --> 00:02:19,970
-Y ese directorio binario
+Ese directorio binario
 contiene todos los ejecutables
 
 59
@@ -278,18 +277,18 @@ para ejecutar Mongo.
 
 60
 00:02:21,540 --> 00:02:23,160
-En los que nos vamos a centrar
-justo ahora, nos vamos a
+Nos vamos a centrar
+justo ahora
 
 61
 00:02:23,160 --> 00:02:26,310
-centrar en este ejecutable mongod,
-que es el
+en este ejecutable
+mongod, que es el
 
 62
 00:02:26,310 --> 00:02:28,620
 servidor, y luego veremos un 
-poco el Shell Mongo,
+poco el shell mongo,
 
 63
 00:02:28,620 --> 00:02:30,770
@@ -303,13 +302,13 @@ insertar algunos datos, ojear
 
 65
 00:02:33,290 --> 00:02:35,510
-datos, los cuales te he enseñado
-previamente.
+datos, los cuales te
+he enseñado previamente.
 
 66
 00:02:35,510 --> 00:02:40,440
 Así que normalmente, mongod ubica
-sus datos en /data/db.
+sus datos en "/data/db".
 
 67
 00:02:40,440 --> 00:02:42,810
@@ -323,8 +322,8 @@ encontrar ese directorio.
 
 69
 00:02:46,220 --> 00:02:48,040
-Sí, no puede encontrar ese
-directorio.
+Sí, no puede encontrar
+ese directorio.
 
 70
 00:02:48,040 --> 00:02:51,070
@@ -357,13 +356,13 @@ es necesario para conseguir
 
 76
 00:03:01,740 --> 00:03:04,480
-acceder al directorio /
-de mi disco.
+acceder al directorio
+"/" de mi disco.
 
 77
 00:03:04,480 --> 00:03:06,750
 Y voy a crear 
-un directorio /data.
+un directorio "/data".
 
 78
 00:03:06,750 --> 00:03:08,770
@@ -372,7 +371,7 @@ crear un directorio
 
 79
 00:03:08,770 --> 00:03:11,410
-/data/db con mkdir.
+"/data/db" con mkdir.
 
 80
 00:03:11,410 --> 00:03:14,090
@@ -382,7 +381,7 @@ que puedo escribir en él.
 81
 00:03:14,090 --> 00:03:18,590
 Voy a hacer un chmod para que
-todos puedas escribir en /data/db.
+todos puedas escribir en "/data/db".
 
 82
 00:03:18,590 --> 00:03:20,820
@@ -391,8 +390,8 @@ para confirmar que tiene
 
 83
 00:03:20,820 --> 00:03:23,660
-los permisos que espero,
-y los tiene.
+los permisos que
+espero, y los tiene.
 
 84
 00:03:23,660 --> 00:03:26,370
@@ -486,12 +485,12 @@ está ubicando sus datos en
 
 103
 00:04:00,270 --> 00:04:02,180
-/data/db/journal.
+"/data/db/journal".
 
 104
 00:04:02,180 --> 00:04:05,370
 Y está escuchando en este 
-puerto 27017, que está
+puerto "27017", que está
 
 105
 00:04:05,370 --> 00:04:07,870
@@ -527,8 +526,8 @@ esa versión de Mongo.
 
 112
 00:04:20,610 --> 00:04:23,910
-Voy a bin, y entonces voy
-a ejecutar Mongo.
+Voy a "bin", y entonces
+voy a ejecutar Mongo.
 
 113
 00:04:23,910 --> 00:04:25,970
@@ -542,7 +541,7 @@ saben esto, pero lo ejecuté
 
 115
 00:04:28,460 --> 00:04:31,620
-escribiendo ./mongo en lugar de
+escribiendo "./mongo" en lugar de
 simplemente mongo.
 
 116
@@ -619,7 +618,7 @@ nombre, justo aquí, y
 
 131
 00:05:10,140 --> 00:05:12,360
-se le asignó un ObjectId
+se le asignó un "ObjectId"
 al documento.
 
 132
