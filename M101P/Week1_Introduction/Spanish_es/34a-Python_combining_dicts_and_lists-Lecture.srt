@@ -1,0 +1,380 @@
+1
+00:00:00,000 --> 00:00:00,130
+
+2
+00:00:00,130 --> 00:00:03,060
+Hemos visto cómo iteraríamos
+a través de una lista.
+
+3
+00:00:03,060 --> 00:00:05,220
+Y hemos visto cómo iteraríamos
+a través de un
+
+4
+00:00:05,220 --> 00:00:06,040
+diccionario.
+
+5
+00:00:06,040 --> 00:00:09,380
+Pero, ¿qué si fuera un documento
+más parecido a JSON que
+
+6
+00:00:09,380 --> 00:00:12,670
+tiene un diccionario en el nivel
+externo y luego, a menudo, un
+
+7
+00:00:12,670 --> 00:00:14,190
+array o una lista dentro de él?
+
+8
+00:00:14,190 --> 00:00:15,490
+Entonces ¿cómo lo hacemos?
+
+9
+00:00:15,490 --> 00:00:20,120
+Así que aquí tengo un documento "person"
+con un "name" establecido a mi nombre y
+
+10
+00:00:20,120 --> 00:00:23,750
+un "favorite_color" establecido en "blue",
+y un "hair" establecido en "brown".
+
+11
+00:00:23,750 --> 00:00:27,870
+Y luego la clave "interests" que en
+realidad es una lista de Python.
+
+12
+00:00:27,870 --> 00:00:31,200
+Y éste es el código de Python
+en un archivo en mi
+
+13
+00:00:31,200 --> 00:00:34,400
+disco llamado "for_loop_dict.py".
+
+14
+00:00:34,400 --> 00:00:36,550
+Por ello quiero iterar a través
+de esta estructura,
+
+15
+00:00:36,550 --> 00:00:37,600
+entonces ¿cómo lo hago?
+
+16
+00:00:37,600 --> 00:00:39,630
+Bueno, sé un poco
+acerca de los datos.
+
+17
+00:00:39,630 --> 00:00:41,120
+Y voy a usar
+este conocimiento para
+
+18
+00:00:41,120 --> 00:00:41,820
+iterar a través de él.
+
+19
+00:00:41,820 --> 00:00:46,200
+Entonces "for key in person", puedo
+obtener cada llave que está en el
+
+20
+00:00:46,200 --> 00:00:46,850
+documento "person".
+
+21
+00:00:46,850 --> 00:00:48,370
+No sé cuál es el orden en
+que voy a obtenerlos.
+
+22
+00:00:48,370 --> 00:00:49,080
+Podría obtener "name".
+
+23
+00:00:49,080 --> 00:00:51,020
+Podría obtener
+"favorite_color" primero.
+
+24
+00:00:51,020 --> 00:00:52,290
+Pero lo compruebo.
+
+25
+00:00:52,290 --> 00:00:55,900
+Si "key" es igual, y esa es la
+condición de igualdad en
+
+26
+00:00:55,900 --> 00:00:59,900
+Python, si esto es igual a "interests",
+bueno sé bien qué estoy
+
+27
+00:00:59,900 --> 00:01:01,680
+buscando en la lista.
+
+28
+00:01:01,680 --> 00:01:06,340
+Así que entonces, sólo para aclarar,
+imprimo la palabra "Interests....", y
+
+29
+00:01:06,340 --> 00:01:07,850
+luego tengo un bucle
+"for" secundario.
+
+30
+00:01:07,850 --> 00:01:09,750
+Otra vez, puedes ver que esto
+tiene sangría al mismo nivel que
+
+31
+00:01:09,750 --> 00:01:11,670
+la sentencia "print", indicando
+que esto es parte
+
+32
+00:01:11,670 --> 00:01:12,590
+de aquel bloque.
+
+33
+00:01:12,590 --> 00:01:14,780
+Y luego por cada "interest", y
+otra vez, me inventé ese
+
+34
+00:01:14,780 --> 00:01:17,850
+nombre de variable, en la
+clave "person"--
+
+35
+00:01:17,850 --> 00:01:21,720
+ahora en este punto "key" es igual
+a la palabra "interests".
+
+36
+00:01:21,720 --> 00:01:26,280
+Así que para cada interés en,
+esencialmente, este array, imprime
+
+37
+00:01:26,280 --> 00:01:28,250
+un tabulado, sólo para hacerlo más ordenado.
+
+38
+00:01:28,250 --> 00:01:31,810
+Y cuando esto está con dobles comillas,
+lo interpolará y encontrará
+
+39
+00:01:31,810 --> 00:01:34,270
+estos tipos de caracteres
+que se encuentran dentro de los caracteres
+
+40
+00:01:34,270 --> 00:01:37,680
+especiales, por ejemplo
+"\t" es un tabulado.
+
+41
+00:01:37,680 --> 00:01:40,170
+Imprime "interest is", y luego
+lo concatena con
+
+42
+00:01:40,170 --> 00:01:43,340
+el interés que obtiene
+de este array.
+
+43
+00:01:43,340 --> 00:01:45,260
+Así que lo concatena
+con el interés.
+
+44
+00:01:45,260 --> 00:01:47,590
+Y por supuesto esto itera
+a través del array--
+
+45
+00:01:47,590 --> 00:01:49,780
+"cycling", "running", "biking".
+
+46
+00:01:49,780 --> 00:01:53,360
+Ahora, si no está buscando la
+clave con el valor "interests",
+
+47
+00:01:53,360 --> 00:01:55,170
+entonces sólo hace algo
+normal que hizo antes,
+
+48
+00:01:55,170 --> 00:01:56,690
+que es sólo imprimir
+la clave de nivel superior.
+
+49
+00:01:56,690 --> 00:02:00,240
+Y entonces lo referencia
+como "person" de "key".
+
+50
+00:02:00,240 --> 00:02:01,850
+Muy bien, veamos
+lo que hace.
+
+51
+00:02:01,850 --> 00:02:06,020
+Ahí voy, y ahora voy
+a ejecutar este programa.
+
+52
+00:02:06,020 --> 00:02:07,830
+Y hace mucho de lo
+que esperas.
+
+53
+00:02:07,830 --> 00:02:10,520
+La primera clave que encuentra es "hair",
+que no es la primera
+
+54
+00:02:10,520 --> 00:02:12,000
+clave que puse, pero está bien.
+
+55
+00:02:12,000 --> 00:02:13,960
+E imprime su
+valor que es "brown".
+
+56
+00:02:13,960 --> 00:02:16,060
+Y luego termina encontrando
+los intereses.
+
+57
+00:02:16,060 --> 00:02:18,750
+Y entonces itera a través
+de la lista interna.
+
+58
+00:02:18,750 --> 00:02:21,120
+Y esto imprime los intereses:
+"cycling", "running", "biking".
+
+59
+00:02:21,120 --> 00:02:24,150
+Éstas están en el mismo orden en que
+fueron puestas porque las listas
+
+60
+00:02:24,150 --> 00:02:26,260
+están ciertamente ordenadas
+en Python.
+
+61
+00:02:26,260 --> 00:02:28,230
+Y fueron ordenadas
+en JSON también.
+
+62
+00:02:28,230 --> 00:02:30,710
+Y luego busca el color favorito
+cuyo valor es "blue", y el
+
+63
+00:02:30,710 --> 00:02:33,140
+nombre cuyo valor es "Andrew
+Erlichson".
+
+64
+00:02:33,140 --> 00:02:36,000
+Así que usando este tipo de técnica,
+puedes imprimir
+
+65
+00:02:36,000 --> 00:02:39,830
+cualquier estructura compleja de
+datos que viene desde MongoDB.
+
+66
+00:02:39,830 --> 00:02:42,505
+Ahora, podrías hacerlo usando
+introspección, si alguno de ustedes
+
+67
+00:02:42,505 --> 00:02:45,260
+ha oído hablar de introspección,
+comprobando si algo es
+
+68
+00:02:45,260 --> 00:02:46,940
+una lista o es un diccionario.
+
+69
+00:02:46,940 --> 00:02:48,500
+Y podrías hacer lo
+adecuado.
+
+70
+00:02:48,500 --> 00:02:51,890
+Pero a menudo el código entiende
+el esquema lo suficiente tanto que
+
+71
+00:02:51,890 --> 00:02:52,950
+no necesita hacerlo.
+
+72
+00:02:52,950 --> 00:02:54,310
+Sólo sabe que "interests"
+
+73
+00:02:54,310 --> 00:02:56,020
+sería siempre una lista.
+
+74
+00:02:56,020 --> 00:02:57,200
+Muy bien, siguiente cuestionario.
+
+75
+00:02:57,200 --> 00:02:59,930
+Combinemos algunos diccionarios
+y listas otra vez.
+
+76
+00:02:59,930 --> 00:03:01,930
+Dime lo que imprime
+este código.
+
+77
+00:03:01,930 --> 00:03:05,190
+Este es un objeto que está establecido
+igual a este diccionario.
+
+78
+00:03:05,190 --> 00:03:08,275
+Y aquí hay un poco de código que hace
+algunas comprobaciones para su inclusión
+
+79
+00:03:08,275 --> 00:03:10,160
+y luego se ejecuta un bucle.
+
+80
+00:03:10,160 --> 00:03:12,530
+Escribe lo que este código
+imprimirá, justo aquí.
+
+81
+00:03:12,530 --> 00:03:13,780
