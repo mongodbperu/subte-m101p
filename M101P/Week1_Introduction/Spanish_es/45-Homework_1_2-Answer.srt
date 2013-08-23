@@ -1,0 +1,97 @@
+1
+00:00:00,000 --> 00:00:00,275
+
+2
+00:00:00,275 --> 00:00:00,550
+Bien.
+
+3
+00:00:00,550 --> 00:00:04,570
+En este problema, tenías que
+restaurar la colección y
+
+4
+00:00:04,570 --> 00:00:06,560
+luego ejecutar este programa.
+
+5
+00:00:06,560 --> 00:00:10,220
+Y el programa es
+"hw1-2.py".
+
+6
+00:00:10,220 --> 00:00:12,070
+Ejecutémoslo juntos --
+
+7
+00:00:12,070 --> 00:00:13,320
+"hw1-2.py".
+
+8
+00:00:13,320 --> 00:00:15,050
+
+9
+00:00:15,050 --> 00:00:17,860
+Imprime que la 
+respuesta es 1815.
+
+10
+00:00:17,860 --> 00:00:20,140
+Echemos un vistazo a qué
+hace el programa.
+
+11
+00:00:20,140 --> 00:00:22,680
+Podemos ver que hace una conexión
+usando la clase
+
+12
+00:00:22,680 --> 00:00:25,450
+MongoClient, conectándose
+a "localhost".
+
+13
+00:00:25,450 --> 00:00:29,300
+Luego se conecta a la base de
+datos "m101" y a la colección
+
+14
+00:00:29,300 --> 00:00:31,060
+"funnynumbers".
+
+15
+00:00:31,060 --> 00:00:33,290
+Luego itera por
+esa colección.
+
+16
+00:00:33,290 --> 00:00:37,440
+En cada documento, hay
+una clave llamada "value".
+
+17
+00:00:37,440 --> 00:00:39,540
+Y se recupera su valor.
+
+18
+00:00:39,540 --> 00:00:43,520
+Y a continuación lo dividimos por 3, 
+llamando a "mod 3", y pregunta
+
+19
+00:00:43,520 --> 00:00:45,110
+si el resto es 0.
+
+20
+00:00:45,110 --> 00:00:48,260
+Y entonces, para cada elemento,
+podemos mantener ejecutándose una suma.
+
+21
+00:00:48,260 --> 00:00:50,340
+Y al final, imprime
+la respuesta.
+
+22
+00:00:50,340 --> 00:00:51,590
+Y ésa es.
