@@ -281,7 +281,6 @@ resultados de la consulta--
 algo más fácil de leer,
 creo que dirías.
 
-
 61
 00:02:17,960 --> 00:02:20,250
 Aun así, en general, navegar
