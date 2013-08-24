@@ -1,0 +1,443 @@
+1
+00:00:00,000 --> 00:00:00,160
+
+2
+00:00:00,160 --> 00:00:02,840
+Muy bien, en este problema
+te pedimos que fueras
+
+3
+00:00:02,840 --> 00:00:06,150
+a través de una colección de
+calificaciones de alumnos y eliminar
+
+4
+00:00:06,150 --> 00:00:07,770
+la de menor calificación para cada alumno.
+
+5
+00:00:07,770 --> 00:00:10,670
+Empezamos por importar
+la colección.
+
+6
+00:00:10,670 --> 00:00:12,650
+Voy a hacer eso ahora.
+
+7
+00:00:12,650 --> 00:00:17,390
+Y ahora voy a conectarme a Mongo
+y usaré la base de datos "school"
+
+8
+00:00:17,390 --> 00:00:21,320
+y veré los datos.
+
+9
+00:00:21,320 --> 00:00:23,460
+OK, aquí hay un documento.
+
+10
+00:00:23,460 --> 00:00:27,710
+Así que te pedimos eliminar la
+tarea de menor puntuación, y nuestra
+
+11
+00:00:27,710 --> 00:00:30,490
+estrategia será
+iterar a través de la colección
+
+12
+00:00:30,490 --> 00:00:34,300
+entera, ver las
+calificaciiones, encontrar la
+
+13
+00:00:34,300 --> 00:00:37,540
+tarea de menor calificación-- por ejemplo,
+en este caso, sería la
+
+14
+00:00:37,540 --> 00:00:38,890
+puntuación de aquí--
+
+15
+00:00:38,890 --> 00:00:42,830
+y luego vamos a escribir
+de vuelta el array de calificaciones
+
+16
+00:00:42,830 --> 00:00:43,960
+en el documento.
+
+17
+00:00:43,960 --> 00:00:47,350
+Y esa es mi estrategia para
+resolver el problema.
+
+18
+00:00:47,350 --> 00:00:51,060
+Y no sé de alguna manera que sólo
+elimine este elemento desde el
+
+19
+00:00:51,060 --> 00:00:54,780
+array en MongoDB e incluso
+si lo hiciera, probablemente estaría un
+
+20
+00:00:54,780 --> 00:00:57,610
+poco indeciso para usarlo
+porque no sé si el
+
+21
+00:00:57,610 --> 00:00:59,980
+registro intervenido
+no ha cambiado.
+
+22
+00:00:59,980 --> 00:01:03,020
+Así que me siento más cómodo
+escribiendo el array
+
+23
+00:01:03,020 --> 00:01:06,165
+completo, porque no estoy
+seguro si no lo veo
+
+24
+00:01:06,165 --> 00:01:07,990
+como el tercer elemento--
+
+25
+00:01:07,990 --> 00:01:09,690
+cero, uno, dos, tres--
+
+26
+00:01:09,690 --> 00:01:12,020
+que aún será el
+tercer elemento cuando regrese
+
+27
+00:01:12,020 --> 00:01:14,680
+allí, en un sistema en
+real funcionamiento.
+
+28
+00:01:14,680 --> 00:01:18,380
+OK, así que vamos a ir
+al programa que escribí
+
+29
+00:01:18,380 --> 00:01:20,100
+para resolver este problema.
+
+30
+00:01:20,100 --> 00:01:21,330
+Lo llamé "drop_lowest".
+
+31
+00:01:21,330 --> 00:01:22,900
+Está escrito en Python.
+
+32
+00:01:22,900 --> 00:01:25,560
+Puedes ver aquí, lo
+primero que hace es llamar a
+
+33
+00:01:25,560 --> 00:01:27,200
+"remove_lowest".
+
+34
+00:01:27,200 --> 00:01:29,180
+Esto obtiene un cursor para
+"students.find"--
+
+35
+00:01:29,180 --> 00:01:33,410
+que básicamente encuentra todos los
+registros, todos los documentos en la
+
+36
+00:01:33,410 --> 00:01:34,220
+colección de alumnos--
+
+37
+00:01:34,220 --> 00:01:36,740
+esto va a través de ellos e
+imprime una información de
+
+38
+00:01:36,740 --> 00:01:37,610
+depuración.
+
+39
+00:01:37,610 --> 00:01:40,130
+Resuelvo el problema como tú,
+así que puse unas impresiones de
+
+40
+00:01:40,130 --> 00:01:42,080
+información en mis programas.
+
+41
+00:01:42,080 --> 00:01:45,080
+Y entonces lo que hace, es
+encontrar las calificaciones en el
+
+42
+00:01:45,080 --> 00:01:48,170
+documento y luego tiene una
+función de ayuda para encontrar el
+
+43
+00:01:48,170 --> 00:01:53,310
+elemento con menor calificación y
+si no es "None"--
+
+44
+00:01:53,310 --> 00:01:55,760
+De acuerdo, esto es sólo una comprobación
+de errores, ya que "find_lowest_hw"
+
+45
+00:01:55,760 --> 00:01:57,670
+debe siempre encontrar la menor
+calificación, pero si por alguna
+
+46
+00:01:57,670 --> 00:01:59,390
+razón no lo pudiera hacer, sólo
+imprimiría un mensaje
+
+47
+00:01:59,390 --> 00:02:00,700
+de error aquí.
+
+48
+00:02:00,700 --> 00:02:03,110
+Si "lowest" no es "None",
+entonces dice que
+
+49
+00:02:03,110 --> 00:02:05,010
+eliminará esta calificación--
+
+50
+00:02:05,010 --> 00:02:06,910
+de nuevo, este es una
+comprobación de errores--
+
+51
+00:02:06,910 --> 00:02:08,479
+y luego llama a
+"scores.remove".
+
+52
+00:02:08,479 --> 00:02:13,380
+Ésta es una función de Python
+que se llama para eliminar
+
+53
+00:02:13,380 --> 00:02:16,760
+el menor elemento del
+array de calificaciones.
+
+54
+00:02:16,760 --> 00:02:19,420
+Y luego sólo se llama a "update".
+
+55
+00:02:19,420 --> 00:02:23,760
+Por ello actualiza por el
+"_id", "student['_id']--
+
+56
+00:02:23,760 --> 00:02:25,880
+actualizando el registro
+que estamos buscando--
+
+57
+00:02:25,880 --> 00:02:29,560
+"set", "scores" a "scores"
+y eso es todo.
+
+58
+00:02:29,560 --> 00:02:31,480
+Ahora, algo que no te he mostrado
+es la función de ayuda
+
+59
+00:02:31,480 --> 00:02:33,090
+"find_lowest_hw".
+
+60
+00:02:33,090 --> 00:02:35,380
+Esto encuentra la menor calificación
+en un array, pero no es
+
+61
+00:02:35,380 --> 00:02:37,810
+particularmente difícil de entender
+cómo funciona.
+
+62
+00:02:37,810 --> 00:02:40,870
+Establece "lowest" a
+"None" para comenzar.
+
+63
+00:02:40,870 --> 00:02:43,270
+Este tiene un valor inicial de "101"
+porque sabe que
+
+64
+00:02:43,270 --> 00:02:45,120
+va a encontrar algo
+menor a 101--
+
+65
+00:02:45,120 --> 00:02:47,030
+porque sé lo que cuáles son los
+límites de las calificaciones
+
+66
+00:02:47,030 --> 00:02:48,540
+que se encuentran en estos registros--
+
+67
+00:02:48,540 --> 00:02:52,630
+y luego itera a través de
+las calificaciones y si el que está
+
+68
+00:02:52,630 --> 00:02:56,005
+buscando es de tipo "homework" y
+menor que el límite, luego
+
+69
+00:02:56,005 --> 00:02:58,560
+encuentra el nuevo límite y
+establece "lowest" a "item" y
+
+70
+00:02:58,560 --> 00:03:00,550
+"lowest_score" to "score".
+
+71
+00:03:00,550 --> 00:03:03,370
+Por lo que pasa por esto
+y cuando lo retorna,
+
+72
+00:03:03,370 --> 00:03:06,110
+va a retornar o bien "None", si
+no pudiera encontrar si una
+
+73
+00:03:06,110 --> 00:03:09,010
+tarea o va a retornar
+la menor tarea.
+
+74
+00:03:09,010 --> 00:03:10,720
+Así que es así cómo
+funciona el programa.
+
+75
+00:03:10,720 --> 00:03:13,170
+Ejecutémoslo.
+
+76
+00:03:13,170 --> 00:03:15,380
+Muy bien, elimina
+un montón de datos.
+
+77
+00:03:15,380 --> 00:03:20,270
+Y entonces regreso a mis
+tareas y hay
+
+78
+00:03:20,270 --> 00:03:23,390
+una validación aquí, me dijo
+que debería encontrar 200
+
+79
+00:03:23,390 --> 00:03:28,510
+alumnos, y que si hiciera el
+trabajo correctamente, éste
+
+80
+00:03:28,510 --> 00:03:32,640
+debería ser el registro
+para "Demarcus".
+
+81
+00:03:32,640 --> 00:03:36,600
+Así que veamos si
+es cierto.
+
+82
+00:03:36,600 --> 00:03:40,560
+Y las calificaciones que debería
+encontrar son "47", "44" y "39"--
+
+83
+00:03:40,560 --> 00:03:43,430
+y "47", "44" y "39"--
+
+84
+00:03:43,430 --> 00:03:46,110
+en efecto, encuentro eso.
+
+85
+00:03:46,110 --> 00:03:49,060
+Y entonces sugiere que ejecute
+esta consulta de agregación--
+
+86
+00:03:49,060 --> 00:03:51,500
+y vamos a ver sobre
+agregación la siguiente semana, así
+
+87
+00:03:51,500 --> 00:03:53,580
+que no veremos ahora sobre
+cómo funciona esto, pero es
+
+88
+00:03:53,580 --> 00:03:59,970
+básicamente el equivalente de
+hacer un "GROUP BY" en SQL--
+
+89
+00:03:59,970 --> 00:04:03,520
+y encontramos que ahora el
+promedio más alto en la clase
+
+90
+00:04:03,520 --> 00:04:08,600
+es el del alumno con "_id" 13 y
+tiene un promedio de 91,
+
+91
+00:04:08,600 --> 00:04:12,760
+Y esa es la respuesta
+al problema--
+
+92
+00:04:12,760 --> 00:04:13,170
+13.
+
+93
+00:04:13,170 --> 00:04:14,530
+Muy bien.
+
+94
+00:04:14,530 --> 00:04:15,820
+Así es cómo funciona.
+
+95
+00:04:15,820 --> 00:04:17,070
