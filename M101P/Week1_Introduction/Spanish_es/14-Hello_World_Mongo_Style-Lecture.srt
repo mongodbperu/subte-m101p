@@ -41,7 +41,8 @@ servidor de base de datos.
 
 10
 00:00:16,470 --> 00:00:17,310
-Nos conectamos a la base de datos "test".
+Nos conectamos a la
+base de datos "test".
 
 11
 00:00:17,310 --> 00:00:18,680
@@ -80,7 +81,8 @@ a la base de datos "test".
 
 19
 00:00:32,610 --> 00:00:36,810
-Veamos qué devuelve "db.names.find()".
+Vemos qué devuelve
+"db.names.find()".
 
 20
 00:00:36,810 --> 00:00:39,180
@@ -194,7 +196,7 @@ real que hace la función
 
 44
 00:01:37,940 --> 00:01:39,400
-dentro del shell Mongo.
+dentro del shell mongo.
 
 45
 00:01:39,400 --> 00:01:42,010
@@ -208,7 +210,7 @@ interesante.
 47
 00:01:42,870 --> 00:01:46,570
 Comprueba si ya hay realmente
-un ObjectId
+un "ObjectId"
 
 48
 00:01:46,570 --> 00:01:47,870
@@ -217,7 +219,7 @@ asociado.
 49
 00:01:47,870 --> 00:01:50,350
 Y si no hay un 
-ObjectId, le asigna
+"ObjectId", le asigna
 
 50
 00:01:50,350 --> 00:01:51,850
@@ -225,7 +227,7 @@ uno y hace un "insert".
 
 51
 00:01:51,850 --> 00:01:55,030
-Y si hay un ObjectId,
+Y si hay un "ObjectId",
 entonces hace un "update".
 
 52
@@ -236,12 +238,12 @@ ese "findOne" como éste y
 53
 00:02:01,490 --> 00:02:05,930
 luego miramos a "j", teníamos
-el ObjectId aquí.
+el "ObjectId" aquí.
 
 54
 00:02:05,930 --> 00:02:10,270
-Así que cuando llamamos a "db.names.save(j)"
-con "j" de esa
+Así que cuando llamamos a
+"db.names.save(j)" con "j" de esa
 
 55
 00:02:10,270 --> 00:02:13,750
@@ -251,7 +253,7 @@ a través del comando "save".
 56
 00:02:13,750 --> 00:02:15,520
 Es decir, existe
-un ObjectId.
+un "ObjectId".
 
 57
 00:02:15,520 --> 00:02:20,270

@@ -25,8 +25,8 @@ aplicación por aquí.
 
 7
 00:00:10,590 --> 00:00:12,860
-Va a ser
-escrita en Python.
+Va a ser escrita
+en Python.
 
 8
 00:00:12,860 --> 00:00:15,360
@@ -44,7 +44,7 @@ capaces de mostrar una página
 
 11
 00:00:22,740 --> 00:00:24,660
-web, vía http.
+web, vía HTTP.
 
 12
 00:00:24,660 --> 00:00:28,670
@@ -71,8 +71,8 @@ pequeño programa en Emacs.
 
 17
 00:00:39,760 --> 00:00:41,100
-Iremos por él 
-línea a línea para que
+Lo veremos línea
+por línea para que
 
 18
 00:00:41,100 --> 00:00:42,370
@@ -90,7 +90,7 @@ Y luego "import pymongo".
 21
 00:00:47,410 --> 00:00:51,570
 Y a continuación crea una ruta para
-/, que quiere decir la ruta
+"/", que quiere decir la ruta
 
 22
 00:00:51,570 --> 00:00:52,480
@@ -132,17 +132,17 @@ cualquier otra forma que prefieras.
 30
 00:01:12,080 --> 00:01:17,980
 El primer paso aquí es usar
-la clase MongoClient para
+la clase "MongoClient" para
 
 31
 00:01:17,980 --> 00:01:21,000
-conectarnos a localhost
-al puerto 27017.
+conectarnos a "localhost"
+al puerto "27017".
 
 32
 00:01:21,000 --> 00:01:23,660
-Ése es el puerto por defecto en
-el que escucha mongod.
+Ése es el puerto por defecto
+en el que escucha mongod.
 
 33
 00:01:23,660 --> 00:01:26,990
@@ -183,13 +183,13 @@ básicamente, "Hello" y cualquier cosa
 
 41
 00:01:43,480 --> 00:01:46,130
-que esté en la clave "name" de
-ese documento.
+que esté en la clave
+"name" de ese documento.
 
 42
 00:01:46,130 --> 00:01:49,270
 Y esto es una convención de Python
-según la cual el %s será
+según la cual el "%s" será
 
 43
 00:01:49,270 --> 00:01:51,690
@@ -198,7 +198,7 @@ el signo de porcentaje.
 
 44
 00:01:51,690 --> 00:01:53,730
-En este caso, item['name'].
+En este caso, "item['name']".
 
 45
 00:01:53,730 --> 00:01:54,830
@@ -211,13 +211,13 @@ valor de la clave "name".
 
 47
 00:01:58,160 --> 00:01:59,890
-Ése es el final de la función,
-que va a 
+Ése es el final de
+la función, que va a 
 
 48
 00:01:59,890 --> 00:02:02,870
-ejecutarse cuando pidas la ruta
-/ al servidor.
+ejecutarse cuando pidas
+la ruta "/" al servidor.
 
 49
 00:02:02,870 --> 00:02:05,450
@@ -253,7 +253,7 @@ OK.
 56
 00:02:20,730 --> 00:02:22,890
 Dice que está escuchando
-en localhost.
+en "localhost".
 
 57
 00:02:22,890 --> 00:02:25,210
@@ -343,8 +343,8 @@ navegador web justo aquí y lo
 
 77
 00:03:11,390 --> 00:03:14,710
-ejecutamos otra vez, cambia
-a "Andrew".
+ejecutamos otra vez,
+cambia a "Andrew".
 
 78
 00:03:14,710 --> 00:03:20,460
@@ -363,7 +363,7 @@ Se conecta a la base de datos.
 81
 00:03:26,720 --> 00:03:28,880
 Y luego puede responder
-a una petición http y
+a una petición HTTP y
 
 82
 00:03:28,880 --> 00:03:30,130
