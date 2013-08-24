@@ -8,17 +8,17 @@ la mostramos aquí.
 
 3
 00:00:02,220 --> 00:00:05,220
-Como puedes ver, tenemos una 
-llave, luego la clave
+Como puedes ver, tenemos un
+corchete, luego la clave
 
 4
 00:00:05,220 --> 00:00:08,500
-"address" y a continuación otra llave
-inmediatamente seguida por
+"address" y a continuación otro
+corchete inmediatamente seguido
 
 5
 00:00:08,500 --> 00:00:10,990
-los datos, "street_address",
+por los datos. "street_address"
 es "Elm Drive".
 
 6
@@ -28,7 +28,7 @@ es "Elm Drive".
 
 7
 00:00:14,890 --> 00:00:16,650
-Y dos llaves para finalizar.
+Y dos corchetes para finalizar.
 
 8
 00:00:16,650 --> 00:00:17,900

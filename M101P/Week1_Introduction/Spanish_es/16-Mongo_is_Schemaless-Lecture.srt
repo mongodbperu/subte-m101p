@@ -13,12 +13,12 @@ es "schemaless".
 4
 00:00:04,230 --> 00:00:06,940
 Y quería volver a este tema
-y enseñarte un poco más
+y enseñarte desde el shell
 
 5
 00:00:06,940 --> 00:00:10,130
-desde el shell qué significa
-eso ahora que ya
+un poco más sobre qué
+significa eso ahora que ya
 
 6
 00:00:10,130 --> 00:00:13,370
@@ -65,12 +65,11 @@ Por ejemplo, "nombre",
 15
 00:00:31,480 --> 00:00:33,630
 Y a medida que pasa el tiempo, podrías
-decidir que quieres mantener
+decidir que quieres almacenar
 
 16
 00:00:33,630 --> 00:00:34,960
-información
-adicional.
+información adicional.
 
 17
 00:00:34,960 --> 00:00:37,400
@@ -83,13 +82,12 @@ Y ejecutar un comando "ALTER TABLE".
 
 19
 00:00:39,120 --> 00:00:40,920
-Así es como funciona en el
-mundo relacional.
+Así es como funciona en
+el mundo relacional.
 
 20
 00:00:40,920 --> 00:00:42,650
-En Mongo, no
-necesitas hacer eso.
+En Mongo, no necesitas hacer eso.
 
 21
 00:00:42,650 --> 00:00:44,200
@@ -112,11 +110,11 @@ en sprints cortos de
 
 25
 00:00:51,440 --> 00:00:51,925
-dos o tres semanas.
+dos o tres semanas
 
 26
 00:00:51,925 --> 00:00:54,290
-Y harás cambios e iteraciones
+y harás cambios e iteraciones
 en el sistema.
 
 27
@@ -154,7 +152,7 @@ poner mi ciudad de nacimiento en ella.
 
 34
 00:01:09,950 --> 00:01:11,540
-Diré que es Queens.
+Diré que es "Queens".
 
 35
 00:01:11,540 --> 00:01:13,010
@@ -220,7 +218,7 @@ un nuevo usuario cuyo nombre es
 
 49
 00:01:33,120 --> 00:01:34,440
-Richard Kreuter, mi
+"Richard Kreuter", mi
 coinstructor.
 
 50
@@ -269,13 +267,13 @@ y por supuesto este
 
 59
 00:01:54,860 --> 00:01:57,080
-interesante ObjectId del que
+interesante "ObjectId" del que
 hablaremos más adelante.
 
 60
 00:01:57,080 --> 00:01:59,870
-Y el otro tiene
-nombre, ciudad de nacimiento
+Y el otro tiene nombre,
+ciudad de nacimiento
 
 61
 00:01:59,870 --> 00:02:01,050
@@ -283,7 +281,7 @@ y color favorito.
 
 62
 00:02:01,050 --> 00:02:04,140
-Así que Mongo permite ser muy
+Así que Mongo te permite ser muy
 ágiles porque no necesitas
 
 63
@@ -293,7 +291,7 @@ claves en cada documento.
 
 64
 00:02:07,280 --> 00:02:09,410
-Y puedo evolucionar esto
+Y puede evolucionar esto
 con el tiempo, también.
 
 65
@@ -304,7 +302,7 @@ de un documento existente.
 66
 00:02:11,910 --> 00:02:15,420
 Así que por ejemplo,
-puedo referenciar db.users.
+puedo referenciar "db.users".
 
 67
 00:02:15,420 --> 00:02:16,470
@@ -312,12 +310,11 @@ todo esto con una variable.
 
 68
 00:02:16,470 --> 00:02:18,330
-Y estoy buscando el
-objeto cuyo 
+Y estoy buscando el objeto cuyo 
 
 69
 00:02:18,330 --> 00:02:20,050
-nombre es Andrew Erlichson.
+nombre es "Andrew Erlichson".
 
 70
 00:02:20,050 --> 00:02:21,730
@@ -347,12 +344,12 @@ Y ahora podría hacer un
 
 76
 00:02:31,270 --> 00:02:34,260
-Ahora, si echas un vistazo a
-esta colección, puedes ver que
+Si le echas un vistazo a esta
+colección, puedes ver que
 
 77
 00:02:34,260 --> 00:02:37,330
-mi objeto ha sido ahora 
+mi objeto ha sido
 actualizado para incluir
 
 78
@@ -366,8 +363,8 @@ vamos a aprovechar un montón
 
 80
 00:02:41,360 --> 00:02:43,640
-a medida que construimos sistemas
-usando MongoDB.
+a medida que construyamos
+sistemas usando MongoDB.
 
 81
 00:02:43,640 --> 00:02:44,890

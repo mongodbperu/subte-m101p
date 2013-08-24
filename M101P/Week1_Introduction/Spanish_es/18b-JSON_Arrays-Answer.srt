@@ -8,7 +8,7 @@ está justo aquí.
 
 3
 00:00:02,890 --> 00:00:05,890
-Abres la llave,
+Abres el corchete,
 "fruit".
 
 4

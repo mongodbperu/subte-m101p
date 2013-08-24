@@ -25,13 +25,12 @@ de datos dentro de JSON,
 
 7
 00:00:09,130 --> 00:00:11,920
-que son arrays y
-diccionarios.
+que son arrays y diccionarios.
 
 8
 00:00:11,920 --> 00:00:13,400
-Ahora, todos sabemos qué
-son arrays.
+Ahora, todos sabemos
+lo que son arrays.
 
 9
 00:00:13,400 --> 00:00:14,800
@@ -45,7 +44,7 @@ mapas asociativos.
 11
 00:00:17,950 --> 00:00:20,830
 Así que se pueden combinar
-de forma abitraria.
+de forma arbitraria.
 
 12
 00:00:20,830 --> 00:00:24,290
@@ -146,8 +145,7 @@ que es un array.
 
 32
 00:01:08,040 --> 00:01:09,640
-Y tiene corchetes,
-y podría
+Tiene corchetes y podría
 
 33
 00:01:09,640 --> 00:01:11,290
@@ -155,7 +153,7 @@ ponerle cosas dentro.
 
 34
 00:01:11,290 --> 00:01:14,440
-Y cada uno de estos, en sí mismo,
+Cada uno de éstos, en sí mismo,
 podría, por supuesto, tener su propio
 
 35
@@ -169,8 +167,8 @@ llaves.
 
 37
 00:01:18,280 --> 00:01:21,370
-Así que vamos a construir
-todo a partir de estas dos
+Vamos a construir todo
+a partir de estas dos
 
 38
 00:01:21,370 --> 00:01:22,720
@@ -197,8 +195,8 @@ más alto y mostraremos cómo se
 
 43
 00:01:33,710 --> 00:01:35,730
-usan para la representación de datos
-en relación
+usan para la representación
+de datos en relación
 
 44
 00:01:35,730 --> 00:01:36,980

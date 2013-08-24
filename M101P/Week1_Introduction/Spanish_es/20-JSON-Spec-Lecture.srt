@@ -9,7 +9,7 @@ JSON, JSON es un estándar.
 3
 00:00:03,430 --> 00:00:07,000
 Y puedes echarle un vistazo
-en www.json.org.
+en "www.json.org".
 
 4
 00:00:07,000 --> 00:00:10,150
@@ -28,12 +28,12 @@ que veremos a continuación.
 
 7
 00:00:14,790 --> 00:00:17,570
-Así que más que llamar
-documento al nivel más alto,
+Así que en lugar de llamar
+"documento" al nivel más alto,
 
 8
 00:00:17,570 --> 00:00:18,890
-lo llaman objeto.
+lo llaman "objeto".
 
 9
 00:00:18,890 --> 00:00:22,170
@@ -100,7 +100,7 @@ estándar permite un
 22
 00:00:52,570 --> 00:00:56,890
 anidamiento arbitrario de arrays
-y documentos, u objetos,
+y documentos u objetos,
 
 23
 00:00:56,890 --> 00:00:58,190
@@ -113,13 +113,13 @@ array u otro documento.
 
 25
 00:01:00,720 --> 00:01:02,270
-Y puedes crear estas estructuras
+Puedes crear estas estructuras
 de datos que son bastante
 
 26
 00:01:02,270 --> 00:01:04,840
 complejas y que mapean muy
-bien lo que podrías ver
+bien a lo que podrías ver
 
 27
 00:01:04,840 --> 00:01:06,090

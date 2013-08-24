@@ -47,7 +47,7 @@ valores--
 
 12
 00:00:20,830 --> 00:00:23,620
-Así que, una vez más, escribe un documento
+Una vez más, escribe un documento
 JSON con una única clave,
 
 13
@@ -66,8 +66,8 @@ estado y un código postal.
 
 16
 00:00:29,100 --> 00:00:30,920
-Y aquí te damos
-los valores para ellos.
+Y aquí te damos los
+valores para ellos.
 
 17
 00:00:30,920 --> 00:00:32,170
