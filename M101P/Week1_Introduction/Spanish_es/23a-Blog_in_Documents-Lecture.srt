@@ -3,7 +3,7 @@
 
 2
 00:00:00,170 --> 00:00:03,290
-Hablemos acerca del modelado
+Hablemos acerca del modelo
 de nuestro blog en MongoDB.
 
 3
@@ -28,8 +28,8 @@ digamos, "posts".
 
 7
 00:00:14,070 --> 00:00:16,660
-Y voy a mostrar por ejemplo
-qué habría en la
+Y voy a mostrar como ejemplo
+lo que habría en la
 
 8
 00:00:16,660 --> 00:00:18,170
@@ -37,7 +37,7 @@ colección "posts".
 
 9
 00:00:18,170 --> 00:00:23,860
-Por lo que podríamos tener un título,
+Podríamos tener un título,
 como "Free online classes",
 
 10
@@ -52,12 +52,11 @@ junto con el nombre del usuario
 
 12
 00:00:33,610 --> 00:00:35,700
-del-- llamémosle
-autor.
+del--llamémosle autor.
 
 13
 00:00:35,700 --> 00:00:38,310
-Y para eso, voy a poner
+Y para eso voy a poner
 mi nombre justo en la
 
 14
@@ -66,7 +65,7 @@ colección.
 
 15
 00:00:38,650 --> 00:00:40,330
-No voy a poner un _id.
+No voy a poner un "_id".
 
 16
 00:00:40,330 --> 00:00:42,250
@@ -75,8 +74,8 @@ a enseñártelo, que vamos
 
 17
 00:00:42,250 --> 00:00:46,360
-a usar esto como el _id para
-nuestra otra colección, la
+a usar esto como el "_id"
+para otra colección, la
 
 18
 00:00:46,360 --> 00:00:47,940
@@ -84,8 +83,7 @@ colección "authors".
 
 19
 00:00:47,940 --> 00:00:49,640
-Por lo que tenemos un título
-de la publicación.
+Tenemos el título de la publicación.
 
 20
 00:00:49,640 --> 00:00:50,820
@@ -93,13 +91,12 @@ Tenemos el cuerpo de la publicación.
 
 21
 00:00:50,820 --> 00:00:52,290
-Tenemos el autor
-de la publicación.
+Tenemos el autor de la publicación.
 
 22
 00:00:52,290 --> 00:00:54,170
-Necesitamos la fecha en que
-fue publicado.
+Necesitamos la fecha 
+en que fue publicado.
 
 23
 00:00:54,170 --> 00:00:56,750
@@ -136,13 +133,13 @@ tener un documento.
 
 30
 00:01:09,870 --> 00:01:15,000
-Y va a tener un nombre de 
-mi publicador, Joe Biden, junto
+Y va a tener el nombre del autor
+del comentario, "Joe Biden", junto
 
 31
 00:01:15,000 --> 00:01:20,210
-con su email, si lo dio,
-joe@whitehouse.gov, junto con
+con su email, si es que lo dio,
+"joe@whitehouse.gov", junto con
 
 32
 00:01:20,210 --> 00:01:23,470
@@ -160,13 +157,12 @@ el documento.
 
 35
 00:01:27,000 --> 00:01:29,070
-Podría ser muy natural
-hacer eso.
+Podría ser muy
+natural hacer eso.
 
 36
 00:01:29,070 --> 00:01:31,410
-Y es muy natural
-hacerlo.
+Y es muy natural hacerlo.
 
 37
 00:01:31,410 --> 00:01:32,820
@@ -183,7 +179,7 @@ pondremos los datos justo aquí.
 
 40
 00:01:37,110 --> 00:01:39,590
-Por lo que tendré una clave "tags"
+Tendré una clave "tags"
 en este documento.
 
 41
@@ -234,8 +230,7 @@ vamos a hacer.
 
 51
 00:02:01,740 --> 00:02:02,470
-Trataremos esto 
-un poco
+Trataremos esto un poco
 
 52
 00:02:02,470 --> 00:02:04,060
@@ -248,18 +243,18 @@ vamos a mantener el nombre
 
 54
 00:02:06,070 --> 00:02:08,250
-de usuario, pero lo que vamos a hacer es,
-realmente vamos a
+de usuario, pero lo que vamos
+a hacer es, realmente vamos a
 
 55
 00:02:08,250 --> 00:02:11,660
-hacer que el ObjectId
+hacer que el "ObjectId"
 sea el nombre de usuario.
 
 56
 00:02:11,660 --> 00:02:13,420
-Aún no hemos hablado mucho de
-esto, y lo trataremos
+Aún no hemos hablado mucho
+de esto, y lo abarcaremos
 
 57
 00:02:13,420 --> 00:02:14,370
@@ -268,12 +263,12 @@ más adelante.
 58
 00:02:14,370 --> 00:02:17,940
 Pero cada documento necesita tener
-un _id único dentro de Mongo.
+un "_id" único dentro de Mongo.
 
 59
 00:02:17,940 --> 00:02:20,420
-El sistema asignará un identificador
-único al
+El sistema asignará un
+identificador único al
 
 60
 00:02:20,420 --> 00:02:22,310
@@ -298,7 +293,7 @@ tiene que ser único en el
 64
 00:02:29,950 --> 00:02:32,180
 sistema, así que vamos a
-usarlo como _id.
+usarlo como "_id".
 
 65
 00:02:32,180 --> 00:02:34,870
@@ -348,8 +343,8 @@ un autor, una fecha,
 
 75
 00:02:56,510 --> 00:02:58,510
-comentarios, que estarán
-en un array
+comentarios, que
+estarán en un array
 
 76
 00:02:58,510 --> 00:02:59,840
@@ -372,8 +367,8 @@ flexible con eso.
 
 80
 00:03:06,890 --> 00:03:09,510
-Las etiquetas, podría ponerlas
-justo aquí.
+Podría poner las
+etiquetas aquí mismo.
 
 81
 00:03:09,510 --> 00:03:11,350
@@ -414,7 +409,7 @@ Bien.
 
 89
 00:03:25,280 --> 00:03:28,730
-Así que de esta forma es como modelarías este
+Así es como modelarías este
 blog dentro del documento.
 
 90
@@ -443,12 +438,12 @@ sus comentarios y el autor?
 
 95
 00:03:43,480 --> 00:03:45,570
-Escribe tu respuesta aquí
-eligiendo una
+Escribe tu respuesta
+aquí eligiendo una
 
 96
 00:03:45,570 --> 00:03:46,820
-de estas cuatro respuestas.
+de estas cuatro opciones.
 
 97
 00:03:46,820 --> 00:03:47,840

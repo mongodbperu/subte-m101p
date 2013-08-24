@@ -12,7 +12,7 @@ comillas más "pin".
 
 4
 00:00:05,650 --> 00:00:07,460
-Y eso sería concatenar
+Y eso concatenaría
 las dos cadenas.
 
 5

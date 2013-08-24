@@ -27,4 +27,4 @@ nombre del autor en la colección
 
 7
 00:00:17,830 --> 00:00:19,080
-¿De acuerdo?
+¿Estás de acuerdo?

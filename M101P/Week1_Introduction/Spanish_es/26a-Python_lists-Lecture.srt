@@ -12,28 +12,28 @@ Las listas de Python son increíblemente
 
 4
 00:00:05,110 --> 00:00:07,410
-Para crear una nueva lista en Python,
-empieza con un
+Para crear una nueva lista
+en Python, empieza con un
 
 5
 00:00:07,410 --> 00:00:10,450
-corchete y
-agrega tus elementos.
+corchete y agrega
+tus elementos.
 
 6
 00:00:10,450 --> 00:00:13,310
-En este caso, añado un "orange",
+En este caso, añado "orange",
 "apple" y "banana", todo en
 
 7
 00:00:13,310 --> 00:00:15,990
-comillas simples, y cierra
-con un corchete.
+comillas simples, y
+cierro con un corchete.
 
 8
 00:00:15,990 --> 00:00:20,190
-Puedes notar que se parece
-a JSON, muy
+Puedes notar que se
+parece a JSON, muy
 
 9
 00:00:20,190 --> 00:00:21,270
@@ -50,8 +50,8 @@ haciendo "a = ".
 
 12
 00:00:25,250 --> 00:00:28,050
-Y si deseara una lista vacía,
-podría crearla así.
+Y si deseara una lista
+vacía, podría crearla así.
 
 13
 00:00:28,050 --> 00:00:31,620
@@ -64,8 +64,8 @@ Podría hacerlo también.
 
 15
 00:00:32,619 --> 00:00:35,320
-Podría decir, dame, el primer
-elemento va a ser
+Podría decir, dame, el
+primer elemento va a ser
 
 16
 00:00:35,320 --> 00:00:37,580
@@ -106,7 +106,7 @@ en el shell, así podemos
 
 24
 00:00:51,150 --> 00:00:52,420
-ver lo que parece.
+ver cómo se ve.
 
 25
 00:00:52,420 --> 00:00:56,630
@@ -125,32 +125,30 @@ de aquella variable.
 
 28
 00:01:01,480 --> 00:01:03,340
-También puedo imprimirlo
-así.
+También puedo imprimirlo así.
 
 29
 00:01:03,340 --> 00:01:05,605
 Si quiero crear otra
-lista, con sólo enteros en
+lista, con sólo enteros
 
 30
 00:01:05,605 --> 00:01:08,135
-él, puedo hacerlo,
-1, 2 y 3.
+puedo hacerlo, "1", "2" y "3".
 
 31
 00:01:08,135 --> 00:01:10,900
 Y puedo crear una lista que
-tenga listas de listas en él.
+contenga listas de listas.
 
 32
 00:01:10,900 --> 00:01:13,170
-Así por ejemplo, puedo crear--
-el primer elemento
+Así por ejemplo, puedo
+crear--el primer elemento
 
 33
 00:01:13,170 --> 00:01:15,830
-será un "1", segundo
+será un "1", el segundo
 elemento será una
 
 34
@@ -168,12 +166,12 @@ a tener un "3".
 
 37
 00:01:21,930 --> 00:01:23,210
-Veamos lo que hay en él.
+Veamos lo que hay en ella.
 
 38
 00:01:23,210 --> 00:01:24,770
-Podemos ver que hay tres
-elementos en él.
+Podemos ver que
+hay tres elementos.
 
 39
 00:01:24,770 --> 00:01:26,070
@@ -213,12 +211,12 @@ el número "3".
 
 47
 00:01:46,660 --> 00:01:49,930
-Muy fácil manipular listas
+Es muy fácil manipular
 y crear listas.
 
 48
 00:01:49,930 --> 00:01:51,610
-Muy útil porque,
+Es muy útil porque,
 por supuesto, las listas
 
 49
@@ -227,26 +225,26 @@ están directamente en JSON.
 
 50
 00:01:53,680 --> 00:01:55,800
-OK, tiempo para un cuestionario.
+OK, hagamos un cuestionario.
 
 51
 00:01:55,800 --> 00:01:59,800
-Las listas de Python, escribe
-el código para inicializar la lista con
+Escribe el código para
+inicializar una lista Python
 
 52
 00:01:59,800 --> 00:02:02,210
-los elementos "hammer",
-"nail" y "wall".
+con los elementos
+"hammer", "nail" y "wall",
 
 53
 00:02:02,210 --> 00:02:05,630
-Y asigna la lista a la
+y asigna la lista a la
 variable llamada "things".
 
 54
 00:02:05,630 --> 00:02:06,880
-Y hazlo justo aquí.
+Hazlo justo aquí.
 
 55
 00:02:06,880 --> 00:02:07,930

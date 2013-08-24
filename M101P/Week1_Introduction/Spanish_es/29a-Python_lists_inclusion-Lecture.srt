@@ -34,7 +34,8 @@ Podemos usar el operador "in".
 
 9
 00:00:17,820 --> 00:00:20,650
-Que se evalúa como verdad.
+Que se evalúa
+como verdadero.
 
 10
 00:00:20,650 --> 00:00:21,530
@@ -42,13 +43,13 @@ Que se evalúa como verdad.
 
 11
 00:00:21,530 --> 00:00:24,480
-"grape in a", evalúa
-a falso.
+"grape in a",
+evalúa a falso.
 
 12
 00:00:24,480 --> 00:00:27,080
 Y luego te voy a enseñar la
-sentencia condicional de probar
+sentencia condicional para probar
 
 13
 00:00:27,080 --> 00:00:29,540
@@ -67,7 +68,7 @@ final de la sentencia "if".
 
 16
 00:00:34,590 --> 00:00:38,140
-Y así que aquí está nuestra sentencia
+Aquí está nuestra sentencia
 condicional, "pear in a", y luego
 
 17
@@ -137,12 +138,12 @@ Aquí está el cuestionario.
 31
 00:01:07,840 --> 00:01:11,560
 Hablemos acerca de las listas de Python
-y la verificación para inclusión.
+y la verificación de inclusión.
 
 32
 00:01:11,560 --> 00:01:14,830
 Teniendo una lista de Python llamada
-"fruit",  escribe una sentencia "if"
+"fruit", escribe una sentencia "if"
 
 33
 00:01:14,830 --> 00:01:17,530

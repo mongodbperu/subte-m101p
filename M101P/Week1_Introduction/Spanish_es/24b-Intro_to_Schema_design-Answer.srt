@@ -7,17 +7,17 @@ Bien.
 
 3
 00:00:00,880 --> 00:00:04,030
-Así que, sucede que hay sólo
-uno de estos cuatro donde
+Sucede que en sólo una
+de estas cuatro se
 
 4
 00:00:04,030 --> 00:00:06,300
-tienes que usar una colección
-separada.
+tiene que usar una
+colección separada.
 
 5
 00:00:06,300 --> 00:00:09,550
-El primero es que los datos
+La primera dice que los datos
 estarían duplicados entre
 
 6
@@ -61,7 +61,7 @@ el elemento de los datos.
 
 14
 00:00:28,460 --> 00:00:32,170
-Por lo que sabes soportamos indexación
+Por lo que sabes, soportamos indexación
 de subdocumentos, así como
 
 15
@@ -84,8 +84,8 @@ no son isomorfos.
 
 19
 00:00:40,360 --> 00:00:42,260
-Bien, no estoy seguro qué significa
-esto exactamente
+Bien, no estoy seguro de qué
+significa esto exactamente
 
 20
 00:00:42,260 --> 00:00:43,220
@@ -111,17 +111,17 @@ fueran ligeramente de tipos
 
 25
 00:00:52,600 --> 00:00:55,020
-diferentes-- uno que fuera un array y 
+diferentes--uno que fuera un array y 
 otro un array más un
 
 26
 00:00:55,020 --> 00:00:56,850
 subdocumento, eso
-sería correcto.
+sería correcto
 
 27
 00:00:56,850 --> 00:00:58,530
-Y no hay razón por la cual
+y no habría razón por la cual
 tuvieras que poner eso en una
 
 28

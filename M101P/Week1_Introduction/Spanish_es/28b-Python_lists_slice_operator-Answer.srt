@@ -12,7 +12,7 @@ Y la respuesta es "things",
 
 4
 00:00:05,370 --> 00:00:06,820
-Recuerda, ellos están enumeradas
+Recuerda, están enumeradas
 desde cero.
 
 5
@@ -26,12 +26,12 @@ el elemento de la derecha.
 
 7
 00:00:13,900 --> 00:00:15,480
-Así que ésto te da
+Así que esto te da
 los dos primeros.
 
 8
 00:00:15,480 --> 00:00:16,730
-Esa es la respuesta.
+Ésa es la respuesta.
 
 9
 00:00:16,730 --> 00:00:17,280

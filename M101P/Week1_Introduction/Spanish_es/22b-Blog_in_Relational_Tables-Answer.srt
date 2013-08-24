@@ -59,8 +59,8 @@ están en la tabla "tags".
 
 14
 00:00:27,790 --> 00:00:31,620
-Por lo que tendrías que acceder realmente
-a seis tablas para mostrar una publicación
+Tendrías que acceder realmente a seis
+tablas para mostrar una publicación
 
 15
 00:00:31,620 --> 00:00:33,170

@@ -49,7 +49,7 @@ exclusivo de éste.
 
 12
 00:00:27,610 --> 00:00:32,509
-Así, por ejemplo, si dices un
+Por ejemplo, si dices un
 "0:1", sólo te va a dar
 
 13
@@ -59,8 +59,8 @@ de la lista.
 
 14
 00:00:35,170 --> 00:00:38,000
-Así que si piensas en ellos así,
-esto sería el elemento cero
+Si piensas en ellos así,
+este sería el elemento cero
 
 15
 00:00:38,000 --> 00:00:41,460
@@ -69,22 +69,22 @@ elemento tres.
 
 16
 00:00:41,460 --> 00:00:45,620
-Si dices desear "0:1", vas a
-conseguir el elemento cero
+Si dices "0:1", vas a
+conseguir del elemento cero
 
 17
 00:00:45,620 --> 00:00:48,400
-hasta el primer
-elemento pero exclusivo para
+hasta el elemento uno,
+pero excluyendo el
 
 18
 00:00:48,400 --> 00:00:50,510
-los primeros elementos ya que
+elemento "uno" ya que
 no lo incluye.
 
 19
 00:00:50,510 --> 00:00:58,310
-Así que decimos un "0:3", obtienes 0,
+Con "0:3", obtienes 0,
 1, 2 y no el tercero.
 
 20
@@ -145,7 +145,7 @@ que especifiques.
 31
 00:01:28,320 --> 00:01:30,485
 Y lo último que necesitas
-entender acerca de ésto es
+entender acerca de esto es
 
 32
 00:01:30,485 --> 00:01:33,120
@@ -193,7 +193,7 @@ cómo funciona esto.
 41
 00:01:55,120 --> 00:01:58,140
 Tenemos una lista aquí y hemos
-puesto los elementos que tenemos los
+puesto elementos con los
 
 42
 00:01:58,140 --> 00:02:01,075
@@ -239,7 +239,7 @@ de la lista.
 
 51
 00:02:21,750 --> 00:02:24,750
-Así que tenemos el resto de la
+Tenemos el resto de la
 lista, 2, 3, 4, 5.
 
 52
@@ -269,7 +269,7 @@ de la lista.
 
 57
 00:02:35,020 --> 00:02:37,860
-Debemos obtener la lista
+Deberíamos obtener la lista
 completa de vuelta y así es.
 
 58
@@ -279,7 +279,7 @@ inicio ni el fin, entonces
 
 59
 00:02:40,960 --> 00:02:42,500
-obtienes la lista completa de regreso.
+te retorna la lista completa.
 
 60
 00:02:42,500 --> 00:02:44,200
@@ -294,7 +294,7 @@ cortes de listas funcionan.
 62
 00:02:46,040 --> 00:02:49,060
 Y son muy útiles porque
-a menudo buscas
+a menudo cuando buscas
 
 63
 00:02:49,060 --> 00:02:52,080
@@ -322,26 +322,26 @@ del operador de corte en Python.
 
 68
 00:03:02,880 --> 00:03:06,560
-Digamos que tenermos la lista
-apples, orange, pear, grape,
+Digamos que tenemos la lista
+"apples", "orange", "pear", "grape",
 
 69
 00:03:06,560 --> 00:03:10,750
-kiwi y deseamos averiguar
+"kiwi" y deseamos averiguar
 la notación de corte que
 
 70
 00:03:10,750 --> 00:03:14,110
 retorne la
-sublista orange, pear.
+sublista "orange", "pear".
 
 71
 00:03:14,110 --> 00:03:15,410
-Orange, pear.
+"orange", "pear".
 
 72
 00:03:15,410 --> 00:03:16,660
-Escríbelo aquí mismo.
+Escríbela aquí mismo.
 
 73
 00:03:16,660 --> 00:03:17,830

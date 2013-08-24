@@ -13,35 +13,35 @@ de antes, vimos en esta
 
 4
 00:00:06,890 --> 00:00:09,635
-pequeña lista, que tiene "apple",
-"pear" y "banana" en ella.
+pequeña lista, que contiene
+"apple", "pear" y "banana",
 
 5
 00:00:09,635 --> 00:00:11,550
-Y lo asignamos a "a".
+y la asignamos a "a".
 
 6
 00:00:11,550 --> 00:00:13,720
-Así que si deseamos añadir otro
-elemento a esta lista, podrías
+Si deseas añadir otro
+elemento a esta lista,
 
 7
 00:00:13,720 --> 00:00:15,540
-usar la función "append".
+podrías usar la función "append",
 
 8
 00:00:15,540 --> 00:00:18,630
-Y podríamos añadir
-"kiwi" en ella.
+y podrías añadir "kiwi".
 
 9
 00:00:18,630 --> 00:00:21,410
-Y si vemos en "a" ahora,
-veremos que es "apple",
+Si le echamos un vistazo a
+"a" ahora, veremos que contiene
 
 10
 00:00:21,410 --> 00:00:23,170
-"pear", "banana" y "kiwi".
+"apple", "pear",
+"banana" y "kiwi".
 
 11
 00:00:23,170 --> 00:00:24,990
@@ -63,12 +63,12 @@ ordenados desde cero.
 
 15
 00:00:29,495 --> 00:00:31,340
-Y ahora si vemos en "a",
-podemos ver que
+Y ahora, si le echamos un
+vistazo a "a", podemos ver
 
 16
 00:00:31,340 --> 00:00:32,840
-fue cambiado a "grape".
+que fue cambiado a "grape".
 
 17
 00:00:32,840 --> 00:00:34,946
@@ -86,40 +86,41 @@ será "banana".
 
 20
 00:00:38,490 --> 00:00:41,100
-Ahora, si vemos en "a", vemos
-que "banana" ahora no está.
+Ahora vemos que
+"banana" ya no está.
 
 21
 00:00:41,100 --> 00:00:43,120
-Está "apple", "grape" y "kiwi".
+Están "apple", "grape" y "kiwi".
 
 22
 00:00:43,120 --> 00:00:45,280
 Ahora si deseas ver todas las
-cosas que son posibles de hacer con
+cosas puedes hacer con una
 
 23
 00:00:45,280 --> 00:00:49,260
-la lista, usa un comado
+lista, usa el comado
 "dir" en Python.
 
 24
 00:00:49,260 --> 00:00:51,500
 Y vas a ver el objeto
-y decirle todas las cosas
+y todas las cosas
 
 25
 00:00:51,500 --> 00:00:52,580
-distintas que son posibles.
+distintas que es
+posible hacer.
 
 26
 00:00:52,580 --> 00:00:53,620
-No voy a revisar por
+No voy a revisar
 muchos de ellos.
 
 27
 00:00:53,620 --> 00:00:55,530
-Ellos son comandos internos
+Son comandos internos
 que no necesitamos
 
 28
@@ -175,8 +176,8 @@ llamar en la lista--
 
 39
 00:01:18,060 --> 00:01:23,150
-append, extend, insert, remove,
-pop, sort, reverse.
+"append", "extend", "insert",
+"remove", "pop", "sort", "reverse".
 
 40
 00:01:23,150 --> 00:01:24,070
@@ -185,7 +186,7 @@ sencillos.
 
 41
 00:01:24,070 --> 00:01:26,090
-Pobablemente no vas a usar
+Probablemente no vas a usar
 muchos de ellos cuando estés
 
 42
@@ -194,8 +195,8 @@ desarrollando en este curso.
 
 43
 00:01:27,060 --> 00:01:28,080
-Pero es bueno saber
-que estos están
+Pero es bueno
+saber que están
 
 44
 00:01:28,080 --> 00:01:30,160
@@ -211,8 +212,8 @@ Manipular una lista de Python.
 
 47
 00:01:34,210 --> 00:01:36,630
-Escribe el código para añadir
-"hammer" en
+Escribe el código para
+añadir "hammer" en
 
 48
 00:01:36,630 --> 00:01:38,080

@@ -7,7 +7,7 @@ Y aquí está la respuesta.
 
 3
 00:00:01,940 --> 00:00:03,190
-"things.append".
+"things.append"
 
 4
 00:00:03,190 --> 00:00:04,440

@@ -3,16 +3,17 @@
 
 2
 00:00:00,290 --> 00:00:01,920
-Abordemos a los diccionarios de Python.
+Abordemos los diccionarios de Python.
 
 3
 00:00:01,920 --> 00:00:02,900
-Los Python "dicts" o--
+Los Python "dicts",
+o diccionarios,
 
 4
 00:00:02,900 --> 00:00:06,940
-Los diccionarios de Python son muy
-similares a los objetos JSON
+son muy similares
+a los objetos JSON
 
 5
 00:00:06,940 --> 00:00:07,635
@@ -29,8 +30,8 @@ mostrártelas.
 
 8
 00:00:10,840 --> 00:00:13,540
-Inicializa un diccionario
-de la misma manera que
+Inicializas un diccionario
+de la misma manera en que
 
 9
 00:00:13,540 --> 00:00:14,670
@@ -38,13 +39,13 @@ inicializas un objeto.
 
 10
 00:00:14,670 --> 00:00:17,650
-Así que si deseas crear un pequeño
-diccionario en Python,
+Si deseas crear un pequeño
+diccionario en Python y
 
 11
 00:00:17,650 --> 00:00:21,415
-asígnalo a la variable "a",
-decimos "a =", llave,
+asignarlo a la variable "a",
+decimos "a =", corchete,
 
 12
 00:00:21,415 --> 00:00:27,430
@@ -71,12 +72,13 @@ los elementos de la lista.
 
 17
 00:00:39,080 --> 00:00:42,700
-Así que no tiene ninguna noción,
-digamos, "name" sería una
+Así que no tiene ninguna noción
+que digamos, "name", es una
 
 18
 00:00:42,700 --> 00:00:44,590
-clave antes que "age".
+clave que aparece
+antes que "age".
 
 19
 00:00:44,590 --> 00:00:47,300
@@ -90,7 +92,7 @@ exacta de diccionario.
 
 21
 00:00:50,550 --> 00:00:52,100
-Este usa algo que
+Éste usa algo que
 es muy similiar al
 
 22
@@ -100,8 +102,7 @@ orden como es necesario para JSON.
 
 23
 00:00:55,340 --> 00:00:56,970
-Si deseas referenciar
-algo,
+Si deseas referenciar algo,
 
 24
 00:00:56,970 --> 00:00:58,040
@@ -109,8 +110,8 @@ utiliza corchetes.
 
 25
 00:00:58,040 --> 00:01:01,260
-Que es una notación muy similar
-para las listas.
+Es una notación muy
+similar para las listas.
 
 26
 00:01:01,260 --> 00:01:04,790
@@ -124,22 +125,21 @@ de una expresión, estoy
 
 28
 00:01:06,570 --> 00:01:07,570
-yendo a obtener el "name" de vuelta.
+obteniendo el "name".
 
 29
 00:01:07,570 --> 00:01:09,200
-Y si lo usas a la izquierda
+Y si lo uso a la izquierda
 de la expresión, estoy
 
 30
 00:01:09,200 --> 00:01:10,620
-por terminar asignándolo
-a "name".
+por asignándolo a "name".
 
 31
 00:01:10,620 --> 00:01:12,980
-Ahora si digo, esto es "Jim",
-va a ser una
+Ahora si digo, esto
+es "Jim", va a ser una
 
 32
 00:01:12,980 --> 00:01:17,320
@@ -157,17 +157,17 @@ asignar "b", "Jim".
 
 35
 00:01:21,520 --> 00:01:24,630
-También puedes eliminar un elemento
-del diccionario
+También puedes eliminar un
+elemento del diccionario
 
 36
 00:01:24,630 --> 00:01:26,130
-de la misma manera que eliminas
-algo de un array.
+de la misma manera en que
+eliminas algo de un array.
 
 37
 00:01:26,130 --> 00:01:30,130
-Pudes usar funciones de "delete",
+Puedes usar funciones de "delete",
 dices "delete", "a", "name",
 
 38
@@ -176,8 +176,8 @@ y lo eliminará.
 
 39
 00:01:31,470 --> 00:01:33,710
-Bien, esto necesita existir
-para que
+Bien, esto necesita
+existir para que
 
 40
 00:01:33,710 --> 00:01:35,130
@@ -214,7 +214,7 @@ dos puntos, "Queens".
 47
 00:01:48,080 --> 00:01:51,300
 Y ahora, si imprimo
-esa expresión, voy  a ver
+esa expresión, voy a ver
 
 48
 00:01:51,300 --> 00:01:52,440
@@ -249,18 +249,17 @@ Pero mira lo que pasó allí.
 
 55
 00:02:08,300 --> 00:02:09,469
-Eso es de lo que hablé
-antes.
+Eso es lo que mencioné antes.
 
 56
 00:02:09,469 --> 00:02:12,325
 Me dio mi ciudad de nacimiento
-como primera clave-- esto
+como primera clave--esto
 
 57
 00:02:12,325 --> 00:02:14,750
-es una lista-- y mi segunda
-clave es "name".
+es una lista-- y mi
+segunda clave es "name".
 
 58
 00:02:14,750 --> 00:02:16,880
@@ -274,13 +273,13 @@ Python no conserva el
 
 60
 00:02:19,190 --> 00:02:22,740
-orden de las claves pero JSON
-sí lo hace-- una pequeña sutileza.
+orden de las claves, pero JSON
+sí lo hace--una pequeña sutileza.
 
 61
 00:02:22,740 --> 00:02:25,290
 Si deseas eliminar algo,
-puedo hacer eso.
+puedo hacer esto.
 
 62
 00:02:25,290 --> 00:02:27,900
@@ -294,7 +293,7 @@ el nombre de la lista,
 64
 00:02:29,560 --> 00:02:32,440
 Si elimino un elemento que no está
-allí, eso es un error.
+allí, eso me da un error.
 
 65
 00:02:32,440 --> 00:02:33,450
@@ -374,8 +373,8 @@ en los valores.
 
 81
 00:03:12,440 --> 00:03:16,360
-OK, así que esa es la forma
-en la que los diccionarios funcionan en Python.
+OK, así que esta es la forma en la
+que los diccionarios funcionan en Python.
 
 82
 00:03:16,360 --> 00:03:18,380
@@ -397,4 +396,4 @@ los pares de claves, "sky" es
 
 86
 00:03:29,660 --> 00:03:31,580
-Escribe tu respuesta justo aquí.
+Escribe tu respuesta aquí.

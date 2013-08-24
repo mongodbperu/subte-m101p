@@ -22,8 +22,8 @@ y voy a guiarte por
 
 6
 00:00:09,230 --> 00:00:11,290
-Creo que la mayoría de la gente
-sabe qué es un blog.
+Creo que la mayoría de la
+gente sabe lo que es un blog.
 
 7
 00:00:11,290 --> 00:00:16,219
@@ -50,8 +50,8 @@ Classes".
 
 12
 00:00:23,660 --> 00:00:27,840
-Y puedes ver que hay un
-nombre corto que está en la URL junto
+Y puedes ver que hay un nombre
+corto que está en la URL junto
 
 13
 00:00:27,840 --> 00:00:30,700
@@ -69,18 +69,18 @@ ha catalogado.
 
 16
 00:00:34,500 --> 00:00:37,080
-Y a continuación hay algunos comentarios
-de algunos lectores y
+Y a continuación hay algunos
+comentarios de algunos lectores y
 
 17
 00:00:37,080 --> 00:00:39,860
-podemos añadir otros comentarios
-justo aquí.
+podemos añadir otros
+comentarios justo aquí.
 
 18
 00:00:39,860 --> 00:00:42,670
 Tras añadir ese comentario, 
-podemos enviarlo, y será
+podemos enviarlo y será
 
 19
 00:00:42,670 --> 00:00:44,280
@@ -88,7 +88,7 @@ parte de la entrada del blog.
 
 20
 00:00:44,280 --> 00:00:47,340
-Y si luego vamos aquí al
+Si luego vamos aquí, al
 inicio del blog, veremos
 
 21
@@ -97,13 +97,13 @@ todos los artículos otra vez.
 
 22
 00:00:48,160 --> 00:00:50,930
-Podemos también añadir una entrada
-nueva al blog.
+Podemos también añadir una
+entrada nueva al blog.
 
 23
 00:00:50,930 --> 00:00:52,930
-No voy a añadir una entrada nueva
-justo ahora, pero ésta es
+No voy a añadir una justo
+ahora, pero ésta es
 
 24
 00:00:52,930 --> 00:00:55,480
@@ -117,8 +117,8 @@ una página de desconexión.
 
 26
 00:00:57,680 --> 00:00:59,860
-Así que estarás construyendo esto
-tú mismo así como extendiéndolo,
+Así que estarás construyendo
+y extendiendo esto tú mismo
 
 27
 00:00:59,860 --> 00:01:03,050
@@ -132,8 +132,8 @@ la escritura del código.
 
 29
 00:01:05,600 --> 00:01:07,720
-Por lo que así es cómo se verá
-cuando esté todo terminado, pero
+Así es cómo se verá cuando
+esté todo terminado, pero
 
 30
 00:01:07,720 --> 00:01:09,660
@@ -148,7 +148,7 @@ vamos a estar usando como
 32
 00:01:11,990 --> 00:01:13,350
 vehículo para enseñar
-en el curso.
+en este curso.
 
 33
 00:01:13,350 --> 00:01:14,600

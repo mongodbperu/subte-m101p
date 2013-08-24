@@ -3,8 +3,8 @@
 
 2
 00:00:00,120 --> 00:00:02,980
-Si quisiéramos modelar este blog
-en un sistema relacional,
+Si quisiéramos modelar este
+blog en un sistema relacional,
 
 3
 00:00:02,980 --> 00:00:05,460
@@ -13,13 +13,12 @@ muy parecidas a éstas.
 
 4
 00:00:05,460 --> 00:00:08,350
-Y te guiaré por cada
-tabla y qué hace.
+Te guiaré por cada
+tabla y lo que hace.
 
 5
 00:00:08,350 --> 00:00:09,960
-Por lo que habría
-una tabla "posts".
+Habría una tabla "posts".
 
 6
 00:00:09,960 --> 00:00:12,860
@@ -50,13 +49,13 @@ un sistema relacional.
 
 12
 00:00:21,500 --> 00:00:24,160
-Y entonces probablemente habría
-un ID de publicación, y algún
+Probablemente habría un ID
+de publicación, y algún
 
 13
 00:00:24,160 --> 00:00:27,130
-tipo de ID de autor que
-apunta al autor
+tipo de ID de autor
+que apunta al autor
 
 14
 00:00:27,130 --> 00:00:29,160
@@ -87,18 +86,18 @@ comentador, el propio
 
 20
 00:00:37,260 --> 00:00:40,690
-comentario, su email, y
-probablemente un ID para identificarlo.
+comentario, su email, y probablemente
+un ID para identificarlo y
 
 21
 00:00:40,690 --> 00:00:44,460
-Por lo que puede ser asociado y
+por lo que pueda ser asociado y
 relacionado a las publicaciones.
 
 22
 00:00:44,460 --> 00:00:47,130
-Y entonces ésta es la forma en que 
-esto funcionaría. También habría 
+Ésta es la forma en que esto
+funcionaría. También habría 
 
 23
 00:00:47,130 --> 00:00:50,100
@@ -112,8 +111,8 @@ relaciones por aquí.
 
 25
 00:00:52,650 --> 00:00:56,350
-Así que por ejemplo, esta tabla "posts"
-conecta con esta tabla
+Por ejemplo, esta tabla "posts"
+se conecta con esta tabla
 
 26
 00:00:56,350 --> 00:00:58,830
@@ -174,8 +173,8 @@ el ID de publicación justo en
 
 38
 00:01:28,390 --> 00:01:31,100
-el sistema de comentarios, ya que un comentario,
-probablemente, está sólo
+el sistema de comentarios, ya que un
+comentario, probablemente, esté sólo
 
 39
 00:01:31,100 --> 00:01:33,500
@@ -189,8 +188,8 @@ en que lo construirías.
 
 41
 00:01:36,300 --> 00:01:39,220
-Así que pensando en eso, es
-hora de hacer un cuestionario, la
+Teniendo esto en mente, es hora
+de hacer un cuestionario, la
 
 42
 00:01:39,220 --> 00:01:43,600
@@ -204,7 +203,7 @@ del blog?
 
 44
 00:01:45,200 --> 00:01:46,410
-Así que éste es el cuestionario.
+Éste es el cuestionario.
 
 45
 00:01:46,410 --> 00:01:49,130
@@ -246,11 +245,11 @@ OK, hora del cuestionario.
 53
 00:02:06,710 --> 00:02:10,220
 Volvamos a mirar el esquema
-del blog que acabamos de crear.
+del blog que acabamos de crear
 
 54
 00:02:10,220 --> 00:02:12,340
-Y supongamos que nuestro blog
+y supongamos que nuestro blog
 se puede modelar con las
 
 55
@@ -259,8 +258,8 @@ siguientes tablas relacionales.
 
 56
 00:02:14,040 --> 00:02:16,490
-Y puedes verlas aquí --
-tabla "authors", tabla "posts",
+Puedes verlas aquí--tabla
+"authors", tabla "posts",
 
 57
 00:02:16,490 --> 00:02:20,030

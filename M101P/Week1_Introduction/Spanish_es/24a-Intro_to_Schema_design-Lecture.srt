@@ -3,16 +3,16 @@
 
 2
 00:00:00,140 --> 00:00:02,530
-Vamos a tratar el diseño de
+Vamos a abordar el diseño de
 esquemas un poco más tarde en
 
 3
 00:00:02,530 --> 00:00:03,550
-este curso.
+este curso,
 
 4
 00:00:03,550 --> 00:00:06,140
-Pero quería introducir
+pero quería introducir
 algunas de las preguntas que
 
 5
@@ -22,8 +22,8 @@ esquema orientado a documentos.
 
 6
 00:00:10,200 --> 00:00:12,220
-En relacional, es bastante
-sencillo
+En relacional, es
+bastante sencillo
 
 7
 00:00:12,220 --> 00:00:13,200
@@ -36,11 +36,11 @@ forma normal, y luego quizá
 
 9
 00:00:15,620 --> 00:00:17,080
-combines unas cuantas cosas.
+combines unas cuantas cosas,
 
 10
 00:00:17,080 --> 00:00:21,410
-Pero con MongoDB y diseños
+pero con MongoDB y diseños
 orientados a documentos, ¿cómo
 
 11
@@ -49,8 +49,8 @@ sabes si embeber o no?
 
 12
 00:00:23,210 --> 00:00:25,910
-Por ejemplo, en el esquema sobre el que
-finalmente decidimos
+Por ejemplo, en el esquema sobre
+el que finalmente decidimos
 
 13
 00:00:25,910 --> 00:00:29,810
@@ -63,8 +63,8 @@ justo en su interior.
 
 15
 00:00:30,870 --> 00:00:34,970
-Y el array de etiquetas tenía nombres de etiquetas
-que potencialmente podrían
+Y el array de etiquetas tenía nombres
+de etiquetas que potencialmente podrían
 
 16
 00:00:34,970 --> 00:00:37,740
@@ -73,16 +73,16 @@ diferentes publicaciones.
 
 17
 00:00:37,740 --> 00:00:41,680
-Así que ¿por qué embeber eso frente a
-ponerlo en una colección "tags"
+¿Por qué embeber eso en lugar
+de ponerlo en una colección
 
 18
 00:00:41,680 --> 00:00:42,490
-separada?
+"tags" separada?
 
 19
 00:00:42,490 --> 00:00:44,310
-Tienes la misma pregunta
+Y nos hacemos la misma pregunta
 para los comentarios.
 
 20
@@ -97,8 +97,8 @@ normalmente serán accedidos al
 
 22
 00:00:51,730 --> 00:00:53,850
-mismo tiempo que se accede a las
-publicaciones.
+mismo tiempo que se accede
+a las publicaciones.
 
 23
 00:00:53,850 --> 00:00:57,200
@@ -108,7 +108,8 @@ acceder a las etiquetas
 24
 00:00:57,200 --> 00:01:00,990
 independientemente de las
-publicaciones o acceder a los comentarios
+publicaciones o acceder
+a los comentarios
 
 25
 00:01:00,990 --> 00:01:04,140
@@ -123,12 +124,12 @@ aplica a más de una publicación.
 27
 00:01:07,800 --> 00:01:09,950
 Ahora, es cierto, en el caso de
-las etiquetas, si son, digamos
+las etiquetas, sí se aplican a
 
 28
 00:01:09,950 --> 00:01:11,740
-"cycling" y
-"running".
+varias publicaciones. Tomemos
+"cycling" y "running".
 
 29
 00:01:11,740 --> 00:01:14,910
@@ -142,7 +143,7 @@ un poco tedioso porque no están
 
 31
 00:01:18,140 --> 00:01:19,740
-relacionalmente conectados.
+relacionalmente conectadas.
 
 32
 00:01:19,740 --> 00:01:22,210
@@ -156,13 +157,13 @@ el tiempo.
 
 34
 00:01:23,440 --> 00:01:25,890
-Por lo que tiene sentido que
+Por lo que tiene más sentido que
 pusieras estas etiquetas directamente
 
 35
 00:01:25,890 --> 00:01:28,130
-dentro de la propia colección 
-"posts".
+dentro de la propia
+colección "posts".
 
 36
 00:01:28,130 --> 00:01:30,420
@@ -171,12 +172,12 @@ decidiendo si embeber o
 
 37
 00:01:30,420 --> 00:01:33,130
-no embeber, va a ser 
-la forma en que accedas a los datos
+no embeber, va a ser la forma
+en que accedas a los datos
 
 38
 00:01:33,130 --> 00:01:35,360
-la que va a decidir eso,
+lo que va a decidir eso,
 junto con algunas otras
 
 39
@@ -204,16 +205,17 @@ extremadamente inusual, entonces
 
 44
 00:01:46,520 --> 00:01:49,000
-tendrías que poner los comentarios
-en una colección
+tendrías que poner los
+comentarios en una
 
 45
 00:01:49,000 --> 00:01:50,050
-separada.
+colección separada.
 
 46
 00:01:50,050 --> 00:01:52,390
-Y ahora es el momento para un cuestionario.
+Y ahora es el momento
+para un cuestionario.
 
 47
 00:01:52,390 --> 00:01:55,590
@@ -226,7 +228,7 @@ dentro de un documento?
 
 49
 00:01:56,600 --> 00:01:59,650
-Esto es, ¿en qué escenarios
+Es decir, ¿en qué escenarios
 tienes que poner los datos en una
 
 50

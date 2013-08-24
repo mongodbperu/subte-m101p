@@ -63,13 +63,13 @@ aprender Python.
 
 15
 00:00:24,520 --> 00:00:26,870
-Pero ésto debería ser suficiente
-para empezar y usar el
+Pero esto debería ser suficiente
+para empezar a usar el
 
 16
 00:00:26,870 --> 00:00:29,400
-lenguaje si eres un
-programador experimentado en cualquier
+lenguaje si eres un programador
+experimentado en cualquier
 
 17
 00:00:29,400 --> 00:00:30,490
@@ -87,8 +87,8 @@ van Rossum.
 
 20
 00:00:35,450 --> 00:00:38,870
-Lleva el nombre de "Monty Python's
-Flying Circus".
+Lleva el nombre de "Monty
+Python's Flying Circus".
 
 21
 00:00:38,870 --> 00:00:40,280
@@ -105,13 +105,13 @@ muchos otros lenguajes.
 
 24
 00:00:43,740 --> 00:00:46,500
-Tiene un garbage collector, por lo
+Tiene un "garbage collector", por lo
 que no necesitas preocuparte
 
 25
 00:00:46,500 --> 00:00:49,290
-de manejar tu propia
-memoria, que es agradable.
+de manejar tu propia memoria,
+lo cual es agradable.
 
 26
 00:00:49,290 --> 00:00:51,010
@@ -148,12 +148,12 @@ crear idiomas para hacer cosas
 
 33
 00:01:07,970 --> 00:01:11,020
-en una manera estándar para que
-el código sea legible y
+en una manera estándar, para
+que el código sea legible y
 
 34
 00:01:11,020 --> 00:01:12,390
-entendible por
+comprensible para
 otra persona.
 
 35
@@ -171,13 +171,13 @@ de Python interactivamente.
 
 38
 00:01:18,080 --> 00:01:20,420
-Y normalmente, vas a
-crear un script de Python y
+Y normalmente, vas a crear
+un script de Python y
 
 39
 00:01:20,420 --> 00:01:21,760
-vas a editarlo
-con un editor de texto.
+vas a editarlo con
+un editor de texto.
 
 40
 00:01:21,760 --> 00:01:22,620
@@ -194,7 +194,7 @@ a ejecutar de forma interactiva.
 
 43
 00:01:25,980 --> 00:01:29,390
-Así que inicio el intérprete de
+Inicio el intérprete de
 Python escribiendo "python".
 
 44
@@ -208,8 +208,7 @@ imprimir "Hello, world!".
 
 46
 00:01:33,820 --> 00:01:35,290
-Y puedes ver cómo
-funciona.
+Y puedes ver cómo funciona.
 
 47
 00:01:35,290 --> 00:01:37,770
@@ -240,12 +239,12 @@ múltiples cadenas.
 
 53
 00:01:49,520 --> 00:01:51,770
-Puedes ver cómo esto pone algunos
-espacios para hacer esto un
+Puedes ver cómo esto pone
+algunos espacios para hacerlo
 
 54
 00:01:51,770 --> 00:01:53,390
-poco más fácil de leer.
+un poco más fácil de leer.
 
 55
 00:01:53,390 --> 00:01:55,780
@@ -267,7 +266,7 @@ concatenar dos cadenas, "hat"
 
 59
 00:02:01,390 --> 00:02:03,830
-y "pin", en Python para
+y "pin", en Python, creando
 la cadena "hatpin".
 
 60
