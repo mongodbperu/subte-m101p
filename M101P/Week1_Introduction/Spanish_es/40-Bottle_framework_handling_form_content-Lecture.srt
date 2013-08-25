@@ -8,8 +8,8 @@ sobre cómo manejar las entradas
 
 3
 00:00:03,650 --> 00:00:06,200
-desde un formulario en Bottle
-y Python.
+desde un formulario en
+Bottle y Python.
 
 4
 00:00:06,200 --> 00:00:09,580
@@ -66,8 +66,8 @@ generará el contenido.
 
 15
 00:00:29,240 --> 00:00:31,800
-En este caso, vamos a
-tener un pequeño formulario en la propia
+En este caso, vamos a tener un
+pequeño formulario en la propia
 
 16
 00:00:31,800 --> 00:00:33,610
@@ -90,7 +90,7 @@ comprenderás por qué en un segundo.
 
 20
 00:00:42,210 --> 00:00:44,900
-Y genera algo de código,
+Genera algo de código,
 que entonces produce 
 
 21
@@ -113,16 +113,16 @@ a un ejemplo.
 
 25
 00:00:53,260 --> 00:00:55,190
-Así que, voy a ejecutar
+Voy a ejecutar
 este pequeño script
 
 26
 00:00:55,190 --> 00:00:56,210
-Python que he escrito.
+Python que he escrito
 
 27
 00:00:56,210 --> 00:00:59,600
-Y vamos a la página de inicio del
+y vamos a la página de inicio del
 servidor web en el 8080.
 
 28
@@ -150,7 +150,7 @@ y lo envías, dice, oh,
 
 33
 00:01:11,920 --> 00:01:13,580
-Así que, ¿cómo hacemos que esto funcione?
+¿Cómo hacemos que esto funcione?
 
 34
 00:01:13,580 --> 00:01:14,690
@@ -192,8 +192,8 @@ justo ahora.
 
 42
 00:01:30,640 --> 00:01:33,410
-Puedes ver lo que esta plantilla
-imprime, el tíulo es "Hello
+Puedes ver lo que la plantilla
+imprime, el título es "Hello
 
 43
 00:01:33,410 --> 00:01:36,790
@@ -239,13 +239,12 @@ Y el método es
 
 52
 00:01:55,480 --> 00:01:58,020
-Pregunta cuál es tu fruta favorita,
-oh, veo ese error
+Pregunta cuál es tu fruta
+favorita, oh, veo ese error
 
 53
 00:01:58,020 --> 00:01:59,220
-ahí, 
-corregiremos eso.
+ahí, corregiremos eso.
 
 54
 00:01:59,220 --> 00:02:00,800
@@ -340,8 +339,8 @@ que está buscando.
 
 73
 00:02:43,440 --> 00:02:45,180
-Eso recupera el elemento del formulario
-que se llama
+Eso recupera el elemento
+del formulario que se llama
 
 74
 00:02:45,180 --> 00:02:46,600
@@ -349,13 +348,13 @@ que se llama
 
 75
 00:02:46,600 --> 00:02:50,070
-Si no está establecido, simplemente lo
-establece a "No Fruit Selected".
+Si no está establecido, simplemente
+lo establece a "No Fruit Selected".
 
 76
 00:02:50,070 --> 00:02:53,210
-Y luego devuelve esta otra
-plantilla llamada
+Y luego devuelve esta
+otra plantilla llamada
 
 77
 00:02:53,210 --> 00:02:56,510
@@ -389,7 +388,7 @@ Confirmation".
 83
 00:03:06,450 --> 00:03:09,670
 Y entonces dice "Your favorite
-fruit is", y dice la fruta
+fruit is", y menciona la fruta
 
 84
 00:03:09,670 --> 00:03:10,520
@@ -397,7 +396,7 @@ justo aquí.
 
 85
 00:03:10,520 --> 00:03:13,910
-Y estas llaves rodean
+Y estos corchetes rodean
 un trozo de código
 
 86
@@ -407,8 +406,8 @@ Python, en este caso, la variable
 
 87
 00:03:16,950 --> 00:03:20,600
-Así que podría haber un montón que recuperar
-de una vez, pero si
+Así que podría haber un montón
+que recuperar de una vez, pero si
 
 88
 00:03:20,600 --> 00:03:22,210
@@ -444,8 +443,8 @@ partes que tienen que ver con MongoDB.
 
 95
 00:03:31,380 --> 00:03:33,510
-Pero quería que este fuera un curso
-completo de forma que
+Pero quería que este fuera un
+curso completo de forma que
 
 96
 00:03:33,510 --> 00:03:36,760

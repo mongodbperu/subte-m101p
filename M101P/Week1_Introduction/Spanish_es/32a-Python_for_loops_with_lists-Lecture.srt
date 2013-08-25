@@ -3,8 +3,8 @@
 
 2
 00:00:00,130 --> 00:00:01,730
-Muy bien, ahora vamos
-a ir sobre la forma en que los bucles
+Muy bien, ahora vamos a
+aprender cómo los bucles
 
 3
 00:00:01,730 --> 00:00:03,160
@@ -17,7 +17,7 @@ estructura de control de flujo
 
 5
 00:00:05,600 --> 00:00:07,110
-que está en muchos lenguajes.
+que encontramos en muchos lenguajes.
 
 6
 00:00:07,110 --> 00:00:09,730
@@ -40,22 +40,22 @@ cambio, editaremos un archivo
 
 10
 00:00:17,450 --> 00:00:20,175
-en lugar de usar el intérprete
-Python
+y en lugar de usar el
+intérprete Python,
 
 11
 00:00:20,175 --> 00:00:21,160
-desde la línea de comandos.
+usaremos la línea de comandos,
 
 12
 00:00:21,160 --> 00:00:23,360
-Porque deseo mostrarte
-algunas cosas sobre eso.
+porque deseo mostrarte
+algunas cosas sobre ella.
 
 13
 00:00:23,360 --> 00:00:27,530
-Así que tenemos aquí una lista
-de frutas que he inicializado con
+Tenemos aquí una lista de
+frutas que he inicializado con
 
 14
 00:00:27,530 --> 00:00:29,030
@@ -63,8 +63,8 @@ de frutas que he inicializado con
 
 15
 00:00:29,030 --> 00:00:31,960
-Y hay un comentario aquí,
-comenzando con un numeral (#), para
+Y hay un comentario aquí, que
+comienza con un numeral (#), para
 
 16
 00:00:31,960 --> 00:00:33,580
@@ -78,11 +78,11 @@ Luego tenemos un segundo array,
 18
 00:00:36,490 --> 00:00:39,410
 lista que ha sido inicializada
-como vacía.
+como vacía
 
 19
 00:00:39,410 --> 00:00:41,210
-Y luego aquí está el bucle
+y luego aquí está el bucle
 "for", justo aquí.
 
 20
@@ -96,22 +96,21 @@ de variable que escogí.
 
 22
 00:00:45,420 --> 00:00:47,690
-Esto no ha sido declarado
+Ésta no ha sido declarada
 antes porque no necesito
 
 23
 00:00:47,690 --> 00:00:49,420
-declarar nada
-en Python.
+declarar nada en Python,
 
 24
 00:00:49,420 --> 00:00:50,670
-Todo es dinámico.
+todo es dinámico.
 
 25
 00:00:50,670 --> 00:00:53,030
-Y dentro de este bucle,
-puedes ver, que es importante que le
+Y dentro de este bucle, puedes
+ver, es importante que le
 
 26
 00:00:53,030 --> 00:00:55,680
@@ -124,8 +123,8 @@ de la sangría en Python.
 
 28
 00:00:57,255 --> 00:01:01,020
-Y he dado sangría aquí e
-impreso cada elemento mientras lo encontraba
+Y he dado sangría aquí e impreso
+cada elemento mientras lo encontraba
 
 29
 00:01:01,020 --> 00:01:01,700
@@ -138,7 +137,7 @@ Así que espera imprimir
 
 31
 00:01:03,950 --> 00:01:07,810
-Y entonces también
+Entonces también
 añado el elemento a
 
 32
@@ -147,7 +146,7 @@ la lista "new_fruit".
 
 33
 00:01:08,880 --> 00:01:10,760
-Así "new_fruit.append" "item".
+Así: "new_fruit.append" "item".
 
 34
 00:01:10,760 --> 00:01:13,230
@@ -166,16 +165,16 @@ cualquier tipo de asistencia.
 
 37
 00:01:18,425 --> 00:01:20,540
-Ahora te darás cuenta que hay
-algunos resaltados
+Te darás cuenta de que hay
+algunos elementos sintácticos
 
 38
 00:01:20,540 --> 00:01:21,430
-de sintaxis aquí.
+que han sido resaltados aquí.
 
 39
 00:01:21,430 --> 00:01:23,680
-Y esto es Emacs que se ejecuta
+Y esto es Emacs ejecutándose
 en modo Python.
 
 40
@@ -185,16 +184,17 @@ sugerir que uses algún tipo de
 
 41
 00:01:25,870 --> 00:01:27,380
-editor que pueda hacer resaltado
+editor que pueda resaltar
 
 42
 00:01:27,380 --> 00:01:29,030
-de sintaxis, y la mayoría pueden.
+la sintaxis, y la
+mayoría pueden hacerlo.
 
 43
 00:01:29,030 --> 00:01:30,970
-Esto hace que sea mucho más fácil
-encontrar errores.
+Esto hace que sea mucho más
+fácil encontrar errores.
 
 44
 00:01:30,970 --> 00:01:32,950
@@ -203,12 +203,12 @@ una línea extra aquí.
 
 45
 00:01:32,950 --> 00:01:36,290
-Eso no va a impactar en
-la ejecución del bucle.
+Eso no va a impactar
+la ejecución del bucle;
 
 46
 00:01:36,290 --> 00:01:39,090
-Esto está dentro del cuerpo del bucle
+está dentro del cuerpo del bucle
 porque está con sangría en el
 
 47
@@ -218,7 +218,7 @@ procedimiento.
 
 48
 00:01:40,890 --> 00:01:42,330
-Muy bien, así que vamos
+Muy bien, vamos
 a ver qué ocurre
 
 49
@@ -251,7 +251,7 @@ y luego imprime la lista
 
 55
 00:01:55,240 --> 00:01:56,420
-Así que eso es genial.
+Eso es genial.
 
 56
 00:01:56,420 --> 00:02:00,620
@@ -265,7 +265,7 @@ Veamos qué ocurre.
 58
 00:02:01,930 --> 00:02:04,740
 Guardémoslo, que, en Emacs,
-es Crtl-X, Crtl-S. Luego
+es "Crtl-X", "Crtl-S". Luego
 
 59
 00:02:04,740 --> 00:02:07,130
@@ -274,7 +274,7 @@ aquí y ejecutarlo.
 
 60
 00:02:07,130 --> 00:02:10,590
-Y ahora, sigo obteniendo "apple",
+Ahora, sigo obteniendo "apple",
 "orange", "grape", pero luego, cuando
 
 61
@@ -288,27 +288,27 @@ Entonces, ¿qué ocurre allí?
 
 63
 00:02:13,640 --> 00:02:16,740
-Y lo que sucedió allí es que
+Lo que sucedió allí es que
 en lugar de tener este
 
 64
 00:02:16,740 --> 00:02:19,850
 "append" ejecutando todo el tiempo
-en el cuerpo del bucle, es
+en el cuerpo del bucle,
 
 65
 00:02:19,850 --> 00:02:23,460
-sólo ejecutado una vez con
-el valor final que "item" toma
+sólo ejecuta una vez, con el
+valor final que "item" toma
 
 66
 00:02:23,460 --> 00:02:24,770
-cuando el buble "for" termina.
+cuando el bucle "for" termina.
 
 67
 00:02:24,770 --> 00:02:27,100
 Por eso imprime algo
-que tiene un
+que tiene un solo
 
 68
 00:02:27,100 --> 00:02:28,680
@@ -316,8 +316,8 @@ elemento en lugar de tres.
 
 69
 00:02:28,680 --> 00:02:31,650
-Así que de nuevo, en Python es
-probablemente más inusual
+Así que de nuevo, en
+Python lo más inusual,
 
 70
 00:02:31,650 --> 00:02:34,870
@@ -330,7 +330,7 @@ sangrías importan.
 
 72
 00:02:36,260 --> 00:02:39,060
-Esto indica al intérprete
+Esto le indica al intérprete
 de Python si algo es
 
 73
@@ -358,8 +358,7 @@ Y ponerlo justo aquí.
 
 78
 00:02:50,640 --> 00:02:52,250
-Escribe lo que imprime
-aquí.
+Escribe lo que imprime.
 
 79
 00:02:52,250 --> 00:02:53,500

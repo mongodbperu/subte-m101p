@@ -4,7 +4,7 @@
 2
 00:00:00,210 --> 00:00:02,060
 Y la respuesta es
-que imprime 9.
+que imprime "9".
 
 3
 00:00:02,060 --> 00:00:05,830
@@ -23,16 +23,16 @@ La cual por supuesto está.
 6
 00:00:10,080 --> 00:00:14,480
 Y a continuación, se ejecuta a través
-de cada número en este objeto, 1, 3,
+de cada número en este objeto, "1", "3",
 
 7
 00:00:14,480 --> 00:00:17,420
-y 5, y los suma.
+y "5", y los suma.
 
 8
 00:00:17,420 --> 00:00:20,410
 "sum = sum + n". "sum"
-empezará en 0 y luego
+empezará en "0" y luego
 
 9
 00:00:20,410 --> 00:00:22,670
@@ -41,4 +41,4 @@ la suma de estos tres números,
 
 10
 00:00:22,670 --> 00:00:23,920
-que es 9.
+la cual es "9".

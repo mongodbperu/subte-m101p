@@ -31,7 +31,7 @@ web en el puerto 8080.
 
 8
 00:00:15,000 --> 00:00:17,810
-Y luego pedíamos ir
+Y luego te pedimos ir
 a una URL en particular.
 
 9
@@ -40,13 +40,13 @@ Y te enseñaré esa URL.
 
 10
 00:00:19,510 --> 00:00:23,060
-Y la URL a la que pedíamos
-ir era "hw1/50".
+Y la URL a la que te
+pedíamos ir era "hw1/50".
 
 11
 00:00:23,060 --> 00:00:25,530
-Si hiciste eso, 
-imprimiría el valor 53.
+Si hiciste eso,
+imprimiría el valor "53".
 
 12
 00:00:25,530 --> 00:00:27,580
@@ -59,8 +59,8 @@ Si miramos el programa --
 
 14
 00:00:29,290 --> 00:00:30,870
-le echaremos un vistazo rápido -- 
-usa algunas
+le echaremos un vistazo
+rápido--usa algunas
 
 15
 00:00:30,870 --> 00:00:33,090
@@ -69,8 +69,8 @@ cubierto en el curso.
 
 16
 00:00:33,090 --> 00:00:35,250
-Y el programa se suponía que 
-era un poco más
+Y el programa se suponía
+que era un poco más
 
 17
 00:00:35,250 --> 00:00:38,260
@@ -79,7 +79,7 @@ difícil ejecutarlo sin
 
 18
 00:00:38,260 --> 00:00:39,660
-hacerlo realmente funcionar --
+hacerlo realmente funcionar--
 
 19
 00:00:39,660 --> 00:00:42,030
@@ -93,8 +93,8 @@ entenderlo.
 
 21
 00:00:44,010 --> 00:00:45,960
-Puedes ver que lo primero
-que hace --
+Puedes ver que lo
+primero que hace--
 
 22
 00:00:45,960 --> 00:00:48,760
@@ -138,7 +138,7 @@ en la base de datos "m101".
 30
 00:01:10,520 --> 00:01:13,820
 Y entonces hace un "skip" y un
-"limit" para saltarse los n primeros
+"limit" para saltarse los "n" primeros
 
 31
 00:01:13,820 --> 00:01:16,520
@@ -152,16 +152,16 @@ en la página web.
 33
 00:01:17,980 --> 00:01:21,660
 Por lo que básicamente, cuando pides
-el elemento 53, estás diciendo,
+el elemento "53", estás diciendo,
 
 34
 00:01:21,660 --> 00:01:24,520
-salta 53 de ellos y limita 1.
+salta "53" de ellos y limita "1".
 
 35
 00:01:24,520 --> 00:01:27,550
 Por lo que supongo que estás recuperando
-el elemento 54 en ese punto.
+el elemento "54" en ese punto.
 
 36
 00:01:27,550 --> 00:01:30,200
@@ -175,7 +175,7 @@ modo depuración y lo ejecuta en
 
 38
 00:01:33,380 --> 00:01:34,790
-Y eso es lo que este
+Eso es lo que este
 programa está haciendo.
 
 39

@@ -29,13 +29,13 @@ Es un programa muy pequeño.
 
 8
 00:00:13,520 --> 00:00:16,420
-Y algunas de estas partes ya 
-te son familiares.
+Y algunas de estas partes
+ya te son familiares.
 
 9
 00:00:16,420 --> 00:00:18,850
-Puedes ver que empezamos por
-importar PyMongo.
+Puedes ver que empezamos
+por importar PyMongo.
 
 10
 00:00:18,850 --> 00:00:22,020
@@ -48,8 +48,8 @@ clase "MongoClient".
 
 12
 00:00:24,050 --> 00:00:27,610
-Nos conectamos a la base de datos "m101"
-y luego a la 
+Nos conectamos a la base
+de datos "m101" y luego a la 
 
 13
 00:00:27,610 --> 00:00:29,140
@@ -67,8 +67,7 @@ un array Python.
 
 16
 00:00:36,790 --> 00:00:38,110
-Veamos cómo
-funciona.
+Veamos cómo funciona.
 
 17
 00:00:38,110 --> 00:00:42,450
@@ -129,8 +128,8 @@ Y ése es el programa completo.
 
 29
 00:01:15,810 --> 00:01:16,950
-Y al final 
-puedes ver que llamamos
+Al final puedes
+ver que llamamos
 
 30
 00:01:16,950 --> 00:01:18,720
@@ -156,8 +155,8 @@ ejecutar el programa.
 
 35
 00:01:28,460 --> 00:01:30,790
-Y vamos a 
-ver qué obtenemos.
+Y vamos a ver
+qué obtenemos.
 
 36
 00:01:30,790 --> 00:01:33,300
@@ -171,7 +170,7 @@ y veremos qué sucede.
 
 38
 00:01:36,670 --> 00:01:39,200
-Así que escribimos el programa
+Escribimos el programa
 "saving_data".
 
 39
@@ -189,12 +188,12 @@ Allá vamos.
 42
 00:01:42,520 --> 00:01:45,150
 Y ahora ejecutemos
-el shell Mongo.
+el shell mongo.
 
 43
 00:01:45,150 --> 00:01:48,680
-Y vamos a usar la
-base de datos "m101" y a echar un vistazo a
+Y vamos a usar la base de datos
+"m101" y a echar un vistazo a
 
 44
 00:01:48,680 --> 00:01:52,030
@@ -227,26 +226,26 @@ en la base de datos.
 50
 00:02:01,910 --> 00:02:05,820
 Puedes ver aquí que hay
-un ObjectId ahora.
+un "ObjectId" ahora.
 
 51
 00:02:05,820 --> 00:02:08,090
-Y no fue algo
-que especificamos en el
+Y no fue algo que
+especificamos en el
 
 52
 00:02:08,090 --> 00:02:09,650
-programa, si recuerdas.
+programa, si lo recuerdas.
 
 53
 00:02:09,650 --> 00:02:12,710
-Y lo que sucedió ahí es
-que el driver ha creado un
+Lo que sucedió ahí es que
+el driver ha creado un
 
 54
 00:02:12,710 --> 00:02:16,130
-_id usando
-un objeto BSON ObjectID.
+"_id" usando un
+objeto BSON "ObjectID".
 
 55
 00:02:16,130 --> 00:02:18,370
@@ -259,8 +258,8 @@ más tarde en este curso.
 
 57
 00:02:20,030 --> 00:02:23,230
-Pero cada documento individual tiene
-un valor _id.
+Pero cada documento individual
+tiene un valor "_id".
 
 58
 00:02:23,230 --> 00:02:24,660
@@ -292,8 +291,8 @@ subdocumento dentro.
 
 64
 00:02:37,260 --> 00:02:38,940
-Así que puedes ver que éstos son
-los datos que
+Así que puedes ver que
+éstos son los datos que
 
 65
 00:02:38,940 --> 00:02:40,550

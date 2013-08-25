@@ -45,8 +45,8 @@ este diccionario.
 
 11
 00:00:22,940 --> 00:00:25,460
-Así que declaro mis propias variables
-dinámicamente aquí.
+Declaro mis propias variables
+dinámicamente aquí:
 
 12
 00:00:25,460 --> 00:00:27,900
@@ -55,11 +55,11 @@ dinámicamente aquí.
 
 13
 00:00:27,900 --> 00:00:28,800
-sería intuitivo.
+sería intuitivo,
 
 14
 00:00:28,800 --> 00:00:30,910
-Pero podrías llamarlo
+pero podrías llamarlo
 como desees.
 
 15
@@ -88,7 +88,8 @@ del diccionario "person".
 
 20
 00:00:45,790 --> 00:00:47,200
-Ahora un par de cosas a tener en cuenta.
+Hay un par de cosas que
+debes tener en cuenta.
 
 21
 00:00:47,200 --> 00:00:49,750
@@ -120,8 +121,8 @@ referenciar en "person".
 
 27
 00:01:00,920 --> 00:01:03,410
-Muy bien, así que veamos lo
-que ocurre cuando ejecutamos eso.
+Muy bien, veamos lo que
+ocurre cuando ejecutamos eso.
 
 28
 00:01:03,410 --> 00:01:06,730
@@ -129,16 +130,16 @@ que ocurre cuando ejecutamos eso.
 
 29
 00:01:06,730 --> 00:01:10,110
-Así que cuando lo ejecutamos, encontramos
+Cuando lo ejecutamos, encontramos
 que mi cabello es marrón, mi
 
 30
 00:01:10,110 --> 00:01:12,100
-color favorito es azul.
+color favorito es azul
 
 31
 00:01:12,100 --> 00:01:15,190
-Y mi nombre es Andrew
+y mi nombre es Andrew
 Erlichson.
 
 32
@@ -158,12 +159,12 @@ este diccionario.
 
 35
 00:01:22,840 --> 00:01:25,870
-Así que estuvo en "name",
+Así que ingresamos "name",
 "favorite_color", "hair".
 
 36
 00:01:25,870 --> 00:01:29,110
-Y vino "hair",
+Y nos retornó "hair",
 "favorite_color", "name".
 
 37

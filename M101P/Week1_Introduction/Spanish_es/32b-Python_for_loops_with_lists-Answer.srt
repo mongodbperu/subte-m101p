@@ -8,7 +8,7 @@ OK.
 3
 00:00:00,800 --> 00:00:03,900
 Resulta que
-sólo imprime ocho.
+sólo imprime "8".
 
 4
 00:00:03,900 --> 00:00:07,520
@@ -27,11 +27,11 @@ no imprime la suma.
 7
 00:00:11,740 --> 00:00:14,800
 Imprime el valor final
-de "i", que es ocho.
+de "i", que es "8".
 
 8
 00:00:14,800 --> 00:00:16,050
-Así que imprime ocho.
+Así que imprime "8".
 
 9
 00:00:16,050 --> 00:00:16,950

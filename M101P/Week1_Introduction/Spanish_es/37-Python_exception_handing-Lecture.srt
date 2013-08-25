@@ -3,31 +3,32 @@
 
 2
 00:00:00,290 --> 00:00:03,530
-A veces la vida no va
+A veces la vida no trascurre
 exactamente como esperarías.
 
 3
 00:00:03,530 --> 00:00:05,470
-En Python no es diferente.
+En Python nos ocurre lo mismo.
 
 4
 00:00:05,470 --> 00:00:08,895
-Y para manejar esas situaciones
-donde ocurre un error, existe
+Para manejar esas situaciones
+en las cuales ocurre un error,
 
 5
 00:00:08,895 --> 00:00:10,230
-un procesamiento de excepciones.
+existe un procesamiento
+de excepciones
 
 6
 00:00:10,230 --> 00:00:12,150
-Y voy a hablar un poco
-acerca de cómo funciona el
+y voy a hablar un poco
+acerca de cómo funciona
 
 7
 00:00:12,150 --> 00:00:14,650
-procesamiento de excepciones en Python
-y cómo puedes capturar
+en Python y cómo
+puedes capturar
 
 8
 00:00:14,650 --> 00:00:16,850
@@ -36,23 +37,23 @@ lanza el código.
 
 9
 00:00:16,850 --> 00:00:21,110
-Así que vamos a un programa
-muy simple que divide por cero.
+Vamos a ver un programa muy
+simple, el cual divide por cero.
 
 10
 00:00:21,110 --> 00:00:24,210
-Aquí puedes ver que hace un
-"print 5 / 0".
+Aquí puedes ver que
+hace un "print 5 / 0".
 
 11
 00:00:24,210 --> 00:00:26,330
-Y entonces intenta imprimir 
+Entonces intenta imprimir 
 "but life goes on".
 
 12
 00:00:26,330 --> 00:00:29,390
-Ahora, si intentas ejecutar este
-programa, lo que averiguarás
+Si intentas ejecutar este
+programa, lo que verás
 
 13
 00:00:29,390 --> 00:00:31,110
@@ -60,13 +61,13 @@ es que falla.
 
 14
 00:00:31,110 --> 00:00:32,479
-Puedes ver que el programa
-falla.
+Puedes ver que el
+programa falla
 
 15
 00:00:32,479 --> 00:00:34,590
-Y señala la línea que
-causa el fallo, que
+y señala la línea que
+causa el fallo, la cual
 
 16
 00:00:34,590 --> 00:00:35,890
@@ -74,8 +75,7 @@ es la línea 3.
 
 17
 00:00:35,890 --> 00:00:38,030
-E incluso te dice
-el error.
+E incluso te dice el error.
 
 18
 00:00:38,030 --> 00:00:40,960
@@ -121,8 +121,8 @@ Entonces intenta imprimir
 
 27
 00:00:58,780 --> 00:01:02,510
-Y si lanza una excepción
-bajará
+Y si lanza una
+excepción, bajará
 
 28
 00:01:02,510 --> 00:01:04,099
@@ -139,12 +139,12 @@ captura todas las excepciones.
 
 31
 00:01:08,250 --> 00:01:10,750
-Y entonces aquí imprime
-el tipo de excepción.
+Entonces aquí imprime
+el tipo de excepción
 
 32
 00:01:10,750 --> 00:01:15,660
-Y esta pequeña función aquí,
+y esta pequeña función aquí,
 la llamada "sys.exc_info",
 
 33
@@ -158,8 +158,8 @@ el nombre de la excepción.
 
 35
 00:01:19,730 --> 00:01:22,040
-Tienes que importar "sys"
-para poder 
+Tienes que importar
+"sys" para poder 
 
 36
 00:01:22,040 --> 00:01:23,800
@@ -167,8 +167,8 @@ llamar a este método.
 
 37
 00:01:23,800 --> 00:01:27,110
-Por lo que si funciona como esperamos,
-entonces tras el lanzamiento de la
+Si funciona como esperamos,
+tras el lanzamiento de la
 
 38
 00:01:27,110 --> 00:01:29,240
@@ -204,8 +204,8 @@ Pero después imprime
 
 45
 00:01:39,500 --> 00:01:41,930
-Y vas a poder usar 
-las mismas técnicas utilizando
+Y vas a poder usar las
+mismas técnicas utilizando
 
 46
 00:01:41,930 --> 00:01:46,040
@@ -224,13 +224,13 @@ datos en MongoDB, entonces tus
 
 49
 00:01:51,570 --> 00:01:53,090
-datos, probablemente, no
-se almacenaron.
+datos, probablemente,
+no se almacenaron.
 
 50
 00:01:53,090 --> 00:01:55,780
-En cuyo caso, querrías
-volver a intentarlo o algo por estilo.
+En cuyo caso, querrías volver
+a intentarlo o algo por estilo.
 
 51
 00:01:55,780 --> 00:01:57,030

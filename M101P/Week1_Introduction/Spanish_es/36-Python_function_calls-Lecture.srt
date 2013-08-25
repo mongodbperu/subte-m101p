@@ -3,8 +3,8 @@
 
 2
 00:00:00,120 --> 00:00:02,760
-OK, pasemos a las funciones
-en Python y
+OK, pasemos a las
+funciones en Python y
 
 3
 00:00:02,760 --> 00:00:04,710
@@ -73,8 +73,8 @@ elemento en esta lista.
 
 17
 00:00:34,590 --> 00:00:38,270
-Así que para hacer eso, voy a
-inicializar un diccionario dentro
+Para hacer eso, voy a inicializar
+un diccionario dentro
 
 18
 00:00:38,270 --> 00:00:40,830
@@ -83,12 +83,12 @@ diccionario vacío.
 
 19
 00:00:40,830 --> 00:00:43,430
-Y luego echo un vistazo a
-cada elemento en mi lista.
+Luego echo un vistazo a
+cada elemento en mi lista
 
 20
 00:00:43,430 --> 00:00:46,520
-Y después voy a incrementar
+y después voy a incrementar
 un contador dentro del
 
 21
@@ -156,13 +156,13 @@ nos da ese error.
 
 34
 00:01:19,680 --> 00:01:23,530
-Sucede que el problema está 
-en que no puedes acceder a un elemento
+Sucede que el problema está en que
+no puedes acceder a un elemento
 
 35
 00:01:23,530 --> 00:01:25,790
-de un diccionario antes
-de asignarlo.
+de un diccionario
+antes de asignarlo.
 
 36
 00:01:25,790 --> 00:01:28,710
@@ -171,13 +171,12 @@ elemento en la lista como "apple",
 
 37
 00:01:28,710 --> 00:01:32,470
-y cuando intentamos hacer "count['apple']
-= count['apple']
+y cuando intentamos hacer
+"count['apple'] = count['apple'] + 1",
 
 38
 00:01:32,470 --> 00:01:35,450
-+ 1", estamos
-referenciando algo que
+estamos referenciando algo que
 
 39
 00:01:35,450 --> 00:01:36,700
@@ -185,11 +184,11 @@ no está definido.
 
 40
 00:01:36,700 --> 00:01:38,210
-Así que ¿cómo corregimos esto?
+¿Cómo corregimos esto?
 
 41
 00:01:38,210 --> 00:01:39,240
-Bastante sencillo.
+Es bastante sencillo.
 
 42
 00:01:39,240 --> 00:01:41,360
@@ -220,15 +219,15 @@ Lo he guardado.
 
 48
 00:01:52,330 --> 00:01:53,530
-Voy a esa ventana.
+Voy a esa ventana
 
 49
 00:01:53,530 --> 00:01:54,570
-Y lo ejecuto de nuevo.
+y lo ejecuto de nuevo.
 
 50
 00:01:54,570 --> 00:01:57,510
-Y esta vez finaliza e
+Esta vez finaliza e
 imprime el diccionario
 
 51
@@ -265,8 +264,8 @@ A mí me parece correcto.
 
 58
 00:02:13,070 --> 00:02:15,540
-Y así es como se define una
-función en Python.
+Así es como se define
+una función en Python.
 
 59
 00:02:15,540 --> 00:02:16,790

@@ -13,8 +13,8 @@ un poco de fundamentos de
 
 4
 00:00:04,940 --> 00:00:06,880
-servidores web en general, en caso
-de que no tengas mucha
+servidores web en general, en
+caso de que no tengas mucha
 
 5
 00:00:06,880 --> 00:00:08,770
@@ -52,8 +52,8 @@ muestra páginas web.
 
 12
 00:00:22,240 --> 00:00:25,340
-Esas páginas web están en HTML (HyperText
-Markup Language).
+Esas páginas web están en HTML
+(HyperText Markup Language).
 
 13
 00:00:25,340 --> 00:00:29,180
@@ -71,8 +71,8 @@ usando el protocolo HTTP.
 
 16
 00:00:34,160 --> 00:00:37,600
-Por lo tanto, la forma en que encaja esto
-es que en el fondo es IP,
+Por lo tanto, la forma en que encaja
+esto es que en el fondo es IP,
 
 17
 00:00:37,600 --> 00:00:41,055
@@ -86,13 +86,12 @@ de servidor web.
 
 19
 00:00:43,030 --> 00:00:45,610
-Y este servidor web, en nuestro
+Este servidor web, en nuestro
 caso, va a estar ejecutando
 
 20
 00:00:45,610 --> 00:00:47,850
-Python con el framework
-Bottle.
+Python con el framework Bottle.
 
 21
 00:00:47,850 --> 00:00:52,270
@@ -111,8 +110,8 @@ ruta, entonces estás pidiendo
 
 24
 00:00:57,100 --> 00:01:00,480
-la página "index" del sitio web-- la
-página principal, la página /.
+la página "index" del sitio web--la
+página principal, la página "/".
 
 25
 00:01:00,480 --> 00:01:03,350
@@ -131,7 +130,7 @@ a peticiones web en un puerto.
 
 28
 00:01:10,930 --> 00:01:14,420
-Una pequeña nota -- no podemos usar
+Una pequeña nota--no podemos usar
 el puerto 80, normalmente, cuando no
 
 29
@@ -168,17 +167,17 @@ imprime "Hello World".
 
 36
 00:01:34,130 --> 00:01:36,760
-Y vayamos sobre las partes
-básicas de este programa porque
+Vayamos por las partes básicas
+de este programa porque
 
 37
 00:01:36,760 --> 00:01:39,040
-van a ser las mismas 
-en todos los programas Bottle.
+van a ser las mismas en
+todos los programas Bottle.
 
 38
 00:01:39,040 --> 00:01:41,020
-Así que comencemos por importar
+Comencemos por importar
 el framework justo
 
 39
@@ -202,11 +201,11 @@ un manejador que
 43
 00:01:48,590 --> 00:01:51,830
 mostrará páginas web cuando los usuarios
-pidan tu sitio web, sin
+pidan tu sitio web sin
 
 44
 00:01:51,830 --> 00:01:55,990
-ninguna ruta, la /, como
+ninguna ruta, la "/", como
 www.google.com, o simplemente "localhost",
 
 45
@@ -226,8 +225,8 @@ es arbitrario.
 
 48
 00:02:04,000 --> 00:02:05,780
-Puedes llamarlo de la forma
-que quieras.
+Puedes llamarlo de
+la forma que quieras.
 
 49
 00:02:05,780 --> 00:02:08,530
@@ -236,7 +235,8 @@ vamos a devolver "Hello World".
 
 50
 00:02:08,530 --> 00:02:10,300
-Eso es todo lo que vamos a hacer.
+Eso es todo lo
+que vamos a hacer.
 
 51
 00:02:10,300 --> 00:02:14,290
@@ -268,17 +268,16 @@ probablemente querrás tenerlas
 
 57
 00:02:25,050 --> 00:02:26,780
-en todos tus
-programas bottle.
+en todos tus programas bottle.
 
 58
 00:02:26,780 --> 00:02:28,070
-La primera activa
+La primera activa,
 el modo depuración,
 
 59
 00:02:28,070 --> 00:02:29,110
-lo cual es muy útil.
+el cual es muy útil.
 
 60
 00:02:29,110 --> 00:02:31,170
@@ -385,8 +384,8 @@ a "localhost".
 
 82
 00:03:16,390 --> 00:03:20,450
-Y voy a hacer esa
-petición a :8080, que es
+Y voy a hacer esa petición
+a ":8080", que es
 
 83
 00:03:20,450 --> 00:03:21,685
@@ -400,12 +399,12 @@ que ocurren un par de cosas.
 85
 00:03:24,770 --> 00:03:27,260
 La primera es que imprime "Hello
-World" en pantalla.
+World" en la pantalla.
 
 86
 00:03:27,260 --> 00:03:30,820
 Y la segunda es que el servidor
-web responmde aceptando
+web responde aceptando
 
 87
 00:03:30,820 --> 00:03:31,250
@@ -456,8 +455,7 @@ que me da las cabeceras,
 
 97
 00:03:54,990 --> 00:03:56,990
-a 
-"localhost:8080".
+a "localhost:8080".
 
 98
 00:03:56,990 --> 00:04:00,800
@@ -504,13 +502,13 @@ cambio aquí y una petición a
 
 107
 00:04:20,380 --> 00:04:23,350
-/testpage, porque también vamos
-a listar /testpage,
+"/testpage", porque también 
+vamos a listar "/testpage",
 
 108
 00:04:23,350 --> 00:04:26,790
-entonces podemos hacer eso,
-/testpage.
+entonces podemos hacer
+eso, "/testpage".
 
 109
 00:04:26,790 --> 00:04:29,590
@@ -533,17 +531,17 @@ fuéramos un navegador web.
 113
 00:04:34,230 --> 00:04:37,820
 Ahora, si quisiéramos devolver
-una página más adecuada, podría.
+una página más adecuada, podríamos.
 
 114
 00:04:37,820 --> 00:04:39,570
-Tengo que conocer un poco
-de HTML.
+Tengo que conocer
+un poco de HTML.
 
 115
 00:04:39,570 --> 00:04:41,850
 Pero la página básica
-es similar a esto --
+es similar a esto--
 
 116
 00:04:41,850 --> 00:04:46,940
@@ -556,8 +554,8 @@ y después cierro el "html".
 
 118
 00:04:48,980 --> 00:04:51,760
-Y ésa es una página web
-más completa.
+Y ésa es una página
+web más completa.
 
 119
 00:04:51,760 --> 00:04:54,710
@@ -576,7 +574,7 @@ servidor web, imprime
 122
 00:04:57,930 --> 00:04:59,850
 Pero ahora, si vemos
-el código fuente --
+el código fuente--
 
 123
 00:04:59,850 --> 00:05:01,765
@@ -593,8 +591,8 @@ Allá vamos.
 
 126
 00:05:04,350 --> 00:05:06,230
-Creo, con la depuración activada, 
-creo que tus
+Creo, con la depuración
+activada, creo que tus
 
 127
 00:05:06,230 --> 00:05:08,030
@@ -602,8 +600,8 @@ vistas serán releídas.
 
 128
 00:05:08,030 --> 00:05:09,640
-Y todavía no hemos llegado a
-qué son las vistas.
+Y todavía no hemos llegado
+a qué son las vistas.
 
 129
 00:05:09,640 --> 00:05:11,480

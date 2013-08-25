@@ -36,17 +36,17 @@ PyMongo funcionan juntos.
 
 9
 00:00:14,330 --> 00:00:16,600
-Ahora, he escrito un pequeño
+He escrito un pequeño
 programa aquí que va a 
 
 10
 00:00:16,600 --> 00:00:19,100
 crear un documento con
-"firstname" Andrew
+"firstname" "Andrew"
 
 11
 00:00:19,100 --> 00:00:20,580
-y "lastname" Erlichson.
+y "lastname" "Erlichson".
 
 12
 00:00:20,580 --> 00:00:24,350
@@ -55,12 +55,12 @@ en MongoDB.
 
 13
 00:00:24,350 --> 00:00:26,550
-Así que antes de hacer eso,
-lo imprime.
+Antes de hacer
+eso, lo imprime
 
 14
 00:00:26,550 --> 00:00:28,680
-Y luego hace la
+y luego hace la
 inserción justo aquí.
 
 15
@@ -75,7 +75,7 @@ failed" y lo imprime
 
 17
 00:00:34,360 --> 00:00:39,330
-usando este "sys.exc_info",
+usando este "sys.exc_info";
 imprime la
 
 18
@@ -104,8 +104,8 @@ programa, que se llama
 
 23
 00:00:54,110 --> 00:00:57,520
-"mongo_exception", y veamos
-qué ocurre.
+"mongo_exception", y
+veamos qué ocurre.
 
 24
 00:00:57,520 --> 00:00:59,160
@@ -123,11 +123,11 @@ insertarlo justo aquí.
 27
 00:01:02,500 --> 00:01:05,660
 Y podemos ver aquí que
-"lastname" es Erlichson y
+"lastname" es "Erlichson" y
 
 28
 00:01:05,660 --> 00:01:06,910
-"firstname" Andrew.
+"firstname" "Andrew".
 
 29
 00:01:06,910 --> 00:01:09,080
@@ -179,8 +179,8 @@ vez después de insertarlo.
 
 40
 00:01:32,070 --> 00:01:35,010
-Ahora, cuando intenta insertar la
-segunda vez, puedes ver
+Ahora, cuando intenta insertar
+la segunda vez, puedes ver
 
 41
 00:01:35,010 --> 00:01:38,580
@@ -189,13 +189,12 @@ en el bloque "try-catch".
 
 42
 00:01:38,580 --> 00:01:40,440
-E imprime
-"insert failed".
+E imprime "insert failed".
 
 43
 00:01:40,440 --> 00:01:42,950
-Y te da el propio error,
-que es un
+Y te da el propio
+error, que es un
 
 44
 00:01:42,950 --> 00:01:45,080
@@ -212,18 +211,18 @@ que intentó insertar, que
 
 47
 00:01:50,870 --> 00:01:54,540
-puedes ver que es el mismo documento
-que existía en la 
+puedes ver que es el mismo
+documento que existía en la 
 
 48
 00:01:54,540 --> 00:01:56,760
-variable después de la
-primera inserción.
+variable después de
+la primera inserción.
 
 49
 00:01:56,760 --> 00:01:59,970
-Vamos a entender qué está
-sucediendo aquí.
+Vamos a entender lo que
+está sucediendo aquí.
 
 50
 00:01:59,970 --> 00:02:01,750
@@ -232,12 +231,12 @@ un documento sin
 
 51
 00:02:01,750 --> 00:02:03,820
-_id.
+"_id".
 
 52
 00:02:03,820 --> 00:02:08,090
 El propio driver añadió un
-_id cuando hizo la
+"_id" cuando hizo la
 
 53
 00:02:08,090 --> 00:02:10,100
@@ -245,7 +244,7 @@ inserción en la base de datos.
 
 54
 00:02:10,100 --> 00:02:12,620
-Y entonces cuando fuimos a insertar
+Entonces cuando fuimos a insertar
 el mismo documento
 
 55
@@ -255,30 +254,29 @@ lo añadió a la variable "doc"
 
 56
 00:02:16,030 --> 00:02:17,780
-justo aquí --
+justo aquí--
 
 57
 00:02:17,780 --> 00:02:19,760
 por lo que en este punto, imprimimos
-tras la inserción.
+tras la inserción,
 
 58
 00:02:19,760 --> 00:02:21,740
-Tenía un campo _id.
+tenía un campo "_id".
 
 59
 00:02:21,740 --> 00:02:25,170
-Y luego, en la segunda inserción,
-falló porque todos
+Y luego, en la segunda
+inserción, falló porque todos
 
 60
 00:02:25,170 --> 00:02:28,430
-los _id
-deben ser únicos.
+los "_id" deben ser únicos.
 
 61
 00:02:28,430 --> 00:02:31,380
-Y como consecuencia, esto fue un
+Y como consecuencia, se dio un
 conflicto, porque estaba
 
 62
@@ -288,7 +286,7 @@ que tenía el mismo
 
 63
 00:02:33,870 --> 00:02:34,980
-_id.
+"_id".
 
 64
 00:02:34,980 --> 00:02:38,110
@@ -301,8 +299,8 @@ que sólo está ahí una vez.
 
 66
 00:02:39,980 --> 00:02:42,740
-Así que echemos un vistazo y veamos
-si esto es cierto.
+Así que echemos un vistazo
+y veamos si esto es cierto.
 
 67
 00:02:42,740 --> 00:02:48,100
@@ -383,8 +381,8 @@ colección.
 
 84
 00:03:28,010 --> 00:03:30,870
-Y confirmaremos que no hay
-nada ahí --
+Y confirmaremos que
+no hay nada ahí--
 
 85
 00:03:30,870 --> 00:03:32,930
@@ -408,7 +406,7 @@ por supuesto, hay
 
 90
 00:03:40,040 --> 00:03:41,800
-un _id.
+un "_id".
 
 91
 00:03:41,800 --> 00:03:48,090
@@ -417,17 +415,17 @@ ver que estoy ahí dos veces
 
 92
 00:03:48,090 --> 00:03:52,100
-con dos _id diferentes
+con dos "_id" diferentes
 justo aquí, dos
 
 93
 00:03:52,100 --> 00:03:53,670
-_id diferentes.
+"_id" diferentes.
 
 94
 00:03:53,670 --> 00:03:56,720
 Y el driver ha generado un
-_id para cada una de
+"_id" para cada una de
 
 95
 00:03:56,720 --> 00:03:59,530
@@ -460,12 +458,12 @@ la inserción se ha completado.
 101
 00:04:09,660 --> 00:04:12,690
 Y si lanza cualquier
-excepción por cualquier motivo en
+excepción por cualquier motivo
 
 102
 00:04:12,690 --> 00:04:16,180
-la inserción, entonces puedes capturarla
-e imprimir la
+durante la inserción, entonces
+puedes capturarla e imprimir la
 
 103
 00:04:16,180 --> 00:04:20,019
@@ -475,7 +473,7 @@ esta llamada justo aquí.
 104
 00:04:20,019 --> 00:04:23,520
 Así es como interactúan las 
-excepciones con PyMongo y
+excepciones entre PyMongo y
 
 105
 00:04:23,520 --> 00:04:27,720
@@ -484,7 +482,8 @@ de depuración cuando
 
 106
 00:04:27,720 --> 00:04:28,970
-estés escribiendo tus programas Python.
+estés escribiendo
+tus programas Python.
 
 107
 00:04:28,970 --> 00:04:30,090

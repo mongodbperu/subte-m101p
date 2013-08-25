@@ -26,12 +26,12 @@ igual a "favorite_color" y luego
 
 7
 00:00:11,020 --> 00:00:14,000
-imprime "people" de "item", que está
-imprimiendo "people" de
+imprime "people" de "item", entonces
+está imprimiendo "people" de
 
 8
 00:00:14,000 --> 00:00:15,570
-"favorite_color", que es "red".
+"favorite_color", lo cual es "red".
 
 9
 00:00:15,570 --> 00:00:16,820

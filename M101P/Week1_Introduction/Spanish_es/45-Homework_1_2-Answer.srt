@@ -16,12 +16,11 @@ luego ejecutar este programa.
 
 5
 00:00:06,560 --> 00:00:10,220
-Y el programa es
-"hw1-2.py".
+El programa es "hw1-2.py".
 
 6
 00:00:10,220 --> 00:00:12,070
-Ejecutémoslo juntos --
+Ejecutémoslo juntos--
 
 7
 00:00:12,070 --> 00:00:13,320
@@ -33,7 +32,7 @@ Ejecutémoslo juntos --
 9
 00:00:15,050 --> 00:00:17,860
 Imprime que la 
-respuesta es 1815.
+respuesta es "1815".
 
 10
 00:00:17,860 --> 00:00:20,140
@@ -47,7 +46,7 @@ usando la clase
 
 12
 00:00:22,680 --> 00:00:25,450
-MongoClient, conectándose
+"MongoClient", conectándose
 a "localhost".
 
 13
@@ -75,17 +74,17 @@ Y se recupera su valor.
 
 18
 00:00:39,540 --> 00:00:43,520
-Y a continuación lo dividimos por 3, 
-llamando a "mod 3", y pregunta
+Y a continuación lo dividimos por
+"3", llamando a "mod 3", y pregunta
 
 19
 00:00:43,520 --> 00:00:45,110
-si el resto es 0.
+si el resto es "0".
 
 20
 00:00:45,110 --> 00:00:48,260
 Y entonces, para cada elemento,
-podemos mantener ejecutándose una suma.
+ejecutamos una suma.
 
 21
 00:00:48,260 --> 00:00:50,340

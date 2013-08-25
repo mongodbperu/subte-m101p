@@ -31,8 +31,8 @@ Y el modelo mantiene el estado.
 
 8
 00:00:13,940 --> 00:00:18,250
-Y éste es donde estaría
-MongoDB.
+Y éste es donde
+estaría MongoDB.
 
 9
 00:00:18,250 --> 00:00:20,150
@@ -79,8 +79,8 @@ manejar la entrada del usuario.
 
 18
 00:00:39,410 --> 00:00:42,690
-Así que Bottle tiene maneras de permitir
-el uso del
+Así que Bottle tiene maneras
+de permitir el uso del
 
 19
 00:00:42,690 --> 00:00:44,200
@@ -89,7 +89,7 @@ Modelo-Vista-Controlador.
 
 20
 00:00:44,200 --> 00:00:45,470
-Así que, ¿cómo funcionaría?
+¿Cómo funcionaría?
 
 21
 00:00:45,470 --> 00:00:50,260
@@ -108,12 +108,12 @@ pida la URL "/".
 
 24
 00:00:57,640 --> 00:01:00,810
-Y no quieres mezclar código,
-que corresponde a tu modelo y
+Y no quieres mezclar código
+que corresponde a tu modelo
 
 25
 00:01:00,810 --> 00:01:05,000
-y controlador, con tu
+y a tu controlador, con tu
 vista, que contiene la mayoría
 
 26
@@ -132,8 +132,8 @@ en Bottle?
 
 29
 00:01:10,920 --> 00:01:12,330
-Y la respuesta es que
-tienen el
+Y la respuesta es
+que tienen el
 
 30
 00:01:12,330 --> 00:01:14,300
@@ -155,13 +155,12 @@ configuremos una pequeña lista llamada
 
 34
 00:01:22,360 --> 00:01:24,020
-"orange", "banana" y
-"peach".
+"orange", "banana" y "peach".
 
 35
 00:01:24,020 --> 00:01:26,630
-Y en lugar de devolver simplemente
-"Hello World",
+Y en lugar de devolver
+simplemente "Hello World",
 
 36
 00:01:26,630 --> 00:01:28,530
@@ -186,13 +185,13 @@ El fichero es "hello_world.tpl".
 
 41
 00:01:35,390 --> 00:01:38,040
-Y le estoy pasando algunos argumentos
-a la plantilla --
+Y le estoy pasando algunos
+argumentos a la plantilla--
 
 42
 00:01:38,040 --> 00:01:42,910
-el "username" igual a "Andrew" y un
-valor "things" que va a
+el "username" igual a "Andrew"
+y un valor "things" que va a
 
 43
 00:01:42,910 --> 00:01:47,480
@@ -268,8 +267,8 @@ Y por eso realmente evalúa
 
 58
 00:02:26,300 --> 00:02:29,660
-por el valor del nombre de usuario cuando
-genera esta página HTML.
+por el valor del nombre de usuario
+cuando genera esta página HTML.
 
 59
 00:02:29,660 --> 00:02:31,840
@@ -278,13 +277,13 @@ querer hacer dentro de una de estas
 
 60
 00:02:31,840 --> 00:02:34,000
-plantillas es escribir un
-poco de código.
+plantillas es escribir
+un poco de código.
 
 61
 00:02:34,000 --> 00:02:36,640
-Por ejemplo, digamos que 
-quiero imprimir
+Por ejemplo, digamos
+que  quiero imprimir
 
 62
 00:02:36,640 --> 00:02:38,930
@@ -321,7 +320,7 @@ a esta plantilla.
 
 69
 00:02:53,660 --> 00:02:55,200
-Y para hacer eso, quiero
+Para hacer eso, quiero
 escribir código
 
 70
@@ -344,8 +343,8 @@ el primer carácter de la
 
 74
 00:03:03,090 --> 00:03:05,990
-línea, entonces sabe que lo que sigue
-es código que necesita
+línea, entonces sabe que lo
+que sigue es código que necesita
 
 75
 00:03:05,990 --> 00:03:07,120
@@ -382,8 +381,8 @@ plantilla HTML no
 
 82
 00:03:26,290 --> 00:03:30,180
-depende de la indentación para expresar
-sus bloques de control, la
+depende de la indentación para
+expresar sus bloques de control, la
 
 83
 00:03:30,180 --> 00:03:31,900
@@ -407,7 +406,7 @@ luego Python sabía que
 87
 00:03:38,190 --> 00:03:40,040
 esto era donde
-el bloque termina --
+el bloque termina--
 
 88
 00:03:40,040 --> 00:03:44,830
@@ -416,7 +415,7 @@ tenemos que poner este "%end".
 
 89
 00:03:44,830 --> 00:03:47,380
-Y ĺo necesitarás por cada
+Y lo necesitarás por cada
 sentencia de control en
 
 90
@@ -434,8 +433,8 @@ Esto es un montón para asimilar.
 
 93
 00:03:52,170 --> 00:03:54,120
-Pero realmente es bastante
-sencillo.
+Pero realmente es
+bastante sencillo.
 
 94
 00:03:54,120 --> 00:03:57,090
@@ -454,8 +453,8 @@ estas dos llaves justo
 
 97
 00:04:05,100 --> 00:04:08,490
-aquí o código Python que empieza
-con un carácter
+aquí o código Python que
+empieza con un carácter de
 
 98
 00:04:08,490 --> 00:04:10,770
@@ -484,13 +483,13 @@ fuente de esa página.
 
 103
 00:04:21,670 --> 00:04:24,440
-Y puedes ver que este código
+Puedes ver que este código
 es exactamente lo que está
 
 104
 00:04:24,440 --> 00:04:26,710
-en este fichero, pero con algunas
-sustituciones.
+en este fichero, pero con
+algunas sustituciones.
 
 105
 00:04:26,710 --> 00:04:29,900
@@ -517,7 +516,7 @@ cierre para cada elemento de la lista.
 
 110
 00:04:37,510 --> 00:04:40,280
-Y esto es simplemente HTML, nada
+Esto es simplemente HTML, nada
 especial sobre eso.
 
 111
@@ -531,12 +530,11 @@ esta plantilla.
 
 113
 00:04:43,110 --> 00:04:45,110
-Y es que hay
-dos formas diferentes de
+Y es que hay dos formas
 
 114
 00:04:45,110 --> 00:04:46,690
-llamar a esta plantilla.
+diferentes de llamarla.
 
 115
 00:04:46,690 --> 00:04:50,760
@@ -572,8 +570,8 @@ y usar esta línea en su lugar.
 
 122
 00:05:03,140 --> 00:05:05,290
-Cualquiera de estas estructuras
-funcionará.
+Cualquiera de estas
+estructuras funcionará.
 
 123
 00:05:05,290 --> 00:05:09,000
@@ -657,7 +655,7 @@ necesitas poner tus plantillas
 140
 00:05:45,490 --> 00:05:49,580
 en un diccionario llamado "views",
-que es justo un
+que es simplemente un
 
 141
 00:05:49,580 --> 00:05:52,090
