@@ -94,8 +94,9 @@ def copy_file(origin, destination, callback):
             os.path.join(options.destination_dir, destination))
         logging.info('Copied %s to %s' % (origin, destination))
     except Exception as e:
-        logging.error(e)
-    callback()
+        logging.error(e, exc_info=True)
+	callback(False)
+    callback(True)
 
 
 @gen.engine
@@ -104,6 +105,8 @@ def process_item(number, item, callback):
     has_answer = 'answer' in item
     if not has_lecture and not has_answer:
         logging.warning('"%s" has not lecture and answer.' % item['concept'])
+        callback(False)
+	return
     flat_concept = yield gen.Task(get_flat_concept, item['concept'])
     if has_lecture != has_answer:
         source = '%s.%s' % (
@@ -111,28 +114,29 @@ def process_item(number, item, callback):
             options.caption_extension)
         filename = yield gen.Task(get_filename, __MAPPING_FORMAT2[has_lecture],
             number, flat_concept)
-        yield gen.Task(copy_file, source, filename)
+        result = yield gen.Task(copy_file, source, filename)
     else:
         if has_lecture:
             source = '%s.%s' % (item['lecture'], options.caption_extension)
             filename = yield gen.Task(get_filename, __MAPPING_FORMAT['lecture'],
                 number, flat_concept)
-            yield gen.Task(copy_file, source, filename)
+            result = yield gen.Task(copy_file, source, filename)
         if has_answer:
             source = '%s.%s' % (item['answer'], options.caption_extension)
             filename = yield gen.Task(get_filename, __MAPPING_FORMAT['answer'],
                 number, flat_concept)
-            yield gen.Task(copy_file, source, filename)
-    callback()
+            result = yield gen.Task(copy_file, source, filename)
+    callback(result)
 
 
 @gen.coroutine
 def process(mapping):
     logging.info('Starting...')
     start = datetime.now()
-    for i, item in enumerate(mapping):
-        process_item(i + 1, item, callback=(yield gen.Callback(i)))
-    yield gen.WaitAll(range(0, len(mapping)))
+    i = 0
+    for item in mapping:
+        result = yield gen.Task(process_item, i + 1, item)
+        i += {True: 1, False: 0}[result]
     end = datetime.now()
     logging.info('Terminating on: %s' % str(end - start))
     loop.stop()
