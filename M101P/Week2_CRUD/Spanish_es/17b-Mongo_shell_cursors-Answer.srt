@@ -1,0 +1,44 @@
+1
+00:00:00,000 --> 00:00:00,100
+
+2
+00:00:00,100 --> 00:00:01,700
+It should look something
+like this.
+
+3
+00:00:01,700 --> 00:00:05,380
+db.scores.find type
+colon exam.
+
+4
+00:00:05,380 --> 00:00:07,040
+And then these cursor
+modifiers can
+
+5
+00:00:07,040 --> 00:00:08,060
+occur in any order.
+
+6
+00:00:08,060 --> 00:00:10,410
+I put the sort and then the
+skin and then the limit.
+
+7
+00:00:10,410 --> 00:00:12,420
+But you could put them
+in a different order.
+
+8
+00:00:12,420 --> 00:00:15,790
+Sort by score, negative
+1 for descending.
+
+9
+00:00:15,790 --> 00:00:17,480
+Skip by a count by 50.
+
+10
+00:00:17,480 --> 00:00:19,940
+And limit to a count of 20.

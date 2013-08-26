@@ -1,0 +1,37 @@
+1
+00:00:00,000 --> 00:00:00,140
+
+2
+00:00:00,140 --> 00:00:02,361
+The answer should
+look like this.
+
+3
+00:00:02,361 --> 00:00:03,730
+db.users.update.
+
+4
+00:00:03,730 --> 00:00:05,790
+The first argument, which
+specifies what document to
+
+5
+00:00:05,790 --> 00:00:08,189
+update, has user name
+colon spelunker.
+
+6
+00:00:08,189 --> 00:00:11,350
+And the second argument, which
+specifies how to update the
+
+7
+00:00:11,350 --> 00:00:13,920
+matching document, says $ set.
+
+8
+00:00:13,920 --> 00:00:15,310
+And then country to RU.
+
+9
+00:00:15,310 --> 00:00:16,560
