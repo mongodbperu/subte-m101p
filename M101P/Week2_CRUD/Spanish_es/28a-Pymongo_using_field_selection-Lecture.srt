@@ -41,7 +41,7 @@ todo con "type" igual a
 
 10
 00:00:21,440 --> 00:00:24,130
-Y esta vez crearemos tambíén
+Y esta vez crearemos también
 un diccionario secundario,
 
 11
@@ -56,8 +56,8 @@ campo "_id".
 
 13
 00:00:32,820 --> 00:00:35,660
-Por lo que estamos suprimiendo y
-recuperando específicamente
+Por lo que estamos suprimiendo "_id" 
+y recuperando específicamente
 
 14
 00:00:35,660 --> 00:00:37,530
@@ -66,7 +66,7 @@ recuperando específicamente
 15
 00:00:37,530 --> 00:00:40,740
 Y de nuevo, notarás estas
-comillas alerededor de estos literales.
+comillas alrededor de estos literales.
 
 16
 00:00:40,740 --> 00:00:44,260
@@ -108,13 +108,13 @@ recupera sólo el "student_id"
 
 24
 00:01:01,880 --> 00:01:05,840
-y surpime
+y suprime
 el campo "_id",
 
 25
 00:01:05,840 --> 00:01:08,440
 que es exactamente
-lo que queremos.
+lo que queríamos.
 
 26
 00:01:08,440 --> 00:01:10,460
@@ -151,7 +151,7 @@ Tengo que seleccionar sólo el
 33
 00:01:23,130 --> 00:01:26,820
 "scores" usando un comando "find",
-por los que es muy similar a
+por lo que es muy similar a
 
 34
 00:01:26,820 --> 00:01:27,820

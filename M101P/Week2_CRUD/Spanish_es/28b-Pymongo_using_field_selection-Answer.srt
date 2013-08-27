@@ -22,12 +22,12 @@ encuentra todos los estudiantes.
 
 6
 00:00:10,970 --> 00:00:13,980
-Y proyecta que quiere
-el campo "student_id"
+Y proyecta el campo con
+el 1 en el documento,
 
 7
 00:00:13,980 --> 00:00:17,490
-del documento,
+"student_id",
 y suprime el
 
 8
