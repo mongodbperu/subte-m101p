@@ -3,18 +3,19 @@
 
 2
 00:00:00,210 --> 00:00:00,800
-That's right.
+Así es.
 
 3
 00:00:00,800 --> 00:00:04,330
-The first and the third will
-match because they either
+El primero y el tercero emparejan
+porque uno contiene la cadena
 
 4
 00:00:04,330 --> 00:00:08,700
-contain the string "shiny" or
-are string "shiny" for the
+"shiny" dentro del array del
+campo "tags" y el otro tiene
 
 5
 00:00:08,700 --> 00:00:09,950
-tags field.
+la cadena "shiny" como
+valor del campo "tags".
