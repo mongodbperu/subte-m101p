@@ -1,0 +1,301 @@
+1
+00:00:00,000 --> 00:00:00,100
+
+2
+00:00:00,100 --> 00:00:02,890
+En este problema, te pedíamos
+borrar la puntuación de "homework"
+
+3
+00:00:02,890 --> 00:00:04,440
+más baja para cada estudiante.
+
+4
+00:00:04,440 --> 00:00:07,200
+El algoritmo que sugeríamos
+era ordenar las
+
+5
+00:00:07,200 --> 00:00:10,940
+puntuaciones por "student_id" y luego
+por "score" de forma ascendente.
+
+6
+00:00:10,940 --> 00:00:14,450
+Ahora, sólo estamos examinando los
+documentos que son de tipo
+
+7
+00:00:14,450 --> 00:00:16,000
+"homework" en este caso.
+
+8
+00:00:16,000 --> 00:00:19,070
+Y si hacemos eso, y establecemos
+el "student_id" a un valor
+
+9
+00:00:19,070 --> 00:00:21,890
+razonable para empezar, siempre que
+el "student_id" cambie, sabemos
+
+10
+00:00:21,890 --> 00:00:23,940
+que estamos viendo la puntuación
+más baja para ese estudiante,
+
+11
+00:00:23,940 --> 00:00:25,180
+y podemos simplemente borrarlo.
+
+12
+00:00:25,180 --> 00:00:27,840
+Así que podemos comenzar por borrar 
+este documento justo aquí.
+
+13
+00:00:27,840 --> 00:00:30,150
+Luego, a medida que continuamos, nos damos
+cuenta que el "student_id" cambia
+
+14
+00:00:30,150 --> 00:00:32,850
+durante esta transición a medida
+que iteramos, por lo que
+
+15
+00:00:32,850 --> 00:00:36,330
+borramos ese documento, luego
+borramos este documento y 
+
+16
+00:00:36,330 --> 00:00:37,420
+borramos este documento.
+
+17
+00:00:37,420 --> 00:00:40,020
+Y pasamos por todos los
+estudiantes y borramos la
+
+18
+00:00:40,020 --> 00:00:42,040
+puntuación de "homework" más baja
+para cada uno.
+
+19
+00:00:42,040 --> 00:00:44,800
+Veamos el
+programa.
+
+20
+00:00:44,800 --> 00:00:47,260
+Aquí está el programa que
+escribí para hacer eso.
+
+21
+00:00:47,260 --> 00:00:48,660
+Tiene dos funciones
+diferentes.
+
+22
+00:00:48,660 --> 00:00:50,770
+Esta función
+"remove_lowest".
+
+23
+00:00:50,770 --> 00:00:53,215
+Llama a "grades.find" con
+el tipo "homework".
+
+24
+00:00:53,215 --> 00:00:55,210
+Ordena ascendentemente 
+por "student_id"
+
+25
+00:00:55,210 --> 00:00:57,210
+y por "score".
+
+26
+00:00:57,210 --> 00:01:00,090
+Establece el "student_id" a un
+valor razonable para empezar.
+
+27
+00:01:00,090 --> 00:01:02,950
+Y luego a medida que avanza por
+cada una de estas entradas en la
+
+28
+00:01:02,950 --> 00:01:05,250
+colección, si el "student_id"
+es diferente al 
+
+29
+00:01:05,250 --> 00:01:07,570
+"student_id" anterior, sabe
+que está examinando la
+
+30
+00:01:07,570 --> 00:01:09,850
+puntuación de "homework" más baja para el
+estudiante y entonces llama a
+
+31
+00:01:09,850 --> 00:01:12,460
+"remove_score" para ese
+"student_id".
+
+32
+00:01:12,460 --> 00:01:14,385
+Y en cada iteración del
+bucle, también
+
+33
+00:01:14,385 --> 00:01:16,300
+actualiza "student_id".
+
+34
+00:01:16,300 --> 00:01:20,480
+Por lo que si echamos un vistazo
+a la función "remove_score" justo aquí,
+
+35
+00:01:20,480 --> 00:01:23,005
+intenta encontrar un documento, el que
+se le está pidiendo que borre por
+
+36
+00:01:23,005 --> 00:01:26,680
+"_id", lo imprime
+por motivos de depuración.
+
+37
+00:01:26,680 --> 00:01:29,380
+Y luego llama a "grades.remove" con
+el "_id" igual al
+
+38
+00:01:29,380 --> 00:01:32,710
+"_id" que se le pasó a
+la función justo aquí.
+
+39
+00:01:32,710 --> 00:01:33,325
+Así es como funciona.
+
+40
+00:01:33,325 --> 00:01:37,010
+Veamos cómo funciona, y luego
+simplemente ejecutaremos "python
+
+41
+00:01:37,010 --> 00:01:40,340
+drop_lowest.py" e imprimirá un
+conjunto de cosas, pero básicamente,
+
+42
+00:01:40,340 --> 00:01:43,050
+borrará un documento por
+cada uno de los estudiantes.
+
+43
+00:01:43,050 --> 00:01:45,640
+Y luego te pedíamos ejecutar
+alguna consulta de agregación, que
+
+44
+00:01:45,640 --> 00:01:48,080
+no explicaremos ahora mismo,
+porque en realidad
+
+45
+00:01:48,080 --> 00:01:50,390
+hay una unidad separada sobre
+esto, pero te contaré cómo va
+
+46
+00:01:50,390 --> 00:01:51,510
+realmente rápido.
+
+47
+00:01:51,510 --> 00:01:54,250
+El framework de agregación funciona
+como una tubería y la primera
+
+48
+00:01:54,250 --> 00:01:56,820
+cosa que hace es agrupar
+todos los documentos por
+
+49
+00:01:56,820 --> 00:02:00,320
+"student_id" y encontrar
+la media de
+
+50
+00:02:00,320 --> 00:02:02,130
+los trabajos de los estudiantes.
+
+51
+00:02:02,130 --> 00:02:04,270
+Y luego ordena
+por esa media.
+
+52
+00:02:04,270 --> 00:02:06,570
+Ése es un documento para
+configurar una tubería
+
+53
+00:02:06,570 --> 00:02:07,840
+ordenada por la media.
+
+54
+00:02:07,840 --> 00:02:10,570
+Y finalmente, lo limitamos a
+al primero, porque es la
+
+55
+00:02:10,570 --> 00:02:12,620
+nota media más 
+alta de la clase.
+
+56
+00:02:12,620 --> 00:02:15,810
+Por lo que si ejecutamos eso,
+y el resultado de esta consulta
+
+57
+00:02:15,810 --> 00:02:19,980
+del framework de agregación es 
+que el documento con la media
+
+58
+00:02:19,980 --> 00:02:22,170
+más alta tiene
+este "_id", que es
+
+59
+00:02:22,170 --> 00:02:23,660
+en realidad el "student_id".
+
+60
+00:02:23,660 --> 00:02:25,410
+Si el framework funciona,
+termina con el
+
+61
+00:02:25,410 --> 00:02:28,190
+campo "_id" al
+final de esta tubería.
+
+62
+00:02:28,190 --> 00:02:30,430
+Y la media de ese
+estudiante es 96.
+
+63
+00:02:30,430 --> 00:02:33,920
+Así que la respuesta a esta
+pregunta era 54.
