@@ -36,7 +36,7 @@ hablamos antes.
 
 9
 00:00:18,270 --> 00:00:21,180
-Sólo por revisar realmente rápido
+Sólo para revisar realmente rápido
 lo que vamos a hacer aquí.
 
 10
@@ -86,7 +86,7 @@ la base de datos.
 19
 00:00:44,410 --> 00:00:47,773
 Esto es algo que ya
-existe en tu mundo porque
+tienes por tu parte porque
 
 20
 00:00:47,773 --> 00:00:50,000
@@ -255,7 +255,7 @@ código para "find_one".
 56
 00:02:20,010 --> 00:02:22,740
 Sé que un montón de gente ha
-solicitado que se os pase el
+solicitado que se les envíe el
 
 57
 00:02:22,740 --> 00:02:25,620
@@ -529,7 +529,7 @@ con un ObjectId BSON y
 
 114
 00:04:57,120 --> 00:05:00,080
-Notarás que lo ha imprimido
+Notarás que lo ha impreso
 como un número en punto flotante.
 
 115
