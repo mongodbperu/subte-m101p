@@ -127,7 +127,7 @@ sentencias --
 
 28
 00:01:12,280 --> 00:01:13,740
-son setencias Python --
+son sentencias Python --
 
 29
 00:01:13,740 --> 00:01:16,300
