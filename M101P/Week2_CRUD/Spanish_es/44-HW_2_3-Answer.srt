@@ -32,7 +32,7 @@ justo aquí e
 
 8
 00:00:16,820 --> 00:00:20,450
-insertar el registro del usuario justo
+insertar el registro del usuario por
 aquí, "self.users.insert(user)".
 
 9
