@@ -196,7 +196,7 @@ conjunto de cosas, pero básicamente,
 
 42
 00:01:40,340 --> 00:01:43,050
-borrará un documento para
+borrará un documento por
 cada uno de los estudiantes.
 
 43
@@ -206,8 +206,8 @@ alguna consulta de agregación, que
 
 44
 00:01:45,640 --> 00:01:48,080
-no explicaremos demasiado justo
-ahora, porque en realidad
+no explicaremos ahora mismo,
+porque en realidad
 
 45
 00:01:48,080 --> 00:01:50,390
@@ -278,12 +278,12 @@ este "_id", que es
 
 59
 00:02:22,170 --> 00:02:23,660
-realmente el "student_id".
+en realidad el "student_id".
 
 60
 00:02:23,660 --> 00:02:25,410
 Si el framework funciona,
-termina en con el
+termina con el
 
 61
 00:02:25,410 --> 00:02:28,190
