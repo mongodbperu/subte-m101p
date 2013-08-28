@@ -33,7 +33,7 @@ que "type" es "quiz".
 8
 00:00:20,770 --> 00:00:24,240
 La tercera es realmente un poco
-difícil, pero si estás
+simple, pero si estás
 
 9
 00:00:24,240 --> 00:00:26,390
