@@ -1,0 +1,83 @@
+1
+00:00:00,000 --> 00:00:00,260
+
+2
+00:00:00,260 --> 00:00:04,480
+OK, y la respuesta es que la
+segunda es correcta.
+
+3
+00:00:04,480 --> 00:00:10,410
+La que especifica este "type" igual
+a "quiz" y "score"
+
+4
+00:00:10,410 --> 00:00:13,260
+"$gt" 20 y 
+"$lt" 90.
+
+5
+00:00:13,260 --> 00:00:15,350
+Fíjate que están 
+entre comillas.
+
+6
+00:00:15,350 --> 00:00:19,230
+La primera no es correcta,
+porque no especifica
+
+7
+00:00:19,230 --> 00:00:20,770
+que "type" es "quiz".
+
+8
+00:00:20,770 --> 00:00:24,240
+La tercera es realmente un poco
+difícil, pero si estás
+
+9
+00:00:24,240 --> 00:00:26,390
+empezando con
+Mongo, es un
+
+10
+00:00:26,390 --> 00:00:28,420
+error muy fácil de cometer.
+
+11
+00:00:28,420 --> 00:00:31,210
+En lugar de tener la clave primero
+y luego un documento que
+
+12
+00:00:31,210 --> 00:00:34,080
+especifica el criterio para el
+número, realmente comienza
+
+13
+00:00:34,080 --> 00:00:36,780
+con "$gt" (mayor que) 
+o "$lt" (menor que).
+
+14
+00:00:36,780 --> 00:00:38,300
+Pero esto no es correcto.
+
+15
+00:00:38,300 --> 00:00:40,790
+Y la última sería
+correcta si no fuera por el hecho
+
+16
+00:00:40,790 --> 00:00:43,500
+que faltan las comillas para
+esos dos literales, lo cual
+
+17
+00:00:43,500 --> 00:00:47,250
+no funcionará en Python y
+PyMongo, pero funcionaría en
+
+18
+00:00:47,250 --> 00:00:48,500
+el shell Mongo.
