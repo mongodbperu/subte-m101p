@@ -61,12 +61,12 @@ el conjunto de datos intacto por completo.
 14
 00:00:29,310 --> 00:00:33,950
 Ahora, es un poco más
-complicado porque de la forma
+complicado por la forma
 
 15
 00:00:33,950 --> 00:00:35,570
-en el que el esquema está
-dispuesta esta semana.
+en que el esquema está
+dispuesto esta semana.
 
 16
 00:00:35,570 --> 00:00:37,700

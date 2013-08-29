@@ -50,7 +50,7 @@ iterar a través de la colección
 12
 00:00:30,490 --> 00:00:34,300
 entera, ver las
-calificaciiones, encontrar la
+calificaciones, encontrar la
 
 13
 00:00:34,300 --> 00:00:37,540
@@ -120,8 +120,8 @@ tercer elemento cuando regrese
 
 27
 00:01:12,020 --> 00:01:14,680
-allí, en un sistema en
-real funcionamiento.
+allí, en un sistema real
+en funcionamiento.
 
 28
 00:01:14,680 --> 00:01:18,380
@@ -299,7 +299,7 @@ menor a 101--
 
 65
 00:02:45,120 --> 00:02:47,030
-porque sé lo que cuáles son los
+porque sé cuáles son los
 límites de las calificaciones
 
 66
