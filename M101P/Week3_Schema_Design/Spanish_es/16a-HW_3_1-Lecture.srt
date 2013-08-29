@@ -1,0 +1,208 @@
+1
+00:00:00,000 --> 00:00:00,170
+
+2
+00:00:00,170 --> 00:00:00,410
+Muy bien.
+
+3
+00:00:00,410 --> 00:00:03,390
+Para el primer problema de esta semana,
+voy a analizar
+
+4
+00:00:03,390 --> 00:00:07,800
+un conjunto de datos similar a la
+semana anterior y eliminar la tarea
+
+5
+00:00:07,800 --> 00:00:09,590
+de menor puntuación por
+cada alumno.
+
+6
+00:00:09,590 --> 00:00:13,350
+Ahora, la semana anterior tuvimos
+una colección donde había un
+
+7
+00:00:13,350 --> 00:00:15,860
+documento para cada evaluación.
+
+8
+00:00:15,860 --> 00:00:18,570
+Entonces habían cuatro documentos
+por alumno.
+
+9
+00:00:18,570 --> 00:00:20,930
+Esta semana, será 
+sólo un
+
+10
+00:00:20,930 --> 00:00:21,890
+documento por alumno.
+
+11
+00:00:21,890 --> 00:00:23,440
+Y es una colección de
+alumnos.
+
+12
+00:00:23,440 --> 00:00:25,470
+Y vas a necesitar
+encontrar la tarea con menor
+
+13
+00:00:25,470 --> 00:00:29,310
+puntuación, eliminarla y mantener
+el conjunto de datos intacto por completo.
+
+14
+00:00:29,310 --> 00:00:33,950
+Ahora, es un poco más
+complicado por la forma
+
+15
+00:00:33,950 --> 00:00:35,570
+en que el esquema está
+dispuesto esta semana.
+
+16
+00:00:35,570 --> 00:00:37,700
+Y esa es la idea.
+
+17
+00:00:37,700 --> 00:00:39,660
+Ahora, al igual que la semana pasada,
+no necesitas escribir este
+
+18
+00:00:39,660 --> 00:00:41,160
+programa en Python.
+
+19
+00:00:41,160 --> 00:00:42,820
+Puedes hacerlo en
+el que desees.
+
+20
+00:00:42,820 --> 00:00:44,470
+Aquí está la descripción
+del problema.
+
+21
+00:00:44,470 --> 00:00:47,730
+Vas a empezar por
+descargar la colección
+
+22
+00:00:47,730 --> 00:00:48,350
+"students.js".
+
+23
+00:00:48,350 --> 00:00:51,730
+Vas a importarlo en
+una base de datos llamada "school".
+
+24
+00:00:51,730 --> 00:00:54,980
+Y después de eso, vas
+a escribir tu programa.
+
+25
+00:00:54,980 --> 00:00:57,660
+Ahora, para ayudarte a verificar
+que tienes la respuesta correcta,
+
+26
+00:00:57,660 --> 00:01:00,640
+tenemos algunas consultas y
+sus respuestas para después
+
+27
+00:01:00,640 --> 00:01:01,500
+que hagas el trabajo.
+
+28
+00:01:01,500 --> 00:01:04,000
+Así que debe haber 200 alumnos
+en la base de datos después de
+
+29
+00:01:04,000 --> 00:01:04,690
+hacer el trabajo.
+
+30
+00:01:04,690 --> 00:01:06,370
+No debes eliminar
+ningún alumno.
+
+31
+00:01:06,370 --> 00:01:10,430
+Y también te damos cómo
+se verá el registro, el
+
+32
+00:01:10,430 --> 00:01:15,130
+documento se verá así, para
+el alumno con "_id" 100, que es
+
+33
+00:01:15,130 --> 00:01:16,920
+el registro de "Demarcus Audette".
+
+34
+00:01:16,920 --> 00:01:20,040
+Y puedes ver que, en este punto,
+Demarcus sólo tiene tres
+
+35
+00:01:20,040 --> 00:01:23,820
+puntuaciones porque la menor
+tarea ha sido eliminada.
+
+36
+00:01:23,820 --> 00:01:26,640
+Y entonces después de haber terminado
+todo el trabajo, verifica que
+
+37
+00:01:26,640 --> 00:01:29,050
+tienes la respuesta correcta,
+vamos a tener que ejecutar esta
+
+38
+00:01:29,050 --> 00:01:31,820
+consulta que usa Aggregation
+Framework, que
+
+39
+00:01:31,820 --> 00:01:34,370
+requiere MongoDB 2.2.
+
+40
+00:01:34,370 --> 00:01:36,810
+Y se va a imprimir
+un documento.
+
+41
+00:01:36,810 --> 00:01:40,810
+Y el campo "_id" va a ser
+el "_id" del alumno con
+
+42
+00:01:40,810 --> 00:01:41,860
+el mayor promedio.
+
+43
+00:01:41,860 --> 00:01:44,360
+Y esa es la respuesta
+al problema, sólo
+
+44
+00:01:44,360 --> 00:01:45,610
+la cantidad numérica.
+
+45
+00:01:45,610 --> 00:01:47,107
