@@ -1,0 +1,19 @@
+# Marketing Message 2
+
+Learn everything you need to know to build an application with MongoDB and Python...in Spanish
+
+MongoDB University will release the fifth run of M101P: MongoDB for Python Developers with support for Spanish speakers. 
+
+-This course will cover basic installation, JSON, schema design, querying, insertion of data, indexing, replication, sharding, and working with the Python driver.
+
+-You will build a blogging platform, backed by MongoDB. Code examples will be in Python.
+
+-All lesson videos include captions in Spanish, translated by members of our Masters of MongoDB and MongoDB User Group (MUG) communities. This effort was organized by Juan-Carlos Farah and Jorge Puente Sarrín. Our thanks to them. 
+
+-Juan-Carlos and Jorge will serve as teaching assistants in the class discussion forum to help Spanish speakers (and others) with questions.
+
+-The course is taught by Andrew Erlichson, VP of Education and Richard Kreuter, consulting engineer at MongoDB, Inc. 
+
+-For more information, visit education.mongodb.com.
+
+Class starts September 9 for M101P: MongoDB for Python Developers – Register Now
