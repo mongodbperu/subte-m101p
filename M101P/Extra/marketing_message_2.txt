@@ -1,19 +1,19 @@
 # Marketing Message 2
 
-Learn everything you need to know to build an application with MongoDB and Python...in Spanish
+Aprende todo lo que necesitas saber para crear una aplicación con MongoDB y Python... ¡en español!
 
-MongoDB University will release the fifth run of M101P: MongoDB for Python Developers with support for Spanish speakers. 
+MongoDB University va a lanzar el quinto ofrecimiento de M101P: MongoDB para desarrolladores Python con soporte para hispanohablantes.
 
--This course will cover basic installation, JSON, schema design, querying, insertion of data, indexing, replication, sharding, and working with the Python driver.
+-Este curso abarcará instalación básica, JSON, diseño de esquemas, consultas, inserción de datos, indexación, replicación, sharding y utilización del driver de Python.
 
--You will build a blogging platform, backed by MongoDB. Code examples will be in Python.
+-Construirás una plataforma de blogs sobre MongoDB. Los ejemplos de código estarán en Python.
 
--All lesson videos include captions in Spanish, translated by members of our Masters of MongoDB and MongoDB User Group (MUG) communities. This effort was organized by Juan-Carlos Farah and Jorge Puente Sarrín. Our thanks to them. 
+-Todos los vídeos incluirán subtítulos en español traducidos por miembros de nuestras comunidades Masters of MongoDB y MongoDB User Group (MUG). Este esfuerzo fue organizado por Juan Carlos Farah y Jorge Puente Sarrín. Nuestros agradecimientos a ellos. 
 
--Juan-Carlos and Jorge will serve as teaching assistants in the class discussion forum to help Spanish speakers (and others) with questions.
+-Juan Carlos y Jorge servirán como asistentes en el foro para ayudar a hispanohablantes (y otros) que tengan alguna pregunta.
 
--The course is taught by Andrew Erlichson, VP of Education and Richard Kreuter, consulting engineer at MongoDB, Inc. 
+-Este curso es liderado por Andrew Erlichson, VP de Educación y Richard Kreuter, ingeniero consultor en MongoDB, Inc.
 
--For more information, visit education.mongodb.com.
+-Para mayor información, visita education.mongodb.com.
 
-Class starts September 9 for M101P: MongoDB for Python Developers – Register Now
+Las clases de M101P: MongoDB para desarrolladores Python comienzan el 9 de setiembre - Regístrate ahora
