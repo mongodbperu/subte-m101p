@@ -56,17 +56,17 @@ que lo conectan a MongoDB.
 
 13
 00:00:28,390 --> 00:00:30,820
-La mayoría de gente está
+La mayoría de la gente está
 familiarizada con los blogs.
 
 14
 00:00:30,820 --> 00:00:34,070
 Y vamos a hacer que tú
-escribas el código y será
+escribas el código que
 
 15
 00:00:34,070 --> 00:00:36,300
-en código Python.
+será código Python.
 
 16
 00:00:36,300 --> 00:00:39,630
@@ -75,8 +75,8 @@ para este curso.
 
 17
 00:00:39,630 --> 00:00:41,900
-Si nunca has usado Python
-antes, está bien.
+Si nunca has usado Python,
+no hay problema.
 
 18
 00:00:41,900 --> 00:00:43,230
@@ -148,7 +148,7 @@ cuestionarios al final.
 
 32
 00:01:13,900 --> 00:01:16,090
-Y éstos son apenas pequeños
+Éstos son apenas pequeños
 controles de aprendizaje que
 
 33
@@ -314,8 +314,8 @@ finalización de 10gen que
 
 66
 00:02:50,795 --> 00:02:53,700
-cerciora que han completado satisfactoriamente el
-curso de MongoDB para Desarrolladores.
+certifica que han completado satisfactoriamente
+el curso de MongoDB para Desarrolladores.
 
 67
 00:02:53,700 --> 00:02:55,560
