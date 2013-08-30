@@ -1,0 +1,149 @@
+1
+00:00:00,000 --> 00:00:01,190
+
+2
+00:00:01,190 --> 00:00:03,570
+Moving along to some more
+update operators.
+
+3
+00:00:03,570 --> 00:00:05,350
+Occasionally, you want to
+be able to remove a
+
+4
+00:00:05,350 --> 00:00:06,810
+field from a document.
+
+5
+00:00:06,810 --> 00:00:10,030
+For example, in my People
+collection, if I want to
+
+6
+00:00:10,030 --> 00:00:13,110
+remove Jones's profession,
+I can.
+
+7
+00:00:13,110 --> 00:00:15,300
+One way to do it, of course,
+would be to do a wholesale
+
+8
+00:00:15,300 --> 00:00:17,960
+replacement specifying all
+of the fields except for
+
+9
+00:00:17,960 --> 00:00:20,270
+profession, but this is somewhat
+cumbersome to do if I
+
+10
+00:00:20,270 --> 00:00:21,890
+happen not to know what
+fields exist in
+
+11
+00:00:21,890 --> 00:00:23,760
+that document in advance.
+
+12
+00:00:23,760 --> 00:00:26,160
+And so we have another operator
+analogous to dollar
+
+13
+00:00:26,160 --> 00:00:30,230
+set, and that operator is
+called dollar unset.
+
+14
+00:00:30,230 --> 00:00:33,120
+This will remove the field and
+its value from the document
+
+15
+00:00:33,120 --> 00:00:35,660
+that matches the specified
+criteria, and so the
+
+16
+00:00:35,660 --> 00:00:37,020
+profession is gone.
+
+17
+00:00:37,020 --> 00:00:39,420
+This is occasionally useful, for
+example, to perform schema
+
+18
+00:00:39,420 --> 00:00:41,850
+change manipulations when the
+application requirements
+
+19
+00:00:41,850 --> 00:00:44,350
+change, or occasionally to
+model certain kinds of
+
+20
+00:00:44,350 --> 00:00:45,780
+transformations of your data.
+
+21
+00:00:45,780 --> 00:00:48,470
+For instance, rather than
+storing a null value if a
+
+22
+00:00:48,470 --> 00:00:50,960
+piece of information is not
+present, you can add and
+
+23
+00:00:50,960 --> 00:00:54,290
+remove fields to a document
+as the information becomes
+
+24
+00:00:54,290 --> 00:00:57,210
+present and relevant, or becomes
+irrelevant and no
+
+25
+00:00:57,210 --> 00:00:58,380
+longer necessary.
+
+26
+00:00:58,380 --> 00:01:02,150
+This is one aspect of MongoDB's
+schema-less nature.
+
+27
+00:01:02,150 --> 00:01:03,620
+All right, let's have a quiz.
+
+28
+00:01:03,620 --> 00:01:08,020
+Write an update query that will
+unset the Interests key
+
+29
+00:01:08,020 --> 00:01:10,980
+in the following document in the
+collection called Users.
+
+30
+00:01:10,980 --> 00:01:14,720
+So the document has username
+Jimmy, favorite color blue,
+
+31
+00:01:14,720 --> 00:01:17,520
+interests the array, debating
+and politics.
+
+32
+00:01:17,520 --> 00:01:18,770

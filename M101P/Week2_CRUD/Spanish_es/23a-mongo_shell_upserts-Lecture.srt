@@ -1,0 +1,307 @@
+1
+00:00:00,000 --> 00:00:00,150
+
+2
+00:00:00,150 --> 00:00:02,730
+OK, now you know some of the
+tricks that are available for
+
+3
+00:00:02,730 --> 00:00:06,160
+manipulating fields inside of
+documents using dollar set,
+
+4
+00:00:06,160 --> 00:00:08,820
+dollar push, dollar
+pop, and so on.
+
+5
+00:00:08,820 --> 00:00:11,260
+I mentioned earlier that the
+update operator in the Mongo
+
+6
+00:00:11,260 --> 00:00:14,340
+shell actually does four
+different things.
+
+7
+00:00:14,340 --> 00:00:17,020
+Among these are wholesale
+replacement of documents,
+
+8
+00:00:17,020 --> 00:00:19,480
+manipulation of fields inside
+of a document--
+
+9
+00:00:19,480 --> 00:00:20,950
+those we've already covered.
+
+10
+00:00:20,950 --> 00:00:23,550
+The next thing that the update
+operator can do is what we
+
+11
+00:00:23,550 --> 00:00:24,970
+call an upsert.
+
+12
+00:00:24,970 --> 00:00:28,490
+And it models a very common,
+specific sort of use case.
+
+13
+00:00:28,490 --> 00:00:30,570
+Let's look at our people
+collection again.
+
+14
+00:00:30,570 --> 00:00:33,150
+Here we have our documents,
+various people
+
+15
+00:00:33,150 --> 00:00:34,560
+having various names.
+
+16
+00:00:34,560 --> 00:00:37,070
+We already know how to updates
+field inside of existing
+
+17
+00:00:37,070 --> 00:00:41,160
+documents, for instance
+db.people.update name colon
+
+18
+00:00:41,160 --> 00:00:45,540
+Charlie comma dollar set colon
+age colon 40, will set
+
+19
+00:00:45,540 --> 00:00:47,130
+Charlie's age of 40.
+
+20
+00:00:47,130 --> 00:00:49,410
+As it happens, I know that there
+is a document with the
+
+21
+00:00:49,410 --> 00:00:50,560
+name Charlie.
+
+22
+00:00:50,560 --> 00:00:53,280
+What if I didn't know that there
+was such a document?
+
+23
+00:00:53,280 --> 00:00:56,140
+Well, if there were no document
+with name Charlie,
+
+24
+00:00:56,140 --> 00:00:58,660
+then this update operation would
+have no effect, because
+
+25
+00:00:58,660 --> 00:01:01,870
+there would be no document
+matching with name Charlie.
+
+26
+00:01:01,870 --> 00:01:05,459
+It's not too uncommon to have
+a desire to either update an
+
+27
+00:01:05,459 --> 00:01:08,940
+existing document or else to
+create a new document from the
+
+28
+00:01:08,940 --> 00:01:10,510
+information that you
+have at hand.
+
+29
+00:01:10,510 --> 00:01:12,310
+And for this, we have
+an operation
+
+30
+00:01:12,310 --> 00:01:14,940
+called upsert in MongoDB.
+
+31
+00:01:14,940 --> 00:01:18,770
+So for instance, if instead of
+updating Charlie, if I wanted
+
+32
+00:01:18,770 --> 00:01:22,580
+to update George, this operation
+will have no effect,
+
+33
+00:01:22,580 --> 00:01:25,440
+because there is no document
+named George.
+
+34
+00:01:25,440 --> 00:01:29,180
+However, if I add as a third
+argument some options to this
+
+35
+00:01:29,180 --> 00:01:33,310
+update, in particular upsert
+true, then MongoDB will
+
+36
+00:01:33,310 --> 00:01:36,270
+construct a new document from
+the information that I've
+
+37
+00:01:36,270 --> 00:01:39,260
+specified named George
+and age 40.
+
+38
+00:01:39,260 --> 00:01:42,340
+This upsert operation models
+the common case where you
+
+39
+00:01:42,340 --> 00:01:45,230
+might want to update a record
+that does exist or otherwise
+
+40
+00:01:45,230 --> 00:01:47,010
+insert a new record.
+
+41
+00:01:47,010 --> 00:01:48,730
+Now, there are some
+edge cases.
+
+42
+00:01:48,730 --> 00:01:52,540
+Of course, if the query that you
+specify under-determines
+
+43
+00:01:52,540 --> 00:01:54,420
+the information that needs
+to go into the resulting
+
+44
+00:01:54,420 --> 00:01:57,670
+document, then those fields will
+be left out of the result
+
+45
+00:01:57,670 --> 00:01:58,530
+of the upsert.
+
+46
+00:01:58,530 --> 00:02:04,560
+For example, if you said
+db.people.update age greater
+
+47
+00:02:04,560 --> 00:02:11,990
+than 50, set name to William,
+well, the age greater than 50
+
+48
+00:02:11,990 --> 00:02:13,820
+is not enough information
+to determine what the
+
+49
+00:02:13,820 --> 00:02:14,640
+result should be.
+
+50
+00:02:14,640 --> 00:02:16,680
+It under-specifies the answer.
+
+51
+00:02:16,680 --> 00:02:21,160
+In fact, MondoDB will create a
+document in this case, but
+
+52
+00:02:21,160 --> 00:02:23,450
+it'll have to leave out any
+field that doesn't have a
+
+53
+00:02:23,450 --> 00:02:27,160
+concrete value to fill
+in for the upsert.
+
+54
+00:02:27,160 --> 00:02:29,090
+Nevertheless, the upsert
+operation is
+
+55
+00:02:29,090 --> 00:02:31,040
+fairly commonly used.
+
+56
+00:02:31,040 --> 00:02:34,570
+For example, if you're merging
+data in from a data vendor,
+
+57
+00:02:34,570 --> 00:02:37,530
+and you don't know whether a
+record already exists, you can
+
+58
+00:02:37,530 --> 00:02:40,250
+fairly straightforwardly use the
+upsert operator to either
+
+59
+00:02:40,250 --> 00:02:43,180
+upgrade an existing record
+or create a new one.
+
+60
+00:02:43,180 --> 00:02:44,800
+Let's see if you caught that.
+
+61
+00:02:44,800 --> 00:02:47,600
+After performing the following
+update on an empty collection,
+
+62
+00:02:47,600 --> 00:02:51,785
+db.food.update user name colon
+bar, dollar set, interests
+
+63
+00:02:51,785 --> 00:02:55,910
+colon cat comma dog, upsert
+colon true, what would be the
+
+64
+00:02:55,910 --> 00:02:57,160
+state of the collection?
+
+65
+00:02:57,160 --> 00:02:57,820

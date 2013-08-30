@@ -1,0 +1,384 @@
+1
+00:00:00,000 --> 00:00:00,230
+
+2
+00:00:00,230 --> 00:00:02,100
+Moving along, let's learn about
+some operators that
+
+3
+00:00:02,100 --> 00:00:04,220
+manipulate arrays inside
+of documents.
+
+4
+00:00:04,220 --> 00:00:06,900
+First, I'll set up some
+documents having arrays,
+
+5
+00:00:06,900 --> 00:00:08,950
+containing just some numbers,
+which should be easy to
+
+6
+00:00:08,950 --> 00:00:10,320
+understand.
+
+7
+00:00:10,320 --> 00:00:13,100
+In my arrays collection, I have
+a single document, having
+
+8
+00:00:13,100 --> 00:00:16,730
+a field called a, whose value
+is the array 1, 2, 3, 4.
+
+9
+00:00:16,730 --> 00:00:18,810
+There are a number of operators
+in the update
+
+10
+00:00:18,810 --> 00:00:20,840
+language that manipulate
+arrays.
+
+11
+00:00:20,840 --> 00:00:24,060
+A couple of simple operations
+can be performed, such as
+
+12
+00:00:24,060 --> 00:00:27,030
+manipulating an individual
+element inside of an array.
+
+13
+00:00:27,030 --> 00:00:30,010
+The dollar set operator can
+change the value of an
+
+14
+00:00:30,010 --> 00:00:33,460
+individual array element,
+represented as the array field
+
+15
+00:00:33,460 --> 00:00:36,770
+name followed by a dot, followed
+by the decimal
+
+16
+00:00:36,770 --> 00:00:39,380
+representation of the index in
+the array that you want to
+
+17
+00:00:39,380 --> 00:00:40,120
+manipulate.
+
+18
+00:00:40,120 --> 00:00:44,360
+In this case, a.2 will
+manipulate the third element
+
+19
+00:00:44,360 --> 00:00:49,040
+of the array a, having changed
+the third element from 3 to 5.
+
+20
+00:00:49,040 --> 00:00:51,190
+Sometimes you want to add
+elements to an array or remove
+
+21
+00:00:51,190 --> 00:00:52,820
+elements from an array.
+
+22
+00:00:52,820 --> 00:00:55,750
+For example, to add an element
+to the right hand side of an
+
+23
+00:00:55,750 --> 00:00:57,450
+array, you can say push.
+
+24
+00:00:57,450 --> 00:01:01,230
+This extends the array by adding
+a new element to it.
+
+25
+00:01:01,230 --> 00:01:03,820
+Similarly, you can remove the
+rightmost element from the
+
+26
+00:01:03,820 --> 00:01:06,310
+array with pop.
+
+27
+00:01:06,310 --> 00:01:08,620
+Alternatively, you can remove
+the leftmost element of the
+
+28
+00:01:08,620 --> 00:01:12,200
+array with pop specified with
+a negative argument.
+
+29
+00:01:12,200 --> 00:01:15,720
+Further, you can add a number
+of elements to an array with
+
+30
+00:01:15,720 --> 00:01:17,870
+the pushAll operator.
+
+31
+00:01:17,870 --> 00:01:20,890
+The pushAll operator takes the
+name of the field that you
+
+32
+00:01:20,890 --> 00:01:23,800
+want to manipulate and an array
+of elements which will
+
+33
+00:01:23,800 --> 00:01:26,305
+be added to the array that's
+the value of the field that
+
+34
+00:01:26,305 --> 00:01:27,890
+you're manipulating.
+
+35
+00:01:27,890 --> 00:01:30,550
+Now my array has six elements
+where as it
+
+36
+00:01:30,550 --> 00:01:31,950
+formerly had three.
+
+37
+00:01:31,950 --> 00:01:34,940
+You can also remove an element
+from an array, no matter what
+
+38
+00:01:34,940 --> 00:01:37,220
+its position, using
+the pull operator.
+
+39
+00:01:37,220 --> 00:01:39,920
+The pull operator removes the
+value from the array, no
+
+40
+00:01:39,920 --> 00:01:42,030
+matter what its location
+inside the array.
+
+41
+00:01:42,030 --> 00:01:43,430
+In this case, I'm going
+to remove the
+
+42
+00:01:43,430 --> 00:01:46,040
+value 5 from the array.
+
+43
+00:01:46,040 --> 00:01:49,050
+Similarly, you could specify a
+list of elements you want to
+
+44
+00:01:49,050 --> 00:01:51,720
+remove from the array, using the
+pullAll operator, which is
+
+45
+00:01:51,720 --> 00:01:53,620
+analogous to the pushAll
+operator.
+
+46
+00:01:53,620 --> 00:01:56,760
+The pullAll operator, like the
+pushAll operator, takes a
+
+47
+00:01:56,760 --> 00:01:59,100
+field name and an
+array of values.
+
+48
+00:01:59,100 --> 00:02:02,930
+The pullAll operator removes any
+occurrence of any of those
+
+49
+00:02:02,930 --> 00:02:05,130
+values from the array.
+
+50
+00:02:05,130 --> 00:02:08,030
+Finally, it's occasionally
+convenient to treat an array
+
+51
+00:02:08,030 --> 00:02:11,020
+not as an ordered sequence of
+items, but as a set of items,
+
+52
+00:02:11,020 --> 00:02:13,430
+which shouldn't contain more
+than one instance of any
+
+53
+00:02:13,430 --> 00:02:14,950
+particular value.
+
+54
+00:02:14,950 --> 00:02:17,080
+To add to such a set,
+we have an operator
+
+55
+00:02:17,080 --> 00:02:19,010
+called, well, addToSet.
+
+56
+00:02:19,010 --> 00:02:21,810
+If the element already exists
+inside the array, addToSet
+
+57
+00:02:21,810 --> 00:02:23,140
+does nothing.
+
+58
+00:02:23,140 --> 00:02:25,490
+Otherwise, addToSet
+acts like a push.
+
+59
+00:02:25,490 --> 00:02:28,310
+Running the same addToSet
+multiple times, therefore, is
+
+60
+00:02:28,310 --> 00:02:31,160
+idempotent, that is, occurrences
+after the first
+
+61
+00:02:31,160 --> 00:02:32,410
+should have no effect.
+
+62
+00:02:32,410 --> 00:02:34,500
+There's no remove from set
+operator, because that
+
+63
+00:02:34,500 --> 00:02:37,630
+functionality is given by the
+pull or pullAll operators.
+
+64
+00:02:37,630 --> 00:02:38,390
+So there you have it.
+
+65
+00:02:38,390 --> 00:02:40,740
+You can set an individual
+element in an array.
+
+66
+00:02:40,740 --> 00:02:45,870
+You can push, pop, pull,
+pushAll, pullAll and addToSet
+
+67
+00:02:45,870 --> 00:02:47,040
+in an array.
+
+68
+00:02:47,040 --> 00:02:49,230
+That was a lot of information,
+but let's try to have
+
+69
+00:02:49,230 --> 00:02:50,540
+a quiz about it.
+
+70
+00:02:50,540 --> 00:02:52,530
+Suppose you have the following
+document in your friends
+
+71
+00:02:52,530 --> 00:02:53,380
+collection--
+
+72
+00:02:53,380 --> 00:02:57,400
+underscore id colon Mike
+interests colon the array
+
+73
+00:02:57,400 --> 00:02:59,390
+chess comma botany.
+
+74
+00:02:59,390 --> 00:03:01,960
+What will the outcome or
+result of the following
+
+75
+00:03:01,960 --> 00:03:03,150
+updates be--
+
+76
+00:03:03,150 --> 00:03:06,520
+the first update, underscore
+id Mike push interests
+
+77
+00:03:06,520 --> 00:03:11,000
+skydiving; the second underscore
+id Mike pop
+
+78
+00:03:11,000 --> 00:03:14,840
+interests negative 1; the third
+update, underscore id
+
+79
+00:03:14,840 --> 00:03:19,310
+Mike add to set interests
+skydiving; the fourth update,
+
+80
+00:03:19,310 --> 00:03:22,510
+underscore id Mike
+pushAll interests
+
+81
+00:03:22,510 --> 00:03:23,760
+skydiving comma skiing?
+
+82
+00:03:23,760 --> 00:03:25,000
