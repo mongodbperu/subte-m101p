@@ -8,9 +8,9 @@ MongoDB University va a lanzar el quinto ofrecimiento de M101P: MongoDB para des
 
 -Construirás una plataforma de blogs sobre MongoDB. Los ejemplos de código estarán en Python.
 
--Todos los vídeos incluirán subtítulos en español traducidos por miembros de nuestras comunidades Masters of MongoDB y MongoDB User Group (MUG). Este esfuerzo fue organizado por Juan Carlos Farah y Jorge Puente Sarrín. Nuestros agradecimientos a ellos. 
+-Todos los vídeos incluirán subtítulos en español traducidos por miembros de nuestras comunidades Masters of MongoDB y MongoDB User Group (MUG). Este esfuerzo fue organizado por Juan Carlos Farah, Jorge Puente Sarrín y José Carlos García. Nuestros agradecimientos a ellos. 
 
--Juan Carlos y Jorge servirán como asistentes en el foro para ayudar a hispanohablantes (y otros) que tengan alguna pregunta.
+-Juan Carlos, Jorge y José Carlos servirán como asistentes de enseñanza en el foro para ayudar a hispanohablantes (y otros) que tengan alguna pregunta.
 
 -Este curso es liderado por Andrew Erlichson, VP de Educación y Richard Kreuter, ingeniero consultor en MongoDB, Inc.
 
