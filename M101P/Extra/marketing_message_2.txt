@@ -10,7 +10,7 @@ MongoDB University va a lanzar la quinta edición de M101P: MongoDB para desarro
 
 -Todos los vídeos incluirán subtítulos en español traducidos por miembros de nuestras comunidades Masters of MongoDB y MongoDB User Group (MUG). Este esfuerzo fue organizado por Juan Carlos Farah, Jorge Puente Sarrín y José Carlos García. Nuestros agradecimientos a ellos. 
 
--Juan Carlos, Jorge y José Carlos servirán como asistentes de enseñanza en el foro para ayudar a hispanohablantes (y otros) que tengan alguna pregunta.
+-Juan Carlos, Jorge y José Carlos servirán como asistentes de enseñanza en el foro para ayudar a hispanohablantes (y otros) si tuvieran alguna pregunta.
 
 -Este curso es liderado por Andrew Erlichson, VP de Educación y Richard Kreuter, ingeniero consultor en MongoDB, Inc.
 
