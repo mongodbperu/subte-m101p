@@ -2,7 +2,7 @@
 
 Aprende todo lo que necesitas saber para crear una aplicación con MongoDB y Python... ¡en español!
 
-MongoDB University va a lanzar la quinta edici�n de M101P: MongoDB para desarrolladores Python con soporte para hispanohablantes.
+MongoDB University va a lanzar la quinta edición de M101P: MongoDB para desarrolladores Python con soporte para hispanohablantes.
 
 -Este curso abarcará instalación básica, JSON, diseño de esquemas, consultas, inserción de datos, indexación, replicación, sharding y utilización del driver de Python.
 
