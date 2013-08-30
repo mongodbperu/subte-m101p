@@ -1,0 +1,175 @@
+1
+00:00:00,000 --> 00:00:00,170
+
+2
+00:00:00,170 --> 00:00:03,600
+In this assignment, we asked you
+to modify the code so that
+
+3
+00:00:03,600 --> 00:00:06,260
+the blog will accept posts.
+
+4
+00:00:06,260 --> 00:00:09,220
+And I want to take you through
+how you do that.
+
+5
+00:00:09,220 --> 00:00:16,600
+All the changes happen in the
+BlogPostDAO.py file, which I
+
+6
+00:00:16,600 --> 00:00:19,000
+have up in front of you here.
+
+7
+00:00:19,000 --> 00:00:23,300
+And the first one is
+in insert_entry.
+
+8
+00:00:23,300 --> 00:00:26,640
+So in insert_entry you need
+to insert the post.
+
+9
+00:00:26,640 --> 00:00:29,220
+And the line that was missing
+is right here.
+
+10
+00:00:29,220 --> 00:00:30,470
+You need to call
+self.posts.inset(post).
+
+11
+00:00:30,470 --> 00:00:33,490
+
+12
+00:00:33,490 --> 00:00:36,170
+And we built the post
+for you over here.
+
+13
+00:00:36,170 --> 00:00:38,370
+So you just needed
+to insert it.
+
+14
+00:00:38,370 --> 00:00:39,940
+That's all there was to that.
+
+15
+00:00:39,940 --> 00:00:41,580
+Now to get the posts--
+
+16
+00:00:41,580 --> 00:00:44,790
+for instance, for the
+blog home page--
+
+17
+00:00:44,790 --> 00:00:50,780
+you needed to add this line
+and call self.posts.find.
+
+18
+00:00:50,780 --> 00:00:56,040
+But you needed to sort them by
+the date descending and limit
+
+19
+00:00:56,040 --> 00:00:59,610
+them by the number of posts,
+which get called with 10.
+
+20
+00:00:59,610 --> 00:01:02,260
+You have to call it with
+a limit as well.
+
+21
+00:01:02,260 --> 00:01:07,160
+And this type of way of
+specifying a sort is an
+
+22
+00:01:07,160 --> 00:01:09,730
+alternative way to
+specifying it.
+
+23
+00:01:09,730 --> 00:01:12,300
+Instead of using tuples,
+you can do it like this
+
+24
+00:01:12,300 --> 00:01:13,700
+in Python as well.
+
+25
+00:01:13,700 --> 00:01:16,030
+And I thought that was
+a little bit easier.
+
+26
+00:01:16,030 --> 00:01:16,760
+All right.
+
+27
+00:01:16,760 --> 00:01:20,650
+So the last place that you need
+to make a change is in
+
+28
+00:01:20,650 --> 00:01:23,680
+this code over here,
+get_post_by_permalink.
+
+29
+00:01:23,680 --> 00:01:25,730
+And in this case, you
+just need to call
+
+30
+00:01:25,730 --> 00:01:29,390
+self.posts.find_one
+right here.
+
+31
+00:01:29,390 --> 00:01:33,600
+And you to specify that the
+permalink is the same as the
+
+32
+00:01:33,600 --> 00:01:34,970
+permalink that was sent in.
+
+33
+00:01:34,970 --> 00:01:37,830
+So this is the permalink key,
+and this is the value.
+
+34
+00:01:37,830 --> 00:01:39,750
+And this is the variable,
+permalink.
+
+35
+00:01:39,750 --> 00:01:42,100
+And that's all there
+was to that.
+
+36
+00:01:42,100 --> 00:01:44,810
+And if you make those
+changes, then the
+
+37
+00:01:44,810 --> 00:01:46,270
+blog will accept posts.
+
+38
+00:01:46,270 --> 00:01:47,520

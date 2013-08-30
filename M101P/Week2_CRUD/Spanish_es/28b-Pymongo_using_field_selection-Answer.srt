@@ -1,0 +1,102 @@
+1
+00:00:00,000 --> 00:00:00,120
+
+2
+00:00:00,120 --> 00:00:03,420
+OK, y la respuesta es que sólo
+la tercera es correcta.
+
+3
+00:00:03,420 --> 00:00:06,940
+Y en la tercera, fíjate
+que se envían dos
+
+4
+00:00:06,940 --> 00:00:07,700
+documentos al comando "find".
+
+5
+00:00:07,700 --> 00:00:10,970
+El primero está vacío, por lo que
+encuentra todos los estudiantes.
+
+6
+00:00:10,970 --> 00:00:13,980
+Y proyecta el campo con
+el 1 en el documento,
+
+7
+00:00:13,980 --> 00:00:17,490
+"student_id",
+y suprime el
+
+8
+00:00:17,490 --> 00:00:18,620
+"_id".
+
+9
+00:00:18,620 --> 00:00:20,810
+La primera es incorrecta porque,
+si te fijas,
+
+10
+00:00:20,810 --> 00:00:22,480
+no hay documento de 
+consulta aquí.
+
+11
+00:00:22,480 --> 00:00:23,900
+Realmente pone la proyección
+
+12
+00:00:23,900 --> 00:00:25,080
+como primer documento.
+
+13
+00:00:25,080 --> 00:00:28,000
+Esto va a encontrar todo lo 
+tenga "student_id" 1
+
+14
+00:00:28,000 --> 00:00:30,850
+y "_id" 0.
+
+15
+00:00:30,850 --> 00:00:34,240
+Y luego la segunda es 
+incorrecta por dos razones.
+
+16
+00:00:34,240 --> 00:00:37,260
+Primero, no pone este
+documento de proyección como
+
+17
+00:00:37,260 --> 00:00:41,100
+segundo argumento en el "find", 
+y además, no suprime el
+
+18
+00:00:41,100 --> 00:00:41,900
+"_id".
+
+19
+00:00:41,900 --> 00:00:43,280
+Nuestra tercera respuesta es correcta.
+
+20
+00:00:43,280 --> 00:00:47,520
+Y la cuarta es incorrecta sólo
+porque no pone entre comillas
+
+21
+00:00:47,520 --> 00:00:50,360
+estos literales, 
+"student_id" y
+
+22
+00:00:50,360 --> 00:00:51,610
+"_id".
+
+23
+00:00:51,610 --> 00:00:52,310
