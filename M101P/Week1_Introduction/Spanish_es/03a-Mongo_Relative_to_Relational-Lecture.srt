@@ -27,7 +27,7 @@ la base de datos--
 
 7
 00:00:13,050 --> 00:00:15,420
-cuanto más, mejor-- y siendo el
+cuanto más, mejor--y siendo el
 otro la profundidad de
 
 8
@@ -38,7 +38,7 @@ por la base de datos.
 9
 00:00:17,580 --> 00:00:21,330
 Así que aquí, en esta esquina
-a la izquierda, muy escalables pero
+izquierda, muy escalables pero
 
 10
 00:00:21,330 --> 00:00:24,030
@@ -77,7 +77,7 @@ de bases de datos relacionales.
 17
 00:00:43,050 --> 00:00:46,980
 Y éstos son los Oracles,
-DB2s y SQL servers.
+DB2s y SQL Servers.
 
 18
 00:00:46,980 --> 00:00:52,110
@@ -116,17 +116,17 @@ hardware para conseguir un mayor
 25
 00:01:07,400 --> 00:01:08,940
 rendimiento en
-un nodo único.
+un nodo único,
 
 26
 00:01:08,940 --> 00:01:11,610
-Pero si quieres escalar horizontalmente
+pero si quieres escalar horizontalmente
 y usar hardware estándar,
 
 27
 00:01:11,610 --> 00:01:13,120
 no son particularmente 
-buenos en eso.
+buenos para eso.
 
 28
 00:01:13,120 --> 00:01:16,080
@@ -174,7 +174,7 @@ documentos en MongoDB, y esos
 
 37
 00:01:39,130 --> 00:01:41,750
-documentos, cada documento se 
+documentos, cada uno se 
 almacena en una colección.
 
 38
@@ -202,8 +202,8 @@ a múltiples nodos.
 
 43
 00:01:54,930 --> 00:01:57,820
-Otra parte de funcionalidad
-que falta en MongoDB son
+Otra funcionalidad que
+falta en MongoDB son
 
 44
 00:01:57,820 --> 00:01:59,330
@@ -217,12 +217,12 @@ pero la verdad es que uno
 46
 00:02:03,290 --> 00:02:06,915
 a menudo no necesita transacciones 
-en MongoDB en aplicaciones
+en aplicaciones de MongoDB
 
 47
 00:02:06,915 --> 00:02:09,470
-donde las necesitarías en 
-un sistema relacional.
+que sí las necesitarían si
+usasen un sistema relacional.
 
 48
 00:02:09,470 --> 00:02:12,300
@@ -270,7 +270,7 @@ parte del mundo no está en
 
 57
 00:02:32,320 --> 00:02:35,140
-el mismo sistema, por lo que a menudo 
+un mismo sistema, por lo que a menudo 
 necesitas maneras de lidiar con sistemas
 
 58
@@ -289,8 +289,8 @@ las bases de datos relacionales.
 
 61
 00:02:43,710 --> 00:02:47,570
-¿Qué características omite MongoDB
-para mantener
+¿Qué características omite
+MongoDB para mantener
 
 62
 00:02:47,570 --> 00:02:49,090
@@ -307,7 +307,7 @@ entre múltiples colecciones.
 
 65
 00:02:54,820 --> 00:02:56,650
-Así que ¿cuáles de éstas
+¿Cuáles de éstas
 omite MongoDB?
 
 66

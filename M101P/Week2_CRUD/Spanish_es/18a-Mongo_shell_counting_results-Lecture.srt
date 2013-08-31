@@ -1,0 +1,164 @@
+1
+00:00:00,000 --> 00:00:00,120
+
+2
+00:00:00,120 --> 00:00:00,560
+OK.
+
+3
+00:00:00,560 --> 00:00:02,710
+Let's move on to a slightly
+different way of looking at
+
+4
+00:00:02,710 --> 00:00:03,380
+your data--
+
+5
+00:00:03,380 --> 00:00:05,170
+namely, counting.
+
+6
+00:00:05,170 --> 00:00:07,190
+Everything that we've learned
+about querying so far has been
+
+7
+00:00:07,190 --> 00:00:09,860
+retrieving documents from the
+database, but occasionally,
+
+8
+00:00:09,860 --> 00:00:11,890
+you just want to get a count of
+those documents that match
+
+9
+00:00:11,890 --> 00:00:13,770
+a particular criteria.
+
+10
+00:00:13,770 --> 00:00:16,620
+MongoDB has a mechanism for
+doing this, which is called
+
+11
+00:00:16,620 --> 00:00:17,710
+the count command.
+
+12
+00:00:17,710 --> 00:00:20,310
+And the count command has a
+convenient helper syntax
+
+13
+00:00:20,310 --> 00:00:22,230
+similar to the "find" syntax.
+
+14
+00:00:22,230 --> 00:00:26,620
+Specifically, if you query for
+scores, having say, the type
+
+15
+00:00:26,620 --> 00:00:29,360
+"exam," then the find method
+will retrieve whatever
+
+16
+00:00:29,360 --> 00:00:31,050
+documents have that
+particular field.
+
+17
+00:00:31,050 --> 00:00:33,630
+And again, if you want, you can
+iterate through results
+
+18
+00:00:33,630 --> 00:00:35,900
+interactively by typing "it."
+
+19
+00:00:35,900 --> 00:00:38,820
+If you want to merely count the
+number of documents that
+
+20
+00:00:38,820 --> 00:00:42,050
+have type exam, instead of
+executing the find method, you
+
+21
+00:00:42,050 --> 00:00:43,700
+can call the count method.
+
+22
+00:00:43,700 --> 00:00:44,810
+And there are 1,000.
+
+23
+00:00:44,810 --> 00:00:47,100
+If you recall how we created
+this collection, with that
+
+24
+00:00:47,100 --> 00:00:50,440
+nested loop in a previous
+section, we inserted an exam
+
+25
+00:00:50,440 --> 00:00:54,550
+document for each student ID
+up from zero up to, but not
+
+26
+00:00:54,550 --> 00:00:55,790
+including, 1,000.
+
+27
+00:00:55,790 --> 00:00:59,140
+So the count method more or
+less performs an analogous
+
+28
+00:00:59,140 --> 00:01:01,110
+function to what
+a query does--
+
+29
+00:01:01,110 --> 00:01:03,560
+namely, counting up all the
+documents that match a
+
+30
+00:01:03,560 --> 00:01:05,010
+particular criteria.
+
+31
+00:01:05,010 --> 00:01:07,260
+There's not much more
+to it than that.
+
+32
+00:01:07,260 --> 00:01:07,630
+All right.
+
+33
+00:01:07,630 --> 00:01:10,170
+Let's try a quick quiz
+on counting.
+
+34
+00:01:10,170 --> 00:01:11,890
+How would you count the
+documents in the scores
+
+35
+00:01:11,890 --> 00:01:14,630
+collection where the type was
+"essay" and the score was
+
+36
+00:01:14,630 --> 00:01:16,590
+greater than 90?

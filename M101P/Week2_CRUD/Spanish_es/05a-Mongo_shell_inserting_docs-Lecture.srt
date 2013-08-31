@@ -1,0 +1,564 @@
+1
+00:00:00,000 --> 00:00:00,410
+
+2
+00:00:00,410 --> 00:00:03,290
+Entonces, ahora que sabemos lo que
+un documento es en MongoDB, hay 
+
+3
+00:00:03,290 --> 00:00:05,600
+que averiguar cómo ponerlos
+en la base de datos.
+
+4
+00:00:05,600 --> 00:00:08,590
+Como dijimos, los documentos
+de MongoDB están representados
+
+5
+00:00:08,590 --> 00:00:10,800
+en JavaScript por objetos de
+JavaScript.
+
+6
+00:00:10,800 --> 00:00:12,910
+Entonces podemos crear una
+variable en JavaScript--
+
+7
+00:00:12,910 --> 00:00:14,030
+llamémoslo "doc"--
+
+8
+00:00:14,030 --> 00:00:18,030
+cuyo valor es un objeto de
+JavaScript, digamos, "name"
+
+9
+00:00:18,030 --> 00:00:21,570
+"Smith", "age" "30", "profession"
+"hacker".
+
+10
+00:00:21,570 --> 00:00:23,920
+Lo que hace esto es establecer
+un enlace entre una variable en
+
+11
+00:00:23,920 --> 00:00:25,640
+JavaScript y un valor.
+
+12
+00:00:25,640 --> 00:00:27,620
+Para comunicarse con la
+base de datos, tenemos que
+
+13
+00:00:27,620 --> 00:00:29,730
+utilizar identificadores de
+conexión a la base de datos.
+
+14
+00:00:29,730 --> 00:00:33,790
+Resulta que el shell tiene una
+variable llamada "db" cuyo valor
+
+15
+00:00:33,790 --> 00:00:35,630
+es un identificador de conexión
+a la base de datos actual.
+
+16
+00:00:35,630 --> 00:00:38,550
+Si evalúas la variable "db"
+te retorna el nombre de
+
+17
+00:00:38,550 --> 00:00:39,610
+la base de datos.
+
+18
+00:00:39,610 --> 00:00:43,360
+Los documentos en la base de datos
+viven dentro de colecciones, las cuales
+
+19
+00:00:43,360 --> 00:00:45,350
+son simplemente conjuntos de
+documentos dentro de
+
+20
+00:00:45,350 --> 00:00:47,070
+una base de datos en particular.
+
+21
+00:00:47,070 --> 00:00:49,370
+Desde la perspectiva de un lenguaje
+de programación, en el shell
+
+22
+00:00:49,370 --> 00:00:53,730
+JavaScript, presentamos colecciones
+como propiedades de la base de datos.
+
+23
+00:00:53,730 --> 00:00:57,730
+Entonces si ingreso
+db.people.insert,
+
+24
+00:00:57,730 --> 00:01:01,390
+el shell interpreta "people"
+como el nombre de la colección
+
+25
+00:01:01,390 --> 00:01:04,959
+dentro de la base de datos actual,
+que es la base de datos "test".
+
+26
+00:01:04,959 --> 00:01:06,870
+"Insert" es un método
+de colecciones
+
+27
+00:01:06,870 --> 00:01:10,100
+que toma como argumento un
+objeto JavaScript, como mi
+
+28
+00:01:10,100 --> 00:01:11,790
+variable "doc".
+
+29
+00:01:11,790 --> 00:01:14,640
+El método "insert" pone un documento
+dentro de la base de datos
+
+30
+00:01:14,640 --> 00:01:16,380
+Pero como puedes ver, el shell
+no imprime nada sobre el
+
+31
+00:01:16,380 --> 00:01:17,450
+éxito o la falla de dicha operación.
+
+32
+00:01:17,450 --> 00:01:19,410
+El shell es usualmente muy
+breve por defecto.
+
+33
+00:01:19,410 --> 00:01:21,120
+Hay maneras de personalizar
+esto, pero vamos a adherirnos
+
+34
+00:01:21,120 --> 00:01:23,000
+a lo básico durante
+este curso.
+
+35
+00:01:23,000 --> 00:01:25,140
+Para ver que he logrado
+hacer algo con 
+
+36
+00:01:25,140 --> 00:01:27,580
+este método "insert", voy a saltar
+hacia adelante por un segundo y
+
+37
+00:01:27,580 --> 00:01:28,560
+mostrarte como puedes
+hacer una consulta
+
+38
+00:01:28,560 --> 00:01:30,200
+de una manera simple.
+
+39
+00:01:30,200 --> 00:01:32,720
+Para hacer una consulta de colección,
+ingresas la colección, por ejemplo
+
+
+40
+00:01:32,720 --> 00:01:34,500
+"db.people"
+
+41
+00:01:34,500 --> 00:01:37,540
+y luego ejecutas el método "find"
+sobre esa colección.
+
+42
+00:01:37,540 --> 00:01:40,070
+Si llamas a "find" sin
+argumentos, te va a retornar todos
+
+43
+00:01:40,070 --> 00:01:41,660
+documentos en esa colección.
+
+44
+00:01:41,660 --> 00:01:42,970
+Y ahí está mi documento.
+
+45
+00:01:42,970 --> 00:01:46,200
+Es decir, me retorna un documento
+donde "name" es "Smith", "age"
+
+46
+00:01:46,200 --> 00:01:49,390
+es "30", y "profession" es
+la cadena "hacker".
+
+47
+00:01:49,390 --> 00:01:52,450
+Pero lo que ves es que hay un
+campo llamado "_id",
+
+48
+00:01:52,450 --> 00:01:55,190
+cuyo valor aparenta ser
+algo llamado ObjectId,
+
+49
+00:01:55,190 --> 00:01:57,410
+que consiste de alguna secuencia
+de algo. 
+
+50
+00:01:57,410 --> 00:02:00,770
+En efecto, cuando insertas un
+documento en MongoDB, el
+
+51
+00:02:00,770 --> 00:02:04,150
+servidor requiere que todos
+los documentos tengan un
+
+52
+00:02:04,150 --> 00:02:05,450
+campo con un identificador único.
+
+53
+00:02:05,450 --> 00:02:08,410
+De hecho, usamos un "_id"
+para este campo.
+
+54
+00:02:08,410 --> 00:02:10,750
+El campo "_id"
+dentro de un documento es
+
+55
+00:02:10,750 --> 00:02:12,120
+un campo de clave primaria.
+
+56
+00:02:12,120 --> 00:02:14,740
+Es decir, es un requerimiento
+que esté presente, el valor de
+
+57
+00:02:14,740 --> 00:02:17,370
+este campo debe ser único
+para ese documento
+
+58
+00:02:17,370 --> 00:02:19,840
+dentro de la colección y también
+tenemos que ir un poco más allá
+
+59
+00:02:19,840 --> 00:02:22,580
+de lo que van otras bases datos
+y requerir que la clave primaria
+
+60
+00:02:22,580 --> 00:02:23,720
+sea inmutable.
+
+61
+00:02:23,720 --> 00:02:26,650
+No dejamos que cambies el valor
+del campo "_id" 
+
+62
+00:02:26,650 --> 00:02:28,520
+dentro del documento en
+el sistema.
+
+63
+00:02:28,520 --> 00:02:31,390
+Puedes simular un cambio
+del campo "_id"
+
+64
+00:02:31,390 --> 00:02:33,980
+removiendo el documento y
+poniendo otro documento
+
+65
+00:02:33,980 --> 00:02:37,360
+con un valor diferente para el
+campo "_id", pero los
+
+66
+00:02:37,360 --> 00:02:39,980
+mismos valores para los otros
+cambios, aunque eso no sería
+
+67
+00:02:39,980 --> 00:02:42,920
+una operación atómica dentro
+de la base de datos.
+
+68
+00:02:42,920 --> 00:02:46,040
+Entonces el campo "_id"
+es la clave primaria.
+
+69
+00:02:46,040 --> 00:02:49,680
+Todas las colecciones normales
+en MongoDB requieren
+
+70
+00:02:49,680 --> 00:02:51,130
+un "_id" como
+clave primaria.
+
+71
+00:02:51,130 --> 00:02:53,740
+Hablaremos sobre colecciones
+anormales eventualmente
+
+72
+00:02:53,740 --> 00:02:54,350
+en este curso.
+
+73
+00:02:54,350 --> 00:02:56,720
+Ahora, ¿qué ocurre con esto de
+ObjectId, al lado derecho
+
+74
+00:02:56,720 --> 00:02:57,540
+de los dos puntos?
+
+75
+00:02:57,540 --> 00:03:01,720
+Bueno, en MongoDB, requerimos
+que el "_id" sea único
+
+76
+00:03:01,720 --> 00:03:02,700
+dentro de la colección.
+
+77
+00:03:02,700 --> 00:03:05,550
+Para facilitar esto, te
+damos un tipo llamado
+
+78
+00:03:05,550 --> 00:03:08,650
+ObjectId, cuya construcción
+toma en consideración el
+
+79
+00:03:08,650 --> 00:03:11,240
+tiempo actual, un identificador
+para la máquina que está
+
+80
+00:03:11,240 --> 00:03:14,510
+construyendo el ObjectId,
+el identificador del proceso
+
+81
+00:03:14,510 --> 00:03:17,120
+en la computadora que está
+construyendo el ObjectId
+
+82
+00:03:17,120 --> 00:03:19,450
+y contador global del
+proceso que está
+
+83
+00:03:19,450 --> 00:03:21,350
+construyendo el ObjectId.
+
+84
+00:03:21,350 --> 00:03:23,600
+Al juntar estas piezas de
+información, logramos tener un
+
+85
+00:03:23,600 --> 00:03:26,720
+valor que tiene una probabilidad
+alta de ser único,
+
+86
+00:03:26,720 --> 00:03:29,350
+es decir, que no va a ser
+generado de nuevo mientras que
+
+87
+00:03:29,350 --> 00:03:30,890
+el tiempo transcurra.
+
+88
+00:03:30,890 --> 00:03:34,610
+De esta manera, un ObjectId
+en MongoDB es previsto ser un
+
+89
+00:03:34,610 --> 00:03:36,610
+identificador global único.
+
+90
+00:03:36,610 --> 00:03:39,970
+Por consecuencia, podemos simplemente 
+usar un ObjectId como un "_id",
+
+91
+00:03:39,970 --> 00:03:42,820
+sin ninguna
+probabilidad de que haya  
+
+92
+00:03:42,820 --> 00:03:44,790
+alguna colisión en el espacio
+de "_id" dentro de una
+
+93
+00:03:44,790 --> 00:03:46,320
+colección en particular.
+
+94
+00:03:46,320 --> 00:03:49,030
+Entonces, si en efecto
+tu aplicación no 
+
+95
+00:03:49,030 --> 00:03:52,510
+llena explícitamente un campo
+llamado "_id" cuando
+
+96
+00:03:52,510 --> 00:03:55,640
+inserta un documento en la base
+de datos, un ObjectId será
+
+97
+00:03:55,640 --> 00:03:58,470
+construido para ti, el cual será
+usado como el "_id"
+
+98
+00:03:58,470 --> 00:03:59,540
+de tus documentos.
+
+99
+00:03:59,540 --> 00:04:01,010
+Entonces déjame enseñarte eso
+de nuevo.
+
+100
+00:04:01,010 --> 00:04:04,120
+Si pongo un documento dentro de la
+base de datos, tipo ingresando
+
+101
+00:04:04,120 --> 00:04:08,060
+db.people.insert y luego
+construyo un documento, y luego
+
+102
+00:04:08,060 --> 00:04:10,340
+recupero todos los documentos
+de una colección al llamar a
+
+103
+00:04:10,340 --> 00:04:13,400
+"find" sin argumentos, voy a
+ver que un documento fue
+
+104
+00:04:13,400 --> 00:04:18,000
+creado con el campo "name"
+"Jones", el campo "age" "35"
+
+105
+00:04:18,000 --> 00:04:20,410
+y el campo "profession" "baker",
+y que un valor para "_id"
+
+106
+00:04:20,410 --> 00:04:22,050
+fue incluido.
+
+107
+00:04:22,050 --> 00:04:24,260
+Podrías usar cualquier tipo de
+valor que quisieras para el
+
+108
+00:04:24,260 --> 00:04:25,240
+"_id".
+
+109
+00:04:25,240 --> 00:04:26,240
+Podrías usar números.
+
+110
+00:04:26,240 --> 00:04:27,580
+Podrías usar cadenas.
+
+111
+00:04:27,580 --> 00:04:29,750
+Pero si no quieres llenar uno
+tú mismo, vas a obtener un
+
+112
+00:04:29,750 --> 00:04:32,760
+ObjectId, el cual es extremadamente
+probable que sea único.
+
+113
+00:04:32,760 --> 00:04:34,210
+OK, hagamos un cuestionario.
+
+114
+00:04:34,210 --> 00:04:37,030
+Inserta documentos dentro de
+una colección llamada "fruit",
+
+115
+00:04:37,030 --> 00:04:40,630
+con los atributos "name" teniendo un
+valor "apple", "color" teniendo el
+
+116
+00:04:40,630 --> 00:04:43,960
+valor "red" y "shape" teniendo un
+valor "round".
+
+117
+00:04:43,960 --> 00:04:46,150
+Asume que ya estás en la base
+de datos en la que quieres 
+
+118
+00:04:46,150 --> 00:04:47,400
+crear la colección "fruit".
+
+119
+00:04:47,400 --> 00:04:48,630

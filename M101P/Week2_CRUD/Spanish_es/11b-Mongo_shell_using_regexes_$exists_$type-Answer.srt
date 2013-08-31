@@ -1,0 +1,28 @@
+1
+00:00:00,000 --> 00:00:00,230
+
+2
+00:00:00,230 --> 00:00:02,160
+Algo como esto
+debería funcionar.
+
+3
+00:00:02,160 --> 00:00:04,070
+"db.users.find".
+
+4
+00:00:04,070 --> 00:00:09,990
+El campo "name" contiene
+"$regex:q" como valor y el
+
+5
+00:00:09,990 --> 00:00:12,960
+campo "email" contiene "true".
+
+6
+00:00:12,960 --> 00:00:14,620
+También hubieses podido
+ingresar "$exists:1".
+
+7
+00:00:14,620 --> 00:00:17,033

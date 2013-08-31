@@ -1,0 +1,462 @@
+1
+00:00:00,000 --> 00:00:00,180
+
+2
+00:00:00,180 --> 00:00:02,200
+Hay que aprender sobre algunos
+otros operadores de consulta.
+
+3
+00:00:02,200 --> 00:00:04,910
+Como puedes haber notado, la
+colección "people" que cree
+
+4
+00:00:04,910 --> 00:00:06,940
+tiene un número de diferentes
+tipos de documentos.
+
+5
+00:00:06,940 --> 00:00:12,380
+Algunos documentos tienen los campos
+"_id", "name", "age" y "profession",
+
+6
+00:00:12,380 --> 00:00:16,750
+mientras que otros documentos sólo
+tienen los campos "_id" y "name".
+
+7
+00:00:16,750 --> 00:00:21,030
+Además, algunos documentos tienen
+el campo "name" como cadena
+
+8
+00:00:21,030 --> 00:00:22,120
+y otros documentos--
+
+9
+00:00:22,120 --> 00:00:23,770
+bueno, sólo uno otro documento--
+
+10
+00:00:23,770 --> 00:00:26,380
+tiene el campo "name"
+como número.
+
+11
+00:00:26,380 --> 00:00:29,010
+MongoDB ayuda a que hagas
+consultas basadas en la estructura
+
+12
+00:00:29,010 --> 00:00:31,700
+y los tipos de información
+que está en los documentos
+
+13
+00:00:31,700 --> 00:00:33,490
+al igual que en sus valores.
+
+14
+00:00:33,490 --> 00:00:36,230
+Por ejemplo, si quiero
+recuperar todos los documentos
+
+15
+00:00:36,230 --> 00:00:40,850
+el campo "profession" existe,
+puedo decir "db.people.find" y
+
+16
+00:00:40,850 --> 00:00:42,740
+luego el argumento es un
+documento que contiene el campo
+
+17
+00:00:42,740 --> 00:00:44,710
+"profession," cuyo valor
+correspondiente es un
+
+18
+00:00:44,710 --> 00:00:47,680
+documento embebido que contiene
+el campo "$exists" con un
+
+19
+00:00:47,680 --> 00:00:49,290
+valor correspondiente de "true".
+
+20
+00:00:49,290 --> 00:00:51,780
+Y esto me va a retornar sólo
+"Smith" y "Jones", quienes
+
+21
+00:00:51,780 --> 00:00:52,870
+tienen una profesión.
+
+22
+00:00:52,870 --> 00:00:55,590
+Por contraste, puedo invertir
+la consulta y pedir sólo aquellos
+
+23
+00:00:55,590 --> 00:00:58,450
+documentos donde el campo
+"profession" no existe, y eso
+
+24
+00:00:58,450 --> 00:01:00,510
+me devuelve la otra media docena.
+
+25
+00:01:00,510 --> 00:01:03,430
+En seguida podemos pedir
+documentos en base al tipo
+
+26
+00:01:03,430 --> 00:01:04,780
+de un campo en particular.
+
+27
+00:01:04,780 --> 00:01:07,410
+Por ejemplo, si quiere recuperar
+sólo aquellos documentos donde el
+
+28
+00:01:07,410 --> 00:01:12,110
+campo "name" es una cadena, puedo
+especificar "db.people.find" y luego
+
+29
+00:01:12,110 --> 00:01:12,810
+un argumento--
+
+30
+00:01:12,810 --> 00:01:15,180
+que es un documento que contiene
+el campo "name" con el
+
+31
+00:01:15,180 --> 00:01:17,940
+valor correspondiente que es
+un documento embebido con los
+
+32
+00:01:17,940 --> 00:01:20,980
+operadores de tipo--"a" y luego
+los tipos, desafortunadamente, son
+
+33
+00:01:20,980 --> 00:01:23,730
+especificados como números
+y los los números corresponden
+
+34
+00:01:23,730 --> 00:01:26,140
+a los tipos de valores de
+la especificación de BSON.
+
+35
+00:01:26,140 --> 00:01:29,240
+Consulta la especificación
+en BSONspec.org para encontrar
+
+36
+00:01:29,240 --> 00:01:32,150
+las codificaciones numéricas
+de los diferentes tipos en BSON.
+
+37
+00:01:32,150 --> 00:01:35,940
+Ocurre que el tipo para cadenas
+es el tipo "2", y esto
+
+38
+00:01:35,940 --> 00:01:37,810
+me retorna los documentos
+donde el campo "name"
+
+39
+00:01:37,810 --> 00:01:39,440
+tiene un valor de cadena.
+
+40
+00:01:39,440 --> 00:01:41,790
+Para concluir esta sección,
+hay consultas más complicadas
+
+41
+00:01:41,790 --> 00:01:43,730
+que podrías querer
+llevar a cabo sobre
+
+42
+00:01:43,730 --> 00:01:47,210
+cadenas, aparte de aquéllas
+de igualdad y desigualdad.
+
+43
+00:01:47,210 --> 00:01:49,080
+Por ejemplo, la gente
+tiende a querer encontrar
+
+44
+00:01:49,080 --> 00:01:50,840
+patrones dentro de cadenas.
+
+45
+00:01:50,840 --> 00:01:53,900
+MongoDB soporta hacer consultas
+por patrones de cadena usando
+
+46
+00:01:53,900 --> 00:01:55,510
+una librería de
+expresiones regulares--
+
+47
+00:01:55,510 --> 00:01:57,960
+en particular, la librería
+"Perl Compatible Regular
+
+48
+00:01:57,960 --> 00:02:00,160
+Expression Library", "libpcre".
+
+49
+00:02:00,160 --> 00:02:02,040
+Ahora, no quiero tomar mucho
+tiempo entrando en los detalles
+
+50
+00:02:02,040 --> 00:02:04,040
+de expresiones regulares.
+Solamente quiero
+
+51
+00:02:04,040 --> 00:02:05,710
+mostrarte un par de ejemplos.
+
+52
+00:02:05,710 --> 00:02:09,300
+Para consultar documentos que
+tienen, digamos, la letra "A"
+
+53
+00:02:09,300 --> 00:02:11,910
+en alguna parte, puedes
+utilizar la consulta que
+
+54
+00:02:11,910 --> 00:02:13,440
+está en la parte inferior
+de mi terminal.
+
+55
+00:02:13,440 --> 00:02:17,810
+"db.people.find" y el valor
+correspondiente, el cual es
+
+56
+00:02:17,810 --> 00:02:20,300
+un documento con el campo
+"name" cuyo valor es un
+
+57
+00:02:20,300 --> 00:02:24,420
+documento embebido con el
+operador "$regex" y luego
+
+58
+00:02:24,420 --> 00:02:26,440
+una cadena que va a ser
+interpretada como una 
+
+59
+00:02:26,440 --> 00:02:27,410
+expresión regular del
+estilo Perl.
+
+60
+00:02:27,410 --> 00:02:30,495
+Ocurre que "Charlie" y "Dave"
+y "Edgar" tienen la letra
+
+61
+00:02:30,495 --> 00:02:32,340
+"A" en alguna parte
+de sus nombres.
+
+62
+00:02:32,340 --> 00:02:34,720
+Si quiero hacer algo más
+complicado, podrías pedir
+
+63
+00:02:34,720 --> 00:02:38,360
+todos los documento donde el
+campo "name" termina con la
+
+64
+00:02:38,360 --> 00:02:41,280
+letra "E" y la expresión
+regular para eso es la
+
+65
+00:02:41,280 --> 00:02:42,500
+cadena que consiste
+de la letra "E"
+
+66
+00:02:42,500 --> 00:02:44,140
+seguida por un signo de dólar.
+
+67
+00:02:44,140 --> 00:02:46,610
+Y entonces tenemos a "Alice"
+y "Charlie" y "Dave".
+
+68
+00:02:46,610 --> 00:02:48,740
+Ahora, hablaremos más sobre
+expresiones regulares en una
+
+69
+00:02:48,740 --> 00:02:50,660
+semana posterior, cuando hablemos
+de la optimización de rendimiento.
+
+70
+00:02:50,660 --> 00:02:53,650
+Ocurre que las expresiones
+regular tiende a no ser tan
+
+71
+00:02:53,650 --> 00:02:57,520
+optimizables en lo que concierna
+al procesamiento de consultas
+
+72
+00:02:57,520 --> 00:02:59,210
+como lo son la simples
+desigualdades de cadena.
+
+73
+00:02:59,210 --> 00:03:01,540
+Aun así, un caso especial de
+expresiones regulares que pueden
+
+74
+00:03:01,540 --> 00:03:04,820
+ser eficientemente optimizadas
+son aquéllas que comienzan con
+
+75
+00:03:04,820 --> 00:03:07,580
+un "^" el cual significa que
+la expresión regular debe
+
+76
+00:03:07,580 --> 00:03:09,280
+comenzar con lo que
+sea que le sigue.
+
+77
+00:03:09,280 --> 00:03:11,990
+Y luego después del "^",
+incluir caracteres que no
+
+78
+00:03:11,990 --> 00:03:14,500
+sean comodines, o que sean
+literales, como letras
+
+79
+00:03:14,500 --> 00:03:15,520
+y números.
+
+80
+00:03:15,520 --> 00:03:18,130
+Entonces, por ejemplo, la
+expresión regular en la parte
+
+81
+00:03:18,130 --> 00:03:21,240
+inferior de mi pantalla dice que
+el campo "name" debe comenzar con
+
+82
+00:03:21,240 --> 00:03:24,040
+la letra mayúscula "A". Vamos a
+ver en una semana subsecuente
+
+83
+00:03:24,040 --> 00:03:27,800
+que esto puede ser mecánicamente
+traducido a una consulta de rango
+
+84
+00:03:27,800 --> 00:03:31,010
+desde "A" hasta, pero no incluyendo a,
+"B". Y en efecto, esto es lo que MongoDB
+
+85
+00:03:31,010 --> 00:03:32,050
+hace internamente.
+
+86
+00:03:32,050 --> 00:03:35,245
+En cualquier caso, estos fueron
+tres nuevos operadores que van
+
+87
+00:03:35,245 --> 00:03:37,600
+de la mano con los operadores de
+desigualdad que ya aprendimos.
+
+88
+00:03:37,600 --> 00:03:40,970
+"$exists" pregunta si un campo
+existe o no dentro de un
+
+89
+00:03:40,970 --> 00:03:45,070
+documento, "$type" ve si un
+campo tiene un tipo de valor
+
+90
+00:03:45,070 --> 00:03:49,400
+en particular y "$regex" te permite
+buscar patrones de cadena complicados
+
+91
+00:03:49,400 --> 00:03:52,290
+dentro de los campos.
+
+92
+00:03:52,290 --> 00:03:52,600
+Muy bien.
+
+93
+00:03:52,600 --> 00:03:54,155
+Hagamos un cuestionario breve.
+
+94
+00:03:54,155 --> 00:03:56,820
+Escribe una consulta que recupere
+documentos de una colección
+
+95
+00:03:56,820 --> 00:04:00,000
+llamada "users" donde el "name"
+del usuario tenga la letra "Q" 
+
+96
+00:04:00,000 --> 00:04:01,840
+y el documento tenga un
+campo "email".
+
+97
+00:04:01,840 --> 00:04:03,090

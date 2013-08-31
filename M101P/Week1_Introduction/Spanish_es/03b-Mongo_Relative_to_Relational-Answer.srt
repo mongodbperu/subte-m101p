@@ -37,13 +37,13 @@ por lo que estrictamente según la redacción
 
 9
 00:00:20,390 --> 00:00:22,240
-de la pregunta, no
-se omiten.
+de la pregunta,
+no se omiten.
 
 10
 00:00:22,240 --> 00:00:25,770
-Pero para ser honesto, son muy difíciles 
-de implementar bien 
+Pero para ser honesto, son muy
+difíciles de implementar bien 
 
 11
 00:00:25,770 --> 00:00:28,490
@@ -62,7 +62,7 @@ colecciones.
 14
 00:00:31,440 --> 00:00:35,360
 Y son omitidas específicamente
-por MongoDB porque
+de MongoDB porque
 
 15
 00:00:35,360 --> 00:00:38,580
@@ -71,8 +71,8 @@ transacciones a través de múltiples
 
 16
 00:00:38,580 --> 00:00:41,760
-colecciones en un sistema
-que es escalado horizontalmente.
+colecciones en un sistema que está
+siendo escalado horizontalmente.
 
 17
 00:00:41,760 --> 00:00:43,010

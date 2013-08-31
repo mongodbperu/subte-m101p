@@ -1,0 +1,35 @@
+1
+00:00:00,000 --> 00:00:00,160
+
+2
+00:00:00,160 --> 00:00:01,730
+Entonces es algo como
+lo siguiente.
+
+3
+00:00:01,730 --> 00:00:06,820
+"db.scores.find", "$or" y luego
+el array, llevando como primer
+
+4
+00:00:06,820 --> 00:00:11,690
+elemento "score" "$" menos
+que "50" y luego "score" "$"
+
+5
+00:00:11,690 --> 00:00:12,650
+más que "90".
+
+6
+00:00:12,650 --> 00:00:15,500
+Esta consulta te retorna todos
+los documentos que tienen un
+
+7
+00:00:15,500 --> 00:00:17,760
+"score" menor que "50" o
+que tienen un "score"
+
+8
+00:00:17,760 --> 00:00:19,640
+mayor que "90".

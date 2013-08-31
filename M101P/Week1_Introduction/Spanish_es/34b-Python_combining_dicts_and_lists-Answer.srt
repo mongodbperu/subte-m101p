@@ -1,0 +1,44 @@
+1
+00:00:00,000 --> 00:00:00,210
+
+2
+00:00:00,210 --> 00:00:02,060
+Y la respuesta es
+que imprime "9".
+
+3
+00:00:02,060 --> 00:00:05,830
+Y la razón es que este
+código verifica si "c" está
+
+4
+00:00:05,830 --> 00:00:08,400
+incluido como una clave
+en este objeto.
+
+5
+00:00:08,400 --> 00:00:10,080
+La cual por supuesto está.
+
+6
+00:00:10,080 --> 00:00:14,480
+Y a continuación, se ejecuta a través
+de cada número en este objeto, "1", "3",
+
+7
+00:00:14,480 --> 00:00:17,420
+y "5", y los suma.
+
+8
+00:00:17,420 --> 00:00:20,410
+"sum = sum + n". "sum"
+empezará en "0" y luego
+
+9
+00:00:20,410 --> 00:00:22,670
+imprime la suma, por lo que es
+la suma de estos tres números,
+
+10
+00:00:22,670 --> 00:00:23,920
+la cual es "9".

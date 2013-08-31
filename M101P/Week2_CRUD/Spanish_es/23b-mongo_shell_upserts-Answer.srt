@@ -1,0 +1,39 @@
+1
+00:00:00,000 --> 00:00:00,140
+
+2
+00:00:00,140 --> 00:00:01,350
+Well, the answer is
+the fourth one.
+
+3
+00:00:01,350 --> 00:00:04,290
+The upsert operation will
+attempt to find a document was
+
+4
+00:00:04,290 --> 00:00:05,730
+username bar.
+
+5
+00:00:05,730 --> 00:00:08,530
+As stipulated, no such document
+exists, however.
+
+6
+00:00:08,530 --> 00:00:11,010
+And so the upsert will actually
+perform an insert
+
+7
+00:00:11,010 --> 00:00:14,640
+operation, creating a new
+document with username bar and
+
+8
+00:00:14,640 --> 00:00:16,940
+interests equal to the
+array cat, dog.
+
+9
+00:00:16,940 --> 00:00:18,190

@@ -8,7 +8,7 @@ OK.
 3
 00:00:01,310 --> 00:00:06,150
 Nuestro próximo paso es
-instalar bottle.py.
+instalar "bottle.py".
 
 4
 00:00:06,150 --> 00:00:07,870
@@ -35,13 +35,13 @@ saltarte esta parte.
 
 9
 00:00:13,790 --> 00:00:15,920
-Ésta es sólo para usuarios
-de Windows.
+Ésta es sólo para
+usuarios de Windows.
 
 10
 00:00:15,920 --> 00:00:19,850
-Por lo que he ido a Google y
-he escrito bottle.py en el
+He ido a Google y he
+escrito "bottle.py" en el
 
 11
 00:00:19,850 --> 00:00:21,230
@@ -54,8 +54,8 @@ el primer enlace aquí.
 
 13
 00:00:24,240 --> 00:00:26,290
-La primera cosa que notas es
-que dice que es una
+La primera cosa que notas
+es que dice que es una
 
 14
 00:00:26,290 --> 00:00:28,790
@@ -83,7 +83,7 @@ descargarla e
 19
 00:00:37,660 --> 00:00:43,000
 instalarla ejecutando
-easy_install -U bottle.
+"easy_install -U bottle".
 
 20
 00:00:43,000 --> 00:00:46,650
@@ -92,8 +92,8 @@ darás cuenta rápidamente de que no
 
 21
 00:00:46,650 --> 00:00:50,840
-tienes instalado easy_install
-en tu equipo
+tienes instalado
+"easy_install" en tu equipo
 
 22
 00:00:50,840 --> 00:00:54,750
@@ -107,22 +107,22 @@ de configuración que te dará el
 
 24
 00:00:57,240 --> 00:00:59,720
-easy_install y que te permitirá 
-instalar Bottle?
+"easy_install" y que te
+permitirá instalar Bottle?
 
 25
 00:00:59,720 --> 00:01:05,519
 Bien, "download setup tools".
-Como hice eso en mi
+Como ingresé eso en mi
 
 26
 00:01:05,519 --> 00:01:06,820
-buscador Google --
+buscador Google--
 
 27
 00:01:06,820 --> 00:01:08,080
 Ahora, está personalizado
-para mi.
+para mí.
 
 28
 00:01:08,080 --> 00:01:09,710
@@ -141,7 +141,7 @@ sobre cómo obtener las
 31
 00:01:14,230 --> 00:01:16,690
 herramientas de configuración, que
-te van a ofrecer easy_install.
+te van a ofrecer "easy_install".
 
 32
 00:01:16,690 --> 00:01:19,380
@@ -150,17 +150,17 @@ de Python de 32 bits, incluso si
 
 33
 00:01:19,380 --> 00:01:20,330
-tienes una máquina de 64 bits.
+tienes una máquina de 64 bits
 
 34
 00:01:20,330 --> 00:01:21,590
-Porque ejecuta 
+porque ejecuta
 binarios de 32 bits.
 
 35
 00:01:21,590 --> 00:01:25,350
 Sugieren que ejecutes el
-instalador .exe.
+instalador ".exe".
 
 36
 00:01:25,350 --> 00:01:26,770
@@ -172,16 +172,16 @@ Bajamos.
 
 38
 00:01:28,010 --> 00:01:31,730
-Y estamos ejecutamos Python 2.7.
+Y estamos ejecutando Python 2.7.
 
 39
 00:01:31,730 --> 00:01:33,390
-Éso es lo que descargamos
-antes.
+Eso es lo que
+descargamos antes.
 
 40
 00:01:33,390 --> 00:01:35,700
-Así que vamos a por este
+Así que vamos por este
 instalador justo aquí.
 
 41
@@ -196,11 +196,11 @@ los términos.
 43
 00:01:39,220 --> 00:01:41,030
 Voy a decir que sí,
-absolutamente.
+absolutamente,
 
 44
 00:01:41,030 --> 00:01:42,180
-Me gustaría.
+me gustaría.
 
 45
 00:01:42,180 --> 00:01:45,760
@@ -214,7 +214,7 @@ Python 2.7.
 47
 00:01:47,200 --> 00:01:50,470
 Y va a poner todo esto
-en lib\site-packages.
+en "lib\site-packages".
 
 48
 00:01:50,470 --> 00:01:51,990
@@ -230,7 +230,7 @@ Y ya acabó.
 
 51
 00:01:55,010 --> 00:01:58,870
-Así que ahora voy a volver
+Ahora voy a volver
 a mi otra ventana
 
 52
@@ -244,8 +244,8 @@ Dijo, "easy_install
 
 54
 00:02:03,190 --> 00:02:06,125
-Bien, vayamos a una nueva
-ventana, para ver si easy_install está
+Bien, vayamos a una nueva ventana,
+para ver si "easy_install" está
 
 55
 00:02:06,125 --> 00:02:07,440
@@ -261,8 +261,8 @@ Está en el directorio Python.
 
 58
 00:02:09,389 --> 00:02:15,620
-Así que vamos a entrar ahí, cd
-\, cd Python27, cd --
+Así que vamos a entrar ahí,
+"cd \", "cd Python27", "cd"--
 
 59
 00:02:15,620 --> 00:02:16,190
@@ -270,17 +270,17 @@ Así que vamos a entrar ahí, cd
 
 60
 00:02:16,190 --> 00:02:17,135
-Scripts, creo.
+"Scripts", creo.
 
 61
 00:02:17,135 --> 00:02:18,720
 Así que va a ponerlo
-en Scripts.
+en "Scripts".
 
 62
 00:02:18,720 --> 00:02:20,830
 Entonces voy a entrar
-en el directorio Scripts.
+en el directorio "Scripts".
 
 63
 00:02:20,830 --> 00:02:22,320
@@ -288,16 +288,16 @@ Y ahí está.
 
 64
 00:02:22,320 --> 00:02:23,650
-Ahí está easy_install.
+Ahí está "easy_install".
 
 65
 00:02:23,650 --> 00:02:26,020
-Así que voy a hacer
-easy_intall.exe
+Así que voy a ejecutar
+"easy_install.exe
 
 66
 00:02:26,020 --> 00:02:28,280
--U bottle.
+-U bottle".
 
 67
 00:02:28,280 --> 00:02:28,880
@@ -313,8 +313,7 @@ Ya tenemos Bottle instalado.
 
 70
 00:02:33,550 --> 00:02:35,370
-¿Y qué versión
-instaló?
+¿Y qué versión instaló?
 
 71
 00:02:35,370 --> 00:02:39,180
@@ -328,7 +327,8 @@ es la versión estable.
 
 73
 00:02:42,860 --> 00:02:45,360
-Así que estamos contentos con eso.
+Así que estamos
+contentos con eso.
 
 74
 00:02:45,360 --> 00:02:47,910
@@ -342,7 +342,7 @@ puedes confirmar que funciona usando
 
 76
 00:02:51,990 --> 00:02:54,840
-el mismo programa Hello World
+el mismo programa "Hello World"
 que usaste en un Mac.
 
 77

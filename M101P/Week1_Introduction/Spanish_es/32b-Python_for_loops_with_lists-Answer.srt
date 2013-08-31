@@ -1,0 +1,37 @@
+1
+00:00:00,000 --> 00:00:00,600
+
+2
+00:00:00,600 --> 00:00:00,800
+OK.
+
+3
+00:00:00,800 --> 00:00:03,900
+Resulta que
+sólo imprime "8".
+
+4
+00:00:03,900 --> 00:00:07,520
+Y la razón es que este bucle
+"for" itera a través de todos
+
+5
+00:00:07,520 --> 00:00:08,610
+los números aquí.
+
+6
+00:00:08,610 --> 00:00:11,740
+Suma los números, pero
+no imprime la suma.
+
+7
+00:00:11,740 --> 00:00:14,800
+Imprime el valor final
+de "i", que es "8".
+
+8
+00:00:14,800 --> 00:00:16,050
+Así que imprime "8".
+
+9
+00:00:16,050 --> 00:00:16,950

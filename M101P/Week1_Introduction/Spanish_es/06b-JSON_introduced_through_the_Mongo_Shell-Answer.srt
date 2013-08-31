@@ -38,7 +38,7 @@ sorprendente.
 
 9
 00:00:16,300 --> 00:00:19,950
-Pero el valor de la clave B
+Pero el valor de la clave "B"
 es un documento JSON vacío.
 
 10
@@ -47,7 +47,7 @@ Eso es legal.
 
 11
 00:00:21,170 --> 00:00:25,430
-Y en este otro, la clave C en
+Y en este otro, la clave "C" en
 el tercero tiene un array,
 
 12

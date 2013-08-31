@@ -53,8 +53,8 @@ Eso es lo que está pasando.
 
 13
 00:00:25,740 --> 00:00:30,600
-Entonces voy a empezar por ir
-a api.mongodb.org.
+Entonces voy a empezar yendo
+a "api.mongodb.org".
 
 14
 00:00:30,600 --> 00:00:33,200
@@ -82,13 +82,12 @@ pequeña aquí.
 
 19
 00:00:44,030 --> 00:00:45,940
-Esperamos que puedas
-verla.
+Esperamos que puedas verla.
 
 20
 00:00:45,940 --> 00:00:47,200
-Vamos a ir a la
-sección de
+Vamos a ir a
+la sección de
 
 21
 00:00:47,200 --> 00:00:48,980
@@ -96,12 +95,12 @@ instalación y actualización.
 
 22
 00:00:48,980 --> 00:00:51,930
-Y puedes ver aquí que
-recomiendan que cuando se utiliza
+Puedes ver aquí que
+recomiendan que cuando se
 
 23
 00:00:51,930 --> 00:00:54,990
-MS Windows se use
+utilice MS Windows se use
 uno de los instaladores
 
 24
@@ -199,8 +198,8 @@ sencillo de una colección.
 
 45
 00:01:52,510 --> 00:01:56,650
-Luego "from pymongo import MongoClient", 
-justo aquí.
+Luego "from pymongo import
+MongoClient", justo aquí.
 
 46
 00:01:56,650 --> 00:01:59,710
@@ -209,7 +208,7 @@ a la base de datos, usando
 
 47
 00:01:59,710 --> 00:02:03,590
-la clase MongoClient, y
+la clase "MongoClient", y
 especificando que nos estamos
 
 48
@@ -219,16 +218,16 @@ al puerto
 
 49
 00:02:06,110 --> 00:02:08,910
-por defecto 27017.
+por defecto, "27017".
 
 50
 00:02:08,910 --> 00:02:12,070
-Nos conectamos a la base
-de datos "test", "db =
+Nos conectamos a la
+base de datos "test",
 
 51
 00:02:12,070 --> 00:02:13,560
-connection.test".
+"db = connection.test".
 
 52
 00:02:13,560 --> 00:02:17,060
@@ -286,7 +285,7 @@ que está en la colección.
 63
 00:02:49,210 --> 00:02:53,930
 Si entro aquí, ejecutamos
-Mongo y db.names.find().
+Mongo y "db.names.find()".
 
 64
 00:02:53,930 --> 00:02:56,830
@@ -301,31 +300,30 @@ Así que ahí está el documento.
 
 67
 00:03:00,830 --> 00:03:04,950
-Y puedes ver justo aquí su
-_id, que fue
+Y puedes ver justo
+aquí su "_id", que
 
 68
 00:03:04,950 --> 00:03:08,300
-asignado cuando se insertó
+fue asignado cuando se insertó
 y a continuación el nombre "Andrew".
 
 69
 00:03:08,300 --> 00:03:12,200
 Y el programa imprimió mi
-nombre justo ahí cuando ejecuté
+nombre justo ahí cuando
 
 70
 00:03:12,200 --> 00:03:12,980
-el programa.
+lo ejecuté.
 
 71
 00:03:12,980 --> 00:03:15,280
-Así que ahora PyMongo
-está instalado en
+Ahora PyMongo está instalado
 
 72
 00:03:15,280 --> 00:03:16,570
-este equipo Windows.
+en este equipo Windows.
 
 73
 00:03:16,570 --> 00:03:19,480

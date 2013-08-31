@@ -1,0 +1,41 @@
+1
+00:00:00,000 --> 00:00:01,870
+That's right, it's
+the third one.
+
+2
+00:00:01,870 --> 00:00:04,560
+The third document has a
+friend's field that contains
+
+3
+00:00:04,560 --> 00:00:07,020
+all of the values,
+Joe and Bob.
+
+4
+00:00:07,020 --> 00:00:11,050
+And at least one of the values
+in the list running in pickles
+
+5
+00:00:11,050 --> 00:00:12,400
+because it has pickles.
+
+6
+00:00:12,400 --> 00:00:14,680
+If you compare that to the other
+three documents, you'll
+
+7
+00:00:14,680 --> 00:00:18,420
+find that each of these other
+documents either lacks Joe or
+
+8
+00:00:18,420 --> 00:00:22,060
+Bob, or has none of running
+or pickles.
+
+9
+00:00:22,060 --> 00:00:23,310

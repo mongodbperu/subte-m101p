@@ -1,0 +1,19 @@
+1
+00:00:00,000 --> 00:00:00,170
+
+2
+00:00:00,170 --> 00:00:04,030
+De acuerdo, y la respuesta es que
+sólo tendrías que escribir "hat" entre
+
+3
+00:00:04,030 --> 00:00:05,650
+comillas más "pin".
+
+4
+00:00:05,650 --> 00:00:07,460
+Y eso concatenaría
+las dos cadenas.
+
+5
+00:00:07,460 --> 00:00:08,710

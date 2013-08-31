@@ -1,0 +1,236 @@
+1
+00:00:00,000 --> 00:00:00,290
+
+2
+00:00:00,290 --> 00:00:03,530
+A veces la vida no trascurre
+exactamente como esperarías.
+
+3
+00:00:03,530 --> 00:00:05,470
+En Python nos ocurre lo mismo.
+
+4
+00:00:05,470 --> 00:00:08,895
+Para manejar esas situaciones
+en las cuales ocurre un error,
+
+5
+00:00:08,895 --> 00:00:10,230
+existe un procesamiento
+de excepciones
+
+6
+00:00:10,230 --> 00:00:12,150
+y voy a hablar un poco
+acerca de cómo funciona
+
+7
+00:00:12,150 --> 00:00:14,650
+en Python y cómo
+puedes capturar
+
+8
+00:00:14,650 --> 00:00:16,850
+las excepciones que 
+lanza el código.
+
+9
+00:00:16,850 --> 00:00:21,110
+Vamos a ver un programa muy
+simple, el cual divide por cero.
+
+10
+00:00:21,110 --> 00:00:24,210
+Aquí puedes ver que
+hace un "print 5 / 0".
+
+11
+00:00:24,210 --> 00:00:26,330
+Entonces intenta imprimir 
+"but life goes on".
+
+12
+00:00:26,330 --> 00:00:29,390
+Si intentas ejecutar este
+programa, lo que verás
+
+13
+00:00:29,390 --> 00:00:31,110
+es que falla.
+
+14
+00:00:31,110 --> 00:00:32,479
+Puedes ver que el
+programa falla
+
+15
+00:00:32,479 --> 00:00:34,590
+y señala la línea que
+causa el fallo, la cual
+
+16
+00:00:34,590 --> 00:00:35,890
+es la línea 3.
+
+17
+00:00:35,890 --> 00:00:38,030
+E incluso te dice el error.
+
+18
+00:00:38,030 --> 00:00:40,960
+Ahora, ¿qué ocurre si quieres manejar
+ese error dentro de tu programa
+
+19
+00:00:40,960 --> 00:00:42,080
+y continuar?
+
+20
+00:00:42,080 --> 00:00:43,310
+¿Cómo lo harías?
+
+21
+00:00:43,310 --> 00:00:46,610
+Bien, para hacer eso, necesitarías
+capturar la excepción.
+
+22
+00:00:46,610 --> 00:00:48,380
+Hay una forma estándar
+de capturar excepciones.
+
+23
+00:00:48,380 --> 00:00:52,050
+Aquí está el mismo programa con
+un bloque "try/except".
+
+24
+00:00:52,050 --> 00:00:55,380
+Ahora puedes ver aquí,
+que dice "try", "try" y
+
+25
+00:00:55,380 --> 00:00:56,360
+luego dice "except".
+
+26
+00:00:56,360 --> 00:00:58,780
+Entonces intenta imprimir
+5 dividido por 0.
+
+27
+00:00:58,780 --> 00:01:02,510
+Y si lanza una
+excepción, bajará
+
+28
+00:01:02,510 --> 00:01:04,099
+al bloque "except".
+
+29
+00:01:04,099 --> 00:01:06,310
+Y este bloque "except" como no
+indica el tipo de excepción,
+
+30
+00:01:06,310 --> 00:01:08,250
+captura todas las excepciones.
+
+31
+00:01:08,250 --> 00:01:10,750
+Entonces aquí imprime
+el tipo de excepción
+
+32
+00:01:10,750 --> 00:01:15,660
+y esta pequeña función aquí,
+la llamada "sys.exc_info",
+
+33
+00:01:15,660 --> 00:01:18,450
+el elemento 0 de la
+lista imprimirá
+
+34
+00:01:18,450 --> 00:01:19,730
+el nombre de la excepción.
+
+35
+00:01:19,730 --> 00:01:22,040
+Tienes que importar
+"sys" para poder 
+
+36
+00:01:22,040 --> 00:01:23,800
+llamar a este método.
+
+37
+00:01:23,800 --> 00:01:27,110
+Si funciona como esperamos,
+tras el lanzamiento de la
+
+38
+00:01:27,110 --> 00:01:29,240
+excepción, deberíamos ser
+capaces de continuar.
+
+39
+00:01:29,240 --> 00:01:30,230
+Veamos qué ocurre.
+
+40
+00:01:30,230 --> 00:01:32,030
+Voy a ejecutar este
+nuevo programa
+
+41
+00:01:32,030 --> 00:01:33,115
+con control de excepciones.
+
+42
+00:01:33,115 --> 00:01:36,320
+Y en este caso, puedes ver
+que imprime "exceptions.
+
+43
+00:01:36,320 --> 00:01:37,480
+zeroDivisionError".
+
+44
+00:01:37,480 --> 00:01:39,500
+Pero después imprime
+"but life goes on".
+
+45
+00:01:39,500 --> 00:01:41,930
+Y vas a poder usar las
+mismas técnicas utilizando
+
+46
+00:01:41,930 --> 00:01:46,040
+"try/except" para capturar excepciones
+cuando intentes almacenar datos en
+
+47
+00:01:46,040 --> 00:01:49,160
+MongoDB, lo cual es importante
+porque si se lanza una 
+
+48
+00:01:49,160 --> 00:01:51,570
+excepción cuando se está intentando almacenar
+datos en MongoDB, entonces tus
+
+49
+00:01:51,570 --> 00:01:53,090
+datos, probablemente,
+no se almacenaron.
+
+50
+00:01:53,090 --> 00:01:55,780
+En cuyo caso, querrías volver
+a intentarlo o algo por estilo.
+
+51
+00:01:55,780 --> 00:01:57,030

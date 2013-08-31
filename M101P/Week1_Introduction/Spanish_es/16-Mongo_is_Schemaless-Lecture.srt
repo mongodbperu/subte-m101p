@@ -1,0 +1,370 @@
+1
+00:00:00,000 --> 00:00:00,320
+
+2
+00:00:00,320 --> 00:00:03,390
+OK, ya hablamos un poco
+antes acerca de que MongoDB
+
+3
+00:00:03,390 --> 00:00:04,230
+es "schemaless".
+
+4
+00:00:04,230 --> 00:00:06,940
+Y quería volver a este tema
+y enseñarte desde el shell
+
+5
+00:00:06,940 --> 00:00:10,130
+un poco más sobre qué
+significa eso ahora que ya
+
+6
+00:00:10,130 --> 00:00:13,370
+has visto cómo instalar MongoDB,
+has visto el shell y
+
+7
+00:00:13,370 --> 00:00:16,610
+nos has visto construir una pequeña
+aplicación de principio a fin.
+
+8
+00:00:16,610 --> 00:00:18,660
+Así que fundamentalmente, eso
+nos lleva a unas
+
+9
+00:00:18,660 --> 00:00:19,970
+cuantas cosas diferentes.
+
+10
+00:00:19,970 --> 00:00:23,050
+Una es que, a menudo, en
+un sistema relacional,
+
+11
+00:00:23,050 --> 00:00:24,270
+tendrás una tabla.
+
+12
+00:00:24,270 --> 00:00:26,440
+Y tendrás ciertas
+columnas en la tabla.
+
+13
+00:00:26,440 --> 00:00:29,890
+Por ejemplo, "nombre",
+"edad" y quizá
+
+14
+00:00:29,890 --> 00:00:31,480
+"ciudad de nacimiento" o algo así.
+
+15
+00:00:31,480 --> 00:00:33,630
+Y a medida que pasa el tiempo, podrías
+decidir que quieres almacenar
+
+16
+00:00:33,630 --> 00:00:34,960
+información adicional.
+
+17
+00:00:34,960 --> 00:00:37,400
+Para hacer eso, tendrías
+que ampliar la tabla.
+
+18
+00:00:37,400 --> 00:00:39,120
+Y ejecutar un comando "ALTER TABLE".
+
+19
+00:00:39,120 --> 00:00:40,920
+Así es como funciona en
+el mundo relacional.
+
+20
+00:00:40,920 --> 00:00:42,650
+En Mongo, no necesitas hacer eso.
+
+21
+00:00:42,650 --> 00:00:44,200
+Porque en Mongo, documentos
+diferentes pueden
+
+22
+00:00:44,200 --> 00:00:45,250
+tener esquemas diferentes.
+
+23
+00:00:45,250 --> 00:00:48,630
+Y esto significa que, a medida que
+el sistema evoluciona, con metodologías
+
+24
+00:00:48,630 --> 00:00:51,440
+ágiles, a menudo trabajarás
+en sprints cortos de
+
+25
+00:00:51,440 --> 00:00:51,925
+dos o tres semanas
+
+26
+00:00:51,925 --> 00:00:54,290
+y harás cambios e iteraciones
+en el sistema.
+
+27
+00:00:54,290 --> 00:00:55,690
+Podemos adaptarnos a eso.
+
+28
+00:00:55,690 --> 00:00:57,410
+Así que veamos a qué nos
+referimos prácticamente
+
+29
+00:00:57,410 --> 00:00:59,050
+en el shell.
+
+30
+00:00:59,050 --> 00:01:01,550
+Bien, vamos a crear una
+nueva colección y la llamaremos
+
+31
+00:01:01,550 --> 00:01:03,830
+"users", y luego 
+pondremos algo en ella.
+
+32
+00:01:03,830 --> 00:01:06,100
+Voy a poner un nombre,
+mi nombre completo.
+
+33
+00:01:06,100 --> 00:01:09,950
+Y luego digamos que quiero
+poner mi ciudad de nacimiento en ella.
+
+34
+00:01:09,950 --> 00:01:11,540
+Diré que es "Queens".
+
+35
+00:01:11,540 --> 00:01:13,010
+Y puedo hacer eso.
+
+36
+00:01:13,010 --> 00:01:14,030
+Ahora, si miro en la colección
+
+37
+00:01:14,030 --> 00:01:16,220
+"users", veré mi documento.
+
+38
+00:01:16,220 --> 00:01:17,300
+Y aquí está.
+
+39
+00:01:17,300 --> 00:01:18,570
+Hay un comando para imprimir
+de forma elegante.
+
+40
+00:01:18,570 --> 00:01:19,160
+Está directamente en el shell.
+
+41
+00:01:19,160 --> 00:01:20,020
+Es muy útil.
+
+42
+00:01:20,020 --> 00:01:21,950
+Imprime las cosas un
+poco más ordenadas.
+
+43
+00:01:21,950 --> 00:01:23,760
+Y aquí está, impreso
+de forma ordenada.
+
+44
+00:01:23,760 --> 00:01:24,880
+Pero ahora, digamos
+que quiero añadir
+
+45
+00:01:24,880 --> 00:01:26,320
+otro usuario al sistema.
+
+46
+00:01:26,320 --> 00:01:28,990
+Y por cualquier motivo, ahora
+voy a almacenar alguna
+
+47
+00:01:28,990 --> 00:01:30,070
+información adicional.
+
+48
+00:01:30,070 --> 00:01:33,120
+Por ejemplo, quiero almacenar
+un nuevo usuario cuyo nombre es
+
+49
+00:01:33,120 --> 00:01:34,440
+"Richard Kreuter", mi
+coinstructor.
+
+50
+00:01:34,440 --> 00:01:37,120
+Y he decidido que quiero
+almacenar su ciudad de nacimiento 
+
+51
+00:01:37,120 --> 00:01:38,900
+también, que no estoy seguro
+cuál es, y simplemente
+
+52
+00:01:38,900 --> 00:01:40,050
+me la voy a inventar.
+
+53
+00:01:40,050 --> 00:01:42,195
+Pero también quiero almacenar su
+color favorito, el cual 
+
+54
+00:01:42,195 --> 00:01:45,390
+creo que es rojo, basándome en
+nada, sólo una suposición.
+
+55
+00:01:45,390 --> 00:01:48,660
+Ahora, si miro en esa
+colección, puedo ver que
+
+56
+00:01:48,660 --> 00:01:50,290
+tengo dos documentos
+distintos.
+
+57
+00:01:50,290 --> 00:01:52,760
+Y de estos dos documentos
+distintos, uno sólo tiene
+
+58
+00:01:52,760 --> 00:01:54,860
+un nombre, ciudad de nacimiento
+y por supuesto este
+
+59
+00:01:54,860 --> 00:01:57,080
+interesante "ObjectId" del que
+hablaremos más adelante.
+
+60
+00:01:57,080 --> 00:01:59,870
+Y el otro tiene nombre,
+ciudad de nacimiento
+
+61
+00:01:59,870 --> 00:02:01,050
+y color favorito.
+
+62
+00:02:01,050 --> 00:02:04,140
+Así que Mongo te permite ser muy
+ágiles porque no necesitas
+
+63
+00:02:04,140 --> 00:02:07,280
+tener exactamente las mismas
+claves en cada documento.
+
+64
+00:02:07,280 --> 00:02:09,410
+Y puede evolucionar esto
+con el tiempo, también.
+
+65
+00:02:09,410 --> 00:02:11,910
+Puedo cambiar el esquema
+de un documento existente.
+
+66
+00:02:11,910 --> 00:02:15,420
+Así que por ejemplo,
+puedo referenciar "db.users".
+
+67
+00:02:15,420 --> 00:02:16,470
+todo esto con una variable.
+
+68
+00:02:16,470 --> 00:02:18,330
+Y estoy buscando el objeto cuyo 
+
+69
+00:02:18,330 --> 00:02:20,050
+nombre es "Andrew Erlichson".
+
+70
+00:02:20,050 --> 00:02:21,730
+Y puedo ver el objeto.
+
+71
+00:02:21,730 --> 00:02:22,440
+Ahí está.
+
+72
+00:02:22,440 --> 00:02:24,240
+Pongo mi color favorito.
+
+73
+00:02:24,240 --> 00:02:26,190
+Y ahora, puedo echar un vistazo 
+a "j", y puedes ver 
+
+74
+00:02:26,190 --> 00:02:27,740
+que se ha actualizado.
+
+75
+00:02:27,740 --> 00:02:31,270
+Y ahora podría hacer un
+"db.users.save(j)".
+
+76
+00:02:31,270 --> 00:02:34,260
+Si le echas un vistazo a esta
+colección, puedes ver que
+
+77
+00:02:34,260 --> 00:02:37,330
+mi objeto ha sido
+actualizado para incluir
+
+78
+00:02:37,330 --> 00:02:39,170
+también un color favorito.
+
+79
+00:02:39,170 --> 00:02:41,360
+Ésta es la flexibilidad que
+vamos a aprovechar un montón
+
+80
+00:02:41,360 --> 00:02:43,640
+a medida que construyamos
+sistemas usando MongoDB.
+
+81
+00:02:43,640 --> 00:02:44,890

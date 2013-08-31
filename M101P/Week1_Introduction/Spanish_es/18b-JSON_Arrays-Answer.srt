@@ -1,0 +1,44 @@
+1
+00:00:00,000 --> 00:00:00,230
+
+2
+00:00:00,230 --> 00:00:02,890
+OK, y la respuesta
+está justo aquí.
+
+3
+00:00:02,890 --> 00:00:05,890
+Abres el corchete,
+"fruit".
+
+4
+00:00:05,890 --> 00:00:09,790
+Puedes omitir si quieres esas
+comillas que engloban la clave "fruit",
+
+5
+00:00:09,790 --> 00:00:13,140
+y luego los dos puntos y 
+a continuación este array.
+
+6
+00:00:13,140 --> 00:00:14,290
+"apple", "pear" y "peach".
+
+7
+00:00:14,290 --> 00:00:16,730
+Y necesitas tener algún
+tipo de comillas englobando
+
+8
+00:00:16,730 --> 00:00:18,470
+estos valores aquí, "apple",
+"pear" y "peach".
+
+9
+00:00:18,470 --> 00:00:20,230
+Ése es un JSON para
+este documento.
+
+10
+00:00:20,230 --> 00:00:21,480

@@ -1,0 +1,36 @@
+1
+00:00:00,000 --> 00:00:00,350
+
+2
+00:00:00,350 --> 00:00:00,820
+Es correcto.
+
+3
+00:00:00,820 --> 00:00:04,120
+Las primeras dos. En efecto,
+el orden de estas operaciones,
+
+
+4
+00:00:04,120 --> 00:00:07,540
+"$lte", "$gte", no importa.
+
+5
+00:00:07,540 --> 00:00:11,530
+Una vez más, esta tercera opción
+no funciona en sí porque
+
+6
+00:00:11,530 --> 00:00:15,600
+las operaciones de ordenamiento
+y comparación de rango en MongoDB
+
+7
+00:00:15,600 --> 00:00:19,290
+toman en consideración si una 
+letra es mayúscula o minúcula
+
+8
+00:00:19,290 --> 00:00:20,540
+y sólo las comparan de
+una manera ASCII.

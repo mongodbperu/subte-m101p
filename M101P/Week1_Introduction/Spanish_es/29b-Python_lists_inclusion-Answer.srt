@@ -1,0 +1,23 @@
+1
+00:00:00,000 --> 00:00:00,180
+
+2
+00:00:00,180 --> 00:00:01,860
+Y aquí está la respuesta.
+
+3
+00:00:01,860 --> 00:00:03,840
+"if apple in fruit", dos puntos.
+
+4
+00:00:03,840 --> 00:00:06,540
+Y luego la sentencia que
+deseas ejecutar sería
+
+5
+00:00:06,540 --> 00:00:07,880
+con sangría en
+la siguiente línea
+
+6
+00:00:07,880 --> 00:00:09,130

@@ -1,0 +1,37 @@
+1
+00:00:00,000 --> 00:00:00,300
+
+2
+00:00:00,300 --> 00:00:00,910
+De acuerdo.
+
+3
+00:00:00,910 --> 00:00:05,370
+Y la respuesta es "things",
+"uno" dos puntos "tres".
+
+4
+00:00:05,370 --> 00:00:06,820
+Recuerda, están enumeradas
+desde cero.
+
+5
+00:00:06,820 --> 00:00:11,100
+Así "cero", "uno", "dos", "tres".
+
+6
+00:00:11,100 --> 00:00:13,900
+Pero no incluye
+el elemento de la derecha.
+
+7
+00:00:13,900 --> 00:00:15,480
+Así que esto te da
+los dos primeros.
+
+8
+00:00:15,480 --> 00:00:16,730
+Ésa es la respuesta.
+
+9
+00:00:16,730 --> 00:00:17,280

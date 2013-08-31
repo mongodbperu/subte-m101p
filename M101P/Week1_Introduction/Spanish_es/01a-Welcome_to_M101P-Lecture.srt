@@ -13,8 +13,8 @@ Andrew Erlichson.
 
 4
 00:00:06,025 --> 00:00:08,600
-Éste es el primer día de
-clases.
+Éste es el primer
+día de clases.
 
 5
 00:00:08,600 --> 00:00:13,150
@@ -56,17 +56,17 @@ que lo conectan a MongoDB.
 
 13
 00:00:28,390 --> 00:00:30,820
-La mayoría de gente está
+La mayoría de la gente está
 familiarizada con los blogs.
 
 14
 00:00:30,820 --> 00:00:34,070
-Y vamos a hacer que tú escribas
-este código y será
+Y vamos a hacer que tú
+escribas el código que
 
 15
 00:00:34,070 --> 00:00:36,300
-en código Python.
+será código Python.
 
 16
 00:00:36,300 --> 00:00:39,630
@@ -75,17 +75,17 @@ para este curso.
 
 17
 00:00:39,630 --> 00:00:41,900
-Si nunca has usado Python
-antes, está bien.
+Si nunca has usado Python,
+no hay problema.
 
 18
 00:00:41,900 --> 00:00:43,230
-Vamos a darte la mayor parte
-del código.
+Vamos a darte la mayor
+parte del código
 
 19
 00:00:43,230 --> 00:00:45,400
-Y te enseñaremos algunos
+y te enseñaremos algunos
 conceptos básicos de Python.
 
 20
@@ -95,18 +95,18 @@ es un requisito es que tengas
 
 21
 00:00:47,730 --> 00:00:48,870
-un poco de experiencia con
-algún otro
+un poco de experiencia
+con algún otro
 
 22
 00:00:48,870 --> 00:00:50,655
-lenguaje de programación de
-alto nivel.
+lenguaje de programación
+de alto nivel.
 
 23
 00:00:50,655 --> 00:00:52,890
-Así que vamos a repasar algunos
-temas de la logística del curso.
+Hay que repasar algunos puntos
+sobre la logística del curso.
 
 24
 00:00:52,890 --> 00:00:56,310
@@ -115,16 +115,16 @@ al igual que éste,
 
 25
 00:00:56,310 --> 00:00:58,540
-y puedes verlos siempre que
-desees.
+y puedes verlos
+cuando quieras.
 
 26
 00:00:58,540 --> 00:01:00,272
-Están en YouTube.
+Están en YouTube
 
 27
 00:01:00,272 --> 00:01:04,269
-Y vamos a publicarlos
+y vamos a publicarlos
 probablemente los lunes y
 
 28
@@ -134,8 +134,8 @@ de material por semana.
 
 29
 00:01:07,020 --> 00:01:10,510
-Al final de todas las clases
-en vídeo, habrá
+Al final de todas las
+clases en vídeo, habrá
 
 30
 00:01:10,510 --> 00:01:12,870
@@ -148,7 +148,7 @@ cuestionarios al final.
 
 32
 00:01:13,900 --> 00:01:16,090
-Y éstos son apenas pequeños
+Éstos son apenas pequeños
 controles de aprendizaje que
 
 33
@@ -158,7 +158,7 @@ entendiendo el material.
 
 34
 00:01:19,070 --> 00:01:22,110
-Cada semana vamos a tener una
+Vamos a tener una
 tarea para cada una
 
 35
@@ -167,13 +167,13 @@ de las siete semanas.
 
 36
 00:01:23,180 --> 00:01:26,410
-Ahora, las tareas van a ser
-una combinación
+Ahora, las tareas van
+a ser una combinación
 
 37
 00:01:26,410 --> 00:01:30,350
-de preguntas en el uso del
-motor de cuestionarios y también
+de preguntas usando el motor
+de cuestionarios y también
 
 38
 00:01:30,350 --> 00:01:33,810
@@ -192,7 +192,7 @@ algo de código en Python para hacer algunas
 
 41
 00:01:40,280 --> 00:01:42,710
-consultas, pero bastante
+consultas, pero código bastante
 sencillo si te pedimos
 
 42
@@ -206,18 +206,17 @@ lenguaje que quieras para estas
 
 44
 00:01:45,220 --> 00:01:49,080
-tareas, no necesariamente en
-Python, porque no vamos
+tareas, no necesariamente tiene
+que ser Python, porque no vamos
 
 45
 00:01:49,080 --> 00:01:49,980
-a verificar el código en
-Python.
+a verificar el código Python.
 
 46
 00:01:49,980 --> 00:01:51,755
-Nosotros verificaremos los
-resultados.
+Nosotros verificaremos
+los resultados.
 
 47
 00:01:51,755 --> 00:01:55,810
@@ -226,8 +225,8 @@ curso es un examen final
 
 48
 00:01:55,810 --> 00:01:58,160
-que es como una tarea más
-grande.
+que es como una
+tarea más grande.
 
 49
 00:01:58,160 --> 00:02:00,830
@@ -236,8 +235,8 @@ semana de clases, durante la
 
 50
 00:02:00,830 --> 00:02:03,715
-sétima semana para la cual no
-habrá ninguna tarea.
+sétima semana, para la cual
+no habrá ninguna tarea.
 
 51
 00:02:03,715 --> 00:02:05,880
@@ -247,7 +246,7 @@ puntuación de la clase.
 52
 00:02:05,880 --> 00:02:09,200
 Ahora, las clases en vídeo
-cuentan para el 0% de la nota.
+cuentan un 0% de la nota.
 
 53
 00:02:09,200 --> 00:02:12,090
@@ -256,18 +255,18 @@ verlas, pero creemos que
 
 54
 00:02:12,090 --> 00:02:15,165
-sí debes, porque esa es la
-idea del curso.
+sí debes hacerlo, porque
+esa es la idea del curso.
 
 55
 00:02:15,165 --> 00:02:18,160
-Y luego, los cuestionarios no
-contarán para tu nota.
+Y luego, los cuestionarios
+tampoco contarán para tu nota.
 
 56
 00:02:18,160 --> 00:02:19,825
-Éstos son sólo para tu propio
-aprendizaje,
+Éstos son sólo para
+tu propio aprendizaje,
 
 57
 00:02:19,825 --> 00:02:21,430
@@ -275,13 +274,13 @@ ya que no cuentan.
 
 58
 00:02:21,430 --> 00:02:24,980
-Las tareas contarán el 50%
-de tu nota,
+Las tareas contarán
+un 50% de tu nota,
 
 59
 00:02:24,980 --> 00:02:29,656
-y el examen final contará el
-50% de tu nota.
+y el examen final contará
+un 50% de tu nota.
 
 60
 00:02:29,656 --> 00:02:34,250
@@ -290,13 +289,13 @@ a eliminar la tarea con la menor nota.
 
 61
 00:02:34,250 --> 00:02:36,625
-Así que cada semana, tienes
-una tarea.
+Así que cada semana,
+tienes una tarea.
 
 62
 00:02:36,625 --> 00:02:39,190
-Y vamos a ver esas semanas y
-en la que
+Al final, vamos a verlas
+todas y en la que
 
 63
 00:02:39,190 --> 00:02:42,170
@@ -315,13 +314,13 @@ finalización de 10gen que
 
 66
 00:02:50,795 --> 00:02:53,700
-cerciora que han completado satisfactoriamente el
-curso de MongoDB para Desarrolladores.
+certifica que han completado satisfactoriamente
+el curso de MongoDB para Desarrolladores.
 
 67
 00:02:53,700 --> 00:02:55,560
-Se verá mucho mejor
-que esto.
+Se verá mucho
+mejor que esto.
 
 68
 00:02:55,560 --> 00:02:59,810
@@ -330,7 +329,7 @@ información de validación para
 
 69
 00:02:59,810 --> 00:03:02,475
-probar que es real.
+comprobar que es real.
 
 70
 00:03:02,475 --> 00:03:04,860
@@ -347,8 +346,8 @@ Está bien.
 
 73
 00:03:06,470 --> 00:03:09,510
-Así que vamos a nuestro primer
-cuestionario.
+Así que vayamos a nuestro
+primer cuestionario.
 
 74
 00:03:09,510 --> 00:03:12,840

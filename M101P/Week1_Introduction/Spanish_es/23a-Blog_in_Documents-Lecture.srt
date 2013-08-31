@@ -1,0 +1,449 @@
+1
+00:00:00,000 --> 00:00:00,170
+
+2
+00:00:00,170 --> 00:00:03,290
+Hablemos acerca del modelo
+de nuestro blog en MongoDB.
+
+3
+00:00:03,290 --> 00:00:05,570
+Hemos visto cómo podríamos
+modelarlo en relacional.
+
+4
+00:00:05,570 --> 00:00:08,270
+Pero ahora hablemos sobre cómo
+podríamos modelarlo en Mongo.
+
+5
+00:00:08,270 --> 00:00:11,510
+Es mucho más fácil porque
+podrías imaginar que
+
+6
+00:00:11,510 --> 00:00:14,070
+tendríamos una colección llamada,
+digamos, "posts".
+
+7
+00:00:14,070 --> 00:00:16,660
+Y voy a mostrar como ejemplo
+lo que habría en la
+
+8
+00:00:16,660 --> 00:00:18,170
+colección "posts".
+
+9
+00:00:18,170 --> 00:00:23,860
+Podríamos tener un título,
+como "Free online classes",
+
+10
+00:00:23,860 --> 00:00:29,080
+junto con el propio cuerpo de
+la publicación, que no mostraré,
+
+11
+00:00:29,080 --> 00:00:33,610
+tan sólo pongo unos puntos suspensivos,
+junto con el nombre del usuario
+
+12
+00:00:33,610 --> 00:00:35,700
+del--llamémosle autor.
+
+13
+00:00:35,700 --> 00:00:38,310
+Y para eso voy a poner
+mi nombre justo en la
+
+14
+00:00:38,310 --> 00:00:38,650
+colección.
+
+15
+00:00:38,650 --> 00:00:40,330
+No voy a poner un "_id".
+
+16
+00:00:40,330 --> 00:00:42,250
+Y el motivo es, y no voy
+a enseñártelo, que vamos
+
+17
+00:00:42,250 --> 00:00:46,360
+a usar esto como el "_id"
+para otra colección, la
+
+18
+00:00:46,360 --> 00:00:47,940
+colección "authors".
+
+19
+00:00:47,940 --> 00:00:49,640
+Tenemos el título de la publicación.
+
+20
+00:00:49,640 --> 00:00:50,820
+Tenemos el cuerpo de la publicación.
+
+21
+00:00:50,820 --> 00:00:52,290
+Tenemos el autor de la publicación.
+
+22
+00:00:52,290 --> 00:00:54,170
+Necesitamos la fecha 
+en que fue publicado.
+
+23
+00:00:54,170 --> 00:00:56,750
+Y tendremos alguna fecha ISO
+aquí, hablaremos más sobre
+
+24
+00:00:56,750 --> 00:00:57,680
+tipos más adelante.
+
+25
+00:00:57,680 --> 00:01:00,660
+Y entonces probablemente
+querrás algunos comentarios.
+
+26
+00:01:00,660 --> 00:01:03,870
+Pero en Mongo, podemos embeberlos
+justo dentro del documento.
+
+27
+00:01:03,870 --> 00:01:06,390
+Así que la clave "comments"
+está justo ahí.
+
+28
+00:01:06,390 --> 00:01:07,390
+Empiezo un array.
+
+29
+00:01:07,390 --> 00:01:09,870
+Y a continuación voy a
+tener un documento.
+
+30
+00:01:09,870 --> 00:01:15,000
+Y va a tener el nombre del autor
+del comentario, "Joe Biden", junto
+
+31
+00:01:15,000 --> 00:01:20,210
+con su email, si es que lo dio,
+"joe@whitehouse.gov", junto con
+
+32
+00:01:20,210 --> 00:01:23,470
+el cuerpo de su comentario, al
+que llamaremos simplemente "comment".
+
+33
+00:01:23,470 --> 00:01:26,785
+Y podemos tener múltiples
+comentarios justo aquí en
+
+34
+00:01:26,785 --> 00:01:27,000
+el documento.
+
+35
+00:01:27,000 --> 00:01:29,070
+Podría ser muy
+natural hacer eso.
+
+36
+00:01:29,070 --> 00:01:31,410
+Y es muy natural hacerlo.
+
+37
+00:01:31,410 --> 00:01:32,820
+Las etiquetas funcionan de igual manera.
+
+38
+00:01:32,820 --> 00:01:35,820
+Por lo que más que tener una colección
+separada de etiquetas, simplemente
+
+39
+00:01:35,820 --> 00:01:37,110
+pondremos los datos justo aquí.
+
+40
+00:01:37,110 --> 00:01:39,590
+Tendré una clave "tags"
+en este documento.
+
+41
+00:01:39,590 --> 00:01:40,970
+Éste es el nivel
+más alto aquí.
+
+42
+00:01:40,970 --> 00:01:42,730
+Está al mismo nivel que
+"title" y "comments".
+
+43
+00:01:42,730 --> 00:01:44,720
+Y pondré las etiquetas justo aquí--
+
+44
+00:01:44,720 --> 00:01:48,150
+"cycling", "education", "startups".
+
+45
+00:01:48,150 --> 00:01:50,580
+Así que probablemente sólo necesite una
+colección más aparte de ésta.
+
+46
+00:01:50,580 --> 00:01:54,070
+Probablemente necesito algún tipo
+de colección de autores.
+
+47
+00:01:54,070 --> 00:01:56,880
+Y esta colección "authors"
+va a tener cosas
+
+48
+00:01:56,880 --> 00:01:59,150
+como mi nombre de usuario.
+
+49
+00:01:59,150 --> 00:02:01,140
+Pero más que llamarlo
+"username", esto es lo que
+
+50
+00:02:01,140 --> 00:02:01,740
+vamos a hacer.
+
+51
+00:02:01,740 --> 00:02:02,470
+Trataremos esto un poco
+
+52
+00:02:02,470 --> 00:02:04,060
+más adelante, cómo funciona.
+
+53
+00:02:04,060 --> 00:02:06,070
+En la colección "authors", 
+vamos a mantener el nombre
+
+54
+00:02:06,070 --> 00:02:08,250
+de usuario, pero lo que vamos
+a hacer es, realmente vamos a
+
+55
+00:02:08,250 --> 00:02:11,660
+hacer que el "ObjectId"
+sea el nombre de usuario.
+
+56
+00:02:11,660 --> 00:02:13,420
+Aún no hemos hablado mucho
+de esto, y lo abarcaremos
+
+57
+00:02:13,420 --> 00:02:14,370
+más adelante.
+
+58
+00:02:14,370 --> 00:02:17,940
+Pero cada documento necesita tener
+un "_id" único dentro de Mongo.
+
+59
+00:02:17,940 --> 00:02:20,420
+El sistema asignará un
+identificador único al
+
+60
+00:02:20,420 --> 00:02:22,310
+objeto si no
+le asignas uno.
+
+61
+00:02:22,310 --> 00:02:25,000
+Pero si tienes un identificador
+natural y único que no puede
+
+62
+00:02:25,000 --> 00:02:27,530
+ser duplicado dentro del objeto,
+lo puedes usar para eso.
+
+63
+00:02:27,530 --> 00:02:29,950
+Por lo que en este caso, el nombre de usuario
+tiene que ser único en el
+
+64
+00:02:29,950 --> 00:02:32,180
+sistema, así que vamos a
+usarlo como "_id".
+
+65
+00:02:32,180 --> 00:02:34,870
+Y entonces, probablemente tenga la
+contraseña, que será algún
+
+66
+00:02:34,870 --> 00:02:38,070
+tipo de versión encriptada y 
+hasheada de mi contraseña.
+
+67
+00:02:38,070 --> 00:02:39,190
+Y también podrías tener 
+alguna otra información
+
+68
+00:02:39,190 --> 00:02:40,660
+sobre el usuario.
+
+69
+00:02:40,660 --> 00:02:41,340
+Y eso es.
+
+70
+00:02:41,340 --> 00:02:43,860
+Quiero decir, ésa es la estructura
+básica que necesitas para
+
+71
+00:02:43,860 --> 00:02:48,390
+representar los mismos datos dentro
+de MongoDB que ocuparon seis tablas
+
+72
+00:02:48,390 --> 00:02:50,110
+en el sistema relacional.
+
+73
+00:02:50,110 --> 00:02:51,100
+Y es jerárquico.
+
+74
+00:02:51,100 --> 00:02:56,510
+Por lo que cada publicación tendrá un título,
+un autor, una fecha,
+
+75
+00:02:56,510 --> 00:02:58,510
+comentarios, que
+estarán en un array
+
+76
+00:02:58,510 --> 00:02:59,840
+de documentos JSON.
+
+77
+00:02:59,840 --> 00:03:02,410
+Si el email no se indica en el
+comentario, no
+
+78
+00:03:02,410 --> 00:03:04,470
+necesita estar ahí, podrías
+quitarlo porque como
+
+79
+00:03:04,470 --> 00:03:06,890
+MongoDB es "schemaless", es
+flexible con eso.
+
+80
+00:03:06,890 --> 00:03:09,510
+Podría poner las
+etiquetas aquí mismo.
+
+81
+00:03:09,510 --> 00:03:11,350
+Puedo tener listadas varias.
+
+82
+00:03:11,350 --> 00:03:13,730
+Por lo que he convertido el
+modelo relacional en este lado,
+
+83
+00:03:13,730 --> 00:03:16,200
+y he tomado cosas que 
+estarían embebidas en tablas
+
+84
+00:03:16,200 --> 00:03:18,470
+separadas, y que probablemente
+estarían relacionadas a través
+
+85
+00:03:18,470 --> 00:03:21,200
+de relaciones, y las he puesto
+justo dentro del mismo
+
+86
+00:03:21,200 --> 00:03:23,330
+documento como una lista o
+como un subdocumento.
+
+87
+00:03:23,330 --> 00:03:24,910
+Es muy adecuado.
+
+88
+00:03:24,910 --> 00:03:25,280
+Bien.
+
+89
+00:03:25,280 --> 00:03:28,730
+Así es como modelarías este
+blog dentro del documento.
+
+90
+00:03:28,730 --> 00:03:31,370
+Bien, hora de un cuestionario.
+
+91
+00:03:31,370 --> 00:03:34,410
+Dado el esquema del documento
+que propusimos para el blog en
+
+92
+00:03:34,410 --> 00:03:36,680
+esta lección, ¿a cuántas
+colecciones necesitaríamos
+
+93
+00:03:36,680 --> 00:03:40,390
+acceder para mostrar la página
+principal del blog, que incluiría
+
+94
+00:03:40,390 --> 00:03:43,480
+las 10 primeras publicaciones del blog,
+sus comentarios y el autor?
+
+95
+00:03:43,480 --> 00:03:45,570
+Escribe tu respuesta
+aquí eligiendo una
+
+96
+00:03:45,570 --> 00:03:46,820
+de estas cuatro opciones.
+
+97
+00:03:46,820 --> 00:03:47,840

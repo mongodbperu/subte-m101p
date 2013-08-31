@@ -1,0 +1,48 @@
+1
+00:00:00,000 --> 00:00:00,140
+
+2
+00:00:00,140 --> 00:00:00,610
+Así es.
+
+3
+00:00:00,610 --> 00:00:05,820
+La respuesta es "db.fruit.insert",
+y el argumento es un documento
+
+4
+00:00:05,820 --> 00:00:08,790
+donde el campo "name" tiene el
+valor "apple", el campo "color"
+
+5
+00:00:08,790 --> 00:00:11,380
+tiene el valor "red", y el
+campo "shape" tiene el valor
+
+6
+00:00:11,380 --> 00:00:14,580
+"round". El simple acto de
+insertar el documento es
+
+7
+00:00:14,580 --> 00:00:16,390
+suficiente para crear la
+colección.
+
+8
+00:00:16,390 --> 00:00:18,640
+Y en su defecto, el acto de
+crear una colección
+
+9
+00:00:18,640 --> 00:00:21,750
+implícitamente crea la
+base de datos si ésta
+
+10
+00:00:21,750 --> 00:00:23,000
+no existe aún.
+
+11
+00:00:23,000 --> 00:00:23,650

@@ -1,0 +1,290 @@
+1
+00:00:00,000 --> 00:00:01,050
+
+2
+00:00:01,050 --> 00:00:03,390
+So we've already learned one of
+the things that the update
+
+3
+00:00:03,390 --> 00:00:05,380
+method in the JavaScript
+shell can do.
+
+4
+00:00:05,380 --> 00:00:07,650
+And that's what we might call a
+wholesale replacement of the
+
+5
+00:00:07,650 --> 00:00:09,010
+fields in a document.
+
+6
+00:00:09,010 --> 00:00:11,470
+This is something of a dangerous
+thing to do in many
+
+7
+00:00:11,470 --> 00:00:12,830
+sorts of applications.
+
+8
+00:00:12,830 --> 00:00:15,040
+And so typically, you want to
+manipulate just specific
+
+9
+00:00:15,040 --> 00:00:16,200
+fields in a document.
+
+10
+00:00:16,200 --> 00:00:17,890
+And in fact, the update
+operator allows you
+
+11
+00:00:17,890 --> 00:00:19,400
+to do that as well.
+
+12
+00:00:19,400 --> 00:00:21,800
+So again, here's my
+people collection.
+
+13
+00:00:21,800 --> 00:00:23,420
+And they have various names.
+
+14
+00:00:23,420 --> 00:00:26,920
+Suppose I wanted to
+give Alice an age.
+
+15
+00:00:26,920 --> 00:00:29,100
+Well, we can do this in
+a couple of ways.
+
+16
+00:00:29,100 --> 00:00:31,790
+First, I could use a replacement
+operation.
+
+17
+00:00:31,790 --> 00:00:34,680
+However, in order to achieve
+the desired effect, namely
+
+18
+00:00:34,680 --> 00:00:37,440
+adding an age value, I would
+need to know all of the other
+
+19
+00:00:37,440 --> 00:00:39,600
+fields that happen to exist
+in the document
+
+20
+00:00:39,600 --> 00:00:40,840
+where the name is Alice.
+
+21
+00:00:40,840 --> 00:00:43,010
+And perhaps I don't know
+that information.
+
+22
+00:00:43,010 --> 00:00:46,470
+And so this replacement method
+is not a great idea.
+
+23
+00:00:46,470 --> 00:00:49,240
+Instead, what we want is an
+operation that manipulates
+
+24
+00:00:49,240 --> 00:00:51,190
+only the fields that we specify
+and leaves all the
+
+25
+00:00:51,190 --> 00:00:52,430
+other fields alone.
+
+26
+00:00:52,430 --> 00:00:56,340
+And for this, update has
+various $ operators.
+
+27
+00:00:56,340 --> 00:00:59,520
+In the simple case, I just want
+to set a specific field.
+
+28
+00:00:59,520 --> 00:01:02,310
+If that field doesn't exist,
+it will be made to exist.
+
+29
+00:01:02,310 --> 00:01:05,010
+So the update that's at the
+bottom of my terminal says
+
+30
+00:01:05,010 --> 00:01:08,480
+find the document where the name
+is Alice and set the age
+
+31
+00:01:08,480 --> 00:01:09,440
+field to 30.
+
+32
+00:01:09,440 --> 00:01:11,590
+If there is no age field,
+one will be created.
+
+33
+00:01:11,590 --> 00:01:14,490
+If I now query for the document
+where name is Alice,
+
+34
+00:01:14,490 --> 00:01:16,120
+Alice now has an age.
+
+35
+00:01:16,120 --> 00:01:18,200
+Once I've created this
+field age, I can
+
+36
+00:01:18,200 --> 00:01:19,690
+certainly set it again.
+
+37
+00:01:19,690 --> 00:01:22,290
+And these sorts of set
+operations that change one
+
+38
+00:01:22,290 --> 00:01:26,050
+number to another are actually
+quite efficient in MongoDB.
+
+39
+00:01:26,050 --> 00:01:28,630
+Further, beyond the set
+operation, we have an
+
+40
+00:01:28,630 --> 00:01:31,900
+operation that can increment a
+field that already exists.
+
+41
+00:01:31,900 --> 00:01:34,000
+It's called $ inc.
+
+42
+00:01:34,000 --> 00:01:36,590
+Given that I happen to know that
+Alice has an age field
+
+43
+00:01:36,590 --> 00:01:40,440
+that's currently 31, if I update
+specifying $ inc of age
+
+44
+00:01:40,440 --> 00:01:43,090
+by 1, then I happen to
+know that the should
+
+45
+00:01:43,090 --> 00:01:44,510
+turn out to be 32.
+
+46
+00:01:44,510 --> 00:01:46,720
+And indeed, it is now 32.
+
+47
+00:01:46,720 --> 00:01:51,340
+So $ set can add or modify
+a field in a document.
+
+48
+00:01:51,340 --> 00:01:54,270
+And $ inc can modify a
+field in a document.
+
+49
+00:01:54,270 --> 00:01:57,880
+In fact, if the field doesn't
+exist, $ inc will create a new
+
+50
+00:01:57,880 --> 00:02:01,760
+field having as its value
+the increment step.
+
+51
+00:02:01,760 --> 00:02:06,635
+So for instance, if I wish to
+increment the age for Bob and
+
+52
+00:02:06,635 --> 00:02:09,620
+one happens not to exist, then
+one will be made to exist with
+
+53
+00:02:09,620 --> 00:02:12,500
+a value that's going to have
+the increment step.
+
+54
+00:02:12,500 --> 00:02:14,550
+In this case, 1.
+
+55
+00:02:14,550 --> 00:02:15,490
+All right.
+
+56
+00:02:15,490 --> 00:02:17,010
+Let's have a simple quiz.
+
+57
+00:02:17,010 --> 00:02:20,010
+Suppose you have this document
+in a collection called users.
+
+58
+00:02:20,010 --> 00:02:22,240
+The username is spelunker.
+
+59
+00:02:22,240 --> 00:02:24,310
+The country is US.
+
+60
+00:02:24,310 --> 00:02:29,200
+And the phone is 718-343-3433.
+
+61
+00:02:29,200 --> 00:02:32,460
+Write the shell command for
+updating the country to RU
+
+62
+00:02:32,460 --> 00:02:33,710
+just for this user.
+
+63
+00:02:33,710 --> 00:02:34,480

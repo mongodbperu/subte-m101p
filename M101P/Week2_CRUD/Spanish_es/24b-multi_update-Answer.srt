@@ -1,0 +1,37 @@
+1
+00:00:00,000 --> 00:00:00,310
+
+2
+00:00:00,310 --> 00:00:05,100
+Well, the answer is
+db.scores.update score colon
+
+3
+00:00:05,100 --> 00:00:06,800
+less than 70.
+
+4
+00:00:06,800 --> 00:00:09,660
+And then $inc score by 20.
+
+5
+00:00:09,660 --> 00:00:11,060
+And then multi-true.
+
+6
+00:00:11,060 --> 00:00:14,010
+If you did not specify
+multi-true, the database would
+
+7
+00:00:14,010 --> 00:00:17,590
+update exactly one document
+with score less than 70.
+
+8
+00:00:17,590 --> 00:00:19,910
+But which document that was is
+somewhat underspecified.
+
+9
+00:00:19,910 --> 00:00:21,160

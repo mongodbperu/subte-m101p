@@ -1,0 +1,222 @@
+1
+00:00:00,000 --> 00:00:00,150
+
+2
+00:00:00,150 --> 00:00:04,170
+Comenzamos esta unidad hablando
+acerca de la tercera forma
+
+3
+00:00:04,170 --> 00:00:07,010
+normal y denormalización.
+
+4
+00:00:07,010 --> 00:00:12,680
+Y si recuerdas, una de las
+razones para normalizar tus datos
+
+5
+00:00:12,680 --> 00:00:17,250
+en el mundo relacional es
+porque deseas evitar
+
+6
+00:00:17,250 --> 00:00:19,240
+las anomalías de modificación
+que vienen con la
+
+7
+00:00:19,240 --> 00:00:20,470
+duplicación de datos.
+
+8
+00:00:20,470 --> 00:00:24,890
+Y cuando nos fijamos en esto en MongoDB
+y cómo está estructurado,
+
+9
+00:00:24,890 --> 00:00:28,410
+permitiendo estos documentos enriquecidos,
+es fácil asumir lo que
+
+10
+00:00:28,410 --> 00:00:30,810
+estamos haciendo es que estamos
+denormalizando datos.
+
+11
+00:00:30,810 --> 00:00:33,340
+Y hasta cierto punto,
+eso es cierto.
+
+12
+00:00:33,340 --> 00:00:37,460
+Pero mientras no
+dupliquemos datos, no nos abrimos
+
+13
+00:00:37,460 --> 00:00:40,510
+a las anomalías de
+modificación.
+
+14
+00:00:40,510 --> 00:00:43,870
+Así que mirando hacia atrás en lo
+que vimos en esta unidad,
+
+15
+00:00:43,870 --> 00:00:46,580
+hablamos acerca de relaciones
+de uno a uno.
+
+16
+00:00:46,580 --> 00:00:48,930
+Y en ese caso, es perfectamente
+seguro embeber los
+
+17
+00:00:48,930 --> 00:00:50,400
+datos si lo deseas.
+
+18
+00:00:50,400 --> 00:00:53,030
+Y no te abres
+a estas anomalías de
+
+19
+00:00:53,030 --> 00:00:55,260
+modificación porque no estás
+duplicando datos.
+
+20
+00:00:55,260 --> 00:00:56,980
+Básicamente, estás simplemente tomando
+algo que estaría normalmente
+
+21
+00:00:56,980 --> 00:01:00,320
+en una tabla separada,
+y estás plegándolo
+
+22
+00:01:00,320 --> 00:01:02,150
+en otra tabla.
+
+23
+00:01:02,150 --> 00:01:05,400
+Y eso no necesariamente
+duplica datos.
+
+24
+00:01:05,400 --> 00:01:08,440
+Ahora, cuando tiene una relación
+de uno a muchos, entonces
+
+25
+00:01:08,440 --> 00:01:10,820
+embeber puede también funcionar bien
+sin duplicación de datos,
+
+26
+00:01:10,820 --> 00:01:13,760
+siempre y cuando embebas a
+"los muchos" en "los unos".
+
+27
+00:01:13,760 --> 00:01:17,350
+Ahora, si deseas ir desde
+"los unos" hacia "los muchos", entonces
+
+28
+00:01:17,350 --> 00:01:21,340
+relacionar evitaría la
+duplicación de datos.
+
+29
+00:01:21,340 --> 00:01:24,620
+Ahora, una vez más, si necesitas embeber
+algo, incluso si
+
+30
+00:01:24,620 --> 00:01:27,100
+provoca duplicación de datos, por
+razones de rendimiento, para que
+
+31
+00:01:27,100 --> 00:01:29,300
+coincida a los patrones de acceso
+de tu aplicación, entonces eso
+
+32
+00:01:29,300 --> 00:01:32,850
+podría tener sentido, especialmente si
+los datos cambian o se actualizan
+
+33
+00:01:32,850 --> 00:01:34,190
+rara vez.
+
+34
+00:01:34,190 --> 00:01:37,160
+Sin embargo, puedes evitarlo con
+la suficiente frecuencia, incluso en esta
+
+35
+00:01:37,160 --> 00:01:40,660
+relación, si pasas de
+"los muchos" a "los unos".
+
+36
+00:01:40,660 --> 00:01:44,150
+Así, en la relación de muchos a muchos,
+que vimos
+
+37
+00:01:44,150 --> 00:01:47,670
+con alumnos y profesores y
+autores y libros, ahí, si
+
+38
+00:01:47,670 --> 00:01:49,980
+deseas evitar las
+anomalías de modificación que
+
+
+39
+00:01:49,980 --> 00:01:54,420
+vienen con la denormalización, todo lo
+que necesitas es relación a través
+
+40
+00:01:54,420 --> 00:01:59,380
+de estos arrays de ObjectIds
+en los documentos.
+
+41
+00:01:59,380 --> 00:02:01,570
+Y si es necesario, por
+razones de rendimiento o por
+
+42
+00:02:01,570 --> 00:02:04,490
+otras razones, coincidiendo algún
+tipo de consulta que tienes que hacer
+
+43
+00:02:04,490 --> 00:02:07,430
+por tu aplicación, entonces
+puedes embeber datos.
+
+44
+00:02:07,430 --> 00:02:10,410
+Pero te das cuenta que podrías
+estar duplicando algunos datos.
+
+45
+00:02:10,410 --> 00:02:13,070
+Y es lo que te toca como
+programador de aplicaciones para mantener
+
+46
+00:02:13,070 --> 00:02:14,320
+todo actualizado.

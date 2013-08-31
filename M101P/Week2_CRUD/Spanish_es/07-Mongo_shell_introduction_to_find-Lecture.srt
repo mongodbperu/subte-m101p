@@ -1,0 +1,295 @@
+1
+00:00:00,000 --> 00:00:00,120
+
+2
+00:00:00,120 --> 00:00:00,450
+De acuerdo.
+
+3
+00:00:00,450 --> 00:00:02,290
+Hay que aprender algunas cosas
+más generales sobre consultas.
+
+4
+00:00:02,290 --> 00:00:05,860
+Como ya sabes, si ingresas
+"db.people.find" sin
+
+5
+00:00:05,860 --> 00:00:08,260
+argumentos, recuperas todos
+los documentos de la
+
+6
+00:00:08,260 --> 00:00:09,390
+colección "people".
+
+7
+00:00:09,390 --> 00:00:10,990
+En este momento, la colección
+"people" sólo tiene dos
+
+8
+00:00:10,990 --> 00:00:13,770
+documentos, entonces no es
+tan interesante hacerle consultas.
+
+9
+00:00:13,770 --> 00:00:16,300
+Hay que construir una colección
+que contiene mucho más documentos
+
+10
+00:00:16,300 --> 00:00:18,610
+con datos algo más distintos
+para así poder hacer
+
+11
+00:00:18,610 --> 00:00:19,660
+algunas consultas.
+
+12
+00:00:19,660 --> 00:00:22,130
+Aquí tenemos un fragmento de
+JavaScript que contiene
+
+13
+00:00:22,130 --> 00:00:22,840
+un bucle embebido.
+
+14
+00:00:22,840 --> 00:00:27,090
+El bucle externo itera sobre
+"i" desde 0 hasta, pero no
+
+15
+00:00:27,090 --> 00:00:31,790
+incluyendo 1000, y el bucle
+interno itera sobre "j" desde 0
+
+16
+00:00:31,790 --> 00:00:33,210
+hasta, pero no incluyendo 3.
+
+17
+00:00:33,210 --> 00:00:36,080
+Y por cada iteración del bucle, por
+el bucle interno, se inserta un nuevo
+
+18
+00:00:36,080 --> 00:00:38,910
+documento con el campo
+"student" conteniendo el valor
+
+19
+00:00:38,910 --> 00:00:42,890
+de "i", el campo "type"
+conteniendo el valor del
+
+20
+00:00:42,890 --> 00:00:47,025
+elemento del array "names" en la
+posición del valor corriente de "j"
+
+21
+00:00:47,025 --> 00:00:49,730
+y el campo "score", que
+es un número entero
+
+22
+00:00:49,730 --> 00:00:51,650
+entre 0 y 100.
+
+23
+00:00:51,650 --> 00:00:54,100
+En este momento, puedo estar
+seguro de que tengo algunos
+
+24
+00:00:54,100 --> 00:00:56,250
+miles de documentos en la
+colección "scores".
+
+25
+00:00:56,250 --> 00:00:57,670
+Hay que hacer algunas consultas
+para recuperar estos documentos
+
+26
+00:00:57,670 --> 00:00:59,310
+usando el método "find".
+
+27
+00:00:59,310 --> 00:01:02,920
+Como puedes ver, cuando llamas
+a "find" sin argumentos un
+
+28
+00:01:02,920 --> 00:01:05,330
+montón de documentos son
+presentados en la pantalla.
+
+29
+00:01:05,330 --> 00:01:08,180
+Como puedes ver, hay documentos
+para "student" 0 con "type"
+
+30
+00:01:08,180 --> 00:01:10,850
+"exam" y "score" 64.
+
+31
+00:01:10,850 --> 00:01:14,760
+Otro para "student" 0 con
+"type" "essay" y "score" 24.
+
+32
+00:01:14,760 --> 00:01:16,660
+Otro para "student" 0
+con "type" "quiz" y
+
+33
+00:01:16,660 --> 00:01:19,130
+"score" 31, etcétera.
+
+34
+00:01:19,130 --> 00:01:22,020
+En el shell, cuando una consulta
+va a retornar muchos
+
+35
+00:01:22,020 --> 00:01:24,510
+documentos, son
+retornados en tandas.
+
+36
+00:01:24,510 --> 00:01:27,230
+Hay en efecto dos capas de
+selección en tandas, pero
+
+37
+00:01:27,230 --> 00:01:28,640
+puedes simplemente considerar
+que el tamaño de una tanda es
+
+38
+00:01:28,640 --> 00:01:30,400
+aproximadamente 20 por defecto.
+
+39
+00:01:30,400 --> 00:01:32,520
+Para poder navegar por algunos
+de los documentos que son
+
+40
+00:01:32,520 --> 00:01:35,370
+retornados, puedes ingresar "it"
+para visitar más documentos.
+
+41
+00:01:35,370 --> 00:01:38,340
+Eventualmente, esta iteración
+va a agotar todos los documentos
+
+42
+00:01:38,340 --> 00:01:39,990
+que son retornados por la consulta.
+
+43
+00:01:39,990 --> 00:01:42,030
+Pero hay muchos miles de
+documentos para visitar y
+
+44
+00:01:42,030 --> 00:01:44,020
+no me parece que debería
+hacer eso ahora.
+
+45
+00:01:44,020 --> 00:01:47,140
+Es más, durante el
+tiempo en que el shell
+
+46
+00:01:47,140 --> 00:01:50,100
+mantiene esta consulta abierta,
+hay un cursor en el servidor
+
+47
+00:01:50,100 --> 00:01:52,540
+que puede permanecer abierto hasta
+que agotemos todo los documentos 
+
+48
+00:01:52,540 --> 00:01:53,690
+que han sido iterados.
+
+49
+00:01:53,690 --> 00:01:56,290
+En efecto, el servidor cierra
+el cursor después de 10 minutos
+
+50
+00:01:56,290 --> 00:01:58,320
+por defecto, así que no debe
+de haber mucho riesgo de
+
+51
+00:01:58,320 --> 00:02:00,480
+agotar los recursos
+en el lado de servidor.
+
+52
+00:02:00,480 --> 00:02:03,210
+En todo caso, usualmente
+iterar por estos
+
+53
+00:02:03,210 --> 00:02:05,640
+documentos manualmente
+es algo un poco
+
+54
+00:02:05,640 --> 00:02:06,800
+pesado de hacer.
+
+55
+00:02:06,800 --> 00:02:07,740
+Un pequeño consejo.
+
+56
+00:02:07,740 --> 00:02:10,199
+Si quieres ejecutar una consulta
+como esta, te podría interesar
+
+57
+00:02:10,199 --> 00:02:13,330
+incluir al final un método
+llamado "pretty", el cual
+
+58
+00:02:13,330 --> 00:02:14,730
+cambia la manera en que
+el shell imprime los
+
+59
+00:02:14,730 --> 00:02:15,770
+resultados de la consulta--
+
+60
+00:02:15,770 --> 00:02:17,960
+algo más fácil de leer,
+creo que dirías.
+
+61
+00:02:17,960 --> 00:02:20,250
+Aun así, en general, navegar
+a través de conjuntos gigantescos  
+
+62
+00:02:20,250 --> 00:02:21,880
+de resultados es algo
+que nadie hace.
+
+63
+00:02:21,880 --> 00:02:23,130

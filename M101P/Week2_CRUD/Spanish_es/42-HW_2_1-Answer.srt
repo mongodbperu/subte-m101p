@@ -1,0 +1,128 @@
+1
+00:00:00,000 --> 00:00:00,160
+
+2
+00:00:00,160 --> 00:00:04,900
+OK, en este problema, pedíamos
+que trabajaras con la colección
+
+3
+00:00:04,900 --> 00:00:08,930
+"grades.js" y que la importaras 
+en tu instancia de MongoDB.
+
+4
+00:00:08,930 --> 00:00:14,630
+Así que comencemos por hacer eso
+ejecutando "mongoimport -d
+
+5
+00:00:14,630 --> 00:00:21,070
+students -c grades",
+cargando "grades.js".
+
+6
+00:00:21,070 --> 00:00:24,410
+Hicimos eso y nos dice
+que importó 800 objetos.
+
+7
+00:00:24,410 --> 00:00:25,330
+Excelente.
+
+8
+00:00:25,330 --> 00:00:29,570
+Conectémonos a la base de datos
+y hagamos "use students", y luego
+
+9
+00:00:29,570 --> 00:00:32,710
+vamos a hacer
+"show collections".
+
+10
+00:00:32,710 --> 00:00:39,076
+OK, echemos un vistazo a
+"db.grades.find().limit(1).pretty()".
+
+11
+00:00:39,076 --> 00:00:39,510
+Lo imprime
+
+12
+00:00:39,510 --> 00:00:40,900
+bonito.
+
+13
+00:00:40,900 --> 00:00:42,110
+Podemos ver cómo 
+son los datos.
+
+14
+00:00:42,110 --> 00:00:43,530
+Parece que hay
+un "student_id",
+
+15
+00:00:43,530 --> 00:00:45,625
+"type" y "score".
+
+16
+00:00:45,625 --> 00:00:46,020
+Bien.
+
+17
+00:00:46,020 --> 00:00:49,380
+Pedíamos que encontraras el estudiante
+con la puntuación más baja mayor
+
+18
+00:00:49,380 --> 00:00:51,240
+o igual a 65.
+
+19
+00:00:51,240 --> 00:00:53,480
+Por lo que para hacer eso, aquí está
+la consulta, justo aquí.
+
+20
+00:00:53,480 --> 00:00:54,590
+Te la explicaré.
+
+21
+00:00:54,590 --> 00:00:59,080
+Vamos a examinar todo con 
+"type" igual a "exam" y
+
+22
+00:00:59,080 --> 00:01:02,980
+con "score" mayor o 
+igual, usando el operador
+
+23
+00:01:02,980 --> 00:01:04,989
+"$gte", a 65.
+
+24
+00:01:04,989 --> 00:01:08,030
+Entonces vamos a ordenarlo
+ascendentemente por "score" y 
+
+25
+00:01:08,030 --> 00:01:09,560
+vamos a limitarlo a cinco.
+
+26
+00:01:09,560 --> 00:01:13,730
+Hacemos eso y vemos que
+el estudiante que tiene la
+
+27
+00:01:13,730 --> 00:01:19,170
+puntuación más baja mayor o 
+igual a 65 es el "student_id" 22.
+
+28
+00:01:19,170 --> 00:01:23,680
+Y ésa es la respuesta
+a este problema, 22.

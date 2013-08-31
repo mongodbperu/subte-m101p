@@ -1,0 +1,74 @@
+1
+00:00:00,000 --> 00:00:01,960
+Well, it should look something
+like this--
+
+2
+00:00:01,960 --> 00:00:06,220
+db.catalog.find, and then a
+price whose corresponding
+
+3
+00:00:06,220 --> 00:00:11,350
+selector is dollar.gt.10000
+and a reviews.rating whose
+
+4
+00:00:11,350 --> 00:00:14,100
+selector is dollar.gte.5.
+
+5
+00:00:14,100 --> 00:00:16,239
+This will match any document
+where the price field is
+
+6
+00:00:16,239 --> 00:00:20,050
+greater than 10,000 and the
+reviews field contains an
+
+7
+00:00:20,050 --> 00:00:23,020
+embedded document that has a
+rating that's greater than or
+
+8
+00:00:23,020 --> 00:00:24,330
+equal to 5.
+
+9
+00:00:24,330 --> 00:00:27,380
+Now this is a little subtle,
+but the querying inside of
+
+10
+00:00:27,380 --> 00:00:31,760
+arrays that we do is also
+applicable with dot notation.
+
+11
+00:00:31,760 --> 00:00:34,340
+So in this case, even though
+reviews is an array of
+
+12
+00:00:34,340 --> 00:00:37,800
+documents, looking for a rating
+inside of the reviews
+
+13
+00:00:37,800 --> 00:00:41,760
+will also traverse into the
+array in what I hope is an
+
+14
+00:00:41,760 --> 00:00:43,130
+intuitive fashion.
+
+15
+00:00:43,130 --> 00:00:45,220
+This is a fairly common thing
+to do in MongoDB.
+
+16
+00:00:45,220 --> 00:00:46,470

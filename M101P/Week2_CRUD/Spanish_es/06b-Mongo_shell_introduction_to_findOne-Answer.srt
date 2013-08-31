@@ -1,0 +1,66 @@
+1
+00:00:00,000 --> 00:00:00,200
+
+2
+00:00:00,200 --> 00:00:02,050
+Si ingresaste algo como
+esto, lo acertaste.
+
+3
+00:00:02,050 --> 00:00:03,300
+"db.users.findOne".
+
+4
+00:00:03,300 --> 00:00:05,030
+
+5
+00:00:05,030 --> 00:00:07,400
+El primer argumento de "findOne"
+es este documento,
+
+6
+00:00:07,400 --> 00:00:09,710
+donde el campo "username"
+tiene el valor "dwight" y el
+
+7
+00:00:09,710 --> 00:00:13,150
+segundo argumento de "findOne"
+es un documento donde el campo
+
+8
+00:00:13,150 --> 00:00:15,650
+"_id" tiene el valor "false" y
+el campo "email" tiene el valor
+
+9
+00:00:15,650 --> 00:00:16,270
+"true".
+
+10
+00:00:16,270 --> 00:00:20,050
+En efecto, puedes alternativamente
+especificar un "_id" con 
+
+11
+00:00:20,050 --> 00:00:22,990
+el valor "0" y "email" con
+el valor "1".
+
+12
+00:00:22,990 --> 00:00:26,300
+"0 1 1", en este contexto, son
+tratados como análogos a los
+
+13
+00:00:26,300 --> 00:00:27,610
+valores "false" y "true",
+respectivamente.
+
+14
+00:00:27,610 --> 00:00:28,900
+Pero estos detalles dependen
+de tus preferencias.
+
+15
+00:00:28,900 --> 00:00:30,150

@@ -1,0 +1,399 @@
+1
+00:00:00,000 --> 00:00:00,290
+
+2
+00:00:00,290 --> 00:00:01,920
+Abordemos los diccionarios de Python.
+
+3
+00:00:01,920 --> 00:00:02,900
+Los Python "dicts",
+o diccionarios,
+
+4
+00:00:02,900 --> 00:00:06,940
+son muy similares
+a los objetos JSON
+
+5
+00:00:06,940 --> 00:00:07,635
+que vimos antes.
+
+6
+00:00:07,635 --> 00:00:09,680
+Ahora bien, hay algunas pequeñas
+diferencias, y voy a
+
+7
+00:00:09,680 --> 00:00:10,840
+mostrártelas.
+
+8
+00:00:10,840 --> 00:00:13,540
+Inicializas un diccionario
+de la misma manera en que
+
+9
+00:00:13,540 --> 00:00:14,670
+inicializas un objeto.
+
+10
+00:00:14,670 --> 00:00:17,650
+Si deseas crear un pequeño
+diccionario en Python y
+
+11
+00:00:17,650 --> 00:00:21,415
+asignarlo a la variable "a",
+decimos "a =", corchete,
+
+12
+00:00:21,415 --> 00:00:27,430
+Y luego "name:Bob" y
+"age:20".
+
+13
+00:00:27,430 --> 00:00:28,650
+Así funciona.
+
+14
+00:00:28,650 --> 00:00:33,320
+Ahora, una diferencia entre un
+diccionario Python y un documento
+
+15
+00:00:33,320 --> 00:00:37,370
+JSON es que Python no
+conserva ningún orden para
+
+16
+00:00:37,370 --> 00:00:39,080
+los elementos de la lista.
+
+17
+00:00:39,080 --> 00:00:42,700
+Así que no tiene ninguna noción
+que digamos, "name", es una
+
+18
+00:00:42,700 --> 00:00:44,590
+clave que aparece
+antes que "age".
+
+19
+00:00:44,590 --> 00:00:47,300
+Por lo tanto, como resultado, en el
+driver de Python, verás
+
+20
+00:00:47,300 --> 00:00:50,550
+que no utilizan la clase
+exacta de diccionario.
+
+21
+00:00:50,550 --> 00:00:52,100
+Éste usa algo que
+es muy similiar al
+
+22
+00:00:52,100 --> 00:00:55,340
+diccionario, pero conservando el
+orden como es necesario para JSON.
+
+23
+00:00:55,340 --> 00:00:56,970
+Si deseas referenciar algo,
+
+24
+00:00:56,970 --> 00:00:58,040
+utiliza corchetes.
+
+25
+00:00:58,040 --> 00:01:01,260
+Es una notación muy
+similar para las listas.
+
+26
+00:01:01,260 --> 00:01:04,790
+Por ello, si deseas el nombre,
+digo "a", corchete, "name".
+
+27
+00:01:04,790 --> 00:01:06,570
+Ahora si uso esto a la derecha
+de una expresión, estoy
+
+28
+00:01:06,570 --> 00:01:07,570
+obteniendo el "name".
+
+29
+00:01:07,570 --> 00:01:09,200
+Y si lo uso a la izquierda
+de la expresión, estoy
+
+30
+00:01:09,200 --> 00:01:10,620
+por asignándolo a "name".
+
+31
+00:01:10,620 --> 00:01:12,980
+Ahora si digo, esto
+es "Jim", va a ser una
+
+32
+00:01:12,980 --> 00:01:17,320
+asignación y si le digo que
+la variable "b" igual "a" de
+
+33
+00:01:17,320 --> 00:01:19,880
+"name", bueno, si hago esto
+después, entonces voy a
+
+34
+00:01:19,880 --> 00:01:21,520
+asignar "b", "Jim".
+
+35
+00:01:21,520 --> 00:01:24,630
+También puedes eliminar un
+elemento del diccionario
+
+36
+00:01:24,630 --> 00:01:26,130
+de la misma manera en que
+eliminas algo de un array.
+
+37
+00:01:26,130 --> 00:01:30,130
+Puedes usar funciones de "delete",
+dices "delete", "a", "name",
+
+38
+00:01:30,130 --> 00:01:31,470
+y lo eliminará.
+
+39
+00:01:31,470 --> 00:01:33,710
+Bien, esto necesita
+existir para que
+
+40
+00:01:33,710 --> 00:01:35,130
+sea una llamada válida.
+
+41
+00:01:35,130 --> 00:01:37,010
+Y vamos a hablar acerca de cómo
+se comprueba si algo es o no
+
+42
+00:01:37,010 --> 00:01:38,600
+un diccionario.
+
+43
+00:01:38,600 --> 00:01:40,910
+Por eso vamos a una ventana
+de terminal y echemos un vistazo a algunas
+
+44
+00:01:40,910 --> 00:01:42,815
+de las cosas que acabamos de hacer.
+
+45
+00:01:42,815 --> 00:01:45,650
+Voy a crear un diccionario
+con "name", dos puntos,
+
+46
+00:01:45,650 --> 00:01:48,080
+mi nombre, "city_of_birth",
+dos puntos, "Queens".
+
+47
+00:01:48,080 --> 00:01:51,300
+Y ahora, si imprimo
+esa expresión, voy a ver
+
+48
+00:01:51,300 --> 00:01:52,440
+lo que hay allí.
+
+49
+00:01:52,440 --> 00:01:56,210
+Si imprimo "g" de "name",
+obtendré "Andrew Erlichson".
+
+50
+00:01:56,210 --> 00:02:00,260
+Si establezco "g" de "name", igual a
+"Dwight Merriman", entonces eso
+
+51
+00:02:00,260 --> 00:02:02,080
+cambiará mi diccionario.
+
+52
+00:02:02,080 --> 00:02:04,810
+Si quiero saber todas
+las claves que están
+
+53
+00:02:04,810 --> 00:02:07,110
+aquí, puedo llamar "g.keys".
+
+54
+00:02:07,110 --> 00:02:08,300
+Pero mira lo que pasó allí.
+
+55
+00:02:08,300 --> 00:02:09,469
+Eso es lo que mencioné antes.
+
+56
+00:02:09,469 --> 00:02:12,325
+Me dio mi ciudad de nacimiento
+como primera clave--esto
+
+57
+00:02:12,325 --> 00:02:14,750
+es una lista-- y mi
+segunda clave es "name".
+
+58
+00:02:14,750 --> 00:02:16,880
+Esto es el orden opuesto al
+que le pusimos en la lista.
+
+59
+00:02:16,880 --> 00:02:19,190
+Y es por eso que dije que
+Python no conserva el
+
+60
+00:02:19,190 --> 00:02:22,740
+orden de las claves, pero JSON
+sí lo hace--una pequeña sutileza.
+
+61
+00:02:22,740 --> 00:02:25,290
+Si deseas eliminar algo,
+puedo hacer esto.
+
+62
+00:02:25,290 --> 00:02:27,900
+Voy a eliminar "g" que es
+el nombre de la lista,
+
+63
+00:02:27,900 --> 00:02:29,560
+"name", eso está bien.
+
+64
+00:02:29,560 --> 00:02:32,440
+Si elimino un elemento que no está
+allí, eso me da un error.
+
+65
+00:02:32,440 --> 00:02:33,450
+Te voy a mostrar eso.
+
+66
+00:02:33,450 --> 00:02:34,500
+Eso es un error.
+
+67
+00:02:34,500 --> 00:02:37,460
+Sin embargo puedes comprobar, usando
+el operador "in", si una clave
+
+68
+00:02:37,460 --> 00:02:39,830
+en particular está o no
+en el diccionario.
+
+69
+00:02:39,830 --> 00:02:43,920
+Así podría decir, ciudad de nacimiento
+en "g", y es verdad.
+
+70
+00:02:43,920 --> 00:02:46,270
+Si dijera "foo in g",
+eso es falso.
+
+71
+00:02:46,270 --> 00:02:48,900
+Y puedo usar eso exactamente de la
+misma manera que lo usé cuando
+
+72
+00:02:48,900 --> 00:02:50,300
+verifiqué la inclusión en listas.
+
+73
+00:02:50,300 --> 00:02:53,990
+Ahora, notarás que cuando
+uso el operador "in" en una lista,
+
+74
+00:02:53,990 --> 00:02:56,460
+va por cada uno de los
+elementos en la lista y verifica
+
+75
+00:02:56,460 --> 00:02:59,150
+si el valor está o no
+en un elemento de la lista.
+
+76
+00:02:59,150 --> 00:03:02,890
+Cuando utilizo el operador "in" con
+un diccionario, este verifica
+
+77
+00:03:02,890 --> 00:03:06,580
+si el elemento que estoy
+comprobando es una clave en el
+
+78
+00:03:06,580 --> 00:03:07,290
+diccionario.
+
+79
+00:03:07,290 --> 00:03:09,950
+Por lo tanto, busca la ciudad
+de nacimiento como una clave.
+
+80
+00:03:09,950 --> 00:03:12,440
+No lo busca
+en los valores.
+
+81
+00:03:12,440 --> 00:03:16,360
+OK, así que esta es la forma en la
+que los diccionarios funcionan en Python.
+
+82
+00:03:16,360 --> 00:03:18,380
+Hora de un cuestionario.
+
+83
+00:03:18,380 --> 00:03:22,550
+Inicializa un nuevo diccionario
+de Python con nombres y colores con
+
+84
+00:03:22,550 --> 00:03:27,880
+los pares de claves, "sky" es
+"blue", "sea" es "blue",
+
+85
+00:03:27,880 --> 00:03:29,660
+"earth" es "brown".
+
+86
+00:03:29,660 --> 00:03:31,580
+Escribe tu respuesta aquí.

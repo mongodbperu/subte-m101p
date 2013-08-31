@@ -1,0 +1,28 @@
+1
+00:00:00,000 --> 00:00:00,260
+
+2
+00:00:00,260 --> 00:00:00,730
+Así es.
+
+3
+00:00:00,730 --> 00:00:01,840
+La segunda.
+
+4
+00:00:01,840 --> 00:00:05,060
+Las otras tienen desigualdades
+estrictas, no-inclusivas 
+
+5
+00:00:05,060 --> 00:00:08,180
+en un lado o el
+otro y la última
+
+6
+00:00:08,180 --> 00:00:09,430
+ni siquiera tiene un
+límite superior.
+
+7
+00:00:09,430 --> 00:00:10,480

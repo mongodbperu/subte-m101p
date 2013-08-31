@@ -1,0 +1,21 @@
+1
+00:00:00,000 --> 00:00:00,210
+
+2
+00:00:00,210 --> 00:00:00,800
+Así es.
+
+3
+00:00:00,800 --> 00:00:04,330
+El primero y el tercero emparejan
+porque uno contiene la cadena
+
+4
+00:00:04,330 --> 00:00:08,700
+"shiny" dentro del array del
+campo "tags" y el otro tiene
+
+5
+00:00:08,700 --> 00:00:09,950
+la cadena "shiny" como
+valor del campo "tags".

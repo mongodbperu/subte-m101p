@@ -1,0 +1,174 @@
+1
+00:00:00,000 --> 00:00:00,220
+
+2
+00:00:00,220 --> 00:00:03,150
+Aprendamos otro operador
+de consulta, "$" "and".
+
+3
+00:00:03,150 --> 00:00:05,640
+Ocasionalmente, pero no muy
+seguido, podrías querer
+
+4
+00:00:05,640 --> 00:00:08,380
+especificar la conjunción
+lógica de ciertos criterios
+
+5
+00:00:08,380 --> 00:00:10,850
+con un operador
+explícito, "$" "and".
+
+6
+00:00:10,850 --> 00:00:13,450
+Por ejemplo, la consulta que
+está ahora en mi pantalla--
+
+7
+00:00:13,450 --> 00:00:19,552
+"db.people.find" "$" "and" y
+luego un array "name" mayor a
+
+8
+00:00:19,552 --> 00:00:22,170
+ "C", "name" "regx" "A"--
+
+9
+00:00:22,170 --> 00:00:25,050
+debería sólo emparejar con
+los documentos donde "name"
+
+10
+00:00:25,050 --> 00:00:27,610
+empieza pasando la letra
+"C" y contiene la letra
+
+11
+00:00:27,610 --> 00:00:29,280
+"A" en alguna parte.
+
+12
+00:00:29,280 --> 00:00:30,190
+Y ahí lo tenemos.
+
+13
+00:00:30,190 --> 00:00:31,720
+"Charlie", "Dave" y "Edgar".
+
+14
+00:00:31,720 --> 00:00:34,180
+Como dije, este es un operador
+que no se usa frecuentemente
+
+15
+00:00:34,180 --> 00:00:37,470
+porque la mayoría de casos para
+los que podrías utilizar "$" "and"
+
+16
+00:00:37,470 --> 00:00:40,230
+pueden ser también expresados de una
+manera más simple, aprovechando el hecho
+
+17
+00:00:40,230 --> 00:00:43,170
+que puedes poner múltiples restricciones
+para un mismo campo de una manera 
+
+18
+00:00:43,170 --> 00:00:45,170
+más natural. Así:
+
+
+19
+00:00:45,170 --> 00:00:50,590
+"name" dos puntos "$" mayor que
+"C", "regx" "x" "A". Esto tiene
+
+20
+00:00:50,590 --> 00:00:52,860
+el mismo efecto que la
+consulta anterior, pero no
+
+21
+00:00:52,860 --> 00:00:54,570
+requiere el operador "$" "and".
+
+22
+00:00:54,570 --> 00:00:57,040
+En efecto, hay algunas
+diferencias en la implementación
+
+23
+00:00:57,040 --> 00:01:00,170
+de estas dos consulta, respecto
+a cómo MongoDB las ejecuta.
+
+24
+00:01:00,170 --> 00:01:03,180
+Esta consulta no es particularmente
+optimizable de cualquier modo, pero
+
+25
+00:01:03,180 --> 00:01:05,485
+si lo fuese, el segundo ejemplo
+tendría mejor rendimiento
+
+26
+00:01:05,485 --> 00:01:06,920
+que el primero.
+
+27
+00:01:06,920 --> 00:01:09,720
+En todo caso, "$" "and" está
+disponible y simplifica, hasta
+
+28
+00:01:09,720 --> 00:01:10,340
+cierto punto, la
+
+29
+00:01:10,340 --> 00:01:13,340
+construcción de
+consultas dinámicas.
+
+30
+00:01:13,340 --> 00:01:14,840
+Hagamos un cuestionario.
+
+31
+00:01:14,840 --> 00:01:16,035
+Éste es un poco difícil.
+
+32
+00:01:16,035 --> 00:01:17,660
+¿Qué haría la siguiente consulta?
+
+33
+00:01:17,660 --> 00:01:20,790
+Define todos los documentos
+con un "score" entre "50" y "60",
+
+34
+00:01:20,790 --> 00:01:23,750
+encuentra todos los documentos con
+un "score" mayor de "50",
+
+35
+00:01:23,750 --> 00:01:26,970
+encuentra todos los documentos
+con un "score" menor de "60",
+
+36
+00:01:26,970 --> 00:01:29,480
+explota como la "Death Star"--
+al final del episodio 4.6, supongo--
+
+37
+00:01:29,480 --> 00:01:30,730
+¿Ninguno de los anteriores?
+
+38
+00:01:30,730 --> 00:01:31,330

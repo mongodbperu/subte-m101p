@@ -1,0 +1,347 @@
+1
+00:00:00,000 --> 00:00:00,390
+
+2
+00:00:00,390 --> 00:00:02,130
+Hablemos de los cortes de listas.
+
+3
+00:00:02,130 --> 00:00:04,240
+Los cortes de listas te permiten
+acceder a partes de listas.
+
+4
+00:00:04,240 --> 00:00:08,260
+Si tienes una lista "a" y
+deseas obtener parte de la lista,
+
+5
+00:00:08,260 --> 00:00:10,520
+podrías especificar un "inicio:fin".
+
+6
+00:00:10,520 --> 00:00:14,930
+Ahora, el "inicio" es el índice
+de inicio de la lista de donde
+
+7
+00:00:14,930 --> 00:00:16,260
+deseas retornar un valor.
+
+8
+00:00:16,260 --> 00:00:19,890
+Y los índices en las listas
+de Python inician en cero.
+
+9
+00:00:19,890 --> 00:00:22,950
+Y luego "fin" es el valor de fin
+que deseas retornar o
+
+10
+00:00:22,950 --> 00:00:25,360
+el índice de fin, debo
+decir y concluir, que es
+
+11
+00:00:25,360 --> 00:00:27,610
+exclusivo de éste.
+
+12
+00:00:27,610 --> 00:00:32,509
+Por ejemplo, si dices un
+"0:1", sólo te va a dar
+
+13
+00:00:32,509 --> 00:00:35,170
+el primer elemento
+de la lista.
+
+14
+00:00:35,170 --> 00:00:38,000
+Si piensas en ellos así,
+este sería el elemento cero
+
+15
+00:00:38,000 --> 00:00:41,460
+elemento uno, elemento dos,
+elemento tres.
+
+16
+00:00:41,460 --> 00:00:45,620
+Si dices "0:1", vas a
+conseguir del elemento cero
+
+17
+00:00:45,620 --> 00:00:48,400
+hasta el elemento uno,
+pero excluyendo el
+
+18
+00:00:48,400 --> 00:00:50,510
+elemento "uno" ya que
+no lo incluye.
+
+19
+00:00:50,510 --> 00:00:58,310
+Con "0:3", obtienes 0,
+1, 2 y no el tercero.
+
+20
+00:00:58,310 --> 00:01:02,310
+Y un "2:3", te va
+a dar--
+
+21
+00:01:02,310 --> 00:01:04,250
+el elemento cero, el
+primer elemento, el segundo
+
+22
+00:01:04,250 --> 00:01:06,050
+elemento, así te
+dará este elemento.
+
+23
+00:01:06,050 --> 00:01:07,210
+Y entonces no te dará
+este elemento porque
+
+24
+00:01:07,210 --> 00:01:09,340
+no te da el
+punto de fin.
+
+25
+00:01:09,340 --> 00:01:14,230
+Un "2:4", que es el cuarto,
+recuerda que comienzan en cero--
+
+26
+00:01:14,230 --> 00:01:18,530
+0, 1, 2, 3, 4, daremos,
+veamos, 0, 1, 2.
+
+27
+00:01:18,530 --> 00:01:19,840
+Así te dará
+este elemento.
+
+28
+00:01:19,840 --> 00:01:22,470
+Y entonces te daría
+este elemento.
+
+29
+00:01:22,470 --> 00:01:25,160
+Y no te daría este
+elemento porque es exclusivo
+
+30
+00:01:25,160 --> 00:01:28,320
+del punto de fin
+que especifiques.
+
+31
+00:01:28,320 --> 00:01:30,485
+Y lo último que necesitas
+entender acerca de esto es
+
+32
+00:01:30,485 --> 00:01:33,120
+que si dejas de dar un valor,
+al principio o al final,
+
+33
+00:01:33,120 --> 00:01:34,660
+supone el comienzo
+o el final.
+
+34
+00:01:34,660 --> 00:01:40,010
+Por eso si le decimos un "2:",
+va a ser el segundo elemento
+
+35
+00:01:40,010 --> 00:01:41,830
+y todo hasta el
+final de la lista.
+
+36
+00:01:41,830 --> 00:01:45,990
+Si dices un ":4", va a
+ser el inicio de la
+
+37
+00:01:45,990 --> 00:01:49,390
+lista y todo hasta
+el elemento con
+
+38
+00:01:49,390 --> 00:01:51,170
+índice tres.
+
+39
+00:01:51,170 --> 00:01:53,230
+0, 1, 2, 3.
+
+40
+00:01:53,230 --> 00:01:55,120
+Veamos en el shell,
+cómo funciona esto.
+
+41
+00:01:55,120 --> 00:01:58,140
+Tenemos una lista aquí y hemos
+puesto elementos con los
+
+42
+00:01:58,140 --> 00:02:01,075
+mismos valores que sus posiciones
+ordinales dentro de la lista,
+
+43
+00:02:01,075 --> 00:02:02,320
+para hacerlo fácil para nosotros.
+
+44
+00:02:02,320 --> 00:02:05,140
+Vamos a decir a "a", dame
+los elementos desde cero hasta
+
+45
+00:02:05,140 --> 00:02:06,420
+el tercer elemento.
+
+46
+00:02:06,420 --> 00:02:09,289
+Y proporciona 0, 1, 2
+porque, otra vez, es exclusivo
+
+47
+00:02:09,289 --> 00:02:10,639
+del tercer elemento.
+
+48
+00:02:10,639 --> 00:02:16,490
+Un "2:3", provee sólo el
+elemento con índice dos.
+
+49
+00:02:16,490 --> 00:02:19,880
+Si ponemos "2:" pero sin
+un final, ahora esto
+
+50
+00:02:19,880 --> 00:02:21,750
+aplica a todo el resto
+de la lista.
+
+51
+00:02:21,750 --> 00:02:24,750
+Tenemos el resto de la
+lista, 2, 3, 4, 5.
+
+52
+00:02:24,750 --> 00:02:27,720
+Si especificamos el inicio de
+la lista, todo hasta el
+
+53
+00:02:27,720 --> 00:02:30,490
+sexto elemento, ahora no hay
+sexto elemento, por supuesto, es
+
+54
+00:02:30,490 --> 00:02:32,100
+exclusivo del
+sexto elemento.
+
+55
+00:02:32,100 --> 00:02:33,960
+Así que va a
+ser de 0 hasta 5.
+
+56
+00:02:33,960 --> 00:02:35,020
+Y eso está en el inicio
+de la lista.
+
+57
+00:02:35,020 --> 00:02:37,860
+Deberíamos obtener la lista
+completa de vuelta y así es.
+
+58
+00:02:37,860 --> 00:02:40,960
+Y luego, si no le das ni el
+inicio ni el fin, entonces
+
+59
+00:02:40,960 --> 00:02:42,500
+te retorna la lista completa.
+
+60
+00:02:42,500 --> 00:02:44,200
+Tiene mucho
+de sentido lógico.
+
+61
+00:02:44,200 --> 00:02:46,040
+Así es cómo estos
+cortes de listas funcionan.
+
+62
+00:02:46,040 --> 00:02:49,060
+Y son muy útiles porque
+a menudo cuando buscas
+
+63
+00:02:49,060 --> 00:02:52,080
+en Mongo, si traes un
+montón de elementos y decimos que
+
+64
+00:02:52,080 --> 00:02:54,600
+deseabas imprimir el primero
+y deseabas imprimir el resto de
+
+65
+00:02:54,600 --> 00:02:58,060
+la lista, podrías hacerlo muy
+fácilmente usando un operador de corte.
+
+66
+00:02:58,060 --> 00:03:00,480
+Muy bien, ahora es tiempo
+para un cuestionario acerca
+
+67
+00:03:00,480 --> 00:03:02,880
+del operador de corte en Python.
+
+68
+00:03:02,880 --> 00:03:06,560
+Digamos que tenemos la lista
+"apples", "orange", "pear", "grape",
+
+69
+00:03:06,560 --> 00:03:10,750
+"kiwi" y deseamos averiguar
+la notación de corte que
+
+70
+00:03:10,750 --> 00:03:14,110
+retorne la
+sublista "orange", "pear".
+
+71
+00:03:14,110 --> 00:03:15,410
+"orange", "pear".
+
+72
+00:03:15,410 --> 00:03:16,660
+Escríbela aquí mismo.
+
+73
+00:03:16,660 --> 00:03:17,830

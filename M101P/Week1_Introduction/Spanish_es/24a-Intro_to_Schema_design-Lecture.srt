@@ -1,0 +1,243 @@
+1
+00:00:00,000 --> 00:00:00,140
+
+2
+00:00:00,140 --> 00:00:02,530
+Vamos a abordar el diseño de
+esquemas un poco más tarde en
+
+3
+00:00:02,530 --> 00:00:03,550
+este curso,
+
+4
+00:00:03,550 --> 00:00:06,140
+pero quería introducir
+algunas de las preguntas que
+
+5
+00:00:06,140 --> 00:00:10,200
+surgen cuando estás diseñando un
+esquema orientado a documentos.
+
+6
+00:00:10,200 --> 00:00:12,220
+En relacional, es
+bastante sencillo
+
+7
+00:00:12,220 --> 00:00:13,200
+diseñar el esquema.
+
+8
+00:00:13,200 --> 00:00:15,620
+Normalmente buscarás la tercera
+forma normal, y luego quizá
+
+9
+00:00:15,620 --> 00:00:17,080
+combines unas cuantas cosas,
+
+10
+00:00:17,080 --> 00:00:21,410
+pero con MongoDB y diseños
+orientados a documentos, ¿cómo
+
+11
+00:00:21,410 --> 00:00:23,210
+sabes si embeber o no?
+
+12
+00:00:23,210 --> 00:00:25,910
+Por ejemplo, en el esquema sobre
+el que finalmente decidimos
+
+13
+00:00:25,910 --> 00:00:29,810
+este problema, la colección
+"posts" tenía un array "tags"
+
+14
+00:00:29,810 --> 00:00:30,870
+justo en su interior.
+
+15
+00:00:30,870 --> 00:00:34,970
+Y el array de etiquetas tenía nombres
+de etiquetas que potencialmente podrían
+
+16
+00:00:34,970 --> 00:00:37,740
+estar duplicados entre las
+diferentes publicaciones.
+
+17
+00:00:37,740 --> 00:00:41,680
+¿Por qué embeber eso en lugar
+de ponerlo en una colección
+
+18
+00:00:41,680 --> 00:00:42,490
+"tags" separada?
+
+19
+00:00:42,490 --> 00:00:44,310
+Y nos hacemos la misma pregunta
+para los comentarios.
+
+20
+00:00:44,310 --> 00:00:48,540
+¿Por qué los embebimos en lugar de
+tenerlos en una colección separada?
+
+21
+00:00:48,540 --> 00:00:51,730
+Y la respuesta es, porque
+normalmente serán accedidos al
+
+22
+00:00:51,730 --> 00:00:53,850
+mismo tiempo que se accede
+a las publicaciones.
+
+23
+00:00:53,850 --> 00:00:57,200
+Es muy raro que necesites
+acceder a las etiquetas
+
+24
+00:00:57,200 --> 00:01:00,990
+independientemente de las
+publicaciones o acceder
+a los comentarios
+
+25
+00:01:00,990 --> 00:01:04,140
+sin acceder a las
+publicaciones.
+
+26
+00:01:04,140 --> 00:01:07,800
+Y el comentario en sí no 
+aplica a más de una publicación.
+
+27
+00:01:07,800 --> 00:01:09,950
+Ahora, es cierto, en el caso de
+las etiquetas, sí se aplican a
+
+28
+00:01:09,950 --> 00:01:11,740
+varias publicaciones. Tomemos
+"cycling" y "running".
+
+29
+00:01:11,740 --> 00:01:14,910
+Si quisiéramos cambiar la
+palabra "cycling" por "biking" en
+
+30
+00:01:14,910 --> 00:01:18,140
+cada publicación individual, sería
+un poco tedioso porque no están
+
+31
+00:01:18,140 --> 00:01:19,740
+relacionalmente conectadas.
+
+32
+00:01:19,740 --> 00:01:22,210
+Pero éste es un cambio 
+inusual, algo que no
+
+33
+00:01:22,210 --> 00:01:23,440
+vas a hacer todo
+el tiempo.
+
+34
+00:01:23,440 --> 00:01:25,890
+Por lo que tiene más sentido que
+pusieras estas etiquetas directamente
+
+35
+00:01:25,890 --> 00:01:28,130
+dentro de la propia
+colección "posts".
+
+36
+00:01:28,130 --> 00:01:30,420
+Y generalmente, cuando estés
+decidiendo si embeber o
+
+37
+00:01:30,420 --> 00:01:33,130
+no embeber, va a ser la forma
+en que accedas a los datos
+
+38
+00:01:33,130 --> 00:01:35,360
+lo que va a decidir eso,
+junto con algunas otras
+
+39
+00:01:35,360 --> 00:01:36,630
+consideraciones prácticas.
+
+40
+00:01:36,630 --> 00:01:38,720
+Por ejemplo, en MongoDB,
+un documento no puede tener
+
+41
+00:01:38,720 --> 00:01:40,270
+más de 16 megabytes.
+
+42
+00:01:40,270 --> 00:01:43,760
+Por lo que si fueras a tener
+más de 16 megabytes de
+
+43
+00:01:43,760 --> 00:01:46,520
+comentarios, lo cual sería
+extremadamente inusual, entonces
+
+44
+00:01:46,520 --> 00:01:49,000
+tendrías que poner los
+comentarios en una
+
+45
+00:01:49,000 --> 00:01:50,050
+colección separada.
+
+46
+00:01:50,050 --> 00:01:52,390
+Y ahora es el momento
+para un cuestionario.
+
+47
+00:01:52,390 --> 00:01:55,590
+¿En qué escenarios es
+imposible embeber datos
+
+48
+00:01:55,590 --> 00:01:56,600
+dentro de un documento?
+
+49
+00:01:56,600 --> 00:01:59,650
+Es decir, ¿en qué escenarios
+tienes que poner los datos en una
+
+50
+00:01:59,650 --> 00:02:00,720
+colección separada?
+
+51
+00:02:00,720 --> 00:02:01,970
+Marca todas las que apliquen.
+
+52
+00:02:01,970 --> 00:02:02,780

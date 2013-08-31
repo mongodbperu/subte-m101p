@@ -1,0 +1,70 @@
+1
+00:00:00,000 --> 00:00:00,140
+
+2
+00:00:00,140 --> 00:00:03,650
+OK, y la respuesta es seis,
+porque para mostrar una
+
+3
+00:00:03,650 --> 00:00:06,100
+publicación del blog con todos
+sus comentarios y etiquetas, tendrías
+
+4
+00:00:06,100 --> 00:00:08,430
+que acceder a la tabla "posts".
+
+5
+00:00:08,430 --> 00:00:10,660
+Sólo hay un ID de autor aquí, por lo
+que tienes que acceder a la tabla
+
+6
+00:00:10,660 --> 00:00:13,860
+"authors" para recuperar
+el nombre del autor.
+
+7
+00:00:13,860 --> 00:00:15,080
+Tendrías que ir a 
+la tabla "comments"
+
+8
+00:00:15,080 --> 00:00:16,780
+para mostrar los comentarios.
+
+9
+00:00:16,780 --> 00:00:19,390
+Y para saber qué comentarios van
+con cada publicación, tendrías que
+
+10
+00:00:19,390 --> 00:00:21,590
+ir a la tabla "post_comments".
+
+11
+00:00:21,590 --> 00:00:24,010
+Y para saber qué etiquetas
+tienes, tienes que ir a la
+
+12
+00:00:24,010 --> 00:00:26,520
+tabla "post_tags", las
+propias etiquetas
+
+13
+00:00:26,520 --> 00:00:27,790
+están en la tabla "tags".
+
+14
+00:00:27,790 --> 00:00:31,620
+Tendrías que acceder realmente a seis
+tablas para mostrar una publicación
+
+15
+00:00:31,620 --> 00:00:33,170
+del blog en un sistema relacional.
+
+16
+00:00:33,170 --> 00:00:34,420

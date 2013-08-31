@@ -1,0 +1,378 @@
+1
+00:00:00,000 --> 00:00:00,250
+
+2
+00:00:00,250 --> 00:00:02,640
+Hay que aprender un poco más
+sobre operadores de desigualdad
+
+3
+00:00:02,640 --> 00:00:04,460
+en el lenguaje de consulta.
+
+4
+00:00:04,460 --> 00:00:06,160
+Ya hemos visto algunos
+ejemplos donde hacemos
+
+5
+00:00:06,160 --> 00:00:08,870
+consultas de desigualdad
+sobre valores numéricos.
+
+6
+00:00:08,870 --> 00:00:11,240
+Los operadores de desigualdad
+pueden ser también aplicados
+
+7
+00:00:11,240 --> 00:00:12,610
+para comparaciones de cadenas.
+
+8
+00:00:12,610 --> 00:00:14,190
+Agreguemos un par de documentos
+más a la colección "people"
+
+9
+00:00:14,190 --> 00:00:15,810
+para que podamos
+ver cosas de una
+
+10
+00:00:15,810 --> 00:00:17,960
+manera más clara.
+
+11
+00:00:17,960 --> 00:00:22,210
+"db.people" ahora tiene media
+docena de documentos en ella,
+
+12
+00:00:22,210 --> 00:00:23,370
+y cada uno tiene un "name".
+
+13
+00:00:23,370 --> 00:00:24,970
+La comparación de desigualdad--
+
+14
+00:00:24,970 --> 00:00:28,050
+"$gt", "$lt", etcétera--
+
+15
+00:00:28,050 --> 00:00:31,080
+pueden ser aplicadas a cadenas
+así como se aplican a números.
+
+16
+00:00:31,080 --> 00:00:33,280
+La consulta en la pantalla
+recupera todos los documentos
+
+17
+00:00:33,280 --> 00:00:35,980
+de la colección "people"
+donde el campo "name" es
+
+18
+00:00:35,980 --> 00:00:38,820
+lexicográficamente menos que
+la letra mayúscula "D".
+
+19
+00:00:38,820 --> 00:00:41,840
+Y luego igualmente, puedes
+agregar más restricciones, como
+
+20
+00:00:41,840 --> 00:00:45,460
+lexicográficamente más que
+la letra "B". Nota que la
+
+21
+00:00:45,460 --> 00:00:48,000
+cadena "Bob" es lexicográficamente
+
+
+22
+00:00:48,000 --> 00:00:50,630
+mayor que la letra "B" simplemente
+porque es más larga.
+
+23
+00:00:50,630 --> 00:00:52,620
+Un par de notas sobre
+localidades y
+
+24
+00:00:52,620 --> 00:00:54,200
+ordenamiento consciente
+de la localidad.
+
+25
+00:00:54,200 --> 00:00:57,670
+Por ahora, MongoDB no tiene
+conocimiento alguno de localidades.
+
+26
+00:00:57,670 --> 00:01:01,150
+En efecto, las comparaciones que
+hacemos para $ menor que
+
+27
+00:01:01,150 --> 00:01:04,480
+y $ mayor que, etcétera,
+van a ordenar de acuerdo
+
+28
+00:01:04,480 --> 00:01:06,320
+al ordenamiento total de
+
+29
+00:01:06,320 --> 00:01:08,110
+las unidades del código UTF-8.
+
+30
+00:01:08,110 --> 00:01:11,230
+Es decir, de acuerdo a un
+ordenamiento lexicográfico de
+
+31
+00:01:11,230 --> 00:01:14,320
+los bytes en la representación
+UTF-8 de la cadena.
+
+32
+00:01:14,320 --> 00:01:16,840
+Esto es correcto sólo
+en las localidades
+
+33
+00:01:16,840 --> 00:01:18,940
+POSIX o C.
+
+34
+00:01:18,940 --> 00:01:22,670
+Es decir, MongoDB compara y
+ordena cosas de una manera
+
+35
+00:01:22,670 --> 00:01:24,560
+"ASCII-béticamente" correcta.
+
+36
+00:01:24,560 --> 00:01:27,070
+Si pasa que hay una localidad
+para la cual el ordenamiento
+
+37
+00:01:27,070 --> 00:01:30,540
+de cosas siguiendo el orden de
+los bytes en UTF-8 es correcta,
+
+38
+00:01:30,540 --> 00:01:32,850
+entonces MongoDB coincide
+con eso muy bien.
+
+39
+00:01:32,850 --> 00:01:35,640
+Es muy posible que una versión
+futura de MongoDB tenga mejor soporte
+
+40
+00:01:35,640 --> 00:01:38,520
+para ordenamiento consciente de
+localidades, colación, etcétera.
+
+41
+00:01:38,520 --> 00:01:41,240
+Además, es importante
+comprender que MongoDB es,
+
+42
+00:01:41,240 --> 00:01:43,420
+en efecto, una base de
+datos sin esquema.
+
+43
+00:01:43,420 --> 00:01:45,850
+Es decir, que documentos
+diferentes dentro de la misma
+
+44
+00:01:45,850 --> 00:01:48,390
+colección pueden tener
+diferente tipos de valor
+
+45
+00:01:48,390 --> 00:01:49,590
+para el mismo campo.
+
+46
+00:01:49,590 --> 00:01:51,360
+No es un patrón
+recomendado, pero
+
+47
+00:01:51,360 --> 00:01:52,730
+aun así es posible.
+
+48
+00:01:52,730 --> 00:01:55,690
+Por ejemplo, si inserto,
+en la colección "people", un
+
+49
+00:01:55,690 --> 00:01:59,250
+documento donde el campo "name"
+tiene como valor correspondiente
+
+50
+00:01:59,250 --> 00:02:01,690
+el número 42, la base de
+datos está perfectamente
+
+51
+00:02:01,690 --> 00:02:03,020
+feliz de almacenarlo.
+
+52
+00:02:03,020 --> 00:02:06,170
+Ahora, tengo más o menos ocho
+documentos con valores de cadena
+
+53
+00:02:06,170 --> 00:02:09,650
+para el campo "name" y un
+documento con un valor numérico
+
+54
+00:02:09,650 --> 00:02:11,220
+para el campo "name".
+
+55
+00:02:11,220 --> 00:02:15,430
+Todas las operaciones de comparación
+en MongoDB son fuertemente tipadas.
+
+56
+00:02:15,430 --> 00:02:16,800
+y dinámicamente tipadas también.
+
+57
+00:02:16,800 --> 00:02:19,350
+Es decir, si proceso la
+comparación de desigualdad
+
+58
+00:02:19,350 --> 00:02:22,030
+que está en la parte inferior de
+la ventana de mi terminal, sólo
+
+59
+00:02:22,030 --> 00:02:26,480
+veré documentos donde el campo
+"name" es una cadena menor que
+
+60
+00:02:26,480 --> 00:02:28,880
+la letra mayúscula "D"
+y mayor que la letra
+
+61
+00:02:28,880 --> 00:02:32,360
+mayúscula "B". Y no veré ningún
+documento donde el campo "name"
+
+62
+00:02:32,360 --> 00:02:36,100
+tiene el valor numérico "42" o
+cualquier otro valor numérico.
+
+63
+00:02:36,100 --> 00:02:39,630
+Es decir, este tipo de
+comparaciones, comparaciones
+
+
+64
+00:02:39,630 --> 00:02:42,700
+de rango, no cruzan
+tipos de datos.
+
+65
+00:02:42,700 --> 00:02:44,630
+Entonces si aprovechas
+el polimorfismo de MongoDB
+
+66
+00:02:44,630 --> 00:02:47,380
+almacenando diferentes
+tipos de datos para los
+
+67
+00:02:47,380 --> 00:02:48,640
+mismos campos--
+
+68
+00:02:48,640 --> 00:02:51,140
+lo cual, por cierto, no es un
+patrón recomendado--
+
+69
+00:02:51,140 --> 00:02:53,330
+pero si te aprovechas
+de ello, tienes
+
+70
+00:02:53,330 --> 00:02:57,010
+que comprender que las
+comparaciones de este
+
+
+71
+00:02:57,010 --> 00:02:58,270
+tipo no cruzan los límites
+de tipos de datos.
+
+72
+00:02:58,270 --> 00:03:01,160
+En efecto, si quieres recuperar
+documentos donde "name"
+
+73
+00:03:01,160 --> 00:03:04,530
+está en cierto rango
+lexicográfico de cadenas
+
+74
+00:03:04,530 --> 00:03:08,120
+o en cierto rango numérico de
+números, tendrías que utilizar
+
+75
+00:03:08,120 --> 00:03:09,940
+una sintaxis de consulta más
+complicada, la cual visitaremos
+
+76
+00:03:09,940 --> 00:03:12,450
+en una sección subsecuente.
+
+77
+00:03:12,450 --> 00:03:14,090
+Hagamos un cuestionario.
+
+78
+00:03:14,090 --> 00:03:16,870
+¿Cuál de las siguientes encuentra
+todos los usuarios con un "username"
+
+79
+00:03:16,870 --> 00:03:18,150
+entre "F" y "Q"?
+
+80
+00:03:18,150 --> 00:03:19,400
