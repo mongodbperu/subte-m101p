@@ -3,7 +3,7 @@
 
 2
 00:00:00,210 --> 00:00:04,000
-Vamos a repasar algunas de características
+Vamos a repasar algunas características
 internas del proyecto de blog.
 
 3
@@ -173,7 +173,7 @@ no necesitas usarlo.
 
 39
 00:01:25,540 --> 00:01:27,660
-No necesitar usar PyCharm.
+No necesitas usar PyCharm.
 
 40
 00:01:27,660 --> 00:01:32,460
@@ -417,7 +417,7 @@ en realidad un archivo HTML.
 91
 00:03:29,420 --> 00:03:33,330
 Pero hay lugares en particular
-donde Bootle realizará
+donde Bottle realizará
 
 92
 00:03:33,330 --> 00:03:35,230
@@ -689,7 +689,7 @@ tenemos aún aquí.
 
 149
 00:05:45,510 --> 00:05:47,680
-Y también haay un
+Y también hay un
 objeto DAO faltante.
 
 150
