@@ -3,252 +3,253 @@
 
 2
 00:00:00,260 --> 00:00:03,810
-Now we're going to return to
-building our blog, the project
+Ahora vamos de nuevo a la
+construcción de nuestro blog,
 
 3
 00:00:03,810 --> 00:00:05,720
-that we're going to be
-doing in this class.
+el proyecto que vamos a
+hacer en esta clase.
 
 4
 00:00:05,720 --> 00:00:08,460
-For this week's homework
-assignment you're going to be
+Para la tarea de
+esta semana, vas a
 
 5
 00:00:08,460 --> 00:00:10,130
-completing the user
-registration
+completar las partes
+del registro de usuarios
 
 6
 00:00:10,130 --> 00:00:11,545
-parts of the blog.
+del blog.
 
 7
 00:00:11,545 --> 00:00:14,460
-And I want to take you through
-how those should work when
+Y quiero llevarte a ver
+cómo debiera funcionar cuando
 
 8
 00:00:14,460 --> 00:00:15,600
-it's complete.
+esté terminado.
 
 9
 00:00:15,600 --> 00:00:17,060
-And we're going to give
-you all the user
+Y vamos a darte
+toda la interfaz de
 
 10
 00:00:17,060 --> 00:00:17,920
-interface for this.
+usuario para esto.
 
 11
 00:00:17,920 --> 00:00:21,280
-So it's just going to be a
-matter of putting in a few
+Por lo que sólo va a ser
+cuestión de poner algunos
 
 12
 00:00:21,280 --> 00:00:25,070
-Mongo commands into the code
-to get it all working.
+comandos de MongoDB en el código
+para ponerlo en marcha.
 
 13
 00:00:25,070 --> 00:00:27,870
-So we're going to go through
-author registration.
+Así que si vamos a ir
+hacia el registro de autor.
 
 14
 00:00:27,870 --> 00:00:30,230
-An author, in order to write on
-our blog, is going to have
+Un autor, para que pueda escribir
+en nuestro blog, va a tener que
 
 15
 00:00:30,230 --> 00:00:31,300
-to register.
+registrarse.
 
 16
 00:00:31,300 --> 00:00:35,330
-And we're going to go through
-user login and author login to
+Y vamos a ir al ingreso de
+usuario e ingreso de autor para
 
 17
 00:00:35,330 --> 00:00:38,780
-validate that they're allowed to
-login with their password,
+validar que ellos están permitidos
+para acceder con sus contraseñas,
 
 18
 00:00:38,780 --> 00:00:40,520
-and logout.
+y cerrar sesión.
 
 19
 00:00:40,520 --> 00:00:43,120
-And I'm going to show you how
-those functions work.
+Y voya mostrarte cómo
+estás funciones trabajan.
 
 20
 00:00:43,120 --> 00:00:47,520
-And then after that I'll give
-you a tour of the code.
+Y luego de eso voy a dar
+un recorrido por el código.
 
 21
 00:00:47,520 --> 00:00:53,410
-So I'm going to run the code by
-typing python blog dot py
+Así que voy a ejecutar el código
+escribiendo "python blog.py"
 
 22
 00:00:53,410 --> 00:00:55,130
-and running the server.
+e iniciar el servidor.
 
 23
 00:00:55,130 --> 00:00:58,570
-And now I'm going to go
-to the web browser.
+Y ahora voy al
+navegador web.
 
 24
 00:00:58,570 --> 00:01:03,110
-And I'm going to just go to
-local hosts and hit return,
+Voy a ir a "localhost"
+y presiono "Enter",
 
 25
 00:01:03,110 --> 00:01:05,750
-see what I see.
+ves lo que veo.
 
 26
 00:01:05,750 --> 00:01:08,040
-And it says, this is the
-placeholder for the blog.
+Y dice, "this is the
+placeholder for the blog".
 
 27
 00:01:08,040 --> 00:01:10,500
-There aren't very many URLs that
-are going to be defined.
+No hay muchas URLs
+que se van a definir.
 
 28
 00:01:10,500 --> 00:01:14,870
-But one of them is going
-to be signup.
+Pero uno de ellos va a
+ser para el registro.
 
 29
 00:01:14,870 --> 00:01:18,260
-And if you want to sign up for
-the blog, you go to this URL
+Y si deseas registrarte en
+el blog, vas a esta URL
 
 30
 00:01:18,260 --> 00:01:20,240
-and you'll type the name.
+y escribirás el nombre.
 
 31
 00:01:20,240 --> 00:01:24,980
-I'm going to put in "erlichson."
-And then I'll
+Estoy poniendo "erlichson".
+Y luego voy a
 
 32
 00:01:24,980 --> 00:01:28,760
-just give a password of "fubar,"
-something very
+dar una contraseña "fubar",
+algo muy simple,
 
 33
 00:01:28,760 --> 00:01:31,990
-simple, and then leave
-out my email.
+y luego dejo mi
+correo electrónico.
 
 34
 00:01:31,990 --> 00:01:33,610
-And then I'm going to submit.
+Y entonces lo envío.
 
 35
 00:01:33,610 --> 00:01:37,180
-You'll notice the URL
-is currently signup.
+Notarás que la URL
+actual es "signup".
 
 36
 00:01:37,180 --> 00:01:41,020
-And then I get redirected
-to a welcome page.
+Y luego me redirecciona
+a la página de bienvenida.
 
 37
 00:01:41,020 --> 00:01:43,260
-And it says, "Welcome
-erlichson." And then it says I
+Y dice, "Welcome erlichson".
+Y luego dice que
 
 38
 00:01:43,260 --> 00:01:45,490
-can go to my blog home or
-I can logout or I can
+puedo ir al incio de mi blog
+o puedo cerrar sesión o puedo
 
 39
 00:01:45,490 --> 00:01:46,540
-create a new post.
+crear un nuevo post.
 
 40
 00:01:46,540 --> 00:01:47,890
-Create a new post won't work,
-because we haven't
+Crear un nuevo post no funcionará,
+porque aún no lo hemos
 
 41
 00:01:47,890 --> 00:01:49,160
-implemented that yet.
+implementado.
 
 42
 00:01:49,160 --> 00:01:50,510
-Logout will work fine.
+Cerrar sesión funcionará bien.
 
 43
 00:01:50,510 --> 00:01:53,790
-In fact, why don't we log out?
+En efecto, ¿por qué no
+cerramos sesión?
 
 44
 00:01:53,790 --> 00:01:56,440
-And now it brings us
-back to this page.
+Y ahora nos trae de
+regreso a esta página.
 
 45
 00:01:56,440 --> 00:02:01,260
-And if I click on Login, it
-brings me back to this page.
+Y si haces clic en "Login",
+me trae de nuevo a esta página.
 
 46
 00:02:01,260 --> 00:02:04,390
-And I'm just going to type my
-username and password again.
+Y voy a escribir mi nombre de
+usuario y contraseña de nuevo.
 
 47
 00:02:04,390 --> 00:02:08,729
-And that sends me back
-to this page.
+Y eso me regresa
+a esta página.
 
 48
 00:02:08,729 --> 00:02:10,120
-So that's the way it works.
+Esta es la forma en que funciona.
 
 49
 00:02:10,120 --> 00:02:12,060
-That's all it's supposed
-to do at this point.
+Eso es todo lo que se supone
+que hace en este momento.
 
 50
 00:02:12,060 --> 00:02:14,990
-So what did it do behind the
-scenes, and how does it work?
+Entonces, ¿qué es lo que ocurre "por
+detrás" y cómo funciona?
 
 51
 00:02:14,990 --> 00:02:17,750
-We're going to get to that in
-some of these next sections.
+Vamos a esto en algunas
+de las siguientes secciones.
 
 52
 00:02:17,750 --> 00:02:19,200
-So we'll start there.
+Vamos a empezar por ahí.
 
 53
 00:02:19,200 --> 00:02:21,520
-And then we'll do another
-section to show you some of
+Y luego vamos a hacer otra
+sección para mostrarte algunos de
 
 54
 00:02:21,520 --> 00:02:22,770
-the underpinnings.
+los fundamentos.
 
 55
 00:02:22,770 --> 00:02:23,640
