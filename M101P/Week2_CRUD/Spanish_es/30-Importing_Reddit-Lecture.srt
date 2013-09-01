@@ -14,7 +14,7 @@ podamos hacer algunas consultas.
 4
 00:00:05,910 --> 00:00:08,260
 Y el motivo por el que estoy haciendo esto en
-realidad es mostrar lo fácil 
+realidad es para mostrar lo fácil 
 
 5
 00:00:08,260 --> 00:00:11,360
@@ -99,7 +99,7 @@ antes de grabar esto.
 22
 00:00:51,530 --> 00:00:54,310
 Así que le eché un vistazo a la estructura
-y parecía un
+y lucía como un
 
 23
 00:00:54,310 --> 00:00:55,890
@@ -187,11 +187,11 @@ llamada "stories".
 41
 00:01:36,910 --> 00:01:41,360
 Luego leo la página de inicio de Reddit
-usando urllib2, que
+usando "urllib2", que
 
 42
 00:01:41,360 --> 00:01:44,750
-es algo que puedes instalar en
+es algo que puedes importar en
 Python si lo tienes instalado.
 
 43
@@ -206,7 +206,7 @@ reddit.com, la URL de
 
 45
 00:01:50,460 --> 00:01:53,410
-tecnología con .json concatenado.
+tecnología con ".json" concatenado.
 
 46
 00:01:53,410 --> 00:01:55,910
@@ -383,7 +383,7 @@ que estaba en la página de inicio de
 83
 00:03:30,160 --> 00:03:33,110
 Reddit en su página de
-teconología.
+tecnología.
 
 84
 00:03:33,110 --> 00:03:34,520
@@ -434,8 +434,8 @@ usando básicamente un par de
 
 94
 00:04:01,880 --> 00:04:05,690
-bibliotecas, urllib2 para capturar la
-URL, una biblioteca JSON para analizarla
+bibliotecas, "urllib2" para capturar la
+URL, una biblioteca "json" para analizarla
 
 95
 00:04:05,690 --> 00:04:08,380
