@@ -8,7 +8,7 @@ OK.
 3
 00:00:00,710 --> 00:00:02,310
 Así que ahora que hemos aprendido
-las operaciones básicos CRUD
+las operaciones básicas CRUD
 
 4
 00:00:02,310 --> 00:00:04,090
@@ -69,7 +69,7 @@ digamos "Smith".
 16
 00:00:32,780 --> 00:00:35,810
 Bueno, tengo razones para creer
-que un documento será insertado.
+que un documento fue insertado.
 
 17
 00:00:35,810 --> 00:00:37,000
@@ -111,7 +111,7 @@ ninguna operación que falla.
 
 25
 00:00:55,410 --> 00:00:57,400
-Ésto fue un poco de
+Esto fue un poco de
 mala previsión.
 
 26
@@ -274,8 +274,8 @@ nombre "Thompson", si existe o
 
 59
 00:02:20,340 --> 00:02:23,220
-sino que cree un documento con
-nombre "Thompson" y título
+de lo contrario que cree un documento
+con nombre "Thompson" y título
 
 60
 00:02:23,220 --> 00:02:25,330
@@ -289,7 +289,7 @@ Después de tal "upsert",
 62
 00:02:28,270 --> 00:02:31,700
 que no fue actualizado ningún
-documento existente, pero que en
+documento existente, pero que
 
 63
 00:02:31,700 --> 00:02:35,470
