@@ -3,7 +3,7 @@
 
 2
 00:00:00,210 --> 00:00:02,230
-De acuerdo, ya que he creado
+De acuerdo, ya he creado
 un usuario en el blog.
 
 3
@@ -55,7 +55,7 @@ colecciones.
 
 13
 00:00:30,040 --> 00:00:31,650
-Y voy a ver
+Y vas a ver
 tres colecciones--
 
 14
@@ -130,7 +130,7 @@ utilidad para cookies.
 
 29
 00:01:11,530 --> 00:01:13,780
-Y haces clic en él,
+Y si haces clic en él,
 podrás ver el cookie que mi
 
 30
@@ -192,7 +192,7 @@ blog, y por supuesto,
 
 42
 00:01:48,130 --> 00:01:50,780
-utiliza Bootle para tomar
+utiliza Bottle para tomar
 las peticiones HTTP.
 
 43
@@ -207,7 +207,7 @@ utilizando PyMongo a MongoDB.
 45
 00:01:58,020 --> 00:02:03,010
 Y se presenta este identificador
-de sessión, este "SessionID",
+de sesión, este "SessionID",
 
 46
 00:02:03,010 --> 00:02:05,430
@@ -341,7 +341,7 @@ la página de bienvenida.
 
 73
 00:03:20,950 --> 00:03:25,250
-Y así es esto un ida y vuelta
+Y así es esto una ida y vuelta
 porque el navegador obtiene una
 
 74
