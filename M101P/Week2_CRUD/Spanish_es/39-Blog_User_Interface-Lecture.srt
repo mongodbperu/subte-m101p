@@ -83,8 +83,8 @@ y cerrar sesión.
 
 19
 00:00:40,520 --> 00:00:43,120
-Y voya mostrarte cómo
-estás funciones trabajan.
+Y voy a mostrarte cómo
+estas funciones trabajan.
 
 20
 00:00:43,120 --> 00:00:47,520
@@ -116,8 +116,8 @@ ves lo que veo.
 
 26
 00:01:05,750 --> 00:01:08,040
-Y dice, "this is the
-placeholder for the blog".
+Y dice, "This is a place
+holder for the blog".
 
 27
 00:01:08,040 --> 00:01:10,500
@@ -126,7 +126,7 @@ que se van a definir.
 
 28
 00:01:10,500 --> 00:01:14,870
-Pero uno de ellos va a
+Pero una de ellas va a
 ser para el registro.
 
 29
@@ -160,7 +160,7 @@ Y entonces lo envío.
 35
 00:01:33,610 --> 00:01:37,180
 Notarás que la URL
-actual es "signup".
+actual es "/signup".
 
 36
 00:01:37,180 --> 00:01:41,020
