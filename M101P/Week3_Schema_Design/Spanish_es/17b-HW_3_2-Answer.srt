@@ -164,7 +164,7 @@ que había que hacer.
 
 36
 00:01:42,100 --> 00:01:44,810
-Y si haces estos cambio,
+Y si haces estos cambios,
 entonces el blog
 
 37
