@@ -3,173 +3,173 @@
 
 2
 00:00:00,170 --> 00:00:03,600
-In this assignment, we asked you
-to modify the code so that
+En esta tarea, te pedimos
+modificar el código para que
 
 3
 00:00:03,600 --> 00:00:06,260
-the blog will accept posts.
+el blog acepte posts.
 
 4
 00:00:06,260 --> 00:00:09,220
-And I want to take you through
-how you do that.
+Y deseo mostrarte
+cómo hacer eso.
 
 5
 00:00:09,220 --> 00:00:16,600
-All the changes happen in the
-BlogPostDAO.py file, which I
+Todos lo cambios están en el
+archivo BlogPostDAO.py, que
 
 6
 00:00:16,600 --> 00:00:19,000
-have up in front of you here.
+tengo frente a ti.
 
 7
 00:00:19,000 --> 00:00:23,300
-And the first one is
-in insert_entry.
+Y el primero está
+en "insert_entry".
 
 8
 00:00:23,300 --> 00:00:26,640
-So in insert_entry you need
-to insert the post.
+Así que en "insert_entry" necesitas
+insertar el post.
 
 9
 00:00:26,640 --> 00:00:29,220
-And the line that was missing
-is right here.
+Y la línea que faltaba
+está justo aquí.
 
 10
 00:00:29,220 --> 00:00:30,470
-You need to call
-self.posts.inset(post).
+Necesitas llamar a
+"self.posts.insert(post)".
 
 11
 00:00:30,470 --> 00:00:33,490
 
 12
 00:00:33,490 --> 00:00:36,170
-And we built the post
-for you over here.
+Y hemos construido el post
+para ti aquí.
 
 13
 00:00:36,170 --> 00:00:38,370
-So you just needed
-to insert it.
+Por lo que sólo necesitas
+insertarlo.
 
 14
 00:00:38,370 --> 00:00:39,940
-That's all there was to that.
+Eso es todo lo que había que hacer.
 
 15
 00:00:39,940 --> 00:00:41,580
-Now to get the posts--
+Ahora para obtener los posts--
 
 16
 00:00:41,580 --> 00:00:44,790
-for instance, for the
-blog home page--
+por ejemplo, para la
+página de inicio del blog--
 
 17
 00:00:44,790 --> 00:00:50,780
-you needed to add this line
-and call self.posts.find.
+necesitas añadir esta línea
+que llama a "self.posts.find".
 
 18
 00:00:50,780 --> 00:00:56,040
-But you needed to sort them by
-the date descending and limit
+Pero necesitas ordenarlos por
+la fecha descendentemente y limitarlos
 
 19
 00:00:56,040 --> 00:00:59,610
-them by the number of posts,
-which get called with 10.
+por el número de posts,
+que será llamado con 10.
 
 20
 00:00:59,610 --> 00:01:02,260
-You have to call it with
-a limit as well.
+Tienes que llamarlo también
+con un límite.
 
 21
 00:01:02,260 --> 00:01:07,160
-And this type of way of
-specifying a sort is an
+Y esta manera de
+especificar el orden es una
 
 22
 00:01:07,160 --> 00:01:09,730
-alternative way to
-specifying it.
+manera alternativa
+para hacerlo.
 
 23
 00:01:09,730 --> 00:01:12,300
-Instead of using tuples,
-you can do it like this
+En lugar de usar tuplas,
+puedes también hacerlo así
 
 24
 00:01:12,300 --> 00:01:13,700
-in Python as well.
+en Python.
 
 25
 00:01:13,700 --> 00:01:16,030
-And I thought that was
-a little bit easier.
+Y pensé que era
+un poco más fácil.
 
 26
 00:01:16,030 --> 00:01:16,760
-All right.
+Muy bien.
 
 27
 00:01:16,760 --> 00:01:20,650
-So the last place that you need
-to make a change is in
+Así que el último lugar que
+necesitas hacer un cambio es en
 
 28
 00:01:20,650 --> 00:01:23,680
-this code over here,
-get_post_by_permalink.
+este código por aquí,
+"get_post_by_permalink".
 
 29
 00:01:23,680 --> 00:01:25,730
-And in this case, you
-just need to call
+Y en este caso,
+sólo necesitas llamar a
 
 30
 00:01:25,730 --> 00:01:29,390
-self.posts.find_one
-right here.
+"self.posts.find_one"
+justo aquí.
 
 31
 00:01:29,390 --> 00:01:33,600
-And you to specify that the
-permalink is the same as the
+Y especificar el enlace
+permanente que es el mismo que el
 
 32
 00:01:33,600 --> 00:01:34,970
-permalink that was sent in.
+enlace permanente que fue enviado.
 
 33
 00:01:34,970 --> 00:01:37,830
-So this is the permalink key,
-and this is the value.
+Así que esta es la clave
+"permalink", y este es el valor.
 
 34
 00:01:37,830 --> 00:01:39,750
-And this is the variable,
-permalink.
+Y esta es la variable
+"permalink".
 
 35
 00:01:39,750 --> 00:01:42,100
-And that's all there
-was to that.
+Y eso es todo lo
+que había que hacer.
 
 36
 00:01:42,100 --> 00:01:44,810
-And if you make those
-changes, then the
+Y si haces estos cambios,
+entonces el blog
 
 37
 00:01:44,810 --> 00:01:46,270
-blog will accept posts.
+aceptará posts.
 
 38
 00:01:46,270 --> 00:01:47,520

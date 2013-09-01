@@ -3,221 +3,221 @@
 
 2
 00:00:00,120 --> 00:00:02,710
-In this second homework
-assignment, you're going to be
+En esta segunda tarea,
+vas a trabajar
 
 3
 00:00:02,710 --> 00:00:04,900
-working on our blog
-project again.
+en nuestro proyecto de blog
+otra vez.
 
 4
 00:00:04,900 --> 00:00:08,650
-Now, this time, you're going to
-be adding the insertion and
+Ahora, esta vez, vas a
+añadir la inserción y
 
 5
 00:00:08,650 --> 00:00:11,900
-retrieval of the posts from the
-posts collection so that
+la recuperación de los posts
+de la colección de posts para
 
 6
 00:00:11,900 --> 00:00:14,880
-it can show posts and
-take new posts.
+que pueda mostrarlos y
+crear nuevos.
 
 7
 00:00:14,880 --> 00:00:18,450
-So here I have the finished
-version running.
+Así que aquí tengo la
+versión terminada ejecutándose.
 
 8
 00:00:18,450 --> 00:00:22,710
-And I am going to create
-a new account on it.
+Y voy a crear
+una nueva cuenta en ella.
 
 9
 00:00:22,710 --> 00:00:25,840
-And now I'm going to
-create a blog post.
+Y ahora voy a
+crear un post.
 
 10
 00:00:25,840 --> 00:00:28,940
-And this is what yours is
-going to have to do.
+Y esto es lo que tú
+vas a tener que hacer.
 
 11
 00:00:28,940 --> 00:00:31,730
-And I'm going to create my
-first blog post here.
+Voy a crear mi
+primer post aquí.
 
 12
 00:00:31,730 --> 00:00:34,620
-And this is the body
-of my post.
+Y este es el cuerpo
+de mi post.
 
 13
 00:00:34,620 --> 00:00:36,920
-I'm going to add some tags.
+Voy a añadir algunas etiquetas.
 
 14
 00:00:36,920 --> 00:00:38,720
-And now I'm going
-to submit it.
+Y ahora voy
+a enviarlo.
 
 15
 00:00:38,720 --> 00:00:42,210
-And it's going to bring
-to the permalink for
+Y me traerá al
+enlace permanente para
 
 16
 00:00:42,210 --> 00:00:43,280
-this post right here.
+este post de aquí.
 
 17
 00:00:43,280 --> 00:00:47,250
-This is my blog post posted
-here, by me is the body of my
+Este es mi post publicado aquí,
+hecho por mí, este es el cuerpo de
 
 18
 00:00:47,250 --> 00:00:49,590
-post posted under
-foo, bar, baz.
+mi post publicado con las
+etiquetas "foo", "bar" y "baz".
 
 19
 00:00:49,590 --> 00:00:52,475
-And now I'm going to go
-to the blog home.
+Y ahora voy
+al inicio del blog.
 
 20
 00:00:52,475 --> 00:00:54,185
-It's going to show that post.
+Va a mostrarte este post.
 
 21
 00:00:54,185 --> 00:00:57,460
-If I want to create another
-post, I can do that.
+Si deseas crear otro
+post, puedes hacerlo.
 
 22
 00:00:57,460 --> 00:01:01,130
-My second post, I'll
-make that bigger.
+Mi segundo post, voy
+a hacerlo más grande.
 
 23
 00:01:01,130 --> 00:01:05,730
-And now I'm going to
-submit it again.
+Y lo envío
+de nuevo.
 
 24
 00:01:05,730 --> 00:01:08,170
-And now I'm going to go
-to the blog home.
+Ahora voy al
+inicio del blog.
 
 25
 00:01:08,170 --> 00:01:10,410
-And you can see this
-is the blog home.
+Y puedes ver que este
+es el inicio del blog.
 
 26
 00:01:10,410 --> 00:01:11,880
-So the URLs that
-you need to get
+Así que las URLs que
+necesitas tener para
 
 27
 00:01:11,880 --> 00:01:13,580
-working for this homework--
+trabajar en esta tarea--
 
 28
 00:01:13,580 --> 00:01:15,730
-and we're going to leave the UI
-in so you just need to do
+y vamos a dejarte la interfaz de usuario
+por lo que sólo necesitas hacer
 
 29
 00:01:15,730 --> 00:01:17,330
-the Mongo parts of it--
+las partes que conectan a Mongo--
 
 30
 00:01:17,330 --> 00:01:20,720
-is that you have to allow the
-person to create a new post.
+es que tienes que permitir
+crear un nuevo post.
 
 31
 00:01:20,720 --> 00:01:22,230
-And you have to allow
-the viewer to
+Y tienes que permitir
+al visitante
 
 32
 00:01:22,230 --> 00:01:23,930
-see the list of posts.
+ver la lista de posts.
 
 33
 00:01:23,930 --> 00:01:27,360
-And this gets the last
-10 most recent posts.
+Y esto da los 10
+posts más recientes.
 
 34
 00:01:27,360 --> 00:01:30,110
-You can search for XXX again
-inside the code to find the
+Puedes buscar "XXX" otra vez
+en el código para encontrar las
 
 35
 00:01:30,110 --> 00:01:31,650
-parts you need to work on.
+partes en las que se necesita trabajar.
 
 36
 00:01:31,650 --> 00:01:35,520
-And then, if you click on one of
-these links for the post--
+Y luego, si haces clic en uno de
+esos enlaces para el post--
 
 37
 00:01:35,520 --> 00:01:36,530
-this is the most recent post.
+este el post más reciente.
 
 38
 00:01:36,530 --> 00:01:39,350
-I'm going to click on the title
-of this right here.
+Voy a hacer clic en el título
+de este post de aquí.
 
 39
 00:01:39,350 --> 00:01:41,400
-Then it's going to bring
-me to the permalink.
+Entonces me va a llevar
+al enlace permanente.
 
 40
 00:01:41,400 --> 00:01:44,390
-So it says, my second post is
-the permalink in the URL.
+Por lo que dice, "My second post"
+en el enlace permanente en la URL.
 
 41
 00:01:44,390 --> 00:01:46,770
-And again, this part's all
-implemented already.
+Y de nuevo, toda esta parte
+ya está implementada.
 
 42
 00:01:46,770 --> 00:01:49,280
-And that permalink's going to
-show you the body of the post.
+Y ese enlace te va a
+mostrar el cuerpo del post.
 
 43
 00:01:49,280 --> 00:01:52,310
-And there's this UI stuff to
-allow you to add a comment.
+Y hay estas cosas de la interfaz de usuario
+para que te permita añadir un comentario.
 
 44
 00:01:52,310 --> 00:01:54,860
-But we're not going to worry
-about that for this homework.
+Pero no nos vamos a preocupar
+por eso para esta tarea.
 
 45
 00:01:54,860 --> 00:01:57,870
-That's the next homework, to
-worry about the comments.
+Esa es la siguiente tarea, donde
+nos preocuparemos por los comentarios.
 
 46
 00:01:57,870 --> 00:02:00,110
-And that's what you have to
-get running for the second
+Y eso es lo que tienes que
+conseguir para la segunda
 
 47
 00:02:00,110 --> 00:02:01,360
-homework this week.
+tarea de esta semana.
