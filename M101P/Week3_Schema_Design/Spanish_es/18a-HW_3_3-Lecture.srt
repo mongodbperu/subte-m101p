@@ -3,140 +3,140 @@
 
 2
 00:00:00,130 --> 00:00:01,950
-In the third homework this
-week, you're going to
+En la tercera tarea de esta
+semana, vas a
 
 3
 00:00:01,950 --> 00:00:03,190
-implement comments.
+implementar los commentarios.
 
 4
 00:00:03,190 --> 00:00:06,620
-So you're just going to extend
-the system that you wrote to
+Así que vas a extender
+el sistema que escribiste para
 
 5
 00:00:06,620 --> 00:00:08,990
-permit a person to comment
-on the blog post.
+permitir que una persona
+comente en un post.
 
 6
 00:00:08,990 --> 00:00:12,480
-So if you click on a post,
-you'll go to the permalink
+Así que si haces clic en un post,
+irás al enlace permanente
 
 7
 00:00:12,480 --> 00:00:13,580
-page for the post.
+de la página del post.
 
 8
 00:00:13,580 --> 00:00:15,550
-And it says my second post.
+Y esto dice "My second post".
 
 9
 00:00:15,550 --> 00:00:19,870
-And then the person should be
-able to add a name, and
+Y luego la persona debería
+poder añadir un nombre y
 
 10
 00:00:19,870 --> 00:00:23,350
-optionally an email,
-and submit that.
+opcionalmente un correo,
+y enviarlo.
 
 11
 00:00:23,350 --> 00:00:25,710
-And then you'll see that on the
-bottom of this, there's
+Y entonces verás que
+abajo de esto, ahora
 
 12
 00:00:25,710 --> 00:00:26,790
-now a comment.
+hay un comentario.
 
 13
 00:00:26,790 --> 00:00:28,670
-And I can add multiple
-comments.
+Y puedo añadir múltiples
+comentarios.
 
 14
 00:00:28,670 --> 00:00:30,720
-And of course, it should
-support that.
+Y por supuesto,
+debería soportarlo.
 
 15
 00:00:30,720 --> 00:00:32,189
-It brought me back to
-permalink page.
+Me trajo de regreso al enlace
+permanente de la página.
 
 16
 00:00:32,189 --> 00:00:35,735
-So you can just keep adding
-comments over and over again.
+Así que puedes seguir añadiendo
+comentarios una y otra vez.
 
 17
 00:00:35,735 --> 00:00:37,220
-And then you can submit it.
+Y entonces puedes enviarlo.
 
 18
 00:00:37,220 --> 00:00:39,250
-Don't worry about the
-UI being rough.
+No te preocupes por la interfaz
+de usuario.
 
 19
 00:00:39,250 --> 00:00:41,870
-The real point of this project
-was to show you the mongo
+El verdadero punto de este proyecto
+es mostrarte las partes que conectan
 
 20
 00:00:41,870 --> 00:00:44,130
-parts of it, not to have
-you worry about user
+a Mongo, no tienes que
+preocuparte tanto por la
 
 21
 00:00:44,130 --> 00:00:45,250
-interface too much.
+interfaz.
 
 22
 00:00:45,250 --> 00:00:48,310
-So that's the basic idea
-of this homework.
+Así que esa es la idea
+básica de esta tarea.
 
 23
 00:00:48,310 --> 00:00:51,700
-And for this homework, just like
-the last one, we've given
+Y para esto, al igual
+que la anterior, te dimos
 
 24
 00:00:51,700 --> 00:00:52,610
-you a validation script.
+un script de validación.
 
 25
 00:00:52,610 --> 00:00:55,140
-And it's going to insert
-comments into your blog.
+Que va a insertar
+comentarios en tu blog.
 
 26
 00:00:55,140 --> 00:00:56,460
-And it's going to go check
-and make sure that
+Va a verificar
+y asegurarse que
 
 27
 00:00:56,460 --> 00:00:57,530
-they can read them.
+pueda leerlos.
 
 28
 00:00:57,530 --> 00:00:59,450
-And then it's also going to
-check the collections to make
+Y luego también va a
+revisar las colecciones para
 
 29
 00:00:59,450 --> 00:01:02,850
-sure that they seem to be in
-the collections properly.
+asegurarse que ellos están
+en las colecciones apropiadas.
 
 30
 00:01:02,850 --> 00:01:03,230
-All right.
+De acuerdo.
 
 31
 00:01:03,230 --> 00:01:04,480
-That's it.
+Eso es todo.
