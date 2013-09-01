@@ -7,380 +7,379 @@ OK.
 
 3
 00:00:00,710 --> 00:00:02,310
-So now we've learned the
-basic CRUD operations
+Así que ahora que hemos aprendido
+las operaciones básicas CRUD
 
 4
 00:00:02,310 --> 00:00:04,090
-that MongoDB offers--
+que ofrece MongoDB--
 
 5
 00:00:04,090 --> 00:00:07,530
-Insert, Find, Update,
-and Remove.
+Insert, Find, Update
+y Remove.
 
 6
 00:00:07,530 --> 00:00:09,290
-However, there's a little bit
-more that you need to know
+Sin embargo, hay algo más
+que necesitas saber
 
 7
 00:00:09,290 --> 00:00:12,960
-about the exact details of
-operations into MongoDB.
+acerca de los detalles exactos de
+las operaciones en MongoDB.
 
 8
 00:00:12,960 --> 00:00:15,700
-The shell is an interactive
-environment, and so it gives
+El shell es un entorno interactivo, por lo que te da
 
 9
 00:00:15,700 --> 00:00:18,380
-you information whenever
-something goes wrong.
+información cada vez
+que algo sale mal.
 
 10
 00:00:18,380 --> 00:00:22,800
-For example, I mentioned before
-that the _id field is a
+Por ejemplo, te mencioné
+que el campo "_id" es una
 
 11
 00:00:22,800 --> 00:00:23,800
-primary key.
+clave primaria.
 
 12
 00:00:23,800 --> 00:00:26,660
-It is required to be present,
-it's required to be unique,
+Requiere estar presente
+y ser única,
 
 13
 00:00:26,660 --> 00:00:29,220
-and we actually make it
-immutable, in addition.
+y en realidad además
+lo hacemos inmutable.
 
 14
 00:00:29,220 --> 00:00:31,850
-If I insert a document with a
-particular primary key, let's
+Si inserto un documento con una
+clave primaria en particular,
 
 15
 00:00:31,850 --> 00:00:32,780
-say "Smith".
+digamos "Smith".
 
 16
 00:00:32,780 --> 00:00:35,810
-Well, I have reason to believe
-that a document got inserted.
+Bueno, tengo razones para creer
+que un documento fue insertado.
 
 17
 00:00:35,810 --> 00:00:37,000
-I'll tell you a little
-bit more about how
+Te contaré un poco
+más sobre cómo
 
 18
 00:00:37,000 --> 00:00:38,320
-you can confirm that.
+puedes confirmar eso.
 
 19
 00:00:38,320 --> 00:00:41,590
-If I try to insert a second
-document with name "Smith",
+Si intento insertar un segundo
+documento con nombre "Smith",
 
 20
 00:00:41,590 --> 00:00:43,990
-the shell will give me an
-error message back.
+el shell me dará un
+mensaje de error.
 
 21
 00:00:43,990 --> 00:00:47,510
-In fact, the interactive shell
-always checks to see whether
+En efecto, el shell interactivo
+siempre comprueba
 
 22
 00:00:47,510 --> 00:00:50,250
-the last operation succeeded
-or failed and tells you
+si la última operación tuvo
+éxito o no, y te dice
 
 23
 00:00:50,250 --> 00:00:52,480
-immediately if it failed.
+inmediatamente si falló.
 
 24
 00:00:52,480 --> 00:00:55,410
-So far, I haven't shown you
-any operations that fail.
+Hasta ahora no te he mostrado
+ninguna operación que falla.
 
 25
 00:00:55,410 --> 00:00:57,400
-This was a little bit of
-malice of forethought.
+Esto fue un poco de
+mala previsión.
 
 26
 00:00:57,400 --> 00:00:59,340
-However, you control
-programatically check whether
+Sin embargo, puedes controlar
+programáticamente, comprobando
 
 27
 00:00:59,340 --> 00:01:02,610
-an operation succeeded or failed
-by running a command.
+si una operación tuvo éxito o
+no, ejecutando un comando.
 
 28
 00:01:02,610 --> 00:01:04,330
-We've actually use some
-commands already.
+En realidad, ya hemos usado
+algunos comandos.
 
 29
 00:01:04,330 --> 00:01:06,410
-For instance, Count is
-actually a command.
+Por ejemplo, en realidad
+"count" es un comando.
 
 30
 00:01:06,410 --> 00:01:09,440
-In any case, there's a command
-called "getLastError", which
+En cualquier caso, hay un
+comando llamado "getLastError",
 
 31
 00:01:09,440 --> 00:01:12,600
-returns the outcome of the last
-right operation that was
+que retorna el resultado de
+la última operación que fue
 
 32
 00:01:12,600 --> 00:01:15,120
-sent on the connection that
-you're currently using.
+enviada en la conexión que
+estás usando actualmente.
 
 33
 00:01:15,120 --> 00:01:18,280
-The result of getLastError is a
-document, and in case of an
+El resultado de "getLastError" es
+un documento y en caso de un
 
 34
 00:01:18,280 --> 00:01:21,860
-error scenario, the document has
-a field E-R-R that has a
+error, el documento tiene un
+campo "err" que tiene un
 
 35
 00:01:21,860 --> 00:01:24,720
-non-null value containing
-an error message.
+valor no nulo conteniendo
+un mensaje de error.
 
 36
 00:01:24,720 --> 00:01:28,010
-Most errors also have a unique
-integer code, which is given
+La mayoría de los errores tienen
+un único código entero, que es
 
 37
 00:01:28,010 --> 00:01:29,510
-the code field.
+dado en el campo "code".
 
 38
 00:01:29,510 --> 00:01:32,460
-getLastError is available both
-in the shell and in all of our
+"getLastError" está disponible
+tanto en el shell y en todos
 
 39
 00:01:32,460 --> 00:01:34,810
-drivers as a way of checking
-whether a write operation
+nuestros drivers como una manera
+de comprobar si una operación de
 
 40
 00:01:34,810 --> 00:01:36,120
-succeed or failed.
+escritura tiene éxito o no.
 
 41
 00:01:36,120 --> 00:01:38,440
-In the event that a write
-operation succeeds, for
+En el caso que una operación de
+escritura se realiza correctamente,
 
 42
 00:01:38,440 --> 00:01:42,330
-example, I'll insert another
-document with a different _id.
+por ejemplo, voy a insertar otro
+documento con un distinto "_id".
 
 43
 00:01:42,330 --> 00:01:45,240
-In that case, the getLastError
-command will tell me that the
+En ese caso, el comando
+"getLastError" me dirá que el
 
 44
 00:01:45,240 --> 00:01:48,800
-error is null-- that is to say
-that operation succeeded.
+error es nulo-- es decir
+que la operación tuvo éxito.
 
 45
 00:01:48,800 --> 00:01:52,390
-For other sorts of operations,
-such as updates, getLastError
+Para otro tipo de operaciones,
+tales como actualizaciones, "getLastError"
 
 46
 00:01:52,390 --> 00:01:54,300
-can tell me the outcome
-of the update.
+puede decirme el resultado
+de la actualización.
 
 47
 00:01:54,300 --> 00:01:56,890
-In this case, I will specify an
-update that should affect
+En este caso, voy a especificar una
+actualización que debería afectar
 
 48
 00:01:56,890 --> 00:01:58,390
-all documents in the collection
+a todos los documentos en la colección
 
 49
 00:01:58,390 --> 00:01:59,690
-adding a title field.
+añadiendo un campo "title".
 
 50
 00:01:59,690 --> 00:02:03,050
-getLastError, after such an
-update, tells me that the
+"getLastError", después de tal
+actualización, me dirá los
 
 51
 00:02:03,050 --> 00:02:05,570
-documents that got updated
-already existed and that there
+documentos existentes que
+consiguió actualizar y
 
 52
 00:02:05,570 --> 00:02:06,540
-were two of them.
+que eran dos de ellos.
 
 53
 00:02:06,540 --> 00:02:08,270
-This is how I could find out
-how many documents got
+Así es cómo podría encontrar
+cuántos documentos fueron
 
 54
 00:02:08,270 --> 00:02:09,949
-affected by an update.
+afectados por una actualización.
 
 55
 00:02:09,949 --> 00:02:13,450
-By contrast, if instead of doing
-a multe-update I ask for
+Por el contrario, si en vez de
+hacer una actualización múltiple
 
 56
 00:02:13,450 --> 00:02:14,220
-an upsert--
+pido un "upsert"--
 
 57
 00:02:14,220 --> 00:02:16,680
-that is to say and update
-operation that will either
+es decir que la operación de
+actualización que
 
 58
 00:02:16,680 --> 00:02:20,340
-update a document with name
-"Thompson", if one exists, or
+actualice un documento con el
+nombre "Thompson", si existe o
 
 59
 00:02:20,340 --> 00:02:23,220
-else create a document with
-name "Thompson" and title
+de lo contrario que cree un documento
+con nombre "Thompson" y título
 
 60
 00:02:23,220 --> 00:02:25,330
-"doctor", if none exists.
+"doctor", si no existe.
 
 61
 00:02:25,330 --> 00:02:28,270
-After such an upsert operation,
-getLastError tells
+Después de tal "upsert",
+"getLastError" me dirá
 
 62
 00:02:28,270 --> 00:02:31,700
-me that it did not update an
-existing document, but instead
+que no fue actualizado ningún
+documento existente, pero que
 
 63
 00:02:31,700 --> 00:02:35,470
-upserted a new document who's
-_id is returned to me.
+fue insertado un nuevo documento
+y me retornó su "_id".
 
 64
 00:02:35,470 --> 00:02:38,370
-So you see the getLastError
-command is a way both to find
+Por eso ya ves que el comando
+"getLastError" es una forma de
 
 65
 00:02:38,370 --> 00:02:41,470
-out whether a write operation
-succeeded or failed and also
+saber si una operación de escritura
+es correcta o falló y también
 
 66
 00:02:41,470 --> 00:02:43,530
-to get some information about
-the successful write
+para obtener alguna información
+acerca de operaciones de escritura
 
 67
 00:02:43,530 --> 00:02:45,690
-operations that just happened.
+que han sido satisfactorias.
 
 68
 00:02:45,690 --> 00:02:48,250
-Again, the shell automatically
-tells you when a write
+Una vez más, el shell automáticamente
+te dice cuándo una operación
 
 69
 00:02:48,250 --> 00:02:49,470
-operation fails.
+de escritura falla.
 
 70
 00:02:49,470 --> 00:02:52,010
-So so far, I have repeatedly
-said that I have reason to
+Por lo que hasta ahora, he
+dicho repetidas veces que tengo
 
 71
 00:02:52,010 --> 00:02:54,550
-believe that my write operations
-were successful.
+razones para creer que mis
+operaciones de escritura fueron exitosas.
 
 72
 00:02:54,550 --> 00:02:56,230
-That reason was simply
-that the shell
+Esa razón era simplemente
+que el shell
 
 73
 00:02:56,230 --> 00:02:58,090
-did not tell me otherwise.
+no me dijo lo contrario.
 
 74
 00:02:58,090 --> 00:03:00,730
-Finally, if I choose to remove
-all people from the "people"
+Finalmente, si decido eliminar
+todas las personas de la colección
 
 75
 00:03:00,730 --> 00:03:04,220
-collection, the getLastError
-command will tell me that
+"people", el comando
+"getLastError" me dirá que
 
 76
 00:03:04,220 --> 00:03:05,860
-there were three documents
-removed.
+fueron eliminados 3
+documentos.
 
 77
 00:03:05,860 --> 00:03:07,550
-n equals 3.
+"n" igual a 3.
 
 78
 00:03:07,550 --> 00:03:10,190
-We'll see more of the
-getLastError command again in
+Vamos a ver más del comando
+"getLastError" otra vez en
 
 79
 00:03:10,190 --> 00:03:11,510
-a future part of this course.
+una futura parte de este curso.
 
 80
 00:03:11,510 --> 00:03:13,810
-For now, you should understand
-that it's the way to check
+Por ahora, deberías entender
+que esta es la forma de verificar
 
 81
 00:03:13,810 --> 00:03:15,640
-whether a write operation
-succeeded or failed.
+si una operación de escritura fue
+satisfactoria o si falló.
 
 82
 00:03:15,640 --> 00:03:16,890
