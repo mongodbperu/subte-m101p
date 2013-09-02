@@ -64,7 +64,7 @@ una secuencia.
 
 15
 00:00:34,820 --> 00:00:37,470
-Ahora, es una base de datos
+Ahora, en una base de datos
 relacional, harías esto usando
 
 16
@@ -150,8 +150,8 @@ secuencia de números.
 
 33
 00:01:20,670 --> 00:01:24,660
-Ahora, lo hace mediante
-conectando a la base de datos,
+Ahora, lo hace conectando
+a la base de datos,
 
 34
 00:01:24,660 --> 00:01:26,620
@@ -232,7 +232,7 @@ hay un documento con "type"
 
 50
 00:02:20,180 --> 00:02:23,970
-con "name", entonces pone
+"name", entonces pone
 uno en la colección.
 
 51
