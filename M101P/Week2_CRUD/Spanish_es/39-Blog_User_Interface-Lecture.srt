@@ -55,8 +55,8 @@ para ponerlo en marcha.
 
 13
 00:00:25,070 --> 00:00:27,870
-Así que si vamos a ir
-hacia el registro de autor.
+Así que vamos a ir hacia
+el registro de autor.
 
 14
 00:00:27,870 --> 00:00:30,230
@@ -74,8 +74,8 @@ usuario e ingreso de autor para
 
 17
 00:00:35,330 --> 00:00:38,780
-validar que ellos están permitidos
-para acceder con sus contraseñas,
+validar que se les permita
+acceder con sus contraseñas,
 
 18
 00:00:38,780 --> 00:00:40,520
