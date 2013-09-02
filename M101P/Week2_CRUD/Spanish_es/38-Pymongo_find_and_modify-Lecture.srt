@@ -3,365 +3,365 @@
 
 2
 00:00:00,170 --> 00:00:00,810
-All right.
+Muy bien.
 
 3
 00:00:00,810 --> 00:00:03,590
-We've learned most of the things
-you need to know to
+Hemos aprendido la mayoría de las
+cosas que necesitas saber para
 
 4
 00:00:03,590 --> 00:00:08,200
-program against MongoDB, at
-least from a crud standpoint.
+programar con MongoDB, al menos
+desde la visión de un CRUD.
 
 5
 00:00:08,200 --> 00:00:11,570
-Creating data, reading the data,
-updating the data, and
+Creando datos, leyendo datos,
+actualizando datos y
 
 6
 00:00:11,570 --> 00:00:12,650
-deleting the data.
+eliminando datos.
 
 7
 00:00:12,650 --> 00:00:14,920
-But there's a couple of things
-we haven't covered.
+Pero hay un par de cosas que
+no hemos cubierto.
 
 8
 00:00:14,920 --> 00:00:17,720
-For instance, if you wanted to
-produce a sequence number
+Por ejemplo, si deseas producir
+una secuencia de números
 
 9
 00:00:17,720 --> 00:00:19,950
-using Mongo, how would
-you do it?
+usando Mongo,
+¿cómo lo harías?
 
 10
 00:00:19,950 --> 00:00:24,640
-So a sequence number is a small
-set of integers, like 1,
+Entonces una secuencia de números
+es un pequeño conjunto de enteros,
 
 11
 00:00:24,640 --> 00:00:27,980
-2, 3, 4, 5, 6.
+como: 1, 2, 3, 4, 5, 6.
 
 12
 00:00:27,980 --> 00:00:31,010
-And you want to make sure that
-two users, let's say, never
+Y si deseas asegurarte que
+dos usuarios, digamos, nunca
 
 13
 00:00:31,010 --> 00:00:33,860
-get the same sequence number,
-and that they're going to be
+obtengan la misma secuencia de
+números y que ellos sigan
 
 14
 00:00:33,860 --> 00:00:34,820
-sequential.
+una secuencia.
 
 15
 00:00:34,820 --> 00:00:37,470
-Now, in a relational database,
-you would do this using
+Ahora, en una base de datos
+relacional, harías esto usando
 
 16
 00:00:37,470 --> 00:00:38,700
-transactions.
+transacciones.
 
 17
 00:00:38,700 --> 00:00:42,180
-And you'd probably begin a
-transaction at an adequate
+Y probablemente comiences con
+una transacción en un nivel
 
 18
 00:00:42,180 --> 00:00:45,130
-isolation level, as you could
-read the data and then update
+de aislamiento adecuado, para
+que puedas leer datos y luego
 
 19
 00:00:45,130 --> 00:00:47,790
-the counter, and then eventually
-release it.
+actualizar el contador, y luego
+eventualmente liberarlo.
 
 20
 00:00:47,790 --> 00:00:50,170
-But we don't have transactions
-in Mongo, but we do have
+Pero no vamos a tener transacciones
+en MongoDB pero tenemos
 
 21
 00:00:50,170 --> 00:00:52,450
-atomic operations on the
-documents themselves.
+operaciones atómicas en
+los mismos documentos.
 
 22
 00:00:52,450 --> 00:00:54,460
-And that's going to let us
-do what we want to do.
+Y eso va a permitirnos
+hacer lo que deseamos.
 
 23
 00:00:54,460 --> 00:00:58,740
-So the command we're going to
-look at is Find and Modify,
+Así que el comando que vamos
+a ver es "Find And Modify",
 
 24
 00:00:58,740 --> 00:01:01,620
-which is going to find a
-document that satisfies
+que va a encontrar un
+documento que satisfaga
 
 25
 00:01:01,620 --> 00:01:04,790
-certain criteria, possibly
-inserting it if it's not there
+cierto criterio, posiblemente
+insertándolo si no está
 
 26
 00:01:04,790 --> 00:01:05,760
-using an upsert.
+usando un "upsert".
 
 27
 00:01:05,760 --> 00:01:07,940
-And modifying it, and
-returning the
+Y modificándolo y
+retornando el
 
 28
 00:01:07,940 --> 00:01:09,960
-old or the new value.
+antiguo o el nuevo valor.
 
 29
 00:01:09,960 --> 00:01:12,540
-So let's look at how we would
-create some sequence numbers
+Para ello, veamos cómo podríamos
+crear una secuencia de números
 
 30
 00:01:12,540 --> 00:01:14,620
-using MongoDB.
+usando MongoDB.
 
 31
 00:01:14,620 --> 00:01:18,300
-Here's a small program that I
-wrote called Find and Modify,
+Aqui está un pequeño programa que
+escribí llamado "using_find_and_modify",
 
 32
 00:01:18,300 --> 00:01:20,670
-and it's going to get
-a sequence number.
+y vamos a obtener una
+secuencia de números.
 
 33
 00:01:20,670 --> 00:01:24,660
-Now, it does this by connecting
-to the database,
+Ahora, lo hace conectando
+a la base de datos,
 
 34
 00:01:24,660 --> 00:01:26,620
-test database, counters,
-collection.
+base de datos "test",
+colección "counters".
 
 35
 00:01:26,620 --> 00:01:30,030
-And then it gets a sequence
-number as follows.
+Y luego obtiene una
+secuencia de número, así.
 
 36
 00:01:30,030 --> 00:01:34,020
-It calls find_and_modify
-query is--
+Llama a "find_and_modify",
+"query"--
 
 37
 00:01:34,020 --> 00:01:35,890
-and notice this a named
-parameter-- so
+y nota que esto es un
+parámentro llamado así--
 
 38
 00:01:35,890 --> 00:01:38,390
-query equals type name.
+"query" igual a "type" "name".
 
 39
 00:01:38,390 --> 00:01:42,040
-So you can call this function
-with, let's say, the string
+Puedes llamar a esta función
+con, digamos, la cadena que
 
 40
 00:01:42,040 --> 00:01:46,690
-could be a user ID, or sequence
-number, or library
+podría ser un ID de usuario, o
+secuencia de números o número de carné
 
 41
 00:01:46,690 --> 00:01:49,510
-card number, or whatever you
-were looking to get that was
+de biblioteca o lo que sea que
+estabas buscando obtener que era
 
 42
 00:01:49,510 --> 00:01:50,320
-sequential.
+secuencial.
 
 43
 00:01:50,320 --> 00:01:53,210
-And then it would substitute
-it right here.
+Y luego sustituiría
+aquí.
 
 44
 00:01:53,210 --> 00:02:03,110
-And then update this document,
-incrementing the value by one.
+Y luego actualiza este documento
+incrementando el valor por uno.
 
 45
 00:02:03,110 --> 00:02:06,640
-Now, calling the counter a
-value is my own decision.
+Ahora, llamar al contador
+con un valor es mi decisión.
 
 46
 00:02:06,640 --> 00:02:10,410
-It's not anything special
-about this command.
+No es nada especial
+acerca de este comando.
 
 47
 00:02:10,410 --> 00:02:14,870
-And then I've also called it
-with upsert equals true, and
+y entonces lo llama
+con "upsert=True" y
 
 48
 00:02:14,870 --> 00:02:16,345
-new equals true.
+"new=True".
 
 49
 00:02:16,345 --> 00:02:20,180
-So upsert means that if there
-isn't a document with type
+"Upsert" significa que si no
+hay un documento con "type"
 
 50
 00:02:20,180 --> 00:02:23,970
-name, then please put one
-in the collection.
+"name", entonces pone
+uno en la colección.
 
 51
 00:02:23,970 --> 00:02:27,030
-And new means return the
-new value, not the
+Y "new" significa que me
+retorna el nuevo valor,
 
 52
 00:02:27,030 --> 00:02:30,120
-old value to me.
+no el antiguo.
 
 53
 00:02:30,120 --> 00:02:34,650
-So then I'm going to get this
-counter right here, counter
+Entonces voy a tener este
+contador justo aquí, "counter_value"
 
 54
 00:02:34,650 --> 00:02:37,590
-value is counter value.
+es "counter" de "value".
 
 55
 00:02:37,590 --> 00:02:40,920
-Remember when we returned a
-dictionary from this command.
+Recuerda cuando retornamos un
+diccionario de este comando.
 
 56
 00:02:40,920 --> 00:02:43,290
-And then I'm going to look
-up the value, and I'm
+Y luego voy a ver
+el valor, y voy
 
 57
 00:02:43,290 --> 00:02:44,310
-going to return it.
+a retornarlo.
 
 58
 00:02:44,310 --> 00:02:45,110
-That's it.
+Eso es todo.
 
 59
 00:02:45,110 --> 00:02:48,180
-So right here in the main body
-of the program, I'm just going
+Entonces aquí en la parte
+principal del programa, voy a
 
 60
 00:02:48,180 --> 00:02:49,710
-to do that three times.
+hacerlo 3 veces.
 
 61
 00:02:49,710 --> 00:02:51,550
-So let's try it out.
+Probémoslo.
 
 62
 00:02:51,550 --> 00:02:52,600
-All right.
+Muy bien.
 
 63
 00:02:52,600 --> 00:02:54,690
-Using Find and Modify.
+"using_find_and_modify".
 
 64
 00:02:54,690 --> 00:02:57,720
-Call that and it produces
+Lo ejecutamos y produce
 1, 2, 3.
 
 65
 00:02:57,720 --> 00:03:00,010
-Call it again, it produces
+Lo ejecutamos de nuevo, produce
 4, 5, 6.
 
 66
 00:03:00,010 --> 00:03:04,430
-Call it again, 7, 8, 9,
-and again, 10, 11, 12.
+De nuevo, 7, 8, 9,
+y una vez más, 10, 11, 12.
 
 67
 00:03:04,430 --> 00:03:05,820
-Perfect.
+Perfecto.
 
 68
 00:03:05,820 --> 00:03:08,670
-So let's go in and see
-this collection.
+Vayamos a ver
+esta colección.
 
 69
 00:03:08,670 --> 00:03:11,320
-Use test.
+"use test".
 
 70
 00:03:11,320 --> 00:03:12,570
-db.counters.find.
+"db.counters.find".
 
 71
 00:03:12,570 --> 00:03:14,220
 
 72
 00:03:14,220 --> 00:03:15,770
-And there it is.
+Y ahí está.
 
 73
 00:03:15,770 --> 00:03:16,790
-Pretty print it.
+Lo imprimimos mejor.
 
 74
 00:03:16,790 --> 00:03:20,960
-You can see there's type uid,
-with a value of 12.
+Puedes ver que hay "type"
+"uid", y "value" "12".
 
 75
 00:03:20,960 --> 00:03:23,750
-And the reason it's type uid
-is that when I called
+Y la razón de "type" "uid"
+es que cuando llamo a
 
 76
 00:03:23,750 --> 00:03:27,220
-get_next_sequence_number here,
-I named the sequence
+"get_next_sequence_number"
+aquí, he nombrado la secuencia
 
 77
 00:03:27,220 --> 00:03:29,150
-uid, for user ID.
+"uid", para "user ID".
 
 78
 00:03:29,150 --> 00:03:30,970
-And that is how you'd get
-a unique sequence
+Y es así cómo puedes tener
+una única secuencia de
 
 79
 00:03:30,970 --> 00:03:32,340
-number using MongoDB.
+números usando MongoDB.
 
 80
 00:03:32,340 --> 00:03:33,590
