@@ -12,8 +12,8 @@ nuestro buen amigo "regex".
 
 4
 00:00:03,670 --> 00:00:06,410
-Todos recordaréis a "regex" de cuando
-fuimos por el shell Mongo
+Todos recordarán un "regex" de cuando
+fuimos al shell Mongo
 
 5
 00:00:06,410 --> 00:00:10,200
