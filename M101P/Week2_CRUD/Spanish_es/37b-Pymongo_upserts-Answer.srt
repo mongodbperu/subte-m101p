@@ -3,73 +3,73 @@
 
 2
 00:00:00,190 --> 00:00:03,780
-OK, and the answer is that the
-third and fourth are correct,
+Bien, y la respuesta es que la
+tercera y la cuarta son correctas,
 
 3
 00:00:03,780 --> 00:00:05,420
-and the first and second
-are wrong.
+y la primera y la segunda
+están equivocadas.
 
 4
 00:00:05,420 --> 00:00:08,750
-So in the third, that we do
-stuff dot update underscore ID
+En la tercera, hacemos
+"stuff.update", "_id",
 
 5
 00:00:08,750 --> 00:00:13,680
-bat, and then we set the
-document, I underscore ID bat,
+"bat", y luego ponemos el
+documento, "_id" "bat",
 
 6
 00:00:13,680 --> 00:00:16,560
-friend ball, cousin glove,
-upsert true.
+"friend" "ball", "cousin" "glove",
+"upsert" "true".
 
 7
 00:00:16,560 --> 00:00:20,130
-And in the last one, we take
-advantage of using the dollar
+Y en la última, tomamos
+ventaja de usar el comando
 
 8
 00:00:20,130 --> 00:00:21,700
-set command here.
+"$set" aquí.
 
 9
 00:00:21,700 --> 00:00:23,860
-So we don't have to specify
-the underscore
+Así que no tenemos
+que especificar el
 
 10
 00:00:23,860 --> 00:00:25,170
-ID bat on the right.
+"_id" "bat" a la derecha.
 
 11
 00:00:25,170 --> 00:00:26,640
-And again, upsert true.
+Y otra vez, "upsert" "true".
 
 12
 00:00:26,640 --> 00:00:30,470
-The first one is wrong because
-we don't specify the
+La primera es incorrecta
+porque no especificamos el
 
 13
 00:00:30,470 --> 00:00:33,430
-underscore ID bat on the right
-hand side in the document that
+"_id" "bat" a la derecha,
+en el documento que
 
 14
 00:00:33,430 --> 00:00:34,530
-we're setting.
+estamos estableciendo.
 
 15
 00:00:34,530 --> 00:00:37,690
-And the second one is wrong
-because we don't
+Y la segunda es incorrecta
+porque no usamos
 
 16
 00:00:37,690 --> 00:00:38,940
-set upsert to true.
+"upsert" en "True".
 
 17
 00:00:38,940 --> 00:00:40,107
