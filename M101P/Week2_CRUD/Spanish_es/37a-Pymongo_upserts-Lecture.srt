@@ -101,7 +101,7 @@ distintas maneras para hacer esto.
 
 23
 00:00:53,250 --> 00:00:54,820
-Puedes hacer "things.remove".
+Puedes hacer "things.remove"
 
 24
 00:00:54,820 --> 00:00:57,200
@@ -268,7 +268,7 @@ usamos el comando "set".
 
 59
 00:02:37,745 --> 00:02:40,880
-Y pasó lo que esperabamos,
+Y pasó lo que esperábamos,
 es que inserta
 
 60
@@ -358,7 +358,7 @@ El atributo "thing", la clave
 
 78
 00:03:41,330 --> 00:03:43,390
-Y eso es algo importante
+Y por lo tanto algo importante
 para recordar cuando estás
 
 79
