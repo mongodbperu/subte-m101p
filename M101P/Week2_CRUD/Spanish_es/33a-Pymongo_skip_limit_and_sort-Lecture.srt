@@ -1,0 +1,571 @@
+1
+00:00:00,000 --> 00:00:00,860
+
+2
+00:00:00,860 --> 00:00:03,070
+Ahora vamos a ver
+"skip", "limit"
+
+3
+00:00:03,070 --> 00:00:05,060
+y "sort" en PyMongo.
+
+4
+00:00:05,060 --> 00:00:07,960
+Y ya has visto "skip",
+"limit y "sort" en el
+
+5
+00:00:07,960 --> 00:00:09,210
+shell Mongo.
+
+6
+00:00:09,210 --> 00:00:12,265
+Ahora, si recuerdas, la forma en que funcionan
+"skip", "limit" y "sort" --
+
+7
+00:00:12,265 --> 00:00:13,680
+y esto es cierto en 
+la mayoría de las bases de datos --
+
+8
+00:00:13,680 --> 00:00:16,960
+es que "sort"
+ocurre primero.
+
+9
+00:00:16,960 --> 00:00:20,930
+Y tras éste, "skip", y 
+después, "limit".
+
+10
+00:00:20,930 --> 00:00:25,800
+Así que "sort" primero, luego
+"skip" y luego "limit".
+
+11
+00:00:25,800 --> 00:00:27,800
+En realidad no importa en qué
+orden los pongas, así
+
+12
+00:00:27,800 --> 00:00:29,410
+es como funciona.
+
+13
+00:00:29,410 --> 00:00:33,390
+Volvamos a nuestro programa y
+comprobemos cómo funciona en
+
+14
+00:00:33,390 --> 00:00:34,940
+la práctica aquí.
+
+15
+00:00:34,940 --> 00:00:38,800
+Así que ahora he vuelto a
+la colección "schools",
+
+16
+00:00:38,800 --> 00:00:41,170
+base de datos "schools" y la
+colección "scores".
+
+17
+00:00:41,170 --> 00:00:43,230
+Y he hecho un "find" aquí.
+
+18
+00:00:43,230 --> 00:00:45,760
+La consulta es un documento vacío.
+
+19
+00:00:45,760 --> 00:00:48,430
+Y puedes ver que he
+hecho un "sort",
+
+20
+00:00:48,430 --> 00:00:49,970
+"skip" y "limit".
+
+21
+00:00:49,970 --> 00:00:53,990
+Y puedes ver que ésta es la
+sintaxis para hacer eso.
+
+22
+00:00:53,990 --> 00:00:55,140
+El "skip" es fácil.
+
+23
+00:00:55,140 --> 00:00:57,280
+Pones un entero entre
+paréntesis.
+
+24
+00:00:57,280 --> 00:01:01,300
+"limit" es fácil, y 
+"sort" un poco más
+
+25
+00:01:01,300 --> 00:01:02,330
+complicado.
+
+26
+00:01:02,330 --> 00:01:06,250
+En este caso, está ordenando
+por "student_id" y luego por
+
+27
+00:01:06,250 --> 00:01:07,990
+"PyMongo.ASCENDING".
+
+28
+00:01:07,990 --> 00:01:12,040
+Esto es una constante dentro del
+driver para indicar que es
+
+29
+00:01:12,040 --> 00:01:13,570
+una ordenación ascendente.
+
+30
+00:01:13,570 --> 00:01:16,290
+Por lo que si hacemos eso,
+entonces veamos
+
+31
+00:01:16,290 --> 00:01:17,490
+qué documento obtenemos.
+
+32
+00:01:17,490 --> 00:01:21,560
+Vamos aquí, y 
+limpiaré la pantalla.
+
+33
+00:01:21,560 --> 00:01:28,050
+Y puedes ver que obtengo el
+que tiene "student_id" 1.
+
+34
+00:01:28,050 --> 00:01:33,010
+Ahora, vuelvo a
+este programa y 
+
+35
+00:01:33,010 --> 00:01:34,800
+lo cambio un poco.
+
+36
+00:01:34,800 --> 00:01:40,190
+Esta vez voy a tomar esto
+y voy a hacer
+
+37
+00:01:40,190 --> 00:01:42,460
+el "skip" por aquí.
+
+38
+00:01:42,460 --> 00:01:46,790
+Y luego voy
+a hacer el "limit".
+
+39
+00:01:46,790 --> 00:01:50,410
+Y finalmente voy
+a hacer el "sort".
+
+40
+00:01:50,410 --> 00:01:52,050
+Y ya tengo el "sort"
+escrito en esta línea,
+
+41
+00:01:52,050 --> 00:01:53,840
+así que permíteme que la traiga.
+
+42
+00:01:53,840 --> 00:01:56,020
+Ahora, voy a guardar eso.
+
+43
+00:01:56,020 --> 00:01:57,230
+No prestes atención
+a esta línea.
+
+44
+00:01:57,230 --> 00:01:58,500
+Está comentada por ahora.
+
+45
+00:01:58,500 --> 00:02:01,600
+Voy a enseñarte algo 
+sobre eso después.
+
+46
+00:02:01,600 --> 00:02:03,140
+Y notarás aquí
+que estoy imprimiendo
+
+47
+00:02:03,140 --> 00:02:04,620
+cada documento en el cursor.
+
+48
+00:02:04,620 --> 00:02:06,820
+Tomo todo esto, 
+limitándolo a 10 documentos
+
+49
+00:02:06,820 --> 00:02:10,389
+porque ahora estoy usando "limit"
+en la propia consulta.
+
+50
+00:02:10,389 --> 00:02:12,960
+Ésta es la misma consulta, pero esta
+vez estamos haciendo
+
+51
+00:02:12,960 --> 00:02:15,680
+deliberadamente el "skip" primero, luego
+el "limit" y luego el "sort".
+
+52
+00:02:15,680 --> 00:02:20,630
+Y veamos qué ocuerre
+cuando ejecutamos esto.
+
+53
+00:02:20,630 --> 00:02:26,600
+Antes que puedas verlo, obtenemos,
+lo siento, "student_id" 1.
+
+54
+00:02:26,600 --> 00:02:30,760
+Y ahora lo ejecuto, y una vez
+más, obtengo "student_id" 1.
+
+55
+00:02:30,760 --> 00:02:31,470
+Wow.
+
+56
+00:02:31,470 --> 00:02:32,870
+Eso es un poco raro.
+
+57
+00:02:32,870 --> 00:02:35,000
+Parece extraño, ¿no?
+
+58
+00:02:35,000 --> 00:02:38,880
+Quiero decir, puedes ver muy claramente
+que estoy ejecutando el
+
+59
+00:02:38,880 --> 00:02:43,100
+"skip" y el "limit" antes
+que el "sort".
+
+60
+00:02:43,100 --> 00:02:47,610
+Pero te conté que el "sort"
+siempre ocurre antes que "skip"
+
+61
+00:02:47,610 --> 00:02:49,560
+y "skip" siempre
+antes que "limit".
+
+62
+00:02:49,560 --> 00:02:51,030
+Entonces, ¿cómo funciona esto?
+
+63
+00:02:51,030 --> 00:02:52,470
+Parece un poco raro.
+
+64
+00:02:52,470 --> 00:02:57,360
+Y por supuesto, el secreto es
+que la base de datos en realidad
+
+65
+00:02:57,360 --> 00:03:00,480
+no ejecuta la consulta
+hasta que comienzas
+
+66
+00:03:00,480 --> 00:03:02,280
+a iterar por el cursor.
+
+67
+00:03:02,280 --> 00:03:04,690
+Y eso es también cierto
+en el shell Mongo.
+
+68
+00:03:04,690 --> 00:03:08,900
+Así que para permitirte encadenar
+estos comandos en cualquier orden,
+
+69
+00:03:08,900 --> 00:03:12,540
+la consulta se pospone hasta que
+realmente empiezas a iterar
+
+70
+00:03:12,540 --> 00:03:13,170
+por los resultados.
+
+71
+00:03:13,170 --> 00:03:14,810
+Y entonces la primera vez que
+comiences a iterar por los
+
+72
+00:03:14,810 --> 00:03:19,040
+resultados es cuando la consulta
+es realmente ejecutada para obtener el
+
+73
+00:03:19,040 --> 00:03:21,160
+primer resultado.
+
+74
+00:03:21,160 --> 00:03:25,120
+La segunda cosa que quería
+enseñarte es que la sintaxis
+
+75
+00:03:25,120 --> 00:03:27,950
+para la ordenación es un poco
+diferente de la que se usa en el
+
+76
+00:03:27,950 --> 00:03:28,910
+shell Mongo.
+
+77
+00:03:28,910 --> 00:03:33,260
+Por lo que si miras aquí a
+la segunda línea --
+
+78
+00:03:33,260 --> 00:03:35,340
+que voy a descomentar
+ahora --
+
+79
+00:03:35,340 --> 00:03:38,120
+si quisiera hacer una ordenación compleja
+o una ordenación sobre más de
+
+80
+00:03:38,120 --> 00:03:42,010
+una clave con una clave primaria y
+secundara en el "sort" --
+
+81
+00:03:42,010 --> 00:03:45,330
+si quiero hacer eso, entonces
+en lugar de usar un
+
+82
+00:03:45,330 --> 00:03:48,660
+diccionario aquí, o un documento
+JSON con múltiples elementos
+
+83
+00:03:48,660 --> 00:03:54,440
+tal y como haríamos en el shell Mongo,
+en vez de eso tengo que usar estas
+
+84
+00:03:54,440 --> 00:03:56,050
+tuplas Python.
+
+85
+00:03:56,050 --> 00:03:59,260
+Por lo que éstos son pares, y 
+esto es un array.
+
+86
+00:03:59,260 --> 00:04:03,880
+Así, "[('student_id',
+pymongo.ASCENDING),
+
+87
+00:04:03,880 --> 00:04:05,130
+('score', pymongo.DESCENDING)]".
+
+88
+00:04:05,130 --> 00:04:07,180
+
+89
+00:04:07,180 --> 00:04:10,690
+Y no hemos hablado para nada
+sobre esas tuplas en Python.
+
+90
+00:04:10,690 --> 00:04:12,350
+No son una estructura que
+hayamos visto.
+
+91
+00:04:12,350 --> 00:04:15,200
+En realidad ésta es una
+divergencia de la forma en que
+
+92
+00:04:15,200 --> 00:04:16,140
+el shell Mongo funciona.
+
+93
+00:04:16,140 --> 00:04:20,790
+Compara esta sintaxis con, por
+ejemplo, aquélla que estuvimos
+
+94
+00:04:20,790 --> 00:04:23,010
+viendo en el shell
+Mongo.
+
+95
+00:04:23,010 --> 00:04:28,960
+Antes, si recuerdas, 
+ordenarías esto en Mongo haciendo,
+
+96
+00:04:28,960 --> 00:04:37,960
+"use school", harías
+"db.scores.find().sort", y luego
+
+97
+00:04:37,960 --> 00:04:40,080
+usarías un único
+documento JSON aquí.
+
+98
+00:04:40,080 --> 00:04:44,830
+Podrías hacer "student_id"
+positivo, y por tanto orden
+
+99
+00:04:44,830 --> 00:04:46,430
+ascendente, y luego "score".
+
+100
+00:04:46,430 --> 00:04:50,770
+Digamos que negativo indica
+un orden descendente.
+
+101
+00:04:50,770 --> 00:04:58,070
+Mira aquí, tenemos un documento
+aquí donde el orden importa.
+
+102
+00:04:58,070 --> 00:05:00,810
+Y entonces podemos ejecutarlo
+y obtendremos --
+
+103
+00:05:00,810 --> 00:05:04,730
+bien, lo limitaré
+a dos documentos.
+
+104
+00:05:04,730 --> 00:05:10,460
+Y puedes ver aquí que obtenemos
+dos documentos, ordenados
+
+105
+00:05:10,460 --> 00:05:14,760
+primero por "student_id" y luego 
+por "score" descendentemente.
+
+106
+00:05:14,760 --> 00:05:19,000
+Y ésa es una sintaxis muy
+diferente de la que estamos viendo
+
+107
+00:05:19,000 --> 00:05:20,110
+en Python.
+
+108
+00:05:20,110 --> 00:05:23,160
+Sólo quiero señalar eso,
+que ésta es una divergencia del
+
+109
+00:05:23,160 --> 00:05:28,020
+shell Mongo en términos de la
+forma de expresar la ordenación.
+
+110
+00:05:28,020 --> 00:05:29,660
+Esto en un montón para aprender.
+
+111
+00:05:29,660 --> 00:05:31,420
+Hagamos un cuestionario.
+
+112
+00:05:31,420 --> 00:05:34,580
+Digamos que tenemos los
+siguientes documentos en una
+
+113
+00:05:34,580 --> 00:05:35,140
+colección.
+
+114
+00:05:35,140 --> 00:05:37,660
+Y puedes ver que tengo cuatro
+documentos aquí con "_id" 0, 2,
+
+115
+00:05:37,660 --> 00:05:41,200
+3 y 4, con "value"
+10, 5, 7 y 20.
+
+116
+00:05:41,200 --> 00:05:44,860
+Si realizo la siguiente
+consulta, "cursor =
+
+117
+00:05:44,860 --> 00:05:49,300
+things.find().
+skip(3).limit(1).sort" sobre "value"
+
+118
+00:05:49,300 --> 00:05:51,010
+descendentemente --
+
+119
+00:05:51,010 --> 00:05:53,260
+este valor es para
+ordenar descendentemente --
+
+120
+00:05:53,260 --> 00:05:57,090
+¿cuáles de estos documentos
+devolvería la base de datos?
+
+121
+00:05:57,090 --> 00:05:57,850
+Selecciona sólo uno.
+
+122
+00:05:57,850 --> 00:05:59,100
+Es una pregunta de selección
+múltiple.
+
+123
+00:05:59,100 --> 00:06:00,120

@@ -1,0 +1,95 @@
+1
+00:00:00,000 --> 00:00:01,080
+
+2
+00:00:01,080 --> 00:00:03,980
+Y la respuesta es que
+devolvería el documento con
+
+3
+00:00:03,980 --> 00:00:05,980
+"_id" igual a 2.
+
+4
+00:00:05,980 --> 00:00:07,530
+Así que, ¿cómo se razona
+eso?
+
+5
+00:00:07,530 --> 00:00:09,340
+Recuerda, la ordenación
+ocurre primero.
+
+6
+00:00:09,340 --> 00:00:12,490
+Por lo que lo primero que va
+a hacer es ordenarlos por "value"
+
+7
+00:00:12,490 --> 00:00:17,010
+descendentemente, lo que significa que
+va a ordenarlos con
+
+8
+00:00:17,010 --> 00:00:23,340
+este documento primero, luego éste,
+luego éste, luego éste.
+
+9
+00:00:23,340 --> 00:00:25,920
+Y después de hacer 
+eso va a
+
+10
+00:00:25,920 --> 00:00:26,910
+saltarse tres de ellos.
+
+11
+00:00:26,910 --> 00:00:31,080
+Así que recuerda, era éste,
+luego éste, luego este otro.
+
+12
+00:00:31,080 --> 00:00:33,920
+Por lo que si salta tres de ellos,
+va a saltarse éstos.
+
+13
+00:00:33,920 --> 00:00:39,340
+Va a saltarse 10, 20 y
+7, después de ordenar, dejando el
+
+14
+00:00:39,340 --> 00:00:42,510
+que tiene "value" 5, cuyo
+"_id" es igual a 2.
+
+15
+00:00:42,510 --> 00:00:44,340
+Y entonces simplemente va a mostrar
+uno, que es todo
+
+16
+00:00:44,340 --> 00:00:45,190
+lo que se dejó.
+
+17
+00:00:45,190 --> 00:00:47,575
+Y por tanto, como resultado, la respuesta
+es que va a devolver
+
+18
+00:00:47,575 --> 00:00:51,840
+el documento con "_id" igual a 2.
+
+19
+00:00:51,840 --> 00:00:54,080
+Porque "sort" siempre
+ocurre antes que
+
+20
+00:00:54,080 --> 00:00:55,330
+"limit" y "skip".
+
+21
+00:00:55,330 --> 00:00:57,457
