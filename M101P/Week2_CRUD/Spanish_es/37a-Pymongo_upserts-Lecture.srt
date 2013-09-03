@@ -3,49 +3,49 @@
 
 2
 00:00:00,130 --> 00:00:02,210
-Let's talk about upserting
-in PyMongo.
+Hablemos acerca de
+"upserting" en PyMongo.
 
 3
 00:00:02,210 --> 00:00:05,510
-Now if you recall from the
-lessons we did on the Mongo
+Ahora bien, si te acuerdas de las
+lecciones que hicimos en el shell
 
 4
 00:00:05,510 --> 00:00:11,640
-shell, an upsert is an update
-where the database will
+Mongo, un "upsert" es una
+actualización donde la base de datos
 
 5
 00:00:11,640 --> 00:00:15,830
-automatically insert the data
-if there is no document that
+insertará automáticamente los
+datos si no hay un documento que
 
 6
 00:00:15,830 --> 00:00:17,760
-matches the criteria.
+coincida con el criterio.
 
 7
 00:00:17,760 --> 00:00:20,710
-So it's a convenient way of
-being able to combine two
+Así que es una forma conveniente
+de poder combinar dos
 
 8
 00:00:20,710 --> 00:00:22,290
-different actions.
+acciones distintas.
 
 9
 00:00:22,290 --> 00:00:25,810
-And I've written a small program
-to demonstrate how
+He escrito un pequeño programa
+para demostrar cómo funciona
 
 10
 00:00:25,810 --> 00:00:27,390
-upserts work in PyMongo.
+un "upsert" en PyMongo.
 
 11
 00:00:27,390 --> 00:00:28,760
-So let's take a look at that.
+Echemos un vistazo a eso.
 
 12
 00:00:28,760 --> 00:00:29,520
@@ -53,337 +53,337 @@ OK.
 
 13
 00:00:29,520 --> 00:00:34,180
-So in this program which I
-call using_upsert.py--
+En este programa que he
+llamado "using_upsert.py"--
 
 14
 00:00:34,180 --> 00:00:36,780
-and I'm going to provide all of
-these files to you if you
+y voy a darte todos estos
+archivos si quieres
 
 15
 00:00:36,780 --> 00:00:38,450
-want to run them on your
-own computer--
+ejecutarlos en tu
+propio computador--
 
 16
 00:00:38,450 --> 00:00:41,010
-we're going to connect to local
-host, and safe equals
+vamos a conectarnos a
+"localhost", con "safe" igual a
 
 17
 00:00:41,010 --> 00:00:43,640
-true, and go into test database,
-and look at things
+"True", vamos a la base de datos
+"test" y vemos la colección
 
 18
 00:00:43,640 --> 00:00:45,240
-collection.
+"things".
 
 19
 00:00:45,240 --> 00:00:48,400
-And we're going to do the
-following actions.
+Y vamos a hacer
+lo siguiente.
 
 20
 00:00:48,400 --> 00:00:50,700
-First we're going to drop
-everything into things
+Primero vamos a eliminar
+todo en la colección
 
 21
 00:00:50,700 --> 00:00:51,950
-collection.
+"things".
 
 22
 00:00:51,950 --> 00:00:53,250
-Now there's actually two
-different ways to do this.
+Ahora, hay en realidad dos
+distintas maneras para hacer esto.
 
 23
 00:00:53,250 --> 00:00:54,820
-You can do things.remove.
+Puedes hacer "things.remove"
 
 24
 00:00:54,820 --> 00:00:57,200
-with an empty document to remove
-all the documents.
+con un documento vacío para
+eliminar todos los documentos.
 
 25
 00:00:57,200 --> 00:01:00,320
-Or slightly more efficiently if
-the collection were large,
+O un poco más eficiente si
+la colección fuera grande,
 
 26
 00:01:00,320 --> 00:01:03,640
-but this is obviously a very
-small collection, you could do
+pero es obviamente una pequeña
+colección, podrías hacer
 
 27
 00:01:03,640 --> 00:01:06,860
-things.drop and that drops
-the collection.
+"things.drop" y eliminará
+la colección.
 
 28
 00:01:06,860 --> 00:01:10,480
-And after that, I'm going to
-do two different upserts.
+Y después de eso, voy a hacer
+dos distintos "upserts".
 
 29
 00:01:10,480 --> 00:01:12,480
-Now I call update.
+Ahora voy a llamar a "update".
 
 30
 00:01:12,480 --> 00:01:17,390
-And I'm looking for thing
-that has a key of thing
+Voy a buscar por algo
+que tenga una clave "thing"
 
 31
 00:01:17,390 --> 00:01:19,410
-and a value of apple.
+y un valor de "apple".
 
 32
 00:01:19,410 --> 00:01:25,580
-And then I'm going to set
-color red, upsert true.
+Y luego voy a establecer
+"color" "red", "upsert" "true".
 
 33
 00:01:25,580 --> 00:01:26,700
-OK?
+¿OK?
 
 34
 00:01:26,700 --> 00:01:29,510
-And the other thing I'm going
-to update in my things
+Y lo otro que voy a
+actualizar en mi colección
 
 35
 00:01:29,510 --> 00:01:32,450
-collection is I'm going to
-look for a thing with the
+"things" es que voy a
+buscar algo con
 
 36
 00:01:32,450 --> 00:01:35,230
-thing value of pear.
+"thing" de valor "pear".
 
 37
 00:01:35,230 --> 00:01:40,660
-And then I'm going to set
-the color to green.
+Luego voy a establecer
+el "color" a "green".
 
 38
 00:01:40,660 --> 00:01:43,330
-And I'm going to upsert
-equals true.
+Y voy a poner
+"upsert=True".
 
 39
 00:01:43,330 --> 00:01:45,960
-And in this case, I'm suing
-the set command.
+Y en este caso, estoy
+usando el comando "set".
 
 40
 00:01:45,960 --> 00:01:48,430
-In this case, I'm just setting
-the document--
+En este caso, sólo estoy
+dando el documento--
 
 41
 00:01:48,430 --> 00:01:49,850
-I'm saying the attribute
-of the document that
+Estoy diciendo el atributo
+del documento que
 
 42
 00:01:49,850 --> 00:01:51,280
-I want right here.
+deseo aquí.
 
 43
 00:01:51,280 --> 00:01:56,360
-And then I'm going to find the
-apple and print it out.
+Entonces voy a encontrar el
+de valor "apple" e imprimirlo.
 
 44
 00:01:56,360 --> 00:02:00,730
-And I'm going to find the pear
-and I'm going to print it out.
+Y voy a encontrar "pear"
+e imprimirlo también.
 
 45
 00:02:00,730 --> 00:02:02,050
-So that's the whole program.
+Así que este es mi programa completo.
 
 46
 00:02:02,050 --> 00:02:04,500
-So let's see what we get.
+Veamos qué obtenemos.
 
 47
 00:02:04,500 --> 00:02:05,430
-All right.
+Muy bien.
 
 48
 00:02:05,430 --> 00:02:08,100
-So here's the result of
-running this program.
+Así que aquí está el resultado
+de ejecutar este programa.
 
 49
 00:02:08,100 --> 00:02:12,870
-And in the case of the apple,
-it pretty much is what we'd
+Y en este caso de "apple",
+es exactamente lo que estábamos
 
 50
 00:02:12,870 --> 00:02:17,580
-expect, which is that there's
-color red, thing apple.
+esperando, que es que hay
+"color" "red", "thing" "apple".
 
 51
 00:02:17,580 --> 00:02:22,510
-And then a underscore IDs
-that's a BSON ObjectId.
+Y luego un "_id" que
+es un BSON ObjectId.
 
 52
 00:02:22,510 --> 00:02:25,530
-But with the pear, there's
-nothing there.
+Pero con "pear",
+no hay nada allí.
 
 53
 00:02:25,530 --> 00:02:27,330
-Wow, that's kind of weird.
+¡Vaya!, eso es un poco raro.
 
 54
 00:02:27,330 --> 00:02:28,820
-There's nothing there.
+No hay nada allí.
 
 55
 00:02:28,820 --> 00:02:30,160
-So why is that?
+¿Por qué es eso?
 
 56
 00:02:30,160 --> 00:02:31,950
-So let's look back at the
-program and see if we can
+Vayamos a mirar hacia atrás en
+el programa y ver si podemos
 
 57
 00:02:31,950 --> 00:02:33,540
-figure out what happened.
+averiguar qué ocurrió.
 
 58
 00:02:33,540 --> 00:02:37,745
-So with the apple, we used
-the set command.
+Entonces, con "apple",
+usamos el comando "set".
 
 59
 00:02:37,745 --> 00:02:40,880
-And it did what we expected,
-which is that it inserted
+Y pasó lo que esperábamos,
+es que inserta
 
 60
 00:02:40,880 --> 00:02:44,090
-something with a thing
-of value of apple
+algo con un "thing"
+de valor "apple"
 
 61
 00:02:44,090 --> 00:02:46,270
-and a color of red.
+y un "color" "red".
 
 62
 00:02:46,270 --> 00:02:49,900
-But with the pear, we didn't
-use a set command.
+Pero con "pear", no
+usamos un comando "set".
 
 63
 00:02:49,900 --> 00:02:55,890
-So we didn't actually get a
-document with thing set.
+Así que en realidad no obtenemos
+un documento con "thing" sin "set".
 
 64
 00:02:55,890 --> 00:03:00,470
-So the reason why this statement
-here returned none
+La razón por la cuál esta
+sentencia de aquí retorna "None"
 
 65
 00:03:00,470 --> 00:03:04,160
-is that there is nothing with
-thing pear in the collection.
+es que no hay nada con
+"thing" "pear" en la colección.
 
 66
 00:03:04,160 --> 00:03:07,950
-And I'll show you the collection
-so you can see it.
+Y te voy a mostrar la colección
+para que puedas verla.
 
 67
 00:03:07,950 --> 00:03:13,380
-So we're on Mongo and
-db.things.find.
+Estamos en Mongo y
+"db.things.find".
 
 68
 00:03:13,380 --> 00:03:15,930
-And here's what's in
-that collection.
+Y esto es lo que hay
+en esa colección.
 
 69
 00:03:15,930 --> 00:03:18,230
-You can see we have
-the apple-- thing
+Puedes ver que tenemos
+"apple"-- "thing"
 
 70
 00:03:18,230 --> 00:03:19,770
-apple, color red--
+"apple", "color" "red"--
 
 71
 00:03:19,770 --> 00:03:24,000
-but for the pear, we just
-have color green.
+pero para "pear", sólo
+tenemos "color" "green".
 
 72
 00:03:24,000 --> 00:03:26,370
-Thing pear is not there.
+"thing" "pear" no está allí.
 
 73
 00:03:26,370 --> 00:03:30,040
-So when we ran this statement
-right here, we inserted
+Así que cuando ejecutamos esta
+sentencia de aquí, insertamos
 
 74
 00:03:30,040 --> 00:03:35,790
-something into the database with
-color of green and thing
+algo en la base de datos con
+"color" "green" y "thing"
 
 75
 00:03:35,790 --> 00:03:36,980
-colon pear.
+dos puntos "pear".
 
 76
 00:03:36,980 --> 00:03:39,640
-The thing attribute, the
-thing key, did not get
+El atributo "thing", la clave
+"thing", no tenía
 
 77
 00:03:39,640 --> 00:03:41,330
-set into the document.
+"set" en el documento.
 
 78
 00:03:41,330 --> 00:03:43,390
-And so that's an important thing
-to remember when you're
+Y por lo tanto algo importante
+para recordar cuando estás
 
 79
 00:03:43,390 --> 00:03:47,510
-doing upserts is that it
-generally just sets the
+haciendo "upserts" es que
+por lo general sólo establece
 
 80
 00:03:47,510 --> 00:03:50,330
-document equal to what's
-on the right.
+el documento igual a lo
+que está aquí.
 
 81
 00:03:50,330 --> 00:03:53,820
-The exception being that if you
-use a set command, then it
+La excepción es que si usas
+un comando "set", entonces
 
 82
 00:03:53,820 --> 00:03:58,140
-will use the criteria on the
-left in the query document as
+usará el criterio dejado
+en el documento de consulta como
 
 83
 00:03:58,140 --> 00:04:00,490
-a part of what's inserted.
+parte de lo que inserta.
 
 84
 00:04:00,490 --> 00:04:01,010
@@ -391,41 +391,41 @@ OK.
 
 85
 00:04:01,010 --> 00:04:03,790
-So it's time for a quiz
-on upserting.
+Es momento para un cuestionario
+acerca de "upserting".
 
 86
 00:04:03,790 --> 00:04:07,400
-So suppose we'd like to upsert
-the following document into
+Así que suponemos que nos gustaría
+hacer un "upsert" al siguiente documento
 
 87
 00:04:07,400 --> 00:04:08,910
-the collection stuff.
+en la colección "stuff".
 
 88
 00:04:08,910 --> 00:04:12,500
-_id bat, friend ball,
-cousin glove.
+"_id" "bat", "friend" "ball",
+"cousin" "glove".
 
 89
 00:04:12,500 --> 00:04:15,060
-Which of the following
-statements would work?
+¿Cuáles de las siguientes
+sentencias funcionarían?
 
 90
 00:04:15,060 --> 00:04:16,870
-And I won't go through
-each one right now,
+Y no voy a ir por cada
+uno en este momento,
 
 91
 00:04:16,870 --> 00:04:19,130
-because they're small.
+porque son pequeños.
 
 92
 00:04:19,130 --> 00:04:20,629
-But which of the following
-statements would work?
+Pero ¿cuáles de las siguientes
+sentencias funcionarían?
 
 93
 00:04:20,629 --> 00:04:21,879
