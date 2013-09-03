@@ -128,7 +128,7 @@ driver para indicar que es
 
 29
 00:01:12,040 --> 00:01:13,570
-una ordenación ascendente.
+un orden ascendente.
 
 30
 00:01:13,570 --> 00:01:16,290
@@ -235,7 +235,7 @@ el "limit" y luego el "sort".
 
 52
 00:02:15,680 --> 00:02:20,630
-Y veamos qué ocuerre
+Y veamos qué ocurre
 cuando ejecutamos esto.
 
 53
@@ -342,7 +342,7 @@ enseñarte es que la sintaxis
 
 75
 00:03:25,120 --> 00:03:27,950
-para la ordenación es un poco
+para el orden es un poco
 diferente de la que se usa en el
 
 76
@@ -361,8 +361,8 @@ ahora --
 
 79
 00:03:35,340 --> 00:03:38,120
-si quisiera hacer una ordenación compleja
-o una ordenación sobre más de
+si quisiera dar un orden complejo
+o un orden para más de
 
 80
 00:03:38,120 --> 00:03:42,010
@@ -505,7 +505,7 @@ que ésta es una divergencia del
 109
 00:05:23,160 --> 00:05:28,020
 shell Mongo en términos de la
-forma de expresar la ordenación.
+forma de expresar el orden.
 
 110
 00:05:28,020 --> 00:05:29,660
