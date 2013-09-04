@@ -3,10 +3,9 @@
 
 2
 00:00:00,130 --> 00:00:02,940
-Well, the answer is this.
-db.scores.remove score colon $
+Bien, la respuesta es ésta.
+"db.scores.remove"
 
 3
 00:00:02,940 --> 00:00:08,220
-less than colon $ less
-than colon 60.
+"({score: {$lt: 60}})".
