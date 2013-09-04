@@ -3,109 +3,108 @@
 
 2
 00:00:00,250 --> 00:00:03,830
-All right, the answer is
-that it will succeed.
+Muy bien, la respuesta es
+que va a tener éxito.
 
 3
 00:00:03,830 --> 00:00:06,820
-And it will succeed because that
-delete call, right here,
+Y va a tener éxito porque esa
+llamada a "delete", de aquí,
 
 4
 00:00:06,820 --> 00:00:11,620
-will delete the underscore ID
-key that the driver added
+eliminará la clave "_id"
+que el driver añadió
 
 5
 00:00:11,620 --> 00:00:15,530
-allowing a second insert to
-occur with a new underscore ID
+permitiendo una segunda inserción
+para producir un nuevo "_id"
 
 6
 00:00:15,530 --> 00:00:17,110
-set by the driver.
+establecido por el driver.
 
 7
 00:00:17,110 --> 00:00:18,975
-Now, the other answers are
-wrong, but we'll go through
+Ahora, las otras respuestas están
+erradas, pero vamos a ir
 
 8
 00:00:18,975 --> 00:00:20,060
-them real fast.
+por ellas muy rápido.
 
 9
 00:00:20,060 --> 00:00:22,740
-No, because the underscore will
-be a duplicate in the
+No, porque el "_id" va
+a estar duplicado en la
 
 10
 00:00:22,740 --> 00:00:23,610
-collection.
+colección.
 
 11
 00:00:23,610 --> 00:00:25,740
-That would have been rue
-but we deleted it.
+Eso habría sido cierto
+pero lo eliminamos.
 
 12
 00:00:25,740 --> 00:00:27,990
-No, because the delete
-call will delete the
+No, porque la llamada
+al "delete" eliminará
 
 13
 00:00:27,990 --> 00:00:29,060
-entire record in python.
+todo el registro en Python.
 
 14
 00:00:29,060 --> 00:00:30,200
-That is not true.
+Eso no es cierto.
 
 15
 00:00:30,200 --> 00:00:31,320
-The delete--
+El "delete"--
 
 16
 00:00:31,320 --> 00:00:35,190
-the D-E-L function in python
-will remove just that key
+la función "del" en Python
+eliminará sólo ese par de
 
 17
 00:00:35,190 --> 00:00:36,530
-value pair from that
-dictionary.
+clave-valor de ese
+diccionario.
 
 18
 00:00:36,530 --> 00:00:38,170
-So that's why that works.
+Así que por eso funciona.
 
 19
 00:00:38,170 --> 00:00:41,220
-And the final answer gets it
-right but explains it wrong.
+Y la respuesta final lo
+hace bien pero explica mal.
 
 20
 00:00:41,220 --> 00:00:44,160
-It says, yes because the pymongo
-driver always adds a
+Dice, sí, porque el driver
+PyMongo siempre añade un
 
 21
 00:00:44,160 --> 00:00:45,520
-unique ID field on insert.
+único campo ID en la inserción.
 
 22
 00:00:45,520 --> 00:00:46,720
-That is not true.
+Eso no es cierto.
 
 23
 00:00:46,720 --> 00:00:50,800
-It does not add the unique ID
-field, underscore ID field, if
+No añade el campo único ID, "_id",
 
 24
 00:00:50,800 --> 00:00:54,320
-there is already one in the
-record that is set to it.
+si ya hay uno en el registro
+que está establecido en él.
 
 25
 00:00:54,320 --> 00:00:55,570

@@ -7,362 +7,360 @@ OK.
 
 3
 00:00:00,600 --> 00:00:03,130
-We've come a long way
-in this unit.
+Hemos recorrido un largo
+camino en esta unidad.
 
 4
 00:00:03,130 --> 00:00:05,980
-What's left is to talk a little
-bit about inserting,
+Lo que nos queda es hablar un
+poco acerca de inserción,
 
 5
 00:00:05,980 --> 00:00:09,100
-updating, and removing data in
-PyMongo, which is pretty
+actualización y eliminación de
+datos en PyMongo, que es muy
 
 6
 00:00:09,100 --> 00:00:11,190
-similar to the way it works
-in the Mongo shell.
+similar a la manera con la que
+funciona en el shell Mongo.
 
 7
 00:00:11,190 --> 00:00:13,410
-So we won't take that long,
-although there are some
+Así que no tomaremos tanto
+tiempo, aunque hay algunas
 
 8
 00:00:13,410 --> 00:00:15,320
-subtleties to the insertion.
+sutilezas para la inserción.
 
 9
 00:00:15,320 --> 00:00:18,190
-And then we're going to talk a
-little bit about the blog, and
+Y luego vamos a hablar
+un poco acerca del blog,
 
 10
 00:00:18,190 --> 00:00:20,290
-the work you're going to
-do for that on the
+y del trabajo que vas a
+realizar para eso en la
 
 11
 00:00:20,290 --> 00:00:21,390
-homework this week.
+tarea de esta semana.
 
 12
 00:00:21,390 --> 00:00:23,100
-And that's it.
+Y eso es todo.
 
 13
 00:00:23,100 --> 00:00:25,440
-So let's get started talking
-about insert.
+Empecemos por hablar
+acerca de inserciones.
 
 14
 00:00:25,440 --> 00:00:28,740
-So I've written a small program
-here in Python that's
+He escrito un pequeño programa
+aquí en Python que va a
 
 15
 00:00:28,740 --> 00:00:32,030
-going to insert two documents
-into the database.
+insertar dos documentos
+en la base de datos.
 
 16
 00:00:32,030 --> 00:00:35,650
-Now, in the first case, I've
-named this document Richard.
+Ahora, en el primer caso, he
+nombrado a este documento como "richard".
 
 17
 00:00:35,650 --> 00:00:39,720
-And you can see that it doesn't
-have an underscore ID.
+Y puedes ver que
+no tiene un "_id".
 
 18
 00:00:39,720 --> 00:00:42,990
-And in the second case, I have
-another document named Andrew,
+Y en el segundo caso, tengo
+otro documento llamado "andrew",
 
 19
 00:00:42,990 --> 00:00:45,590
-and it does have an
-underscore ID.
+que sí tiene un "_id".
 
 20
 00:00:45,590 --> 00:00:48,550
-Now, if you recall from the
-first unit, the PyMongo
+Ahora, si recuerdas de la
+primera unidad, el driver
 
 21
 00:00:48,550 --> 00:00:51,270
-driver, and the drivers in
-general, will set an
+PyMongo, y todos los drivers
+en general, establecerán un
 
 22
 00:00:51,270 --> 00:00:54,790
-underscore ID and create a BSON
-object ID if there's none
+"_id" y crearán un BSON
+ObjectId si no hay ninguno
 
 23
 00:00:54,790 --> 00:00:58,490
-set in the data that comes
-into the insert.
+establecido en los datos
+que vienen en el "insert".
 
 24
 00:00:58,490 --> 00:01:02,410
-So after we insert these, we're
-going to look and we're
+Por esto después que los
+insertamos, vamos a ver e
 
 25
 00:01:02,410 --> 00:01:05,239
-going to print out, inside
-Python, the value
+imprimir, en Python, el valor
 
 26
 00:01:05,239 --> 00:01:06,860
-of these two records.
+de estos dos registros.
 
 27
 00:01:06,860 --> 00:01:08,620
-And what I'll do is I'll just
-print them in the same order
+Y lo que haré es sólo
+imprimirlos en el mismo orden
 
 28
 00:01:08,620 --> 00:01:10,820
-that I'm inserting them.
+en que los estoy insertando.
 
 29
 00:01:10,820 --> 00:01:12,860
-All right, so let's do that.
+Muy bien, así que hagamos eso.
 
 30
 00:01:12,860 --> 00:01:16,535
-So we're going to
-run the program.
+Vamos a ejecutar
+el programa.
 
 31
 00:01:16,535 --> 00:01:19,200
-And once we do that, we can
-see that it prints out the
+Y una vez que hacemos esto,
+podemos ver que imprime el
 
 32
 00:01:19,200 --> 00:01:22,710
-first one, the one
-for Richard.
+primero, el que es
+"richard".
 
 33
 00:01:22,710 --> 00:01:26,190
-And in that case, the driver
-added an underscore ID, and a
+En este caso, el driver
+añadió un "_id" y un
 
 34
 00:01:26,190 --> 00:01:28,510
-BSON object ID.
+BSON ObjectId.
 
 35
 00:01:28,510 --> 00:01:31,590
-And in the second case, where
-I already provided one--
+Y en el segundo caso,
+donde he provisto un
 
 36
 00:01:31,590 --> 00:01:34,900
-underscore ID is Erlichson,
-it didn't add one.
+"_id" es Erlichson,
+no añadió ninguno.
 
 37
 00:01:34,900 --> 00:01:36,780
-So that's interesting.
+Por tanto eso es interesante.
 
 38
 00:01:36,780 --> 00:01:39,620
-Now what happens if we run
-the program again?
+Ahora, ¿qué ocurre si ejecutamos
+el programa de nuevo?
 
 39
 00:01:39,620 --> 00:01:42,540
-What would you expect
-to happen?
+¿Qué se espera
+que ocurra?
 
 40
 00:01:42,540 --> 00:01:44,090
-So let's do that.
+Así que hagamos eso.
 
 41
 00:01:44,090 --> 00:01:50,960
-And the answer is that the first
-insert succeeds with a
+Y la respuesta es que la primera
+inserción tiene éxito con un
 
 42
 00:01:50,960 --> 00:01:53,720
-new object ID.
+nuevo ObjectId.
 
 43
 00:01:53,720 --> 00:01:55,920
-Different from the first,
-because the driver just
+A diferencia del primero,
+porque el driver con suerte
 
 44
 00:01:55,920 --> 00:01:57,410
-happily added a new one.
+añade uno nuevo.
 
 45
 00:01:57,410 --> 00:02:00,760
-But the second insert, where I
-had specified the ID, that's
+Pero la segunda inserción,
+donde especifiqué el ID,
 
 46
 00:02:00,760 --> 00:02:01,510
-going to fail.
+fracasará.
 
 47
 00:02:01,510 --> 00:02:04,870
-And we can confirm that by going
-into Mongo, using the
+Y podemos confirmar
+yendo a Mongo, usando la
 
 48
 00:02:04,870 --> 00:02:09,550
-schools collection, and then
-looking at that collection,
+colección "schools" y luego
+buscamos en esa colección,
 
 49
 00:02:09,550 --> 00:02:11,880
-people dot--
+"people.--
 
 50
 00:02:11,880 --> 00:02:13,910
-I think it's school.
+Creo que es "school".
 
 51
 00:02:13,910 --> 00:02:17,370
-And then looking at the
-people collection.
+Y luego ver en la
+colección "people".
 
 52
 00:02:17,370 --> 00:02:22,060
-And when we do that, we can
-see that, in fact, Richard
+Y cuando lo hacemos,
+podemos ver que, en efecto,
 
 53
 00:02:22,060 --> 00:02:24,330
-appears twice right there.
+Richard aparece dos veces allí
 
 54
 00:02:24,330 --> 00:02:28,850
-And I appear once, because that
-was a duplicate key error
+Y yo aparezco una vez, porque
+hubo un error por clave suplicada
 
 55
 00:02:28,850 --> 00:02:31,570
-when I tried to insert
-that again.
+cuando intenté
+insertarlo de nuevo.
 
 56
 00:02:31,570 --> 00:02:32,210
-All right?
+¿De acuerdo?
 
 57
 00:02:32,210 --> 00:02:37,380
-So as an aside, the reason why
-the driver is created the
+Como una acotación, la razón por
+la cual el driver creó el
 
 58
 00:02:37,380 --> 00:02:39,320
-underscore ID and not
-the database--
+"_id" y no
+la base de datos--
 
 59
 00:02:39,320 --> 00:02:40,540
-it's kind of historical.
+es por algo de historia.
 
 60
 00:02:40,540 --> 00:02:44,160
-But it was to allow a
-very fast writes.
+Pero fue para permitir
+escrituras muy rápidas.
 
 61
 00:02:44,160 --> 00:02:46,650
-You could send a write to the
-database with a unique
+Podrías enviar una escritura
+a la base de datos con un único
 
 62
 00:02:46,650 --> 00:02:50,230
-underscore ID, and then not
-wait for the response.
+"_id" y luego no
+esperar la respuesta.
 
 63
 00:02:50,230 --> 00:02:52,300
-Now, we have safe mode set to
-true, so we're waiting for a
+Ahora, tenemos el modo seguro (safe)
+en "True", así que estamos esperando
 
 64
 00:02:52,300 --> 00:02:53,860
-response anyway.
+una respuesta de todos modos.
 
 65
 00:02:53,860 --> 00:02:55,090
-So it doesn't really matter.
+Así que en realidad no importa.
 
 66
 00:02:55,090 --> 00:02:58,090
-And also, if you've been
-following this, or if you're
+Y también, si has estado
+siguiendo esto, o si eres
 
 67
 00:02:58,090 --> 00:03:02,070
-aware of the default mode being
-safe mode equal false
+consciente del modo por defecto
+que es "safe" igual a "False"
 
 68
 00:03:02,070 --> 00:03:04,930
-inside MondoDB, I just wanted
-to let you know that in the
+en MongoDB, sólo quería
+permitirte saber que en las
 
 69
 00:03:04,930 --> 00:03:09,050
-coming weeks, one of the plans
-for MongoDB is that safe mode
+próximas semanas, uno de los planes
+para MongoDB es que el modo seguro
 
 70
 00:03:09,050 --> 00:03:11,110
-is going to be set to
-true by default.
+va a ser establecido
+en "True" por defecto.
 
 71
 00:03:11,110 --> 00:03:14,610
-So that sort of obviates the
-need for the object ID being
+Así que ese tipo de cosas obvian
+la necesidad para que el ObjectId
 
 72
 00:03:14,610 --> 00:03:17,120
-set by the driver, but it always
-has been that way.
+sea establecido por el driver,
+pero siempre ha sido así.
 
 73
 00:03:17,120 --> 00:03:20,200
-So I'm guessing it's going to
-probably remain that way.
+Así que supongo que probablemente
+seguirá siendo así.
 
 74
 00:03:20,200 --> 00:03:23,670
-But that was the original reason
-why the drivers were
+Pero esa fue la razón original
+por la que los drivers estaban
 
 75
 00:03:23,670 --> 00:03:25,060
-creating the object ID.
+creando los ObjectId.
 
 76
 00:03:25,060 --> 00:03:27,750
-It was to allow you to send a
-write to the database and not
+Fue para permitirte enviar una
+escritura a la base de datos y no
 
 77
 00:03:27,750 --> 00:03:30,140
-wait for a response, and know
-what the ID was going to be
+esperar una respuesta, y
+conocer cuál es el ID que va a
 
 78
 00:03:30,140 --> 00:03:31,310
-when it succeeded.
+tener cuando esto sucedió.
 
 79
 00:03:31,310 --> 00:03:32,200
@@ -370,63 +368,63 @@ OK.
 
 80
 00:03:32,200 --> 00:03:34,190
-So it's time for a quiz.
+Es hora de un cuestionario.
 
 81
 00:03:34,190 --> 00:03:35,820
-So here's the quiz.
+Aquí está el cuestionario.
 
 82
 00:03:35,820 --> 00:03:39,640
-In this code right here, which
-looks similar to the code that
+En este código de aquí, que
+parece similar al código que
 
 83
 00:03:39,640 --> 00:03:43,880
-we just went over, where we have
-a document set to my name
+tuvimos antes, donde tenemos un
+conjunto de documentos con mi nombre
 
 84
 00:03:43,880 --> 00:03:47,100
-and some interests, if
-I try to insert it--
+y algunos intereses, si
+intentas insertarlo--
 
 85
 00:03:47,100 --> 00:03:50,320
-I have a first insert here,
-and then the delete of the
+tengo una primera inserción aquí,
+y luego la eliminación del
 
 86
 00:03:50,320 --> 00:03:53,740
-underscore ID here, and then
-a second insert here--
+"_id" aquí, y luego una
+segunda inserción aquí--
 
 87
 00:03:53,740 --> 00:03:57,480
-what do you expect to happen
-with the second insert?
+¿Qué se espera que suceda
+con la segunda inserción?
 
 88
 00:03:57,480 --> 00:03:58,120
-All right?
+¿De acuerdo?
 
 89
 00:03:58,120 --> 00:04:00,520
-Do you expect to succeed,
-and what is your
+¿Que se espera que
+suceda y cuál es tu
 
 90
 00:04:00,520 --> 00:04:01,980
-explanation for that?
+explicación para eso?
 
 91
 00:04:01,980 --> 00:04:04,430
-And there is one answer to
-this question right here.
+Y no una sola respuesta para
+esta pregunta de aquí.
 
 92
 00:04:04,430 --> 00:04:05,680
-And here are the answers.
+Y aquí están las respuestas.
 
 93
 00:04:05,680 --> 00:04:06,510
