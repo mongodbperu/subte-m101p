@@ -7,33 +7,33 @@ Bienvenido otra vez.
 
 3
 00:00:01,700 --> 00:00:04,930
-Esta semana, vamos a hablar
-acerca del diseño de esquemas con MongoDB.
+Esta semana, vamos a hablar acerca
+del diseño de esquemas en MongoDB.
 
 4
 00:00:04,930 --> 00:00:07,620
-Si estás viniendo del mundo
-de bases de datos relacionales,
+Si vienes del mundo de
+bases de datos relacionales,
 
 5
 00:00:07,620 --> 00:00:11,450
-sabes que hay una mejor,
-ideal manera para diseñar tu
+sabes que hay una manera
+ideal en la cual diseñar
 
 6
 00:00:11,450 --> 00:00:14,640
-esquema, que es mantenerla
-en la tercera forma normal.
+tu esquema, que es de acuerdo
+a la tercera forma normal.
 
 7
 00:00:14,640 --> 00:00:17,860
-Ahora, puedes mantener datos en la
-tercera forma normal en MongoDB.
+Ahora, puedes mantener datos siguiendo
+la tercera forma normal en MongoDB
 
 8
 00:00:17,860 --> 00:00:19,900
-Y hablaremos un poco
-acerca de la tercera forma normal
+y hablaremos un poco acerca
+de la tercera forma normal
 
 9
 00:00:19,900 --> 00:00:20,930
@@ -41,8 +41,8 @@ en la siguiente lección.
 
 10
 00:00:20,930 --> 00:00:24,380
-Pero en Mongo, resulta que
-es muy importante
+Pero en Mongo, resulta
+que es muy importante
 
 11
 00:00:24,380 --> 00:00:28,740
@@ -51,26 +51,26 @@ favorable para que la aplicación
 
 12
 00:00:28,740 --> 00:00:30,200
-utilice los datos.
+los utilice.
 
 13
 00:00:30,200 --> 00:00:33,000
-Así que piensa en los
-patrones de datos de tu aplicación
+Así­ que piensa en los patrones
+de datos de tu aplicación.
 
 14
 00:00:33,000 --> 00:00:36,670
-Piensa en qué partes de
-datos son utilizadas juntas, qué
+Piensa en qué datos son
+utilizados en conjunto,
 
 15
 00:00:36,670 --> 00:00:40,260
-partes de datos son usadas mayormente
-de sólo lectura, qué partes de datos
+cuáles son usados mayormente
+sólo para lectura y cuáles
 
 16
 00:00:40,260 --> 00:00:41,560
-son escritas todo el tiempo.
+son escritos todo el tiempo.
 
 17
 00:00:41,560 --> 00:00:43,730
@@ -79,23 +79,23 @@ nuestros datos en
 
 18
 00:00:43,730 --> 00:00:47,170
-MongoDB para adaptar
-específicamente los
+MongoDB para adaptarlos
+especí­ficamente a los
 
 19
 00:00:47,170 --> 00:00:49,350
-patrones de acceso a datos
-de tu aplicación.
+patrones de acceso a
+datos de tu aplicación.
 
 20
 00:00:49,350 --> 00:00:51,640
-Y es un poco distinto del
+Es un poco distinto al
 mundo de las relaciones,
 
 21
 00:00:51,640 --> 00:00:54,290
-donde por el contrario, intentas mantener
-los datos en una manera que es
+donde por lo contrario, intentas
+mantener los datos en una manera
 
 22
 00:00:54,290 --> 00:00:57,580
@@ -103,22 +103,22 @@ agnóstica a la aplicación.
 
 23
 00:00:57,580 --> 00:01:02,070
-Así que vamos a repasar algunos de los
-factores básicos sobre MongoDB sólo
+Así­ que vamos a repasar algunos de los
+factores básicos de MongoDB, sólo para
 
 24
 00:01:02,070 --> 00:01:05,500
-para hacerte recordar esto, mientras
-hablamos acerca del diseño de esquemas.
+hacerte recordar, mientras
+abordamos el diseño de esquemas.
 
 25
 00:01:05,500 --> 00:01:09,070
-Lo primero es que MongoDB
-soporta documentos enriquecidos.
+Primero, que MongoDB soporta
+documentos enriquecidos
 
 26
 00:01:09,070 --> 00:01:10,900
-Y por documentos enriquecidos,
+y por documentos enriquecidos,
 quiero decir que no son
 
 27
@@ -128,25 +128,25 @@ sólo datos tabulares.
 28
 00:01:12,870 --> 00:01:17,730
 En MongoDB, puedes almacenar un
-array de elementos, o un valor para
+array de elementos, o el valor
 
 29
 00:01:17,730 --> 00:01:20,890
-una cierta clave puede ser
-otro documento completo.
+de una cierta clave puede ser
+otro documento entero.
 
 30
 00:01:20,890 --> 00:01:23,520
-Y esto va a permitirnos
-relacionar previamente
+Esto va a permitirnos
+relacionar datos de
 
 31
 00:01:23,520 --> 00:01:25,780
-datos para un acceso rápido.
+antemano para un acceso rápido.
 
 32
 00:01:25,780 --> 00:01:29,090
-Y esto es importante porque,
+Esto es importante porque,
 como sabes, MongoDB no
 
 33
@@ -156,42 +156,41 @@ dentro del núcleo.
 
 34
 00:01:31,870 --> 00:01:34,280
-En su lugar, si deseas hacer una
-relación, vamos a tener que
+En su lugar, si deseas hacer
+una relación, tienes que
 
 35
 00:01:34,280 --> 00:01:36,680
-relacionar en la aplicación
-misma.
+hacerla en la aplicación misma.
 
 36
 00:01:36,680 --> 00:01:39,030
-Y por supuesto, la razón de hacer
-esto es porque estas relaciones
+Por supuesto, la razón por la cual
+hacemos esto es porque estas relaciones
 
 37
 00:01:39,030 --> 00:01:39,880
-son muy difíciles para escalar.
+son muy difí­ciles de escalar
 
 38
 00:01:39,880 --> 00:01:41,980
-Y deseamos que el sistema
+y deseamos que el sistema
 sea de alto rendimiento.
 
 39
 00:01:41,980 --> 00:01:44,150
-Así que como resultado de esto, necesitas
+Como resultado, necesitas
 pensar de antemano
 
 40
 00:01:44,150 --> 00:01:46,450
-acerca de qué datos deseas usar
-junto a otros datos.
+acerca de qué datos deseas
+usar junto a otros datos.
 
 41
 00:01:46,450 --> 00:01:48,000
-Y si es posible,
-podrías desear embeberlo
+Y si es posible, podrías
+preferir embeberlo
 
 42
 00:01:48,000 --> 00:01:49,560
@@ -199,28 +198,28 @@ directamente en un documento.
 
 43
 00:01:49,560 --> 00:01:52,280
-Y hablemos acerca de
+Hablemos acerca de
 cómo se hace eso.
 
 44
 00:01:52,280 --> 00:01:54,490
-Lo siguiente es que no
-hay restricciones.
+Lo siguiente es que
+no hay restricciones.
 
 45
 00:01:54,490 --> 00:01:56,480
-Ahora, si vienes del mundo
+Si vienes del mundo
 de relaciones, podrías
 
 46
 00:01:56,480 --> 00:01:59,500
-recordar que puedes tener una
-restricción por clave foránea y pedir
+recordar que puedes implementar
+una restricción por clave foránea
 
 47
 00:01:59,500 --> 00:02:03,430
-que un atributo de una fila en
-una tabla formaría una clave
+y pedir que un atributo en alguna
+fila de una tabla forme una clave
 
 48
 00:02:03,430 --> 00:02:04,750
@@ -228,23 +227,22 @@ foránea en otra tabla.
 
 49
 00:02:04,750 --> 00:02:06,930
-Y no tenemos
-esto en MongoDB.
+No tenemos esto en MongoDB.
 
 50
 00:02:06,930 --> 00:02:09,120
-Pero va a resultar que no es
+Pero resulta que no es
 tan importante como se
 
 51
 00:02:09,120 --> 00:02:10,600
-piensa debido a que se puede
-embeber.
+piensa ya que en MongoDB
+se puede embeber.
 
 52
 00:02:10,600 --> 00:02:13,090
-Embeber va a ser un poco
-menos importante
+Embeber va a ser un
+poco menos importante
 
 53
 00:02:13,090 --> 00:02:14,740
@@ -261,8 +259,8 @@ No soportamos transacciones.
 
 56
 00:02:18,860 --> 00:02:21,570
-Pero soportamos operaciones
-atómicas en MongoDB
+Pero en MongoDB, soportamos
+operaciones atómicas
 
 57
 00:02:21,570 --> 00:02:22,780
@@ -285,25 +283,25 @@ aplicación.
 61
 00:02:28,570 --> 00:02:31,980
 Y lo último es que
-no existen esquemas declarados
+no existen esquemas
 
 62
 00:02:31,980 --> 00:02:33,070
-en MongoDB.
+declarados en MongoDB.
 
 63
 00:02:33,070 --> 00:02:35,530
-Sin embargo hay una alta posibilidad
-que tu aplicación
+Sin embargo hay una alta
+posibilidad que tu aplicación
 
 64
 00:02:35,530 --> 00:02:37,090
-vaya a tener un esquema.
+tenga un esquema.
 
 65
 00:02:37,090 --> 00:02:39,880
-Y por tener un esquema, quiero decir
-que cada documento único
+Por tener un esquema, quiero
+decir que cada documento único
 
 66
 00:02:39,880 --> 00:02:41,550
@@ -326,8 +324,8 @@ de tu aplicación.
 
 70
 00:02:49,120 --> 00:02:51,460
-Pero sobre todo, cada documento de la
-colección va a tener
+Pero sobre todo, cada documento
+de una colección va a tener
 
 71
 00:02:51,460 --> 00:02:52,670
@@ -335,54 +333,54 @@ una estructura similar.
 
 72
 00:02:52,670 --> 00:02:54,950
-Y a pesar que no se
-declaró antes de tiempo, es
+Y a pesar de que no se
+declare de antemano,
 
 73
 00:02:54,950 --> 00:02:57,730
-importante pensar en la
-estructura de manera que el esquema
+es importante pensar en la
+estructura, para que el esquema
 
 74
 00:02:57,730 --> 00:03:01,140
-de datos en sí soporta todas
-las diferentes funcionalidades de tu
+de datos soporte todas las
+diferentes funcionalidades
 
 75
 00:03:01,140 --> 00:03:03,160
-aplicación.
+de tu aplicación.
 
 76
 00:03:03,160 --> 00:03:04,800
-Así que vayamos al primer cuestionario.
+Vayamos al primer cuestionario.
 
 77
 00:03:04,800 --> 00:03:08,590
-El primer cuestionario para diseño de
-esquemas es �cuál es el único
+El primer cuestionario para diseño
+de esquemas es ¿cuál es el factor
 
 78
 00:03:08,590 --> 00:03:11,160
-factor más importante para
-diseñar el esquema de
+más importante que tienes que
+considerar al diseñar el esquema
 
 79
 00:03:11,160 --> 00:03:13,080
-tu aplicación en MongoDB?
+de tu aplicación en MongoDB?
 
 80
 00:03:13,080 --> 00:03:16,630
-¿Es hacer el diseño
-extensible, hacer fácil
+¿Hacer el diseño
+extensible? ¿Hacer fácil
 
 81
 00:03:16,630 --> 00:03:19,500
-la lectura para un humano, coincidir
-los patrones de acceso a datos de tu
+la lectura para un humano? ¿Coincidir
+con los patrones de acceso a datos de
 
 82
 00:03:19,500 --> 00:03:23,250
-aplicación, o mantener los
+tu aplicación? ¿O mantener los
 datos en la tercer forma normal?
 
 83
