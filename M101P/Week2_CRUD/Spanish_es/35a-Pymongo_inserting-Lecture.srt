@@ -23,7 +23,7 @@ datos en PyMongo, que es muy
 6
 00:00:09,100 --> 00:00:11,190
 similar a la manera con la que
-funciona en el shell Mongo.
+funciona con el shell Mongo.
 
 7
 00:00:11,190 --> 00:00:13,410
@@ -98,8 +98,8 @@ en general, establecerán un
 
 22
 00:00:51,270 --> 00:00:54,790
-"_id" y crearán un BSON
-ObjectId si no hay ninguno
+"_id" y crearán un ObjectId
+BSON si no hay ninguno
 
 23
 00:00:54,790 --> 00:00:58,490
@@ -154,12 +154,12 @@ añadió un "_id" y un
 
 34
 00:01:26,190 --> 00:01:28,510
-BSON ObjectId.
+ObjectId BSON.
 
 35
 00:01:28,510 --> 00:01:31,590
 Y en el segundo caso,
-donde he provisto un
+donde ya he provisto un
 
 36
 00:01:31,590 --> 00:01:34,900
@@ -223,7 +223,7 @@ buscamos en esa colección,
 
 49
 00:02:09,550 --> 00:02:11,880
-"people.--
+"people."--
 
 50
 00:02:11,880 --> 00:02:13,910
@@ -246,7 +246,7 @@ Richard aparece dos veces allí
 54
 00:02:24,330 --> 00:02:28,850
 Y yo aparezco una vez, porque
-hubo un error por clave suplicada
+hubo un error por clave duplicada
 
 55
 00:02:28,850 --> 00:02:31,570
@@ -410,7 +410,7 @@ con la segunda inserción?
 
 89
 00:03:58,120 --> 00:04:00,520
-¿Que se espera que
+¿Qué se espera que
 suceda y cuál es tu
 
 90
@@ -419,7 +419,7 @@ explicación para eso?
 
 91
 00:04:01,980 --> 00:04:04,430
-Y no una sola respuesta para
+Y hay una sola respuesta para
 esta pregunta de aquí.
 
 92
