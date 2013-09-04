@@ -7,361 +7,361 @@ OK.
 
 3
 00:00:00,790 --> 00:00:02,460
-We've covered most of the
-operations that you can
+Hemos cubierto la mayoría de las
+operaciones que puedes
 
 4
 00:00:02,460 --> 00:00:06,010
-perform through Insert,
-Find, Update.
+realizar a través de inserciones,
+búsquedas y actualizaciones.
 
 5
 00:00:06,010 --> 00:00:08,390
-Let's move on to deleting
-documents from the database.
+Continuemos con la eliminación
+de documentos de la base de datos.
 
 6
 00:00:08,390 --> 00:00:10,410
-This is actually relatively
+En realidad esto es relativamente
 simple.
 
 7
 00:00:10,410 --> 00:00:12,830
-You have essentially
-three options.
+Esencialmente tienes
+tres opciones.
 
 8
 00:00:12,830 --> 00:00:15,650
-First, each collection has
-a method called Remove.
+Primera, cada colección tiene
+un método "remove".
 
 9
 00:00:15,650 --> 00:00:17,830
-And Remove works very
-much like Find.
+Y "remove" funciona muy
+parecido a "find".
 
 10
 00:00:17,830 --> 00:00:20,540
-It takes an optional first
-argument which specifies what
+Recibe un primer argumento
+opcional que especifica qué
 
 11
 00:00:20,540 --> 00:00:22,630
-documents to remove.
+documentos borrar.
 
 12
 00:00:22,630 --> 00:00:24,980
-That argument has exactly the
-same semantics as the first
+Ese argumento tiene exactamente la
+misma semántica que el primer
 
 13
 00:00:24,980 --> 00:00:26,360
-argument to Find.
+argumento de "find".
 
 14
 00:00:26,360 --> 00:00:29,110
-If you specify no argument, then
-all the documents in the
+Si no especificas argumento, entonces
+se borrarán todos los
 
 15
 00:00:29,110 --> 00:00:31,190
-collection will be removed
-one by one.
+documentos de la colección
+uno a uno.
 
 16
 00:00:31,190 --> 00:00:36,060
-If I specify an argument-- for
-example, name colon Alice--
+Si especifico un argumento -- por
+ejemplo, "name: 'Alice'" --
 
 17
 00:00:36,060 --> 00:00:38,450
-then the Alice document
-gets removed.
+entonces el documento "Alice"
+se elimina.
 
 18
 00:00:38,450 --> 00:00:41,930
-Or I could give a range, name
-greater than the capital
+O podría proporcionar un rango, "name"
+mayor que la letra mayúscula
 
 19
 00:00:41,930 --> 00:00:45,370
-letter M, in which case,
-say, William is
+"M", en cuyo caso,
+digamos, se elimina
 
 20
 00:00:45,370 --> 00:00:48,370
-removed, as well as Thompson.
+"William", así como "Thompson".
 
 21
 00:00:48,370 --> 00:00:51,490
-Further, as mentioned, if no
-argument is specified to
+Además, como se ha mencionado, si no
+se pasa argumento a
 
 22
 00:00:51,490 --> 00:00:54,340
-remove, then the documents are
-removed from the collection
+"remove", entonces los documentos son
+eliminados de la colección
 
 23
 00:00:54,340 --> 00:00:56,350
-one by one until the
-collection has
+uno a uno hasta que la
+colección no
 
 24
 00:00:56,350 --> 00:00:58,300
-no documents left.
+tenga documentos.
 
 25
 00:00:58,300 --> 00:01:00,940
-Next, if you want to remove
-all documents in a single
+Después, si quieres eliminar
+todos los documentos en una única
 
 26
 00:01:00,940 --> 00:01:03,480
-pass, in a somewhat more
-efficient manner even if the
+pasada, de una forma algo más
+eficiente incluso si la
 
 27
 00:01:03,480 --> 00:01:06,100
-collection is very large, you
-can drop a collection.
+colección es muy grande,
+puedes hacer un "drop" de la colección.
 
 28
 00:01:06,100 --> 00:01:07,700
-The difference between dropping
-a collection and
+La diferencia entre hacer "drop" 
+sobre una colección y hacer
 
 29
 00:01:07,700 --> 00:01:10,000
-removing all the documents in
-the collection is really
+"remove" de todos los documentos en
+la colección es en realidad
 
 30
 00:01:10,000 --> 00:01:11,870
-mostly an implementation
-detail.
+un detalle de implementación
+en su mayor parte.
 
 31
 00:01:11,870 --> 00:01:14,320
-Removing all the documents in
-the collection requires a
+Hacer "remove" de todos los documentos
+en la colección requiere una
 
 32
 00:01:14,320 --> 00:01:18,270
-one-by-one update of internal
-state for each document that
+actualización uno a uno 
+del estado interno de cada documento que
 
 33
 00:01:18,270 --> 00:01:20,240
-happens to exist in
-the collection.
+existe en
+la colección.
 
 34
 00:01:20,240 --> 00:01:23,250
-Whereas dropping the collection
-requires freeing up
+Mientras que hacer "drop" de la colección
+requiere liberar
 
 35
 00:01:23,250 --> 00:01:26,460
-some much larger data structures
-inside of the
+algunas estructuras de datos mucho mayores
+dentro de la
 
 36
 00:01:26,460 --> 00:01:28,140
-database's data files.
+los ficheros de datos de la base de datos.
 
 37
 00:01:28,140 --> 00:01:30,790
-Which, although still
-proportional to the size of
+Lo cual, aunque es
+proporcional al tamaño de
 
 38
 00:01:30,790 --> 00:01:33,930
-the collection in terms of the
-number of documents, is going
+la colección en términos del
+número de documentos, va a
 
 39
 00:01:33,930 --> 00:01:35,980
-to have constant factors that
-will make dropping the
+tener factores constantes que
+harán que el "drop" de la 
 
 40
 00:01:35,980 --> 00:01:39,040
-collection vastly faster than
-removing documents from the
+colección sea mucho más rápido que
+eliminar los documentos de la 
 
 41
 00:01:39,040 --> 00:01:42,000
-collection one by one until
-the collection is empty.
+colección uno a uno hasta que
+la colección esté vacía.
 
 42
 00:01:42,000 --> 00:01:44,490
-However, collections can
-have some metadata
+Sin embargo, las colecciones pueden
+tener algunos metadatos
 
 43
 00:01:44,490 --> 00:01:45,950
-associated with them--
+asociados a ellas --
 
 44
 00:01:45,950 --> 00:01:47,530
-for instance, indexes--
+por ejemplo, índices --
 
 45
 00:01:47,530 --> 00:01:50,550
-which get discarded when the
-collection is dropped but
+que son descartados cuando la
+colección se elimina con "drop" pero
 
 46
 00:01:50,550 --> 00:01:53,290
-which remain in existence when
-a collection has all of its
+que continúan existiendo cuando
+una colección tiene todos sus
 
 47
 00:01:53,290 --> 00:01:54,590
-documents removed.
+documentos eliminados con "remove".
 
 48
 00:01:54,590 --> 00:01:56,970
-If you have an unusual situation
-where you need to be
+Si tienes una situación inusual
+donde necesitas deshacerte
 
 49
 00:01:56,970 --> 00:01:58,970
-frequently getting rid of all
-of the contents of your
+con frecuencia de todos
+los contenidos de tu
 
 50
 00:01:58,970 --> 00:02:01,670
-collection, the most efficient
-way to do so would be to drop
+colección, la forma más
+eficiente de hacer eso sería un "drop"
 
 51
 00:02:01,670 --> 00:02:04,040
-the collection and then
-immediately recreate the
+de la colección e inmediatamente
+después volver a crear los
 
 52
 00:02:04,040 --> 00:02:06,610
-indexes that ought to exist
-on that collection.
+índices que deberían existir
+en esa colección.
 
 53
 00:02:06,610 --> 00:02:10,570
-As a further detail, Remove,
-just like a multi-document
+Como detalle adicional, "remove",
+al igual que una actualización
 
 54
 00:02:10,570 --> 00:02:13,390
-update, can affect an arbitrary
-number of documents,
+multidocumento, puede afectar a un número
+arbitrario de documentos,
 
 55
 00:02:13,390 --> 00:02:16,240
-namely whichever documents
-happen to match the first
+es decir, cualquier documento
+que coincida con el primer
 
 56
 00:02:16,240 --> 00:02:17,860
-argument to the Remove.
+argumento de "remove".
 
 57
 00:02:17,860 --> 00:02:20,640
-Just like a multi-update,
-multi-document remove
+Al igual que una actualización múltiple,
+las operaciones "remove"
 
 58
 00:02:20,640 --> 00:02:24,470
-operations are not atomic
-isolated transactions with
+multidocumentos no son transacciones
+aisladas atómicas con
 
 59
 00:02:24,470 --> 00:02:26,600
-respect to other readers
-or writers.
+respecto a otras lecturas
+o escrituras.
 
 60
 00:02:26,600 --> 00:02:30,210
-That is to say, if you happen
-to remove, say, 10 documents
+Es decir, si haces
+un "remove", digamos, de 10 documentos
 
 61
 00:02:30,210 --> 00:02:32,660
-from a collection, a concurrent
-read or write
+de una colección, una operación de 
+lectura o escritura
 
 62
 00:02:32,660 --> 00:02:35,870
-operation might see the state
-of that collection halfway
+concurrente podría ver el estado
+de esa colección a la mitad
 
 63
 00:02:35,870 --> 00:02:37,690
-through that Remove operation.
+de la operación "remove".
 
 64
 00:02:37,690 --> 00:02:40,840
-That is, after five of the
-documents have been removed.
+Esto es, después que hayan sido eliminados 
+cinco de los documentos.
 
 65
 00:02:40,840 --> 00:02:43,400
-You'll need to take some
-measures of your own if you
+Necesitarás tomar algunas
+medidas por tu cuenta si
 
 66
 00:02:43,400 --> 00:02:45,340
-really need to isolate readers
-and writers from
+realmente necesitas aislar las lecturas
+y escrituras
 
 67
 00:02:45,340 --> 00:02:47,240
-each other in MongoDB.
+entre ellas en MongoDB.
 
 68
 00:02:47,240 --> 00:02:49,810
-However, as mentioned in the
-case with Update, each
+No obstante, tal y como se ha mencionado en el
+caso de la actualización, cada
 
 69
 00:02:49,810 --> 00:02:52,690
-individual document removal is
-atomic with respect to a
+eliminación de un documento individual es
+atómica con respecto a una
 
 70
 00:02:52,690 --> 00:02:54,420
-concurrent reader or writer.
+letura o escritura concurrente.
 
 71
 00:02:54,420 --> 00:02:58,180
-No client will see a document
-half removed.
+Ningún cliente verá un documento
+a medio borrar.
 
 72
 00:02:58,180 --> 00:03:00,130
-Let's have a quiz about
-deleting documents.
+Hagamos un cuestionario sobre
+la eliminación de documentos.
 
 73
 00:03:00,130 --> 00:03:02,360
-Recall again the schema of
-the scores collection.
+Recuerda de nuevo el esquema de
+la colección "scores".
 
 74
 00:03:02,360 --> 00:03:06,090
-There's an _id, a Student field,
-a Type field, and a
+Contiene un "_id", un campo "student",
+un campo "type" y un
 
 75
 00:03:06,090 --> 00:03:07,090
-Score field.
+campo "score".
 
 76
 00:03:07,090 --> 00:03:08,980
-How would you delete every
-record whose score
+¿Cómo eliminarías cada
+registro cuyo "score"
 
 77
 00:03:08,980 --> 00:03:11,000
-was less than 60?
+sea menor que 60?
