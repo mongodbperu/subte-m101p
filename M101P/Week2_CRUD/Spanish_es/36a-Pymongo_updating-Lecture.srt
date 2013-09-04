@@ -46,7 +46,7 @@ una inserción.
 
 11
 00:00:23,400 --> 00:00:25,390
-Y otra manera de hacer
+Y otra manera es hacer
 una actualización completa.
 
 12
@@ -56,7 +56,7 @@ en el shell Mongo.
 
 13
 00:00:27,390 --> 00:00:29,780
-Este es donde tu identificas
+Esto es donde tú identificas
 qué documento deseas
 
 14
@@ -254,7 +254,7 @@ eso.
 55
 00:02:07,810 --> 00:02:10,620
 Esa es la manera de llevar a cabo
-la adicción de un "review_date"
+la adición de un "review_date"
 
 56
 00:02:10,620 --> 00:02:12,990
@@ -355,8 +355,8 @@ intentando actualizar el
 
 77
 00:03:06,130 --> 00:03:11,170
-"_id", pero Mongo está bien
-cuando intentas hacer eso,
+"_id", pero para Mongo está
+bien que intentes hacer eso,
 
 78
 00:03:11,170 --> 00:03:14,560
@@ -550,7 +550,7 @@ Así que te voy a enseñar eso.
 
 118
 00:04:56,280 --> 00:04:58,310
-Aqui está "remove_review_date".
+Aquí está "remove_review_date".
 
 119
 00:04:58,310 --> 00:05:00,640
@@ -608,7 +608,7 @@ los "review_date" de todos los
 
 131
 00:05:29,230 --> 00:05:31,910
-registros, todos los documento,
+registros, todos los documentos,
 para asegurar que esté limpio.
 
 132
@@ -669,8 +669,8 @@ que es mostrada en Python.
 
 144
 00:06:01,385 --> 00:06:04,150
-Se ve un poco diferente
-si lo haces en shell Mongo.
+Se ve un poco diferente si
+lo haces en el shell Mongo.
 
 145
 00:06:04,150 --> 00:06:06,090
@@ -743,7 +743,7 @@ está faltando porque ya lo he
 
 160
 00:06:38,930 --> 00:06:39,710
-removido.
+eliminado.
 
 161
 00:06:39,710 --> 00:06:42,600
@@ -779,12 +779,12 @@ Aquí está el cuestionario.
 168
 00:06:53,080 --> 00:06:55,200
 En el siguiente fragmento de
-código, que es una expresión en
+código, ¿cuál es la expresión en
 
 169
 00:06:55,200 --> 00:06:58,870
-Python en el lugar de "xxxx",
-establece una nueva clave
+Python en lugar de "xxxx",
+para establecer una nueva clave
 
 170
 00:06:58,870 --> 00:07:01,050
@@ -796,7 +796,7 @@ Por favor usa el operador "$set".
 
 172
 00:07:03,140 --> 00:07:06,720
-Y puedes ver esto
+Y puedes ver que esto
 es muy similar al
 
 173
