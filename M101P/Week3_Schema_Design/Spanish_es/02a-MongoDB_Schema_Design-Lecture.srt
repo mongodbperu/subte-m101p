@@ -55,7 +55,7 @@ los utilice.
 
 13
 00:00:30,200 --> 00:00:33,000
-Así­ que piensa en los patrones
+Así que piensa en los patrones
 de datos de tu aplicación.
 
 14
@@ -80,7 +80,7 @@ nuestros datos en
 18
 00:00:43,730 --> 00:00:47,170
 MongoDB para adaptarlos
-especí­ficamente a los
+específicamente a los
 
 19
 00:00:47,170 --> 00:00:49,350
@@ -103,7 +103,7 @@ agnóstica a la aplicación.
 
 23
 00:00:57,580 --> 00:01:02,070
-Así­ que vamos a repasar algunos de los
+Así que vamos a repasar algunos de los
 factores básicos de MongoDB, sólo para
 
 24
@@ -170,7 +170,7 @@ hacemos esto es porque estas relaciones
 
 37
 00:01:39,030 --> 00:01:39,880
-son muy difí­ciles de escalar
+son muy difíciles de escalar
 
 38
 00:01:39,880 --> 00:01:41,980

@@ -3,28 +3,28 @@
 
 2
 00:00:00,160 --> 00:00:03,220
-Empecemos por revisar
-quÃ© es lo que intentamos hacer en
+Empecemos por revisar qué es
+lo que intentamos hacer en
 
 3
 00:00:03,220 --> 00:00:06,050
 el mundo relacional con
-la tercera forma normal.
+la tercera forma normal,
 
 4
 00:00:06,050 --> 00:00:09,930
-Ya que pienso que esto motivarÃ¡
-mucho de los tradeoffs que
+ya que pienso que esto motivará
+muchos de los "tradeoffs" que
 
 5
 00:00:09,930 --> 00:00:14,430
-hablamos en el
+se presentan en el
 mundo de MongoDB.
 
 6
 00:00:14,430 --> 00:00:16,680
-Esto es un poco de revisiÃ³n para
-aquellos que vienen del
+Esto es un poco de revisión
+para aquéllos que vienen del
 
 7
 00:00:16,680 --> 00:00:17,760
@@ -38,31 +38,31 @@ para una tabla de posts para
 9
 00:00:21,320 --> 00:00:24,110
 el proyecto de blog que
-hemos estado hablando.
+hemos estado considerando.
 
 10
 00:00:24,110 --> 00:00:26,710
 Y esto no es todo,
-es sÃ³lo los posts
+es sólo los posts
 
 11
 00:00:26,710 --> 00:00:29,870
-mÃ¡s los autores.
+más los autores.
 
 12
 00:00:29,870 --> 00:00:33,070
-Digamos que tenÃ­as una
+Digamos que tienes una
 tabla de posts y que decidiste
 
 13
 00:00:33,070 --> 00:00:37,730
-tener un ID del post, un tÃ­tulo y
-el cuerpo, por lo que estos son los
+tener un ID del post, un título y
+el cuerpo, por lo que éstos son los
 
 14
 00:00:37,730 --> 00:00:40,210
-distintos tÃ­tulos de estos posts,
-como "Elvis lives" y
+distintos títulos de estos
+posts, como "Elvis lives" y
 
 15
 00:00:40,210 --> 00:00:42,350
@@ -70,50 +70,50 @@ el cuerpo dice "yes he does".
 
 16
 00:00:42,350 --> 00:00:44,900
-Y el autor de este
-post aquÃ­, "Andrew".
+Y el autor de este post
+está aquí, "Andrew".
 
 17
 00:00:44,900 --> 00:00:48,290
-Y luego el correo del autor "andrew
-arroba 10gen.com", el segundo
+Luego el correo del autor "andrew
+arroba 10gen.com". El segundo
 
 18
 00:00:48,290 --> 00:00:51,060
 post en la tabla dice
-"MongoRocks".
+"MongoRocks" y fue
 
 19
 00:00:51,060 --> 00:00:52,800
-Y fue escrito por "Richard".
+escrito por "Richard"
 
 20
 00:00:52,800 --> 00:00:55,230
-Y su correo, "richard
-arroba 10gen.com"
+y su correo es "richard
+arroba 10gen.com".
 
 21
 00:00:55,230 --> 00:00:57,800
 Y el tercero tiene el
-tÃ­tulo "hello world".
+título "hello world"
 
 22
 00:00:57,800 --> 00:00:59,720
-Y fue escrito por "Andrew".
+y fue escrito por "Andrew"
 
 23
 00:00:59,720 --> 00:01:03,490
-Y tiene el correo "andrew
+y lleva el correo "andrew
 arroba 10gen.com".
 
 24
 00:01:03,490 --> 00:01:06,630
-Por lo que es una estructura
-de tabla denormalizada en el
+Es una estructura de
+tabla denormalizada en
 
 25
 00:01:06,630 --> 00:01:07,800
-mundo relacional.
+el mundo relacional.
 
 26
 00:01:07,800 --> 00:01:09,970
@@ -122,37 +122,37 @@ forma normal.
 
 27
 00:01:09,970 --> 00:01:11,420
-No ha sido cumplido.
+No ha sido cumplida.
 
 28
 00:01:11,420 --> 00:01:16,340
-Y no ha sido cumplido claramente
-porque puedes ver aquÃ­
+Y no ha sido cumplida claramente
+porque puedes ver aquí
 
 29
 00:01:16,340 --> 00:01:20,230
 que si deseas actualizar mi
-correo, digamos que el correo para
+correo, digamos que el correo
 
 30
 00:01:20,230 --> 00:01:26,360
-Andrew, tendrÃ­as que actualizar
-aquÃ­ y aquÃ­ tambiÃ©n.
+para Andrew, tendrías que
+actualizar aquí y aquí también.
 
 31
 00:01:26,360 --> 00:01:29,320
 Y hay una posibilidad de
-dejarlo inconsistente.
+causar una inconsistencia.
 
 32
 00:01:29,320 --> 00:01:32,840
-PodrÃ­a actualizarlo en esta fila,
-pero no en esta fila,
+Podría actualizarlo en esta
+fila, pero no en esta fila
 
 33
 00:01:32,840 --> 00:01:36,170
-y por lo tanto, dejarlo
-inconsistente.
+y por lo tanto, causar
+una inconsistencia.
 
 34
 00:01:36,170 --> 00:01:40,990
@@ -161,8 +161,8 @@ esto contraviene
 
 35
 00:01:40,990 --> 00:01:44,880
-la normalizaciÃ³n porque
-viola una manera comÃºn de
+la normalización, porque
+viola una manera común de
 
 36
 00:01:44,880 --> 00:01:48,870
@@ -174,24 +174,23 @@ en la tercera forma normal,
 que es que todo atributo que no
 es clave en la tabla debe
 
-38
 00:01:52,490 --> 00:01:55,300
-proveer un hecho sobre la
+proveer un atributo de la
 clave, toda la clave, y
 
 39
 00:01:55,300 --> 00:01:56,460
-nada mÃ¡s que la clave.
+nada más que la clave.
 
 40
 00:01:56,460 --> 00:02:00,360
-Y eso es un juego de palabras,
-asÃ­ como decir en una corte de los
+Eso es un juego de palabras, así
+como decir en una corte de los
 
 41
 00:02:00,360 --> 00:02:02,690
 Estados Unidos: "decir la verdad,
-toda la verdad, y nada mÃ¡s
+toda la verdad, y nada más
 
 42
 00:02:02,690 --> 00:02:03,660
@@ -199,23 +198,23 @@ que la verdad".
 
 43
 00:02:03,660 --> 00:02:07,470
-Y, en particular, la clave
-en Ã©ste es el post.
+Y, en particular, la
+clave aquí es el post.
 
 44
 00:02:07,470 --> 00:02:10,120
 Esto va a ser la clave
-primaria para esta tabla.
+primaria para esta tabla
 
 45
 00:02:10,120 --> 00:02:13,400
-Y tenemos este atributo que
+y tenemos este atributo que
 no es una clave, el correo
 
 46
 00:02:13,400 --> 00:02:15,970
 de autor, que no
-sigue a eso.
+se adhiere a eso.
 
 47
 00:02:15,970 --> 00:02:19,750
@@ -224,36 +223,35 @@ algo sobre el autor.
 
 48
 00:02:19,750 --> 00:02:22,420
-Y asÃ­ afecta la
+Y así afecta la
 tercera forma normal.
 
 49
 00:02:22,420 --> 00:02:28,140
-Y si recuerdas, del mundo
-relacional teniendo una
+Si recuerdas, en el mundo
+relacional, hay varias 
 
 50
 00:02:28,140 --> 00:02:32,020
-tabla de base de datos en la tercera
-forma normal, hay varias
+buenas cosas acerca
+de tener una tabla en
 
 51
 00:02:32,020 --> 00:02:33,770
-buenas cosas acerca de eso.
+la tercera forma normal.
 
 52
 00:02:33,770 --> 00:02:36,440
-Y te mostrarÃ©
-cuÃ¡les son.
+Te mostraré cuáles son.
 
 53
 00:02:36,440 --> 00:02:40,040
-De acuerdo, entonces ¿cuÃ¡les son los
-objetivos de la normalizaciÃ³n en el
+Entonces, ¿cuáles son los
+objetivos de la normalización
 
 54
 00:02:40,040 --> 00:02:40,710
-mundo relacional?
+en el mundo relacional?
 
 55
 00:02:40,710 --> 00:02:41,810
@@ -262,32 +260,32 @@ Bueno, hay tres objetivos.
 56
 00:02:41,810 --> 00:02:44,950
 Uno de ellos es que libera la
-base de datos de estas anomalÃ­as
+base de datos de estas anomalías
 
 57
 00:02:44,950 --> 00:02:47,630
-de modificaciÃ³n, como, por ejemplo,
+de modificación, como, por ejemplo,
 el que te acabo de mostrar,
 
 58
 00:02:47,630 --> 00:02:50,730
-donde pude actualizar mi direcciÃ³n
+donde pude actualizar mi dirección
 de correo en una fila, pero no
 
 59
 00:02:50,730 --> 00:02:52,280
-actualizarlo en otro, y
-por lo tanto, dejarlo
+actualizarla en otra, y
+por lo tanto, causé una
 
 60
 00:02:52,280 --> 00:02:55,220
-inconsistente en
+inconsistencia en
 la base de datos.
 
 61
 00:02:55,220 --> 00:02:58,090
-Y el siguiente es supuestamente
-minimizar el rediseÃ±o al
+El siguiente es supuestamente
+minimizar el rediseño al
 
 62
 00:02:58,090 --> 00:02:59,670
@@ -295,59 +293,59 @@ extender la base de datos.
 
 63
 00:02:59,670 --> 00:03:01,225
-Ahora, esto pienso que es un
-poco controversial
+Ahora, esto pienso que
+es un poco controversial,
 
 64
 00:03:01,225 --> 00:03:03,010
-si se hace eso o no.
+si se logra eso o no.
 
 65
 00:03:03,010 --> 00:03:05,350
-Pero esa es la idea
-de la normalizaciÃ³n.
+Pero ésa es la idea
+de la normalización.
 
 66
 00:03:05,350 --> 00:03:08,550
-Y la razÃ³n final para
-normalizar estas tablas, en el
+Y la motivación final para
+normalizar estas tablas
 
 67
 00:03:08,550 --> 00:03:13,440
-mundo relacional, es Ã©sta, es
-evitar cualquier tendencia hacia un
+en el mundo relacional, es ésta:
+evitar cualquier tendencia hacia
 
 68
 00:03:13,440 --> 00:03:15,940
-patrÃ³n de acceso particular.
+un patrón de acceso particular.
 
 69
 00:03:15,940 --> 00:03:20,440
-Ahora, cuando vemos desarrollar
+Ahora, cuando desarrollemos
 sistemas en MongoDB, y
 
 70
 00:03:20,440 --> 00:03:23,900
 veamos el esquema que
-diseÃ±amos en MongoDB, Ã©ste es el
+diseñamos en MongoDB,
 
 71
 00:03:23,900 --> 00:03:26,920
-que no nos preocuparemos.
+no nos preocuparemos de ésta.
 
 72
 00:03:26,920 --> 00:03:31,200
-Y la razÃ³n es que cuando
-no tiendes a algÃºn
+Y la razón es que cuando
+no tiendes hacia algún
 
 73
 00:03:31,200 --> 00:03:33,720
-patrÃ³n de acceso particular,
-estÃ¡s igualmente
+patrón de acceso en particular,
+estás igualmente mal que si
 
 74
 00:03:33,720 --> 00:03:35,250
-mal en todo esto.
+evitases esa tendencia.
 
 75
 00:03:35,250 --> 00:03:38,990
@@ -357,42 +355,42 @@ MongoDB es adaptar tu
 76
 00:03:38,990 --> 00:03:43,120
 base de datos a las aplicaciones
-que estÃ¡s intentado escribir
+que estás intentado escribir
 
 77
 00:03:43,120 --> 00:03:44,900
-y al problema que estÃ¡s
+y al problema que estás
 intentando resolver.
 
 78
 00:03:44,900 --> 00:03:47,920
-Y asÃ­, no nos preocuparemos
+Así que no nos preocuparemos
 por evitar la tendencia
 
 79
 00:03:47,920 --> 00:03:50,210
-hacia algÃºn patrÃ³n
-de acceso particular.
+hacia algún patrón
+de acceso en particular.
 
 80
 00:03:50,210 --> 00:03:52,460
 Ahora, vamos a
-precuparnos de esto.
+preocuparnos de esto.
 
 81
 00:03:52,460 --> 00:03:54,520
 No quiero tener que
-rediseÃ±ar el sistema completo
+rediseñar el sistema
 
 82
 00:03:54,520 --> 00:03:56,190
-cada vez que cambiamos
-algo.
+completo cada vez
+que cambiamos algo.
 
 83
 00:03:56,190 --> 00:03:58,990
-Y MongoDB es muy flexible
-porque podemos aÃ±adir
+MongoDB es muy flexible
+porque podemos añadir
 
 84
 00:03:58,990 --> 00:04:02,240
@@ -405,41 +403,41 @@ todo el documento existente.
 
 86
 00:04:04,310 --> 00:04:07,710
-Y entonces, lo Ãºltimo es
-liberar la base de datos de estas
+Entonces, lo último es
+liberar la base de datos
 
 87
 00:04:07,710 --> 00:04:09,430
-anomalÃ­as de modificaciÃ³n.
+de estas anomalías
+de modificación.
 
 88
 00:04:09,430 --> 00:04:13,370
-y si bien podrÃ­as pensar
+y si bien podrías pensar
 que embeber los datos
 
 89
 00:04:13,370 --> 00:04:15,070
-causarÃ­a esto, no lo
-hace.
+causaría esto, no lo hace.
 
 90
 00:04:15,070 --> 00:04:19,130
-Y, de hecho, principalmente
-evitaremos embeber datos
+Principalmente, evitaremos
+embeber datos en documentos
 
 91
 00:04:19,130 --> 00:04:22,830
-en documentos en MongoDB
-de manera que
+en MongoDB de una
+manera que causaría
 
 92
 00:04:22,830 --> 00:04:24,130
-se creen estas anomalÃ­as.
+que se creen estas anomalías.
 
 93
 00:04:24,130 --> 00:04:27,020
-AsÃ­ que vamos a tener cuidado
-de no crearlos
+Así que vamos a tener
+cuidado de no embeber
 
 94
 00:04:27,020 --> 00:04:28,530
@@ -452,8 +450,8 @@ rendimiento, vamos a decidir
 
 96
 00:04:31,870 --> 00:04:35,140
-si deseamos duplicar los
-datos en el documento.
+duplicar algunos datos
+en el documento.
 
 97
 00:04:35,140 --> 00:04:36,760
@@ -468,7 +466,7 @@ a evitarlo, de modo que
 99
 00:04:40,540 --> 00:04:42,550
 no tenemos estos tipos de
-anomalÃ­as donde los datos pueden
+anomalías donde los datos pueden
 
 100
 00:04:42,550 --> 00:04:45,260
@@ -477,7 +475,7 @@ cambiar de manera inconsistente.
 101
 00:04:45,260 --> 00:04:47,680
 Y en algunas aplicaciones,
-podrÃ­as desear permitirlo y
+podrías desear permitirlo y
 
 102
 00:04:47,680 --> 00:04:48,570
@@ -486,7 +484,7 @@ no importa.
 103
 00:04:48,570 --> 00:04:51,760
 O puede que desees mantenerlos
-actualizados en la aplicaciÃ³n,
+actualizados en la aplicación,
 
 104
 00:04:51,760 --> 00:04:53,530
