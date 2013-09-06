@@ -110,16 +110,16 @@ a medida que la información esté
 24
 00:00:54,290 --> 00:00:57,210
 presente y sea relevante, o se convierta
-en irrelevante y no
+en irrelevante y
 
 25
 00:00:57,210 --> 00:00:58,380
-sea necesaria por más tiempo.
+ya no sea necesaria.
 
 26
 00:00:58,380 --> 00:01:02,150
 Éste es un apecto de la naturaleza
-sin esquema de MongoDB.
+schemaless (sin esquema) de MongoDB.
 
 27
 00:01:02,150 --> 00:01:03,620
@@ -143,7 +143,7 @@ El documento tiene "username:
 31
 00:01:14,720 --> 00:01:17,520
 "interests": ['debating',
-'politics]'".
+'politics']".
 
 32
 00:01:17,520 --> 00:01:18,770
