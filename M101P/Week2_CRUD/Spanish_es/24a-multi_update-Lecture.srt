@@ -368,7 +368,7 @@ documentos restantes.
 77
 00:03:25,910 --> 00:03:29,020
 Llamamos a esto "pausing yielding"
-debido al hecho que,because in point of fact,
+debido al hecho que
 
 78
 00:03:29,020 --> 00:03:31,560
@@ -525,7 +525,7 @@ ser un truco que
 110
 00:04:54,230 --> 00:04:56,620
 se utiliza dentro de una arquitectura
-con sharding.
+con Sharding.
 
 111
 00:04:56,620 --> 00:05:00,000
