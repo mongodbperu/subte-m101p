@@ -30,8 +30,8 @@ con "score" menor que 70.
 
 8
 00:00:17,590 --> 00:00:19,910
-Pero qué documento sería ése es
-algo sin especificar.
+Pero el documento que sería actualizado es
+algo que no se puede especificar.
 
 9
 00:00:19,910 --> 00:00:21,160
