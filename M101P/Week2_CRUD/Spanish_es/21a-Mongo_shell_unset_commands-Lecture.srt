@@ -3,147 +3,147 @@
 
 2
 00:00:01,190 --> 00:00:03,570
-Moving along to some more
-update operators.
+Seguimos con algunos operadores 
+"update" más.
 
 3
 00:00:03,570 --> 00:00:05,350
-Occasionally, you want to
-be able to remove a
+Ocasionalmente, quieres
+poder eliminar un
 
 4
 00:00:05,350 --> 00:00:06,810
-field from a document.
+campo de un documento.
 
 5
 00:00:06,810 --> 00:00:10,030
-For example, in my People
-collection, if I want to
+Por ejemplo, en mi colección
+"people", si quiero
 
 6
 00:00:10,030 --> 00:00:13,110
-remove Jones's profession,
-I can.
+eliminar la profesión de "Jones",
+puedo hacerlo.
 
 7
 00:00:13,110 --> 00:00:15,300
-One way to do it, of course,
-would be to do a wholesale
+Una forma de hacerlo, por supuesto,
+sería hacer un sustitución
 
 8
 00:00:15,300 --> 00:00:17,960
-replacement specifying all
-of the fields except for
+completa especificando todos
+los campos excepto el campo
 
 9
 00:00:17,960 --> 00:00:20,270
-profession, but this is somewhat
-cumbersome to do if I
+"profession", pero esto es algo
+difícil de manejar si
 
 10
 00:00:20,270 --> 00:00:21,890
-happen not to know what
-fields exist in
+sucede que no conoces de 
+antemano los campos que 
 
 11
 00:00:21,890 --> 00:00:23,760
-that document in advance.
+existen en ese documento.
 
 12
 00:00:23,760 --> 00:00:26,160
-And so we have another operator
-analogous to dollar
+Y por tanto tenemos otro operador
+análogo a "$set",
 
 13
 00:00:26,160 --> 00:00:30,230
-set, and that operator is
-called dollar unset.
+y ese operador se
+llama "$unset".
 
 14
 00:00:30,230 --> 00:00:33,120
-This will remove the field and
-its value from the document
+Este operador eliminará el campo y
+su valor del documento
 
 15
 00:00:33,120 --> 00:00:35,660
-that matches the specified
-criteria, and so the
+que coincida con los criterios
+especificados, y por tanto
 
 16
 00:00:35,660 --> 00:00:37,020
-profession is gone.
+"profession" se elimina.
 
 17
 00:00:37,020 --> 00:00:39,420
-This is occasionally useful, for
-example, to perform schema
+Esto es útil en ocasiones, por 
+ejemplo, para realizar manipulaciones
 
 18
 00:00:39,420 --> 00:00:41,850
-change manipulations when the
-application requirements
+que cambian el esquema cuando los
+requisitos de la aplicación
 
 19
 00:00:41,850 --> 00:00:44,350
-change, or occasionally to
-model certain kinds of
+cambian, o en ciertas ocasiones para
+modelar determinados tipos de
 
 20
 00:00:44,350 --> 00:00:45,780
-transformations of your data.
+transformaciones de tus datos.
 
 21
 00:00:45,780 --> 00:00:48,470
-For instance, rather than
-storing a null value if a
+Por ejemplo, en lugar de
+almacenar un valor nulo si una
 
 22
 00:00:48,470 --> 00:00:50,960
-piece of information is not
-present, you can add and
+parte de la información no está
+presente, puedes añadir y 
 
 23
 00:00:50,960 --> 00:00:54,290
-remove fields to a document
-as the information becomes
+eliminar campos a un documento
+a medida que la información esté
 
 24
 00:00:54,290 --> 00:00:57,210
-present and relevant, or becomes
-irrelevant and no
+presente y sea relevante, o se convierta
+en irrelevante y
 
 25
 00:00:57,210 --> 00:00:58,380
-longer necessary.
+ya no sea necesaria.
 
 26
 00:00:58,380 --> 00:01:02,150
-This is one aspect of MongoDB's
-schema-less nature.
+Éste es un apecto de la naturaleza
+schemaless (sin esquema) de MongoDB.
 
 27
 00:01:02,150 --> 00:01:03,620
-All right, let's have a quiz.
+Bien, hagamos un cuestionario.
 
 28
 00:01:03,620 --> 00:01:08,020
-Write an update query that will
-unset the Interests key
+Escribe una consulta "update" que haga
+"unset" de la clave "interests"
 
 29
 00:01:08,020 --> 00:01:10,980
-in the following document in the
-collection called Users.
+en el siguiente documento en la
+colección llamada "users".
 
 30
 00:01:10,980 --> 00:01:14,720
-So the document has username
-Jimmy, favorite color blue,
+El documento tiene "username: 
+'Jimmy'", "favorite_color: 'blue'",
 
 31
 00:01:14,720 --> 00:01:17,520
-interests the array, debating
-and politics.
+"interests": ['debating',
+'politics']".
 
 32
 00:01:17,520 --> 00:01:18,770
