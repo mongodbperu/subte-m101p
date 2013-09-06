@@ -3,35 +3,35 @@
 
 2
 00:00:00,310 --> 00:00:05,100
-Well, the answer is
-db.scores.update score colon
+Bien, la respuesta es
+"db.scores.update({score:"
 
 3
 00:00:05,100 --> 00:00:06,800
-less than 70.
+menor que 70.
 
 4
 00:00:06,800 --> 00:00:09,660
-And then $inc score by 20.
+Y luego "$inc: {score: 20}".
 
 5
 00:00:09,660 --> 00:00:11,060
-And then multi-true.
+Y a continuación "multi: true".
 
 6
 00:00:11,060 --> 00:00:14,010
-If you did not specify
-multi-true, the database would
+Si no especificaras
+"multi: true", la base de datos
 
 7
 00:00:14,010 --> 00:00:17,590
-update exactly one document
-with score less than 70.
+actualizaría exactamente un documento
+con "score" menor que 70.
 
 8
 00:00:17,590 --> 00:00:19,910
-But which document that was is
-somewhat underspecified.
+Pero qué documento sería ése es
+algo sin especificar.
 
 9
 00:00:19,910 --> 00:00:21,160
