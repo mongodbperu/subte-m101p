@@ -3,32 +3,32 @@
 
 2
 00:00:00,150 --> 00:00:02,040
-So this code should do it.
+Así que este código debería hacerlo.
 
 3
 00:00:02,040 --> 00:00:03,250
-db.users.update.
+"db.users.update("
 
 4
 00:00:03,250 --> 00:00:05,200
-user name colon Jimmy.
+"{username: 'Jimmy'},"
 
 5
 00:00:05,200 --> 00:00:06,830
-$unset.
+"{$unset:"
 
 6
 00:00:06,830 --> 00:00:08,370
-Interests colon 1.
+"{interests: 1}}".
 
 7
 00:00:08,370 --> 00:00:10,670
-This will remove the interest
-field and all of the data in
+Esto eliminará el campo
+"interests" y todo su contenido
 
 8
 00:00:10,670 --> 00:00:11,920
-it from the document.
+del documento.
 
 9
 00:00:11,920 --> 00:00:13,010
