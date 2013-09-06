@@ -103,7 +103,7 @@ existe tal documento?
 
 23
 00:00:53,280 --> 00:00:56,140
-Bien, si no hubiera documento
+Bien, si no hubiera un documento
 con "name" igual a "Charlie",
 
 24
