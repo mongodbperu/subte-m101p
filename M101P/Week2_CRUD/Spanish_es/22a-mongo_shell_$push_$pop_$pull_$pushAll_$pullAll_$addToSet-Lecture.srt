@@ -13,7 +13,7 @@ de documentos.
 
 4
 00:00:04,220 --> 00:00:06,900
-Primero, configuraré algunos
+Primero, estableceré algunos
 documentos que tengan arrays,
 
 5
@@ -275,7 +275,7 @@ actúa como un "push".
 
 59
 00:02:25,490 --> 00:02:28,310
-Ejecutar el mismo "addToSet"
+Si ejecutas el mismo "addToSet"
 varias veces, por lo tanto, es
 
 60
