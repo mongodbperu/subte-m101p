@@ -1,25 +1,25 @@
 =====
-subte
+Subte
 =====
 
-Project Subte: Translation of the 10gen MongoDB Courses.
+Translation of the `MongoDB University`_ Courses.
 
-Proyecto Subte: Traducción de los subtítulos de los cursos de 10gen.
-
-
-Contribución
+Contributing
 ============
 
-Contribuir es muy fácil, sólo debes seguir los siguientes pasos:
+Contributing is very easy, just follow these steps:
 
-- Bifurca o crea un fork de este repositorio en tu cuenta.
-- Crea un nuevo issue comentando que te harás cargo de la traducción de un
-  subtítulo.
-- Crea una rama para realizar los cambios al documento que desees.
-- Y finalmente, envía el pull request de esta nueva rama en tu repositorio
-  hacia nuestra rama master, señalando también el issue que cerrarás.
+- Fork this repository with your GitHub account.
+- Create a new issue assigning yourself the translation of a lesson's files.
+- Create a "lesson branch" to make changes to the caption files you have
+  assigned.
+- And finally, send the pull request from this new branch in your repository
+  to our master branch, noting also the issue that you will close.
 
-Mientras traduces, es más fácil tener un reproductor de vídeo moderno donde
-puedas usar los subtítulos, tales como VLC o Dragon Player. Para esto sólo
-tienes que asegurarte de descargar el vídeo desde YouTube y especificar el
-mismo nombre que tiene asignado el subtítulo.
+As you translate, it is easier to have a modern video player where can use
+the subtitles, such as VLC and Dragon Player. For this only have to make sure
+to download video from YouTube and specify the same name that is assigned the
+subtitle.
+
+.. _MongoDB University: http://education.mongodb.com
+
