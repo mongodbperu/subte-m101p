@@ -3,28 +3,28 @@
 
 2
 00:00:00,280 --> 00:00:02,480
-So it should be something
-like this.
+Debería ser algo
+como esto.
 
 3
 00:00:02,480 --> 00:00:04,180
-db.scores.count.
+"db.scores.count".
 
 4
 00:00:04,180 --> 00:00:05,790
-type colon essay.
+"{type: "essay"}".
 
 5
 00:00:05,790 --> 00:00:08,029
-score colon embedded document.
+"score: {".
 
 6
 00:00:08,029 --> 00:00:10,490
-$ gt colon 90.
+"{$gt: 90}".
 
 7
 00:00:10,490 --> 00:00:11,740
-Easy peasy.
+Facilísimo.
 
 8
 00:00:11,740 --> 00:00:12,310
