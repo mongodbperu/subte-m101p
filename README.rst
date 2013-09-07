@@ -1,0 +1,40 @@
+=====
+Subte
+=====
+
+Translation of the `MongoDB University`_ Courses.
+
+Contributing
+============
+
+Contributing is very easy, just follow these steps:
+
+#. Fork this repository with your GitHub account.
+#. Create a new issue assigning yourself the translation of a lesson's files.
+
+   For instance: `#111: "Translate Week 2 | 26-getLastError"
+   <https://github.com/MongoDBPeru/subte/issues/111>`_.
+
+#. Create a "lesson branch" or "issue branch"::
+
+   $ git checkout -b lesson-or-issue
+
+#. Make changes to the caption files you have assigned::
+
+   $ git commit -am "Completed translation of lesson into Spanish. Resolve #111."
+   $ git push origin lesson-or-issue
+
+#. And finally, send the pull request from this new branch in your repository
+   to our master branch, noting also the issue that you will close.
+
+   For instance: `#180: "Completed translation of 26-getLastError into Spanish"
+   <https://github.com/MongoDBPeru/subte/pull/180>`_ is a pull request that
+   resolve the issue `#111`_.
+
+As you translate, it is easier to have a modern video player where can use
+the subtitles, such as VLC and Dragon Player. For this only have to make sure
+to download video from YouTube and specify the same name that is assigned the
+subtitle.
+
+.. _MongoDB University: http://education.mongodb.com
+.. _#111: https://github.com/MongoDBPeru/subte/issues/111

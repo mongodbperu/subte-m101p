@@ -3,382 +3,381 @@
 
 2
 00:00:00,230 --> 00:00:02,100
-Moving along, let's learn about
-some operators that
+En marcha, aprendamos acerca
+de algunos operadores que
 
 3
 00:00:02,100 --> 00:00:04,220
-manipulate arrays inside
-of documents.
+manipulan arrays dentro
+de documentos.
 
 4
 00:00:04,220 --> 00:00:06,900
-First, I'll set up some
-documents having arrays,
+Primero, estableceré algunos
+documentos que tengan arrays,
 
 5
 00:00:06,900 --> 00:00:08,950
-containing just some numbers,
-which should be easy to
+conteniendo sólo algunos números,
+lo cual debería ser fácil
 
 6
 00:00:08,950 --> 00:00:10,320
-understand.
+de entender.
 
 7
 00:00:10,320 --> 00:00:13,100
-In my arrays collection, I have
-a single document, having
+En mi colección "arrays", tengo
+un único documento que contiene
 
 8
 00:00:13,100 --> 00:00:16,730
-a field called a, whose value
-is the array 1, 2, 3, 4.
+un campo llamado "a", cuyo valor
+es el array "[1, 2, 3, 4]".
 
 9
 00:00:16,730 --> 00:00:18,810
-There are a number of operators
-in the update
+Hay un montón de operadores
+en el comando
 
 10
 00:00:18,810 --> 00:00:20,840
-language that manipulate
+"update" que manipulan
 arrays.
 
 11
 00:00:20,840 --> 00:00:24,060
-A couple of simple operations
-can be performed, such as
+Se pueden realizar un par
+de operaciones simples, tales como
 
 12
 00:00:24,060 --> 00:00:27,030
-manipulating an individual
-element inside of an array.
+la manipulación de un elemento
+individual dentro de un array.
 
 13
 00:00:27,030 --> 00:00:30,010
-The dollar set operator can
-change the value of an
+El operador "$set" puede
+cambiar el valor de un
 
 14
 00:00:30,010 --> 00:00:33,460
-individual array element,
-represented as the array field
+elemento individual en un array,
+representado como el nombre del campo
 
 15
 00:00:33,460 --> 00:00:36,770
-name followed by a dot, followed
-by the decimal
+de tipo array seguido por un punto, seguido
+por la representación decimal
 
 16
 00:00:36,770 --> 00:00:39,380
-representation of the index in
-the array that you want to
+de un índice en
+el array que quieres
 
 17
 00:00:39,380 --> 00:00:40,120
-manipulate.
+manipular.
 
 18
 00:00:40,120 --> 00:00:44,360
-In this case, a.2 will
-manipulate the third element
+En este caso, "a.2"
+manipulará el tercer elemento
 
 19
 00:00:44,360 --> 00:00:49,040
-of the array a, having changed
-the third element from 3 to 5.
+del array "a", cambiando el
+tercer elemento de 3 a 5.
 
 20
 00:00:49,040 --> 00:00:51,190
-Sometimes you want to add
-elements to an array or remove
+A veces quieres añadir
+elementos a un array o borrar
 
 21
 00:00:51,190 --> 00:00:52,820
-elements from an array.
+elementos del array.
 
 22
 00:00:52,820 --> 00:00:55,750
-For example, to add an element
-to the right hand side of an
+Por ejemplo, para añadir un elemento
+a la parte derecha de un
 
 23
 00:00:55,750 --> 00:00:57,450
-array, you can say push.
+array, puedes hacer "push".
 
 24
 00:00:57,450 --> 00:01:01,230
-This extends the array by adding
-a new element to it.
+Esto extiende el array añadiendo
+un nuevo elemento al mismo.
 
 25
 00:01:01,230 --> 00:01:03,820
-Similarly, you can remove the
-rightmost element from the
+De manera similar, puedes eliminar el
+elemento más a la derecha del
 
 26
 00:01:03,820 --> 00:01:06,310
-array with pop.
+array con "pop".
 
 27
 00:01:06,310 --> 00:01:08,620
-Alternatively, you can remove
-the leftmost element of the
+Alternativamente, puedes eliminar
+el elemento más a la izquierda del
 
 28
 00:01:08,620 --> 00:01:12,200
-array with pop specified with
-a negative argument.
+array con "pop" indicando
+un argumento negativo.
 
 29
 00:01:12,200 --> 00:01:15,720
-Further, you can add a number
-of elements to an array with
+Además, puedes añadir varios
+elementos a un array con
 
 30
 00:01:15,720 --> 00:01:17,870
-the pushAll operator.
+el operador "pushAll".
 
 31
 00:01:17,870 --> 00:01:20,890
-The pushAll operator takes the
-name of the field that you
+El operador "pushAll" toma el
+nombre del campo que
 
 32
 00:01:20,890 --> 00:01:23,800
-want to manipulate and an array
-of elements which will
+quieres manipular y un array
+de elementos que
 
 33
 00:01:23,800 --> 00:01:26,305
-be added to the array that's
-the value of the field that
+serán añadidos al array que tiene
+el valor del campo que
 
 34
 00:01:26,305 --> 00:01:27,890
-you're manipulating.
+estás manipulando.
 
 35
 00:01:27,890 --> 00:01:30,550
-Now my array has six elements
-where as it
+Ahora mi array tiene seis elementos
+mientras que
 
 36
 00:01:30,550 --> 00:01:31,950
-formerly had three.
+antes tenía tres.
 
 37
 00:01:31,950 --> 00:01:34,940
-You can also remove an element
-from an array, no matter what
+También puedes eliminar un elemento
+de un array, sin importar en qué
 
 38
 00:01:34,940 --> 00:01:37,220
-its position, using
-the pull operator.
+posición esté, usando
+el operador "pull".
 
 39
 00:01:37,220 --> 00:01:39,920
-The pull operator removes the
-value from the array, no
+El operador "pull" elimina el
+valor del array, sin
 
 40
 00:01:39,920 --> 00:01:42,030
-matter what its location
-inside the array.
+importar cuál es su ubicación
+dentro del array.
 
 41
 00:01:42,030 --> 00:01:43,430
-In this case, I'm going
-to remove the
+En este caso, voy a
+eliminar el
 
 42
 00:01:43,430 --> 00:01:46,040
-value 5 from the array.
+valor 5 del array.
 
 43
 00:01:46,040 --> 00:01:49,050
-Similarly, you could specify a
-list of elements you want to
+De manera similar, podrías especificar una
+lista de elementos que quisieras
 
 44
 00:01:49,050 --> 00:01:51,720
-remove from the array, using the
-pullAll operator, which is
+eliminar del array, usando el
+operador "pullAll", que es
 
 45
 00:01:51,720 --> 00:01:53,620
-analogous to the pushAll
-operator.
+el análogo al operador
+"pushAll".
 
 46
 00:01:53,620 --> 00:01:56,760
-The pullAll operator, like the
-pushAll operator, takes a
+El operador "pullAll", como el
+operador "pushAll", toma un
 
 47
 00:01:56,760 --> 00:01:59,100
-field name and an
-array of values.
+nombre de campo y un
+array de valores.
 
 48
 00:01:59,100 --> 00:02:02,930
-The pullAll operator removes any
-occurrence of any of those
+El operador "pullAll" elimina cualquier
+ocurrencia de cualquiera de esos
 
 49
 00:02:02,930 --> 00:02:05,130
-values from the array.
+valores del array.
 
 50
 00:02:05,130 --> 00:02:08,030
-Finally, it's occasionally
-convenient to treat an array
+Finalmente, ocasionalemente es
+conveniente tratar un array
 
 51
 00:02:08,030 --> 00:02:11,020
-not as an ordered sequence of
-items, but as a set of items,
+no como una secuencia ordenada de
+elemento, sino como un conjunto de elementos,
 
 52
 00:02:11,020 --> 00:02:13,430
-which shouldn't contain more
-than one instance of any
+que no deberían contener más de
+una instancia de cualquier
 
 53
 00:02:13,430 --> 00:02:14,950
-particular value.
+valor particular.
 
 54
 00:02:14,950 --> 00:02:17,080
-To add to such a set,
-we have an operator
+Para añadir a un conjunto de este tipo,
+tenemos un operador
 
 55
 00:02:17,080 --> 00:02:19,010
-called, well, addToSet.
+llamado, bien, "addToSet".
 
 56
 00:02:19,010 --> 00:02:21,810
-If the element already exists
-inside the array, addToSet
+Si el elemento ya existe
+en el array, "addToSet"
 
 57
 00:02:21,810 --> 00:02:23,140
-does nothing.
+no hace nada.
 
 58
 00:02:23,140 --> 00:02:25,490
-Otherwise, addToSet
-acts like a push.
+En caso contrario, "addToSet"
+actúa como un "push".
 
 59
 00:02:25,490 --> 00:02:28,310
-Running the same addToSet
-multiple times, therefore, is
+Si ejecutas el mismo "addToSet"
+varias veces, por lo tanto, es
 
 60
 00:02:28,310 --> 00:02:31,160
-idempotent, that is, occurrences
-after the first
+idempotente, es decir, las ocurrencias
+tras el primero
 
 61
 00:02:31,160 --> 00:02:32,410
-should have no effect.
+no deberían tener efecto.
 
 62
 00:02:32,410 --> 00:02:34,500
-There's no remove from set
-operator, because that
+No es posible eliminar con el
+operador "set", porque esa
 
 63
 00:02:34,500 --> 00:02:37,630
-functionality is given by the
-pull or pullAll operators.
+funcionalidad la ofrecen los
+operadores "pull" y "pullAll".
 
 64
 00:02:37,630 --> 00:02:38,390
-So there you have it.
+Así que allí las tienes.
 
 65
 00:02:38,390 --> 00:02:40,740
-You can set an individual
-element in an array.
+Puedes hacer "set" de un elemento
+individual en un array.
 
 66
 00:02:40,740 --> 00:02:45,870
-You can push, pop, pull,
-pushAll, pullAll and addToSet
+Puedes hacer "push", "pop", "pull",
+"pushAll", "pullAll" y "addToSet"
 
 67
 00:02:45,870 --> 00:02:47,040
-in an array.
+en un array.
 
 68
 00:02:47,040 --> 00:02:49,230
-That was a lot of information,
-but let's try to have
+Todo eso es un montón de información,
+pero intentemos hacer un cuestionario
 
 69
 00:02:49,230 --> 00:02:50,540
-a quiz about it.
+sobre esto.
 
 70
 00:02:50,540 --> 00:02:52,530
-Suppose you have the following
-document in your friends
+Supongamos que tienes el siguiente
+documento en tu colección
 
 71
 00:02:52,530 --> 00:02:53,380
-collection--
+"friends" --
 
 72
 00:02:53,380 --> 00:02:57,400
-underscore id colon Mike
-interests colon the array
+"_id: 'Mike', interests:
 
 73
 00:02:57,400 --> 00:02:59,390
-chess comma botany.
+['chess', 'botany']".
 
 74
 00:02:59,390 --> 00:03:01,960
-What will the outcome or
-result of the following
+¿Cuál será el resultado
+de las siguientes
 
 75
 00:03:01,960 --> 00:03:03,150
-updates be--
+actualizaciones --
 
 76
 00:03:03,150 --> 00:03:06,520
-the first update, underscore
-id Mike push interests
+el primer "update",
+"{_id: 'Mike'}, {$push: {interests:
 
 77
 00:03:06,520 --> 00:03:11,000
-skydiving; the second underscore
-id Mike pop
+'skydiving'}}"; el segundo
+"{_id: 'Mike'},{$pop: 
 
 78
 00:03:11,000 --> 00:03:14,840
-interests negative 1; the third
-update, underscore id
+{interests: -1}}"; el tercer
+"update", "{_id:
 
 79
 00:03:14,840 --> 00:03:19,310
-Mike add to set interests
-skydiving; the fourth update,
+'Mike', {$addToSet: {interests:
+'skydiving'}}"; el cuarto "update",
 
 80
 00:03:19,310 --> 00:03:22,510
-underscore id Mike
-pushAll interests
+"{_id: 'Mike'},
+{$pushAll: {interests:
 
 81
 00:03:22,510 --> 00:03:23,760
-skydiving comma skiing?
+['skydiving', 'skiing']}}"?
 
 82
 00:03:23,760 --> 00:03:25,000

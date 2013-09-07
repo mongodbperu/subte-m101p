@@ -3,37 +3,37 @@
 
 2
 00:00:00,140 --> 00:00:01,350
-Well, the answer is
-the fourth one.
+Bien, la respuesta es
+la cuarta.
 
 3
 00:00:01,350 --> 00:00:04,290
-The upsert operation will
-attempt to find a document was
+La operación "upsert"
+intentará encontrar un documento
 
 4
 00:00:04,290 --> 00:00:05,730
-username bar.
+con "username" igual a "bar".
 
 5
 00:00:05,730 --> 00:00:08,530
-As stipulated, no such document
-exists, however.
+Según se estipula, dicho documento
+no existe, sin embargo.
 
 6
 00:00:08,530 --> 00:00:11,010
-And so the upsert will actually
-perform an insert
+Y por eso el "upsert" realizará
+en realidad una operación de
 
 7
 00:00:11,010 --> 00:00:14,640
-operation, creating a new
-document with username bar and
+inserción, creando un nuevo
+documento con "username" igual a "bar" e
 
 8
 00:00:14,640 --> 00:00:16,940
-interests equal to the
-array cat, dog.
+"interests" igual al
+array "[cat, dog]".
 
 9
 00:00:16,940 --> 00:00:18,190
