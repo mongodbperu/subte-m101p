@@ -31,10 +31,17 @@ Contributing is very easy, just follow these steps:
    <https://github.com/MongoDBPeru/subte/pull/180>`_ is a pull request that
    resolve the issue `#111`_.
 
-As you translate, it is easier to have a modern video player where can use
-the subtitles, such as VLC and Dragon Player. For this only have to make sure
-to download video from YouTube and specify the same name that is assigned the
-subtitle.
+.. note::
+
+   Usually, at least a team member will verify and discuss your changes before
+   merging. So you may have to do more than one commit per pull request.
+
+.. tip::
+
+   As you translate, it is easier to have a modern video player where can use
+   the subtitles, such as VLC and Dragon Player. For this only have to make
+   sure to download videos from YouTube and specify the same names that is
+   assigned for the subtitles.
 
 .. _MongoDB University: http://education.mongodb.com
 .. _#111: https://github.com/MongoDBPeru/subte/issues/111
