@@ -82,7 +82,7 @@ interactivamente escribiendo "it".
 19
 00:00:35,900 --> 00:00:38,820
 Si deseas simplemente contar
-el números de documentos que
+el número de documentos que
 
 20
 00:00:38,820 --> 00:00:42,050
