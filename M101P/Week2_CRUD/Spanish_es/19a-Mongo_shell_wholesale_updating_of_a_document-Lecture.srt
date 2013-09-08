@@ -3,32 +3,32 @@
 
 2
 00:00:00,190 --> 00:00:01,110
-OK.
+Muy bien.
 
 3
 00:00:01,110 --> 00:00:03,250
-Now we've learned almost
-everything there is to learn
+Ahora que hemos aprendido casi
+todo lo que hay que aprender
 
 4
 00:00:03,250 --> 00:00:06,120
-about querying the database, so
-we're going to move on to
+acerca de consultar la base
+de datos, vamos a ir hacia la
 
 5
 00:00:06,120 --> 00:00:08,020
-updating documents
-in the database.
+actualización de documentos
+en la base de datos.
 
 6
 00:00:08,020 --> 00:00:10,310
-Let's take a look at our
-"people" collection.
+Echemos un vistazo a
+nuestra colección "people".
 
 7
 00:00:10,310 --> 00:00:13,400
-In this collection, we have
-documents for users named
+En esta colección, tenemos
+documentos de usuarios con nombre
 
 8
 00:00:13,400 --> 00:00:16,980
@@ -37,303 +37,304 @@ Charlie, Dave, Edgar, Fred,
 
 9
 00:00:16,980 --> 00:00:18,750
-and, well, Name 42.
+y bueno nombre "42".
 
 10
 00:00:18,750 --> 00:00:20,540
-Once you have some documents
-in the database, it's quite
+Una vez que tengas algunos documentos
+en la base de datos, es bastante
 
 11
 00:00:20,540 --> 00:00:22,830
-common to want to be able to
-modify those documents.
+común desear tener la posibilidad
+de modificar esos documentos.
 
 12
 00:00:22,830 --> 00:00:25,860
-And so just like we have a
-method for requiring documents
+Y así al igual que tenemos un 
+método para retornar documentos
 
 13
 00:00:25,860 --> 00:00:27,990
-called Find, we have a
-method for changing
+llamado "find", tenemos un
+método llamado "update" para
 
 14
 00:00:27,990 --> 00:00:29,790
-documents called Update.
+modificar los documentos.
 
 15
 00:00:29,790 --> 00:00:34,670
-Now, in the Mongo shell, the API
-for updating actually does
+Ahora, en el shell Mongo, el API
+para actualizar, en realidad, hace
 
 16
 00:00:34,670 --> 00:00:36,500
-four different things.
+cuatro cosas diferentes.
 
 17
 00:00:36,500 --> 00:00:38,505
-Right now, we're going to learn
-about one of them and
+Ahora mismo, vamos a
+aprender uno de ellos y
 
 18
 00:00:38,505 --> 00:00:40,510
-we'll learn about the
-rest as we go.
+aprenderemos el resto
+a medida que avancemos.
 
 19
 00:00:40,510 --> 00:00:43,830
-Just like queries are methods
-on a collection, updates are
+Al igual que las consultas son métodos,
+en una colección las actualizaciones
 
 20
 00:00:43,830 --> 00:00:45,270
-methods on a collection.
+también son métodos.
 
 21
 00:00:45,270 --> 00:00:48,710
-And updates take at least
-two arguments.
+Y las actualizaciones toman
+al menos dos argumentos.
 
 22
 00:00:48,710 --> 00:00:51,510
-The first argument is a query,
-analogous to the
+El primer argumento es una
+consulta, similar a la
 
 23
 00:00:51,510 --> 00:00:53,550
-WHERE clause in SQL.
+cláusula WHERE en SQL.
 
 24
 00:00:53,550 --> 00:00:56,510
-So everything you've learned
-about Find is applicable to
+Por tanto todo lo que has aprendido
+acerca de "find" es aplicable a la
 
 25
 00:00:56,510 --> 00:00:58,850
-querying for documents in order
-to perform updates.
+consulta de documentos para
+realizar actualizaciones.
 
 26
 00:00:58,850 --> 00:01:02,740
-So, for instance, let's say I
-want to update "Smith." The
+Así, por ejemplo, digamos que
+deseo actualizar "Smith",
 
 27
 00:01:02,740 --> 00:01:05,470
-second argument to update is a
-document, and in the simple
+el segundo argumento para actualizar
+es un documento, y en el caso simple,
 
 28
 00:01:05,470 --> 00:01:08,990
-case, whatever you put inside
-that document will replace
+lo que pones dentro de
+ese documento reemplazará
 
 29
 00:01:08,990 --> 00:01:12,610
-everything but the primary key
-of the document being updated.
+todo el documento que está siendo
+actualizado, excepto la clave primaria.
 
 30
 00:01:12,610 --> 00:01:16,890
-So if I say find a document with
-name "Smith" and I put
+Si deseo encontrar un documento
+con nombre "Smith" y pongo
 
 31
 00:01:16,890 --> 00:01:22,120
-some fields in here, let's say
-"name" "Thompson" and "salary"
+algunos campos aquí, digamos
+"name" "Thompson" y "salary"
 
 32
 00:01:22,120 --> 00:01:26,170
-"50,000," then this update will
-replace whatever is in
+"50000", entonces este "update"
+actualizará lo que está en el
 
 33
 00:01:26,170 --> 00:01:29,170
-the document that currently
-exists where the name is Smith
+documento que actualmente
+existe con el nombre "Smith"
 
 34
 00:01:29,170 --> 00:01:31,530
-with those fields
-that I specify
+con estos campos
+que especifico
 
 35
 00:01:31,530 --> 00:01:33,250
-in the second argument.
+en el segundo argumento.
 
 36
 00:01:33,250 --> 00:01:36,650
-As you can see, the top line
-of my terminal window shows
+Como puedes ver, la línea de arriba
+en mi ventana de terminal muestra
 
 37
 00:01:36,650 --> 00:01:40,170
-the _id with a particular object
-ID and that had the
+el "_id" con un ObjectId
+en particular y que tiene el
 
 38
 00:01:40,170 --> 00:01:41,740
-name Smith.
+nombre "Smith".
 
 39
 00:01:41,740 --> 00:01:44,700
-The 10th line up from the bottom
-of my terminal window
+La décima linea desde abajo
+de la ventana de mi terminal
 
 40
 00:01:44,700 --> 00:01:48,650
-has the same object ID but now
-the name is Thompson and the
+tiene el mismo ObjectId pero ahora
+el nombre es "Thompson" y el
 
 41
 00:01:48,650 --> 00:01:50,240
-salary is 50,000.
+salario es 50000.
 
 42
 00:01:50,240 --> 00:01:52,500
-The other two fields of
-information that existed about
+Los otros dos campos de
+información que existía en
 
 43
 00:01:52,500 --> 00:01:54,300
-Smith are gone.
+"Smith" se han ido.
 
 44
 00:01:54,300 --> 00:01:55,500
-This use of the update
+Este uso del operador
 
 45
 00:01:55,500 --> 00:01:57,720
-operator is somewhat vestigial.
+"update" es algo rudimentario.
 
 46
 00:01:57,720 --> 00:01:59,400
-MongoDB was originally
-designed as a
+MongoDB fue originalmente
+diseñado como un
 
 47
 00:01:59,400 --> 00:02:00,840
-kind of object store.
+tipo de almacén de objetos.
 
 48
 00:02:00,840 --> 00:02:03,440
-And in an object store,
-especially for a
+Y en un almacén de objetos,
+especialmente para un
 
 49
 00:02:03,440 --> 00:02:05,910
-dynamically-typed language, such
-as, say, JavaScript or
+lenguaje dinámicamente tipado,
+tal como, digamos, JavaScript o
 
 50
 00:02:05,910 --> 00:02:09,440
-Python, it's sort of convenient
-to be able to say I
+Python, es algo conveniente
+poder decir que tengo
 
 51
 00:02:09,440 --> 00:02:12,000
-have a document in the
-application, manipulate the
+un documento en la
+aplicación, manipular el
 
 52
 00:02:12,000 --> 00:02:14,290
-document in the application,
-and put it back into the
+documento en la aplicación,
+y ponerlo de vuelta en la
 
 53
 00:02:14,290 --> 00:02:17,190
-database disregarding whatever
-happens to be in the database
+base de datos, sin tener en cuenta
+lo que ocurre en la base de datos
 
 54
 00:02:17,190 --> 00:02:19,910
-for that document, storing only
-those things that the
+para aquel documento, almacenando
+sólo estas cosas que la
 
 55
 00:02:19,910 --> 00:02:22,940
-application currently has
-for the document.
+aplicación tiene actualmente
+para el documento.
 
 56
 00:02:22,940 --> 00:02:25,380
-This use, however, is somewhat
-dangerous, and so in a
+Este uso, sin embargo,
+es algo peligroso y en una
 
 57
 00:02:25,380 --> 00:02:28,060
-subsequent section, we'll show
-a somewhat more constrained
+sección posterior, mostraremos
+una forma un tanto más limitada
 
 58
 00:02:28,060 --> 00:02:31,000
-way of manipulating fields
-inside of a document.
+para manipular campos
+de un documento.
 
 59
 00:02:31,000 --> 00:02:33,320
-In any case, this wholesale
-replacement is
+En cualquier caso, este
+reemplazo masivo es
 
 60
 00:02:33,320 --> 00:02:34,450
-occasionally useful.
+ocasionalmente útil.
 
 61
 00:02:34,450 --> 00:02:37,680
-For example, if you're merging
-data into the database and you
+Por ejemplo, si estás combinando
+datos en la base de datos y
 
 62
 00:02:37,680 --> 00:02:40,890
-don't know how or can't
-conveniently compute the delta
+no sabes cómo o no puedes calcular
+convenientemente la diferencia (delta)
 
 63
 00:02:40,890 --> 00:02:43,380
-between what's in the database
-and what you have from an
+entre lo que está en la base
+de datos y lo que tienes en una
 
 64
 00:02:43,380 --> 00:02:46,400
-external source, then you might
-just send the data from
+fuente externa, entonces
+podrías enviar los datos desde
 
 65
 00:02:46,400 --> 00:02:50,360
-the external source into the
-database keyed using, say, a
+la fuente externa en la base
+de datos usando una clave, digo,
 
 66
 00:02:50,360 --> 00:02:51,610
-primary key.
+una clave primaria.
 
 67
 00:02:51,610 --> 00:02:54,210
-This is not an infrequent
-use for this
+Esto es un uso
+frecuente para esta
 
 68
 00:02:54,210 --> 00:02:56,500
-replacing version of update.
+versión de reemplazo
+de actualización.
 
 69
 00:02:56,500 --> 00:02:59,240
-Nevertheless, it's a somewhat
-blunderbuss approach to
+Sin embargo, es un enfoque
+algo anticuado para modificar
 
 70
 00:02:59,240 --> 00:03:01,540
-changing data in the database,
-so if you don't need this
+datos en la base de datos,
+por lo que si no necesitas
 
 71
 00:03:01,540 --> 00:03:03,720
-approach, you might not
-want to use it.
+este enfoque, puede
+que no desees usarlo.
 
 72
 00:03:03,720 --> 00:03:04,070
@@ -341,45 +342,45 @@ OK.
 
 73
 00:03:04,070 --> 00:03:05,760
-So let's have a quiz
-on this subject.
+Hagamos un cuestionario
+sobre este tema.
 
 74
 00:03:05,760 --> 00:03:06,890
-Let's say you had a collection
-with the
+Digamos que tienes
+una colección con el
 
 75
 00:03:06,890 --> 00:03:09,180
-following document in it.
+siguiente documento en él.
 
 76
 00:03:09,180 --> 00:03:15,930
-_id:Texas, "population"
-"2500000," "landlocked:1", and
+"{_id: "Texas", "population":
+2500000, "land_locked": 1}",
 
 77
 00:03:15,930 --> 00:03:19,970
-you issued this operation,
-db.foo, where "foo" is the
+y ejecutas esta operación,
+"db.foo", donde "foo" es el
 
 78
 00:03:19,970 --> 00:03:24,070
-name of your collection,
-.update _id "Texas"
+nombre de tu colección,
+".update({_id: "Texas"},"
 
 79
 00:03:24,070 --> 00:03:28,900
-"population" "30000000".
+"{population: 30000000})".
 
 80
 00:03:28,900 --> 00:03:31,670
-What would be the state of the
-document in this collection
+¿Cuál sería el estado del
+documento en esta colección
 
 81
 00:03:31,670 --> 00:03:32,920
-after the update?
+luego del "update"?
 
 82
 00:03:32,920 --> 00:03:33,750
