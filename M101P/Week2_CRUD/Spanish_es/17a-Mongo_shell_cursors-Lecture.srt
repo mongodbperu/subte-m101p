@@ -3,638 +3,638 @@
 
 2
 00:00:00,120 --> 00:00:01,860
-So let's learn a little bit
-more about what's going on
+Aprendamos un poco más
+sobre qué sucede
 
 3
 00:00:01,860 --> 00:00:03,800
-behind the scenes when
-you execute a query.
+tras el escenario cuando
+ejecutas una consulta.
 
 4
 00:00:03,800 --> 00:00:07,030
-So far, we've been executing
-queries and seeing results
+Hasta ahora, hemos estado ejecutando
+consultas y viendo los resultados
 
 5
 00:00:07,030 --> 00:00:08,490
-printed out to the screen.
+impresos en la pantalla.
 
 6
 00:00:08,490 --> 00:00:10,720
-In fact, this is a convenient
-behavior for an interactive
+De hecho, éste es un comportamiento
+adecuado para un shell
 
 7
 00:00:10,720 --> 00:00:12,360
-shell like the Mongo shell.
+interactivo como el shell Mongo.
 
 8
 00:00:12,360 --> 00:00:14,810
-But what's actually going on
-when you execute a query such
+Pero lo que ocurre en realidad 
+cuando ejecutas una consulta como
 
 9
 00:00:14,810 --> 00:00:19,280
-as db.people.find, and press
-Enter, is that a cursor is
+"db.people.find()", y pulsas
+"Enter", es que se construye un
 
 10
 00:00:19,280 --> 00:00:21,890
-being constructed and returned
-in the shell.
+cursor y se devuelve
+al shell.
 
 11
 00:00:21,890 --> 00:00:24,370
-The shell is configured to print
-out cursors by iterating
+El shell está configurado para imprimir
+cursores iterando
 
 12
 00:00:24,370 --> 00:00:26,420
-through all of the elements that
-are retrieved from the
+a través de todos los elementos que
+son recuperados del
 
 13
 00:00:26,420 --> 00:00:28,330
-cursor and printing out
-those elements.
+cursor e imprimiendo
+estos elementos.
 
 14
 00:00:28,330 --> 00:00:30,770
-But you can hold on to a cursor
-just as you could hold
+Pero puedes retener un cursor
+de igual manera que podrías retener
 
 15
 00:00:30,770 --> 00:00:33,550
-on to any other value in the
-programming language.
+cualquier otro valor en un
+lenguaje de programación.
 
 16
 00:00:33,550 --> 00:00:36,100
-Now, in order to avoid printing
-out the result of
+Ahora, para evitar imprimir
+el resultado de
 
 17
 00:00:36,100 --> 00:00:38,390
-this assignment, which is going
-to be the cursor, I'm
+esta asignación, que va
+a ser el cursor,
 
 18
 00:00:38,390 --> 00:00:41,000
-going to tack on something
-completely meaningless, like
+voy a añadir algo
+completamente sin sentido, como
 
 19
 00:00:41,000 --> 00:00:42,420
-this null value.
+este valor nulo.
 
 20
 00:00:42,420 --> 00:00:45,110
-At this point, "cur" is
-a variable that's
+En este punto, "cur" es
+una variable que está
 
 21
 00:00:45,110 --> 00:00:47,430
-holding onto a cursor.
+referenciando a un cursor.
 
 22
 00:00:47,430 --> 00:00:49,700
-Cursor objects have a
-variety of methods.
+Los objetos de tipo cursor tienen
+un montón de métodos.
 
 23
 00:00:49,700 --> 00:00:52,890
-For example, the hasNext method
-returns "true" so long
+Por ejemplo, el método "hasNext"
+devuelve "true" mientras
 
 24
 00:00:52,890 --> 00:00:55,500
-as there's another document
-to visit on this cursor.
+exista otro documento
+por visitar en este cursor.
 
 25
 00:00:55,500 --> 00:00:58,170
-And the next method returns
-the next document to be
+Y el método "next" devuelve
+el siguiente documento que será
 
 26
 00:00:58,170 --> 00:00:59,890
-visited on this cursor.
+visitado en este cursor.
 
 27
 00:00:59,890 --> 00:01:02,680
-And so by holding on to cursor
-objects and manipulating them
+Y así, referenciando objetos de tipo
+cursor y manipulándolos
 
 28
 00:01:02,680 --> 00:01:05,750
-directly with hasNext and next
-methods, you can control the
+directamente con los métodos "hasNext" y
+"next", puedes controlar la
 
 29
 00:01:05,750 --> 00:01:07,250
-manner in which you
-step through
+forma en que 
+avanzas por
 
 30
 00:01:07,250 --> 00:01:08,930
-the sequence of documents.
+la secuencia de documentos.
 
 31
 00:01:08,930 --> 00:01:10,690
-This is not something you tend
-to do very much from the
+Esto no es algo que vayas
+a hacer mucho desde el
 
 32
 00:01:10,690 --> 00:01:12,380
-shell, though you can.
+shell, aunque puedes hacerlo.
 
 33
 00:01:12,380 --> 00:01:14,760
-Instead, it's a much more common
-operation to do in a
+En lugar de eso, es mucho más normal
+hacer esa operación en un
 
 34
 00:01:14,760 --> 00:01:17,410
-programming language, such
-as something like Python.
+lenguaje de programación, 
+tal como Python.
 
 35
 00:01:17,410 --> 00:01:20,120
-You can, for instance,
-programmatically step through
+Puedes, por ejemplo,
+avanzar programáticamente por
 
 36
 00:01:20,120 --> 00:01:22,820
-all of the documents to be
-visited, and that while loop
+todos los documentos a
+visitar, y ese bucle "while"
 
 37
 00:01:22,820 --> 00:01:25,170
-that's close to the bottom of
-my terminal window, is, in
+que está cerca de la parte de abajo de
+mi ventana de terminal es,
 
 38
 00:01:25,170 --> 00:01:28,560
-effect, the default behavior
-of the shell when it's
+en efecto, el comportamiento por defecto
+del shell cuando está
 
 39
 00:01:28,560 --> 00:01:30,050
-printing out a cursor object--
+imprimiendo un objeto de tipo cursor --
 
 40
 00:01:30,050 --> 00:01:32,600
-except that the shell, by
-default, batches up the result
+excepto que el shell, por
+defecto, agrupa los documentos
 
 41
 00:01:32,600 --> 00:01:35,670
-documents into groups of about
-20 so that it doesn't
+resultantes en grupos de 
+20 para que no
 
 42
 00:01:35,670 --> 00:01:37,660
-obliterate your terminal by
-printing infinitely many
+arrase tu terminal
+imprimiendo infinatemente muchos
 
 43
 00:01:37,660 --> 00:01:40,440
-documents if you have very
-large query results.
+documentos si tienes muchos
+resultados de una consulta.
 
 44
 00:01:40,440 --> 00:01:42,150
-But there are some more methods
-that you can use to
+Pero hay algunos métodos más
+que puedes usar para
 
 45
 00:01:42,150 --> 00:01:44,035
-modify the behavior
-of a cursor.
+modificar el comportamiento
+de un cursor.
 
 46
 00:01:44,035 --> 00:01:46,480
-I'll establish a new cursor,
-again, by going
+Estableceré un nuevo cursor,
+de nuevo, volviendo
 
 47
 00:01:46,480 --> 00:01:48,530
-back up in my history.
+atrás en mi historial.
 
 48
 00:01:48,530 --> 00:01:50,510
-So long as you haven't actually
-stepped through the
+Siempre que no hayas realmente
+avanzado por el 
 
 49
 00:01:50,510 --> 00:01:53,740
-cursor or checked to see if
-there are any documents left,
+cursor o comprobado para ver si
+si existen documentos restantes,
 
 50
 00:01:53,740 --> 00:01:55,320
-you can impose limits.
+puedes imponer límites.
 
 51
 00:01:55,320 --> 00:01:58,270
-For instance, the limit method
-will instruct the server to
+Por ejemplo, el método "limit"
+ordenará al servidor que
 
 52
 00:01:58,270 --> 00:02:01,300
-return only that many documents
-for this cursor.
+devuelva sólo esos tantos documentos
+para este cursor.
 
 53
 00:02:01,300 --> 00:02:04,360
-Limit also returns the cursor,
-and so in order to avoid
+"limit" también devolverá el cursor,
+y por eso para evitar
 
 54
 00:02:04,360 --> 00:02:06,880
-printing things out at this
-point, I'm going to tack on
+que imprima cosas en este
+punto, voy a añadir
 
 55
 00:02:06,880 --> 00:02:08,910
-this mysterious null.
+este misterioso "null".
 
 56
 00:02:08,910 --> 00:02:11,370
-At this point, I'm modifying the
-query that's going to be
+En este punto, estoy modificando la
+consulta que se va a
 
 57
 00:02:11,370 --> 00:02:13,430
-sent over to the database
-server.
+enviar al servidor de base 
+de datos.
 
 58
 00:02:13,430 --> 00:02:16,340
-Until I actually retrieve some
-documents or check to see if
+Hasta que recupere realmente algunos
+documentos o compruebe para ver si
 
 59
 00:02:16,340 --> 00:02:19,420
-there any documents left on this
-cursor, no transmission
+existen documentos restantes en este
+cursor, no se 
 
 60
 00:02:19,420 --> 00:02:22,330
-has been made to the database
-and no query has been executed
+transmite nada hacia la base de datos
+y no se ejecuta ninguna consulta
 
 61
 00:02:22,330 --> 00:02:23,950
-yet on the database.
+sobre la base de datos.
 
 62
 00:02:23,950 --> 00:02:26,680
-If I actually do go ahead and
-start retrieving documents
+Si de hecho continúo y
+empiezo a recuperar documentos
 
 63
 00:02:26,680 --> 00:02:30,090
-from the database, the query is
-sent over with the Limit as
+de la base de datos, la consulta se
+envía con el "limit" como
 
 64
 00:02:30,090 --> 00:02:31,930
-part of the transmission
-to the database.
+parte de la transmisión
+a la base de datos.
 
 65
 00:02:31,930 --> 00:02:35,240
-And so you see, having tacked
-a limit on to this cursor, I
+Y así verás que, añadiendo 
+un "limit" a este cursor,
 
 66
 00:02:35,240 --> 00:02:37,720
-only get five documents back
-from the database even though
+sólo obtengo cinco documentos
+de la base de datos incluso aunque
 
 67
 00:02:37,720 --> 00:02:40,400
-there are approximately 8
-documents in this collection.
+aproximadamente existen 8
+documentos en esta colección.
 
 68
 00:02:40,400 --> 00:02:42,075
-There are a couple more methods
-that you can tack on
+Hay un par más de métodos
+que puedes añadir
 
 69
 00:02:42,075 --> 00:02:43,150
-to cursors.
+a los cursores.
 
 70
 00:02:43,150 --> 00:02:46,370
-The Sort method instructs the
-database to return documents
+El método "sort" indica a la
+base de datos que devuelva los documentos
 
 71
 00:02:46,370 --> 00:02:49,480
-in an order that's specified by
-the argument to the sort.
+en un orden especificado por
+el argumento que se pasa al "sort".
 
 72
 00:02:49,480 --> 00:02:52,290
-For instance, if I want my
-documents to come back in
+Por ejemplo, si quiero 
+recuperar mis documentos
 
 73
 00:02:52,290 --> 00:02:54,420
-reverse order by name--
+en orden inverso por "name" --
 
 74
 00:02:54,420 --> 00:02:56,920
-that's reverse lexicographical
-order, by name--
+esto es, el orden inverso
+lexicográfico, por "name" --
 
 75
 00:02:56,920 --> 00:03:01,280
-I can say name:-1 as an
-argument to the sort.
+puedo decir "name: -1" como
+argumento del "sort".
 
 76
 00:03:01,280 --> 00:03:02,900
-This cursor modifier,
-like the limit
+Este modificador del cursor,
+como el modificador
 
 77
 00:03:02,900 --> 00:03:05,270
-modifier, returns the cursor.
+"limit", devuelve el cursor.
 
 78
 00:03:05,270 --> 00:03:07,620
-And so in order to avoid eagerly
-printing out the
+Y para evitar que imprima
+ansiosamente los
 
 79
 00:03:07,620 --> 00:03:09,180
-results of this query,
-I'm going to
+resultados de esta consulta,
+voy a 
 
 80
 00:03:09,180 --> 00:03:11,420
-tack on the null again.
+añadir el "null" otra vez.
 
 81
 00:03:11,420 --> 00:03:13,980
-At this point, if I iterate
-through the result documents
+En este punto, si itero
+por los documentos resultantes
 
 82
 00:03:13,980 --> 00:03:16,880
-using this WHILE loop, I should
-see my results in
+usando este bucle "while", debería
+ver mis resultados en
 
 83
 00:03:16,880 --> 00:03:19,380
-reverse order by name.
+orden inverso por "name".
 
 84
 00:03:19,380 --> 00:03:21,840
-And indeed, I get them in
-reverse order by name,
+Y de hecho, los obtengo en
+orden inverso por "name",
 
 85
 00:03:21,840 --> 00:03:25,740
-remembering, again, that the
-sorting that we perform is
+recordando, de nuevo, que la
+ordenación que realizamos es
 
 86
 00:03:25,740 --> 00:03:29,800
-lexicographical according to
-the byte encoding of UTF-8
+lexicográficamente conforme a la
+representación de cadenas
 
 87
 00:03:29,800 --> 00:03:33,140
-representation of the strings,
-which is to say, in effect,
+codificadas en UTF-8,
+es decir, en efecto,
 
 88
 00:03:33,140 --> 00:03:34,160
-Ascii ordering.
+ordenación ASCII.
 
 89
 00:03:34,160 --> 00:03:37,220
-And finally, the integer
-is presented last.
+Y por último, los enteros
+se presentan al final.
 
 90
 00:03:37,220 --> 00:03:40,370
-You can put these two things
-together, Limit and Sort, more
+Puedes poner estas dos cosas
+juntas, "limit" y "sort", más
 
 91
 00:03:40,370 --> 00:03:42,160
-or less in the way that
-you might expect.
+o menos de la forma que
+podrías esperar.
 
 92
 00:03:42,160 --> 00:03:45,200
-I'll establish a cursor
-again and tack on both
+Estableceré un cursor
+otra vez y le añadiré
 
 93
 00:03:45,200 --> 00:03:47,560
-a Sort and a Limit.
+un "sort" y un "limit".
 
 94
 00:03:47,560 --> 00:03:48,710
-Let's say three.
+Digamos tres.
 
 95
 00:03:48,710 --> 00:03:51,330
-Because these cursor modifiers,
-Sort and Limit,
+Como estos modificadores de cursor,
+"sort" y "limit",
 
 96
 00:03:51,330 --> 00:03:54,440
-return the modified cursor, it's
-possible to chain them
+devuelven el cursor modificado, es
+posible encadenarlos
 
 97
 00:03:54,440 --> 00:03:56,070
-together in this fashion.
+juntos de esta manera.
 
 98
 00:03:56,070 --> 00:03:58,470
-And now, if I step through the
-documents on this cursor, I
+Y ahora, si avanzo por los
+documentos de este cursor
 
 99
 00:03:58,470 --> 00:04:01,310
-should see them sorted in
-reverse lexicographical order,
+debería verlos ordenados en
+orden lexicográfico inverso,
 
 100
 00:04:01,310 --> 00:04:03,210
-and I should only see
-three of them.
+y debería ver sólo
+tres de ellos.
 
 101
 00:04:03,210 --> 00:04:04,890
-And indeed, there they are.
+Y de hecho, ahí están.
 
 102
 00:04:04,890 --> 00:04:07,630
-It's important to understand
-that the Sort method and the
+Es importante comprender
+que el método "sort" y el
 
 103
 00:04:07,630 --> 00:04:10,890
-Limit method modify the
-information that's transmitted
+método "limit" modifican la
+información que se transmite
 
 104
 00:04:10,890 --> 00:04:12,380
-over to the database.
+a la base de datos.
 
 105
 00:04:12,380 --> 00:04:15,960
-I can't apply these methods to
-a cursor after having begun
+No puedo aplicar estos métodos a
+un cursor después de haber empezado
 
 106
 00:04:15,960 --> 00:04:18,670
-retrieving documents from the
-database or even checking
+a recuperar documentos de la
+base de datos o incluso tras comprobar
 
 107
 00:04:18,670 --> 00:04:20,980
-whether the cursor has next.
+si el cursor tiene un documento siguiente.
 
 108
 00:04:20,980 --> 00:04:23,590
-This is because the Sort and the
-Limit need to actually be
+Esto es porque el "sort" y el
+"limit" necesitan realmente
 
 109
 00:04:23,590 --> 00:04:25,670
-processed inside the
-database engine.
+ser procesados dentro
+del motor de la base de datos.
 
 110
 00:04:25,670 --> 00:04:28,720
-They're not processed by
-ordering the documents in
+No se procesan
+ordenando los documentos en
 
 111
 00:04:28,720 --> 00:04:32,040
-memory in the client, they're
-processed by server-side
+memoria en el cliente, son
+procesados ordenando y
 
 112
 00:04:32,040 --> 00:04:34,220
-ordering and limiting.
+limitando en el servidor.
 
 113
 00:04:34,220 --> 00:04:35,970
-There's one more important
-method that you need to know
+Hay un método importante
+más que necesitas conocer
 
 114
 00:04:35,970 --> 00:04:39,000
-about that modifies cursors,
-and that's called Skip.
+que modifica los cursores,
+y se llama "skip".
 
 115
 00:04:39,000 --> 00:04:42,310
-Just like sort and limit, it
-modifies a cursor and returns
+Al igual que "sort" y "limit",
+modifica un cursor y devuelve
 
 116
 00:04:42,310 --> 00:04:44,070
-the modified cursor.
+el cursor modificado.
 
 117
 00:04:44,070 --> 00:04:48,380
-And so if I set up a new cursor
-and tack on a Sort, and
+Y por eso si establezco un nuevo cursor
+y le añado un "sort", 
 
 118
 00:04:48,380 --> 00:04:51,190
-a Limit, and a Skip, then the
-instructions are sent over to
+un "limit" y un "skip", entonces las
+instrucciones se envían a
 
 119
 00:04:51,190 --> 00:04:53,120
-the database to retrieve
-documents from the people
+la base de datos para recuperar
+los documentos de la colección
 
 120
 00:04:53,120 --> 00:04:56,990
-collection, ordered in reverse
-lexicographic order by name,
+"people", ordenados en orden
+lexicográfico inverso por "name",
 
 121
 00:04:56,990 --> 00:04:59,210
-skipping over the first two
-that are visited in that
+saltando los primeros dos
+que son visitados en esa
 
 122
 00:04:59,210 --> 00:05:02,140
-ordering, and showing the only
-three documents after the
+ordenación y mostrando sólo los
+tres documentos después que los
 
 123
 00:05:02,140 --> 00:05:04,240
-first two are skipped.
+primeros dos se han saltado.
 
 124
 00:05:04,240 --> 00:05:05,460
-And there we are--
+Y ahí los tenemos --
 
 125
 00:05:05,460 --> 00:05:06,910
-Fred, Edgar, Dave.
+"Fred", "Edgar", "Dave".
 
 126
 00:05:06,910 --> 00:05:09,350
-It's important to understand
-that Sort and Limit and Skip,
+Es importante comprender
+que "sort", "limit" y "skip",
 
 127
 00:05:09,350 --> 00:05:13,370
-which are quite analogous to the
-Order by Limit and Skip in
+que son bastante análogos a
+"Order by", "Limit" y "Skip" en
 
 128
 00:05:13,370 --> 00:05:16,310
-SQL, are processed in
-the same order--
+"SQL", son procesados en
+el mismo orden --
 
 129
 00:05:16,310 --> 00:05:20,550
-first the Sort, then the Skip,
-then the Limit in the server.
+primero el "sort", luego "skip" y
+luego "limit", en el servidor.
 
 130
 00:05:20,550 --> 00:05:22,740
-They're not processed
-in the client.
+No se procesan
+en el cliente.
 
 131
 00:05:22,740 --> 00:05:25,430
-Despite the fact that the method
-calls appear to be
+A pesar del hecho que las llamadas
+a los métodos parecen estar
 
 132
 00:05:25,430 --> 00:05:29,120
-modifying a client-side object,
-they're actually
+modificando un objeto en cliente,
+en realidad están
 
 133
 00:05:29,120 --> 00:05:30,860
-modifying the instructions
-that get
+modificando las instrucciones
+que se envían
 
 134
 00:05:30,860 --> 00:05:32,300
-sent over to the database.
+a la base de datos.
 
 135
 00:05:32,300 --> 00:05:32,750
@@ -642,39 +642,39 @@ OK.
 
 136
 00:05:32,750 --> 00:05:34,910
-If you got all that,
-let's have a quiz.
+Si entendiste todo eso,
+hagamos un cuestionario.
 
 137
 00:05:34,910 --> 00:05:36,480
-Remember the "scores" collection
-that we came up
+Recuerda la colección "scores"
+que usamos
 
 138
 00:05:36,480 --> 00:05:37,470
-with before--
+antes --
 
 139
 00:05:37,470 --> 00:05:41,940
-having a student number, a type
-field, and a score value.
+conteniendo un número de estudiante, un
+campo "type" y un valor "score".
 
 140
 00:05:41,940 --> 00:05:44,540
-Write a query that retrieves
-exam documents--
+Escribe una consulta que recupere
+documentos de tipo examen --
 
 141
 00:05:44,540 --> 00:05:47,080
-that is to say, documents where
-the type is "exam"--
+esto es, documentos cuyo
+"type" es "exam" --
 
 142
 00:05:47,080 --> 00:05:51,590
-sorted by score in descending
-order, skipping the first 50,
+ordenados por "score" en orden
+descendente, saltando los 50 primeros
 
 143
 00:05:51,590 --> 00:05:56,150
-and showing only the next 20
-that occur after the first 50.
+y mostrando sólo los siguientes 20
+que aparecen tras los primeros 50.
