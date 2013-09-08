@@ -7,158 +7,158 @@ OK.
 
 3
 00:00:00,560 --> 00:00:02,710
-Let's move on to a slightly
-different way of looking at
+Vayamos a pasar a una forma
+un poco distinta de ver
 
 4
 00:00:02,710 --> 00:00:03,380
-your data--
+tus datos--
 
 5
 00:00:03,380 --> 00:00:05,170
-namely, counting.
+es decir, a contarlos.
 
 6
 00:00:05,170 --> 00:00:07,190
-Everything that we've learned
-about querying so far has been
+Todo lo que hemos aprendido acerca
+de consultas hasta ahora ha sido
 
 7
 00:00:07,190 --> 00:00:09,860
-retrieving documents from the
-database, but occasionally,
+recuperando documentos de la base
+de datos, pero ocasionalmente,
 
 8
 00:00:09,860 --> 00:00:11,890
-you just want to get a count of
-those documents that match
+lo que deseas es obtener un recuento
+de estos documentos que coinciden
 
 9
 00:00:11,890 --> 00:00:13,770
-a particular criteria.
+con un criterio en particular.
 
 10
 00:00:13,770 --> 00:00:16,620
-MongoDB has a mechanism for
-doing this, which is called
+MongoDB tiene un mecanismo
+para hacer esto, que se llama
 
 11
 00:00:16,620 --> 00:00:17,710
-the count command.
+el comando "count".
 
 12
 00:00:17,710 --> 00:00:20,310
-And the count command has a
-convenient helper syntax
+Y el comando "count" tiene una
+sintaxis práctica de "helper"
 
 13
 00:00:20,310 --> 00:00:22,230
-similar to the "find" syntax.
+similar a la sintaxis de "find".
 
 14
 00:00:22,230 --> 00:00:26,620
-Specifically, if you query for
-scores, having say, the type
+En concreto, si consultas "scores",
+diciendo, "{type: "exam"}",
 
 15
 00:00:26,620 --> 00:00:29,360
-"exam," then the find method
-will retrieve whatever
+entonces el método "find"
+retornará todos los
 
 16
 00:00:29,360 --> 00:00:31,050
-documents have that
-particular field.
+documentos que tengan
+ese campo en particular.
 
 17
 00:00:31,050 --> 00:00:33,630
-And again, if you want, you can
-iterate through results
+Y de nuevo, si lo deseas, puedes
+iterar a través de los resultados
 
 18
 00:00:33,630 --> 00:00:35,900
-interactively by typing "it."
+interactivamente escribiendo "it".
 
 19
 00:00:35,900 --> 00:00:38,820
-If you want to merely count the
-number of documents that
+Si deseas simplemente contar
+el número de documentos que
 
 20
 00:00:38,820 --> 00:00:42,050
-have type exam, instead of
-executing the find method, you
+tienen "type" "exam", en lugar de
+ejecutar el método "find", puedes
 
 21
 00:00:42,050 --> 00:00:43,700
-can call the count method.
+llamar al método "count".
 
 22
 00:00:43,700 --> 00:00:44,810
-And there are 1,000.
+Y hay 1000.
 
 23
 00:00:44,810 --> 00:00:47,100
-If you recall how we created
-this collection, with that
+Si recuerdas cómo creamos
+esta colección, con el
 
 24
 00:00:47,100 --> 00:00:50,440
-nested loop in a previous
-section, we inserted an exam
+bucle anidado en una sección
+anterior, insertamos un documento
 
 25
 00:00:50,440 --> 00:00:54,550
-document for each student ID
-up from zero up to, but not
+"exam" para cada "student_id"
+desde cero hacia arriba, pero no
 
 26
 00:00:54,550 --> 00:00:55,790
-including, 1,000.
+incluyendo 1000.
 
 27
 00:00:55,790 --> 00:00:59,140
-So the count method more or
-less performs an analogous
+Así que el método "count" más
+o menos realiza una función
 
 28
 00:00:59,140 --> 00:01:01,110
-function to what
-a query does--
+similar a lo que una
+consulta hace--
 
 29
 00:01:01,110 --> 00:01:03,560
-namely, counting up all the
-documents that match a
+es decir, cuenta todos los
+documentos que coinciden con
 
 30
 00:01:03,560 --> 00:01:05,010
-particular criteria.
+un criterio en particular.
 
 31
 00:01:05,010 --> 00:01:07,260
-There's not much more
-to it than that.
+No hay mucho más
+que eso.
 
 32
 00:01:07,260 --> 00:01:07,630
-All right.
+Muy bien.
 
 33
 00:01:07,630 --> 00:01:10,170
-Let's try a quick quiz
-on counting.
+Intentemos un breve
+cuestionario acerca de "count".
 
 34
 00:01:10,170 --> 00:01:11,890
-How would you count the
-documents in the scores
+¿Cómo contarías los
+documentos en la colección
 
 35
 00:01:11,890 --> 00:01:14,630
-collection where the type was
-"essay" and the score was
+"scores" donde el "type" es
+"essay" y el "score" es
 
 36
 00:01:14,630 --> 00:01:16,590
-greater than 90?
+mayor que 90?
