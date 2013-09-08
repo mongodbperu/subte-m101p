@@ -3,42 +3,42 @@
 
 2
 00:00:00,100 --> 00:00:01,700
-It should look something
-like this.
+Debería ser algo
+parecido a esto.
 
 3
 00:00:01,700 --> 00:00:05,380
-db.scores.find type
-colon exam.
+"db.scores.find({type:
+'exam'})".
 
 4
 00:00:05,380 --> 00:00:07,040
-And then these cursor
-modifiers can
+Y luego estos modificadores
+de cursor pueden
 
 5
 00:00:07,040 --> 00:00:08,060
-occur in any order.
+estar en cualquier orden.
 
 6
 00:00:08,060 --> 00:00:10,410
-I put the sort and then the
-skin and then the limit.
+Puse el "sort" y luego el
+"skip" y luego el "limit".
 
 7
 00:00:10,410 --> 00:00:12,420
-But you could put them
-in a different order.
+Pero podrías ponerlos
+en un orden diferente.
 
 8
 00:00:12,420 --> 00:00:15,790
-Sort by score, negative
-1 for descending.
+"sort" por "score", -1 
+para ordenación descendente.
 
 9
 00:00:15,790 --> 00:00:17,480
-Skip by a count by 50.
+"skip" con una cantidad de 50.
 
 10
 00:00:17,480 --> 00:00:19,940
-And limit to a count of 20.
+Y "limit" con una cantidad de 20.
