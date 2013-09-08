@@ -1,41 +1,41 @@
 1
 00:00:00,000 --> 00:00:01,870
-That's right, it's
-the third one.
+Bien, es 
+el tercero.
 
 2
 00:00:01,870 --> 00:00:04,560
-The third document has a
-friend's field that contains
+El tercer documento tiene un
+campo "friends" que contiene
 
 3
 00:00:04,560 --> 00:00:07,020
-all of the values,
-Joe and Bob.
+todos los valores,
+"Joe" y "Bob".
 
 4
 00:00:07,020 --> 00:00:11,050
-And at least one of the values
-in the list running in pickles
+Y al menos uno de los valores
+en la lista "running" y "pickles",
 
 5
 00:00:11,050 --> 00:00:12,400
-because it has pickles.
+porque tiene "pickles".
 
 6
 00:00:12,400 --> 00:00:14,680
-If you compare that to the other
-three documents, you'll
+Si comparas ése con los otros
+tres documentos, 
 
 7
 00:00:14,680 --> 00:00:18,420
-find that each of these other
-documents either lacks Joe or
+encontrarás que cada uno de estos otros
+documentos carece de "Joe" o
 
 8
 00:00:18,420 --> 00:00:22,060
-Bob, or has none of running
-or pickles.
+"Bob", o no tiene ni "running"
+ni "pickles".
 
 9
 00:00:22,060 --> 00:00:23,310

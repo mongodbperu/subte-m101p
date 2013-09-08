@@ -3,276 +3,276 @@
 
 2
 00:00:00,420 --> 00:00:02,380
-Let's go a little bit further
-into our examination of
+Avancemos un poco más
+en nuestra exploración de
 
 3
 00:00:02,380 --> 00:00:05,770
-querying for arrays by finding
-out about one more operator
+las consultas para arrays
+descubriendo un operador más
 
 4
 00:00:05,770 --> 00:00:08,580
-that's specific to looking
-at array contents.
+específico para examinar
+los contenidos de un array.
 
 5
 00:00:08,580 --> 00:00:11,080
-Just as a reminder, we have the
-following in our accounts
+Sólo como recordatorio, tenemos lo
+siguiente en nuestra colección
 
 6
 00:00:11,080 --> 00:00:12,080
-collection.
+"accounts".
 
 7
 00:00:12,080 --> 00:00:14,700
-Let's embellish it slightly
-by adding some more data.
+Vamos a adornarla ligeramante
+añadiendo algunos datos más.
 
 8
 00:00:14,700 --> 00:00:17,500
-At this point, we have a handful
-of accounts containing
+En este punto, tenemos un puñado
+de cuentas conteniendo
 
 9
 00:00:17,500 --> 00:00:20,200
-various combinations
-of favorites.
+varias combinaciones
+de favoritos.
 
 10
 00:00:20,200 --> 00:00:22,640
-Again, as a reminder, if it's
-a little hard to read these
+De nuevo, como recordatorio, si resulta
+un poco difícil leer estas
 
 11
 00:00:22,640 --> 00:00:24,560
-things because they're longer
-than the width of the
+cosas debido a que son más largas
+que el ancho del
 
 12
 00:00:24,560 --> 00:00:27,920
-terminal, you can tack dot
-pretty on to the Find
+terminal, puedes añadir
+".pretty()" a la operación
 
 13
 00:00:27,920 --> 00:00:30,790
-operation in order to get them
-to print out in a slightly
+"find" para que se
+impriman en un formato
 
 14
 00:00:30,790 --> 00:00:32,270
-more indented format.
+ligeramente más indentado.
 
 15
 00:00:32,270 --> 00:00:35,120
-So we have a variety of
-combinations of favorites.
+Así que tenemos un montón
+de combinaciones de favoritos.
 
 16
 00:00:35,120 --> 00:00:37,320
-Suppose you wanted to query for
-all those documents that
+Supongamos que quisieras consultar
+todos aquellos documentos que
 
 17
 00:00:37,320 --> 00:00:40,950
-have both pretzels and beer
-in the favorites array.
+tienen "pretzels" y "beer"
+en el array "favorites".
 
 18
 00:00:40,950 --> 00:00:42,800
-Well, there's an operator
-for that.
+Bien, hay un operador
+para eso.
 
 19
 00:00:42,800 --> 00:00:48,570
-The $all operator matches any
-document that has all of the
+El operador "$all" coincide con cualquier
+documento que tenga todos los
 
 20
 00:00:48,570 --> 00:00:51,730
-specified elements inside the
-array in the field that you're
+elementos especificados dentro del
+array en el campo que estés
 
 21
 00:00:51,730 --> 00:00:52,760
-looking at.
+examinando.
 
 22
 00:00:52,760 --> 00:00:55,960
-And the operand to the $all
-operator is a array.
+Y el operando del operador
+"$all" es un array.
 
 23
 00:00:55,960 --> 00:00:58,510
-And the elements inside that
-array can occur in any order
+Y los elementos dentro de ese
+array pueden estar en cualquier orden
 
 24
 00:00:58,510 --> 00:01:01,050
-in the corresponding field
-in the documents.
+en el campo correspondiente
+en los documentos.
 
 25
 00:01:01,050 --> 00:01:05,069
-So for example, Howard has
-favorites pretzels comma beer
+Así por ejemplo, "Howard" tiene como
+favoritos "['pretzels', 'beer']"
 
 26
 00:01:05,069 --> 00:01:06,060
-in that order.
+en ese orden.
 
 27
 00:01:06,060 --> 00:01:09,240
-But Irving has favorites beer
-comma pretzels comma cheese in
+Pero "Irving" tiene como favoritos 
+"['beer', 'pretzels', 'cheese'] en
 
 28
 00:01:09,240 --> 00:01:10,320
-that order.
+ese orden.
 
 29
 00:01:10,320 --> 00:01:12,940
-Another way of putting it is
-that the operand on the
+Otra forma de expresarlo es
+que el operando en la
 
 30
 00:01:12,940 --> 00:01:17,160
-right-hand side of the $all in
-the query has to be a subset--
+parte derecha del "$all" en
+la consulta tiene que ser un subconjunto --
 
 31
 00:01:17,160 --> 00:01:20,920
-possibly not a strict subset,
-possibly equal to the set--
+es posible que no un subconjunto estricto, 
+posiblemente igual al conjunto --
 
 32
 00:01:20,920 --> 00:01:24,220
-of the things that are the
-values in the field that's
+de las cosas que son los
+valores del campo que se está
 
 33
 00:01:24,220 --> 00:01:26,480
-queried for in the Find.
+consultado en el "find".
 
 34
 00:01:26,480 --> 00:01:29,770
-That is to say, Favorites has
-to contain beer and pretzels
+Es decir, "favorites" tiene
+que contener "beer" y "pretzels"
 
 35
 00:01:29,770 --> 00:01:32,550
-in any order and may contain
-some other things.
+en cualquier orden y podría contener
+algunas otras cosas.
 
 36
 00:01:32,550 --> 00:01:34,910
-Finally, there's one more
-operator that has to do
+Por último, hay un operador
+más que tiene que ver
 
 37
 00:01:34,910 --> 00:01:36,120
-tangentially with arrays.
+tangencialmente con los arrays.
 
 38
 00:01:36,120 --> 00:01:38,230
-Although it's not specifically
-about querying inside of
+Aunque no es específicamente
+sobre consultas en
 
 39
 00:01:38,230 --> 00:01:41,330
-arrays, although you can use it
-with the feature that Mongo
+arrays, sin embargo puedes usarlo
+con la característica que tiene
 
 40
 00:01:41,330 --> 00:01:43,050
-has to look into arrays.
+Mongo para examinar los arrays.
 
 41
 00:01:43,050 --> 00:01:46,450
-Specifically, just like in SQL,
-Mongo's query language
+Específicamente, al igual que en SQL,
+el lenguaje de consulta de Mongo
 
 42
 00:01:46,450 --> 00:01:50,320
-has an operator $in, which takes
-a list of strings and
+tiene un operador "$in", que toma
+una lista de cadenas y
 
 43
 00:01:50,320 --> 00:01:53,040
-returns only those documents
-where the corresponding
+devuelve sólo aquellos documentos
+donde el campo
 
 44
 00:01:53,040 --> 00:01:54,890
-field-- in this case, Name--
+correspondiente -- en este caso, "name" --
 
 45
 00:01:54,890 --> 00:01:57,330
-has a value that's either
-Howard or John.
+tiene un valor que es
+"Howard" o "John".
 
 46
 00:01:57,330 --> 00:01:59,550
-That is to say, it's an
-enumeration of all the values
+Es decir, es una
+enumeración de todos los valores
 
 47
 00:01:59,550 --> 00:02:01,450
-that you're looking for
-for the given field.
+que estás buscando
+para el campo dado.
 
 48
 00:02:01,450 --> 00:02:04,570
-This feature composes, in a
-hopefully intuitive fashion,
+Esta característica forma parte, con suerte
+de manera intuitiva,
 
 49
 00:02:04,570 --> 00:02:07,790
-with the examination inside
-of arrays that you've just
+del examen interno de
+los arrays que, según acabas
 
 50
 00:02:07,790 --> 00:02:09,639
-learned that MongoDB does.
+de aprender, hace MongoDB.
 
 51
 00:02:09,639 --> 00:02:13,380
-So for example, if I look for
-favorites $in beer or ice
+Por ejemplo, si busco
+"favorites: {$in: ['beer', 'ice cream']}",
 
 52
 00:02:13,380 --> 00:02:16,500
-cream, I should find any
-document having a Favorites
+debería encontrar
+cualquier documento que tenga un campo
 
 53
 00:02:16,500 --> 00:02:20,790
-field that contains beer
-or contains ice cream.
+"favorites" que contenga "beer"
+o "ice cream".
 
 54
 00:02:20,790 --> 00:02:23,140
-And that appears to
-specify everybody.
+Y eso parece
+especificar a todo el mundo.
 
 55
 00:02:23,140 --> 00:02:25,110
-OK, let's have a quiz.
+OK, hagamos un cuestionario.
 
 56
 00:02:25,110 --> 00:02:28,100
-Which of the following documents
-matches this query?
+¿Cuál de los siguientes documentos
+coincide con esta consulta?
 
 57
 00:02:28,100 --> 00:02:35,230
-db.users.find, friends, $all
-of Joe, Bob, favorites $in
+"db.users.find({friends: {$all:
+['Joe', 'Bob']}, favorites: {$in:
 
 58
 00:02:35,230 --> 00:02:36,480
-running, pickles.
+['running', 'pickles']}})".
 
 59
 00:02:36,480 --> 00:02:37,400
