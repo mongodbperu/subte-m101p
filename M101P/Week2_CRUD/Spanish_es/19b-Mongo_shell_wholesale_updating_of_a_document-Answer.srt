@@ -7,7 +7,7 @@ Bueno, sería este.
 
 3
 00:00:01,230 --> 00:00:05,010
-El "update" descatará toda la
+El "update" descartará toda la
 información que exista en el
 
 4
