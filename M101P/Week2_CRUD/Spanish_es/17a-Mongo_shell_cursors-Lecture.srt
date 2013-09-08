@@ -196,7 +196,7 @@ resultantes en grupos de
 42
 00:01:35,670 --> 00:01:37,660
 arrase tu terminal
-imprimiendo infinatemente muchos
+imprimiendo infinitamente muchos
 
 43
 00:01:37,660 --> 00:01:40,440
@@ -401,8 +401,8 @@ orden inverso por "name",
 
 85
 00:03:21,840 --> 00:03:25,740
-recordando, de nuevo, que la
-ordenación que realizamos es
+recordando, de nuevo, que el
+ordenamiento que realizamos es
 
 86
 00:03:25,740 --> 00:03:29,800
@@ -600,7 +600,7 @@ que "sort", "limit" y "skip",
 127
 00:05:09,350 --> 00:05:13,370
 que son bastante análogos a
-"Order by", "Limit" y "Skip" en
+"ORDER BY", "LIMIT" y "SKIP" en
 
 128
 00:05:13,370 --> 00:05:16,310
