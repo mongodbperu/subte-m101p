@@ -3,46 +3,46 @@
 
 2
 00:00:00,190 --> 00:00:01,230
-Well, it would be this one.
+Bueno, sería este.
 
 3
 00:00:01,230 --> 00:00:05,010
-The update will discard any
-information that exists in the
+El "update" descatará toda la
+información que exista en el
 
 4
 00:00:05,010 --> 00:00:08,390
-document with underscore ID
-Texas and deposit only the
+documento con "_id" igual a
+"Texas" y almacenará sólo la
 
 5
 00:00:08,390 --> 00:00:10,990
-information that's present
-in the second
+información que está
+presente en el segundo
 
 6
 00:00:10,990 --> 00:00:12,560
-argument to the update.
+argumento para el "update".
 
 7
 00:00:12,560 --> 00:00:15,380
-So in this case, you'll have
-a population value, but
+Así que en este caso, tendrás
+un valor "population", pero
 
 8
 00:00:15,380 --> 00:00:17,260
-landlocked will be discarded.
+"land_locked" será descartado.
 
 9
 00:00:17,260 --> 00:00:19,950
-Again, you can't change the
-underscore ID value of a
+Otra vez, no puedes cambiar
+el valor del "_id" de un
 
 10
 00:00:19,950 --> 00:00:22,710
-particular document, so that
-will never be touched by an
+documento en particular, así que
+esto nunca será tocado por una
 
 11
 00:00:22,710 --> 00:00:23,960
-update of this sort.
+actualización de este tipo.
