@@ -3,35 +3,35 @@
 
 2
 00:00:00,140 --> 00:00:02,361
-The answer should
-look like this.
+La respuesta debería
+parecerse a esto.
 
 3
 00:00:02,361 --> 00:00:03,730
-db.users.update.
+"db.users.update"
 
 4
 00:00:03,730 --> 00:00:05,790
-The first argument, which
-specifies what document to
+El primer argumento, que
+especifica el documento a
 
 5
 00:00:05,790 --> 00:00:08,189
-update, has user name
-colon spelunker.
+actualizar, tiene
+"username": "spelunker".
 
 6
 00:00:08,189 --> 00:00:11,350
-And the second argument, which
-specifies how to update the
+Y el segundo argumento, que
+especifica cómo actualizar el
 
 7
 00:00:11,350 --> 00:00:13,920
-matching document, says $ set.
+documento coincidente, dice "$set".
 
 8
 00:00:13,920 --> 00:00:15,310
-And then country to RU.
+Y luego "country" igual a "RU".
 
 9
 00:00:15,310 --> 00:00:16,560
