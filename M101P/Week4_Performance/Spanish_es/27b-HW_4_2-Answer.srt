@@ -1,0 +1,200 @@
+1
+00:00:00,000 --> 00:00:00,130
+
+2
+00:00:00,130 --> 00:00:00,630
+All right.
+
+3
+00:00:00,630 --> 00:00:05,170
+And the answer is that this
+find is using BtreeCursor
+
+4
+00:00:05,170 --> 00:00:06,660
+created at index.
+
+5
+00:00:06,660 --> 00:00:10,500
+We know that that's an index on
+just the created at field.
+
+6
+00:00:10,500 --> 00:00:11,730
+It reversed it.
+
+7
+00:00:11,730 --> 00:00:14,400
+We know that Mongo can only use
+one index for any given
+
+8
+00:00:14,400 --> 00:00:17,770
+query, and since created at is
+in the sort field and it's not
+
+9
+00:00:17,770 --> 00:00:21,410
+in the criteria field, we know
+that it's probably being used
+
+10
+00:00:21,410 --> 00:00:22,560
+for the sort.
+
+11
+00:00:22,560 --> 00:00:26,490
+And we also know that it's not
+using anything for the
+
+12
+00:00:26,490 --> 00:00:28,920
+criteria part because it can't
+use more than one index, and
+
+13
+00:00:28,920 --> 00:00:30,490
+we know that the follower
+count is not in
+
+14
+00:00:30,490 --> 00:00:32,450
+the created at index.
+
+15
+00:00:32,450 --> 00:00:35,470
+So from that, we can determine
+that we probably did scan the
+
+16
+00:00:35,470 --> 00:00:37,920
+entire collection even though
+we did use an index.
+
+17
+00:00:37,920 --> 00:00:39,800
+We used the index
+for the sort.
+
+18
+00:00:39,800 --> 00:00:43,350
+And we also note that it's not a
+covered index, but of course
+
+19
+00:00:43,350 --> 00:00:45,880
+you did a table scan, so that
+probably make sense.
+
+20
+00:00:45,880 --> 00:00:48,190
+And it took 205 milliseconds.
+
+21
+00:00:48,190 --> 00:00:50,420
+So let's see what we can
+learn from this.
+
+22
+00:00:50,420 --> 00:00:52,690
+Returned 10 documents, OK.
+
+23
+00:00:52,690 --> 00:00:56,220
+So, the answers are, this query
+performs a table scan.
+
+24
+00:00:56,220 --> 00:00:58,250
+A table scan is the same
+as a collection scan.
+
+25
+00:00:58,250 --> 00:01:01,620
+The answer is, yes it does.
+
+26
+00:01:01,620 --> 00:01:03,742
+The query uses an index to
+determine the order in which
+
+27
+00:01:03,742 --> 00:01:05,190
+to return the resulting
+documents.
+
+28
+00:01:05,190 --> 00:01:07,430
+Yes, that is true.
+
+29
+00:01:07,430 --> 00:01:08,740
+The query uses an index
+to determine which
+
+30
+00:01:08,740 --> 00:01:09,890
+documents to match.
+
+31
+00:01:09,890 --> 00:01:10,820
+That is not true.
+
+32
+00:01:10,820 --> 00:01:12,100
+You cannot use that index.
+
+33
+00:01:12,100 --> 00:01:15,660
+The index here, BtreeCursor
+created at could not be used
+
+34
+00:01:15,660 --> 00:01:20,080
+to satisfy this criteria, and
+so therefore, it is not.
+
+35
+00:01:20,080 --> 00:01:21,930
+The query returns 46,000
+documents.
+
+36
+00:01:21,930 --> 00:01:22,570
+That's not true.
+
+37
+00:01:22,570 --> 00:01:24,500
+The query returns
+10 documents .
+
+38
+00:01:24,500 --> 00:01:29,820
+The query visits 46,462
+documents, that is true.
+
+39
+00:01:29,820 --> 00:01:33,030
+Yeah, 46,462, right there.
+
+40
+00:01:33,030 --> 00:01:35,690
+And, this query is a covered
+index query, and that is not
+
+41
+00:01:35,690 --> 00:01:38,290
+true, which is plainly obvious
+from the fact that it says
+
+42
+00:01:38,290 --> 00:01:39,690
+index only false.
+
+43
+00:01:39,690 --> 00:01:41,430
+OK, so that's the answer
+to this question.
+
+44
+00:01:41,430 --> 00:01:42,680

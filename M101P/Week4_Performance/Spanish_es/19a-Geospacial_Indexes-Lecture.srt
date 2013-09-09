@@ -1,0 +1,529 @@
+1
+00:00:00,000 --> 00:00:01,570
+The next topic I want
+to discuss with you
+
+2
+00:00:01,570 --> 00:00:04,050
+is geospatial indexes.
+
+3
+00:00:04,050 --> 00:00:06,930
+And geospatial indexes
+allow you to find
+
+4
+00:00:06,930 --> 00:00:08,720
+things based on location.
+
+5
+00:00:08,720 --> 00:00:11,270
+The first model we're going to
+discuss is a two-dimensional
+
+6
+00:00:11,270 --> 00:00:14,080
+model, and then we'll go over
+a three-dimensional model in
+
+7
+00:00:14,080 --> 00:00:15,290
+another lesson.
+
+8
+00:00:15,290 --> 00:00:19,060
+Now in a 2D world, we've
+got a Cartesian plane,
+
+9
+00:00:19,060 --> 00:00:21,840
+y-coordinates, and you may
+have a bunch of different
+
+10
+00:00:21,840 --> 00:00:23,300
+objects out in that world.
+
+11
+00:00:23,300 --> 00:00:27,140
+So for instance, you might have
+a restaurant here and a
+
+12
+00:00:27,140 --> 00:00:30,680
+barber shop here and a grocery
+store here and a hardware
+
+13
+00:00:30,680 --> 00:00:31,750
+store here.
+
+14
+00:00:31,750 --> 00:00:36,550
+And then, you also have,
+typically, a person right here
+
+15
+00:00:36,550 --> 00:00:40,340
+with his little coordinates,
+x comma y.
+
+16
+00:00:40,340 --> 00:00:42,370
+And what you want to know
+is, well, what's
+
+17
+00:00:42,370 --> 00:00:44,470
+closest to this person?
+
+18
+00:00:44,470 --> 00:00:46,290
+What are the establishments
+that are closest to this
+
+19
+00:00:46,290 --> 00:00:49,570
+person, maybe of
+a certain type?
+
+20
+00:00:49,570 --> 00:00:51,690
+And how do you figure
+out where those are?
+
+21
+00:00:51,690 --> 00:00:54,470
+Now the way we do this is that,
+in order to do searches
+
+22
+00:00:54,470 --> 00:00:57,730
+based on location, first of
+all, your document need to
+
+23
+00:00:57,730 --> 00:01:01,670
+have some sort of x,y location
+stored in it.
+
+24
+00:01:01,670 --> 00:01:04,964
+I'm just going to call it
+location, but to be clear, it
+
+25
+00:01:04,964 --> 00:01:06,220
+is just my name.
+
+26
+00:01:06,220 --> 00:01:10,720
+And in that, you store an array
+of values which are the
+
+27
+00:01:10,720 --> 00:01:12,330
+x, y-coordinates.
+
+28
+00:01:12,330 --> 00:01:17,770
+And then once you do that, you
+need to also use ensureIndex
+
+29
+00:01:17,770 --> 00:01:20,370
+to tell the database that these
+are locations that need
+
+30
+00:01:20,370 --> 00:01:22,830
+to be indexed so that
+you can search them.
+
+31
+00:01:22,830 --> 00:01:27,700
+And you do that by specifying
+that you want to have there be
+
+32
+00:01:27,700 --> 00:01:30,290
+an index on location--
+
+33
+00:01:30,290 --> 00:01:32,280
+again, just my word--
+
+34
+00:01:32,280 --> 00:01:34,720
+and that the index is type 2D.
+
+35
+00:01:34,720 --> 00:01:36,430
+And that's the reserve type.
+
+36
+00:01:36,430 --> 00:01:39,070
+That tells the database that
+this is a two-dimensional
+
+37
+00:01:39,070 --> 00:01:40,300
+geospatial index.
+
+38
+00:01:40,300 --> 00:01:42,340
+If there are some other pieces
+of information you want to
+
+39
+00:01:42,340 --> 00:01:44,240
+have be a part of the index,
+there's a compound index, you
+
+40
+00:01:44,240 --> 00:01:44,880
+can add that.
+
+41
+00:01:44,880 --> 00:01:47,810
+So if there's a store type or
+something or an establishment
+
+42
+00:01:47,810 --> 00:01:50,990
+type, you can put that
+in, ascending.
+
+43
+00:01:50,990 --> 00:01:54,240
+That's optional, but it can
+be a compound index.
+
+44
+00:01:54,240 --> 00:01:56,500
+Now, the last part of this is
+that you're going to need some
+
+45
+00:01:56,500 --> 00:01:59,170
+sort of query operator
+to work on this.
+
+46
+00:01:59,170 --> 00:02:01,490
+And there's a few different
+query operators, but I'm going
+
+47
+00:02:01,490 --> 00:02:03,880
+to just tell you about one of
+them right now which is the
+
+48
+00:02:03,880 --> 00:02:05,970
+$near operator.
+
+49
+00:02:05,970 --> 00:02:10,350
+And so the way you would do a
+find on this, you'd say, OK,
+
+50
+00:02:10,350 --> 00:02:17,580
+find all the locations that
+are $near, colon, and then
+
+51
+00:02:17,580 --> 00:02:20,830
+this would be the x,
+y-coordinates of where that
+
+52
+00:02:20,830 --> 00:02:22,510
+person was standing.
+
+53
+00:02:22,510 --> 00:02:25,740
+So just to over it again, you
+have to have something in the
+
+54
+00:02:25,740 --> 00:02:28,460
+document right here that
+specifies the x,
+
+55
+00:02:28,460 --> 00:02:28,670
+y-coordinates.
+
+56
+00:02:28,670 --> 00:02:32,320
+You need to have an index that
+tells the database that there
+
+57
+00:02:32,320 --> 00:02:34,750
+are x, y-coordinates stored
+in the document.
+
+58
+00:02:34,750 --> 00:02:36,230
+You give type 2D.
+
+59
+00:02:36,230 --> 00:02:40,240
+And then in your find, you can
+call the $near operator and
+
+60
+00:02:40,240 --> 00:02:44,800
+say, oh, find me all the
+locations that are near this
+
+61
+00:02:44,800 --> 00:02:47,210
+particular set of x,
+y-coordinates, and the
+
+62
+00:02:47,210 --> 00:02:49,610
+database will return
+them in the order
+
+63
+00:02:49,610 --> 00:02:51,920
+of increasing distance.
+
+64
+00:02:51,920 --> 00:02:54,390
+And practically speaking, the
+way this is often used is
+
+65
+00:02:54,390 --> 00:02:55,070
+through a limit.
+
+66
+00:02:55,070 --> 00:02:59,360
+So you'd say limit(20), and then
+that would give me, let's
+
+67
+00:02:59,360 --> 00:03:02,850
+say, all the shops or the stores
+that were closest to
+
+68
+00:03:02,850 --> 00:03:06,310
+this person standing at
+coordinates x,y, limiting to
+
+69
+00:03:06,310 --> 00:03:07,550
+20 of them.
+
+70
+00:03:07,550 --> 00:03:10,320
+Let's go through a little
+example in the Shell.
+
+71
+00:03:10,320 --> 00:03:14,540
+All right, I've got a small
+collection here that is called
+
+72
+00:03:14,540 --> 00:03:17,170
+stores, and it has three
+establishments.
+
+73
+00:03:17,170 --> 00:03:19,630
+So you can see the three
+establishments right here.
+
+74
+00:03:19,630 --> 00:03:21,650
+They are Ruby--
+
+75
+00:03:21,650 --> 00:03:24,560
+it's a barber at location
+40, 74--
+
+76
+00:03:24,560 --> 00:03:27,670
+and then, ACE hardware, a
+hardware store, at location
+
+77
+00:03:27,670 --> 00:03:31,980
+40, minus 74, and then,
+Tickle Candy, a food
+
+78
+00:03:31,980 --> 00:03:33,720
+store, at this location.
+
+79
+00:03:33,720 --> 00:03:36,520
+I've added an index using
+this command--
+
+80
+00:03:36,520 --> 00:03:37,440
+let me show it to you--
+
+81
+00:03:37,440 --> 00:03:40,810
+db.stores.ensureIndex,
+location: 2D.
+
+82
+00:03:40,810 --> 00:03:43,290
+And again, I named it location,
+but it doesn't need
+
+83
+00:03:43,290 --> 00:03:44,340
+to be named location.
+
+84
+00:03:44,340 --> 00:03:46,820
+You can call it whatever
+you want, or loc or
+
+85
+00:03:46,820 --> 00:03:47,860
+whatever you want.
+
+86
+00:03:47,860 --> 00:03:49,730
+And then type ascending.
+
+87
+00:03:49,730 --> 00:03:52,090
+I said, oh, wouldn't it be nice
+to also be able to filter
+
+88
+00:03:52,090 --> 00:03:55,430
+and sort by the type of
+establishment it is, so I
+
+89
+00:03:55,430 --> 00:03:56,660
+added that.
+
+90
+00:03:56,660 --> 00:03:59,900
+You can see all the indexes
+that are on there.
+
+91
+00:03:59,900 --> 00:04:03,330
+So you can see that there's
+two indexes on this
+
+92
+00:04:03,330 --> 00:04:06,010
+collection, the default one
+under underscore id, and the
+
+93
+00:04:06,010 --> 00:04:10,360
+second one, a two-dimensional
+index, a compound index where
+
+94
+00:04:10,360 --> 00:04:11,810
+location is the first
+part of it.
+
+95
+00:04:11,810 --> 00:04:13,830
+And then, type is the
+second part of it.
+
+96
+00:04:13,830 --> 00:04:15,830
+And this is the name
+of the index.
+
+97
+00:04:15,830 --> 00:04:19,040
+And to do a query, here's
+a typical query.
+
+98
+00:04:19,040 --> 00:04:26,920
+So find me every document whose
+location is near 50, 50
+
+99
+00:04:26,920 --> 00:04:29,040
+and you're going to return
+them to me in order of
+
+100
+00:04:29,040 --> 00:04:30,640
+increasing distance.
+
+101
+00:04:30,640 --> 00:04:34,730
+So I do that, and then it shows
+me the three of them.
+
+102
+00:04:34,730 --> 00:04:38,620
+It says that the one that's
+closest to 50, 50 is 40, 74,
+
+103
+00:04:38,620 --> 00:04:43,380
+and then 40.2, minus 74 is next
+closest, and then 41,
+
+104
+00:04:43,380 --> 00:04:46,850
+minus 75, which makes sense
+to me just looking
+
+105
+00:04:46,850 --> 00:04:48,350
+at them real quickly.
+
+106
+00:04:48,350 --> 00:04:50,640
+All right, so let's do a quiz.
+
+107
+00:04:50,640 --> 00:04:51,710
+Here's the quiz.
+
+108
+00:04:51,710 --> 00:04:54,590
+Suppose you have a 2D geospatial
+index defined on
+
+109
+00:04:54,590 --> 00:04:57,400
+the key location in the
+collection places.
+
+110
+00:04:57,400 --> 00:04:59,920
+Write a query that will find the
+closest three places, the
+
+111
+00:04:59,920 --> 00:05:03,150
+closest three documents, to
+the location 74, 140.
+
+112
+00:05:03,150 --> 00:05:04,540
+Please type it there.
+
+113
+00:05:04,540 --> 00:05:05,790

@@ -1,0 +1,568 @@
+1
+00:00:00,000 --> 00:00:00,120
+
+2
+00:00:00,120 --> 00:00:01,960
+Now let's talk about
+the profiler.
+
+3
+00:00:01,960 --> 00:00:04,810
+The profiler is a more
+sophisticated facility.
+
+4
+00:00:04,810 --> 00:00:09,300
+It will write entries,
+documents, to system.profile
+
+5
+00:00:09,300 --> 00:00:12,690
+for any query that takes longer
+than some specified
+
+6
+00:00:12,690 --> 00:00:13,650
+period of time.
+
+7
+00:00:13,650 --> 00:00:15,540
+There are three levels
+for the profiler.
+
+8
+00:00:15,540 --> 00:00:18,600
+There's level zero, level
+one, and level two.
+
+9
+00:00:18,600 --> 00:00:22,310
+Levels zero is the default
+level, and it means it is off.
+
+10
+00:00:22,310 --> 00:00:26,030
+Level one means, I want to
+log my slow queries.
+
+11
+00:00:26,030 --> 00:00:29,730
+And level two means, I want
+to log all my queries.
+
+12
+00:00:29,730 --> 00:00:32,240
+So why would you want to
+log all your queries?
+
+13
+00:00:32,240 --> 00:00:34,850
+And the reason is because not
+so much for performance
+
+14
+00:00:34,850 --> 00:00:38,210
+debugging, but because when
+you're writing a program, it's
+
+15
+00:00:38,210 --> 00:00:41,780
+convenient to see all the
+database traffic so that you
+
+16
+00:00:41,780 --> 00:00:42,990
+can figure out whether
+the program is
+
+17
+00:00:42,990 --> 00:00:44,170
+doing what you expect.
+
+18
+00:00:44,170 --> 00:00:47,210
+So this is really more of a
+general debugging feature than
+
+19
+00:00:47,210 --> 00:00:49,340
+a performance debugging
+feature.
+
+20
+00:00:49,340 --> 00:00:51,880
+And you might want to use that
+when you're debugging your own
+
+21
+00:00:51,880 --> 00:00:54,790
+programs, to turn the profiler
+on a level two and see
+
+22
+00:00:54,790 --> 00:00:56,870
+everything that's happening
+in the system.
+
+23
+00:00:56,870 --> 00:00:59,520
+But right now, we're going to
+focus on this level one which
+
+24
+00:00:59,520 --> 00:01:01,230
+is logging the slow queries.
+
+25
+00:01:01,230 --> 00:01:05,780
+Let's go and start Mongo up
+logging slow queries.
+
+26
+00:01:05,780 --> 00:01:09,560
+So we're going to run mongod
+minus dbpath and, same as
+
+27
+00:01:09,560 --> 00:01:11,110
+before, the one I used.
+
+28
+00:01:11,110 --> 00:01:14,160
+And then minus profile one, log
+my slow queries, anything
+
+29
+00:01:14,160 --> 00:01:16,530
+above two milliseconds.
+
+30
+00:01:16,530 --> 00:01:17,810
+So I'm going to do that.
+
+31
+00:01:17,810 --> 00:01:20,550
+And now, it's logging
+my slow queries.
+
+32
+00:01:20,550 --> 00:01:23,230
+And now, I'm going to
+do a slow query.
+
+33
+00:01:23,230 --> 00:01:26,800
+So I'm going to do that
+same query again.
+
+34
+00:01:26,800 --> 00:01:28,340
+All right, it took a while.
+
+35
+00:01:28,340 --> 00:01:29,840
+It took about four seconds.
+
+36
+00:01:29,840 --> 00:01:35,940
+And now, I'm going to look in
+db.system.profile and see what
+
+37
+00:01:35,940 --> 00:01:37,770
+there is to see.
+
+38
+00:01:37,770 --> 00:01:44,070
+And this is the query
+we just did.
+
+39
+00:01:44,070 --> 00:01:47,770
+We can see that there's a
+query to the students
+
+40
+00:01:47,770 --> 00:01:49,570
+collection, that
+we were looking
+
+41
+00:01:49,570 --> 00:01:51,660
+for student_id: 10,000.
+
+42
+00:01:51,660 --> 00:01:53,430
+It happened here,
+this time stamp.
+
+43
+00:01:53,430 --> 00:01:55,750
+And it scanned 10 million
+documents.
+
+44
+00:01:55,750 --> 00:01:56,790
+That sounds slow.
+
+45
+00:01:56,790 --> 00:02:02,590
+It returned one document, and
+took 4.2 seconds, 4,231
+
+46
+00:02:02,590 --> 00:02:04,410
+milliseconds.
+
+47
+00:02:04,410 --> 00:02:06,570
+So this is going to
+be really useful.
+
+48
+00:02:06,570 --> 00:02:07,790
+And you can see it
+actually returned
+
+49
+00:02:07,790 --> 00:02:09,229
+more than one document.
+
+50
+00:02:09,229 --> 00:02:12,020
+It returned some of the
+work I did before.
+
+51
+00:02:12,020 --> 00:02:14,510
+This is a cap collection, which
+means that there's a
+
+52
+00:02:14,510 --> 00:02:17,260
+fixed size collection and it
+will recycle space in the
+
+53
+00:02:17,260 --> 00:02:19,840
+collection after
+it uses it up.
+
+54
+00:02:19,840 --> 00:02:21,510
+So we can use this
+information.
+
+55
+00:02:21,510 --> 00:02:22,710
+We can query on it.
+
+56
+00:02:22,710 --> 00:02:26,520
+So we see, for instance this
+millis over 4,000.
+
+57
+00:02:26,520 --> 00:02:29,120
+So let me show you some of kind
+of queries you can do.
+
+58
+00:02:29,120 --> 00:02:34,270
+So in here, I'm doing a find
+in the profile collection
+
+59
+00:02:34,270 --> 00:02:38,710
+looking for anything with
+test.foo in it in the name
+
+60
+00:02:38,710 --> 00:02:42,130
+space, which is the foo
+collection which is another
+
+61
+00:02:42,130 --> 00:02:44,950
+collections I've been writing
+queries to as well.
+
+62
+00:02:44,950 --> 00:02:48,820
+And then, sort it by the time
+stamp, prettyprint it.
+
+63
+00:02:48,820 --> 00:02:53,000
+And you see there's nothing in
+there right now from test.foo.
+
+64
+00:02:53,000 --> 00:02:58,240
+But if I switch that up to be
+school.students collection,
+
+65
+00:02:58,240 --> 00:02:59,610
+I'll get the query
+we just did.
+
+66
+00:02:59,610 --> 00:03:01,580
+We can also look for things
+that are slower
+
+67
+00:03:01,580 --> 00:03:03,210
+than a certain duration.
+
+68
+00:03:03,210 --> 00:03:04,610
+Let me show you how
+that works.
+
+69
+00:03:04,610 --> 00:03:05,220
+Here we go.
+
+70
+00:03:05,220 --> 00:03:09,890
+This is a query, again, of the
+system.profile where we're
+
+71
+00:03:09,890 --> 00:03:14,635
+looking for things that have
+milliseconds greater than one.
+
+72
+00:03:14,635 --> 00:03:16,670
+And we're going to sort by
+the time stamp again and
+
+73
+00:03:16,670 --> 00:03:18,090
+prettyprint it.
+
+74
+00:03:18,090 --> 00:03:18,970
+Very convenient.
+
+75
+00:03:18,970 --> 00:03:21,130
+So that's how you would
+use the profile
+
+76
+00:03:21,130 --> 00:03:22,330
+information you get.
+
+77
+00:03:22,330 --> 00:03:26,135
+You can turn on this profiler
+from the Mongo shell.
+
+78
+00:03:26,135 --> 00:03:27,800
+Let me show you how
+to do that.
+
+79
+00:03:27,800 --> 00:03:30,260
+So you can get the
+profile status.
+
+80
+00:03:30,260 --> 00:03:32,080
+Here, let me show you that.
+
+81
+00:03:32,080 --> 00:03:33,520
+getProfilingLevel--
+
+82
+00:03:33,520 --> 00:03:36,720
+we're set to level
+one right now.
+
+83
+00:03:36,720 --> 00:03:38,910
+Let's get the status.
+
+84
+00:03:38,910 --> 00:03:42,620
+And you can see it's set to one,
+which is slow queries,
+
+85
+00:03:42,620 --> 00:03:44,340
+anything above two
+milliseconds.
+
+86
+00:03:44,340 --> 00:03:49,090
+We can set the status
+if we want.
+
+87
+00:03:49,090 --> 00:03:50,330
+This is how you turn
+the profiler on
+
+88
+00:03:50,330 --> 00:03:52,170
+from the Mongo Shell.
+
+89
+00:03:52,170 --> 00:03:55,710
+Let's set it to level one, but
+I want to only look at things
+
+90
+00:03:55,710 --> 00:03:58,230
+that are longer than
+four milliseconds.
+
+91
+00:03:58,230 --> 00:04:01,540
+If I do that, oh
+I meant set the
+
+92
+00:04:01,540 --> 00:04:04,070
+profiling level, not status.
+
+93
+00:04:04,070 --> 00:04:05,730
+If you set the profiling
+level--
+
+94
+00:04:05,730 --> 00:04:06,210
+right here--
+
+95
+00:04:06,210 --> 00:04:10,880
+set profiling level to 1 comma
+4, that means slow queries
+
+96
+00:04:10,880 --> 00:04:11,870
+above four milliseconds.
+
+97
+00:04:11,870 --> 00:04:17,480
+And now it tells me what it used
+to be, just so I can do
+
+98
+00:04:17,480 --> 00:04:18,130
+some debugging information.
+
+99
+00:04:18,130 --> 00:04:22,670
+But if I do a get of the status,
+I can see that it's
+
+100
+00:04:22,670 --> 00:04:26,040
+now set to level one and
+anything above four.
+
+101
+00:04:26,040 --> 00:04:31,480
+If I want to turn it off
+entirely, I just set it to
+
+102
+00:04:31,480 --> 00:04:37,070
+zero, and that should fix it up
+for me. setProfilingLevel--
+
+103
+00:04:37,070 --> 00:04:40,545
+and if I get the profiling
+status now, I
+
+104
+00:04:40,545 --> 00:04:41,850
+should see it's zero.
+
+105
+00:04:41,850 --> 00:04:45,580
+And if I get the profiling
+level, which is another
+
+106
+00:04:45,580 --> 00:04:47,990
+command, it'll also
+tell me it's zero.
+
+107
+00:04:47,990 --> 00:04:51,150
+So those are the commands you
+might want to know which is to
+
+108
+00:04:51,150 --> 00:04:52,770
+get the profiling level,
+that'll tell
+
+109
+00:04:52,770 --> 00:04:53,940
+you what it's doing.
+
+110
+00:04:53,940 --> 00:04:55,510
+If you want to set
+the profiling
+
+111
+00:04:55,510 --> 00:04:56,500
+level, you can set it.
+
+112
+00:04:56,500 --> 00:04:57,480
+It takes two parameters.
+
+113
+00:04:57,480 --> 00:04:58,963
+I only gave one here because
+I was turning it off.
+
+114
+00:04:58,963 --> 00:05:02,820
+But it takes two parameters
+which is the level and then
+
+115
+00:05:02,820 --> 00:05:07,350
+the number of milliseconds that
+I want to log beyond, any
+
+116
+00:05:07,350 --> 00:05:10,310
+query that exceeds that
+will get logged.
+
+117
+00:05:10,310 --> 00:05:13,900
+OK, it is time for a quiz.
+
+118
+00:05:13,900 --> 00:05:16,520
+Write the query to look in the
+system.profile profile
+
+119
+00:05:16,520 --> 00:05:18,840
+collection for all the queries
+that took longer than one
+
+120
+00:05:18,840 --> 00:05:20,810
+second ordered by timestamp
+descending.
+
+121
+00:05:20,810 --> 00:05:22,060

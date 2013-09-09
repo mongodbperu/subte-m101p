@@ -1,0 +1,470 @@
+1
+00:00:00,000 --> 00:00:00,230
+
+2
+00:00:00,230 --> 00:00:04,030
+All right, the last topic of
+this unit is sharding.
+
+3
+00:00:04,030 --> 00:00:07,280
+And sharding is a technique
+for splitting up a large
+
+4
+00:00:07,280 --> 00:00:09,620
+collection amongst
+multiple servers.
+
+5
+00:00:09,620 --> 00:00:13,420
+So so far we've been talking
+about having a single Mongo
+
+6
+00:00:13,420 --> 00:00:16,129
+server, which I'll represent
+as this disk.
+
+7
+00:00:16,129 --> 00:00:18,560
+But there comes a time when you
+can't get the performance
+
+8
+00:00:18,560 --> 00:00:20,810
+you want from a single server.
+
+9
+00:00:20,810 --> 00:00:24,290
+And so what you can do
+is you can shard.
+
+10
+00:00:24,290 --> 00:00:28,520
+And when you shard, you deploy
+multiple mongod servers, and
+
+11
+00:00:28,520 --> 00:00:32,450
+in the front, you have a mongos
+which is a router.
+
+12
+00:00:32,450 --> 00:00:36,910
+And your application talks to
+mongos, which then talks to
+
+13
+00:00:36,910 --> 00:00:40,880
+the various servers,
+the mongods.
+
+14
+00:00:40,880 --> 00:00:44,500
+Now one wrinkle, which I won't
+go into here, is that rather
+
+15
+00:00:44,500 --> 00:00:48,820
+than being a single server, this
+is sometimes and often
+
+16
+00:00:48,820 --> 00:00:51,950
+and recommend to be
+a set of servers.
+
+17
+00:00:51,950 --> 00:00:56,750
+So imagine three of these guys
+behind here in what's called a
+
+18
+00:00:56,750 --> 00:00:58,030
+replica set.
+
+19
+00:00:58,030 --> 00:01:02,640
+And a replica set keeps the data
+in sync across several
+
+20
+00:01:02,640 --> 00:01:05,870
+different instances so that if
+one of them goes down, you
+
+21
+00:01:05,870 --> 00:01:06,930
+won't lose your data.
+
+22
+00:01:06,930 --> 00:01:11,000
+But logically, you can look at
+this replica set as one shard.
+
+23
+00:01:11,000 --> 00:01:13,360
+And when you're doing this--
+and for the most part, it's
+
+24
+00:01:13,360 --> 00:01:15,290
+transparent to the
+application--
+
+25
+00:01:15,290 --> 00:01:17,820
+however, the way Mongo
+shards is that you
+
+26
+00:01:17,820 --> 00:01:19,580
+choose a shard key.
+
+27
+00:01:19,580 --> 00:01:21,730
+So for instance, in that student
+collection, you might
+
+28
+00:01:21,730 --> 00:01:25,810
+decide that student_id
+is your shard key.
+
+29
+00:01:25,810 --> 00:01:27,950
+Or it could be a compound key.
+
+30
+00:01:27,950 --> 00:01:30,930
+And the mongos server, it's
+a range-based system.
+
+31
+00:01:30,930 --> 00:01:33,710
+So based on the student-id that
+you query, it'll send the
+
+32
+00:01:33,710 --> 00:01:38,440
+request to the right
+Mongo instance.
+
+33
+00:01:38,440 --> 00:01:41,870
+So what do you really have to
+need to know as a developer?
+
+34
+00:01:41,870 --> 00:01:45,440
+Well the, first thing you need
+to know is that an insert must
+
+35
+00:01:45,440 --> 00:01:48,110
+include the shard key,
+the entire shard key.
+
+36
+00:01:48,110 --> 00:01:51,130
+So if it's a multi-parted shard
+key, you must include
+
+37
+00:01:51,130 --> 00:01:53,990
+the entire shard key in order
+for the insert to complete.
+
+38
+00:01:53,990 --> 00:01:57,700
+So you have to be aware of what
+the shard key is on the
+
+39
+00:01:57,700 --> 00:01:58,980
+collection itself.
+
+40
+00:01:58,980 --> 00:02:03,330
+And the second thing you need to
+know is that for an update
+
+41
+00:02:03,330 --> 00:02:08,211
+or a remove or a find, if mongos
+isn't given a shard
+
+42
+00:02:08,211 --> 00:02:13,000
+key, then what it's going to
+have to do is broadcast the
+
+43
+00:02:13,000 --> 00:02:16,180
+request to all the different
+shards that cover the
+
+44
+00:02:16,180 --> 00:02:17,310
+collection.
+
+45
+00:02:17,310 --> 00:02:20,580
+So you have some collection,
+like the students collection,
+
+46
+00:02:20,580 --> 00:02:25,340
+and it's broken up into big
+parts that map each to
+
+47
+00:02:25,340 --> 00:02:26,780
+different shards--
+
+48
+00:02:26,780 --> 00:02:28,710
+shard0, shard1.
+
+49
+00:02:28,710 --> 00:02:31,980
+And then there's some chunking
+within here to allow Mongo to
+
+50
+00:02:31,980 --> 00:02:33,860
+keep it balanced, but that
+doesn't really matter from
+
+51
+00:02:33,860 --> 00:02:35,430
+your standpoint.
+
+52
+00:02:35,430 --> 00:02:38,970
+The point is that if it doesn't
+know the shard key, on
+
+53
+00:02:38,970 --> 00:02:41,050
+the query, it has
+to broadcast it.
+
+54
+00:02:41,050 --> 00:02:44,790
+Now, it may be the case that
+you're doing a query that you
+
+55
+00:02:44,790 --> 00:02:47,370
+don't know the shard key,
+in which case it
+
+56
+00:02:47,370 --> 00:02:48,105
+does have to be broadcast.
+
+57
+00:02:48,105 --> 00:02:49,230
+And that's fine.
+
+58
+00:02:49,230 --> 00:02:52,950
+But if you know the shard key,
+you should specify it because
+
+59
+00:02:52,950 --> 00:02:54,310
+you will get better performance
+because you'll
+
+60
+00:02:54,310 --> 00:02:56,600
+only be utilizing one
+of the servers.
+
+61
+00:02:56,600 --> 00:02:58,920
+And you won't be keep the other
+servers busy with this
+
+62
+00:02:58,920 --> 00:03:00,180
+query as well.
+
+63
+00:03:00,180 --> 00:03:01,380
+A couple of other subtleties--
+
+64
+00:03:01,380 --> 00:03:04,800
+with updates, if you don't
+specify the entire shard key,
+
+65
+00:03:04,800 --> 00:03:07,590
+you have to make it a
+multi-update so that it knows
+
+66
+00:03:07,590 --> 00:03:09,100
+that it needs to broadcast it.
+
+67
+00:03:09,100 --> 00:03:11,480
+And we're going to go over a lot
+of this in the application
+
+68
+00:03:11,480 --> 00:03:13,150
+engineering part
+of the course.
+
+69
+00:03:13,150 --> 00:03:16,760
+But I just wanted to explain the
+role that sharding has on
+
+70
+00:03:16,760 --> 00:03:21,210
+performance and also the
+subtlety of having to think
+
+71
+00:03:21,210 --> 00:03:22,420
+about the shard key a bit.
+
+72
+00:03:22,420 --> 00:03:25,150
+And choosing a shard key is a
+topic in and of itself, which
+
+73
+00:03:25,150 --> 00:03:26,530
+we are not going to go over.
+
+74
+00:03:26,530 --> 00:03:30,890
+Now within each of these
+servers, all these instances,
+
+75
+00:03:30,890 --> 00:03:33,870
+the same techniques apply as
+we have been talking about
+
+76
+00:03:33,870 --> 00:03:34,930
+this entire unit.
+
+77
+00:03:34,930 --> 00:03:37,960
+So you could certainly
+use Explain.
+
+78
+00:03:37,960 --> 00:03:40,820
+You can look at the
+system profile.
+
+79
+00:03:40,820 --> 00:03:43,000
+You can connect directly to the
+Mongo instances that are
+
+80
+00:03:43,000 --> 00:03:47,450
+running on here if you'd like
+for debugging purposes.
+
+81
+00:03:47,450 --> 00:03:49,420
+So a lot of the same
+things apply.
+
+82
+00:03:49,420 --> 00:03:52,250
+But at the highest level, your
+application will be talking to
+
+83
+00:03:52,250 --> 00:03:53,850
+a mongos router.
+
+84
+00:03:53,850 --> 00:03:56,790
+And that mongos will be talking
+to the mongods,
+
+85
+00:03:56,790 --> 00:03:59,300
+usually on different physical
+servers because that's
+
+86
+00:03:59,300 --> 00:04:01,920
+probably the reason why you
+sharded in the first place was
+
+87
+00:04:01,920 --> 00:04:03,270
+to get higher performance.
+
+88
+00:04:03,270 --> 00:04:05,950
+And just in case you were
+wondering, mongos is often
+
+89
+00:04:05,950 --> 00:04:10,120
+co-located on the same machine
+as the application, and you
+
+90
+00:04:10,120 --> 00:04:12,910
+can have multiple of these
+mongos services.
+
+91
+00:04:12,910 --> 00:04:15,240
+And you may have noticed the
+mongos binary in the Mongo
+
+92
+00:04:15,240 --> 00:04:16,620
+distribution, and that's
+what it is.
+
+93
+00:04:16,620 --> 00:04:21,279
+It lets you shard a collection
+and split it across multiple
+
+94
+00:04:21,279 --> 00:04:23,750
+servers and access it
+pretty easily--
+
+95
+00:04:23,750 --> 00:04:25,980
+somewhat transparently, except
+you have to have some
+
+96
+00:04:25,980 --> 00:04:27,760
+understanding of
+the shard key.
+
+97
+00:04:27,760 --> 00:04:31,130
+All right, so that completes
+our unit on performance.
+
+98
+00:04:31,130 --> 00:04:33,950
+I hope you've enjoyed it, and
+I'll see you next week.
+
+99
+00:04:33,950 --> 00:04:35,200

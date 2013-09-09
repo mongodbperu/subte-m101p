@@ -1,0 +1,11 @@
+1
+00:00:00,000 --> 00:00:00,410
+
+2
+00:00:00,410 --> 00:00:05,990
+And the answer is db places dot
+find, location near 74,
+
+3
+00:00:05,990 --> 00:00:08,140
+140, limit three.

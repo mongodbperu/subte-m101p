@@ -1,0 +1,660 @@
+1
+00:00:00,000 --> 00:00:00,160
+
+2
+00:00:00,160 --> 00:00:03,260
+Now let's talk about geospatial
+indexes that
+
+3
+00:00:03,260 --> 00:00:05,240
+consider the curvature
+of the earth.
+
+4
+00:00:05,240 --> 00:00:08,570
+So a spherical model of the
+earth, which is the earth we
+
+5
+00:00:08,570 --> 00:00:09,790
+really live in.
+
+6
+00:00:09,790 --> 00:00:13,490
+Now in a spherical model of the
+earth the locations on the
+
+7
+00:00:13,490 --> 00:00:16,800
+earth are usually specified
+by longitude and latitude.
+
+8
+00:00:16,800 --> 00:00:20,830
+And the lines of longitude go
+from one pole to the other,
+
+9
+00:00:20,830 --> 00:00:23,460
+and the lines of latitude come
+around the earth like that,
+
+10
+00:00:23,460 --> 00:00:26,775
+and I'll just draw in
+the equator in red.
+
+11
+00:00:26,775 --> 00:00:29,170
+This is my equator in red.
+
+12
+00:00:29,170 --> 00:00:32,369
+Now if we're closer to the
+equator, than the lines of
+
+13
+00:00:32,369 --> 00:00:33,880
+longitude are further apart.
+
+14
+00:00:33,880 --> 00:00:35,910
+And as we get the poles,
+the lines of
+
+15
+00:00:35,910 --> 00:00:37,840
+longitude are closer together.
+
+16
+00:00:37,840 --> 00:00:39,850
+Now, if you have a person
+standing anywhere on the
+
+17
+00:00:39,850 --> 00:00:41,530
+earth, you have a person
+standing right here.
+
+18
+00:00:41,530 --> 00:00:43,090
+You might want to figure
+out well what are
+
+19
+00:00:43,090 --> 00:00:44,230
+the different locations?
+
+20
+00:00:44,230 --> 00:00:46,400
+Different stores that
+are near him?
+
+21
+00:00:46,400 --> 00:00:49,410
+You can do that using the
+spherical model by specifying
+
+22
+00:00:49,410 --> 00:00:50,630
+a max distance.
+
+23
+00:00:50,630 --> 00:00:53,950
+That will accept documents that
+satisfy that max distance
+
+24
+00:00:53,950 --> 00:00:56,290
+criteria, and then we want the
+database to return the
+
+25
+00:00:56,290 --> 00:00:59,280
+documents in order of
+increasing distance.
+
+26
+00:00:59,280 --> 00:01:02,490
+That's all good, now this max
+distance is going to be
+
+27
+00:01:02,490 --> 00:01:04,590
+specified in radians.
+
+28
+00:01:04,590 --> 00:01:06,680
+Let's have a little
+math review here.
+
+29
+00:01:06,680 --> 00:01:10,090
+So if you have a circle, and if
+you have a distance, let's
+
+30
+00:01:10,090 --> 00:01:11,550
+say that's specified
+in meters.
+
+31
+00:01:11,550 --> 00:01:14,300
+This distance d that
+I'm showing in red.
+
+32
+00:01:14,300 --> 00:01:20,340
+Then the distance d, swept by
+the arc theta is equal to pi r
+
+33
+00:01:20,340 --> 00:01:23,190
+where r is the radius of
+the earth in meters.
+
+34
+00:01:23,190 --> 00:01:27,950
+So if you know the distance, you
+say oh I want it to be I
+
+35
+00:01:27,950 --> 00:01:29,600
+want to find every document
+within 100
+
+36
+00:01:29,600 --> 00:01:32,000
+meters of this location.
+
+37
+00:01:32,000 --> 00:01:35,900
+Then the arc in radians is the
+distance you're looking for.
+
+38
+00:01:35,900 --> 00:01:38,790
+Let's say 100 meters divided
+by the radius of
+
+39
+00:01:38,790 --> 00:01:40,570
+the earth in meters.
+
+40
+00:01:40,570 --> 00:01:42,460
+And then you get to
+the angle theta.
+
+41
+00:01:42,460 --> 00:01:44,130
+And that's the way you're going
+to need to specify any
+
+42
+00:01:44,130 --> 00:01:47,080
+max distances in this model.
+
+43
+00:01:47,080 --> 00:01:50,270
+Now the spherical model was
+introduced after the 2D model
+
+44
+00:01:50,270 --> 00:01:54,160
+in MongoDB, and so it uses some
+of the same facilities,
+
+45
+00:01:54,160 --> 00:01:55,830
+even though it is a
+spherical model.
+
+46
+00:01:55,830 --> 00:01:59,640
+In particular when you put an
+index on the location inside
+
+47
+00:01:59,640 --> 00:02:00,800
+the document.
+
+48
+00:02:00,800 --> 00:02:05,050
+You're still going to say
+that it's of type 2D.
+
+49
+00:02:05,050 --> 00:02:09,930
+Even though I consider this
+to be more of a 3D model.
+
+50
+00:02:09,930 --> 00:02:11,900
+I guess it's only looking at the
+surface of the earth, so
+
+51
+00:02:11,900 --> 00:02:14,700
+you might call it a spherical
+model, but you still
+
+52
+00:02:14,700 --> 00:02:17,260
+call it a 2D index.
+
+53
+00:02:17,260 --> 00:02:21,190
+And the difference is that
+when you query it, you're
+
+54
+00:02:21,190 --> 00:02:23,630
+going to query it in
+a different way.
+
+55
+00:02:23,630 --> 00:02:25,680
+And let's look at how we're
+going to query it.
+
+56
+00:02:25,680 --> 00:02:28,460
+Now I've got the same collection
+here I had before
+
+57
+00:02:28,460 --> 00:02:32,240
+my stores collection,
+and I'll just remind
+
+58
+00:02:32,240 --> 00:02:34,380
+you what's in that.
+
+59
+00:02:34,380 --> 00:02:36,760
+I've got three documents in
+there, and they've got
+
+60
+00:02:36,760 --> 00:02:38,680
+location listed as arrays.
+
+61
+00:02:38,680 --> 00:02:41,950
+Now before I told you they were
+xy-coordinates, and that
+
+62
+00:02:41,950 --> 00:02:43,480
+it could even be yx and
+it wouldn't matter.
+
+63
+00:02:43,480 --> 00:02:45,810
+Because in Cartesian geometry
+it wouldn't
+
+64
+00:02:45,810 --> 00:02:46,900
+matter which it was.
+
+65
+00:02:46,900 --> 00:02:50,320
+But in this spherical model
+it very much does matter.
+
+66
+00:02:50,320 --> 00:02:53,445
+And these have to be considered
+to be longitudes
+
+67
+00:02:53,445 --> 00:02:54,760
+and latitudes.
+
+68
+00:02:54,760 --> 00:02:57,300
+So remember-- it's longitude,
+latitude.
+
+69
+00:02:57,300 --> 00:02:59,020
+Not latitude, longitude.
+
+70
+00:02:59,020 --> 00:03:00,870
+And so we're going to consider
+these to be longitude,
+
+71
+00:03:00,870 --> 00:03:03,030
+latitudes in all these
+documents.
+
+72
+00:03:03,030 --> 00:03:06,230
+Now there is a 2D index already
+in here, if you
+
+73
+00:03:06,230 --> 00:03:09,140
+remember if you do a getIndex
+you can see it.
+
+74
+00:03:09,140 --> 00:03:10,620
+I'll do it again.
+
+75
+00:03:10,620 --> 00:03:13,560
+Just so that this lesson can
+stand alone, you can see that
+
+76
+00:03:13,560 --> 00:03:17,270
+there's something on location
+right here, and its marked 2D.
+
+77
+00:03:17,270 --> 00:03:20,230
+Although we're going to use it
+in a way that gives us a 3D
+
+78
+00:03:20,230 --> 00:03:22,620
+distance from a particular
+location.
+
+79
+00:03:22,620 --> 00:03:23,950
+The syntax looks like this.
+
+80
+00:03:23,950 --> 00:03:26,000
+It uses the geoNear command.
+
+81
+00:03:26,000 --> 00:03:29,590
+And rather than being used
+with the find, it's used
+
+82
+00:03:29,590 --> 00:03:30,650
+runCommand.
+
+83
+00:03:30,650 --> 00:03:32,390
+Which lets you run
+a whole host of
+
+84
+00:03:32,390 --> 00:03:33,580
+commands to the database.
+
+85
+00:03:33,580 --> 00:03:36,520
+In this case we're going to
+specify that geoNear is the
+
+86
+00:03:36,520 --> 00:03:38,390
+one we're looking for.
+
+87
+00:03:38,390 --> 00:03:41,570
+And that we won't have to look
+in the stores collection.
+
+88
+00:03:41,570 --> 00:03:46,500
+Now stores has to be specified
+explicitly, because it doesn't
+
+89
+00:03:46,500 --> 00:03:49,430
+say db.storage here, it says
+db.runCommand so that the
+
+90
+00:03:49,430 --> 00:03:51,650
+database would have no way of
+knowing that you want to look
+
+91
+00:03:51,650 --> 00:03:54,780
+in the storage collection unless
+you specify the tier.
+
+92
+00:03:54,780 --> 00:03:57,010
+And then it's near
+this location.
+
+93
+00:03:57,010 --> 00:03:59,750
+Again it's longitude,
+latitude.
+
+94
+00:03:59,750 --> 00:04:04,220
+I specify spherical is true,
+which tells the system--
+
+95
+00:04:04,220 --> 00:04:04,820
+the database--
+
+96
+00:04:04,820 --> 00:04:06,920
+that I'm looking for the
+spherical model.
+
+97
+00:04:06,920 --> 00:04:11,750
+And then I specify a max
+distance of one radian.
+
+98
+00:04:11,750 --> 00:04:15,893
+One radian if there's two pi
+radians, about six radians all
+
+99
+00:04:15,893 --> 00:04:17,360
+the way around the earth.
+
+100
+00:04:17,360 --> 00:04:20,360
+So it's like 1/6 of the
+way around the earth.
+
+101
+00:04:20,360 --> 00:04:22,900
+And if I do that, here's
+what I get.
+
+102
+00:04:22,900 --> 00:04:26,670
+I get this rather convoluted
+return document.
+
+103
+00:04:26,670 --> 00:04:29,560
+And if you look here
+in results that's
+
+104
+00:04:29,560 --> 00:04:30,300
+where the action is.
+
+105
+00:04:30,300 --> 00:04:33,080
+That's where over here, this
+object that's the actual
+
+106
+00:04:33,080 --> 00:04:36,410
+document from the collection
+that satisfies the criteria.
+
+107
+00:04:36,410 --> 00:04:40,740
+And if I gave a larger max
+distance of let's say 3
+
+108
+00:04:40,740 --> 00:04:45,650
+radians which is half the way
+around the earth, at that
+
+109
+00:04:45,650 --> 00:04:49,525
+point all the documents are
+going to satisfy that, and
+
+110
+00:04:49,525 --> 00:04:51,170
+they're going to be
+returned in order
+
+111
+00:04:51,170 --> 00:04:52,580
+of increasing distance.
+
+112
+00:04:52,580 --> 00:04:55,960
+So the same one is returned
+first, which is the Rubys
+
+113
+00:04:55,960 --> 00:04:58,130
+Barber 40, 74.
+
+114
+00:04:58,130 --> 00:04:58,890
+Let's see.
+
+115
+00:04:58,890 --> 00:05:00,020
+Make sure that's true.
+
+116
+00:05:00,020 --> 00:05:00,420
+Yep.
+
+117
+00:05:00,420 --> 00:05:02,030
+That's true, that's good.
+
+118
+00:05:02,030 --> 00:05:03,800
+So this is still the
+closest one.
+
+119
+00:05:03,800 --> 00:05:06,980
+But now that we've opened up the
+max distance, we're also
+
+120
+00:05:06,980 --> 00:05:10,210
+getting the ACE Hardware store,
+and the Tickle Candy
+
+121
+00:05:10,210 --> 00:05:11,730
+store as well.
+
+122
+00:05:11,730 --> 00:05:13,500
+And that's how you use
+the spherical model.
+
+123
+00:05:13,500 --> 00:05:15,880
+So just to review-- you store
+the location as much as you
+
+124
+00:05:15,880 --> 00:05:19,365
+did before in a key of your own
+choosing within an array
+
+125
+00:05:19,365 --> 00:05:23,390
+with two values, and it has
+to be longitude, latitude.
+
+126
+00:05:23,390 --> 00:05:26,720
+You ensure an index on the
+collection of type 2D,
+
+127
+00:05:26,720 --> 00:05:29,010
+although we're going to use a
+spherical model to query it.
+
+128
+00:05:29,010 --> 00:05:31,980
+And then we use this runCommand
+geoNear with a
+
+129
+00:05:31,980 --> 00:05:33,250
+bunch of parameters.
+
+130
+00:05:33,250 --> 00:05:36,920
+That will let you look up
+any of these documents.
+
+131
+00:05:36,920 --> 00:05:38,920
+Find our which documents are
+closest to a particular
+
+132
+00:05:38,920 --> 00:05:42,280
+location, and specifying a
+max distance if you want.
+
+133
+00:05:42,280 --> 00:05:45,920
+Now there are other options to
+these, and there are other
+
+134
+00:05:45,920 --> 00:05:48,660
+details, and limits, and
+conditions, and other things
+
+135
+00:05:48,660 --> 00:05:51,950
+that haven't completely gone
+through in this lesson.
+
+136
+00:05:51,950 --> 00:05:53,930
+So you'll have to look up in the
+documentation if you want
+
+137
+00:05:53,930 --> 00:05:56,750
+to learn more about these
+geospatial indexes.
+
+138
+00:05:56,750 --> 00:06:01,410
+But it's really convenient if
+you want to do location look
+
+139
+00:06:01,410 --> 00:06:02,980
+ups inside MongoDB.
+
+140
+00:06:02,980 --> 00:06:04,230

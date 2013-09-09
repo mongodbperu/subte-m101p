@@ -1,0 +1,24 @@
+1
+00:00:00,000 --> 00:00:00,280
+
+2
+00:00:00,280 --> 00:00:00,770
+All right.
+
+3
+00:00:00,770 --> 00:00:04,810
+And the answer is that the
+documents will be deleted
+
+4
+00:00:04,810 --> 00:00:06,570
+forever and ever, Amen.
+
+5
+00:00:06,570 --> 00:00:10,630
+So be very careful with that
+drop dups option when creating
+
+6
+00:00:10,630 --> 00:00:11,880
+a unique index.
