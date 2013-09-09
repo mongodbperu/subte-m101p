@@ -323,7 +323,7 @@ mi documento.
 
 69
 00:02:53,930 --> 00:02:56,400
-Por lo que el propósito de la "dot notation"
+Por lo que el propósito de "dot notation"
 es permitirte alcanzar
 
 70
