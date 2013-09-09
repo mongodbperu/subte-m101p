@@ -159,7 +159,7 @@ documento donde "name" es "Alice",
 
 35
 00:01:16,120 --> 00:01:18,200
-Una ves que he creado
+Una vez que he creado
 este campo "age", sin duda
 
 36
