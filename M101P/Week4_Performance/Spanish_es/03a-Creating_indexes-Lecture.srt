@@ -121,8 +121,8 @@ Y echemos un vistazo al
 
 27
 00:01:10,890 --> 00:01:12,610
-"student_id" 5 debería surgir
-muy pronto de la
+"student_id" 5 debería aparecer
+muy rápido desde la
 
 28
 00:01:12,610 --> 00:01:13,730
@@ -399,7 +399,7 @@ Así que ejecutemos eso.
 
 87
 00:03:40,700 --> 00:03:42,120
-¡Guau!, fue rápido.
+¡Vaya!, fue rápido.
 
 88
 00:03:42,120 --> 00:03:44,280
