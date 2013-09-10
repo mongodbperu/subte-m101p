@@ -7,27 +7,27 @@ OK.
 
 3
 00:00:00,760 --> 00:00:04,640
-And the answer is
-db.students.ensureIndex class
+Y la respuesta es
+"db.students.ensureIndex({class:
 
 4
 00:00:04,640 --> 00:00:07,560
-colon 1 student underscore
-name colon 1.
+1, student_
+name: 1})".
 
 5
 00:00:07,560 --> 00:00:10,020
-So, that would be the
-way it works.
+Por lo que esa sería la
+forma en que funciona.
 
 6
 00:00:10,020 --> 00:00:12,940
-I didn't say ascending, but I
-hope you figured out that it
+No dije ascendente, pero
+espero que averiguaras que
 
 7
 00:00:12,940 --> 00:00:14,190
-was supposed to be ascending.
+se suponía que era ascendente.
 
 8
 00:00:14,190 --> 00:00:15,230
