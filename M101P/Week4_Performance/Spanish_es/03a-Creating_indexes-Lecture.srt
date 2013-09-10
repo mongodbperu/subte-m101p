@@ -3,634 +3,634 @@
 
 2
 00:00:00,240 --> 00:00:00,670
-All right.
+Bien.
 
 3
 00:00:00,670 --> 00:00:05,040
-So now, I'd like to show you
-a large collection and the
+Ahora, me gustaría enseñarte
+una colección grande y el
 
 4
 00:00:05,040 --> 00:00:07,930
-effect that indexing can have
-on the performance.
+efecto que la indexación puede tener
+en el rendimiento.
 
 5
 00:00:07,930 --> 00:00:10,520
-I'm going to start the Mongo
-shell here, and I'm going to
+Voy a iniciar el shell
+Mongo aquí, y voy a
 
 6
 00:00:10,520 --> 00:00:18,430
-use the school database and,
-in particular, the students
+usar la base de datos "school" y,
+en particular, la colección
 
 7
 00:00:18,430 --> 00:00:19,110
-collection.
+"students".
 
 8
 00:00:19,110 --> 00:00:22,220
-Now, this is similar
-to what we had in
+Ahora, esto es similar
+a lo que teníamos en
 
 9
 00:00:22,220 --> 00:00:24,340
-the previous lessons.
+las lecciones anteriores.
 
 10
 00:00:24,340 --> 00:00:26,150
-I'll show you a document
-from it.
+Te enseñaré un documento
+de la colección.
 
 11
 00:00:26,150 --> 00:00:30,870
-You can see that we have here a
-student ID for each record.
+Puedes ver que tenemos aquí un
+"student_id" por cada registro.
 
 12
 00:00:30,870 --> 00:00:33,000
-And there's, actually, also
-an underscore ID which is
+Y también hay, en realidad,
+un "_id" que es
 
 13
 00:00:33,000 --> 00:00:34,700
-an BSON object ID.
+un ObjectId BSON.
 
 14
 00:00:34,700 --> 00:00:36,550
-And then there's an
-array of scores.
+Y luego hay un
+array "scores".
 
 15
 00:00:36,550 --> 00:00:39,030
-And then there's a class
-for each student.
+Y hay un campo "class"
+por cada estudiante.
 
 16
 00:00:39,030 --> 00:00:43,320
-Now, I have inserted 10 million
-records into this
+Ahora, he insertado 10 millones
+de registros en esta
 
 17
 00:00:43,320 --> 00:00:44,510
-collection.
+colección.
 
 18
 00:00:44,510 --> 00:00:46,430
-And this is a pretty
-fast computer.
+Y éste es un equipo
+bastante rápido.
 
 19
 00:00:46,430 --> 00:00:48,410
-This is a recent iMac.
+Es un iMac nuevo.
 
 20
 00:00:48,410 --> 00:00:52,720
-It actually has a solid state
-drive and a bunch of memory.
+En realidad tiene una unidad
+de estado sólido y un montón de memoria.
 
 21
 00:00:52,720 --> 00:00:54,580
-And I've been playing with the
-collection so it's probably
+Y he estado jugando con la
+colección así que probablemente
 
 22
 00:00:54,580 --> 00:00:55,940
-cached in memory.
+esté cacheado en memoria.
 
 23
 00:00:55,940 --> 00:00:59,000
-So let's see how slow it is to
-find something in the middle
+Así que veamos qué lento es
+encontrar algo en medio
 
 24
 00:00:59,000 --> 00:01:01,990
-of the collection or really
-anywhere in the collection.
+de la colección o
+en cualquier lugar de la colección.
 
 25
 00:01:01,990 --> 00:01:05,610
-So let's go look at
-db.students.find.
+Echemos un vistazo a
+"db.students.find".
 
 26
 00:01:05,610 --> 00:01:10,890
-And let's look at
-student ID 5.
+Y echemos un vistazo al
+"student_id" 5.
 
 27
 00:01:10,890 --> 00:01:12,610
-Student ID5 should come
-up pretty early in the
+"student_id" 5 debería surgir
+muy pronto de la
 
 28
 00:01:12,610 --> 00:01:13,730
-collection.
+colección.
 
 29
 00:01:13,730 --> 00:01:18,290
-But because I'm using find
-and not find one--
+Pero como estoy usando "find"
+y no "findOne" --
 
 30
 00:01:18,290 --> 00:01:21,460
-Sorry about that little typo.
+lo siento por ese pequeño error.
 
 31
 00:01:21,460 --> 00:01:24,180
-Because I'm using find and not
-find one, even though it's
+Como estoy usando "find" y no
+"findOne", incluso aunque
 
 32
 00:01:24,180 --> 00:01:28,390
-going to find that record pretty
-early in the process,
+va a encontrar ese registro muy
+pronto en el proceso,
 
 33
 00:01:28,390 --> 00:01:32,260
-it took a couple of seconds
-to find the object,
+le llevó un par de segundos
+encontrar el objeto,
 
 34
 00:01:32,260 --> 00:01:33,940
-two or three seconds.
+dos o tres segundos.
 
 35
 00:01:33,940 --> 00:01:37,920
-Now if I did a find one where
-the database could be
+Ahora si hiciera un "findOne" donde
+la base de datos se pudiera satisfacer
 
 36
 00:01:37,920 --> 00:01:42,130
-satisfied by the first one it
-fines, then you'll see, whoa,
+por el primero que 
+encuentra, entonces verás
 
 37
 00:01:42,130 --> 00:01:44,690
-that was really fast,
-very fast.
+que fue realmente rápido,
+muy rápido.
 
 38
 00:01:44,690 --> 00:01:51,500
-And if I did a find one on the
-record five million, five,
+Y si hicera un "findOne" sobre el
+registro cinco millones, cinco,
 
 39
 00:01:51,500 --> 00:01:54,850
-one, two, three, four,
-five, six, that
+uno, dos, tres, cuatro,
+cinco, seis, eso
 
 40
 00:01:54,850 --> 00:01:55,860
-should be fairly slow.
+sería bastante lento.
 
 41
 00:01:55,860 --> 00:01:58,770
-Because it has to go through the
-entire collection or half
+Porque tiene que ir a través
+de la colección entera o la mitad
 
 42
 00:01:58,770 --> 00:02:00,850
-of the collection to find one.
+de la colección para el "findOne".
 
 43
 00:02:00,850 --> 00:02:03,920
-And if I do a find, which is
-always going to search the
+Y si hago un "find", que 
+siempre va a buscar en la
 
 44
 00:02:03,920 --> 00:02:06,370
-entire collection because there
-could be more than one,
+colección completa porque podría
+haber más de uno,
 
 45
 00:02:06,370 --> 00:02:08,289
-we're going to get to the
-slowest case again.
+vamos a ver el
+caso más lento de nuevo.
 
 46
 00:02:08,289 --> 00:02:10,970
-It has to go through the entire
-collection to make sure
+Tiene que ir a través de la colección
+completa para asegurar
 
 47
 00:02:10,970 --> 00:02:13,520
-that there's not more
-than one record with
+que no hay más
+que un registro con
 
 48
 00:02:13,520 --> 00:02:16,440
-student ID five million.
+"student_id" cinco millones.
 
 49
 00:02:16,440 --> 00:02:17,980
-Let's say we wanted
-to put an index on
+Digamos que quisiéramos
+poner un índice sobre
 
 50
 00:02:17,980 --> 00:02:18,930
-this and make it faster.
+esto y hacerlo más rápido.
 
 51
 00:02:18,930 --> 00:02:20,320
-We can do that.
+Podemos hacerlo.
 
 52
 00:02:20,320 --> 00:02:21,200
-This is how we're
-going to do it.
+Así es como
+vamos a hacerlo.
 
 53
 00:02:21,200 --> 00:02:27,000
-So we're going to call the
-ensure index command.
+Vamos a llamar al
+comando "ensureIndex".
 
 54
 00:02:27,000 --> 00:02:32,090
-And we are going to give it the
-fields, the key, that we
+Y vamos a pasarle los
+campos, la clave, sobre los que nos
 
 55
 00:02:32,090 --> 00:02:35,010
-would like to index on.
+gustaría indexar.
 
 56
 00:02:35,010 --> 00:02:37,360
-And we're going to tell it
-that we want to do it in
+Y vamos a decirle 
+que queremos hacerlo en
 
 57
 00:02:37,360 --> 00:02:39,180
-ascending order.
+orden ascendente.
 
 58
 00:02:39,180 --> 00:02:42,590
-So let's go back through
-this so you can see
+Así que volvamos a
+esto de forma que puedas ver
 
 59
 00:02:42,590 --> 00:02:43,972
-each part of it.
+cada una de las partes.
 
 60
 00:02:43,972 --> 00:02:49,530
-db.students is the collection
-name, ensure index, and then
+"db.students" es el nombre de la 
+colección, "ensureIndex", y luego
 
 61
 00:02:49,530 --> 00:02:51,020
-asking to put the
-index on Student
+se pide generar el
+índice sobre "student_id"
 
 62
 00:02:51,020 --> 00:02:53,250
-ID, and make it ascending.
+y hacerlo ascendentemente.
 
 63
 00:02:53,250 --> 00:02:54,440
-So we're going to do
-that in real time.
+Así que vamos a hacer
+eso en tiempo real.
 
 64
 00:02:54,440 --> 00:02:56,060
-We're going to wait and see
-how long it takes to index
+Vamos a esperar y ver
+cuánto tarda en indexar
 
 65
 00:02:56,060 --> 00:02:58,070
-those 10 million rows.
+esos 10 millones de filas.
 
 66
 00:02:58,070 --> 00:03:01,310
-Now, right now the database is
-actually going through and
+Ahora, justo ahora la base de datos está
+avanzando y 
 
 67
 00:03:01,310 --> 00:03:03,940
-it's looking at every single
-row, and it's building an
+examinando cada fila
+individual, y está construyendo un
 
 68
 00:03:03,940 --> 00:03:05,830
-index for every single row.
+índice por cada fila individual.
 
 69
 00:03:05,830 --> 00:03:07,480
-So this could take a
-couple of minutes.
+Por lo que esto podría llevar
+un par de minutos.
 
 70
 00:03:07,480 --> 00:03:10,890
-We're going to just skip forward
-and wait in the video
+Simplemente vamos a saltarnos esto
+y esperar en el vídeo
 
 71
 00:03:10,890 --> 00:03:12,600
-and get to the end of it.
+hasta llegar al final del proceso.
 
 72
 00:03:12,600 --> 00:03:14,500
-So you're not having
-to wait for it.
+Por lo que no tienes
+que esperar a que acabe.
 
 73
 00:03:14,500 --> 00:03:16,160
-OK, some time has elapsed
-now, and the
+OK, ahora ya ha pasado algún 
+tiempo, y el
 
 74
 00:03:16,160 --> 00:03:17,570
-index has been created.
+índice se ha creado.
 
 75
 00:03:17,570 --> 00:03:19,050
-Overall, it took about
-two or three minutes
+En total, llevó alrededor
+de dos o tres minutos
 
 76
 00:03:19,050 --> 00:03:20,220
-to create that index.
+crear ese índice.
 
 77
 00:03:20,220 --> 00:03:22,700
-So let's see how much faster
-it is to query the database
+Veamos cuánto más rápido
+es consultar la base de datos
 
 78
 00:03:22,700 --> 00:03:24,550
-now that the index is created.
+ahora que el índice está creado.
 
 79
 00:03:24,550 --> 00:03:26,520
-So we're going to the
-same find we did
+Por lo que vamos al 
+mismo "find" que hicimos
 
 80
 00:03:26,520 --> 00:03:28,600
-before, same find command.
+antes, el mismo comando "find".
 
 81
 00:03:28,600 --> 00:03:30,570
-We're going to look for
-a document with
+Vamos a buscar 
+un documento con
 
 82
 00:03:30,570 --> 00:03:32,350
-student ID five million.
+"student_id" cinco millones.
 
 83
 00:03:32,350 --> 00:03:33,820
-We're going to pretty
-print it.
+Vamos a imprimirlo
+indentado.
 
 84
 00:03:33,820 --> 00:03:37,120
-And we expect this to hit the
-index because student ID was
+Y esperamos que vaya al
+índice porque "student_id" era
 
 85
 00:03:37,120 --> 00:03:38,450
-the key in the index.
+la clave en el índice.
 
 86
 00:03:38,450 --> 00:03:40,700
-So let's just run that.
+Así que ejecutemos eso.
 
 87
 00:03:40,700 --> 00:03:42,120
-Wow, that was fast.
+¡Guau!, fue rápido.
 
 88
 00:03:42,120 --> 00:03:44,280
-So we can see it came
-back immediately.
+Podemos ver que nos respondió
+inmediatamente.
 
 89
 00:03:44,280 --> 00:03:46,920
-Before we had the index, it took
-up to five or six seconds
+Antes que tuviéramos el índice, tardaba
+hasta cinco o seis segundos
 
 90
 00:03:46,920 --> 00:03:47,530
-to do this query.
+en hacer esta consulta.
 
 91
 00:03:47,530 --> 00:03:50,280
-But now, that we have an
-index, it's immediate.
+Pero ahora que tenemos un
+índice, es inmediato.
 
 92
 00:03:50,280 --> 00:03:53,940
-And you can see that if we call
-it with seven million,
+Y puedes ver que si lo llamamos
+con siete millones,
 
 93
 00:03:53,940 --> 00:03:55,650
-also extremely fast.
+es también extremadamente rápido.
 
 94
 00:03:55,650 --> 00:03:57,880
-But if we make a query that
-can't be index, like something
+Pero si hacemos una consulta que
+no pueda usar el índice, como algo
 
 95
 00:03:57,880 --> 00:04:02,170
-that asks for everything
-with class of--
+que pida todo
+con "class" --
 
 96
 00:04:02,170 --> 00:04:04,430
-Well, we could say class of
-seven million, there isn't any
+bueno, podrías decir "class"
+siete millones, no hay ninguna
 
 97
 00:04:04,430 --> 00:04:05,410
-class with seven million.
+clase con siete millones.
 
 98
 00:04:05,410 --> 00:04:07,930
-But that won't matter, because
-it can't know that.
+Pero eso no importa, porque
+no puede saberlo.
 
 99
 00:04:07,930 --> 00:04:12,290
-And you can see, it's going to
-take a long time to tell us
+Y puedes ver que va a 
+tardar mucho tiempo en decirnos
 
 100
 00:04:12,290 --> 00:04:13,590
-there's nothing.
+que no hay nada.
 
 101
 00:04:13,590 --> 00:04:16,450
-So indexes are really important
-in terms of the
+Así que los índices son realmente importantes
+en términos del
 
 102
 00:04:16,450 --> 00:04:18,610
-performance we get from
-the database.
+rendimiento que obtenemos de
+la base de datos.
 
 103
 00:04:18,610 --> 00:04:21,760
-Let's look at that in ensure
-index command again.
+Echemos de nuevo un vistazo al 
+comando "ensureIndex".
 
 104
 00:04:21,760 --> 00:04:24,250
-So in that ensure index command,
-we called it with
+En ese comando "ensureIndex",
+lo llamamos con
 
 105
 00:04:24,250 --> 00:04:25,680
-student ID colon one.
+"student_id : 1".
 
 106
 00:04:25,680 --> 00:04:28,290
-Now, if we wanted to include
-the class, we could've
+Ahora, si quisiéramos incluir
+"class", podríamos
 
 107
 00:04:28,290 --> 00:04:31,350
-included it like this.
+incluirlo de esta manera.
 
 108
 00:04:31,350 --> 00:04:34,210
-And in this case, it's a
-compound index which is going
+Y en este caso, es un
+índice compuesto que va a
 
 109
 00:04:34,210 --> 00:04:37,010
-to be made up of student
-ID comma class.
+ser construido por 
+"student_id, class".
 
 110
 00:04:37,010 --> 00:04:40,160
-And I've decided to make the
-student ID ascending and the
+Y he decidido hacer 
+"student_id" ascendente y 
 
 111
 00:04:40,160 --> 00:04:41,830
-class descending.
+"class" descendente.
 
 112
 00:04:41,830 --> 00:04:43,900
-So ascending versus
-descending.
+Así que ascendente frente a
+descendente.
 
 113
 00:04:43,900 --> 00:04:44,750
-So it doesn't make much of a
+Pero no hay mucha
 
 114
 00:04:44,750 --> 00:04:46,160
-difference when you're searching.
+diferencia cuando estás buscando.
 
 115
 00:04:46,160 --> 00:04:48,000
-But it makes a big difference
-when you're sorting.
+Pero sí tiene una gran diferencia
+cuando estás ordenando.
 
 116
 00:04:48,000 --> 00:04:50,530
-Because if the database is going
-to use the index for the
+Porque si la base de datos va a
+usar el índice para el
 
 117
 00:04:50,530 --> 00:04:53,470
-sort, then it needs to be
-in the right order.
+ordenamiento, entonces necesita estar
+en el orden correcto.
 
 118
 00:04:53,470 --> 00:04:56,830
-Now, if we had other sub parts
-of this document we wanted to
+Ahora, si tuviéramos otras subpartes
+de este documento que quisiéramos
 
 119
 00:04:56,830 --> 00:04:58,180
-index, we could continue.
+indexar, podríamos continuar.
 
 120
 00:04:58,180 --> 00:05:00,650
-We could make it a three part
-index if we wanted.
+Podríamos hacer un índice de tres
+partes si quisiéramos.
 
 121
 00:05:00,650 --> 00:05:03,310
-Of course, it takes more space
-and a little bit longer to
+Por supuesto, ocupa más espacio
+y tarda un poco más en
 
 122
 00:05:03,310 --> 00:05:05,080
-build it when you do rights.
+construirlo cuando haces escrituras.
 
 123
 00:05:05,080 --> 00:05:08,540
-Now, in terms of using the
-index, if I had an index on a
+Ahora, en términos de uso del
+índice, si tuviera un índice sobre
 
 124
 00:05:08,540 --> 00:05:12,360
-student ID comma class and I
-specified just the class,
+"student_id, class" y
+especificara sólo "class",
 
 125
 00:05:12,360 --> 00:05:14,250
-well, it couldn't use the index
-because it needs to be a
+bien, no podría usar el índice
+porque necesita ser un
 
 126
 00:05:14,250 --> 00:05:16,330
-left subset of the field.
+subconjunto por la izquierda del campo.
 
 127
 00:05:16,330 --> 00:05:20,130
-If I specified student ID and
-class, I could use the index.
+Si especificara "student_id" y
+"class", podría usar el índice.
 
 128
 00:05:20,130 --> 00:05:22,190
-And if I specified just
-student ID, I
+Y si especificara sólo
+"student_id",
 
 129
 00:05:22,190 --> 00:05:23,920
-could use that index.
+podría usar ese índice.
 
 130
 00:05:23,920 --> 00:05:25,670
-OK, let's do a quiz.
+OK, hagamos un cuestionario.
 
 131
 00:05:25,670 --> 00:05:28,880
-So please provide the Mongo
-shell command to add an index
+Por favor, escriba el comando del shell
+Mongo para añadir un índice
 
 132
 00:05:28,880 --> 00:05:33,760
-to a collection named students
-having the index key be class
+a una colección llamada "students"
+siendo la clave del índice
 
 133
 00:05:33,760 --> 00:05:35,430
-comma student name.
+"class, student_name".
 
 134
 00:05:35,430 --> 00:05:37,210
-Now, this is very similar to
-what I just showed you.
+Ahora, esto es muy similar a
+lo que acabo de enseñarte.
 
 135
 00:05:37,210 --> 00:05:39,060
-But I just wanted to get you
-into the practice of typing
+Pero sólo quiero que
+practiques cómo se escriben
 
 136
 00:05:39,060 --> 00:05:41,500
-these ensure index commands so
-that you are used to doing it
+estos comandos "ensureIndex" para
+que te acostumbres a hacerlo
 
 137
 00:05:41,500 --> 00:05:42,750
-in the shell.
+en el shell.
