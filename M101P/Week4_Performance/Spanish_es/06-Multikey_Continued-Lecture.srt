@@ -3,155 +3,155 @@
 
 2
 00:00:00,120 --> 00:00:02,950
-One thing I want to make clear
-is that indexing is not
+Una cosa que quiero aclarar
+es que la indexación no está
 
 3
 00:00:02,950 --> 00:00:07,320
-restricted to the first level
-of keys within a document.
+restringida al primer nivel
+de claves dentro de un documento.
 
 4
 00:00:07,320 --> 00:00:11,210
-So, for example, I've got this
-people collection right here,
+Así, por ejemplo, tengo esta
+colección "people" justo aquí,
 
 5
 00:00:11,210 --> 00:00:13,760
-and [INAUDIBLE] printed
-out the contents.
+y he impreso de forma indentada
+los contenidos.
 
 6
 00:00:13,760 --> 00:00:18,270
-It has a couple of small
-documents plus this larger
+Tiene un par de documentos
+pequeños más este documento
 
 7
 00:00:18,270 --> 00:00:22,800
-document down here that has Tim
-Johnson and his addresses,
+más grande por aquí que contiene a
+"Tim Johnson" y sus direcciones,
 
 8
 00:00:22,800 --> 00:00:25,450
-which is an array of addresses,
-right here.
+que es un array de direcciones,
+justo aquí.
 
 9
 00:00:25,450 --> 00:00:30,000
-And then in the array of
-addresses, there's a tag for
+Y luego en el array de
+direcciones, hay una etiqueta para
 
 10
 00:00:30,000 --> 00:00:33,520
-what type of address it
-is, as well as an
+cada tipo de dirección,
+así como un
 
 11
 00:00:33,520 --> 00:00:35,060
-array of phone numbers.
+array de números de teléfono.
 
 12
 00:00:35,060 --> 00:00:37,080
-And these are just place
-holders, so the numbers one
+Y éstos son sólo
+contenedores, de forma que los números del
 
 13
 00:00:37,080 --> 00:00:39,080
-through five, it's an array.
+uno al cinco, están en un array.
 
 14
 00:00:39,080 --> 00:00:43,590
-So, we can actually put an index
-on these subparts, these
+En realidad podemos crear un índice
+sobre estas subpartes, estos
 
 15
 00:00:43,590 --> 00:00:45,120
-subarrays, of the document.
+subarrays, del documento.
 
 16
 00:00:45,120 --> 00:00:47,390
-So, let me show you what
-that looks like.
+Permíteme que te enseñe
+cómo sería.
 
 17
 00:00:47,390 --> 00:00:51,250
-If you wanted to put in an index
-on the address key and
+Si quisieras poner un índice
+sobre la clave "addresses" y 
 
 18
 00:00:51,250 --> 00:00:53,290
-then there's an array underneath
-there, and then the
+luego hubiera un array bajo
+ella, y luego el
 
 19
 00:00:53,290 --> 00:00:56,390
-tag in that array you could
-do it this way.
+"tag" en ese array, podrías
+hacerlo de esta manera.
 
 20
 00:00:56,390 --> 00:01:00,750
-And if you wanted to add
-one to the phones, you
+Y si quisieras añadir
+uno de los teléfonos,
 
 21
 00:01:00,750 --> 00:01:02,350
-could do it that way.
+podrías hacerlo de esa forma.
 
 22
 00:01:02,350 --> 00:01:06,360
-And now, if we look at get
-index, you'll see there are
+Y ahora, si echamos un vistazo a
+"getIndexes", verás que aparecen
 
 23
 00:01:06,360 --> 00:01:13,000
-these multi key indexes on the
-phone's key over here, and the
+estos índices multiclave sobre la
+clave "phone" por aquí, y la
 
 24
 00:01:13,000 --> 00:01:14,600
-tag key over here.
+clave "tag" por aquí.
 
 25
 00:01:14,600 --> 00:01:17,795
-So, that's pretty useful if
-you're looking to create a
+Por lo que es muy útil si
+estás buscando crear un
 
 26
 00:01:17,795 --> 00:01:19,450
-rich document.
+documento enriquecido.
 
 27
 00:01:19,450 --> 00:01:24,450
-And the way it works is Mongo
-D will add an index element,
+Y la forma en que funciona es, que
+MongoDB añadirá un elemento al índice,
 
 28
 00:01:24,450 --> 00:01:28,520
-or index point, if you will, for
-every item in the array,
+o punto en el índice, si prefieres, por
+cada elemento en el array,
 
 29
 00:01:28,520 --> 00:01:31,940
-and if you change those items
-then it would have to change
+y si cambias esos elementos
+entonces habría que cambiar
 
 30
 00:01:31,940 --> 00:01:34,780
-the pointer in those indexes.
+el punto en esos índices.
 
 31
 00:01:34,780 --> 00:01:37,000
-But you don't think much about
-it, you just can add the index
+Pero no pienses más sobre
+esto, puedes añadir al índice
 
 32
 00:01:37,000 --> 00:01:40,000
-in whatever subpart you want and
-it will just sort of work
+cualquier subparte que quieras y
+en cierto modo funcionará
 
 33
 00:01:40,000 --> 00:01:41,250
-the way you might expect.
+de la forma que esperas.
 
 34
 00:01:41,250 --> 00:01:42,290
