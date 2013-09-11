@@ -3,270 +3,270 @@
 
 2
 00:00:00,120 --> 00:00:02,680
-Now I'd like to show you how
-you find out what indexes
+Ahora me gustaría enseñarte cómo
+averiguar qué índices
 
 3
 00:00:02,680 --> 00:00:04,650
-exist in your database.
+existen en tu base de datos.
 
 4
 00:00:04,650 --> 00:00:09,120
-Now, if I call
-db.system.indexes.find, I will
+Si llamo a
+"db.system.indexes.find()",
 
 5
 00:00:09,120 --> 00:00:11,790
-find all the indexes that are
-in this database, and I'm in
+encontraré todos los índices que están
+en esta base de datos, y justo ahora
 
 6
 00:00:11,790 --> 00:00:13,720
-the school database right now.
+estoy en la base de datos "school".
 
 7
 00:00:13,720 --> 00:00:15,420
-And if I do that, you can see
-that there's a bunch of
+Y si hago eso, puedes ver
+que hay un montón de
 
 8
 00:00:15,420 --> 00:00:16,980
-collections I haven't really
-talked about, because they're
+colecciones de las que aún
+no hemos hablado, porque
 
 9
 00:00:16,980 --> 00:00:18,280
-not part of this lesson.
+no forman parte de esta lección.
 
 10
 00:00:18,280 --> 00:00:21,730
-But you can see the one right
-here, this is the one that's
+Pero puedes ver una por
+aquí, ésta es la que resulta
 
 11
 00:00:21,730 --> 00:00:24,270
-most interesting here, which
-is that there's an index on
+más interesante, que es
+la que tiene un índice sobre
 
 12
 00:00:24,270 --> 00:00:27,790
-student ID right here in the
-students collection.
+"student_id" justo aquí en la
+colección "students".
 
 13
 00:00:27,790 --> 00:00:30,640
-And this index is called
-studentID_1.
+Y este índice se llama
+"student_id_1".
 
 14
 00:00:30,640 --> 00:00:32,890
-And this is the index that
-we built together in the
+Y éste es el índice que
+construimos juntos en la
 
 15
 00:00:32,890 --> 00:00:33,860
-preceding lesson.
+lección anterior.
 
 16
 00:00:33,860 --> 00:00:36,640
-You can also see all the indexes
-on _ID, because every
+También puedes ver todos los índices
+sobre "_id", porque cada
 
 17
 00:00:36,640 --> 00:00:41,070
-collection by default
-has index on _ID.
+colección tiene por
+defecto un índice sobre "_id".
 
 18
 00:00:41,070 --> 00:00:43,710
-Now, if we want to see more
-detail about the index for a
+Ahora, si queremos ver más
+detalles sobre el índice para
 
 19
 00:00:43,710 --> 00:00:47,370
-particular collection, we can
-call db.students.getindexes.
+una colección particular, podemos
+llamar a "db.students.getIndexes()".
 
 20
 00:00:47,370 --> 00:00:51,380
 
 21
 00:00:51,380 --> 00:00:54,020
-Now I'm naming the collection,
-and I'm going to get all the
+Ahora estoy indicando la colección,
+y voy a obtener todos los
 
 22
 00:00:54,020 --> 00:00:54,740
-indexes on it.
+índices definidos en ella.
 
 23
 00:00:54,740 --> 00:00:57,400
-And if I do that, I find out
-that there are two indexes on
+Y si hago eso, averiguo 
+que hay dos índices en
 
 24
 00:00:57,400 --> 00:00:58,420
-this collection.
+esta colección.
 
 25
 00:00:58,420 --> 00:01:02,070
-One of them is the one that
-we built over here.
+Uno de ellos es el que
+construimos por aquí.
 
 26
 00:01:02,070 --> 00:01:04,250
-It's a student ID index.
+Es un índice sobre "student_id".
 
 27
 00:01:04,250 --> 00:01:07,980
-And the other one is
-the one on _ID.
+Y el otro es
+sobre "_id".
 
 28
 00:01:07,980 --> 00:01:10,610
-Now, although we didn't talk
-about it, and I'm not going to
+Ahora, aunque no hablamos sobre
+ello, y no voy a
 
 29
 00:01:10,610 --> 00:01:13,310
-go over it again, so I'll just
-mention it real quickly.
+analizarlo de nuevo, sólo lo
+mencionaré realmente rápido.
 
 30
 00:01:13,310 --> 00:01:18,090
-But if you want to drop an
-index, you can do that by
+Pero si quieres eliminar un
+índice, puedes hacerlo
 
 31
 00:01:18,090 --> 00:01:22,650
-calling drop index and naming
-it exactly the way you named
+llamando a "dropIndex()" con exactamente
+el mismo nombre que le diste
 
 32
 00:01:22,650 --> 00:01:23,850
-it when you created it.
+cuando lo creaste.
 
 33
 00:01:23,850 --> 00:01:28,520
-So if I want to kill the index
-that we created together, then
+Por lo que si quiero eliminar el índice
+que creamos juntos, entonces
 
 34
 00:01:28,520 --> 00:01:30,330
-I can do it just like this.
+puedo hacerlo de esta forma.
 
 35
 00:01:30,330 --> 00:01:33,540
-I want to drop that index, and
-that'll drop the index out of
+Quiero eliminar ese índice, y
+eso eliminará el índice
 
 36
 00:01:33,540 --> 00:01:35,430
-the system.
+del sistema.
 
 37
 00:01:35,430 --> 00:01:36,165
-I named it wrong.
+Lo llamé mal.
 
 38
 00:01:36,165 --> 00:01:37,775
-Excuse me, one second.
+Perdóname, un segundo.
 
 39
 00:01:37,775 --> 00:01:39,820
-Little typo there.
+Un pequeño error ahí.
 
 40
 00:01:39,820 --> 00:01:41,360
-And there it was.
+Y ahí estaba.
 
 41
 00:01:41,360 --> 00:01:43,650
-Says there was an index, there
-was two indexes, and now
+Dice que había un índice, había
+dos índices, y ahora
 
 42
 00:01:43,650 --> 00:01:44,425
-there's one.
+hay uno.
 
 43
 00:01:44,425 --> 00:01:48,680
-And if I go back, and I look
-in the indexes now, you can
+Y si vuelvo atrás, y echo un vistazo
+a los índices ahora, puedes
 
 44
 00:01:48,680 --> 00:01:50,202
-see it's missing.
+ver que falta.
 
 45
 00:01:50,202 --> 00:01:54,140
-And if I do that find command
-again that I did before, I'm
+Y si hago ese comando "find"
+que hice antes otra vez, voy
 
 46
 00:01:54,140 --> 00:01:55,880
-going to go back and find it.
+a volver y encontrarlo.
 
 47
 00:01:55,880 --> 00:01:59,230
-Then I should see that it is
-once again slow, because the
+Entonces debería ver que 
+otra vez es lento, porque el
 
 48
 00:01:59,230 --> 00:02:00,740
-index is not there.
+índice ya no está ahí.
 
 49
 00:02:00,740 --> 00:02:02,970
-You can see it's kind of slow.
+Puedes ver que es un poco lento.
 
 50
 00:02:02,970 --> 00:02:05,385
-So again, you can find all the
-indexes for a collection, for
+Así que de nuevo, puedes encontrar todos los
+índices de una colección, de
 
 51
 00:02:05,385 --> 00:02:08,850
-a database using this
-system.indexes.find.
+una base de datos usando
+"system.indexes.find()".
 
 52
 00:02:08,850 --> 00:02:10,913
-Now if I use a different
-database, for instance if I
+Si uso ahora una base de datos
+diferente, por ejemplo si
 
 53
 00:02:10,913 --> 00:02:17,370
-use a test database and do the
-same command, then I will see
+uso la base de datos "test" y ejecuto el
+mismo comando, entonces veré
 
 54
 00:02:17,370 --> 00:02:18,740
-a bunch of different indexes.
+un montón de índices distintos.
 
 55
 00:02:18,740 --> 00:02:22,200
-These are a bunch of different
-collections that I've created,
+Éstas son un montón de colecciones
+diferentes que he creado,
 
 56
 00:02:22,200 --> 00:02:23,230
-and I was just playing around.
+y sólo estaba jugando.
 
 57
 00:02:23,230 --> 00:02:25,880
-Let's see, there's a lot
-of indexes on those.
+Veamos, hay un montón
+de índices sobre ellas.
 
 58
 00:02:25,880 --> 00:02:28,860
-And that's the way you discover
-what indexes exist
+Y ésa es la forma de descubrir
+qué índices existen
 
 59
 00:02:28,860 --> 00:02:30,920
-inside the database, and
-inside the collection.
+en la base de datos, y
+en las colecciones.
 
 60
 00:02:30,920 --> 00:02:32,170
