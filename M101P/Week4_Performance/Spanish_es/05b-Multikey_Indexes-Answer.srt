@@ -7,41 +7,41 @@ OK.
 
 3
 00:00:01,060 --> 00:00:02,760
-So this is a multi-key index.
+Así que éste es un índice multiclave.
 
 4
 00:00:02,760 --> 00:00:06,360
-And so the answer is that the
-first three are valid because
+Y por eso la respuesta es que las
+tres primeras son válidas porque
 
 5
 00:00:06,360 --> 00:00:11,520
-the first one inserts an array
-here and an item in b.
+la primera inserta un array
+aquí y un elemento en "b".
 
 6
 00:00:11,520 --> 00:00:15,540
-And then the second one is just
-two strings, an a and b.
+Y luego la segunda es sólo
+dos cadenas, "a" y "b".
 
 7
 00:00:15,540 --> 00:00:18,650
-The third one is a string
-in a and an array in b.
+La tercera es una cadena
+en "a" y un array en "b".
 
 8
 00:00:18,650 --> 00:00:20,170
-The fourth one is two arrays.
+La cuarta es dos arrays.
 
 9
 00:00:20,170 --> 00:00:22,220
-And you can't have two parallel
-arrays in a multi-key
+Y no puedes tener dos arrays
+paralelos en un índice
 
 10
 00:00:22,220 --> 00:00:24,740
-index, so that would
-not be valid.
+multiclave, por lo que no
+sería válido.
 
 11
 00:00:24,740 --> 00:00:25,990
