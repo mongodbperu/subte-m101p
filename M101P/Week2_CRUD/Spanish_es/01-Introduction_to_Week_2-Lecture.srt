@@ -47,7 +47,7 @@ presentar las mismas
 11
 00:00:24,240 --> 00:00:27,900
 operaciones, pero utilizando
-Python y pymongo.
+Python y PyMongo.
 
 12
 00:00:27,900 --> 00:00:30,210
