@@ -3,367 +3,367 @@
 
 2
 00:00:00,160 --> 00:00:05,250
-In MongoDB you can have a
-key that holds an array.
+En MongoDB puedes tener una
+clave que contenga un array.
 
 3
 00:00:05,250 --> 00:00:07,770
-For instance, if you have tags
-keyed that hold cycling,
+Por ejemplo, si tienes una clave
+"tags" que contiene "cycling",
 
 4
 00:00:07,770 --> 00:00:09,450
-tennis, and football.
+"tennis" y "football".
 
 5
 00:00:09,450 --> 00:00:15,370
-And you can index tags, so you
-can call ensure index, and you
+Y puedes indexar "tags", por lo que
+puedes llamar a "ensureIndex" y
 
 6
 00:00:15,370 --> 00:00:17,900
-can tell the database
-that you want the
+puedes decirle a la base de datos
+que quieres que se 
 
 7
 00:00:17,900 --> 00:00:19,785
-tags key to be indexed.
+indexe la clave "tags".
 
 8
 00:00:19,785 --> 00:00:23,160
-Now, if you do that what MongoDB
-does is it creates
+Ahora, si haces eso, lo que hace
+MongoDB es crear
 
 9
 00:00:23,160 --> 00:00:25,540
-what's called a multikey
-index.
+lo que se conoce como índice
+multiclave.
 
 10
 00:00:25,540 --> 00:00:30,980
-Now, what a multikey index is,
-is that rather than create one
+Un índice multiclave es,
+más que crear un punto en el
 
 11
 00:00:30,980 --> 00:00:34,890
-index point for each document,
-if it sees an array in the
+índice por cada documento,
+si ve un array en el
 
 12
 00:00:34,890 --> 00:00:37,840
-document, it will create
-an index point for
+documento, creará
+un punto en el índice por
 
 13
 00:00:37,840 --> 00:00:40,100
-every item in the array.
+cada elemento en el array.
 
 14
 00:00:40,100 --> 00:00:45,860
-So that if we do a Find where
-cycling is in tags, then it
+De forma que si hacemos un "find" donde
+"cycling" esté en "tags", entonces
 
 15
 00:00:45,860 --> 00:00:50,110
-will be fast because it's
-able to use the index.
+será rápido porque es
+capaz de usar el índice.
 
 16
 00:00:50,110 --> 00:00:53,200
-And that only happens
-if it's an array.
+Y eso sólo ocurre
+si es un array.
 
 17
 00:00:53,200 --> 00:00:55,160
-That's called a multikey
-index.
+Eso es lo que se llama un índice
+multiclave.
 
 18
 00:00:55,160 --> 00:00:57,210
-Then you can create
-a compound index.
+Luego puedes crear
+un índice compuesto.
 
 19
 00:00:57,210 --> 00:01:02,960
-For instance, I can create a
-compound index on tags colon
+Por ejemplo, puedo crear un
+índice compuesto sobre
 
 20
 00:01:02,960 --> 00:01:04,349
-color or something.
+"tags, color" o algo así.
 
 21
 00:01:04,349 --> 00:01:06,220
-And that works just fine.
+Y eso funciona bien.
 
 22
 00:01:06,220 --> 00:01:08,890
-But Mongo restricts
-the queries.
+Pero Mongo restringe
+las consultas.
 
 23
 00:01:08,890 --> 00:01:13,860
-You cannot have two items in a
-document that are both arrays
+No puedes tener dos elementos en un
+documento que sean ambos arrays
 
 24
 00:01:13,860 --> 00:01:15,700
-if it's a multikey index.
+si existe un índice multiclave.
 
 25
 00:01:15,700 --> 00:01:17,690
-Now, this is all
-dynamic, right?
+Ahora, todo esto es
+dinámico, ¿de acuerdo?
 
 26
 00:01:17,690 --> 00:01:20,950
-So when you first create an
-index on two things, MongoDB
+Así que cuando primero creas un
+índice sobre dos cosas, MongoDB
 
 27
 00:01:20,950 --> 00:01:22,720
-doesn't know whether or not
-there are going to be arrays
+no sabe si va a 
+haber arrays o no
 
 28
 00:01:22,720 --> 00:01:23,760
-in those items.
+en esos elementos.
 
 29
 00:01:23,760 --> 00:01:27,470
-So it's when you insert the
-items that it will stop you
+Por lo que cuando insertas los
+elementos es cuando te impedirá
 
 30
 00:01:27,470 --> 00:01:28,690
-from inserting them
-if they're both
+que los insertes
+si ambos son
 
 31
 00:01:28,690 --> 00:01:30,240
-arrays and they're multikeys.
+arrays y multiclaves.
 
 32
 00:01:30,240 --> 00:01:34,090
-And the reason is because of the
-polynomial explosion that
+Y la razón es debido a la
+expansión polinómica que
 
 33
 00:01:34,090 --> 00:01:38,500
-you'd have of index points every
-single time you added
+tendrías de los puntos en el índice cada
+vez que añadieras
 
 34
 00:01:38,500 --> 00:01:43,430
-and subtracted something from
-the array if we allowed you to
+y eliminaras algo del
+array si te permitiésemos
 
 35
 00:01:43,430 --> 00:01:46,500
-compound index where both
-items were arrays.
+índices compuestos donde ambos
+elementos fueran arrays.
 
 36
 00:01:46,500 --> 00:01:49,120
-So let me make this more
-concrete by showing you some
+Permíteme que concrete esto más
+enseñándote algunas
 
 37
 00:01:49,120 --> 00:01:51,270
-stuff in the shell.
+cosas en el shell.
 
 38
 00:01:51,270 --> 00:01:56,020
-So I'm just going to use the
-test database here and I'm
+Simplemente voy a usar la
+base de datos "test" aquí y voy
 
 39
 00:01:56,020 --> 00:02:00,140
-going to actually start by
-creating a collection and
+a empezar realmente
+creando una colección e
 
 40
 00:02:00,140 --> 00:02:01,910
-insert something into
-the collection.
+insertando algo en
+la colección.
 
 41
 00:02:01,910 --> 00:02:05,550
-I'll call the collection BBB.
+Llamaré a la colección "bbb".
 
 42
 00:02:05,550 --> 00:02:09,570
-I inserted into BBB
-A and B being one.
+Inserté en "bbb"
+"a" y "b" con valor uno.
 
 43
 00:02:09,570 --> 00:02:14,140
-And I can now, if I want, I can
-create an index for that.
+Y ahora puedo, si quiero, puedo
+crear un índice para eso.
 
 44
 00:02:14,140 --> 00:02:16,540
-At this point I have to set up
-a standard compound index.
+En este punto tengo que establecer
+un índice compuesto estándar.
 
 45
 00:02:16,540 --> 00:02:21,470
-But what if I tried to insert
-something into the index where
+Pero, ¿qué pasaría si intentara insertar
+algo en el índice que
 
 46
 00:02:21,470 --> 00:02:24,060
-it was an array,
-which I can do.
+fuera un array?,
+puedo hacerlo.
 
 47
 00:02:24,060 --> 00:02:29,660
-So now I'm going to insert
-A is 1, 2, 3.
+Así que ahora voy a insertar
+"a" es "[1, 2, 3]".
 
 48
 00:02:29,660 --> 00:02:33,610
-Now at this point it's a
-multikey index, and I can also
+En este punto es un
+índice multiclave, y también puedo
 
 49
 00:02:33,610 --> 00:02:38,110
-insert something where, let's
-say, B is 1, 2, 3.
+insertar algo como, digamos,
+"b" es "[1, 2, 3]".
 
 50
 00:02:38,110 --> 00:02:44,040
-Now A is going to be 5 in this
-case, and B is going to be the
+Ahora "a" va a ser 5 en este
+caso, y "b" va a ser el
 
 51
 00:02:44,040 --> 00:02:45,500
-array 1, 2, 3.
+array "[1, 2, 3]".
 
 52
 00:02:45,500 --> 00:02:48,130
-A little extra cone there.
+Unos dos puntos extra ahí.
 
 53
 00:02:48,130 --> 00:02:49,650
-Here we go.
+Aquí vamos.
 
 54
 00:02:49,650 --> 00:02:51,430
-So that all works just fine.
+Todo eso funciona bien.
 
 55
 00:02:51,430 --> 00:02:54,870
-And there's an index in here,
-and you can see it, if you
+Y hay un índice aquí,
+y puedes verlo, si
 
 56
 00:02:54,870 --> 00:02:57,480
-call get indexes you'll see
-the indexes we created.
+llamas a "getIndexes" verás
+los índices que creamos.
 
 57
 00:02:57,480 --> 00:03:01,650
-So there's the index that we
-created on A and B. But if I
+Por lo que ahí está el índice que
+creamos sobre "a" y "b". Pero si
 
 58
 00:03:01,650 --> 00:03:06,370
-try to insert something where
-both A and B are an array into
+intento insertar algo donde
+tanto "a" como "b" sean arrays dentro
 
 59
 00:03:06,370 --> 00:03:10,120
-this multikey index, the
-database will cry foul.
+de este índice multiclave, la
+base de datos se quejará.
 
 60
 00:03:10,120 --> 00:03:11,630
-It will not allow that.
+No permitirá eso.
 
 61
 00:03:11,630 --> 00:03:14,460
-You cannot index the parallel
-arrays B and A.
+No puedes indexar los arrays
+paralelos "b" y "a".
 
 62
 00:03:14,460 --> 00:03:17,990
-So there's this concept of a
-multikey index inside MongoDB.
+Por lo que ahí queda este concepto de
+índice multiclave en MongoDB.
 
 63
 00:03:17,990 --> 00:03:19,170
-Its dynamic.
+Es dinámico.
 
 64
 00:03:19,170 --> 00:03:21,870
-It doesn't really know there's
-going to be array values in
+No sabe realmente si va
+a haber valores de tipo array en
 
 65
 00:03:21,870 --> 00:03:23,020
-any given key.
+una clave dada.
 
 66
 00:03:23,020 --> 00:03:26,730
-But if you start adding arrays
-into a key, it's fine.
+Pero si empiezas a añadir arrays
+a una clave, está bien.
 
 67
 00:03:26,730 --> 00:03:29,160
-If it's part of index it will
-create next point for every
+Si es parte del índice
+creará el siguiente punto por cada
 
 68
 00:03:29,160 --> 00:03:31,680
-item in the array, but you
-can't do it for parallel
+elemento en el array, pero
+no puede hacerlo para arrays
 
 69
 00:03:31,680 --> 00:03:35,380
-arrays, as it calls it, if
-more than one value is an
+paralelos, así los llama, si
+más de un valor es un
 
 70
 00:03:35,380 --> 00:03:37,700
-array in a compound index.
+array en un índice compuesto.
 
 71
 00:03:37,700 --> 00:03:40,670
-OK, it is time for a quiz.
+OK, hora de hacer un cuestionario.
 
 72
 00:03:40,670 --> 00:03:44,290
-Suppose we have a collection foo
-that has an index created
+Supongamos que tenemos una colección "foo"
+que tiene un índice creado
 
 73
 00:03:44,290 --> 00:03:45,440
-as follows.
+de esta forma.
 
 74
 00:03:45,440 --> 00:03:49,610
-db.foo.ensureIndex A1, B1.
+"db.foo.ensureIndex({a:1, b:1})".
 
 75
 00:03:49,610 --> 00:03:52,720
-Which of the following inserts
-are valid to this collection?
+¿Cuáles de las siguientes inserciones
+son válidas para esta colección?
 
 76
 00:03:52,720 --> 00:03:54,940
-And I won't go through
-them, because they're
+Y no las analizaré,
+porque ya están
 
 77
 00:03:54,940 --> 00:03:56,210
-a little bit detailed.
+un poco detalladas.
 
 78
 00:03:56,210 --> 00:03:58,970
-But figure out which one of
-these are valid for the
+Pero averigua cuáles de
+ellas son válidas para la
 
 79
 00:03:58,970 --> 00:04:00,220
-collection.
+colección.
