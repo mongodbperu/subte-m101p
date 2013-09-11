@@ -27,7 +27,7 @@ base de datos se llama "find".
 7
 00:00:09,920 --> 00:00:13,110
 Aun así, muchas veces es más
-simple buscar a un solo documento
+simple buscar un solo documento
 
 8
 00:00:13,110 --> 00:00:14,020
@@ -54,12 +54,12 @@ llamado sin argumentos, recupera
 
 13
 00:00:24,130 --> 00:00:26,820
-esencialmente un documento
-al azar de la
+esencialmente un
+documento al azar
 
 14
 00:00:26,820 --> 00:00:27,420
-colección.
+de la colección.
 
 15
 00:00:27,420 --> 00:00:30,370
@@ -68,8 +68,7 @@ examinar qué esquemas siguen
 
 16
 00:00:30,370 --> 00:00:32,310
-los documentos en
-tu colección.
+los documentos en tu colección.
 
 17
 00:00:32,310 --> 00:00:35,720
@@ -97,18 +96,16 @@ cuyo valor es otra cadena.
 
 22
 00:00:46,980 --> 00:00:48,760
-Podemos pasarle argumentos
-a findOne.
+Podemos pasarle argumentos a findOne.
 
 23
 00:00:48,760 --> 00:00:51,370
-En este caso, voy a apretar la flecha
+En este caso, voy a presionar la flecha
 hacia arriba para recuperar mi comando 
 
 24
 00:00:51,370 --> 00:00:53,510
-previo y moverme con las
-flechas.
+previo y moverme con las flechas.
 
 25
 00:00:53,510 --> 00:00:56,790
@@ -117,7 +114,7 @@ especifica qué criterios estoy
 
 26
 00:00:56,790 --> 00:00:59,865
-buscando para poder contar un
+buscando para considerar un
 documento como un resultado.
 
 27
@@ -131,12 +128,12 @@ SELECT en SQL.
 
 29
 00:01:05,400 --> 00:01:08,080
-El argumento que viene aquí
-es un documento.
+El argumento que viene
+aquí es un documento.
 
 30
 00:01:08,080 --> 00:01:11,050
-En este caso, findOne me
+En este caso, "findOne" me
 retornaría un documento
 
 31
@@ -151,8 +148,8 @@ el nombre "Jones".
 
 33
 00:01:15,450 --> 00:01:18,450
-Este es nuestro primer ejemplo de
-una consulta a MongoDB que
+Éste es nuestro primer ejemplo
+de una consulta a MongoDB que
 
 34
 00:01:18,450 --> 00:01:20,570
@@ -160,23 +157,23 @@ tiene un tipo de restricción.
 
 35
 00:01:20,570 --> 00:01:23,050
-Y como pueden ver, la
+Como pueden ver, la
 especificación de qué
 
 36
 00:01:23,050 --> 00:01:26,870
-documentos cuentan como un resultado
-está presentado en sí como un documento.
+documentos consideramos resultados válidos
+está presentada en sí como un documento.
 
 37
 00:01:26,870 --> 00:01:29,710
-Esto es una variación considerable de
-como se hacen las cosas en, digamos,
+Esto es una variación considerable a
+la manera en que se hacen las cosas en,
 
 38
 00:01:29,710 --> 00:01:31,480
-una tradicional base
-de datos relacional.
+digamos, una tradicional
+base de datos relacional.
 
 39
 00:01:31,480 --> 00:01:33,910
@@ -195,7 +192,7 @@ al "findOne" a través de la conexión,
 
 42
 00:01:40,910 --> 00:01:43,330
-envuelto en algunos encabezados de
+envuelta en algunos encabezados de
 mensaje, como una operación, para
 
 43
@@ -216,11 +213,11 @@ forma de un documento estructurado,
 46
 00:01:51,270 --> 00:01:54,220
 en lugar de una secuencia de texto
-que tiene que diseccionar
+que tiene que ser diseccionada
 
 47
 00:01:54,220 --> 00:01:54,970
-y analizar.
+y analizada.
 
 48
 00:01:54,970 --> 00:01:57,330
@@ -239,8 +236,8 @@ lenguaje de consulta en un sistema
 
 51
 00:02:03,100 --> 00:02:05,500
-donde se presenta como un
-pedazo de datos estructurado
+donde éste se presenta como un
+pedazo de datos estructurados
 
 52
 00:02:05,500 --> 00:02:06,460
@@ -277,26 +274,26 @@ que le puedes pasar a "findOne".
 59
 00:02:21,030 --> 00:02:23,520
 Tomando en cuenta que el primer
-argumento para "findOne" especifica lo
+argumento para "findOne" especifica
 
 60
 00:02:23,520 --> 00:02:26,970
-que quieres ver, es decir, qué
-documentos emparejan con un
+lo que quieres ver, es decir,
+qué documentos emparejan con un
 
 61
 00:02:26,970 --> 00:02:29,650
-tipo particular de cláusula WHERE,
-el segundo argumento de
+tipo particular de cláusula
+WHERE, el segundo argumento de
 
 62
 00:02:29,650 --> 00:02:32,280
 "findOne" te permite
-estipular qué campos quieres
+estipular qué campos
 
 63
 00:02:32,280 --> 00:02:33,720
-que te retorne la base de datos.
+quieres que te retorne la base de datos.
 
 64
 00:02:33,720 --> 00:02:36,640
@@ -344,17 +341,17 @@ recibir cualquier documento en la
 73
 00:03:01,530 --> 00:03:04,730
 colección "People" donde el
-campo "Name" es "Jones".
+campo "Name" es "Jones"
 
 74
 00:03:04,730 --> 00:03:08,100
-Y sólo voy a ver el campo "Name"
-y no el campo "_id".
+y sólo voy a ver el campo
+"Name", no el campo "_id".
 
 75
 00:03:08,100 --> 00:03:09,870
-Y por supuesto, recibo sólo uno
-de éstos resultados, porque sólo
+Por supuesto, recibo sólo uno de
+éstos resultados, porque sólo
 
 76
 00:03:09,870 --> 00:03:11,010
@@ -362,8 +359,8 @@ he pedido uno.
 
 77
 00:03:11,010 --> 00:03:13,840
-Entonces, de esta manera, el
-segundo argumento de "findOne" es
+De esta manera, el segundo
+argumento de "findOne" es
 
 78
 00:03:13,840 --> 00:03:16,440
@@ -376,12 +373,13 @@ de SELECT en SQL.
 
 80
 00:03:18,540 --> 00:03:20,870
-Es decir, te ayuda a especificar
-qué campos quieres 
+Es decir, te ayuda a
+especificar qué campos 
 
 81
 00:03:20,870 --> 00:03:22,860
-que te retorne la base de datos.
+quieres que la base de
+datos te retorne.
 
 82
 00:03:22,860 --> 00:03:27,560
@@ -391,7 +389,7 @@ el campo "_id" por defecto
 83
 00:03:27,560 --> 00:03:31,210
 está presente en la respuesta
-de findOne aunque no lo
+de "findOne" aunque no lo
 
 84
 00:03:31,210 --> 00:03:32,450
@@ -399,8 +397,8 @@ pidas.
 
 85
 00:03:32,450 --> 00:03:34,290
-Esto es una funcionalidad un
-poco rudimentaria.
+Esto es una funcionalidad
+un poco rudimentaria.
 
 86
 00:03:34,290 --> 00:03:36,890
@@ -470,7 +468,7 @@ de consultas mientras avanzamos.
 
 100
 00:04:08,090 --> 00:04:10,910
-"FindOne" fue simplemente un
+"findOne" fue simplemente un
 tipo de introducción.
 
 101

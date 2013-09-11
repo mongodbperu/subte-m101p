@@ -3,8 +3,7 @@
 
 2
 00:00:00,190 --> 00:00:02,150
-Si mantienes esto,
-has acertado.
+Si hiciste esto, has acertado.
 
 3
 00:00:02,150 --> 00:00:05,520
@@ -18,7 +17,7 @@ un documento con "type"
 
 5
 00:00:08,320 --> 00:00:11,140
-Y luego defines un segundo
+Luego defines un segundo
 argumento que tenga el documento
 
 6

@@ -9,7 +9,7 @@ detalle sobre lo que puedes hacer
 3
 00:00:02,420 --> 00:00:04,976
 con la base de datos utilizando
-el shell Mongo, tenemos que
+el shell mongo, tenemos que
 
 4
 00:00:04,976 --> 00:00:07,630
@@ -19,12 +19,12 @@ realidad MongoDB representa
 5
 00:00:07,630 --> 00:00:10,820
 datos y cómo puedes comprender
-lo que hace el shell Mongo para
+lo que hace el shell mongo para
 
 6
 00:00:10,820 --> 00:00:12,170
-interpretar los datos
-que recibe
+interpretar los
+datos que recibe
 
 7
 00:00:12,170 --> 00:00:13,380
@@ -41,18 +41,17 @@ a documentos.
 
 10
 00:00:16,690 --> 00:00:19,300
-Lo que esto significa es
-que el tipo de registro
+Esto significa es que
+el tipo de registro
 
 11
 00:00:19,300 --> 00:00:22,510
 fundamental en MongoDB es una
-especie de diccionario aninado
+especie de diccionario anidado
 
 12
 00:00:22,510 --> 00:00:23,430
-de asociaciones de clave /
-valor.
+de asociaciones de clave / valor.
 
 13
 00:00:23,430 --> 00:00:26,500
@@ -71,8 +70,7 @@ puedan representar este tipo
 
 16
 00:00:31,890 --> 00:00:33,200
-de asociaciones de
-clave / valor.
+de asociaciones de clave / valor.
 
 17
 00:00:33,200 --> 00:00:36,110
@@ -81,8 +79,8 @@ objeto que representa este
 
 18
 00:00:36,110 --> 00:00:37,890
-tipo de asociaciones de clave /
-valor se llama un
+tipo de asociaciones de
+clave / valor se llama un
 
 19
 00:00:37,890 --> 00:00:39,220
@@ -100,8 +98,8 @@ sea igual a "1", b "hello", c
 
 22
 00:00:48,470 --> 00:00:52,020
-el valor de la variable "obj"
-puede ser utilizada
+el valor de la variable
+"obj" puede ser utilizada
 
 23
 00:00:52,020 --> 00:00:53,900
@@ -161,7 +159,7 @@ representación binaria que
 
 35
 00:01:21,680 --> 00:01:24,590
-MongoDB utiliza es presentada
+MongoDB utiliza está
 en BSONspec.org.
 
 36
@@ -171,7 +169,7 @@ BSON, que significa "Binary JSON"
 
 37
 00:01:27,610 --> 00:01:30,480
-y en efecto, este es un formato
+y en efecto, éste es un formato
 de serialización que está
 
 38
@@ -181,8 +179,8 @@ súperset de lo que puede
 
 39
 00:01:32,730 --> 00:01:34,760
-ser transcrito en la sintaxis
-de JSON.
+ser transcrito en la
+sintaxis de JSON.
 
 40
 00:01:34,760 --> 00:01:37,360
@@ -196,8 +194,8 @@ BSON soporta son, por supuesto,
 
 42
 00:01:40,560 --> 00:01:42,700
-un súperset de los que
-soporta JSON--
+un súperset de los
+que soporta JSON--
 
 43
 00:01:42,700 --> 00:01:45,840
@@ -206,8 +204,8 @@ punto flotante, valores de cadenas,
 
 44
 00:01:45,840 --> 00:01:49,280
-donde una cadena representa una
-secuencia una secuencia de unidades
+donde una cadena representa
+una secuencia de unidades
 
 45
 00:01:49,280 --> 00:01:53,070
@@ -231,8 +229,8 @@ verdadero, y el valor nulo.
 
 49
 00:02:05,550 --> 00:02:07,770
-Éstos son los tipos de datos
-básicos de JSON.
+Éstos son los tipos de
+datos básicos de JSON.
 
 50
 00:02:07,770 --> 00:02:10,520
@@ -271,8 +269,7 @@ protocolo de consultas y timestamps
 
 57
 00:02:31,180 --> 00:02:33,410
-para propósitos de
-replicación.
+para propósitos de replicación.
 
 58
 00:02:33,410 --> 00:02:37,240
@@ -286,8 +283,8 @@ en varios lenguajes de programación
 
 60
 00:02:39,450 --> 00:02:42,390
-o tienen una especie de
-manejo especial en
+o tienen una especie
+de manejo especial en
 
 61
 00:02:42,390 --> 00:02:43,880
@@ -310,12 +307,12 @@ soporte para números, los cuales
 
 65
 00:02:51,090 --> 00:02:55,280
-son interpretados como dobles flotantes,
+son interpretados como dobles flotantes;
 cadenas, que son interpretadas
 
 66
 00:02:55,280 --> 00:02:58,850
-como cadenas UTF-8, arrays,
+como cadenas UTF-8; arrays,
 objetos, verdadero, falso,
 
 67
@@ -348,18 +345,18 @@ precisión numérica.
 
 73
 00:03:14,950 --> 00:03:18,330
-"Number/Long" te da valores de
-enteros de 64 bits.
+"Number/Long" te da valores
+de enteros de 64 bits.
 
 74
 00:03:18,330 --> 00:03:20,500
-Y también soportamos por lo menos algunas
+También soportamos por lo menos algunas
 operaciones aritméticas en estos valores
 
 75
 00:03:20,500 --> 00:03:23,400
-aunque de repente no podamos
-redondear sin
+aunque de repente no
+podamos redondear sin
 
 76
 00:03:23,400 --> 00:03:24,480
@@ -377,8 +374,8 @@ JavaScript que sería un
 
 79
 00:03:30,210 --> 00:03:31,700
-valor de doble precisión de
-punto flotante al
+valor de doble precisión
+de punto flotante al
 
 80
 00:03:31,700 --> 00:03:32,890
@@ -416,8 +413,8 @@ de fecha JavaScript, el cual
 
 87
 00:03:49,880 --> 00:03:51,910
-por razones pertinentes a los
-detalles esotericos
+por razones pertinentes a
+los detalles esotéricos
 
 88
 00:03:51,910 --> 00:03:53,820
@@ -426,27 +423,27 @@ imprimimos con el
 
 89
 00:03:53,820 --> 00:03:55,450
-constructor que llamamos
-"ISO date".
+constructor que
+llamamos "ISO date".
 
 90
 00:03:55,450 --> 00:03:58,890
 Este constructor siempre te
-devuelve un nuevo objeto de fecha
+devuelve un nuevo objeto de
 
 91
 00:03:58,890 --> 00:04:00,780
-el cual contiene un respectivo
-timestamp, lo cual es algo
+fecha el cual contiene un
+respectivo timestamp. Esto
 
 92
 00:04:00,780 --> 00:04:02,810
-diferente de lo que el
-constructor de fechas hace
+es algo diferente a lo que
+el constructor de fechas
 
 93
 00:04:02,810 --> 00:04:04,200
-en el lenguaje JavaScript.
+hace en el lenguaje JavaScript.
 
 94
 00:04:04,200 --> 00:04:06,980
@@ -455,8 +452,8 @@ en JavaScript que contiene
 
 95
 00:04:06,980 --> 00:04:10,000
-números que son enteros de
-precisión fija o que
+números que son enteros
+de precisión fija o que
 
 96
 00:04:10,000 --> 00:04:12,990
@@ -465,7 +462,7 @@ está en este momento en la
 
 97
 00:04:12,990 --> 00:04:15,680
-pantalla, puedes usar estas
+pantalla, puedes usar esta
 sintaxis del constructor.
 
 98
@@ -500,12 +497,12 @@ porque al parecer
 104
 00:04:27,450 --> 00:04:29,590
 las operaciones aritméticas que
-son disponibles podrían no
+están disponibles podrían no
 
 105
 00:04:29,590 --> 00:04:31,020
-preservar información del tipo
-numérico.
+preservar información
+del tipo numérico.
 
 106
 00:04:31,020 --> 00:04:34,410
@@ -514,8 +511,7 @@ es que MongoDB maneja su tráfico
 
 107
 00:04:34,410 --> 00:04:36,230
-interno con representaciones
-binarias
+interno con representaciones binarias
 
 108
 00:04:36,230 --> 00:04:37,410
@@ -538,7 +534,7 @@ incorpora todos los tipos
 112
 00:04:43,700 --> 00:04:47,270
 que JSON puede contener, además de
-algunos otros, y el shell Mongo,
+algunos otros, y el shell mongo,
 
 113
 00:04:47,270 --> 00:04:50,440
@@ -564,13 +560,13 @@ Hagamos un cuestionario.
 
 118
 00:04:55,790 --> 00:04:57,990
-Cuáles de los sigueintes tipos
+¿Cuáles de los siguientes tipos
 son disponibles en BSON?
 
 119
 00:04:57,990 --> 00:05:01,170
-Cadenas, números de punto flotante,
-números complejos,
+Cadenas, números de punto
+flotante, números complejos,
 
 120
 00:05:01,170 --> 00:05:03,160

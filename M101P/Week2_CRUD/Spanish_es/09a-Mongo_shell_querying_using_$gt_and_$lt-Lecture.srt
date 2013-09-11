@@ -13,7 +13,7 @@ facultades de las consultas.
 4
 00:00:03,370 --> 00:00:05,710
 Ya hemos visto cómo hacer consultas
-usando valores específicos de
+usando los valores específicos de
 
 5
 00:00:05,710 --> 00:00:09,560
@@ -32,11 +32,11 @@ de aplicaciones prácticas.
 8
 00:00:13,200 --> 00:00:16,050
 Lo que hemos hecho hasta ahora
-lo llamamos hacer consultas por
+lo llamamos "hacer consultas por
 
 9
 00:00:16,050 --> 00:00:19,240
-consultas ejemplares, donde 
+consultas ejemplares", donde 
 usas un ejemplo de los campos
 
 10
@@ -50,8 +50,8 @@ que deseas recuperar.
 
 12
 00:00:21,820 --> 00:00:25,130
-Por ejemplo, "student" "19"
-y "type" "essay".
+Por ejemplo, "student"
+"19" y "type" "essay".
 
 13
 00:00:25,130 --> 00:00:27,550
@@ -96,7 +96,7 @@ punto, el método "find".
 
 22
 00:00:45,920 --> 00:00:47,400
-Y el primer argumento de
+El primer argumento de
 "find", una vez más,
 
 23
@@ -121,12 +121,11 @@ campo y el valor correspondiente
 27
 00:00:58,500 --> 00:01:02,030
 en este primer argumento de "find"
-va a ser un sub-documento conteniendo
+va a ser un subdocumento conteniendo
 
 28
 00:01:02,030 --> 00:01:04,599
-como su valor correspondiente,
-un operador.
+un operador como valor correspondiente.
 
 29
 00:01:04,599 --> 00:01:09,050
@@ -136,20 +135,20 @@ algún argumento para el operador.
 30
 00:01:09,050 --> 00:01:12,380
 Cerramos el documento y retornamos
-para volver a leer esto,
+para volver a leer esto.
 
 31
 00:01:12,380 --> 00:01:14,320
-lo que dice esto es que
-el "score" debería ser
+Lo que dice esto es
+que el "score" debe
 
 32
 00:01:14,320 --> 00:01:16,020
-mayor a 95.
+ser mayor a 95.
 
 33
 00:01:16,020 --> 00:01:19,240
-Esta es nuestra primera experiencia
+Ésta es nuestra primera experiencia
 con consultas no usando valores
 
 34
@@ -167,8 +166,8 @@ campo "score".
 
 37
 00:01:24,750 --> 00:01:27,280
-Y recibimos un número de
-documentos y al parecer en el
+Recibimos un número de
+documentos y al parecer al
 
 38
 00:01:27,280 --> 00:01:29,800
@@ -182,7 +181,7 @@ mayores a "95".
 40
 00:01:30,880 --> 00:01:37,970
 Veo un "96", un "98", un "97",
-otro "97", "99", etc.
+otro "97", "99", etcétera.
 
 41
 00:01:37,970 --> 00:01:40,550
@@ -234,7 +233,7 @@ la parte inferior de mi
 
 51
 00:02:04,630 --> 00:02:06,750
-terminal, ahí está.
+terminal. Ahí está.
 
 52
 00:02:06,750 --> 00:02:10,009
@@ -276,7 +275,7 @@ valores "95" y "98"
 
 60
 00:02:32,430 --> 00:02:35,390
-Y el significado de esta
+El significado de esta
 construcción peculiar es
 
 61
@@ -290,12 +289,12 @@ y menor o igual a "98".
 
 63
 00:02:40,620 --> 00:02:42,960
-Y, adicionalmente, "type"
+Adicionalmente, "type"
 debe ser "essay".
 
 64
 00:02:42,960 --> 00:02:43,930
-Y se ven bien.
+Se ve bien.
 
 65
 00:02:43,930 --> 00:02:46,660
@@ -304,18 +303,17 @@ por lo menos, sugieren que estoy
 
 66
 00:02:46,660 --> 00:02:49,320
-viendo resultados desde "96"
-hasta "98".
+viendo resultados desde
+"96" hasta "98".
 
 67
 00:02:49,320 --> 00:02:52,570
-Este es nuestro primer ejemplo
+Éste es nuestro primer ejemplo
 de un operador de consulta en 
 
 68
 00:02:52,570 --> 00:02:53,690
-el lenguaje de consulta
-de MongoDB.
+el lenguaje de consulta de MongoDB.
 
 69
 00:02:53,690 --> 00:02:56,000
@@ -339,12 +337,11 @@ el operador dólar "lt", el cual
 
 73
 00:03:04,620 --> 00:03:06,570
-significa estrictamente
-menor a.
+significa estrictamente menor a.
 
 74
 00:03:06,570 --> 00:03:10,550
-Y una vez más, como recordatorio,
+Una vez más, como recordatorio,
 los dos campos "score" y "type"
 
 75
@@ -369,17 +366,16 @@ resultado lógico de "score"
 
 79
 00:03:23,450 --> 00:03:26,910
-estando en el rango desde 95
-pero no incluyendo 98.
+estando en el rango desde "95"
+hasta, pero excluyendo, "98".
 
 80
 00:03:26,910 --> 00:03:29,130
-Y el tipo debe ser
-igual a "essay"
+Y el tipo debe ser igual a "essay"
 
 81
 00:03:29,130 --> 00:03:30,890
-Y se ve bien.
+Se ve bien.
 
 82
 00:03:30,890 --> 00:03:33,450

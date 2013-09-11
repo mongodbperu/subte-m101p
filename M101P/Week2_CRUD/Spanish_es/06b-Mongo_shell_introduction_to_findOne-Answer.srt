@@ -15,8 +15,8 @@ esto, lo acertaste.
 
 5
 00:00:05,030 --> 00:00:07,400
-El primer argumento de "findOne"
-es este documento,
+El primer argumento de
+"findOne" es este documento,
 
 6
 00:00:07,400 --> 00:00:09,710
@@ -44,8 +44,8 @@ especificar un "_id" con
 
 11
 00:00:20,050 --> 00:00:22,990
-el valor "0" y "email" con
-el valor "1".
+el valor "0" y "email"
+con el valor "1".
 
 12
 00:00:22,990 --> 00:00:26,300
@@ -59,7 +59,7 @@ respectivamente.
 
 14
 00:00:27,610 --> 00:00:28,900
-Pero estos detalles dependen
+Estos detalles dependen
 de tus preferencias.
 
 15

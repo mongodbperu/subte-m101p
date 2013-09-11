@@ -3,8 +3,8 @@
 
 2
 00:00:00,250 --> 00:00:02,640
-Hay que aprender un poco más
-sobre operadores de desigualdad
+Hay que aprender un poco más sobre
+los operadores de desigualdad
 
 3
 00:00:02,640 --> 00:00:04,460
@@ -82,8 +82,8 @@ la letra mayúscula "D".
 
 19
 00:00:38,820 --> 00:00:41,840
-Y luego igualmente, puedes
-agregar más restricciones, como
+Igualmente, puedes agregar
+más restricciones, como
 
 20
 00:00:41,840 --> 00:00:45,460
@@ -97,18 +97,17 @@ cadena "Bob" es lexicográficamente
 
 22
 00:00:48,000 --> 00:00:50,630
-mayor que la letra "B" simplemente
-porque es más larga.
+mayor que la letra "B" simple-
+mente porque es más larga.
 
 23
 00:00:50,630 --> 00:00:52,620
-Un par de notas sobre
-localidades y
+Un par de notas sobre localidades y
 
 24
 00:00:52,620 --> 00:00:54,200
-ordenamiento consciente
-de la localidad.
+ordenamiento tomando la
+localidad en cuenta.
 
 25
 00:00:54,200 --> 00:00:57,670
@@ -183,28 +182,28 @@ futura de MongoDB tenga mejor soporte
 
 40
 00:01:35,640 --> 00:01:38,520
-para ordenamiento consciente de
-localidades, colación, etcétera.
+para ordenamiento tomando en cuenta
+las localidades, colación, etcétera.
 
 41
 00:01:38,520 --> 00:01:41,240
 Además, es importante
-comprender que MongoDB es,
+comprender que MongoDB
 
 42
 00:01:41,240 --> 00:01:43,420
-en efecto, una base de
-datos sin esquema.
+en efecto es una base
+de datos sin esquema.
 
 43
 00:01:43,420 --> 00:01:45,850
-Es decir, que documentos
-diferentes dentro de la misma
+Es decir, documentos
+diferentes dentro de la
 
 44
 00:01:45,850 --> 00:01:48,390
-colección pueden tener
-diferente tipos de valor
+misma colección pueden tener
+diferentes tipos de valor
 
 45
 00:01:48,390 --> 00:01:49,590
@@ -217,12 +216,12 @@ recomendado, pero
 
 47
 00:01:51,360 --> 00:01:52,730
-aun así es posible.
+aun así, es posible.
 
 48
 00:01:52,730 --> 00:01:55,690
 Por ejemplo, si inserto,
-en la colección "people", un
+en la colección "people" un
 
 49
 00:01:55,690 --> 00:01:59,250
@@ -232,20 +231,20 @@ tiene como valor correspondiente
 50
 00:01:59,250 --> 00:02:01,690
 el número 42, la base de
-datos está perfectamente
+datos lo almacenará
 
 51
 00:02:01,690 --> 00:02:03,020
-feliz de almacenarlo.
+sin ningún problema.
 
 52
 00:02:03,020 --> 00:02:06,170
-Ahora, tengo más o menos ocho
-documentos con valores de cadena
+Ahora tengo más o menos ocho
+documentos con valores de
 
 53
 00:02:06,170 --> 00:02:09,650
-para el campo "name" y un
+cadena para el campo "name" y un
 documento con un valor numérico
 
 54
@@ -259,7 +258,7 @@ en MongoDB son fuertemente tipadas.
 
 56
 00:02:15,430 --> 00:02:16,800
-y dinámicamente tipadas también.
+y también dinámicamente tipadas.
 
 57
 00:02:16,800 --> 00:02:19,350
@@ -283,7 +282,7 @@ y mayor que la letra
 
 61
 00:02:28,880 --> 00:02:32,360
-mayúscula "B". Y no veré ningún
+mayúscula "B". No veré ningún
 documento donde el campo "name"
 
 62
@@ -309,7 +308,7 @@ el polimorfismo de MongoDB
 
 66
 00:02:44,630 --> 00:02:47,380
-almacenando diferentes
+y almacenas diferentes
 tipos de datos para los
 
 67
@@ -330,7 +329,6 @@ de ello, tienes
 00:02:53,330 --> 00:02:57,010
 que comprender que las
 comparaciones de este
-
 
 71
 00:02:57,010 --> 00:02:58,270

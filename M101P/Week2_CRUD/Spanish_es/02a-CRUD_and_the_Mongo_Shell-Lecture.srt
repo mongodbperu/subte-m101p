@@ -8,7 +8,8 @@ MongoDB para desarrolladores.
 
 3
 00:00:02,510 --> 00:00:04,350
-Está semana vamos a cubrir CRUD
+Está semana vamos
+a abordar "CRUD"
 
 4
 00:00:04,350 --> 00:00:05,610
@@ -16,8 +17,8 @@ y el shell Mongo.
 
 5
 00:00:05,610 --> 00:00:10,860
-CRUD, que significa create (crear), read (leer),
-update (actualizar), delete (eliminar), es un
+CRUD, que significa Create (crear), Read (leer),
+Update (actualizar), Delete (eliminar), es un
 
 6
 00:00:10,860 --> 00:00:12,960
@@ -29,23 +30,23 @@ manipulaciones que puedes hacer
 
 8
 00:00:14,510 --> 00:00:16,280
-a los registros de la base
-de datos.
+a los registros de
+la base de datos.
 
 9
 00:00:16,280 --> 00:00:20,280
-En la terminología de MongoDB, llamamos
-create "insert" (insertar),  
+En la terminología de MongoDB,
+create es "insert" (insertar),  
 
 10
 00:00:20,280 --> 00:00:24,850
-read "find" (buscar), llamamos update
-"update" (actualizar) y llamamos delete
+read es "find" (buscar), update es
+"update" (actualizar) y delete
 
 11
 00:00:24,850 --> 00:00:29,320
-"remove" (remover). Éstos son ánalogos,
-respectivamente a los operadores de SQL
+es "remove" (remover). Éstos son ánalogos,
+respectivamente, a los operadores de SQL
 
 12
 00:00:29,320 --> 00:00:32,470
@@ -54,8 +55,8 @@ y "delete".
 
 13
 00:00:32,470 --> 00:00:35,900
-Ahora, algo que es importante saber
-sobre MongoDB es que las
+Ahora, algo que es importante
+saber sobre MongoDB es que las
 
 14
 00:00:35,900 --> 00:00:39,330
@@ -79,8 +80,8 @@ lenguaje de consultas análogo
 
 18
 00:00:48,600 --> 00:00:51,650
-al lenguaje SQL que tiene que
-ser expresado como una cadena
+al lenguaje SQL, el cual tiene
+que ser expresado como una cadena
 
 19
 00:00:51,650 --> 00:00:53,430
@@ -89,21 +90,22 @@ dentro de un programa.
 20
 00:00:53,430 --> 00:00:56,750
 En vez de eso, MongoDB tiene un protocolo
-de conexión que es relativamente
+de conexión que es relativamente simple.
 
 21
 00:00:56,750 --> 00:01:00,420
-simple, que incorpora un
-código de operación y argumentos
+Consiste de un código
+de operación acompañado
 
 22
 00:01:00,420 --> 00:01:02,580
-para esa operación, transmitidos
-como una secuencia de
+de argumentos para dicha operación,
+los cuales son transmitidos como
 
 23
 00:01:02,580 --> 00:01:04,379
-bytes a través de la red.
+una secuencia de bytes
+a través de la red.
 
 24
 00:01:04,379 --> 00:01:06,380
@@ -113,7 +115,7 @@ programador, en lugar de
 25
 00:01:06,380 --> 00:01:08,250
 manipular documentos
-en la base de datos
+en la base de datos,
 
 26
 00:01:08,250 --> 00:01:09,900
@@ -121,7 +123,7 @@ usas métodos sobre objetos--
 
 27
 00:01:09,900 --> 00:01:13,130
-o funciones si tu lenguaje no
+o funciones, si tu lenguaje no
 es orientado a objetos--
 
 28
@@ -131,8 +133,8 @@ datos a través de la red
 
 29
 00:01:15,540 --> 00:01:17,480
-de acuerdo al protocolo de
-conexión.
+de acuerdo al protocolo
+de conexión.
 
 30
 00:01:17,480 --> 00:01:19,930
@@ -141,7 +143,7 @@ para las operaciones CRUD
 
 31
 00:01:19,930 --> 00:01:23,430
-de MongoDB es relativamente placentera
+en MongoDB es relativamente placentera
 para la mayoría de programadores
 
 32
@@ -174,7 +176,7 @@ APIs CRUD básicos que están
 
 38
 00:01:36,430 --> 00:01:38,830
-disponibles en el shell Mongo
+disponibles en el shell mongo
 y luego la funcionalidad
 
 39
@@ -200,28 +202,28 @@ de lo siguiente habrás aprendido?
 
 44
 00:01:47,460 --> 00:01:50,110
-La operaciones básicas de MongoDB
-para crear, acceder,
+¿Las operaciones básicas de
+MongoDB para crear, acceder,
 
 45
 00:01:50,110 --> 00:01:53,000
-modificar y remover documentos;
-algunas funcionalidades del
+modificar y remover documentos?
+¿Algunas funcionalidades del
 
 46
 00:01:53,000 --> 00:01:56,110
-shell Mongo de MongoDB; cómo
-medir la performance de
+shell mongo de MongoDB?
+¿Cómo medir la performance
 
 47
 00:01:56,110 --> 00:01:59,480
-operaciones de MongoDB; cómo
+de operaciones de MongoDB? ¿Cómo
 manipular documentos de MongoDB
 
 48
 00:01:59,480 --> 00:02:02,680
-desde Python; y cómo analizar
-datos en colecciones de MongoDB.
+desde Python? Y/o ¿cómo analizar
+datos en colecciones de MongoDB?
 
 49
 00:02:02,680 --> 00:02:03,930

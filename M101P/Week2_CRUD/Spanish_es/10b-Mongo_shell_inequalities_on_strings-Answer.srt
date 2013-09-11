@@ -28,7 +28,7 @@ y comparación de rango en MongoDB
 7
 00:00:15,600 --> 00:00:19,290
 toman en consideración si una 
-letra es mayúscula o minúcula
+letra es mayúscula o minúscula
 
 8
 00:00:19,290 --> 00:00:20,540

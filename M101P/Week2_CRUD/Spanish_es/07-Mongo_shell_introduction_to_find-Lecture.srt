@@ -37,11 +37,11 @@ tan interesante hacerle consultas.
 9
 00:00:13,770 --> 00:00:16,300
 Hay que construir una colección
-que contiene mucho más documentos
+que contenga mucho más documentos
 
 10
 00:00:16,300 --> 00:00:18,610
-con datos algo más distintos
+con datos más distintos
 para así poder hacer
 
 11
@@ -60,20 +60,20 @@ un bucle embebido.
 14
 00:00:22,840 --> 00:00:27,090
 El bucle externo itera sobre
-"i" desde 0 hasta, pero no
+"i" desde 0 hasta, pero
 
 15
 00:00:27,090 --> 00:00:31,790
-incluyendo 1000, y el bucle
+excluyendo 1000, y el bucle
 interno itera sobre "j" desde 0
 
 16
 00:00:31,790 --> 00:00:33,210
-hasta, pero no incluyendo 3.
+hasta, pero excluyendo 3.
 
 17
 00:00:33,210 --> 00:00:36,080
-Y por cada iteración del bucle, por
+Por cada iteración del bucle, por
 el bucle interno, se inserta un nuevo
 
 18
@@ -122,7 +122,7 @@ usando el método "find".
 27
 00:00:59,310 --> 00:01:02,920
 Como puedes ver, cuando llamas
-a "find" sin argumentos un
+a "find" sin argumentos, un
 
 28
 00:01:02,920 --> 00:01:05,330
@@ -246,8 +246,7 @@ iterar por estos
 
 53
 00:02:03,210 --> 00:02:05,640
-documentos manualmente
-es algo un poco
+documentos manualmente es un poco
 
 54
 00:02:05,640 --> 00:02:06,800
@@ -278,8 +277,8 @@ resultados de la consulta--
 
 60
 00:02:15,770 --> 00:02:17,960
-algo más fácil de leer,
-creo que dirías.
+esto es más fácil de leer y
+creo que estarías de acuerdo.
 
 61
 00:02:17,960 --> 00:02:20,250

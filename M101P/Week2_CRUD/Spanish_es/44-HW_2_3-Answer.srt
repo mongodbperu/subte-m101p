@@ -3,7 +3,7 @@
 
 2
 00:00:00,180 --> 00:00:03,620
-En este problema, te pedíamos
+Para este problema, te pedíamos
 añadir el código al blog que
 
 3

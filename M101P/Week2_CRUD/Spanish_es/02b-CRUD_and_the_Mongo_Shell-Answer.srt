@@ -7,9 +7,6 @@ Eso es correcto.
 Esta semana vamos a presentar
 las operaciones básicas de
 
-This week, we're going to go
-over the basic document
-
 3
 00:00:02,660 --> 00:00:05,260
 creación, acceso, modificación
@@ -17,8 +14,7 @@ y eliminación de documentos
 
 4
 00:00:05,260 --> 00:00:08,000
-conocidas como operaciones
-CRUD.
+conocidas como operaciones CRUD.
 
 5
 00:00:08,000 --> 00:00:10,170
@@ -27,7 +23,7 @@ del shell de MongoDB el cual
 
 6
 00:00:10,170 --> 00:00:12,600
-se llama Mongo, y sabremos
+se llama mongo, y
 cómo manipular
 
 7
@@ -46,7 +42,7 @@ de MongoDB o cómo medir
 
 10
 00:00:19,060 --> 00:00:22,820
-aquella perfromance, o cómo hacer
+aquella performance, o cómo hacer
 operaciones analíticas sobre
 
 11

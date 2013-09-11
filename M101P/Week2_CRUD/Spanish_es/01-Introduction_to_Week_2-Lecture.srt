@@ -41,18 +41,18 @@ accederlos desde el shell Mongo.
 
 10
 00:00:21,670 --> 00:00:24,240
-Después yo voy a presentar
-las mismas
+Después yo voy a
+presentar las mismas
 
 11
 00:00:24,240 --> 00:00:27,900
 operaciones, pero utilizando
-Python y PyMongo.
+Python y pymongo.
 
 12
 00:00:27,900 --> 00:00:30,210
 Va a ser una semana divertida.
-Entonces, empecemos.
+Empecemos.
 
 13
 00:00:30,210 --> 00:00:31,460

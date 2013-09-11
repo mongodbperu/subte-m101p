@@ -27,13 +27,13 @@ insertar el documento es
 
 7
 00:00:14,580 --> 00:00:16,390
-suficiente para crear la
-colección.
+suficiente para
+crear la colección.
 
 8
 00:00:16,390 --> 00:00:18,640
-Y en su defecto, el acto de
-crear una colección
+Y en su defecto, el acto
+de crear una colección
 
 9
 00:00:18,640 --> 00:00:21,750

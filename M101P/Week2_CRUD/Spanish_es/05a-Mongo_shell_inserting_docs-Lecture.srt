@@ -3,8 +3,8 @@
 
 2
 00:00:00,410 --> 00:00:03,290
-Entonces, ahora que sabemos lo que
-un documento es en MongoDB, hay 
+Entonces, ahora que sabemos qué
+es un documento en MongoDB, hay 
 
 3
 00:00:03,290 --> 00:00:05,600
@@ -18,8 +18,8 @@ de MongoDB están representados
 
 5
 00:00:08,590 --> 00:00:10,800
-en JavaScript por objetos de
-JavaScript.
+en JavaScript por
+objetos de JavaScript.
 
 6
 00:00:10,800 --> 00:00:12,910
@@ -28,7 +28,7 @@ variable en JavaScript--
 
 7
 00:00:12,910 --> 00:00:14,030
-llamémoslo "doc"--
+llamémosla "doc"--
 
 8
 00:00:14,030 --> 00:00:18,030
@@ -37,8 +37,8 @@ JavaScript, digamos, "name"
 
 9
 00:00:18,030 --> 00:00:21,570
-"Smith", "age" "30", "profession"
-"hacker".
+"Smith", "age" "30",
+"profession" "hacker".
 
 10
 00:00:21,570 --> 00:00:23,920
@@ -85,8 +85,8 @@ viven dentro de colecciones, las cuales
 
 19
 00:00:43,360 --> 00:00:45,350
-son simplemente conjuntos de
-documentos dentro de
+simplemente son conjuntos
+de documentos dentro de
 
 20
 00:00:45,350 --> 00:00:47,070
@@ -147,8 +147,8 @@ no imprime nada sobre el
 
 32
 00:01:17,450 --> 00:01:19,410
-El shell es usualmente muy
-breve por defecto.
+El shell es usualmente
+muy breve por defecto.
 
 33
 00:01:19,410 --> 00:01:21,120
@@ -162,8 +162,8 @@ este curso.
 
 35
 00:01:23,000 --> 00:01:25,140
-Para ver que he logrado
-hacer algo con 
+Para ver lo que he
+logrado hacer algo con 
 
 36
 00:01:25,140 --> 00:01:27,580
@@ -172,7 +172,7 @@ hacia adelante por un segundo y
 
 37
 00:01:27,580 --> 00:01:28,560
-mostrarte como puedes
+mostrarte cómo puedes
 hacer una consulta
 
 38
@@ -191,13 +191,13 @@ ingresas la colección, por ejemplo
 
 41
 00:01:34,500 --> 00:01:37,540
-y luego ejecutas el método "find"
-sobre esa colección.
+y luego ejecutas el método
+"find" sobre esa colección.
 
 42
 00:01:37,540 --> 00:01:40,070
-Si llamas a "find" sin
-argumentos, te va a retornar todos
+Si llamas a "find" sin argumentos,
+te va a retornar todos los
 
 43
 00:01:40,070 --> 00:01:41,660
@@ -219,8 +219,8 @@ la cadena "hacker".
 
 47
 00:01:49,390 --> 00:01:52,450
-Pero lo que ves es que hay un
-campo llamado "_id",
+Pero lo que ves es que
+hay un campo llamado "_id",
 
 48
 00:01:52,450 --> 00:01:55,190
@@ -229,8 +229,8 @@ algo llamado ObjectId,
 
 49
 00:01:55,190 --> 00:01:57,410
-que consiste de alguna secuencia
-de algo. 
+que consiste de alguna
+secuencia de algo. 
 
 50
 00:01:57,410 --> 00:02:00,770
@@ -248,13 +248,13 @@ campo con un identificador único.
 
 53
 00:02:05,450 --> 00:02:08,410
-De hecho, usamos un "_id"
-para este campo.
+De hecho, usamos un
+"_id" para este campo.
 
 54
 00:02:08,410 --> 00:02:10,750
-El campo "_id"
-dentro de un documento es
+El campo "_id" dentro
+de un documento es
 
 55
 00:02:10,750 --> 00:02:12,120
@@ -263,7 +263,7 @@ un campo de clave primaria.
 56
 00:02:12,120 --> 00:02:14,740
 Es decir, es un requerimiento
-que esté presente, el valor de
+que esté presente; el valor de
 
 57
 00:02:14,740 --> 00:02:17,370
@@ -286,18 +286,18 @@ sea inmutable.
 
 61
 00:02:23,720 --> 00:02:26,650
-No dejamos que cambies el valor
-del campo "_id" 
+No dejamos que cambies
+el valor del campo "_id" 
 
 62
 00:02:26,650 --> 00:02:28,520
-dentro del documento en
-el sistema.
+dentro del documento
+en el sistema.
 
 63
 00:02:28,520 --> 00:02:31,390
-Puedes simular un cambio
-del campo "_id"
+Puedes simular un
+cambio del campo "_id"
 
 64
 00:02:31,390 --> 00:02:33,980
@@ -306,18 +306,18 @@ poniendo otro documento
 
 65
 00:02:33,980 --> 00:02:37,360
-con un valor diferente para el
-campo "_id", pero los
+con un valor diferente para
+el campo "_id" y los
 
 66
 00:02:37,360 --> 00:02:39,980
 mismos valores para los otros
-cambios, aunque eso no sería
+campos, aunque eso no sería
 
 67
 00:02:39,980 --> 00:02:42,920
-una operación atómica dentro
-de la base de datos.
+una operación atómica
+dentro de la base de datos.
 
 68
 00:02:42,920 --> 00:02:46,040
@@ -402,8 +402,8 @@ información, logramos tener un
 
 85
 00:03:23,600 --> 00:03:26,720
-valor que tiene una probabilidad
-alta de ser único,
+valor que tiene una alta 
+probabilidad de ser único,
 
 86
 00:03:26,720 --> 00:03:29,350
@@ -430,8 +430,7 @@ usar un ObjectId como un "_id",
 
 91
 00:03:39,970 --> 00:03:42,820
-sin ninguna
-probabilidad de que haya  
+sin ninguna probabilidad de que haya  
 
 92
 00:03:42,820 --> 00:03:44,790
@@ -459,17 +458,17 @@ de datos, un ObjectId será
 
 97
 00:03:55,640 --> 00:03:58,470
-construido para ti, el cual será
-usado como el "_id"
+construido automáticamente,
+el cual será usado como el
 
 98
 00:03:58,470 --> 00:03:59,540
-de tus documentos.
+"_id" de tus documentos.
 
 99
 00:03:59,540 --> 00:04:01,010
-Entonces déjame enseñarte eso
-de nuevo.
+Déjame enseñarte
+eso de nuevo.
 
 100
 00:04:01,010 --> 00:04:04,120
@@ -478,7 +477,7 @@ base de datos, tipo ingresando
 
 101
 00:04:04,120 --> 00:04:08,060
-db.people.insert y luego
+"db.people.insert" y luego
 construyo un documento, y luego
 
 102
@@ -548,8 +547,8 @@ valor "apple", "color" teniendo el
 
 116
 00:04:40,630 --> 00:04:43,960
-valor "red" y "shape" teniendo un
-valor "round".
+valor "red" y "shape"
+teniendo el valor "round".
 
 117
 00:04:43,960 --> 00:04:46,150

@@ -11,12 +11,12 @@ BSON soporta cadenas--
 
 4
 00:00:02,430 --> 00:00:05,240
-las cuales tiene que estar
+las cuales tienen que estar
 codificadas en UTF-8--
 
 5
 00:00:05,240 --> 00:00:06,410
-números de punto flotante--
+números de punto flotante,
 
 6
 00:00:06,410 --> 00:00:08,750
@@ -25,13 +25,13 @@ doble precisión--si eso te es
 
 7
 00:00:08,750 --> 00:00:12,510
-importante, arrays, objetos
+importante--arrays, objetos
 y timestamps.
 
 8
 00:00:12,510 --> 00:00:15,110
-BSON, por el momento, no soporta
-números complejos.
+BSON, por el momento, no
+soporta números complejos.
 
 9
 00:00:15,110 --> 00:00:16,360

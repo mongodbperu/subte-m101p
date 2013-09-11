@@ -13,8 +13,8 @@ Al igual que el método
 
 4
 00:00:04,180 --> 00:00:05,740
-"find" puede lleva un
-par de argumentos.
+"find" puede llevar
+un par de argumentos.
 
 5
 00:00:05,740 --> 00:00:08,530
@@ -28,13 +28,13 @@ hace la cláusula WHERE en SQL.
 
 7
 00:00:11,140 --> 00:00:13,680
-Por ejemplo, puede recuperar
+Por ejemplo, puedes recuperar
 sólo aquellos documentos donde
 
 8
 00:00:13,680 --> 00:00:16,320
-el campo "type" es "essay". Y
-aquí vemos un grupo de ensayos
+el campo "type" es "essay".
+Aquí vemos un grupo de ensayos
 
 9
 00:00:16,320 --> 00:00:17,280
@@ -43,7 +43,7 @@ con su nota.
 10
 00:00:17,280 --> 00:00:20,370
 Alternativamente, puedo seleccionar
-sólo aquellos donde el estudiante
+sólo aquéllos donde el estudiante
 
 11
 00:00:20,370 --> 00:00:21,650
@@ -79,12 +79,12 @@ el documento donde el identificador
 
 18
 00:00:34,695 --> 00:00:36,980
-de "student" es "19" y el 
-"type" es "essay."
+de "student" es "19" y
+el "type" es "essay."
 
 19
 00:00:36,980 --> 00:00:39,250
-En efecto, este es un
+En efecto, éste es un
 detalle importante.
 
 20
@@ -148,7 +148,7 @@ recuperar sólo el "score".
 
 32
 00:01:11,580 --> 00:01:14,780
-Una vez más, por defecto el _id
+Una vez más, por defecto el "_id"
 será retornado, aun si no lo
 
 33
@@ -158,12 +158,12 @@ he pedido.
 34
 00:01:15,700 --> 00:01:18,620
 Si quisiera que no me retorne
-el _id, puedo pedir que
+el "_id", puedo pedir que
 
 35
 00:01:18,620 --> 00:01:23,050
-el _id sea excluido
-especificando _id "false".
+el "_id" sea excluido
+especificando "_id" "false".
 
 36
 00:01:23,050 --> 00:01:25,900

@@ -12,7 +12,7 @@ La segunda.
 4
 00:00:01,840 --> 00:00:05,060
 Las otras tienen desigualdades
-estrictas, no-inclusivas 
+estrictas, exclusivas, 
 
 5
 00:00:05,060 --> 00:00:08,180
