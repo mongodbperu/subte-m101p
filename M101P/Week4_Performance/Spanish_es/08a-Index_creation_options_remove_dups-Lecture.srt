@@ -55,7 +55,7 @@ pasando la opción "dropDups" y
 
 13
 00:00:27,230 --> 00:00:29,170
-estableciéndolo a "true", estableciendo
+estableciéndolo a "true", poniendo
 también la
 
 14
@@ -103,7 +103,7 @@ problema, pero funcionará.
 23
 00:00:53,820 --> 00:00:56,910
 Por lo que esos documentos son
-irremediablemente elimiandos de la
+irremediablemente eliminados de la
 
 24
 00:00:56,910 --> 00:00:57,610
@@ -130,7 +130,7 @@ colección "things." Y he
 
 29
 00:01:06,980 --> 00:01:08,880
-hecho "db.things.find".
+hecho "db.things.find()".
 
 30
 00:01:08,880 --> 00:01:10,925
@@ -149,16 +149,16 @@ Y contienen "pear",
 33
 00:01:15,740 --> 00:01:19,200
 Por lo que si quiero crear un índice
-sonbre eso puedo hacerlo.
+sobre esto puedo hacerlo.
 
 34
 00:01:19,200 --> 00:01:24,450
 Voy a hacer
-"db.things.ensureIndex", y pasarle
+"db.things.ensureIndex", y voy a pasarle
 
 35
 00:01:24,450 --> 00:01:26,610
-"thing" ascendentemente.
+"thing" ascendente.
 
 36
 00:01:26,610 --> 00:01:31,850
@@ -172,7 +172,7 @@ averiguar que fallará,
 
 38
 00:01:34,640 --> 00:01:36,960
-porque despúes de todo, hay
+porque después de todo, hay
 un duplicado.
 
 39
