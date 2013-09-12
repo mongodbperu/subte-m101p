@@ -1,208 +1,238 @@
 1
-00:00:00,000 --> 00:00:00,190
+00:00:00,000 --> 00:00:00,160
 
 2
-00:00:00,190 --> 00:00:00,460
-All right.
+00:00:00,160 --> 00:00:02,150
+All right, let's revisit
+JSON now and talk
 
 3
-00:00:00,460 --> 00:00:02,170
-Let's revisit JSON now and talk
-
-4
-00:00:02,170 --> 00:00:03,430
+00:00:02,150 --> 00:00:03,400
 about what it can represent.
 
-5
-00:00:03,430 --> 00:00:05,570
+4
+00:00:03,400 --> 00:00:05,560
 And then we're going to get to
 why it can represent it.
 
-6
-00:00:05,570 --> 00:00:09,130
+5
+00:00:05,560 --> 00:00:09,110
 There are only two basic data
 structures inside JSON, and
 
-7
-00:00:09,130 --> 00:00:11,920
+6
+00:00:09,110 --> 00:00:11,880
 they are arrays and
 dictionaries.
 
-8
-00:00:11,920 --> 00:00:13,400
+7
+00:00:11,880 --> 00:00:13,370
 Now, we all know what
 arrays are.
 
+8
+00:00:13,370 --> 00:00:16,400
+Arrays are lists of things,
+and dictionaries are these
+
 9
-00:00:13,400 --> 00:00:14,800
-Arrays are list of things.
+00:00:16,400 --> 00:00:17,930
+associated maps.
 
 10
-00:00:14,800 --> 00:00:17,950
-And dictionaries are these
-associative maps.
-
-11
-00:00:17,950 --> 00:00:20,830
+00:00:17,930 --> 00:00:20,790
 So they can be combined
 in arbitrary ways.
 
-12
-00:00:20,830 --> 00:00:24,290
+11
+00:00:20,790 --> 00:00:24,270
 So an array inside JSON is
 represented using these square
 
-13
-00:00:24,290 --> 00:00:26,600
+12
+00:00:24,270 --> 00:00:26,590
 brackets and then a list
 of items between.
 
-14
-00:00:26,600 --> 00:00:29,010
+13
+00:00:26,590 --> 00:00:28,980
 And a dictionary is represented
 using the curly
 
-15
-00:00:29,010 --> 00:00:33,280
+14
+00:00:28,980 --> 00:00:33,250
 braces, and it's a bunch of
 keyword and value pairs.
 
-16
-00:00:33,280 --> 00:00:35,850
+15
+00:00:33,250 --> 00:00:35,820
 And then there's a keyword,
-a colon, and then a value.
+colon, and then a value.
 
-17
-00:00:35,850 --> 00:00:37,380
+16
+00:00:35,820 --> 00:00:37,350
 And there could be arbitrary
 numbers of these
 
-18
-00:00:37,380 --> 00:00:38,940
+17
+00:00:37,350 --> 00:00:38,950
 separated by commas.
 
+18
+00:00:38,950 --> 00:00:41,600
+Those are the only two data
+structures inside JSON, and
+
 19
-00:00:38,940 --> 00:00:41,460
-Those are only two data
-structures inside JSON.
+00:00:41,600 --> 00:00:42,305
+they're all just combined.
 
 20
-00:00:41,460 --> 00:00:43,350
-And they're all just combined,
-and they could be nested in
+00:00:42,305 --> 00:00:44,530
+And they can be nested
+in arbitrary ways.
 
 21
-00:00:43,350 --> 00:00:44,550
-arbitrary ways.
-
-22
-00:00:44,550 --> 00:00:46,910
+00:00:44,530 --> 00:00:46,990
 So I can create a very
 deep document.
 
+22
+00:00:46,990 --> 00:00:49,020
+So I can create a document,
+for instance.
+
 23
-00:00:46,910 --> 00:00:49,560
-So I can create a document, for
-instance, and at the top
+00:00:49,020 --> 00:00:51,180
+At the top level there has
+to be a dictionary.
 
 24
-00:00:49,560 --> 00:00:51,110
-level, there has to
-be a dictionary.
+00:00:51,180 --> 00:00:53,510
+And I can create something
+with a name,
 
 25
-00:00:51,110 --> 00:00:54,070
-And I can create something with
-a name and that has a
+00:00:53,510 --> 00:00:54,930
+and that has a value.
 
 26
-00:00:54,070 --> 00:00:57,260
-value, and then I could have a
-city, and it can have another
+00:00:54,930 --> 00:00:57,000
+And then I could have a
+city, and it can have
 
 27
-00:00:57,260 --> 00:00:58,660
-value here.
+00:00:57,000 --> 00:00:58,740
+another value here.
 
 28
-00:00:58,660 --> 00:01:00,900
-And then I could put, for
+00:00:58,740 --> 00:01:00,880
+And then I could put-- for
 instance, if this is just a
 
 29
-00:01:00,900 --> 00:01:03,060
+00:01:00,880 --> 00:01:03,030
 collection of people and their
 cities and maybe their
 
 30
-00:01:03,060 --> 00:01:05,990
-interests, I can have another
-key here called Interest, and
+00:01:03,030 --> 00:01:03,690
+interests--
 
 31
-00:01:05,990 --> 00:01:08,040
-that could turn out
-to be an array.
+00:01:03,690 --> 00:01:05,800
+can have another key here
+called interest.
 
 32
-00:01:08,040 --> 00:01:09,640
-And it's got square brackets,
-and I could
+00:01:05,800 --> 00:01:08,110
+And that could turn out
+to be an array, and
 
 33
-00:01:09,640 --> 00:01:11,290
-put things in here.
+00:01:08,110 --> 00:01:09,200
+it's got square brackets.
 
 34
-00:01:11,290 --> 00:01:14,440
-And each of these, in itself,
-could, of course, be its own
+00:01:09,200 --> 00:01:11,270
+And then I could put
+things in here.
 
 35
-00:01:14,440 --> 00:01:17,070
+00:01:11,270 --> 00:01:14,410
+And each of these in itself
+could, of course, be its own
+
+36
+00:01:14,410 --> 00:01:17,040
 dictionary, which means it would
 be represented using the
 
-36
-00:01:17,070 --> 00:01:18,280
-curly braces.
-
 37
-00:01:18,280 --> 00:01:21,370
+00:01:17,040 --> 00:01:18,350
+curly brace.
+
+38
+00:01:18,350 --> 00:01:21,350
 So we're going to build up
 everything from these two
 
-38
-00:01:21,370 --> 00:01:22,720
+39
+00:01:21,350 --> 00:01:23,050
 basic data structures.
 
-39
-00:01:22,720 --> 00:01:26,720
-The two basic structures are
-arrays and dictionaries.
-
 40
-00:01:26,720 --> 00:01:30,410
+00:01:23,050 --> 00:01:26,700
+The two basic data structures
+are arrays and dictionaries.
+
+41
+00:01:26,700 --> 00:01:30,380
 Now we're going to go through
 and show you each of these and
 
-41
-00:01:30,410 --> 00:01:31,530
+42
+00:01:30,380 --> 00:01:31,500
 teach you how to write them.
 
-42
-00:01:31,530 --> 00:01:33,710
-And then we'll go one higher
-level and show how they're
-
 43
-00:01:33,710 --> 00:01:35,730
-used in data representation
-relative
+00:01:31,500 --> 00:01:33,530
+And then we'll go from a higher
+level and show how
 
 44
-00:01:35,730 --> 00:01:36,980
-to relational databases.
+00:01:33,530 --> 00:01:35,870
+they're used in data
+representation relative to
 
 45
-00:01:36,980 --> 00:01:37,900
+00:01:35,870 --> 00:01:37,230
+relational databases.
+
+46
+00:01:37,230 --> 00:01:39,410
+All right, time for
+the next quiz.
+
+47
+00:01:39,410 --> 00:01:43,100
+Write the JSON for a simple
+document containing a single
+
+48
+00:01:43,100 --> 00:01:47,370
+key, fruit, that has as its
+value an array containing
+
+49
+00:01:47,370 --> 00:01:50,040
+three strings, apple,
+pear, and peach.
+
+50
+00:01:50,040 --> 00:01:51,990
+You're just going to write the
+JSON document for that.
+
+51
+00:01:51,990 --> 00:01:53,240
