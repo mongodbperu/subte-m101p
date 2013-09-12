@@ -3,13 +3,13 @@
 
 2
 00:00:00,180 --> 00:00:03,015
-The answer is db dot students
-dot ensure index student ID
+La respuesta es "db.students.
+ensureIndex({student_id:
 
 3
 00:00:03,015 --> 00:00:06,820
-one, class ID colon
-one, unique true.
+1, class_id:
+1}, {unique: true})".
 
 4
 00:00:06,820 --> 00:00:08,070
