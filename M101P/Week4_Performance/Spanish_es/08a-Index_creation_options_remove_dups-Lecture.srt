@@ -3,312 +3,312 @@
 
 2
 00:00:00,130 --> 00:00:00,450
-All right.
+Bien.
 
 3
 00:00:00,450 --> 00:00:04,340
-So now we know how to create
-an index and have it be a
+Ahora sabemos cómo crear
+un índice y hacer que sea un
 
 4
 00:00:04,340 --> 00:00:07,530
-unique index by giving the
-unique true option.
+índice único pasándole la
+opción "unique: true".
 
 5
 00:00:07,530 --> 00:00:10,760
-Now the problem is, what if you
-want to create an index on
+Ahora el problema es, ¿qué ocurre si
+quieres crear un índice en
 
 6
 00:00:10,760 --> 00:00:13,260
-a collection but there are
-duplicate keys in the
+una colección pero ya existen 
+claves duplicadas en la
 
 7
 00:00:13,260 --> 00:00:14,050
-collection?
+colección?
 
 8
 00:00:14,050 --> 00:00:16,260
-Now, there is a way to do
-this inside MongoDB,
+Hay una forma de hacer
+esto en MongoDB,
 
 9
 00:00:16,260 --> 00:00:18,250
-but it's a bit dangerous.
+pero es un poco peligrosa.
 
 10
 00:00:18,250 --> 00:00:19,820
-But I want you to
-know about it.
+Pero quiero que la
+conozcas.
 
 11
 00:00:19,820 --> 00:00:22,240
-If you want to remove the
-duplicate keys when creating
+Si quieres eliminar las
+claves duplicadas cuando se crea
 
 12
 00:00:22,240 --> 00:00:27,230
-the index, you can do it by
-giving the dropDups option and
+el índice, puedes hacerlo
+pasando la opción "dropDups" y
 
 13
 00:00:27,230 --> 00:00:29,170
-setting it to true, while
-also setting the
+estableciéndolo a "true", poniendo
+también la
 
 14
 00:00:29,170 --> 00:00:30,530
-unique option to true.
+opción "unique" a "true".
 
 15
 00:00:30,530 --> 00:00:33,580
-So you have to set unique to
-true and dropDups to true.
+Por lo que tienes que establecer "unique" a
+"true" y "dropDups" a "true".
 
 16
 00:00:33,580 --> 00:00:36,750
-And what this will do is, as it
-goes through the collection
+Y lo que esto hace es, a medida
+que recorre la colección
 
 17
 00:00:36,750 --> 00:00:40,510
-and creates the index, if it
-finds more than one document
+y crea el índice, si
+encuentra más de un documento
 
 18
 00:00:40,510 --> 00:00:44,360
-with the same key it will
-remove all the documents
+con la misma clave
+eliminará todos los documentos
 
 19
 00:00:44,360 --> 00:00:45,600
-except for one.
+excepto uno.
 
 20
 00:00:45,600 --> 00:00:48,490
-And there's no way to control
-which one it removes.
+Y no hay manera de controlar
+cuál elimina.
 
 21
 00:00:48,490 --> 00:00:51,770
-So this is a pretty big
-sledgehammer to solve the
+Por lo que esto es un gran
+mazo para resolver el
 
 22
 00:00:51,770 --> 00:00:53,820
-problem, but it will work.
+problema, pero funcionará.
 
 23
 00:00:53,820 --> 00:00:56,910
-So those documents are
-irretrievably deleted from the
+Por lo que esos documentos son
+irremediablemente eliminados de la
 
 24
 00:00:56,910 --> 00:00:57,610
-collection.
+colección.
 
 25
 00:00:57,610 --> 00:01:00,520
-And I wouldn't recommend this,
-but if this is what you want,
+Y yo no recomendaría esto,
+pero si es lo que quieres,
 
 26
 00:01:00,520 --> 00:01:02,080
-then you can do it.
+entonces puedes hacerlo.
 
 27
 00:01:02,080 --> 00:01:04,330
-Let me show it to you
-in the shell.
+Déjame que te lo enseñe
+en el shell.
 
 28
 00:01:04,330 --> 00:01:06,980
-Here I have a collection, the
-collection "things." And I've
+Aquí tengo una colección, la 
+colección "things." Y he
 
 29
 00:01:06,980 --> 00:01:08,880
-done db.things.find.
+hecho "db.things.find()".
 
 30
 00:01:08,880 --> 00:01:10,925
-And you can see there's
-three things in here.
+Y puedes ver que hay
+tres cosas aquí.
 
 31
 00:01:10,925 --> 00:01:12,520
-Each of them has a key thing.
+Cada una de ellas tiene una clave "thing".
 
 32
 00:01:12,520 --> 00:01:15,740
-And there's a pear,
-apple, and pear.
+Y contienen "pear",
+"apple" y "pear".
 
 33
 00:01:15,740 --> 00:01:19,200
-So if I want to create an index
-on that I can do that.
+Por lo que si quiero crear un índice
+sobre esto puedo hacerlo.
 
 34
 00:01:19,200 --> 00:01:24,450
-I'm going to do
-db.things.ensureIndex, and put
+Voy a hacer
+"db.things.ensureIndex", y voy a pasarle
 
 35
 00:01:24,450 --> 00:01:26,610
-it on thing ascending.
+"thing" ascendentemente.
 
 36
 00:01:26,610 --> 00:01:31,850
-And now I'm going to offer
-unique equals true.
+Y ahora voy a ponerle
+"unique" igual a "true".
 
 37
 00:01:31,850 --> 00:01:34,640
-And if I did that, I should
-find that it will fail,
+Y si hiciera eso, debería
+averiguar que fallará,
 
 38
 00:01:34,640 --> 00:01:36,960
-because after all, there's
-a duplicate.
+porque después de todo, hay
+un duplicado.
 
 39
 00:01:36,960 --> 00:01:37,490
-All right.
+De acuerdo.
 
 40
 00:01:37,490 --> 00:01:39,600
-So if we try to do that, we get
-a duplicate key error when
+Así que si intentamos hacer eso, obtenemos
+un error de clave duplicada cuando
 
 41
 00:01:39,600 --> 00:01:41,060
-it tries to create the index.
+intenta crear el índice.
 
 42
 00:01:41,060 --> 00:01:43,970
-So let's go through it now
-and let's remove all the
+Así que seguimos y ahora vamos
+a eliminar todos los
 
 43
 00:01:43,970 --> 00:01:44,960
-duplicates.
+duplicados.
 
 44
 00:01:44,960 --> 00:01:47,150
-I'm going to give the same
-ensureIndex command, but this
+Voy a ejecutar el mismo
+comando "ensureIndex", pero esta
 
 45
 00:01:47,150 --> 00:01:52,560
-time I'm going to say dropDups
-true to drop the duplicates.
+vez voy a decir "dropDups: true"
+para eliminar los duplicados.
 
 46
 00:01:52,560 --> 00:01:56,420
-And if I do that, then
-the index succeeds.
+Y si hago eso, entonces el
+índice se crea con éxito.
 
 47
 00:01:56,420 --> 00:02:00,770
-And if I now look in the
-collection, I'll find that,
+Y si ahora echo un vistazo a la
+colección, encuentro que,
 
 48
 00:02:00,770 --> 00:02:04,840
-indeed, one of my two items
-for pear-- pear was a
+de hecho, uno de mis dos elementos
+"pear" -- "pear" era una
 
 49
 00:02:04,840 --> 00:02:06,000
-duplicate key--
+clave duplicada --
 
 50
 00:02:06,000 --> 00:02:06,690
-has been removed.
+ha sido eliminado.
 
 51
 00:02:06,690 --> 00:02:09,080
-Now there's only two documents
-in the collection.
+Ahora hay sólo dos documentos
+en la colección.
 
 52
 00:02:09,080 --> 00:02:13,890
-And if you look and see what
-indexes are on the collection,
+Y si echas un vistazo y ves qué
+índices existen en la colección,
 
 53
 00:02:13,890 --> 00:02:17,930
-you'll see there's now an index
-in the collection that
+verás que ahora hay un índice
+en la colección 
 
 54
 00:02:17,930 --> 00:02:19,020
-is unique true.
+con "unique: true".
 
 55
 00:02:19,020 --> 00:02:22,620
-And also it noted that dropDups
-was true during the
+Y también indica que "dropDups"
+era "true" durante la
 
 56
 00:02:22,620 --> 00:02:24,790
-creation, so that
-you know that.
+creación, para que
+sepas eso.
 
 57
 00:02:24,790 --> 00:02:25,300
-All right.
+Bien.
 
 58
 00:02:25,300 --> 00:02:27,210
-It is time for a quiz.
+Hora de hacer un cuestionario.
 
 59
 00:02:27,210 --> 00:02:30,530
-If you choose the dropDups
-option when creating a unique
+Si eliges la opción
+"dropDups" para la creación de un índice
 
 60
 00:02:30,530 --> 00:02:34,480
-index, what will MongoDB do to
-documents that conflict with
+único, ¿qué hará MongoDB a los
+documentos que entren en conflicto con
 
 61
 00:02:34,480 --> 00:02:36,380
-an existing index entry?
+una entrada existente en el índice?
 
 62
 00:02:36,380 --> 00:02:38,230
-Move them to an archive
-collection?
+¿Moverlos a una colección
+"archive"?
 
 63
 00:02:38,230 --> 00:02:40,520
-Unset the conflicting key so
-that they can be indexed and
+¿Deshacer la clave en conflicto para
+que pueda ser indexada y
 
 64
 00:02:40,520 --> 00:02:42,010
-remain in the collection?
+dejarla en la colección?
 
 65
 00:02:42,010 --> 00:02:45,170
-Remove them but write the
-deleted documents in JSON to a
+¿Eliminarlas pero escribiendo los
+documentos eliminados en JSON a un
 
 66
 00:02:45,170 --> 00:02:46,850
-special file in the
-log directory?
+fichero especial en el
+directorio "log"?
 
 67
 00:02:46,850 --> 00:02:48,580
-Or delete them forever
-and ever, Amen?
+¿O eliminarlas por los siglos
+de los siglos, amén?
 
 68
 00:02:48,580 --> 00:02:49,830

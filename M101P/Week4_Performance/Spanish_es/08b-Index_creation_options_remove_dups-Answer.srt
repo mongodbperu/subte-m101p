@@ -3,22 +3,22 @@
 
 2
 00:00:00,280 --> 00:00:00,770
-All right.
+Bien.
 
 3
 00:00:00,770 --> 00:00:04,810
-And the answer is that the
-documents will be deleted
+Y la respuesta es que los
+documentos serán eliminados
 
 4
 00:00:04,810 --> 00:00:06,570
-forever and ever, Amen.
+por los siglos de los siglos, amén.
 
 5
 00:00:06,570 --> 00:00:10,630
-So be very careful with that
-drop dups option when creating
+Así que sé muy cuidadoso con esa
+opción "dropDups" cuando estés creando
 
 6
 00:00:10,630 --> 00:00:11,880
-a unique index.
+un índice único.
