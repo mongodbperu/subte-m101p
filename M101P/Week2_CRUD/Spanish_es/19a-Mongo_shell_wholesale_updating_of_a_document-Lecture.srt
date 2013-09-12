@@ -37,7 +37,7 @@ Charlie, Dave, Edgar, Fred,
 
 9
 00:00:16,980 --> 00:00:18,750
-y bueno nombre "42".
+y bueno, un nombre "42".
 
 10
 00:00:18,750 --> 00:00:20,540
@@ -46,12 +46,12 @@ en la base de datos, es bastante
 
 11
 00:00:20,540 --> 00:00:22,830
-común desear tener la posibilidad
+común querer tener la posibilidad
 de modificar esos documentos.
 
 12
 00:00:22,830 --> 00:00:25,860
-Y así al igual que tenemos un 
+Así, al igual que tenemos un 
 método para retornar documentos
 
 13
@@ -65,7 +65,7 @@ modificar los documentos.
 
 15
 00:00:29,790 --> 00:00:34,670
-Ahora, en el shell Mongo, el API
+Ahora, en el shell mongo, el API
 para actualizar, en realidad, hace
 
 16
@@ -74,26 +74,26 @@ cuatro cosas diferentes.
 
 17
 00:00:36,500 --> 00:00:38,505
-Ahora mismo, vamos a
-aprender uno de ellos y
+Ahora mismo vamos a
+aprender una de ellas
 
 18
 00:00:38,505 --> 00:00:40,510
-aprenderemos el resto
+y aprenderemos el resto
 a medida que avancemos.
 
 19
 00:00:40,510 --> 00:00:43,830
-Al igual que las consultas son métodos,
-en una colección las actualizaciones
+Al igual que las consultas,
+las actualizaciones también
 
 20
 00:00:43,830 --> 00:00:45,270
-también son métodos.
+son métodos en una colección
 
 21
 00:00:45,270 --> 00:00:48,710
-Y las actualizaciones toman
+y las actualizaciones toman
 al menos dos argumentos.
 
 22
@@ -107,7 +107,7 @@ cláusula WHERE en SQL.
 
 24
 00:00:53,550 --> 00:00:56,510
-Por tanto todo lo que has aprendido
+Por lo tanto, todo lo que has aprendido
 acerca de "find" es aplicable a la
 
 25
@@ -117,13 +117,13 @@ realizar actualizaciones.
 
 26
 00:00:58,850 --> 00:01:02,740
-Así, por ejemplo, digamos que
+Por ejemplo, digamos que
 deseo actualizar "Smith",
 
 27
 00:01:02,740 --> 00:01:05,470
 el segundo argumento para actualizar
-es un documento, y en el caso simple,
+es un documento y en el caso simple,
 
 28
 00:01:05,470 --> 00:01:08,990
@@ -171,12 +171,12 @@ en mi ventana de terminal muestra
 
 37
 00:01:36,650 --> 00:01:40,170
-el "_id" con un ObjectId
-en particular y que tiene el
+el "_id" con un "ObjectId"
+en particular que contiene
 
 38
 00:01:40,170 --> 00:01:41,740
-nombre "Smith".
+el nombre "Smith".
 
 39
 00:01:41,740 --> 00:01:44,700
@@ -185,17 +185,17 @@ de la ventana de mi terminal
 
 40
 00:01:44,700 --> 00:01:48,650
-tiene el mismo ObjectId pero ahora
-el nombre es "Thompson" y el
+tiene el mismo "ObjectId" pero
+ahora el nombre es "Thompson" y
 
 41
 00:01:48,650 --> 00:01:50,240
-salario es 50000.
+el salario es 50000.
 
 42
 00:01:50,240 --> 00:01:52,500
 Los otros dos campos de
-información que existía en
+información que existían en
 
 43
 00:01:52,500 --> 00:01:54,300
@@ -212,15 +212,15 @@ Este uso del operador
 46
 00:01:57,720 --> 00:01:59,400
 MongoDB fue originalmente
-diseñado como un
+diseñado como un tipo de
 
 47
 00:01:59,400 --> 00:02:00,840
-tipo de almacén de objetos.
+almacén de objetos.
 
 48
 00:02:00,840 --> 00:02:03,440
-Y en un almacén de objetos,
+En un almacén de objetos,
 especialmente para un
 
 49
@@ -236,12 +236,12 @@ poder decir que tengo
 51
 00:02:09,440 --> 00:02:12,000
 un documento en la
-aplicación, manipular el
+aplicación, manipulo el
 
 52
 00:02:12,000 --> 00:02:14,290
 documento en la aplicación,
-y ponerlo de vuelta en la
+y lo pongo de vuelta en la
 
 53
 00:02:14,290 --> 00:02:17,190
@@ -250,13 +250,13 @@ lo que ocurre en la base de datos
 
 54
 00:02:17,190 --> 00:02:19,910
-para aquel documento, almacenando
-sólo estas cosas que la
+respecto a aquel documento,
+almacenando sólo estas cosas
 
 55
 00:02:19,910 --> 00:02:22,940
-aplicación tiene actualmente
-para el documento.
+que la aplicación contiene
+actualmente para el documento.
 
 56
 00:02:22,940 --> 00:02:25,380
@@ -275,7 +275,7 @@ de un documento.
 
 59
 00:02:31,000 --> 00:02:33,320
-En cualquier caso, este
+De igual manera, este
 reemplazo masivo es
 
 60
@@ -289,7 +289,7 @@ datos en la base de datos y
 
 62
 00:02:37,680 --> 00:02:40,890
-no sabes cómo o no puedes calcular
+no sabes cómo, o no puedes calcular
 convenientemente la diferencia (delta)
 
 63
@@ -319,7 +319,7 @@ frecuente para esta
 68
 00:02:54,210 --> 00:02:56,500
 versión de reemplazo
-de actualización.
+por actualización.
 
 69
 00:02:56,500 --> 00:02:59,240
@@ -352,7 +352,7 @@ una colección con el
 
 75
 00:03:06,890 --> 00:03:09,180
-siguiente documento en él.
+siguiente documento.
 
 76
 00:03:09,180 --> 00:03:15,930

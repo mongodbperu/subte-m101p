@@ -8,12 +8,11 @@ parecido a esto.
 
 3
 00:00:01,700 --> 00:00:05,380
-"db.scores.find({type:
-'exam'})".
+"db.scores.find({type:'exam'})".
 
 4
 00:00:05,380 --> 00:00:07,040
-Y luego estos modificadores
+Luego estos modificadores
 de cursor pueden
 
 5

@@ -3,17 +3,17 @@
 
 2
 00:00:00,180 --> 00:00:02,200
-Hay que aprender sobre algunos
+Hay que aprender acerca de
 otros operadores de consulta.
 
 3
 00:00:02,200 --> 00:00:04,910
 Como puedes haber notado, la
-colección "people" que cree
+colección "people" que creé
 
 4
 00:00:04,910 --> 00:00:06,940
-tiene un número de diferentes
+contiene diferentes
 tipos de documentos.
 
 5
@@ -37,22 +37,21 @@ y otros documentos--
 
 9
 00:00:22,120 --> 00:00:23,770
-bueno, sólo uno otro documento--
+bueno, sólo un documento--
 
 10
 00:00:23,770 --> 00:00:26,380
-tiene el campo "name"
-como número.
+tiene el campo "name" como número.
 
 11
 00:00:26,380 --> 00:00:29,010
-MongoDB ayuda a que hagas
-consultas basadas en la estructura
+MongoDB te permite hacer consultas
+basadas en la estructura
 
 12
 00:00:29,010 --> 00:00:31,700
 y los tipos de información
-que está en los documentos
+contenidos en los documentos
 
 13
 00:00:31,700 --> 00:00:33,490
@@ -65,17 +64,17 @@ recuperar todos los documentos
 
 15
 00:00:36,230 --> 00:00:40,850
-el campo "profession" existe,
-puedo decir "db.people.find" y
+donde el campo "profession" existe,
+puedo ingresar "db.people.find" y
 
 16
 00:00:40,850 --> 00:00:42,740
-luego el argumento es un
+luego el argumento, el cual es un
 documento que contiene el campo
 
 17
 00:00:42,740 --> 00:00:44,710
-"profession," cuyo valor
+"profession" y cuyo valor
 correspondiente es un
 
 18
@@ -89,7 +88,7 @@ valor correspondiente de "true".
 
 20
 00:00:49,290 --> 00:00:51,780
-Y esto me va a retornar sólo
+Esto me va a retornar sólo
 "Smith" y "Jones", quienes
 
 21
@@ -104,7 +103,7 @@ la consulta y pedir sólo aquellos
 23
 00:00:55,590 --> 00:00:58,450
 documentos donde el campo
-"profession" no existe, y eso
+"profession" no existe y eso
 
 24
 00:00:58,450 --> 00:01:00,510
@@ -121,7 +120,7 @@ de un campo en particular.
 
 27
 00:01:04,780 --> 00:01:07,410
-Por ejemplo, si quiere recuperar
+Por ejemplo, si quiero recuperar
 sólo aquellos documentos donde el
 
 28
@@ -135,23 +134,23 @@ un argumento--
 
 30
 00:01:12,810 --> 00:01:15,180
-que es un documento que contiene
-el campo "name" con el
+el cual es un documento que
+contiene el campo "name" y
 
 31
 00:01:15,180 --> 00:01:17,940
-valor correspondiente que es
+como valor correspondiente,
 un documento embebido con los
 
 32
 00:01:17,940 --> 00:01:20,980
 operadores de tipo--"a" y luego
-los tipos, desafortunadamente, son
+los tipos. Desafortunadamente,
 
 33
 00:01:20,980 --> 00:01:23,730
-especificados como números
-y los los números corresponden
+son especificados como números
+y los números corresponden
 
 34
 00:01:23,730 --> 00:01:26,140
@@ -170,17 +169,17 @@ de los diferentes tipos en BSON.
 
 37
 00:01:32,150 --> 00:01:35,940
-Ocurre que el tipo para cadenas
-es el tipo "2", y esto
+Ocurre que el tipo para
+cadenas es el tipo "2",
 
 38
 00:01:35,940 --> 00:01:37,810
-me retorna los documentos
-donde el campo "name"
+y esto me retorna los
+documentos donde el campo
 
 39
 00:01:37,810 --> 00:01:39,440
-tiene un valor de cadena.
+"name" tiene un valor de cadena.
 
 40
 00:01:39,440 --> 00:01:41,790
@@ -189,8 +188,7 @@ hay consultas más complicadas
 
 41
 00:01:41,790 --> 00:01:43,730
-que podrías querer
-llevar a cabo sobre
+que podrías hacer sobre
 
 42
 00:01:43,730 --> 00:01:47,210
@@ -228,12 +226,12 @@ Expression Library", "libpcre".
 49
 00:02:00,160 --> 00:02:02,040
 Ahora, no quiero tomar mucho
-tiempo entrando en los detalles
+tiempo entrando en detalle
 
 50
 00:02:02,040 --> 00:02:04,040
-de expresiones regulares.
-Solamente quiero
+respecto a las expresiones
+regulares. Solamente quiero
 
 51
 00:02:04,040 --> 00:02:05,710
@@ -276,8 +274,7 @@ interpretada como una
 
 59
 00:02:26,440 --> 00:02:27,410
-expresión regular del
-estilo Perl.
+expresión regular del estilo Perl.
 
 60
 00:02:27,410 --> 00:02:30,495
@@ -291,12 +288,12 @@ de sus nombres.
 
 62
 00:02:32,340 --> 00:02:34,720
-Si quiero hacer algo más
+Si quieres hacer algo más
 complicado, podrías pedir
 
 63
 00:02:34,720 --> 00:02:38,360
-todos los documento donde el
+todos los documentos donde el
 campo "name" termina con la
 
 64
@@ -326,12 +323,12 @@ expresiones regulares en una
 69
 00:02:48,740 --> 00:02:50,660
 semana posterior, cuando hablemos
-de la optimización de rendimiento.
+sobre la optimización de rendimiento.
 
 70
 00:02:50,660 --> 00:02:53,650
 Ocurre que las expresiones
-regular tiende a no ser tan
+regulares tienden a no ser tan
 
 71
 00:02:53,650 --> 00:02:57,520
@@ -340,22 +337,22 @@ al procesamiento de consultas
 
 72
 00:02:57,520 --> 00:02:59,210
-como lo son la simples
-desigualdades de cadena.
+como lo son las simples
+desigualdades de cadenas.
 
 73
 00:02:59,210 --> 00:03:01,540
-Aun así, un caso especial de
-expresiones regulares que pueden
+Aun así, existen algunas
+expresiones regulares que
 
 74
 00:03:01,540 --> 00:03:04,820
-ser eficientemente optimizadas
-son aquéllas que comienzan con
+pueden ser eficientemente optimizadas
+y son aquéllas que comienzan con
 
 75
 00:03:04,820 --> 00:03:07,580
-un "^" el cual significa que
+un "^", el cual significa que
 la expresión regular debe
 
 76
@@ -399,17 +396,17 @@ traducido a una consulta de rango
 
 84
 00:03:27,800 --> 00:03:31,010
-desde "A" hasta, pero no incluyendo a,
-"B". Y en efecto, esto es lo que MongoDB
+desde "A" hasta, pero excluyendo
+"B". En efecto, esto es lo que
 
 85
 00:03:31,010 --> 00:03:32,050
-hace internamente.
+MongoDB hace internamente.
 
 86
 00:03:32,050 --> 00:03:35,245
-En cualquier caso, estos fueron
-tres nuevos operadores que van
+Éstos fueron tres nuevos
+operadores que van
 
 87
 00:03:35,245 --> 00:03:37,600

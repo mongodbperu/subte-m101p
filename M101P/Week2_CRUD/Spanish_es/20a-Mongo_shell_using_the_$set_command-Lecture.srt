@@ -31,7 +31,7 @@ tipos de aplicaciones.
 
 8
 00:00:12,830 --> 00:00:15,040
-Y por lo general, deseas
+Por lo general, deseas
 manipular sólo campos
 
 9
@@ -40,7 +40,7 @@ específicos en un documento.
 
 10
 00:00:16,200 --> 00:00:17,890
-Y de hecho, el operador
+De hecho, el operador
 "update" permite
 
 11
@@ -54,7 +54,7 @@ colección "people".
 
 13
 00:00:21,800 --> 00:00:23,420
-Y tiene varios nombres.
+Tiene varios nombres.
 
 14
 00:00:23,420 --> 00:00:26,920
@@ -97,8 +97,8 @@ esa información.
 
 22
 00:00:43,010 --> 00:00:46,470
-Y por eso este método de
-reemplazo no es una gran idea.
+Por eso, este método de
+reemplazo no es una buena idea.
 
 23
 00:00:46,470 --> 00:00:49,240
@@ -108,20 +108,20 @@ una operación que manipule
 24
 00:00:49,240 --> 00:00:51,190
 sólo los campos que
-especificamos y deje todos los
+especificamos y deje
 
 25
 00:00:51,190 --> 00:00:52,430
-otros campos como están.
+todos los otros campos como están.
 
 26
 00:00:52,430 --> 00:00:56,340
-Y para ello, "update" tiene
-varios operadores "$".
+Para ello, "update" tiene
+varios operadores "$"
 
 27
 00:00:56,340 --> 00:00:59,520
-En el simple caso que sólo desee
+en el simple caso que sólo desee
 establecer un campo específico.
 
 28
@@ -155,7 +155,7 @@ documento donde "name" es "Alice",
 
 34
 00:01:14,490 --> 00:01:16,120
-"Alice" tiene ahora un "age".
+"Alice" tiene un "age".
 
 35
 00:01:16,120 --> 00:01:18,200
@@ -230,8 +230,8 @@ existe, "$inc" creará un
 
 50
 00:01:57,880 --> 00:02:01,760
-campo teniendo como
-valor el incremento.
+campo teniendo como valor
+el valor del incremento.
 
 51
 00:02:01,760 --> 00:02:06,635
@@ -241,12 +241,12 @@ el campo "age" para "Bob" y
 52
 00:02:06,635 --> 00:02:09,620
 sucede que no existe,
-entonces hará que exista con
+entonces hará que exista
 
 53
 00:02:09,620 --> 00:02:12,500
-un valor que va a tener
-el incremento.
+con un valor que va a ser
+igual al valor del incremento.
 
 54
 00:02:12,500 --> 00:02:14,550

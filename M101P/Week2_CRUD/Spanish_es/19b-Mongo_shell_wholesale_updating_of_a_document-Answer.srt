@@ -3,7 +3,7 @@
 
 2
 00:00:00,190 --> 00:00:01,230
-Bueno, sería este.
+Bueno, sería éste.
 
 3
 00:00:01,230 --> 00:00:05,010
@@ -35,7 +35,7 @@ un valor "population", pero
 
 9
 00:00:17,260 --> 00:00:19,950
-Otra vez, no puedes cambiar
+Una vez más, no puedes cambiar
 el valor del "_id" de un
 
 10

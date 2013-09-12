@@ -31,7 +31,7 @@ documentos en una colección
 
 8
 00:00:11,330 --> 00:00:14,230
-llamada "accounts", un para
+llamada "accounts", uno para
 "George" y otro para "Howard".
 
 9
@@ -82,8 +82,7 @@ la siguiente consulta, puedes
 
 19
 00:00:37,990 --> 00:00:39,700
-considerar la
-ejecución de ésta
+considerar que se ejecuta
 
 20
 00:00:39,700 --> 00:00:41,100
@@ -91,7 +90,7 @@ de la siguiente manera:
 
 21
 00:00:41,100 --> 00:00:43,890
-para cada documento en la
+Para cada documento en la
 colección "accounts", encuentra
 
 22
@@ -312,7 +311,7 @@ otros campos de una manera
 
 67
 00:02:42,250 --> 00:02:43,910
-intuitiva, ojalá.
+que esperamos, sea intuitiva.
 
 68
 00:02:43,910 --> 00:02:44,650

@@ -9,7 +9,7 @@ está en la pantalla encuentra
 3
 00:00:04,540 --> 00:00:06,760
 todos los documentos con un
-"score" menor de "60".
+"score" menor que "60".
 
 4
 00:00:06,760 --> 00:00:08,840
@@ -41,7 +41,7 @@ documento embebido, "$" "gt" "50".
 
 10
 00:00:23,650 --> 00:00:27,380
-Y luego la segunda instancia
+Luego la segunda instancia
 de "score" en esa línea va
 
 11
@@ -55,8 +55,7 @@ esto es porque puede tentarte
 
 13
 00:00:31,650 --> 00:00:33,925
-ingresar este tipo
-de texto al
+ingresar este tipo de texto al
 
 14
 00:00:33,925 --> 00:00:35,420
@@ -75,7 +74,7 @@ deseado, tienes que
 17
 00:00:39,880 --> 00:00:44,250
 juntar el "$" "gt" y el "$"
-"lt" dentro de un sub-documento
+"lt" dentro de un subdocumento
 
 18
 00:00:44,250 --> 00:00:47,850
@@ -85,7 +84,7 @@ embebido con el valor de
 19
 00:00:47,850 --> 00:00:51,750
 "$" "and" para lograr el efecto
-de esta intersección lógica
+de la intersección lógica
 
 20
 00:00:51,750 --> 00:00:53,130
@@ -98,12 +97,12 @@ aunque puedes ingresar esto en
 
 22
 00:00:56,160 --> 00:00:59,460
-el "prompt" JavaScript, la
-interpretación no es necesariamente
+el "prompt" JavaScript,
+la interpretación no es
 
 23
 00:00:59,460 --> 00:01:01,560
-lo que podrías
+necesariamente lo que podrías
 ingenuamente esperar.
 
 24

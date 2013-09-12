@@ -9,7 +9,7 @@ de consulta, "$" "and".
 3
 00:00:03,150 --> 00:00:05,640
 Ocasionalmente, pero no muy
-seguido, podrías querer
+seguido, te podría interesar
 
 4
 00:00:05,640 --> 00:00:08,380
@@ -42,8 +42,8 @@ los documentos donde "name"
 
 10
 00:00:25,050 --> 00:00:27,610
-empieza pasando la letra
-"C" y contiene la letra
+empieza con "C" o con una letra
+subsecuente, y contiene la letra
 
 11
 00:00:27,610 --> 00:00:29,280
@@ -51,7 +51,7 @@ empieza pasando la letra
 
 12
 00:00:29,280 --> 00:00:30,190
-Y ahí lo tenemos.
+Y ahí los tenemos.
 
 13
 00:00:30,190 --> 00:00:31,720
@@ -59,7 +59,7 @@ Y ahí lo tenemos.
 
 14
 00:00:31,720 --> 00:00:34,180
-Como dije, este es un operador
+Como dije, éste es un operador
 que no se usa frecuentemente
 
 15
@@ -103,13 +103,13 @@ diferencias en la implementación
 
 23
 00:00:57,040 --> 00:01:00,170
-de estas dos consulta, respecto
-a cómo MongoDB las ejecuta.
+de estas dos consultas en cuanto
+a cómo son ejecutadas por MongoDB.
 
 24
 00:01:00,170 --> 00:01:03,180
-Esta consulta no es particularmente
-optimizable de cualquier modo, pero
+De cualquier modo, esta consulta no
+es particularmente optimizable, pero
 
 25
 00:01:03,180 --> 00:01:05,485
@@ -127,12 +127,11 @@ disponible y simplifica, hasta
 
 28
 00:01:09,720 --> 00:01:10,340
-cierto punto, la
+cierto punto, la construcción
 
 29
 00:01:10,340 --> 00:01:13,340
-construcción de
-consultas dinámicas.
+de consultas dinámicas.
 
 30
 00:01:13,340 --> 00:01:14,840
@@ -149,17 +148,17 @@ Hagamos un cuestionario.
 33
 00:01:17,660 --> 00:01:20,790
 Define todos los documentos
-con un "score" entre "50" y "60",
+con un "score" entre "50" y "60";
 
 34
 00:01:20,790 --> 00:01:23,750
 encuentra todos los documentos con
-un "score" mayor de "50",
+un "score" mayor que "50";
 
 35
 00:01:23,750 --> 00:01:26,970
 encuentra todos los documentos
-con un "score" menor de "60",
+con un "score" menor que "60";
 
 36
 00:01:26,970 --> 00:01:29,480

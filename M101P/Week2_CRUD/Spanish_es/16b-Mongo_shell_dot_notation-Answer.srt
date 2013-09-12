@@ -1,12 +1,12 @@
 1
 00:00:00,000 --> 00:00:01,960
-Bien, debería parecerse a algo
-como esto --
+Bien, debería parecerse
+a algo como esto--
 
 2
 00:00:01,960 --> 00:00:06,220
 "db.catalog.find", y luego
-"price" cuyo selector
+"price", cuyo selector
 
 3
 00:00:06,220 --> 00:00:11,350
@@ -24,8 +24,8 @@ donde el campo "price" sea
 
 6
 00:00:16,239 --> 00:00:20,050
-mayor que 10000 y el 
-campo "reviews" contenga un
+mayor que 10000 y el campo
+"reviews" contenga un
 
 7
 00:00:20,050 --> 00:00:23,020
@@ -43,32 +43,32 @@ pero la consulta que
 
 10
 00:00:27,380 --> 00:00:31,760
-hacemos dentro de los arrays es también
-aplicable con "dot notation".
+hacemos dentro de los arrays es
+también aplicable con "dot notation".
 
 11
 00:00:31,760 --> 00:00:34,340
-Por lo que en este caso, incluso aunque
-"reviews" es un array de
+Por lo que en este caso, incluso
+siendo "reviews" un array de
 
 12
 00:00:34,340 --> 00:00:37,800
-documentos, al buscar un "rating"
-dentro de "reviews"
+documentos, al buscar un
+"rating" dentro de "reviews"
 
 13
 00:00:37,800 --> 00:00:41,760
 también recorrerá el
-array en lo que espero que sea
+array en lo que espero
 
 14
 00:00:41,760 --> 00:00:43,130
-una forma intuitiva.
+sea una forma intuitiva.
 
 15
 00:00:43,130 --> 00:00:45,220
-Esto es algo que se hace 
-con bastante frecuencia en MongoDB.
+Esto es algo que se hace con
+bastante frecuencia en MongoDB.
 
 16
 00:00:45,220 --> 00:00:46,470

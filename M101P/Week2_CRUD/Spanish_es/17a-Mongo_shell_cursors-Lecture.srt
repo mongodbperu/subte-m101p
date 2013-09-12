@@ -3,12 +3,12 @@
 
 2
 00:00:00,120 --> 00:00:01,860
-Aprendamos un poco más
-sobre qué sucede
+Aprendamos un poco
+más sobre qué sucede
 
 3
 00:00:01,860 --> 00:00:03,800
-tras el escenario cuando
+detrás del escenario cuando
 ejecutas una consulta.
 
 4
@@ -27,7 +27,7 @@ adecuado para un shell
 
 7
 00:00:10,720 --> 00:00:12,360
-interactivo como el shell Mongo.
+interactivo como el shell mongo.
 
 8
 00:00:12,360 --> 00:00:14,810
@@ -36,57 +36,57 @@ cuando ejecutas una consulta como
 
 9
 00:00:14,810 --> 00:00:19,280
-"db.people.find()", y pulsas
-"Enter", es que se construye un
+"db.people.find()" y pulsas
+"Enter", es que se construye
 
 10
 00:00:19,280 --> 00:00:21,890
-cursor y se devuelve
-al shell.
+un cursor y se
+retorna al shell.
 
 11
 00:00:21,890 --> 00:00:24,370
-El shell está configurado para imprimir
-cursores iterando
+El shell está configurado para
+imprimir cursores iterando
 
 12
 00:00:24,370 --> 00:00:26,420
-a través de todos los elementos que
-son recuperados del
+a través de todos los elementos
+que son recuperados del
 
 13
 00:00:26,420 --> 00:00:28,330
-cursor e imprimiendo
+cursor e ir imprimiendo
 estos elementos.
 
 14
 00:00:28,330 --> 00:00:30,770
 Pero puedes retener un cursor
-de igual manera que podrías retener
+de la misma manera que puedes
 
 15
 00:00:30,770 --> 00:00:33,550
-cualquier otro valor en un
-lenguaje de programación.
+retener cualquier otro valor
+en un lenguaje de programación.
 
 16
 00:00:33,550 --> 00:00:36,100
-Ahora, para evitar imprimir
-el resultado de
+Ahora, para evitar
+imprimir el resultado de
 
 17
 00:00:36,100 --> 00:00:38,390
-esta asignación, que va
-a ser el cursor,
+esta asignación, que
+va a ser el cursor,
 
 18
 00:00:38,390 --> 00:00:41,000
-voy a añadir algo
-completamente sin sentido, como
+voy a añadir algo que no
+tenga significado alguno,
 
 19
 00:00:41,000 --> 00:00:42,420
-este valor nulo.
+como este valor nulo.
 
 20
 00:00:42,420 --> 00:00:45,110
@@ -99,8 +99,8 @@ referenciando a un cursor.
 
 22
 00:00:47,430 --> 00:00:49,700
-Los objetos de tipo cursor tienen
-un montón de métodos.
+Los objetos de tipo cursor
+tienen un montón de métodos.
 
 23
 00:00:49,700 --> 00:00:52,890
@@ -109,32 +109,31 @@ devuelve "true" mientras
 
 24
 00:00:52,890 --> 00:00:55,500
-exista otro documento
-por visitar en este cursor.
+exista otro documento por
+visitar en este cursor.
 
 25
 00:00:55,500 --> 00:00:58,170
 Y el método "next" devuelve
-el siguiente documento que será
+el siguiente documento que
 
 26
 00:00:58,170 --> 00:00:59,890
-visitado en este cursor.
+será visitado en este cursor.
 
 27
 00:00:59,890 --> 00:01:02,680
-Y así, referenciando objetos de tipo
-cursor y manipulándolos
+Así, referenciando objetos de
+tipo cursor y manipulándolos
 
 28
 00:01:02,680 --> 00:01:05,750
-directamente con los métodos "hasNext" y
-"next", puedes controlar la
+directamente con los métodos "hasNext"
+y "next", puedes controlar la
 
 29
 00:01:05,750 --> 00:01:07,250
-forma en que 
-avanzas por
+forma en que avanzas por
 
 30
 00:01:07,250 --> 00:01:08,930
@@ -151,12 +150,12 @@ shell, aunque puedes hacerlo.
 
 33
 00:01:12,380 --> 00:01:14,760
-En lugar de eso, es mucho más normal
-hacer esa operación en un
+En lugar de eso, es mucho más
+normal hacer esa operación en
 
 34
 00:01:14,760 --> 00:01:17,410
-lenguaje de programación, 
+un lenguaje de programación,
 tal como Python.
 
 35
@@ -167,21 +166,21 @@ avanzar programáticamente por
 36
 00:01:20,120 --> 00:01:22,820
 todos los documentos a
-visitar, y ese bucle "while"
+visitar y ese bucle "while"
 
 37
 00:01:22,820 --> 00:01:25,170
-que está cerca de la parte de abajo de
-mi ventana de terminal es,
+que está cerca de la parte de
+abajo de mi ventana de terminal
 
 38
 00:01:25,170 --> 00:01:28,560
-en efecto, el comportamiento por defecto
-del shell cuando está
+es en efecto el comportamiento por
+defecto del shell cuando está
 
 39
 00:01:28,560 --> 00:01:30,050
-imprimiendo un objeto de tipo cursor --
+imprimiendo un objeto de tipo cursor--
 
 40
 00:01:30,050 --> 00:01:32,600
@@ -190,23 +189,23 @@ defecto, agrupa los documentos
 
 41
 00:01:32,600 --> 00:01:35,670
-resultantes en grupos de 
-20 para que no
+resultantes en grupos
+de 20 para que no
 
 42
 00:01:35,670 --> 00:01:37,660
 arrase tu terminal
-imprimiendo infinitamente muchos
+imprimiendo documentos
 
 43
 00:01:37,660 --> 00:01:40,440
-documentos si tienes muchos
-resultados de una consulta.
+infinitamente si tienes muchos
+resultados para una consulta.
 
 44
 00:01:40,440 --> 00:01:42,150
-Pero hay algunos métodos más
-que puedes usar para
+Pero hay algunos métodos
+más que puedes usar para
 
 45
 00:01:42,150 --> 00:01:44,035
@@ -215,17 +214,17 @@ de un cursor.
 
 46
 00:01:44,035 --> 00:01:46,480
-Estableceré un nuevo cursor,
-de nuevo, volviendo
+Estableceré un nuevo cursor
 
 47
 00:01:46,480 --> 00:01:48,530
-atrás en mi historial.
+volviendo atrás
+en mi historial.
 
 48
 00:01:48,530 --> 00:01:50,510
-Siempre que no hayas realmente
-avanzado por el 
+Siempre que no hayas
+realmente avanzado por el 
 
 49
 00:01:50,510 --> 00:01:53,740
@@ -243,13 +242,13 @@ ordenará al servidor que
 
 52
 00:01:58,270 --> 00:02:01,300
-devuelva sólo esos tantos documentos
-para este cursor.
+devuelva sólo ese número de
+documentos para este cursor.
 
 53
 00:02:01,300 --> 00:02:04,360
-"limit" también devolverá el cursor,
-y por eso para evitar
+"limit" también devolverá el
+cursor y por eso para evitar
 
 54
 00:02:04,360 --> 00:02:06,880
@@ -262,13 +261,13 @@ este misterioso "null".
 
 56
 00:02:08,910 --> 00:02:11,370
-En este punto, estoy modificando la
-consulta que se va a
+Ahora estoy modificando
+la consulta que se va a
 
 57
 00:02:11,370 --> 00:02:13,430
-enviar al servidor de base 
-de datos.
+enviar al servidor
+de base de datos.
 
 58
 00:02:13,430 --> 00:02:16,340
@@ -277,8 +276,8 @@ documentos o compruebe para ver si
 
 59
 00:02:16,340 --> 00:02:19,420
-existen documentos restantes en este
-cursor, no se 
+existen documentos restantes
+en este cursor, no se 
 
 60
 00:02:19,420 --> 00:02:22,330
@@ -312,17 +311,17 @@ un "limit" a este cursor,
 66
 00:02:35,240 --> 00:02:37,720
 sólo obtengo cinco documentos
-de la base de datos incluso aunque
+de la base de datos aunque
 
 67
 00:02:37,720 --> 00:02:40,400
-aproximadamente existen 8
+existen aproximadamente ocho
 documentos en esta colección.
 
 68
 00:02:40,400 --> 00:02:42,075
-Hay un par más de métodos
-que puedes añadir
+Hay un par de métodos
+más que puedes añadir
 
 69
 00:02:42,075 --> 00:02:43,150
@@ -331,12 +330,12 @@ a los cursores.
 70
 00:02:43,150 --> 00:02:46,370
 El método "sort" indica a la
-base de datos que devuelva los documentos
+base de datos que devuelva los
 
 71
 00:02:46,370 --> 00:02:49,480
-en un orden especificado por
-el argumento que se pasa al "sort".
+documentos en un orden especificado por
+el argumento que se le pasa al "sort".
 
 72
 00:02:49,480 --> 00:02:52,290
@@ -345,12 +344,12 @@ recuperar mis documentos
 
 73
 00:02:52,290 --> 00:02:54,420
-en orden inverso por "name" --
+en orden inverso por "name"--
 
 74
 00:02:54,420 --> 00:02:56,920
 esto es, el orden inverso
-lexicográfico, por "name" --
+lexicográfico, por "name"--
 
 75
 00:02:56,920 --> 00:03:01,280
@@ -368,13 +367,13 @@ como el modificador
 
 78
 00:03:05,270 --> 00:03:07,620
-Y para evitar que imprima
+Para evitar que imprima
 ansiosamente los
 
 79
 00:03:07,620 --> 00:03:09,180
-resultados de esta consulta,
-voy a 
+resultados de esta
+consulta, voy a 
 
 80
 00:03:09,180 --> 00:03:11,420
@@ -387,16 +386,16 @@ por los documentos resultantes
 
 82
 00:03:13,980 --> 00:03:16,880
-usando este bucle "while", debería
-ver mis resultados en
+usando este bucle "while",
+debería ver mis resultados
 
 83
 00:03:16,880 --> 00:03:19,380
-orden inverso por "name".
+en orden inverso por "name".
 
 84
 00:03:19,380 --> 00:03:21,840
-Y de hecho, los obtengo en
+De hecho, los obtengo en
 orden inverso por "name",
 
 85
@@ -406,8 +405,8 @@ ordenamiento que realizamos es
 
 86
 00:03:25,740 --> 00:03:29,800
-lexicográficamente conforme a la
-representación de cadenas
+lexicográficamente conforme a
+la representación de cadenas
 
 87
 00:03:29,800 --> 00:03:33,140
@@ -420,7 +419,7 @@ ordenación ASCII.
 
 89
 00:03:34,160 --> 00:03:37,220
-Y por último, los enteros
+Por último, los enteros
 se presentan al final.
 
 90
@@ -430,8 +429,8 @@ juntas, "limit" y "sort", más
 
 91
 00:03:40,370 --> 00:03:42,160
-o menos de la forma que
-podrías esperar.
+o menos de la forma
+que podrías esperar.
 
 92
 00:03:42,160 --> 00:03:45,200
@@ -448,13 +447,13 @@ Digamos tres.
 
 95
 00:03:48,710 --> 00:03:51,330
-Como estos modificadores de cursor,
-"sort" y "limit",
+Como estos modificadores
+de cursor "sort" y "limit",
 
 96
 00:03:51,330 --> 00:03:54,440
-devuelven el cursor modificado, es
-posible encadenarlos
+devuelven el cursor modificado,
+es posible encadenarlos
 
 97
 00:03:54,440 --> 00:03:56,070
@@ -501,11 +500,12 @@ un cursor después de haber empezado
 106
 00:04:15,960 --> 00:04:18,670
 a recuperar documentos de la
-base de datos o incluso tras comprobar
+base de datos o incluso tras
 
 107
 00:04:18,670 --> 00:04:20,980
-si el cursor tiene un documento siguiente.
+comprobar si el cursor
+tiene un documento siguiente.
 
 108
 00:04:20,980 --> 00:04:23,590
@@ -514,18 +514,18 @@ Esto es porque el "sort" y el
 
 109
 00:04:23,590 --> 00:04:25,670
-ser procesados dentro
-del motor de la base de datos.
+ser procesados dentro del
+motor de la base de datos.
 
 110
 00:04:25,670 --> 00:04:28,720
-No se procesan
-ordenando los documentos en
+No se procesan ordenando
+los documentos en
 
 111
 00:04:28,720 --> 00:04:32,040
-memoria en el cliente, son
-procesados ordenando y
+memoria en el cliente, sino
+son procesados ordenando y
 
 112
 00:04:32,040 --> 00:04:34,220
@@ -552,13 +552,13 @@ el cursor modificado.
 
 117
 00:04:44,070 --> 00:04:48,380
-Y por eso si establezco un nuevo cursor
-y le añado un "sort", 
+Por eso si establezco un nuevo
+cursor y le añado un "sort", 
 
 118
 00:04:48,380 --> 00:04:51,190
-un "limit" y un "skip", entonces las
-instrucciones se envían a
+un "limit" y un "skip", entonces
+las instrucciones se envían a
 
 119
 00:04:51,190 --> 00:04:53,120
@@ -582,11 +582,11 @@ tres documentos después que los
 
 123
 00:05:02,140 --> 00:05:04,240
-primeros dos se han saltado.
+primeros dos hayan sido saltados.
 
 124
 00:05:04,240 --> 00:05:05,460
-Y ahí los tenemos --
+Y ahí los tenemos--
 
 125
 00:05:05,460 --> 00:05:06,910
@@ -594,8 +594,8 @@ Y ahí los tenemos --
 
 126
 00:05:06,910 --> 00:05:09,350
-Es importante comprender
-que "sort", "limit" y "skip",
+Es importante comprender que
+"sort", "limit" y "skip",
 
 127
 00:05:09,350 --> 00:05:13,370
@@ -604,18 +604,17 @@ que son bastante análogos a
 
 128
 00:05:13,370 --> 00:05:16,310
-"SQL", son procesados en
-el mismo orden --
+SQL, son procesados
+en el mismo orden--
 
 129
 00:05:16,310 --> 00:05:20,550
-primero el "sort", luego "skip" y
-luego "limit", en el servidor.
+primero el "sort", luego el "skip"
+y luego el "limit", en el servidor.
 
 130
 00:05:20,550 --> 00:05:22,740
-No se procesan
-en el cliente.
+No se procesan en el cliente.
 
 131
 00:05:22,740 --> 00:05:25,430
@@ -624,17 +623,17 @@ a los métodos parecen estar
 
 132
 00:05:25,430 --> 00:05:29,120
-modificando un objeto en cliente,
-en realidad están
+modificando un objeto en el
+cliente, en realidad están
 
 133
 00:05:29,120 --> 00:05:30,860
-modificando las instrucciones
-que se envían
+modificando las
+instrucciones que
 
 134
 00:05:30,860 --> 00:05:32,300
-a la base de datos.
+se envían a la base de datos.
 
 135
 00:05:32,300 --> 00:05:32,750
@@ -647,27 +646,27 @@ hagamos un cuestionario.
 
 137
 00:05:34,910 --> 00:05:36,480
-Recuerda la colección "scores"
-que usamos
+Recuerda la colección
+"scores" que usamos
 
 138
 00:05:36,480 --> 00:05:37,470
-antes --
+antes--
 
 139
 00:05:37,470 --> 00:05:41,940
-conteniendo un número de estudiante, un
-campo "type" y un valor "score".
+contiene un número de estudiante,
+un campo "type" y un valor "score".
 
 140
 00:05:41,940 --> 00:05:44,540
 Escribe una consulta que recupere
-documentos de tipo examen --
+documentos de tipo examen--
 
 141
 00:05:44,540 --> 00:05:47,080
 esto es, documentos cuyo
-"type" es "exam" --
+"type" es "exam"--
 
 142
 00:05:47,080 --> 00:05:51,590

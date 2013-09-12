@@ -1,7 +1,6 @@
 1
 00:00:00,000 --> 00:00:01,870
-Bien, es 
-el tercero.
+Bueno, es el tercero.
 
 2
 00:00:01,870 --> 00:00:04,560
@@ -24,8 +23,8 @@ porque tiene "pickles".
 
 6
 00:00:12,400 --> 00:00:14,680
-Si comparas ése con los otros
-tres documentos, 
+Si comparas ése con los
+otros tres documentos, 
 
 7
 00:00:14,680 --> 00:00:18,420
@@ -34,8 +33,8 @@ documentos carece de "Joe" o
 
 8
 00:00:18,420 --> 00:00:22,060
-"Bob", o no tiene ni "running"
-ni "pickles".
+"Bob", o no tiene ni
+"running" ni "pickles".
 
 9
 00:00:22,060 --> 00:00:23,310

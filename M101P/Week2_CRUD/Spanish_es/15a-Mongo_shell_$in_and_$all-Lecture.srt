@@ -8,7 +8,7 @@ en nuestra exploración de
 
 3
 00:00:02,380 --> 00:00:05,770
-las consultas para arrays
+las consultas para arrays,
 descubriendo un operador más
 
 4
@@ -42,13 +42,13 @@ de favoritos.
 
 10
 00:00:20,200 --> 00:00:22,640
-De nuevo, como recordatorio, si resulta
-un poco difícil leer estas
+De nuevo, como recordatorio, si
+resulta un poco difícil leer estas
 
 11
 00:00:22,640 --> 00:00:24,560
-cosas debido a que son más largas
-que el ancho del
+cosas debido a que son más
+largas que el ancho del
 
 12
 00:00:24,560 --> 00:00:27,920
@@ -81,18 +81,17 @@ en el array "favorites".
 
 18
 00:00:40,950 --> 00:00:42,800
-Bien, hay un operador
-para eso.
+Bueno, hay un operador para eso.
 
 19
 00:00:42,800 --> 00:00:48,570
-El operador "$all" coincide con cualquier
-documento que tenga todos los
+El operador "$all" coincide con
+cualquier documento que tenga todos
 
 20
 00:00:48,570 --> 00:00:51,730
-elementos especificados dentro del
-array en el campo que estés
+los elementos especificados dentro
+del array en el campo que estés
 
 21
 00:00:51,730 --> 00:00:52,760
@@ -105,8 +104,8 @@ Y el operando del operador
 
 23
 00:00:55,960 --> 00:00:58,510
-Y los elementos dentro de ese
-array pueden estar en cualquier orden
+Los elementos dentro de ese array
+pueden estar en cualquier orden
 
 24
 00:00:58,510 --> 00:01:01,050
@@ -115,8 +114,8 @@ en los documentos.
 
 25
 00:01:01,050 --> 00:01:05,069
-Así por ejemplo, "Howard" tiene como
-favoritos "['pretzels', 'beer']"
+Así que por ejemplo, "Howard" tiene
+como favoritos "['pretzels', 'beer']"
 
 26
 00:01:05,069 --> 00:01:06,060
@@ -133,18 +132,18 @@ ese orden.
 
 29
 00:01:10,320 --> 00:01:12,940
-Otra forma de expresarlo es
-que el operando en la
+Otra forma de expresarlo
+es que el operando en la
 
 30
 00:01:12,940 --> 00:01:17,160
-parte derecha del "$all" en
-la consulta tiene que ser un subconjunto --
+parte derecha de "$all"
+debe ser un subconjunto--
 
 31
 00:01:17,160 --> 00:01:20,920
-es posible que no un subconjunto estricto, 
-posiblemente igual al conjunto --
+es posible que no sea un subconjunto estricto,
+ya que posiblemente sea igual al conjunto--
 
 32
 00:01:20,920 --> 00:01:24,220
@@ -153,7 +152,7 @@ valores del campo que se está
 
 33
 00:01:24,220 --> 00:01:26,480
-consultado en el "find".
+consultando en el "find".
 
 34
 00:01:26,480 --> 00:01:29,770
@@ -162,8 +161,8 @@ que contener "beer" y "pretzels"
 
 35
 00:01:29,770 --> 00:01:32,550
-en cualquier orden y podría contener
-algunas otras cosas.
+en cualquier orden y podría
+contener algunas otras cosas.
 
 36
 00:01:32,550 --> 00:01:34,910
@@ -181,12 +180,12 @@ sobre consultas en
 
 39
 00:01:38,230 --> 00:01:41,330
-arrays, sin embargo puedes usarlo
-con la característica que tiene
+arrays, puedes usarlo dada
+la característica que tiene
 
 40
 00:01:41,330 --> 00:01:43,050
-Mongo para examinar los arrays.
+Mongo de examinar los arrays.
 
 41
 00:01:43,050 --> 00:01:46,450
@@ -195,17 +194,17 @@ el lenguaje de consulta de Mongo
 
 42
 00:01:46,450 --> 00:01:50,320
-tiene un operador "$in", que toma
-una lista de cadenas y
+tiene un operador "$in", que
+toma una lista de cadenas y
 
 43
 00:01:50,320 --> 00:01:53,040
-devuelve sólo aquellos documentos
-donde el campo
+devuelve sólo aquellos
+documentos donde el campo
 
 44
 00:01:53,040 --> 00:01:54,890
-correspondiente -- en este caso, "name" --
+correspondiente--en este caso "name"--
 
 45
 00:01:54,890 --> 00:01:57,330
@@ -214,23 +213,23 @@ tiene un valor que es
 
 46
 00:01:57,330 --> 00:01:59,550
-Es decir, es una
-enumeración de todos los valores
+Es decir, es una enumeración
+de todos los valores
 
 47
 00:01:59,550 --> 00:02:01,450
 que estás buscando
-para el campo dado.
+para el campo especificado.
 
 48
 00:02:01,450 --> 00:02:04,570
-Esta característica forma parte, con suerte
-de manera intuitiva,
+Esta característica forma parte,
+esperamos de manera intuitiva,
 
 49
 00:02:04,570 --> 00:02:07,790
 del examen interno de
-los arrays que, según acabas
+arrays que, según acabas
 
 50
 00:02:07,790 --> 00:02:09,639
@@ -238,23 +237,23 @@ de aprender, hace MongoDB.
 
 51
 00:02:09,639 --> 00:02:13,380
-Por ejemplo, si busco
+Por ejemplo, si busco:
 "favorites: {$in: ['beer', 'ice cream']}",
 
 52
 00:02:13,380 --> 00:02:16,500
-debería encontrar
-cualquier documento que tenga un campo
+debería encontrar cualquier
+documento que tenga un campo
 
 53
 00:02:16,500 --> 00:02:20,790
-"favorites" que contenga "beer"
-o "ice cream".
+"favorites" que contenga
+"beer" o "ice cream".
 
 54
 00:02:20,790 --> 00:02:23,140
-Y eso parece
-especificar a todo el mundo.
+Eso parece especificar
+a todo el mundo.
 
 55
 00:02:23,140 --> 00:02:25,110

@@ -3,8 +3,7 @@
 
 2
 00:00:00,160 --> 00:00:01,730
-Entonces es algo como
-lo siguiente.
+Es algo como lo siguiente.
 
 3
 00:00:01,730 --> 00:00:06,820

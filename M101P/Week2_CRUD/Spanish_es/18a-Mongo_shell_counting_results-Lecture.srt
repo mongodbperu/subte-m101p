@@ -7,8 +7,8 @@ OK.
 
 3
 00:00:00,560 --> 00:00:02,710
-Vayamos a pasar a una forma
-un poco distinta de ver
+Veamos una forma un
+poco distinta de ver
 
 4
 00:00:02,710 --> 00:00:03,380
@@ -16,7 +16,7 @@ tus datos--
 
 5
 00:00:03,380 --> 00:00:05,170
-es decir, a contarlos.
+es decir, contarlos.
 
 6
 00:00:05,170 --> 00:00:07,190
@@ -31,7 +31,7 @@ de datos, pero ocasionalmente,
 8
 00:00:09,860 --> 00:00:11,890
 lo que deseas es obtener un recuento
-de estos documentos que coinciden
+de los documentos que coinciden
 
 9
 00:00:11,890 --> 00:00:13,770
@@ -48,7 +48,7 @@ el comando "count".
 
 12
 00:00:17,710 --> 00:00:20,310
-Y el comando "count" tiene una
+El comando "count" tiene una
 sintaxis práctica de "helper"
 
 13
@@ -72,7 +72,7 @@ ese campo en particular.
 
 17
 00:00:31,050 --> 00:00:33,630
-Y de nuevo, si lo deseas, puedes
+De nuevo, si lo deseas, puedes
 iterar a través de los resultados
 
 18
@@ -110,11 +110,11 @@ anterior, insertamos un documento
 25
 00:00:50,440 --> 00:00:54,550
 "exam" para cada "student_id"
-desde cero hacia arriba, pero no
+desde cero hacia arriba, pero
 
 26
 00:00:54,550 --> 00:00:55,790
-incluyendo 1000.
+excluyendo 1000.
 
 27
 00:00:55,790 --> 00:00:59,140
@@ -137,8 +137,7 @@ un criterio en particular.
 
 31
 00:01:05,010 --> 00:01:07,260
-No hay mucho más
-que eso.
+No hay mucho más que eso.
 
 32
 00:01:07,260 --> 00:01:07,630
@@ -146,8 +145,8 @@ Muy bien.
 
 33
 00:01:07,630 --> 00:01:10,170
-Intentemos un breve
-cuestionario acerca de "count".
+Hagamos un breve cuestionario
+acerca de "count".
 
 34
 00:01:10,170 --> 00:01:11,890
