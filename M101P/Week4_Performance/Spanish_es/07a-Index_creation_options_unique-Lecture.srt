@@ -182,7 +182,7 @@ de nuevo la colección.
 40
 00:01:47,220 --> 00:01:50,590
 Y entonces intento insertar algo
-que viola el
+que contraviene el
 
 41
 00:01:50,590 --> 00:01:53,870
