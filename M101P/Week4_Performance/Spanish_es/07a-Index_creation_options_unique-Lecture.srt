@@ -3,306 +3,306 @@
 
 2
 00:00:00,150 --> 00:00:03,470
-The indexes that we've created
-so far have not been unique.
+Los índices que hemos creado
+hasta ahora no han sido únicos.
 
 3
 00:00:03,470 --> 00:00:06,770
-A unique index enforces a
-constraint that each key can
+Un índice único fuerza la
+restricción de que cada clave puede
 
 4
 00:00:06,770 --> 00:00:08,600
-only appear once in the index.
+aparecer sólo una vez en el índice.
 
 5
 00:00:08,600 --> 00:00:11,360
-That is not true for the indexed
-that we've created.
+Eso no es cierto para los índices
+que hemos creado.
 
 6
 00:00:11,360 --> 00:00:13,500
-Let's create another
-collection here,
+Creemos otra
+colección aquí,
 
 7
 00:00:13,500 --> 00:00:15,410
-db.stuff.insert.
+"db.stuff.insert".
 
 8
 00:00:15,410 --> 00:00:18,115
-And I'm going to
-insert a thing.
+Y voy a 
+insertar una cosa.
 
 9
 00:00:18,115 --> 00:00:19,830
-I'm going to insert a pear.
+Voy a insertar una pera.
 
 10
 00:00:19,830 --> 00:00:25,280
-And now I'm going to create an
-index on this collection.
+Y ahora voy a crear un
+índice en esta colección.
 
 11
 00:00:25,280 --> 00:00:26,680
-Sorry, I mistyped it.
+Perdón, lo escribí mal.
 
 12
 00:00:26,680 --> 00:00:28,800
-I need to have the collection
-in there.
+Necesito tener la colección
+ahí.
 
 13
 00:00:28,800 --> 00:00:30,640
-So we created an index
-on this collection.
+Así que creamos un índice
+en esta colección.
 
 14
 00:00:30,640 --> 00:00:34,780
-And I can create multiple
-items with thing pear.
+Y puedo crear varios
+elementos con "pear" en "thing".
 
 15
 00:00:34,780 --> 00:00:37,090
-So I'm going to put
-another one in.
+Por lo que voy a poner
+otro más.
 
 16
 00:00:37,090 --> 00:00:40,010
-I'm going to put one in
-with thing apple.
+Voy a poner otro 
+con "apple".
 
 17
 00:00:40,010 --> 00:00:43,530
-But what if I wanted to
-create a unique index?
+Pero, ¿qué ocurriría si quisiera
+crear un índice único?
 
 18
 00:00:43,530 --> 00:00:46,430
-All right, if I look
-in stuff right now,
+Bien, si echo un vistazo
+a "stuff" justo ahora,
 
 19
 00:00:46,430 --> 00:00:49,910
-I can see my indexes.
+puedo ver mis índices.
 
 20
 00:00:49,910 --> 00:00:52,950
-I can see I've got this
-index on thing.
+Puedo ver que tengo este
+índice sobre "thing".
 
 21
 00:00:52,950 --> 00:00:54,490
-Let's drop that index.
+Eliminemos ese índice.
 
 22
 00:00:54,490 --> 00:00:58,160
-And now let's try to create
-an index that's unique.
+Y ahora intentemos crear
+un índice que sea único.
 
 23
 00:00:58,160 --> 00:01:01,710
-So we do that with ensureIndex
-command, with now our second
+Por lo que hacemos eso con el comando
+"ensureIndex", ahora con nuestro segundo
 
 24
 00:01:01,710 --> 00:01:05,230
-document after the first one
-with unique being true.
+documento después del primero
+con "unique" igual a "true".
 
 25
 00:01:05,230 --> 00:01:08,220
-And this is going to enforce the
-constraint that each key
+Y esto va a obligar a cumplir
+la restricción de que cada clave
 
 26
 00:01:08,220 --> 00:01:09,420
-can only appear once.
+pueda aparecer sólo una vez.
 
 27
 00:01:09,420 --> 00:01:14,890
-Now it won't allow me to do that
-because, in fact, there
+Ahora no me permitirá hacer eso
+porque, de hecho, hay
 
 28
 00:01:14,890 --> 00:01:16,310
-is a conflict.
+un conflicto.
 
 29
 00:01:16,310 --> 00:01:19,430
-So let's get rid of
-that conflict.
+Así que deshagamos
+ese conflicto.
 
 30
 00:01:19,430 --> 00:01:22,170
-So db.stuff.remove,
-let's remove one
+Entonces "db.stuff.remove",
+eliminemos uno
 
 31
 00:01:22,170 --> 00:01:24,800
-of these right here.
+de estos justo aquí.
 
 32
 00:01:24,800 --> 00:01:27,330
-I'll remove one of
-these pears.
+Eliminaré una de
+estas peras.
 
 33
 00:01:27,330 --> 00:01:28,430
-That should do it.
+Eso debería hacerlo.
 
 34
 00:01:28,430 --> 00:01:32,290
-And now if I try to create
-the index, I can do it.
+Y ahora si intento crear
+el índice, puedo hacerlo.
 
 35
 00:01:32,290 --> 00:01:36,390
-And if I call getIndexes on
-this collection, I can see
+Y si llamo a "getIndexes" en
+esta colección, puedo ver
 
 36
 00:01:36,390 --> 00:01:38,630
-that there's a new field now.
+que ahora hay un nuevo campo.
 
 37
 00:01:38,630 --> 00:01:41,750
-It says unique true for
-this secondary index.
+Dice "unique: true" para
+este índice secundario.
 
 38
 00:01:41,750 --> 00:01:45,100
-And if I try to insert
-something, I'm going to show
+Y si intento insertar
+algo, voy a enseñarte
 
 39
 00:01:45,100 --> 00:01:47,220
-you the collection again.
+de nuevo la colección.
 
 40
 00:01:47,220 --> 00:01:50,590
-And then try to insert something
-that violates the
+Y entonces intento insertar algo
+que contraviene el
 
 41
 00:01:50,590 --> 00:01:53,870
-index, like, for instance,
-asserting an apple.
+índice, como, por ejemplo,
+insertar una manzana.
 
 42
 00:01:53,870 --> 00:01:56,770
-I get a duplicate key error
-because I can't have more than
+Obtengo un error de clave duplicada
+porque no puedo tener más que
 
 43
 00:01:56,770 --> 00:01:59,130
-one item in the collection
-that has a
+un elemento en la colección
+que tenga una
 
 44
 00:01:59,130 --> 00:02:01,560
-key with thing apple.
+clave con "thing" igual a "apple".
 
 45
 00:02:01,560 --> 00:02:07,320
-So you'll notice that the _id
-index is not shown is unique.
+Entonces te darás cuenta que el índice
+"_id" no muestra que sea "unique".
 
 46
 00:02:07,320 --> 00:02:09,419
-But we know and we've told
-you that it is unique.
+Pero sabemos y te hemos contado
+que es único.
 
 47
 00:02:09,419 --> 00:02:13,000
-So this is actually a slight
-vagary of the database that it
+Por lo que esto es realmente un leve
+capricho de la base de datos que
 
 48
 00:02:13,000 --> 00:02:14,990
-doesn't tell you that that
-particular index is unique.
+no te cuenta que ese 
+índice particular es único.
 
 49
 00:02:14,990 --> 00:02:17,810
-But if you try to insert into
-it, you'll certainly see that
+Pero si intentas insertar
+algo, desde luego verás que
 
 50
 00:02:17,810 --> 00:02:18,420
-it is unique.
+es único.
 
 51
 00:02:18,420 --> 00:02:22,050
-So I'm going to try to insert
-into the collection.
+Así que voy a intentar insertar algo
+en la colección.
 
 52
 00:02:22,050 --> 00:02:26,235
-I want to do this, id:1, b:1.
+Quiero hacer esto, "_id:1, b:1".
 
 53
 00:02:26,235 --> 00:02:30,410
-So now I'm inserting something
-with _id of 1.
+Así que ahora estoy insertando algo
+con "_id" igual a 1.
 
 54
 00:02:30,410 --> 00:02:34,100
-An if I try to insert another
-documents with _id of 1, I get
+Y si intento insertar otros
+documentos con "_id" igual a 1, obtengo
 
 55
 00:02:34,100 --> 00:02:37,840
-a duplicate key error, exactly
-the same way as I do on the
+un error de clave duplicada, exactamente
+de la misma manera que con el
 
 56
 00:02:37,840 --> 00:02:42,740
-index on thing, even though in
-fact the database does not
+índice sobre "thing", incluso aunque de 
+hecho la base de datos no
 
 57
 00:02:42,740 --> 00:02:46,220
-tell you that the index
-_id unique.
+te dice que ese índice
+"_id" sea único.
 
 58
 00:02:46,220 --> 00:02:47,610
-But it is a unique index.
+Pero es un índice único.
 
 59
 00:02:47,610 --> 00:02:50,340
-And so just to review, to create
-a unique index you
+Y sólo para revisar, para crear
+un índice único
 
 60
 00:02:50,340 --> 00:02:55,980
-specify this unique:true option
-in the second document
+especifica esta opción "unique: true"
+en el segundo documento
 
 61
 00:02:55,980 --> 00:02:57,620
-after the ensureIndex.
+tras "ensureIndex".
 
 62
 00:02:57,620 --> 00:03:01,400
-All right, so now it
-is time for a quiz.
+Bien, hora
+de hacer un cuestionario.
 
 63
 00:03:01,400 --> 00:03:04,250
-Please provide the mongo shell
-command to add a unique index
+Por favor, proporciona el comando del
+shell mongo para añadir un índice único
 
 64
 00:03:04,250 --> 00:03:09,070
-to the collection students on
-the keys student_id, class_id.
+a la colección "students" sobre
+las claves "student_id", "class_id".
 
 65
 00:03:09,070 --> 00:03:10,980
-And please type that
-right there.
+Y por favor escríbelo
+justo ahí.
 
 66
 00:03:10,980 --> 00:03:12,230
