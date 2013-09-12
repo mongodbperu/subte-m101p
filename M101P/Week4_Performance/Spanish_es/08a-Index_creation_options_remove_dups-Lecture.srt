@@ -158,7 +158,7 @@ Voy a hacer
 
 35
 00:01:24,450 --> 00:01:26,610
-"thing" ascendente.
+"thing" ascendentemente.
 
 36
 00:01:26,610 --> 00:01:31,850
@@ -307,8 +307,8 @@ directorio "log"?
 
 67
 00:02:46,850 --> 00:02:48,580
-¿O eliminarlas por siempre
-jamás, amén?
+¿O eliminarlas por los siglos
+de los siglos, amén?
 
 68
 00:02:48,580 --> 00:02:49,830
