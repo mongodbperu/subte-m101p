@@ -12,7 +12,7 @@ sobre qué puede representar.
 
 4
 00:00:03,400 --> 00:00:05,560
-Y luego vamos a ver por qué
+Luego vamos a ver por qué
 puede representarlo.
 
 5
@@ -22,8 +22,7 @@ de datos dentro de JSON,
 
 6
 00:00:09,110 --> 00:00:11,880
-que son arrays y
-diccionarios.
+que son arrays y diccionarios.
 
 7
 00:00:11,880 --> 00:00:13,370
@@ -56,8 +55,8 @@ de elementos entre ellos.
 
 13
 00:00:26,590 --> 00:00:28,980
-Y un diccionario se representa
-usando llaves,
+Y un diccionario se
+representa usando llaves,
 
 14
 00:00:28,980 --> 00:00:33,250
@@ -66,12 +65,12 @@ pares clave / valor.
 
 15
 00:00:33,250 --> 00:00:35,820
-Y entonces hay una clave,
-dos puntos, y luego un valor.
+Entonces hay una clave, dos
+puntos, y luego un valor.
 
 16
 00:00:35,820 --> 00:00:37,350
-Y podría haber un número
+Podría haber un número
 arbitrario de ellos
 
 17
@@ -109,16 +108,16 @@ que haber un diccionario.
 
 24
 00:00:51,180 --> 00:00:53,510
-Y puedo crear algo
-con un nombre,
+Puedo crear algo
+con un nombre
 
 25
 00:00:53,510 --> 00:00:54,930
-y que tenga un valor.
+y que tenga un valor
 
 26
 00:00:54,930 --> 00:00:57,000
-Y luego podría tener una
+y luego podría tener una
 ciudad, y ésta puede tener
 
 27
@@ -127,13 +126,13 @@ otro valor aquí.
 
 28
 00:00:58,740 --> 00:01:00,880
-Y entonces podría tener-- por
+Y entonces podría tener--por
 ejemplo, si ésta es sólo una
 
 29
 00:01:00,880 --> 00:01:03,030
-colección de personas y sus
-ciudades y quizá sus
+colección de personas y
+sus ciudades y quizá sus
 
 30
 00:01:03,030 --> 00:01:03,690
@@ -141,13 +140,12 @@ intereses--
 
 31
 00:01:03,690 --> 00:01:05,800
-podría tener otra clave aquí
-llamada "interest".
+podría tener otra clave
+aquí llamada "interest"
 
 32
 00:01:05,800 --> 00:01:08,110
-Y que podría resultar
-que es un array.
+que podría resultar ser un array.
 
 33
 00:01:08,110 --> 00:01:09,200
@@ -155,7 +153,7 @@ Tiene corchetes.
 
 34
 00:01:09,200 --> 00:01:11,270
-Y entonces podría
+Entonces podría
 poner cosas dentro.
 
 35
