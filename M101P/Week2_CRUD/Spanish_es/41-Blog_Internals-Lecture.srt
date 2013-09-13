@@ -22,8 +22,8 @@ Una es la colección de posts.
 
 6
 00:00:11,700 --> 00:00:13,510
-La otra es la colección
-de usuarios.
+La otra es la
+colección de usuarios.
 
 7
 00:00:13,510 --> 00:00:16,460
@@ -49,16 +49,15 @@ Vamos a ir a través de los archivos.
 
 12
 00:00:24,800 --> 00:00:28,120
-Vamos a ver lo que
-hay en el directorio.
+Veamos qué hay en el directorio.
 
 13
 00:00:28,120 --> 00:00:29,750
-Hay un archivo blog.py.
+Hay un archivo "blog.py".
 
 14
 00:00:29,750 --> 00:00:32,570
-Ese es el archivo principal
+Ése es el archivo principal
 que tiene el controlador que
 
 15
@@ -67,7 +66,7 @@ controla la interfaz para el blog.
 
 16
 00:00:34,700 --> 00:00:36,840
-Y luego hay un objeto para el
+Luego hay un objeto para el
 acceso a datos de sesiones,
 
 17
@@ -76,7 +75,7 @@ abreviado como "sessionDAO".
 
 18
 00:00:38,800 --> 00:00:42,450
-Y luego hay un archivo "userDAO",
+Luego hay un archivo "userDAO",
 conteniendo todo el código
 
 19
@@ -105,8 +104,8 @@ producir la interfaz de usuario.
 
 24
 00:00:54,610 --> 00:00:56,490
-Y luego también tendrás
-un programa de validación para
+Luego también tendrás un
+programa de validación para
 
 25
 00:00:56,490 --> 00:00:57,990
@@ -192,7 +191,7 @@ es que, aparte del
 43
 00:01:35,370 --> 00:01:37,630
 coloreado de sintaxis que
-que tienes en todos los editores,
+tienes en todos los editores,
 
 44
 00:01:37,630 --> 00:01:39,865
@@ -201,12 +200,11 @@ cuando las variables no son usadas.
 
 45
 00:01:39,865 --> 00:01:42,290
-Y te dice
-qué código no
+Y te dice qué código no
 
 46
 00:01:42,290 --> 00:01:44,300
-sigue el idioma Pitónico.
+sigue el idioma pitónico.
 
 47
 00:01:44,300 --> 00:01:48,060
@@ -224,17 +222,16 @@ lo señalará.
 
 50
 00:01:52,510 --> 00:01:54,230
-Puedes verlos
-justo aquí.
+Puedes verlos justo aquí.
 
 51
 00:01:54,230 --> 00:01:56,260
-Están estas pequeñas
+Hay estas pequeñas
 cosas que te indican
 
 52
 00:01:56,260 --> 00:01:57,470
-y advierten.
+y te advierten.
 
 53
 00:01:57,470 --> 00:01:59,800
@@ -248,7 +245,7 @@ advertencias útiles.
 
 55
 00:02:01,870 --> 00:02:04,940
-Y como un novato usuario de Python,
+Y como un usuario novato de Python,
 pienso que esto puede ser realmente
 
 56
@@ -266,12 +263,11 @@ tienes tus hábitos establecidos.
 
 59
 00:02:08,710 --> 00:02:11,510
-Y probablemente
-no importa.
+Y probablemente no te importa.
 
 60
 00:02:11,510 --> 00:02:12,870
-Vamos a través del código.
+Vayamos a través del código.
 
 61
 00:02:12,870 --> 00:02:15,800
@@ -290,17 +286,17 @@ funciones que serán llamadas como
 64
 00:02:22,750 --> 00:02:27,060
 manejadores para solicitudes a
-particulares URLs para nuestro blog.
+particulares URLs de nuestro blog.
 
 65
 00:02:27,060 --> 00:02:30,050
-Y la forma en que estos se
+Y la forma en que éstas se
 hacen en Bottle es con estos
 
 66
 00:02:30,050 --> 00:02:33,660
-decoradores, donde la función
-es decorada.
+decoradores, donde la
+función es decorada.
 
 67
 00:02:33,660 --> 00:02:37,710
@@ -333,11 +329,11 @@ a esto más tarde.
 
 73
 00:02:50,270 --> 00:02:51,840
-Es sólo un placeholder.
+Es sólo un "placeholder"
 
 74
 00:02:51,840 --> 00:02:55,070
-A pesar que se va a devolver
+a pesar de que se va a devolver
 un archivo de plantilla.
 
 75
@@ -357,7 +353,7 @@ tener un usuario registrado para
 
 78
 00:03:02,710 --> 00:03:05,100
-el blog, esta es la
+el blog, ésta es la
 ruta de registro.
 
 79
@@ -376,12 +372,12 @@ valores iniciales y se los entrega
 
 82
 00:03:13,500 --> 00:03:14,940
-a la plantilla
-como un diccionario.
+a la plantilla como
+un diccionario.
 
 83
 00:03:14,940 --> 00:03:15,980
-Esa es la plantilla de registro.
+Ésa es la plantilla de registro.
 
 84
 00:03:15,980 --> 00:03:17,320
@@ -390,11 +386,11 @@ plantilla de registro.
 
 85
 00:03:17,320 --> 00:03:19,150
-Así que llamaré a esta plantilla.
+Llamaré a esta plantilla.
 
 86
 00:03:19,150 --> 00:03:22,010
-Y puedes ver que esta plantilla
+Puedes ver que esta plantilla
 tiene alguna información mínima
 
 87
@@ -403,7 +399,7 @@ con estilos.
 
 88
 00:03:22,750 --> 00:03:24,880
-Y esta es una plantilla HTML.
+Y ésta es una plantilla HTML.
 
 89
 00:03:24,880 --> 00:03:28,250
@@ -416,7 +412,7 @@ en realidad un archivo HTML.
 
 91
 00:03:29,420 --> 00:03:33,330
-Pero hay lugares en particular
+Pero hay lugares particulares
 donde Bottle realizará
 
 92
@@ -426,8 +422,8 @@ variables de Python.
 
 93
 00:03:35,230 --> 00:03:38,530
-En particular, estos dobles
-corchetes indican que
+En particular, estos corchetes
+dobles indican que
 
 94
 00:03:38,530 --> 00:03:41,020
@@ -440,22 +436,20 @@ cuando sea ejecutado.
 
 96
 00:03:42,440 --> 00:03:45,170
-Así que esa es la forma en que funciona.
+Ésa es la forma en que funciona.
 
 97
 00:03:45,170 --> 00:03:47,460
-Volvamos a
-blog.py otra vez.
+Volvamos a "blog.py" otra vez.
 
 98
 00:03:47,460 --> 00:03:50,690
-Y luego cuando el usuario hace
+Luego cuando el usuario hace
 algo, por lo general lo llamará
 
 99
 00:03:50,690 --> 00:03:54,750
-en una de estas
-clases.
+en una de estas clases.
 
 100
 00:03:54,750 --> 00:03:57,170
@@ -468,16 +462,16 @@ Esto toma los datos de ingreso.
 
 102
 00:03:57,930 --> 00:03:59,100
-Obtiene el nombre de usuario
-y la contraseña.
+Obtiene el nombre de
+usuario y la contraseña
 
 103
 00:03:59,100 --> 00:04:01,190
-Y llama a validar los datos.
+y llama a validar los datos.
 
 104
 00:04:01,190 --> 00:04:04,990
-Y para hacerlo llama a
+Para hacerlo llama a
 "users.validate_login".
 
 105
@@ -495,33 +489,32 @@ Permíteme explicarlo.
 
 108
 00:04:10,330 --> 00:04:13,730
-En la parte inferior del programa,
-puedes ver que esto
+En la parte inferior del
+programa, puedes ver que esto
 
 109
 00:04:13,730 --> 00:04:16,300
-esencialmente es lo
+es esencialmente lo
 principal en Bottle.py.
 
 110
 00:04:16,300 --> 00:04:18,480
 Puedes ver que establece
-arriba una variable "users".
+arriba una variable "users"
 
 111
 00:04:18,480 --> 00:04:21,279
-Y crea una nueva instancia de la
-clase "User Data Access
+y crea una nueva instancia de
+la clase "User Data Access Object",
 
 112
 00:04:21,279 --> 00:04:24,620
-Object", "userDAO", dándole
+"userDAO", dándole
 la base de datos.
 
 113
 00:04:24,620 --> 00:04:26,480
-Y lo mismo
-para las sesiones.
+Y lo mismo para las sesiones.
 
 114
 00:04:26,480 --> 00:04:29,880
@@ -549,26 +542,25 @@ tienes que trabajar esta
 
 119
 00:04:39,810 --> 00:04:41,120
-semana para la tarea.
+semana para la tarea
 
 120
 00:04:41,120 --> 00:04:42,840
-Y el código está completo
-en mi versión.
+y el código está
+completo en mi versión.
 
 121
 00:04:42,840 --> 00:04:44,430
-Por lo que no voy a
-mostrártelo.
+Por lo que no
+voy a mostrártelo.
 
 122
 00:04:44,430 --> 00:04:47,130
-Te mostraré el objeto
-"sessionDAO".
+Te mostraré el objeto "sessionDAO".
 
 123
 00:04:47,130 --> 00:04:49,970
-Y el objeto "sessionDAO" no
+El objeto "sessionDAO" no
 necesitará ser trabajado.
 
 124
@@ -585,12 +577,12 @@ funcionan las clases en Python.
 
 127
 00:04:54,130 --> 00:04:56,480
-Así que si eres nuevo
-con Python, te lo explicaré.
+Así que si eres nuevo con
+Python, te lo explicaré.
 
 128
 00:04:56,480 --> 00:04:58,230
-Esta es la declaración de una clase.
+Ésta es la declaración de una clase.
 
 129
 00:04:58,230 --> 00:05:01,820
@@ -599,8 +591,8 @@ constructor para la clase.
 
 130
 00:05:01,820 --> 00:05:05,050
-Esto se llama cuando
-creas una nueva instancia de un
+Esto se llama cuando creas
+una nueva instancia de un
 
 131
 00:05:05,050 --> 00:05:06,170
@@ -617,12 +609,12 @@ base de datos.
 
 134
 00:05:08,900 --> 00:05:11,320
-Por lo que lo guarda y
-luego crea un manejador para la
+Lo guarda y luego
+crea un manejador
 
 135
 00:05:11,320 --> 00:05:13,380
-colección "sessions".
+para la colección "sessions".
 
 136
 00:05:13,380 --> 00:05:15,500
@@ -632,7 +624,7 @@ algo bastante sencillo.
 137
 00:05:15,500 --> 00:05:19,600
 Esto crea un nuevo diccionario con el
-nombre de usuario y el ID se la sesión.
+nombre de usuario y el ID de la sesión.
 
 138
 00:05:19,600 --> 00:05:21,340
@@ -670,26 +662,26 @@ de bienvenida.
 
 145
 00:05:36,490 --> 00:05:40,100
-Pero no hay plantillas para
-mostrar los posts o
+Pero no hay plantillas
+para mostrar los posts
 
 146
 00:05:40,100 --> 00:05:41,570
-añadir comentarios.
+o añadir comentarios
 
 147
 00:05:41,570 --> 00:05:43,670
-Debido a que esto vendrá
+debido a que esto vendrá
 en las próximas semanas.
 
 148
 00:05:43,670 --> 00:05:45,510
 Así que no los
-tenemos aún aquí.
+tenemos aquí aún.
 
 149
 00:05:45,510 --> 00:05:47,680
-Y también hay un
+También hay un
 objeto DAO faltante.
 
 150
@@ -699,13 +691,13 @@ aún no se te ha dado.
 
 151
 00:05:50,850 --> 00:05:53,970
-Porque lo tendrás
-la siguiente semana también.
+Porque lo tendrás la
+siguiente semana también.
 
 152
 00:05:53,970 --> 00:05:57,640
-Otra vez, estuve trabajando en
-PyCharm aquí, que puedes
+Otra vez, estuve trabajando
+en PyCharm aquí, que puedes
 
 153
 00:05:57,640 --> 00:05:58,740

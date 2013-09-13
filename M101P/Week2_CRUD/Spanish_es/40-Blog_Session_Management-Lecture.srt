@@ -12,22 +12,21 @@ Ese usuario soy yo, "erlichson".
 
 4
 00:00:04,050 --> 00:00:06,510
-Y ahora deseo ir hacia algunos
-archivos de gestión de sesiones
+Ahora deseo ver algunos archivos
+de gestión de sesiones y vamos a
 
 5
 00:00:06,510 --> 00:00:10,680
-y vamos a ir por los escenarios para
+considerar los escenarios para
 presentar esta página de bienvenida
 
 6
 00:00:10,680 --> 00:00:12,880
-con el nombre "erlichson" en él.
+con el nombre "erlichson".
 
 7
 00:00:12,880 --> 00:00:15,830
-Así que todo sucede
-por las cookies.
+Todo sucede por las cookies.
 
 8
 00:00:15,830 --> 00:00:20,510
@@ -36,13 +35,13 @@ de crear un usuario cuando
 
 9
 00:00:20,510 --> 00:00:22,680
-has completado la primera
-parte de la tarea de esta semana,
+hayas completado la primera
+parte de la tarea de esta
 
 10
 00:00:22,680 --> 00:00:25,880
-deberías ver
-lo siguiente.
+semana, deberías
+ver lo siguiente.
 
 11
 00:00:25,880 --> 00:00:28,100
@@ -55,8 +54,7 @@ colecciones.
 
 13
 00:00:30,040 --> 00:00:31,650
-Y vas a ver
-tres colecciones--
+Vas a ver tres colecciones--
 
 14
 00:00:31,650 --> 00:00:34,360
@@ -80,7 +78,7 @@ usuario en esta colección con
 18
 00:00:44,580 --> 00:00:46,880
 el ID "erlichson",
-y ese soy yo, con
+y ése soy yo, con
 
 19
 00:00:46,880 --> 00:00:48,390
@@ -107,17 +105,17 @@ y mi nombre de usuario.
 
 24
 00:00:59,870 --> 00:01:02,640
-Así que hay esta cadena aleatoria
+Hay esta cadena aleatoria
 que va a ser puesta
 
 25
 00:01:02,640 --> 00:01:04,030
-en el cookie del navegador.
+en el cookie del navegador
 
 26
 00:01:04,030 --> 00:01:06,350
-Y luego está asociado
-con mi nombre de usuario.
+y luego está asociado con
+mi nombre de usuario.
 
 27
 00:01:06,350 --> 00:01:10,430
@@ -131,26 +129,26 @@ utilidad para cookies.
 29
 00:01:11,530 --> 00:01:13,780
 Y si haces clic en él,
-podrás ver el cookie que mi
+podrás ver el cookie que
 
 30
 00:01:13,780 --> 00:01:16,590
-navegador tiene
+mi navegador tiene
 en esta sesión.
 
 31
 00:01:16,590 --> 00:01:21,010
-Y puedes ver que empieza
-con "ab" y termina con "f".
+Puedes ver que empieza con
+"ab" y termina con "f".
 
 32
 00:01:21,010 --> 00:01:25,840
-Y vas aquí, puedes ver
-"ab" terminando con "f", que es
+Y si vas aquí, puedes ver
+"ab" terminando con "f", que
 
 33
 00:01:25,840 --> 00:01:28,550
-la misma cadena que está
+es la misma cadena que está
 en mi tabla "sessions".
 
 34
@@ -160,7 +158,7 @@ este manejo de sesiones?
 
 35
 00:01:31,070 --> 00:01:32,390
-Vayamos a verlo.
+Veámoslo.
 
 36
 00:01:32,390 --> 00:01:35,220
@@ -173,7 +171,7 @@ de una solicitud GET.
 
 38
 00:01:36,450 --> 00:01:40,370
-Y lo que pasa es que el
+Y lo que ocurre es que el
 navegador envía una petición
 
 39
@@ -187,7 +185,7 @@ escrita en Python.
 
 41
 00:01:45,620 --> 00:01:48,130
-Y esta es la aplicación de
+Ésta es la aplicación de
 blog, y por supuesto,
 
 42
@@ -197,17 +195,17 @@ las peticiones HTTP.
 
 43
 00:01:50,780 --> 00:01:54,570
-Y luego la aplicación
+Luego la aplicación
 realiza una solicitud
 
 44
 00:01:54,570 --> 00:01:58,020
-utilizando PyMongo a MongoDB.
+utilizando PyMongo a MongoDB
 
 45
 00:01:58,020 --> 00:02:03,010
-Y se presenta este identificador
-de sesión, este "SessionID",
+y se presenta este identificador
+de sesión, este "SessionID"
 
 46
 00:02:03,010 --> 00:02:05,430
@@ -216,17 +214,17 @@ nombre de usuario.
 
 47
 00:02:05,430 --> 00:02:11,100
-Y entonces la aplicación
-responde, y responde con el
+Entonces la aplicación
+responde, y responde con
 
 48
 00:02:11,100 --> 00:02:14,330
-nombre de usuario embebido
-en la página HTML.
+el nombre de usuario
+embebido en la página HTML.
 
 49
 00:02:14,330 --> 00:02:18,300
-Y entonces dice "Welcome
+Entonces dice "Welcome
 erlichson". Y lo hace
 
 50
@@ -244,7 +242,7 @@ para el ingreso.
 
 53
 00:02:24,050 --> 00:02:25,750
-Así que vayamos a eso.
+Veamos eso.
 
 54
 00:02:25,750 --> 00:02:28,110
@@ -253,7 +251,7 @@ una página de ingreso.
 
 55
 00:02:28,110 --> 00:02:31,190
-Y ésta página de ingreso tiene
+Ésta página de ingreso tiene
 un campo de nombre de usuario
 
 56
@@ -277,7 +275,7 @@ POST a tu blog.
 
 60
 00:02:43,540 --> 00:02:47,280
-Y lo que el blog va a hacer
+Lo que el blog va a hacer
 es verificarlo contra las
 
 61
@@ -287,7 +285,7 @@ colección "users" en MongoDB.
 
 62
 00:02:52,130 --> 00:02:55,950
-Y si lo ve como un inicio de
+Si lo ve como un inicio de
 sesión válido, creará un
 
 63
@@ -307,8 +305,8 @@ se va a convertir en la cookie.
 
 66
 00:03:02,000 --> 00:03:05,430
-Así que responderá
-con la información de sesión
+Entonces responderá con
+la información de sesión
 
 67
 00:03:05,430 --> 00:03:07,370
@@ -326,22 +324,22 @@ bienvenida con el cookie establecido.
 
 70
 00:03:13,890 --> 00:03:16,465
-Por esto tu navegador va a ir
-de ida y vuelta, e irá
+Por eso tu navegador va a
+ir de ida y vuelta, y todo
 
 71
 00:03:16,465 --> 00:03:18,525
-todo bien, entonces redirecciona
+irá bien, entonces redirecciona
 a la página de bienvenida
 
 72
 00:03:18,525 --> 00:03:20,950
-luego está yendo hacia
-la página de bienvenida.
+luego va hacia la
+página de bienvenida.
 
 73
 00:03:20,950 --> 00:03:25,250
-Y así es esto una ida y vuelta
+Y así, esto es una ida y vuelta
 porque el navegador obtiene una
 
 74
@@ -361,16 +359,16 @@ que es visto durante la
 77
 00:03:31,210 --> 00:03:34,640
 redirección y va a
-producir esto: "Welcome
+producir esto:
 
 78
 00:03:34,640 --> 00:03:35,525
-erlichson".
+"Welcome erlichson".
 
 79
 00:03:35,525 --> 00:03:37,790
-Muy bien, así que este es el
-flujo de cómo el manejo de sesiones
+Muy bien, éste es el flujo
+de cómo el manejo de sesiones
 
 80
 00:03:37,790 --> 00:03:39,550
@@ -378,7 +376,7 @@ funciona en el blog.
 
 81
 00:03:39,550 --> 00:03:41,790
-Y ahora voy a mostrarte
+Ahora voy a mostrarte
 algunas de las características
 
 82

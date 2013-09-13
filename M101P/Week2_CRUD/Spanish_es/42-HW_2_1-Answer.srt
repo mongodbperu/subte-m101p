@@ -82,8 +82,8 @@ o igual a 65.
 
 19
 00:00:51,240 --> 00:00:53,480
-Por lo que para hacer eso, aquí está
-la consulta, justo aquí.
+Por lo que para hacer eso, aquí
+está la consulta, justo aquí.
 
 20
 00:00:53,480 --> 00:00:54,590
@@ -96,8 +96,8 @@ Vamos a examinar todo con
 
 22
 00:00:59,080 --> 00:01:02,980
-con "score" mayor o 
-igual, usando el operador
+con "score" mayor o igual,
+usando el operador
 
 23
 00:01:02,980 --> 00:01:04,989
@@ -106,11 +106,11 @@ igual, usando el operador
 24
 00:01:04,989 --> 00:01:08,030
 Entonces vamos a ordenarlo
-ascendentemente por "score" y 
+ascendentemente por "score"
 
 25
 00:01:08,030 --> 00:01:09,560
-vamos a limitarlo a cinco.
+y vamos a limitarlo a cinco.
 
 26
 00:01:09,560 --> 00:01:13,730
@@ -119,8 +119,8 @@ el estudiante que tiene la
 
 27
 00:01:13,730 --> 00:01:19,170
-puntuación más baja mayor o 
-igual a 65 es el "student_id" 22.
+puntuación más baja mayor o igual
+a 65 es el "student_id" 22.
 
 28
 00:01:19,170 --> 00:01:23,680

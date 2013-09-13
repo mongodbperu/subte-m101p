@@ -4,16 +4,15 @@
 2
 00:00:01,080 --> 00:00:03,980
 Y la respuesta es que
-devolvería el documento con
+devolvería el documento
 
 3
 00:00:03,980 --> 00:00:05,980
-"_id" igual a 2.
+con "_id" igual a 2.
 
 4
 00:00:05,980 --> 00:00:07,530
-Así que, ¿cómo se razona
-eso?
+¿Cómo se razona eso?
 
 5
 00:00:07,530 --> 00:00:09,340
@@ -27,18 +26,17 @@ a hacer es ordenarlos por "value"
 
 7
 00:00:12,490 --> 00:00:17,010
-descendentemente, lo que significa que
-va a ordenarlos con
+descendentemente, lo que significa
+que va a ordenarlos con
 
 8
 00:00:17,010 --> 00:00:23,340
-este documento primero, luego éste,
-luego éste, luego éste.
+este documento primero, luego
+éste, luego éste, luego éste.
 
 9
 00:00:23,340 --> 00:00:25,920
-Y después de hacer 
-eso va a
+Y después de hacer eso va a
 
 10
 00:00:25,920 --> 00:00:26,910
@@ -51,23 +49,23 @@ luego éste, luego este otro.
 
 12
 00:00:31,080 --> 00:00:33,920
-Por lo que si salta tres de ellos,
-va a saltarse éstos.
+Por lo que si salta tres de
+ellos, va a saltarse éstos.
 
 13
 00:00:33,920 --> 00:00:39,340
-Va a saltarse 10, 20 y
-7, después de ordenar, dejando el
+Va a saltarse 10, 20 y 7,
+después de ordenar, dejando
 
 14
 00:00:39,340 --> 00:00:42,510
-que tiene "value" 5, cuyo
-"_id" es igual a 2.
+el que tiene "value" 5,
+cuyo "_id" es igual a 2.
 
 15
 00:00:42,510 --> 00:00:44,340
-Y entonces simplemente va a mostrar
-uno, que es todo
+Entonces simplemente va a
+mostrar uno, que es todo
 
 16
 00:00:44,340 --> 00:00:45,190
@@ -75,8 +73,8 @@ lo que se dejó.
 
 17
 00:00:45,190 --> 00:00:47,575
-Y por tanto, como resultado, la respuesta
-es que va a devolver
+Por lo tanto, como resultado, la
+respuesta es que va a devolver
 
 18
 00:00:47,575 --> 00:00:51,840

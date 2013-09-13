@@ -22,8 +22,8 @@ por "score" de forma ascendente.
 
 6
 00:00:10,940 --> 00:00:14,450
-Ahora, sólo estamos examinando los
-documentos que son de tipo
+Ahora, sólo estamos examinando
+los documentos que son de tipo
 
 7
 00:00:14,450 --> 00:00:16,000
@@ -31,7 +31,7 @@ documentos que son de tipo
 
 8
 00:00:16,000 --> 00:00:19,070
-Y si hacemos eso, y establecemos
+Y si hacemos eso, y asigno
 el "student_id" a un valor
 
 9
@@ -50,18 +50,18 @@ y podemos simplemente borrarlo.
 
 12
 00:00:25,180 --> 00:00:27,840
-Así que podemos comenzar por borrar 
-este documento justo aquí.
+Así que podemos comenzar
+borrando este documento aquí.
 
 13
 00:00:27,840 --> 00:00:30,150
-Luego, a medida que continuamos, nos damos
-cuenta que el "student_id" cambia
+Luego, a medida que continuamos, nos
+damos cuenta de que el "student_id"
 
 14
 00:00:30,150 --> 00:00:32,850
-durante esta transición a medida
-que iteramos, por lo que
+cambia durante esta transición, a
+medida que iteramos, por lo que
 
 15
 00:00:32,850 --> 00:00:36,330
@@ -79,13 +79,12 @@ estudiantes y borramos la
 
 18
 00:00:40,020 --> 00:00:42,040
-puntuación de "homework" más baja
-para cada uno.
+puntuación de "homework"
+más baja para cada uno.
 
 19
 00:00:42,040 --> 00:00:44,800
-Veamos el
-programa.
+Veamos el programa.
 
 20
 00:00:44,800 --> 00:00:47,260
@@ -94,62 +93,60 @@ escribí para hacer eso.
 
 21
 00:00:47,260 --> 00:00:48,660
-Tiene dos funciones
-diferentes.
+Tiene dos funciones diferentes.
 
 22
 00:00:48,660 --> 00:00:50,770
-Esta función
-"remove_lowest".
+Esta función "remove_lowest"
 
 23
 00:00:50,770 --> 00:00:53,215
-Llama a "grades.find" con
-el tipo "homework".
+llama a "grades.find"
+con el tipo "homework",
 
 24
 00:00:53,215 --> 00:00:55,210
-Ordena ascendentemente 
+ordena ascendentemente
 por "student_id"
 
 25
 00:00:55,210 --> 00:00:57,210
-y por "score".
+y por "score",
 
 26
 00:00:57,210 --> 00:01:00,090
-Establece el "student_id" a un
-valor razonable para empezar.
+asigna el "student_id" a un
+valor razonable para empezar
 
 27
 00:01:00,090 --> 00:01:02,950
-Y luego a medida que avanza por
+y luego a medida que avanza por
 cada una de estas entradas en la
 
 28
 00:01:02,950 --> 00:01:05,250
 colección, si el "student_id"
-es diferente al 
+es diferente al "student_id"
 
 29
 00:01:05,250 --> 00:01:07,570
-"student_id" anterior, sabe
-que está examinando la
+anterior, sabe que
+está examinando la
 
 30
 00:01:07,570 --> 00:01:09,850
-puntuación de "homework" más baja para el
-estudiante y entonces llama a
+puntuación de "homework" más baja para
+el estudiante y entonces llama a
 
 31
 00:01:09,850 --> 00:01:12,460
-"remove_score" para ese
-"student_id".
+"remove_score" para
+ese "student_id".
 
 32
 00:01:12,460 --> 00:01:14,385
-Y en cada iteración del
-bucle, también
+Y en cada iteración
+del bucle, también
 
 33
 00:01:14,385 --> 00:01:16,300
@@ -157,23 +154,23 @@ actualiza "student_id".
 
 34
 00:01:16,300 --> 00:01:20,480
-Por lo que si echamos un vistazo
-a la función "remove_score" justo aquí,
+Si echamos un vistazo a la función
+"remove_score" justo aquí, intenta
 
 35
 00:01:20,480 --> 00:01:23,005
-intenta encontrar un documento, el que
-se le está pidiendo que borre por
+encontrar un documento, el que
+se le está pidiendo que borre,
 
 36
 00:01:23,005 --> 00:01:26,680
-"_id", lo imprime
-por motivos de depuración.
+por "_id", lo imprime
+por motivos de depuración
 
 37
 00:01:26,680 --> 00:01:29,380
-Y luego llama a "grades.remove" con
-el "_id" igual al
+y luego llama a "grades.remove"
+con el "_id" igual al
 
 38
 00:01:29,380 --> 00:01:32,710
@@ -187,11 +184,11 @@ Así es como funciona.
 40
 00:01:33,325 --> 00:01:37,010
 Veamos cómo funciona, y luego
-simplemente ejecutaremos "python
+simplemente ejecutaremos
 
 41
 00:01:37,010 --> 00:01:40,340
-drop_lowest.py" e imprimirá un
+"python drop_lowest.py" e imprimirá un
 conjunto de cosas, pero básicamente,
 
 42
@@ -206,17 +203,17 @@ alguna consulta de agregación, que
 
 44
 00:01:45,640 --> 00:01:48,080
-no explicaremos ahora mismo,
-porque en realidad
+no explicaremos ahora
+mismo, porque en realidad
 
 45
 00:01:48,080 --> 00:01:50,390
 hay una unidad separada sobre
-esto, pero te contaré cómo va
+esto, pero te explicaré cómo
 
 46
 00:01:50,390 --> 00:01:51,510
-realmente rápido.
+funciona rápidamente.
 
 47
 00:01:51,510 --> 00:01:54,250
@@ -230,8 +227,8 @@ todos los documentos por
 
 49
 00:01:56,820 --> 00:02:00,320
-"student_id" y encontrar
-la media de
+"student_id" y
+encontrar la media de
 
 50
 00:02:00,320 --> 00:02:02,130
@@ -239,8 +236,7 @@ los trabajos de los estudiantes.
 
 51
 00:02:02,130 --> 00:02:04,270
-Y luego ordena
-por esa media.
+Y luego ordena por esa media.
 
 52
 00:02:04,270 --> 00:02:06,570
@@ -283,12 +279,11 @@ en realidad el "student_id".
 60
 00:02:23,660 --> 00:02:25,410
 Si el framework funciona,
-termina con el
+termina con el campo "_id"
 
 61
 00:02:25,410 --> 00:02:28,190
-campo "_id" al
-final de esta tubería.
+al final de esta tubería.
 
 62
 00:02:28,190 --> 00:02:30,430
@@ -297,5 +292,5 @@ estudiante es 96.
 
 63
 00:02:30,430 --> 00:02:33,920
-Así que la respuesta a esta
-pregunta era 54.
+Así que la respuesta a
+esta pregunta era 54.

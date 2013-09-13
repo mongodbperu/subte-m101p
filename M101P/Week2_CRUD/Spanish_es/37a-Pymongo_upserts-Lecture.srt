@@ -13,13 +13,13 @@ lecciones que hicimos en el shell
 
 4
 00:00:05,510 --> 00:00:11,640
-Mongo, un "upsert" es una
-actualización donde la base de datos
+mongo, un "upsert" es una
+actualización donde la base
 
 5
 00:00:11,640 --> 00:00:15,830
-insertará automáticamente los
-datos si no hay un documento que
+de datos insertará automáticamente
+los datos si no hay un documento que
 
 6
 00:00:15,830 --> 00:00:17,760
@@ -45,7 +45,7 @@ un "upsert" en PyMongo.
 
 11
 00:00:27,390 --> 00:00:28,760
-Echemos un vistazo a eso.
+Echémosle un vistazo.
 
 12
 00:00:28,760 --> 00:00:29,520
@@ -53,7 +53,7 @@ OK.
 
 13
 00:00:29,520 --> 00:00:34,180
-En este programa que he
+En este programa, que he
 llamado "using_upsert.py"--
 
 14
@@ -69,12 +69,12 @@ propio computador--
 16
 00:00:38,450 --> 00:00:41,010
 vamos a conectarnos a
-"localhost", con "safe" igual a
+"localhost", con "safe"
 
 17
 00:00:41,010 --> 00:00:43,640
-"True", vamos a la base de datos
-"test" y vemos la colección
+igual a "True". Vayamos a la base de
+datos "test" y veamos la colección
 
 18
 00:00:43,640 --> 00:00:45,240
@@ -82,8 +82,7 @@ vamos a conectarnos a
 
 19
 00:00:45,240 --> 00:00:48,400
-Y vamos a hacer
-lo siguiente.
+Y vamos a hacer lo siguiente.
 
 20
 00:00:48,400 --> 00:00:50,700
@@ -97,7 +96,7 @@ todo en la colección
 22
 00:00:51,950 --> 00:00:53,250
 Ahora, hay en realidad dos
-distintas maneras para hacer esto.
+distintas maneras de hacer esto.
 
 23
 00:00:53,250 --> 00:00:54,820
@@ -110,13 +109,13 @@ eliminar todos los documentos.
 
 25
 00:00:57,200 --> 00:01:00,320
-O un poco más eficiente si
-la colección fuera grande,
+O un poco más eficiente por
+si la colección fuera grande,
 
 26
 00:01:00,320 --> 00:01:03,640
-pero es obviamente una pequeña
-colección, podrías hacer
+pero ésta es obviamente una
+pequeña colección, podrías hacer
 
 27
 00:01:03,640 --> 00:01:06,860
@@ -125,7 +124,7 @@ la colección.
 
 28
 00:01:06,860 --> 00:01:10,480
-Y después de eso, voy a hacer
+Después de eso, voy a hacer
 dos distintos "upserts".
 
 29
@@ -134,12 +133,12 @@ Ahora voy a llamar a "update".
 
 30
 00:01:12,480 --> 00:01:17,390
-Voy a buscar por algo
-que tenga una clave "thing"
+Voy a buscar algo que
+tenga una clave "thing"
 
 31
 00:01:17,390 --> 00:01:19,410
-y un valor de "apple".
+y un valor "apple".
 
 32
 00:01:19,410 --> 00:01:25,580
@@ -157,8 +156,8 @@ actualizar en mi colección
 
 35
 00:01:29,510 --> 00:01:32,450
-"things" es que voy a
-buscar algo con
+"things" es que voy
+a buscar algo con
 
 36
 00:01:32,450 --> 00:01:35,230
@@ -171,8 +170,7 @@ el "color" a "green".
 
 38
 00:01:40,660 --> 00:01:43,330
-Y voy a poner
-"upsert=True".
+Y voy a poner "upsert=True".
 
 39
 00:01:43,330 --> 00:01:45,960
@@ -186,12 +184,12 @@ dando el documento--
 
 41
 00:01:48,430 --> 00:01:49,850
-Estoy diciendo el atributo
-del documento que
+Estoy especificando el
+atributo del documento
 
 42
 00:01:49,850 --> 00:01:51,280
-deseo aquí.
+que deseo aquí.
 
 43
 00:01:51,280 --> 00:01:56,360
@@ -205,7 +203,7 @@ e imprimirlo también.
 
 45
 00:02:00,730 --> 00:02:02,050
-Así que este es mi programa completo.
+Éste es mi programa completo.
 
 46
 00:02:02,050 --> 00:02:04,500
@@ -217,12 +215,12 @@ Muy bien.
 
 48
 00:02:05,430 --> 00:02:08,100
-Así que aquí está el resultado
+Aquí está el resultado
 de ejecutar este programa.
 
 49
 00:02:08,100 --> 00:02:12,870
-Y en este caso de "apple",
+Y en el caso de "apple",
 es exactamente lo que estábamos
 
 50
@@ -254,8 +252,8 @@ No hay nada allí.
 
 56
 00:02:30,160 --> 00:02:31,950
-Vayamos a mirar hacia atrás en
-el programa y ver si podemos
+Veamos hacia atrás en el
+programa a ver si podemos
 
 57
 00:02:31,950 --> 00:02:33,540
@@ -268,13 +266,12 @@ usamos el comando "set".
 
 59
 00:02:37,745 --> 00:02:40,880
-Y pasó lo que esperábamos,
-es que inserta
+Y pasó lo que esperábamos:
 
 60
 00:02:40,880 --> 00:02:44,090
-algo con un "thing"
-de valor "apple"
+se insertó algo con un
+"thing" de valor "apple"
 
 61
 00:02:44,090 --> 00:02:46,270
@@ -283,7 +280,7 @@ y un "color" "red".
 62
 00:02:46,270 --> 00:02:49,900
 Pero con "pear", no
-usamos un comando "set".
+usamos el comando "set".
 
 63
 00:02:49,900 --> 00:02:55,890
@@ -302,27 +299,27 @@ es que no hay nada con
 
 66
 00:03:04,160 --> 00:03:07,950
-Y te voy a mostrar la colección
+Te voy a mostrar la colección
 para que puedas verla.
 
 67
 00:03:07,950 --> 00:03:13,380
-Estamos en Mongo y
+Estamos en Mongo y hacemos
 "db.things.find".
 
 68
 00:03:13,380 --> 00:03:15,930
-Y esto es lo que hay
+Esto es lo que hay
 en esa colección.
 
 69
 00:03:15,930 --> 00:03:18,230
 Puedes ver que tenemos
-"apple"-- "thing"
+"apple"--"thing" "apple",
 
 70
 00:03:18,230 --> 00:03:19,770
-"apple", "color" "red"--
+"color" "red"--
 
 71
 00:03:19,770 --> 00:03:24,000
@@ -358,7 +355,7 @@ El atributo "thing", la clave
 
 78
 00:03:41,330 --> 00:03:43,390
-Y por lo tanto algo importante
+Por lo tanto algo importante
 para recordar cuando estás
 
 79
@@ -368,8 +365,8 @@ por lo general sólo establece
 
 80
 00:03:47,510 --> 00:03:50,330
-el documento igual a lo
-que está aquí.
+el documento igual a
+lo que está aquí.
 
 81
 00:03:50,330 --> 00:03:53,820
@@ -396,8 +393,8 @@ acerca de "upserting".
 
 86
 00:04:03,790 --> 00:04:07,400
-Así que suponemos que nos gustaría
-hacer un "upsert" al siguiente documento
+Supongamos que nos gustaría hacer
+un "upsert" al siguiente documento
 
 87
 00:04:07,400 --> 00:04:08,910
@@ -415,12 +412,12 @@ sentencias funcionarían?
 
 90
 00:04:15,060 --> 00:04:16,870
-Y no voy a ir por cada
-uno en este momento,
+No voy a ir por cada
+una en este momento,
 
 91
 00:04:16,870 --> 00:04:19,130
-porque son pequeños.
+porque son pequeñas.
 
 92
 00:04:19,130 --> 00:04:20,629

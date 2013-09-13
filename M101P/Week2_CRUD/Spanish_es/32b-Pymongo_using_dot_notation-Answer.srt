@@ -3,8 +3,8 @@
 
 2
 00:00:00,240 --> 00:00:04,570
-Y la respuesta es, y en 
-realidad podrías simplemente experimentar
+Y la respuesta es, y en realidad
+podrías simplemente experimentar
 
 3
 00:00:04,570 --> 00:00:06,170
@@ -27,17 +27,16 @@ pero cada vez que proyectes sobre
 7
 00:00:13,970 --> 00:00:18,540
 una clave que no existe, 
-esencialmente es ignorada por Mongo.
+esencialmente es ignorada por Mongo
 
 8
 00:00:18,540 --> 00:00:20,230
-Y no se devuelve nada
-para ella.
+y no se devuelve nada para ella.
 
 9
 00:00:20,230 --> 00:00:22,320
-Y por supuesto si no se devuelve 
-nada, entonces
+Por supuesto si no se
+devuelve nada, entonces
 
 10
 00:00:22,320 --> 00:00:24,040

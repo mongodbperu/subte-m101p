@@ -4,7 +4,7 @@
 2
 00:00:00,260 --> 00:00:03,810
 Ahora vamos de nuevo a la
-construcción de nuestro blog,
+construcción de nuestro blog;
 
 3
 00:00:03,810 --> 00:00:05,720
@@ -27,8 +27,8 @@ del blog.
 
 7
 00:00:11,545 --> 00:00:14,460
-Y quiero llevarte a ver
-cómo debiera funcionar cuando
+Y quiero enseñarte cómo
+debería funcionar cuando
 
 8
 00:00:14,460 --> 00:00:15,600
@@ -37,11 +37,11 @@ esté terminado.
 9
 00:00:15,600 --> 00:00:17,060
 Y vamos a darte
-toda la interfaz de
+toda la interfaz
 
 10
 00:00:17,060 --> 00:00:17,920
-usuario para esto.
+de usuario para esto.
 
 11
 00:00:17,920 --> 00:00:21,280
@@ -50,8 +50,8 @@ cuestión de poner algunos
 
 12
 00:00:21,280 --> 00:00:25,070
-comandos de MongoDB en el código
-para ponerlo en marcha.
+comandos de MongoDB en el
+código para ponerlo en marcha.
 
 13
 00:00:25,070 --> 00:00:27,870
@@ -88,8 +88,8 @@ estas funciones trabajan.
 
 20
 00:00:43,120 --> 00:00:47,520
-Y luego de eso voy a dar
-un recorrido por el código.
+Luego voy a dar un
+recorrido por el código.
 
 21
 00:00:47,520 --> 00:00:53,410
@@ -102,8 +102,7 @@ e iniciar el servidor.
 
 23
 00:00:55,130 --> 00:00:58,570
-Y ahora voy al
-navegador web.
+Ahora voy al navegador web.
 
 24
 00:00:58,570 --> 00:01:03,110
@@ -112,7 +111,7 @@ y presiono "Enter",
 
 25
 00:01:03,110 --> 00:01:05,750
-ves lo que veo.
+mira lo que veo.
 
 26
 00:01:05,750 --> 00:01:08,040
@@ -141,11 +140,11 @@ y escribirás el nombre.
 31
 00:01:20,240 --> 00:01:24,980
 Estoy poniendo "erlichson".
-Y luego voy a
+Y luego voy a dar una
 
 32
 00:01:24,980 --> 00:01:28,760
-dar una contraseña "fubar",
+contraseña "fubar",
 algo muy simple,
 
 33
@@ -169,13 +168,13 @@ a la página de bienvenida.
 
 37
 00:01:41,020 --> 00:01:43,260
-Y dice, "Welcome erlichson".
-Y luego dice que
+Dice, "Welcome erlichson"
+y luego dice que puedo
 
 38
 00:01:43,260 --> 00:01:45,490
-puedo ir al incio de mi blog
-o puedo cerrar sesión o puedo
+ir al inicio de mi blog o
+puedo cerrar sesión o puedo
 
 39
 00:01:45,490 --> 00:01:46,540
@@ -183,12 +182,12 @@ crear un nuevo post.
 
 40
 00:01:46,540 --> 00:01:47,890
-Crear un nuevo post no funcionará,
-porque aún no lo hemos
+Crear un nuevo post no
+funcionará, porque aún
 
 41
 00:01:47,890 --> 00:01:49,160
-implementado.
+no lo hemos implementado.
 
 42
 00:01:49,160 --> 00:01:50,510
@@ -196,8 +195,8 @@ Cerrar sesión funcionará bien.
 
 43
 00:01:50,510 --> 00:01:53,790
-En efecto, ¿por qué no
-cerramos sesión?
+En efecto, ¿por qué
+no cerramos sesión?
 
 44
 00:01:53,790 --> 00:01:56,440
@@ -207,7 +206,7 @@ regreso a esta página.
 45
 00:01:56,440 --> 00:02:01,260
 Y si haces clic en "Login",
-me trae de nuevo a esta página.
+te regresa a esta página.
 
 46
 00:02:01,260 --> 00:02:04,390
@@ -216,8 +215,7 @@ usuario y contraseña de nuevo.
 
 47
 00:02:04,390 --> 00:02:08,729
-Y eso me regresa
-a esta página.
+Eso me regresa a esta página.
 
 48
 00:02:08,729 --> 00:02:10,120
@@ -230,12 +228,12 @@ que hace en este momento.
 
 50
 00:02:12,060 --> 00:02:14,990
-Entonces, ¿qué es lo que ocurre "por
-detrás" y cómo funciona?
+Entonces, ¿qué es lo que ocurre
+"por detrás" y cómo funciona?
 
 51
 00:02:14,990 --> 00:02:17,750
-Vamos a esto en algunas
+Vamos a ver esto en algunas
 de las siguientes secciones.
 
 52
@@ -244,8 +242,8 @@ Vamos a empezar por ahí.
 
 53
 00:02:19,200 --> 00:02:21,520
-Y luego vamos a hacer otra
-sección para mostrarte algunos de
+Luego vamos a hacer otra sección
+para mostrarte algunos de
 
 54
 00:02:21,520 --> 00:02:22,770

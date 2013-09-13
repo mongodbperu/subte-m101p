@@ -22,8 +22,8 @@ datos en PyMongo, que es muy
 
 6
 00:00:09,100 --> 00:00:11,190
-similar a la manera con la que
-funciona con el shell Mongo.
+similar a la manera en la que
+funciona con el shell mongo.
 
 7
 00:00:11,190 --> 00:00:13,410
@@ -37,7 +37,7 @@ sutilezas para la inserción.
 9
 00:00:15,320 --> 00:00:18,190
 Y luego vamos a hablar
-un poco acerca del blog,
+un poco acerca del blog
 
 10
 00:00:18,190 --> 00:00:20,290
@@ -70,7 +70,7 @@ en la base de datos.
 16
 00:00:32,030 --> 00:00:35,650
 Ahora, en el primer caso, he
-nombrado a este documento como "richard".
+llamado a este documento "richard".
 
 17
 00:00:35,650 --> 00:00:39,720
@@ -93,13 +93,13 @@ primera unidad, el driver
 
 21
 00:00:48,550 --> 00:00:51,270
-PyMongo, y todos los drivers
+PyMongo y todos los drivers
 en general, establecerán un
 
 22
 00:00:51,270 --> 00:00:54,790
 "_id" y crearán un ObjectId
-BSON si no hay ninguno
+BSON si no existe uno
 
 23
 00:00:54,790 --> 00:00:58,490
@@ -108,7 +108,7 @@ que vienen en el "insert".
 
 24
 00:00:58,490 --> 00:01:02,410
-Por esto después que los
+Por esto después de que los
 insertamos, vamos a ver e
 
 25
@@ -121,12 +121,13 @@ de estos dos registros.
 
 27
 00:01:06,860 --> 00:01:08,620
-Y lo que haré es sólo
-imprimirlos en el mismo orden
+Lo que haré es sólo
+imprimirlos en el mismo
 
 28
 00:01:08,620 --> 00:01:10,820
-en que los estoy insertando.
+orden en que los
+estoy insertando.
 
 29
 00:01:10,820 --> 00:01:12,860
@@ -134,8 +135,7 @@ Muy bien, así que hagamos eso.
 
 30
 00:01:12,860 --> 00:01:16,535
-Vamos a ejecutar
-el programa.
+Vamos a ejecutar el programa.
 
 31
 00:01:16,535 --> 00:01:19,200
@@ -144,8 +144,7 @@ podemos ver que imprime el
 
 32
 00:01:19,200 --> 00:01:22,710
-primero, el que es
-"richard".
+primero, que es "richard".
 
 33
 00:01:22,710 --> 00:01:26,190
@@ -163,12 +162,12 @@ donde ya he provisto un
 
 36
 00:01:31,590 --> 00:01:34,900
-"_id" es Erlichson,
+"_id" que es "Erlichson",
 no añadió ninguno.
 
 37
 00:01:34,900 --> 00:01:36,780
-Por tanto eso es interesante.
+Eso es interesante.
 
 38
 00:01:36,780 --> 00:01:39,620
@@ -177,8 +176,7 @@ el programa de nuevo?
 
 39
 00:01:39,620 --> 00:01:42,540
-¿Qué se espera
-que ocurra?
+¿Qué esperas que ocurra?
 
 40
 00:01:42,540 --> 00:01:44,090
@@ -186,7 +184,7 @@ Así que hagamos eso.
 
 41
 00:01:44,090 --> 00:01:50,960
-Y la respuesta es que la primera
+La respuesta es que la primera
 inserción tiene éxito con un
 
 42
@@ -213,7 +211,7 @@ fracasará.
 
 47
 00:02:01,510 --> 00:02:04,870
-Y podemos confirmar
+Podemos confirmar eso
 yendo a Mongo, usando la
 
 48
@@ -236,8 +234,8 @@ colección "people".
 
 52
 00:02:17,370 --> 00:02:22,060
-Y cuando lo hacemos,
-podemos ver que, en efecto,
+Cuando lo hacemos, podemos
+ver que, en efecto,
 
 53
 00:02:22,060 --> 00:02:24,330
@@ -245,7 +243,7 @@ Richard aparece dos veces allí
 
 54
 00:02:24,330 --> 00:02:28,850
-Y yo aparezco una vez, porque
+y yo aparezco una vez, porque
 hubo un error por clave duplicada
 
 55
@@ -264,8 +262,7 @@ la cual el driver creó el
 
 58
 00:02:37,380 --> 00:02:39,320
-"_id" y no
-la base de datos--
+"_id" y no la base de datos--
 
 59
 00:02:39,320 --> 00:02:40,540
@@ -401,7 +398,7 @@ segunda inserción aquí--
 
 87
 00:03:53,740 --> 00:03:57,480
-¿Qué se espera que suceda
+¿Qué esperas que suceda
 con la segunda inserción?
 
 88
@@ -410,7 +407,7 @@ con la segunda inserción?
 
 89
 00:03:58,120 --> 00:04:00,520
-¿Qué se espera que
+¿Qué esperas que
 suceda y cuál es tu
 
 90
@@ -419,12 +416,12 @@ explicación para eso?
 
 91
 00:04:01,980 --> 00:04:04,430
-Y hay una sola respuesta para
-esta pregunta de aquí.
+Hay una sola respuesta
+para esta pregunta
 
 92
 00:04:04,430 --> 00:04:05,680
-Y aquí están las respuestas.
+y aquí están las respuestas.
 
 93
 00:04:05,680 --> 00:04:06,510

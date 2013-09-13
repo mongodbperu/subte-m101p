@@ -16,18 +16,18 @@ PyMongo en nuestras consultas.
 
 5
 00:00:05,620 --> 00:00:07,940
-Justo aquí, estoy en el shell
-Mongo, y he impreso
+Justo aquí, estoy en el
+shell mongo, y he impreso
 
 6
 00:00:07,940 --> 00:00:11,910
-estos artículos que están en la
-página de inicio de tecnología de Reddit.
+estos artículos que están en la página
+de inicio de tecnología de Reddit.
 
 7
 00:00:11,910 --> 00:00:14,500
-Y me di cuenta que algunos de ellos
-tienen un subtipo llamado
+Me di cuenta de que algunos de
+ellos tienen un subtipo llamado
 
 8
 00:00:14,500 --> 00:00:18,580
@@ -36,17 +36,18 @@ llamado "oembed".
 
 9
 00:00:18,580 --> 00:00:21,460
-Y justo aquí hay un subdocumento,
-y tiene una clave
+Y justo aquí hay un
+subdocumento, y tiene
 
 10
 00:00:21,460 --> 00:00:24,100
-"type" con el tipo "video".
+una clave "type"
+con el tipo "video".
 
 11
 00:00:24,100 --> 00:00:27,020
-Dicho eso, de acuerdo, supongo
-que algunos de estos artículos son
+Dado eso, supongo que algunos
+de estos artículos son
 
 12
 00:00:27,020 --> 00:00:28,830
@@ -59,13 +60,12 @@ Reddit en el JSON.
 
 14
 00:00:30,670 --> 00:00:34,800
-Así que encontremos todos los artículos
-que son vídeos.
+Así que encontremos todos
+los artículos que son vídeos.
 
 15
 00:00:34,800 --> 00:00:37,410
-Para hacer eso, 
-vamos a ir aquí.
+Para hacer eso vamos a ir aquí.
 
 16
 00:00:37,410 --> 00:00:41,920
@@ -93,8 +93,8 @@ a la colección "stories".
 
 21
 00:00:52,450 --> 00:00:56,740
-A continuación, lo que quiero hacer es
-una consulta, donde estoy buscando
+A continuación, lo que quiero hacer
+es una consulta donde estoy buscando
 
 22
 00:00:56,740 --> 00:01:01,300
@@ -103,8 +103,8 @@ igual a "video".
 
 23
 00:01:01,300 --> 00:01:04,420
-Y puedes ver aquí que
-puse entre comillas simples esta
+Y puedes ver aquí que puse
+entre comillas simples esta
 
 24
 00:01:04,420 --> 00:01:08,350
@@ -126,17 +126,16 @@ esto, por supuesto, es que no
 
 28
 00:01:15,190 --> 00:01:17,570
-todos los documentos
-tienen estos
+todos los documentos contienen
 
 29
 00:01:17,570 --> 00:01:19,060
-subdocumentos dentro.
+estos subdocumentos.
 
 30
 00:01:19,060 --> 00:01:23,260
-Por lo que es muy flexible, y puede
-hacer una consulta y buscar
+Por lo que es muy flexible, y
+puedo hacer una consulta y buscar
 
 31
 00:01:23,260 --> 00:01:27,320
@@ -145,12 +144,12 @@ subdocumentos con esta
 
 32
 00:01:27,320 --> 00:01:30,540
-estructura, simplemente no
-devolverá nada.
+estructura; simplemente
+no devolverá nada.
 
 33
 00:01:30,540 --> 00:01:33,860
-Y luego, vamos a proyectar
+Luego, vamos a proyectar
 y seleccionar los
 
 34
@@ -159,8 +158,8 @@ campos "media.oembed.url".
 
 35
 00:01:36,730 --> 00:01:40,530
-Queremos ver la "url" y
-suprimir el "_id".
+Queremos ver la "url"
+y suprimir el "_id".
 
 36
 00:01:40,530 --> 00:01:41,860
@@ -187,25 +186,24 @@ Así que hagamos eso,
 
 41
 00:01:54,102 --> 00:01:55,650
-Estoy en el shell Mongo aquí.
+Estoy en el shell mongo aquí.
 
 42
 00:01:55,650 --> 00:02:01,640
-Voy a salir, y luego,
-veamos, "python using_dot
+Voy a salir, y luego veamos:
 
 43
 00:02:01,640 --> 00:02:03,285
-_notation.py".
+"python using_dot_notation.py".
 
 44
 00:02:03,285 --> 00:02:04,790
-Y lo hago.
+Y lo ejecuto.
 
 45
 00:02:04,790 --> 00:02:08,690
-A continuación puedes ver que lo que
-obtengo es, obtengo los dos
+A continuación puedes ver que lo
+que obtengo es, obtengo los dos
 
 46
 00:02:08,690 --> 00:02:10,729
@@ -213,13 +211,13 @@ documentos que devuelve.
 
 47
 00:02:10,729 --> 00:02:16,900
-Y lo que devuelve es un
-documento que tiene una clave "media",
+Lo que devuelve es un documento
+que tiene una clave "media"
 
 48
 00:02:16,900 --> 00:02:21,550
-y el valor es otro
-documento con una clave "oembed".
+y el valor es otro documento
+con una clave "oembed".
 
 49
 00:02:21,550 --> 00:02:23,420
@@ -236,7 +234,7 @@ Entonces éstas son las URLs.
 
 52
 00:02:27,160 --> 00:02:31,030
-Y son URLs de YouTube, simplemente
+Y son URLs de YouTube
 para ver esos vídeos.
 
 53
@@ -268,12 +266,13 @@ Bien.
 
 59
 00:02:43,460 --> 00:02:46,340
-No hemos pasado exactamente sobre
-esto, por lo que tendrás que
+No hemos abarcado esto
+particularmente, así que
 
 60
 00:02:46,340 --> 00:02:47,810
-averiguarlo de alguna forma.
+tendrás que averiguarlo
+de alguna forma.
 
 61
 00:02:47,810 --> 00:02:51,710
@@ -296,8 +295,8 @@ llamada "media.oembed.url"?
 
 65
 00:03:00,370 --> 00:03:03,410
-Por alguna razón, hay
-un documento con "type" igual a "video",
+Por alguna razón, hay un documento
+con "type" igual a "video",
 
 66
 00:03:03,410 --> 00:03:08,130
@@ -331,12 +330,12 @@ documento con la siguiente
 
 72
 00:03:20,510 --> 00:03:21,690
-estructura --
+estructura--
 
 73
 00:03:21,690 --> 00:03:24,825
-"media", "oembed", "url" con 
-un documento vacío.
+"media", "oembed", "url"
+con un documento vacío.
 
 74
 00:03:24,825 --> 00:03:28,340
@@ -345,8 +344,8 @@ el conjunto completo de subdocumentos,
 
 75
 00:03:28,340 --> 00:03:30,110
-pero luego un documento vacío
-en el centro.
+pero luego un documento
+vacío en el centro.
 
 76
 00:03:30,110 --> 00:03:33,050
@@ -355,8 +354,8 @@ información para saberlo.
 
 77
 00:03:33,050 --> 00:03:35,920
-Así que por favor, marca la respuesta
-que sea correcta.
+Así que por favor, marca
+la respuesta correcta.
 
 78
 00:03:35,920 --> 00:03:37,170

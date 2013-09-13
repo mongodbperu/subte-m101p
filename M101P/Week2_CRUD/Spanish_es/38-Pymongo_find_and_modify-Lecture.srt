@@ -13,21 +13,21 @@ cosas que necesitas saber para
 4
 00:00:03,590 --> 00:00:08,200
 programar con MongoDB, al menos
-desde la visión de un CRUD.
+desde la visión de CRUD.
 
 5
 00:00:08,200 --> 00:00:11,570
-Creando datos, leyendo datos,
-actualizando datos y
+Creando datos, leyendo
+datos, actualizando datos
 
 6
 00:00:11,570 --> 00:00:12,650
-eliminando datos.
+y eliminando datos.
 
 7
 00:00:12,650 --> 00:00:14,920
-Pero hay un par de cosas que
-no hemos cubierto.
+Pero hay un par de cosas
+que no hemos cubierto.
 
 8
 00:00:14,920 --> 00:00:17,720
@@ -36,13 +36,12 @@ una secuencia de números
 
 9
 00:00:17,720 --> 00:00:19,950
-usando Mongo,
-¿cómo lo harías?
+usando Mongo, ¿cómo lo harías?
 
 10
 00:00:19,950 --> 00:00:24,640
-Entonces una secuencia de números
-es un pequeño conjunto de enteros,
+Una secuencia de números es un
+pequeño conjunto de enteros,
 
 11
 00:00:24,640 --> 00:00:27,980
@@ -50,13 +49,13 @@ como: 1, 2, 3, 4, 5, 6.
 
 12
 00:00:27,980 --> 00:00:31,010
-Y si deseas asegurarte que
-dos usuarios, digamos, nunca
+Y digamos que deseas asegurarte
+de que dos usuarios nunca
 
 13
 00:00:31,010 --> 00:00:33,860
 obtengan la misma secuencia de
-números y que ellos sigan
+números y que éstas también sigan
 
 14
 00:00:33,860 --> 00:00:34,820
@@ -89,16 +88,16 @@ eventualmente liberarlo.
 20
 00:00:47,790 --> 00:00:50,170
 Pero no vamos a tener transacciones
-en MongoDB pero tenemos
+en MongoDB, pero tenemos
 
 21
 00:00:50,170 --> 00:00:52,450
 operaciones atómicas en
-los mismos documentos.
+los documentos mismos.
 
 22
 00:00:52,450 --> 00:00:54,460
-Y eso va a permitirnos
+Eso va a permitirnos
 hacer lo que deseamos.
 
 23
@@ -122,8 +121,7 @@ usando un "upsert".
 
 27
 00:01:05,760 --> 00:01:07,940
-Y modificándolo y
-retornando el
+Modificándolo y retornando el
 
 28
 00:01:07,940 --> 00:01:09,960
@@ -140,7 +138,7 @@ usando MongoDB.
 
 31
 00:01:14,620 --> 00:01:18,300
-Aqui está un pequeño programa que
+Aquí está un pequeño programa que
 escribí llamado "using_find_and_modify",
 
 32
@@ -161,17 +159,16 @@ colección "counters".
 35
 00:01:26,620 --> 00:01:30,030
 Y luego obtiene una
-secuencia de número, así.
+secuencia de números, así.
 
 36
 00:01:30,030 --> 00:01:34,020
-Llama a "find_and_modify",
-"query"--
+Llama a "find_and_modify", "query"--
 
 37
 00:01:34,020 --> 00:01:35,890
 y nota que esto es un
-parámentro llamado así--
+parámetro llamado así--
 
 38
 00:01:35,890 --> 00:01:38,390
@@ -185,21 +182,20 @@ con, digamos, la cadena que
 40
 00:01:42,040 --> 00:01:46,690
 podría ser un ID de usuario, o
-secuencia de números o número de carné
+secuencia de números o número de
 
 41
 00:01:46,690 --> 00:01:49,510
-de biblioteca o lo que sea que
-estabas buscando obtener que era
+carné de biblioteca o lo que sea
+que estabas buscando obtener que
 
 42
 00:01:49,510 --> 00:01:50,320
-secuencial.
+sea secuencial.
 
 43
 00:01:50,320 --> 00:01:53,210
-Y luego sustituiría
-aquí.
+Y luego lo sustituiría aquí.
 
 44
 00:01:53,210 --> 00:02:03,110
@@ -246,8 +242,8 @@ no el antiguo.
 
 53
 00:02:30,120 --> 00:02:34,650
-Entonces voy a tener este
-contador justo aquí, "counter_value"
+Entonces voy a tener este contador
+justo aquí, "counter_value"
 
 54
 00:02:34,650 --> 00:02:37,590
@@ -256,7 +252,7 @@ es "counter" de "value".
 55
 00:02:37,590 --> 00:02:40,920
 Recuerda cuando retornamos un
-diccionario de este comando.
+diccionario con este comando.
 
 56
 00:02:40,920 --> 00:02:43,290
@@ -274,11 +270,11 @@ Eso es todo.
 59
 00:02:45,110 --> 00:02:48,180
 Entonces aquí en la parte
-principal del programa, voy a
+principal del programa, voy
 
 60
 00:02:48,180 --> 00:02:49,710
-hacerlo 3 veces.
+a hacerlo 3 veces.
 
 61
 00:02:49,710 --> 00:02:51,550
@@ -295,17 +291,17 @@ Muy bien.
 64
 00:02:54,690 --> 00:02:57,720
 Lo ejecutamos y produce
-1, 2, 3.
+"1, 2, 3".
 
 65
 00:02:57,720 --> 00:03:00,010
-Lo ejecutamos de nuevo, produce
-4, 5, 6.
+Lo ejecutamos de nuevo
+y produce "4, 5, 6".
 
 66
 00:03:00,010 --> 00:03:04,430
-De nuevo, 7, 8, 9,
-y una vez más, 10, 11, 12.
+De nuevo, "7, 8, 9" y una
+vez más, "10, 11, 12".
 
 67
 00:03:04,430 --> 00:03:05,820
@@ -313,8 +309,7 @@ Perfecto.
 
 68
 00:03:05,820 --> 00:03:08,670
-Vayamos a ver
-esta colección.
+Veamos esta colección.
 
 69
 00:03:08,670 --> 00:03:11,320
@@ -342,8 +337,8 @@ Puedes ver que hay "type"
 
 75
 00:03:20,960 --> 00:03:23,750
-Y la razón de "type" "uid"
-es que cuando llamo a
+Y la razón por la que es "type"
+"uid" es que cuando llamo a
 
 76
 00:03:23,750 --> 00:03:27,220
@@ -356,8 +351,8 @@ aquí, he nombrado la secuencia
 
 78
 00:03:29,150 --> 00:03:30,970
-Y es así cómo puedes tener
-una única secuencia de
+Es así cómo puedes tener
+una secuencia única de
 
 79
 00:03:30,970 --> 00:03:32,340

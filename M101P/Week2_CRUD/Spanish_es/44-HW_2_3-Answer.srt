@@ -8,12 +8,12 @@ añadir el código al blog que
 
 3
 00:00:03,620 --> 00:00:06,550
-permitiría a la gente registrarse
-en el blog y conectarse
+permitiría a la gente
+registrarse en el blog
 
 4
 00:00:06,550 --> 00:00:07,740
-al blog.
+y conectarse al blog.
 
 5
 00:00:07,740 --> 00:00:09,190
@@ -27,8 +27,8 @@ El primero era este código
 
 7
 00:00:13,730 --> 00:00:16,820
-Necesitabas añadir esta sentencia
-justo aquí e
+Necesitabas añadir esta
+sentencia justo aquí e
 
 8
 00:00:16,820 --> 00:00:20,450
@@ -40,17 +40,17 @@ aquí, "self.users.insert(user)".
 
 10
 00:00:23,170 --> 00:00:26,790
-Y el segundo lugar en el que necesitabas
-trabajar está por aquí, en
+Y el segundo lugar en el que
+necesitabas trabajar está por
 
 11
 00:00:26,790 --> 00:00:28,540
-"validate_login".
+aquí, en "validate_login".
 
 12
 00:00:28,540 --> 00:00:31,200
-Necesitabas encontrar el usuario
-en la colección "user".
+Necesitabas encontrar el
+usuario en la colección "user".
 
 13
 00:00:31,200 --> 00:00:34,520
@@ -59,13 +59,12 @@ Y la forma de hacer eso es
 
 14
 00:00:34,520 --> 00:00:36,830
-Y luego especificas "_id"
-y el nombre 
+Y luego especificas
+"_id" y el nombre 
 
 15
 00:00:36,830 --> 00:00:39,510
-de usuario que envió
-el usuario.
+de usuario que envió el usuario.
 
 16
 00:00:39,510 --> 00:00:40,900
@@ -83,8 +82,7 @@ necesitabas trabajar.
 
 19
 00:00:44,530 --> 00:00:45,740
-Por lo que ésta es la solución
-finalizada.
+Ésta es la solución finalizada.
 
 20
 00:00:45,740 --> 00:00:46,860
@@ -92,7 +90,7 @@ Veamos si funciona.
 
 21
 00:00:46,860 --> 00:00:48,270
-Así que iremos aquí.
+Iremos aquí.
 
 22
 00:00:48,270 --> 00:00:51,090
@@ -104,8 +102,8 @@ Oh.
 
 24
 00:00:51,690 --> 00:00:54,510
-Parece que Python está
-ya en ejecución.
+Parece que Python
+está ya en ejecución.
 
 25
 00:00:54,510 --> 00:00:58,140
@@ -118,7 +116,7 @@ Yup.
 
 27
 00:00:58,555 --> 00:01:01,110
-Y entonces justo aquí,
+Entonces justo aquí,
 vamos a ejecutar
 
 28
@@ -127,12 +125,11 @@ el script de validación.
 
 29
 00:01:03,870 --> 00:01:06,030
-Y puedes ver que
-funcionó.
+Puedes ver que funcionó
 
 30
 00:01:06,030 --> 00:01:09,220
-Y obtuvo un código de validación,
+y obtuvo un código de validación,
 que aparece en blanco ahí.
 
 31
@@ -142,8 +139,7 @@ cuando lo ejecutes.
 
 32
 00:01:11,900 --> 00:01:14,660
-Y veamos si
-el blog funciona.
+Veamos si el blog funciona.
 
 33
 00:01:14,660 --> 00:01:15,580
@@ -159,8 +155,8 @@ Creemos un nuevo usuario.
 
 36
 00:01:18,810 --> 00:01:25,822
-"test101", contraseña "test",
-verficamos "test".
+"test101", contraseña
+"test", verificamos "test".
 
 37
 00:01:25,822 --> 00:01:26,300
@@ -177,7 +173,8 @@ Y podemos conectarnos.
 
 40
 00:01:34,790 --> 00:01:36,560
-Por lo que parece que funciona adecuadamente.
+Por lo que parece que
+funciona adecuadamente.
 
 41
 00:01:36,560 --> 00:01:41,780
@@ -195,11 +192,12 @@ y hacer "db.users.find()".
 44
 00:01:46,980 --> 00:01:49,640
 Y oh, hay un montón de
-entradas de prueba que fueron 
+entradas de prueba que
 
 45
 00:01:49,640 --> 00:01:50,880
-introducidas por el programa.
+fueron introducidas
+por el programa.
 
 46
 00:01:50,880 --> 00:01:55,230
@@ -230,7 +228,8 @@ de la contraseña.
 
 52
 00:02:04,820 --> 00:02:06,090
-Así que parece que todo eso funciona.
+Así que parece que
+todo eso funciona.
 
 53
 00:02:06,090 --> 00:02:07,340
