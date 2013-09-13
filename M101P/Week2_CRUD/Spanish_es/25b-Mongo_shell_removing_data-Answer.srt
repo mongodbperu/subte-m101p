@@ -3,7 +3,7 @@
 
 2
 00:00:00,130 --> 00:00:02,940
-Bien, la respuesta es ésta.
+Bueno, la respuesta es ésta.
 "db.scores.remove"
 
 3

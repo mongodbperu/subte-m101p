@@ -3,23 +3,23 @@
 
 2
 00:00:00,190 --> 00:00:03,390
-A continuación hablaremos acerca de 
-cómo usar los operadores
+A continuación hablaremos acerca
+de cómo usar los operadores
 
 3
 00:00:03,390 --> 00:00:07,400
-"$gt" (mayor que) y "$lt" (menor que)
-en PyMongo.
+"$gt" (mayor que) y "$lt"
+(menor que) en PyMongo.
 
 4
 00:00:07,400 --> 00:00:09,570
-Aquí está la misma función
-que tenía antes.
+Aquí está la misma
+función que tenía antes.
 
 5
 00:00:09,570 --> 00:00:11,840
-He definido mi propio comando
-"find" aquí.
+He definido mi propio
+comando "find" aquí.
 
 6
 00:00:11,840 --> 00:00:17,060
@@ -38,8 +38,8 @@ a restringirlo para que tenga
 
 9
 00:00:23,310 --> 00:00:26,760
-un "score" que sea "$gt" 
-(mayor que) 50
+un "score" que sea
+"$gt" (mayor que) 50
 
 10
 00:00:26,760 --> 00:00:28,900
@@ -57,8 +57,8 @@ operadores en "$gt" y
 
 13
 00:00:34,250 --> 00:00:36,940
-Y luego, continuamos
-y hacemos el "find" sobre
+Luego, continuamos y
+hacemos el "find" sobre
 
 14
 00:00:36,940 --> 00:00:37,920
@@ -71,8 +71,8 @@ está definida en el fichero.
 
 16
 00:00:41,370 --> 00:00:44,190
-Obtenemos un cursor y luego lo recorremos
-uno a uno e 
+Obtenemos un cursor y luego
+lo recorremos uno por uno e 
 
 17
 00:00:44,190 --> 00:00:45,240
@@ -80,7 +80,7 @@ imprimimos.
 
 18
 00:00:45,240 --> 00:00:47,420
-Y si hacemos eso --
+Y si hacemos eso--
 
 19
 00:00:47,420 --> 00:00:49,290
@@ -119,11 +119,12 @@ similar al código que acabo
 
 27
 00:01:06,270 --> 00:01:09,300
-de enseñarte, y veamos
+de enseñarte y veamos
 
 28
 00:01:09,300 --> 00:01:10,530
-cómo prestaste atención cuidadosamente.
+si prestaste atención
+cuidadosamente.
 
 29
 00:01:10,530 --> 00:01:13,500
@@ -132,17 +133,17 @@ averiguar qué deberías poner
 
 30
 00:01:13,500 --> 00:01:18,170
-para hacer una consulta para todas las
-puntuaciones en "quiz" en la colección
+para hacer una consulta que retorne
+todas las puntuaciones en "quiz"
 
 31
 00:01:18,170 --> 00:01:21,430
-"scores" donde "score"
-es mayor que 20
+de la colección "scores"
+donde "score" es mayor que
 
 32
 00:01:21,430 --> 00:01:23,100
-y menor que 90.
+20 y menor que 90.
 
 33
 00:01:23,100 --> 00:01:26,210

@@ -3,8 +3,8 @@
 
 2
 00:00:00,150 --> 00:00:02,730
-OK, ahora conoces algunos
-trucos que están disponibles para
+OK, ahora conoces algunos trucos
+que están disponibles para
 
 3
 00:00:02,730 --> 00:00:06,160
@@ -13,8 +13,7 @@ documentos usando "$set",
 
 4
 00:00:06,160 --> 00:00:08,820
-"$push", "$pop",
-etcétera.
+"$push", "$pop", etcétera.
 
 5
 00:00:08,820 --> 00:00:11,260
@@ -23,22 +22,22 @@ operador "update" en el shell
 
 6
 00:00:11,260 --> 00:00:14,340
-Mongo en realidad hace cuatro
-cosas diferentes.
+Mongo en realidad hace
+cuatro cosas diferentes.
 
 7
 00:00:14,340 --> 00:00:17,020
 Entre ellas están el reemplazo
-completo de documentos,
+completo de documentos y
 
 8
 00:00:17,020 --> 00:00:19,480
-la manipulación de campos dentro
-de un doucmento --
+la manipulación de campos
+dentro de un documento--
 
 9
 00:00:19,480 --> 00:00:20,950
-aquéllos que ya hemos visto.
+aquéllas que ya hemos visto.
 
 10
 00:00:20,950 --> 00:00:23,550
@@ -51,18 +50,18 @@ llamamos "upsert".
 
 12
 00:00:24,970 --> 00:00:28,490
-Y modela un tipo específico de 
-caso de uso muy común.
+Modela un tipo específico
+de caso de uso muy común.
 
 13
 00:00:28,490 --> 00:00:30,570
-Echemos de nuevo un vistazo a nuestra
-colección "people".
+Echemos de nuevo un vistazo a
+nuestra colección "people".
 
 14
 00:00:30,570 --> 00:00:33,150
-Aquí tenemos nuestros documentos,
-varias personas
+Aquí tenemos nuestros
+documentos; varias personas
 
 15
 00:00:33,150 --> 00:00:34,560
@@ -89,8 +88,8 @@ la edad de Charlie a 40.
 
 20
 00:00:47,130 --> 00:00:49,410
-Da la casualidad que sé que 
-hay un documento con 
+Da la casualidad que sé
+que hay un documento con 
 
 21
 00:00:49,410 --> 00:00:50,560
@@ -98,8 +97,8 @@ hay un documento con
 
 22
 00:00:50,560 --> 00:00:53,280
-¿Qué ocurriría si no supiera que
-existe tal documento?
+¿Qué ocurriría si no supiera
+que existe tal documento?
 
 23
 00:00:53,280 --> 00:00:56,140
@@ -118,23 +117,22 @@ cuyo "name" fuera "Charlie".
 
 26
 00:01:01,870 --> 00:01:05,459
-No es poco común tener
-la necesidad de actualizar un
+No es poco común tener la
+necesidad de actualizar un
 
 27
 00:01:05,459 --> 00:01:08,940
-documento existente o si no existe
+documento existente o si no existe,
 crear un documento nuevo a partir
 
 28
 00:01:08,940 --> 00:01:10,510
-de la información que
-tienes a mano.
+de la información
+que tienes a la mano.
 
 29
 00:01:10,510 --> 00:01:12,310
-Y para esto, tenemos
-una operación
+Y para esto, tenemos una operación
 
 30
 00:01:12,310 --> 00:01:14,940
@@ -142,13 +140,13 @@ en MongoDB llamada "upsert".
 
 31
 00:01:14,940 --> 00:01:18,770
-Así que por ejemplo, si en lugar
-de actualizar "Charlie", quisiera
+Por ejemplo, si en lugar de
+actualizar "Charlie", quisiera
 
 32
 00:01:18,770 --> 00:01:22,580
-actualizar "George", esta operación
-no tendría efecto,
+actualizar "George", esta
+operación no tendría efecto,
 
 33
 00:01:22,580 --> 00:01:25,440
@@ -167,18 +165,18 @@ argumento algunas opciones a este
 
 36
 00:01:33,310 --> 00:01:36,270
-construirá un nuevo documento a partir
-de la información que he
+construirá un nuevo documento a
+partir de la información que he
 
 37
 00:01:36,270 --> 00:01:39,260
-especificado con "name" igual a "George"
-y "age" 40.
+especificado, con "name"
+igual a "George" y "age" 40.
 
 38
 00:01:39,260 --> 00:01:42,340
-Esta operación "upsert" modela
-el caso común donde
+Esta operación "upsert"
+modela el caso común donde
 
 39
 00:01:42,340 --> 00:01:45,230
@@ -220,8 +218,8 @@ Por ejemplo, si hicieras
 
 47
 00:02:04,560 --> 00:02:11,990
-50}}, {$set: {name: "William"}})",
-bien, "age" mayor que 50
+50}}, {$set: {name: "William"}})".
+Bueno, "age" mayor que 50
 
 48
 00:02:11,990 --> 00:02:13,820
@@ -248,17 +246,17 @@ campo que no tenga un
 
 53
 00:02:23,450 --> 00:02:27,160
-valor concreto para rellenar
-por el "upsert".
+valor concreto que pueda ser
+rellenado por el "upsert".
 
 54
 00:02:27,160 --> 00:02:29,090
-Sin embargo, la operación
-"upsert" es
+Sin embargo, la
+operación "upsert"
 
 55
 00:02:29,090 --> 00:02:31,040
-usada con bastante frecuencia.
+es usada con bastante frecuencia.
 
 56
 00:02:31,040 --> 00:02:34,570
@@ -267,12 +265,12 @@ datos desde un proveedor de datos,
 
 57
 00:02:34,570 --> 00:02:37,530
-y no sabes si un
-registro ya existe, puedes
+y no sabes si un registro
+ya existe, puedes usar
 
 58
 00:02:37,530 --> 00:02:40,250
-usar de forma bastante sencilla el
+de forma bastante sencilla el
 operador "upsert" para 
 
 59

@@ -3,12 +3,11 @@
 
 2
 00:00:00,750 --> 00:00:02,040
-Ahora sabemos cómo
-usar "find" y 
+Ahora sabemos cómo usar "find"
 
 3
 00:00:02,040 --> 00:00:04,390
-"find_one" en Pymongo.
+y "find_one" en Pymongo.
 
 4
 00:00:04,390 --> 00:00:06,230
@@ -17,13 +16,13 @@ hacer proyecciones.
 
 5
 00:00:06,230 --> 00:00:11,320
-Las proyecciones nos permiten seleccionar
-campos particulares
+Las proyecciones nos permiten
+seleccionar campos particulares
 
 6
 00:00:11,320 --> 00:00:14,560
-para recuperar durante la consulta
-y no recuperar el resto de ellos.
+para obtener durante una consulta
+y no obtener el resto de ellos.
 
 7
 00:00:14,560 --> 00:00:17,510
@@ -41,18 +40,18 @@ todo con "type" igual a
 
 10
 00:00:21,440 --> 00:00:24,130
-Y esta vez crearemos también
+Esta vez crearemos también
 un diccionario secundario,
 
 11
 00:00:24,130 --> 00:00:28,300
-al que llamaré "selector", donde
-nos gustaría obtener un
+al que llamaré "selector",
+donde nos gustaría obtener un
 
 12
 00:00:28,300 --> 00:00:32,820
-"student_id" y no mostrar el
-campo "_id".
+"student_id" y no
+mostrar el campo "_id".
 
 13
 00:00:32,820 --> 00:00:35,660
@@ -65,13 +64,13 @@ y recuperando específicamente
 
 15
 00:00:37,530 --> 00:00:40,740
-Y de nuevo, notarás estas
-comillas alrededor de estos literales.
+De nuevo, notarás estas comillas
+alrededor de estos literales.
 
 16
 00:00:40,740 --> 00:00:44,260
-Y luego justo aquí
-llamamos a "scores" en PyMongo,
+Luego justo aquí llamamos
+a "scores" en PyMongo,
 
 17
 00:00:44,260 --> 00:00:47,060
@@ -90,8 +89,8 @@ e imprimimos los resultados.
 
 20
 00:00:52,370 --> 00:00:54,670
-Así que, ¿qué ocurre cuando
-hacemos eso?
+Así que, ¿qué ocurre
+cuando hacemos eso?
 
 21
 00:00:54,670 --> 00:00:56,670
@@ -103,13 +102,12 @@ Continuemos y ejecutémoslo.
 
 23
 00:00:58,790 --> 00:01:01,880
-Y como puedes ver, 
-recupera sólo el "student_id"
+Como puedes ver, recupera
+sólo el "student_id"
 
 24
 00:01:01,880 --> 00:01:05,840
-y suprime
-el campo "_id",
+y suprime el campo "_id",
 
 25
 00:01:05,840 --> 00:01:08,440
@@ -118,26 +116,27 @@ lo que queríamos.
 
 26
 00:01:08,440 --> 00:01:10,460
-Bien, hora para hacer un cuestionario.
+Bien, hora de hacer
+un cuestionario.
 
 27
 00:01:10,460 --> 00:01:12,280
-Cuáles de las siguientes
-sentencias --
+¿Cuáles de las siguientes
+sentencias--
 
 28
 00:01:12,280 --> 00:01:13,740
-son sentencias Python --
+son sentencias Python--
 
 29
 00:01:13,740 --> 00:01:16,300
-podrían funcionar usando Pymongo
-dependiendo de los nombres de las variables,
+podrían funcionar usando Pymongo?
+Depende de los nombres de las
 
 30
 00:01:16,300 --> 00:01:18,430
-ya que los nombres de las variables
-tienen que ser legales.
+variables, ya que los nombres de
+las variables tienen que ser legales.
 
 31
 00:01:18,430 --> 00:01:20,000

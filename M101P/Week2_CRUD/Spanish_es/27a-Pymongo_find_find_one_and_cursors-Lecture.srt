@@ -18,7 +18,7 @@ Richard te enseñó.
 5
 00:00:07,400 --> 00:00:11,000
 Pero voy a mostrártelas
-usando Python y PyMongo,
+usando Python y PyMongo
 
 6
 00:00:11,000 --> 00:00:13,030
@@ -27,7 +27,7 @@ la tarea de esta semana,
 
 7
 00:00:13,030 --> 00:00:16,890
-que comienza a construir
+con la que comenzamos a construir
 ese proyecto de blog del que
 
 8
@@ -36,28 +36,27 @@ hablamos antes.
 
 9
 00:00:18,270 --> 00:00:21,180
-Sólo para revisar realmente rápido
+Sólo para revisar rápidamente
 lo que vamos a hacer aquí.
 
 10
 00:00:21,180 --> 00:00:23,660
-Ya has ido a través de estas operaciones en
-el shell Mongo y aprendiste los
+Ya has visto estas operaciones
+en el shell mongo y aprendiste los
 
 11
 00:00:23,660 --> 00:00:27,730
-operadores para crear, leer, actualizar 
-y borrar de Mongo.
+operadores para crear, leer,
+actualizar y borrar de Mongo.
 
 12
 00:00:27,730 --> 00:00:30,610
-El shell Mongo se comunica
+El shell mongo se comunica
 con mongod en BSON.
 
 13
 00:00:30,610 --> 00:00:32,100
-Y ahora vamos a
-hacer lo mismo en
+Ahora vamos a hacer lo mismo en
 
 14
 00:00:32,100 --> 00:00:34,080
@@ -70,27 +69,26 @@ en BSON con mongod.
 
 16
 00:00:37,330 --> 00:00:39,340
-Y vamos a escribir
-algo de código aquí.
+Vamos a escribir algo de código aquí.
 
 17
 00:00:39,340 --> 00:00:41,880
-Así que para empezar con esto, la
-primera cosa que tenemos que hacer
+Así que para empezar, la primera
+cosa que tenemos que hacer
 
 18
 00:00:41,880 --> 00:00:44,410
-es cargar algunos datos en
-la base de datos.
+es cargar algunos datos
+en la base de datos.
 
 19
 00:00:44,410 --> 00:00:47,773
 Esto es algo que ya
-tienes por tu parte porque
+tienes por tu parte
 
 20
 00:00:47,773 --> 00:00:50,000
-has visto las
+porque has visto las
 lecciones secuencialmente.
 
 21
@@ -100,11 +98,11 @@ equipo, por lo que voy a
 
 22
 00:00:52,330 --> 00:00:53,430
-hacerlo realmente rápido.
+hacerlo rápidamente.
 
 23
 00:00:53,430 --> 00:00:57,040
-Así que éste es un programa JavaScript
+Éste es un programa JavaScript
 que voy a conectar
 
 24
@@ -144,13 +142,13 @@ la entrada estándar al fichero.
 
 32
 00:01:20,330 --> 00:01:22,540
-Esto es algo que 
-probablemente sea bastante familiar
+Esto es algo que probablemente
+sea bastante familiar
 
 33
 00:01:22,540 --> 00:01:25,400
-para cualquiera del mundo 
-Mac o Unix.
+para cualquiera del
+mundo Mac o Unix.
 
 34
 00:01:25,400 --> 00:01:26,590
@@ -158,8 +156,7 @@ Así que haremos eso.
 
 35
 00:01:26,590 --> 00:01:28,260
-Y volveremos a
-la salida estándar.
+Y volveremos a la salida estándar.
 
 36
 00:01:28,260 --> 00:01:30,840
@@ -168,8 +165,8 @@ de la base de datos,
 
 37
 00:01:30,840 --> 00:01:32,990
-cambió a la base de datos "school",
-y luego nos dijo
+cambió a la base de datos
+"school" y luego nos dijo
 
 38
 00:01:32,990 --> 00:01:34,210
@@ -177,8 +174,7 @@ adiós.
 
 39
 00:01:34,210 --> 00:01:36,320
-Confirmemos que los datos
-están ahí.
+Confirmemos que los datos están ahí.
 
 40
 00:01:36,320 --> 00:01:39,710
@@ -190,12 +186,11 @@ luego "db.scores.find()".
 
 42
 00:01:42,470 --> 00:01:45,650
-Y hay datos
-justo aquí.
+Y hay datos justo aquí.
 
 43
 00:01:45,650 --> 00:01:48,880
-Y luego los imprimiremos
+Luego los imprimiremos
 de forma elegante.
 
 44
@@ -218,12 +213,12 @@ Son algunos números aleatorios.
 
 48
 00:01:58,580 --> 00:02:01,940
-Y permitimos al driver que asigne
-IDs a los objetos.
+Dejamos que el driver
+asigne IDs a los objetos
 
 49
 00:02:01,940 --> 00:02:05,310
-Y éstos son simplemente ObjectIds
+y éstos son simplemente "ObjectIds"
 BSON para cada uno de ellos.
 
 50
@@ -268,12 +263,12 @@ esta semana.
 
 59
 00:02:27,600 --> 00:02:30,270
-Empezamos por importar
-PyMongo, importar "sys", hacer
+Empezamos por importar PyMongo,
+importar "sys", hacer algún
 
 60
 00:02:30,270 --> 00:02:34,060
-algún informe de errores y obtener
+informe de errores y obtener
 una conexión a la base de datos
 
 61
@@ -292,8 +287,8 @@ ocurra durante nuestras consultas.
 
 64
 00:02:41,300 --> 00:02:44,340
-Nos conectamos a la base de datos
-"school" y luego a la
+Nos conectamos a la base de
+datos "school" y luego a la
 
 65
 00:02:44,340 --> 00:02:46,790
@@ -321,7 +316,8 @@ Prepara un diccionario con
 
 70
 00:02:58,470 --> 00:03:00,360
-Algunas cosas a tener en cuenta sobre esto.
+Algunas cosas a tener
+en cuenta sobre esto:
 
 71
 00:03:00,360 --> 00:03:03,280
@@ -334,13 +330,13 @@ que sea un entero en Python.
 
 73
 00:03:05,150 --> 00:03:08,750
-La segunda es que "student_id"
+La segunda es que 'student_id'
 está entre comillas simples.
 
 74
 00:03:08,750 --> 00:03:11,190
-No necesitaría ser así en
-caso de estar en el shell Mongo.
+No necesitaría ser así en caso
+de estar en el shell mongo.
 
 75
 00:03:11,190 --> 00:03:12,430
@@ -348,26 +344,25 @@ Sería opcional.
 
 76
 00:03:12,430 --> 00:03:15,060
-Pero en Python no
-es opcional.
+Pero en Python no es opcional.
 
 77
 00:03:15,060 --> 00:03:16,870
-Un literal de tipo cadena que
-sea clave en un
+Un literal de tipo cadena 
+que sea clave en un
 
 78
 00:03:16,870 --> 00:03:18,400
-diccionario tiene que estar entre comillas.
+diccionario tiene que
+estar entre comillas.
 
 79
 00:03:18,400 --> 00:03:20,230
-Así que la ponemos entre comillas.
+Así que lo ponemos entre comillas.
 
 80
 00:03:20,230 --> 00:03:22,630
-Luego vamos a
-recuperar el documento.
+Luego vamos a recuperar el documento.
 
 81
 00:03:22,630 --> 00:03:25,850
@@ -376,12 +371,11 @@ a esta variable "doc".
 
 82
 00:03:25,850 --> 00:03:27,030
-Vamos a llamar a "scores" --
+Vamos a llamar a "scores"--
 
 83
 00:03:27,030 --> 00:03:28,720
-que es un manejador de la
-colección --
+que es un manejador de la colección--
 
 84
 00:03:28,720 --> 00:03:29,970
@@ -397,23 +391,23 @@ la función para recuperar un único
 
 87
 00:03:37,290 --> 00:03:40,910
-documento desde la base de datos usando
-"findOne" es "find_one".
+documento desde la base de datos 
+usando "findOne" es "find_one".
 
 88
 00:03:40,910 --> 00:03:45,730
-Si recuerdas en el shell
-Mongo, era "findOne", todo en una
+Si recuerdas en el shell mongo,
+era "findOne", todo en una
 
 89
 00:03:45,730 --> 00:03:50,470
-palabra, con la "O" mayúscula. Ésa es
-una de las ventajas e
+palabra, con la "O" mayúscula.
+Ésa es una de las ventajas e
 
 90
 00:03:50,470 --> 00:03:52,770
-inconvenientes de los drivers
-en Mongo.
+inconvenientes de
+los drivers en Mongo.
 
 91
 00:03:52,770 --> 00:03:55,790
@@ -431,8 +425,8 @@ guiones bajos en un lenguaje,
 
 94
 00:04:00,320 --> 00:04:02,910
-entonces ésa es la forma en que se escribe
-el driver de forma que parezca
+entonces ésa es la forma en que se
+escribe el driver de forma que parezca
 
 95
 00:04:02,910 --> 00:04:05,140
@@ -446,18 +440,18 @@ drivers varían un poco.
 
 97
 00:04:08,230 --> 00:04:11,220
-Por lo que podrías necesitar consultar la
-documentación del API para aprender
+Por lo que podrías necesitar consultar
+la documentación del API para aprender
 
 98
 00:04:11,220 --> 00:04:15,370
-cómo hacer una cosa particular
-con tu driver.
+cómo hacer una cosa
+particular con tu driver.
 
 99
 00:04:15,370 --> 00:04:17,750
-Esta excepción sólo se 
-llama si falla.
+Esta excepción sólo
+se llama si algo falla.
 
 100
 00:04:17,750 --> 00:04:19,329
@@ -465,18 +459,17 @@ No nos preocuparemos por eso.
 
 101
 00:04:19,329 --> 00:04:21,410
-Y luego imprime 
-"doc" justo aquí.
+Luego imprime "doc" justo aquí.
 
 102
 00:04:21,410 --> 00:04:24,020
-Una de las grandes cosas de
-Python es que es muy
+Una de las grandes cosas
+de Python es que es muy
 
 103
 00:04:24,020 --> 00:04:26,660
-flexible a la hora de imprimir
-objetos complejos.
+flexible a la hora de
+imprimir objetos complejos.
 
 104
 00:04:26,660 --> 00:04:30,190
@@ -485,8 +478,7 @@ y veamos qué ocurre.
 
 105
 00:04:30,190 --> 00:04:32,200
-Voy a volver
-a mi terminal.
+Voy a volver a mi terminal.
 
 106
 00:04:32,200 --> 00:04:34,820
@@ -495,33 +487,32 @@ que simplemente voy a salir.
 
 107
 00:04:34,820 --> 00:04:39,110
-Y ahora voy a ejecutar
-"python using_find.py".
+Ahora voy a ejecutar
+"python using_find.py"
 
 108
 00:04:39,110 --> 00:04:43,580
-Y podemos ver que llama
-a "find_one" justo aquí --
+y podemos ver que llama
+a "find_one" justo aquí--
 
 109
 00:04:43,580 --> 00:04:44,730
-subo un poco
-la pantalla --
+subo un poco la pantalla--
 
 110
 00:04:44,730 --> 00:04:47,430
-llama a "find_one", que imprime
-"Reporting For Duty".
+llama a "find_one", que
+imprime "Reporting For Duty".
 
 111
 00:04:47,430 --> 00:04:50,960
-Y luego imprime un
-documento que recuperó de la
+Luego imprime un documento
+que recuperó de la
 
 112
 00:04:50,960 --> 00:04:55,440
-colección con "student_id" igual a 10
-con un ObjectId BSON y
+colección con "student_id" igual
+a 10 con un ObjectId BSON y
 
 113
 00:04:55,440 --> 00:04:57,120
@@ -529,27 +520,26 @@ con un ObjectId BSON y
 
 114
 00:04:57,120 --> 00:05:00,080
-Notarás que lo ha impreso
-como un número en punto flotante.
+Notarás que lo ha impreso como
+un número en punto flotante.
 
 115
 00:05:00,080 --> 00:05:02,080
-Y creo que es una conversión
-automática que
+Creo que es una conversión automática
 
 116
 00:05:02,080 --> 00:05:03,980
-ocurrió durante la
+que ocurrió durante la
 conversión de la cadena.
 
 117
 00:05:03,980 --> 00:05:07,730
-Pero en realidad no es indicativo
-que salga de ahí el
+Pero en realidad no está
+claro que el punto flotante
 
 118
 00:05:07,730 --> 00:05:08,270
-punto flotante.
+viene de ahí.
 
 119
 00:05:08,270 --> 00:05:09,650
@@ -563,8 +553,8 @@ entero en la base de datos.
 
 121
 00:05:13,830 --> 00:05:16,210
-Si recuerdas, realmente
-puedes verlos justo aquí.
+Si recuerdas, puedes
+verlos justo aquí.
 
 122
 00:05:16,210 --> 00:05:16,880
@@ -581,12 +571,12 @@ Así es como funciona "find_one".
 
 125
 00:05:21,400 --> 00:05:24,710
-Por lo que la siguiente pregunta es, bien,
+Por lo que la siguiente pregunta es:
 ¿cómo funciona "find"?
 
 126
 00:05:24,710 --> 00:05:26,670
-"find", tal y como hablamos --
+"find", tal y como hablamos--
 
 127
 00:05:26,670 --> 00:05:29,720
@@ -595,13 +585,12 @@ aquí para llamar a "find".
 
 128
 00:05:29,720 --> 00:05:31,710
-Hay otra función
-que escribimos.
+Hay otra función que escribimos.
 
 129
 00:05:31,710 --> 00:05:37,490
-Y "find" configura una consulta donde
-"type" es "exam".
+Y "find" configura una consulta
+donde "type" es "exam".
 
 130
 00:05:37,490 --> 00:05:42,130
@@ -610,12 +599,12 @@ y "exam" está entre comillas.
 
 131
 00:05:42,130 --> 00:05:49,730
-Y ahora vamos a hacer
-"scores.find", el nombre de la
+Ahora vamos a hacer "scores.find",
 
 132
 00:05:49,730 --> 00:05:51,850
-colección ".find" y la consulta.
+el nombre de la colección
+".find" y la consulta.
 
 133
 00:05:51,850 --> 00:05:55,240
@@ -628,13 +617,12 @@ No un iterador.
 
 135
 00:05:56,270 --> 00:05:57,700
-No debería haberlo
-llamado así.
+No debería haberlo llamado así.
 
 136
 00:05:57,700 --> 00:05:59,440
-Probablemente debería haberlo
-llamado "cursor".
+Probablemente debería
+haberlo llamado "cursor".
 
 137
 00:05:59,440 --> 00:06:01,720
@@ -646,8 +634,8 @@ Así que nos devuelve un cursor.
 
 139
 00:06:03,550 --> 00:06:10,060
-Y luego justo aquí
-continuamos e iteramos sobre
+Luego justo aquí continuamos
+e iteramos sobre
 
 140
 00:06:10,060 --> 00:06:11,200
@@ -655,13 +643,13 @@ ese cursor.
 
 141
 00:06:11,200 --> 00:06:15,050
-Por lo que por cada documento en el
-cursor simplemente imprimimos el documento.
+Y por cada documento en el cursor,
+simplemente imprimimos el documento.
 
 142
 00:06:15,050 --> 00:06:17,060
-Ahora no quiero imprimir
-cientos de cosas, por lo que sólo
+No quiero imprimir cientos
+de cosas, por lo que sólo
 
 143
 00:06:17,060 --> 00:06:17,740
@@ -669,27 +657,27 @@ hago una pequeña comprobación.
 
 144
 00:06:17,740 --> 00:06:21,500
-Y una vez que imprime diez de ellos,
-sale del bucle.
+Y una vez que imprime diez
+de ellos, sale del bucle.
 
 145
 00:06:21,500 --> 00:06:24,750
-Por lo que pone "sanity" a cero,
-y lo incrementa.
+Por lo que pone "sanity"
+a cero y lo incrementa.
 
 146
 00:06:24,750 --> 00:06:26,960
-Y entonces si es mayor que
-10 sale, simplemente para asegurar
+Entonces, si es mayor que 10
+sale, simplemente para asegurar
 
 147
 00:06:26,960 --> 00:06:29,220
-que no imprime demasiado
+que no imprima demasiado
 en la pantalla.
 
 148
 00:06:29,220 --> 00:06:31,660
-Así que vamos a ejecutarlo y
+Vamos a ejecutarlo y
 ver qué ocurre.
 
 149
@@ -699,7 +687,7 @@ Vamos a ejecutar
 
 150
 00:06:36,150 --> 00:06:40,410
-Y ahora puedes ver que en este 
+Ahora puedes ver que en este 
 caso obtenemos un conjunto
 
 151
@@ -709,8 +697,7 @@ son todos de tipo "exam",
 
 152
 00:06:44,580 --> 00:06:46,150
-porque eso es lo que
-consultamos.
+porque eso es lo que consultamos.
 
 153
 00:06:46,150 --> 00:06:48,290
@@ -719,7 +706,7 @@ diferentes puntuaciones.
 
 154
 00:06:48,290 --> 00:06:51,950
-Por lo que así es como se usa
+Así es como se usa
 el comando "find"
 
 155
@@ -728,7 +715,7 @@ y como se itera sobre un cursor.
 
 156
 00:06:54,390 --> 00:06:57,820
-Así que ahora es momento para un cuestionario.
+Ahora es momento para un cuestionario.
 
 157
 00:06:57,820 --> 00:06:59,140
@@ -751,16 +738,15 @@ conexión a la base de datos
 161
 00:07:06,680 --> 00:07:09,330
 y va a obtener un manejador
-para la base de datos "school" y
+para la base de datos "school"
 
 162
 00:07:09,330 --> 00:07:10,790
-la colección "scores".
+y la colección "scores".
 
 163
 00:07:10,790 --> 00:07:15,380
-Y luego va a
-hacer algo aquí.
+Y luego va a hacer algo aquí.
 
 164
 00:07:15,380 --> 00:07:18,330
@@ -769,18 +755,18 @@ el documento que recupera.
 
 165
 00:07:18,330 --> 00:07:20,760
-Ahora, esto es una prueba
-de "find_one".
+Ahora, esto es una
+prueba de "find_one".
 
 166
 00:07:20,760 --> 00:07:22,930
-Así que, ¿cuál sería la línea de
+¿Cuál sería la línea de
 código por la que habría que
 
 167
 00:07:22,930 --> 00:07:27,280
-reemplazar estas XXX para que
-pudiéramos poner el
+reemplazar estas "XXX" para
+que pudiéramos poner el
 
 168
 00:07:27,280 --> 00:07:28,270
@@ -788,12 +774,11 @@ documento justo aquí?
 
 169
 00:07:28,270 --> 00:07:30,690
-Por lo que si pones esa línea
-de código justo 
+Pon esa línea de código justo 
 
 170
 00:07:30,690 --> 00:07:31,940
-aquí, ése es el cuestionario.
+aquí. Ése es el cuestionario.
 
 171
 00:07:31,940 --> 00:07:33,252

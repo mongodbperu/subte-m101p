@@ -20,12 +20,12 @@ Y a continuación "multi: true".
 
 6
 00:00:11,060 --> 00:00:14,010
-Si no especificaras
-"multi: true", la base de datos
+Si no especificas "multi: true",
+la base de datos actualizará
 
 7
 00:00:14,010 --> 00:00:17,590
-actualizaría exactamente un documento
+exactamente un documento
 con "score" menor que 70.
 
 8

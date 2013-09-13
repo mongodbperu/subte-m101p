@@ -3,13 +3,12 @@
 
 2
 00:00:00,140 --> 00:00:01,350
-Bien, la respuesta es
-la cuarta.
+Bien, la respuesta es la cuarta.
 
 3
 00:00:01,350 --> 00:00:04,290
-La operación "upsert"
-intentará encontrar un documento
+La operación "upsert" intentará
+encontrar un documento
 
 4
 00:00:04,290 --> 00:00:05,730
@@ -17,18 +16,18 @@ con "username" igual a "bar".
 
 5
 00:00:05,730 --> 00:00:08,530
-Según se estipula, dicho documento
-no existe, sin embargo.
+Sin embargo, según se estipula,
+dicho documento no existe.
 
 6
 00:00:08,530 --> 00:00:11,010
-Y por eso el "upsert" realizará
+Por eso, el "upsert" realizará
 en realidad una operación de
 
 7
 00:00:11,010 --> 00:00:14,640
-inserción, creando un nuevo
-documento con "username" igual a "bar" e
+inserción, creando un nuevo documento
+con "username" igual a "bar" e
 
 8
 00:00:14,640 --> 00:00:16,940

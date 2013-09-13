@@ -3,8 +3,8 @@
 
 2
 00:00:01,190 --> 00:00:03,570
-Seguimos con algunos operadores 
-"update" más.
+Seguimos con algunos
+operadores "update" más.
 
 3
 00:00:03,570 --> 00:00:05,350
@@ -22,13 +22,13 @@ Por ejemplo, en mi colección
 
 6
 00:00:10,030 --> 00:00:13,110
-eliminar la profesión de "Jones",
-puedo hacerlo.
+eliminar la profesión de
+"Jones", puedo hacerlo.
 
 7
 00:00:13,110 --> 00:00:15,300
 Una forma de hacerlo, por supuesto,
-sería hacer un sustitución
+sería hacer una sustitución
 
 8
 00:00:15,300 --> 00:00:17,960
@@ -51,18 +51,17 @@ existen en ese documento.
 
 12
 00:00:23,760 --> 00:00:26,160
-Y por tanto tenemos otro operador
-análogo a "$set",
+Por lo tanto tenemos otro
+operador análogo a "$set",
 
 13
 00:00:26,160 --> 00:00:30,230
-y ese operador se
-llama "$unset".
+y ese operador se llama "$unset".
 
 14
 00:00:30,230 --> 00:00:33,120
-Este operador eliminará el campo y
-su valor del documento
+Este operador eliminará el
+campo y su valor del documento
 
 15
 00:00:33,120 --> 00:00:35,660
@@ -75,8 +74,8 @@ especificados, y por tanto
 
 17
 00:00:37,020 --> 00:00:39,420
-Esto es útil en ocasiones, por 
-ejemplo, para realizar manipulaciones
+Esto es útil, por ejemplo,
+para realizar manipulaciones
 
 18
 00:00:39,420 --> 00:00:41,850
@@ -104,13 +103,13 @@ presente, puedes añadir y
 
 23
 00:00:50,960 --> 00:00:54,290
-eliminar campos a un documento
+eliminar campos en un documento
 a medida que la información esté
 
 24
 00:00:54,290 --> 00:00:57,210
-presente y sea relevante, o se convierta
-en irrelevante y
+presente y sea relevante, o
+se convierta en irrelevante y
 
 25
 00:00:57,210 --> 00:00:58,380
@@ -118,8 +117,8 @@ ya no sea necesaria.
 
 26
 00:00:58,380 --> 00:01:02,150
-Éste es un apecto de la naturaleza
-schemaless (sin esquema) de MongoDB.
+Éste es un aspecto de la naturaleza
+"schemaless" (sin esquema) de MongoDB.
 
 27
 00:01:02,150 --> 00:01:03,620
@@ -132,7 +131,7 @@ Escribe una consulta "update" que haga
 
 29
 00:01:08,020 --> 00:01:10,980
-en el siguiente documento en la
+en el siguiente documento de la
 colección llamada "users".
 
 30
@@ -142,8 +141,7 @@ El documento tiene "username:
 
 31
 00:01:14,720 --> 00:01:17,520
-"interests": ['debating',
-'politics']".
+"interests": ['debating', 'politics']".
 
 32
 00:01:17,520 --> 00:01:18,770

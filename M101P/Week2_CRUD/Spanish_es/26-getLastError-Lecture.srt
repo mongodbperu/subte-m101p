@@ -7,7 +7,7 @@ OK.
 
 3
 00:00:00,710 --> 00:00:02,310
-Así que ahora que hemos aprendido
+Hemos aprendido acerca de
 las operaciones básicas CRUD
 
 4
@@ -16,27 +16,27 @@ que ofrece MongoDB--
 
 5
 00:00:04,090 --> 00:00:07,530
-Insert, Find, Update
-y Remove.
+"Insert", "Find", "Update" y "Remove".
 
 6
 00:00:07,530 --> 00:00:09,290
-Sin embargo, hay algo más
-que necesitas saber
+Sin embargo, hay algo
+más que necesitas saber
 
 7
 00:00:09,290 --> 00:00:12,960
-acerca de los detalles exactos de
-las operaciones en MongoDB.
+acerca de los detalles exactos
+de las operaciones en MongoDB.
 
 8
 00:00:12,960 --> 00:00:15,700
-El shell es un entorno interactivo, por lo que te da
+El shell es un entorno
+interactivo, por lo que
 
 9
 00:00:15,700 --> 00:00:18,380
-información cada vez
-que algo sale mal.
+te da información cada
+vez que algo sale mal.
 
 10
 00:00:18,380 --> 00:00:22,800
@@ -54,8 +54,8 @@ y ser única,
 
 13
 00:00:26,660 --> 00:00:29,220
-y en realidad además
-lo hacemos inmutable.
+y en realidad, además
+la hacemos inmutable.
 
 14
 00:00:29,220 --> 00:00:31,850
@@ -93,12 +93,12 @@ mensaje de error.
 21
 00:00:43,990 --> 00:00:47,510
 En efecto, el shell interactivo
-siempre comprueba
+siempre comprueba si la última
 
 22
 00:00:47,510 --> 00:00:50,250
-si la última operación tuvo
-éxito o no, y te dice
+operación tuvo éxito
+o no, y te dice
 
 23
 00:00:50,250 --> 00:00:52,480
@@ -111,8 +111,8 @@ ninguna operación que falla.
 
 25
 00:00:55,410 --> 00:00:57,400
-Esto fue un poco de
-mala previsión.
+Esto fue un poco
+de mala previsión.
 
 26
 00:00:57,400 --> 00:00:59,340
@@ -126,8 +126,8 @@ no, ejecutando un comando.
 
 28
 00:01:02,610 --> 00:01:04,330
-En realidad, ya hemos usado
-algunos comandos.
+En realidad, ya hemos
+usado algunos comandos.
 
 29
 00:01:04,330 --> 00:01:06,410
@@ -190,7 +190,7 @@ escritura tiene éxito o no.
 41
 00:01:36,120 --> 00:01:38,440
 En el caso que una operación de
-escritura se realiza correctamente,
+escritura se realice correctamente,
 
 42
 00:01:38,440 --> 00:01:42,330
@@ -204,13 +204,13 @@ En ese caso, el comando
 
 44
 00:01:45,240 --> 00:01:48,800
-error es nulo-- es decir
+error es nulo--es decir
 que la operación tuvo éxito.
 
 45
 00:01:48,800 --> 00:01:52,390
-Para otro tipo de operaciones,
-tales como actualizaciones, "getLastError"
+Para otro tipo de operaciones, tal
+como actualizaciones, "getLastError"
 
 46
 00:01:52,390 --> 00:01:54,300
@@ -224,7 +224,8 @@ actualización que debería afectar
 
 48
 00:01:56,890 --> 00:01:58,390
-a todos los documentos en la colección
+a todos los documentos
+en la colección
 
 49
 00:01:58,390 --> 00:01:59,690
@@ -255,7 +256,7 @@ afectados por una actualización.
 
 55
 00:02:09,949 --> 00:02:13,450
-Por el contrario, si en vez de
+Por lo contrario, si en vez de
 hacer una actualización múltiple
 
 56
@@ -264,13 +265,13 @@ pido un "upsert"--
 
 57
 00:02:14,220 --> 00:02:16,680
-es decir que la operación de
-actualización que
+es decir, que la
+operación de actualización
 
 58
 00:02:16,680 --> 00:02:20,340
 actualice un documento con el
-nombre "Thompson", si existe o
+nombre "Thompson" si existe o
 
 59
 00:02:20,340 --> 00:02:23,220
@@ -279,7 +280,7 @@ con nombre "Thompson" y título
 
 60
 00:02:23,220 --> 00:02:25,330
-"doctor", si no existe.
+"doctor" si éste no existe.
 
 61
 00:02:25,330 --> 00:02:28,270
@@ -304,7 +305,7 @@ Por eso ya ves que el comando
 65
 00:02:38,370 --> 00:02:41,470
 saber si una operación de escritura
-es correcta o falló y también
+fue exitosa o si falló y también
 
 66
 00:02:41,470 --> 00:02:43,530
@@ -318,7 +319,7 @@ que han sido satisfactorias.
 68
 00:02:45,690 --> 00:02:48,250
 Una vez más, el shell automáticamente
-te dice cuándo una operación
+te alerta cuando una operación
 
 69
 00:02:48,250 --> 00:02:49,470
@@ -355,8 +356,7 @@ todas las personas de la colección
 
 76
 00:03:04,220 --> 00:03:05,860
-fueron eliminados 3
-documentos.
+fueron eliminados 3 documentos.
 
 77
 00:03:05,860 --> 00:03:07,550
@@ -365,16 +365,16 @@ documentos.
 78
 00:03:07,550 --> 00:03:10,190
 Vamos a ver más del comando
-"getLastError" otra vez en
+"getLastError" en una futura
 
 79
 00:03:10,190 --> 00:03:11,510
-una futura parte de este curso.
+parte de este curso.
 
 80
 00:03:11,510 --> 00:03:13,810
 Por ahora, deberías entender
-que esta es la forma de verificar
+que ésta es la forma de verificar
 
 81
 00:03:13,810 --> 00:03:15,640

@@ -32,18 +32,18 @@ dentro de un documento,
 
 8
 00:00:12,790 --> 00:00:14,550
-puede realizar una operación
-"upsert" --
+puede realizar una
+operación "upsert"--
 
 9
 00:00:14,550 --> 00:00:17,190
 que es o un "update" o
-un "insert" si no existe
+un "insert", si no existe
 
 10
 00:00:17,190 --> 00:00:20,270
-un documento que coincida
-con los criterios especificados --
+un documento que coincida con
+los criterios especificados--
 
 11
 00:00:20,270 --> 00:00:23,740
@@ -52,7 +52,7 @@ múltiples documentos.
 
 12
 00:00:23,740 --> 00:00:27,190
-He sido intencionadamente astuto
+He sido intencionalmente astuto
 y hasta ahora siempre he realizado
 
 13
@@ -76,8 +76,8 @@ un documento a la vez.
 
 17
 00:00:38,220 --> 00:00:40,980
-Así que de nuevo, echamos un vistazo a la
-colección "people", tenemos una gran
+Así que de nuevo, echemos un vistazo a
+la colección "people". Tenemos una gran
 
 18
 00:00:40,980 --> 00:00:43,070
@@ -92,11 +92,11 @@ algún campo nuevo, puedo hacerlo.
 20
 00:00:46,900 --> 00:00:50,880
 El documento vacío actúa como un
-selector que coincide con cada
+selector que coincide con todos
 
 21
 00:00:50,880 --> 00:00:52,150
-documento en la colección.
+los documentos en la colección.
 
 22
 00:00:52,150 --> 00:00:53,970
@@ -104,13 +104,13 @@ Esto es también cierto para "find".
 
 23
 00:00:53,970 --> 00:00:56,830
-Y, por ejemplo, podría
-querer establecer un campo nuevo.
+Por ejemplo, podría querer
+establecer un campo nuevo.
 
 24
 00:00:56,830 --> 00:00:58,850
-Quizá todo el mundo aquí
-es médico.
+Quizá todo el mundo
+aquí es médico.
 
 25
 00:00:58,850 --> 00:01:02,270
@@ -124,12 +124,12 @@ incluso si el primer argumento de
 
 27
 00:01:07,070 --> 00:01:09,790
-"update" es una especificación de consulta
-que coincidiría
+"update" es una especificación
+de consulta que coincidiría
 
 28
 00:01:09,790 --> 00:01:13,930
-con cada documento, el método 
+con todos los documentos, el método 
 "update" sólo afectaría en realidad a un
 
 29
@@ -153,12 +153,11 @@ indicar una opción.
 
 33
 00:01:24,250 --> 00:01:26,540
-Y desde el shell
-JavaScript, esa opción se
+Desde el shell JavaScript, esa opción
 
 34
 00:01:26,540 --> 00:01:28,500
-llama "multi: true".
+se llama "multi: true".
 
 35
 00:01:28,500 --> 00:01:32,220
@@ -173,7 +172,7 @@ afectará sólo a un documento.
 37
 00:01:35,420 --> 00:01:37,700
 De hecho, a qué documento
-afecta es algo un poco
+afecte es algo un poco
 
 38
 00:01:37,700 --> 00:01:38,520
@@ -181,13 +180,12 @@ indefinido.
 
 39
 00:01:38,520 --> 00:01:42,090
-Especificando "multi: true", entonces
-este "update" recorrerá
+Especificando "multi: true",
+entonces este "update" recorrerá
 
 40
 00:01:42,090 --> 00:01:43,870
-cada documento en
-la colección
+cada documento en la colección
 
 41
 00:01:43,870 --> 00:01:45,900
@@ -195,7 +193,7 @@ y añadirá un nuevo campo.
 
 42
 00:01:45,900 --> 00:01:47,930
-Y ahora, todos tienen un campo "title".
+Ahora, todos tienen un campo "title".
 
 43
 00:01:47,930 --> 00:01:50,040
@@ -204,18 +202,18 @@ este detalle.
 
 44
 00:01:50,040 --> 00:01:53,380
-El comportamiento por defecto de una
-consulta "update" en SQL es
+El comportamiento por defecto de
+una consulta "update" en SQL es
 
 45
 00:01:53,380 --> 00:01:55,970
-actualizar cada registro que cumple
-la cláusula "where", o
+actualizar cada registro que
+cumple la cláusula "WHERE", o
 
 46
 00:01:55,970 --> 00:01:59,660
 cada registro en la tabla si no
-se indica una cláusula "where".
+se indica una cláusula "WHERE".
 
 47
 00:01:59,660 --> 00:02:03,790
@@ -224,8 +222,7 @@ en MongoDB es actualizar sólo
 
 48
 00:02:03,790 --> 00:02:05,850
-un documento en la
-colección.
+un documento en la colección.
 
 49
 00:02:05,850 --> 00:02:08,610
@@ -243,13 +240,13 @@ colección.
 
 52
 00:02:12,870 --> 00:02:15,450
-Algunos de nuestros drivers para
-diferentes lenguajes de
+Algunos de nuestros drivers
+para diferentes lenguajes de
 
 53
 00:02:15,450 --> 00:02:19,000
-programación en realidad dividen esto
-en dos métodos separados.
+programación en realidad dividen
+esto en dos métodos separados.
 
 54
 00:02:19,000 --> 00:02:22,160
@@ -272,18 +269,18 @@ más sobre la semántica
 
 58
 00:02:27,440 --> 00:02:29,870
-real de qué sucede cuando
+real de lo que sucede cuando
 realizas una operación de escritura
 
 59
 00:02:29,870 --> 00:02:32,440
-multidocumento tal como
+multidocumento tal como lo es
 una actualización múltiple.
 
 60
 00:02:32,440 --> 00:02:35,690
-En MongoDB, hay un 
-único hilo de ejecución por cada
+En MongoDB, hay un único
+hilo de ejecución por cada
 
 61
 00:02:35,690 --> 00:02:37,760
@@ -292,18 +289,18 @@ siendo ejecutada.
 
 62
 00:02:37,760 --> 00:02:40,960
-Por lo que, por ejemplo, esta operación
-"update" se realizará
+Por lo que, por ejemplo, esta
+operación "update" se realizará
 
 63
 00:02:40,960 --> 00:02:43,420
-secuencialmente dentro de
-un único hilo.
+secuencialmente dentro
+de un único hilo.
 
 64
 00:02:43,420 --> 00:02:47,050
-Sin embargo, cada operación de escritura
-que afecta a más de un
+Sin embargo, cada operación de
+escritura que afecta a más de un
 
 65
 00:02:47,050 --> 00:02:51,550
@@ -322,38 +319,37 @@ al mismo conjunto de datos.
 
 68
 00:02:58,350 --> 00:03:01,140
-En particular, la actualización múltiple
-que ves en la 
+En particular, la actualización
+múltiple que ves en la pantalla
 
 69
 00:03:01,140 --> 00:03:04,320
-pantalla afectó aproximadamente a
-10 documentos.
+afectó a aproximadamente 10 documentos.
 
 70
 00:03:04,320 --> 00:03:07,070
-Sería posible si hubiera
-otras operaciones de escritura
+Si hubiera otras operaciones
+de escritura entrando al
 
 71
 00:03:07,070 --> 00:03:11,020
-entrando al sistema que esa
-operación de actualización específica
+sistema, es posible que esa
+operación de actualización
 
 72
 00:03:11,020 --> 00:03:14,420
-afectara, digamos, a tres documentos,
-y luego se pause para
+afecte, digamos, a tres documentos,
+y luego se pause para permitir
 
 73
 00:03:14,420 --> 00:03:17,250
-permitir que otras operaciones
-continúen, y a continuación se recupere
+que otras operaciones continúen,
+y a continuación se recupere
 
 74
 00:03:17,250 --> 00:03:20,530
-de nuevo, afecte a otros
-documentos más, y luego se pause para
+de nuevo, afecte a otros documentos
+más, y luego se pause para
 
 75
 00:03:20,530 --> 00:03:23,350
@@ -362,23 +358,23 @@ continúen, y luego, por último,
 
 76
 00:03:23,350 --> 00:03:25,910
-finalizar con los últimos tres
-documentos restantes.
+finalizar con los últimos
+tres documentos restantes.
 
 77
 00:03:25,910 --> 00:03:29,020
-Llamamos a esto "pausing yielding"
-debido al hecho que
+Llamamos a esto "pausing
+yielding" debido al hecho
 
 78
 00:03:29,020 --> 00:03:31,560
-existe un recurso compartido que
-comparten diferentes operaciones de escritura,
+que existe un recurso compartido para
+diferentes operaciones de escritura,
 
 79
 00:03:31,560 --> 00:03:34,970
 el cual usamos para secuenciar
-las operaciones de escritura.
+estas operaciones de escritura.
 
 80
 00:03:34,970 --> 00:03:37,020
@@ -392,8 +388,8 @@ comprender acerca de las
 
 82
 00:03:39,950 --> 00:03:43,250
-consecuencias de la concurrencia que
-estoy describiendo es que
+consecuencias de la concurrencia
+que estoy describiendo es que
 
 83
 00:03:43,250 --> 00:03:46,420
@@ -411,18 +407,18 @@ número arbitrario de documentos,
 
 86
 00:03:51,940 --> 00:03:55,300
-luego ceder, permitir operar a otras
-lecturas o escrituras,
+luego ceder, permitir a otras
+lecturas o escrituras operar
 
 87
 00:03:55,300 --> 00:03:58,090
-y luego recuperar de nuevo el control para
-afectar a algunos documentos más.
+y luego recuperar de nuevo el control
+para afectar a algunos documentos más.
 
 88
 00:03:58,090 --> 00:04:01,320
-En general, no es posible
-tener una operación de escritura
+En general, no es posible tener
+una operación de escritura
 
 89
 00:04:01,320 --> 00:04:02,620
@@ -468,8 +464,8 @@ el documento a medio actualizar.
 
 98
 00:04:27,280 --> 00:04:29,660
-Esta garantía de atomicidad te permite
-construir cosas sobre
+Esta garantía de atomicidad te
+permite construir cosas sobre
 
 99
 00:04:29,660 --> 00:04:31,090
@@ -483,12 +479,12 @@ necesario para tu
 101
 00:04:33,400 --> 00:04:36,900
 aplicación tener algún tipo de
-asilamiento entre diferentes
+aislamiento entre diferentes
 
 102
 00:04:36,900 --> 00:04:39,120
-hilos, podrías, por
-ejemplo, construir un mecanismo ajustado
+hilos, podrías, por ejemplo,
+construir un mecanismo ajustado
 
 103
 00:04:39,120 --> 00:04:42,120
@@ -502,30 +498,30 @@ que las operaciones de escritura necesitaran
 
 105
 00:04:45,670 --> 00:04:46,910
-adquirir --
+adquirir--
 
 106
 00:04:46,910 --> 00:04:48,400
-quizás actualizándolo --
+quizás actualizándolo--
 
 107
 00:04:48,400 --> 00:04:50,170
 antes de realizar
-cualquier operación sobre
+cualquier operación
 
 108
 00:04:50,170 --> 00:04:51,750
-los datos ordinarios.
+sobre los datos ordinarios.
 
 109
 00:04:51,750 --> 00:04:54,230
-Y de hecho, en realidad esto resulta
-ser un truco que
+De hecho, en realidad esto
+resulta ser un truco que
 
 110
 00:04:54,230 --> 00:04:56,620
-se utiliza dentro de una arquitectura
-con Sharding.
+se utiliza dentro de una
+arquitectura con "sharding".
 
 111
 00:04:56,620 --> 00:05:00,000
@@ -534,8 +530,8 @@ vista semántico, una operación de
 
 112
 00:05:00,000 --> 00:05:01,930
-actualización múltiple es simplemente
-un "update" que
+actualización múltiple es
+simplemente un "update" que
 
 113
 00:05:01,930 --> 00:05:03,670
@@ -543,8 +539,8 @@ afecta a múltiples documentos.
 
 114
 00:05:03,670 --> 00:05:05,820
-Desde una perspectiva de concurrencia,
-es importante
+Desde una perspectiva de
+concurrencia, es importante
 
 115
 00:05:05,820 --> 00:05:09,670
@@ -580,9 +576,9 @@ campo "type" y un campo "score".
 
 122
 00:05:21,750 --> 00:05:23,870
-¿Cómo darías a cada registro
-cuyo "score" sea menor
+¿Cómo le darías a cada registro
+cuyo "score" es menor que 70
 
 123
 00:05:23,870 --> 00:05:26,900
-que 70 un extra de 20 puntos?
+unos 20 puntos extra?

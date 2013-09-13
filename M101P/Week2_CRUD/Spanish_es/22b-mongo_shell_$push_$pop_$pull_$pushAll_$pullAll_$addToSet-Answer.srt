@@ -8,22 +8,22 @@ ser algo parecido a esto.
 
 3
 00:00:02,890 --> 00:00:04,320
-"_id" es 
-"Mike", por supuesto.
+"_id" es "Mike", por supuesto.
 
 4
 00:00:04,320 --> 00:00:07,590
 E "interests" debería ser
-"botany", luego "skydiving", después
+"botany", luego "skydiving",
 
 5
 00:00:07,590 --> 00:00:10,360
-"skydiving" otra vez, luego "skiing".
+después "skydiving" otra
+vez, luego "skiing".
 
 6
 00:00:10,360 --> 00:00:13,640
-El primer "push" cambia
-el array a
+El primer "push"
+cambia el array a
 
 7
 00:00:13,640 --> 00:00:16,460
@@ -31,13 +31,13 @@ el array a
 
 8
 00:00:16,460 --> 00:00:19,060
-Luego el "pop" elimina el
-elemento más a la izquierda del array
+Luego el "pop" elimina el elemento
+en el extremo izquierdo del array
 
 9
 00:00:19,060 --> 00:00:21,280
-porque el argumento que se pasa
-a "pop" es negativo.
+porque el argumento que se
+pasa a "pop" es negativo.
 
 10
 00:00:21,280 --> 00:00:24,590
@@ -46,13 +46,13 @@ Esto nos deja con sólo
 
 11
 00:00:24,590 --> 00:00:28,760
-Luego teníamos un "set" que añadiría
-"skydiving" al array si
+Luego teníamos un "set" que
+añadiría "skydiving" al array
 
 12
 00:00:28,760 --> 00:00:30,880
-"skydiving" no estuviera 
-ya allí.
+si "skydiving" no
+estuviera ya allí.
 
 13
 00:00:30,880 --> 00:00:33,300
@@ -70,18 +70,18 @@ no hace nada.
 
 16
 00:00:36,720 --> 00:00:40,270
-Finalmente, el "pushAll" añade al
-array en la parte más a la derecha
+Finalmente, el "pushAll"
+añade "skydiving" y "skiing"
 
 17
 00:00:40,270 --> 00:00:43,540
-"skydiving" y "skiing",
+al extremo derecho del array,
 dejándonos dos duplicados de
 
 18
 00:00:43,540 --> 00:00:47,030
-"skydiving" y ésta es
-la respuesta.
+"skydiving" y ésta
+es la respuesta.
 
 19
 00:00:47,030 --> 00:00:50,990
@@ -95,21 +95,21 @@ mismo documento.
 21
 00:00:52,460 --> 00:00:54,730
 Normalmente, si estás usando
-"addToSet" lo que quieres es tratar el
+"addToSet" lo que quieres es
 
 22
 00:00:54,730 --> 00:00:58,060
-array como un conjunto que no debería
-contener duplicados del
+tratar el array como un conjunto
+que no debería contener duplicados
 
 23
 00:00:58,060 --> 00:00:59,190
-mismo valor.
+del mismo valor.
 
 24
 00:00:59,190 --> 00:01:02,280
-El operador "push" simplemente trata
-el array como una secuencia
+El operador "push" simplemente
+trata el array como una secuencia
 
 25
 00:01:02,280 --> 00:01:03,530

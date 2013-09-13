@@ -3,18 +3,18 @@
 
 2
 00:00:00,230 --> 00:00:02,100
-En marcha, aprendamos acerca
-de algunos operadores que
+Siguiendo adelante, aprendamos
+acerca de algunos operadores
 
 3
 00:00:02,100 --> 00:00:04,220
-manipulan arrays dentro
-de documentos.
+que manipulan arrays
+dentro de documentos.
 
 4
 00:00:04,220 --> 00:00:06,900
 Primero, estableceré algunos
-documentos que tengan arrays,
+documentos que tengan arrays
 
 5
 00:00:06,900 --> 00:00:08,950
@@ -37,18 +37,18 @@ es el array "[1, 2, 3, 4]".
 
 9
 00:00:16,730 --> 00:00:18,810
-Hay un montón de operadores
-en el comando
+Hay un montón de
+operadores en el
 
 10
 00:00:18,810 --> 00:00:20,840
-"update" que manipulan
-arrays.
+comando "update" que
+manipulan arrays.
 
 11
 00:00:20,840 --> 00:00:24,060
-Se pueden realizar un par
-de operaciones simples, tales como
+Se pueden realizar un par de
+operaciones simples, tales como
 
 12
 00:00:24,060 --> 00:00:27,030
@@ -67,8 +67,8 @@ representado como el nombre del campo
 
 15
 00:00:33,460 --> 00:00:36,770
-de tipo array seguido por un punto, seguido
-por la representación decimal
+de tipo array seguido por un punto,
+seguido por la representación decimal
 
 16
 00:00:36,770 --> 00:00:39,380
@@ -92,43 +92,43 @@ tercer elemento de 3 a 5.
 20
 00:00:49,040 --> 00:00:51,190
 A veces quieres añadir
-elementos a un array o borrar
+elementos a un array o
 
 21
 00:00:51,190 --> 00:00:52,820
-elementos del array.
+borrar elementos del array.
 
 22
 00:00:52,820 --> 00:00:55,750
-Por ejemplo, para añadir un elemento
-a la parte derecha de un
+Por ejemplo, para añadir un
+elemento a la parte derecha
 
 23
 00:00:55,750 --> 00:00:57,450
-array, puedes hacer "push".
+de un array, puedes hacer "push".
 
 24
 00:00:57,450 --> 00:01:01,230
-Esto extiende el array añadiendo
+Esto extiende el array, añadiendo
 un nuevo elemento al mismo.
 
 25
 00:01:01,230 --> 00:01:03,820
-De manera similar, puedes eliminar el
-elemento más a la derecha del
+De manera similar, puedes eliminar
+el elemento en el extremo derecho del
 
 26
 00:01:03,820 --> 00:01:06,310
-array con "pop".
+array usando "pop".
 
 27
 00:01:06,310 --> 00:01:08,620
 Alternativamente, puedes eliminar
-el elemento más a la izquierda del
+el elemento en el extremo izquierdo
 
 28
 00:01:08,620 --> 00:01:12,200
-array con "pop" indicando
+del array con "pop" indicando
 un argumento negativo.
 
 29
@@ -142,18 +142,18 @@ el operador "pushAll".
 
 31
 00:01:17,870 --> 00:01:20,890
-El operador "pushAll" toma el
-nombre del campo que
+El operador "pushAll" toma
+el nombre del campo que
 
 32
 00:01:20,890 --> 00:01:23,800
-quieres manipular y un array
-de elementos que
+quieres manipular y un
+array de elementos que
 
 33
 00:01:23,800 --> 00:01:26,305
-serán añadidos al array que tiene
-el valor del campo que
+serán añadidos al array que
+tiene el valor del campo que
 
 34
 00:01:26,305 --> 00:01:27,890
@@ -161,8 +161,8 @@ estás manipulando.
 
 35
 00:01:27,890 --> 00:01:30,550
-Ahora mi array tiene seis elementos
-mientras que
+Ahora mi array tiene seis
+elementos mientras que
 
 36
 00:01:30,550 --> 00:01:31,950
@@ -180,27 +180,26 @@ el operador "pull".
 
 39
 00:01:37,220 --> 00:01:39,920
-El operador "pull" elimina el
-valor del array, sin
+El operador "pull" elimina
+el valor del array, sin
 
 40
 00:01:39,920 --> 00:01:42,030
-importar cuál es su ubicación
-dentro del array.
+importar cuál es su
+ubicación dentro del array.
 
 41
 00:01:42,030 --> 00:01:43,430
-En este caso, voy a
-eliminar el
+En este caso, voy a eliminar
 
 42
 00:01:43,430 --> 00:01:46,040
-valor 5 del array.
+el valor 5 del array.
 
 43
 00:01:46,040 --> 00:01:49,050
-De manera similar, podrías especificar una
-lista de elementos que quisieras
+De manera similar, podrías especificar
+una lista de elementos que quisieras
 
 44
 00:01:49,050 --> 00:01:51,720
@@ -209,8 +208,7 @@ operador "pullAll", que es
 
 45
 00:01:51,720 --> 00:01:53,620
-el análogo al operador
-"pushAll".
+análogo al operador "pushAll".
 
 46
 00:01:53,620 --> 00:01:56,760
@@ -233,18 +231,18 @@ valores del array.
 
 50
 00:02:05,130 --> 00:02:08,030
-Finalmente, ocasionalemente es
+Finalmente, ocasionalmente es
 conveniente tratar un array
 
 51
 00:02:08,030 --> 00:02:11,020
 no como una secuencia ordenada de
-elemento, sino como un conjunto de elementos,
+elementos, sino como un conjunto de
 
 52
 00:02:11,020 --> 00:02:13,430
-que no deberían contener más de
-una instancia de cualquier
+elementos, que no deberían contener
+más de una instancia de cualquier
 
 53
 00:02:13,430 --> 00:02:14,950
@@ -252,12 +250,12 @@ valor particular.
 
 54
 00:02:14,950 --> 00:02:17,080
-Para añadir a un conjunto de este tipo,
-tenemos un operador
+Para añadir a un conjunto de
+este tipo, tenemos un operador
 
 55
 00:02:17,080 --> 00:02:19,010
-llamado, bien, "addToSet".
+llamado "addToSet".
 
 56
 00:02:19,010 --> 00:02:21,810
@@ -275,13 +273,13 @@ actúa como un "push".
 
 59
 00:02:25,490 --> 00:02:28,310
-Si ejecutas el mismo "addToSet"
-varias veces, por lo tanto, es
+Por lo tanto, si ejecutas el
+mismo "addToSet" varias veces,
 
 60
 00:02:28,310 --> 00:02:31,160
-idempotente, es decir, las ocurrencias
-tras el primero
+es idempotente, es decir, las
+ocurrencias tras la primera
 
 61
 00:02:31,160 --> 00:02:32,410
@@ -322,7 +320,7 @@ pero intentemos hacer un cuestionario
 
 69
 00:02:49,230 --> 00:02:50,540
-sobre esto.
+sobre ello.
 
 70
 00:02:50,540 --> 00:02:52,530
@@ -331,7 +329,7 @@ documento en tu colección
 
 71
 00:02:52,530 --> 00:02:53,380
-"friends" --
+"friends"--
 
 72
 00:02:53,380 --> 00:02:57,400
@@ -348,11 +346,11 @@ de las siguientes
 
 75
 00:03:01,960 --> 00:03:03,150
-actualizaciones --
+actualizaciones?
 
 76
 00:03:03,150 --> 00:03:06,520
-el primer "update",
+El primer "update",
 "{_id: 'Mike'}, {$push: {interests:
 
 77
@@ -377,7 +375,7 @@ el primer "update",
 
 81
 00:03:22,510 --> 00:03:23,760
-['skydiving', 'skiing']}}"?
+['skydiving', 'skiing']}}".
 
 82
 00:03:23,760 --> 00:03:25,000

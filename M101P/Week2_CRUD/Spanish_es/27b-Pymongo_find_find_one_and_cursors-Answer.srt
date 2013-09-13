@@ -3,7 +3,7 @@
 
 2
 00:00:00,270 --> 00:00:05,070
-OK, y la respuesta es que llamas
+OK y la respuesta es que llamas
 a "doc = scores.find_one()"
 
 3
@@ -17,8 +17,7 @@ asignado a la variable "doc",
 
 5
 00:00:11,010 --> 00:00:12,660
-porque es la
-variable que
+porque es la variable que
 
 6
 00:00:12,660 --> 00:00:13,910

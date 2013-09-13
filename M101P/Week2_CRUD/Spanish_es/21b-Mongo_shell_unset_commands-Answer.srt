@@ -3,23 +3,23 @@
 
 2
 00:00:00,150 --> 00:00:02,040
-Así que este código debería hacerlo.
+Este código debería hacerlo.
 
 3
 00:00:02,040 --> 00:00:03,250
-"db.users.update("
+"db.users.update(...
 
 4
 00:00:03,250 --> 00:00:05,200
-"{username: 'Jimmy'},"
+{username: 'Jimmy'},...
 
 5
 00:00:05,200 --> 00:00:06,830
-"{$unset:"
+{$unset:...
 
 6
 00:00:06,830 --> 00:00:08,370
-"{interests: 1}}".
+{interests: 1}});".
 
 7
 00:00:08,370 --> 00:00:10,670

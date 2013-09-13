@@ -13,13 +13,12 @@ podamos hacer algunas consultas.
 
 4
 00:00:05,910 --> 00:00:08,260
-Y el motivo por el que estoy haciendo esto en
-realidad es para mostrar lo fácil 
+El motivo por el que estoy haciendo esto
+en realidad es para mostrar lo fácil 
 
 5
 00:00:08,260 --> 00:00:11,360
-que es importar
-datos en MongoDB.
+que es importar datos en MongoDB.
 
 6
 00:00:11,360 --> 00:00:14,570
@@ -29,17 +28,17 @@ de Reddit justo aquí.
 7
 00:00:14,570 --> 00:00:18,880
 Y resulta que Reddit
-es muy flexible, si añades
+es muy flexible. Si añades
 
 8
 00:00:18,880 --> 00:00:24,260
-".json" al final de cualquier URL,
-realmente generará un
+".json" al final de
+cualquier URL, generará
 
 9
 00:00:24,260 --> 00:00:28,030
-JSON como salida de
-cualquier página dada.
+un JSON como la salida de
+la página especificada.
 
 10
 00:00:28,030 --> 00:00:28,870
@@ -47,18 +46,16 @@ cualquier página dada.
 
 11
 00:00:28,870 --> 00:00:30,190
-¿Cómo lo importarías
-en MongoDB?
+¿Cómo lo importarías en MongoDB?
 
 12
 00:00:30,190 --> 00:00:31,920
-Bien, es muy
-sencillo.
+Bien, es muy sencillo.
 
 13
 00:00:31,920 --> 00:00:34,440
-Tan sólo necesitas leer esa
-URL y averiguar
+Tan sólo necesitas leer
+esa URL y averiguar
 
 14
 00:00:34,440 --> 00:00:35,060
@@ -70,17 +67,17 @@ Así que vayamos a un terminal.
 
 16
 00:00:36,490 --> 00:00:39,850
-Y lo que voy a hacer es,
-voy a hacer un "curl" a esa URL,
+Lo que voy a hacer es, voy
+a hacer un "curl" a esa URL,
 
 17
 00:00:39,850 --> 00:00:43,150
-"reddit.com/r/technology", simplemente
-la leo y la envío hacia
+"reddit.com/r/technology".
+Simplemente la leo y la envío
 
 18
 00:00:43,150 --> 00:00:44,840
-"reddit.json".
+hacia "reddit.json".
 
 19
 00:00:44,840 --> 00:00:45,650
@@ -88,8 +85,8 @@ Lo hice.
 
 20
 00:00:45,650 --> 00:00:48,760
-Y si entro en "reddit.json"
-y echo un vistazo al fichero --
+Si entro a "reddit.json" y le
+echo un vistazo al fichero--
 
 21
 00:00:48,760 --> 00:00:51,530
@@ -98,8 +95,8 @@ antes de grabar esto.
 
 22
 00:00:51,530 --> 00:00:54,310
-Así que le eché un vistazo a la estructura
-y lucía como un
+Así que le eché un vistazo a
+la estructura y lucía como un
 
 23
 00:00:54,310 --> 00:00:55,890
@@ -116,8 +113,8 @@ había una clave "children" aquí.
 
 26
 00:01:02,090 --> 00:01:04,879
-En "data" había un subdocumento
-"children".
+En "data" había un
+subdocumento "children".
 
 27
 00:01:04,879 --> 00:01:08,520
@@ -134,8 +131,7 @@ Eso es.
 
 30
 00:01:11,250 --> 00:01:13,720
-Ahora que sé eso, es
-muy fácil
+Ahora que sé eso, es muy fácil
 
 31
 00:01:13,720 --> 00:01:15,090
@@ -143,22 +139,22 @@ leerlo.
 
 32
 00:01:15,090 --> 00:01:18,560
-Simplemente creé un pequeño script
-aquí que usa unas pocas
+Simplemente creé un pequeño
+script aquí que usa algunas
 
 33
 00:01:18,560 --> 00:01:22,250
-utilidades diferentes en Python que
-realmente no necesitas
+utilidades diferentes en Python
+que realmente no necesitas
 
 34
 00:01:22,250 --> 00:01:24,210
-conocer para este curso, pero sólo
-quería enseñarte cómo
+conocer para este curso, pero
+sólo quería enseñarte cómo
 
 35
 00:01:24,210 --> 00:01:25,780
-funcionan realmente rápido.
+funcionan rápidamente.
 
 36
 00:01:25,780 --> 00:01:28,040
@@ -167,12 +163,12 @@ Estoy importando PyMongo.
 37
 00:01:28,040 --> 00:01:30,140
 Me conecto a mi
-base de datos Mongo.
+base de datos Mongo
 
 38
 00:01:30,140 --> 00:01:32,350
-Y creo una nueva
-conexión a una base de datos
+y creo una nueva conexión
+a una base de datos
 
 39
 00:01:32,350 --> 00:01:34,200
@@ -186,8 +182,8 @@ llamada "stories".
 
 41
 00:01:36,910 --> 00:01:41,360
-Luego leo la página de inicio de Reddit
-usando "urllib2", que
+Luego leo la página de inicio
+de Reddit usando "urllib2", que
 
 42
 00:01:41,360 --> 00:01:44,750
@@ -197,12 +193,12 @@ Python si lo tienes instalado.
 43
 00:01:44,750 --> 00:01:48,300
 Y a continuación, si haces eso,
-puedes leer cualquier URL -- y
+puedes leer cualquier URL--y
 
 44
 00:01:48,300 --> 00:01:50,460
-simplemente estoy leyendo la URL
-reddit.com, la URL de
+simplemente estoy leyendo la
+URL reddit.com, la URL de
 
 45
 00:01:50,460 --> 00:01:53,410
@@ -210,12 +206,12 @@ tecnología con ".json" concatenado.
 
 46
 00:01:53,410 --> 00:01:55,910
-Eso me da algo que
-parece un fichero descriptor.
+Eso me da algo que parece
+un fichero descriptor.
 
 47
 00:01:55,910 --> 00:01:57,480
-Y entonces necesito
+Entonces necesito
 interpretarlo.
 
 48
@@ -225,8 +221,7 @@ Por eso lo que hago es llamar a
 
 49
 00:02:00,820 --> 00:02:02,780
-los contenidos completos
-de la página.
+los contenidos completos de la página.
 
 50
 00:02:02,780 --> 00:02:06,900
@@ -235,12 +230,12 @@ los meterá en estructuras de
 
 51
 00:02:06,900 --> 00:02:09,940
-datos en Python,
-y habrá un conjunto de
+datos en Python y
+habrá un conjunto
 
 52
 00:02:09,940 --> 00:02:12,600
-diccionarios y
+de diccionarios y
 subdiccionarios y todo eso.
 
 53
@@ -250,8 +245,8 @@ la versión interpretada de eso.
 
 54
 00:02:16,340 --> 00:02:21,580
-Ahora todo lo que hago es mirar cada
-elemento en este documento --
+Ahora todo lo que hago es mirar
+cada elemento en este documento--
 
 55
 00:02:21,580 --> 00:02:26,690
@@ -274,13 +269,13 @@ Sé que eso es un array.
 
 59
 00:02:33,840 --> 00:02:36,190
-Así que sé que va a ser
-algo sobre lo que puedo iterar.
+Así que sé que va a ser algo
+sobre lo que puedo iterar.
 
 60
 00:02:36,190 --> 00:02:38,975
-Y por cada uno de ellos, miro
-su estructura, y
+Y por cada uno de ellos,
+miro su estructura, y
 
 61
 00:02:38,975 --> 00:02:41,750
@@ -289,8 +284,8 @@ uno de esos elementos e inserto
 
 62
 00:02:41,750 --> 00:02:43,850
-el elemento "data" en el diccionario,
-eso sería
+el elemento "data" en el
+diccionario, eso sería
 
 63
 00:02:43,850 --> 00:02:45,040
@@ -298,7 +293,7 @@ el propio artículo.
 
 64
 00:02:45,040 --> 00:02:47,920
-Así que lo limpié un poco
+Lo limpié un poco
 examinando los datos
 
 65
@@ -324,7 +319,7 @@ Ese script se llama
 
 70
 00:02:57,930 --> 00:03:02,180
-Por lo que voy a ejecutar eso,
+Voy a ejecutar eso,
 "read_reddit.py".
 
 71
@@ -337,7 +332,7 @@ Parece que ha funcionado.
 
 73
 00:03:04,390 --> 00:03:08,070
-Y luego voy a conectarme
+Luego voy a conectarme
 a Mongo, y voy a usar
 
 74
@@ -363,8 +358,8 @@ tenemos aquí es cada artículo
 
 79
 00:03:20,120 --> 00:03:23,120
-de la página de inicio
-de Reddit.
+de la página de
+inicio de Reddit.
 
 80
 00:03:23,120 --> 00:03:24,240
@@ -382,8 +377,8 @@ que estaba en la página de inicio de
 
 83
 00:03:30,160 --> 00:03:33,110
-Reddit en su página de
-tecnología.
+Reddit en su página
+de tecnología.
 
 84
 00:03:33,110 --> 00:03:34,520
@@ -400,13 +395,13 @@ importados en Mongo.
 
 87
 00:03:38,900 --> 00:03:41,620
-Y lo bueno de esto es
-que ni siquiera necesitamos 
+Y lo bueno de esto es que
+ni siquiera necesitamos 
 
 88
 00:03:41,620 --> 00:03:46,820
-pensar en qué campos existían
-en la estructura.
+pensar en qué campos
+existían en la estructura.
 
 89
 00:03:46,820 --> 00:03:48,110
@@ -414,8 +409,8 @@ Mongo es muy flexible.
 
 90
 00:03:48,110 --> 00:03:52,390
-Y por eso pude traérmela y
-ahora puedo hacer consultas sobre ella.
+Por eso pude traérmela y ahora
+puedo hacer consultas sobre ella.
 
 91
 00:03:52,390 --> 00:03:55,140
@@ -429,8 +424,8 @@ a usar este conjunto de datos
 
 93
 00:03:57,750 --> 00:04:01,880
-más interesante que obtuvimos de Reddit
-usando básicamente un par de
+más interesante que obtuvimos de
+Reddit usando básicamente un par de
 
 94
 00:04:01,880 --> 00:04:05,690
@@ -439,13 +434,13 @@ URL, una biblioteca "json" para analizarla
 
 95
 00:04:05,690 --> 00:04:08,380
-y luego simplemente un poco de
-conocimiento sobre
+y luego simplemente un poco
+de conocimiento sobre
 
 96
 00:04:08,380 --> 00:04:11,170
-cómo se ve, fui capaz
-de insertar cada uno de esos
+cómo se ve, fui capaz de
+insertar cada uno de esos
 
 97
 00:04:11,170 --> 00:04:12,440

@@ -7,8 +7,8 @@ OK.
 
 3
 00:00:00,790 --> 00:00:02,460
-Hemos cubierto la mayoría de las
-operaciones que puedes
+Hemos cubierto la mayoría de
+las operaciones que puedes
 
 4
 00:00:02,460 --> 00:00:06,010
@@ -22,18 +22,17 @@ de documentos de la base de datos.
 
 6
 00:00:08,390 --> 00:00:10,410
-En realidad esto es relativamente
-simple.
+En realidad esto es
+relativamente simple.
 
 7
 00:00:10,410 --> 00:00:12,830
-Esencialmente tienes
-tres opciones.
+Esencialmente tienes tres opciones.
 
 8
 00:00:12,830 --> 00:00:15,650
-Primera, cada colección tiene
-un método "remove".
+Primero, cada colección
+tiene un método "remove".
 
 9
 00:00:15,650 --> 00:00:17,830
@@ -60,28 +59,28 @@ argumento de "find".
 
 14
 00:00:26,360 --> 00:00:29,110
-Si no especificas argumento, entonces
-se borrarán todos los
+Si no especificas un argumento,
+entonces uno por uno se borrarán
 
 15
 00:00:29,110 --> 00:00:31,190
-documentos de la colección
-uno a uno.
+todos los documentos
+de la colección.
 
 16
 00:00:31,190 --> 00:00:36,060
-Si especifico un argumento -- por
-ejemplo, "name: 'Alice'" --
+Si especificas un argumento--
+por ejemplo, "name: 'Alice'"--
 
 17
 00:00:36,060 --> 00:00:38,450
-entonces el documento "Alice"
-se elimina.
+entonces el documento
+"Alice" se elimina.
 
 18
 00:00:38,450 --> 00:00:41,930
-O podría proporcionar un rango, "name"
-mayor que la letra mayúscula
+O podrías proporcionar un rango,
+"name" mayor que la letra mayúscula
 
 19
 00:00:41,930 --> 00:00:45,370
@@ -94,18 +93,18 @@ digamos, se elimina
 
 21
 00:00:48,370 --> 00:00:51,490
-Además, como se ha mencionado, si no
-se pasa argumento a
+Además, como se ha mencionado,
+si no se le pasa un argumento a
 
 22
 00:00:51,490 --> 00:00:54,340
-"remove", entonces los documentos son
-eliminados de la colección
+"remove", entonces los documentos
+son eliminados de la colección
 
 23
 00:00:54,340 --> 00:00:56,350
-uno a uno hasta que la
-colección no
+uno por uno hasta
+que la colección no
 
 24
 00:00:56,350 --> 00:00:58,300
@@ -113,18 +112,18 @@ tenga documentos.
 
 25
 00:00:58,300 --> 00:01:00,940
-Después, si quieres eliminar
-todos los documentos en una única
+Si quieres eliminar todos
+los documentos en una única
 
 26
 00:01:00,940 --> 00:01:03,480
-pasada, de una forma algo más
-eficiente incluso si la
+pasada de una forma algo más
+eficiente, incluso si la
 
 27
 00:01:03,480 --> 00:01:06,100
-colección es muy grande,
-puedes hacer un "drop" de la colección.
+colección es muy grande, puedes
+hacer un "drop" de la colección.
 
 28
 00:01:06,100 --> 00:01:07,700
@@ -148,27 +147,27 @@ en la colección requiere una
 
 32
 00:01:14,320 --> 00:01:18,270
-actualización uno a uno 
-del estado interno de cada documento que
+actualización uno por uno del
+estado interno de cada documento
 
 33
 00:01:18,270 --> 00:01:20,240
-existe en
-la colección.
+que existe en la colección.
 
 34
 00:01:20,240 --> 00:01:23,250
-Mientras que hacer "drop" de la colección
-requiere liberar
+Mientras que hacer "drop" de
+la colección requiere liberar
 
 35
 00:01:23,250 --> 00:01:26,460
-algunas estructuras de datos mucho mayores
-dentro de la
+algunas estructuras de datos
+mucho mayores dentro de la
 
 36
 00:01:26,460 --> 00:01:28,140
-los ficheros de datos de la base de datos.
+los ficheros de datos
+de la base de datos.
 
 37
 00:01:28,140 --> 00:01:30,790
@@ -192,35 +191,35 @@ eliminar los documentos de la
 
 41
 00:01:39,040 --> 00:01:42,000
-colección uno a uno hasta que
-la colección esté vacía.
+colección uno por uno hasta
+que la colección esté vacía.
 
 42
 00:01:42,000 --> 00:01:44,490
-Sin embargo, las colecciones pueden
-tener algunos metadatos
+Sin embargo, las colecciones
+pueden tener algunos metadatos
 
 43
 00:01:44,490 --> 00:01:45,950
-asociados a ellas --
+asociados a ellas--
 
 44
 00:01:45,950 --> 00:01:47,530
-por ejemplo, índices --
+por ejemplo, índices--
 
 45
 00:01:47,530 --> 00:01:50,550
 que son descartados cuando la
-colección se elimina con "drop" pero
+colección se elimina con "drop"
 
 46
 00:01:50,550 --> 00:01:53,290
-que continúan existiendo cuando
-una colección tiene todos sus
+pero que continúan existiendo
+aun cuando todos los documentos
 
 47
 00:01:53,290 --> 00:01:54,590
-documentos eliminados con "remove".
+son eliminados con "remove".
 
 48
 00:01:54,590 --> 00:01:56,970
@@ -234,8 +233,8 @@ los contenidos de tu
 
 50
 00:01:58,970 --> 00:02:01,670
-colección, la forma más
-eficiente de hacer eso sería un "drop"
+colección, la forma más eficiente
+de hacer eso sería con un "drop"
 
 51
 00:02:01,670 --> 00:02:04,040
@@ -244,8 +243,8 @@ después volver a crear los
 
 52
 00:02:04,040 --> 00:02:06,610
-índices que deberían existir
-en esa colección.
+índices que deberían
+existir en esa colección.
 
 53
 00:02:06,610 --> 00:02:10,570
@@ -254,8 +253,8 @@ al igual que una actualización
 
 54
 00:02:10,570 --> 00:02:13,390
-multidocumento, puede afectar a un número
-arbitrario de documentos,
+multidocumento, puede afectar a
+un número arbitrario de documentos,
 
 55
 00:02:13,390 --> 00:02:16,240
@@ -268,8 +267,8 @@ argumento de "remove".
 
 57
 00:02:17,860 --> 00:02:20,640
-Al igual que una actualización múltiple,
-las operaciones "remove"
+Al igual que una actualización
+múltiple, las operaciones "remove"
 
 58
 00:02:20,640 --> 00:02:24,470
@@ -278,18 +277,18 @@ aisladas atómicas con
 
 59
 00:02:24,470 --> 00:02:26,600
-respecto a otras lecturas
-o escrituras.
+respecto a otras
+lecturas o escrituras.
 
 60
 00:02:26,600 --> 00:02:30,210
-Es decir, si haces
-un "remove", digamos, de 10 documentos
+Es decir, si haces un "remove",
+digamos, de 10 documentos en
 
 61
 00:02:30,210 --> 00:02:32,660
-de una colección, una operación de 
-lectura o escritura
+una colección, una operación
+de lectura o escritura
 
 62
 00:02:32,660 --> 00:02:35,870
@@ -302,41 +301,41 @@ de la operación "remove".
 
 64
 00:02:37,690 --> 00:02:40,840
-Esto es, después que hayan sido eliminados 
-cinco de los documentos.
+Esto es, después de que hayan sido
+eliminados cinco de los documentos.
 
 65
 00:02:40,840 --> 00:02:43,400
 Necesitarás tomar algunas
-medidas por tu cuenta si
+medidas por tu lado si
 
 66
 00:02:43,400 --> 00:02:45,340
-realmente necesitas aislar las lecturas
-y escrituras
+realmente necesitas aislar
+las lecturas y escrituras
 
 67
 00:02:45,340 --> 00:02:47,240
-entre ellas en MongoDB.
+entre operaciones en MongoDB.
 
 68
 00:02:47,240 --> 00:02:49,810
-No obstante, tal y como se ha mencionado en el
-caso de la actualización, cada
+No obstante, tal y como se mencionó
+en el caso de la actualización, cada
 
 69
 00:02:49,810 --> 00:02:52,690
-eliminación de un documento individual es
-atómica con respecto a una
+eliminación de un documento individual
+es atómica con respecto a una
 
 70
 00:02:52,690 --> 00:02:54,420
-letura o escritura concurrente.
+lectura o escritura concurrente.
 
 71
 00:02:54,420 --> 00:02:58,180
-Ningún cliente verá un documento
-a medio borrar.
+Ningún cliente verá un
+documento a medio borrar.
 
 72
 00:02:58,180 --> 00:03:00,130
@@ -350,12 +349,12 @@ la colección "scores".
 
 74
 00:03:02,360 --> 00:03:06,090
-Contiene un "_id", un campo "student",
-un campo "type" y un
+Contiene un "_id", un campo
+"student", un campo "type"
 
 75
 00:03:06,090 --> 00:03:07,090
-campo "score".
+y un campo "score".
 
 76
 00:03:07,090 --> 00:03:08,980
@@ -364,4 +363,4 @@ registro cuyo "score"
 
 77
 00:03:08,980 --> 00:03:11,000
-sea menor que 60?
+es menor que 60?
