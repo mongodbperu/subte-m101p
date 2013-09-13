@@ -3,236 +3,236 @@
 
 2
 00:00:00,160 --> 00:00:02,150
-All right, let's revisit
-JSON now and talk
+Bien, ahora vamos a
+repasar JSON y hablaremos
 
 3
 00:00:02,150 --> 00:00:03,400
-about what it can represent.
+sobre qué puede representar.
 
 4
 00:00:03,400 --> 00:00:05,560
-And then we're going to get to
-why it can represent it.
+Y luego vamos a ver por qué
+puede representarlo.
 
 5
 00:00:05,560 --> 00:00:09,110
-There are only two basic data
-structures inside JSON, and
+Hay sólo dos estructuras básicas
+de datos dentro de JSON,
 
 6
 00:00:09,110 --> 00:00:11,880
-they are arrays and
-dictionaries.
+que son arrays y
+diccionarios.
 
 7
 00:00:11,880 --> 00:00:13,370
-Now, we all know what
-arrays are.
+Ahora, todos sabemos
+lo que son arrays.
 
 8
 00:00:13,370 --> 00:00:16,400
-Arrays are lists of things,
-and dictionaries are these
+Arrays son listas de cosas
+y diccionarios son estos
 
 9
 00:00:16,400 --> 00:00:17,930
-associated maps.
+mapas asociativos.
 
 10
 00:00:17,930 --> 00:00:20,790
-So they can be combined
-in arbitrary ways.
+Así que se pueden combinar
+de forma arbitraria.
 
 11
 00:00:20,790 --> 00:00:24,270
-So an array inside JSON is
-represented using these square
+Por lo que un array dentro de un JSON
+se representa usando estos corchetes
 
 12
 00:00:24,270 --> 00:00:26,590
-brackets and then a list
-of items between.
+y a continuación una lista
+de elementos entre ellos.
 
 13
 00:00:26,590 --> 00:00:28,980
-And a dictionary is represented
-using the curly
+Y un diccionario se representa
+usando llaves,
 
 14
 00:00:28,980 --> 00:00:33,250
-braces, and it's a bunch of
-keyword and value pairs.
+y es un conjunto de
+pares clave / valor.
 
 15
 00:00:33,250 --> 00:00:35,820
-And then there's a keyword,
-colon, and then a value.
+Y entonces hay una clave,
+dos puntos, y luego un valor.
 
 16
 00:00:35,820 --> 00:00:37,350
-And there could be arbitrary
-numbers of these
+Y podría haber un número
+arbitrario de ellos
 
 17
 00:00:37,350 --> 00:00:38,950
-separated by commas.
+separados por comas.
 
 18
 00:00:38,950 --> 00:00:41,600
-Those are the only two data
-structures inside JSON, and
+Hay sólo dos estructuras de
+datos dentro de JSON,
 
 19
 00:00:41,600 --> 00:00:42,305
-they're all just combined.
+y se pueden combinar.
 
 20
 00:00:42,305 --> 00:00:44,530
-And they can be nested
-in arbitrary ways.
+Y pueden anidarse de
+manera arbitraria.
 
 21
 00:00:44,530 --> 00:00:46,990
-So I can create a very
-deep document.
+Por lo que puedo crear un
+documento muy profundo.
 
 22
 00:00:46,990 --> 00:00:49,020
-So I can create a document,
-for instance.
+Puedo crear un documento,
+por ejemplo.
 
 23
 00:00:49,020 --> 00:00:51,180
-At the top level there has
-to be a dictionary.
+En el nivel superior tendría
+que haber un diccionario.
 
 24
 00:00:51,180 --> 00:00:53,510
-And I can create something
-with a name,
+Y puedo crear algo
+con un nombre,
 
 25
 00:00:53,510 --> 00:00:54,930
-and that has a value.
+y que tenga un valor.
 
 26
 00:00:54,930 --> 00:00:57,000
-And then I could have a
-city, and it can have
+Y luego podría tener una
+ciudad, y ésta puede tener
 
 27
 00:00:57,000 --> 00:00:58,740
-another value here.
+otro valor aquí.
 
 28
 00:00:58,740 --> 00:01:00,880
-And then I could put-- for
-instance, if this is just a
+Y entonces podría tener-- por
+ejemplo, si ésta es sólo una
 
 29
 00:01:00,880 --> 00:01:03,030
-collection of people and their
-cities and maybe their
+colección de personas y sus
+ciudades y quizá sus
 
 30
 00:01:03,030 --> 00:01:03,690
-interests--
+intereses--
 
 31
 00:01:03,690 --> 00:01:05,800
-can have another key here
-called interest.
+podría tener otra clave aquí
+llamada "interest".
 
 32
 00:01:05,800 --> 00:01:08,110
-And that could turn out
-to be an array, and
+Y que podría resultar
+que es un array.
 
 33
 00:01:08,110 --> 00:01:09,200
-it's got square brackets.
+Tiene corchetes.
 
 34
 00:01:09,200 --> 00:01:11,270
-And then I could put
-things in here.
+Y entonces podría
+poner cosas dentro.
 
 35
 00:01:11,270 --> 00:01:14,410
-And each of these in itself
-could, of course, be its own
+Cada uno de éstos, en sí mismo
+podría, por supuesto, tener su propio
 
 36
 00:01:14,410 --> 00:01:17,040
-dictionary, which means it would
-be represented using the
+diccionario, que significa que
+sería representado usando las
 
 37
 00:01:17,040 --> 00:01:18,350
-curly brace.
+llaves.
 
 38
 00:01:18,350 --> 00:01:21,350
-So we're going to build up
-everything from these two
+Vamos a construir todo
+a partir de estas dos
 
 39
 00:01:21,350 --> 00:01:23,050
-basic data structures.
+estructuras básicas de datos.
 
 40
 00:01:23,050 --> 00:01:26,700
-The two basic data structures
-are arrays and dictionaries.
+Las dos estructuras básicas son
+los arrays y los diccionarios.
 
 41
 00:01:26,700 --> 00:01:30,380
-Now we're going to go through
-and show you each of these and
+Ahora vamos a continuar y
+mostrar cada una de ellas y
 
 42
 00:01:30,380 --> 00:01:31,500
-teach you how to write them.
+enseñarte cómo escribirlas.
 
 43
 00:01:31,500 --> 00:01:33,530
-And then we'll go from a higher
-level and show how
+Y a continuación subiremos a un nivel
+más alto y mostraremos cómo se
 
 44
 00:01:33,530 --> 00:01:35,870
-they're used in data
-representation relative to
+usan para la representación
+de datos en relación a las
 
 45
 00:01:35,870 --> 00:01:37,230
-relational databases.
+bases de datos relacionales.
 
 46
 00:01:37,230 --> 00:01:39,410
-All right, time for
-the next quiz.
+Muy bien, es hora para
+el siguiente cuestionario.
 
 47
 00:01:39,410 --> 00:01:43,100
-Write the JSON for a simple
-document containing a single
+Escribe un JSON para un documento
+simple conteniendo una única clave
 
 48
 00:01:43,100 --> 00:01:47,370
-key, fruit, that has as its
-value an array containing
+llamada "fruit", que tenga como
+valor un array conteniendo
 
 49
 00:01:47,370 --> 00:01:50,040
-three strings, apple,
-pear, and peach.
+tres cadenas, "apple",
+"pear" y "peach".
 
 50
 00:01:50,040 --> 00:01:51,990
-You're just going to write the
-JSON document for that.
+Sólo tienes que escribir el
+documento JSON para eso.
 
 51
 00:01:51,990 --> 00:01:53,240
