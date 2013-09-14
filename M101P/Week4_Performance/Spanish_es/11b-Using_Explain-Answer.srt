@@ -1,66 +1,66 @@
 1
 00:00:00,000 --> 00:00:02,870
-All right, and the answer is
-that the query scanned 10
+Bien, y la respuesta es
+que la consulta escaneó 10
 
 2
 00:00:02,870 --> 00:00:06,390
-million documents, returning
-in 5.2 seconds.
+millones de documentos, respondiendo
+en 5,2 segundos.
 
 3
 00:00:06,390 --> 00:00:10,230
-So, you can see here that this
-is 5,000 milliseconds, which
+Así, puedes ver aquí que esto
+es 5000 milisegundos, que
 
 4
 00:00:10,230 --> 00:00:14,210
-is actually 5.2 seconds if you
-round it, and we did look at
+en realidad son 5,2 segundos si lo
+redondeas, y tuvimos que examinar
 
 5
 00:00:14,210 --> 00:00:15,850
-the full 10 million
-documents here.
+los 10 millones de 
+documentos aquí en su totalidad.
 
 6
 00:00:15,850 --> 00:00:18,400
-You can see 10 million documents
-right there.
+Puedes ver 10 millones de documentos
+justo aquí.
 
 7
 00:00:18,400 --> 00:00:20,820
-And several of these are wrong
-in different ways.
+Y muchos de éstos son incorrectos
+por distintos motivos.
 
 8
 00:00:20,820 --> 00:00:24,440
-Now this is the query, by the
-way, on our large student
+Ésta es la consulta, por
+cierto, sobre nuestra gran colección
 
 9
 00:00:24,440 --> 00:00:27,350
-collection of grades when
-we don't hit an index.
+de notas "student" cuando
+no accedemos al índice.
 
 10
 00:00:27,350 --> 00:00:32,990
-So it was a query that returned
-100,000 documents and
+Por lo que era una consulta que devolvía
+100000 documentos y
 
 11
 00:00:32,990 --> 00:00:35,490
-had a look at every single
-document to do it, and
+examinó cada documento
+individual para hacerlo, y
 
 12
 00:00:35,490 --> 00:00:38,330
-therefore, took over five
-seconds without an index.
+por tanto, tardó alrededor de cinco
+segundos sin un índice.
 
 13
 00:00:38,330 --> 00:00:39,580
-That's what this query was.
+Esto es lo que hace esta consulta.
 
 14
 00:00:39,580 --> 00:00:40,410
