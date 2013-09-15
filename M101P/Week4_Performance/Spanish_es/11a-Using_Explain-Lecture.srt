@@ -354,7 +354,7 @@ y "c" son arrays, por lo que no es
 
 77
 00:03:08,220 --> 00:03:10,040
-un array multiclave.
+un índice multiclave.
 
 78
 00:03:10,040 --> 00:03:13,730
@@ -709,7 +709,7 @@ pero estoy bastante seguro --
 153
 00:06:28,170 --> 00:06:29,950
 fue que escaneó el
-propio index.
+propio índice.
 
 154
 00:06:29,950 --> 00:06:34,340
