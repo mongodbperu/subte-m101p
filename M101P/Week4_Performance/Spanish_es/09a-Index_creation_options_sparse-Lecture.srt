@@ -54,7 +54,7 @@ un índice sólo en "c".
 12
 00:00:31,320 --> 00:00:34,200
 Bueno, eso está bien
-para el primero documento
+para el primer documento
 
 13
 00:00:34,200 --> 00:00:36,910
@@ -174,8 +174,8 @@ serían considerados.
 
 37
 00:01:52,740 --> 00:01:55,340
-Pero a parte de eso, funciona
-más o menos como era de esperar.
+Pero aparte de eso, funciona
+tal como era de esperar.
 
 38
 00:01:55,340 --> 00:01:57,920
@@ -199,7 +199,7 @@ en ella para poder verla.
 42
 00:02:07,420 --> 00:02:10,449
 Y tal vez voy a
-imprimirlos elegántemente.
+imprimirlos elegantemente.
 
 43
 00:02:10,449 --> 00:02:12,900
@@ -305,7 +305,7 @@ La clave duplicada es "null".
 
 66
 00:03:09,040 --> 00:03:13,170
-Así que si quisieramos en vez
+Así que si quisiéramos en vez
 de crear el índice, permitir
 
 67
@@ -549,7 +549,7 @@ estos índices dispersos.
 
 118
 00:05:24,740 --> 00:05:27,740
-Ellos que permiten crear un
+Ellos permitirán crear un
 índice único, aún cuando
 
 119
