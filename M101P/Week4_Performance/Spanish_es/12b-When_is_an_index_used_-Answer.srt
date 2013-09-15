@@ -3,134 +3,134 @@
 
 2
 00:00:00,200 --> 00:00:04,560
-And the answer is, if there's
-an index on a, and b, and c,
+Y la respuesta es, si hay
+un índice sobre "a", "b" y "c",
 
 3
 00:00:04,560 --> 00:00:07,700
-then the first one can't because
-it's b and c that's
+entonces la primera no puede porque
+son "b" y "c" las que están
 
 4
 00:00:07,700 --> 00:00:09,800
-specified and the a
-is not included.
+especificadas y "a"
+no está incluida.
 
 5
 00:00:09,800 --> 00:00:13,340
-The second one can, because
-a is specified.
+La segunda puede, porque
+"a" está especificada.
 
 6
 00:00:13,340 --> 00:00:17,390
-The third one can't use it to
-satisfy the find because c is
+La tercera no puede usarlo para
+satisfacer el "find" porque "c" es
 
 7
 00:00:17,390 --> 00:00:19,835
-what's specified in the criteria
-and that's not a
+lo que está especificado en el criterio
+y no es un
 
 8
 00:00:19,835 --> 00:00:22,670
-leftmost set of this index, but
-it can use it to satisfy
+conjunto por la izquierda de este índice, pero
+puede usarlo para satisfacer
 
 9
 00:00:22,670 --> 00:00:24,680
-the sort, right here.
+el "sort", justo aquí.
 
 10
 00:00:24,680 --> 00:00:28,040
-Because it has these items
-in sorted order, a, b.
+Porque tiene estos elementos
+ordenados, "a", "b".
 
 11
 00:00:28,040 --> 00:00:31,160
-Now, the last one looks similar
-to the third one and
+Ahora, la última parece similar
+a la tercera y
 
 12
 00:00:31,160 --> 00:00:34,140
-that's looking for c, which of
-course, it can't use index to
+está buscando "c", que por
+supuesto, no puede usar el índice
 
 13
 00:00:34,140 --> 00:00:38,790
-search on, and then it sorts
-on a minus one b.
+para buscar, y luego ordena
+por "a: -1, b: 1".
 
 14
 00:00:38,790 --> 00:00:43,200
-Now, the database can't use the
-index because this sort
+La base de datos no puede usar el
+índice porque este "sort"
 
 15
 00:00:43,200 --> 00:00:46,550
-order is not the same as the
-index that's sorted.
+no es el mismo en el que está
+ordenado el índice.
 
 16
 00:00:46,550 --> 00:00:49,690
-So, the index is sorted in a
-ascending, b ascending, we've
+El índice está ordenado por "a"
+ascendentemente, "b" ascendentemente, y
 
 17
 00:00:49,690 --> 00:00:53,550
-asked for a descending,
-b ascending, and so
+hemos pedido "a" descendentemente,
+"b" ascendentemente, y por eso
 
 18
 00:00:53,550 --> 00:00:54,480
-it can't use it.
+no puede usarlo.
 
 19
 00:00:54,480 --> 00:00:58,930
-Now, interestingly enough, if we
-had specified just a minus
+Ahora, resulta bastante interesante, que si
+hubiésemos especificado sólo un "-1",
 
 20
 00:00:58,930 --> 00:01:04,480
-one, even though the index is
-sorted on abc, it knows that
+incluso aunque el índice esté
+ordenado sobre "a: 1, b: 1, c: 1", sabe que
 
 21
 00:01:04,480 --> 00:01:07,990
-it could just reverse it and
-get a minus one out of it.
+simplemente podría invertirlo y
+obtener un "-1" de él.
 
 22
 00:01:07,990 --> 00:01:11,390
-And if you try to do that, if
-you create a situation like
+Y si intentas hacer eso, si
+creas una situación como
 
 23
 00:01:11,390 --> 00:01:14,290
-this, and you do the explain
-command, you'll see that
+ésta, y ejecutas el comando
+"explain", verás que
 
 24
 00:01:14,290 --> 00:01:17,340
-refers to a reversed version of
-a, b, and c, which you can
+se refiere a una versión invertida de
+"a", "b" y "c", que puede
 
 25
 00:01:17,340 --> 00:01:20,030
-use to satisfy a query like
-this, if only a is specified
+usar para satisfacer una consulta como
+ésta, si sólo se ha especificado "a"
 
 26
 00:01:20,030 --> 00:01:21,050
-in descending order.
+en orden descendente.
 
 27
 00:01:21,050 --> 00:01:22,580
-Just a little interesting
-tidbit.
+Simplemente un poco
+de información interesante.
 
 28
 00:01:22,580 --> 00:01:23,830
-All right.
+Bien.
 
 29
 00:01:23,830 --> 00:01:24,430
