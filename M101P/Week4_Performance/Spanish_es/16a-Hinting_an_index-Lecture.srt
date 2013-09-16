@@ -32,7 +32,7 @@ Y la manera en que el comando
 
 8
 00:00:18,740 --> 00:00:21,120
-añadirías al final
+añadiéndolo al final
 de la consulta.
 
 9
@@ -74,7 +74,7 @@ no use ningún índice y use sólo
 17
 00:00:40,580 --> 00:00:43,600
 el cursor que va a través de
-todos de cada documento en la
+cada uno de los documentos en la
 
 18
 00:00:43,600 --> 00:00:46,600
@@ -340,8 +340,8 @@ obtengo documentos.
 
 74
 00:03:05,320 --> 00:03:08,490
-Si no hago un "hint"
-no obtengo ningún documento.
+Si no hubiera hecho un "hint"
+obtendría un documento.
 
 75
 00:03:08,490 --> 00:03:12,030
@@ -379,7 +379,7 @@ documentos tiene una clave "e".
 82
 00:03:25,580 --> 00:03:28,500
 No hay ninguna clave "e" en
-ninguno de estos documento,
+ninguno de estos documentos,
 
 83
 00:03:28,500 --> 00:03:31,900
@@ -396,7 +396,7 @@ Ahora es tiempo para un cuestionario.
 
 86
 00:03:35,690 --> 00:03:37,570
-Aquí está en cuestionario.
+Aquí está el cuestionario.
 
 87
 00:03:37,570 --> 00:03:39,890
@@ -420,7 +420,7 @@ documentos--
 91
 00:03:46,950 --> 00:03:48,890
 el tercer documento sólo
-tiene en "name" con valor "John".
+tiene el "name" con valor "John".
 
 92
 00:03:48,890 --> 00:03:50,870
