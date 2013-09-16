@@ -3,132 +3,132 @@
 
 2
 00:00:00,430 --> 00:00:04,090
-All right, and the answer is
-that it's the first choice
+Muy bien, y la respuesta es
+que es la primera opción
 
 3
 00:00:04,090 --> 00:00:06,410
-here, will turn the
-most documents.
+de aquí, retornará
+más documentos.
 
 4
 00:00:06,410 --> 00:00:08,920
-It will return all three
-documents The find doesn't
+Esta retornará todos los tres
+documentos, el "find" no
 
 5
 00:00:08,920 --> 00:00:10,130
-have any criteria
-so it's going to
+tiene ningún criterio
+así que va a
 
 6
 00:00:10,130 --> 00:00:10,980
-return every document.
+retornar todos los documentos.
 
 7
 00:00:10,980 --> 00:00:13,825
-It's going to sort by title, but
-we're hinting that we want
+Va a ordenar por "title", pero
+estamos diciendo que deseamos
 
 8
 00:00:13,825 --> 00:00:16,930
-it to use the basic cursor, so
-it'll find every single one of
+usar el "BasicCursor", por lo que
+vamos a encontrar todos y cada uno
 
 9
 00:00:16,930 --> 00:00:18,310
-these documents.
+de estos documentos.
 
 10
 00:00:18,310 --> 00:00:21,110
-Even though it's sorted by
-title, which is a sparse index
+A pesar que está ordenado por
+"title", que es un índice disperso
 
 11
 00:00:21,110 --> 00:00:23,740
-and which does not have an entry
-for the third document,
+y que no tiene ninguna entrada
+para el tercer documento,
 
 12
 00:00:23,740 --> 00:00:24,870
-if you recall the
-third document
+si recuerdas el
+tercer documento
 
 13
 00:00:24,870 --> 00:00:27,420
-does not have a title.
+no tiene un "title".
 
 14
 00:00:27,420 --> 00:00:30,000
-All these other three items
-will not return three
+Todos estas otras tres
+opciones no retornarán tres
 
 15
 00:00:30,000 --> 00:00:31,770
-documents, they have
-the same problem.
+documentos, ellas
+tienen el mismo problema.
 
 16
 00:00:31,770 --> 00:00:35,500
-The second one sorts by title
-and doesn't give a hint and so
+La segunda ordena por "title"
+y no hace "hint" por lo que
 
 17
 00:00:35,500 --> 00:00:39,330
-it will use a title index and
-the title index is sparse and
+no utilizará el índice en
+"title" que es disperso y
 
 18
 00:00:39,330 --> 00:00:40,700
-the third document does not have
-an entry and this will
+el tercer documento no tiene
+ninguna entrada y ésta
 
 19
 00:00:40,700 --> 00:00:42,230
-return two documents.
+retornará dos documentos.
 
 20
 00:00:42,230 --> 00:00:45,930
-This one, name does not equal
-Kevin, that is every document,
+Ésta, "{name: {$ne: "Kevin"}}",
+que son todos los documentos,
 
 21
 00:00:45,930 --> 00:00:50,120
-but again sorting by title,
-that's going to filter out the
+pero una vez más ordenando por
+"title", eso va a filtrar al
 
 22
 00:00:50,120 --> 00:00:52,290
-one that doesn't have a title
-because the sort is on that
+que no tiene "title" porque
+el ordenamiento está en ese
 
 23
 00:00:52,290 --> 00:00:54,240
-sparse index.
+índice disperso.
 
 24
 00:00:54,240 --> 00:00:57,010
-The last one specifically tells
-us to hint and use the
+La última específicamente nos
+dice que hace "hint" y usa el
 
 25
 00:00:57,010 --> 00:00:58,070
-title index.
+índice en "title".
 
 26
 00:00:58,070 --> 00:01:01,270
-Same problem, it's going to
-return two documents.
+Mismo problema, va a
+retornar dos documentos.
 
 27
 00:01:01,270 --> 00:01:04,720
-So only the first one will
-return all three documents, so
+Tan sólo la primera retornará
+todos los tres documentos, por
 
 28
 00:01:04,720 --> 00:01:06,090
-the first one returns
-the most documents.
+lo que el primero
+retorna más documentos.
 
 29
 00:01:06,090 --> 00:01:07,340
