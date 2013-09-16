@@ -96,7 +96,7 @@ Ese es el gran cambio.
 
 22
 00:00:40,390 --> 00:00:42,550
-Así que si incluso si ejecutas
+Así que incluso si ejecutas
 en un primer plano, sólo vas a
 
 23

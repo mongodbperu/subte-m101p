@@ -58,7 +58,7 @@ primer plano es rápido.
 
 14
 00:00:24,370 --> 00:00:26,220
-Pero va bloquear
+Pero va a bloquear
 las escrituras.
 
 15
@@ -87,7 +87,7 @@ será un poco lento.
 
 20
 00:00:41,090 --> 00:00:42,270
-Y a veces a lo mucho--
+Y a veces tanto como--
 
 21
 00:00:42,270 --> 00:00:44,500
@@ -169,7 +169,7 @@ será "false" por defecto
 37
 00:01:17,940 --> 00:01:21,360
 en cuyo caso se ejecutará
-en un pirmer plano.
+en un primer plano.
 
 38
 00:01:21,360 --> 00:01:23,010
@@ -218,7 +218,7 @@ con replicación, que es la
 47
 00:01:42,070 --> 00:01:44,410
 forma que se recomienda para ejecutar
-Mongo en sistemas en produccíón--
+Mongo en sistemas en producción--
 
 48
 00:01:44,410 --> 00:01:48,330
