@@ -156,7 +156,7 @@ serían indexados.
 33
 00:01:40,170 --> 00:01:44,480
 Por lo que tiene algunas interesantes
-implicancias, porque si estos
+repercusiones, porque si estos
 
 34
 00:01:44,480 --> 00:01:48,700
