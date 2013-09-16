@@ -3,9 +3,9 @@
 
 2
 00:00:00,220 --> 00:00:03,990
-And the answer is index, and
-if you watch the video you
+Y la respuesta es el índice, y
+si viste el vídeo
 
 3
 00:00:03,990 --> 00:00:05,240
-certainly know that.
+por supuesto sabes eso.
