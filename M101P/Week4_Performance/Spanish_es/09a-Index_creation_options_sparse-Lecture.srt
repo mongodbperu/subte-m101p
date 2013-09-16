@@ -3,489 +3,489 @@
 
 2
 00:00:00,120 --> 00:00:02,550
-Now we know how to create unique
-indexes on collections.
+Ahora que sabemos cómo crear
+índices únicos en las colecciones.
 
 3
 00:00:02,550 --> 00:00:05,900
-The question is, what happens
-if we try to create a unique
+La pregunta es, ¿qué sucede
+si intentamos crear un índice
 
 4
 00:00:05,900 --> 00:00:09,900
-index on a collection, and
-there is more than one
+único en una colección
+y hay más de un
 
 5
 00:00:09,900 --> 00:00:12,960
-document missing
-the index key?
+documento que no tiene
+la clave del índice?
 
 6
 00:00:12,960 --> 00:00:16,490
-So for example, let's say I try
-to create a unique index
+Por ejemplo, digamos que trato
+de crear un índice único
 
 7
 00:00:16,490 --> 00:00:22,870
-on these three documents,
-a, b, and c, ab, and ab.
+en estos tres documentos,
+"a, b y c", "a, b" y "a, b".
 
 8
 00:00:22,870 --> 00:00:24,260
-The first document
-has a, b, c.
+El primer documento
+tiene a, b, c.
 
 9
 00:00:24,260 --> 00:00:25,380
-The second document
-has a and b.
+El segundo documento
+tiene a y b.
 
 10
 00:00:25,380 --> 00:00:27,480
-And the third document
-has a and b.
+Y el tercer documento
+tiene a y b.
 
 11
 00:00:27,480 --> 00:00:31,320
-And I want to create
-an index on just c.
+Y deseo crear
+un índice sólo en "c".
 
 12
 00:00:31,320 --> 00:00:34,200
-Well, that's fine for
-the first document.
+Bueno, eso está bien
+para el primer documento
 
 13
 00:00:34,200 --> 00:00:36,910
-But for the second document,
-c does not have a value.
+Pero para el segundo documento,
+"c" no tiene un valor.
 
 14
 00:00:36,910 --> 00:00:40,950
-And so the database considers
-c to be null.
+Por ello la base de datos
+considera que "c" es nulo.
 
 15
 00:00:40,950 --> 00:00:42,620
-And for the third document,
-the database
+Y para el tercer documento,
+la base de datos también
 
 16
 00:00:42,620 --> 00:00:45,040
-considers c to be null.
+considera que "c" es nulo.
 
 17
 00:00:45,040 --> 00:00:49,020
-But unique means each
-key could only be
+Pero "único" significa que
+cada clave podría estar sólo
 
 18
 00:00:49,020 --> 00:00:50,420
-in the index once.
+una vez en el índice.
 
 19
 00:00:50,420 --> 00:00:53,110
-And so if there are multiple
-documents where the key is
+Por lo que si hay varios
+documentos donde la clave tiene
 
 20
 00:00:53,110 --> 00:00:56,210
-null, you can't create
-the index.
+valor nulo, no se puede
+crear el índice.
 
 21
 00:00:56,210 --> 00:00:58,930
-You don't want to drop the
-dups, what do you do?
+Y si no deseas eliminar los
+duplicados, ¿qué hacer?
 
 22
 00:00:58,930 --> 00:01:02,660
-Now again, the problem is that
-a unique index only allows
+Ahora, de nuevo, el problema es
+que un índice único permite sólo
 
 23
 00:01:02,660 --> 00:01:04,970
-each key to be in
-the index once.
+que cada clave esté
+en el índice una vez.
 
 24
 00:01:04,970 --> 00:01:08,380
-And if the key is missing for
-multiple documents, they all
+Y si la clave no se encuentra
+para múltiples documentos, todos
 
 25
 00:01:08,380 --> 00:01:09,860
-map to null.
+ellos mapean a nulo.
 
 26
 00:01:09,860 --> 00:01:15,090
-So this maps to null, and this
-maps to null for the key.
+Por ello esto mapea a nulo, y
+esto mapea a nulo para la clave.
 
 27
 00:01:15,090 --> 00:01:18,310
-And that means that they can't
-coexist in the index.
+Y eso significa que ellos no
+pueden coexistir en el índice.
 
 28
 00:01:18,310 --> 00:01:24,080
-And the answer to this problem
-is sparse indexes.
+Y la respuesta a este problema
+es índices dispersos.
 
 29
 00:01:24,080 --> 00:01:29,010
-What sparse indexes do is they
-only index the documents that
+Lo que hacen los índices dispersos
+es que ellos sólo indexan los documentos
 
 30
 00:01:29,010 --> 00:01:33,850
-have a key set for the
-key being indexed.
+que tienen una clave establecida para
+la clave que está siendo indexada.
 
 31
 00:01:33,850 --> 00:01:37,540
-So this document would be
-indexed, but these two
+Así que este documento sería
+indexado, pero estos dos
 
 32
 00:01:37,540 --> 00:01:40,170
-documents would not
-be indexed.
+documentos no
+serían indexados.
 
 33
 00:01:40,170 --> 00:01:44,480
-So that has some interesting
-implications, because if these
+Por lo que tiene algunas interesantes
+repercusiones, porque si estos
 
 34
 00:01:44,480 --> 00:01:48,700
-two documents are not indexed,
-then if we use the index to
+dos documentos no son indexados,
+entonces si usas el índice para
 
 35
 00:01:48,700 --> 00:01:51,680
-find the answer to a query,
-these documents won't be
+encontrar la respuesta a una
+consulta, estos documentos no
 
 36
 00:01:51,680 --> 00:01:52,740
-considered.
+serían considerados.
 
 37
 00:01:52,740 --> 00:01:55,340
-But other than that, it works
-pretty much as you'd expect.
+Pero aparte de eso, funciona
+tal como era de esperar.
 
 38
 00:01:55,340 --> 00:01:57,920
-Let me show you an example
-to explain how
+Déjame mostrarte un ejemplo
+para explicarte cómo
 
 39
 00:01:57,920 --> 00:01:59,760
-sparse indexes work.
+funcionan los índices dispersos.
 
 40
 00:01:59,760 --> 00:02:04,100
-Here is a small collection
-called products.
+Aquí hay una pequeña
+colección llamada "products".
 
 41
 00:02:04,100 --> 00:02:07,420
-And I'll do a db.products.find
-on it so you can see them.
+Y voy a hacer un "db.products.find"
+en ella para poder verla.
 
 42
 00:02:07,420 --> 00:02:10,449
-And maybe I'll print
-them out pretty.
+Y tal vez voy a
+imprimirlos elegantemente.
 
 43
 00:02:10,449 --> 00:02:12,900
-And you can see here--
+Y puedes ver aquí--
 
 44
 00:02:12,900 --> 00:02:15,740
-the first two printed pretty,
-the second ones are too small
+los dos primeros se imprimen
+elegantes, los otros dos son
 
 45
 00:02:15,740 --> 00:02:17,880
-to be printed in
-a pretty way--
+demasiado pequeños para ser
+impresos como
 
 46
 00:02:17,880 --> 00:02:19,780
-that the first two documents--
+los dos primeros--
 
 47
 00:02:19,780 --> 00:02:21,590
-the first one is a polo shirt.
+el primero es un "polo shirt".
 
 48
 00:02:21,590 --> 00:02:23,090
-It's a products collection.
+Es una colección de productos.
 
 49
 00:02:23,090 --> 00:02:24,450
-Has a size medium.
+Tiene un "size" "medium".
 
 50
 00:02:24,450 --> 00:02:25,800
-And the second one is jeans.
+Y el segundo es "jeans".
 
 51
 00:02:25,800 --> 00:02:27,640
-It has a size 32 by 32.
+Tiene un "size" "32x32".
 
 52
 00:02:27,640 --> 00:02:31,150
-And the third and fourth
-documents, one of them is a
+Y el tercero y cuarto
+documento, uno de ellos es un
 
 53
 00:02:31,150 --> 00:02:34,110
-DVI-to-VGA cable, and
-it has no size.
+"DVI-to-VGA cable" y
+no tiene "size".
 
 54
 00:02:34,110 --> 00:02:39,730
-And the other one is an iPhone
-cradle, and it has no size.
+El otro es un "iPhone cradle"
+que tampoco tiene "size".
 
 55
 00:02:39,730 --> 00:02:46,270
-Now, if we wanted to create an
-index on, let's say, size, and
+Ahora, si deseamos crear un índice
+en él, digamos, en "size" y
 
 56
 00:02:46,270 --> 00:02:48,510
-we wanted to make that
-index sparse--
+deseamos hacer que sea
+un índice disperso--
 
 57
 00:02:48,510 --> 00:02:50,700
-well, first of all, we certainly
-couldn't create an
+bueno, primeramente, no
+podríamos crear un índice
 
 58
 00:02:50,700 --> 00:02:52,710
-index that was unique.
+que fuese único.
 
 59
 00:02:52,710 --> 00:02:54,340
-And I'll show you that.
+Y te voy a mostrar eso.
 
 60
 00:02:54,340 --> 00:02:58,530
-So we'll do
-db.products.ensureIndix on
+Por ello hacemos
+"db.products.ensureIndex"
 
 61
 00:02:58,530 --> 00:03:03,970
-size, where it is unique.
+en "size", donde es único.
 
 62
 00:03:03,970 --> 00:03:05,910
-And you can see that
-we can't do that,
+Y puedes ver que
+no podemos hacerlo,
 
 63
 00:03:05,910 --> 00:03:06,850
-there's a duplicate key.
+hay una clave duplicada.
 
 64
 00:03:06,850 --> 00:03:08,670
-The duplicate key is null.
+La clave duplicada es "null".
 
 65
 00:03:08,670 --> 00:03:09,040
-All right?
+¿De acuerdo?
 
 66
 00:03:09,040 --> 00:03:13,170
-So if we wanted instead to
-create the index, but to allow
+Así que si quisiéramos en vez
+de crear el índice, permitir
 
 67
 00:03:13,170 --> 00:03:16,030
-it to be sparse, then
-we can create it.
+que sea disperso,
+entonces podemos crearlo.
 
 68
 00:03:16,030 --> 00:03:19,070
-Now, this is a little bit of a
-synthetic example because it's
+Ahora, este es un ejemplo un
+poco sencillo ya que no está
 
 69
 00:03:19,070 --> 00:03:23,610
-not clear why you'd want a
-unique index on the size,
+claro por qué querría un
+índice único en "size",
 
 70
 00:03:23,610 --> 00:03:25,320
-since there's obviously going to
-be more than one item with
+ya que obviamente va a haber
+más de un elemento con un
 
 71
 00:03:25,320 --> 00:03:28,180
-a size, but it doesn't
-have to be unique to
+"size", pero no tiene
+que ser único para
 
 72
 00:03:28,180 --> 00:03:29,440
-create a sparse index.
+crear un índice disperso.
 
 73
 00:03:29,440 --> 00:03:31,320
-So in fact--
+Así que, de hecho--
 
 74
 00:03:31,320 --> 00:03:33,240
-well, I'll create it this way.
+bueno, voy a crearlo de esta manera.
 
 75
 00:03:33,240 --> 00:03:35,520
-And now you can see there's
-an index on it.
+Y ahora puedes ver que hay
+un índice en él.
 
 76
 00:03:35,520 --> 00:03:40,880
-And I can look at it
-and see it's there.
+Y puedo echar un vistazo
+y ver lo que está ahí.
 
 77
 00:03:40,880 --> 00:03:42,460
-It works pretty much
-as I'd expect.
+Funciona tal
+como esperaba.
 
 78
 00:03:42,460 --> 00:03:44,560
-It doesn't really change
-most queries.
+En realidad, no cambia
+la mayoría de las consultas.
 
 79
 00:03:44,560 --> 00:03:50,920
-If I do a find and I look for
-size medium, I find what I
+Si hago un "find" y busco por
+"size" con valor "medium", encuentro
 
 80
 00:03:50,920 --> 00:03:53,620
-expected to find, which is the
-polo shirt, size medium.
+lo que esperaba, que es el
+"polo shirt", "size" "medium".
 
 81
 00:03:53,620 --> 00:03:54,490
-No big deal.
+No es gran cosa.
 
 82
 00:03:54,490 --> 00:03:58,320
-But if I use this new index to
-sort, for example, it will not
+Pero si utilizo este nuevo índice
+para ordenar, por ejemplo, no va a
 
 83
 00:03:58,320 --> 00:04:00,970
-do exactly what you
-might expect.
+hacer exactamente lo
+que se podría esperar.
 
 84
 00:04:00,970 --> 00:04:06,540
-So let's say I do
-db.products.find, let me find
+Así que digamos que hago
+"db.products.find", vamos a
 
 85
 00:04:06,540 --> 00:04:11,030
-all the documents and
-sort them by size.
+encontrar todos los documentos y
+ordenarlos por "size".
 
 86
 00:04:11,030 --> 00:04:11,880
-All right.
+Muy bien.
 
 87
 00:04:11,880 --> 00:04:15,165
-That is going to return
-two documents.
+Eso va a devolver
+dos documentos.
 
 88
 00:04:15,165 --> 00:04:16,459
-Hmm, that's interesting.
+Eh... eso es interesante.
 
 89
 00:04:16,459 --> 00:04:19,149
-So there are four documents in
-the collection, but if I sort
+Hay cuatro documentos en la
+colección, pero si los ordeno
 
 90
 00:04:19,149 --> 00:04:22,190
-them by size, I only
-get two documents.
+por "size", sólo
+obtengo dos documentos.
 
 91
 00:04:22,190 --> 00:04:23,820
-OK, that's weird.
+OK, eso es extraño.
 
 92
 00:04:23,820 --> 00:04:24,750
-What's happening?
+¿Qué está pasando?
 
 93
 00:04:24,750 --> 00:04:28,360
-What's happening is that if this
-index is sparse and there
+Lo que pasa es que si este
+índice es disperso y no hay
 
 94
 00:04:28,360 --> 00:04:31,750
-are no entries for the two
-pieces of electronics that
+registros para las dos
+piezas de electrónica que
 
 95
 00:04:31,750 --> 00:04:34,910
-were in the product collection
-that don't have a size, and
+están en la colección "products"
+que no tienen un "size",
 
 96
 00:04:34,910 --> 00:04:38,840
-it's going to use this index
-that we created on size, do
+no usarán este índice
+que creamos en "size",
 
 97
 00:04:38,840 --> 00:04:42,220
-the sort, there is no entry
-for the documents that
+ordena, no hay ninguna entrada
+para los documentos que
 
 98
 00:04:42,220 --> 00:04:43,280
-have no size key.
+no tienen la clave "size".
 
 99
 00:04:43,280 --> 00:04:45,540
-And so they're simply left
-out of the final result.
+Por lo que son simplemente
+excluidos del resultado final.
 
 100
 00:04:45,540 --> 00:04:46,940
-They're basically
-filtered out.
+Básicamente
+están filtrados.
 
 101
 00:04:46,940 --> 00:04:48,370
-That might be a little
-bit unexpected.
+Eso podría ser un
+poco inesperado.
 
 102
 00:04:48,370 --> 00:04:51,260
-So again, if we just do a
-straight find without sorting
+Así que de nuevo, si sólo hacemos
+una búsqueda sencilla sin ordenar,
 
 103
 00:04:51,260 --> 00:04:53,830
-it, we get four documents.
+obtenemos cuatro documentos.
 
 104
 00:04:53,830 --> 00:04:57,250
-But if we sort it, we get two.
+Pero si ordenamos, obtenemos dos.
 
 105
 00:04:57,250 --> 00:04:58,660
@@ -493,263 +493,264 @@ OK.
 
 106
 00:04:58,660 --> 00:05:02,180
-Very strange, and the reason is,
-this is a result of there
+Muy extraño y la razón es que,
+este es un resultado de la
 
 107
 00:05:02,180 --> 00:05:03,970
-being a sparse index on size.
+existencia de un índice
+disperso en "size".
 
 108
 00:05:03,970 --> 00:05:05,230
-It's an artifact of that.
+Esto es un artefacto de eso.
 
 109
 00:05:05,230 --> 00:05:07,220
-And if we drop the index--
+Y si eliminamos el índice--
 
 110
 00:05:07,220 --> 00:05:10,460
-I'm going to drop the
-index on size--
+Voy a eliminar el
+índice en "size"--
 
 111
 00:05:10,460 --> 00:05:13,860
-and then I rerun this exact
-same query with a sort--
+y luego voy a volver a ejecutar
+esta misma consulta con un orden--
 
 112
 00:05:13,860 --> 00:05:16,030
-which granted, will now be slow
-because I can't use index
+que ejecuté, ahora será lento
+porque no puedo usar un índice
 
 113
 00:05:16,030 --> 00:05:17,542
-to do the sort, but there's
-only two documents is this
+para ordenar, pero hay
+sólo dos documentos en esta
 
 114
 00:05:17,542 --> 00:05:19,200
-collection, so it
-doesn't matter--
+colección, por lo
+que no importa--
 
 115
 00:05:19,200 --> 00:05:21,920
-then I get four documents.
+entonces consigo cuatro documentos.
 
 116
 00:05:21,920 --> 00:05:23,570
-So you have to be a little
-bit careful with
+Así que tienes que ser
+un poco cuidadoso con
 
 117
 00:05:23,570 --> 00:05:24,740
-these sparse indexes.
+estos índices dispersos.
 
 118
 00:05:24,740 --> 00:05:27,740
-They will let you create a
-unique index, even when
+Ellos permitirán crear un
+índice único, aún cuando
 
 119
 00:05:27,740 --> 00:05:29,560
-multiple documents in the
-collection are missing the
+múltiples documentos en la
+colección no tienen la
 
 120
 00:05:29,560 --> 00:05:33,430
-key, but they do change the
-nature of some of the queries,
+clave, pero ellos cambian la
+naturaleza de algunas de las consultas,
 
 121
 00:05:33,430 --> 00:05:36,990
-especially sorting queries and
-also some items when you're
+especialmente ordenando consultas y
+también algunos elementos cuando estás
 
 122
 00:05:36,990 --> 00:05:37,500
-are filtering.
+filtrando.
 
 123
 00:05:37,500 --> 00:05:39,290
-You can also see different
-results.
+Puedes también ver
+distintos resultados.
 
 124
 00:05:39,290 --> 00:05:41,290
-So you have to be a little bit
-wary and realize that if the
+Así que hay que ser un poco
+cuidadoso y darse cuenta si el
 
 125
 00:05:41,290 --> 00:05:44,900
-index is used that it's not
-going to hit the items that
+índice es usado y no va a
+alcanzar los elementos que
 
 126
 00:05:44,900 --> 00:05:46,100
-are not in the index.
+no están en el índice.
 
 127
 00:05:46,100 --> 00:05:48,490
-And we're going to show you
-later on how to ask that this
+Y vamos a mostrarte luego
+cómo solicitar que este
 
 128
 00:05:48,490 --> 00:05:50,240
-particular index not be used.
+índice en paticular no sea usado.
 
 129
 00:05:50,240 --> 00:05:53,860
-So there are ways to work around
-this, even if you want
+Así que hay formas de evitar
+esto, incluso si deseas
 
 130
 00:05:53,860 --> 00:05:56,900
-to have the index in the
-collection in general.
+tener el índice en la
+colección en general.
 
 131
 00:05:56,900 --> 00:05:57,200
-All right.
+Muy bien.
 
 132
 00:05:57,200 --> 00:05:59,390
-Now it's time for a quiz.
+Ahora es momento para un cuestionario.
 
 133
 00:05:59,390 --> 00:06:01,480
-Suppose you had the following
-documents in a collection
+Supongamos que tenemos los siguientes
+documentos en una colección
 
 134
 00:06:01,480 --> 00:06:04,250
-called people with the
-following docs.
+llamada "people" con los
+siguientes documentos.
 
 135
 00:06:04,250 --> 00:06:06,230
-I have three documents
-in the collection.
+Tengo tres documentos
+en la colección.
 
 136
 00:06:06,230 --> 00:06:09,880
-The first one is named Andrew,
-and he has a title of Jester.
+El primero es llamado "Andrew",
+tiene un "title" con valor "Jester".
 
 137
 00:06:09,880 --> 00:06:11,620
-And then the second one is named
-Dwight, and he has a
+Y luego el segundo es llamado
+"Dwight", y tiene un
 
 138
 00:06:11,620 --> 00:06:13,070
-title of CEO.
+"title" con valor "CEO".
 
 139
 00:06:13,070 --> 00:06:16,490
-And the third one is named John,
-and he has no title.
+Y el tercero es llamado "John",
+y no tiene "title".
 
 140
 00:06:16,490 --> 00:06:20,210
-And then I decided to create
-an index on title.
+Y luego decidí crear
+un índice en "title".
 
 141
 00:06:20,210 --> 00:06:22,730
-And I decide to make its sparse,
-so that there are no
+Y decidí que sea disperso,
+y que no haya
 
 142
 00:06:22,730 --> 00:06:27,100
-entries in the index for items
-where title does not exist.
+entradas en el índice para
+elementos donde "title" no exista.
 
 143
 00:06:27,100 --> 00:06:31,050
-If you perform the following
-query, db.people.find, with
+Si realizas la siguiente consulta,
+"db.people.find", con
 
 144
 00:06:31,050 --> 00:06:34,910
-title being null, what do you
-think the database returns?
+"title" con valor nulo, ¿qué crees
+que retorne la base de datos?
 
 145
 00:06:34,910 --> 00:06:37,220
-What do you think
-MongoDB returns?
+¿Qué crees que
+retorne MongoDB?
 
 146
 00:06:37,220 --> 00:06:39,210
-And the four choices are--
+Y las cuatro opciones son--
 
 147
 00:06:39,210 --> 00:06:41,370
-no documents, because the query
-uses the index, and
+Ningún documento porque
+la consulta usa el índice y
 
 148
 00:06:41,370 --> 00:06:44,030
-there are no documents with the
-title null in the index.
+no hay documentos con "title"
+con valor nulo en el índice.
 
 149
 00:06:44,030 --> 00:06:46,490
-No documents, because querying
-for title null only finds
+Ningún documento porque consultando
+por "title" con valor nulo sólo encuentra
 
 150
 00:06:46,490 --> 00:06:49,010
-documents that explicitly
-have title null,
+documentos que tengan
+valor nulo explícitamente,
 
 151
 00:06:49,010 --> 00:06:50,530
-regardless of the index.
+independientemente del índice.
 
 152
 00:06:50,530 --> 00:06:54,070
-And you know you can set title
-to be null in a document.
+Y sabes que puedes establecer "title"
+con valor nulo a un documento.
 
 153
 00:06:54,070 --> 00:06:57,070
-Or the document for John,
-because the query won't use
+O el documento para "John",
+porque la consulta no usará
 
 154
 00:06:57,070 --> 00:06:59,790
-the index, so you'll just
-get John because
+el índice, así sólo
+obtendrás a "John" porque
 
 155
 00:06:59,790 --> 00:07:01,410
-he's missing a title.
+le falta un "title".
 
 156
 00:07:01,410 --> 00:07:04,500
-Or all documents in the
-collection, because title null
+O todos los documentos en la
+colección, porque "title" "null"
 
 157
 00:07:04,500 --> 00:07:06,310
-matches all the documents.
+coincide con todos los documentos.
 
 158
 00:07:06,310 --> 00:07:08,620
-Or the document for John,
-because the ensureIndex
+O el documento para "John",
+porque el comando "ensureIndex"
 
 159
 00:07:08,620 --> 00:07:13,170
-command above here won't
-succeed in this case.
+de aquí arriba no tendrá
+éxito en este caso.
 
 160
 00:07:13,170 --> 00:07:15,390
-And please check the
-right answer.
+Por favor marca la
+respuesta correcta.
 
 161
 00:07:15,390 --> 00:07:16,640
