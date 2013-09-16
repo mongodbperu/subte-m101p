@@ -3,110 +3,111 @@
 
 2
 00:00:00,140 --> 00:00:02,380
-And the answer is the first
-three are true, and the last
+Y la respuesta es que las primeras
+tres son ciertas, y la última
 
 3
 00:00:02,380 --> 00:00:03,620
-one is not true.
+no lo es.
 
 4
 00:00:03,620 --> 00:00:05,893
-A mongod instance can only build
-one background index at
+Una instancia de mongod puede construir
+sólo un índice en un segundo plano
 
 5
 00:00:05,893 --> 00:00:07,510
-a time per database.
+a la vez por base de datos.
 
 6
 00:00:07,510 --> 00:00:10,460
-The database server will
-continue to take requests, but
+El servidor de base de datos
+seguirá tomando solicitudes,
 
 7
 00:00:10,460 --> 00:00:12,150
-you'll be blocked in the
-shell that you used
+pero bloquearás el shell
+mongo que estás usando
 
 8
 00:00:12,150 --> 00:00:13,250
-to create the index.
+para crear el índice.
 
 9
 00:00:13,250 --> 00:00:16,440
-So you might think that that's
-an indication that other
+Así que podrías pensar que eso
+es una indicación que otras
 
 10
 00:00:16,440 --> 00:00:19,670
-people are blocked, but it's
-not, you can continue to work.
+personas son bloqueadas, pero
+no lo es, puedes continuar trabajando.
 
 11
 00:00:19,670 --> 00:00:21,635
-I'm not sure we told you
-that, so you might have
+No estoy seguro de haberlo
+dicho, así que tuviste
 
 12
 00:00:21,635 --> 00:00:23,650
-had to guess at that.
+que suponer eso.
 
 13
 00:00:23,650 --> 00:00:25,560
-Creating an index in the
-background takes longer than
+Crear un índice en un segundo
+plano toma más tiempo que
 
 14
 00:00:25,560 --> 00:00:28,610
-creating it in the foreground,
-this is certainly true.
+en un primer plano,
+esto es cierto.
 
 15
 00:00:28,610 --> 00:00:30,850
-And in Mongo 2.2 and above,
-indexes are created in the
+En Mongo 2.2 y posteriores,
+los índices son creados en un
 
 16
 00:00:30,850 --> 00:00:31,900
-background by default.
+segundo plano por defecto.
 
 17
 00:00:31,900 --> 00:00:32,409
-That's not true.
+Eso no es cierto.
 
 18
 00:00:32,409 --> 00:00:34,320
-They're still create it in the
-foreground by default.
+Ellos son creados en un
+primer plano por defecto.
 
 19
 00:00:34,320 --> 00:00:36,970
-In Mongo 2.2 and above the big
-change is that there's now a
+En Mongo 2.2 y posteriores, el
+gran cambio es que hay ahora un
 
 20
 00:00:36,970 --> 00:00:39,000
-pre-database writer lock.
+bloqueo de escritura
+por base de datos.
 
 21
 00:00:39,000 --> 00:00:40,390
-That is the big change.
+Ese es el gran cambio.
 
 22
 00:00:40,390 --> 00:00:42,550
-So that even if you run them in
-the foreground, you're only
+Así que incluso si ejecutas
+en un primer plano, sólo vas a
 
 23
 00:00:42,550 --> 00:00:46,130
-going to be blocking writers
-from the same database, versus
+bloquear las escrituras en
+la misma base de datos, en lugar
 
 24
 00:00:46,130 --> 00:00:47,660
-all the databases across
-the whole server.
+que a todas las bases de datos
+en el servidor.	
 
 25
 00:00:47,660 --> 00:00:49,115
