@@ -112,7 +112,7 @@ básicamente está ejecutando
 25
 00:00:58,380 --> 00:01:01,950
 experimentos sobre tus datos reales
-para avergiguar qué índice
+para averiguar qué índice
 
 26
 00:01:01,950 --> 00:01:03,350
@@ -125,8 +125,8 @@ nada para que esto ocurra,
 
 28
 00:01:04,920 --> 00:01:06,480
-simplemente sucede tras
-el escenario.
+simplemente sucede en
+un segundo plano.
 
 29
 00:01:06,480 --> 00:01:09,650
@@ -165,11 +165,11 @@ sobre "d", "c", "b", "a" en ese orden --
 36
 00:01:29,470 --> 00:01:32,100
 si tienes un índice compuesto,
-entones para que la base de datos
+entonces para que la base de datos
 
 37
 00:01:32,100 --> 00:01:37,100
-use este índiece, tienes que
+use este índice, tienes que
 especificar algún subconjunto por la izquierda de
 
 38
