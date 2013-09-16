@@ -3,7 +3,7 @@
 
 2
 00:00:00,320 --> 00:00:02,560
-Y la respuesta es "odometer_mileage", 
+Y la respuesta es "odometer mileage", 
 ¿de acuerdo?
 
 3
@@ -18,7 +18,7 @@ coches hasta 100000 millas.
 5
 00:00:06,560 --> 00:00:10,030
 Hay 100000 lecturas diferentes
-de "odometer_mileage" entre las que
+de "odometer mileage" entre las que
 
 6
 00:00:10,030 --> 00:00:13,900
@@ -38,16 +38,16 @@ hay, pero quizá
 9
 00:00:19,280 --> 00:00:22,330
 El peso del coche, la mayoría
-de los cochen pesan menos de 10000
+de los coches pesan menos de 10000
 
 10
 00:00:22,330 --> 00:00:25,560
 libras, por lo que serían 10000,
-asumiendo que usamos
+asumiendo que no usamos
 
 11
 00:00:25,560 --> 00:00:28,000
-ningunos puntos decimales
+ningunos valores decimales
 son sólo 10000 posibilidades
 
 12
@@ -57,7 +57,7 @@ tantos colores.
 
 13
 00:00:30,400 --> 00:00:31,370
-Así que creo que "odometer_mileage"
+Así que creo que "odometer mileage"
 
 14
 00:00:31,370 --> 00:00:32,900

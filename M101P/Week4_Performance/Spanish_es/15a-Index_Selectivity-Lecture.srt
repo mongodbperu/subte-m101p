@@ -79,11 +79,11 @@ hora, o digamos un sello de tiempo.
 18
 00:00:43,610 --> 00:00:48,950
 Por lo que, ¿tendrías un
-índice que fuera el "timestamp,
+índice que fuera "timestamp,
 
 19
 00:00:48,950 --> 00:00:54,570
-opcode", donce éstos
+opcode", donde éstos
 son los "opcodes", o tendría
 
 20
@@ -141,7 +141,7 @@ sobre "opcode", por ejemplo,
 31
 00:01:23,750 --> 00:01:26,300
 no sería muy diferente
-que hacer un
+a hacer un
 
 32
 00:01:26,300 --> 00:01:28,190
@@ -193,7 +193,7 @@ en ese intervalo de tiempo.
 42
 00:01:53,380 --> 00:01:57,430
 Esta idea de intentar elegir
-n índice con selectividad es
+un índice con selectividad es
 
 43
 00:01:57,430 --> 00:01:59,650
@@ -213,7 +213,7 @@ estés creando tus índices,
 46
 00:02:03,830 --> 00:02:07,030
 que te gustaría que fueran
-muy selectivos si pueden.
+muy selectivos si puedes.
 
 47
 00:02:07,030 --> 00:02:09,720
@@ -227,7 +227,7 @@ Si sólo quieres buscar sobre
 
 49
 00:02:13,400 --> 00:02:15,460
-bien, pero va a ser
+bien, pero vas a tener
 casi todos los datos por cada
 
 50
@@ -245,8 +245,8 @@ de automóviles --
 
 53
 00:02:21,360 --> 00:02:24,850
-"color", "weight", "manufacture" y
-"odometer_mileage", ¿qué
+"color", "weight", "manufacturer" y
+"odometer mileage", ¿qué
 
 54
 00:02:24,850 --> 00:02:27,950
