@@ -1,9 +1,9 @@
-1
+ï»¿1
 00:00:00,000 --> 00:00:00,200
 
 2
 00:00:00,200 --> 00:00:02,680
-Cuando estás diseñando tus índices,
+Cuando estÃ¡s diseÃ±ando tus Ã­ndices,
 quieres que sean tan
 
 3
@@ -12,7 +12,7 @@ selectivos como sea posible.
 
 4
 00:00:04,740 --> 00:00:07,360
-Y éste es un concepto que en realidad
+Y Ã©ste es un concepto que en realidad
 no es diferente al del
 
 5
@@ -21,8 +21,8 @@ mundo relacional.
 
 6
 00:00:08,640 --> 00:00:10,840
-Pero cuando estás eligiendo un
-índice compuesto, si no
+Pero cuando estÃ¡s eligiendo un
+Ã­ndice compuesto, si no
 
 7
 00:00:10,840 --> 00:00:13,170
@@ -36,12 +36,12 @@ ese campo.
 
 9
 00:00:15,980 --> 00:00:17,690
-Aquí tenemos un ejemplo.
+AquÃ­ tenemos un ejemplo.
 
 10
 00:00:17,690 --> 00:00:20,100
-Digamos que estabas haciendo algún
-registro de logs y que hubiera sólo
+Digamos que estabas haciendo algÃºn
+registro de logs y que hubiera sÃ³lo
 
 11
 00:00:20,100 --> 00:00:23,872
@@ -50,12 +50,12 @@ de operaciones de registro.
 
 12
 00:00:23,872 --> 00:00:30,180
-Había un "save", había
+HabÃ­a un "save", habÃ­a
 un "open" y un "run" --
 
 13
 00:00:30,180 --> 00:00:33,750
-sólo estoy imaginando operaciones 
+sÃ³lo estoy imaginando operaciones 
 de registro que pudieras ver --
 
 14
@@ -74,17 +74,17 @@ de registro.
 17
 00:00:38,760 --> 00:00:43,610
 Y cada una de ellas tiene una fecha y
-hora, o digamos un sello de tiempo.
+hora, o digamos un "timestamp".
 
 18
 00:00:43,610 --> 00:00:48,950
-Por lo que, ¿tendrías un
-índice que fuera "timestamp,
+Por lo que, Â¿tendrÃ­as un
+Ã­ndice que fuera "timestamp,
 
 19
 00:00:48,950 --> 00:00:54,570
-opcode", donde éstos
-son los "opcodes", o tendría
+opcode", donde Ã©stos
+son los "opcodes", o tendrÃ­a
 
 20
 00:00:54,570 --> 00:00:59,850
@@ -94,7 +94,7 @@ timestamp"?
 21
 00:00:59,850 --> 00:01:02,660
 Ahora, la respuesta es que 
-tendría mucho más sentido
+tendrÃ­a mucho mÃ¡s sentido
 
 22
 00:01:02,660 --> 00:01:04,160
@@ -102,27 +102,27 @@ poner el "timestamp" primero.
 
 23
 00:01:04,160 --> 00:01:07,230
-Y la razón es que si
+Y la razÃ³n es que si
 normalmente conoces el rango de
 
 24
 00:01:07,230 --> 00:01:11,290
-tiempo en el que estás buscando una
-operación y especificas
+tiempo en el que estÃ¡s buscando una
+operaciÃ³n y especificas
 
 25
 00:01:11,290 --> 00:01:13,180
-un "opcode", bien, hay sólo
+un "opcode", bien, hay sÃ³lo
 cinco de estos "opcodes".
 
 26
 00:01:13,180 --> 00:01:15,890
-Y así, especificando
-uno estás eliminando
+Y asÃ­, especificando
+uno estÃ¡s eliminando
 
 27
 00:01:15,890 --> 00:01:17,960
-sólo 4/5 de los datos.
+sÃ³lo 4/5 de los datos.
 
 28
 00:01:17,960 --> 00:01:19,570
@@ -131,25 +131,25 @@ de datos que
 
 29
 00:01:19,570 --> 00:01:21,470
-todavía se necesitan recorrer.
+todavÃ­a se necesitan recorrer.
 
 30
 00:01:21,470 --> 00:01:23,750
-Y si sólo tuvieras un índice
+Y si sÃ³lo tuvieras un Ã­ndice
 sobre "opcode", por ejemplo,
 
 31
 00:01:23,750 --> 00:01:26,300
-no sería muy diferente
+no serÃ­a muy diferente
 a hacer un
 
 32
 00:01:26,300 --> 00:01:28,190
-escaneo de la colección completa.
+escaneo de la colecciÃ³n completa.
 
 33
 00:01:28,190 --> 00:01:31,290
-Mientras que, si hubiera un índice
+Mientras que, si hubiera un Ã­ndice
 sobre "timestamp, opcode", y
 
 34
@@ -160,12 +160,12 @@ deseadas para consultar el
 35
 00:01:35,340 --> 00:01:39,190
 "opcode", el intervalo de tiempo, entonces
-sería bastante rápido.
+serÃ­a bastante rÃ¡pido.
 
 36
 00:01:39,190 --> 00:01:41,330
-Porque sería un porcentaje
-muy pequeño
+Porque serÃ­a un porcentaje
+muy pequeÃ±o
 
 37
 00:01:41,330 --> 00:01:43,100
@@ -178,12 +178,12 @@ reduces en un 99%, entonces
 
 39
 00:01:48,360 --> 00:01:50,300
-buscar el "opcode" sería
+buscar el "opcode" serÃ­a
 eficiente y no
 
 40
 00:01:50,300 --> 00:01:51,690
-habría
+habrÃ­a
 muchas operaciones
 
 41
@@ -193,7 +193,7 @@ en ese intervalo de tiempo.
 42
 00:01:53,380 --> 00:01:57,430
 Esta idea de intentar elegir
-un índice con selectividad es
+un Ã­ndice con selectividad es
 
 43
 00:01:57,430 --> 00:01:59,650
@@ -207,12 +207,12 @@ cierta en MongoDB.
 
 45
 00:02:01,900 --> 00:02:03,830
-Así que simplemente ten eso en mente cuando
-estés creando tus índices,
+AsÃ­ que simplemente ten eso en mente cuando
+estÃ©s creando tus Ã­ndices,
 
 46
 00:02:03,830 --> 00:02:07,030
-que te gustaría que fueran
+que te gustarÃ­a que fueran
 muy selectivos si puedes.
 
 47
@@ -222,7 +222,7 @@ valores suficientes para tenerlos.
 
 48
 00:02:09,720 --> 00:02:13,400
-Si sólo quieres buscar sobre
+Si sÃ³lo quieres buscar sobre
 "opcode", bueno, entonces
 
 49
@@ -232,7 +232,7 @@ casi todos los datos por cada
 
 50
 00:02:15,460 --> 00:02:17,190
-"time" individual que estás examinando.
+"time" individual que estÃ¡s examinando.
 
 51
 00:02:17,190 --> 00:02:19,220
@@ -241,32 +241,32 @@ De acuerdo, hora de hacer un cuestionario.
 52
 00:02:19,220 --> 00:02:21,360
 Dados los siguientes atributos
-de automóviles --
+de automÃ³viles --
 
 53
 00:02:21,360 --> 00:02:24,850
 "color", "weight", "manufacturer" y
-"odometer mileage", ¿qué
+"odometer mileage", Â¿quÃ©
 
 54
 00:02:24,850 --> 00:02:27,950
-índice es probablemente el más
+Ã­ndice es probablemente el mÃ¡s
 selectivo, sabiendo que puedes
 
 55
 00:02:27,950 --> 00:02:29,840
 pasar los cuatro atributos
-en una búsqueda?
+en una bÃºsqueda?
 
 56
 00:02:29,840 --> 00:02:32,200
-Así que, ¿cuál de éstos va a
-ser el más selectivo para
+AsÃ­ que, Â¿cuÃ¡l de Ã©stos va a
+ser el mÃ¡s selectivo para
 
 57
 00:02:32,200 --> 00:02:34,160
-reducir el número
-de automóviles?
+reducir el nÃºmero
+de automÃ³viles?
 
 58
 00:02:34,160 --> 00:02:35,410
