@@ -5,7 +5,7 @@ la cardinalidad de los índices, que es
 
 2
 00:00:03,540 --> 00:00:06,990
-cuántos puntos hay en el índice
+cuántos puntos hay
 por cada tipo diferente
 
 3
