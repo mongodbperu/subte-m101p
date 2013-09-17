@@ -9,7 +9,7 @@ comando "hint" en PyMongo.
 3
 00:00:04,270 --> 00:00:06,770
 Es bastante similar a la forma
-en que se usa en el shell mongo.
+en que se usa en el shell mongo,
 
 4
 00:00:06,770 --> 00:00:09,470
@@ -99,7 +99,7 @@ es un índice simple.
 
 22
 00:00:56,050 --> 00:00:57,770
-Pero si se fuera un índice
+Pero si fuera un índice
 compuesto, habría múltiples
 
 23
@@ -214,7 +214,7 @@ Se imprime en Python.
 
 46
 00:01:53,510 --> 00:01:56,660
-Es orden de estas diferentes
+El orden de estas diferentes
 claves no son necesariamente las
 
 47
