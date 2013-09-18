@@ -1,0 +1,662 @@
+1
+00:00:00,000 --> 00:00:00,100
+
+2
+00:00:00,100 --> 00:00:01,900
+Let's talk about database
+performance.
+
+3
+00:00:01,900 --> 00:00:05,140
+Database performance in MongoDB
+is driven by pretty
+
+4
+00:00:05,140 --> 00:00:08,020
+much the same thing that every
+database is driven by.
+
+5
+00:00:08,020 --> 00:00:13,610
+Which is, are you going to
+use an index to resolve
+
+6
+00:00:13,610 --> 00:00:15,550
+your query or not?
+
+7
+00:00:15,550 --> 00:00:18,010
+So indexes turn out to be the
+single most important factor
+
+8
+00:00:18,010 --> 00:00:19,450
+in database performance--
+
+9
+00:00:19,450 --> 00:00:22,440
+in MongoDB and in relational
+databases.
+
+10
+00:00:22,440 --> 00:00:24,630
+So this will be a review for a
+lot of you, but I want to take
+
+11
+00:00:24,630 --> 00:00:26,860
+you through the basics of
+indexing and what it is and
+
+12
+00:00:26,860 --> 00:00:29,480
+why it's so effective.
+
+13
+00:00:29,480 --> 00:00:32,940
+So if you look at MongoDB or
+any other database, it will
+
+14
+00:00:32,940 --> 00:00:36,310
+store its data in these large
+files on disk, and this is
+
+15
+00:00:36,310 --> 00:00:39,820
+supposed to represent some
+sort of collection.
+
+16
+00:00:39,820 --> 00:00:42,600
+There's no particular order for
+the documents on the disk,
+
+17
+00:00:42,600 --> 00:00:44,130
+it could be anywhere.
+
+18
+00:00:44,130 --> 00:00:45,490
+And if you ask for a particular
+
+19
+00:00:45,490 --> 00:00:47,030
+document, you do a query.
+
+20
+00:00:47,030 --> 00:00:51,920
+What the database is going to
+have to do by default is scan
+
+21
+00:00:51,920 --> 00:00:55,245
+through the entire collection
+to find the data.
+
+22
+00:00:55,245 --> 00:00:59,650
+Now this is called a table scan
+in a relational database,
+
+23
+00:00:59,650 --> 00:01:04,830
+and it's a collection scan in
+MongoDB, and it is death to
+
+24
+00:01:04,830 --> 00:01:05,850
+your performance.
+
+25
+00:01:05,850 --> 00:01:08,530
+You do not want to have to scan
+your entire collection
+
+26
+00:01:08,530 --> 00:01:11,310
+for your data if the data set
+is large, because it'll be
+
+27
+00:01:11,310 --> 00:01:13,090
+extremely slow.
+
+28
+00:01:13,090 --> 00:01:15,460
+So instead we use indexing.
+
+29
+00:01:15,460 --> 00:01:16,680
+So how does indexing work?
+
+30
+00:01:16,680 --> 00:01:18,670
+Well it's pretty
+straightforward.
+
+31
+00:01:18,670 --> 00:01:21,320
+If something is ordered, like
+for instance this list is
+
+32
+00:01:21,320 --> 00:01:22,500
+ordered alphabetically--
+
+33
+00:01:22,500 --> 00:01:24,790
+apple, banana, kiwi, pear.
+
+34
+00:01:24,790 --> 00:01:28,370
+And even if it was very long,
+it's very quick to find
+
+35
+00:01:28,370 --> 00:01:29,760
+something within the
+list-- right?
+
+36
+00:01:29,760 --> 00:01:33,590
+Because you can use a binary
+search to do it.
+
+37
+00:01:33,590 --> 00:01:36,270
+So finding something in
+an ordered list--
+
+38
+00:01:36,270 --> 00:01:37,400
+in an assorted list--
+
+39
+00:01:37,400 --> 00:01:38,300
+is quick.
+
+40
+00:01:38,300 --> 00:01:42,300
+Finding something in an
+unordered list is slow.
+
+41
+00:01:42,300 --> 00:01:45,730
+What we do is we keep
+our keys ordered.
+
+42
+00:01:45,730 --> 00:01:48,740
+Now we don't actually keep them
+linearly ordered like
+
+43
+00:01:48,740 --> 00:01:50,440
+this in MongoDB--
+
+44
+00:01:50,440 --> 00:01:52,240
+we use something called
+a B-tree.
+
+45
+00:01:52,240 --> 00:01:55,520
+But conceptually, you can
+imagine it looking like this.
+
+46
+00:01:55,520 --> 00:01:59,150
+And if I'm looking for, let's
+say, "banana", I can quickly
+
+47
+00:01:59,150 --> 00:02:05,100
+search, find the item, and then
+have a pointer to the
+
+48
+00:02:05,100 --> 00:02:07,400
+actual document inside
+the collection.
+
+49
+00:02:07,400 --> 00:02:11,890
+This is the key.
+
+50
+00:02:11,890 --> 00:02:14,990
+So indexes in MongoDB are
+an ordered list of keys.
+
+51
+00:02:14,990 --> 00:02:17,940
+So for instance, you could have
+an index on name, and
+
+52
+00:02:17,940 --> 00:02:21,230
+then an index on hair color,
+and there could be another
+
+53
+00:02:21,230 --> 00:02:24,190
+index on the date of
+birth or something.
+
+54
+00:02:24,190 --> 00:02:26,990
+Now the order is important
+because conceptually the way
+
+55
+00:02:26,990 --> 00:02:30,760
+the index is built is that name
+will be at the top level.
+
+56
+00:02:30,760 --> 00:02:32,090
+So here are my names.
+
+57
+00:02:32,090 --> 00:02:38,430
+And this might be Amy,
+and John, and Zoe--
+
+58
+00:02:38,430 --> 00:02:40,750
+well probably Zoe
+is over here.
+
+59
+00:02:40,750 --> 00:02:43,450
+Now within this, the hair
+color is sort of
+
+60
+00:02:43,450 --> 00:02:45,120
+conceptually over here.
+
+61
+00:02:45,120 --> 00:02:52,490
+So for all the Amy items we've
+got brown hair, blonde hair--
+
+62
+00:02:52,490 --> 00:02:54,890
+I'm going to put BL
+for blond hair--
+
+63
+00:02:54,890 --> 00:02:58,130
+black hair, and then repeat
+it for every item.
+
+64
+00:02:58,130 --> 00:03:02,370
+So there will be some brown hair
+here, black hair here.
+
+65
+00:03:02,370 --> 00:03:04,490
+And then finally within this--
+
+66
+00:03:04,490 --> 00:03:06,850
+I might pick a new color--
+
+67
+00:03:06,850 --> 00:03:10,400
+you might have a bunch of
+items for date of birth.
+
+68
+00:03:10,400 --> 00:03:13,590
+So here's my hair color over
+here, my name is at the top
+
+69
+00:03:13,590 --> 00:03:17,450
+level, and then finally I've got
+this date of birth item at
+
+70
+00:03:17,450 --> 00:03:19,670
+the bottom.
+
+71
+00:03:19,670 --> 00:03:22,350
+So if you provide me
+the person's--
+
+72
+00:03:22,350 --> 00:03:23,620
+just their name--
+
+73
+00:03:23,620 --> 00:03:27,380
+then I can go into the index and
+I can find all the Johns.
+
+74
+00:03:27,380 --> 00:03:29,640
+And if you prefer to provide me
+the hair color, I can break
+
+75
+00:03:29,640 --> 00:03:32,070
+it down and find all the
+brown-haired people.
+
+76
+00:03:32,070 --> 00:03:34,890
+At the very bottom of this,
+of course, is going to be
+
+77
+00:03:34,890 --> 00:03:37,100
+pointers into the actual data.
+
+78
+00:03:37,100 --> 00:03:39,660
+
+79
+00:03:39,660 --> 00:03:42,950
+Now these things are going to
+represent keys in the Mongo
+
+80
+00:03:42,950 --> 00:03:46,700
+document that we've
+decided to index.
+
+81
+00:03:46,700 --> 00:03:50,160
+In order for a database to
+utilize an index, you have to
+
+82
+00:03:50,160 --> 00:03:53,040
+give it a left-most
+set of items.
+
+83
+00:03:53,040 --> 00:03:56,280
+So you can give it just the name
+or you can give just a
+
+84
+00:03:56,280 --> 00:03:57,260
+hair color--
+
+85
+00:03:57,260 --> 00:03:58,800
+name and the hair color--
+
+86
+00:03:58,800 --> 00:03:59,990
+or you can give it the
+name, the hair
+
+87
+00:03:59,990 --> 00:04:01,100
+color, and date of birth.
+
+88
+00:04:01,100 --> 00:04:04,340
+If you provide me just the date
+of birth, I can't do much
+
+89
+00:04:04,340 --> 00:04:07,220
+conceptually with the index,
+because date of birth is down
+
+90
+00:04:07,220 --> 00:04:08,460
+here at this level.
+
+91
+00:04:08,460 --> 00:04:12,060
+So I would need to do a binary
+search through here, then do a
+
+92
+00:04:12,060 --> 00:04:14,775
+binary search through this one,
+then do a binary search
+
+93
+00:04:14,775 --> 00:04:17,329
+through this one-- et cetera,
+et cetera, et cetera.
+
+94
+00:04:17,329 --> 00:04:20,470
+Instead, I need to
+start at the top.
+
+95
+00:04:20,470 --> 00:04:24,420
+And this is true whether or not
+I'm doing a query or I'm
+
+96
+00:04:24,420 --> 00:04:28,540
+doing an update or I'm doing a
+sort, because sorts also will
+
+97
+00:04:28,540 --> 00:04:31,120
+use an index to sort
+their values.
+
+98
+00:04:31,120 --> 00:04:34,750
+So for instance, if I pull a
+bunch of data out of the
+
+99
+00:04:34,750 --> 00:04:37,000
+collection and I want
+to sort it by name--
+
+100
+00:04:37,000 --> 00:04:40,400
+well, the database can use this
+index if we just define
+
+101
+00:04:40,400 --> 00:04:43,440
+name, hair color, date of
+birth, to do the sort.
+
+102
+00:04:43,440 --> 00:04:46,600
+Now one other point I want to
+make is that every single time
+
+103
+00:04:46,600 --> 00:04:51,140
+the database wants to insert
+something into it--
+
+104
+00:04:51,140 --> 00:04:52,190
+or you want to insert
+something into
+
+105
+00:04:52,190 --> 00:04:53,530
+the database, rather--
+
+106
+00:04:53,530 --> 00:04:57,590
+this index needs to be updated,
+and that updating
+
+107
+00:04:57,590 --> 00:04:58,690
+takes time.
+
+108
+00:04:58,690 --> 00:05:02,280
+So although reads are faster
+inside the database, writes
+
+109
+00:05:02,280 --> 00:05:05,920
+are a little bit slower if you
+have an index, because the
+
+110
+00:05:05,920 --> 00:05:07,500
+index needs to be updated.
+
+111
+00:05:07,500 --> 00:05:09,400
+And so indexes are
+not cost-less.
+
+112
+00:05:09,400 --> 00:05:12,430
+They take space on disks
+and they also take
+
+113
+00:05:12,430 --> 00:05:13,680
+time to keep updated.
+
+114
+00:05:13,680 --> 00:05:14,940
+And that's something
+to keep in mind.
+
+115
+00:05:14,940 --> 00:05:18,800
+So you don't want to have an
+index on every single possible
+
+116
+00:05:18,800 --> 00:05:21,200
+way you're going to query the
+collection, you instead want
+
+117
+00:05:21,200 --> 00:05:24,760
+to have an index on the ways
+you're most likely to query
+
+118
+00:05:24,760 --> 00:05:26,090
+the collection.
+
+119
+00:05:26,090 --> 00:05:27,660
+Let's go through one
+or two examples--
+
+120
+00:05:27,660 --> 00:05:29,050
+talk about the index.
+
+121
+00:05:29,050 --> 00:05:34,946
+Say I have an index on "a, b,
+c", and I do a query on "b".
+
+122
+00:05:34,946 --> 00:05:36,300
+Can the index be used?
+
+123
+00:05:36,300 --> 00:05:38,120
+The answer is no.
+
+124
+00:05:38,120 --> 00:05:40,500
+If I do a query on "a", yes.
+
+125
+00:05:40,500 --> 00:05:42,905
+If I do query on "c", no.
+
+126
+00:05:42,905 --> 00:05:46,910
+If I do a query on "a,
+b", yes-- it uses two
+
+127
+00:05:46,910 --> 00:05:48,400
+parts of the index.
+
+128
+00:05:48,400 --> 00:05:50,090
+"a, c"--
+
+129
+00:05:50,090 --> 00:05:53,730
+it uses just "a" part and it
+ignores the "c" part for the
+
+130
+00:05:53,730 --> 00:05:56,470
+purposes of doing the
+search on the index.
+
+131
+00:05:56,470 --> 00:05:58,190
+So I hope that kind of
+gives you a feeling.
+
+132
+00:05:58,190 --> 00:06:01,250
+All right, so now it's time
+for our first quiz.
+
+133
+00:06:01,250 --> 00:06:03,390
+Which optimization will
+typically have the greatest
+
+134
+00:06:03,390 --> 00:06:05,350
+impact on the performance
+of a database?
+
+135
+00:06:05,350 --> 00:06:08,120
+Adding more memory so that the
+working set fits in memory,
+
+136
+00:06:08,120 --> 00:06:10,570
+adding a faster drive so that
+the operation of the hit disk
+
+137
+00:06:10,570 --> 00:06:13,650
+will happen more quickly,
+replacing your CPU with a
+
+138
+00:06:13,650 --> 00:06:16,380
+faster one-- say 2x as fast--
+
+139
+00:06:16,380 --> 00:06:20,630
+or adding an appropriate index
+on a large collection so that
+
+140
+00:06:20,630 --> 00:06:22,640
+only a small percentage of the
+queries need to scan the
+
+141
+00:06:22,640 --> 00:06:23,890
+collection?
+
+142
+00:06:23,890 --> 00:06:24,190
