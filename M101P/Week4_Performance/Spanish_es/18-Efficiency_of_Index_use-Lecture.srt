@@ -50,17 +50,17 @@ la mitad de la colección.
 
 12
 00:00:31,200 --> 00:00:34,390
-Y por tanto usa el índice, pero
+Y por tanto aunque use el índice,
 es todavía muy lento.
 
 13
 00:00:34,390 --> 00:00:36,930
 Otras cosas que podrían no usar
-el índice o si lo usan
+el índice o usarlo
 
 14
 00:00:36,930 --> 00:00:40,140
-hacerlo ineficientemente son
+ineficientemente son
 "$ne" (distinto de) o "$nin"
 
 15
@@ -315,7 +315,7 @@ muchos estudiantes en cada clase
 
 68
 00:03:06,950 --> 00:03:08,940
-porque yo construí este conjunto de datos,
+porque construí este conjunto de datos,
 así que tengo información que
 
 69
