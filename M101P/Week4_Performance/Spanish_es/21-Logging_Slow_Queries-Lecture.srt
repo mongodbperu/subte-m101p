@@ -3,213 +3,213 @@
 
 2
 00:00:00,120 --> 00:00:03,040
-We've talked about how you
-create indexes and we've
+Hemos hablado de
+cómo crear índices y
 
 3
 00:00:03,040 --> 00:00:06,200
-talked about how you use the
-explain command to figure out
+de cómo usar el comando
+"explain" para averiguar
 
 4
 00:00:06,200 --> 00:00:08,410
-what indexes are getting used
-and how they're getting used
+qué índices están siendo usados
+y cómo están siendo usados
 
 5
 00:00:08,410 --> 00:00:11,400
-in your queries, but ultimately,
-about the
+en tus consultas, pero por
+último, hablemos acerca del
 
 6
 00:00:11,400 --> 00:00:13,520
-performance of your programs
-you're going to need to do
+rendimiento de tus programas
+donde vas a necesitar hacer
 
 7
 00:00:13,520 --> 00:00:15,520
-some profiling to figure
-out what is
+algún "profiling" para
+averiguar qué está
 
 8
 00:00:15,520 --> 00:00:17,500
-slow inside your programs.
+lento dentro de tus programas.
 
 9
 00:00:17,500 --> 00:00:20,120
-Now, there's actually, there is
-a profiler built into Mongo
+Ahora, de hecho hay un
+"profiler" integrado a mongod
 
 10
 00:00:20,120 --> 00:00:22,760
-D and I'm going to teach you
-how to turn that on, but
+y voy a enseñarte
+cómo activarlo, pero
 
 11
 00:00:22,760 --> 00:00:25,680
-before you even do that there's
-a default facility
+antes de hacerlo hay una
+característica por defecto
 
 12
 00:00:25,680 --> 00:00:29,330
-that could help you and that
-is that Mongo automatically
+que podría ayudarte y es que
+Mongo registra automáticamente
 
 13
 00:00:29,330 --> 00:00:34,240
-logs slow queries of above 100
-milliseconds right to the log
+las consultas lentas por encima
+de los 100 milisegundos al "log"
 
 14
 00:00:34,240 --> 00:00:37,220
-that Mongo D writes when
-you start it up.
+que mongod escribe
+cuando tú lo inicias.
 
 15
 00:00:37,220 --> 00:00:39,880
-So this is a default
-logging facility
+Así que ésta es una característica
+de "logging" por defecto
 
 16
 00:00:39,880 --> 00:00:41,360
-that can be very useful.
+que puede ser muy útil.
 
 17
 00:00:41,360 --> 00:00:43,480
-So let me show you
-how that works.
+Permíteme mostrate
+cómo funciona eso.
 
 18
 00:00:43,480 --> 00:00:46,760
-So I'm going to start Mongo
-D here with the default.
+Voy a iniciar mongod aquí
+con el valor predeterminado.
 
 19
 00:00:46,760 --> 00:00:48,750
-Here, I'll shut it down.
+Aquí, voy a detenerlo.
 
 20
 00:00:48,750 --> 00:00:50,800
-I have a DB path and
-nothing else set.
+Tengo un "dbpath" y
+nada más establecido.
 
 21
 00:00:50,800 --> 00:00:55,060
-If I do that, all right, do
-nothing else and then I go
+Si hago eso, está bien, no
+hace nada más y luego voy
 
 22
 00:00:55,060 --> 00:00:57,540
-over here to my Mongo shell.
+aquí a mi shell mongo.
 
 23
 00:00:57,540 --> 00:00:59,455
-I'm going to have to reconnect,
-so the first time I
+Voy a tener que volver a
+conectar, por ser la primera
 
 24
 00:00:59,455 --> 00:01:01,990
-hit this, it's not
-going to do it.
+que me conecta,
+estoy haciendo eso.
 
 25
 00:01:01,990 --> 00:01:04,330
-And now, I'm going to do
-a find on the student's
+Y ahora, voy a hacer un
+"find" en la colección
 
 26
 00:01:04,330 --> 00:01:07,920
-collection, and student's
-collection is a 10 million
+"students" y esta colección
+tiene 10 millones de
 
 27
 00:01:07,920 --> 00:01:10,170
-document collection that
-we've seen many times.
+documentos que hemos
+visto muchas veces.
 
 28
 00:01:10,170 --> 00:01:14,230
-And I took all the indexes off
-it so it's going to be slow
+Y he quitado todos los índices,
+así que va a ser lento
 
 29
 00:01:14,230 --> 00:01:16,740
-since it has to scan the whole
-collection, if I look for
+ya que tiene que escanear la
+colección completa, si busco por
 
 30
 00:01:16,740 --> 00:01:18,720
-student ID 10,000.
+un "student_id" con valor 10000.
 
 31
 00:01:18,720 --> 00:01:19,830
-So I'm going to do that.
+Voy a hacer eso.
 
 32
 00:01:19,830 --> 00:01:21,820
-It's going to take a while.
+Va a tomar un tiempo.
 
 33
 00:01:21,820 --> 00:01:24,260
-It has to spin up a disc even
-to do it because I haven't
+Incluso tiene que hacer un
+"spin-up" al disco porque no
 
 34
 00:01:24,260 --> 00:01:25,390
-done it in a while.
+lo he hecho en mucho tiempo.
 
 35
 00:01:25,390 --> 00:01:27,582
-It finds the object in
-question, finds the
+Encuentra el objeto en
+cuestión, encuentra el
 
 36
 00:01:27,582 --> 00:01:29,060
-document, all good.
+documento, todo bien.
 
 37
 00:01:29,060 --> 00:01:35,450
-And if we go here, into the log,
-you can see, right here
+Y si seguimos aquí, en el
+"log", puedes ver, justo aquí
 
 38
 00:01:35,450 --> 00:01:38,090
-it says that there was this
-really slow query.
+que dice que había un
+consulta realmente lenta.
 
 39
 00:01:38,090 --> 00:01:40,190
-It actually gives me the query,
-I looked for student ID
+En realidad, me da la consulta,
+busqué por un "student_id" igual a
 
 40
 00:01:40,190 --> 00:01:44,910
-10,000 and it was in school dot
-students and it took about
+10000 y fue en
+"school.students" y tomó cerca
 
 41
 00:01:44,910 --> 00:01:46,110
-four seconds.
+de cuatro segundos.
 
 42
 00:01:46,110 --> 00:01:50,000
-Very useful and certainly, you
-should be checking your logs
+Muy útil y sin duda, deberías
+verificar tus registros
 
 43
 00:01:50,000 --> 00:01:53,275
-to make sure you don't have a
-lot of slow queries and this
+para asegurarte que no tienes
+una gran cantidad de consultas
 
 44
 00:01:53,275 --> 00:01:55,180
-is something that's built in
-and you don't need to do
+lentas y esto es algo que está
+integrado y no necesitas hacer
 
 45
 00:01:55,180 --> 00:01:56,880
-anything to get this.
+algo para conseguir esto.
 
 46
 00:01:56,880 --> 00:01:58,130
-It's automatic.
+Es automático.
