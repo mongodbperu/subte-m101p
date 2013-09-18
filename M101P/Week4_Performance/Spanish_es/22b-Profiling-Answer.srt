@@ -3,27 +3,27 @@
 
 2
 00:00:00,190 --> 00:00:03,860
-All right, and the answer is, db
-dot system dot profile dot
+Muy bien, y la respuesta es
+"db.system.profile.
 
 3
 00:00:03,860 --> 00:00:09,030
-find and milliseconds greater
-than 1,000 sort by time stamp
+find({millis: {$gt: 1000}}).
+sort({ts: -1})"
 
 4
 00:00:09,030 --> 00:00:09,410
-to sending.
+--descedentemente.
 
 5
 00:00:09,410 --> 00:00:11,800
-It's a little cut off on the
-screen but you'll be able to
+Está un poco cortado en la
+pantalla pero podrás verlo
 
 6
 00:00:11,800 --> 00:00:13,200
-see it in the actual
-courseware.
+en el material
+real.
 
 7
 00:00:13,200 --> 00:00:14,450
