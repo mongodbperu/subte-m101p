@@ -1,12 +1,12 @@
 1
 00:00:00,000 --> 00:00:02,870
-Hablemos de uno de las
-relaciones de uno a muchos.
+Hablemos de las relaciones
+de uno a muchos.
 
 2
 00:00:02,870 --> 00:00:06,840
-Por lo que una relación de uno a muchos es
-donde hay dos entidades
+Una relación de uno a muchos es
+una donde hay dos entidades
 
 3
 00:00:06,840 --> 00:00:10,090
@@ -29,40 +29,39 @@ en aquella ciudad.
 
 7
 00:00:16,950 --> 00:00:22,530
-Así por ejemplo sería la ciudad
-de Nueva York, que tiene 8 millones
+Por ejemplo, la ciudad
+de Nueva York, que tiene
 
 8
 00:00:22,530 --> 00:00:24,020
-de personas.
+8 millones de personas.
 
 9
 00:00:24,020 --> 00:00:25,280
-¿Cómo tú
-modelas esto?
+¿Cómo modelas esto?
 
 10
 00:00:25,280 --> 00:00:27,900
-Bueno, podríamos abordar esto y
-pensar acerca de distintas maneras
+Bueno, podríamos abordarlo y
+pensar en distintas maneras
 
 11
 00:00:27,900 --> 00:00:29,120
-en que puedes hacerlo.
+en que podríamos hacerlo.
 
 12
 00:00:29,120 --> 00:00:31,920
-Por lo tanto, podrías decir,
-Voy a tener una colección
+Podría decir que voy
+a tener una colección
 
 13
 00:00:31,920 --> 00:00:33,030
-de ciudades.
+de ciudades
 
 14
 00:00:33,030 --> 00:00:35,970
-Y en esa colección de ciudades,
-voy a tener los
+y en esa colección de
+ciudades, voy a tener los
 
 15
 00:00:35,970 --> 00:00:37,530
@@ -88,42 +87,41 @@ Pero eso no funcionará.
 
 20
 00:00:47,790 --> 00:00:52,420
-Porque, por supuesto, hay
-demasiada gente.
+Porque, por supuesto,
+hay demasiada gente.
 
 21
 00:00:52,420 --> 00:00:54,680
-8 millones de personas y todos sus
-documentos y toda su
+Ocho millones de personas y
+todos sus documentos y toda su
 
 22
 00:00:54,680 --> 00:00:58,290
-información, no va
-a caber dentro de ésto.
+información no va a
+caber dentro de esto.
 
 23
 00:00:58,290 --> 00:01:01,780
-Así que, como resultado, no
-puedes hacer eso.
+Así que no puedes hacer eso.
 
 24
 00:01:01,780 --> 00:01:03,850
-Podrías decir, bueno, voy
+Podría decir, bueno, voy
 a ponerlo de cabeza.
 
 25
 00:01:03,850 --> 00:01:05,780
-Así que en lugar, podría decir, bueno,
+En lugar de lo anterior,
 voy a tener una colección
 
 26
 00:01:05,780 --> 00:01:07,770
-de personas.
+de personas
 
 27
 00:01:07,770 --> 00:01:11,230
-Y la colección de personas, en
-cada documento, voy a
+y en la colección de personas,
+en cada documento, voy a
 
 28
 00:01:11,230 --> 00:01:14,580
@@ -150,22 +148,22 @@ y todo lo demás.
 
 33
 00:01:26,230 --> 00:01:30,630
-Ahora, el problema con este diseño
-es que si hay
+El problema con este
+diseño es que si hay
 
 34
 00:01:30,630 --> 00:01:33,510
-obviamente muchos viviendo en Nueva
+muchos viviendo en Nueva
 York, lo que he hecho es
 
 35
 00:01:33,510 --> 00:01:39,490
-he duplicado estos datos en
-múltiples documentos, que está
+duplicar estos datos en
+múltiples documentos,
 
 36
 00:01:39,490 --> 00:01:42,620
-abriendo a
+haciéndome vulnerable a
 inconsistencias porque tengo
 
 37
@@ -175,7 +173,7 @@ actualizada a través de toda la gente
 
 38
 00:01:46,490 --> 00:01:47,170
-que vive en la ciudad.
+que vive en ella.
 
 39
 00:01:47,170 --> 00:01:49,800
@@ -184,13 +182,13 @@ podría ser aceptable.
 
 40
 00:01:49,800 --> 00:01:52,800
-Pero probablemente no
-lo recomendaría en general.
+Pero probablemente no lo
+recomendaría en general.
 
 41
 00:01:52,800 --> 00:01:55,740
-Así que teniendo en cuenta, ¿cuál es la
-mejor manera de hacerlo?
+Así que teniendo todo en cuenta,
+¿cuál es la mejor manera de hacerlo?
 
 42
 00:01:55,740 --> 00:01:59,170
@@ -199,45 +197,46 @@ realmente es uno a muchos,
 
 43
 00:01:59,170 --> 00:02:03,620
-una ciudad con mucha gente, la
-mejor manera de hacerlo es probablemente
+una ciudad con mucha gente, la mejor
+manera de hacerlo es probablemente
 
 44
 00:02:03,620 --> 00:02:06,530
-usar verdadera vinculación.
+usar una verdadera vinculación.
 
 45
 00:02:06,530 --> 00:02:08,229
-Así que usaremos verdadera vinculación.
+Así que usaremos una
+verdadera vinculación.
 
 46
 00:02:08,229 --> 00:02:10,919
-Así que para la verdadera vinculación,
+Para la verdadera vinculación,
 vamos a tener una colección
 
 47
 00:02:10,919 --> 00:02:11,950
-de personas.
+de personas
 
 48
 00:02:11,950 --> 00:02:14,030
-Y en esta colección de personas,
-vamos a tener algo
+y en esta colección de
+personas, vamos a tener algo
 
 49
 00:02:14,030 --> 00:02:18,510
 como el nombre de la persona,
-como "Andrew" y luego
+como "Andrew" y luego,
 
 50
 00:02:18,510 --> 00:02:23,770
-probablemente, mi ciudad, que vamos
-a suponer que los nombres de la ciudades son
+probablemente, mi ciudad, y vamos
+a suponer que los nombres de la
 
 51
 00:02:23,770 --> 00:02:27,870
-unicas, "Nueva York" es
-única y otros
+ciudades son únicos, "Nueva York"
+es único y otros
 
 52
 00:02:27,870 --> 00:02:29,390
@@ -245,7 +244,7 @@ atributos acerca de mi.
 
 53
 00:02:29,390 --> 00:02:32,770
-Y luego, en la colección de
+Luego, en la colección de
 ciudades, tendré un
 
 54
@@ -264,32 +263,32 @@ enlazaría desde el elemento
 
 57
 00:02:43,660 --> 00:02:44,560
-donde hubo muchos.
+donde hay muchos.
 
 58
 00:02:44,560 --> 00:02:48,380
 Así, tendría una colección
-de "los muchos", las personas.
+de "los muchos", las personas,
 
 59
 00:02:48,380 --> 00:02:51,430
-Y enlazaría a
-"el uno", en la ciudad.
+y los enlazaría con
+"el uno", la ciudad.
 
 60
 00:02:51,430 --> 00:02:53,625
-Y otra vez, sabiendo que no tenemos
-restricciones de clave foráneas,
+Otra vez, sabiendo que no tenemos
+restricciones de clave foránea,
 
 61
 00:02:53,625 --> 00:02:55,080
-sólo asegúrate de
-ser consistente al respecto y
+sólo asegúrate de ser
+consistente al respecto y
 
 62
 00:02:55,080 --> 00:02:57,690
-que no pones una ciudad en
-él no es también un
+no poner una ciudad
+que no sea también un
 
 63
 00:02:57,690 --> 00:03:00,810
@@ -298,23 +297,20 @@ a la que se refiere.
 
 64
 00:03:00,810 --> 00:03:03,240
-Por lo que es una buena solución
-para "uno uno a muchos".
+Ésta es una buena solución
+para "uno a muchos" y
 
 65
 00:03:03,240 --> 00:03:05,290
-Y esto requiere dos
-colecciones.
+requiere dos colecciones.
 
 66
 00:03:05,290 --> 00:03:08,110
-Para esto requiere dos
-colecciones.
+Esto requiere dos colecciones.
 
 67
 00:03:08,110 --> 00:03:11,610
-¿Pero qué si no es
-"uno a muchos"
+¿Pero qué si no es "uno a muchos"
 
 68
 00:03:11,610 --> 00:03:15,050
@@ -322,52 +318,51 @@ sino "uno a pocos"?
 
 69
 00:03:15,050 --> 00:03:18,450
-Que sigue siendo una relación de
+Sigue siendo una relación de
 uno a muchos, pero en realidad
 
 70
 00:03:18,450 --> 00:03:20,640
-es mucho más fácil de modelar
-en MongoDB.
+es mucho más fácil de
+modelar en MongoDB.
 
 71
 00:03:20,640 --> 00:03:24,600
-Así por ejemplo antes te di
+Por ejemplo, antes te di
 estos ejemplos de los posts
 
 72
 00:03:24,600 --> 00:03:25,740
-y los commentarios.
+y los comentarios
 
 73
 00:03:25,740 --> 00:03:30,170
-Y viste, que cuando hicimos
+y viste que cuando hicimos
 el esquema para el blog,
 
 74
 00:03:30,170 --> 00:03:33,920
 hay muchos comentarios
-que van a un post.
+que van con un post.
 
 75
 00:03:33,920 --> 00:03:36,000
-Pero no es
-mucho de ellos
+Pero no son muchos.
 
 76
 00:03:36,000 --> 00:03:38,960
 Así que es post, perdón,
-a comentarios.
+a comentario.
 
 77
 00:03:38,960 --> 00:03:42,090
-Es uno de ellos
-y tal vez 10 de ellos.
+Hay uno de éstos y
+tal vez 10 de éstos.
 
 78
 00:03:42,090 --> 00:03:46,110
-Y por lo que en este caso, es
-posible tener una colección
+En este caso, es posible
+tener una colección
 
 79
 00:03:46,110 --> 00:03:47,210
@@ -375,13 +370,13 @@ de "los unos".
 
 80
 00:03:47,210 --> 00:03:49,770
-Así que para tener una colección de posts,
-que es lo que hicimos.
+Tenías una colección de
+posts, que es lo que hicimos
 
 81
 00:03:49,770 --> 00:03:54,620
-Y entonces, dentro de cada post,
-tenías el nombre de los posts,
+y entonces, dentro de cada post,
+tenías el nombre de los posts
 
 82
 00:03:54,620 --> 00:03:58,100
@@ -390,27 +385,26 @@ un array de los comentarios.
 
 83
 00:03:58,100 --> 00:04:02,470
-Y después, el array que contiene
-todos los comentarios, pero hay
+Este array contiene todos
+los comentarios, pero hay
 
 84
 00:04:02,470 --> 00:04:04,620
-sólo unos pocos de éstos
-para cada post.
+sólo unos cuantos para cada post.
 
 85
 00:04:04,620 --> 00:04:06,940
-Y de nuevo, no tenemos el
-problema de duplicación de datos
+No tenemos el problema
+de duplicación de datos
 
 86
 00:04:06,940 --> 00:04:11,920
-porque cada comentario está sólo
-en un único post.
+porque cada comentario está
+sólo en un único post.
 
 87
 00:04:11,920 --> 00:04:15,490
-Así que en este modelo en particular,
+Así que este modelo en particular
 funciona muy bien para tener una
 
 88
@@ -424,22 +418,21 @@ colección de "los unos",
 
 90
 00:04:20,079 --> 00:04:21,149
-de los posts.
+o sea de los posts.
 
 91
 00:04:21,149 --> 00:04:23,640
-Y a continuación poner "los
-muchos" embebidos.
+Y embebemos "los muchos".
 
 92
 00:04:23,640 --> 00:04:27,110
-Así esas son las dos diferentes
-formas de manejar la relación de
+Ésas son las dos diferentes
+formas de manejar la relación
 
 93
 00:04:27,110 --> 00:04:29,980
-uno a muchos, dependiendo si
-se trata de "uno a pocos" o
+de uno a muchos, dependiendo de
+si se trata de "uno a pocos" o
 
 94
 00:04:29,980 --> 00:04:30,740
@@ -447,36 +440,36 @@ se trata de "uno a pocos" o
 
 95
 00:04:30,740 --> 00:04:33,860
-Si es verdaderamente "uno a muchos" de
-dos colecciones funciona mejor
+Si es verdaderamente "uno a muchos",
+tener dos colecciones con vinculación
 
 96
 00:04:33,860 --> 00:04:35,110
-con vinculación.
+funciona mejor.
 
 97
 00:04:35,110 --> 00:04:38,440
-Y si es sólo "uno a pocos",
-bueno, entonces probablemente podrías
+Y si es sólo "uno a pocos", bueno,
+entonces probablemente podrías
 
 98
 00:04:38,440 --> 00:04:41,050
-hacerlo con una sola
-colección, al igual que lo hicimos en el
+hacerlo con una sola colección,
+al igual que lo hicimos en el
 
 99
 00:04:41,050 --> 00:04:44,100
-ejemplo de blog, donde
-sólo embebes los
+ejemplo del blog, donde
+simplemente embebes los
 
 100
 00:04:44,100 --> 00:04:45,640
-elementos en él.
+elementos.
 
 101
 00:04:45,640 --> 00:04:47,890
-Muy bien, ahora es
-tiempo para un cuestionario.
+Muy bien, ahora es tiempo
+para un cuestionario.
 
 102
 00:04:47,890 --> 00:04:51,800
@@ -485,18 +478,17 @@ representar una relación
 
 103
 00:04:51,800 --> 00:04:54,320
-de uno a muchos en múltiples
-colecciones?
+de uno a muchos en múltiples colecciones?
 
 104
 00:04:54,320 --> 00:04:59,190
 Y las respuestas son: siempre,
-siempre que el número es grande,
+siempre que el número sea grande,
 
 105
 00:04:59,190 --> 00:05:03,630
-cada vez que "los muchos" son realmente
-pocos o nunca.
+cada vez que "los muchos" son
+realmente pocos, o nunca.
 
 106
 00:05:03,630 --> 00:05:04,880

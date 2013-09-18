@@ -3,37 +3,37 @@
 
 2
 00:00:00,320 --> 00:00:03,010
-Y la respuesta es que, vas
-a necesitar usar múltiples
+Y la respuesta es que vas
+a necesitar, o es recomendado,
 
 3
 00:00:03,010 --> 00:00:06,020
-colecciones para representar una
-relación de uno a muchos, o
+usar múltiples colecciones para
+representar una relación de uno
 
 4
 00:00:06,020 --> 00:00:08,450
-se lo recomiendo siempre que
-el número es grande.
+a muchos, siempre que
+el número sea grande.
 
 5
 00:00:08,450 --> 00:00:12,530
-Por ejemplo, en el ejemplo que
-dimos, personas en la ciudad,
+En el ejemplo que dimos,
+personas en una ciudad,
 
 6
 00:00:12,530 --> 00:00:15,720
-sería mejor si llevas
-a las personas a ser
+sería mejor si las personas son
 
 7
 00:00:15,720 --> 00:00:17,920
-el objeto de primera clase, le das
-su propia colección y tener
+un objeto de primera clase, les
+das su propia colección y haces
+
 8
 00:00:17,920 --> 00:00:19,340
-la ciudad en su propia colección
-también.
+que las ciudades estén en
+su propia colección también.
 
 9
 00:00:19,340 --> 00:00:20,590
