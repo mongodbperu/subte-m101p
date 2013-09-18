@@ -12,8 +12,8 @@ desear mantenerlos en colecciones
 
 4
 00:00:03,770 --> 00:00:05,600
-separadas para reducir el
-tamaño del conjunto de trabajo de tu
+separadas para reducir el tamaño
+del conjunto de trabajo de tu
 
 5
 00:00:05,600 --> 00:00:06,630
@@ -22,94 +22,94 @@ aplicación.
 6
 00:00:06,630 --> 00:00:09,120
 Porque sólo estás
-accediendo a parte de los
+accediendo a parte
 
 7
 00:00:09,120 --> 00:00:12,100
-datos, no deseas traer
-ambas partes del conjunto de datos
+de los datos y no deseas traer
+ambas partes del conjunto de
 
 8
 00:00:12,100 --> 00:00:13,220
-hacia la memoria.
+datos a la memoria.
 
 9
 00:00:13,220 --> 00:00:16,420
-O puedes preocuparte en que
-el documento combinado va
+O puedes preocuparte porque
+el documento combinado vaya
 
 10
 00:00:16,420 --> 00:00:18,710
-a ser más grande que
-16 megabytes.
+a ser más grande
+que 16 megabytes.
 
 11
 00:00:18,710 --> 00:00:20,830
-Ahora bien, esta tercera opción--
-para hacer cumplir las restricciones
+Esta tercera opción--para
+hacer cumplir las restricciones
 
 12
 00:00:20,830 --> 00:00:22,010
-de clave foránea.
+de clave foránea--
 
 13
 00:00:22,010 --> 00:00:24,300
-Ahora, eso es en realidad la razón
+eso es en realidad una razón
 por la cual combinarlos.
 
 14
 00:00:24,300 --> 00:00:27,450
-Ya que MongoDB no tiene
-restricciones de claves foráneas, así
+MongoDB no tiene restricciones
+de claves foráneas, pues
 
 15
 00:00:27,450 --> 00:00:29,150
-que mantener las cosas en
-documentos independientes.
+mantienes las cosas en
+documentos separados.
 
 16
 00:00:29,150 --> 00:00:33,500
-Ya sabes, mirando este caso
-antes, no había ninguna garantía
+Considerando este caso antes,
+no había ninguna garantía
 
 17
 00:00:33,500 --> 00:00:38,130
 que este ID aquí sea una clave
-foránea en este colección aquí.
+foránea en esta colección aquí.
 
 18
 00:00:38,130 --> 00:00:40,530
-Y lo que es posible hacer es
-que estas cosas sean
+Es posible hacer que
+estas cosas sean
 
 19
 00:00:40,530 --> 00:00:42,830
-inconsistentes si tu programa
-no tiene cuidado.
+inconsistentes si tu
+programa no tiene cuidado.
 
 20
 00:00:42,830 --> 00:00:46,830
-Y eso no es un problema si
-los tienes embebidos porque
+Eso no es un problema si los
+tienes embebidos porque
 
 21
 00:00:46,830 --> 00:00:49,220
-entonces esta relación
-dependerá que los IDs sean
+entonces esta relación que
+depende de que los IDs sean
 
 22
 00:00:49,220 --> 00:00:51,380
-correctos aquí, para unir estos
-dos documentos
+correctos aquí, para unir
+estos dos documentos,
 
 23
 00:00:51,380 --> 00:00:53,250
-juntos.
+no existiría.
 
 24
 00:00:53,250 --> 00:00:55,850
-Así que no es una respuesta
-porque, en efecto, las restricciones
+Así que no es una respuesta porque,
+en efecto, las restricciones
 
 25
 00:00:55,850 --> 00:00:57,710
@@ -122,8 +122,7 @@ problema, en realidad
 
 27
 00:00:59,420 --> 00:01:01,110
-ponerlos juntos, no
-mantenerlos separados.
+los pondrías juntos, no separados.
 
 28
 00:01:01,110 --> 00:01:02,360

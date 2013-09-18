@@ -3,31 +3,31 @@
 
 2
 00:00:00,170 --> 00:00:04,700
-Hablamos un poco al principo de
-la primera semana de la
+Hablamos un poco al principio
+de la primera semana de la
 
 3
 00:00:04,700 --> 00:00:08,570
-falta de soporte a transacciones
-con MongoDB.
+falta de soporte de
+transacciones en MongoDB.
 
 4
 00:00:08,570 --> 00:00:11,650
 Y del mundo relacional,
-muchos de ustedes saben que
+muchos de ustedes saben
 
 5
 00:00:11,650 --> 00:00:16,219
-las transacciones ofrecen atomicidad,
-consistencia, aislamiento y
+que las transacciones ofrecen
+atomicidad, consistencia, aislamiento
 
 6
 00:00:16,219 --> 00:00:17,450
-durabilidad.
+y durabilidad.
 
 7
 00:00:17,450 --> 00:00:20,820
-Pero, a pesar que no tenemos
+Pero, a pesar de que no tenemos
 transacciones en MongoDB,
 
 8
@@ -36,7 +36,7 @@ tenemos operaciones atómicas.
 
 9
 00:00:24,040 --> 00:00:25,530
-Entonces, ¿qué significa esto?
+¿Qué significa esto?
 
 10
 00:00:25,530 --> 00:00:29,990
@@ -46,7 +46,7 @@ que cuando trabajas en un solo
 11
 00:00:29,990 --> 00:00:33,880
 documento, este trabajo se
-completará antes que alguien
+completará antes de que alguien
 
 12
 00:00:33,880 --> 00:00:35,200
@@ -54,7 +54,7 @@ vea el documento.
 
 13
 00:00:35,200 --> 00:00:36,930
-Ellos verán bien todos
+Ellos verán o todos
 los cambios que
 
 14
@@ -63,7 +63,7 @@ hagas o ninguno de éstos.
 
 15
 00:00:38,490 --> 00:00:43,370
-Y usando operaciones atómicas,
+Usando operaciones atómicas,
 a menudo puedes lograr lo
 
 16
@@ -73,37 +73,37 @@ logrado usando
 
 17
 00:00:44,910 --> 00:00:47,090
-transacciones en una base de
-datos relacional.
+transacciones en una base
+de datos relacional.
 
 18
 00:00:47,090 --> 00:00:51,940
-Y la razón es, que en una
-base de datos relacional, necesitas
+La razón es que en una base
+de datos relacional necesitas
 
 19
 00:00:51,940 --> 00:00:56,680
-hacer cambios a través de múltiples
-tablas, usualmente
+hacer cambios a través de
+múltiples tablas, usualmente
 
 20
 00:00:56,680 --> 00:00:59,820
-tablas que necesitan ser relacionadas,
-y así deseas
+tablas que necesitan ser
+relacionadas y de esa manera
 
 21
 00:00:59,820 --> 00:01:00,820
-hacer todo a la vez.
+logras hacer todo a la vez.
 
 22
 00:01:00,820 --> 00:01:03,530
-Y para hacerlo, ya que hay
+Para hacerlo, ya que hay
 varias tablas, tendrás que
 
 23
 00:01:03,530 --> 00:01:07,060
-iniciar una transacción y hacer
-todas esas modificaciones y luego finalizar
+iniciar una transacción y hacer todas
+esas modificaciones y luego finalizar
 
 24
 00:01:07,060 --> 00:01:08,860
@@ -111,13 +111,12 @@ la transacción.
 
 25
 00:01:08,860 --> 00:01:12,490
-Pero con MongoDB, ya que
-embeberás datos, y
+Pero con MongoDB, ya
+que embeberás datos y
 
 26
 00:01:12,490 --> 00:01:15,160
-vas a vincular previamente
-en documentos--
+vas a vincular documentos previamente--
 
 27
 00:01:15,160 --> 00:01:16,950
@@ -130,18 +129,18 @@ jerarquía--
 
 29
 00:01:17,810 --> 00:01:20,180
-a menudo puedes lograr
-lo mismo.
+a menudo puedes
+lograr lo mismo.
 
 30
 00:01:20,180 --> 00:01:22,570
-Por ejemplo, en el blog,
-si deseas
+Por ejemplo, en
+el blog, si deseas
 
 31
 00:01:22,570 --> 00:01:25,600
-asegurarte de actualizar
-un post atómicamente, puedes hacer
+asegurarte de actualizar un
+post atómicamente, puedes hacer
 
 32
 00:01:25,600 --> 00:01:28,430
@@ -150,18 +149,18 @@ post de blog completo a la vez.
 
 33
 00:01:28,430 --> 00:01:30,890
-Considerando que, si se trataba de
-varias tablas relacionales,
+Considerando que, si se trataba
+de varias tablas relacionales,
 
 34
 00:01:30,890 --> 00:01:33,690
-probablemente tendrás que abrir una
-transacción para que puedas
+probablemente tendrías que abrir
+una transacción para que puedas
 
 35
 00:01:33,690 --> 00:01:37,040
-actualizar la colección de posts y
-la colección de comentarios.
+actualizar la colección de posts
+y la colección de comentarios.
 
 36
 00:01:37,040 --> 00:01:40,650
@@ -176,25 +175,24 @@ de transacciones?
 38
 00:01:42,340 --> 00:01:44,470
 Y la respuesta es que hay
-realmente tres distintos
+realmente tres enfoques
 
 39
 00:01:44,470 --> 00:01:44,910
-enfoques.
+distintos.
 
 40
 00:01:44,910 --> 00:01:46,860
-Y quiero ir por ello
-realmente rápido.
+Quiero ir por ello rápidamente.
 
 41
 00:01:46,860 --> 00:01:50,720
-Lo primero es que puedes
-reestructurar tu código para que
+La primera es que puedes
+reestructurar tu código
 
 42
 00:01:50,720 --> 00:01:53,340
-trabajes con un solo
+para que trabajes con un solo
 documento y tomar ventaja
 
 43
@@ -204,23 +202,23 @@ ofrecemos dentro del documento.
 
 44
 00:01:57,020 --> 00:02:00,690
-Y si lo haces, entonces
-por lo general ya está todo listo.
+Y si lo haces, entonces por
+lo general ya está todo listo
 
 45
 00:02:00,690 --> 00:02:03,720
-Y no te pierdes de las
+y no te pierdes de las
 transacciones en absoluto.
 
 46
 00:02:03,720 --> 00:02:07,590
-Lo segundo es que puedes hacer,
-si deseas,
+Lo segundo que puedes
+hacer, si deseas,
 
 47
 00:02:07,590 --> 00:02:10,930
-implementar en esencia una especie
-de bloqueo en el software.
+es implementar en esencia una
+especie de bloqueo en el software.
 
 48
 00:02:10,930 --> 00:02:14,240
@@ -229,8 +227,8 @@ una sección crítica.
 
 49
 00:02:14,240 --> 00:02:17,040
-Puedes construir en esencia una
-prueba y prueba, usando
+Puedes construir en esencia
+una prueba y prueba, usando
 
 50
 00:02:17,040 --> 00:02:18,310
@@ -238,14 +236,13 @@ prueba y prueba, usando
 
 51
 00:02:18,310 --> 00:02:20,680
-Puedes construir semáforos
-si lo deseas.
+Puedes construir
+semáforos si lo deseas.
 
 52
 00:02:20,680 --> 00:02:25,060
-Y en cierto modo, ésta es la forma
-en que el mundo en general funciona de todos modos.
-
+Y en cierto modo, ésta es la forma en que
+el mundo en general funciona de todos modos.
 
 53
 00:02:25,060 --> 00:02:27,860
@@ -263,27 +260,27 @@ mismo sistema relacional.
 
 56
 00:02:31,460 --> 00:02:34,250
-Y a menudo cada uno tiene sus
-propias bases de datos relacionales.
+A menudo cada uno tiene sus propias
+bases de datos relacionales.
 
 57
 00:02:34,250 --> 00:02:37,350
-Y tienen que ser capaces de
+Tienen que ser capaces de
 coordinar la operación,
 
 58
 00:02:37,350 --> 00:02:39,260
-a pesar que no puedes iniciar
+a pesar de que no puedes iniciar
 una transacción y finalizar
 
 59
 00:02:39,260 --> 00:02:42,610
 la transacción a través de estos
-sistemas de bases de datos, sólo en
+sistemas de bases de datos, sólo
 
 60
 00:02:42,610 --> 00:02:44,040
-un sistema de un banco.
+en el sistema de un banco.
 
 61
 00:02:44,040 --> 00:02:46,070
@@ -296,22 +293,21 @@ eludir el problema.
 
 63
 00:02:47,900 --> 00:02:51,680
-Y el último enfoque, que
-a menudo funciona en aplicaciones
+Y el último enfoque, que a menudo
+funciona en aplicaciones web
 
 64
 00:02:51,680 --> 00:02:54,810
-web modernas y otras
-aplicaciones que tienen una
+modernas y otras aplicaciones
+que tienen una enorme cantidad
 
 65
 00:02:54,810 --> 00:02:58,800
-enorme cantidad de datos, es
-sólo tolerar un poco
+de datos, es sólo tolerar
 
 66
 00:02:58,800 --> 00:03:01,020
-de inconsistencia.
+un poco de inconsistencia.
 
 67
 00:03:01,020 --> 00:03:05,790
@@ -329,8 +325,8 @@ actualizarse simultáneamente.
 
 70
 00:03:12,090 --> 00:03:14,270
-Está bien si una persona
-no lo ve
+Está bien si una
+persona no lo ve
 
 71
 00:03:14,270 --> 00:03:16,080
@@ -347,13 +343,13 @@ muchos diseños de sistemas que
 
 74
 00:03:23,040 --> 00:03:25,050
-todo será perfectamente
+todo sea perfectamente
 consistente y que todos
 
 75
 00:03:25,050 --> 00:03:27,120
-tienen una perfecta consistencia
-y lo
+tengan una perfecta
+consistencia y lo
 
 76
 00:03:27,120 --> 00:03:28,630
@@ -361,8 +357,8 @@ mismo para la base de datos.
 
 77
 00:03:28,630 --> 00:03:32,580
-Así que puedes simplemente tolerar un
-poco de inconsistencia
+Así que puedes simplemente tolerar
+un poco de inconsistencia
 
 78
 00:03:32,580 --> 00:03:33,890
@@ -370,16 +366,17 @@ que es algo temporal.
 
 79
 00:03:33,890 --> 00:03:34,950
-Así que éstos son los tres enfoques.
+Así que éstos son
+los tres enfoques.
 
 80
 00:03:34,950 --> 00:03:36,970
-Puedes reestructurar para asegurarte
-que todo suceda
+Puedes reestructurar para
+asegurarte de que todo suceda
 
 81
 00:03:36,970 --> 00:03:40,300
-en un solo documento para que
+en un solo documento y así
 obtengas las ventajas de
 
 82
@@ -388,8 +385,7 @@ operaciones atómicas.
 
 83
 00:03:41,790 --> 00:03:42,900
-Puedes implementar
-lo que estás
+Puedes implementar lo que estás
 
 84
 00:03:42,900 --> 00:03:43,950
@@ -398,12 +394,11 @@ buscando con el software.
 85
 00:03:43,950 --> 00:03:46,720
 O puedes tolerar un poco
-de consistencia que
+de la inconsistencia que
 
 86
 00:03:46,720 --> 00:03:48,810
-puedes obtener sin
-transacciones.
+puedes obtener sin transacciones.
 
 87
 00:03:48,810 --> 00:03:52,390
@@ -421,8 +416,7 @@ operaciones funcionan atómicamente
 
 90
 00:03:56,560 --> 00:03:59,180
-en un solo documento
-en MongoDB?
+en un solo documento en MongoDB?
 
 91
 00:03:59,180 --> 00:04:00,420
@@ -430,8 +424,8 @@ Marca todas las que apliquen.
 
 92
 00:04:00,420 --> 00:04:02,990
-Y las opciones son, el comando
-"update", el comando
+Y las opciones son, el
+comando "update", el comando
 
 93
 00:04:02,990 --> 00:04:06,870
@@ -440,8 +434,7 @@ Y las opciones son, el comando
 
 94
 00:04:06,870 --> 00:04:09,440
-"push", también en
-un "update".
+"push", también en un "update".
 
 95
 00:04:09,440 --> 00:04:11,990
@@ -450,8 +443,7 @@ añade algo a un array
 
 96
 00:04:11,990 --> 00:04:14,740
-si no está allí,
-"push" es al
+si no está allí, "push" es al
 
 97
 00:04:14,740 --> 00:04:15,990

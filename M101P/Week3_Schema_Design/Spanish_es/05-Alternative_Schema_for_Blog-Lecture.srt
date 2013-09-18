@@ -3,8 +3,8 @@
 
 2
 00:00:00,130 --> 00:00:02,340
-Digamos que deseamos probar
-un diseño distinto
+Digamos que deseamos
+probar un diseño distinto
 
 3
 00:00:02,340 --> 00:00:04,000
@@ -12,12 +12,12 @@ para nuestro esquema de blog.
 
 4
 00:00:04,000 --> 00:00:06,850
-Por ejemplo, en lugar de tener
-todo en la colección
+Por ejemplo, en lugar de
+tener todo en la colección
 
 5
 00:00:06,850 --> 00:00:10,580
-de post embebidos con un
+de posts embebidos con un
 array para las etiquetas y un
 
 6
@@ -40,26 +40,26 @@ añado una "s" aquí--
 
 10
 00:00:19,480 --> 00:00:22,180
-Si lo hacemos, ¿cómo
-se vería?
+Si lo hacemos,
+¿cómo se vería?
 
 11
 00:00:22,180 --> 00:00:24,600
-Bien, tenemos nuestra colección
-de posts otra vez.
+Bueno, aún tenemos nuestra
+colección de posts
 
 12
 00:00:24,600 --> 00:00:26,280
-Y un post sería--
+y un post sería--
 
 13
 00:00:26,280 --> 00:00:28,640
 el _id sería probablemente
-el ID del post.
+el ID del post--
 
 14
 00:00:28,640 --> 00:00:30,530
-Y habría el título del
+y habría el título del
 post y el cuerpo y el
 
 15
@@ -68,35 +68,35 @@ autor y la fecha.
 
 16
 00:00:32,560 --> 00:00:36,300
-Y luego para los comentarios, nos
+Luego, para los comentarios, nos
 gustaría tener múltiples documentos
 
 17
 00:00:36,300 --> 00:00:37,510
-en la colección de comentarios.
+en la colección de comentarios
 
 18
 00:00:37,510 --> 00:00:41,030
-Y probablemente estarían
-unidos en una manera similar a cómo
+y probablemente estarían unidos
+en una manera similar a como
 
 19
 00:00:41,030 --> 00:00:44,480
 lo haríamos en el mundo
-relacional, que es cómo lo
+relacional, que es como lo
 
 20
 00:00:44,480 --> 00:00:49,850
-tendríamos aquí, este ID de post
-sería el mismo que el ID
+tendríamos aquí, este ID de
+post sería el mismo que el
 
 21
 00:00:49,850 --> 00:00:51,370
-aquí.
+ID aquí.
 
 22
 00:00:51,370 --> 00:00:53,840
-Y entonces tendríamos el autor
+Entonces tendríamos el autor
 del comentario aquí y el
 
 23
@@ -110,39 +110,38 @@ para el orden, ya que, recuerda,
 
 25
 00:00:58,660 --> 00:01:01,590
-estos comentarios son ordenados
-en el post de blog.
+estos comentarios son
+ordenados en el post del blog
 
 26
 00:01:01,590 --> 00:01:04,330
-Y lo tenemos disponible
-cuando los embebemos,
+y lo teníamos disponible
+cuando los embebíamos,
 
 27
 00:01:04,330 --> 00:01:06,960
-porque hubo un array y
-los arrays son ordenados, ahora
+porque había un array y los
+arrays son ordenados, ahora
 
 28
 00:01:06,960 --> 00:01:09,390
-debemos tener el orden, porque
-si hubiera cinco
+debemos tener el orden,
+porque si hubiera cinco
 
 29
 00:01:09,390 --> 00:01:12,590
-comentarios, uno de ellos tendría
-un valor ordinal de 0,
+comentarios, uno de ellos
+tendría un valor ordinal
 
 30
 00:01:12,590 --> 00:01:15,270
-uno tendría un valor ordinal
-de 1, 2, 3, etcétera.
+de 0, uno tendría un valor
+ordinal de 1, 2, 3, etcétera.
 
 31
 00:01:15,270 --> 00:01:17,800
-Y luego, finalmente, para las
+Luego, finalmente, para las
 etiquetas, deberíamos tener
-
 
 32
 00:01:17,800 --> 00:01:18,940
@@ -150,12 +149,12 @@ múltiples entradas de etiquetas.
 
 33
 00:01:18,940 --> 00:01:22,670
-Así que para añadir tres etiquetas para
-clasificar este post y las tres etiquetas,
+Así que para añadir tres etiquetas
+para clasificar este post,
 
 34
 00:01:22,670 --> 00:01:24,880
-Deberíamos tener tres
+tendríamos que tener tres
 documentos distintos en esta
 
 35
@@ -164,8 +163,8 @@ colección de etiquetas.
 
 36
 00:01:26,480 --> 00:01:30,080
-Ahora, el problema es que
-no tenemos ningún tipo de relación
+Ahora, el problema es que no
+tenemos ningún tipo de relación
 
 37
 00:01:30,080 --> 00:01:32,240
@@ -173,17 +172,18 @@ en MongoDB.
 
 38
 00:01:32,240 --> 00:01:36,270
-Así que si deseas mostrar un
-post, vas a tener que
+Así que si deseas mostrar
+un post, vas a tener que
 
 39
 00:01:36,270 --> 00:01:38,650
-juntar manualmente esto en el código.
+juntar manualmente
+esto en el código.
 
 40
 00:01:38,650 --> 00:01:42,560
-Vas a tener que ir
-a través y leer el ID del post
+Vas a tener que encontrar
+y leer el ID del post
 
 41
 00:01:42,560 --> 00:01:45,750
@@ -192,8 +192,8 @@ colección de comentarios.
 
 42
 00:01:45,750 --> 00:01:47,550
-Y luego vas a tener
-que usarlo para leer la colección
+Luego vas a tener que usarlo
+para leer la colección
 
 43
 00:01:47,550 --> 00:01:48,610
@@ -206,15 +206,16 @@ Es muy tedioso en código.
 45
 00:01:50,420 --> 00:01:53,540
 Y no hay localidad de datos,
-ya que estos están en
+ya que éstos están en
 
 46
 00:01:53,540 --> 00:01:56,550
-archivos separados en disco.
+archivos separados en el disco.
 
 47
 00:01:56,550 --> 00:01:58,190
-Esto está en un archivo, probablemente.
+Esto está en un
+archivo, probablemente.
 
 48
 00:01:58,190 --> 00:01:59,870
@@ -254,27 +255,26 @@ leerlos en memoria.
 
 56
 00:02:12,560 --> 00:02:14,910
-Y lo mismo
-con estas etiquetas.
+Lo mismo con estas etiquetas.
 
 57
 00:02:14,910 --> 00:02:17,170
-Por lo tanto, no funciona muy
-bien.
+Por lo tanto, no
+funciona muy bien.
 
 58
 00:02:17,170 --> 00:02:21,480
-Y una buena regla de oro para
-el diseño de esquema de MongoDB,
+Una buena regla de oro para el
+diseño de esquema en MongoDB,
 
 59
 00:02:21,480 --> 00:02:25,130
-es que si te ves haciendo
-exactamente de la misma manera que
+es que si te ves haciendo algo
+exactamente de la misma manera
 
 60
 00:02:25,130 --> 00:02:29,000
-lo harías en un diseño
+en que lo harías para un diseño
 relacional, probablemente no estás
 
 61
@@ -283,8 +283,8 @@ tomando el mejor enfoque.
 
 62
 00:02:30,490 --> 00:02:34,750
-Así que siempre trata de embeber datos
-donde puedas, relaciona previamente
+Siempre trata de embeber datos
+donde puedas; relaciona previamente
 
 63
 00:02:34,750 --> 00:02:35,750
@@ -292,44 +292,45 @@ donde puedas.
 
 64
 00:02:35,750 --> 00:02:37,200
-Ahora, hay algunas limitaciones
-para lo que vamos
+Ahora, hay algunas
+limitaciones para
 
 65
 00:02:37,200 --> 00:02:38,320
-a llegar hacer.
+lo que vamos a llegar a hacer.
 
 66
 00:02:38,320 --> 00:02:41,640
 En particular, estos documentos
-pueden sólo ser de 16
+pueden sólo ser de 16 megabytes
 
 67
 00:02:41,640 --> 00:02:43,150
-megabytes de tamaño.
+de tamaño.
 
 68
 00:02:43,150 --> 00:02:47,210
-Por lo que en ciertas ocasiones
-no va a funcionar embeber los datos.
+Por lo que en ciertas ocasiones no
+va a funcionar embeber los datos.
 
 69
 00:02:47,210 --> 00:02:49,660
-Y tienes que mantenerlos
+Tienes que mantenerlos
 en colecciones separadas.
 
 70
 00:02:49,660 --> 00:02:52,840
-Pero hay algunas maneras de evitar
-esto, hablaré de esto en
+Pero hay algunas maneras de
+evitar esto. Hablaré de esto
 
 71
 00:02:52,840 --> 00:02:54,860
-algunos segmentos futuros.
+en algunos segmentos futuros.
 
 72
 00:02:54,860 --> 00:02:56,440
-Pero de todos modos, este diseño es
+Pero de todos modos,
+éste es un diseño 
 
 73
 00:02:56,440 --> 00:02:57,940
@@ -337,14 +338,13 @@ alternativo para el blog.
 
 74
 00:02:57,940 --> 00:03:00,690
-Y pienso que no
-funciona muy
+Y pienso que no funciona muy
 
 75
 00:03:00,690 --> 00:03:04,300
-bien, a pesar que pueda parecer
-lo más natural del
+bien, a pesar de que pueda
+parecer lo más natural en
 
 76
 00:03:04,300 --> 00:03:05,550
-mundo relacional.
+el mundo relacional.

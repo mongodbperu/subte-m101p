@@ -8,22 +8,22 @@ relaciones de uno a uno.
 
 3
 00:00:02,450 --> 00:00:07,110
-Las relaciones de uno a uno son relaciones
-donde cada elemento corresponde
+Las relaciones de uno a uno son
+relaciones donde cada elemento
 
 4
 00:00:07,110 --> 00:00:08,920
-exactamente a otro.
+corresponde exactamente a otro.
 
 5
 00:00:08,920 --> 00:00:12,280
-Así, por ejemplo, un empleado
+Por ejemplo, un empleado
 tiene un currículo.
 
 6
 00:00:12,280 --> 00:00:14,500
-Hay un empleados
-que tiene un currículo.
+Hay un empleado que
+tiene un currículo.
 
 7
 00:00:14,500 --> 00:00:16,460
@@ -39,27 +39,27 @@ Un plano tiene un edificio.
 
 10
 00:00:19,950 --> 00:00:21,810
-Un paciente tiene una historia médica,
-y la historia
+Un paciente tiene una
+historia médica, y la
 
 11
 00:00:21,810 --> 00:00:24,650
-médica corresponde
-al paciente.
+historia médica
+corresponde al paciente.
 
 12
 00:00:24,650 --> 00:00:28,270
-Veamos en el primer caso,
-el ejemplo de empleado-currículo.
+Veamos el primer caso, el
+ejemplo de empleado-currículo.
 
 13
 00:00:28,270 --> 00:00:31,080
-Podemos modelar ésto de varias
-distintas maneras
+Podemos modelar esto de
+varias distintas maneras
 
 14
 00:00:31,080 --> 00:00:32,380
-para hablar acerca de esto.
+para representar esto.
 
 15
 00:00:32,380 --> 00:00:33,060
@@ -72,8 +72,8 @@ relación empleado-currículo
 
 17
 00:00:36,570 --> 00:00:39,160
-teniendo una colección de empleados
-y una colección de
+teniendo una colección de
+empleados y una colección de
 
 18
 00:00:39,160 --> 00:00:42,460
@@ -82,8 +82,8 @@ apuntando al currículo,
 
 19
 00:00:42,460 --> 00:00:47,610
-donde tenemos
-un ID que corresponda a un
+donde tenemos un ID
+que corresponda a un
 
 20
 00:00:47,610 --> 00:00:49,380
@@ -97,12 +97,11 @@ a la otra colección, donde
 22
 00:00:54,740 --> 00:00:58,440
 tenemos una clave de empleado en
-la colección de currículos, y
+la colección de currículos que
 
 23
 00:00:58,440 --> 00:01:01,180
-puede apuntar hacia el propio
-empleado.
+apunta hacia el respectivo empleado.
 
 24
 00:01:01,180 --> 00:01:03,920
@@ -120,8 +119,7 @@ documento del empleado.
 
 27
 00:01:13,330 --> 00:01:15,620
-Ponerlo allí mismo
-o viceversa.
+Ponerlo allí mismo o viceversa.
 
 28
 00:01:15,620 --> 00:01:18,760
@@ -134,28 +132,28 @@ del currículo.
 
 30
 00:01:20,170 --> 00:01:23,690
-Por lo que, tenemos todas las distintas
-opciones, y como probablemente
+Por ende, tenemos distintas
+opciones y la manera en que
 
 31
 00:01:23,690 --> 00:01:27,250
 desearás hacerlo depende de cómo
-puedas acceder a los datos y de cómo
+quieras acceder a los datos y de cómo
 
 32
 00:01:27,250 --> 00:01:29,810
-accedes frecuentemente a cada
-parte de los datos.
+accedes frecuentemente a
+cada parte de los datos.
 
 33
 00:01:29,810 --> 00:01:32,830
-Así, algunas de las consideraciones
+Algunas de las consideraciones
 son las siguientes.
 
 34
 00:01:32,830 --> 00:01:35,890
-El primero es la frecuencia
-de acceso.
+El primero es la
+frecuencia de acceso.
 
 35
 00:01:35,890 --> 00:01:39,850
@@ -178,7 +176,7 @@ accedes a su currículo.
 
 39
 00:01:46,160 --> 00:01:48,340
-Y digamos que es una colección
+Digamos que es una colección
 muy grande y estás
 
 40
@@ -199,54 +197,54 @@ un currículo en memoria
 43
 00:01:56,340 --> 00:01:59,330
 cada vez que se extraiga el
-registro del empleado-- el
+registro del empleado--el
 
 44
 00:01:59,330 --> 00:02:00,730
-documento del empleado-- en memoria.
+documento del empleado--en memoria.
 
 45
 00:02:00,730 --> 00:02:03,750
-Por lo tanto, el acceso frecuente tiene
-mucho impacto en cómo
+Por lo tanto, el acceso frecuente
+tiene mucho impacto en cómo
 
 46
 00:02:03,750 --> 00:02:06,900
-los organizas en términos que si
-lo embebes o no.
+lo organizas en términos
+de si lo embebes o no.
 
 47
 00:02:06,900 --> 00:02:09,900
 La segunda consideración es
-que éstos están creciendo todo
+si el tamaño de los elementos
 
 48
 00:02:09,900 --> 00:02:12,980
-el tiempo o no,
-el tamaño de los elementos.
+está creciendo todo
+el tiempo o no.
 
 49
 00:02:12,980 --> 00:02:15,710
-Así que cada vez que añadas algo
-a un documento, hay
+Cada vez que añadas algo
+a un documento, tienes que
 
 50
 00:02:15,710 --> 00:02:18,370
-un punto más allá del cual el
-documento necesitará ser movido
+considerar que llega un punto donde
+el documento necesitará ser movido
 
 51
 00:02:18,370 --> 00:02:19,240
-de la colección.
+en la colección.
 
 52
 00:02:19,240 --> 00:02:22,230
-Y si sabías que ésto era cierto
-para algunos de los documentos pero
+Si sabes que esto es cierto
+para algunos de los documentos
 
 53
 00:02:22,230 --> 00:02:24,010
-no para otros--
+pero no para otros--
 
 54
 00:02:24,010 --> 00:02:25,730
@@ -264,27 +262,25 @@ del currículo--
 
 57
 00:02:28,470 --> 00:02:31,700
-puedes decidir no
-desear incurrir en 
+puedes preferir no incurrir en
 
 58
 00:02:31,700 --> 00:02:35,780
-gastos generales que al escribir el
+gastos generales escribiendo el
 registro del empleado, si sólo
 
 59
 00:02:35,780 --> 00:02:36,910
-vas a actualizar
-el currículo.
+vas a actualizar el currículo.
 
 60
 00:02:36,910 --> 00:02:39,290
-Así que podría ser otra de las razones
-por las que se decide mantenerlos
+Ésa podría ser otra de las razones
+por las que decidas mantenerlos
 
 61
 00:02:39,290 --> 00:02:42,030
-separados contra lo mismo.
+separados en lugar de juntos.
 
 62
 00:02:42,030 --> 00:02:44,230
@@ -293,27 +289,26 @@ currículo es muy grande--
 
 63
 00:02:44,230 --> 00:02:47,110
-Si en realidad es mayor que
-16 megabytes, que es el
+si es mayor que 16 megabytes,
+el cual es el tamaño
 
 64
 00:02:47,110 --> 00:02:48,610
-tamaño de un documento--
+máximo de un documento--
 
 65
 00:02:48,610 --> 00:02:49,930
-que podría ser capaz
-de embeberlo.
+no podrás embeberlo.
 
 66
 00:02:49,930 --> 00:02:52,070
-Quiero decir, que no
-sería mayor que 16
+Quiero decir, no es común
+que sea mayor que 16
 
 67
 00:02:52,070 --> 00:02:55,650
-megabytes, pero tal vez tiene alguna
-información multimedia o
+megabytes, pero tal vez tiene
+alguna información multimedia o
 
 68
 00:02:55,650 --> 00:02:57,610
@@ -322,17 +317,17 @@ histórica acerca de la persona
 
 69
 00:02:57,610 --> 00:03:00,850
-o historial de eventos,
-podría tener eso.
+o un historial de eventos.
+Podría tener eso.
 
 70
 00:03:00,850 --> 00:03:04,520
-Y la consideración final
-es la atomicidad de los datos.
+Y la consideración final es
+la atomicidad de los datos.
 
 71
 00:03:04,520 --> 00:03:06,800
-Bueno, ahora no hay
+Bueno, al momento no hay
 transacciones en MongoDB, pero
 
 72
@@ -342,32 +337,32 @@ en documentos individuales.
 
 73
 00:03:09,380 --> 00:03:12,830
-Por lo tanto, si sabías que
-no podrías soportar cualquier
+Por lo tanto, si sabes que
+no podrías soportar ninguna
 
 74
 00:03:12,830 --> 00:03:15,000
-inconsistencia y que
-deseas ser capaz de actualizar
+inconsistencia y deseas
+ser capaz de actualizar
 
 75
 00:03:15,000 --> 00:03:19,030
-el empleado completo más el
-currículo, todo al mismo tiempo,
+el empleado y el
+currículo al mismo tiempo,
 
 76
 00:03:19,030 --> 00:03:21,390
 puedes decidir ponerlos en el
-mismo documento y embebidos
+mismo documento y embeberlos
 
 77
 00:03:21,390 --> 00:03:24,040
-de una manera u otra
-para poder
+de una manera u
+otra para poder
 
 78
 00:03:24,040 --> 00:03:25,890
-actualizar todo en una sola vez.
+actualizar todo junto.
 
 79
 00:03:25,890 --> 00:03:26,455
@@ -384,8 +379,8 @@ desear mantener dos documentos
 
 82
 00:03:30,310 --> 00:03:33,740
-que se relacionan entre sí
-de uno a uno en
+que se relacionan entre
+sí de uno a uno, en
 
 83
 00:03:33,740 --> 00:03:34,730
@@ -398,26 +393,26 @@ Marca todas las que apliquen.
 85
 00:03:36,600 --> 00:03:38,370
 Porque deseas permitir
-actualizaciones atómicas entre
+actualizaciones atómicas
 
 86
 00:03:38,370 --> 00:03:39,590
-documentos a la vez.
+entre documentos a la vez.
 
 87
 00:03:39,590 --> 00:03:42,300
-Reducir el tamaño del conjunto de trabajo
-de tu aplicación.
+Reducir el tamaño del conjunto
+de trabajo de tu aplicación.
 
 88
 00:03:42,300 --> 00:03:44,750
-Hacer cumplir las restricciones
-de clave foráneas.
+Cumplir las restricciones
+de clave foránea.
 
 89
 00:03:44,750 --> 00:03:47,420
-Debido a que el tamaño combinado de los
-documentos sería más grande
+Debido a que el tamaño combinado
+de los documentos sería mayor
 
 90
 00:03:47,420 --> 00:03:49,660

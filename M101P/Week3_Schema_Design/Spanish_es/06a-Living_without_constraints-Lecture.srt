@@ -8,28 +8,28 @@ con MongoDB, porque yo vengo
 
 3
 00:00:04,310 --> 00:00:06,570
-del mundo relacional
-antes de empezar a trabajar en
+del mundo relacional antes
+de empezar a trabajar en
 
 4
 00:00:06,570 --> 00:00:10,030
 10gen y pensaba mucho acerca de
-las ventajas de MongoDB, es
+las ventajas de MongoDB, es que
 
 5
 00:00:10,030 --> 00:00:12,230
-que hay muchas cosas
-geniales acerca de relaciones.
+hay muchas cosas geniales
+acerca de relaciones.
 
 6
 00:00:12,230 --> 00:00:14,020
 Y una de estas geniales cosas
-acerca de relaciones es que es
+acerca de relaciones es que son
 
 7
 00:00:14,020 --> 00:00:16,129
-realmente bueno en mantener
-tus datos
+realmente buenas en
+mantener tus datos
 
 8
 00:00:16,129 --> 00:00:18,090
@@ -37,7 +37,7 @@ consistentes en la base de datos.
 
 9
 00:00:18,090 --> 00:00:20,750
-Y una de las maneras en que lo hace
+Una de las maneras en que lo hacen
 es con restricciones de claves
 
 10
@@ -46,13 +46,13 @@ foráneas.
 
 11
 00:00:21,920 --> 00:00:23,290
-Entonces, ¿qué es una restricción
+¿Qué es una restricción
 de clave foránea?
 
 12
 00:00:23,290 --> 00:00:27,800
-Bueno, una restricción de clave foránea
-es que digamos que éstos son
+Bueno, una restricción de clave
+foránea es que digamos que éstos son
 
 13
 00:00:27,800 --> 00:00:30,950
@@ -61,13 +61,13 @@ en realidad más como tablas, pero
 
 14
 00:00:30,950 --> 00:00:34,640
-caso que te mostramos, lo que
-garantiza que cuando
+caso que te mostramos, lo
+que garantiza que cuando
 
 15
 00:00:34,640 --> 00:00:38,010
 insertas un documento en la
-colección de comentarios, que este
+colección de comentarios, este
 
 16
 00:00:38,010 --> 00:00:43,610
@@ -76,47 +76,47 @@ en esta colección de posts.
 
 17
 00:00:43,610 --> 00:00:45,340
-Esa es una restricción
+Ésa es una restricción
 de clave foránea.
 
 18
 00:00:45,340 --> 00:00:49,470
-Y la respuesta en MongoDB
+La respuesta en MongoDB
 es que no se garantiza.
 
 19
 00:00:49,470 --> 00:00:52,450
-Esto realmente depende de ti
-como programador para asegurarte que
+Esto realmente depende de ti como
+programador, el asegurarte de que
 
 20
 00:00:52,450 --> 00:00:54,490
-tus datos son consistentes
-de esa manera.
+tus datos sean consistentes
+de esa manera y que cuando
 
 21
 00:00:54,490 --> 00:00:56,440
-Y que cuando vayas a guardar
-algo en una colección, si
+guardes algo en
+una colección, si
 
 22
 00:00:56,440 --> 00:01:00,900
-te refieres a que se trata de un índice
-en la colección de posts
+te refieres a un índice
+en la colección de posts,
 
 23
 00:01:00,900 --> 00:01:02,880
-que lo garantice.
+garantizarlo, debido a
 
 24
 00:01:02,880 --> 00:01:05,420
-Debido a que la base de datos
+que la base de datos
 no lo garantiza por ti.
 
 25
 00:01:05,420 --> 00:01:08,800
-Y tal vez en una futura versión de
-MongoDB, lo garanticemos,
+Tal vez en una futura versión
+de MongoDB, lo garanticemos,
 
 26
 00:01:08,800 --> 00:01:11,430
@@ -129,51 +129,51 @@ Lo mismo con esto.
 
 28
 00:01:13,920 --> 00:01:18,300
-Y así, ¿cómo se vive en un
-mundo sin estas restricciones
+¿Cómo se vive en un mundo
+sin estas restricciones
 
 29
 00:01:18,300 --> 00:01:21,410
 de claves foráneas, sin
-restricciones y mantener tus datos
+restricciones y manteniendo
 
 30
 00:01:21,410 --> 00:01:23,370
-intactos y consistentes?
+tus datos intactos
+y consistentes?
 
 31
 00:01:23,370 --> 00:01:26,820
-Y la respuesta es que embeber
+La respuesta es que embeber
 en realidad ayuda.
 
 32
 00:01:26,820 --> 00:01:29,500
-Y es por eso que este diseño
-alternativo que
+Por eso es que ese diseño
+alternativo que mostré
 
 33
 00:01:29,500 --> 00:01:31,640
-mostré no es particularmente
-bueno.
+no es particularmente bueno.
 
 34
 00:01:31,640 --> 00:01:33,560
 Así que vamos a ver el caso
-particular que acabamos de hablar,
+particular que acabamos de
 
 35
 00:01:33,560 --> 00:01:36,960
-y es que hemos tenido esta
-colección de comentarios y
+considerar y es que hemos tenido
+esta colección de comentarios y
 
 36
 00:01:36,960 --> 00:01:40,960
 esto tenía un ID del post y
-no podíamos garantizar en la
+no podíamos garantizarlo en
 
 37
 00:01:40,960 --> 00:01:42,520
-colección de posts.
+la colección de posts.
 
 38
 00:01:42,520 --> 00:01:45,270
@@ -196,18 +196,18 @@ apareció directamente en el
 
 42
 00:01:54,240 --> 00:01:58,800
-documento, no hay forma de
-insertar algo donde
+documento, no hay forma
+de insertar algo donde
 
 43
 00:01:58,800 --> 00:02:02,590
-el comentario del ID del post no está
-en la colección de posts.
+el comentario del ID del post no
+está en la colección de posts.
 
 44
 00:02:02,590 --> 00:02:05,730
-Esa información ya se
-une cuando
+Esa información
+ya se une cuando
 
 45
 00:02:05,730 --> 00:02:07,490
@@ -219,8 +219,8 @@ Lo mismo con las etiquetas.
 
 47
 00:02:09,690 --> 00:02:13,160
-No hay manera que podamos
-almacenar accidentalmente una etiqueta en
+No hay manera que podamos almacenar
+accidentalmente una etiqueta en
 
 48
 00:02:13,160 --> 00:02:16,180
@@ -229,16 +229,16 @@ del post no está en la colección de
 
 49
 00:02:16,180 --> 00:02:18,060
-posts porque ya he
-vinculado previamente los datos
+posts porque ya he vinculado
+previamente los datos
 
 50
 00:02:18,060 --> 00:02:19,060
-y está aquí.
+y están aquí.
 
 51
 00:02:19,060 --> 00:02:23,480
-Y es por eso que quería
+Es por eso que quería
 señalarte que deberías
 
 52
@@ -253,7 +253,7 @@ forma que tenga sentido para tu
 54
 00:02:27,210 --> 00:02:30,030
 aplicación por muchas
-distintas razones.
+razones distintas.
 
 55
 00:02:30,030 --> 00:02:33,200
@@ -266,12 +266,12 @@ datos intactos y consistentes.
 
 57
 00:02:35,030 --> 00:02:37,800
-Muy bien, es tiempo
-para un cuestionario rápido.
+Muy bien, es tiempo para
+un cuestionario rápido.
 
 58
 00:02:37,800 --> 00:02:41,130
-Y la pregunta es, ¿a qué
+La pregunta es, ¿a qué
 se refiere vivir sin
 
 59
@@ -280,22 +280,22 @@ restricciones?
 
 60
 00:02:44,040 --> 00:02:48,890
-Y las respuestas son, vivir
-todos los días como si fuera el último,
+Las respuestas son, vivir todos
+los días como si fuera el último,
 
 61
 00:02:48,890 --> 00:02:53,020
-diciendo lo que quieras cuando
-lo deseas, manteniendo tus datos
+decir lo que quieras cuando
+lo deseas, mantener tus datos
 
 62
 00:02:53,020 --> 00:02:57,530
-consistentes a pesar que MongoDB
-carece de restricciones de clave foráneas,
+consistentes a pesar de que MongoDB
+carece de restricciones de clave
 
 63
 00:02:57,530 --> 00:02:59,330
-o no usar cinturón.
+foráneas, o no usar cinturón.
 
 64
 00:02:59,330 --> 00:03:00,580
