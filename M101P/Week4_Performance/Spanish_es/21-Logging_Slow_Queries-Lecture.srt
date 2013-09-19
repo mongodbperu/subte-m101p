@@ -76,7 +76,7 @@ que puede ser muy útil.
 
 17
 00:00:41,360 --> 00:00:43,480
-Permíteme mostrate
+Permíteme mostrarte
 cómo funciona eso.
 
 18
@@ -109,7 +109,7 @@ conectar, por ser la primera
 
 24
 00:00:59,455 --> 00:01:01,990
-que me conecta,
+vez que me conecta,
 estoy haciendo eso.
 
 25
@@ -174,7 +174,7 @@ Y si seguimos aquí, en el
 
 38
 00:01:35,450 --> 00:01:38,090
-que dice que había un
+que dice que había una
 consulta realmente lenta.
 
 39
