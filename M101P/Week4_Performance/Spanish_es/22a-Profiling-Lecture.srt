@@ -8,13 +8,13 @@ Ahora hablemos sobre el "profiler"
 
 3
 00:00:01,960 --> 00:00:04,810
-El "profiler" is una
+El "profiler" es una
 facilidad más sofisticada.
 
 4
 00:00:04,810 --> 00:00:09,300
 Ésta escribe entradas,
-documento, a "system.profile"
+documentos, a "system.profile"
 
 5
 00:00:09,300 --> 00:00:12,690
@@ -236,7 +236,7 @@ que hice antes.
 51
 00:02:12,020 --> 00:02:14,510
 Esta es una colección con tope,
-lo que significa que hay un
+lo que significa que hay una
 
 52
 00:02:14,510 --> 00:02:17,260
@@ -260,7 +260,7 @@ Podemos consultar en ella.
 56
 00:02:22,710 --> 00:02:26,520
 Y podemos ver, por ejemplo este
-"millis" por sobre 4000.
+"millis" por encima de 4000.
 
 57
 00:02:26,520 --> 00:02:29,120
@@ -275,7 +275,7 @@ Así que aquí, voy a hacer un
 59
 00:02:34,270 --> 00:02:38,710
 buscando por algo con "test.foo"
-en el con el espacio de nombre,
+en él con el espacio de nombre,
 
 60
 00:02:38,710 --> 00:02:42,130
@@ -350,7 +350,7 @@ Muy conveniente.
 
 75
 00:03:18,970 --> 00:03:21,130
-Esa esa la forma en que
+Esa es la forma en que
 utilizaría la información
 
 76
@@ -452,8 +452,8 @@ por encima de cuatro milisegundos.
 
 97
 00:04:11,870 --> 00:04:17,480
-Y ahora me dice que estuvo
-usando, para que pueda tener
+Y ahora me dice lo que suele
+hacer, para que pueda tener
 
 98
 00:04:17,480 --> 00:04:18,130
@@ -552,7 +552,7 @@ Bueno, es hora de un cuestionario.
 118
 00:05:13,900 --> 00:05:16,520
 Escribe la consulta para buscar
-el la colección "system.profile"
+en la colección "system.profile"
 
 119
 00:05:16,520 --> 00:05:18,840
