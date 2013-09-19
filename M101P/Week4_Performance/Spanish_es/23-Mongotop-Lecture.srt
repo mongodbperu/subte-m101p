@@ -3,467 +3,470 @@
 
 2
 00:00:00,200 --> 00:00:01,840
-Let's review what we've
-learned so far.
+Repasemos lo que hemos
+aprendido hasta ahora.
 
 3
 00:00:01,840 --> 00:00:04,610
-We've learned that indexes are
-critical to performance inside
+Aprendimos que los índices son
+vitales para el rendimiento en
 
 4
 00:00:04,610 --> 00:00:06,670
-a database and inside MongoDB.
+una base de datos y en MongoDB.
 
 5
 00:00:06,670 --> 00:00:09,760
-We learned how to use the
-Explain command to look at
+Aprendimos cómo usar el
+comando "explain" para buscar lo
 
 6
 00:00:09,760 --> 00:00:12,850
-what the database is doing for
-any particular query in terms
+que la base de datos está haciendo
+para una consulta en particular en
 
 7
 00:00:12,850 --> 00:00:14,670
-of how it's using its indexes.
+términos de cómo está
+usando sus índices.
 
 8
 00:00:14,670 --> 00:00:17,200
-We've learned how to use the
-Hint command to instruct the
+Aprendimos cómo usar el comando
+"hint" para decirle a la
 
 9
 00:00:17,200 --> 00:00:19,880
-database to use a particular
-index for a query.
+base de datos que use un índice
+en particular para una consulta.
 
 10
 00:00:19,880 --> 00:00:22,070
-And we've learned how to turn
-on profiling and look at the
+Y hemos aprendido cómo activar el
+"profiling" y echado un vistazo a la
 
 11
 00:00:22,070 --> 00:00:24,720
-profiling information to
-figure out which of our
+información del "profiling" para
+averiguar cuáles de nuestras
 
 12
 00:00:24,720 --> 00:00:28,030
-queries are slow so that we can
-use the Explain command,
+consultas son lentas para que
+podamos usar el comando "explain",
 
 13
 00:00:28,030 --> 00:00:31,420
-possibly use the Hint command,
-possibly create new indexes.
+posiblemente usar el comando "hint",
+posiblemente crear nuevos índices.
 
 14
 00:00:31,420 --> 00:00:33,980
-But if I want to look at the
-high level inside a program
+Pero si deseas echar un vistazo
+en un alto nivel en un programa
 
 15
 00:00:33,980 --> 00:00:37,320
-and figure out what it's doing,
-how would I do that?
+y averiguar lo que está haciendo,
+¿cómo lo haría?
 
 16
 00:00:37,320 --> 00:00:38,800
-Now, we have some tools
-to do that.
+Bien, tenemos algunas
+herramientas para hacerlo. 
 
 17
 00:00:38,800 --> 00:00:41,170
-And I'm going to show
-those to you next.
+Y voy a mostrartelas
+acontinuación.
 
 18
 00:00:41,170 --> 00:00:44,560
-The first one I'd like to
-show you is Mongtop .
+El primero que me gustaría
+mostrarte es "mongotop".
 
 19
 00:00:44,560 --> 00:00:48,710
-Now, Mongtop is named after
-the Unix Top command.
+Ahora, "mongotop" es llamada
+así por el comando Unix "top".
 
 20
 00:00:48,710 --> 00:00:51,920
-It's going to give you a high
-level view of where Mongo is
+Esto te va a dar una visión, a un
+alto nivel, de dónde Mongo está
 
 21
 00:00:51,920 --> 00:00:53,210
-spending its time.
+gastando su tiempo.
 
 22
 00:00:53,210 --> 00:00:56,510
-And to show you how that could
-be interesting, let me bring
+Y para mostrarte cómo podría
+ser interesante, permíteme llevarte
 
 23
 00:00:56,510 --> 00:01:00,890
-you through two programs
-that I wrote.
+a través de dos programas
+que he escrito.
 
 24
 00:01:00,890 --> 00:01:04,430
-The first program I call
-stress_students.
+El primer programa lo llamo
+"stress_students".
 
 25
 00:01:04,430 --> 00:01:08,690
-Now stress_students, which is
-right here, is a small program
+Ahora, "stress_students", que está
+justo aquí, es un pequeño programa
 
 26
 00:01:08,690 --> 00:01:10,970
-that connects to the database
-and is going to look up a
+que se conecta a la base de datos
+y va a buscar por un
 
 27
 00:01:10,970 --> 00:01:13,600
-million student records in
-my students collection.
+millón de registros de estudiantes
+en mi colección "students".
 
 28
 00:01:13,600 --> 00:01:16,520
-My students collection has
-no index, and this
+Mi colección "students"
+no tiene índices y va a
 
 29
 00:01:16,520 --> 00:01:18,640
-is going to be slow.
+ser lenta.
 
 30
 00:01:18,640 --> 00:01:21,970
-So let's run that.
+Así que corremos eso.
 
 31
 00:01:21,970 --> 00:01:23,710
-Now here it is, chugging
-through these different
+Ahora aquí está, trastabillando
+a través de estos distintos
 
 32
 00:01:23,710 --> 00:01:24,280
-student records.
+registros de estudiantes.
 
 33
 00:01:24,280 --> 00:01:26,900
-It looks like it's talking
-almost a second per record.
+Parece que está tomando
+casi un segundo por registro.
 
 34
 00:01:26,900 --> 00:01:30,135
-And then in this window, I'm
-going to run Mongtop.
+Y luego en esta ventana,
+estoy ejecutando "mongotop".
 
 35
 00:01:30,135 --> 00:01:32,960
-And I'll run it every
-three seconds--
+Y voy a ejecutarlo
+por tres segundos--
 
 36
 00:01:32,960 --> 00:01:34,600
-mongotop 3.
+"mongotop 3".
 
 37
 00:01:34,600 --> 00:01:36,585
-Anyway, let's look at that
-output together.
+De cualquier modo, vamos a
+ver la salida juntos.
 
 38
 00:01:36,585 --> 00:01:38,440
-I'm going to stop it.
+Voy a detenerlo.
 
 39
 00:01:38,440 --> 00:01:42,340
-Now what it's saying is that--
-and I'm not sure exactly why
+Ahora lo que está diciendo es que--
+y no estoy seguro exactamente por qué
+
 
 40
 00:01:42,340 --> 00:01:44,210
-it's above three seconds
-when the sampling
+está por encima de los tres
+segundos cuando el intervalo
 
 41
 00:01:44,210 --> 00:01:45,510
-interval's three seconds--
+de muestreo es tres segundos--
 
 42
 00:01:45,510 --> 00:01:50,650
-but it's saying that all the
-time is spent in the students
+pero está diciendo todo el tiempo
+que es gastado en la colección
 
 43
 00:01:50,650 --> 00:01:51,190
-collection.
+"students".
 
 44
 00:01:51,190 --> 00:01:55,630
-You'll notice this a row for
-each collection that it's
+Notarás esto, una fila por
+cada colección que está
 
 45
 00:01:55,630 --> 00:01:56,530
-looking at.
+monitoreando.
 
 46
 00:01:56,530 --> 00:01:59,740
-And this is great because at a
-high level, if I've got lots
+Y esto es genial porque en un
+alto nivel, si tengo muchas
 
 47
 00:01:59,740 --> 00:02:01,800
-of collections, I want to
-know where the thing's
+colecciones, deseo
+saber dónde está
 
 48
 00:02:01,800 --> 00:02:02,800
-spending its time.
+gastando su tiempo.
 
 49
 00:02:02,800 --> 00:02:06,470
-And then it's telling me my read
-time and my write time.
+Entonces está diciéndome mi
+tiempo de lectura y de escritura.
 
 50
 00:02:06,470 --> 00:02:10,229
-And it's very clearly dominated
-by time spent
+Y está claramente dominado
+por el tiempo gastado en la
 
 51
 00:02:10,229 --> 00:02:13,180
-reading in the students
-collection.
+lectura de la colección
+"students".
 
 52
 00:02:13,180 --> 00:02:15,680
-So that tells me that that's
-were I should look, right?
+Por eso me dice que es lo que
+debería mirar, ¿correcto?
 
 53
 00:02:15,680 --> 00:02:19,540
-And I have profiling turned on,
-if I went to the profiler,
+Y tengo el "profiling" activado,
+si fuera hacia el "profiler",
 
 54
 00:02:19,540 --> 00:02:22,090
-I would find there's a lot of
-slow queries and that I could
+Encontraría que hay muchas
+consultas lentas y que podría
 
 55
 00:02:22,090 --> 00:02:24,910
-work on this right
-off the bat.
+trabajar en esto de
+buenas a primeras.
 
 56
 00:02:24,910 --> 00:02:28,250
-So let's look at a different
-program which should be
+Así que echemos un vistazo a un
+programa diferente que debería estar
 
 57
 00:02:28,250 --> 00:02:30,380
-running much more efficiently
-because it uses indexes and
+ejecutándose de manera más
+eficiente ya que usa índices y
 
 58
 00:02:30,380 --> 00:02:32,390
-see what results we get there.
+ve qué resultados obtenemos allí.
 
 59
 00:02:32,390 --> 00:02:33,480
-So I'm going to go back here.
+Voy a volver aquí.
 
 60
 00:02:33,480 --> 00:02:35,610
-I'm going to stop
-this program.
+Voy a detener
+este programa.
 
 61
 00:02:35,610 --> 00:02:41,110
-And now, I'm going to show you
-a very similar program called
+Y ahora, voy a mostrarte un
+programa muy similar llamado
 
 62
 00:02:41,110 --> 00:02:43,090
-stress_students2.py.
+"stress_students2.py".
 
 63
 00:02:43,090 --> 00:02:47,230
-Now, this connects to my school2
-database, and there's
+Ahora, este se conecta a mi
+base de datos "school2" y hay
 
 64
 00:02:47,230 --> 00:02:50,430
-another students collection
-in there which also has 10
+otra colección "students"
+allí que también tiene 10
 
 65
 00:02:50,430 --> 00:02:51,110
-million records.
+millones de registros.
 
 66
 00:02:51,110 --> 00:02:52,960
-But they're broken up slightly
-differently by class and
+Pero ellos están siendo consultados de
+una manera un poco diferente por "class_id"
 
 67
 00:02:52,960 --> 00:02:56,470
-student id, and so as a result,
-I have to loop.
+y "student_id", por lo
+que luego, hago un bucle.
 
 68
 00:02:56,470 --> 00:02:59,920
-But every one of these queries
-that looks up a student by its
+Pero cada una de estas consultas
+que buscan un estudiante por su
 
 69
 00:02:59,920 --> 00:03:02,150
-class id is going to hit an
-index because I have a
+"class_id" va a alcanzar a un
+índice porque tengo un índice
 
 70
 00:03:02,150 --> 00:03:05,540
-student_id, class_id index on
-that in that collection.
+para "student_id" y "class_id"
+en aquella colección.
 
 71
 00:03:05,540 --> 00:03:07,650
-And it's nicely selective,
-and their student
+Y es bastante selectivo,
+y sus "student_id"
 
 72
 00:03:07,650 --> 00:03:08,750
-id is right in there.
+están justo ahí.
 
 73
 00:03:08,750 --> 00:03:10,700
-So we should expect to get good
+Así que deberíamos esperar
+por obtener un buen
 
 74
 00:03:10,700 --> 00:03:12,690
-performance from this program.
+rendimiento de este programa.
 
 75
 00:03:12,690 --> 00:03:16,710
-And let's see what the results
-are when we run it.
+Y veamos cuáles son los
+resultados cuando lo ejecutamos.
 
 76
 00:03:16,710 --> 00:03:18,190
-Well, I mean the first thing
-you note is that it's just
+Bueno, quiero decir que lo
+primero que notas es que está
 
 77
 00:03:18,190 --> 00:03:20,860
-flying by, so you could just
-feel that it's running a lot
+volando, por que sólo podrías
+sentir que está ejecutando mucho
 
 78
 00:03:20,860 --> 00:03:22,420
-more quickly through
-the database.
+más rápido a través
+de la base de datos.
 
 79
 00:03:22,420 --> 00:03:26,220
-But now I'm going to just run
-Mongtop for three seconds and
+Pero ahora voy a ejecutar
+"mongotop" por tres segundos y
 
 80
 00:03:26,220 --> 00:03:27,850
-see what it says.
+ver lo que dice.
 
 81
 00:03:27,850 --> 00:03:32,420
-And it says that in the
-interval, 850 milliseconds of
+Y dice que en el intervalo,
+850 milisegundos de
 
 82
 00:03:32,420 --> 00:03:36,270
-the three seconds, the 3000
-milliseconds, are spent in the
+los tres segundos, los 3000
+milisegundos, están gastados en
 
 83
 00:03:36,270 --> 00:03:40,750
-school2.students collection,
-and it's all on read.
+la colección "school2.students",
+y todo esto está en lectura.
 
 84
 00:03:40,750 --> 00:03:42,540
-But that's only a small fraction
-of the sampling
+Pero eso es sólo una pequeña
+fracción del intervalo de
 
 85
 00:03:42,540 --> 00:03:44,320
-interval of three seconds.
+muestreo de tres segundos.
 
 86
 00:03:44,320 --> 00:03:47,100
-And what that would leave me to
-believe is that this thing
+Y lo que me da a
+pensar es que esto
 
 87
 00:03:47,100 --> 00:03:51,060
-is not even bound by its
-performance through Mongo.
+no está vinculado a su
+rendimiento a través de Mongo.
 
 88
 00:03:51,060 --> 00:03:54,480
-And if I look at the activity
-monitor on my Mac-- and this
+Y si veo en el monitor de
+actividad en mi Mac-- y esto
 
 89
 00:03:54,480 --> 00:03:57,300
-is probably a little small
-for you to see--
+es probablemente una pequeña
+característa para ver--
 
 90
 00:03:57,300 --> 00:03:59,920
-you can see that there's as much
-time spent in Python as
+puedes ver que hay mucho
+tiempo desgastado en Python
 
 91
 00:03:59,920 --> 00:04:00,950
-there is in Mongo.
+que lo que hay en Mongo.
 
 92
 00:04:00,950 --> 00:04:04,300
-Because of all the I/O and the
-loops in there, it's accessing
+Porque todo el I/O y los bucles
+de allí, están accediendo a
 
 93
 00:04:04,300 --> 00:04:05,760
-Mongo very quickly.
+Mongo muy rápidamente.
 
 94
 00:04:05,760 --> 00:04:08,280
-And this would tell me that
-this program is actually
+Y esto me diría que este
+programa, en realidad, está
 
 95
 00:04:08,280 --> 00:04:09,320
-performing pretty well.
+rindiendo bastante bien.
 
 96
 00:04:09,320 --> 00:04:14,240
-Now if I went and looked in the
-profiling logs, I wouldn't
+Ahora bien, si fui y miré en los
+registros de "profiling", no vería
 
 97
 00:04:14,240 --> 00:04:17,019
-see any slow queries because
-there really aren't any for
+ninguna consulta lenta porque
+realmente no hay ninguna para
 
 98
 00:04:17,019 --> 00:04:18,690
-this particular program.
+este programa en particular.
 
 99
 00:04:18,690 --> 00:04:19,940
-So that is Mongtop.
+Así que esto es "mongotop".
 
 100
 00:04:19,940 --> 00:04:21,149
