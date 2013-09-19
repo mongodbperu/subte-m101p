@@ -3,122 +3,122 @@
 
 2
 00:00:00,800 --> 00:00:02,400
-Welcome to week four.
+Bienvenido a la semana cuatro.
 
 3
 00:00:02,400 --> 00:00:04,640
-Congratulations on making
-it to this point.
+Felicitaciones por
+llegar hasta este punto.
 
 4
 00:00:04,640 --> 00:00:06,820
-This week we're going to
-talk about performance.
+Esta semana vamos a hablar
+acerca de rendimiento.
 
 5
 00:00:06,820 --> 00:00:08,800
-Now computer system performance
-is driven by lots
+Ahora bien, el rendimiento en sistemas
+computacionales está motivado
 
 6
 00:00:08,800 --> 00:00:11,170
-of factors, including the
-speed of the underlying
+por muchos factores, incluyendo
+la velocidad de operaciones
 
 7
 00:00:11,170 --> 00:00:14,870
-operations, like the disk
-and memory and the CPU.
+subyacentes, como el disco,
+la memoria y el procesador.
 
 8
 00:00:14,870 --> 00:00:17,000
-But the largest driver for
-performance is going to be
+Pero el motivo más grande para
+el rendimiento va a ser el
 
 9
 00:00:17,000 --> 00:00:18,870
-your algorithmic performance.
+rendimiento de tus algoritmos.
 
 10
 00:00:18,870 --> 00:00:21,300
-And for a database server,
-that's going to be how fast
+Y para un servidor de base
+de datos, va a ser cuán rápido
 
 11
 00:00:21,300 --> 00:00:23,250
-can we execute queries.
+podemos ejecutar consultas.
 
 12
 00:00:23,250 --> 00:00:26,720
-And that's driven by whether or
-not the database can use an
+Y eso es motivado por si la
+base de datos puede usar o no
 
 13
 00:00:26,720 --> 00:00:28,700
-index to look data up.
+un índice para buscar los datos.
 
 14
 00:00:28,700 --> 00:00:30,990
-So this week we're going to
-talk a lot about indexes.
+Por eso esta semana vamos a
+hablar mucho acerca de índices.
 
 15
 00:00:30,990 --> 00:00:33,350
-We're going to talk about what
-they are, we're going to talk
+Vamos a hablar
+de lo que son y
 
 16
 00:00:33,350 --> 00:00:36,280
-about how to create them, and
-we're going to talk about how
+acerca de cómo crearlos, y
+también hablaremos de cómo
 
 17
 00:00:36,280 --> 00:00:39,640
-you figure out which parts
-of your program are slow.
+averiguar qué partes
+de tu programa son lentas.
 
 18
 00:00:39,640 --> 00:00:42,250
-Finally, we're going to discuss
-sharding a little bit,
+Finalmente, vamos a discutir
+un poco de Sharding,
 
 19
 00:00:42,250 --> 00:00:45,340
-which is a technique for
-breaking up large collections
+que es la técnica para
+dividir grandes colecciones
 
 20
 00:00:45,340 --> 00:00:49,700
-across multiple servers to
-exploit greater parallelism.
+a través de varios servidores
+y aprovechar mayor paralelismo.
 
 21
 00:00:49,700 --> 00:00:52,850
-Now performance is normally
-the domain of database
+Ahora, el rendimiento está
+normalmente en el dominio de los
 
 22
 00:00:52,850 --> 00:00:55,600
-administrators, but good
-developers have an
+administradores de base de datos, pero
+los buenos desarrolladores tienen un
 
 23
 00:00:55,600 --> 00:00:57,370
-understanding of performance.
+entendimiento del rendimiento.
 
 24
 00:00:57,370 --> 00:00:59,770
-They write with performance in
-mind, and they can find their
+Ellos desarrollan con el rendimiento
+en la mente y pueden encontrar
 
 25
 00:00:59,770 --> 00:01:02,350
-own performance problems
-within their programs.
+sus propios problemas de
+rendimiento en sus programas.
 
 26
 00:01:02,350 --> 00:01:03,600
-So let's get started.
+Así que empecemos.
 
 27
 00:01:03,600 --> 00:01:04,690
