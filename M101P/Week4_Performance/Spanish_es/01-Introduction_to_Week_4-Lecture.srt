@@ -12,7 +12,7 @@ llegar hasta este punto.
 
 4
 00:00:04,640 --> 00:00:06,820
-Esta semana vamos hablar
+Esta semana vamos a hablar
 acerca de rendimiento.
 
 5
@@ -64,8 +64,8 @@ hablar mucho acerca de índices.
 
 15
 00:00:30,990 --> 00:00:33,350
-Vamos a hablar de lo
-que ellos son y
+Vamos a hablar
+de lo que son y
 
 16
 00:00:33,350 --> 00:00:36,280
