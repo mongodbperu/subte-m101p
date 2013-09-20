@@ -5,7 +5,7 @@ discutir contigo
 
 2
 00:00:01,570 --> 00:00:04,050
-son los índices geoespaciales.
+es índices geoespaciales.
 
 3
 00:00:04,050 --> 00:00:06,930
@@ -52,7 +52,7 @@ un restaurante aquí y una
 12
 00:00:27,140 --> 00:00:30,680
 peluquería aquí y una
-tienda aquí y una droguería
+tienda aquí y una ferretería
 
 13
 00:00:30,680 --> 00:00:31,750
@@ -354,7 +354,7 @@ es una peluquería en la posición
 76
 00:03:24,560 --> 00:03:27,670
 y luego, "ACE Hardware", una
-droguería, en la posición
+ferretería, en la posición
 
 77
 00:03:27,670 --> 00:03:31,980
