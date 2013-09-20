@@ -3,35 +3,35 @@
 
 2
 00:00:00,870 --> 00:00:03,020
-And the answer is that,
-this is going
+Y la respuesta
+es que esto no
 
 3
 00:00:03,020 --> 00:00:04,790
-to return no documents.
+va a retornar documentos.
 
 4
 00:00:04,790 --> 00:00:06,820
-And it's going to return no
-documents because the query
+Y no retornará documentos
+porque la consulta
 
 5
 00:00:06,820 --> 00:00:10,090
-uses the index and there are no
-documents with title null
+usa el índice y no hay documentos
+con "title" con valor nulo
 
 6
 00:00:10,090 --> 00:00:10,940
-in the index.
+en el índice.
 
 7
 00:00:10,940 --> 00:00:14,050
-And you can test that in the
-shell if you'd like to confirm
+Y puedes probar eso en el
+shell si quisieras confirmar
 
 8
 00:00:14,050 --> 00:00:15,300
-that is the case.
+que es el caso.
 
 9
 00:00:15,300 --> 00:00:16,220

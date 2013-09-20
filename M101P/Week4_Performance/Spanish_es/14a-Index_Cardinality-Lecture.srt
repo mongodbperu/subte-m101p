@@ -1,278 +1,278 @@
 1
 00:00:00,000 --> 00:00:03,540
-Let's talk for a moment about
-index cardinality, which is
+Hablemos durante un momento sobre
+la cardinalidad de los índices, que es
 
 2
 00:00:03,540 --> 00:00:06,990
-how many index points are there
-for each different type
+cuántos puntos hay
+por cada tipo diferente
 
 3
 00:00:06,990 --> 00:00:10,180
-of index that MongoDB
-supports.
+de índice que soporta
+MongoDB.
 
 4
 00:00:10,180 --> 00:00:13,940
-Now in a regular index, for
-every single key that you put
+Ahora en un índice normal, por
+cada clave individual que pones
 
 5
 00:00:13,940 --> 00:00:15,190
-in the index, there's
-certainly going
+en el índice,
+desde luego va
 
 6
 00:00:15,190 --> 00:00:17,300
-to be an index point.
+a haber un punto en el índice.
 
 7
 00:00:17,300 --> 00:00:20,650
-And in addition, if there is no
-key, then there's going to
+Y además, si no hay
+clave, entonces va a
 
 8
 00:00:20,650 --> 00:00:23,080
-be an index point under
-the null entry.
+haber un punto en el índice bajo
+la entrada "null".
 
 9
 00:00:23,080 --> 00:00:26,650
-So essentially, you get about
-one to one relative to the
+Por lo que esencialmente, obtienes alrededor de
+una asociación uno a uno con el
 
 10
 00:00:26,650 --> 00:00:29,210
-number of documents in the
-collection in terms of index
+número de documentos en la
+colección en términos de cardinalidad
 
 11
 00:00:29,210 --> 00:00:30,640
-cardinality.
+del índice.
 
 12
 00:00:30,640 --> 00:00:31,990
-And that makes the index
-a certain size.
+Y eso hace que el índice
+tenga un cierto tamaño.
 
 13
 00:00:31,990 --> 00:00:35,270
-And it's proportional to the
-collection size in terms of
+Y es proporcional al
+tamaño de la colección en términos de
 
 14
 00:00:35,270 --> 00:00:37,770
-its end pointers to documents.
+sus punteros finales a documentos.
 
 15
 00:00:37,770 --> 00:00:41,820
-In a sparse index, when a
-document is missing the key
+En un índice disperso, cuando un
+documento no tiene la clave
 
 16
 00:00:41,820 --> 00:00:45,920
-being indexed, it's not in the
-index because it's a null and
+que está siendo indexada, no está en el
+índice porque es "null" y
 
 17
 00:00:45,920 --> 00:00:49,280
-we don't keep nulls in the
-index for a sparse index.
+no mantenemos "nulls" en el
+índice para un índice disperso.
 
 18
 00:00:49,280 --> 00:00:52,790
-So here, we're going to have
-index points that could be
+Por lo que aquí, vamos a tener
+puntos en el índice que podrían ser
 
 19
 00:00:52,790 --> 00:00:56,610
-potentially less than or equal
-to the number of documents.
+potencialmente menor o igual que
+el número de documentos.
 
 20
 00:00:56,610 --> 00:00:59,750
-And finally, here in a multikey
-index, which is an
+Y por último, aquí en un índice
+multiclave, que es un
 
 21
 00:00:59,750 --> 00:01:02,520
-index on an array value--
+índice sobre un valor de tipo array --
 
 22
 00:01:02,520 --> 00:01:05,660
-and an index becomes a multikey
-index as soon as you
+y un índice se convierte en un índice
+multiclave tan pronto como
 
 23
 00:01:05,660 --> 00:01:11,720
-have at least one value inside
-any document that is an array.
+tenga al menos un valor dentro
+de cualquier documento que sea un array.
 
 24
 00:01:11,720 --> 00:01:13,970
-Then there may be
-multiple index
+Entonces podría haber
+múltiples puntos en el
 
 25
 00:01:13,970 --> 00:01:15,830
-points for each document.
+índice por cada documento.
 
 26
 00:01:15,830 --> 00:01:19,190
-For instance, if there's some
-sort of tags array in a
+Por ejemplo, si hay algún
+tipo de array "tags" en un
 
 27
 00:01:19,190 --> 00:01:26,480
-document, and it's got three
-or five or four tags, then
+documento, y tiene tres
+o cinco o cuatro etiquetas, entonces
 
 28
 00:01:26,480 --> 00:01:29,780
-there's going to be an index
-point for every single one of
+va a haber un punto en el
+índice por cada valor individual de
 
 29
 00:01:29,780 --> 00:01:31,040
-these keys.
+estas claves.
 
 30
 00:01:31,040 --> 00:01:34,770
-And so it could be greater than
-the number of documents.
+Y así podría ser mayor que
+el número de documentos.
 
 31
 00:01:34,770 --> 00:01:36,450
-And it could be significantly
-greater than
+Y podría ser significativamente
+mayor que
 
 32
 00:01:36,450 --> 00:01:38,100
-the number of documents.
+el número de documentos.
 
 33
 00:01:38,100 --> 00:01:41,430
-And this comes up because
-indexes need to be maintained.
+Y esto surge porque
+los índices necesitan mantenerse.
 
 34
 00:01:41,430 --> 00:01:43,330
-There's a cost of maintaining
-them.
+Hay un coste de mantenimiento para
+ellos.
 
 35
 00:01:43,330 --> 00:01:47,510
-And if anything causes the
-index to have to get
+Y si algo causa que el
+índice tenga que ser
 
 36
 00:01:47,510 --> 00:01:48,170
-rewritten--
+reescrito --
 
 37
 00:01:48,170 --> 00:01:50,210
-For example, let's say
-a document moves.
+por ejemplo, digamos que
+se mueve un documento.
 
 38
 00:01:50,210 --> 00:01:53,170
-When a document moves-- and it
-might move because you just
+Cuando un documento se mueve -- y
+podría moverse simplemente porque
 
 39
 00:01:53,170 --> 00:01:55,070
-added something to it that makes
-it too large to fit in
+le añadiste algo que lo hace
+muy grande para ajustarse al
 
 40
 00:01:55,070 --> 00:01:57,760
-the space that the database
-has for it on disk, so it
+espacio que la base de datos
+tiene para él en disco, por lo que
 
 41
 00:01:57,760 --> 00:01:59,230
-needs to move it to
-a new location.
+necesita moverlo a
+una nueva ubicación.
 
 42
 00:01:59,230 --> 00:02:02,910
-Every single index point that
-points to that document needs
+Cada punto individual en el índice que
+apunta a ese documento necesita
 
 43
 00:02:02,910 --> 00:02:04,860
-to be updated.
+ser actualizado.
 
 44
 00:02:04,860 --> 00:02:08,030
-Now, if the key is null for a
-particular index, well then
+Ahora, si la clave es "null" para un
+índice particular, entonces
 
 45
 00:02:08,030 --> 00:02:11,530
-there is no update that needs
-to happen to the index.
+no es necesario que ocurra
+ninguna actualización del índice.
 
 46
 00:02:11,530 --> 00:02:14,110
-If it's a regular index, well
-then yeah, one index point
+Si es un índice normal, bien, 
+entonces sí, un punto en el índice
 
 47
 00:02:14,110 --> 00:02:15,590
-needs to get updated for sure.
+necesita ser actualizado, seguro.
 
 48
 00:02:15,590 --> 00:02:20,130
-And if it's a multikey index,
-and there's 100 or 200 or 300
+Y si es un índice multiclave,
+y hay 100 o 200 o 300
 
 49
 00:02:20,130 --> 00:02:22,690
-items in an array, then
-they all need to get
+elementos en un array, entonces
+todos ellos necesitan ser
 
 50
 00:02:22,690 --> 00:02:25,440
-updated inside the index.
+actualizados en el índice.
 
 51
 00:02:25,440 --> 00:02:27,990
-All right, time for a quiz.
+Bien, hora de hacer un cuestionario.
 
 52
 00:02:27,990 --> 00:02:29,970
-Let's say you update a document
-with a key called
+Digamos que actualizas un documento
+con una clave llamada
 
 53
 00:02:29,970 --> 00:02:32,540
-tags and that update causes the
-document to need to get
+"tags" y esa actualización provoca que
+el documento se tenga que
 
 54
 00:02:32,540 --> 00:02:33,950
-moved on disk.
+mover en disco.
 
 55
 00:02:33,950 --> 00:02:36,830
-If the document has 100 tags in
-it, and if the tags array
+Si el documento tiene 100 etiquetas, 
+y si el array "tags"
 
 56
 00:02:36,830 --> 00:02:39,970
-is indexed with a multikey
-index, how many index points
+está indexado con un índice
+multiclave, ¿cuántos puntos necesitarían
 
 57
 00:02:39,970 --> 00:02:42,830
-need to be updated in the index
-to accommodate the move?
+ser actualizados en el índice
+para ajustarse a ese movimiento?
 
 58
 00:02:42,830 --> 00:02:44,080
-Put just the number below.
+Pon sólo el número más abajo.
 
 59
 00:02:44,080 --> 00:02:45,240

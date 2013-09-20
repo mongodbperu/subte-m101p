@@ -3,270 +3,270 @@
 
 2
 00:00:00,200 --> 00:00:02,680
-When designing your indexes,
-you want them to be as
+Cuando estás diseñando tus índices,
+quieres que sean tan
 
 3
 00:00:02,680 --> 00:00:04,740
-selective as possible.
+selectivos como sea posible.
 
 4
 00:00:04,740 --> 00:00:07,360
-And this is a concept that is
-really no different than the
+Y éste es un concepto que en realidad
+no es diferente al del
 
 5
 00:00:07,360 --> 00:00:08,640
-world of relational.
+mundo relacional.
 
 6
 00:00:08,640 --> 00:00:10,840
-But when you're choosing a
-compound index, if you don't
+Pero cuando estás eligiendo un
+índice compuesto, si no
 
 7
 00:00:10,840 --> 00:00:13,170
-choose something that's
-selective, then there isn't a
+seleccionas algo que sea
+selectivo, entonces no hay 
 
 8
 00:00:13,170 --> 00:00:15,980
-lot of value to specifying
-that field.
+muchos valores para especificar
+ese campo.
 
 9
 00:00:15,980 --> 00:00:17,690
-So here's an example.
+Aquí tenemos un ejemplo.
 
 10
 00:00:17,690 --> 00:00:20,100
-Let's say you were doing some
-logging and there were only
+Digamos que estabas haciendo algún
+registro de logs y que hubiera sólo
 
 11
 00:00:20,100 --> 00:00:23,872
-three different types
-of log operations.
+tres tipos diferentes
+de operaciones de registro.
 
 12
 00:00:23,872 --> 00:00:30,180
-There was a save, and there
-was an open, and a run--
+Había un "save", había
+un "open" y un "run" --
 
 13
 00:00:30,180 --> 00:00:33,750
-I'm just imagining logging
-operations you might see--
+sólo estoy imaginando operaciones 
+de registro que pudieras ver --
 
 14
 00:00:33,750 --> 00:00:35,740
-and a put, and a get.
+un "put" y un "get".
 
 15
 00:00:35,740 --> 00:00:37,820
-And we had hundreds of millions
-of these logging
+Y tenemos cientos de millones
+de estas operaciones
 
 16
 00:00:37,820 --> 00:00:38,760
-operations.
+de registro.
 
 17
 00:00:38,760 --> 00:00:43,610
-And each of them has a date and
-time, or say a timestamp.
+Y cada una de ellas tiene una fecha y
+hora, o digamos un "timestamp".
 
 18
 00:00:43,610 --> 00:00:48,950
-So would you rather have an
-index that was the timestamp
+Por lo que, ¿tendrías un
+índice que fuera "timestamp,
 
 19
 00:00:48,950 --> 00:00:54,570
-comma the opcode, where these
-are the opcodes, or would it
+opcode", donde éstos
+son los "opcodes", o tendría
 
 20
 00:00:54,570 --> 00:00:59,850
-make sense to do the opcode
-comma the timestamp?
+sentido hacer "opcode,
+timestamp"?
 
 21
 00:00:59,850 --> 00:01:02,660
-Now, the answer is that it would
-make a lot more sense to
+Ahora, la respuesta es que 
+tendría mucho más sentido
 
 22
 00:01:02,660 --> 00:01:04,160
-do the timestamp first.
+poner el "timestamp" primero.
 
 23
 00:01:04,160 --> 00:01:07,230
-And the reason is that if you
-typically know the range of
+Y la razón es que si
+normalmente conoces el rango de
 
 24
 00:01:07,230 --> 00:01:11,290
-time that you're looking for an
-operation, and you specify
+tiempo en el que estás buscando una
+operación y especificas
 
 25
 00:01:11,290 --> 00:01:13,180
-an opcode, well there's only
-five of these opcodes.
+un "opcode", bien, hay sólo
+cinco de estos "opcodes".
 
 26
 00:01:13,180 --> 00:01:15,890
-And so by specifying
-one you're only
+Y así, especificando
+uno estás eliminando
 
 27
 00:01:15,890 --> 00:01:17,960
-eliminating 4/5 of the data.
+sólo 4/5 de los datos.
 
 28
 00:01:17,960 --> 00:01:19,570
-There's a tremendous amount
-of data that you
+Hay una enorme cantidad
+de datos que
 
 29
 00:01:19,570 --> 00:01:21,470
-still need to go through.
+todavía se necesitan recorrer.
 
 30
 00:01:21,470 --> 00:01:23,750
-And if you just had an index
-on opcode for instance, it
+Y si sólo tuvieras un índice
+sobre "opcode", por ejemplo,
 
 31
 00:01:23,750 --> 00:01:26,300
-wouldn't be a lot different
-than doing a
+no sería muy diferente
+a hacer un
 
 32
 00:01:26,300 --> 00:01:28,190
-full collection scan.
+escaneo de la colección completa.
 
 33
 00:01:28,190 --> 00:01:31,290
-Whereas, if there was an index
-on timestamp comma opcode, and
+Mientras que, si hubiera un índice
+sobre "timestamp, opcode", y
 
 34
 00:01:31,290 --> 00:01:35,340
-you did know the times when
-you wanted to query the
+conocieras las horas 
+deseadas para consultar el
 
 35
 00:01:35,340 --> 00:01:39,190
-opcode, the time interval, then
-it would be pretty fast.
+"opcode", el intervalo de tiempo, entonces
+sería bastante rápido.
 
 36
 00:01:39,190 --> 00:01:41,330
-Because it would be a very
-small percentage
+Porque sería un porcentaje
+muy pequeño
 
 37
 00:01:41,330 --> 00:01:43,100
-of the total log.
+del registro total.
 
 38
 00:01:43,100 --> 00:01:48,360
-And after that, once you narrow
-it down by 99%, then
+Y tras eso, una vez que lo
+reduces en un 99%, entonces
 
 39
 00:01:48,360 --> 00:01:50,300
-searching for the opcode would
-be efficient and there
+buscar el "opcode" sería
+eficiente y no
 
 40
 00:01:50,300 --> 00:01:51,690
-wouldn't be that
-many operations
+habría
+muchas operaciones
 
 41
 00:01:51,690 --> 00:01:53,380
-in that time interval.
+en ese intervalo de tiempo.
 
 42
 00:01:53,380 --> 00:01:57,430
-This idea of trying to choose
-an index with selectivity is
+Esta idea de intentar elegir
+un índice con selectividad es
 
 43
 00:01:57,430 --> 00:01:59,650
-universally true in databases,
-it's true in relational
+universalmente cierta en las bases de datos,
+es cierta en bases de datos
 
 44
 00:01:59,650 --> 00:02:01,900
-databases, and it's
-true in MongoDB.
+relacionales, y es
+cierta en MongoDB.
 
 45
 00:02:01,900 --> 00:02:03,830
-So just keep that in mind when
-you're creating your indexes,
+Así que simplemente ten eso en mente cuando
+estés creando tus índices,
 
 46
 00:02:03,830 --> 00:02:07,030
-that you'd like to have them be
-very selective if you can.
+que te gustaría que fueran
+muy selectivos si puedes.
 
 47
 00:02:07,030 --> 00:02:09,720
-, Otherwise, there's just not a
-lot of value to having them.
+En caso contrario, no hay
+valores suficientes para tenerlos.
 
 48
 00:02:09,720 --> 00:02:13,400
-If you just want to search on
-just the opcode, well then
+Si sólo quieres buscar sobre
+"opcode", bueno, entonces
 
 49
 00:02:13,400 --> 00:02:15,460
-fine, but it's going to be
-almost all the data every
+bien, pero vas a tener
+casi todos los datos por cada
 
 50
 00:02:15,460 --> 00:02:17,190
-single time you look at it.
+"time" individual que estás examinando.
 
 51
 00:02:17,190 --> 00:02:19,220
-All right, so time for quiz.
+De acuerdo, hora de hacer un cuestionario.
 
 52
 00:02:19,220 --> 00:02:21,360
-Given the following attributes
-of automobiles--
+Dados los siguientes atributos
+de automóviles --
 
 53
 00:02:21,360 --> 00:02:24,850
-color, weight, manufacture, and
-odometer mileage, which
+"color", "weight", "manufacturer" y
+"odometer mileage", ¿qué
 
 54
 00:02:24,850 --> 00:02:27,950
-index is likely to be the most
-selective, provided you can
+índice es probablemente el más
+selectivo, sabiendo que puedes
 
 55
 00:02:27,950 --> 00:02:29,840
-provide all four attributes
-on a search?
+pasar los cuatro atributos
+en una búsqueda?
 
 56
 00:02:29,840 --> 00:02:32,200
-So which of these is going to
-be the most selective to
+Así que, ¿cuál de éstos va a
+ser el más selectivo para
 
 57
 00:02:32,200 --> 00:02:34,160
-narrowing down the number
-of automobiles?
+reducir el número
+de automóviles?
 
 58
 00:02:34,160 --> 00:02:35,410

@@ -3,922 +3,922 @@
 
 2
 00:00:00,200 --> 00:00:03,470
-Now we've gone over how to
-create index, and we have some
+Ahora ya hemos visto cómo
+crear un índice y entendemos
 
 3
 00:00:03,470 --> 00:00:06,910
-basic understanding of when
-an index will be used.
+básicamente cuándo
+se usuará un índice.
 
 4
 00:00:06,910 --> 00:00:10,160
-But there is a command inside
-the database, Explain, that
+Pero hay un comando en
+la base de datos, "explain", que
 
 5
 00:00:10,160 --> 00:00:12,690
-will tell you exactly what
-indexes were used for your
+te dirá exactamente qué
+índices se usaron para tus
 
 6
 00:00:12,690 --> 00:00:15,290
-queries and how they
-were used.
+consultas y cómo
+fueron usados.
 
 7
 00:00:15,290 --> 00:00:16,390
-And in this lesson,
-we're going to go
+Y en esta lección,
+vamos a ver
 
 8
 00:00:16,390 --> 00:00:18,550
-over the Explain command.
+el comando "explain".
 
 9
 00:00:18,550 --> 00:00:21,320
-I've created a collection called
-foo inside the test
+He creado una colección llamada
+"foo" dentro de la base de datos
 
 10
 00:00:21,320 --> 00:00:23,890
-database that has 10,000
-documents.
+"test" que tiene 10000
+documentos.
 
 11
 00:00:23,890 --> 00:00:25,220
-And the documents are
-pretty simple.
+Y los documentos son
+bastante simples.
 
 12
 00:00:25,220 --> 00:00:26,090
-They have a structure.
+Tienen una estructura.
 
 13
 00:00:26,090 --> 00:00:27,830
-They have an a, b, and c key.
+Tiene una clave "a", "b" y "c".
 
 14
 00:00:27,830 --> 00:00:30,410
-And you can see here a
-is 0, b is 0, c is 0.
+Y puedes ver aquí que "a"
+es 0, "b" es 0 y "c" es 0.
 
 15
 00:00:30,410 --> 00:00:34,520
-And then I just increment 1,
-1, 1, 2, 2, 2, et cetera.
+Y luego incremento 1,
+1, 1, 2, 2, 2, etcétera.
 
 16
 00:00:34,520 --> 00:00:37,900
-I put an index on this
-collection, and the index is a
+Creo un índice sobre esta
+colección, y el índice es un
 
 17
 00:00:37,900 --> 00:00:40,610
-compound index on a, b, and c.
+índice compuesto sobre "a", "b" y "c".
 
 18
 00:00:40,610 --> 00:00:42,330
-And let me scroll through
-and show you
+Y permíteme que me desplace
+para enseñarte
 
 19
 00:00:42,330 --> 00:00:44,580
-that ensureIndex command.
+ese comando "ensureIndex".
 
 20
 00:00:44,580 --> 00:00:47,250
-So this was the index that I
-put on the collection where
+Así que éste es el índice que
+creé en la colección donde
 
 21
 00:00:47,250 --> 00:00:50,440
-there's a, b, and
-c in the index.
+"a", "b" y "c"
+están en el índice.
 
 22
 00:00:50,440 --> 00:00:53,790
-And now I'm going to do a query
-where I would expect
+Y ahora voy a hacer una consulta
+donde esperaría
 
 23
 00:00:53,790 --> 00:00:57,920
-that the database could not use
-an index, so for instance,
+que la base de datos no pudiera usar
+un índice, como por ejemplo,
 
 24
 00:00:57,920 --> 00:01:01,650
-the query where b was
-10 or something.
+una consulta donde "b" fuera
+10 o algo así.
 
 25
 00:01:01,650 --> 00:01:03,630
-So let's just do that.
+Así que hagamos eso.
 
 26
 00:01:03,630 --> 00:01:04,930
-There's one.
+Hay uno.
 
 27
 00:01:04,930 --> 00:01:06,730
-We'll do on where c is 1.
+Lo haremos para "c" igual a 1.
 
 28
 00:01:06,730 --> 00:01:09,200
-That is a query where we would
-expect that the database could
+Ésa es una consulta donde
+esperaríamos que la base de datos no pudiera
 
 29
 00:01:09,200 --> 00:01:10,830
-not use the index.
+usar un índice.
 
 30
 00:01:10,830 --> 00:01:12,090
-And we get the result.
+Y obtenemos el resultado.
 
 31
 00:01:12,090 --> 00:01:15,680
-There's one document that
-matches that criteria.
+Hay un documento que
+cumple ese criterio.
 
 32
 00:01:15,680 --> 00:01:18,040
-Now we're going to call the same
-exact query, but we're
+Ahora vamos a llamar exactamente a la
+misma consulta, pero vamos a
 
 33
 00:01:18,040 --> 00:01:19,720
-going to append an Explain on
-the end, and we're going to
+concatenar un "explain" al
+final, y vamos a 
 
 34
 00:01:19,720 --> 00:01:21,380
-look at the result.
+echar un vistazo al resultado.
 
 35
 00:01:21,380 --> 00:01:23,520
-So I added Explain to the end.
+Así que añadí "explain" al final.
 
 36
 00:01:23,520 --> 00:01:26,120
-And now, instead of getting back
-to document itself, we
+Y ahora, en lugar de devolver
+el documento en sí, 
 
 37
 00:01:26,120 --> 00:01:29,610
-get back an explanation of
-what the database did to
+obtenemos una explicación sobre
+qué hizo la base de datos
 
 38
 00:01:29,610 --> 00:01:30,770
-perform the query.
+para realizar la consulta.
 
 39
 00:01:30,770 --> 00:01:34,880
-Now the first thing to note here
-is that it says cursor
+La primera cosa a notar aquí
+es que dice "cursor: "
 
 40
 00:01:34,880 --> 00:01:36,390
-BasicCursor.
+"BasicCursor".
 
 41
 00:01:36,390 --> 00:01:39,950
-Now BasicCursor means that there
-was no index used to
+"BasicCursor" significa que no
+se usó un índice para
 
 42
 00:01:39,950 --> 00:01:41,350
-execute this query.
+ejecutar esta consulta.
 
 43
 00:01:41,350 --> 00:01:44,890
-That doesn't surprise us,
-because we know that we gave
+Eso no nos sorprende,
+porque sabemos que pasamos
 
 44
 00:01:44,890 --> 00:01:47,790
-just c, and we know that the
-index is a, b, and c.
+sólo "c", y sabemos que el
+índice está sobre "a", "b" y "c".
 
 45
 00:01:47,790 --> 00:01:49,965
-So we know that the index
-couldn't be used, so it
+Por lo que sabemos que el índice
+no podía usarse, así que
 
 46
 00:01:49,965 --> 00:01:52,240
-doesn't surprise us to
-find out that it
+no nos sorprende
+averiguar que
 
 47
 00:01:52,240 --> 00:01:53,520
-couldn't use the index.
+no puede usar el índice.
 
 48
 00:01:53,520 --> 00:01:56,360
-Now I'm going to go over a lot
-of these fields soon, but I
+Ahora voy a analizar un montón
+de estos campos, pero
 
 49
 00:01:56,360 --> 00:01:59,380
-just want to bring your
-attention right now to this
+sólo quiero que prestes
+atención justo ahora a este
 
 50
 00:01:59,380 --> 00:02:02,690
-millis field, which is the
-number of milliseconds that
+campo "millis", que es el
+número de milisegundos que
 
 51
 00:02:02,690 --> 00:02:05,130
-was required to execute
-the query.
+se requirieron para ejecutar
+la consulta.
 
 52
 00:02:05,130 --> 00:02:07,700
-And as you know, there are
-1,000 milliseconds in a
+Y como sabes, hay
+1000 milisegundos en un
 
 53
 00:02:07,700 --> 00:02:12,200
-second, so this was 3/1,000
-of a second to
+segundo, por lo tardó 3/1000
+de un segundo 
 
 54
 00:02:12,200 --> 00:02:13,603
-execute this query.
+en ejecutar esta consulta.
 
 55
 00:02:13,603 --> 00:02:14,470
-All right?
+¿De acuerdo?
 
 56
 00:02:14,470 --> 00:02:16,030
-That's pretty slow
-for a database.
+Eso es bastante lento
+para una base de datos.
 
 57
 00:02:16,030 --> 00:02:18,300
-If you want to do thousands and
-thousands of operations a
+Si quieres hacer miles y
+miles de operaciones por
 
 58
 00:02:18,300 --> 00:02:20,300
-second, that's going
-to be pretty slow.
+segundo, eso va
+a ser bastante lento.
 
 59
 00:02:20,300 --> 00:02:21,880
-Now let's do another query.
+Ahora hagamos otra consulta.
 
 60
 00:02:21,880 --> 00:02:26,910
-But this time let's have it be a
-being 1, or let's say a 500.
+Pero esta vez hagamos que "a"
+sea 1, o digamos que "a" es 500.
 
 61
 00:02:26,910 --> 00:02:28,730
-I won't go back and get the
-document because we know
+No volveré a recuperar el
+documento porque ya sabemos
 
 62
 00:02:28,730 --> 00:02:30,320
-there's one in there.
+que hay uno ahí.
 
 63
 00:02:30,320 --> 00:02:32,840
-I'll just look at the
-Explain output.
+Simplemente echaré un vistazo a
+la salida de "explain".
 
 64
 00:02:32,840 --> 00:02:36,020
-Explain output is much
-longer this time.
+La salida de "explain" es mucho
+más extensa esta vez.
 
 65
 00:02:36,020 --> 00:02:38,380
-The first thing to note is
-that it no longer says
+La primera cosa a notar es
+que no dice que
 
 66
 00:02:38,380 --> 00:02:39,650
-BasicCursor up here.
+sea un "BasicCursor" aquí arriba.
 
 67
 00:02:39,650 --> 00:02:44,130
-It says that there is a
-BtreeCurson, a 1, b 1, c 1
+Dice que hay un
+"BtreeCursor", "a_1_b_1_c_1",
 
 68
 00:02:44,130 --> 00:02:46,460
-used to perform this query.
+usado para realizar esta consulta.
 
 69
 00:02:46,460 --> 00:02:49,340
-Now that is the name of the
-index, the compound
+Ahora ése es el nombre del
+índice, el índice
 
 70
 00:02:49,340 --> 00:02:52,690
-index, on a, b, c.
+compuesto, sobre "a", "b" y "c".
 
 71
 00:02:52,690 --> 00:02:55,890
-So the first thing you note here
-is that the database is
+Así que lo primero que notas aquí
+es que la base de datos está
 
 72
 00:02:55,890 --> 00:02:57,670
-using the index, which
-is excellent.
+usando el índice, lo cual
+es excelente.
 
 73
 00:02:57,670 --> 00:02:59,460
-That's exactly what we wanted.
+Eso es exactamente lo que queríamos.
 
 74
 00:02:59,460 --> 00:03:02,230
-Second thing to note is that
-is isMultiKey is false.
+Lo segundo a fijarse es que
+"isMultiKey" es "false".
 
 75
 00:03:02,230 --> 00:03:04,820
-This is whether or not the index
-is a multikey index.
+Esto indica si el índice es un
+índice multiclave o no.
 
 76
 00:03:04,820 --> 00:03:08,220
-None of the values inside a, b,
-and c are arrays, so it is
+Ninguno de los valores en "a", "b"
+y "c" son arrays, por lo que no es
 
 77
 00:03:08,220 --> 00:03:10,040
-not a multikey index.
+un índice multiclave.
 
 78
 00:03:10,040 --> 00:03:13,730
-n 1 is the number of documents
-that is returned.
+"n: 1" es el número de documentos
+que se devuelven.
 
 79
 00:03:13,730 --> 00:03:16,040
-This is a simple theory
-where a was 500.
+Ésta es una consulta simple
+donde "a" era 500.
 
 80
 00:03:16,040 --> 00:03:18,660
-There are 10,000 documents in
-this collection, and there's
+Hay 10000 documentos en
+esta colección, y hay
 
 81
 00:03:18,660 --> 00:03:20,550
-only one of them where
-a is 500, so it
+sólo uno de ellos donde
+"a" es 500, por lo que
 
 82
 00:03:20,550 --> 00:03:23,260
-returned the one document.
+devolvió ese documento.
 
 83
 00:03:23,260 --> 00:03:26,530
-nscannedObjects is the number of
-documents that were scanned
+"nscannedObjects" es el número de
+documentos que fueron escaneados
 
 84
 00:03:26,530 --> 00:03:29,960
-to answer the query,
-which was the one.
+para responder a la consulta,
+que fue uno.
 
 85
 00:03:29,960 --> 00:03:32,290
-The index drilled down,
-found the one
+El índice examinó a fondo,
+encontró el
 
 86
 00:03:32,290 --> 00:03:34,280
-document, and it was returned.
+documento y lo devolvió.
 
 87
 00:03:34,280 --> 00:03:38,650
-nscanned is the number of index
-entries or documents, I
+"nscanned" es el número de entradas
+del índice o documentos,
 
 88
 00:03:38,650 --> 00:03:41,810
-believe, that were looked
-at, which, again, is 1.
+creo, que fueron examinados,
+el cual, de nuevo, es 1.
 
 89
 00:03:41,810 --> 00:03:44,840
-And then I won't go over some
-of these, but I want to just
+Y no analizaremos algunos
+de éstos, sólo quiero 
 
 90
 00:03:44,840 --> 00:03:46,160
-point out a few of them.
+destacar unos cuantos de ellos.
 
 91
 00:03:46,160 --> 00:03:49,230
-And one is that there's
-this indexBounds
+Y uno es este
+elemento
 
 92
 00:03:49,230 --> 00:03:50,950
-element right here.
+"indexBounds" justo aquí.
 
 93
 00:03:50,950 --> 00:03:53,640
-That's one element I want to
-point out, which shows the
+Es un elemento que quiero
+destacar, el cual muestra
 
 94
 00:03:53,640 --> 00:03:56,060
-bounds that were used to
-look up the index.
+los límites que se usaron para
+buscar en el índice.
 
 95
 00:03:56,060 --> 00:03:59,910
-And it's not surprising that
-we looked up 500, 500, the
+Y no es sorprendente que
+buscáramos 500, 500, el
 
 96
 00:03:59,910 --> 00:04:03,340
-lower and upper bound of 500 for
-a to perform that index,
+límite inferior y superior de 500 para
+"a" para realizar esa consulta,
 
 97
 00:04:03,340 --> 00:04:05,890
-and then the rest of them are
-set to min and max element.
+y entonces el resto de ellos se
+establecen a los elementos "min" y "max".
 
 98
 00:04:05,890 --> 00:04:07,520
-Not too surprising.
+No demasiado sorprendente.
 
 99
 00:04:07,520 --> 00:04:10,080
-This last field that I want to
-show you right now is this
+Este último campo que quiero
+enseñarte justo ahora es este
 
 100
 00:04:10,080 --> 00:04:11,620
-indexOnly field.
+campo "indexOnly".
 
 101
 00:04:11,620 --> 00:04:15,950
-And this indexOnly field tells
-us whether or not the database
+Y este campo "indexOnly" nos 
+dice si la consulta
 
 102
 00:04:15,950 --> 00:04:18,910
-query could be satisfied
-with just the index.
+se puede satisfacer o no
+sólo con el índice.
 
 103
 00:04:18,910 --> 00:04:20,769
-This is a concept we haven't
-talked about yet.
+Éste es un concepto del que aún
+no me hemos hablado.
 
 104
 00:04:20,769 --> 00:04:22,340
-It's called a covered index.
+Se llama índice cubierto.
 
 105
 00:04:22,340 --> 00:04:27,090
-If everything you're asking for
-can be satisfied with just
+Si todo lo que estás pidiendo se
+puede satisfacer con sólo
 
 106
 00:04:27,090 --> 00:04:30,920
-the index, then the indexOnly
-field will be true, and then
+el índice, entonces el campo
+"indexOnly" será "true", y
 
 107
 00:04:30,920 --> 00:04:33,420
-the document itself didn't
-have to be retrieved.
+y el documento en sí no 
+tendría que ser recuperado.
 
 108
 00:04:33,420 --> 00:04:37,310
-Let's see if we can modify this
-query to make that true.
+Veamos si podemos modificar esta
+consulta para hacer que sea "true".
 
 109
 00:04:37,310 --> 00:04:40,160
-So I'm going to go back
-to this query where
+Voy a volver
+a esta consulta donde
 
 110
 00:04:40,160 --> 00:04:42,480
-I look for a 500.
+busco "a" 500.
 
 111
 00:04:42,480 --> 00:04:46,240
-And this time what I'm
-going to do is ask
+Y esta vez lo que voy
+a hacer es pedir
 
 112
 00:04:46,240 --> 00:04:49,010
-for just a is 500.
+simplemente que "a" sea 500.
 
 113
 00:04:49,010 --> 00:04:52,540
-And I'm going to ask for just
-the a field and the b field,
+Y voy a pedir sólo
+el campo "a" y el campo "b",
 
 114
 00:04:52,540 --> 00:04:55,260
-and I'm going to suppress
-the _id field
+y voy a suprimir
+el campo "_id"
 
 115
 00:04:55,260 --> 00:04:56,420
-and not ask for that.
+y no lo voy a pedir.
 
 116
 00:04:56,420 --> 00:04:57,520
-Let's look at that query.
+Echemos un vistazo a esa consulta.
 
 117
 00:04:57,520 --> 00:04:58,460
-Let's run it.
+Vamos a ejecutarla.
 
 118
 00:04:58,460 --> 00:04:59,600
-We see there's one item.
+Vemos que hay un elemento.
 
 119
 00:04:59,600 --> 00:05:01,180
-This is a query that should
-be completely
+Ésta es una consulta que debería
+ser completamente
 
 120
 00:05:01,180 --> 00:05:03,370
-satisfied by the index.
+satisfecha por el índice.
 
 121
 00:05:03,370 --> 00:05:08,280
-Let's call Explain and
-see what we get.
+Llamemos a "explain" y 
+veamos qué obtenemos.
 
 122
 00:05:08,280 --> 00:05:13,300
-And here you can see that now
-indexOnly Only is true,
+Y aquí puedes ver que ahora
+"indexOnly" es "true",
 
 123
 00:05:13,300 --> 00:05:18,610
-because we didn't need to go
-to the actual collection to
+porque no necesitamos acceder
+a la colección real para
 
 124
 00:05:18,610 --> 00:05:19,530
-answer this query.
+responder esta consulta.
 
 125
 00:05:19,530 --> 00:05:22,810
-All the information that we
-needed is in the query.
+Toda la información que
+necesitamos está en la consulta.
 
 126
 00:05:22,810 --> 00:05:23,600
-All right.
+Bien.
 
 127
 00:05:23,600 --> 00:05:25,780
-Let's look at a slightly
-different variant.
+Echemos un vistazo a una variante
+ligeramente diferente.
 
 128
 00:05:25,780 --> 00:05:29,600
-Let's look at a query where
-MongoDB cannot use the index
+Veamos una consulta donde
+MongoDB no puede usar el índice
 
 129
 00:05:29,600 --> 00:05:32,570
-for finding the documents but
-it can use the index for
+para encontrar los documentos pero
+puede usar el índice para
 
 130
 00:05:32,570 --> 00:05:34,400
-sorting the documents.
+ordenar los documentos.
 
 131
 00:05:34,400 --> 00:05:38,040
-So in this query we have and
-clause, and we're looking for
+Así en esta consulta tenemos una
+cláusula "and", y estamos buscando
 
 132
 00:05:38,040 --> 00:05:40,470
-c values that are greater
-than 250 and less
+valores de "c" que sean mayores
+que 250 y menores
 
 133
 00:05:40,470 --> 00:05:42,420
-than or equal to 500.
+o iguales que 500.
 
 134
 00:05:42,420 --> 00:05:44,810
-And we're going to sort by a.
+Y vamos a ordenar por "a".
 
 135
 00:05:44,810 --> 00:05:48,600
-Now we know the index is on a,
-b, c, so it shouldn't be able
+Ahora que sabemos que el índice está sobre "a"
+"b" y "c", no debería ser capaz
 
 136
 00:05:48,600 --> 00:05:51,250
-to use the index to find the
-documents, but it should be
+de usarlo para encontrar los
+documentos, pero debería ser
 
 137
 00:05:51,250 --> 00:05:53,200
-able to use the index
-to sort them.
+capaz de usar el índice
+para ordenarlos.
 
 138
 00:05:53,200 --> 00:05:54,910
-So let's see what happens
-when you run that
+Así que veamos qué ocurre
+cuando ejecutas esa
 
 139
 00:05:54,910 --> 00:05:57,050
-query and hit Explain.
+consulta y lanzamos un "explain".
 
 140
 00:05:57,050 --> 00:05:57,750
-All right.
+Bien.
 
 141
 00:05:57,750 --> 00:06:01,580
-So what we find out is that 250
-documents were returned,
+Así que lo que encontramos es que se
+devolvieron 250 documentos,
 
 142
 00:06:01,580 --> 00:06:03,600
-which is what we'd expect.
+lo cual es lo que esperábamos.
 
 143
 00:06:03,600 --> 00:06:07,120
-And it says that it uses
-BtreeCursor index, but it
+Y dice que usa un
+índice "BtreeCursor", pero no
 
 144
 00:06:07,120 --> 00:06:09,790
-didn't use it for the
-actual find part for
+lo usó para la parte
+de la búsqueda real para
 
 145
 00:06:09,790 --> 00:06:10,960
-selecting the criteria.
+seleccionar el criterio.
 
 146
 00:06:10,960 --> 00:06:12,970
-Instead it used it
-for sorting.
+En lugar de eso lo usó
+para ordenar.
 
 147
 00:06:12,970 --> 00:06:16,370
-And the way you can tell is that
-the number of scanned--
+Y la forma en que puedes decir eso es que
+el número de escaneados --
 
 148
 00:06:16,370 --> 00:06:18,030
-this is index or documents--
+esto es índice o documentos --
 
 149
 00:06:18,030 --> 00:06:19,805
-was 9541.
+fue 9541.
 
 150
 00:06:19,805 --> 00:06:22,710
-The number of scanned
-documents was 250.
+El número de documentos
+escaneados fue 250.
 
 151
 00:06:22,710 --> 00:06:25,740
-So in this case, what
-MongoDB did--
+Por lo que en este caso, lo que
+hizo MongoDB --
 
 152
 00:06:25,740 --> 00:06:28,170
-and I'm not positive about this,
-but I'm pretty sure--
+y no soy optimista sobre esto,
+pero estoy bastante seguro --
 
 153
 00:06:28,170 --> 00:06:29,950
-that it scanned the
-index itself.
+fue que escaneó el
+propio índice.
 
 154
 00:06:29,950 --> 00:06:34,340
-It only had a look at 9,541
-index entries before it felt
+Sólo tuvo que examinar 9541
+entradas en el índice antes de que sintiera
 
 155
 00:06:34,340 --> 00:06:36,840
-that it had gotten exhaustively
-all the documents
+que había obtenido exhaustivamente
+todos los documentos
 
 156
 00:06:36,840 --> 00:06:40,110
-that were between
-c 250 and c 500.
+que estaban entre
+"c" 250 y "c" 500.
 
 157
 00:06:40,110 --> 00:06:43,550
-And so then it actually went
-into those 250 documents, and
+Y por eso en realidad entró en
+esos 250 documentos, y
 
 158
 00:06:43,550 --> 00:06:46,250
-this right here is the number
-of documents it touched, and
+éste justo aquí es el número
+de documentos que revisó, y
 
 159
 00:06:46,250 --> 00:06:47,670
-then gave us the results.
+luego nos dio los resultados.
 
 160
 00:06:47,670 --> 00:06:49,520
-Let's change this around a
-little bit to make it more
+Cambiemos esto un poco
+para aclarar más
 
 161
 00:06:49,520 --> 00:06:51,500
-clear exactly what's
-happening here.
+qué está ocurriendo
+aquí exactamente.
 
 162
 00:06:51,500 --> 00:06:56,330
-I'm going to drop this index on
-a, b, c, and I'm going to
+Voy a eliminar este índice sobre
+"a", "b" y "c", y voy a
 
 163
 00:06:56,330 --> 00:07:00,080
-add a new index on just a, b.
+añadir un nuevo índice sobre sólo "a" y "b".
 
 164
 00:07:00,080 --> 00:07:03,110
-Now we are absolutely positive
-that it can't use the index
+Ahora somos absolutamente optimistas
+sobre que no puede usar los valores
 
 165
 00:07:03,110 --> 00:07:06,360
-values for the find, even
-if it scans them all.
+del índice para la búsqueda, incluso
+si escanea todos ellos.
 
 166
 00:07:06,360 --> 00:07:08,220
-Now we're going to
-do the same find.
+Ahora vamos a 
+hacer el mismo "find".
 
 167
 00:07:08,220 --> 00:07:11,330
-Remember, we're looking for c
-greater than 250 or less than
+Recuerda, estamos buscando sólo por "c"
+mayor que 250 o menor que
 
 168
 00:07:11,330 --> 00:07:14,810
-500, and we have an index
-on only a, b.
+500, y tenemos un índice
+sobre sólo "a" y "b".
 
 169
 00:07:14,810 --> 00:07:17,530
-But we're asking to sort on a,
-so it should be able to use
+Pero estamos pidiendo que ordene por "a",
+por lo que debería ser capaz de usar
 
 170
 00:07:17,530 --> 00:07:19,420
-the index for the sort part.
+el índice para la parte del ordenamiento.
 
 171
 00:07:19,420 --> 00:07:21,640
-Let's see what happens.
+Veamos qué ocurre.
 
 172
 00:07:21,640 --> 00:07:24,260
-In this case, the result
-is more clear.
+En este caso, el resultado
+es más claro.
 
 173
 00:07:24,260 --> 00:07:27,030
-You can see that, again, it
-returned 250 documents.
+Puedes ver que, de nuevo,
+devolvió 250 documentos.
 
 174
 00:07:27,030 --> 00:07:30,980
-But you can see the number of
-scanned index or documents is
+Pero puedes ver que el número de
+documentos o elementos del índice escaneados es
 
 175
 00:07:30,980 --> 00:07:34,680
-10,000, and the number of
-scanned documents is 10,000.
+10000, y el número de
+documentos escaneados en 10000.
 
 176
 00:07:34,680 --> 00:07:37,220
-So in this case, it couldn't
-use the index all, couldn't
+Así que en este caso, no podría
+usar todo el índice, no podría
 
 177
 00:07:37,220 --> 00:07:39,940
-even scan the index to figure
-out what the answer was.
+incluso escanear el índice para averiguar
+cuál sería la respuesta.
 
 178
 00:07:39,940 --> 00:07:42,430
-So it went right to the
-collection, it's scanned them
+Por lo que fue directo a la
+colección, los escaneó todos,
 
 179
 00:07:42,430 --> 00:07:46,880
-all, and then it was able to use
-the BtreeCursor index to
+y luego fue capaz de usar
+el índice "BtreeCursor" para
 
 180
 00:07:46,880 --> 00:07:49,730
-return the results
-in sorted order.
+devolver los resultados
+ordenados.
 
 181
 00:07:49,730 --> 00:07:53,060
-And just to show you that this
-is the index on a and b, I'm
+Y sólo para enseñarte que éste
+es el índice sobre "a" y "b", voy
 
 182
 00:07:53,060 --> 00:07:55,870
-just going to show you the
-getIndexes command, which will
+voy a mostrarte el 
+comando "getIndexes", que
 
 183
 00:07:55,870 --> 00:07:58,260
-show you the indexes that
-are on the collection.
+te enseñará los índices que
+existen sobre la colección.
 
 184
 00:07:58,260 --> 00:08:02,300
-You can see this collection
-has the index a, b is now
+Puedes ver que esta colección
+tiene el índice sobre "a" y "b" y ahora
 
 185
 00:08:02,300 --> 00:08:07,080
-called a_1_b_1 for ascending
-and ascending.
+se llama "a_1_b_1" por ascendente y
+ascendente.
 
 186
 00:08:07,080 --> 00:08:07,390
-All right.
+De acuerdo.
 
 187
 00:08:07,390 --> 00:08:09,630
-It is now time for a quiz.
+Hora de hacer un cuestionario.
 
 188
 00:08:09,630 --> 00:08:12,190
-Given the following output from
-Explain, what is the best
+Dada la siguiente salida de
+"explain", ¿cuál es la mejor
 
 189
 00:08:12,190 --> 00:08:14,530
-description of what happened
-during the query.
+descripción de lo que sucedió
+durante la consulta?
 
 190
 00:08:14,530 --> 00:08:17,500
-And the choices are the query
-used an index called
+Y las opciones son que la consulta
+usó un índice llamado
 
 191
 00:08:17,500 --> 00:08:23,750
-BasicCursor and returned in
-5,151 microseconds; the query
+"BasicCursor" y respondió en
+5151 microsegundos; la consulta
 
 192
 00:08:23,750 --> 00:08:28,500
-scanned 10 million documents,
-returning 10,000 in 5.2
+escaneó 10 millones de documentos,
+devolviendo 10000 in 5,2
 
 193
 00:08:28,500 --> 00:08:33,240
-seconds; the query scanned
-10,000 documents and returned
+segundos; la consulta escaneó
+10000 documentos y respondió
 
 194
 00:08:33,240 --> 00:08:37,309
-in 5 milliseconds; and the
-query was able to use a
+en 5 milisegundos; y la
+consulta fue capaz de usar un
 
 195
 00:08:37,309 --> 00:08:39,750
-covered index to answer the
-query entirely within the
+índice cubierto para responder la
+consulta completamente desde
 
 196
 00:08:39,750 --> 00:08:41,780
-index without looking
-at the documents.
+el índice sin examinar
+los documentos.
 
 197
 00:08:41,780 --> 00:08:43,030

@@ -1,0 +1,124 @@
+1
+00:00:00,000 --> 00:00:00,800
+
+2
+00:00:00,800 --> 00:00:02,400
+Bienvenido a la semana cuatro.
+
+3
+00:00:02,400 --> 00:00:04,640
+Felicitaciones por
+llegar hasta este punto.
+
+4
+00:00:04,640 --> 00:00:06,820
+Esta semana vamos a hablar
+acerca de rendimiento.
+
+5
+00:00:06,820 --> 00:00:08,800
+Ahora bien, el rendimiento en sistemas
+computacionales está motivado
+
+6
+00:00:08,800 --> 00:00:11,170
+por muchos factores, incluyendo
+la velocidad de operaciones
+
+7
+00:00:11,170 --> 00:00:14,870
+subyacentes, como el disco,
+la memoria y el procesador.
+
+8
+00:00:14,870 --> 00:00:17,000
+Pero el motivo más grande para
+el rendimiento va a ser el
+
+9
+00:00:17,000 --> 00:00:18,870
+rendimiento de tus algoritmos.
+
+10
+00:00:18,870 --> 00:00:21,300
+Y para un servidor de base
+de datos, va a ser cuán rápido
+
+11
+00:00:21,300 --> 00:00:23,250
+podemos ejecutar consultas.
+
+12
+00:00:23,250 --> 00:00:26,720
+Y eso es motivado por si la
+base de datos puede usar o no
+
+13
+00:00:26,720 --> 00:00:28,700
+un índice para buscar los datos.
+
+14
+00:00:28,700 --> 00:00:30,990
+Por eso esta semana vamos a
+hablar mucho acerca de índices.
+
+15
+00:00:30,990 --> 00:00:33,350
+Vamos a hablar
+de lo que son y
+
+16
+00:00:33,350 --> 00:00:36,280
+acerca de cómo crearlos, y
+también hablaremos de cómo
+
+17
+00:00:36,280 --> 00:00:39,640
+averiguar qué partes
+de tu programa son lentas.
+
+18
+00:00:39,640 --> 00:00:42,250
+Finalmente, vamos a discutir
+un poco de Sharding,
+
+19
+00:00:42,250 --> 00:00:45,340
+que es la técnica para
+dividir grandes colecciones
+
+20
+00:00:45,340 --> 00:00:49,700
+a través de varios servidores
+y aprovechar mayor paralelismo.
+
+21
+00:00:49,700 --> 00:00:52,850
+Ahora, el rendimiento está
+normalmente en el dominio de los
+
+22
+00:00:52,850 --> 00:00:55,600
+administradores de base de datos, pero
+los buenos desarrolladores tienen un
+
+23
+00:00:55,600 --> 00:00:57,370
+entendimiento del rendimiento.
+
+24
+00:00:57,370 --> 00:00:59,770
+Ellos desarrollan con el rendimiento
+en la mente y pueden encontrar
+
+25
+00:00:59,770 --> 00:01:02,350
+sus propios problemas de
+rendimiento en sus programas.
+
+26
+00:01:02,350 --> 00:01:03,600
+Así que empecemos.
+
+27
+00:01:03,600 --> 00:01:04,690

@@ -3,79 +3,79 @@
 
 2
 00:00:00,320 --> 00:00:02,560
-And the answer is the odometer
-mileage, right?
+Y la respuesta es "odometer mileage", 
+¿de acuerdo?
 
 3
 00:00:02,560 --> 00:00:05,030
-Because there's, let's
-say most people drive
+Porque hay, digamos que
+la mayoría de la gente conduce
 
 4
 00:00:05,030 --> 00:00:06,560
-cars 100,000 miles.
+coches hasta 100000 millas.
 
 5
 00:00:06,560 --> 00:00:10,030
-There's 100,000 different
-odometer readings that we
+Hay 100000 lecturas diferentes
+de "odometer mileage" entre las que
 
 6
 00:00:10,030 --> 00:00:13,900
-could choose from that might
-narrow down the car, whereas
+podríamos elegir que podrían
+reducir "car", mientras que
 
 7
 00:00:13,900 --> 00:00:16,340
-the manufacturer, I don't know
-how many manufacturers of cars
+"manufacturer", no sé
+cuántos fabricantes de coches
 
 8
 00:00:16,340 --> 00:00:19,280
-there are, but maybe
-100 or 1,000.
+hay, pero quizá
+100 o 1000.
 
 9
 00:00:19,280 --> 00:00:22,330
-The weight of the car, most
-cars weigh under 10,000
+El peso del coche, la mayoría
+de los coches pesan menos de 10000
 
 10
 00:00:22,330 --> 00:00:25,560
-pounds, so that's 10,000,
-assuming that you don't bring
+libras, por lo que serían 10000,
+asumiendo que no usamos
 
 11
 00:00:25,560 --> 00:00:28,000
-it out to any decimal points
-it's just 10,000 different
+ningunos valores decimales
+son sólo 10000 posibilidades
 
 12
 00:00:28,000 --> 00:00:30,400
-possibilities, and there aren't
-that many colors.
+diferentes, y no hay
+tantos colores.
 
 13
 00:00:30,400 --> 00:00:31,370
-So I think the odometer mileage
+Así que creo que "odometer mileage"
 
 14
 00:00:31,370 --> 00:00:32,900
-would be the most selective.
+sería el más selectivo.
 
 15
 00:00:32,900 --> 00:00:35,540
-So again, this is important to
-think about selectivity when
+Así que de nuevo, es importante
+pensar sobre la selectividad cuando
 
 16
 00:00:35,540 --> 00:00:38,010
-designing indexes because that's
-going to help you get
+estés diseñando índices porque te
+va a ayudar a obtener
 
 17
 00:00:38,010 --> 00:00:39,260
-better performance.
+mejor rendimiento.
 
 18
 00:00:39,260 --> 00:00:39,750

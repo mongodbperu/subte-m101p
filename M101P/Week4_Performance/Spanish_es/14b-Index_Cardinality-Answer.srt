@@ -3,27 +3,27 @@
 
 2
 00:00:00,150 --> 00:00:02,480
-And the answer is 100.
+Y la respuesta es 100.
 
 3
 00:00:02,480 --> 00:00:04,760
-If we have to move the document
-and if there's an
+Si tenemos que mover el documento
+y si hay un
 
 4
 00:00:04,760 --> 00:00:08,900
-array that's indexed, and if the
-array has 100 items in it,
+array que está indexado, si el 
+array tiene 100 elementos,
 
 5
 00:00:08,900 --> 00:00:11,180
-then there are 100 index points
-that need to be updated
+entonces hay 100 puntos en el índice
+que necesitan ser actualizados
 
 6
 00:00:11,180 --> 00:00:13,470
-inside the index that point
-to this document.
+dentro del índice que apuntan
+a este documento.
 
 7
 00:00:13,470 --> 00:00:14,720
