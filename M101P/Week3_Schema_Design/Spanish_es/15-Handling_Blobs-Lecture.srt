@@ -13,8 +13,8 @@ archivos en MongoDB, estás
 
 4
 00:00:05,980 --> 00:00:10,880
-limitado por el límite del
-tamaño de un documento de 16 megabytes.
+limitado por el límite del tamaño
+de un documento de 16 megabytes.
 
 5
 00:00:10,880 --> 00:00:15,570
@@ -24,32 +24,31 @@ especial llamada GridFS, que
 6
 00:00:15,570 --> 00:00:18,490
 dividirá un archivo
-grande en pedazos.
+grande en pedazos
 
 7
 00:00:18,490 --> 00:00:21,030
-Y almacenará estos pedazos
+y los almacenará
 en una colección.
 
 8
 00:00:21,030 --> 00:00:24,640
-Y también almacenará los metadatos
-de estos pedazos en
+También almacenará los
+metadatos de estos pedazos
 
 9
 00:00:24,640 --> 00:00:26,440
-una colección secundaria.
+en una colección secundaria.
 
 10
 00:00:26,440 --> 00:00:29,820
-Por lo tanto, tienes una colección que
-habla acerca de los pedazos y
+Por lo tanto, tienes una colección
+que habla acerca de los pedazos y
 
 11
 00:00:29,820 --> 00:00:33,690
 luego un montón de pedazos que
 son almacenados en MongoDB.
-
 
 12
 00:00:33,690 --> 00:00:35,320
@@ -70,17 +69,15 @@ almacenado en un documento.
 
 16
 00:00:41,560 --> 00:00:43,560
-Está a unos 100 megabytes.
+Es de unos 100 megabytes y no
 
 17
 00:00:43,560 --> 00:00:47,410
-Y no se almacenará fácilmente
-en MongoDB.
+se almacenará fácilmente en MongoDB.
 
 18
 00:00:47,410 --> 00:00:48,890
-Y podemos ver este
-archivo aquí.
+Podemos ver este archivo aquí.
 
 19
 00:00:48,890 --> 00:00:50,260
@@ -88,8 +85,7 @@ Echémosle un vistazo.
 
 20
 00:00:50,260 --> 00:00:52,660
-Y ahí está en
-100 megabytes.
+Ahí está. Es de 100 megabytes.
 
 21
 00:00:52,660 --> 00:00:53,680
@@ -97,31 +93,31 @@ Entonces, ¿qué hacemos?
 
 22
 00:00:53,680 --> 00:00:58,340
-Bien, he escrito un programa
-llamado "using_gridfs", eso
+Bueno, he escrito un programa
+llamado "using_gridfs" que
 
 23
 00:00:58,340 --> 00:01:01,850
-va a almacenar aquel archivo
-en MongoDB.
+va a almacenar aquel
+archivo en MongoDB.
 
 24
 00:01:01,850 --> 00:01:03,300
-Así que aquí está cómo funciona.
+Funciona así.
 
 25
 00:01:03,300 --> 00:01:05,690
 Tenemos una conexión a
-la base de datos "test".
+la base de datos "test"
 
 26
 00:01:05,690 --> 00:01:09,610
-Y tenemos nuestra propia colección
-de metadatos que creamos
+y tenemos nuestra propia
+colección de metadatos que
 
 27
 00:01:09,610 --> 00:01:11,250
-llamada "videos_meta".
+creamos, llamada "videos_meta".
 
 28
 00:01:11,250 --> 00:01:13,230
@@ -136,11 +132,11 @@ en la base de datos.
 30
 00:01:15,820 --> 00:01:21,110
 Y entonces obtengo un nuevo
-apuntador a GridFS, dándole
+apuntador a GridFS, le doy
 
 31
 00:01:21,110 --> 00:01:23,730
-la variable "db" y diciendo que
+la variable "db" y digo que
 quiero poner todos estos
 
 32
@@ -150,22 +146,22 @@ llamada "videos".
 
 33
 00:01:26,510 --> 00:01:29,640
-Y luego abro un descriptor
+Luego abro un descriptor
 de archivo en Python a mi
 
 34
 00:01:29,640 --> 00:01:31,520
-archivo de vídeo MP4.
+archivo de vídeo MP4
 
 35
 00:01:31,520 --> 00:01:33,530
-Y lo abro
-como lectura solamente.
+y lo abro como
+lectura solamente.
 
 36
 00:01:33,530 --> 00:01:39,290
-Y a continuación obtengo el ID de
-un nuevo archivo GridFS.
+A continuación obtengo el ID
+de un nuevo archivo GridFS.
 
 37
 00:01:39,290 --> 00:01:44,340
@@ -174,8 +170,8 @@ justo aquí, dándole como
 
 38
 00:01:44,340 --> 00:01:47,710
-entrada el descriptor de archivo del
-archivo abierto que deseo
+entrada el descriptor de archivo
+del archivo abierto que deseo
 
 39
 00:01:47,710 --> 00:01:48,490
@@ -183,8 +179,7 @@ leer del disco.
 
 40
 00:01:48,490 --> 00:01:50,330
-Y me devuelve
-el _id
+Y me devuelve el _id
 
 41
 00:01:50,330 --> 00:01:51,620
@@ -197,23 +192,23 @@ mi objeto entrante.
 
 43
 00:01:53,780 --> 00:01:57,360
-Luego, para que pueda realizar el
-seguimiento de ésto, también guardo
+Luego, para que pueda realizar
+el seguimiento, también guardo
 
 44
 00:01:57,360 --> 00:02:00,270
 el ID que obtuve de GridFS
-en aquella colección que
+en aquella colección a la
 
 45
 00:02:00,270 --> 00:02:02,690
-se hace referencia aquí, llamada
-"videos_meta".
+que hacemos referencia
+aquí, llamada "videos_meta".
 
 46
 00:02:02,690 --> 00:02:05,450
-Acabo de insertar el ID y
-el nombre del archivo, así que
+Acabo de insertar el ID y el
+nombre del archivo, así que
 
 47
 00:02:05,450 --> 00:02:06,810
@@ -221,13 +216,13 @@ sé lo que es.
 
 48
 00:02:06,810 --> 00:02:09,759
-Entonces, veamos qué ocurre cuando
-intento correr esto.
+Entonces, veamos qué ocurre
+cuando intento ejecutar
 
 49
 00:02:09,759 --> 00:02:12,740
-"python using_gridfs", y va a
-tomar unos minutos porque
+"python using_gridfs", y va
+a tomar unos minutos porque
 
 50
 00:02:12,740 --> 00:02:15,060
@@ -240,16 +235,16 @@ Y ahí vamos.
 
 52
 00:02:16,250 --> 00:02:17,770
-Dice el ID del archivo.
+Nos da el ID del archivo.
 
 53
 00:02:17,770 --> 00:02:20,380
-Así que vamos a Mongo
-y a ver lo que hay.
+Vayamos a Mongo y
+veamos qué hay.
 
 54
 00:02:20,380 --> 00:02:21,900
-Entonces estoy ejecutando Mongo.
+Estoy ejecutando Mongo.
 
 55
 00:02:21,900 --> 00:02:23,520
@@ -257,45 +252,43 @@ Uso la colección test.
 
 56
 00:02:23,520 --> 00:02:25,800
-show collections.
+Hago "show collections".
 
 57
 00:02:25,800 --> 00:02:28,710
-Todo bien, veo cuatro distintas
+Todo bien. Veo cuatro distintas
 colecciones allí.
 
 58
 00:02:28,710 --> 00:02:30,000
-Una de ellas es llamada
-system.indexes.
+Una de ellas se llama
+"system.indexes".
 
 59
 00:02:30,000 --> 00:02:31,620
-No me voy a preocupar
-por eso.
+No me voy a preocupar por esa.
 
 60
 00:02:31,620 --> 00:02:32,980
-Una de ellas es llamada
-"videos_meta".
+Una de ellas se
+llama "videos_meta".
 
 61
 00:02:32,980 --> 00:02:34,760
-Que es el único que he creado.
+Es la única que he creado.
 
 62
 00:02:34,760 --> 00:02:36,370
-Así que voy a ver eso.
+Así que veámosla.
 
 63
 00:02:36,370 --> 00:02:39,510
-Y eso me dice que almacenamos
-el archivo
+Me dice que almacenamos el archivo
 
 64
 00:02:39,510 --> 00:02:45,930
 de vídeo MP4 y que el "grid_id"
-fue el ObjectId de aquí.
+es el ObjectId de aquí.
 
 65
 00:02:45,930 --> 00:02:48,440
@@ -304,12 +297,12 @@ dos colecciones.
 
 66
 00:02:48,440 --> 00:02:51,390
-Veo videos.chunks
-y videos.files.
+Veo "videos.chunks"
+y "videos.files".
 
 67
 00:02:51,390 --> 00:02:55,200
-Ahora videos.chunks es lo que
+Ahora "videos.chunks" es lo que
 MongoDB creó con GridFS para
 
 68
@@ -318,39 +311,38 @@ poner estos datos.
 
 69
 00:02:56,410 --> 00:03:00,550
-Así que veamos la
-colección videos.files.
+Veamos la colección "videos.files".
 
 70
 00:03:00,550 --> 00:03:01,800
-db.videos.files.find.
+"db.videos.files.find".
 
 71
 00:03:01,800 --> 00:03:04,490
 
 72
 00:03:04,490 --> 00:03:08,210
-Y podemos ver que ésta es su propia
+Podemos ver que ésta es su propia
 colección de metadatos que
 
 73
 00:03:08,210 --> 00:03:11,530
-habla acerca del objeto
-que crea.
+habla acerca del
+objeto que ha creado.
 
 74
 00:03:11,530 --> 00:03:13,230
-Y luego la fecha de subida.
+Luego la fecha de subida.
 
 75
 00:03:13,230 --> 00:03:16,080
-Y luego el tamaño del objeto,
-que tenía 100 megabytes.
+Luego el tamaño del objeto,
+que contenía 100 megabytes.
 
 76
 00:03:16,080 --> 00:03:18,280
-Y entonces, el hecho es
-que lo almacena,
+Y entonces, el hecho
+es que lo almacena,
 
 77
 00:03:18,280 --> 00:03:19,970
@@ -368,49 +360,48 @@ en la traducción.
 
 80
 00:03:26,480 --> 00:03:28,330
-Y entonces, no te voy a mostrar estos
-pedazos porque son
+Entonces, no te voy a mostrar
+estos pedazos porque son
 
 81
 00:03:28,330 --> 00:03:30,840
 muy grandes, pero voy a ver
-cuántos pedazos están ahí.
+cuántos pedazos hay ahí.
 
 82
 00:03:30,840 --> 00:03:32,090
-Así db.videos.chunks.count.
+Así "db.videos.chunks.count".
 
 83
 00:03:32,090 --> 00:03:34,700
 
 84
 00:03:34,700 --> 00:03:36,890
-Y podemos ver que
+Podemos ver que
 hay 419 pedazos.
 
 85
 00:03:36,890 --> 00:03:38,950
-Y supongo que si deseamos
-ver uno que podemos.
+Supongo que si quisiéramos
+ver uno, podríamos.
 
 86
 00:03:38,950 --> 00:03:42,720
-Apenas bajamos algo
-la pantalla.
+Se sale un poco de la pantalla.
 
 87
 00:03:42,720 --> 00:03:44,700
-Y puedes ver que es
+Y puedes ver que son
 un montón de datos
 
 88
 00:03:44,700 --> 00:03:46,560
-que son codificados.
+que están codificados.
 
 89
 00:03:46,560 --> 00:03:48,630
-Y así es como se utiliza
-GridFS si deseas
+Así es como se utiliza
+GridFS si quieres
 
 90
 00:03:48,630 --> 00:03:50,000

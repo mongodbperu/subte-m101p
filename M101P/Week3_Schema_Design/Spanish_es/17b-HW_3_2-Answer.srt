@@ -12,12 +12,12 @@ el blog acepte posts.
 
 4
 00:00:06,260 --> 00:00:09,220
-Y deseo mostrarte
+Y quiero mostrarte
 cómo hacer eso.
 
 5
 00:00:09,220 --> 00:00:16,600
-Todos lo cambios están en el
+Todos los cambios están en el
 archivo BlogPostDAO.py, que
 
 6
@@ -31,7 +31,7 @@ en "insert_entry".
 
 8
 00:00:23,300 --> 00:00:26,640
-Así que en "insert_entry" necesitas
+En "insert_entry" necesitas
 insertar el post.
 
 9
@@ -49,21 +49,21 @@ Necesitas llamar a
 
 12
 00:00:33,490 --> 00:00:36,170
-Y hemos construido el post
-para ti aquí.
+Hemos construido el
+post para ti aquí.
 
 13
 00:00:36,170 --> 00:00:38,370
-Por lo que sólo necesitas
-insertarlo.
+Sólo necesitas insertarlo.
 
 14
 00:00:38,370 --> 00:00:39,940
-Eso es todo lo que había que hacer.
+Eso es todo lo que
+había que hacer.
 
 15
 00:00:39,940 --> 00:00:41,580
-Ahora para obtener los posts--
+Ahora, para obtener los posts--
 
 16
 00:00:41,580 --> 00:00:44,790
@@ -78,7 +78,7 @@ que llama a "self.posts.find".
 18
 00:00:50,780 --> 00:00:56,040
 Pero necesitas ordenarlos por
-la fecha descendentemente y limitarlos
+fecha descendentemente y limitarlos
 
 19
 00:00:56,040 --> 00:00:59,610
@@ -87,18 +87,17 @@ que será llamado con 10.
 
 20
 00:00:59,610 --> 00:01:02,260
-Tienes que llamarlo también
-con un límite.
+Tienes que llamarlo
+también con un límite.
 
 21
 00:01:02,260 --> 00:01:07,160
-Y esta manera de
-especificar el orden es una
+Esta manera de especificar
+el orden es una manera
 
 22
 00:01:07,160 --> 00:01:09,730
-manera alternativa
-para hacerlo.
+alternativa de hacerlo.
 
 23
 00:01:09,730 --> 00:01:12,300
@@ -120,8 +119,8 @@ Muy bien.
 
 27
 00:01:16,760 --> 00:01:20,650
-Así que el último lugar que
-necesitas hacer un cambio es en
+Lo último que necesitas
+hacer es un cambio en
 
 28
 00:01:20,650 --> 00:01:23,680
@@ -130,37 +129,36 @@ este código por aquí,
 
 29
 00:01:23,680 --> 00:01:25,730
-Y en este caso,
-sólo necesitas llamar a
+Y en este caso, sólo
+necesitas llamar a
 
 30
 00:01:25,730 --> 00:01:29,390
-"self.posts.find_one"
-justo aquí.
+"self.posts.find_one" justo aquí.
 
 31
 00:01:29,390 --> 00:01:33,600
 Y especificar el enlace
-permanente que es el mismo que el
+permanente que es igual
 
 32
 00:01:33,600 --> 00:01:34,970
-enlace permanente que fue enviado.
+al enlace permanente
+que fue enviado.
 
 33
 00:01:34,970 --> 00:01:37,830
-Así que esta es la clave
-"permalink", y este es el valor.
+Así que ésta es la clave
+"permalink", y éste es el valor
 
 34
 00:01:37,830 --> 00:01:39,750
-Y esta es la variable
-"permalink".
+y ésta es la variable "permalink".
 
 35
 00:01:39,750 --> 00:01:42,100
-Y eso es todo lo
-que había que hacer.
+Eso es todo lo que
+había que hacer.
 
 36
 00:01:42,100 --> 00:01:44,810

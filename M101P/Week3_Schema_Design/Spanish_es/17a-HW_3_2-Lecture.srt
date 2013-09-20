@@ -3,13 +3,13 @@
 
 2
 00:00:00,120 --> 00:00:02,710
-En esta segunda tarea,
-vas a trabajar
+En esta segunda
+tarea vas a trabajar
 
 3
 00:00:02,710 --> 00:00:04,900
-en nuestro proyecto de blog
-otra vez.
+en nuestro proyecto
+de blog una vez más.
 
 4
 00:00:04,900 --> 00:00:08,650
@@ -23,8 +23,8 @@ de la colección de posts para
 
 6
 00:00:11,900 --> 00:00:14,880
-que pueda mostrarlos y
-crear nuevos.
+que pueda mostrarlos
+y crear nuevos.
 
 7
 00:00:14,880 --> 00:00:18,450
@@ -33,13 +33,12 @@ versión terminada ejecutándose.
 
 8
 00:00:18,450 --> 00:00:22,710
-Y voy a crear
-una nueva cuenta en ella.
+Y voy a crear una
+nueva cuenta en ella.
 
 9
 00:00:22,710 --> 00:00:25,840
-Y ahora voy a
-crear un post.
+Y ahora voy a crear un post.
 
 10
 00:00:25,840 --> 00:00:28,940
@@ -53,8 +52,7 @@ primer post aquí.
 
 12
 00:00:31,730 --> 00:00:34,620
-Y este es el cuerpo
-de mi post.
+Y éste es el cuerpo de mi post.
 
 13
 00:00:34,620 --> 00:00:36,920
@@ -62,8 +60,7 @@ Voy a añadir algunas etiquetas.
 
 14
 00:00:36,920 --> 00:00:38,720
-Y ahora voy
-a enviarlo.
+Y ahora voy a enviarlo.
 
 15
 00:00:38,720 --> 00:00:42,210
@@ -76,7 +73,7 @@ este post de aquí.
 
 17
 00:00:43,280 --> 00:00:47,250
-Este es mi post publicado aquí,
+Éste es mi post publicado aquí,
 hecho por mí, este es el cuerpo de
 
 18
@@ -86,8 +83,7 @@ etiquetas "foo", "bar" y "baz".
 
 19
 00:00:49,590 --> 00:00:52,475
-Y ahora voy
-al inicio del blog.
+Ahora voy al inicio del blog.
 
 20
 00:00:52,475 --> 00:00:54,185
@@ -105,17 +101,15 @@ a hacerlo más grande.
 
 23
 00:01:01,130 --> 00:01:05,730
-Y lo envío
-de nuevo.
+Y lo envío de nuevo.
 
 24
 00:01:05,730 --> 00:01:08,170
-Ahora voy al
-inicio del blog.
+Ahora voy al inicio del blog.
 
 25
 00:01:08,170 --> 00:01:10,410
-Y puedes ver que este
+Y puedes ver que éste
 es el inicio del blog.
 
 26
@@ -129,12 +123,13 @@ trabajar en esta tarea--
 
 28
 00:01:13,580 --> 00:01:15,730
-y vamos a dejarte la interfaz de usuario
-por lo que sólo necesitas hacer
+y vamos a dejarte la interfaz de
+usuario por lo que sólo necesitas
 
 29
 00:01:15,730 --> 00:01:17,330
-las partes que conectan a Mongo--
+hacer las partes que
+conectan a Mongo--
 
 30
 00:01:17,330 --> 00:01:20,720
@@ -143,16 +138,15 @@ crear un nuevo post.
 
 31
 00:01:20,720 --> 00:01:22,230
-Y tienes que permitir
-al visitante
+Tienes que permitir al visitante
 
 32
 00:01:22,230 --> 00:01:23,930
-ver la lista de posts.
+ver la lista de posts
 
 33
 00:01:23,930 --> 00:01:27,360
-Y esto da los 10
+y esto da los 10
 posts más recientes.
 
 34
@@ -162,16 +156,17 @@ en el código para encontrar las
 
 35
 00:01:30,110 --> 00:01:31,650
-partes en las que se necesita trabajar.
+partes en las que
+necesitas trabajar.
 
 36
 00:01:31,650 --> 00:01:35,520
-Y luego, si haces clic en uno de
-esos enlaces para el post--
+Y luego, si haces clic en uno
+de esos enlaces para el post--
 
 37
 00:01:35,520 --> 00:01:36,530
-este el post más reciente.
+éste el post más reciente.
 
 38
 00:01:36,530 --> 00:01:39,350
@@ -190,7 +185,7 @@ en el enlace permanente en la URL.
 
 41
 00:01:44,390 --> 00:01:46,770
-Y de nuevo, toda esta parte
+De nuevo, toda esta parte
 ya está implementada.
 
 42
@@ -200,22 +195,22 @@ mostrar el cuerpo del post.
 
 43
 00:01:49,280 --> 00:01:52,310
-Y hay estas cosas de la interfaz de usuario
+Hay estas cosas de la interfaz de usuario
 para que te permita añadir un comentario.
 
 44
 00:01:52,310 --> 00:01:54,860
 Pero no nos vamos a preocupar
-por eso para esta tarea.
+por eso en esta tarea.
 
 45
 00:01:54,860 --> 00:01:57,870
-Esa es la siguiente tarea, donde
+Ésa es la siguiente tarea, en la cual
 nos preocuparemos por los comentarios.
 
 46
 00:01:57,870 --> 00:02:00,110
-Y eso es lo que tienes que
+Eso es lo que tienes que
 conseguir para la segunda
 
 47

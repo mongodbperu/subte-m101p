@@ -9,11 +9,12 @@ te pedimos que fueras
 3
 00:00:02,840 --> 00:00:06,150
 a través de una colección de
-calificaciones de alumnos y eliminar
+calificaciones de alumnos y
 
 4
 00:00:06,150 --> 00:00:07,770
-la de menor calificación para cada alumno.
+eliminases de menor
+puntuación para cada uno.
 
 5
 00:00:07,770 --> 00:00:10,670
@@ -26,7 +27,7 @@ Voy a hacer eso ahora.
 
 7
 00:00:12,650 --> 00:00:17,390
-Y ahora voy a conectarme a Mongo
+Y ahora voy a conectarme a mongo
 y usaré la base de datos "school"
 
 8
@@ -39,22 +40,22 @@ OK, aquí hay un documento.
 
 10
 00:00:23,460 --> 00:00:27,710
-Así que te pedimos eliminar la
-tarea de menor puntuación, y nuestra
+Te pedimos eliminar la tarea
+de menor puntuación y nuestra
 
 11
 00:00:27,710 --> 00:00:30,490
-estrategia será
-iterar a través de la colección
+estrategia será iterar
+a través de la colección
 
 12
 00:00:30,490 --> 00:00:34,300
-entera, ver las
-calificaciones, encontrar la
+entera, ver las calificaciones,
+encontrar la tarea de menor
 
 13
 00:00:34,300 --> 00:00:37,540
-tarea de menor calificación-- por ejemplo,
+puntuación--por ejemplo,
 en este caso, sería la
 
 14
@@ -63,8 +64,8 @@ puntuación de aquí--
 
 15
 00:00:38,890 --> 00:00:42,830
-y luego vamos a escribir
-de vuelta el array de calificaciones
+y luego vamos a escribir de
+nuevo el array de calificaciones
 
 16
 00:00:42,830 --> 00:00:43,960
@@ -72,42 +73,42 @@ en el documento.
 
 17
 00:00:43,960 --> 00:00:47,350
-Y esa es mi estrategia para
+Ésa es mi estrategia para
 resolver el problema.
 
 18
 00:00:47,350 --> 00:00:51,060
-Y no sé de alguna manera que sólo
-elimine este elemento desde el
+Y no conozco la manera de eliminar
+sólo este elemento desde el
 
 19
 00:00:51,060 --> 00:00:54,780
-array en MongoDB e incluso
-si lo hiciera, probablemente estaría un
+array en mongod, e incluso si
+conociera alguna, probablemente
 
 20
 00:00:54,780 --> 00:00:57,610
-poco indeciso para usarlo
-porque no sé si el
+pensaría bien antes de
+usarla porque no sé si el
 
 21
 00:00:57,610 --> 00:00:59,980
 registro intervenido
-no ha cambiado.
+ha cambiado o no.
 
 22
 00:00:59,980 --> 00:01:03,020
 Así que me siento más cómodo
-escribiendo el array
+re-escribiendo el array
 
 23
 00:01:03,020 --> 00:01:06,165
 completo, porque no estoy
-seguro si no lo veo
+seguro de que si lo veo como
 
 24
 00:01:06,165 --> 00:01:07,990
-como el tercer elemento--
+el tercer elemento--
 
 25
 00:01:07,990 --> 00:01:09,690
@@ -115,18 +116,16 @@ cero, uno, dos, tres--
 
 26
 00:01:09,690 --> 00:01:12,020
-que aún será el
-tercer elemento cuando regrese
+que éste aún sea el tercer
+elemento cuando regrese allí,
 
 27
 00:01:12,020 --> 00:01:14,680
-allí, en un sistema real
-en funcionamiento.
+en un sistema en funcionamiento.
 
 28
 00:01:14,680 --> 00:01:18,380
-OK, así que vamos a ir
-al programa que escribí
+OK, vayamos al programa que escribí
 
 29
 00:01:18,380 --> 00:01:20,100
@@ -142,8 +141,8 @@ Está escrito en Python.
 
 32
 00:01:22,900 --> 00:01:25,560
-Puedes ver aquí, lo
-primero que hace es llamar a
+Puedes ver que lo primero
+que hace es llamar a
 
 33
 00:01:25,560 --> 00:01:27,200
@@ -151,8 +150,8 @@ primero que hace es llamar a
 
 34
 00:01:27,200 --> 00:01:29,180
-Esto obtiene un cursor para
-"students.find"--
+Esto obtiene un cursor
+para "students.find"--
 
 35
 00:01:29,180 --> 00:01:33,410
@@ -165,8 +164,8 @@ colección de alumnos--
 
 37
 00:01:34,220 --> 00:01:36,740
-esto va a través de ellos e
-imprime una información de
+esto va a través de ellos
+e imprime información de
 
 38
 00:01:36,740 --> 00:01:37,610
@@ -175,7 +174,7 @@ depuración.
 39
 00:01:37,610 --> 00:01:40,130
 Resuelvo el problema como tú,
-así que puse unas impresiones de
+así que usualmente imprimo alguna
 
 40
 00:01:40,130 --> 00:01:42,080
@@ -183,22 +182,22 @@ información en mis programas.
 
 41
 00:01:42,080 --> 00:01:45,080
-Y entonces lo que hace, es
-encontrar las calificaciones en el
+Lo que hace es encontrar
+las calificaciones
 
 42
 00:01:45,080 --> 00:01:48,170
-documento y luego tiene una
+en el documento y luego tiene una
 función de ayuda para encontrar el
 
 43
 00:01:48,170 --> 00:01:53,310
-elemento con menor calificación y
-si no es "None"--
+elemento con menor calificación
+y si no es "None"--
 
 44
 00:01:53,310 --> 00:01:55,760
-De acuerdo, esto es sólo una comprobación
+de acuerdo, esto es sólo una comprobación
 de errores, ya que "find_lowest_hw"
 
 45
@@ -217,8 +216,8 @@ de error aquí.
 
 48
 00:02:00,700 --> 00:02:03,110
-Si "lowest" no es "None",
-entonces dice que
+Entonces, si "lowest" no
+es "None", imprime que
 
 49
 00:02:03,110 --> 00:02:05,010
@@ -226,13 +225,12 @@ eliminará esta calificación--
 
 50
 00:02:05,010 --> 00:02:06,910
-de nuevo, este es una
+de nuevo, ésta es una
 comprobación de errores--
 
 51
 00:02:06,910 --> 00:02:08,479
-y luego llama a
-"scores.remove".
+y luego llama a "scores.remove".
 
 52
 00:02:08,479 --> 00:02:13,380
@@ -250,7 +248,7 @@ Y luego sólo se llama a "update".
 
 55
 00:02:19,420 --> 00:02:23,760
-Por ello actualiza por el
+Por ello actualiza por
 "_id", "student['_id']--
 
 56
@@ -265,7 +263,7 @@ y eso es todo.
 
 58
 00:02:29,560 --> 00:02:31,480
-Ahora, algo que no te he mostrado
+Algo que no te he mostrado
 es la función de ayuda
 
 59
@@ -274,13 +272,13 @@ es la función de ayuda
 
 60
 00:02:33,090 --> 00:02:35,380
-Esto encuentra la menor calificación
-en un array, pero no es
+Esto encuentra la menor
+calificación en un array,
 
 61
 00:02:35,380 --> 00:02:37,810
-particularmente difícil de entender
-cómo funciona.
+pero no es particularmente difícil
+de entender cómo funciona.
 
 62
 00:02:37,810 --> 00:02:40,870
@@ -289,13 +287,12 @@ Establece "lowest" a
 
 63
 00:02:40,870 --> 00:02:43,270
-Este tiene un valor inicial de "101"
-porque sabe que
+Este tiene un valor inicial
+de "101" porque sabe que
 
 64
 00:02:43,270 --> 00:02:45,120
-va a encontrar algo
-menor a 101--
+va a encontrar algo menor a 101--
 
 65
 00:02:45,120 --> 00:02:47,030
@@ -308,13 +305,13 @@ que se encuentran en estos registros--
 
 67
 00:02:48,540 --> 00:02:52,630
-y luego itera a través de
-las calificaciones y si el que está
+y luego itera a través de las
+calificaciones y si la que está
 
 68
 00:02:52,630 --> 00:02:56,005
-buscando es de tipo "homework" y
-menor que el límite, luego
+buscando es de tipo "homework"
+y menor que el límite, pues
 
 69
 00:02:56,005 --> 00:02:58,560
@@ -323,7 +320,7 @@ establece "lowest" a "item" y
 
 70
 00:02:58,560 --> 00:03:00,550
-"lowest_score" to "score".
+"lowest_score" a "score".
 
 71
 00:03:00,550 --> 00:03:03,370
@@ -332,18 +329,16 @@ y cuando lo retorna,
 
 72
 00:03:03,370 --> 00:03:06,110
-va a retornar o bien "None", si
-no pudiera encontrar si una
+va a retornar o bien "None",
+si no encuentra una tarea,
 
 73
 00:03:06,110 --> 00:03:09,010
-tarea o va a retornar
-la menor tarea.
+o bien la menor tarea.
 
 74
 00:03:09,010 --> 00:03:10,720
-Así que es así cómo
-funciona el programa.
+Así funciona el programa.
 
 75
 00:03:10,720 --> 00:03:13,170
@@ -356,8 +351,8 @@ un montón de datos.
 
 77
 00:03:15,380 --> 00:03:20,270
-Y entonces regreso a mis
-tareas y hay
+Entonces regreso a
+mis tareas y hay
 
 78
 00:03:20,270 --> 00:03:23,390
@@ -366,18 +361,16 @@ que debería encontrar 200
 
 79
 00:03:23,390 --> 00:03:28,510
-alumnos, y que si hiciera el
-trabajo correctamente, éste
+alumnos, y que si hice la
+tarea correctamente, éste
 
 80
 00:03:28,510 --> 00:03:32,640
-debería ser el registro
-para "Demarcus".
+debería ser el registro de "Demarcus".
 
 81
 00:03:32,640 --> 00:03:36,600
-Así que veamos si
-es cierto.
+Veamos si es cierto.
 
 82
 00:03:36,600 --> 00:03:40,560
@@ -394,17 +387,17 @@ en efecto, encuentro eso.
 
 85
 00:03:46,110 --> 00:03:49,060
-Y entonces sugiere que ejecute
+Entonces sugiere que ejecute
 esta consulta de agregación--
 
 86
 00:03:49,060 --> 00:03:51,500
-y vamos a ver sobre
-agregación la siguiente semana, así
+y vamos a aprender acerca de
+agregación la siguiente semana,
 
 87
 00:03:51,500 --> 00:03:53,580
-que no veremos ahora sobre
+así que no veremos ahora
 cómo funciona esto, pero es
 
 88
@@ -415,17 +408,16 @@ hacer un "GROUP BY" en SQL--
 89
 00:03:59,970 --> 00:04:03,520
 y encontramos que ahora el
-promedio más alto en la clase
+promedio más alto de la clase
 
 90
 00:04:03,520 --> 00:04:08,600
-es el del alumno con "_id" 13 y
-tiene un promedio de 91,
+es el del alumno con "_id" 13,
+quien tiene un promedio de 91.
 
 91
 00:04:08,600 --> 00:04:12,760
-Y esa es la respuesta
-al problema--
+Ésa es la respuesta al problema--
 
 92
 00:04:12,760 --> 00:04:13,170
@@ -437,7 +429,7 @@ Muy bien.
 
 94
 00:04:14,530 --> 00:04:15,820
-Así es cómo funciona.
+Así funciona.
 
 95
 00:04:15,820 --> 00:04:17,070

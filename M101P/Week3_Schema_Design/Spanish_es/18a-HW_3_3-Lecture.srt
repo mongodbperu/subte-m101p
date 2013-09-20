@@ -3,17 +3,17 @@
 
 2
 00:00:00,130 --> 00:00:01,950
-En la tercera tarea de esta
-semana, vas a
+En la tercera tarea de
+esta semana, vas a
 
 3
 00:00:01,950 --> 00:00:03,190
-implementar los commentarios.
+implementar los comentarios.
 
 4
 00:00:03,190 --> 00:00:06,620
-Así que vas a extender
-el sistema que escribiste para
+Vas a extender el sistema
+que escribiste para
 
 5
 00:00:06,620 --> 00:00:08,990
@@ -22,7 +22,7 @@ comente en un post.
 
 6
 00:00:08,990 --> 00:00:12,480
-Así que si haces clic en un post,
+Si haces clic en un post,
 irás al enlace permanente
 
 7
@@ -35,17 +35,17 @@ Y esto dice "My second post".
 
 9
 00:00:15,550 --> 00:00:19,870
-Y luego la persona debería
+Luego la persona debería
 poder añadir un nombre y
 
 10
 00:00:19,870 --> 00:00:23,350
-opcionalmente un correo,
-y enviarlo.
+opcionalmente un
+correo y enviarlo.
 
 11
 00:00:23,350 --> 00:00:25,710
-Y entonces verás que
+Entonces verás que
 abajo de esto, ahora
 
 12
@@ -59,12 +59,11 @@ comentarios.
 
 14
 00:00:28,670 --> 00:00:30,720
-Y por supuesto,
-debería soportarlo.
+Por supuesto, debería soportarlo.
 
 15
 00:00:30,720 --> 00:00:32,189
-Me trajo de regreso al enlace
+Me regresó al enlace
 permanente de la página.
 
 16
@@ -78,8 +77,8 @@ Y entonces puedes enviarlo.
 
 18
 00:00:37,220 --> 00:00:39,250
-No te preocupes por la interfaz
-de usuario.
+No te preocupes por la
+interfaz de usuario.
 
 19
 00:00:39,250 --> 00:00:41,870
@@ -97,21 +96,21 @@ interfaz.
 
 22
 00:00:45,250 --> 00:00:48,310
-Así que esa es la idea
+Ésa es la idea
 básica de esta tarea.
 
 23
 00:00:48,310 --> 00:00:51,700
-Y para esto, al igual
-que la anterior, te dimos
+Para esto, al igual que
+la anterior, te dimos
 
 24
 00:00:51,700 --> 00:00:52,610
-un script de validación.
+un script de validación
 
 25
 00:00:52,610 --> 00:00:55,140
-Que va a insertar
+que va a insertar
 comentarios en tu blog.
 
 26
@@ -126,12 +125,12 @@ pueda leerlos.
 28
 00:00:57,530 --> 00:00:59,450
 Y luego también va a
-revisar las colecciones para
+revisar las colecciones
 
 29
 00:00:59,450 --> 00:01:02,850
-asegurarse que ellos están
-en las colecciones apropiadas.
+para asegurarse que estén en
+las colecciones apropiadas.
 
 30
 00:01:02,850 --> 00:01:03,230

@@ -13,8 +13,8 @@ en los posts del blog.
 
 4
 00:00:05,550 --> 00:00:08,240
-Ahora, sólo hay un lugar
-que debes cambiar,
+Ahora, sólo hay una cosa
+que debes cambiar y
 
 5
 00:00:08,240 --> 00:00:11,110
@@ -22,12 +22,13 @@ está en blogPostDAO.py.
 
 6
 00:00:11,110 --> 00:00:16,010
-Pero el flujo de control inicia
-en blog.py donde tenemos un
+El flujo de control se inicia
+en blog.py, donde tenemos un
 
 7
 00:00:16,010 --> 00:00:18,200
-controlador para un nuevo comentario.
+controlador para
+un nuevo comentario.
 
 8
 00:00:18,200 --> 00:00:21,640
@@ -42,32 +43,32 @@ del post y cuando éste es llamado
 10
 00:00:26,560 --> 00:00:29,540
 con una solicitud POST, extrae
-los elementos del formulario, que
+los elementos del formulario,
 
 11
 00:00:29,540 --> 00:00:32,549
-son valores ocultos en él,
+que son valores ocultos,
 fuera de la página.
 
 12
 00:00:32,549 --> 00:00:34,990
-Y entonces recupera el post
+Entonces recupera el post
 por el enlace permanente.
 
 13
 00:00:34,990 --> 00:00:37,740
 Así que aquí, si por alguna
-razón fue enviado un falso
+razón se envió un falso enlace
 
 14
 00:00:37,740 --> 00:00:39,900
-enlace permanente, esto no
+permanente, no se
 obtendría el post.
 
 15
 00:00:39,900 --> 00:00:42,630
-Así que si no podemos encontrar el
-post, redirecciona inmediatamente a
+Si no podemos encontrar el post,
+se redirecciona inmediatamente a
 
 16
 00:00:42,630 --> 00:00:44,130
@@ -76,7 +77,7 @@ post, redirecciona inmediatamente a
 17
 00:00:44,130 --> 00:00:47,840
 De lo contrario, lo que hace es
-que se asegura que el nombre y
+asegurarse de que el nombre y
 
 18
 00:00:47,840 --> 00:00:51,000
@@ -90,22 +91,22 @@ con el enlace permanente, nombre,
 
 20
 00:00:54,930 --> 00:00:56,080
-correo y el cuerpo.
+correo y cuerpo.
 
 21
 00:00:56,080 --> 00:01:00,000
-Eso va directamente a
-blogPostDAO.py.
+Eso va directamente
+a blogPostDAO.py.
 
 22
 00:01:00,000 --> 00:01:03,300
-Y después que ha terminado,
+Después de que ha terminado,
 va a redireccionar al
 
 23
 00:01:03,300 --> 00:01:06,120
-enlace permanente de la página
-con un request GET, por lo que verás
+enlace permanente de la página con
+un request GET, por lo que verás
 
 24
 00:01:06,120 --> 00:01:09,580
@@ -124,18 +125,17 @@ necesitas trabajar y
 
 27
 00:01:15,000 --> 00:01:17,010
-es en la función
-"add_comment".
+es en la función "add_comment".
 
 28
 00:01:17,010 --> 00:01:21,050
-Necesitas añadir esta actualización
-y tenías que buscar un
+Necesitabas añadir esta actualización
+y tenías que buscar un documento
 
 29
 00:01:21,050 --> 00:01:23,355
-documento con un enlace permanente
-que coincide con el enlace que
+con un enlace permanente que
+coincida con el enlace que
 
 30
 00:01:23,355 --> 00:01:26,230
@@ -148,17 +148,17 @@ array de comentarios.
 
 32
 00:01:27,640 --> 00:01:30,640
-Y entonces, sólo por seguridad,
+Entonces, sólo por seguridad,
 tengo "upsert=False".
 
 33
 00:01:30,640 --> 00:01:32,460
 Aunque ya hemos verificado
-para asegurarnos que
+para asegurarnos de que
 
 34
 00:01:32,460 --> 00:01:35,890
-el enlace permanente corresponde
+el enlace permanente corresponda
 al existente post, esto debería
 
 35
@@ -167,8 +167,8 @@ encontrar un documento.
 
 36
 00:01:37,260 --> 00:01:39,260
-Pero si por alguna razón no lo
-hace, esto no lo insertará
+Pero si por alguna razón no
+lo hace, esto no lo insertará
 
 37
 00:01:39,260 --> 00:01:41,280
@@ -181,8 +181,7 @@ es decirle al driver que no añada
 
 39
 00:01:44,695 --> 00:01:47,730
-un campo "_id" si
-no hubiera.
+un campo "_id" si no hubiera.
 
 40
 00:01:47,730 --> 00:01:50,140
@@ -210,7 +209,7 @@ necesita trabajar en este archivo.
 45
 00:01:56,970 --> 00:02:00,760
 Para obtener los
-comentarios del blog,
+comentarios del blog
 
 46
 00:02:00,760 --> 00:02:04,270
@@ -234,7 +233,7 @@ para asumir que los comentarios
 50
 00:02:10,750 --> 00:02:14,880
 están presentes, se pasaron y
-agregaron justo aquí
+se agregaron justo aquí
 
 51
 00:02:14,880 --> 00:02:17,920
@@ -252,12 +251,11 @@ de forma gratuita.
 
 54
 00:02:21,480 --> 00:02:23,750
-Lo mismo en
-"get_post_by_permalink" que es
+Lo mismo en "get_post_by_permalink"
 
 55
 00:02:23,750 --> 00:02:25,980
-el otro lugar donde
+que es el otro lugar donde
 se necesitaba trabajar.
 
 56

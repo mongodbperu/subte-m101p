@@ -7,18 +7,18 @@ Muy bien.
 
 3
 00:00:00,410 --> 00:00:03,390
-Para el primer problema de esta semana,
-voy a analizar
+Para el primer problema de
+esta semana, voy a analizar
 
 4
 00:00:03,390 --> 00:00:07,800
-un conjunto de datos similar a la
-semana anterior y eliminar la tarea
+un conjunto de datos similar al de la
+semana anterior y para cada alumno,
 
 5
 00:00:07,800 --> 00:00:09,590
-de menor puntuación por
-cada alumno.
+eliminar la tarea con
+la menor puntuación.
 
 6
 00:00:09,590 --> 00:00:13,350
@@ -31,32 +31,30 @@ documento para cada evaluación.
 
 8
 00:00:15,860 --> 00:00:18,570
-Entonces habían cuatro documentos
-por alumno.
+Entonces había cuatro
+documentos por alumno.
 
 9
 00:00:18,570 --> 00:00:20,930
-Esta semana, será 
-sólo un
+Esta semana, habrá sólo un
 
 10
 00:00:20,930 --> 00:00:21,890
-documento por alumno.
+documento por alumno
 
 11
 00:00:21,890 --> 00:00:23,440
-Y es una colección de
-alumnos.
+y es una colección de alumnos.
 
 12
 00:00:23,440 --> 00:00:25,470
-Y vas a necesitar
-encontrar la tarea con menor
+Vas a necesitar encontrar
+la tarea con menor
 
 13
 00:00:25,470 --> 00:00:29,310
 puntuación, eliminarla y mantener
-el conjunto de datos intacto por completo.
+el conjunto de datos intacto.
 
 14
 00:00:29,310 --> 00:00:33,950
@@ -66,15 +64,15 @@ complicado por la forma
 15
 00:00:33,950 --> 00:00:35,570
 en que el esquema está
-dispuesto esta semana.
+organizado esta semana.
 
 16
 00:00:35,570 --> 00:00:37,700
-Y esa es la idea.
+Y ésa es la idea.
 
 17
 00:00:37,700 --> 00:00:39,660
-Ahora, al igual que la semana pasada,
+Al igual que la semana pasada,
 no necesitas escribir este
 
 18
@@ -83,27 +81,24 @@ programa en Python.
 
 19
 00:00:41,160 --> 00:00:42,820
-Puedes hacerlo en
-el que desees.
+Puedes hacerlo en lo que desees.
 
 20
 00:00:42,820 --> 00:00:44,470
-Aquí está la descripción
-del problema.
+Aquí está la descripción del problema.
 
 21
 00:00:44,470 --> 00:00:47,730
-Vas a empezar por
-descargar la colección
+Vas a empezar por descargar la
 
 22
 00:00:47,730 --> 00:00:48,350
-"students.js".
+colección "students.js".
 
 23
 00:00:48,350 --> 00:00:51,730
-Vas a importarlo en
-una base de datos llamada "school".
+Vas a importarlo en una
+base de datos llamada "school".
 
 24
 00:00:51,730 --> 00:00:54,980
@@ -122,7 +117,7 @@ sus respuestas para después
 
 27
 00:01:00,640 --> 00:01:01,500
-que hagas el trabajo.
+de que termines la tarea.
 
 28
 00:01:01,500 --> 00:01:04,000
@@ -131,22 +126,21 @@ en la base de datos después de
 
 29
 00:01:04,000 --> 00:01:04,690
-hacer el trabajo.
+hacer la tarea.
 
 30
 00:01:04,690 --> 00:01:06,370
-No debes eliminar
-ningún alumno.
+No debes eliminar a ningún alumno.
 
 31
 00:01:06,370 --> 00:01:10,430
-Y también te damos cómo
-se verá el registro, el
+Y también te mostramos cómo
+se verán los registros. El
 
 32
 00:01:10,430 --> 00:01:15,130
-documento se verá así, para
-el alumno con "_id" 100, que es
+documento se verá así para el
+alumno con "_id" 100, que es
 
 33
 00:01:15,130 --> 00:01:16,920
@@ -154,18 +148,18 @@ el registro de "Demarcus Audette".
 
 34
 00:01:16,920 --> 00:01:20,040
-Y puedes ver que, en este punto,
+Puedes ver que, en este punto,
 Demarcus sólo tiene tres
 
 35
 00:01:20,040 --> 00:01:23,820
-puntuaciones porque la menor
-tarea ha sido eliminada.
+puntuaciones porque la tarea con
+la menor puntuación ha sido eliminada.
 
 36
 00:01:23,820 --> 00:01:26,640
-Y entonces después de haber terminado
-todo el trabajo, verifica que
+Después de haber terminado
+la tarea, verifica que
 
 37
 00:01:26,640 --> 00:01:29,050
@@ -174,8 +168,8 @@ vamos a tener que ejecutar esta
 
 38
 00:01:29,050 --> 00:01:31,820
-consulta que usa Aggregation
-Framework, que
+consulta que usa "Aggregation
+Framework", la cual
 
 39
 00:01:31,820 --> 00:01:34,370
@@ -183,8 +177,7 @@ requiere MongoDB 2.2.
 
 40
 00:01:34,370 --> 00:01:36,810
-Y se va a imprimir
-un documento.
+Y se va a imprimir un documento.
 
 41
 00:01:36,810 --> 00:01:40,810
@@ -197,8 +190,8 @@ el mayor promedio.
 
 43
 00:01:41,860 --> 00:01:44,360
-Y esa es la respuesta
-al problema, sólo
+Ésa es la respuesta
+al problema. Sólo
 
 44
 00:01:44,360 --> 00:01:45,610
