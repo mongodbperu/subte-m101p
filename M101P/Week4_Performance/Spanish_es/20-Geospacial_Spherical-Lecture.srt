@@ -3,658 +3,658 @@
 
 2
 00:00:00,160 --> 00:00:03,260
-Now let's talk about geospatial
-indexes that
+Ahora hablaremos acerca de índices
+geoespaciales, que
 
 3
 00:00:03,260 --> 00:00:05,240
-consider the curvature
-of the earth.
+tienen en cuenta la curvatura
+de la Tierra.
 
 4
 00:00:05,240 --> 00:00:08,570
-So a spherical model of the
-earth, which is the earth we
+Un modelo esférico de la
+Tierra, que es la Tierra en
 
 5
 00:00:08,570 --> 00:00:09,790
-really live in.
+la que realmente vivimos.
 
 6
 00:00:09,790 --> 00:00:13,490
-Now in a spherical model of the
-earth the locations on the
+En un modelo esférico de la
+Tierra las posiciones sobre
 
 7
 00:00:13,490 --> 00:00:16,800
-earth are usually specified
-by longitude and latitude.
+ella se especifican normalmente
+en longitud y latitud.
 
 8
 00:00:16,800 --> 00:00:20,830
-And the lines of longitude go
-from one pole to the other,
+Y las líneas de longitud van
+desde un polo al otro,
 
 9
 00:00:20,830 --> 00:00:23,460
-and the lines of latitude come
-around the earth like that,
+y las líneas de latitud van
+alrededor de la Tierra como eso,
 
 10
 00:00:23,460 --> 00:00:26,775
-and I'll just draw in
-the equator in red.
+y sólo dibujaré
+el ecuador en rojo.
 
 11
 00:00:26,775 --> 00:00:29,170
-This is my equator in red.
+Éste es mi ecuador en rojo.
 
 12
 00:00:29,170 --> 00:00:32,369
-Now if we're closer to the
-equator, than the lines of
+Ahora si estamos cerca del
+ecuador, entonces las líneas
 
 13
 00:00:32,369 --> 00:00:33,880
-longitude are further apart.
+de longitud están más separadas.
 
 14
 00:00:33,880 --> 00:00:35,910
-And as we get the poles,
-the lines of
+Y a medida que llegamos a los polos,
+las líneas de
 
 15
 00:00:35,910 --> 00:00:37,840
-longitude are closer together.
+longitud están más juntas.
 
 16
 00:00:37,840 --> 00:00:39,850
-Now, if you have a person
-standing anywhere on the
+Ahora, si tienes una persona
+en cualquier lugar de la
 
 17
 00:00:39,850 --> 00:00:41,530
-earth, you have a person
-standing right here.
+Tierra, tienes una persona
+justo aquí.
 
 18
 00:00:41,530 --> 00:00:43,090
-You might want to figure
-out well what are
+Podrías querer averiguar,
+bien, ¿cuáles son
 
 19
 00:00:43,090 --> 00:00:44,230
-the different locations?
+las diferentes ubicaciones?
 
 20
 00:00:44,230 --> 00:00:46,400
-Different stores that
-are near him?
+¿Diferentes almacenes que
+están cerca de él?
 
 21
 00:00:46,400 --> 00:00:49,410
-You can do that using the
-spherical model by specifying
+Puedes hacer eso usando el
+modelo esférico especificando
 
 22
 00:00:49,410 --> 00:00:50,630
-a max distance.
+una distancia máxima.
 
 23
 00:00:50,630 --> 00:00:53,950
-That will accept documents that
-satisfy that max distance
+Eso aceptará documentos que
+satisfagan ese criterio
 
 24
 00:00:53,950 --> 00:00:56,290
-criteria, and then we want the
-database to return the
+de distancia máxima, y luego queremos que
+la base de datos devuelva los
 
 25
 00:00:56,290 --> 00:00:59,280
-documents in order of
-increasing distance.
+documentos en orden de
+distancia creciente.
 
 26
 00:00:59,280 --> 00:01:02,490
-That's all good, now this max
-distance is going to be
+Todo eso está muy bien, ahora esta distancia
+máxima va a ser
 
 27
 00:01:02,490 --> 00:01:04,590
-specified in radians.
+especificada en radianes.
 
 28
 00:01:04,590 --> 00:01:06,680
-Let's have a little
-math review here.
+Hagamos una pequeña
+revisión de matemáticas aquí.
 
 29
 00:01:06,680 --> 00:01:10,090
-So if you have a circle, and if
-you have a distance, let's
+Así, si tienes un círculo, y si
+tienes una distancia, 
 
 30
 00:01:10,090 --> 00:01:11,550
-say that's specified
-in meters.
+digamos que está especificada
+en metros.
 
 31
 00:01:11,550 --> 00:01:14,300
-This distance d that
-I'm showing in red.
+Esta distancia "d" que 
+estoy enseñando en rojo.
 
 32
 00:01:14,300 --> 00:01:20,340
-Then the distance d, swept by
-the arc theta is equal to pi r
+Entonces la distancia "d", recorrida por
+el arco theta es igual a "pi * r"
 
 33
 00:01:20,340 --> 00:01:23,190
-where r is the radius of
-the earth in meters.
+donde "r" es el radio de
+la Tierra en metros.
 
 34
 00:01:23,190 --> 00:01:27,950
-So if you know the distance, you
-say oh I want it to be I
+Por lo que si conoces la distancia, dices
+¡oh!, quiero que sea, 
 
 35
 00:01:27,950 --> 00:01:29,600
-want to find every document
-within 100
+quiero encontrar todos los 
+documentos a 100
 
 36
 00:01:29,600 --> 00:01:32,000
-meters of this location.
+metros de esta posición.
 
 37
 00:01:32,000 --> 00:01:35,900
-Then the arc in radians is the
-distance you're looking for.
+Entonces el arco en radianes es la
+distancia que estás buscando.
 
 38
 00:01:35,900 --> 00:01:38,790
-Let's say 100 meters divided
-by the radius of
+Digamos que 100 metros divididos
+por el radio de
 
 39
 00:01:38,790 --> 00:01:40,570
-the earth in meters.
+la Tierra en metros.
 
 40
 00:01:40,570 --> 00:01:42,460
-And then you get to
-the angle theta.
+Y luego obtienes 
+el ángulo theta.
 
 41
 00:01:42,460 --> 00:01:44,130
-And that's the way you're going
-to need to specify any
+Y ésa es la manera en que vas a
+necesitar especificar cualquier
 
 42
 00:01:44,130 --> 00:01:47,080
-max distances in this model.
+distancia máxima en este modelo.
 
 43
 00:01:47,080 --> 00:01:50,270
-Now the spherical model was
-introduced after the 2D model
+El modelo esférico se 
+introdujo en MongoDB después del
 
 44
 00:01:50,270 --> 00:01:54,160
-in MongoDB, and so it uses some
-of the same facilities,
+modelo 2D, y por eso usa algunas
+de las mismas funcionalidades,
 
 45
 00:01:54,160 --> 00:01:55,830
-even though it is a
-spherical model.
+incluso a pesar de ser
+un modelo esférico.
 
 46
 00:01:55,830 --> 00:01:59,640
-In particular when you put an
-index on the location inside
+En particular, cuando creas un
+índice sobre la posición dentro
 
 47
 00:01:59,640 --> 00:02:00,800
-the document.
+del documento.
 
 48
 00:02:00,800 --> 00:02:05,050
-You're still going to say
-that it's of type 2D.
+Todavía vas a decir
+que es de tipo 2D.
 
 49
 00:02:05,050 --> 00:02:09,930
-Even though I consider this
-to be more of a 3D model.
+Aunque considero que esto
+es más un modelo 3D.
 
 50
 00:02:09,930 --> 00:02:11,900
-I guess it's only looking at the
-surface of the earth, so
+Supongo que sólo está mirando en la 
+superficie de la Tierra, por lo que
 
 51
 00:02:11,900 --> 00:02:14,700
-you might call it a spherical
-model, but you still
+podrías llamarlo modelo
+esférico, pero todavía se
 
 52
 00:02:14,700 --> 00:02:17,260
-call it a 2D index.
+le llama índice 2D.
 
 53
 00:02:17,260 --> 00:02:21,190
-And the difference is that
-when you query it, you're
+Y la diferencia es que
+cuando lo consultas, vas a 
 
 54
 00:02:21,190 --> 00:02:23,630
-going to query it in
-a different way.
+consultarlo de 
+forma distinta.
 
 55
 00:02:23,630 --> 00:02:25,680
-And let's look at how we're
-going to query it.
+Echemos un vistazo a cómo
+vamos a consultarlo.
 
 56
 00:02:25,680 --> 00:02:28,460
-Now I've got the same collection
-here I had before
+Ahora tengo aquí la misma 
+colección que tenía antes,
 
 57
 00:02:28,460 --> 00:02:32,240
-my stores collection,
-and I'll just remind
+mi colección "stores",
+y te recordaré
 
 58
 00:02:32,240 --> 00:02:34,380
-you what's in that.
+qué hay en ella.
 
 59
 00:02:34,380 --> 00:02:36,760
-I've got three documents in
-there, and they've got
+Tengo tres documentos
+ahí, que contienen
 
 60
 00:02:36,760 --> 00:02:38,680
-location listed as arrays.
+posiciones listadas como arrays.
 
 61
 00:02:38,680 --> 00:02:41,950
-Now before I told you they were
-xy-coordinates, and that
+Antes que te contara que eran
+coordenadas "x, y",
 
 62
 00:02:41,950 --> 00:02:43,480
-it could even be yx and
-it wouldn't matter.
+podrían incluso ser "y, x" y
+no importaría.
 
 63
 00:02:43,480 --> 00:02:45,810
-Because in Cartesian geometry
-it wouldn't
+Porque en geometría cartesiana
+no importa
 
 64
 00:02:45,810 --> 00:02:46,900
-matter which it was.
+cuál sea.
 
 65
 00:02:46,900 --> 00:02:50,320
-But in this spherical model
-it very much does matter.
+Pero en este modelo esférico
+importa mucho más.
 
 66
 00:02:50,320 --> 00:02:53,445
-And these have to be considered
-to be longitudes
+Y esas coordenadas tienen que ser 
+consideradas longitudes
 
 67
 00:02:53,445 --> 00:02:54,760
-and latitudes.
+y latitudes.
 
 68
 00:02:54,760 --> 00:02:57,300
-So remember-- it's longitude,
-latitude.
+Así que recuerda -- es longitud,
+latitud.
 
 69
 00:02:57,300 --> 00:02:59,020
-Not latitude, longitude.
+No latitud, longitud.
 
 70
 00:02:59,020 --> 00:03:00,870
-And so we're going to consider
-these to be longitude,
+Y por eso vamos a considerar
+que son longitudes,
 
 71
 00:03:00,870 --> 00:03:03,030
-latitudes in all these
-documents.
+latitudes en todos estos
+documentos.
 
 72
 00:03:03,030 --> 00:03:06,230
-Now there is a 2D index already
-in here, if you
+Ahora ya hay un índice 2D 
+aquí, si
 
 73
 00:03:06,230 --> 00:03:09,140
-remember if you do a getIndex
-you can see it.
+recuerdas , si haces un "getIndexes"
+puedes verlo.
 
 74
 00:03:09,140 --> 00:03:10,620
-I'll do it again.
+Lo haré de nuevo.
 
 75
 00:03:10,620 --> 00:03:13,560
-Just so that this lesson can
-stand alone, you can see that
+Sólo para que esta lección pueda
+ser independiente, puedes ver que
 
 76
 00:03:13,560 --> 00:03:17,270
-there's something on location
-right here, and its marked 2D.
+hay algo sobre "location"
+justo aquí, y está marcado como "2d".
 
 77
 00:03:17,270 --> 00:03:20,230
-Although we're going to use it
-in a way that gives us a 3D
+Aunque vamos a usarlo
+de una forma que nos da una distancia
 
 78
 00:03:20,230 --> 00:03:22,620
-distance from a particular
-location.
+3D desde una posición
+particular.
 
 79
 00:03:22,620 --> 00:03:23,950
-The syntax looks like this.
+La sintaxis es similar a esto.
 
 80
 00:03:23,950 --> 00:03:26,000
-It uses the geoNear command.
+Usa el comando "geoNear".
 
 81
 00:03:26,000 --> 00:03:29,590
-And rather than being used
-with the find, it's used
+Y más que usarlo con
+con el "find", se usa
 
 82
 00:03:29,590 --> 00:03:30,650
-runCommand.
+con "runCommand",
 
 83
 00:03:30,650 --> 00:03:32,390
-Which lets you run
-a whole host of
+el cual te permite ejecutar
+toda una serie de
 
 84
 00:03:32,390 --> 00:03:33,580
-commands to the database.
+comandos en la base de datos.
 
 85
 00:03:33,580 --> 00:03:36,520
-In this case we're going to
-specify that geoNear is the
+En este caso vamos a 
+especificar que "geoNear" es el
 
 86
 00:03:36,520 --> 00:03:38,390
-one we're looking for.
+que estamos buscando.
 
 87
 00:03:38,390 --> 00:03:41,570
-And that we won't have to look
-in the stores collection.
+Y que no tendremos que mirar
+en la colección "stores".
 
 88
 00:03:41,570 --> 00:03:46,500
-Now stores has to be specified
-explicitly, because it doesn't
+Ahora "stores" tiene que ser indicada
+específicamente, porque no
 
 89
 00:03:46,500 --> 00:03:49,430
-say db.storage here, it says
-db.runCommand so that the
+dice "db.stores" aquí, dice
+"db.runCommand" y la
 
 90
 00:03:49,430 --> 00:03:51,650
-database would have no way of
-knowing that you want to look
+base de datos no tendría forma de
+saber que quieres buscar
 
 91
 00:03:51,650 --> 00:03:54,780
-in the storage collection unless
-you specify the tier.
+en la colección "stores" a menos que
+lo especifiques aquí.
 
 92
 00:03:54,780 --> 00:03:57,010
-And then it's near
-this location.
+Y luego está "near" y 
+esta posición.
 
 93
 00:03:57,010 --> 00:03:59,750
-Again it's longitude,
-latitude.
+De nuevo es longitud,
+latitud.
 
 94
 00:03:59,750 --> 00:04:04,220
-I specify spherical is true,
-which tells the system--
+Especifico que "spherical" es "true",
+lo cual le dice al sistema --
 
 95
 00:04:04,220 --> 00:04:04,820
-the database--
+la base de datos --
 
 96
 00:04:04,820 --> 00:04:06,920
-that I'm looking for the
-spherical model.
+que estoy buscando con el
+modelo esférico.
 
 97
 00:04:06,920 --> 00:04:11,750
-And then I specify a max
-distance of one radian.
+Y luego indico una distancia
+máxima de un radián.
 
 98
 00:04:11,750 --> 00:04:15,893
-One radian if there's two pi
-radians, about six radians all
+Un radián es, ya sabes, si hay dos pi
+radianes, aproximadamente seis radianes
 
 99
 00:04:15,893 --> 00:04:17,360
-the way around the earth.
+alrededor de la Tierra.
 
 100
 00:04:17,360 --> 00:04:20,360
-So it's like 1/6 of the
-way around the earth.
+Por lo que es como 1/6 del
+camino alrededor de la Tierra.
 
 101
 00:04:20,360 --> 00:04:22,900
-And if I do that, here's
-what I get.
+Y si hago eso, aquí está
+lo que obtengo.
 
 102
 00:04:22,900 --> 00:04:26,670
-I get this rather convoluted
-return document.
+Obtengo este documento 
+bastante complicado.
 
 103
 00:04:26,670 --> 00:04:29,560
-And if you look here
-in results that's
+Y si miro aquí,
+en "results", ahí es
 
 104
 00:04:29,560 --> 00:04:30,300
-where the action is.
+donde está la acción.
 
 105
 00:04:30,300 --> 00:04:33,080
-That's where over here, this
-object that's the actual
+Es por aquí donde, este
+objeto es el documento
 
 106
 00:04:33,080 --> 00:04:36,410
-document from the collection
-that satisfies the criteria.
+real de la colección
+que satisface el criterio.
 
 107
 00:04:36,410 --> 00:04:40,740
-And if I gave a larger max
-distance of let's say 3
+Y si le diera una distancia máxima
+mayor de, digamos 3
 
 108
 00:04:40,740 --> 00:04:45,650
-radians which is half the way
-around the earth, at that
+radianes, que es la mitad del camino
+alrededor de la Tierra, en ese
 
 109
 00:04:45,650 --> 00:04:49,525
-point all the documents are
-going to satisfy that, and
+punto todos los documentos van
+a satisfacer eso, y
 
 110
 00:04:49,525 --> 00:04:51,170
-they're going to be
-returned in order
+van a ser
+devueltos en orden
 
 111
 00:04:51,170 --> 00:04:52,580
-of increasing distance.
+de distancia creciente.
 
 112
 00:04:52,580 --> 00:04:55,960
-So the same one is returned
-first, which is the Rubys
+Así que devuelve lo mismo
+primero, que es la peluquería
 
 113
 00:04:55,960 --> 00:04:58,130
-Barber 40, 74.
+"Rubys", "40, 74".
 
 114
 00:04:58,130 --> 00:04:58,890
-Let's see.
+Veamos.
 
 115
 00:04:58,890 --> 00:05:00,020
-Make sure that's true.
+Asegurémonos que es cierto.
 
 116
 00:05:00,020 --> 00:05:00,420
-Yep.
+Sí.
 
 117
 00:05:00,420 --> 00:05:02,030
-That's true, that's good.
+Es cierto, está bien.
 
 118
 00:05:02,030 --> 00:05:03,800
-So this is still the
-closest one.
+Por lo que ésta es todavía
+la más cercana.
 
 119
 00:05:03,800 --> 00:05:06,980
-But now that we've opened up the
-max distance, we're also
+Pero ahora que hemos ampliado la
+distancia máxima, también estamos
 
 120
 00:05:06,980 --> 00:05:10,210
-getting the ACE Hardware store,
-and the Tickle Candy
+obteniendo la ferretería "ACE Hardware",
+y también el almacén
 
 121
 00:05:10,210 --> 00:05:11,730
-store as well.
+"Tickle Candy".
 
 122
 00:05:11,730 --> 00:05:13,500
-And that's how you use
-the spherical model.
+Y así es como se usa
+el modelo esférico.
 
 123
 00:05:13,500 --> 00:05:15,880
-So just to review-- you store
-the location as much as you
+Así que sólo por repasar -- almacena
+la posición tal y como
 
 124
 00:05:15,880 --> 00:05:19,365
-did before in a key of your own
-choosing within an array
+hiciste antes en una clave de tu propia
+elección dentro de un array
 
 125
 00:05:19,365 --> 00:05:23,390
-with two values, and it has
-to be longitude, latitude.
+con dos valores, y tienen
+que ser longitud, latitud.
 
 126
 00:05:23,390 --> 00:05:26,720
-You ensure an index on the
-collection of type 2D,
+Aseguras un índice en la
+colección de tipo 2D,
 
 127
 00:05:26,720 --> 00:05:29,010
-although we're going to use a
-spherical model to query it.
+aunque vamos a usar un
+modelo esférico para consultarlo.
 
 128
 00:05:29,010 --> 00:05:31,980
-And then we use this runCommand
-geoNear with a
+Y luego usamos este "runCommand"
+"geoNear" con un
 
 129
 00:05:31,980 --> 00:05:33,250
-bunch of parameters.
+montón de parámetros.
 
 130
 00:05:33,250 --> 00:05:36,920
-That will let you look up
-any of these documents.
+Eso te dejará buscar
+cualquiera de estos documentos.
 
 131
 00:05:36,920 --> 00:05:38,920
-Find our which documents are
-closest to a particular
+Averiguar qué documentos son los
+más cercanos a una posición
 
 132
 00:05:38,920 --> 00:05:42,280
-location, and specifying a
-max distance if you want.
+particular, y especificando una
+distancia máxima si quieres.
 
 133
 00:05:42,280 --> 00:05:45,920
-Now there are other options to
-these, and there are other
+Hay otras opciones para
+éstos, y hay otros
 
 134
 00:05:45,920 --> 00:05:48,660
-details, and limits, and
-conditions, and other things
+detalles, y límites, y 
+condiciones y otras cosas
 
 135
 00:05:48,660 --> 00:05:51,950
-that haven't completely gone
-through in this lesson.
+que no hemos visto completamente
+en esta lección.
 
 136
 00:05:51,950 --> 00:05:53,930
-So you'll have to look up in the
-documentation if you want
+Por lo que tendrás que buscar en la
+documentación si quieres
 
 137
 00:05:53,930 --> 00:05:56,750
-to learn more about these
-geospatial indexes.
+aprender más acerca de estos
+índices geoespaciales.
 
 138
 00:05:56,750 --> 00:06:01,410
-But it's really convenient if
-you want to do location look
+Pero es realmente conveniente si
+quieres hacer búsquedas por
 
 139
 00:06:01,410 --> 00:06:02,980
-ups inside MongoDB.
+posición dentro de MongoDB.
 
 140
 00:06:02,980 --> 00:06:04,230
