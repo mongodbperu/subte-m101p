@@ -3,109 +3,109 @@
 
 2
 00:00:00,160 --> 00:00:04,480
-OK, and the answer is that the
-first one can't use an index
+OK, y la respuesta es que la
+primera no puede usar un índice
 
 3
 00:00:04,480 --> 00:00:09,700
-because it asks for brand GE,
-and as you can see, the only
+porque pregunta por "brand: 'GE'",
+y como puedes ver, el único
 
 4
 00:00:09,700 --> 00:00:14,360
-index that has brand in it is
-a compound index and it's in
+índice que tiene "brand" es
+un índice compuesto y está
 
 5
 00:00:14,360 --> 00:00:17,210
-the second column, so
-it can't use it.
+en la segunda columna, por lo que
+no puede usarlo.
 
 6
 00:00:17,210 --> 00:00:20,880
-And then the next one is brand
-GE as well, so that won't use
+Y entonces la siguiente también es 
+"brand: 'GE'", por lo que no usará
 
 7
 00:00:20,880 --> 00:00:24,920
-the index, but it sorts by
-price, and there is a
+el índice, pero ordena por
+"price", y hay un
 
 8
 00:00:24,920 --> 00:00:26,210
-index on the price.
+índice sobre "price".
 
 9
 00:00:26,210 --> 00:00:29,030
-So that second query can
-utilize an index.
+Por lo que esta segunda consulta puede
+utilizar un índice.
 
 10
 00:00:29,030 --> 00:00:32,890
-The next one looks for prices
-that are greater than 30 and
+La siguiente busca precios
+mayores que 30 y
 
 11
 00:00:32,890 --> 00:00:36,600
-less than 50, and it
-sorts by brand.
+menores que 50,
+y ordena por "brand".
 
 12
 00:00:36,600 --> 00:00:39,075
-So this can use an index because
-the price query can
+Por lo que ésta puede usar un índice porque
+la consulta sobre "price" puede
 
 13
 00:00:39,075 --> 00:00:42,820
-use an index, and this sort
-won't use an index.
+usar un índice y este "sort"
+no usará un índice.
 
 14
 00:00:42,820 --> 00:00:46,820
-And the last one is to look up
-a brand GE, which we know
+Y la última es buscar
+"brand: 'GE'", que sabemos que
 
 15
 00:00:46,820 --> 00:00:52,720
-cannot use the index, and then
-sort by category and brand in
+no puede usar el índice y luego
+"sort" por "category" y "brand" en
 
 16
 00:00:52,720 --> 00:00:53,230
-that order.
+ese orden.
 
 17
 00:00:53,230 --> 00:00:54,620
-Category and brand.
+"category" y "brand".
 
 18
 00:00:54,620 --> 00:00:58,040
-And you can see here that there
-is a category and brand
+Y puedes ver aquí que hay
+un índice sobre "category"
 
 19
 00:00:58,040 --> 00:01:02,300
-index, but the issue is that
-it's in the wrong order.
+y "brand", pero el problema es que
+no está en el orden correcto.
 
 20
 00:01:02,300 --> 00:01:05,660
-So its category ascending, brand
-ascending, and we try to
+Es "category" ascendentemente, "brand"
+ascendentemente, e intentamos
 
 21
 00:01:05,660 --> 00:01:10,970
-do a category ascending, brand
-descending index, which it
+hacer "category" ascendentemente, "brand"
+descendentemente, lo cual
 
 22
 00:01:10,970 --> 00:01:12,610
-will not do.
+no hará.
 
 23
 00:01:12,610 --> 00:01:15,600
-So for that reason, that
-answer is not chosen.
+Así que por esa razón, esa
+respuesta no es elegida.
 
 24
 00:01:15,600 --> 00:01:17,133
