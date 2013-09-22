@@ -3,8 +3,8 @@
 
 2
 00:00:00,160 --> 00:00:03,260
-Ahora hablaremos acerca de índices
-geoespaciales, que
+Ahora hablemos acerca de índices
+geoespaciales que
 
 3
 00:00:03,260 --> 00:00:05,240
@@ -23,7 +23,7 @@ la que realmente vivimos.
 6
 00:00:09,790 --> 00:00:13,490
 En un modelo esférico de la
-Tierra las posiciones sobre
+Tierra, las posiciones sobre
 
 7
 00:00:13,490 --> 00:00:16,800
@@ -117,7 +117,7 @@ distancia creciente.
 
 26
 00:00:59,280 --> 00:01:02,490
-Todo eso está muy bien, ahora esta distancia
+Todo eso está muy bien, ahora, esta distancia
 máxima va a ser
 
 27
@@ -131,7 +131,7 @@ revisión de matemáticas aquí.
 
 29
 00:01:06,680 --> 00:01:10,090
-Así, si tienes un círculo, y si
+Así, si tienes un círculo y si
 tienes una distancia, 
 
 30
@@ -147,7 +147,7 @@ estoy enseñando en rojo.
 32
 00:01:14,300 --> 00:01:20,340
 Entonces la distancia "d", recorrida por
-el arco theta es igual a "pi * r"
+el arco "zeta" es igual a "pi * r"
 
 33
 00:01:20,340 --> 00:01:23,190
@@ -185,7 +185,7 @@ la Tierra en metros.
 40
 00:01:40,570 --> 00:01:42,460
 Y luego obtienes 
-el ángulo theta.
+el ángulo "zeta".
 
 41
 00:01:42,460 --> 00:01:44,130
@@ -284,7 +284,7 @@ posiciones listadas como arrays.
 
 61
 00:02:38,680 --> 00:02:41,950
-Antes que te contara que eran
+Antes te dije que eran
 coordenadas "x, y",
 
 62
@@ -562,7 +562,7 @@ distancia máxima, también estamos
 120
 00:05:06,980 --> 00:05:10,210
 obteniendo la ferretería "ACE Hardware",
-y también el almacén
+y también la tienda
 
 121
 00:05:10,210 --> 00:05:11,730
@@ -625,11 +625,11 @@ distancia máxima si quieres.
 133
 00:05:42,280 --> 00:05:45,920
 Hay otras opciones para
-éstos, y hay otros
+éstos, hay otros
 
 134
 00:05:45,920 --> 00:05:48,660
-detalles, y límites, y 
+detalles, límites, 
 condiciones y otras cosas
 
 135
