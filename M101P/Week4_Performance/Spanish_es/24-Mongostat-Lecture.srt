@@ -31,12 +31,12 @@ al nivel del sistema.
 8
 00:00:12,070 --> 00:00:14,610
 Y otra vez, todo esto de
-rendimiento, sobretodo
+rendimiento, sobre todo
 
 9
 00:00:14,610 --> 00:00:17,780
 en un sistema grande en ejecución,
-probablemente lo tenga un administrador
+probablemente tenga un administrador
 
 10
 00:00:17,780 --> 00:00:20,110
@@ -150,7 +150,7 @@ que ir al disco.
 33
 00:01:18,380 --> 00:01:21,050
 Porque, como hemos comentado
-anteriormente, que tu índice en
+anteriormente, tener tu índice en
 
 34
 00:01:21,050 --> 00:01:23,080
@@ -177,8 +177,8 @@ Así que te está diciendo si tu
 
 39
 00:01:31,940 --> 00:01:34,090
-Y montón de personas echará un
-vistazo a esto para averiguar
+Y un montón de personas echará
+un vistazo a esto para averiguar
 
 40
 00:01:34,090 --> 00:01:36,170
@@ -244,7 +244,7 @@ Eso no tiene ningún sentido.
 
 54
 00:02:07,530 --> 00:02:09,150
-Y la razón por la que no nos estpe
+Y la razón por la que no nos está
 faltando ningún índice, por supuesto-
 
 55
@@ -287,7 +287,7 @@ tiene ni siquiera que usar un índice.
 63
 00:02:28,880 --> 00:02:31,240
 Así que por lo tanto, esto
-no te dice nada interesantes.
+no te dice nada interesante.
 
 64
 00:02:31,240 --> 00:02:32,840
@@ -374,7 +374,7 @@ creo que tiene uno o dos gigas.
 82
 00:03:14,540 --> 00:03:15,800
 Si puedes fijarte en el monitor
-de actividad para qué tanto
+de actividad para ver qué tanto
 
 83
 00:03:15,800 --> 00:03:18,090
