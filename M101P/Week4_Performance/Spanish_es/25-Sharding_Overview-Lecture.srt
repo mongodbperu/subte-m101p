@@ -229,7 +229,7 @@ distintos "shards" --
 
 49
 00:02:28,710 --> 00:02:31,980
-Y entonces hay algún troceo
+Y entonces hay algún reparto
 por aquí dentro para permitir a Mongo
 
 50
