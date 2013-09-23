@@ -3,108 +3,108 @@
 
 2
 00:00:00,130 --> 00:00:03,200
-And the answer is that adding
-the appropriate index on large
+Y la respuesta es que añadiendo el
+índice apropiado en colecciones
 
 3
 00:00:03,200 --> 00:00:04,900
-collections so that only a small
-percentage of queries
+grandes de modo que sólo un
+pequeño porcentaje de consultas
 
 4
 00:00:04,900 --> 00:00:07,090
-need to scan the collection,
-that's gonna have your
+necesitan escanear la
+colección, va a tener un
 
 5
 00:00:07,090 --> 00:00:08,320
-greatest impact.
+mayor impacto.
 
 6
 00:00:08,320 --> 00:00:10,800
-Any more memory so the
-working set fits into
+Un poco más de memoria para que
+la carga de trabajo se ajuste
 
 7
 00:00:10,800 --> 00:00:13,590
-memory, that'll help.
+en memoria, ayudará.
 
 8
 00:00:13,590 --> 00:00:16,059
-But, you typically won't be
-able to get your entire
+Pero, en realidad no
+serás capaz de obtener tu
 
 9
 00:00:16,059 --> 00:00:17,780
-database into memory, although
-you'll be able to get your
+base de datos en memoria, a pesar
+que serás capaz de obtener todo
 
 10
 00:00:17,780 --> 00:00:20,730
-entire index into memory.
+tu índice en memoria.
 
 11
 00:00:20,730 --> 00:00:21,865
-And that will be important
-for performance
+Y eso va a ser importante
+para el rendimiento,
 
 12
 00:00:21,865 --> 00:00:23,730
-as we'll see later.
+como veremos más adelante.
 
 13
 00:00:23,730 --> 00:00:26,960
-Adding a faster disk
-drive, that helps.
+Añadiendo un disco duro
+más rápido, ayudará.
 
 14
 00:00:26,960 --> 00:00:29,200
-But truth is that the
-algorithmic improvements you
+Pero la verdad es que las
+mejoras algorítmicas que
 
 15
 00:00:29,200 --> 00:00:33,270
-get from hitting an index are an
-order of magnitude greater
+llegan a usar un índice
+tiene una magnitud mayor
 
 16
 00:00:33,270 --> 00:00:35,800
-than what you're gonna get by
-having a faster disk drive
+que lo que vas a obtener por
+tener un disco duro más rápido
 
 17
 00:00:35,800 --> 00:00:36,920
-inside your computer.
+en tu computador.
 
 18
 00:00:36,920 --> 00:00:39,520
-The same thing is
-true for a CPU.
+Lo mismo es cierto
+para un procesador.
 
 19
 00:00:39,520 --> 00:00:43,370
-Creating a faster CPU is
-OK, but the algorithmic
+Reemplazando un procesador más
+rápido está bien, pero las mejoras
 
 20
 00:00:43,370 --> 00:00:45,850
-improvements you get by hitting
-an index inside the
+algorítmicas que obtengas
+usando un índice en la
 
 21
 00:00:45,850 --> 00:00:48,360
-database is far more
-important.
+base de datos es
+mucho más importante.
 
 22
 00:00:48,360 --> 00:00:50,690
-And so thinking about indexing
-when you're thinking about
+Y así piensa sobre indexación
+cuando estás pensando en
 
 23
 00:00:50,690 --> 00:00:53,410
-performance in a database is
-gonna be absolutely critical.
+rendimiento en una base de datos
+va a ser absolútamente crítico.
 
 24
 00:00:53,410 --> 00:00:54,660
