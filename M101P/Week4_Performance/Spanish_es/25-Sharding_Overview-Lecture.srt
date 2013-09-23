@@ -13,7 +13,7 @@ para dividir una colección
 
 4
 00:00:07,280 --> 00:00:09,620
-grande entre
+grande a través de
 múltiples servidores.
 
 5
@@ -116,11 +116,11 @@ aplicación --
 25
 00:01:15,290 --> 00:01:17,820
 sin embargo, la forma en que Mongo
-hacer "Sharding" es que
+hace "Sharding", es escogiendo
 
 26
 00:01:17,820 --> 00:01:19,580
-tienes que seleccionar una clave de "shard".
+una clave de "shard".
 
 27
 00:01:19,580 --> 00:01:21,730
@@ -178,12 +178,12 @@ completar la inserción.
 
 38
 00:01:53,990 --> 00:01:57,700
-Así que tienes que tener cuidado con cuál
+Así que debes tener cuidado con cuál
 es la clave del "shard" en la
 
 39
 00:01:57,700 --> 00:01:58,980
-propia colección.
+colección.
 
 40
 00:01:58,980 --> 00:02:03,330
@@ -309,7 +309,7 @@ tienes que hacer un
 
 66
 00:03:07,590 --> 00:03:09,100
-necesita difundirlo.
+necesita difundirlas.
 
 67
 00:03:09,100 --> 00:03:11,480
