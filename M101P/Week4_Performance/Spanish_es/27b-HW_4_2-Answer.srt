@@ -8,7 +8,7 @@ Bien.
 3
 00:00:00,630 --> 00:00:05,170
 Y la respuesta es que este
-"find" está usando  el índice
+"find" está usando el índice
 
 4
 00:00:05,170 --> 00:00:06,660

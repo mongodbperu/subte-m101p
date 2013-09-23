@@ -9,11 +9,11 @@ damos la consulta y la
 3
 00:00:04,310 --> 00:00:06,980
 salida del "explain" y tienes
-que averiguar cuáles de los
+que averiguar cuáles de las
 
 4
 00:00:06,980 --> 00:00:10,880
-siguientes hechos son ciertos a partir
+siguientes afirmaciones son ciertas a partir
 del comando "explain".
 
 5
