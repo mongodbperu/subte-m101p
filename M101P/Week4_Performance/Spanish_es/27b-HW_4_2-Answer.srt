@@ -3,198 +3,198 @@
 
 2
 00:00:00,130 --> 00:00:00,630
-All right.
+Bien.
 
 3
 00:00:00,630 --> 00:00:05,170
-And the answer is that this
-find is using BtreeCursor
+Y la respuesta es que este
+"find" está usando el índice
 
 4
 00:00:05,170 --> 00:00:06,660
-created at index.
+"BtreeCursor created_at".
 
 5
 00:00:06,660 --> 00:00:10,500
-We know that that's an index on
-just the created at field.
+Sabemos que ése es un índice sobre
+el campo "created_at" solamente.
 
 6
 00:00:10,500 --> 00:00:11,730
-It reversed it.
+Lo invirtió.
 
 7
 00:00:11,730 --> 00:00:14,400
-We know that Mongo can only use
-one index for any given
+Sabemos que Mongo sólo puede usar
+un índice para una consulta
 
 8
 00:00:14,400 --> 00:00:17,770
-query, and since created at is
-in the sort field and it's not
+dada, y como "created_at" está
+en el campo "sort" y no está
 
 9
 00:00:17,770 --> 00:00:21,410
-in the criteria field, we know
-that it's probably being used
+en el campo criterio, sabemos
+que probablemente está siendo usado
 
 10
 00:00:21,410 --> 00:00:22,560
-for the sort.
+para el "sort".
 
 11
 00:00:22,560 --> 00:00:26,490
-And we also know that it's not
-using anything for the
+Y también sabemos que no está
+usando nada para la
 
 12
 00:00:26,490 --> 00:00:28,920
-criteria part because it can't
-use more than one index, and
+parte del criterio porque no puede
+usar más que un índice y
 
 13
 00:00:28,920 --> 00:00:30,490
-we know that the follower
-count is not in
+sabemos que el "followers_count"
+no está en
 
 14
 00:00:30,490 --> 00:00:32,450
-the created at index.
+el índice "created_at".
 
 15
 00:00:32,450 --> 00:00:35,470
-So from that, we can determine
-that we probably did scan the
+Así que a partir de eso, podemos determinar
+que probablemente hizo un escaneo
 
 16
 00:00:35,470 --> 00:00:37,920
-entire collection even though
-we did use an index.
+de la colección completa aunque
+usamos un índice.
 
 17
 00:00:37,920 --> 00:00:39,800
-We used the index
-for the sort.
+Usamos el índice
+para el "sort".
 
 18
 00:00:39,800 --> 00:00:43,350
-And we also note that it's not a
-covered index, but of course
+Y también notamos que no es un
+índice cubierto, pero por supuesto
 
 19
 00:00:43,350 --> 00:00:45,880
-you did a table scan, so that
-probably make sense.
+hiciste un escaneo de tabla, por lo que
+probablemente tenga sentido.
 
 20
 00:00:45,880 --> 00:00:48,190
-And it took 205 milliseconds.
+Y tardó 205 milisegundos.
 
 21
 00:00:48,190 --> 00:00:50,420
-So let's see what we can
-learn from this.
+Así que veamos qué podemos
+aprender de esto.
 
 22
 00:00:50,420 --> 00:00:52,690
-Returned 10 documents, OK.
+Devolvió 10 documentos, OK.
 
 23
 00:00:52,690 --> 00:00:56,220
-So, the answers are, this query
-performs a table scan.
+Por lo tanto, las respuestas son, esta consulta
+realiza un escaneo de tabla.
 
 24
 00:00:56,220 --> 00:00:58,250
-A table scan is the same
-as a collection scan.
+Un escaneo de tabla es lo mismo
+que un escaneo de colección.
 
 25
 00:00:58,250 --> 00:01:01,620
-The answer is, yes it does.
+La respuesta es, sí lo hace.
 
 26
 00:01:01,620 --> 00:01:03,742
-The query uses an index to
-determine the order in which
+La consulta usa un índice para
+determinar el orden en el que
 
 27
 00:01:03,742 --> 00:01:05,190
-to return the resulting
-documents.
+devolver los documentos
+resultantes.
 
 28
 00:01:05,190 --> 00:01:07,430
-Yes, that is true.
+Sí, eso es cierto.
 
 29
 00:01:07,430 --> 00:01:08,740
-The query uses an index
-to determine which
+La consulta usa un índice
+para determinar qué
 
 30
 00:01:08,740 --> 00:01:09,890
-documents to match.
+documentos coinciden.
 
 31
 00:01:09,890 --> 00:01:10,820
-That is not true.
+Eso no es cierto.
 
 32
 00:01:10,820 --> 00:01:12,100
-You cannot use that index.
+No puedes usar ese índice.
 
 33
 00:01:12,100 --> 00:01:15,660
-The index here, BtreeCursor
-created at could not be used
+El índice aquí, "BtreeCursor 
+created_at" no podría usarse
 
 34
 00:01:15,660 --> 00:01:20,080
-to satisfy this criteria, and
-so therefore, it is not.
+para satisfacer este criterio, y 
+por tanto, no se usa.
 
 35
 00:01:20,080 --> 00:01:21,930
-The query returns 46,000
-documents.
+La consulta devuelve 46000
+documentos.
 
 36
 00:01:21,930 --> 00:01:22,570
-That's not true.
+Eso no es cierto.
 
 37
 00:01:22,570 --> 00:01:24,500
-The query returns
-10 documents .
+La consulta devuelve
+10 documentos.
 
 38
 00:01:24,500 --> 00:01:29,820
-The query visits 46,462
-documents, that is true.
+La consulta visita 46462
+documentos, eso es cierto.
 
 39
 00:01:29,820 --> 00:01:33,030
-Yeah, 46,462, right there.
+Sí, 46462, justo aquí.
 
 40
 00:01:33,030 --> 00:01:35,690
-And, this query is a covered
-index query, and that is not
+Y esta consulta es una consulta de
+índice cubierto, eso no es
 
 41
 00:01:35,690 --> 00:01:38,290
-true, which is plainly obvious
-from the fact that it says
+cierto, lo cual es bastante obvio
+partiendo del hecho que dice
 
 42
 00:01:38,290 --> 00:01:39,690
-index only false.
+"indexOnly: false".
 
 43
 00:01:39,690 --> 00:01:41,430
-OK, so that's the answer
-to this question.
+OK, pues esa es la respuesta
+a esta pregunta.
 
 44
 00:01:41,430 --> 00:01:42,680
