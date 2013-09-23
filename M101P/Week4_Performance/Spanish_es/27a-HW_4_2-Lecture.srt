@@ -3,38 +3,38 @@
 
 2
 00:00:00,180 --> 00:00:04,310
-All right, in this problem you
-are given the query and the
+Bien, en este problema te 
+damos la consulta y la 
 
 3
 00:00:04,310 --> 00:00:06,980
-explain output and you have
-to figure out which of the
+salida del "explain" y tienes
+que averiguar cuáles de las
 
 4
 00:00:06,980 --> 00:00:10,880
-following facts are true from
-the explain command.
+siguientes afirmaciones son ciertas a partir
+del comando "explain".
 
 5
 00:00:10,880 --> 00:00:14,100
-It's a little subtle because we
-aren't shown the index and
+Es un poco complicado porque
+no te hemos enseñado el índice y
 
 6
 00:00:14,100 --> 00:00:17,130
-to figure it out you have to
-look at the actual names of
+para averiguarlo tienes que
+echar un vistazo a los nombres reales
 
 7
 00:00:17,130 --> 00:00:20,700
-the index, over here, and the
-names of the index that are
+del índice, por aquí, y los
+nombres del índice que se
 
 8
 00:00:20,700 --> 00:00:23,050
-used can tell you a lot
-about what's going on.
+utiliza te puede decir un
+montón acerca de qué está sucediendo.
 
 9
 00:00:23,050 --> 00:00:24,300
