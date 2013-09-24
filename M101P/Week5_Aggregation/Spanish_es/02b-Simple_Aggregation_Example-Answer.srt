@@ -7,40 +7,40 @@ OK.
 
 3
 00:00:00,700 --> 00:00:05,170
-And the answer is
-db.products.aggregate, and it
+Y la respuesta es
+"db.products.aggregate", y esto
 
 4
 00:00:05,170 --> 00:00:09,170
-looks exactly like I did before
-where we $group and
+se parece mucho a lo que hice
+antes donde hicimos $group y
 
 5
 00:00:09,170 --> 00:00:11,795
-then we have an _id
-of category.
+luego tenemos un "_id"
+de "category".
 
 6
 00:00:11,795 --> 00:00:12,570
-[INAUDIBLE]
+--ya no por
 
 7
 00:00:12,570 --> 00:00:13,750
-manufacturer.
+"manufacturer".
 
 8
 00:00:13,750 --> 00:00:16,370
-And we built a new item called
-num_products, a new key called
+y construimos un nuevo elemento
+llamado "num_products", una nueva
 
 9
 00:00:16,370 --> 00:00:21,150
-num_products, where we sum 1
-for each one by category.
+clave llamada "num_products", donde
+sumamos 1 por cada elemento por categoría.
 
 10
 00:00:21,150 --> 00:00:22,400
-That's the answer.
+Esa es la respuesta.
 
 11
 00:00:22,400 --> 00:00:23,122
