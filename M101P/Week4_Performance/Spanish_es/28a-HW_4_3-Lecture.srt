@@ -22,11 +22,11 @@ te hemos dado un conjunto
 
 6
 00:00:10,860 --> 00:00:12,940
-de datos de 1000 publicaciones.
+de datos de 1000 posts.
 
 7
 00:00:12,940 --> 00:00:14,700
-Publicaciones muy patrióticas si
+Posts muy patrióticos si
 eres americano.
 
 8
@@ -45,7 +45,7 @@ y la declaración de derechos.
 
 11
 00:00:22,660 --> 00:00:25,680
-Y todas estas publicaciones tienen 50
+Y todos estos posts tienen 50
 comentarios y tienen
 
 12
@@ -60,12 +60,12 @@ que necesitas hacer que sean más rápidas.
 14
 00:00:29,640 --> 00:00:31,700
 Tienes que hacer que la página inicial
-del blog sea rápida, la cual recupera las
+del blog sea rápida, la cual recupera los
 
 15
 00:00:31,700 --> 00:00:35,580
-10 publicaciones del blog más
-recientes y las imprime.
+10 posts del blog más
+recientes y los imprime.
 
 16
 00:00:35,580 --> 00:00:38,170
@@ -75,7 +75,7 @@ esta página sea rápida.
 17
 00:00:38,170 --> 00:00:41,470
 Ésta es una página que buscará
-las 10 publicaciones más
+los 10 posts más
 
 18
 00:00:41,470 --> 00:00:43,330
@@ -84,7 +84,7 @@ recientes para una etiqueta dada.
 19
 00:00:43,330 --> 00:00:46,510
 Simplemente hice clic en "tempo", por lo que ahora
-todas estas publicaciones van a
+todos estos posts van a
 
 20
 00:00:46,510 --> 00:00:47,850
@@ -93,7 +93,7 @@ contener "tempo".
 21
 00:00:47,850 --> 00:00:50,820
 Si hago clic en "refund", entonces
-todas estas publicaciones
+todos estos posts
 
 22
 00:00:50,820 --> 00:00:52,690
@@ -102,7 +102,7 @@ contendrán "refund".
 23
 00:00:52,690 --> 00:00:55,370
 Y la última página que tienes que hacer
-que sea rápida es la página de publicación
+que sea rápida es la página de un post
 
 24
 00:00:55,370 --> 00:00:58,840
@@ -116,12 +116,12 @@ justo aquí.
 
 26
 00:01:00,940 --> 00:01:04,140
-Y luego, nos devuelve la publicación,
-una única publicación junto con
+Y luego, nos devuelve el post,
+un único post junto con
 
 27
 00:01:04,140 --> 00:01:06,490
-los comentarios de la misma y
+los comentarios del mismo y
 hay 50 comentarios.
 
 28
@@ -165,7 +165,7 @@ desde cero, simplemente puedes
 
 36
 00:01:27,600 --> 00:01:32,140
-echar un vistazo en el fichero "blog.py" y
+echar un vistazo al fichero "blog.py" y
 ver qué hacen esas consultas.
 
 37

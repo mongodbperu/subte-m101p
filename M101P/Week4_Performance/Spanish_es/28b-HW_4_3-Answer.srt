@@ -32,7 +32,7 @@ que hace la página de inicio.
 
 8
 00:00:17,070 --> 00:00:20,630
-Y lo dice descendentemente por "date",
+Y lo hice descendentemente por "date",
 aunque podrías hacerlo por "date"
 
 9
@@ -52,11 +52,11 @@ busque rápido, necesitas un
 12
 00:00:29,110 --> 00:00:32,060
 Y para hacer que sea rápido buscar
-todas las publicaciones por una
+todos los posts por una
 
 13
 00:00:32,060 --> 00:00:34,770
-etiqueta particular y luego ordenarlas
+etiqueta particular y luego ordenarlos
 por fecha, necesitas un
 
 14
@@ -99,4 +99,4 @@ este problema y
 
 22
 00:00:55,920 --> 00:00:57,170
-espero que lo tuvieras bien.
+espero que lo hayas comprendido.
