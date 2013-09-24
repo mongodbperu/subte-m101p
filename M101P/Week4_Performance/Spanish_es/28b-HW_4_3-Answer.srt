@@ -7,96 +7,96 @@ OK.
 
 3
 00:00:00,980 --> 00:00:03,990
-And the answer is that in order
-to make the queries
+Y la respuesta es que para
+hacer las consultas
 
 4
 00:00:03,990 --> 00:00:08,039
-fast, the home page, the look
-up by tag, and the permalink
+más rápidas, la página de inicio, la búsqueda
+por etiqueta y la página del enlace
 
 5
 00:00:08,039 --> 00:00:11,310
-page, you need three
-different indexes.
+permanente, necesitas tres
+índices diferentes.
 
 6
 00:00:11,310 --> 00:00:14,550
-So, to make the homepage fast,
-you need an index on just the
+Así, para hacer más rápida la página de inicio,
+necesitas un índice sólo sobre el
 
 7
 00:00:14,550 --> 00:00:17,070
-date field because that's
-what the homepage does.
+campo "date" porque eso es lo
+que hace la página de inicio.
 
 8
 00:00:17,070 --> 00:00:20,630
-And I did it date descending,
-although you could do it date
+Y lo hice descendentemente por "date",
+aunque podrías hacerlo por "date"
 
 9
 00:00:20,630 --> 00:00:23,780
-ascending and it will reverse
-it for that purpose.
+ascendentemente y lo invertiría
+para ese propósito.
 
 10
 00:00:23,780 --> 00:00:27,590
-To make the permalink page look
-up fast, you just need a
+Para hacer que la página del enlace permanente
+busque rápido, necesitas un
 
 11
 00:00:27,590 --> 00:00:29,110
-index on permalink.
+índice sobre "permalink".
 
 12
 00:00:29,110 --> 00:00:32,060
-And to make it fast to look
-up all the posts from a
+Y para hacer que sea rápido buscar
+todos los posts por una
 
 13
 00:00:32,060 --> 00:00:34,770
-particular tag and then order
-them by date, you need a
+etiqueta particular y luego ordenarlos
+por fecha, necesitas un
 
 14
 00:00:34,770 --> 00:00:37,580
-compound index on
-tags comma date.
+índice compuesto sobre
+"tags, date".
 
 15
 00:00:37,580 --> 00:00:40,940
-And I made it descending on
-date, reflecting that we're
+Y lo hice descendentemente por
+"date", reflejando que vamos
 
 16
 00:00:40,940 --> 00:00:42,320
-going to show them
-in reverse order.
+a mostrarlos
+en orden inverso.
 
 17
 00:00:42,320 --> 00:00:45,360
-Although, if you had made it
-ascending on date, Mongo can
+Aunque, si lo hubiera hecho
+ascendentemente sobre "date", Mongo aún
 
 18
 00:00:45,360 --> 00:00:49,530
-still manage to use that index
-in the case where you're
+puede gestionar el uso de ese índice
+en el caso donde estás
 
 19
 00:00:49,530 --> 00:00:51,020
-sorting only by date and you're
+ordenando sólo por "date" y 
 
 20
 00:00:51,020 --> 00:00:52,720
-looking up only one tag.
+buscando sólo una etiqueta.
 
 21
 00:00:52,720 --> 00:00:55,920
-So that's the answer to
-this problem, and I
+Así que ésa es la respuesta a
+este problema y
 
 22
 00:00:55,920 --> 00:00:57,170
-hope you got it right.
+espero que lo hayas comprendido.

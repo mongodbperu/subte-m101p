@@ -3,216 +3,216 @@
 
 2
 00:00:00,190 --> 00:00:02,680
-All right, in this assignment
-you're going to be
+Bien, en esta tarea
+vas a hacer
 
 3
 00:00:02,680 --> 00:00:04,310
-making the blog fast.
+que el blog sea más rápido.
 
 4
 00:00:04,310 --> 00:00:07,230
-We've given you the code for
-the blog in blog.py and
+Te hemos dado el código para
+el blog en "blog.py" y
 
 5
 00:00:07,230 --> 00:00:10,860
-user.py in the views, and we've
-also given you a data
+"user.py" y las vistas, y también
+te hemos dado un conjunto
 
 6
 00:00:10,860 --> 00:00:12,940
-set of 1,000 posts.
+de datos de 1000 posts.
 
 7
 00:00:12,940 --> 00:00:14,700
-Very patriotic posts if
-you're an American.
+Posts muy patrióticos si
+eres americano.
 
 8
 00:00:14,700 --> 00:00:18,020
-We have the Gettysburg Address
-here, and we also have the US
+Tenemos aquí el discurso de Gettysburg,
+también tenemos la constitución
 
 9
 00:00:18,020 --> 00:00:20,740
-Constitution and the Declaration
-of Independence,
+de los Estados Unidos, la declaración
+de independencia 
 
 10
 00:00:20,740 --> 00:00:22,660
-and the Bill of Rights.
+y la declaración de derechos.
 
 11
 00:00:22,660 --> 00:00:25,680
-And all these posts have 50
-comments on them and they have
+Y todos estos posts tienen 50
+comentarios y tienen
 
 12
 00:00:25,680 --> 00:00:27,800
-a bunch of tags on them.
+un montón de etiquetas.
 
 13
 00:00:27,800 --> 00:00:29,640
-Now, there's three pages
-you need to make fast.
+Ahora, hay tres páginas
+que necesitas hacer que sean más rápidas.
 
 14
 00:00:29,640 --> 00:00:31,700
-You have to make the blog
-homepage fast, which gets the
+Tienes que hacer que la página inicial
+del blog sea rápida, la cual recupera los
 
 15
 00:00:31,700 --> 00:00:35,580
-most recent 10 blog posts
-and prints them out.
+10 posts del blog más
+recientes y los imprime.
 
 16
 00:00:35,580 --> 00:00:38,170
-You also need to make
-this page fast.
+También necesitas hacer que
+esta página sea rápida.
 
 17
 00:00:38,170 --> 00:00:41,470
-This is a page that will search
-for the most recent 10
+Ésta es una página que buscará
+los 10 posts más
 
 18
 00:00:41,470 --> 00:00:43,330
-posts for any given tag.
+recientes para una etiqueta dada.
 
 19
 00:00:43,330 --> 00:00:46,510
-I just clicked on tempo, so now
-all these posts are going
+Simplemente hice clic en "tempo", por lo que ahora
+todos estos posts van a
 
 20
 00:00:46,510 --> 00:00:47,850
-to have tempo in them.
+contener "tempo".
 
 21
 00:00:47,850 --> 00:00:50,820
-If I click on refund, then
-all these posts will
+Si hago clic en "refund", entonces
+todos estos posts
 
 22
 00:00:50,820 --> 00:00:52,690
-have refund in them.
+contendrán "refund".
 
 23
 00:00:52,690 --> 00:00:55,370
-And the final page you have to
-make fast is the blog post
+Y la última página que tienes que hacer
+que sea rápida es la página de un post
 
 24
 00:00:55,370 --> 00:00:58,840
-page, which is referenced
-by permalink.
+del blog, que se referencia
+con un enlace permanente.
 
 25
 00:00:58,840 --> 00:01:00,940
-I'll show you the permalink's
-right here.
+Te enseñaré el enlace permanente
+justo aquí.
 
 26
 00:01:00,940 --> 00:01:04,140
-And then, it brings up the post,
-just one post along with
+Y luego, nos devuelve el post,
+un único post junto con
 
 27
 00:01:04,140 --> 00:01:06,490
-the comments in the post and
-there are 50 comments.
+los comentarios del mismo y
+hay 50 comentarios.
 
 28
 00:01:06,490 --> 00:01:09,520
-You need to make this
-page fast as well.
+Necesitas hacer que esta
+página también sea rápida.
 
 29
 00:01:09,520 --> 00:01:12,190
-Now, you don't ever need to run
-the blog project for this
+Ahora, no necesitas ejecutar
+el proyecto del blog para esta
 
 30
 00:01:12,190 --> 00:01:14,890
-homework assignment, but you
-might want to because you
+tarea, pero podrías
+querer hacerlo 
 
 31
 00:01:14,890 --> 00:01:16,290
-might want to see the data.
+si quisieras ver los datos.
 
 32
 00:01:16,290 --> 00:01:18,520
-But another reason why you want
-to take a look at it is
+Pero otro motivo por el cual quieres
+echar un vistazo es
 
 33
 00:01:18,520 --> 00:01:21,070
-that the queries that we're
-going to check you on are the
+que las consultas con las que vamos
+a comprobar esto son las
 
 34
 00:01:21,070 --> 00:01:24,740
-ones that are inside the code
-that produced these pages.
+que están dentro del código
+que generó estas páginas.
 
 35
 00:01:24,740 --> 00:01:27,600
-And you don't need to rewrite
-them from scratch you can just
+Y no necesitas reescribirlas
+desde cero, simplemente puedes
 
 36
 00:01:27,600 --> 00:01:32,140
-look in the blog.py file and
-see what the queries are.
+echar un vistazo al fichero "blog.py" y
+ver qué hacen esas consultas.
 
 37
 00:01:32,140 --> 00:01:35,850
-Now, the idea is that these
-queries should only scan as
+Ahora, la idea es que estas
+consultas deberían escanear sólo
 
 38
 00:01:35,850 --> 00:01:37,630
-many documents as they return.
+tantos documentos como devuelvan.
 
 39
 00:01:37,630 --> 00:01:40,630
-So if it returns 10 documents
-it should scan 10 documents.
+Por lo que si devuelve 10 documentos
+debería escanear 10 documentos.
 
 40
 00:01:40,630 --> 00:01:41,760
-If it's returning
-one document, it
+Si devuelve
+un documento,
 
 41
 00:01:41,760 --> 00:01:43,310
-should return one document.
+debería escanear un documento.
 
 42
 00:01:43,310 --> 00:01:44,580
-And our validate program.
+Y nuestro programa de validación.
 
 43
 00:01:44,580 --> 00:01:48,290
-What it does is it runs these
-queries, it gets the explain
+Lo que hace es ejecutar estas
+consultas, obtiene la salida
 
 44
 00:01:48,290 --> 00:01:50,840
-output, and it makes sure that
-you've added the right
+del "explain" y se asegura que
+has añadido los índices
 
 45
 00:01:50,840 --> 00:01:53,840
-indexes, so that this is fast.
+correctos para que esto sea rápido.
 
 46
 00:01:53,840 --> 00:01:55,650
-And that's the assignment
-for this week.
+Y ésa es la tarea
+para esta semana.
 
 47
 00:01:55,650 --> 00:01:56,900
