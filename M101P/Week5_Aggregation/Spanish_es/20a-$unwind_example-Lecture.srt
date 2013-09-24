@@ -1,0 +1,317 @@
+1
+00:00:00,000 --> 00:00:00,150
+
+2
+00:00:00,150 --> 00:00:03,820
+Let's go over an example of
+using unwind during our
+
+3
+00:00:03,820 --> 00:00:05,250
+aggregation pipeline.
+
+4
+00:00:05,250 --> 00:00:10,330
+Now if you remember, we had
+the blog posts homework.
+
+5
+00:00:10,330 --> 00:00:12,830
+We gave you a pretty big
+blog post data set.
+
+6
+00:00:12,830 --> 00:00:15,970
+And here, I'm going to show you
+one of the elements from
+
+7
+00:00:15,970 --> 00:00:17,880
+that blog post data set.
+
+8
+00:00:17,880 --> 00:00:19,800
+I'm just suppressing the
+comments because it makes it a
+
+9
+00:00:19,800 --> 00:00:21,320
+little bit longer.
+
+10
+00:00:21,320 --> 00:00:25,800
+You can see here that it's got
+an underscore ID in the body.
+
+11
+00:00:25,800 --> 00:00:28,050
+And it looks like this one
+is the Declaration of
+
+12
+00:00:28,050 --> 00:00:29,330
+Independence.
+
+13
+00:00:29,330 --> 00:00:32,759
+And then we have the author,
+which was a machine.
+
+14
+00:00:32,759 --> 00:00:35,890
+And then a bunch of tags, which
+I pretty much randomly
+
+15
+00:00:35,890 --> 00:00:39,240
+took from a bunch of nouns
+that I got off the net.
+
+16
+00:00:39,240 --> 00:00:42,190
+Now let's say you wanted to go
+through these blog posts and
+
+17
+00:00:42,190 --> 00:00:46,490
+count the number of times that
+each tag appears in a post, or
+
+18
+00:00:46,490 --> 00:00:49,000
+how many posts were tagged
+with each tag.
+
+19
+00:00:49,000 --> 00:00:51,560
+So we can do that using
+an aggregation query.
+
+20
+00:00:51,560 --> 00:00:54,080
+We're going to unwind
+these tags.
+
+21
+00:00:54,080 --> 00:00:57,340
+And then we're going to group
+by the tag and count.
+
+22
+00:00:57,340 --> 00:00:59,610
+So let's look at how that
+works and run it.
+
+23
+00:00:59,610 --> 00:01:03,130
+So here's my aggregation query
+to unwind based on tag.
+
+24
+00:01:03,130 --> 00:01:05,390
+So let's go through
+it piece by piece.
+
+25
+00:01:05,390 --> 00:01:07,720
+The first thing we're going to
+do is we're going to take
+
+26
+00:01:07,720 --> 00:01:11,110
+these posts and we're going
+to unwind them.
+
+27
+00:01:11,110 --> 00:01:14,110
+We're going to unwind
+the tags array.
+
+28
+00:01:14,110 --> 00:01:16,140
+And now we're going to
+group by the tag.
+
+29
+00:01:16,140 --> 00:01:19,000
+And we're going to count how
+many times each tag appears,
+
+30
+00:01:19,000 --> 00:01:21,720
+using $sum:1.
+
+31
+00:01:21,720 --> 00:01:24,480
+Now I want to figure out which
+are the most popular.
+
+32
+00:01:24,480 --> 00:01:29,485
+So what I'm going to do here is
+sort them by count minus 1.
+
+33
+00:01:29,485 --> 00:01:31,480
+And now I want the top 10.
+
+34
+00:01:31,480 --> 00:01:33,600
+So I'm going to limit
+them to 10.
+
+35
+00:01:33,600 --> 00:01:35,200
+And then I want it
+to be pretty.
+
+36
+00:01:35,200 --> 00:01:38,270
+So I'm going to reshape the
+document using Project.
+
+37
+00:01:38,270 --> 00:01:40,740
+I'm going to drop the _id key.
+
+38
+00:01:40,740 --> 00:01:43,370
+And I'm going to create a new
+one called Tag, which is just
+
+39
+00:01:43,370 --> 00:01:44,420
+the _id key.
+
+40
+00:01:44,420 --> 00:01:45,390
+I basically--
+
+41
+00:01:45,390 --> 00:01:49,030
+this is a rename of the _id
+key, dropping it, and then
+
+42
+00:01:49,030 --> 00:01:50,920
+creating a new one
+with its value.
+
+43
+00:01:50,920 --> 00:01:53,860
+And then include the count.
+
+44
+00:01:53,860 --> 00:01:55,840
+Let's see what happens
+when we do that.
+
+45
+00:01:55,840 --> 00:01:58,080
+Blog_tags.js.
+
+46
+00:01:58,080 --> 00:01:58,970
+All right.
+
+47
+00:01:58,970 --> 00:02:00,350
+So we did that.
+
+48
+00:02:00,350 --> 00:02:01,770
+And what we get is the result.
+
+49
+00:02:01,770 --> 00:02:04,380
+And we see that the most
+popular tag was
+
+50
+00:02:04,380 --> 00:02:06,390
+"sphynx" with 13 uses.
+
+51
+00:02:06,390 --> 00:02:08,060
+And then "lunchroom" with 12.
+
+52
+00:02:08,060 --> 00:02:10,195
+And then "crowd" with 11.
+
+53
+00:02:10,195 --> 00:02:11,580
+And it goes down from there.
+
+54
+00:02:11,580 --> 00:02:12,870
+Actually, these are all
+about the same.
+
+55
+00:02:12,870 --> 00:02:16,050
+Now, I used a random number
+generator to evenly distribute
+
+56
+00:02:16,050 --> 00:02:17,440
+the tags across the posts.
+
+57
+00:02:17,440 --> 00:02:20,440
+So it's not too surprising that
+they'd be all about the
+
+58
+00:02:20,440 --> 00:02:22,460
+same, given that's
+how we did it.
+
+59
+00:02:22,460 --> 00:02:24,390
+Distribution should
+be pretty equal.
+
+60
+00:02:24,390 --> 00:02:25,500
+Let's do a quiz.
+
+61
+00:02:25,500 --> 00:02:27,080
+And we haven't talked
+about this.
+
+62
+00:02:27,080 --> 00:02:29,050
+We've got to think about
+it for a second.
+
+63
+00:02:29,050 --> 00:02:32,510
+Which grouping operator will
+enable you to reverse the
+
+64
+00:02:32,510 --> 00:02:33,900
+effects of an unwind?
+
+65
+00:02:33,900 --> 00:02:36,980
+How would you reverse the
+effects of an unwind?
+
+66
+00:02:36,980 --> 00:02:38,520
+Think about that for a second.
+
+67
+00:02:38,520 --> 00:02:41,180
+And you could try different
+grouping operators in the
+
+68
+00:02:41,180 --> 00:02:42,430
+[INAUDIBLE] shell to do this.
+
+69
+00:02:42,430 --> 00:02:43,600

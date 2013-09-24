@@ -1,0 +1,75 @@
+1
+00:00:00,000 --> 00:00:00,220
+
+2
+00:00:00,220 --> 00:00:00,820
+OK.
+
+3
+00:00:00,820 --> 00:00:03,810
+The answer is that the push
+operator will do it.
+
+4
+00:00:03,810 --> 00:00:07,890
+If you think about it, if I
+unwind, let's say, those tags,
+
+5
+00:00:07,890 --> 00:00:14,270
+and then I group by the rest of
+the document, I could push
+
+6
+00:00:14,270 --> 00:00:16,830
+on the tags and it'll
+essentially
+
+7
+00:00:16,830 --> 00:00:18,720
+recreate what I had.
+
+8
+00:00:18,720 --> 00:00:21,890
+So, push is kind of the inverse,
+if you will, of the
+
+9
+00:00:21,890 --> 00:00:22,735
+unwind operator.
+
+10
+00:00:22,735 --> 00:00:24,520
+It's a little tricky, but.
+
+11
+00:00:24,520 --> 00:00:27,530
+Another option might be add to
+set, and that usually does
+
+12
+00:00:27,530 --> 00:00:30,600
+work depending on if the
+array was unique in
+
+13
+00:00:30,600 --> 00:00:31,810
+the original document.
+
+14
+00:00:31,810 --> 00:00:35,120
+But if it wasn't unique, and
+then add to set won't recreate
+
+15
+00:00:35,120 --> 00:00:37,660
+the exact original array,
+because if an item was in it
+
+16
+00:00:37,660 --> 00:00:39,590
+more than once, add to set
+will only add it once.
+
+17
+00:00:39,590 --> 00:00:40,840

@@ -1,0 +1,67 @@
+1
+00:00:00,000 --> 00:00:00,300
+
+2
+00:00:00,300 --> 00:00:00,600
+OK.
+
+3
+00:00:00,600 --> 00:00:01,820
+And here's the answer.
+
+4
+00:00:01,820 --> 00:00:04,160
+It's db.zips.aggregate.
+
+5
+00:00:04,160 --> 00:00:07,830
+And then we have a $group stage,
+where once again we're
+
+6
+00:00:07,830 --> 00:00:11,560
+aggregating on state.
+
+7
+00:00:11,560 --> 00:00:15,450
+We're going to create a new key
+called average population.
+
+8
+00:00:15,450 --> 00:00:17,090
+And then we're going
+to calculate
+
+9
+00:00:17,090 --> 00:00:21,250
+that as $avg of $pop.
+
+10
+00:00:21,250 --> 00:00:22,970
+Now $avg is our operator.
+
+11
+00:00:22,970 --> 00:00:25,370
+And $pop is a reference to the
+
+12
+00:00:25,370 --> 00:00:28,400
+population key of the documents.
+
+13
+00:00:28,400 --> 00:00:32,619
+And you could run that on the
+data that you downloaded if
+
+14
+00:00:32,619 --> 00:00:34,700
+you'd like, just to
+see that it works.
+
+15
+00:00:34,700 --> 00:00:36,620
+But you don't need
+to for this quiz.
+
+16
+00:00:36,620 --> 00:00:37,870

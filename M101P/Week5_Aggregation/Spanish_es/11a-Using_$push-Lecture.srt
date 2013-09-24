@@ -1,0 +1,249 @@
+1
+00:00:00,000 --> 00:00:00,250
+
+2
+00:00:00,250 --> 00:00:01,750
+Next aggregation expression
+that we're going
+
+3
+00:00:01,750 --> 00:00:03,780
+to look at is push.
+
+4
+00:00:03,780 --> 00:00:06,940
+Now push is very similar to
+addtoset, except that push
+
+5
+00:00:06,940 --> 00:00:09,520
+does not guarantee that it
+adds each item only once.
+
+6
+00:00:09,520 --> 00:00:10,720
+It doesn't look through
+to make sure
+
+7
+00:00:10,720 --> 00:00:12,400
+it's not already there.
+
+8
+00:00:12,400 --> 00:00:16,070
+So let's say we wanted to
+see what categories each
+
+9
+00:00:16,070 --> 00:00:18,770
+manufacturer had products in.
+
+10
+00:00:18,770 --> 00:00:22,280
+This is looking in our little
+electronics products database
+
+11
+00:00:22,280 --> 00:00:25,370
+that we created before-- our
+little collection where we
+
+12
+00:00:25,370 --> 00:00:27,410
+have a document for
+each product.
+
+13
+00:00:27,410 --> 00:00:30,490
+And it has a category
+and manufacturer.
+
+14
+00:00:30,490 --> 00:00:32,830
+And this time, rather than
+using addToSet, we're
+
+15
+00:00:32,830 --> 00:00:33,660
+going to use push.
+
+16
+00:00:33,660 --> 00:00:35,010
+So if we do that--
+
+17
+00:00:35,010 --> 00:00:36,360
+push the category--
+
+18
+00:00:36,360 --> 00:00:39,190
+it shouldn't be too surprising,
+the result we get.
+
+19
+00:00:39,190 --> 00:00:44,720
+What we get, is that we have a
+document for each maker or
+
+20
+00:00:44,720 --> 00:00:49,220
+manufacturer, Google, Tablets,
+Amazon, Tablets, Tablets.
+
+21
+00:00:49,220 --> 00:00:50,500
+But you see these
+duplications--
+
+22
+00:00:50,500 --> 00:00:52,170
+Tablets, Tablets.
+
+23
+00:00:52,170 --> 00:00:54,110
+And you'll see with Apple,
+it's Tablets, Tablets,
+
+24
+00:00:54,110 --> 00:00:55,370
+Tablets, Laptops.
+
+25
+00:00:55,370 --> 00:00:57,120
+And that's because there
+are four documents
+
+26
+00:00:57,120 --> 00:00:58,180
+with Apple in it.
+
+27
+00:00:58,180 --> 00:00:59,690
+And it's going to look
+at each one.
+
+28
+00:00:59,690 --> 00:01:02,080
+And it's going to push this
+item onto this categories
+
+29
+00:01:02,080 --> 00:01:03,930
+array, versus addToSet.
+
+30
+00:01:03,930 --> 00:01:06,580
+And so they may appear
+more than once.
+
+31
+00:01:06,580 --> 00:01:08,250
+And this is the result.
+
+32
+00:01:08,250 --> 00:01:09,840
+It depends on what
+your goal is.
+
+33
+00:01:09,840 --> 00:01:11,930
+This might be the right result
+or the wrong result, depending
+
+34
+00:01:11,930 --> 00:01:13,380
+on what you're trying to do.
+
+35
+00:01:13,380 --> 00:01:14,590
+Now let's do a quiz.
+
+36
+00:01:14,590 --> 00:01:15,010
+All right.
+
+37
+00:01:15,010 --> 00:01:17,430
+Given the zip code data set
+that we looked at before,
+
+38
+00:01:17,430 --> 00:01:21,490
+which is explained more fully in
+the using dollar sum quiz,
+
+39
+00:01:21,490 --> 00:01:22,110
+a few back.
+
+40
+00:01:22,110 --> 00:01:23,420
+You can check it out.
+
+41
+00:01:23,420 --> 00:01:26,140
+And it has documents that look
+like this, again, where each
+
+42
+00:01:26,140 --> 00:01:29,600
+document is a postal code, or
+also known as a zip code here
+
+43
+00:01:29,600 --> 00:01:33,630
+in the US, and it'll tell you
+the population of that postal
+
+44
+00:01:33,630 --> 00:01:37,620
+code/zip code, the state it's
+in, and the city it's in.
+
+45
+00:01:37,620 --> 00:01:39,410
+What we're going to do is, we're
+going to run these two
+
+46
+00:01:39,410 --> 00:01:42,240
+different queries that are going
+to tell us the postal
+
+47
+00:01:42,240 --> 00:01:44,680
+codes that map to a
+particular city.
+
+48
+00:01:44,680 --> 00:01:46,870
+So we're going to group
+by the city.
+
+49
+00:01:46,870 --> 00:01:50,950
+And we're going to push a
+list of postal codes.
+
+50
+00:01:50,950 --> 00:01:53,740
+And the question is, if we did
+it two different ways, once
+
+51
+00:01:53,740 --> 00:01:57,580
+with a push over here, and once
+with an addToSet, would
+
+52
+00:01:57,580 --> 00:01:59,750
+you expect to get a different
+result or the same result for
+
+53
+00:01:59,750 --> 00:02:01,250
+those two different queries?
+
+54
+00:02:01,250 --> 00:02:02,500
+That's the question.

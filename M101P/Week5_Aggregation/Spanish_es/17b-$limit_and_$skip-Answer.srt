@@ -1,0 +1,33 @@
+1
+00:00:00,000 --> 00:00:00,210
+
+2
+00:00:00,210 --> 00:00:03,040
+OK, and the answer is, there
+will be zero documents in the
+
+3
+00:00:03,040 --> 00:00:04,200
+result set.
+
+4
+00:00:04,200 --> 00:00:07,010
+If you limit it to five
+documents and then you try to
+
+5
+00:00:07,010 --> 00:00:09,610
+skip forward 10 in that
+set, you're skipping
+
+6
+00:00:09,610 --> 00:00:10,440
+out of what's left.
+
+7
+00:00:10,440 --> 00:00:12,760
+So there's nothing left to
+show, so it shows zero.
+
+8
+00:00:12,760 --> 00:00:14,010

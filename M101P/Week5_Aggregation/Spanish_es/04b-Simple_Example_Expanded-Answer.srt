@@ -1,0 +1,72 @@
+1
+00:00:00,000 --> 00:00:00,360
+
+2
+00:00:00,360 --> 00:00:02,170
+And the answer is there'll
+be three documents.
+
+3
+00:00:02,170 --> 00:00:04,720
+And that there'll be three
+documents because there are
+
+4
+00:00:04,720 --> 00:00:08,220
+three unique values of c
+in this collection--
+
+5
+00:00:08,220 --> 00:00:09,590
+one, two, three.
+
+6
+00:00:09,590 --> 00:00:11,770
+It's either one, two, or
+three values of c.
+
+7
+00:00:11,770 --> 00:00:13,670
+And so there are three
+unique values of c.
+
+8
+00:00:13,670 --> 00:00:16,320
+And so we're going to get three
+unique documents in our
+
+9
+00:00:16,320 --> 00:00:17,150
+results set.
+
+10
+00:00:17,150 --> 00:00:20,230
+All this aggregation function
+does, in this case, is tell
+
+11
+00:00:20,230 --> 00:00:21,530
+you the unique values of c.
+
+12
+00:00:21,530 --> 00:00:23,170
+Cause it doesn't actually
+aggregate anything else beyond
+
+13
+00:00:23,170 --> 00:00:25,120
+there, which you don't need
+to if you don't want to.
+
+14
+00:00:25,120 --> 00:00:27,630
+But that's the way it
+works for this.
+
+15
+00:00:27,630 --> 00:00:28,880
+And we'll give you
+three documents.
+
+16
+00:00:28,880 --> 00:00:29,770

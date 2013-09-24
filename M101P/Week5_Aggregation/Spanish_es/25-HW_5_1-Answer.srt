@@ -1,0 +1,109 @@
+1
+00:00:00,000 --> 00:00:00,140
+
+2
+00:00:00,140 --> 00:00:00,570
+OK.
+
+3
+00:00:00,570 --> 00:00:03,070
+In this problem, we asked you
+to go through and figure out
+
+4
+00:00:03,070 --> 00:00:06,440
+the most frequent author of
+a comment on the blog.
+
+5
+00:00:06,440 --> 00:00:10,050
+And you're supposed to import
+the post data set and then use
+
+6
+00:00:10,050 --> 00:00:12,410
+an aggregation query to
+find out the answer.
+
+7
+00:00:12,410 --> 00:00:13,310
+And the answer is going
+to turn out
+
+8
+00:00:13,310 --> 00:00:15,290
+to be Elizabet Kleine.
+
+9
+00:00:15,290 --> 00:00:16,890
+So let's see how you do that.
+
+10
+00:00:16,890 --> 00:00:18,820
+Here's the aggregation query
+that you need to run.
+
+11
+00:00:18,820 --> 00:00:21,400
+You unwind the comments, which
+there's an array of comments,
+
+12
+00:00:21,400 --> 00:00:22,320
+if you recall.
+
+13
+00:00:22,320 --> 00:00:24,740
+And then you group it by
+the comment author.
+
+14
+00:00:24,740 --> 00:00:27,290
+And then add one every time
+you see a comment author.
+
+15
+00:00:27,290 --> 00:00:29,440
+You create this new num_comments
+field.
+
+16
+00:00:29,440 --> 00:00:32,409
+And the value is this summing,
+adding one each
+
+17
+00:00:32,409 --> 00:00:33,380
+time you see it.
+
+18
+00:00:33,380 --> 00:00:36,540
+Sort by num_comments minus one
+to get it in reverse order.
+
+19
+00:00:36,540 --> 00:00:40,070
+And I just limited it to 10,
+just to make it easier to see.
+
+20
+00:00:40,070 --> 00:00:45,580
+And if you do that, then the
+answer is this right here.
+
+21
+00:00:45,580 --> 00:00:46,710
+You can see the answer
+is Elizabet
+
+22
+00:00:46,710 --> 00:00:49,790
+Kleine has 503 comments.
+
+23
+00:00:49,790 --> 00:00:51,040
+And then it goes down
+from there.
+
+24
+00:00:51,040 --> 00:00:52,452

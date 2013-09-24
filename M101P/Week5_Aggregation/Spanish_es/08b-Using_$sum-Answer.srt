@@ -1,0 +1,49 @@
+1
+00:00:00,000 --> 00:00:00,230
+
+2
+00:00:00,230 --> 00:00:00,690
+OK.
+
+3
+00:00:00,690 --> 00:00:03,880
+And the answer is
+db.zips.aggregate.
+
+4
+00:00:03,880 --> 00:00:06,320
+And then we have an array.
+
+5
+00:00:06,320 --> 00:00:08,990
+And we're only running
+a grouping stage, so
+
+6
+00:00:08,990 --> 00:00:11,220
+group and then _id.
+
+7
+00:00:11,220 --> 00:00:14,500
+We're going to group by state,
+and then we're going to create
+
+8
+00:00:14,500 --> 00:00:16,379
+a new key called population.
+
+9
+00:00:16,379 --> 00:00:18,970
+In that population, we're just
+going to sum the pop field,
+
+10
+00:00:18,970 --> 00:00:20,280
+$pop field.
+
+11
+00:00:20,280 --> 00:00:21,530
+That's the way it works.
+
+12
+00:00:21,530 --> 00:00:22,270

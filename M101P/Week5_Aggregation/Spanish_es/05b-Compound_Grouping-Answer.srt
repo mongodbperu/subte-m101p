@@ -1,0 +1,62 @@
+1
+00:00:00,000 --> 00:00:00,750
+
+2
+00:00:00,750 --> 00:00:02,910
+And the answer is that we will
+get five documents in the
+
+3
+00:00:02,910 --> 00:00:03,950
+results set.
+
+4
+00:00:03,950 --> 00:00:05,370
+Because regardless of what
+we're naming them--
+
+5
+00:00:05,370 --> 00:00:07,715
+Moe, Larry, and Curly-- we're
+looking at unique values for
+
+6
+00:00:07,715 --> 00:00:09,130
+a, b, and c.
+
+7
+00:00:09,130 --> 00:00:11,720
+And if you look at these
+documents, each of them is
+
+8
+00:00:11,720 --> 00:00:13,310
+unique except for
+one duplicate.
+
+9
+00:00:13,310 --> 00:00:17,540
+So there's only one duplicate,
+which is right here.
+
+10
+00:00:17,540 --> 00:00:21,700
+This has a, b, and c values
+three, three and two, that is
+
+11
+00:00:21,700 --> 00:00:23,870
+the same as this document.
+
+12
+00:00:23,870 --> 00:00:26,150
+So other than that, every one
+of them will create a unique
+
+13
+00:00:26,150 --> 00:00:27,430
+result document during
+aggregation.
+
+14
+00:00:27,430 --> 00:00:29,262
