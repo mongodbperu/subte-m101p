@@ -98,13 +98,13 @@ mucho más importante.
 
 22
 00:00:48,360 --> 00:00:50,690
-Y así piensa sobre indexación
+Y así pensar sobre indexación
 cuando estás pensando en
 
 23
 00:00:50,690 --> 00:00:53,410
 rendimiento en una base de datos
-va a ser absolútamente crítico.
+va a ser absolutamente crítico.
 
 24
 00:00:53,410 --> 00:00:54,660

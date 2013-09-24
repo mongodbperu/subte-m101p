@@ -18,7 +18,7 @@ en toda base de datos.
 
 5
 00:00:08,020 --> 00:00:13,610
-Que es, que va a usar
+Que es, si va a usar
 un índice para resolver
 
 6
@@ -27,7 +27,7 @@ tu consulta o no.
 
 7
 00:00:15,550 --> 00:00:18,010
-Así que lo índices resultan ser
+Así que los índices resultan ser
 el factor más importante en el
 
 8
@@ -41,7 +41,7 @@ de datos relacionales.
 
 10
 00:00:22,440 --> 00:00:24,630
-Por ello esto será un revisión
+Por ello esto será una revisión
 para muchos de ustedes, pero deseo
 
 11
@@ -125,7 +125,8 @@ extremadamente lento.
 
 28
 00:01:13,090 --> 00:01:15,460
-Así que en vez usamos indexación.
+Así que en su lugar
+usamos indexación.
 
 29
 00:01:15,460 --> 00:01:16,680
@@ -341,7 +342,7 @@ puedo encontrar todo de "John".
 74
 00:03:27,380 --> 00:03:29,640
 Y si prefieres proveerme el
-"hair_color", puedo quebrarlo
+"hair_color", puedo descender
 
 75
 00:03:29,640 --> 00:03:32,070
@@ -508,15 +509,14 @@ rápidas en la base de datos, las
 escrituras son un poco más lentas
 si tienes un índice, porque el
 
-
 110
 00:05:05,920 --> 00:05:07,500
 índice necesita ser actualizado.
 
 111
 00:05:07,500 --> 00:05:09,400
-Y por ello los índice
-no son menos costosos.
+Y por ello los índices
+no son sin coste.
 
 112
 00:05:09,400 --> 00:05:12,430
@@ -627,27 +627,27 @@ de una base de datos?
 
 135
 00:06:05,350 --> 00:06:08,120
-Añadiendo más memoria de modo que la
+Añadir más memoria de modo que la
 carga de trabajo se ajusta a la memoria,
 
 136
 00:06:08,120 --> 00:06:10,570
-Añadiendo un disco más rápido de modo
+Añadir un disco más rápido de modo
 que la operación que alcanza al disco
 
 137
 00:06:10,570 --> 00:06:13,650
 será mucho más rápida.
-Reemplazando tu procesador con uno
+Reemplazar tu procesador con uno
 
 138
 00:06:13,650 --> 00:06:16,380
-más rápido-- dice
+más rápido-- digamos
 2 veces más rápido--
 
 139
 00:06:16,380 --> 00:06:20,630
-O añadiendo un índice apropiado
+O añadir un índice apropiado
 en una colección grande de modo que
 
 140
