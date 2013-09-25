@@ -3,161 +3,161 @@
 
 2
 00:00:00,100 --> 00:00:02,320
-Let's go through that simple
-aggregation example I showed
+Vamos a analizar ese ejemplo
+de agregación simple que te enseñé
 
 3
 00:00:02,320 --> 00:00:05,010
-you in the first lesson,
-in a detailed way.
+en la primera lección,
+de forma detallada.
 
 4
 00:00:05,010 --> 00:00:08,050
-So, if you recall, we started
-with a products collection.
+Así, si recuerdas, empezamos
+con una colección "products".
 
 5
 00:00:08,050 --> 00:00:10,440
-And then we did some grouping
-on that collection to get a
+Y luego hicimos algunas agrupaciones
+en esa colección para obtener una
 
 6
 00:00:10,440 --> 00:00:12,922
-results collection that
-was shown from
+colección resultante que
+se mostró a partir
 
 7
 00:00:12,922 --> 00:00:14,530
-the aggregation function.
+de la función de agregación.
 
 8
 00:00:14,530 --> 00:00:16,980
-Now, here is the collection,
-if you recall.
+Ahora, aquí está la colección,
+si recuerdas.
 
 9
 00:00:16,980 --> 00:00:19,840
-It was this list of products.
+Era esta lista de productos.
 
 10
 00:00:19,840 --> 00:00:22,710
-And the products have a
-manufacturer, and a name, and
+Y los productos tienen un
+fabricante, un nombre y
 
 11
 00:00:22,710 --> 00:00:23,920
-a category.
+una categoría.
 
 12
 00:00:23,920 --> 00:00:25,940
-And we wanted to get the number
-of products by each
+Y queríamos obtener el número
+de productos por cada
 
 13
 00:00:25,940 --> 00:00:27,540
-manufacturer.
+fabricante.
 
 14
 00:00:27,540 --> 00:00:30,370
-This was the query, over
-here, that we used.
+Ésta era la consulta, por
+aquí, que usamos.
 
 15
 00:00:30,370 --> 00:00:33,120
-We called db.products.aggregate.
+Llamamos a "db.products.aggregate".
 
 16
 00:00:33,120 --> 00:00:34,650
-We put it through--
+Lo pusimos --
 
 17
 00:00:34,650 --> 00:00:36,840
-there's only one stage to our
-aggregation pipeline.
+sólo hay una etapa de nuestro
+pipeline de agregación.
 
 18
 00:00:36,840 --> 00:00:40,500
-It was a dollar group, where
-we asked to group by
+Era un "$group", donde
+pedíamos agrupar por
 
 19
 00:00:40,500 --> 00:00:41,470
-manufacturer.
+fabricante.
 
 20
 00:00:41,470 --> 00:00:45,270
-And we do that by
-specifying _id.
+E hicimos eso
+especificando un "_id".
 
 21
 00:00:45,270 --> 00:00:49,470
-And then, we were creating a new
-key, called num_products
+Y luego, estuvimos creando una nueva
+clave, llamada "num_products"
 
 22
 00:00:49,470 --> 00:00:52,160
-with the operator dollar sum.
+con el operador "$sum".
 
 23
 00:00:52,160 --> 00:00:54,550
-So what logically
-happens here?
+Así que, ¿qué sucede
+aquí lógicamente?
 
 24
 00:00:54,550 --> 00:00:55,340
-All right.
+De acuerdo.
 
 25
 00:00:55,340 --> 00:00:57,840
-So the aggregation framework is
-going to run through every
+El aggregation framework va
+a recorrer cada
 
 26
 00:00:57,840 --> 00:00:58,730
-one of these documents.
+uno de estos documentos.
 
 27
 00:00:58,730 --> 00:01:01,380
-So the first document it's going
-to consider is this one.
+Así el primer documento va 
+a considerar que es éste.
 
 28
 00:01:01,380 --> 00:01:05,019
-And this document has a
-manufacturer of Apple.
+Y este documento tiene
+"manufacturer: 'Apple'".
 
 29
 00:01:05,019 --> 00:01:07,440
-And, if you recall, we're
-going to create-- in our
+Y, si recuerdas, vamos
+a crear -- en nuestro
 
 30
 00:01:07,440 --> 00:01:10,060
-result set-- we're going to look
-for a resulting document
+conjunto resultante -- vamos a buscar
+un documento resultante
 
 31
 00:01:10,060 --> 00:01:12,750
-with an _id of the
-manufacturer.
+con un "_id:
+$manufacturer".
 
 32
 00:01:12,750 --> 00:01:15,060
-And, in this case, it's Apple.
+Y, en este caso, es "Apple".
 
 33
 00:01:15,060 --> 00:01:17,640
-So, as we go through that first
-document, we're going to
+Por tanto, a medida que avanzamos por ese primer
+documento, vamos a
 
 34
 00:01:17,640 --> 00:01:19,080
-look and we're going to
-say, is there one
+mirar y vamos a
+decir, ¿hay uno
 
 35
 00:01:19,080 --> 00:01:20,640
-with an _id of Apple?
+con un "_id" igual a "Apple"?
 
 36
 00:01:20,640 --> 00:01:21,990
@@ -165,394 +165,394 @@ No.
 
 37
 00:01:21,990 --> 00:01:22,600
-Let's create [INAUDIBLE]
+Creamos eso en
 
 38
 00:01:22,600 --> 00:01:27,280
-my result set, called
-_id Apple.
+mi conjunto resultante, llamado
+"_id: 'Apple'".
 
 39
 00:01:27,280 --> 00:01:31,550
-And then, it also asked to
-create a num_products key.
+Y luego, también solicitó
+crear una clave "num_products".
 
 40
 00:01:31,550 --> 00:01:33,500
-And, what does the num_products
-key do?
+Y, ¿qué hace la clave
+"num_products"?
 
 41
 00:01:33,500 --> 00:01:36,070
-Well, it said, create
-a num_products key
+Bien, dijo, crea
+una clave "num_products"
 
 42
 00:01:36,070 --> 00:01:37,300
-in my result set.
+en mi conjunto resultante.
 
 43
 00:01:37,300 --> 00:01:40,540
-And I want you to add one--
+Y quiero que añadas uno --
 
 44
 00:01:40,540 --> 00:01:42,760
-run a sum and add one to
-whatever is there.
+ejecuta una suma y añade uno a
+cualquier cosa que esté ahí.
 
 45
 00:01:42,760 --> 00:01:44,680
-There's nothing there
-to start.
+No hay nada ahí
+para empezar.
 
 46
 00:01:44,680 --> 00:01:47,860
-And it seeds it at zero, so
-it'll start it-- by adding
+Y lo inicializa a cero, por lo que
+comenzará en -- al añadir
 
 47
 00:01:47,860 --> 00:01:50,340
-one, it'll put it right
-there-- one.
+uno, lo pondrá justo
+ahí -- uno.
 
 48
 00:01:50,340 --> 00:01:52,500
-So, again, as it's running
-through these products, it's
+Así, de nuevo, a medida que recorre
+estos productos, está
 
 49
 00:01:52,500 --> 00:01:55,080
-creating a new collection
-of the results.
+creando una nueva colección
+con los resultados.
 
 50
 00:01:55,080 --> 00:01:58,630
-So the group phase doesn't
-run the documents from
+Así que la fase de agrupación no
+recorre los documentos de
 
 51
 00:01:58,630 --> 00:02:00,080
-one end to the other.
+un extremo al otro.
 
 52
 00:02:00,080 --> 00:02:02,970
-It actually processes each one,
-grouping it, and then
+En realidad procesa cada uno,
+agrupándolo, y luego
 
 53
 00:02:02,970 --> 00:02:05,690
-creating a new set of aggregated
-documents.
+creando un nuevo conjunto de documentos
+agregados.
 
 54
 00:02:05,690 --> 00:02:07,620
-Let's look at the
-second document.
+Echemos un vistazo al
+segundo documento.
 
 55
 00:02:07,620 --> 00:02:10,900
-Second document has a
-manufacturer of Apple.
+El segundo documento tiene "Apple"
+como fabricante.
 
 56
 00:02:10,900 --> 00:02:13,680
-And, again, it would go
-through, and they
+Y, de nuevo, lo
+recorrería y 
 
 57
 00:02:13,680 --> 00:02:14,370
-would say, all right.
+diríamos, de acuerdo.
 
 58
 00:02:14,370 --> 00:02:15,180
-It's almost like an upsert.
+Es casi como un "upsert".
 
 59
 00:02:15,180 --> 00:02:16,570
-It would look and say,
-is there something
+Miraría y diría,
+¿hay algo
 
 60
 00:02:16,570 --> 00:02:18,350
-with an _id of Apple?
+con un "_id" igual a "Apple"?
 
 61
 00:02:18,350 --> 00:02:19,580
-Yes, there is.
+Sí, lo hay.
 
 62
 00:02:19,580 --> 00:02:21,320
-Run that sum on it.
+Ejecuta la suma sobre él.
 
 63
 00:02:21,320 --> 00:02:23,940
-It said add one to num_products,
-so that's going
+Dijo, añade uno a "num_products",
+así que eso va a 
 
 64
 00:02:23,940 --> 00:02:26,680
-to update the num_products
-to two.
+actualizar "num_products"
+a dos.
 
 65
 00:02:26,680 --> 00:02:29,570
-And it's going to run to the
-third document in the
+Y va a recorrer el
+tercer documento de la
 
 66
 00:02:29,570 --> 00:02:30,260
-collection.
+colección.
 
 67
 00:02:30,260 --> 00:02:34,000
-The third document collection
-has a manufacturer of Apple.
+El tercer documento de la colección
+tiene "manufacturer: 'Apple'".
 
 68
 00:02:34,000 --> 00:02:36,520
-So remember we were looking for
-a document in the result
+Así que recuerda que estábamos buscando
+un documento en el conjunto
 
 69
 00:02:36,520 --> 00:02:38,740
-set with an _id of Apple.
+resultante con un "_id" igual a "Apple".
 
 70
 00:02:38,740 --> 00:02:39,670
-We do have one.
+Tenemos uno.
 
 71
 00:02:39,670 --> 00:02:41,270
-We're going to add one,
-again, to it.
+Vamos a añadirle uno,
+de nuevo.
 
 72
 00:02:41,270 --> 00:02:44,210
-And now we're going to
-wind up with three.
+Y ahora vamos a
+terminar con tres.
 
 73
 00:02:44,210 --> 00:02:48,050
-Now, the fourth document in this
-products collection has a
+Ahora, el cuarto documento en esta
+colección "products" tiene
 
 74
 00:02:48,050 --> 00:02:49,850
-manufacturer of Samsung.
+"manufacturer: 'Samsung'".
 
 75
 00:02:49,850 --> 00:02:51,910
-We're going to look for a
-document in the result set
+Vamos a buscar un
+documento en el conjunto resultante
 
 76
 00:02:51,910 --> 00:02:53,480
-that has an _id of Samsung.
+que tenga un "_id" igual a "Samsung".
 
 77
 00:02:53,480 --> 00:02:55,300
-We're not going to find one.
+No vamos a encontrar ninguno.
 
 78
 00:02:55,300 --> 00:02:58,020
-So we're, essentially, going
-to, if you will, upsert it,
+Por lo tanto, esencialmente, vamos a,
+si quieres, hacer un "upsert",
 
 79
 00:02:58,020 --> 00:03:03,510
-put something in the result set
-with Samsung, as an _id.
+poner algo en el conjunto resultante
+con "Samsung" como "_id".
 
 80
 00:03:03,510 --> 00:03:06,880
-And we're going to, again,
-create a num_products key.
+Y vamos a, de nuevo,
+crear una clave "num_products".
 
 81
 00:03:06,880 --> 00:03:09,390
-And this was my name,
-it's arbitrary.
+Y éste era mi nombre,
+es arbitrario.
 
 82
 00:03:09,390 --> 00:03:11,100
-And we're going to add
-one to what was
+Y vamos a añadir
+uno a lo que estuviera
 
 83
 00:03:11,100 --> 00:03:11,810
-there, which is nothing.
+ahí, que es nada.
 
 84
 00:03:11,810 --> 00:03:13,740
-So we're going to get one.
+Por lo que vamos a obtener uno.
 
 85
 00:03:13,740 --> 00:03:16,330
-And so on and so forth, as we
-run through this collection,
+Y así sucesivamente, a medida
+que recorremos esta colección,
 
 86
 00:03:16,330 --> 00:03:19,150
-the next one is a product
-from Sony.
+el siguiente es un producto
+de "Sony".
 
 87
 00:03:19,150 --> 00:03:23,250
-So we're going to look for a
-document with an _id of Sony.
+Así que vamos a buscar un
+documento con un "_id" igual a "Sony".
 
 88
 00:03:23,250 --> 00:03:24,880
-We're not going to find one.
+No vamos a encontrar ninguno.
 
 89
 00:03:24,880 --> 00:03:26,330
-So we're going to create it--
+Por lo tanto vamos a crearlo --
 
 90
 00:03:26,330 --> 00:03:28,470
-_id of Sony.
+"_id: 'Sony'".
 
 91
 00:03:28,470 --> 00:03:32,090
-And then initialize it to be
-num_products one because of
+Y luego lo inicializa para que 
+"num_products" sea uno debido
 
 92
 00:03:32,090 --> 00:03:33,940
-that sum operator again.
+otra vez a ese operador "sum".
 
 93
 00:03:33,940 --> 00:03:36,020
-When we're done, we're going
-to get a resulting set of
+Cuando acabamos, vamos 
+a obtener el conjunto resultante de
 
 94
 00:03:36,020 --> 00:03:38,150
-documents that's going
-to run to the next
+documentos que va
+a pasar a la siguiente
 
 95
 00:03:38,150 --> 00:03:39,310
-stage of the pipeline.
+fase del pipeline.
 
 96
 00:03:39,310 --> 00:03:42,550
-And that set of documents is
-going to have an _id equal to
+Y ese conjunto de documentos va
+a tener un "_id" igual al
 
 97
 00:03:42,550 --> 00:03:44,740
-the manufacturer of each
-of these products.
+fabricante de cada uno
+de estos productos.
 
 98
 00:03:44,740 --> 00:03:48,050
-And num_products is going to be
-the number of products that
+Y "num_products" va a ser
+el número de productos que
 
 99
 00:03:48,050 --> 00:03:50,180
-each manufacturer
-manufactured.
+fabricó cada
+fabricante.
 
 100
 00:03:50,180 --> 00:03:52,965
-You can almost look at this,
-again, as an upsert-- or I
+Casi puedes ver esto,
+de nuevo, como un "upsert" -- o me
 
 101
 00:03:52,965 --> 00:03:54,300
-like to think of it
-as an upsert--
+gusta pensar sobre ello
+como un "upsert" --
 
 102
 00:03:54,300 --> 00:03:56,980
-because it's creating documents
-in the result set,
+porque está creando documentos
+en el conjunto resultante
 
 103
 00:03:56,980 --> 00:03:58,690
-if they don't already exist.
+si no existen ya.
 
 104
 00:03:58,690 --> 00:04:01,140
-If they do exist, it's
-just updating them.
+Si existen, simplemente
+los actualiza.
 
 105
 00:04:01,140 --> 00:04:04,240
-It's running that aggregation
-operator against the field,
+Está ejecutando ese operador
+de agregación contra el campo,
 
 106
 00:04:04,240 --> 00:04:07,100
-other than _id.
+más que contra el "_id".
 
 107
 00:04:07,100 --> 00:04:07,360
-All right.
+Bien.
 
 108
 00:04:07,360 --> 00:04:10,640
-So that's the way aggregation
-works, in a detailed way.
+Así es como funciona la
+agregación, de forma detallada.
 
 109
 00:04:10,640 --> 00:04:13,390
-And they all build on this
-basic concept of running
+Y todo se contruye sobre este
+concepto básico de ejecutar
 
 110
 00:04:13,390 --> 00:04:15,230
-through the source collection.
+a través de la colección fuente.
 
 111
 00:04:15,230 --> 00:04:17,470
-Or the collection is known as
-a source collection because
+La colección se conoce como
+colección fuente porque
 
 112
 00:04:17,470 --> 00:04:17,870
-they [INAUDIBLE]
+hacen
 
 113
 00:04:17,870 --> 00:04:18,959
-other stages of the pipeline.
+otras etapas del pipeline.
 
 114
 00:04:18,959 --> 00:04:22,510
-But running through documents
-that existed, prior to that
+Pero ejecutándose a través de documentos
+que existían, antes de esa
 
 115
 00:04:22,510 --> 00:04:25,460
-stage of the pipeline, and then
-building a new set of
+etapa del pipeline, y luego
+construyendo un nuevo conjunto de
 
 116
 00:04:25,460 --> 00:04:27,400
-documents with an _id,
-as specified.
+documentos con un "_id",
+como se ha especificado.
 
 117
 00:04:27,400 --> 00:04:31,275
-In this case, we called upon
-dollar manufacturer to be our
+En este caso, llamamos
+a nuestro "_id"
 
 118
 00:04:31,275 --> 00:04:34,460
-_id, and then running the
-aggregation operators on the
+"$manufacturer", y luego se ejecutan los
+operadores de agregación sobre los
 
 119
 00:04:34,460 --> 00:04:37,110
-other fields that we've created,
-other keys, and
+otros campos que hemos creado,
+otras claves y
 
 120
 00:04:37,110 --> 00:04:38,360
-values that we've created.
+valores que hemos creado.
 
 121
 00:04:38,360 --> 00:04:39,300
@@ -560,41 +560,41 @@ OK.
 
 122
 00:04:39,300 --> 00:04:41,320
-So let's have a quiz.
+Así que hagamos un cuestionario.
 
 123
 00:04:41,320 --> 00:04:43,650
-Let's say we have the following
-collection of stuff.
+Digamos que tenemos la siguiente
+colección "stuff".
 
 124
 00:04:43,650 --> 00:04:46,410
-And you can see here it has some
-documents with a, b, and
+Y puedes ver aquí que tiene algunos
+documentos con "a", "b" y
 
 125
 00:04:46,410 --> 00:04:49,005
-c, specified for each
-of these documents.
+"c", especificados por cada
+uno de estos documentos.
 
 126
 00:04:49,005 --> 00:04:51,330
-And we perform the following
-aggregation,
+Y realizamos la siguiente
+agregación,
 
 127
 00:04:51,330 --> 00:04:55,510
-db.stuff.aggregate, group
-_id dollar c.
+"db.stuff.aggregate([{$group:
+{_id: '$c'}}])".
 
 128
 00:04:55,510 --> 00:04:57,940
-How many documents will be in
-the result set from the
+¿Cuántos documentos estarán
+en el conjunto resultante de
 
 129
 00:04:57,940 --> 00:04:59,190
-aggregate function?
+la función "aggregate"?
 
 130
 00:04:59,190 --> 00:05:00,165
