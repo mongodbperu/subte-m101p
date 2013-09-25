@@ -41,7 +41,7 @@ y precio por cada elemento.
 10
 00:00:19,610 --> 00:00:22,510
 Esta es una tabla de
-elementos electrónicos.
+artículos electrónicos.
 
 11
 00:00:22,510 --> 00:00:25,780
@@ -148,7 +148,7 @@ de agregación, que en SQL,
 
 33
 00:01:24,830 --> 00:01:26,400
-"COUNT(*)".
+era "COUNT(*)".
 
 34
 00:01:26,400 --> 00:01:29,750
@@ -365,7 +365,7 @@ esto es un array.
 
 80
 00:03:07,540 --> 00:03:09,140
-Y puede haber otro operadores.
+Y puede haber otros operadores.
 
 81
 00:03:09,140 --> 00:03:11,000
@@ -528,7 +528,7 @@ forma en que harías un simple
 115
 00:04:29,790 --> 00:04:33,570
 GROUP BY y obtendrías el número
-de elementos por frabricante en
+de elementos por fabricante en
 
 116
 00:04:33,570 --> 00:04:35,240
@@ -612,7 +612,7 @@ escribas aquí abajo.
 133
 00:05:13,000 --> 00:05:15,800
 Y, lo que hace que sea más
-fácil par calificarlo, si
+fácil para calificarlo, si
 
 134
 00:05:15,800 --> 00:05:19,220
@@ -635,7 +635,7 @@ comillas dobles.
 138
 00:05:23,090 --> 00:05:24,430
 Pero tú sólo usa
-comillas doble para todo.
+comillas dobles para todo.
 
 139
 00:05:24,430 --> 00:05:25,680
