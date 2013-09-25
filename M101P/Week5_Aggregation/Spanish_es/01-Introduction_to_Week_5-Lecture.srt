@@ -3,83 +3,83 @@
 
 2
 00:00:01,110 --> 00:00:03,750
-Welcome to week five of M101.
+Bienvenido a la quinta semana de M101.
 
 3
 00:00:03,750 --> 00:00:06,760
-Congratulations, we are almost
-done with the course.
+Felicitaciones, ya casi
+hemos terminado el curso.
 
 4
 00:00:06,760 --> 00:00:08,310
-This week, we're going
-to go over
+Esta semana, vamos a
+aprender sobre
 
 5
 00:00:08,310 --> 00:00:10,120
-the aggregation framework.
+Aggregation Framework.
 
 6
 00:00:10,120 --> 00:00:12,530
-The aggregation framework has
-its roots in the world of
+Aggregation Framework tiene
+su origen en la cláusula
 
 7
 00:00:12,530 --> 00:00:14,550
-SQL's group by clause.
+GROUP BY del mundo SQL.
 
 8
 00:00:14,550 --> 00:00:17,230
-If you've ever done a select
-something something, group by
+Si alguna vez has hecho un
+SELECT "algo", "algo", GROUP BY
 
 9
 00:00:17,230 --> 00:00:20,070
-something something in SQL, the
-aggregation framework in
+"algo", "algo" en SQL,
+Aggregation Framework en
 
 10
 00:00:20,070 --> 00:00:23,250
-MongoDB can answer a lot
-of the same questions.
+MongoDB puede responder
+muchas de las mismas preguntas.
 
 11
 00:00:23,250 --> 00:00:26,750
-We're going to use it to
-calculate sums, and counts,
+Vamos a utilizarlo para
+calcular sumas, contadores,
 
 12
 00:00:26,750 --> 00:00:29,340
-and averages, and other
-functions over entire
+promedios y otras
+funciones para agrupar
 
 13
 00:00:29,340 --> 00:00:32,430
-collections grouped
-by certain values.
+colecciones completas
+según ciertos valores.
 
 14
 00:00:32,430 --> 00:00:34,600
-By the end of the week, you're
-going to be able to write
+Al final de la semana,
+vas a ser capaz de escribir
 
 15
 00:00:34,600 --> 00:00:37,480
-simple aggregation queries that
-answer a lot of the same
+consultas simples de agregación que
+responden a muchas de las mismas preguntas
 
 16
 00:00:37,480 --> 00:00:40,410
-questions you were writing code
-to solve at the beginning
+para cuando tuviste que escribir
+código para resolverlas al inicio
 
 17
 00:00:40,410 --> 00:00:41,450
-of the class.
+del curso.
 
 18
 00:00:41,450 --> 00:00:42,700
-Let's get started.
+Empecemos.
 
 19
 00:00:42,700 --> 00:00:43,390
