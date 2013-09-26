@@ -3,70 +3,70 @@
 
 2
 00:00:00,360 --> 00:00:02,170
-And the answer is there'll
-be three documents.
+Y la respuesta es que habrá
+tres documentos.
 
 3
 00:00:02,170 --> 00:00:04,720
-And that there'll be three
-documents because there are
+Y habrá tres 
+documentos porque hay
 
 4
 00:00:04,720 --> 00:00:08,220
-three unique values of c
-in this collection--
+tres valores únicos de "c"
+en esta colección --
 
 5
 00:00:08,220 --> 00:00:09,590
-one, two, three.
+uno, dos, tres.
 
 6
 00:00:09,590 --> 00:00:11,770
-It's either one, two, or
-three values of c.
+Los valores de "c" son uno,
+dos o tres.
 
 7
 00:00:11,770 --> 00:00:13,670
-And so there are three
-unique values of c.
+Y por eso hay tres
+valores únicos de "c".
 
 8
 00:00:13,670 --> 00:00:16,320
-And so we're going to get three
-unique documents in our
+Y por lo tanto vamos a obtener tres
+documentos únicos en nuestro
 
 9
 00:00:16,320 --> 00:00:17,150
-results set.
+conjunto resultante.
 
 10
 00:00:17,150 --> 00:00:20,230
-All this aggregation function
-does, in this case, is tell
+Todo lo que hace esta función de
+agregación, en este caso, es decirte
 
 11
 00:00:20,230 --> 00:00:21,530
-you the unique values of c.
+los valores únicos de "c".
 
 12
 00:00:21,530 --> 00:00:23,170
-Cause it doesn't actually
-aggregate anything else beyond
+Como en realidad no
+agrega nada más allá,
 
 13
 00:00:23,170 --> 00:00:25,120
-there, which you don't need
-to if you don't want to.
+lo cual no lo necesitas
+si no quieres.
 
 14
 00:00:25,120 --> 00:00:27,630
-But that's the way it
-works for this.
+Pero esa es la forma en
+que funciona para esto.
 
 15
 00:00:27,630 --> 00:00:28,880
-And we'll give you
-three documents.
+Y te dará 
+tres documentos.
 
 16
 00:00:28,880 --> 00:00:29,770
