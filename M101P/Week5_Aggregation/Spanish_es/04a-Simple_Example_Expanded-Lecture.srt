@@ -72,7 +72,7 @@ Lo pusimos --
 
 17
 00:00:34,650 --> 00:00:36,840
-sólo hay una etapa de nuestro
+sólo hay una fase de nuestro
 pipeline de agregación.
 
 18
@@ -109,7 +109,7 @@ De acuerdo.
 
 25
 00:00:55,340 --> 00:00:57,840
-El aggregation framework va
+Aggregation Framework va
 a recorrer cada
 
 26
@@ -518,7 +518,7 @@ hacen
 
 113
 00:04:17,870 --> 00:04:18,959
-otras etapas del pipeline.
+otras fases del pipeline.
 
 114
 00:04:18,959 --> 00:04:22,510
@@ -527,7 +527,7 @@ que existían, antes de esa
 
 115
 00:04:22,510 --> 00:04:25,460
-etapa del pipeline, y luego
+fase del pipeline, y luego
 construyendo un nuevo conjunto de
 
 116
