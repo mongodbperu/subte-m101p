@@ -53,8 +53,8 @@ cada categoría.
 
 12
 00:00:30,920 --> 00:00:33,870
-Hacemos esto usando el aggregation
-framework
+Hacemos esto usando Aggregation
+Framework
 
 13
 00:00:33,870 --> 00:00:37,360
@@ -97,7 +97,7 @@ clave "_id", como
 
 21
 00:01:01,700 --> 00:01:04,160
-el aggregation framework
+Aggregation Framework
 se ejecuta a través de esos documentos,
 
 22
