@@ -3,340 +3,340 @@
 
 2
 00:00:00,120 --> 00:00:02,770
-Now we know how to group
-by a single key.
+Ahora ya sabemos cómo agrupar
+por una clave simple.
 
 3
 00:00:02,770 --> 00:00:04,720
-But what if we want to group
-by multiple keys?
+Pero, ¿qué sucede si queremos agrupar
+por claves múltiples?
 
 4
 00:00:04,720 --> 00:00:08,220
-For example, what if we wanted
-to find the number of products
+Por ejemplo, ¿qué ocurriría si quisiéramos
+encontrar el número de productos
 
 5
 00:00:08,220 --> 00:00:11,100
-that each manufacturer
-had in each category?
+que cada fabricante
+tiene en cada categoría?
 
 6
 00:00:11,100 --> 00:00:14,030
-This would be equivalent in
-the SQL world of doing a
+Eso sería equivalente en
+el mundo SQL a hacer 
 
 7
 00:00:14,030 --> 00:00:19,500
-select manufacturer, comma
-category, comma count star,
+"SELECT manufacturer, 
+category, COUNT(*)
 
 8
 00:00:19,500 --> 00:00:23,590
-from products, grouped by
-manufacturer, comma category.
+FROM products GROUP BY
+manufacturer, category".
 
 9
 00:00:23,590 --> 00:00:27,340
-And if you recall, the data
-set looked like this.
+Y si recuerdas, el conjunto
+de datos era como esto.
 
 10
 00:00:27,340 --> 00:00:29,020
-So we want to find the number
-of products that each
+Por lo que queremos encontrar el número
+de productos que cada
 
 11
 00:00:29,020 --> 00:00:30,920
-manufacturer has in
-each category.
+fabricante tiene en
+cada categoría.
 
 12
 00:00:30,920 --> 00:00:33,870
-We do this using the aggregation
-framework by
+Hacemos esto usando Aggregation
+Framework
 
 13
 00:00:33,870 --> 00:00:37,360
-having a compound underscore
-ID key.
+teniendo una clave 
+compuesta "_id".
 
 14
 00:00:37,360 --> 00:00:41,490
-So rather than just say we want
-to organize our grouped
+Así que en lugar de decir que queremos
+organizar nuestros documentos
 
 15
 00:00:41,490 --> 00:00:45,330
-documents by manufacturer, I
-might say I want to organize
+agrupados por fabricante, 
+podría decir que quiero organizarlos
 
 16
 00:00:45,330 --> 00:00:48,210
-them by manufacturer
-and category.
+por fabricante
+y categoría.
 
 17
 00:00:48,210 --> 00:00:50,900
-And again I get to name
-these anyway I want.
+Y de nuevo puedo llamar a
+esto como quiera.
 
 18
 00:00:50,900 --> 00:00:55,180
-That's the manufacturer, colon,
-dollar manufacturer,
+Eso es "manufacturer: 
+'$manufacturer'",
 
 19
 00:00:55,180 --> 00:00:58,600
-and category, dollar category.
+y "category: '$category'".
 
 20
 00:00:58,600 --> 00:01:01,700
-And I'm having a document be my
-underscore ID key so that
+Y teniendo un documento que sea mi
+clave "_id", como
 
 21
 00:01:01,700 --> 00:01:04,160
-as the aggregation framework
-runs through those documents,
+Aggregation Framework
+se ejecuta a través de esos documentos,
 
 22
 00:01:04,160 --> 00:01:06,850
-it'll be looking for documents
-that have the same manufacture
+estará buscando documentos
+que tengan la misma categoría
 
 23
 00:01:06,850 --> 00:01:09,730
-category and running the
-aggregation on them.
+y fabricante y ejecutará la
+agregación sobre ellos.
 
 24
 00:01:09,730 --> 00:01:11,630
-Here is that query a
-little bit cleaner,
+Aquí está esa consulta un
+poco más limpia,
 
 25
 00:01:11,630 --> 00:01:13,070
-written out in text.
+escrita en texto.
 
 26
 00:01:13,070 --> 00:01:15,410
-You can see that I'm
-grouping here.
+Puedes ver que estoy
+agrupando aquí.
 
 27
 00:01:15,410 --> 00:01:18,925
-And rather than just grouping
-by dollar manufacturer, I'm
+Y en lugar de agrupar simplemente
+por "$manufacturer", estoy
 
 28
 00:01:18,925 --> 00:01:22,300
-grouping by manufacturer,
-dollar manufacture, and
+agrupando por "manufacturer:
+'$manufacturer'" y
 
 29
 00:01:22,300 --> 00:01:25,030
-category, dollar category.
+"category: '$category'".
 
 30
 00:01:25,030 --> 00:01:29,100
-Now these names right here,
-manufacture and category, are
+Estos nombres justo aquí,
+"manufacturer" y "category", son
 
 31
 00:01:29,100 --> 00:01:30,110
-my own invention.
+mi propia invención.
 
 32
 00:01:30,110 --> 00:01:34,550
-I'm essentially able to create
-a new key, or underscore ID,
+Esencialmente puedo crear
+una nueva clave, o "_id",
 
 33
 00:01:34,550 --> 00:01:38,230
-for each document and name it
-any way I want, with these
+por cada documento y llamarla
+como quiera, siendo éstos
 
 34
 00:01:38,230 --> 00:01:40,040
-being the values.
+los valores.
 
 35
 00:01:40,040 --> 00:01:44,150
-And then I am aggregating and
-getting the sum of all of
+Y luego estoy agregando y
+recuperando la suma de todas
 
 36
 00:01:44,150 --> 00:01:46,030
-those different groupings.
+esas agrupaciones diferentes.
 
 37
 00:01:46,030 --> 00:01:48,070
-So if I run that,
-what do I get?
+Así que si ejecuto eso,
+¿qué obtengo?
 
 38
 00:01:48,070 --> 00:01:49,550
-Let's see.
+Veamos.
 
 39
 00:01:49,550 --> 00:01:51,910
-So here, here's the
-results set.
+Aquí, aquí están
+los resultados.
 
 40
 00:01:51,910 --> 00:01:54,070
-You can see the results set
-has an underscore ID of
+Puedes ver que los resultados
+tienen un "_id" de
 
 41
 00:01:54,070 --> 00:01:57,760
-manufacture, Amazon,
-category, tablets.
+"manufacturer: Amazon",
+"category: Tablets".
 
 42
 00:01:57,760 --> 00:01:59,770
-And number of products two--
+Y "num_products: 2" --
 
 43
 00:01:59,770 --> 00:02:02,960
-Google tablets, one,
-Apple laptops, one.
+"Google tablets", uno,
+"Apple laptops", uno.
 
 44
 00:02:02,960 --> 00:02:05,050
-Now it was arbitrary how
-we named these things.
+Nombramos estas cosas
+de manera arbitraria.
 
 45
 00:02:05,050 --> 00:02:11,890
-So if I go in here and I change
-this to be maker, then
+Por lo que si voy aquí y cambio
+esto para que sea "maker", entonces
 
 46
 00:02:11,890 --> 00:02:13,430
-that works too.
+también funcionará.
 
 47
 00:02:13,430 --> 00:02:15,565
-Now it's maker, Apple,
-category, laptops.
+Ahora es "maker: Apple",
+"category: laptops".
 
 48
 00:02:15,565 --> 00:02:17,560
-It doesn't really matter
-what it is.
+Realmente no importa
+cuál es el nombre.
 
 49
 00:02:17,560 --> 00:02:21,850
-It's also useful, if I want, I
-can use this ability to create
+También es útil, si quiero,
+puedo usar esta capacidad para crear
 
 50
 00:02:21,850 --> 00:02:24,520
-a key that is itself
-a JSON document.
+una clave que en sí misma
+es un documento JSON.
 
 51
 00:02:24,520 --> 00:02:28,500
-I can use it to better label
-even a single grouping key.
+Puedo usarlo para etiquetar mejor
+una clave de agrupación simple.
 
 52
 00:02:28,500 --> 00:02:33,430
-So for instance, we had before
-our simple example where I was
+Así por ejemplo, teníamos antes
+nuestro ejemplo simple donde estaba
 
 53
 00:02:33,430 --> 00:02:35,820
-organizing the number of
-products by manufacturer.
+organizando el número de
+productos por fabricante.
 
 54
 00:02:35,820 --> 00:02:37,970
-I was getting a report
-on that.
+Estaba obteniendo un informe
+de eso.
 
 55
 00:02:37,970 --> 00:02:40,480
-And rather than just have it
-be underscore ID, [? be ?]
+Y en vez de tenerlo sólo 
+como "_id" 
 
 56
 00:02:40,480 --> 00:02:43,690
-dollar, manufacturer, what if I
-actually created a document
+"$manufacturer",
+realmente creé una clave
 
 57
 00:02:43,690 --> 00:02:48,670
-key which is manufacturer,
-colon, dollar, manufacturer.
+de documento que es "manufacturer:
+'$manufacturer'".
 
 58
 00:02:48,670 --> 00:02:51,480
-And the benefit of that is
-that now the result is a
+Y el beneficio de eso es
+que ahora el resultado es un
 
 59
 00:02:51,480 --> 00:02:52,960
-little bit easier to read.
+poco más fácil de leer.
 
 60
 00:02:52,960 --> 00:02:55,600
-So rather than have it just
-be underscore ID, Apple--
+Así que en vez de hacer que sea
+simplemente "_id" "Apple" --
 
 61
 00:02:55,600 --> 00:02:57,300
-maybe that was obvious
-before--
+quizá eso era obvio
+antes --
 
 62
 00:02:57,300 --> 00:03:00,380
-now it's underscore ID,
-manufacturer, Apple, num
+ahora es "_id",
+"manufacturer: 'Apple'",
 
 63
 00:03:00,380 --> 00:03:01,270
-products 4.
+"num_products: 4".
 
 64
 00:03:01,270 --> 00:03:03,990
-Same result, but a little
-bit easier to read.
+Mismo resultado, pero un poco
+más fácil de leer.
 
 65
 00:03:03,990 --> 00:03:06,490
-Now you can create a compound
-key in the grouping phase that
+Ahora puedes crear una clave
+compuesta en la fase de agrupación que
 
 66
 00:03:06,490 --> 00:03:07,920
-has as many keys as you want.
+tenga tantas claves como quieras.
 
 67
 00:03:07,920 --> 00:03:08,960
-So it doesn't need
-to be just two.
+Así que no necesitan
+ser sólo dos.
 
 68
 00:03:08,960 --> 00:03:10,230
-It could be three or four.
+Podrían ser tres o cuatro.
 
 69
 00:03:10,230 --> 00:03:12,700
-Whatever you want to group
-around, you can put right in
+Cualquier cosa que quieras
+agrupar, puedes ponerla justo
 
 70
 00:03:12,700 --> 00:03:15,970
-here as the underscore ID of the
-documents that are going
+aquí como "_id" de los
+documentos que van 
 
 71
 00:03:15,970 --> 00:03:18,400
-to get created during
-the grouping phase.
+a crearse durante
+la fase de agrupación.
 
 72
 00:03:18,400 --> 00:03:19,040
@@ -344,42 +344,42 @@ OK.
 
 73
 00:03:19,040 --> 00:03:20,320
-Let's have a quiz.
+Hagamos un cuestionario.
 
 74
 00:03:20,320 --> 00:03:21,690
-Given the following
-collection--
+Dada la siguiente
+colección --
 
 75
 00:03:21,690 --> 00:03:23,580
-which is right here,
-db stuff--
+que está justo aquí,
+"db.stuff" --
 
 76
 00:03:23,580 --> 00:03:27,280
-and has a, b, and c keys for
-each of the documents, and the
+y tiene las claves "a", "b" y "c"
+por cada documento, y la
 
 77
 00:03:27,280 --> 00:03:28,740
-following aggregation query--
+siguiente consulta de agregación --
 
 78
 00:03:28,740 --> 00:03:33,010
-right here, we have created a
-compound grouping key which is
+justo aquí hemos creado una
+clave de agrupación compuesta que es
 
 79
 00:03:33,010 --> 00:03:36,140
-a JSON document, Mo,
-Larry, and Curly--
+un documento JSON, "Moe",
+"Larry" y "Curly" --
 
 80
 00:03:36,140 --> 00:03:38,470
-how many documents will
-be in the result set?
+¿Cuántos documentos 
+estarán en el conjunto resultante?
 
 81
 00:03:38,470 --> 00:03:39,720
-Check one.
+Marca una.
