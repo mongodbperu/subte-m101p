@@ -3,128 +3,128 @@
 
 2
 00:00:00,370 --> 00:00:02,940
-I realized as I was doing the
-last lesson that we had never
+Me di cuenta mientras estaba haciendo
+la última lección que realmente nunca
 
 3
 00:00:02,940 --> 00:00:07,920
-really shown that the _id key of
-a document can itself be a
+habíamos enseñado que la clave "_id" de
+un documento puede ser a su vez un
 
 4
 00:00:07,920 --> 00:00:09,490
-complex document.
+documento complejo.
 
 5
 00:00:09,490 --> 00:00:10,600
-And it can be.
+Y puede serlo.
 
 6
 00:00:10,600 --> 00:00:12,050
-It just needs to be unique.
+Tan sólo necesita ser único.
 
 7
 00:00:12,050 --> 00:00:14,190
-So I just wanted to quickly
-make that clear.
+Así que sólo quería dejar eso
+claro rápidamente.
 
 8
 00:00:14,190 --> 00:00:16,550
-So here I have a little
-collection called foo.
+Aquí tengo una pequeña
+colección llamada "foo".
 
 9
 00:00:16,550 --> 00:00:19,670
-And I'm just inserting something
-with an _id being a
+Y sólo voy a insertar algo
+con un "_id" que sea
 
 10
 00:00:19,670 --> 00:00:25,080
-document of name andrew, class
-m101, and hometown New York.
+un documento con "name: 'andrew'", "class:
+'m101'" y "hometown: 'New York'".
 
 11
 00:00:25,080 --> 00:00:29,610
-If I do that and I look at the
-collection, you can see that I
+Si hago eso y echo un vistazo a la 
+colección, puedes ver que
 
 12
 00:00:29,610 --> 00:00:32,549
-have an _id of a
-document here.
+tiene un "_id" que es un
+documento aquí.
 
 13
 00:00:32,549 --> 00:00:35,020
-And so this is not something
-that's unique to aggregation.
+Y esto no es algo
+que sea único de la agregación.
 
 14
 00:00:35,020 --> 00:00:37,610
-This is something that's
-generally true about mongodb,
+Esto es algo que
+generalmente es cierto en MongoDB,
 
 15
 00:00:37,610 --> 00:00:40,585
-which is that your _id field
-can be a document.
+que es que tu campo "_id"
+puede ser un documento.
 
 16
 00:00:40,585 --> 00:00:42,610
-It doesn't need to be
-a scalar value.
+No necesita ser
+un valor escalar.
 
 17
 00:00:42,610 --> 00:00:44,700
-I think we've always shown it as
-a scalar value, and that's
+Creo que siempre lo hemos mostrado como
+un valor escalar, y desde luego
 
 18
 00:00:44,700 --> 00:00:46,290
-certainly most typical.
+eso es lo más normal.
 
 19
 00:00:46,290 --> 00:00:48,410
-But in aggregation, it actually
-isn't typical.
+Pero con la agregación, en realidad no
+es lo normal.
 
 20
 00:00:48,410 --> 00:00:50,940
-And I don't want you to think
-that that's unusual or that's
+Y no quiero que pienses
+que es inusual o un
 
 21
 00:00:50,940 --> 00:00:53,820
-a special case for mongodb
-because it's not.
+caso especial en MongoDB,
+porque no lo es.
 
 22
 00:00:53,820 --> 00:00:57,550
-And the only real requirement
-for _id is that it be unique
+Y el único requisito real
+para el "_id" es que sea único
 
 23
 00:00:57,550 --> 00:01:00,820
-because it is a unique primary
-key for the collection.
+porque es una clave primaria
+única para la colección.
 
 24
 00:01:00,820 --> 00:01:03,790
-So if I try to assert that
-document again with the exact
+Por lo que si intento insertar ese
+documento otra vez con exactamente
 
 25
 00:01:03,790 --> 00:01:08,410
-same document as its _id field
-as its value, I'll find that
+el mismo documento como valor de su 
+campo "_id", encontraré
 
 26
 00:01:08,410 --> 00:01:09,140
-it won't go in.
+que no funcionará.
 
 27
 00:01:09,140 --> 00:01:10,880
-And you can see that I get
-a duplicate key error.
+Y puedes ver que obtengo
+un error de clave duplicada.
 
 28
 00:01:10,880 --> 00:01:12,130
