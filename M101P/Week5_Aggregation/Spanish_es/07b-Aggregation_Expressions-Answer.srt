@@ -3,29 +3,29 @@
 
 2
 00:00:00,320 --> 00:00:02,720
-The answer is the first and
-last must be used in
+La respuesta es que "$first" y
+"$last" deben usarse en
 
 3
 00:00:02,720 --> 00:00:05,860
-conjunction with sort, because
-they look at the first or last
+conjunción con "$sort", ya que
+miran el primer o último
 
 4
 00:00:05,860 --> 00:00:08,570
-document, the value for
-a certain key--
+documento, el valor para
+una cierta clave --
 
 5
 00:00:08,570 --> 00:00:10,820
-the first or last document
-in the pipeline.
+el primer o último documento
+en el pipeline.
 
 6
 00:00:10,820 --> 00:00:13,190
-And that documents aren't
-necessarily ordered unless you
+Y esos documentos no están
+necesariamente ordenados a menos que
 
 7
 00:00:13,190 --> 00:00:14,780
-sorted them.
+los ordenes.
