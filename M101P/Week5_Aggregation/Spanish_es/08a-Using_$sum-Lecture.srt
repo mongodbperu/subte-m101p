@@ -3,395 +3,395 @@
 
 2
 00:00:00,210 --> 00:00:03,330
-We've already showed you how to
-use sum to count the number
+Ya te hemos enseñado cómo
+usar "$sum" para contar el número
 
 3
 00:00:03,330 --> 00:00:05,380
-of products from each
-manufacturer.
+de productos por cada
+fabricante.
 
 4
 00:00:05,380 --> 00:00:07,930
-What if we just want to sum
-up the prices that each
+¿Qué sucede si sólo queremos sumar
+los precios que cobra
 
 5
 00:00:07,930 --> 00:00:09,400
-manufacturer charges?
+cada fabricante?
 
 6
 00:00:09,400 --> 00:00:11,320
-That's a little bit of a strange
-thing to ask, but it's
+Pedir eso es una cosa un
+poco extraña, pero
 
 7
 00:00:11,320 --> 00:00:12,550
-not too hard to figure
-out, using
+no es demasiado complejo
+averiguarlo, usando
 
 8
 00:00:12,550 --> 00:00:14,260
-the aggregation framework.
+Aggregation Framework.
 
 9
 00:00:14,260 --> 00:00:17,820
-Here's the original program that
-aggregated these number
+Aquí está el programa original que
+agregó este número
 
 10
 00:00:17,820 --> 00:00:19,480
-of products by manufacturer.
+de poductos por fabricante.
 
 11
 00:00:19,480 --> 00:00:23,265
-And, in that case, we were using
-$sum, and we were using
+Y, en este caso, estuvimos usando
+"$sum", y usamos
 
 12
 00:00:23,265 --> 00:00:25,010
-the integer one here.
+el entero uno aquí.
 
 13
 00:00:25,010 --> 00:00:26,480
-But if we want to sum
-the prices, we
+Pero si queremos sumar
+los precios, 
 
 14
 00:00:26,480 --> 00:00:27,590
-just change it slightly.
+lo cambiaremos ligeramente.
 
 15
 00:00:27,590 --> 00:00:33,140
-And what we do is, we create a
-new key, called sum_prices.
+Y lo que hacemos es, creamos una
+nueva clave, llamada "sum_prices".
 
 16
 00:00:33,140 --> 00:00:35,520
-And use the $sum operator.
+Y usamos el operador "$sum".
 
 17
 00:00:35,520 --> 00:00:39,280
-And then, here, give $price,
-which is the column name from
+Y luego, aquí, ponemos "$price",
+que es el nombre de la columna de
 
 18
 00:00:39,280 --> 00:00:42,420
-the documents that are coming
-into the pipeline.
+los documentos que van a 
+llegar al pipeline.
 
 19
 00:00:42,420 --> 00:00:44,140
-And, of course, we have
-quotes around it.
+Y, por supuesto,
+está entre comillas.
 
 20
 00:00:44,140 --> 00:00:47,940
-And we have to use $price so
-that MongoDB knows that it's
+Y tenemos que usar "$price" para
+que MongoDB sepa que es
 
 21
 00:00:47,940 --> 00:00:50,810
-the price document key
-we're looking for.
+la clave "price" del documento
+que estamos buscando.
 
 22
 00:00:50,810 --> 00:00:52,620
-Let's run that and
-see what we get.
+Ejecutemos eso y
+veamos qué obtenemos.
 
 23
 00:00:52,620 --> 00:00:52,850
-All right.
+Bien.
 
 24
 00:00:52,850 --> 00:00:54,260
-This is the result right here.
+Éste es el resultado, justo aquí.
 
 25
 00:00:54,260 --> 00:00:56,710
-I'll just bring it up and show
-you that I ran it here.
+Lo traeré y te enseñaré
+que lo ejecuté aquí.
 
 26
 00:00:56,710 --> 00:00:57,210
-All right.
+De acuerdo.
 
 27
 00:00:57,210 --> 00:00:59,330
-So Mongo, using_sum.js--
+Así que "mongo < using_sum.js" --
 
 28
 00:00:59,330 --> 00:01:01,250
-that was the file that
-I just showed you.
+ése era el fichero que
+te acabo de enseñar.
 
 29
 00:01:01,250 --> 00:01:04,970
-You can see that it just gives
-you a document in the result
+Puedes ver que sólo te da
+un documento en el conjunto
 
 30
 00:01:04,970 --> 00:01:07,660
-set for each manufacturer and
-sums their prices up--
+resultante por cada fabricante y
+suma sus precios --
 
 31
 00:01:07,660 --> 00:01:09,470
-pretty straightforward.
+bastante fácil.
 
 32
 00:01:09,470 --> 00:01:09,810
-All right.
+Bien.
 
 33
 00:01:09,810 --> 00:01:11,115
-Let's do a quiz.
+Hagamos un cuestionario.
 
 34
 00:01:11,115 --> 00:01:14,840
-For this quiz, we're going to
-have you write an aggregation
+Para este cuestionario te vamos a
+pedir que escribas una consulta
 
 35
 00:01:14,840 --> 00:01:16,380
-query using sum.
+de agregación usando "$sum".
 
 36
 00:01:16,380 --> 00:01:19,570
-If you'd like, you can download
-the data set that I'm
+Si quieres, puedes descargar
+el conjunto de datos que voy
 
 37
 00:01:19,570 --> 00:01:20,680
-going to use for this.
+a usar para esto.
 
 38
 00:01:20,680 --> 00:01:22,400
-You don't need because I've
-given you enough information
+No lo necesitas porque te
+he dado suficiente información
 
 39
 00:01:22,400 --> 00:01:25,590
-to do it right here, but it
-might be useful to you to have
+para hacerlo justo aquí, pero
+podría ser útil tener
 
 40
 00:01:25,590 --> 00:01:27,660
-a data set on your local machine
-so you can play with
+un conjunto de datos en tu equipo local
+para que puedas jugar con
 
 41
 00:01:27,660 --> 00:01:28,710
-these queries.
+estas consultas.
 
 42
 00:01:28,710 --> 00:01:32,730
-This is a data set of zip code
-and population information in
+Éste es un conjunto de datos de códigos postales
+e información de población en
 
 43
 00:01:32,730 --> 00:01:33,940
-the United States.
+los Estados Unidos.
 
 44
 00:01:33,940 --> 00:01:37,970
-You can get it from
+Puedes conseguirlo en
 media.mongodb.org/zips/json,
 
 45
 00:01:37,970 --> 00:01:42,400
-and you can import it using
-Mongo import into a zips
+y puedes importarlo usando
+"mongoimport" en una colección
 
 46
 00:01:42,400 --> 00:01:45,210
-collection, inside any database
-of your choosing.
+"zips", dentro de cualquier base de datos
+de tu elección.
 
 47
 00:01:45,210 --> 00:01:48,370
-Now, just to give you folks
-from outside the US some
+Ahora, sólo para darle a la gente
+de fuera de los Estados Unidos alguna
 
 48
 00:01:48,370 --> 00:01:50,700
-background on the way
-this data looks,
+información sobre cómo
+son estos datos,
 
 49
 00:01:50,700 --> 00:01:52,450
-this is a city name.
+esto es un nombre de ciudad.
 
 50
 00:01:52,450 --> 00:01:54,080
-This is the state.
+Esto es el estado.
 
 51
 00:01:54,080 --> 00:01:56,805
-There's 50 states in the United
-States, and each one of
+Hay 50 estados en los Estados
+Unidos y cada uno de
 
 52
 00:01:56,805 --> 00:01:58,230
-them has a two letter
-abbreviation.
+ellos tiene una abreviatura
+de dos letras.
 
 53
 00:01:58,230 --> 00:01:59,770
-So LA is Alabama.
+Así, LA es Alabama.
 
 54
 00:01:59,770 --> 00:02:01,570
-NY would be New York.
+NY sería New York.
 
 55
 00:02:01,570 --> 00:02:04,040
-The states are non-overlapping.
+Los estados no se solapan.
 
 56
 00:02:04,040 --> 00:02:05,980
-These are postal codes,
-right here.
+Éstos son códigos postales,
+justo aquí.
 
 57
 00:02:05,980 --> 00:02:09,680
-We call this a zip code, but
-it's also just a postal code.
+Le llamamos "zip code", pero
+simplemente es un código postal.
 
 58
 00:02:09,680 --> 00:02:13,050
-The postal codes are
-non-overlapping; although, a
+Los códigos postales no
+se solapan, aunque
 
 59
 00:02:13,050 --> 00:02:16,750
-city may span multiple
-zip codes--
+una ciudad podría tener mútiples
+"zip codes" --
 
 60
 00:02:16,750 --> 00:02:18,680
-multiple postal codes.
+múltiples códigos postales.
 
 61
 00:02:18,680 --> 00:02:20,850
-This is some geolocation
-information about
+Ésta es cierta información de
+geolocalización sobre
 
 62
 00:02:20,850 --> 00:02:21,710
-where the city is.
+dónde está la ciudad.
 
 63
 00:02:21,710 --> 00:02:22,930
-We're not going to use
-that right now.
+No vamos a usar eso
+por ahora.
 
 64
 00:02:22,930 --> 00:02:26,210
-This is the population
-of this postal code--
+Esto es la población
+de este código postal --
 
 65
 00:02:26,210 --> 00:02:27,740
-that is the zip code.
+Eso es el "zip code".
 
 66
 00:02:27,740 --> 00:02:29,170
-So that's the way this
-data set looks.
+Así es como se ve
+este conjunto de datos.
 
 67
 00:02:29,170 --> 00:02:32,330
-And what I'd like you to do, is
-write an aggregation query
+Y lo que me gustaría hacer es
+escribir una consulta de agregación
 
 68
 00:02:32,330 --> 00:02:35,450
-to sum up the population
-by state.
+para sumar la población
+por estado.
 
 69
 00:02:35,450 --> 00:02:39,740
-So you need to group by state
-and sum up the population.
+Por lo que necesitas agrupar por "state"
+y sumar la población.
 
 70
 00:02:39,740 --> 00:02:42,410
-Now, so that our quiz checker
-can check it-- our quiz
+Ahora, para que nuestro comprobador del
+cuestionario pueda comprobarlo -- nuestro
 
 71
 00:02:42,410 --> 00:02:43,940
-checker isn't that
-sophisticated--
+comprobador no es muy
+sofisticado --
 
 72
 00:02:43,940 --> 00:02:47,230
-make sure that you call the key
-that's going to hold the
+asegúrate que llamas a la clave
+que va a contener la
 
 73
 00:02:47,230 --> 00:02:49,530
-population and the resulting
-documents--
+población y los documentos 
+resultantes --
 
 74
 00:02:49,530 --> 00:02:51,000
-call it population.
+llámala "population".
 
 75
 00:02:51,000 --> 00:02:54,370
-And it'd be helpful if you could
-put quotes around the
+Y sería de ayuda si pudieras
+poner entre comillas los
 
 76
 00:02:54,370 --> 00:02:56,890
-different key names and the
-different operators.
+nombres de las diferentes claves 
+y operadores.
 
 77
 00:02:56,890 --> 00:02:59,340
-That'll probably work
-better for you.
+Probablemente eso te
+funcionará mejor.
 
 78
 00:02:59,340 --> 00:03:01,380
-The collection is assumed
-to be called zips.
+Esta colección se supone
+que se llama "zips".
 
 79
 00:03:01,380 --> 00:03:03,000
-So it's going to be something
-along the lines of
+Por lo que va a ser algo
+en la línea de
 
 80
 00:03:03,000 --> 00:03:07,220
-db.zips.aggregate, and then
-open parenthesis, and your
+"db.zips.aggregate", y luego 
+paréntesis de apertura, tu
 
 81
 00:03:07,220 --> 00:03:09,180
-long expression, and
-close parentheses.
+expresión y paréntesis
+de cierre.
 
 82
 00:03:09,180 --> 00:03:11,680
-So we want an aggregation query
-that'll tell us the
+Así que queremos una consulta de agregación
+que nos dirá la
 
 83
 00:03:11,680 --> 00:03:12,480
-population--
+población --
 
 84
 00:03:12,480 --> 00:03:13,800
-sum of the population--
+suma de la población --
 
 85
 00:03:13,800 --> 00:03:16,520
-by each of the 50 states
-of the United States.
+por cada uno de los 50 estados
+de los Estados Unidos.
 
 86
 00:03:16,520 --> 00:03:17,770
