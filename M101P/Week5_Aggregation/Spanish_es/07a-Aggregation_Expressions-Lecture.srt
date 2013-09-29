@@ -3,204 +3,204 @@
 
 2
 00:00:00,160 --> 00:00:03,730
-Let's go over what other
-expressions exist in the
+Analicemos qué otras
+expresiones existen en la
 
 3
 00:00:03,730 --> 00:00:06,420
-aggregation grouping stage
-of the pipeline.
+fase de agrupación del pipeline
+de agregación.
 
 4
 00:00:06,420 --> 00:00:09,710
-So, again, these are the
-expressions that you can use
+Así que, de nuevo, éstas son las
+expresiones que puedes usar
 
 5
 00:00:09,710 --> 00:00:11,350
-in the group stage.
+en la fase "group".
 
 6
 00:00:11,350 --> 00:00:13,300
-We've already seen sum, a bit.
+Ya hemos visto "$sum", un poco.
 
 7
 00:00:13,300 --> 00:00:15,120
-Sum lets you do two things.
+"$sum" te permite hacer dos cosas.
 
 8
 00:00:15,120 --> 00:00:18,540
-It can count if you add one
-each time you see a key.
+Puede contar si añades uno
+cada vez que ves una clave.
 
 9
 00:00:18,540 --> 00:00:20,570
-Or, if you add the value
-of the key, then it
+O, si añades el valor
+de la clave, entonces
 
 10
 00:00:20,570 --> 00:00:22,110
-can sum up that key.
+puede sumar esa clave.
 
 11
 00:00:22,110 --> 00:00:27,220
-Average can average the values
-of a key across documents.
+"$avg" puede calcular el promedio de los valores
+de una clave en todos los documentos.
 
 12
 00:00:27,220 --> 00:00:30,370
-Minimum will find the minimum
-value of a documents of a
+"$min" encontrará el valor
+mínimo de los documentos de una
 
 13
 00:00:30,370 --> 00:00:30,940
-certain key.
+cierta clave.
 
 14
 00:00:30,940 --> 00:00:32,940
-And, again, this is
-as grouped by the
+Y, de nuevo, esto está
+agrupado por el
 
 15
 00:00:32,940 --> 00:00:35,180
-underscore ID that you specify.
+"_id" que especifiques.
 
 16
 00:00:35,180 --> 00:00:37,960
-Max finds the maximum
-value of a key.
+"$max" encuentra el valor
+máximo de una clave.
 
 17
 00:00:37,960 --> 00:00:40,230
-Push and addtoset--
+"$push" y "$addToSet" --
 
 18
 00:00:40,230 --> 00:00:41,440
-these two--
+los dos --
 
 19
 00:00:41,440 --> 00:00:42,640
-they build arrays.
+construyen arrays.
 
 20
 00:00:42,640 --> 00:00:44,260
-So if you--
+Por lo que si --
 
 21
 00:00:44,260 --> 00:00:46,720
-we'll go over this in more
-detail-- but if you want to--
+analizaremos esto en más
+detalle -- pero si quieres --
 
 22
 00:00:46,720 --> 00:00:49,300
-every time you encounter a
-certain value, you want to
+cada vez que encuentres un
+cierto valor quieres
 
 23
 00:00:49,300 --> 00:00:51,190
-push it onto an array
-in the result
+insertarlo en un array
+en el documento
 
 24
 00:00:51,190 --> 00:00:52,990
-documents, you can do that.
+resultante, puedes hacerlo.
 
 25
 00:00:52,990 --> 00:00:55,670
-This can get large very
-quickly with push.
+Éste puede hacerse muy grande
+rápidamente con "$push".
 
 26
 00:00:55,670 --> 00:00:58,950
-Addtoset does something very
-similar to push, but only adds
+"$addToSet" hace algo muy
+similar a "$push", pero sólo añade
 
 27
 00:00:58,950 --> 00:01:00,470
-each one, uniquely.
+cada valor una vez, de forma única.
 
 28
 00:01:00,470 --> 00:01:01,870
-It won't add it if it's already
-there, so this is
+No lo añadirá si ya está
+ahí, por lo que esto es
 
 29
 00:01:01,870 --> 00:01:03,330
-usually more useful.
+normalmente más útil.
 
 30
 00:01:03,330 --> 00:01:06,390
-And, finally, we have
-first and last.
+Y, por último, tenemos
+"$first" y "$last".
 
 31
 00:01:06,390 --> 00:01:07,850
-Now these are special.
+Estos dos son especiales.
 
 32
 00:01:07,850 --> 00:01:12,000
-First and last require you to,
-first, sort the documents, or
+"$first" y "$last" requieren que,
+primero, ordenes los documentos, o
 
 33
 00:01:12,000 --> 00:01:13,310
-they don't make any sense.
+no tendrán ningún sentido.
 
 34
 00:01:13,310 --> 00:01:15,650
-Because what first is going to
-do is it's going to find the
+Porque lo que "$first" va a
+hacer es que va a encontrar el
 
 35
 00:01:15,650 --> 00:01:18,510
-first value for a key that it
-sees across the documents it's
+primer valor para una clave que 
+vea en los documentos que está
 
 36
 00:01:18,510 --> 00:01:21,130
-processed during the group
-aggregation stage.
+procesando durante la fase "group"
+de la agregación.
 
 37
 00:01:21,130 --> 00:01:22,910
-And last would be
-the last one.
+Y "$last" sería
+el último.
 
 38
 00:01:22,910 --> 00:01:26,380
-And if you haven't sorted
-them, then first
+Y si no los has ordenado,
+entonces "$first"
 
 39
 00:01:26,380 --> 00:01:28,290
-and last are arbitrary.
+y "$last" son arbitrarios.
 
 40
 00:01:28,290 --> 00:01:31,280
-And I'll show you how to use
-these little bit later, too.
+Y te enseñaré cómo usarlos
+un poco más tarde, también.
 
 41
 00:01:31,280 --> 00:01:31,670
-All right.
+De acuerdo.
 
 42
 00:01:31,670 --> 00:01:33,080
-So let's do a quiz.
+Hora de hacer un cuestionario.
 
 43
 00:01:33,080 --> 00:01:35,150
-Which of the following
-aggregation expressions must
+¿Cuáles de las siguientes
+expresiones de agregación deben
 
 44
 00:01:35,150 --> 00:01:38,590
-be used in conjunction with
-a sort to make any sense?
+ser usadas en conjunción con
+un "$sort" para que tengan sentido?
 
 45
 00:01:38,590 --> 00:01:39,840
-Check all that apply.
+Marca todas las que apliquen.
 
 46
 00:01:39,840 --> 00:01:40,580
