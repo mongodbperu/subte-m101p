@@ -13,12 +13,12 @@ pequeño porcentaje de consultas
 
 4
 00:00:04,900 --> 00:00:07,090
-necesitan escanear la
-colección, va a tener un
+necesiten escanear la
+colección va a tener
 
 5
 00:00:07,090 --> 00:00:08,320
-mayor impacto.
+el mayor impacto.
 
 6
 00:00:08,320 --> 00:00:10,800
@@ -27,17 +27,17 @@ la carga de trabajo se ajuste
 
 7
 00:00:10,800 --> 00:00:13,590
-en memoria, ayudará.
+en memoria ayudará.
 
 8
 00:00:13,590 --> 00:00:16,059
-Pero, en realidad no
+Pero en realidad no
 serás capaz de obtener tu
 
 9
 00:00:16,059 --> 00:00:17,780
 base de datos en memoria, a pesar
-que serás capaz de obtener todo
+de que seas capaz de obtener todo
 
 10
 00:00:17,780 --> 00:00:20,730
@@ -55,7 +55,7 @@ como veremos más adelante.
 13
 00:00:23,730 --> 00:00:26,960
 Añadiendo un disco duro
-más rápido, ayudará.
+más rápido ayudará.
 
 14
 00:00:26,960 --> 00:00:29,200
@@ -64,12 +64,12 @@ mejoras algorítmicas que
 
 15
 00:00:29,200 --> 00:00:33,270
-llegan a usar un índice
+logramos al usar un índice
 tiene una magnitud mayor
 
 16
 00:00:33,270 --> 00:00:35,800
-que lo que vas a obtener por
+a lo que vas a obtener por
 tener un disco duro más rápido
 
 17
@@ -83,7 +83,7 @@ para un procesador.
 
 19
 00:00:39,520 --> 00:00:43,370
-Reemplazando un procesador más
+Reemplazando por un procesador más
 rápido está bien, pero las mejoras
 
 20
@@ -93,18 +93,18 @@ usando un índice en la
 
 21
 00:00:45,850 --> 00:00:48,360
-base de datos es
-mucho más importante.
+base de datos son
+mucho más importantes.
 
 22
 00:00:48,360 --> 00:00:50,690
-Y así pensar sobre indexación
-cuando estás pensando en
+Y pensar así sobre la
+indexación cuando pienses
 
 23
 00:00:50,690 --> 00:00:53,410
-rendimiento en una base de datos
-va a ser absolutamente crítico.
+sobre el rendimiento de una base de
+datos va a ser absolutamente crítico.
 
 24
 00:00:53,410 --> 00:00:54,660

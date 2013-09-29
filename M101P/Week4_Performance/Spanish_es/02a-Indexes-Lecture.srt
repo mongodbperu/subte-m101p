@@ -8,17 +8,17 @@ de base de datos.
 
 3
 00:00:01,900 --> 00:00:05,140
-El rendimiento de base de datos
-en MongoDB está impulsado
+El rendimiento de base de
+datos en MongoDB depende
 
 4
 00:00:05,140 --> 00:00:08,020
-por exactamente lo mismo que
-en toda base de datos.
+de exactamente lo mismo
+que toda base de datos.
 
 5
 00:00:08,020 --> 00:00:13,610
-Que es, si va a usar
+Eso es, de si puede usar
 un índice para resolver
 
 6
@@ -42,30 +42,30 @@ de datos relacionales.
 10
 00:00:22,440 --> 00:00:24,630
 Por ello esto será una revisión
-para muchos de ustedes, pero deseo
+para muchos de ustedes, pero quiero
 
 11
 00:00:24,630 --> 00:00:26,860
 llevarte a través de lo básico
-de indexación, lo que es y
+sobre la indexación, lo que es
 
 12
 00:00:26,860 --> 00:00:29,480
-por qué es tan efectivo.
+y por qué es tan efectiva.
 
 13
 00:00:29,480 --> 00:00:32,940
-Así que si te fijas en MongoDB
-o en cualquier otra base de datos,
+Si te fijas, MongoDB, o
+cualquier otra base de datos,
 
 14
 00:00:32,940 --> 00:00:36,310
-almacenará sus datos en estos
-grandes archivos en disco y esto
+almacena los datos en estos
+grandes archivos en disco y
 
 15
 00:00:36,310 --> 00:00:39,820
-supone representar
+esto supone representar
 algún tipo de colección.
 
 16
@@ -75,7 +75,7 @@ para los documentos en el disco,
 
 17
 00:00:42,600 --> 00:00:44,130
-podría estar en cualquier lugar.
+podrían estar en cualquier lugar.
 
 18
 00:00:44,130 --> 00:00:45,490
@@ -92,18 +92,18 @@ tener que hacer por defecto es
 
 21
 00:00:51,920 --> 00:00:55,245
-barrer toda la colección
+atravesar toda la colección
 para encontrar los datos.
 
 22
 00:00:55,245 --> 00:00:59,650
-Ahora, esto se llama un escaneo de
-tabla en una base de datos relacional,
+Esto se llama un escaneo de tabla
+en una base de datos relacional
 
 23
 00:00:59,650 --> 00:01:04,830
 y es un escaneo de colección en
-MongoDB y esto es la muerte de
+MongoDB. Esto es la muerte de
 
 24
 00:01:04,830 --> 00:01:05,850
@@ -111,17 +111,17 @@ tu rendimiento.
 
 25
 00:01:05,850 --> 00:01:08,530
-No deseas tener que escanear
-tu colección completa
+No quieres tener que escanear
+tu colección completa para
 
 26
 00:01:08,530 --> 00:01:11,310
-para tus datos si el conjunto de
-datos es grande porque será
+encontrar datos porque si el
+conjunto de datos es grande,
 
 27
 00:01:11,310 --> 00:01:13,090
-extremadamente lento.
+esto será extremadamente lento.
 
 28
 00:01:13,090 --> 00:01:15,460
@@ -139,11 +139,11 @@ Bueno, es bastante sencillo.
 31
 00:01:18,670 --> 00:01:21,320
 Si algo está ordenado, como
-por ejemplo esta lista está
+por ejemplo esta lista que
 
 32
 00:01:21,320 --> 00:01:22,500
-ordenada alfabéticamente--
+está ordenada alfabéticamente--
 
 33
 00:01:22,500 --> 00:01:24,790
@@ -151,13 +151,12 @@ ordenada alfabéticamente--
 
 34
 00:01:24,790 --> 00:01:28,370
-Y aun si fuera muy larga,
+Aun si fuera muy larga,
 es muy rápido encontrar
 
 35
 00:01:28,370 --> 00:01:29,760
-algo en la lista--
-¿correcto?
+algo en la lista--¿correcto?
 
 36
 00:01:29,760 --> 00:01:33,590
@@ -166,7 +165,7 @@ búsqueda binaria para hacerlo.
 
 37
 00:01:33,590 --> 00:01:36,270
-Por lo que encontrar algo
+Por eso, encontrar algo
 en una lista ordenada--
 
 38
@@ -189,26 +188,25 @@ nuestras claves ordenadas.
 
 42
 00:01:45,730 --> 00:01:48,740
-Ahora en realidad no las mantenemos
-ordenadas linealmente como
+Ahora en realidad no las
+mantenemos ordenadas
 
 43
 00:01:48,740 --> 00:01:50,440
-esto en MongoDB--
+linealmente en MongoDB--
 
 44
 00:01:50,440 --> 00:01:52,240
-usamos algo llamado
-un "B-tree".
+usamos algo llamado un "B-tree",
 
 45
 00:01:52,240 --> 00:01:55,520
-Pero conceptualmente, puedes
-imaginar algo como esto.
+pero conceptualmente,
+puedes imaginar algo así.
 
 46
 00:01:55,520 --> 00:01:59,150
-Y si busco por, digamos,
+Si busco por, digamos,
 "Banana", puedo buscar
 
 47
@@ -218,12 +216,11 @@ y luego tener un puntero al
 
 48
 00:02:05,100 --> 00:02:07,400
-documento real
-en la colección.
+documento real en la colección.
 
 49
 00:02:07,400 --> 00:02:11,890
-Esta es la clave.
+Ésta es la clave.
 
 50
 00:02:11,890 --> 00:02:14,990
@@ -233,27 +230,26 @@ son listas ordenadas de claves.
 51
 00:02:14,990 --> 00:02:17,940
 Por ejemplo, podrías tener
-un índice en "name" y
+un índice en "name" y luego
 
 52
 00:02:17,940 --> 00:02:21,230
-luego un índice en "hair_color",
-y podría ser otro
+un índice en "hair_color" y otro
 
 53
 00:02:21,230 --> 00:02:24,190
-índice en "dof" ("date of
-birth") o algo.
+índice en "date of birth"
+o algo por el estilo.
 
 54
 00:02:24,190 --> 00:02:26,990
 Ahora, el orden es importante
-porque conceptualmente la forma
+porque conceptualmente, dada
 
 55
 00:02:26,990 --> 00:02:30,760
-en que el índice está construído
-es que "name" estará en el nivel alto.
+la forma en que se construye un índice,
+"name" estaría en el nivel más alto.
 
 56
 00:02:30,760 --> 00:02:32,090
@@ -276,7 +272,7 @@ Ahora dentro de esto, el
 
 60
 00:02:43,450 --> 00:02:45,120
-conceptualmente por aquí.
+conceptualmente así.
 
 61
 00:02:45,120 --> 00:02:52,490
@@ -296,11 +292,11 @@ esto para cada elemento.
 64
 00:02:58,130 --> 00:03:02,370
 Así que habrá algún "Brown hair"
-aquí, "Black hair" aquí.
+aquí, "Black hair" aquí y
 
 65
 00:03:02,370 --> 00:03:04,490
-Y entonces finalmente dentro de esto--
+entonces finalmente dentro de esto--
 
 66
 00:03:04,490 --> 00:03:06,850
@@ -314,12 +310,12 @@ elementos para "date of birth".
 68
 00:03:10,400 --> 00:03:13,590
 Así que está mi "hair_color" por
-aquí, mi "name" está en el alto
+aquí, mi "name" está en el nivel
 
 69
 00:03:13,590 --> 00:03:17,450
-nivel y luego finalmente obtengo
-este elemento "date of birth"
+más alto y luego finalmente obtengo
+este elemento, "date of birth"
 
 70
 00:03:17,450 --> 00:03:19,670
@@ -327,17 +323,16 @@ debajo.
 
 71
 00:03:19,670 --> 00:03:22,350
-Así que si me provees
-de la persona--
+Así que si sólo me provees el nombre
 
 72
 00:03:22,350 --> 00:03:23,620
-sólo un nombre--
+de la persona,
 
 73
 00:03:23,620 --> 00:03:27,380
-entonces puedo ir al índice y
-puedo encontrar todo de "John".
+puedo ir al índice y 
+encontrar todo lo de "John".
 
 74
 00:03:27,380 --> 00:03:29,640
@@ -352,7 +347,7 @@ personas con "Brown hair".
 76
 00:03:32,070 --> 00:03:34,890
 Y en la parte inferior de esto,
-por supuesto, van a ser
+por supuesto, van a estar los
 
 77
 00:03:34,890 --> 00:03:37,100
@@ -364,12 +359,12 @@ punteros a los datos reales.
 79
 00:03:39,660 --> 00:03:42,950
 Ahora, estas cosas van a
-representar claves en el documento
+representar claves en el
 
 80
 00:03:42,950 --> 00:03:46,700
-de Mongo que hemos
-decidido indexar.
+documento de Mongo que
+hemos decidido indexar.
 
 81
 00:03:46,700 --> 00:03:50,160
@@ -379,16 +374,15 @@ utilice un índice, tienes que
 82
 00:03:50,160 --> 00:03:53,040
 darle el conjunto de elementos que
-coinciden más por el lado izquierdo.
+coinciden de izquierda a derecha.
 
 83
 00:03:53,040 --> 00:03:56,280
-Sí que puedes darle apenas el
-"name" o puedes darle sólo un
+Puedes darle apenas el "name"
 
 84
 00:03:56,280 --> 00:03:57,260
-"hair_color"--
+o sólo un "hair_color"--
 
 85
 00:03:57,260 --> 00:03:58,800
@@ -401,17 +395,17 @@ el "hair_color"
 
 87
 00:03:59,990 --> 00:04:01,100
-y "dof" (date of birth).
+y "date of birth".
 
 88
 00:04:01,100 --> 00:04:04,340
-Si provees sólo el "dof",
-no puedes hacer mucho
+Si provees sólo el "date of
+birth", no puedes hacer mucho
 
 89
 00:04:04,340 --> 00:04:07,220
-conceptualmente con el índice,
-porque "dof" está aquí
+con el índice, porque
+"date of birth" está aquí
 
 90
 00:04:07,220 --> 00:04:08,460
@@ -435,17 +429,16 @@ etcétera, etcétera, etcétera.
 94
 00:04:17,329 --> 00:04:20,470
 En cambio, necesito
-iniciar por arriba.
+comenzar arriba.
 
 95
 00:04:20,470 --> 00:04:24,420
-Y esto es cierto o haciendo
-una consulta o haciendo una
+Esto es cierto para consultas
 
 96
 00:04:24,420 --> 00:04:28,540
-actualización o haciendo un
-ordenamiento porque "sort" también
+y actualizaciones y ordenamientos
+porque "sort" también
 
 97
 00:04:28,540 --> 00:04:31,120
@@ -454,8 +447,8 @@ ordenar estos valores.
 
 98
 00:04:31,120 --> 00:04:34,750
-Así por ejemplo, si saco
-un montón de datos de la
+Por ejemplo, si saco un
+montón de datos de la
 
 99
 00:04:34,750 --> 00:04:37,000
@@ -469,8 +462,8 @@ usar este índice si definimos
 
 101
 00:04:40,400 --> 00:04:43,440
-"name", "hair_color", "dof"
-para hacer el ordenamiento.
+"name", "hair_color" y "date of
+birth" para hacer el ordenamiento.
 
 102
 00:04:43,440 --> 00:04:46,600
@@ -479,16 +472,15 @@ hacer es que cada vez que
 
 103
 00:04:46,600 --> 00:04:51,140
-la base de datos desee
-insertar algo en ella--
+la base de datos desee insertar algo--
 
 104
 00:04:51,140 --> 00:04:52,190
-o deseas insertar algo en
+o más bien que tú desees insertar
 
 105
 00:04:52,190 --> 00:04:53,530
-la base de datos, más bien--
+algo en la base de datos--
 
 106
 00:04:53,530 --> 00:04:57,590
@@ -515,12 +507,12 @@ si tienes un índice, porque el
 
 111
 00:05:07,500 --> 00:05:09,400
-Y por ello los índices
-no son sin coste.
+Por ello los índices no
+vienen sin costo alguno.
 
 112
 00:05:09,400 --> 00:05:12,430
-Ellos toman espacio en
+Toman espacio en
 disco y también toman
 
 113
@@ -530,23 +522,22 @@ actualizados.
 
 114
 00:05:13,680 --> 00:05:14,940
-Y eso es algo para
-tener en mente.
+Ten eso en mente.
 
 115
 00:05:14,940 --> 00:05:18,800
-Por ello si no deseas tener ningún
-índice en todas las formas
+Por ello no es bueno tener un
+índice para todas las formas
 
 116
 00:05:18,800 --> 00:05:21,200
-posibles que vas a consultar en
-la colección, en su lugar deseas
+en que vas a hacer consultas,
+en su lugar es mejor tener
 
 117
 00:05:21,200 --> 00:05:24,760
-tener un índice en las formas
-que es más probable consultar
+un índice para las formas
+más comunes en la que consultes
 
 118
 00:05:24,760 --> 00:05:26,090
@@ -554,12 +545,12 @@ la colección.
 
 119
 00:05:26,090 --> 00:05:27,660
-Vayamos a través de
-uno o dos ejemplos--
+Veamos un par de ejemplos
 
 120
 00:05:27,660 --> 00:05:29,050
-para hablar acerca de índices.
+para entender cómo
+funcionan los índices.
 
 121
 00:05:29,050 --> 00:05:34,946
@@ -585,7 +576,7 @@ Si hago una consulta sobre "c", no.
 126
 00:05:42,905 --> 00:05:46,910
 Si hago una consulta sobre
-"a, b", sí, usa dos
+"a, b", sí ya que usa dos
 
 127
 00:05:46,910 --> 00:05:48,400
@@ -593,12 +584,12 @@ partes del índice.
 
 128
 00:05:48,400 --> 00:05:50,090
-"a, c"--
+Si hago "a, c"--
 
 129
 00:05:50,090 --> 00:05:53,730
-esto sólo usa la parte "a" e
-ignora la parte "c" para los
+sólo usa la parte "a" e ignora
+la parte "c" para los
 
 130
 00:05:53,730 --> 00:05:56,470
@@ -628,32 +619,32 @@ de una base de datos?
 135
 00:06:05,350 --> 00:06:08,120
 Añadir más memoria de modo que la
-carga de trabajo se ajusta a la memoria,
+carga de trabajo se ajuste a la memoria.
 
 136
 00:06:08,120 --> 00:06:10,570
 Añadir un disco más rápido de modo
-que la operación que alcanza al disco
+que la operación que alcance al disco
 
 137
 00:06:10,570 --> 00:06:13,650
-será mucho más rápida.
+sea mucho más rápida.
 Reemplazar tu procesador con uno
 
 138
 00:06:13,650 --> 00:06:16,380
-más rápido-- digamos
-2 veces más rápido--
+más rápido, digamos
+2 veces más rápido.
 
 139
 00:06:16,380 --> 00:06:20,630
-O añadir un índice apropiado
-en una colección grande de modo que
+O añadir un índice apropiado en
+una colección grande de modo que
 
 140
 00:06:20,630 --> 00:06:22,640
 sólo un pequeño porcentaje de las
-consultas necesitan escanear la
+consultas necesiten escanear la
 
 141
 00:06:22,640 --> 00:06:23,890
