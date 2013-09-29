@@ -3,159 +3,159 @@
 
 2
 00:00:00,120 --> 00:00:02,840
-And the answer is in this case
-that the result was the same.
+Y la respuesta en este caso es
+que el resultado era el mismo.
 
 3
 00:00:02,840 --> 00:00:05,060
-And the reason the result is the
-same, if you think about
+Y la razón por la cual el resultado
+es el mismo, si piensas en
 
 4
 00:00:05,060 --> 00:00:08,320
-it, is that we're going through
-these documents one by
+en ello, es que vamos a recorrer
+estos documentos uno a 
 
 5
 00:00:08,320 --> 00:00:12,450
-one and we're adding the postal
-codes that map to a
+uno y estamos añadiendo los códigos
+postales que corresponden a una
 
 6
 00:00:12,450 --> 00:00:16,040
-particular city and we're going
-to inspect each source
+ciudad particular y vamos a
+inspeccionar cada documento
 
 7
 00:00:16,040 --> 00:00:17,610
-document once.
+fuente una vez.
 
 8
 00:00:17,610 --> 00:00:23,010
-And we know that the postal
-codes, which are in the _id
+Y sabemos que los códigos
+postales, que están en los campos
 
 9
 00:00:23,010 --> 00:00:25,730
-fields, which is what we're
-pushing, are unique in the
+"_id", que es lo que estamos
+insertando, son únicos en la
 
 10
 00:00:25,730 --> 00:00:28,140
-collection because, of course,
-_id is unique in the
+colección porque, por supuesto,
+"_id" es único en la 
 
 11
 00:00:28,140 --> 00:00:29,080
-collection.
+colección.
 
 12
 00:00:29,080 --> 00:00:31,132
-So we know that it doesn't
-really matter whether we push
+Por lo que sabemos que realmente
+no importa si hacemos "push"
 
 13
 00:00:31,132 --> 00:00:33,780
-it or add it to set, we should
-get the same answer.
+o "addToSet", deberíamos
+obtener la misma respuesta.
 
 14
 00:00:33,780 --> 00:00:36,060
-Now, I ran this on the
-actual data set.
+Ahora, ejecuté esto sobre el
+conjunto de datos real.
 
 15
 00:00:36,060 --> 00:00:38,650
-And it turns out that you
-don't get the exact same
+Y resulta que no se 
+obtiene exactamente la misma
 
 16
 00:00:38,650 --> 00:00:40,870
-answer because the order that
-the postal codes show up is
+respuesta porque el orden en 
+que se muestran los códigos postales
 
 17
 00:00:40,870 --> 00:00:42,020
-slightly different.
+es ligeramente diferente.
 
 18
 00:00:42,020 --> 00:00:43,740
-And I'm not actually sure
-why that would be the
+Y en realidad no estoy seguro
+por qué sería ése el
 
 19
 00:00:43,740 --> 00:00:45,110
-case, but it is.
+caso, pero lo es.
 
 20
 00:00:45,110 --> 00:00:46,950
-I guess it doesn't guarantee
-the order.
+Supongo que no garantiza
+el orden.
 
 21
 00:00:46,950 --> 00:00:50,360
-So what I did is I sorted
-them first--
+Así que lo que hice es ordenarlos
+primero --
 
 22
 00:00:50,360 --> 00:00:52,200
-and we're gonna learn about
-sort very soon--
+y vamos a aprender cómo
+se ordena muy pronto --
 
 23
 00:00:52,200 --> 00:00:55,900
-and when I sorted all of the
-documents by postal code and
+y cuando ordené todos los
+documentos por código postal y
 
 24
 00:00:55,900 --> 00:00:58,510
-then ran it, the result
-was exactly the same.
+luego lo ejecuté, el resultado
+fue exactamente el mismo.
 
 25
 00:00:58,510 --> 00:01:00,980
-And when I say the same, I
-meant the same from a set
+Y cuando digo el mismo, 
+quiero decir el mismo desde el
 
 26
 00:01:00,980 --> 00:01:03,770
-theory standpoint, which is that
-the same items appeared
+punto de vista de teoría de conjuntos, que
+es que aparecen los mismos elementos
 
 27
 00:01:03,770 --> 00:01:04,930
-in the result.
+en el resultado.
 
 28
 00:01:04,930 --> 00:01:06,960
-I wasn't really thinking about
-the ordering of the items
+En realidad no estaba pensando
+en el ordenamiento de los elementos
 
 29
 00:01:06,960 --> 00:01:07,950
-within the result set.
+dentro del conjunto resultante.
 
 30
 00:01:07,950 --> 00:01:09,600
-But if you thought they were
-different because they might
+Pero si pensabas que eran
+diferentes porque podrían
 
 31
 00:01:09,600 --> 00:01:11,540
-come up in a different order,
-the postal codes might be in a
+venir en un orden diferente,
+los códigos postales podrían estar en
 
 32
 00:01:11,540 --> 00:01:14,260
-different order under each
-city, well then you can
+un orden diferente bajo cada
+ciudad, entonces puedes
 
 33
 00:01:14,260 --> 00:01:15,780
-consider yourself
-correct as well.
+considerar que
+estabas en lo cierto.
 
 34
 00:01:15,780 --> 00:01:19,530
-But for the purposes of this, I
-decided they were the same.
+Pero para el propósito de esto,
+decidí que eran lo mismo.
