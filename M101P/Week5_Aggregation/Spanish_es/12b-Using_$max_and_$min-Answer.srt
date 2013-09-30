@@ -7,30 +7,30 @@ OK.
 
 3
 00:00:00,910 --> 00:00:05,665
-And the answer is
-db.zips.aggregate, grouping by
+Y la respuesta es
+"db.zips.aggregate", agrupando por
 
 4
 00:00:05,665 --> 00:00:09,060
-_id by the state.
+"_id: '$state'".
 
 5
 00:00:09,060 --> 00:00:12,770
-Find me the max population
-and assign it to a
+Encuentra la población máxima
+y asígnala a una
 
 6
 00:00:12,770 --> 00:00:14,650
-new key called pop.
+nueva clave llamada "pop".
 
 7
 00:00:14,650 --> 00:00:18,040
-And that's pop, because
-it's pop there.
+Y eso es "pop", porque
+"pop" está ahí.
 
 8
 00:00:18,040 --> 00:00:19,290
-And that's the answer.
+Y ésa es la respuesta.
 
 9
 00:00:19,290 --> 00:00:20,200

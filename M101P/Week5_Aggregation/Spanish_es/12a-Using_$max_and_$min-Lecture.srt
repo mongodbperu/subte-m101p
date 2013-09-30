@@ -3,193 +3,193 @@
 
 2
 00:00:00,180 --> 00:00:02,750
-The last two expressions I want
-to go over before turning
+Las últimas dos expresiones que quiero
+analizar antes de pasar
 
 3
 00:00:02,750 --> 00:00:05,160
-to some other topics
-is max and min.
+a algunos otros temas
+son "$max" y "$min".
 
 4
 00:00:05,160 --> 00:00:07,400
-Now max and min are so similar
-I'm not gonna show both.
+"$max" y "$min" son tan similares
+que no voy a enseñarlos ambos.
 
 5
 00:00:07,400 --> 00:00:11,300
-But what max does is it picks
-out the max value in the
+Pero lo que hace "$max" es recoger
+el valor máximo en la
 
 6
 00:00:11,300 --> 00:00:14,160
-grouping, and it makes
-it available for
+agrupación, haciendo que
+esté disponible para
 
 7
 00:00:14,160 --> 00:00:15,630
-creating a new key.
+crear una nueva clave.
 
 8
 00:00:15,630 --> 00:00:17,940
-So let's say we want to figure
-out the max price charged by
+Así que digamos que queremos averiguar
+el precio máximo cobrado por
 
 9
 00:00:17,940 --> 00:00:22,040
-any manufacturer in our little
-electronics products catalog.
+cualquier fabricante en nuestro pequeño
+catálogo de productos electrónicos.
 
 10
 00:00:22,040 --> 00:00:25,090
-And again, the catalog looks
-a little bit like this.
+Y de nuevo, el catálogo se parece
+un poco a esto.
 
 11
 00:00:25,090 --> 00:00:27,330
-We're gonna figure out the max
-price that Amazon charges or
+Vamos a averiguar el precio
+máximo que cobra Amazon o
 
 12
 00:00:27,330 --> 00:00:29,440
-the max price that
-Google charges.
+el precio máximo que
+cobra Google.
 
 13
 00:00:29,440 --> 00:00:32,940
-We do that by grouping by the
-maker, pulling out the
+Hacemos eso agrupando por 
+"maker", recuperando el
 
 14
 00:00:32,940 --> 00:00:38,010
-$manufacturer value and then
-setting up a new key, max
+valor "$manufacturer" y luego
+estableciendo una nueva clave,
 
 15
 00:00:38,010 --> 00:00:40,600
-price with max of $price.
+"maxprice" con "$max: '$price'".
 
 16
 00:00:40,600 --> 00:00:43,100
-And this refers to
-the price key.
+Y esto se refiere a
+la clave "price".
 
 17
 00:00:43,100 --> 00:00:44,260
-So we run that.
+Así que ejecutamos eso.
 
 18
 00:00:44,260 --> 00:00:48,150
-And we see that the max price
-charged by Google, Amazon,
+Y vemos el precio máximo
+cobrado por Google, Amazon,
 
 19
 00:00:48,150 --> 00:00:51,650
-Sony, et cetera, and Apple,
-in our little collection.
+Sony, Apple, etcétera
+en nuestra pequeña colección.
 
 20
 00:00:51,650 --> 00:00:54,390
-Now, note that this is a
-little bit limiting.
+Ahora, fíjate que esto está
+limitando un poco.
 
 21
 00:00:54,390 --> 00:00:58,170
-Because using this technique, I
-can't figure out the name of
+Porque usando esta técnica
+no puedo averiguar el nombre del
 
 22
 00:00:58,170 --> 00:01:00,820
-the product and its max price.
+producto y su precio máximo.
 
 23
 00:01:00,820 --> 00:01:04,060
-Because I'm grouping by
-manufacture and I can't group
+Debido a que estoy agrupando por
+"manufacturer" y no puedo agrupar
 
 24
 00:01:04,060 --> 00:01:05,670
-by manufacture product.
+por fabricante y producto.
 
 25
 00:01:05,670 --> 00:01:07,110
-That wouldn't make any sense.
+Eso no tendría ningún sentido.
 
 26
 00:01:07,110 --> 00:01:10,590
-I want to also pull out the
-product that corresponds to
+También quiero obtener el
+producto que corresponde a
 
 27
 00:01:10,590 --> 00:01:11,430
-that price.
+ese precio.
 
 28
 00:01:11,430 --> 00:01:13,890
-And max, there's really no
-easy way to do that.
+Y el máximo, realmente no hay una
+forma sencilla de hacer eso.
 
 29
 00:01:13,890 --> 00:01:18,190
-But there are some ways to do
-that using sort and last and
+Pero hay algunas maneras para hacerlo
+usando "$sort", "$last" y
 
 30
 00:01:18,190 --> 00:01:21,010
-first, which we're gonna show
-after we go through some of
+"$first", los cuales vamos a enseñarte
+después de analizar algunas de
 
 31
 00:01:21,010 --> 00:01:23,660
-the other pipeline stages that
-are available in the
+las otras fases del "pipeline" que
+están disponibles en 
 
 32
 00:01:23,660 --> 00:01:25,550
-aggregation framework.
+Aggregation Framework.
 
 33
 00:01:25,550 --> 00:01:26,870
-OK, let's do a quiz.
+OK, hagamos un cuestionario.
 
 34
 00:01:26,870 --> 00:01:27,970
-Here's the quiz.
+Aquí está el cuestionario.
 
 35
 00:01:27,970 --> 00:01:31,280
-Thinking again about this zip
-code database that we've been
+Pensando otra vez en esta base 
+de datos de códigos postales con la 
 
 36
 00:01:31,280 --> 00:01:36,390
-playing with, let's find the
-population of the zip code in
+que hemos estado jugando, encontremos
+la población del código postal en
 
 37
 00:01:36,390 --> 00:01:38,910
-each state that is
-most populous.
+cada estado que tiene
+mayor población.
 
 38
 00:01:38,910 --> 00:01:42,890
-So we want to group by the
-state and figure out the
+Así que queremos agrupar por el
+estado y averiguar la
 
 39
 00:01:42,890 --> 00:01:45,390
-highest population that exists
-in any zip code.
+mayor población que existe
+en cualquier código postal.
 
 40
 00:01:45,390 --> 00:01:47,550
-And again, the collection
-is called zips.
+Y de nuevo, la colección
+se llama "zips".
 
 41
 00:01:47,550 --> 00:01:51,060
-And write your aggregation
-query over here.
+Y escribe tu consulta de
+agregación por aquí.
 
 42
 00:01:51,060 --> 00:01:52,712
