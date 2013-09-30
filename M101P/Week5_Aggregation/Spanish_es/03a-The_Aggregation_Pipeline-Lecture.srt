@@ -33,7 +33,7 @@ eso automáticamente ordenaría
 8
 00:00:22,840 --> 00:00:24,570
 el tamaño de los
-subdirectorios e imprimirlos
+subdirectorios y los imprimirá
 
 9
 00:00:24,570 --> 00:00:25,690
@@ -61,7 +61,6 @@ Y por ejemplo, esa colección
 14
 00:00:34,090 --> 00:00:35,920
 documento por documento.
-through document by document.
 
 15
 00:00:35,920 --> 00:00:37,270
@@ -74,7 +73,7 @@ este "pipeline" de procesamiento.
 
 17
 00:00:39,040 --> 00:00:41,490
-Y estos pasar por
+Y estos pasan por
 una serie de fases.
 
 18
@@ -258,8 +257,8 @@ El "$match" va a filtrar.
 
 57
 00:02:11,080 --> 00:02:13,850
-Así, por ejemplo, en el que t
-mostré en "products", si
+Así, por ejemplo, en el que
+te mostré en "products", si
 
 58
 00:02:13,850 --> 00:02:17,140
@@ -335,7 +334,7 @@ cierta clave.
 
 73
 00:02:46,870 --> 00:02:49,500
-No puede producit tantos
+No puede producir tantos
 documentos como ve.
 
 74
@@ -537,7 +536,7 @@ todo sin repetirlos.
 
 116
 00:04:32,400 --> 00:04:36,400
-Así que, basicamente, normaliza
+Así que, básicamente, normaliza
 los datos, de nuevo, para que
 
 117
@@ -579,7 +578,7 @@ estas etapas.
 
 125
 00:04:50,840 --> 00:04:53,340
-Quiero señalasr que
+Quiero señalar que
 puedes tener más de una
 
 126
