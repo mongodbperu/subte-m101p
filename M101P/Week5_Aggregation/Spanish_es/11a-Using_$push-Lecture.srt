@@ -3,97 +3,97 @@
 
 2
 00:00:00,250 --> 00:00:01,750
-Next aggregation expression
-that we're going
+La siguiente expresión de agregación
+que vamos a 
 
 3
 00:00:01,750 --> 00:00:03,780
-to look at is push.
+ver es "$push".
 
 4
 00:00:03,780 --> 00:00:06,940
-Now push is very similar to
-addtoset, except that push
+"$push" es muy similar a
+"$addToSet", salvo que "$push"
 
 5
 00:00:06,940 --> 00:00:09,520
-does not guarantee that it
-adds each item only once.
+no garantiza que añada
+cada elemento sólo una vez.
 
 6
 00:00:09,520 --> 00:00:10,720
-It doesn't look through
-to make sure
+No revisa nada
+para asegurarse
 
 7
 00:00:10,720 --> 00:00:12,400
-it's not already there.
+que el elemento ya no está ahí.
 
 8
 00:00:12,400 --> 00:00:16,070
-So let's say we wanted to
-see what categories each
+Digamos que quisiéramos
+ver en qué categorías tiene
 
 9
 00:00:16,070 --> 00:00:18,770
-manufacturer had products in.
+productos cada fabricante.
 
 10
 00:00:18,770 --> 00:00:22,280
-This is looking in our little
-electronics products database
+Mirando en nuestra pequeña
+base de datos de productos electrónicos
 
 11
 00:00:22,280 --> 00:00:25,370
-that we created before-- our
-little collection where we
+que creamos antes -- nuestra
+pequeña colección donde
 
 12
 00:00:25,370 --> 00:00:27,410
-have a document for
-each product.
+tenemos un documento por
+cada producto.
 
 13
 00:00:27,410 --> 00:00:30,490
-And it has a category
-and manufacturer.
+Y tiene una categoría
+y un fabricante.
 
 14
 00:00:30,490 --> 00:00:32,830
-And this time, rather than
-using addToSet, we're
+Y esta vez, en lugar de
+usar "$addToSet", vamos
 
 15
 00:00:32,830 --> 00:00:33,660
-going to use push.
+a usar "$push".
 
 16
 00:00:33,660 --> 00:00:35,010
-So if we do that--
+Por lo que si hacemos eso --
 
 17
 00:00:35,010 --> 00:00:36,360
-push the category--
+"$push" de "category" --
 
 18
 00:00:36,360 --> 00:00:39,190
-it shouldn't be too surprising,
-the result we get.
+no debería ser muy sorprendente
+el resultado que obtenemos.
 
 19
 00:00:39,190 --> 00:00:44,720
-What we get, is that we have a
-document for each maker or
+Lo que obtenemos es 
+un documento por cada fabricante,
 
 20
 00:00:44,720 --> 00:00:49,220
-manufacturer, Google, Tablets,
+Google, Tablets,
 Amazon, Tablets, Tablets.
 
 21
 00:00:49,220 --> 00:00:50,500
-But you see these
-duplications--
+Pero ves estos
+duplicados --
 
 22
 00:00:50,500 --> 00:00:52,170
@@ -101,8 +101,8 @@ Tablets, Tablets.
 
 23
 00:00:52,170 --> 00:00:54,110
-And you'll see with Apple,
-it's Tablets, Tablets,
+Y verás con Apple,
+sus Tablets, Tablets,
 
 24
 00:00:54,110 --> 00:00:55,370
@@ -110,140 +110,140 @@ Tablets, Laptops.
 
 25
 00:00:55,370 --> 00:00:57,120
-And that's because there
-are four documents
+Y eso es porque hay
+cuatro documentos
 
 26
 00:00:57,120 --> 00:00:58,180
-with Apple in it.
+que incluyen Apple.
 
 27
 00:00:58,180 --> 00:00:59,690
-And it's going to look
-at each one.
+Y va a mirar
+a cada uno.
 
 28
 00:00:59,690 --> 00:01:02,080
-And it's going to push this
-item onto this categories
+Y va a poner este
+elemento en este array
 
 29
 00:01:02,080 --> 00:01:03,930
-array, versus addToSet.
+de categorías, en comparación a "$addToSet".
 
 30
 00:01:03,930 --> 00:01:06,580
-And so they may appear
-more than once.
+Y por eso podrían aparecen
+más de una vez.
 
 31
 00:01:06,580 --> 00:01:08,250
-And this is the result.
+Y éste es el resultado.
 
 32
 00:01:08,250 --> 00:01:09,840
-It depends on what
-your goal is.
+Depende de cuál
+sea tu objetivo.
 
 33
 00:01:09,840 --> 00:01:11,930
-This might be the right result
-or the wrong result, depending
+Éste podría ser el resultado correcto
+o el resultado erróneo, dependiendo
 
 34
 00:01:11,930 --> 00:01:13,380
-on what you're trying to do.
+de qué estés intentando hacer.
 
 35
 00:01:13,380 --> 00:01:14,590
-Now let's do a quiz.
+Ahora hagamos un cuestionario.
 
 36
 00:01:14,590 --> 00:01:15,010
-All right.
+De acuerdo.
 
 37
 00:01:15,010 --> 00:01:17,430
-Given the zip code data set
-that we looked at before,
+Dado el conjunto de datos de "zip codes"
+que vimos antes,
 
 38
 00:01:17,430 --> 00:01:21,490
-which is explained more fully in
-the using dollar sum quiz,
+el cual se explicó más detalladamente en
+el cuestionario acerca del uso de "sum",
 
 39
 00:01:21,490 --> 00:01:22,110
-a few back.
+un poco atrás.
 
 40
 00:01:22,110 --> 00:01:23,420
-You can check it out.
+Puedes revisarlo.
 
 41
 00:01:23,420 --> 00:01:26,140
-And it has documents that look
-like this, again, where each
+Y tiene documentos que son
+como éste, de nuevo, donde cada
 
 42
 00:01:26,140 --> 00:01:29,600
-document is a postal code, or
-also known as a zip code here
+documento tiene un código postal, o
+también conocido como "zip code" aquí
 
 43
 00:01:29,600 --> 00:01:33,630
-in the US, and it'll tell you
-the population of that postal
+en los Estados Unidos, y te dirá
+la población de ese código
 
 44
 00:01:33,630 --> 00:01:37,620
-code/zip code, the state it's
-in, and the city it's in.
+postal / "zip code", el estado en el que
+está y la ciudad a la que pertenece.
 
 45
 00:01:37,620 --> 00:01:39,410
-What we're going to do is, we're
-going to run these two
+Lo que vamos a hacer es, vamos
+a ejecutar estas dos
 
 46
 00:01:39,410 --> 00:01:42,240
-different queries that are going
-to tell us the postal
+consultas diferentes que van
+a decirnos los códigos
 
 47
 00:01:42,240 --> 00:01:44,680
-codes that map to a
-particular city.
+postales que corresponden a
+una ciudad particular.
 
 48
 00:01:44,680 --> 00:01:46,870
-So we're going to group
-by the city.
+Por lo que vamos a agrupar
+por ciudad.
 
 49
 00:01:46,870 --> 00:01:50,950
-And we're going to push a
-list of postal codes.
+Y vamos a generar con "$push" una
+lista de códigos postales.
 
 50
 00:01:50,950 --> 00:01:53,740
-And the question is, if we did
-it two different ways, once
+Y la pregunta es, si lo hiciéramos
+de dos maneras distintas, una
 
 51
 00:01:53,740 --> 00:01:57,580
-with a push over here, and once
-with an addToSet, would
+con un "$push" por aquí y otra
+con un "$addToSet", 
 
 52
 00:01:57,580 --> 00:01:59,750
-you expect to get a different
-result or the same result for
+¿esperarías obtener un resultado
+diferente o el mismo resultado para
 
 53
 00:01:59,750 --> 00:02:01,250
-those two different queries?
+estas dos consultas distintas?
 
 54
 00:02:01,250 --> 00:02:02,500
-That's the question.
+Ésa es la pregunta.
