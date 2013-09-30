@@ -24,7 +24,7 @@ precio medio por categoría, el
 6
 00:00:12,700 --> 00:00:15,630
 precio promedio, por ejemplo,
-de una tableta.
+de una tablet.
 
 7
 00:00:15,630 --> 00:00:18,790
@@ -201,7 +201,7 @@ agregación para
 
 45
 00:01:48,960 --> 00:01:52,230
-calcular la población media
+calcular el promedio de la población
 de un "zip code",
 
 46
@@ -212,11 +212,11 @@ postal, por estado.
 47
 00:01:54,880 --> 00:01:58,090
 Como antes, el código postal está
-en el campo ID, el campo 
+en el campo identificador, el campo 
 
 48
 00:01:58,090 --> 00:01:59,960
-"_id", y es único.
+"_id" y es único.
 
 49
 00:01:59,960 --> 00:02:02,710
