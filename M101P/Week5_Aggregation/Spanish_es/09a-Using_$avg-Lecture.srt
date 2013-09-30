@@ -3,267 +3,267 @@
 
 2
 00:00:00,100 --> 00:00:03,710
-The next operator we're gonna
-go over is the $avg operator
+El siguiente operador que vamos
+a analizar es el operador "$avg"
 
 3
 00:00:03,710 --> 00:00:06,580
-for figuring out the average
-value of a key.
+para averiguar el valor promedio
+de una clave.
 
 4
 00:00:06,580 --> 00:00:09,100
-Again, we have our products
-collection.
+De nuevo, tenemos nuestra colección
+"products".
 
 5
 00:00:09,100 --> 00:00:12,700
-And we're gonna figure out the
-average price by category, so
+Y vamos a averiguar el
+precio medio por categoría, el
 
 6
 00:00:12,700 --> 00:00:15,630
-the average price, for instance,
-of a tablet.
+precio promedio, por ejemplo,
+de una tablet.
 
 7
 00:00:15,630 --> 00:00:18,790
-Here's a program that can do
-that, or an aggregation
+Aquí está un programa que puede hacer
+eso, o una expresión de
 
 8
 00:00:18,790 --> 00:00:20,160
-expression that can do that.
+agregación que puede hacer eso.
 
 9
 00:00:20,160 --> 00:00:22,355
-We're going to $group.
+Vamos a hacer un "$group".
 
 10
 00:00:22,355 --> 00:00:27,840
-Our _id is going to be at a
-compound document of category
+Nuestro "_id" va a ser un
+documento compuesto de "category"
 
 11
 00:00:27,840 --> 00:00:30,490
-where we're gonna name the key
-category and then we're going
+donde vamos a llamar a la clave
+"category" y luego vamos
 
 12
 00:00:30,490 --> 00:00:33,985
-to pull the $category
-value out.
+a sacar el valor de
+"$category".
 
 13
 00:00:33,985 --> 00:00:36,190
-We're gonna aggregate on
-that, on category.
+Vamos a hacer la agregación sobre
+eso, sobre "category".
 
 14
 00:00:36,190 --> 00:00:39,550
-And then we're going to
-get the average price.
+Y luego vamos a 
+obtener el precio promedio.
 
 15
 00:00:39,550 --> 00:00:40,840
-You can see it says $avg.
+Puedes ver que dice "$avg".
 
 16
 00:00:40,840 --> 00:00:42,120
-And we should name that
-appropriately.
+Y deberíamos llamarlo
+de manera adecuada.
 
 17
 00:00:42,120 --> 00:00:44,180
-So we'll name it avg_price.
+Así que lo llamaremos "avg_price".
 
 18
 00:00:44,180 --> 00:00:45,110
-There it is.
+Ahí está.
 
 19
 00:00:45,110 --> 00:00:48,200
-And we get the average of the
-$price expression which is the
+Y obtenemos el promedio de la
+expresión "$price", que es el
 
 20
 00:00:48,200 --> 00:00:50,590
-price document key value.
+valor de la clave "price" del documento.
 
 21
 00:00:50,590 --> 00:00:52,410
-So let's go and run that.
+Así que continuemos y ejecutemos eso.
 
 22
 00:00:52,410 --> 00:00:53,310
-So here we are.
+Aquí lo tenemos.
 
 23
 00:00:53,310 --> 00:00:54,760
-We're gonna run it, mongo.
+Vamos a ejecutarlo, mongo.
 
 24
 00:00:54,760 --> 00:00:58,500
-And we're just gonna redirect
-input from using avg.js, which
+Y simplemente vamos a redirigir
+la entrada a "using_avg.js", que
 
 25
 00:00:58,500 --> 00:01:01,460
-is the file I just showed you.
+es el fichero que te acabo de enseñar.
 
 26
 00:01:01,460 --> 00:01:02,340
-And you can see that.
+Y puedes ver eso.
 
 27
 00:01:02,340 --> 00:01:05,379
-And what we get is just three
-resulting documents, which
+Y lo que obtenemos son sólo tres
+documentos resultantes, lo cual
 
 28
 00:01:05,379 --> 00:01:08,990
-makes sense, category laptops,
-the average price, category
+tiene sentido, "category: 'laptops'",
+"avg_price", "category:
 
 29
 00:01:08,990 --> 00:01:11,370
-cellphones, the average price,
-and category tablets, the
+'cellphones'", "avg_price",
+y "category: 'tablets'", 
 
 30
 00:01:11,370 --> 00:01:13,070
-average price.
+"avg_price".
 
 31
 00:01:13,070 --> 00:01:14,150
-Now it's time for
-you to do it.
+Ahora es el momento
+de que lo hagas tú.
 
 32
 00:01:14,150 --> 00:01:15,230
-Let's do a quiz.
+Hagamos un cuestionario.
 
 33
 00:01:15,230 --> 00:01:18,340
-So for this quiz, we're gonna
-use the same data set we used
+Para este cuestionario, vamos
+a usar el mismo conjunto de datos que usamos
 
 34
 00:01:18,340 --> 00:01:22,430
-in the last problem, which is
-a data set of US zip codes,
+en el último problema, el cual es un conjunto 
+de datos de "zip codes" de Estados Unidos,
 
 35
 00:01:22,430 --> 00:01:24,600
-which are postal codes.
+que son códigos portales.
 
 36
 00:01:24,600 --> 00:01:27,250
-If you did not do the last quiz,
-you should go back and
+Si no hiciste el último cuestionario,
+deberías volver y
 
 37
 00:01:27,250 --> 00:01:29,630
-read that quiz for using sum.
+leer ese cuestionario sobre cómo usar "$sum".
 
 38
 00:01:29,630 --> 00:01:32,790
-That'll tell you about this
-data set and how it works.
+Te explicará este conjunto
+de datos y cómo funciona.
 
 39
 00:01:32,790 --> 00:01:35,350
-This is the document out of the
-data set giving you the
+Éste es el documento del
+conjunto de datos que te da la
 
 40
 00:01:35,350 --> 00:01:38,870
-population of a particular zip
-code, particular postal code
+población de un "zip code" particular,
+un código postal particular,
 
 41
 00:01:38,870 --> 00:01:40,000
-as it's called.
+como también se llama.
 
 42
 00:01:40,000 --> 00:01:43,850
-And in this case it falls into a
-city called Fisher's Island,
+Y en este caso cae en una
+ciudad llamada "Fisher's Island",
 
 43
 00:01:43,850 --> 00:01:46,670
-and the population is 329.
+y la población es 329.
 
 44
 00:01:46,670 --> 00:01:48,960
-So, please write an aggregation
-expression to
+Por favor, escribe una expresión de
+agregación para
 
 45
 00:01:48,960 --> 00:01:52,230
-calculate the average population
-of a zip code,
+calcular el promedio de la población
+de un "zip code",
 
 46
 00:01:52,230 --> 00:01:54,880
-which is a postal
-code, by state.
+que es un código
+postal, por estado.
 
 47
 00:01:54,880 --> 00:01:58,090
-As before, the postal code is
-in the ID field, the _id
+Como antes, el código postal está
+en el campo identificador, el campo 
 
 48
 00:01:58,090 --> 00:01:59,960
-field, and is unique.
+"_id" y es único.
 
 49
 00:01:59,960 --> 00:02:02,710
-And we can assume that the
-collection is called zips.
+Y podemos suponer que la
+colección se llama "zips".
 
 50
 00:02:02,710 --> 00:02:05,620
-And you should name the key in
-the result of the aggregation
+Y deberías llamar a la clave en
+el resultado de la expresión de 
 
 51
 00:02:05,620 --> 00:02:09,699
-expression as average_pop so
-that we know what to expect,
+agregación como "average_pop" para
+que sepamos qué esperar,
 
 52
 00:02:09,699 --> 00:02:11,190
-average_pop.
+"average_pop".
 
 53
 00:02:11,190 --> 00:02:12,820
-And it's gonna be something
-along the line of
+Y va a ser algo
+en la línea de
 
 54
 00:02:12,820 --> 00:02:16,410
-db.zips.aggregate and then
-the whole expression.
+"db.zips.aggregate" y luego
+la expresión completa.
 
 55
 00:02:16,410 --> 00:02:20,460
-Please don't use a compound
-_id specification.
+Por favor, no uses una especificación
+"_id" compuesta.
 
 56
 00:02:20,460 --> 00:02:23,030
-Just use what you need to
-get the problem done.
+Usa simplemente lo que necesites
+para resolver el problema.
 
 57
 00:02:23,030 --> 00:02:23,760
-Don't rename it.
+No lo renombres.
 
 58
 00:02:23,760 --> 00:02:25,210
-And put the answer right here.
+Y pon la respuesta justo aquí.
 
 59
 00:02:25,210 --> 00:02:26,460
