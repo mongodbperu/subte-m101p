@@ -3,712 +3,712 @@
 
 2
 00:00:00,160 --> 00:00:03,770
-Aggregation uses a pipeline
-in MongoDB.
+Aggregation utiliza un
+"pipeline" en MongoDB.
 
 3
 00:00:03,770 --> 00:00:06,350
-And, if you're familiar with the
-Unix world, you probably
+Y si estás familiarizado con
+el mundo Unix, probablemente
 
 4
 00:00:06,350 --> 00:00:08,119
-know what pipes look like.
+sabes a qué se parecen los "pipes".
 
 5
 00:00:08,119 --> 00:00:13,060
-For instance, if I wanted to
-look in a directory and find
+Por ejemplo, si deseo ver
+en un directorio y encontrar
 
 6
 00:00:13,060 --> 00:00:16,140
-the size of every sub-directory
-in it. du minus
+el tamaño de todos los
+subdirectorios en él.
 
 7
 00:00:16,140 --> 00:00:22,840
-s star piped to sort minus n,
-that would numerically sort
+"du -s * | sort -n",
+eso automáticamente ordenaría
 
 8
 00:00:22,840 --> 00:00:24,570
-the size of the sub-directories
-and print them
+el tamaño de los
+subdirectorios e imprimirlos
 
 9
 00:00:24,570 --> 00:00:25,690
-on my screen.
+en mi pantalla.
 
 10
 00:00:25,690 --> 00:00:28,280
-So that's the Unix world of
-pipes, and we have a similar
+Así que eso es el mundo de los
+"pipes" de Unix y tenemos una idea
 
 11
 00:00:28,280 --> 00:00:29,900
-idea of a Pipeline here.
+similar de un "pipeline" aquí.
 
 12
 00:00:29,900 --> 00:00:32,030
-At the very top, is
-your collection.
+En la parte superior
+está tu colección.
 
 13
 00:00:32,030 --> 00:00:34,090
-And, for instance, that products
-collection is sent
+Y por ejemplo, esa colección
+"products" es enviada
 
 14
 00:00:34,090 --> 00:00:35,920
+documento por documento.
 through document by document.
 
 15
 00:00:35,920 --> 00:00:37,270
-The documents are piped through
+Los documentos son conducidos
+a través de los "pipes" por
 
 16
 00:00:37,270 --> 00:00:39,040
-this processing pipeline.
+este "pipeline" de procesamiento.
 
 17
 00:00:39,040 --> 00:00:41,490
-And they go through a
-series of stages.
+Y estos pasar por
+una serie de fases.
 
 18
 00:00:41,490 --> 00:00:43,720
-And then we eventually
-get a result set.
+Y luego, eventualmente conseguimos
+el conjunto de resultados.
 
 19
 00:00:43,720 --> 00:00:46,990
-Now, the one stage I showed you,
-is the group stage, which
+Ahora, la etapa uno que te mostré,
+es la etapa "$group", que va
 
 20
 00:00:46,990 --> 00:00:48,710
-is going to do the
-aggregations.
+hacer las agregaciones.
 
 21
 00:00:48,710 --> 00:00:50,040
-But there are lots
-of other stages.
+Pero hay un montón
+de otras etapas.
 
 22
 00:00:50,040 --> 00:00:53,660
-There's a potential sorting
-stage and a matching stage we
+Hay una potencial fase de ordenamiento
+y una fase de filtro de coincidencia
 
 23
 00:00:53,660 --> 00:00:54,480
-filter for documents.
+para los documentos.
 
 24
 00:00:54,480 --> 00:00:56,680
-I'm going to go through each
-one real briefly to explain
+Voy a repasar brevemente
+cada uno de ellos para explicar
 
 25
 00:00:56,680 --> 00:00:57,660
-how it works.
+cómo funciona.
 
 26
 00:00:57,660 --> 00:01:00,170
-But these stages can
-appear multiple
+Sin embargo estas etapas
+pueden aparecer varias
 
 27
 00:01:00,170 --> 00:01:02,040
-times inside the pipeline.
+veces en el "pipeline".
 
 28
 00:01:02,040 --> 00:01:05,379
-If you recall, when I showed you
-that aggregation command,
+Si recuerdas, cuando te mostré
+ese comando de agregación,
 
 29
 00:01:05,379 --> 00:01:09,600
-there was an array inside
-the function call.
+había un array en la
+llamada a la función.
 
 30
 00:01:09,600 --> 00:01:11,680
-And the reason there was an
-array, is that each of the
+Y la razón para que haya un
+array, es que cada uno de los
 
 31
 00:01:11,680 --> 00:01:15,270
-items in that array is a stage
-of the pipeline that is going
+elementos en aquel array es una
+fase del "pipeline" que va a
 
 32
 00:01:15,270 --> 00:01:18,390
-to transform that collection.
+transformar esa colección.
 
 33
 00:01:18,390 --> 00:01:21,520
-So let's go through what the
-different possible stages are
+Por lo que vamos a pasar por
+las distintas posibles etapas
 
 34
 00:01:21,520 --> 00:01:24,210
-of an aggregation pipeline
-at the high level.
+de un "pipeline" de agregación
+en el alto nivel.
 
 35
 00:01:24,210 --> 00:01:27,610
-And then, we're going to dig in
-to each one, individually,
+Y luego, vamos a profundizar
+en cada uno, individualmente,
 
 36
 00:01:27,610 --> 00:01:29,820
-and then I'll show
-you what it does.
+y luego te voy a
+mostrar lo que hace.
 
 37
 00:01:29,820 --> 00:01:30,180
-All right.
+Muy bien.
 
 38
 00:01:30,180 --> 00:01:33,330
-So the first one is
-dollar project.
+El primero es "$project".
 
 39
 00:01:33,330 --> 00:01:37,030
-And it is doesn't have to be the
-first one, but often it is
+Y no tiene que ser el
+primero, pero a menudo es
 
 40
 00:01:37,030 --> 00:01:38,060
-the first one.
+el primero.
 
 41
 00:01:38,060 --> 00:01:41,600
-And a dollar project is going
-to select out which keys
+Y un "$project" va a
+seleccionar las claves
 
 42
 00:01:41,600 --> 00:01:42,740
-you're interested in.
+en las que estás interesado.
 
 43
 00:01:42,740 --> 00:01:44,790
-It could also reshape
-the document.
+También podría volver a
+formar el documento.
 
 44
 00:01:44,790 --> 00:01:47,150
-And I'll show you how that
-works, if you want to change
+Y voy mostrarte cómo
+funciona, si deseas cambiar
 
 45
 00:01:47,150 --> 00:01:48,630
-its form a little bit--
+su forma un poco--
 
 46
 00:01:48,630 --> 00:01:50,450
-taking something out of a
-hierarchical document and
+extrayendo algo de un
+documento jerárquico y
 
 47
 00:01:50,450 --> 00:01:51,636
-putting it at the high
-level, you can do
+poniéndolo en un alto
+nivel, puedes hacerlo
 
 48
 00:01:51,636 --> 00:01:53,050
-it with dollar project.
+con "$project".
 
 49
 00:01:53,050 --> 00:01:53,870
-Now dollar project--
+Ahora "$project"--
 
 50
 00:01:53,870 --> 00:01:57,210
-for every document that dollar
-project sees, it
+para cada documento que
+"$project" ve,
 
 51
 00:01:57,210 --> 00:01:58,390
-sends out one document.
+éste saca otro documento.
 
 52
 00:01:58,390 --> 00:02:00,180
-So it's one to one.
+Por lo que es "uno a uno".
 
 53
 00:02:00,180 --> 00:02:03,580
-If it sees 10 documents, it
-produces 10 documents.
+Si ve 10 documentos,
+produce 10 documentos.
 
 54
 00:02:03,580 --> 00:02:06,226
-The next one is a
-dollar match.
+El siguiente es "$match".
 
 55
 00:02:06,226 --> 00:02:09,020
-And they don't have to be in
-this order in the pipeline.
+Y éstos no tienen que estar en
+este orden en el "pipeline".
 
 56
 00:02:09,020 --> 00:02:11,080
-And the match is going
-to filter.
+El "$match" va a filtrar.
 
 57
 00:02:11,080 --> 00:02:13,850
-So, for instance, in the case I
-showed you in products, if I
+Así, por ejemplo, en el que t
+mostré en "products", si
 
 58
 00:02:13,850 --> 00:02:17,140
-was only interested in products
-by Apple, I could
+sólo estuviera interesado en
+productos fabricados por Apple,
 
 59
 00:02:17,140 --> 00:02:18,660
-filter early on in
-the pipeline.
+podría filtrar al
+inicio del "pipeline".
 
 60
 00:02:18,660 --> 00:02:21,470
-And make sure that I'm only
-looking at the documents that
+Y asegurar que sólo
+encuentre los documentos que
 
 61
 00:02:21,470 --> 00:02:24,150
-have the manufacturer
-being Apple.
+tengan como fabricante
+a "Apple".
 
 62
 00:02:24,150 --> 00:02:25,760
-That's what match
-is going to do.
+Eso es lo que
+"$match" va a hacer.
 
 63
 00:02:25,760 --> 00:02:28,530
-I can group, of course,
-which you saw.
+Puedes usar "$group", por
+supuesto que lo viste.
 
 64
 00:02:28,530 --> 00:02:31,500
-And this is going to be your
-aggregation functions.
+Y éstas van a ser tus
+funciones de agregación.
 
 65
 00:02:31,500 --> 00:02:32,790
-Now, filter--
+Ahora, filtrar--
 
 66
 00:02:32,790 --> 00:02:34,410
-for every document that
-filter sees, it
+para cada documento
+que filtres,
 
 67
 00:02:34,410 --> 00:02:35,470
-may only see a subset.
+puede ver sólo un subconjunto.
 
 68
 00:02:35,470 --> 00:02:39,750
-So, for instance, it might see
-100 documents, and then it
+Por ejemplo, podría ver
+100 documentos y luego
 
 69
 00:02:39,750 --> 00:02:42,170
-might actually produce
-25 documents.
+poodría en realidad
+producir 25 documentos.
 
 70
 00:02:42,170 --> 00:02:44,770
-With aggregation, the same thing
-is true because it's
+Con agregación, lo mismo
+es cierto porque es
 
 71
 00:02:44,770 --> 00:02:45,410
-aggregating.
+agregación.
 
 72
 00:02:45,410 --> 00:02:46,870
-So it's grouping by
-a certain key.
+Es agrupar por
+cierta clave.
 
 73
 00:02:46,870 --> 00:02:49,500
-So it may not produce as many
-documents as it sees.
+No puede producit tantos
+documentos como ve.
 
 74
 00:02:49,500 --> 00:02:53,640
-So I'll call this n to one,
-since it reduces the number of
+Llamaré a esto: "n a uno",
+ya que reduce el número de
 
 75
 00:02:53,640 --> 00:02:55,970
-documents down a bit
-or can reduce
+documentos un poco
+o puede reducir
 
 76
 00:02:55,970 --> 00:02:56,970
-the number of documents.
+el número de documentos.
 
 77
 00:02:56,970 --> 00:02:59,510
-And then, there's
-a sort stage.
+Y luego hay una
+fase "$sort".
 
 78
 00:02:59,510 --> 00:03:01,290
-And the sorting stage does
-exactly what you could
+Y la fase de ordenamiento
+hace exactamente lo que podrías
 
 79
 00:03:01,290 --> 00:03:02,760
-imagine-- it sorts.
+imaginar-- ordena.
 
 80
 00:03:02,760 --> 00:03:03,830
-And that's one to one.
+Y eso es "uno a uno".
 
 81
 00:03:03,830 --> 00:03:06,590
-Every document it sees, it
-produces another document.
+Todos los documentos que ve,
+produce otro documento.
 
 82
 00:03:06,590 --> 00:03:08,560
-And then there's a skip stage.
+Y luego hay una fase "$skip".
 
 83
 00:03:08,560 --> 00:03:10,290
-And the skip stage
-can skip forward.
+Y la fase "$skip" puede
+saltar hacia adelante.
 
 84
 00:03:10,290 --> 00:03:12,290
-It only makes sense
-after you sort.
+Ésto sólo tiene sentido
+después que ordenes.
 
 85
 00:03:12,290 --> 00:03:13,675
-And it just skips.
+Y sólo salta.
 
 86
 00:03:13,675 --> 00:03:16,740
-I don't know how to explain
-that, other than skipping.
+No sé cómo explicar eso,
+aparte de saltar.
 
 87
 00:03:16,740 --> 00:03:18,760
-And, again, this is
-not one to one.
+Y de nuevo, esto
+no es "uno a uno".
 
 88
 00:03:18,760 --> 00:03:21,600
-This is n to one because, of
-course, if you skip forward
+Esto es "n a uno" porque, por
+supuesto, si saltas hacia delante
 
 89
 00:03:21,600 --> 00:03:23,755
-10, then you aren't going to
-produce all the documents.
+10, entonces no vas a
+producir todos los documentos.
 
 90
 00:03:23,755 --> 00:03:26,140
-You are going to produce a
-subset of the documents.
+Vas a producir un subconjunto
+de los documentos.
 
 91
 00:03:26,140 --> 00:03:27,840
-There's a limit stage.
+Hay una fase "$limit".
 
 92
 00:03:27,840 --> 00:03:29,950
-And that limit stage is going
-to limit the number of
+Y esta fase "$limit" va a
+limitar el número de
 
 93
 00:03:29,950 --> 00:03:31,040
-documents produced.
+documentos producidos.
 
 94
 00:03:31,040 --> 00:03:33,860
-Again, it's used usually
-with skip.
+De nuevo, esto usualmente
+se utiliza con "$skip".
 
 95
 00:03:33,860 --> 00:03:36,050
-You might skip forward 10, and
-then limit myself to showing
+Podrías saltar 10 y luego
+limitar para mostrar
 
 96
 00:03:36,050 --> 00:03:37,450
-three documents.
+tres documentos.
 
 97
 00:03:37,450 --> 00:03:41,770
-And that's also going to be
-usually limit the number of
+Y normalmente esto va a
+limitar el número de
 
 98
 00:03:41,770 --> 00:03:45,930
-documents that comes through
-the pipeline, in some way.
+documentos que vienen a través
+del "pipeline", de alguna manera.
 
 99
 00:03:45,930 --> 00:03:48,590
-That's one, two, three,
-four, five, six.
+Son uno, dos, tres,
+cuatro, cinco, seis.
 
 100
 00:03:48,590 --> 00:03:53,950
-There's one more operator, and
-that is unwind, which we're
+Hay un operador más que es
+"$unwind", que vamos a
 
 101
 00:03:53,950 --> 00:03:56,550
-going to get into much more
-completely later.
+repasar mucho más
+completamente luego.
 
 102
 00:03:56,550 --> 00:03:58,110
-What unwind does--
+Lo que hace "$unwind" es--
 
 103
 00:03:58,110 --> 00:04:00,860
-in MongoDB, we've got these
-documents that can have
+en MongoDB, tenemos estos
+documentos que pueden tener
 
 104
 00:04:00,860 --> 00:04:03,400
-sub-arrays inside them--
+sub arrays dentro de ellos--
 
 105
 00:04:03,400 --> 00:04:04,580
-pre-joined data.
+datos pre relacionados.
 
 106
 00:04:04,580 --> 00:04:07,430
-And what unwind does, is
-it un-joins the data.
+Y lo que "$unwind" hace, es
+quitar la relación de los datos.
 
 107
 00:04:07,430 --> 00:04:09,850
-So you can imagine, that if
-you had, let's say, a blog
+Puedes imaginar, que si
+tenías, digamos, un post
 
 108
 00:04:09,850 --> 00:04:16,839
-post with tags, and tags were
-sports and outdoors and
+con etiquetas, y las etiquetas
+son "sports", "outdoors" y
 
 109
 00:04:16,839 --> 00:04:19,860
-summer, what unwind will
-do is, it'll--
+"summer", lo que "$unwind"
+hará es--
 
 110
 00:04:19,860 --> 00:04:21,149
-when it encounters
-a document--
+cuando encuentra
+un documento--
 
 111
 00:04:21,149 --> 00:04:22,740
-and you're going to unwind
-in a particular key, like
+y va a "desovillar" el array
+en claves particulares
 
 112
 00:04:22,740 --> 00:04:23,450
-[INAUDIBLE]
+para cada
 
 113
 00:04:23,450 --> 00:04:24,360
-tags--
+etiqueta--
 
 114
 00:04:24,360 --> 00:04:28,130
-it's going to produce a document
-for every single one
+va a producir un
+documento para cada uno
 
 115
 00:04:28,130 --> 00:04:32,400
-of these sub-elements with
-everything else repeated.
+de estos subdocumentos con
+todo sin repetirlos.
 
 116
 00:04:32,400 --> 00:04:36,400
-So, basically, it normalizes the
-data, again, so that you
+Así que, basicamente, normaliza
+los datos, de nuevo, para que
 
 117
 00:04:36,400 --> 00:04:39,100
-can more easily aggregate
-it, is what it does.
+puedas agregarlos más
+fácilmente, es lo que hace.
 
 118
 00:04:39,100 --> 00:04:40,780
-So this is going to create an
-explosion of documents.
+Esto va a crear una
+"explosión" de documentos.
 
 119
 00:04:40,780 --> 00:04:42,780
-So I might have one document
-with three keys.
+Podría tener un documento
+con tres claves.
 
 120
 00:04:42,780 --> 00:04:45,140
-And it might produce three
-documents going through the
+Y podría producir tres
+documentos que pasar por la
 
 121
 00:04:45,140 --> 00:04:46,380
-unwind stage.
+etapa "$unwind".
 
 122
 00:04:46,380 --> 00:04:48,250
-So I'm going to say, 1 to n.
+Por ello voy a decir, "uno a n".
 
 123
 00:04:48,250 --> 00:04:49,260
-We'll go through what
-every single one of
+Vamos a pasar por
+lo que hace cada una de
 
 124
 00:04:49,260 --> 00:04:50,840
-these stages does.
+estas etapas.
 
 125
 00:04:50,840 --> 00:04:53,340
-I want to point out that
-you can have a stage
+Quiero señalasr que
+puedes tener más de una
 
 126
 00:04:53,340 --> 00:04:54,370
-exist more than once.
+misma etapa por vez.
 
 127
 00:04:54,370 --> 00:04:57,400
-So you could decide to match
-on some documents.
+Por eso podrías decidir
+coincidir algunos documentos.
 
 128
 00:04:57,400 --> 00:04:58,880
-You can then group them.
+Puedes luego agruparlos.
 
 129
 00:04:58,880 --> 00:05:00,070
-Then you could match again.
+Luego podrías usar
+"$match" otra vez.
 
 130
 00:05:00,070 --> 00:05:01,040
-You could then sort them.
+Podrías luego ordenarlos.
 
 131
 00:05:01,040 --> 00:05:02,330
-You could skip them.
+Podrías saltar.
 
 132
 00:05:02,330 --> 00:05:05,070
-You could even unwind them over
-and over again, if you
+Incluso podrías usar "$unwind"
+luego una y otra vez, si
 
 133
 00:05:05,070 --> 00:05:06,410
-wanted to do that.
+deseas hacerlo.
 
 134
 00:05:06,410 --> 00:05:07,930
-And I'll show you some cases
-where that might be
+Y te mostraré algunos casos
+donde podrías estar
 
 135
 00:05:07,930 --> 00:05:08,990
-interesting.
+interesado.
 
 136
 00:05:08,990 --> 00:05:10,720
-But, for now, I just want you
-to understand that the
+Pero, por ahora, sólo
+quiero que entiendas que
 
 137
 00:05:10,720 --> 00:05:13,430
-aggregation system uses
-a pipeline concept.
+el sistema de agregación
+usa un concepto de "pipeline".
 
 138
 00:05:13,430 --> 00:05:15,740
-And that that pipeline has
-various operators that can run
+Y que el "pipeline" tiene
+varios operadores que puedes
 
 139
 00:05:15,740 --> 00:05:16,370
-other documents.
+ejecutar con otros documentos.
 
 140
 00:05:16,370 --> 00:05:19,490
-And that you can conceptually
-think of the documents as
+Y que puedes pensar
+conceptualmente como documentos
 
 141
 00:05:19,490 --> 00:05:22,470
-coming in the left side, getting
-transformed through
+que vienen del lado izquierdo,
+son transformados a través de
 
 142
 00:05:22,470 --> 00:05:26,640
-these stages, and then getting
-a result set from that.
+éstas etapas y luego obtener
+un conjunto resultante de esto.
 
 143
 00:05:26,640 --> 00:05:30,180
-And, so far, we looked only
-at the grouping operator.
+Y hasta ahora, nos hemos fijado
+sólo en el operador de agrupación.
 
 144
 00:05:30,180 --> 00:05:31,890
-But we're going to go
-through them all.
+Pero vamos a ir por
+todos ellos.
 
 145
 00:05:31,890 --> 00:05:32,460
-OK.
+De acuerdo.
 
 146
 00:05:32,460 --> 00:05:34,380
-It is time for a quiz.
+Hora de un cuestionario.
 
 147
 00:05:34,380 --> 00:05:38,220
-And I think this quiz is going
-to be pretty straightforward.
+Y pienso que este cuestionario
+va a ser bastante sencillo.
 
 148
 00:05:38,220 --> 00:05:39,660
-Which of the following
-are stages in
+¿Cuál de las siguientes
+etapas están en el
 
 149
 00:05:39,660 --> 00:05:40,760
-the aggregation pipeline?
+"pipeline" de agregación?
 
 150
 00:05:40,760 --> 00:05:42,300
-Check all that apply.
+Marca todas las que apliquen.
 
 151
 00:05:42,300 --> 00:05:45,100
-Match, transpose, group,
-skip, limit, sort,
+"Match", "Transpose", "Group",
+"Skip", "Limit", "Sort",
 
 152
 00:05:45,100 --> 00:05:46,680
-project, and unwind.
+"Project" y "Unwind".
 
 153
 00:05:46,680 --> 00:05:47,930
-Just check all that apply.
+Simplemente marca
+las que apliquen.
 
 154
 00:05:47,930 --> 00:05:48,880

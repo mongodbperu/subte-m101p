@@ -3,17 +3,17 @@
 
 2
 00:00:00,150 --> 00:00:01,990
-And the answer is that
-these are all
+Y la respuesta es
+que todas éstas son
 
 3
 00:00:01,990 --> 00:00:03,930
-stages, except for Transpose.
+etapas excepto por "Transpose".
 
 4
 00:00:03,930 --> 00:00:06,880
-Transpose is not a stage of
-the aggregation pipeline.
+"Transpose" no es una etapa
+del "pipeline" de agregación.
 
 5
 00:00:06,880 --> 00:00:08,130
