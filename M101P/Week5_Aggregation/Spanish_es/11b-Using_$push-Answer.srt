@@ -52,11 +52,11 @@ colección.
 12
 00:00:29,080 --> 00:00:31,132
 Por lo que sabemos que realmente
-no importa si hacemos "push"
+no importa si hacemos "$push"
 
 13
 00:00:31,132 --> 00:00:33,780
-o "addToSet", deberíamos
+o "$addToSet", deberíamos
 obtener la misma respuesta.
 
 14
