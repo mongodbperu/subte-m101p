@@ -22,7 +22,7 @@ no habíamos usado eso antes --
 
 6
 00:00:16,950 --> 00:00:18,170
-totalmente legal.
+totalmente válido.
 
 7
 00:00:18,170 --> 00:00:20,930

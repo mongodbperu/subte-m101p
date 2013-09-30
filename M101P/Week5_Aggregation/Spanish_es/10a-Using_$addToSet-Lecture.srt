@@ -8,11 +8,11 @@ que vamos a analizar
 
 3
 00:00:02,029 --> 00:00:03,780
-es "addToSet".
+es "$addToSet".
 
 4
 00:00:03,780 --> 00:00:06,360
-"addToSet" es interesante
+"$addToSet" es interesante
 porque no hay equivalente
 
 5
@@ -22,7 +22,7 @@ SQL para hacer lo que
 
 6
 00:00:09,680 --> 00:00:11,560
-permite "addToSet".
+permite "$addToSet".
 
 7
 00:00:11,560 --> 00:00:14,070
@@ -89,7 +89,7 @@ De nuevo estamos agrupando.
 20
 00:00:47,110 --> 00:00:51,260
 Ésa es la fase que estamos invocando
-del pipeline de agregación.
+del "pipeline" de agregación.
 
 21
 00:00:51,260 --> 00:00:55,310
@@ -197,7 +197,7 @@ y "tablets".
 
 43
 00:01:53,930 --> 00:01:55,585
-También fabrican teléfonos móviles,
+También fabrican "cell phones",
 pero no lo puse
 
 44
