@@ -1,29 +1,29 @@
 1
 00:00:00,000 --> 00:00:00,970
-OK.
+De acuerdo.
 
 2
 00:00:00,970 --> 00:00:05,890
-And the answer is
-db.zips.aggregate, and then we
+Y la respuesta es
+"db.zips.aggregate" y entonces
 
 3
 00:00:05,890 --> 00:00:11,590
-use a $match phase in the
-pipeline and ask for the
+usamos una fase "$match" en el
+"pipeline" y preguntamos por los
 
 4
 00:00:11,590 --> 00:00:16,840
-documents where pop is dollar
-sign greater than 100,000.
+documentos donde "pop" es
+"$gt" (mayor que) 100000.
 
 5
 00:00:16,840 --> 00:00:17,350
-That's it.
+Eso es.
 
 6
 00:00:17,350 --> 00:00:18,600
-Just like a find.
+Al igual que un "find".
 
 7
 00:00:18,600 --> 00:00:19,250
