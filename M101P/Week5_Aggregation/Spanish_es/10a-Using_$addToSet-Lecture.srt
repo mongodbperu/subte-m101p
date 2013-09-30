@@ -3,398 +3,398 @@
 
 2
 00:00:00,100 --> 00:00:02,029
-The next aggregation expression
-we're going to go
+La siguiente expresión de agregación
+que vamos a analizar
 
 3
 00:00:02,029 --> 00:00:03,780
-over is addToSet.
+es "$addToSet".
 
 4
 00:00:03,780 --> 00:00:06,360
-Now addToSet is interesting
-because there is no direct
+"$addToSet" es interesante
+porque no hay equivalente
 
 5
 00:00:06,360 --> 00:00:09,680
-parallel from the world
-of SQL to do what
+en el mundo
+SQL para hacer lo que
 
 6
 00:00:09,680 --> 00:00:11,560
-you can do with addToSet.
+permite "$addToSet".
 
 7
 00:00:11,560 --> 00:00:14,070
-And let me give you an example
-of how it works.
+Y déjame que te dé un ejemplo
+de cómo funciona.
 
 8
 00:00:14,070 --> 00:00:17,560
-Let's go back to our
-little data set
+Volvamos a nuestro
+pequeño conjunto de datos
 
 9
 00:00:17,560 --> 00:00:19,470
-of electronics products.
+de productos electrónicos.
 
 10
 00:00:19,470 --> 00:00:22,460
-And imagine that what we want
-to do is figure out, what
+E imagina que lo que queremos
+hacer es averiguar qué
 
 11
 00:00:22,460 --> 00:00:25,980
-products does each manufacturer
-sell?
+productos vende cada
+fabricante.
 
 12
 00:00:25,980 --> 00:00:29,890
-So to do that, we basically want
-to group by manufacturer.
+Por lo que para hacer eso, básicamente
+queremos agrupar por fabricante.
 
 13
 00:00:29,890 --> 00:00:33,690
-And then, for each of the
-manufacturers, we want to
+Y entonces, por cada
+fabricante, queremos 
 
 14
 00:00:33,690 --> 00:00:37,260
-create a new array of categories
-they sell in.
+crear un nuevo array de categorías
+de lo que venden.
 
 15
 00:00:37,260 --> 00:00:39,050
-And it looks just like this.
+Y es simplemente como esto.
 
 16
 00:00:39,050 --> 00:00:41,710
-Here we are using the
-aggregation database again,
+Aquí estamos usando de nuevo la
+base de datos de agregación,
 
 17
 00:00:41,710 --> 00:00:43,800
-which is where I put
-my little data set.
+que es donde puse
+mi pequeño conjunto de datos.
 
 18
 00:00:43,800 --> 00:00:45,670
-We have db products
-that aggregate.
+Tenemos "db.products
+.aggregate".
 
 19
 00:00:45,670 --> 00:00:47,110
-We're grouping again.
+De nuevo estamos agrupando.
 
 20
 00:00:47,110 --> 00:00:51,260
-That's a stage we're invoking
-from the aggregation pipeline.
+Ésa es la fase que estamos invocando
+del "pipeline" de agregación.
 
 21
 00:00:51,260 --> 00:00:55,310
-And we're going to group on
-_id maker manufacturer.
+Y vamos a agrupar sobre
+"_id: {'maker': '$manufacturer'}".
 
 22
 00:00:55,310 --> 00:00:56,890
-Maker is my name.
+"maker" es mi nombre.
 
 23
 00:00:56,890 --> 00:00:58,800
-Manufacturer is the key piece
-of information here--
+"manufacturer" es la pieza clave
+de información aquí --
 
 24
 00:00:58,800 --> 00:00:59,810
-$manufacturer--
+"$manufacturer" --
 
 25
 00:00:59,810 --> 00:01:04,010
-to pull the manufacturer value
-out from the manufacturer key.
+para sacar el valor del fabricante
+de la clave "manufacturer".
 
 26
 00:01:04,010 --> 00:01:08,670
-And then, we're creating a new
-key in the resulting document
+Y luego, estamos creando una nueva
+clave en el conjunto resultante de documentos,
 
 27
 00:01:08,670 --> 00:01:10,810
-set, called categories.
+llamada "categories".
 
 28
 00:01:10,810 --> 00:01:14,090
-And we're using addToSet
-$category.
+Y estamos usando "$addToSet:
+'$category'".
 
 29
 00:01:14,090 --> 00:01:15,290
-And if you recall,
-each of these
+Y si recuerdas,
+cada uno de estos
 
 30
 00:01:15,290 --> 00:01:17,310
-documents had a category.
+documentos tenía una categoría.
 
 31
 00:01:17,310 --> 00:01:19,770
-And what this will do is, it's
-building a new set of
+Y esto lo que hará es
+construir un nuevo conjunto de
 
 32
 00:01:19,770 --> 00:01:22,230
-documents, grouped
-by manufacturer.
+documentos, agrupados
+por fabricante.
 
 33
 00:01:22,230 --> 00:01:27,420
-And if the category is not in
-this category's array, it's
+Y si la categoría no está en
+este array de categorías, va
 
 34
 00:01:27,420 --> 00:01:28,270
-going to add it.
+a añadirla.
 
 35
 00:01:28,270 --> 00:01:31,240
-AddToSet adds it, only if
-it's not already there.
+"$addToSet" la añade sólo si
+todavía no está ahí.
 
 36
 00:01:31,240 --> 00:01:34,480
-And the answer get
-looks like this.
+Y la respuesta es
+similar a esto.
 
 37
 00:01:34,480 --> 00:01:38,190
-So this will give us documents
-for each manufacturer, which I
+Por lo que esto nos dará documentos
+por cada fabricante, a los que 
 
 38
 00:01:38,190 --> 00:01:41,300
-called maker, like Google makes
-tablets, Amazon makes
+llamé "maker", como Google fabrica
+"tablets", Amazon fabrica
 
 39
 00:01:41,300 --> 00:01:43,670
-tablets, Sony makes laptops.
+"tablets", Sony fabrica "laptops".
 
 40
 00:01:43,670 --> 00:01:46,800
-They make other things, too,
-but not in my data set.
+Ellos también fabrican otras cosas,
+pero no en mi conjunto de datos.
 
 41
 00:01:46,800 --> 00:01:50,320
-Samsung makes tablets
-and cell phones.
+Samsung fabrica "tablets"
+y "cell phones".
 
 42
 00:01:50,320 --> 00:01:53,930
-And Apple makes laptops
-and tablets.
+Y Apple fabrica "laptops"
+y "tablets".
 
 43
 00:01:53,930 --> 00:01:55,585
-They also make cell phones,
-but I didn't put
+También fabrican "cell phones",
+pero no lo puse
 
 44
 00:01:55,585 --> 00:01:56,870
-it in the data set.
+en mi conjunto de datos.
 
 45
 00:01:56,870 --> 00:01:59,640
-So you can see how that works,
-so that you can build up an
+Puedes ver cómo funciona,
+para que puedas construir un
 
 46
 00:01:59,640 --> 00:02:02,690
-array, while grouping by
-another key, like, for
+array, mientras agrupas por
+otra clave, como por
 
 47
 00:02:02,690 --> 00:02:04,420
-instance, manufacturer.
+ejemplo, "manufacturer".
 
 48
 00:02:04,420 --> 00:02:05,660
-Time for a quiz.
+Hora de hacer un cuestionario.
 
 49
 00:02:05,660 --> 00:02:07,650
-Now you're going to write
-a query using addToSet.
+Ahora vas a escribir
+una consulta usando "$addToSet".
 
 50
 00:02:07,650 --> 00:02:10,430
-This uses the zip
-code database--
+Usa la base de datos
+de "zip codes" --
 
 51
 00:02:10,430 --> 00:02:12,460
-the population by zip code--
+la población por "zip code" --
 
 52
 00:02:12,460 --> 00:02:14,140
-that we've been using in
-the last few problems.
+que hemos estado usando en
+los últimos problemas.
 
 53
 00:02:14,140 --> 00:02:18,040
-You can see it in using sum
-quiz, if you're not
+Puedes verlo en el cuestionario
+sobre el uso de "$sum", si
 
 54
 00:02:18,040 --> 00:02:19,240
-familiar with it.
+no te es familiar.
 
 55
 00:02:19,240 --> 00:02:22,140
-And I showed you some data
-out of that data set.
+Y te enseñé algunos datos
+de ese conjunto de datos.
 
 56
 00:02:22,140 --> 00:02:24,580
-Again, you can download to your
-computer if you want.
+De nuevo, puedes descargarlos en tu
+equipo si quieres.
 
 57
 00:02:24,580 --> 00:02:27,850
-In this case, I just found in
-California, the city, Palo
+En este caso, sólo encontré
+California, la ciudad, Palo
 
 58
 00:02:27,850 --> 00:02:30,650
-Alto, and I got all of the
-different documents out that
+Alto, y obtuve todos los
+documentos diferentes que
 
 59
 00:02:30,650 --> 00:02:33,180
-correspond to that city
-and that state.
+corresponden a esa ciudad
+y ese estado.
 
 60
 00:02:33,180 --> 00:02:36,160
-And now you can see there's
-three different zip codes,
+Y ahora puedes ver que hay
+tres "zip codes" diferentes,
 
 61
 00:02:36,160 --> 00:02:42,750
-94301, 94303, and 94306, that
-all correspond to Palo Alto.
+94301, 94303 y 94306, todos los 
+cuales corresponden a Palo Alto.
 
 62
 00:02:42,750 --> 00:02:44,140
-That is correct.
+Eso es correcto.
 
 63
 00:02:44,140 --> 00:02:47,660
-So what I'd like you do, is
-write aggregation query that
+Así que lo que me gustaría que hicieras es
+que escribieras una consulta de agregación que
 
 64
 00:02:47,660 --> 00:02:49,590
-will return the postal codes--
+devuelva los códigos postales --
 
 65
 00:02:49,590 --> 00:02:51,060
-that is zip codes--
+es decir, "zip codes" --
 
 66
 00:02:51,060 --> 00:02:53,840
-that cover each city in
-the United States.
+que cubran cada ciudad de
+los Estados Unidos.
 
 67
 00:02:53,840 --> 00:02:57,320
-And the result should look
-something like this, where
+Y el resultado debería ser
+algo similar a esto, donde
 
 68
 00:02:57,320 --> 00:02:58,970
-grouping by the--
+se está agrupando por --
 
 69
 00:02:58,970 --> 00:03:00,680
-you can see we have
-the city here.
+puedes ver que tenemos
+la ciudad aquí.
 
 70
 00:03:00,680 --> 00:03:04,670
-And then we have a list of the
-postal codes that corresponds
+Y entonces tenemos una lista de los
+códigos postales que corresponden
 
 71
 00:03:04,670 --> 00:03:05,830
-to that city.
+a esa ciudad.
 
 72
 00:03:05,830 --> 00:03:09,190
-And, for the purpose of this
-problem, we'll ignore the fact
+Y, para el propósito de este
+problema, ignoraremos el hecho
 
 73
 00:03:09,190 --> 00:03:11,480
-that cities do appear
-in multiple states.
+de que hay ciudades que aparecen
+en múltiples estados.
 
 74
 00:03:11,480 --> 00:03:13,430
-And that most people consider
-them to be different cities,
+Y que la mayoría de la gente las considera
+ciudades diferentes,
 
 75
 00:03:13,430 --> 00:03:15,600
-especially when they're
-thousands of miles apart.
+especialmente cuando están a
+miles de millas de distancia.
 
 76
 00:03:15,600 --> 00:03:18,070
-For instance, Springfield,
-Missouri, and Springfield,
+Por ejemplo, Springfield,
+Missouri y Springfield,
 
 77
 00:03:18,070 --> 00:03:19,900
-Massachusetts are not
-close together.
+Massachusetts no están
+cerca entre sí.
 
 78
 00:03:19,900 --> 00:03:22,510
-And they're not the same place,
-but for our purposes,
+Y no son el mismo lugar,
+pero para nuestro propósito,
 
 79
 00:03:22,510 --> 00:03:24,010
-they'll be the same place.
+serán considerados el mismo lugar.
 
 80
 00:03:24,010 --> 00:03:25,770
-So write a query
-that does that.
+Así que escribe una consulta
+que haga eso.
 
 81
 00:03:25,770 --> 00:03:28,070
-You can deduce what you need to
-do, in terms of the names
+Puedes deducir qué necesitas
+hacer, en cuanto a los nombres
 
 82
 00:03:28,070 --> 00:03:30,590
-of the keys in the result
-document, based on
+de las claves en el documento
+resultante, basándote en 
 
 83
 00:03:30,590 --> 00:03:31,930
-what you see here.
+lo que ves aquí.
 
 84
 00:03:31,930 --> 00:03:33,650
-Again, it's called zips.
+De nuevo, se llama "zips".
 
 85
 00:03:33,650 --> 00:03:34,900
-And write your query below.
+Y escribe tu consulta debajo.
 
 86
 00:03:34,900 --> 00:03:36,315
