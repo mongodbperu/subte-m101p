@@ -3,528 +3,527 @@
 
 2
 00:00:00,170 --> 00:00:05,410
-Next phase of the aggregation
-pipeline is $match phase.
+La siguiente fase del "pipeline"
+de agregación es "$match".
 
 3
 00:00:05,410 --> 00:00:11,250
-Now, $match performs a filter on
-the documents as they pass
+Ahora, "$match" realiza un filtro
+en los documentos a medida que pasan
 
 4
 00:00:11,250 --> 00:00:15,390
-through the pipe, and it
-has a reducing effect.
+a través del "pipe" y
+tiene un efecto reductor.
 
 5
 00:00:15,390 --> 00:00:20,700
-So, there might be n documents
-in for every one document out.
+Por lo tanto, puede haber "n"
+documentos por cada documento saliente.
 
 6
 00:00:20,700 --> 00:00:24,220
-It may pass all the documents,
-but it may pass some subset of
+Puede pasar todos los documentos,
+pero puede pasar algún subconjunto de
 
 7
 00:00:24,220 --> 00:00:25,630
-the documents.
+los documentos.
 
 8
 00:00:25,630 --> 00:00:29,340
-And the reason you might want to
-match is because you'd like
+Y la razón por la que desearas
+usar "$match" es porque te deseas
 
 9
 00:00:29,340 --> 00:00:32,460
-to filter the results and only
-aggregate a portion of the
+filtrar los resultados y sólo
+agregar una porción de los
 
 10
 00:00:32,460 --> 00:00:35,990
-documents, or search for
-particular parts of the
+documentos o buscar por
+partes en particular, partes del
 
 11
 00:00:35,990 --> 00:00:39,050
-results set after you
-do the grouping.
+conjunto de resultados después
+de hacer la agrupación.
 
 12
 00:00:39,050 --> 00:00:43,130
-Now let's look at the zip code
-collection again, and let's
+Ahora veamos la colección
+"zip code" de nuevo y digamos
 
 13
 00:00:43,130 --> 00:00:47,680
-say that I wanted to match only
-on documents that are in
+que deseo coincidir con sólo
+los documentos que están en el
 
 14
 00:00:47,680 --> 00:00:48,870
-New York State.
+estado de Nueva York.
 
 15
 00:00:48,870 --> 00:00:51,780
-So, the state of New
-York, which is NY.
+El estado de Nueva York,
+que es NY.
 
 16
 00:00:51,780 --> 00:00:54,150
-We could do that with this
-expression right here.
+Podríamos hacer eso con
+esta expresión de aquí.
 
 17
 00:00:54,150 --> 00:00:59,550
-So db.zips.aggregate, and then
-we open our square brackets,
+Así "db.zips.aggregate" y entonces
+abrimos nuestros corchetes,
 
 18
 00:00:59,550 --> 00:01:01,510
-because again, this is a
-pipeline but we're only going
+porque de nuevo, esto es un
+"pipeline" pero sólo vamos a
 
 19
 00:01:01,510 --> 00:01:04,860
-to have one item in the pipe
-right now, one stage, and
+tener un elemento en el
+"pipe" aquí, una etapa y
 
 20
 00:01:04,860 --> 00:01:06,830
-that's the match stage.
+eso es la fase "$match".
 
 21
 00:01:06,830 --> 00:01:10,980
-And then here you can see the
-syntax is very similar
+Y luego aquí puedes ver la
+sintaxis es muy similar
 
 22
 00:01:10,980 --> 00:01:13,380
-to that of a find.
+a la de un "find".
 
 23
 00:01:13,380 --> 00:01:15,490
-Basically, I specify that
-I would like the
+Básicamente, especifico
+que me gustaría que el
 
 24
 00:01:15,490 --> 00:01:18,760
-state to be New York.
+estado sea Nueva York.
 
 25
 00:01:18,760 --> 00:01:22,550
-And this is a simple selection
-of the items where the state
+Y esta es una simple selección
+de los elementos donde el estado
 
 26
 00:01:22,550 --> 00:01:23,570
-is New York.
+es Nueva York.
 
 27
 00:01:23,570 --> 00:01:26,930
-And if I do that, this
-is what I get.
+Y si hago eso, esto
+es lo que obtengo.
 
 28
 00:01:26,930 --> 00:01:30,920
-And you can see that what it's
-done is find only the zip
+Y puedes ver que lo que hace es
+encontrar sólo los códigos
 
 29
 00:01:30,920 --> 00:01:34,640
-codes that are located within
-New York state.
+postales que se encuentran
+dentro del estado de Nueva York.
 
 30
 00:01:34,640 --> 00:01:37,320
-And once I do that, I might
-want to do a grouping and
+Y una vez que haga eso, podría
+querer hacer una agrupación y
 
 31
 00:01:37,320 --> 00:01:39,650
-figure out what the population
-of each city is.
+averiguar cuál es la
+población de cada ciudad.
 
 32
 00:01:39,650 --> 00:01:43,220
-If you recall, a city can have
-multiple zip codes within it,
+Si recuerdas, una ciudad puede tener
+múltiples códigos postales dentro de ella,
 
 33
 00:01:43,220 --> 00:01:44,820
-multiple postal codes.
+múltiples códigos postales.
 
 34
 00:01:44,820 --> 00:01:48,700
-So we have to aggregate across
-the cities of a group by the
+Por ello tenemos que agregar entre
+las ciudades o un "GROUP BY" de la
 
 35
 00:01:48,700 --> 00:01:50,690
-city to get the population
-of the city.
+ciudad para obtener su
+población.
 
 36
 00:01:50,690 --> 00:01:52,330
-So, we'll look at that.
+Así que vamos a ver eso.
 
 37
 00:01:52,330 --> 00:01:55,490
-Now, in this, we see a more
-traditional aggregation
+Ahora, en esto, vemos un
+"pipeline" de agregación
 
 38
 00:01:55,490 --> 00:01:57,960
-pipeline because it has
-multiple phases.
+más tradicional ya que
+tiene múltiples fases.
 
 39
 00:01:57,960 --> 00:02:01,320
-First we're going to match and
-find everything that is state
+Primero vamos a usar "$match" y
+encontrar todo lo que está en el
 
 40
 00:02:01,320 --> 00:02:05,420
-New York, and then we're going
-to group and create a new set
+estado de Nueva York y luego vamos a
+agrupar y crear un nuevo conjunto de
 
 41
 00:02:05,420 --> 00:02:06,640
-of result documents.
+documentos resultantes.
 
 42
 00:02:06,640 --> 00:02:11,320
-We're going to group by $city,
-by specifying the _id is
+Vamos a agrupar por "$city",
+especificando el "_id" con
 
 43
 00:02:11,320 --> 00:02:15,320
-$city, and then we're going to
-create a population key, which
+"$city" y luego vamos a crear
+una clave "population", que es
 
 44
 00:02:15,320 --> 00:02:19,110
-is the $sum of $pop from
-those documents.
+la suma del "$pop"
+de esos documentos.
 
 45
 00:02:19,110 --> 00:02:22,060
-We're going to add up the
-population and then, just for
+Vamos a ir sumando la población
+y a continuación, sólo por
 
 46
 00:02:22,060 --> 00:02:25,510
-fun, we're going to also keep
-track of all the zip codes
+diversión, vamos a mantener
+también todos los códigos postales
 
 47
 00:02:25,510 --> 00:02:29,160
-that appear in that city by
-you doing an add to set.
+que aparecen en esa ciudad
+haciendo un "$addToSet".
 
 48
 00:02:29,160 --> 00:02:34,400
-And if we do that, we will
-get this result here.
+Y si hacemos eso, obtendremos
+este resultado de aquí.
 
 49
 00:02:34,400 --> 00:02:38,680
-So we can see that New York City
-has a lot of zip codes in
+Así que podemos ver que la ciudad de
+Nueva York tiene muchos códigos postales
 
 50
 00:02:38,680 --> 00:02:41,290
-it and a pretty big
-population.
+en ella y una muy
+grande población.
 
 51
 00:02:41,290 --> 00:02:45,380
-According to this, it says
-it's 1.4 million.
+De acuerdo a esto, dice
+que es 1.4 millones.
 
 52
 00:02:45,380 --> 00:02:49,890
-So, this data set considers
-Manhattan to be New York and
+Así, este conjunto de datos considera
+que Manhattan es de Nueva York y
 
 53
 00:02:49,890 --> 00:02:53,320
-the other four boroughs,
-Brooklyn, Queens, the Bronx,
+los otros cuatro condados,
+Brooklyn, Queens, el Bronx,
 
 54
 00:02:53,320 --> 00:02:56,780
-and Staten Island, to be
-separate cities, because the
+y la isla Staten son ciudades
+separadas porque la
 
 55
 00:02:56,780 --> 00:03:01,880
-overall population of New York
-City is about 8 million, but
+población general de la ciudad de Nueva
+York está cerca de los 8 millones, pero
 
 56
 00:03:01,880 --> 00:03:05,260
-this New York means Manhattan,
-for those who know their
+esta New York significa Manhattan,
+para aquellos quienes conocen la
 
 57
 00:03:05,260 --> 00:03:09,120
-American geography and are
-aware of the population.
+geografía estadounidense y son
+concientes de la población.
 
 58
 00:03:09,120 --> 00:03:11,520
-And this data set's also
-a few years old.
+Y estos datos también son
+de hace un par de años.
 
 59
 00:03:11,520 --> 00:03:14,370
-And you can see here all the
-different populations of the
+Y puedes ver aquí todas las
+distintas poblaciones de las
 
 60
 00:03:14,370 --> 00:03:16,920
-different cities in New York.
+distintas ciudades en Nueva York.
 
 61
 00:03:16,920 --> 00:03:20,280
-Now, let's say we wanted to
-reshape this document to be a
+Ahora, digamos que deseamos
+reformar este documento para ser un
 
 62
 00:03:20,280 --> 00:03:21,330
-little bit prettier.
+poco más elegante.
 
 63
 00:03:21,330 --> 00:03:24,290
-In particular, we don't like
-that our city appears as an
+En particular, no nos gusta que
+nuestra ciudad aparezca como un
 
 64
 00:03:24,290 --> 00:03:28,110
-_id, but instead we want it
-to say the word city.
+"_id", pero en su lugar deseamos
+que diga la palabra "city".
 
 65
 00:03:28,110 --> 00:03:30,490
-So, now that we understand the
-project operator, we can
+Por ello, ahora que entendemos
+el operador "$project", sin duda
 
 66
 00:03:30,490 --> 00:03:32,140
-certainly do that.
+podemos hacerlo.
 
 67
 00:03:32,140 --> 00:03:34,580
-So let's see how that works.
+Así que veamos cómo funciona.
 
 68
 00:03:34,580 --> 00:03:37,550
-Now there are three phases
-to our pipeline.
+Ahora hay tres fases
+en nuestro "pipeline".
 
 69
 00:03:37,550 --> 00:03:41,020
-First we're going to match on
-the state being New York, then
+Primero vamos a hacer "$match"
+en el estado que sea Nueva York,
 
 70
 00:03:41,020 --> 00:03:44,490
-we're going to group by city
-and get the population, and
+luego vamos a agrupar por ciudad
+y obtener la población, y
 
 71
 00:03:44,490 --> 00:03:46,710
-finally, we're going to
-project a little bit.
+finalmente, vamos a hacer
+"$project" un poco.
 
 72
 00:03:46,710 --> 00:03:49,460
-We're going to suppress the _id,
-we're going to create a
+Vamos a suprimir el "_id",
+vamos a crear una
 
 73
 00:03:49,460 --> 00:03:53,640
-new key called city and use the
-_id field, and then we're
+nueva clave llamada "city" y usar
+el campo "_id" y luego vamos a
 
 74
 00:03:53,640 --> 00:03:57,150
-going to just pass through
-the population.
+pasar simplemente
+la clave "population".
 
 75
 00:03:57,150 --> 00:04:00,420
-And here we could have just been
-population colon 1, it
+Y aquí podría haber sido
+"'population': 1",
 
 76
 00:04:00,420 --> 00:04:04,260
-would've been the same result,
-and zip codes colon 1.
+hubiera sido el mismo resultado,
+y "'zip_codes': 1".
 
 77
 00:04:04,260 --> 00:04:07,060
-So if we do that,
-what do we get?
+Si lo hacemos,
+¿qué obtenemos?
 
 78
 00:04:07,060 --> 00:04:13,590
-You can see this is a little
-bit prettier result.
+Puedes ver que esto es un
+resultado un poco más elegante.
 
 79
 00:04:13,590 --> 00:04:17,810
-So now I have population,
-zip code, and city.
+Así que ahora tengo "population",
+"zip_codes" y "city".
 
 80
 00:04:17,810 --> 00:04:20,220
-Interestingly, although I
-specified them in a different
+Curiosamente, a pesar que
+los especifiqué en un orden
 
 81
 00:04:20,220 --> 00:04:23,020
-order, it didn't change the
-order in the document.
+distinto, esto cambió el
+orden en el documento.
 
 82
 00:04:23,020 --> 00:04:24,970
-So that's an interesting
-thing to note.
+Eso es algo interesante
+a observar.
 
 83
 00:04:24,970 --> 00:04:29,370
-I specified city, population,
-zip, but I got out something
+Especifiqué "city", "population",
+"zip_codes", pero obtuve algo
 
 84
 00:04:29,370 --> 00:04:33,910
-that looks like population, zip,
-city, which means that, I
+que luce como "population", "zip_codes",
+"city", lo que significa que, supongo
 
 85
 00:04:33,910 --> 00:04:36,860
-guess, MongoDB, when it's
-doing that projection it
+que MongoDB, cuando hace
+una proyección no
 
 86
 00:04:36,860 --> 00:04:40,490
-doesn't necessarily impose order
-that you provide in the
+necesariamente impone el
+orden que provees en la
 
 87
 00:04:40,490 --> 00:04:41,400
-projection.
+proyección.
 
 88
 00:04:41,400 --> 00:04:43,740
-Just to confirm that it wouldn't
-have mattered whether
+Sólo para confirmar que
+no hubiera importado
 
 89
 00:04:43,740 --> 00:04:48,420
-I wrote $population or
-$population 1, let's just
+si escribí "$population" o
+"'$population': 1", vamos a
 
 90
 00:04:48,420 --> 00:04:52,220
-change that to be just
-a 1 and see if that
+cambiar que sea sólo
+un "1" y veamos si
 
 91
 00:04:52,220 --> 00:04:53,200
-works the same way.
+funciona de la misma manera.
 
 92
 00:04:53,200 --> 00:04:54,710
-I think it should.
+Creo que debería.
 
 93
 00:04:54,710 --> 00:04:56,470
-And yeah, it does.
+Y sí, funciona.
 
 94
 00:04:56,470 --> 00:04:58,570
-It works exactly the same way.
+Funciona exactamente
+de la misma manera.
 
 95
 00:04:58,570 --> 00:04:59,110
-All right.
+Muy bien.
 
 96
 00:04:59,110 --> 00:05:00,170
-Here we go.
+Aquí vamos.
 
 97
 00:05:00,170 --> 00:05:02,230
-And that's how that works.
+Y así es cómo funciona.
 
 98
 00:05:02,230 --> 00:05:05,540
-all right, so now let's do a
-quiz and you are going to
+Muy bien, ahora hagamos
+un cuestinario y
 
 99
 00:05:05,540 --> 00:05:07,440
-write a $match.
+escribe un "$match".
 
 100
 00:05:07,440 --> 00:05:11,110
-So, thinking again about the
-zip code collection which
+Pensando en la colección
+"zipcodes" con la que
 
 101
 00:05:11,110 --> 00:05:14,110
-we've been playing with, write
-an aggregation query with a
+hemos estado jugando, escribe
+una consulta de agregación con un
 
 102
 00:05:14,110 --> 00:05:17,750
-single match phase that filters
-for zip codes with
+única fase "$match" que
+filtra por "zip_codes"
 
 103
 00:05:17,750 --> 00:05:20,000
-greater than 100,000 people.
+con población mayor a 100000.
 
 104
 00:05:20,000 --> 00:05:22,700
-And you may need to look up the
-use of the $ greater than
+Y puede que necesites usar
+el operador "$gt" (mayor que)
 
 105
 00:05:22,700 --> 00:05:24,630
-operator if you forgot
-how to do that.
+si se te olvidó cómo hacerlo.
 
 106
 00:05:24,630 --> 00:05:26,940
-I put a link to it
-here in the Docs.
+Puse un enlace aquí
+hacia la documentación.
 
 107
 00:05:26,940 --> 00:05:30,830
-The way I found this, by the
-way, is by typing $gt space
+La manera cómo lo encontré,
+es así, escribiento "$gt MongoDB"
 
 108
 00:05:30,830 --> 00:05:32,460
-MongoDB into Google.
+en Google.
 
 109
 00:05:32,460 --> 00:05:36,265
-So, Google is your friend when
-it comes to looking up the
+Así, Google es tu amigo
+cuando se trata de buscar la
 
 110
 00:05:36,265 --> 00:05:37,470
-MongoDB documentation.
+documentación de MongoDB.
 
 111
 00:05:37,470 --> 00:05:39,020
-So, write that query
-right here.
+Escribe la consulta justo aquí.
 
 112
 00:05:39,020 --> 00:05:40,270
