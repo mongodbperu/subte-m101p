@@ -3,73 +3,71 @@
 
 2
 00:00:00,200 --> 00:00:05,110
-And the answer is
-that it is 54.
+Y la respuesta es que es 54.
 
 3
 00:00:05,110 --> 00:00:08,280
-And you can probably pretty much
-reason this out, but I'll
+Y probablemente puedas dar mucha
+razón de esto, pero trabajaré
 
 4
 00:00:08,280 --> 00:00:09,500
-work on it with you.
+en él contigo.
 
 5
 00:00:09,500 --> 00:00:11,720
-So, match a 0.
+"{$match: {'a': 0}".
 
 6
 00:00:11,720 --> 00:00:15,220
-So that matches only the first
-four documents here.
+Coincide sólo con los cuatro
+primeros documentos aquí.
 
 7
 00:00:15,220 --> 00:00:18,140
-So the first four documents
-have an a value of 0.
+Los primeros cuatro documentos
+tienen un valor de "0".
 
 8
 00:00:18,140 --> 00:00:23,260
-We're going to sort
-by c descending.
+Vamos a ordenar por
+"c" descendentemente.
 
 9
 00:00:23,260 --> 00:00:24,660
-So, c descending.
+"c" descendentemente.
 
 10
 00:00:24,660 --> 00:00:26,850
-So, let's see.
+Veamos.
 
 11
 00:00:26,850 --> 00:00:33,200
-The larges c value is 54, then
-52, then 17, then 21.
+El mayor valor de "c" es 54,
+luego 52, luego 27, luego 21.
 
 12
 00:00:33,200 --> 00:00:35,640
-And then we're going
-to do a group on a.
+Y luego vamos a hacer
+una agrupación en "a".
 
 13
 00:00:35,640 --> 00:00:37,670
-We only have 80 values left
-that are zero, so that's
+Sólo tenemos 8 valores que
+están en cero, por lo que es
 
 14
 00:00:37,670 --> 00:00:39,120
-pretty trivial.
+bastante casual.
 
 15
 00:00:39,120 --> 00:00:41,260
-And we're going to get the first
-c value, and so that
+Y vamos a obtener el primer
+valor de "c" y por lo que
 
 16
 00:00:41,260 --> 00:00:43,760
-will be 54, and that
-was the answer.
+será 54 y esa fue la respuesta.
 
 17
 00:00:43,760 --> 00:00:45,010
