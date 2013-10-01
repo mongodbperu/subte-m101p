@@ -47,7 +47,7 @@ estudiante en cada clase.
 11
 00:00:28,180 --> 00:00:34,550
 Así por ejemplo, podría tener
-"student_id: 1, class_id: 397".
+"student_id: 1", "class_id: 397".
 
 12
 00:00:34,550 --> 00:00:36,690
@@ -135,7 +135,7 @@ como su "_id" para
 30
 00:01:25,770 --> 00:01:29,300
 la agrupación el
-"_id.class_id" de
+"$_id.class_id" de
 
 31
 00:01:29,300 --> 00:01:31,250
@@ -144,7 +144,7 @@ la fase previa.
 32
 00:01:31,250 --> 00:01:35,050
 Y entonces va a calcular el promedio
-de aquéllos para obtener un promedio final.
+de aquéllas para obtener un promedio final.
 
 33
 00:01:35,050 --> 00:01:38,770
