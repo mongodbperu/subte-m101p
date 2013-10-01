@@ -3,236 +3,236 @@
 
 2
 00:00:00,350 --> 00:00:03,650
-Skip and limit inside the
-aggregation pipeline work
+"$skip" y "$limit" en el
+"pipeline" de agregación funciona
 
 3
 00:00:03,650 --> 00:00:06,770
-pretty much the same way skip
-and limit work when you do a
+exactamente de la manera en que
+"skip" y "limit" funcionan cuando
 
 4
 00:00:06,770 --> 00:00:07,550
-simple find.
+se hace un simple "find".
 
 5
 00:00:07,550 --> 00:00:11,240
-So it doesn't make any sense to
-skip and limit unless you
+Por ello, no tiene ningún sentido
+saltar y limitar a menos que
 
 6
 00:00:11,240 --> 00:00:15,880
-first sort, otherwise, the
-result is undefined.
+primero se ordene, de lo contrario,
+el resultado es indefinido.
 
 7
 00:00:15,880 --> 00:00:20,500
-And what you want to do is first
-skip and then you limit.
+Y lo que quiero hacer es
+primero saltar y luego limitar.
 
 8
 00:00:20,500 --> 00:00:24,180
-Doesn't usually make a lot of
-sense to limit and then skip.
+No suele tener mucho sentido
+limitar y luego saltar.
 
 9
 00:00:24,180 --> 00:00:27,420
-And skip forward just skips
-forward to the document set.
+Y salta hacia adelante, sólo salta hacia
+adelante en el conjunto de documentos.
 
 10
 00:00:27,420 --> 00:00:31,310
-So if you have a set of ordered
-documents, and it's
+Así que si tienes un conjunto
+de documentos ordenados, y es
 
 11
 00:00:31,310 --> 00:00:34,940
-coming at you, let's say, in
-this direction, and you want
+es como vienen a ti, digamos,
+en este sentido, y deseas
 
 12
 00:00:34,940 --> 00:00:36,150
-to skip forward--
+saltar hacia adelante--
 
 13
 00:00:36,150 --> 00:00:40,740
-So if you skip five, you skip
-one two, three, four, five.
+Así que si saltas cinco, saltas
+uno, dos, tres, cuatro, cinco.
 
 14
 00:00:40,740 --> 00:00:42,370
-And then you start here.
+Y luego inicias aquí.
 
 15
 00:00:42,370 --> 00:00:44,970
-And then if you limit it to
-three, you get one, two,
+Y después limitas a tres,
+obtienes uno, dos,
 
 16
 00:00:44,970 --> 00:00:47,040
-three, the next three
-documents.
+tres, los siguientes
+tres documentos.
 
 17
 00:00:47,040 --> 00:00:50,790
-If you recall when we did a
-find, the order in which you
+Si recuerdas cuando hicimos
+un "find", el orden en que
 
 18
 00:00:50,790 --> 00:00:54,010
-gave skip and limit didn't even
-matter because the server
+diste un salto y limitaste ni
+siquiera importa porque el servidor
 
 19
 00:00:54,010 --> 00:00:57,740
-would automatically, or the
-drivers, would reorder it so
+lo haría automáticamente, o los
+drivers, lo ordenarían de modo
 
 20
 00:00:57,740 --> 00:01:00,720
-that it first sorted,
-and then it
+que primero ordena, y luego
 
 21
 00:01:00,720 --> 00:01:02,460
-skipped, and then a limited.
+salta y luego limita.
 
 22
 00:01:02,460 --> 00:01:05,459
-But in the case of the
-aggregation framework where
+Pero en el caso de
+Aggregation Framework donde
 
 23
 00:01:05,459 --> 00:01:08,520
-you are given an ordered list of
-stages, the order in which
+se le da una lista ordenada
+de etapas, el orden en que
 
 24
 00:01:08,520 --> 00:01:10,770
-you specify skip and
-limit do matter.
+se especifica "$skip"
+y "$limit" importa.
 
 25
 00:01:10,770 --> 00:01:14,160
-Let's look at an example of
-using skip and limit.
+Veamos un ejemplo de uso
+de "$skip" y "$limit".
 
 26
 00:01:14,160 --> 00:01:17,530
-We're going to go back to our
-query that we've been working
+Vamos a volver a nuestra consulta
+que hemos estado trabajando
 
 27
 00:01:17,530 --> 00:01:19,750
-with in the last few lessons
-where we were going through
+en las últimas lecciones
+donde estábamos repasando
 
 28
 00:01:19,750 --> 00:01:22,580
-that zip code data and searching
-for all of the zip
+los datos de códigos postales
+y buscar por todos los códigos
 
 29
 00:01:22,580 --> 00:01:26,750
-codes in New York, and finding
-the population for each city,
+postales en Nueva York y encontrar
+la población de cada ciudad,
 
 30
 00:01:26,750 --> 00:01:30,030
-projecting the information,
-sorting it by population, and
+proyectando la información,
+ordenando por población y
 
 31
 00:01:30,030 --> 00:01:33,630
-then skipping forward 10, and
-then limiting it to the next
+luego saltando hacia adelante 10
+y luego limitando los siguientes
 
 32
 00:01:33,630 --> 00:01:35,150
-five items.
+cinco elementos.
 
 33
 00:01:35,150 --> 00:01:39,450
-So if we do that, then we get
-these items right here, which
+Así que si hacemos esto, entonces
+obtenemos estos elementos de aquí,
 
 34
 00:01:39,450 --> 00:01:41,480
-are still some big population
-places.
+que son los lugares
+con más población.
 
 35
 00:01:41,480 --> 00:01:44,860
-But the first 10 are missing
-from the list, and then we get
+Pero los primeros 10 no están
+en la lista y luego obtenemos
 
 36
 00:01:44,860 --> 00:01:47,570
-the next five from the list,
-which is Astoria, which in
+los cinco siguientes de la lista,
+que son Astoria, que está en
 
 37
 00:01:47,570 --> 00:01:53,540
 Queens, Jackson Heights, Far
-Rockaway, also Queens,
+Rockaway, también de Queens,
 
 38
 00:01:53,540 --> 00:01:55,110
-Ridgewood, and Binghamton.
+Ridgewood y Binghamton.
 
 39
 00:01:55,110 --> 00:01:57,880
-These are not in Queens,
-and Jackson Heights
+Estas no están en Queens,
+ni Jackson Heights
 
 40
 00:01:57,880 --> 00:01:59,570
-I think is in Queens.
+Creo que está en Queens.
 
 41
 00:01:59,570 --> 00:02:00,510
-So all right.
+Así que todo bien.
 
 42
 00:02:00,510 --> 00:02:03,110
-That is how you skip
-and limit.
+Esto es cómo
+saltas y limitas.
 
 43
 00:02:03,110 --> 00:02:05,120
-Now, it is time for quiz.
+Ahora, es tiempo
+para un cuestionario.
 
 44
 00:02:05,120 --> 00:02:06,100
-Here's the quiz.
+Aquí está en cuestionario.
 
 45
 00:02:06,100 --> 00:02:09,949
-Suppose that you change the
-order of skip and limit in the
+Supongamos que cambias el orden
+de "$skip" y "$limit" en la
 
 46
 00:02:09,949 --> 00:02:11,940
-query shown in the lesson
-to look like this.
+consulta mostrada en la
+lección que luce como esto.
 
 47
 00:02:11,940 --> 00:02:17,260
-So rather than skipping first
-and then limiting, you limit
+Así que en lugar de saltar
+primero y luego limitar, limita
 
 48
 00:02:17,260 --> 00:02:18,910
-and then you skip.
+y luego salta.
 
 49
 00:02:18,910 --> 00:02:20,750
-How many documents do
-you think will be
+¿Cuántos documentos
+crees que van a estar
 
 50
 00:02:20,750 --> 00:02:22,000
-in the result set?
+en el conjunto de resultados?
 
 51
 00:02:22,000 --> 00:02:22,850
