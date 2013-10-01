@@ -7,111 +7,111 @@ OK.
 
 3
 00:00:00,890 --> 00:00:05,790
-And the answer is that 52
-and 22 will be returned.
+Y la respuesta es que devolverá
+52 y 22.
 
 4
 00:00:05,790 --> 00:00:09,360
-52 and 22.
+52 y 22.
 
 5
 00:00:09,360 --> 00:00:10,430
-So what is this doing?
+Así que, ¿qué está haciendo?
 
 6
 00:00:10,430 --> 00:00:15,940
-Well, first it's grouping by
-a,b, and it's finding the max
+Bien, primero está agrupando por
+"a,b" y está encontrando el valor
 
 7
 00:00:15,940 --> 00:00:18,310
-value of c in that grouping.
+máximo de "c" en esa agrupación.
 
 8
 00:00:18,310 --> 00:00:21,370
-And then it's grouping just by
-a and finding the minimum
+Y luego está agrupando sólo por
+"a" y encontrando el valor
 
 9
 00:00:21,370 --> 00:00:22,940
-value of those.
+mínimos de éstos.
 
 10
 00:00:22,940 --> 00:00:25,980
-So I'll show you what it looks
-like after the first stage.
+Por lo que te enseñaré cómo se ve
+tras la primera fase.
 
 11
 00:00:25,980 --> 00:00:28,810
-So this is what it looks like
-after the first stage where
+Así es como se ve
+tras la primera fase donde
 
 12
 00:00:28,810 --> 00:00:33,610
-it's grouping by a and b and
-finding the max value of c.
+está agrupando por "a" y "b" y
+encontrando el valor máximo de "c".
 
 13
 00:00:33,610 --> 00:00:38,760
-And you can see that you have
-97, 22, 52, and 54.
+Y puedes ver que tiene
+97, 22, 52 y 54.
 
 14
 00:00:38,760 --> 00:00:42,670
-And in that final stage, it
-was grouping just by a and
+Y en esa fase final,
+estaba agrupando sólo por "a" y
 
 15
 00:00:42,670 --> 00:00:44,130
-finding the min value.
+encontrando el valor mínimo.
 
 16
 00:00:44,130 --> 00:00:47,710
-Well, if you group by a here,
-you could see there were two
+Bien, si agrupas por "a" aquí,
+podrías ver que había dos ocurrencias
 
 17
 00:00:47,710 --> 00:00:50,600
-ones where a is one, the first
-and second entry right here.
+donde "a" es uno, la primera
+y segunda entrada justo aquí.
 
 18
 00:00:50,600 --> 00:00:53,340
-And so it's finding the
-min value of that.
+Y por eso está buscando el
+valor mínimo de eso.
 
 19
 00:00:53,340 --> 00:00:56,420
-So it's finding 22 between
-those two documents.
+Así que está encontrando 22 entre
+aquellos dos documentos.
 
 20
 00:00:56,420 --> 00:00:58,730
-And then over these two
-documents, it's finding the
+Y entonces sobre estos dos
+documentos, está buscando el
 
 21
 00:00:58,730 --> 00:01:01,600
-min value of c, and so
-it's finding 52.
+valor mínimo de "c", y por eso
+está encontrando 52.
 
 22
 00:01:01,600 --> 00:01:05,050
-So 22 and 52, and that
-was the answer.
+Por lo tanto 22 y 52, ésa
+era la respuesta.
 
 23
 00:01:05,050 --> 00:01:06,390
-22 and 52.
+22 y 52.
 
 24
 00:01:06,390 --> 00:01:08,050
-So that's how you can
-reason your way
+Así es como puedes
+razonar a través
 
 25
 00:01:08,050 --> 00:01:09,300
-through what it's doing.
+de lo que está haciendo.
 
 26
 00:01:09,300 --> 00:01:10,130
