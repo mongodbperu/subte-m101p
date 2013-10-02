@@ -1,217 +1,218 @@
 1
 00:00:00,000 --> 00:00:02,870
-Let's talk about the unwind
-pipeline stage.
+Hablemos acerca de la fase
+"$unwind" en el "pipeline".
 
 2
 00:00:02,870 --> 00:00:06,230
-In MongoDB, documents
-can have arrays.
+En MongoDB, los documentos
+pueden tener arrays.
 
 3
 00:00:06,230 --> 00:00:10,100
-And it's not easy to group on
-something within an array
+Y no es fácil agrupar sobre
+algo dentro de un array
 
 4
 00:00:10,100 --> 00:00:12,890
-unless we move it out of
-the array form and
+a menos que lo retires
+del array y lo
 
 5
 00:00:12,890 --> 00:00:14,520
-make it more flat.
+hagas más plano.
 
 6
 00:00:14,520 --> 00:00:18,530
-So if you remember, this is sort
-of pre-joined data when
+Si recuerdas, esto es tipo de
+datos pre relacionados cuando
 
 7
 00:00:18,530 --> 00:00:20,130
-you have a document
-with an array.
+tienen un documento
+con un array.
 
 8
 00:00:20,130 --> 00:00:24,110
-And what we're going to do is
-we're going to use unwind to
+Y lo que vamos a hacer es que
+vamos a usar "$unwind" para
 
 9
 00:00:24,110 --> 00:00:28,940
-unjoin the data and then
-basically rejoin it in a way
+deshacer la relación de los datos y luego,
+en realidad, volver a relacionarlo
 
 10
 00:00:28,940 --> 00:00:31,710
-that lets us do grouping
-calculations on it.
+de manera que nos permita
+agrupar cálculos en él. 
 
 11
 00:00:31,710 --> 00:00:33,870
-So let's look at an example.
+Veámoslo en un ejemplo.
 
 12
 00:00:33,870 --> 00:00:36,510
-Let's say I unwind on c.
+Digamos que hago "$unwind" en "c".
 
 13
 00:00:36,510 --> 00:00:38,770
-What it's going to do is for
-each document, it's going to
+Lo que va a hacer por cada
+documento, es que va a
 
 14
 00:00:38,770 --> 00:00:42,900
-create a document with the
-remainder of the document plus
+crear un documento con el
+resto del documento más
 
 15
 00:00:42,900 --> 00:00:44,590
-each value from this array.
+cada valor de este array.
 
 16
 00:00:44,590 --> 00:00:49,680
-So this is what you'd get
-for this document.
+Esto es lo que obtienes
+para este documento.
 
 17
 00:00:49,680 --> 00:01:01,240
-You'd get a 1, B 2, c being
-apple, a 1, b 2, c being pear,
+Obtienes "a: 1, b:2, c: 'apple'",
+"a: 1, b: 2, c: 'pear'",
 
 18
 00:01:01,240 --> 00:01:06,250
-and a 1, b 2, c being orange.
+y "a: 1, b: 2, c: 'orange'".
 
 19
 00:01:06,250 --> 00:01:09,140
-So I got three documents as this
-document passed through
+Tengo tres documentos como
+éste pasado a través del
 
 20
 00:01:09,140 --> 00:01:13,670
-the pipeline if I'm unwinding on
-the dollar c, which is this
+"pipeline" si estoy usando
+"$unwind" en "$c", que es esta
 
 21
 00:01:13,670 --> 00:01:15,000
-key right here.
+clave de aquí.
 
 22
 00:01:15,000 --> 00:01:18,400
-And once I do this unwind, what
-I can do is I could group
+Y cada vez que haga este "$unwind",
+lo que hago es podría agrupar
 
 23
 00:01:18,400 --> 00:01:21,580
-by what I just unwound and count
-something else or sum
+por lo que acabo de "desovillar"
+y cuento otra cosa o sumo
 
 24
 00:01:21,580 --> 00:01:22,180
-something else.
+otra cosa.
 
 25
 00:01:22,180 --> 00:01:24,620
-That's typically the
-way you'll use it.
+Esa es la manera en que
+típicamente lo usarías.
 
 26
 00:01:24,620 --> 00:01:27,130
-And if there are five documents,
-for example, and
+Y si hay cinco documentos,
+por ejemplo, y
 
 27
 00:01:27,130 --> 00:01:30,970
-each one has three elements in
-the array, then you would get
+cada uno tiene tres elementos
+en el array, entonces obtendrías
 
 28
 00:01:30,970 --> 00:01:34,340
-15 documents out of
-the unwind stage.
+15 documentos como salida
+de la fase del "$unwind".
 
 29
 00:01:34,340 --> 00:01:37,580
-So there's sort of a data
-explosion from unwind.
+Así hay una suerte de "explosión
+de datos" con el "$unwind".
 
 30
 00:01:37,580 --> 00:01:40,750
-But we need that, because we
-need the data in a way that
+Pero necesitamos eso, porque
+necesitamos los datos de manera que
 
 31
 00:01:40,750 --> 00:01:43,580
-looks, honestly, a little bit
-more tabular, a little bit
+se vean, honestamente, un poco
+más tabulares, un poco más
 
 32
 00:01:43,580 --> 00:01:47,050
-more relational, so that we
-can then group it on the
+relacional, de manera
+que podamos agrupar los
 
 33
 00:01:47,050 --> 00:01:48,720
-elements in the array.
+elementos en el array.
 
 34
 00:01:48,720 --> 00:01:51,820
-So time for quick quiz,
-see if you understand
+Es tiempo para un rápido
+cuestionario, para ver si
 
 35
 00:01:51,820 --> 00:01:53,010
-the way unwind works.
+entiendes la manera en
+que "$unwind" funciona.
 
 36
 00:01:53,010 --> 00:01:56,750
-Let's say that we have the
-following collection.
+Digamos que tenemos la
+siguiente colección.
 
 37
 00:01:56,750 --> 00:01:58,370
-We have two elements
-in the collection.
+Tenemos dos elementos
+en la colección.
 
 38
 00:01:58,370 --> 00:02:02,730
-And the first one is Barack
-Obama, and he likes social
+Y el primero es "Barack
+Obama", y le gusta "social
 
 39
 00:02:02,730 --> 00:02:04,860
-justice, health care,
-and taxes.
+justice", "health care"
+y "taxes".
 
 40
 00:02:04,860 --> 00:02:07,760
-And the second one is Mitt
-Romney, and he likes a
+Y el segundo es "Mitt
+Romney", y le gusta
 
 41
 00:02:07,760 --> 00:02:10,600
-balanced budget, corporations,
-and binders full of women.
+"balanced budget", "corporations"
+y "binders full of women".
 
 42
 00:02:10,600 --> 00:02:13,070
-So let's say you want
-to unwind the likes
+Digamos que deseas usar
+"$unwind" a la clave "likes"
 
 43
 00:02:13,070 --> 00:02:14,870
-array of each document.
+que es un array en cada documento.
 
 44
 00:02:14,870 --> 00:02:17,220
-How many documents will you
-wind up with when you pass
+¿Cuántos documentos se verán afectados
+por "$unwind" luego de pasar
 
 45
 00:02:17,220 --> 00:02:18,730
-these two documents through
-the collection?
+estos dos documentos a
+través de la colección?
 
 46
 00:02:18,730 --> 00:02:19,980
