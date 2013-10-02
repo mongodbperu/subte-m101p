@@ -10,8 +10,8 @@ pueden tener arrays.
 
 3
 00:00:06,230 --> 00:00:10,100
-Y no es fácil agrupar
-en algo en un array
+Y no es fácil agrupar sobre
+algo dentro de un array
 
 4
 00:00:10,100 --> 00:00:12,890
@@ -39,7 +39,7 @@ vamos a usar "$unwind" para
 
 9
 00:00:24,110 --> 00:00:28,940
-remover la relación de lo datos y luego,
+deshacer la relación de los datos y luego,
 en realidad, volver a relacionarlo
 
 10

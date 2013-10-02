@@ -36,8 +36,8 @@ array, así que obtendremos otros
 
 9
 00:00:15,210 --> 00:00:18,640
-tres documento ahí, para un total
-de seis documento después de la
+tres documentos ahí, para un total
+de seis documentos después de la
 
 10
 00:00:18,640 --> 00:00:19,890
