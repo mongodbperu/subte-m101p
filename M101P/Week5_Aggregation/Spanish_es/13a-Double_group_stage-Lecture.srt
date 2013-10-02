@@ -38,7 +38,7 @@ esto útil?
 9
 00:00:20,940 --> 00:00:26,150
 Permíteme que te enseñe un conjunto de datos que
-contiene puntuaciones por cada
+contiene calificaciones por cada
 
 10
 00:00:26,150 --> 00:00:28,180
@@ -149,7 +149,7 @@ de aquéllas para obtener un promedio final.
 33
 00:01:35,050 --> 00:01:38,770
 Así que ejecutemos eso y veamos
-qué pinta tiene.
+cómo se ve.
 
 34
 00:01:38,770 --> 00:01:40,560
@@ -166,7 +166,7 @@ tengo un promedio.
 
 37
 00:01:45,070 --> 00:01:47,800
-Ahora, ¿qué pinta tenía
+Ahora, ¿cómo se ve
 tras la primera fase?
 
 38
