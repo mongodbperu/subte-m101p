@@ -4,7 +4,7 @@
 2
 00:00:00,350 --> 00:00:03,650
 "$skip" y "$limit" en el
-"pipeline" de agregación funciona
+"pipeline" de agregación funcionan
 
 3
 00:00:03,650 --> 00:00:06,770
@@ -47,7 +47,7 @@ de documentos ordenados, y es
 
 11
 00:00:31,310 --> 00:00:34,940
-es como vienen a ti, digamos,
+como vienen a ti, digamos,
 en este sentido, y deseas
 
 12
@@ -204,7 +204,7 @@ para un cuestionario.
 
 44
 00:02:05,120 --> 00:02:06,100
-Aquí está en cuestionario.
+Aquí está el cuestionario.
 
 45
 00:02:06,100 --> 00:02:09,949
