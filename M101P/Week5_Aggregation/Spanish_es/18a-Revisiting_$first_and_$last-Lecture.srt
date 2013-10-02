@@ -239,7 +239,7 @@ Y lo hacemos.
 
 52
 00:02:28,860 --> 00:02:30,370
-Ahora tenermos la población
+Ahora tenemos la población
 de todas las ciudades.
 
 53
@@ -285,12 +285,12 @@ por "_id.state" y por
 62
 00:02:58,750 --> 00:03:01,730
 Y no necesitamos signos de dólar
-($) porque este es una operación
+($) porque esta es una operación
 
 63
 00:03:01,730 --> 00:03:05,140
 "$sort" y los nombres de las claves
-estén en el lado izquierdo aquí.
+están en el lado izquierdo aquí.
 
 64
 00:03:05,140 --> 00:03:07,590
@@ -527,11 +527,11 @@ Hagamos un cuestionario.
 
 115
 00:05:26,090 --> 00:05:27,990
-Dad la siguiente colección--
+Dada la siguiente colección--
 
 116
 00:05:27,990 --> 00:05:31,430
-y esta es uns colección que hemos
+y esta es una colección que hemos
 usado en un problema anterior,
 
 117
