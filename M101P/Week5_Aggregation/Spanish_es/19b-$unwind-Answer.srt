@@ -7,39 +7,38 @@ OK.
 
 3
 00:00:00,720 --> 00:00:02,150
-And the answer is, you're going
-to wind up with six
+Y la respuesta es que
+vas a "desovillar" seis
 
 4
 00:00:02,150 --> 00:00:04,550
-documents, because you're
-going to wind up with a
+documentos, porque vas a
+hacer "unwind" sobre un
 
 5
 00:00:04,550 --> 00:00:08,580
-document for Barack Obama and
-likes social justice, Barack
+documento para "Barack Obama"
+con "likes": "social justice", 
 
 6
 00:00:08,580 --> 00:00:11,630
-Obama and likes health care,
-Barack Obama and likes taxes.
+"Barack Obama" con "likes": "health care",
+"Barack Obama" con "likes": "taxes".
 
 7
 00:00:11,630 --> 00:00:12,780
-And the same thing
-with Mitt Romney.
+Y lo mismo para "Mitt Romney".
 
 8
 00:00:12,780 --> 00:00:15,210
-He has three elements in his
-array, so we get another three
+Él tiene tres elementos en su
+array, así que obtendremos otros
 
 9
 00:00:15,210 --> 00:00:18,640
-documents there, for a total
-of six documents after the
+tres documentos ahí, para un total
+de seis documentos después de la
 
 10
 00:00:18,640 --> 00:00:19,890
-unwind stage.
+la fase "$unwind".
