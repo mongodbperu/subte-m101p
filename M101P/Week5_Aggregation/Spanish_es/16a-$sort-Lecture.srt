@@ -1,369 +1,365 @@
 1
 00:00:00,000 --> 00:00:03,680
-All right, let's talk about the
-dollar sort pipeline stage
+Muy bien, hablemos acerca de
+la fase "$sort" del "pipeline"
 
 2
 00:00:03,680 --> 00:00:05,070
-when you're aggregating.
+cuando se está agregando.
 
 3
 00:00:05,070 --> 00:00:07,350
-Now, dollar sort does pretty
-much what you'd expect.
+Ahora, "$sort" hace
+exactamente lo que esperas.
 
 4
 00:00:07,350 --> 00:00:10,990
-It sorts the documents, but a
-few things to keep in mind
+Ordena los documentos, pero un
+par de cosas a tener en cuenta
 
 5
 00:00:10,990 --> 00:00:12,250
-when you sort.
+cuando ordenas.
 
 6
 00:00:12,250 --> 00:00:16,630
-The first is that it can
-be a real memory hog.
+Lo primero es que puede
+usar mucha memoria.
 
 7
 00:00:16,630 --> 00:00:19,880
-The aggregation framework
-doesn't go to disk for sorting
+Aggregation Framework
+no va a disco para ordenar
 
 8
 00:00:19,880 --> 00:00:20,820
-as far as I know.
+por lo que sé.
 
 9
 00:00:20,820 --> 00:00:23,140
-And so it's going to
-sort in memory.
+Y así que ordenará en memoria.
 
 10
 00:00:23,140 --> 00:00:26,940
-If the sort is before a grouping
-and after a match, I
+Si el "$sort" está antes de un
+"$group" y después de un "$match",
 
 11
 00:00:26,940 --> 00:00:28,310
-think it can use an index.
+pienso que puede usar un índice.
 
 12
 00:00:28,310 --> 00:00:30,480
-But if it's after the grouping
-phase, I don't believe it can
+Pero si es luego de la fase de
+agrupación, no creo que pueda
 
 13
 00:00:30,480 --> 00:00:31,650
-use an index.
+usar un índice.
 
 14
 00:00:31,650 --> 00:00:34,300
-And the second thing to remember
-about dollar sort is
+Y lo segundo para recordar
+acerca de "$sort" es que
 
 15
 00:00:34,300 --> 00:00:38,270
-it can go before or after
-the group phase.
+puede ir antes o después
+de la fase "$group".
 
 16
 00:00:38,270 --> 00:00:41,170
-You can sort multiple
-times if you'd like.
+Puedes ordenar varias
+veces si lo deseas.
 
 17
 00:00:41,170 --> 00:00:44,040
-And it's going to be
-really useful.
+Y va a ser muy útil.
 
 18
 00:00:44,040 --> 00:00:47,330
-Now, I'm going to show you
-a sort at the end of the
+Ahora, voy a mostrarte un
+ordenamiento al final del
 
 19
 00:00:47,330 --> 00:00:50,740
-pipeline, which is good for
-formatting a report.
+"pipeline", que es bueno para
+dar formato a un reporte.
 
 20
 00:00:50,740 --> 00:00:54,220
-But sorting before you do a
-grouping is even more useful
+Sin embargo, antes que hagas una
+agrupación es inclusive más útil
 
 21
 00:00:54,220 --> 00:00:56,830
-in terms of aggregating
-different pieces of data from
+en términos de agregación de
+distintas piezas de datos de
 
 22
 00:00:56,830 --> 00:00:57,820
-the collection.
+la colección.
 
 23
 00:00:57,820 --> 00:01:00,260
-So let's look at sorting at
-the end of the pipeline.
+Así que echemos un vistazo al
+ordenamiento al final del "pipeline".
 
 24
 00:01:00,260 --> 00:01:02,150
-We're going to go back to
-our zip code data set.
+Regresamos a nuestro conjunto
+de datos de códigos postales.
 
 25
 00:01:02,150 --> 00:01:05,390
-And each document looks like
-this, if you recall.
+Y cada documento luce como
+esto, si lo recuerdas.
 
 26
 00:01:05,390 --> 00:01:10,490
-And then we're going to just add
-a sort at the end of this
+Y luego vamos a simplemente añadir
+un "$sort" al final de esta
 
 27
 00:01:10,490 --> 00:01:12,170
-query that we did before.
+consulta que hicimos antes.
 
 28
 00:01:12,170 --> 00:01:13,480
-Makes it a little bit
-more useful though.
+Hace que sea un
+poco más útil.
 
 29
 00:01:13,480 --> 00:01:16,610
-We're going to match on all
-of the zip codes in the
+Vamos a hacer "$match" en todos
+los códigos postales en el
 
 30
 00:01:16,610 --> 00:01:17,400
-state of New York.
+estado de Nueva York.
 
 31
 00:01:17,400 --> 00:01:20,490
-We're going to group by the
-city and sum up the
+Vamos a agrupar por ciudad
+y usar "$sum" en la
 
 32
 00:01:20,490 --> 00:01:21,580
-population.
+población.
 
 33
 00:01:21,580 --> 00:01:24,150
-And then we're going to project,
-just to make it a
+Y luego vamos a usar "$project",
+sólo para que sea un
 
 34
 00:01:24,150 --> 00:01:25,460
-little bit neater.
+poco más elegante.
 
 35
 00:01:25,460 --> 00:01:28,600
-We're going to rename the
-underscore ID field to be
+Vamos a renombrar el
+campo "_id" para que sea
 
 36
 00:01:28,600 --> 00:01:30,240
-city, essentially through
-these two operations,
+"city", esencialmente a través
+de estas dos operaciones,
 
 37
 00:01:30,240 --> 00:01:32,220
-suppressing the underscore ID
-and then creating a new key
+eliminando el "_id" y
+luego crea una nueva clave
 
 38
 00:01:32,220 --> 00:01:33,240
-called city.
+llamada "city".
 
 39
 00:01:33,240 --> 00:01:35,140
-And then we're going to include
-the population.
+Y luego vamos a
+incluir la población.
 
 40
 00:01:35,140 --> 00:01:38,040
-And then we're going to sort
-by population descending.
+Y luego vamos a ordenar
+por población descendentemente.
 
 41
 00:01:38,040 --> 00:01:40,390
-And of course this can
-be a compound key.
+Y por supuesto esto puede
+ser una clave compuesta.
 
 42
 00:01:40,390 --> 00:01:42,830
-It doesn't need to be just
-a single key here.
+No tiene por qué ser sólo
+una clave única aquí.
 
 43
 00:01:42,830 --> 00:01:45,610
-But, in this case, I just want
-to sort by the population
+Pero, en este caso, sólo
+quiero ordenar por población
 
 44
 00:01:45,610 --> 00:01:46,480
-descending.
+descendentemente.
 
 45
 00:01:46,480 --> 00:01:48,230
-Let's see what that
-looks like.
+Veamos cómo se ve.
 
 46
 00:01:48,230 --> 00:01:51,360
-All right, so it looks
-like this.
+Muy bien, así que
+se ve como esto.
 
 47
 00:01:51,360 --> 00:01:53,640
-I'll just make sure I'm running
-the right one here.
+Voy a asegurarme que estoy
+ejecutando uno aquí.
 
 48
 00:01:53,640 --> 00:01:54,750
-There we go.
+Ahí vamos.
 
 49
 00:01:54,750 --> 00:01:55,830
-It looks like this.
+Se ve como esto.
 
 50
 00:01:55,830 --> 00:02:00,370
-And you can see that now we've
-got the result in descending
+Y puedes ver que ahora tenemos
+el resultado en orden
 
 51
 00:02:00,370 --> 00:02:01,170
-population order.
+descendente por población.
 
 52
 00:02:01,170 --> 00:02:03,720
-So we could see the biggest
-cities in New York.
+Así pudimos ver la mayor
+ciudad en Nueva York.
 
 53
 00:02:03,720 --> 00:02:05,730
-And the biggest city in New York
-is considered Brooklyn,
+Y la mayor ciudad en Nueva York
+se considera a Brooklyn,
 
 54
 00:02:05,730 --> 00:02:08,380
-which is one of the five
-boroughs in New York City.
+que es uno de los cinco condados
+de la ciudad de Nueva York.
 
 55
 00:02:08,380 --> 00:02:10,270
-And again, as I told you before,
-it looks like in this
+Y de nuevo, como dije antes,
+parece que en este
 
 56
 00:02:10,270 --> 00:02:12,700
-data set each borough
-its own city.
+conjunto de datos cada condado
+tiene su propia ciudad.
 
 57
 00:02:12,700 --> 00:02:16,210
-And actually, beyond that, so
-this is Manhattan right here.
+Y en realidad, más allá de eso,
+así que esto es Manhattan aquí.
 
 58
 00:02:16,210 --> 00:02:17,530
-This is the Bronx.
+Este es el Bronx.
 
 59
 00:02:17,530 --> 00:02:19,010
-This is the city of Rochester.
+Este es la ciudad de Rochester.
 
 60
 00:02:19,010 --> 00:02:21,490
-And then this is Staten
-Island, which is
+Y luego este es la
+isla Staten, que es
 
 61
 00:02:21,490 --> 00:02:22,970
-where I grew up.
+donde me crié.
 
 62
 00:02:22,970 --> 00:02:26,440
-And then you can see that Queens
-has been broken up into
+Y luego puedes ver que
+Queens ha sido dividida en
 
 63
 00:02:26,440 --> 00:02:27,480
-multiple pieces.
+varias piezas.
 
 64
 00:02:27,480 --> 00:02:30,030
-Buffalo is a separate city, but
-the borough of Queens is
+Buffalo está en una ciudad separada
+pero el condado de Queens no es
 
 65
 00:02:30,030 --> 00:02:31,170
-not even a city.
+ni siquiera una ciudad.
 
 66
 00:02:31,170 --> 00:02:33,700
-It's put in as Flushing,
-and Jamaica,
+Está puesto como
+Flushing, y Jamaica,
 
 67
 00:02:33,700 --> 00:02:35,000
-and a few other places.
+y algunos otros lugares.
 
 68
 00:02:35,000 --> 00:02:38,860
-I guess the post office of the
-United States has its own
+Supongo que la oficina de correos
+de los Estados Unidos tiene su propia
 
 69
 00:02:38,860 --> 00:02:42,000
-notion of what a city is,
-interestingly enough.
+idea de lo que es una ciudad,
+curiosamente.
 
 70
 00:02:42,000 --> 00:02:43,820
-So that's news to me.
+Así que eso es nuevo para mí.
 
 71
 00:02:43,820 --> 00:02:47,740
-I consider New York to be one
-city since it has one mayor.
+Considero que Nueva York es una
+ciudad ya que tiene un alcalde.
 
 72
 00:02:47,740 --> 00:02:52,240
-All right, so let's now
-do a quiz on sorting.
+Muy bien, hagamos ahora un
+cuestionario de ordenamiento.
 
 73
 00:02:52,240 --> 00:02:55,290
-So again, considering the zip
-code collection, which has the
+Así que de nuevo, considerando la
+colección "zipcodes", que tiene los
 
 74
 00:02:55,290 --> 00:02:57,090
-documents that look like that.
+documentos que se parecen a eso.
 
 75
 00:02:57,090 --> 00:03:01,900
-Write an aggregation query to
-sort by state comma city,
+Escribe una consulta de agregación
+para ordenar por "state" y "city",
 
 76
 00:03:01,900 --> 00:03:03,470
-ascending, both of
-them ascending.
+ascendentemente,
+ambos ascendentemente.
 
 77
 00:03:03,470 --> 00:03:05,700
-And assume the collection
-is called zips.
+Y asume que la colección
+es llamada "zips".
 
 78
 00:03:05,700 --> 00:03:07,410
-And put your answer
-right there.
+Y pon tu respuesta allí.
 
 79
 00:03:07,410 --> 00:03:08,660

@@ -7,14 +7,14 @@ OK.
 
 3
 00:00:00,870 --> 00:00:04,760
-And the answer is
-db.zips.aggregate, sort by
+Y la respuesta es
+"db.zips.aggregate", ordenado por
 
 4
 00:00:04,760 --> 00:00:06,840
-state and city, both descending,
-and that's how
+"state" y "city", ambos
+descendentemente, y así es
 
 5
 00:00:06,840 --> 00:00:08,090
-that works.
+cómo funciona.
