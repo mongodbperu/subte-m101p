@@ -3,318 +3,318 @@
 
 2
 00:00:00,140 --> 00:00:03,830
-One of the neat things about
-the aggregation framework
+Una de las cosas interesantes sobre
+Aggregation Framework
 
 3
 00:00:03,830 --> 00:00:06,930
-that's even better than what you
-have available using SQL
+que es incluso mejor que lo que
+tienes disponible usando SQL
 
 4
 00:00:06,930 --> 00:00:10,830
-with group by is that you can
-run a particular aggregation
+con "GROUP BY" es que puedes
+ejecutar una fase particular
 
 5
 00:00:10,830 --> 00:00:12,450
-stage more than once.
+de agregación más de una vez.
 
 6
 00:00:12,450 --> 00:00:15,680
-For instance, we can group more
-than once in the same
+Por ejemplo, podemos agrupar más
+de una vez en la misma
 
 7
 00:00:15,680 --> 00:00:19,010
-aggregation query, what I'll
-call double grouping.
+consulta de agregación, lo que 
+llamamos agrupación doble.
 
 8
 00:00:19,010 --> 00:00:20,940
-Now, when would this
-be useful?
+Ahora, ¿cuándo sería
+esto útil?
 
 9
 00:00:20,940 --> 00:00:26,150
-Let me show you a data set that
-contains scores for each
+Permíteme que te enseñe un conjunto de datos que
+contiene calificaciones por cada
 
 10
 00:00:26,150 --> 00:00:28,180
-student in each class.
+estudiante en cada clase.
 
 11
 00:00:28,180 --> 00:00:34,550
-So for example, I might have
-student ID 1, class ID 397.
+Así por ejemplo, podría tener
+"student_id: 1", "class_id: 397".
 
 12
 00:00:34,550 --> 00:00:36,690
-He may have several entries--
+Podría tener muchas entradas --
 
 13
 00:00:36,690 --> 00:00:39,450
-one for a homework,
-one for a quiz.
+una para un "homework",
+otra para un "quiz".
 
 14
 00:00:39,450 --> 00:00:44,780
-And let's say that we want to
-figure out what's the average
+Y digamos que queremos
+averiguar cuál es la nota promedio
 
 15
 00:00:44,780 --> 00:00:47,440
-class grade in each class.
+de la clase en cada clase.
 
 16
 00:00:47,440 --> 00:00:50,290
-To do that, first, we need to
-average all the students'
+Para hacer eso, primero, necesitamos calcular
+el promedio de todas las notas de los
 
 17
 00:00:50,290 --> 00:00:51,840
-grades within the class.
+estudiantes dentro de la clase.
 
 18
 00:00:51,840 --> 00:00:54,630
-And after that, we need to
-average those grades.
+Y después, necesitamos calcular
+el promedio de esas notas.
 
 19
 00:00:54,630 --> 00:00:57,270
-So that looks like this.
+Por lo que es algo como esto.
 
 20
 00:00:57,270 --> 00:00:58,880
-db.grades.aggregate.
+"db.grades.aggregate".
 
 21
 00:00:58,880 --> 00:01:01,810
-I'm going to first do a grouping
-where I group by
+Primero voy a hacer una agrupación
+donde agrupo por
 
 22
 00:01:01,810 --> 00:01:03,935
-class ID and Student ID.
+"class_id" y "student_id".
 
 23
 00:01:03,935 --> 00:01:06,730
-And I'm going to average
-all those scores.
+Y voy a calcular el promedio
+de todas esas notas.
 
 24
 00:01:06,730 --> 00:01:08,610
-So I'm going to average
-all those scores.
+Así que voy a calcular el promedio
+de todas esas notas.
 
 25
 00:01:08,610 --> 00:01:11,290
-And that's going to give me a
-bunch of documents that have
+Y eso me va a dar un montón
+de documentos que tienen
 
 26
 00:01:11,290 --> 00:01:15,730
-the class ID and the student ID
-as an underscore ID and the
+"class_id" y "student_id"
+como "_id" y el promedio
 
 27
 00:01:15,730 --> 00:01:18,280
-average for those assessments.
+para esas evaluaciones.
 
 28
 00:01:18,280 --> 00:01:20,980
-And then we're going to pipe
-that to the secondary
+Y entonces vamos a hacer un "pipe"
+con la agrupación
 
 29
 00:01:20,980 --> 00:01:25,770
-grouping, which is going to use
-as its underscore ID for
+secundaria, que va a usar
+como su "_id" para
 
 30
 00:01:25,770 --> 00:01:29,300
-grouping purposes the underscore
-ID dot class ID of
+la agrupación el
+"$_id.class_id" de
 
 31
 00:01:29,300 --> 00:01:31,250
-the previous stage.
+la fase previa.
 
 32
 00:01:31,250 --> 00:01:35,050
-And then it's going to average
-those to get a final average.
+Y entonces va a calcular el promedio
+de aquéllas para obtener un promedio final.
 
 33
 00:01:35,050 --> 00:01:38,770
-So let's run that and see
-what it looks like.
+Así que ejecutemos eso y veamos
+cómo se ve.
 
 34
 00:01:38,770 --> 00:01:40,560
-So it looks like this.
+Es como esto.
 
 35
 00:01:40,560 --> 00:01:42,650
-You can see for each
-of these class
+Puedes ver que por cada
+uno de estos "class_id"
 
 36
 00:01:42,650 --> 00:01:45,070
-IDs, I've got an average.
+tengo un promedio.
 
 37
 00:01:45,070 --> 00:01:47,800
-Now, what did it look like
-after the first stage?
+Ahora, ¿cómo se ve
+tras la primera fase?
 
 38
 00:01:47,800 --> 00:01:48,700
-Let's do this.
+Hagamos esto.
 
 39
 00:01:48,700 --> 00:01:49,850
-Let's just--
+Simplemente --
 
 40
 00:01:49,850 --> 00:01:52,310
-going to write this as
-a secondary file--
+voy a escribir esto como
+un fichero secundario --
 
 41
 00:01:52,310 --> 00:01:54,745
-take this out.
+tomemos esto.
 
 42
 00:01:54,745 --> 00:01:57,370
-I'll take the second
-stage out.
+Me llevará un segundo
+organizar esto.
 
 43
 00:01:57,370 --> 00:01:58,510
-All right.
+De acuerdo.
 
 44
 00:01:58,510 --> 00:02:01,640
-Now, we'll run that.
+Ahora, lo ejecutaremos.
 
 45
 00:02:01,640 --> 00:02:06,330
-So after the first stage, what
-I have is for each class and
+Por lo que tras la primera fase, lo que
+tengo es que por cada clase y
 
 46
 00:02:06,330 --> 00:02:08,910
-each student, I have
-an average.
+por cada estudiante, tengo
+un promedio.
 
 47
 00:02:08,910 --> 00:02:13,120
-And then what I need to do is
-aggregate on the class and
+Y entonces lo que necesito hacer es
+agregar sobre la clase y
 
 48
 00:02:13,120 --> 00:02:14,630
-average those averages.
+calcular el promedio de esos promedios.
 
 49
 00:02:14,630 --> 00:02:15,570
-And there might be a
-different number of
+Y podría haber un
+número diferente de
 
 50
 00:02:15,570 --> 00:02:16,960
-assessments for each student.
+evaluaciones por cada estudiante.
 
 51
 00:02:16,960 --> 00:02:18,780
-So I can't just take an average
-of everything for the
+Por lo que no puedo tomar simplemente 
+un promedio de todo por 
 
 52
 00:02:18,780 --> 00:02:23,070
-class ID, I need to do two
-separate aggregation stages to
+"class_id", necesito hacer dos
+fases de agregación separadas para
 
 53
 00:02:23,070 --> 00:02:23,655
-get the answer.
+obtener la respuesta.
 
 54
 00:02:23,655 --> 00:02:26,990
-A little tricky, but it's very
-useful to be able to do this
+Un poco difícil, pero es muy
+útil poder hacer esto
 
 55
 00:02:26,990 --> 00:02:29,970
-as we'll see in other
-assignments.
+como veremos en otras
+tareas.
 
 56
 00:02:29,970 --> 00:02:31,170
-Now, let's do a quiz.
+Ahora, hagamos un cuestionario.
 
 57
 00:02:31,170 --> 00:02:33,140
-Given the following collection--
-and I've just
+Dada la siguiente colección --
+y acabo de
 
 58
 00:02:33,140 --> 00:02:34,260
-created this collection--
+crear esta colección --
 
 59
 00:02:34,260 --> 00:02:37,600
-with the following documents and
-the following aggregation
+con los siguientes documentos y
+la siguiente consulta de
 
 60
 00:02:37,600 --> 00:02:40,330
-query which has a
-double grouping,
+agregación que tiene una
+agrupación doble,
 
 61
 00:02:40,330 --> 00:02:42,190
-what values are returned?
+¿qué valores devuelve?
 
 62
 00:02:42,190 --> 00:02:45,310
-And I'll just go ahead and tell
-you that there are two
+Y sólo te adelantaré y te diré
+que hay dos
 
 63
 00:02:45,310 --> 00:02:48,790
-values of interest in the
-final result document.
+valores interesantes en el
+documento resultante final.
 
 64
 00:02:48,790 --> 00:02:50,600
-What values are returned?
+¿Qué valores se devuelven?
 
 65
 00:02:50,600 --> 00:02:52,470
-Now, you can do this by
-reasoning your way through it.
+Ahora, puedes hacer esto 
+razonando por ti mismo.
 
 66
 00:02:52,470 --> 00:02:55,062
-Or if you really want, you can
-set up my MongoDB and put all
+O si realmente quieres, puedes
+configurar MongoDB y poner
 
 67
 00:02:55,062 --> 00:02:57,810
-these documents in and it'll
-just tell you the answer.
+todos estos documentos y simplemente
+te dará la respuesta.
 
 68
 00:02:57,810 --> 00:02:59,650
-But it'd be better if you could
-sort of reason your way
+Pero estaría mejor si pudieras
+razonar por ti mismo
 
 69
 00:02:59,650 --> 00:03:00,900
-through it.
+sobre esto.
 
 70
 00:03:00,900 --> 00:03:02,715
