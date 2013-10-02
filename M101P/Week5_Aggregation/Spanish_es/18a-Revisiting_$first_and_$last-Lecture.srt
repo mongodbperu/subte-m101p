@@ -3,583 +3,583 @@
 
 2
 00:00:00,120 --> 00:00:02,820
-Now that we've gone over how a
-sort works in the aggregation
+Ahora que hemos repasado cómo
+funciona "$sort" en el "pipeline"
 
 3
 00:00:02,820 --> 00:00:05,810
-pipeline, we can talk about
-first and last.
+de agregación, podemos hablar
+acerca de "$first" y "$last".
 
 4
 00:00:05,810 --> 00:00:08,480
-First and last are group
-operators, and they're going
+"$first" y "$last" son operadores
+de agrupación y ellos van a
 
 5
 00:00:08,480 --> 00:00:13,500
-to allow us to get the first or
-last value in each group as
+permitirnos obtener el primero
+o el último valor en cada "$group"
 
 6
 00:00:13,500 --> 00:00:16,470
-the aggregation pipeline
-processes the documents.
+en el "pipeline" de agregación
+que procesa los documentos.
 
 7
 00:00:16,470 --> 00:00:19,640
-So, I think a little example
-will make it more clear how
+Pienso que un pequeño ejemplo
+hará más claro cómo
 
 8
 00:00:19,640 --> 00:00:20,680
-this works.
+funciona esto.
 
 9
 00:00:20,680 --> 00:00:23,000
-So, let's say we have
-a set of documents.
+Así que digamos que tenemos
+un conjunto de documentos.
 
 10
 00:00:23,000 --> 00:00:24,940
-And these are the
-documents here.
+Y estos son los
+documentos aquí.
 
 11
 00:00:24,940 --> 00:00:28,260
-And they've been
-sorted by a, b.
+Y han sido ordenados
+por "a" y "b".
 
 12
 00:00:28,260 --> 00:00:31,360
-So they've been sorted by a, b,
-for instance we have this
+Por lo que han sido ordenados por
+"a" y "b", por ejemplo, tenemos este
 
 13
 00:00:31,360 --> 00:00:38,230
-document with value a, 0, b,
-23, then 0 b, 45, 0, b, 97.
+documento con valor "a: 0, b: 23",
+luego "a: 0, b: 45", "a: 0, b: 97".
 
 14
 00:00:38,230 --> 00:00:42,110
-And again, here we
-have 0, b, 17--
+Y de nuevo, aquí tenemos
+"a: 0, b: 17"--
 
 15
 00:00:42,110 --> 00:00:44,470
-excuse me, I wanted
-to make this a 1.
+disculpa, deseé
+hacer esto "a: 1".
 
 16
 00:00:44,470 --> 00:00:48,830
-1, b, 17, 1, 68, and 1, 73.
+"a: 1, b: 17", "a: 1, b: 68"
+y "a: 1, b: 73".
 
 17
 00:00:48,830 --> 00:00:51,720
-So you can see how they're
-sorted a, b.
+Se puede ver cómo están
+ordenados por "a" y "b".
 
 18
 00:00:51,720 --> 00:00:54,570
-Now let's say I want
-to group by a.
+Ahora digamos que deseo
+agrupar por "a".
 
 19
 00:00:54,570 --> 00:00:58,630
-If I group by a then I'm going
-to process the documents
+Si agrupo por "a" entonces
+voy a procesar los documentos
 
 20
 00:00:58,630 --> 00:01:01,980
-logically on this set and
-logically on this set.
+lógicamente en este conjunto
+y lógicamente en este conjunto.
 
 21
 00:01:01,980 --> 00:01:06,450
-And then if I ask for the first
-of b as I'm grouping by
+Y luego si pregunto por el primero
+de "b" como estoy agrupando por "a",
 
 22
 00:01:06,450 --> 00:01:09,160
-a, I'm going to get this value,
-and I'm going to get
+voy a obtener este valor,
+y voy a obtener
 
 23
 00:01:09,160 --> 00:01:10,220
-this value.
+este valor.
 
 24
 00:01:10,220 --> 00:01:13,380
-So, in the grouping by a where
-a is 0, I'm going to get the
+Por ello, en la agrupación por "a"
+donde "a" es cero, voy a obtener el
 
 25
 00:01:13,380 --> 00:01:18,370
-first of b is 23, and a where
-a is 1 the first of b is 17.
+primero de "b" que es 23 y "a" donde
+"a" es uno el primero de "b" es 17.
 
 26
 00:01:18,370 --> 00:01:21,530
-On the other hand, if I ask for
-last, then I'm going to
+Por otro lado, si pregunto
+por "$last", entonces voy a
 
 27
 00:01:21,530 --> 00:01:25,150
-get this value and this value.
+obtener este valor y este valor.
 
 28
 00:01:25,150 --> 00:01:29,390
-So, after a sort phase, these
-first and last operators can
+Así, después de una fase "$sort",
+estos operadores "$first" y "$last"
 
 29
 00:01:29,390 --> 00:01:32,510
-find the first or last document
-in sorted order in
+pueden encontrar el primer y último
+documento de forma ordenada en
 
 30
 00:01:32,510 --> 00:01:33,760
-each group.
+cada grupo.
 
 31
 00:01:33,760 --> 00:01:37,590
-So, let's see how we would use
-this in a practical situation.
+Por tanto, veamos cómo íbamos a
+usar esto en una situación práctica.
 
 32
 00:01:37,590 --> 00:01:38,550
-All right.
+Muy bien.
 
 33
 00:01:38,550 --> 00:01:41,560
-Let's say we wanted to
-find the largest
+Digamos que deseamos
+encontrar la ciudad
 
 34
 00:01:41,560 --> 00:01:43,520
-city in every state.
+más grande para todos los estados.
 
 35
 00:01:43,520 --> 00:01:45,010
-So, how would we do this?
+¿Cómo podríamos hacer esto?
 
 36
 00:01:45,010 --> 00:01:49,210
-Well, we would have to find the
-population of the city in
+Bueno, tendríamos que encontrar
+la población de la ciudad en
 
 37
 00:01:49,210 --> 00:01:53,280
-every state, and I do this here
-in this first grouping
+todos los estados y hacer esto de
+aquí en esta primera agrupación
 
 38
 00:01:53,280 --> 00:01:57,570
-where I'm looking at a group
-by state and city.
+donde estoy haciendo una
+agrupación por "state" y "city".
 
 39
 00:01:57,570 --> 00:02:02,130
-And then I get the population
-as the sum of the pop in a
+Y luego obtengo la población
+como la suma del "$pop" en una
 
 40
 00:02:02,130 --> 00:02:03,540
-group by state and city.
+agrupación por "state" y "city".
 
 41
 00:02:03,540 --> 00:02:06,540
-And I actually have just this
-part of the query and I'll
+Y en realidad tengo sólo esta
+parte de la consulta y te voy
 
 42
 00:02:06,540 --> 00:02:07,380
-show you the results.
+a mostrar los resultados.
 
 43
 00:02:07,380 --> 00:02:09,539
-You can visualize what it does
-before we can move on.
+Puedes visualizar lo que hace
+antes que podamos continuar.
 
 44
 00:02:09,539 --> 00:02:11,295
-I call that phase one.
+Llamo a esto la fase uno.
 
 45
 00:02:11,295 --> 00:02:12,675
-Let's look at that.
+Echemos un vistazo a eso.
 
 46
 00:02:12,675 --> 00:02:14,920
-I'm going to pipe it some more,
-just to make it a little
+Voy al "pipe" una vez más,
+sólo para hacerlo un poco más
 
 47
 00:02:14,920 --> 00:02:16,280
-cleaner on the eyes.
+limpio para los ojos.
 
 48
 00:02:16,280 --> 00:02:20,990
-So you can see that what we get
-is basically every city in
+Se puede ver que lo que obtenemos
+es realmente todas las ciudades en
 
 49
 00:02:20,990 --> 00:02:23,340
-every state we get
-the population.
+todos los estados y se
+obtiene la población.
 
 50
 00:02:23,340 --> 00:02:27,330
-So, Smoot, I guess, Wyoming.
+Así, Smoot, supongo, Wyoming.
 
 51
 00:02:27,330 --> 00:02:28,860
-And we do that.
+Y lo hacemos.
 
 52
 00:02:28,860 --> 00:02:30,370
-Now we have the population
-of every city.
+Ahora tenemos la población
+de todas las ciudades.
 
 53
 00:02:30,370 --> 00:02:31,770
-So what do we do next?
+Entonces, ¿qué hacemos ahora?
 
 54
 00:02:31,770 --> 00:02:35,480
-Well, the next thing we need to
-do is we need to sort it by
+Bueno, lo siguiente es que lo que
+necesitamos hacer es ordenarlo por
 
 55
 00:02:35,480 --> 00:02:37,680
-state comma population.
+"state" y "population".
 
 56
 00:02:37,680 --> 00:02:43,320
-And remember that these
-documents have and _id of
+Y recuerda que estos
+documentos tienen un "_id" de
 
 57
 00:02:43,320 --> 00:02:49,730
-state and city, so my sort has
-to be on _id.state and
+"state" y "city", así mi "$sort"
+va a ser en "_id.state" y
 
 58
 00:02:49,730 --> 00:02:50,830
-population.
+"population".
 
 59
 00:02:50,830 --> 00:02:52,580
-So we do that.
+Así que lo hacemos.
 
 60
 00:02:52,580 --> 00:02:57,300
-And you can see that we sort
-by _id.state and by
+Y puedes ver que ordenamos
+por "_id.state" y por
 
 61
 00:02:57,300 --> 00:02:58,750
-population.
+"population".
 
 62
 00:02:58,750 --> 00:03:01,730
-And we don't need dollar signs
-here because this is a sort
+Y no necesitamos signos de dólar
+($) porque esta es una operación
 
 63
 00:03:01,730 --> 00:03:05,140
-operation and the key names
-are on the left side here.
+"$sort" y los nombres de las claves
+están en el lado izquierdo aquí.
 
 64
 00:03:05,140 --> 00:03:07,590
-So I call this phase two.
+Lo llamo la fase dos.
 
 65
 00:03:07,590 --> 00:03:10,980
-Let's see what we get out
-of the system for that.
+Vamos a ver lo que obtenemos
+del sistema para eso.
 
 66
 00:03:10,980 --> 00:03:12,110
-All right.
+Muy bien.
 
 67
 00:03:12,110 --> 00:03:17,170
-So, in phase two, in every
-state, I have a descending
+En la fase dos, en cada
+estado, tendo una lista
 
 68
 00:03:17,170 --> 00:03:19,660
-list of cities by population.
+descendente de las
+ciudades por población.
 
 69
 00:03:19,660 --> 00:03:23,340
-So I can already see that in
-Alaska, Anchorage is the
+Así que ya puedes ver que en
+Alaska, Anchorage es la
 
 70
 00:03:23,340 --> 00:03:24,250
-biggest city.
+ciudad más grande.
 
 71
 00:03:24,250 --> 00:03:25,760
-And then it's going to go
-through all the other Alaska
+Y luego va a pasar por
+todas las otras ciudades
 
 72
 00:03:25,760 --> 00:03:33,110
-cities, and eventually it'll
-go on to another state.
+de Alaska y eventualmente
+va a pasar por otro estado.
 
 73
 00:03:33,110 --> 00:03:34,750
-We have a lot of cities
-in Alaska.
+Tenemos una gran cantidad
+de ciudades en Alaska.
 
 74
 00:03:34,750 --> 00:03:37,210
-So let's go to phase three.
+Vayamos a la fase tres.
 
 75
 00:03:37,210 --> 00:03:42,670
-So, in phase three, now I want
-to pick out just the first one
+En la fase tres, ahora deseamos
+seleccionar sólo el primero
 
 76
 00:03:42,670 --> 00:03:45,400
-when I group by state.
+cuando agrupe por "state".
 
 77
 00:03:45,400 --> 00:03:47,700
-So, just to review those
-documents again to remember
+Por ello, sólo para revisar estos
+documentos de nuevo, recuerda
 
 78
 00:03:47,700 --> 00:03:49,440
-how they look.
+cómo se veían.
 
 79
 00:03:49,440 --> 00:03:53,750
-Those documents have _id, which
-is the document of state
+Estos documentos tienen "_id",
+que es el documento de "state"
 
 80
 00:03:53,750 --> 00:03:56,210
-and city, and a population
-here.
+y "city" y un "population" aquí.
 
 81
 00:03:56,210 --> 00:04:00,590
-So, this next grouping is
-going to group by state.
+Esta nueva agrupación
+va a agrupar por "state".
 
 82
 00:04:00,590 --> 00:04:04,560
-For each state, we want the
-city which is the first
+Por cada estado, queremos la
+ciudad que está en el primer
 
 83
 00:04:04,560 --> 00:04:06,450
-document in that grouping.
+documento en dicha agrupación.
 
 84
 00:04:06,450 --> 00:04:08,420
-So the first city.
+La primera ciudad.
 
 85
 00:04:08,420 --> 00:04:10,840
-$_id.city.
+"$_id.city".
 
 86
 00:04:10,840 --> 00:04:11,810
-First one.
+La primera.
 
 87
 00:04:11,810 --> 00:04:14,640
-And population, first
-population.
+Y "population:
+{$first: '$population'}".
 
 88
 00:04:14,640 --> 00:04:17,910
-And that's going to be what we
-need to get the information
+Y eso va a ser lo que necesitamos
+para obtener la información
 
 89
 00:04:17,910 --> 00:04:18,620
-we're looking for.
+que buscamos.
 
 90
 00:04:18,620 --> 00:04:19,769
-So that's called phase three.
+Eso es llamada la fase tres.
 
 91
 00:04:19,769 --> 00:04:21,690
-Let's take a look at that.
+Echemos un vistazo a eso.
 
 92
 00:04:21,690 --> 00:04:22,340
-All right.
+Muy bien.
 
 93
 00:04:22,340 --> 00:04:25,810
-In phase three, I now have
-filtered it down to the
+En la fase tres, que ahora
+ya he filtrado a las
 
 94
 00:04:25,810 --> 00:04:30,330
-biggest cities in every single
-state by using my first
+ciudades más grandes de cada
+estado usando mi primer
 
 95
 00:04:30,330 --> 00:04:34,140
-operator on what was previously
-a descending sort
+operador en lo que antes
+era un orden descendente
 
 96
 00:04:34,140 --> 00:04:37,180
-by state comma population.
+por "state" y "population".
 
 97
 00:04:37,180 --> 00:04:40,440
-But they're not in any
-particular order, which is
+Pero no están en ningún
+orden en particular, que es
 
 98
 00:04:40,440 --> 00:04:42,790
-interesting, because they were
-sorted by state before and
+interesante, porque fueron
+ordenados por "state" antes y
 
 99
 00:04:42,790 --> 00:04:44,420
-after the group by phase,
-they seem to
+después de la fase de
+agrupación, parecen estar
 
 100
 00:04:44,420 --> 00:04:47,290
-be arbitrarily ordered.
+ordenados arbitrariamente.
 
 101
 00:04:47,290 --> 00:04:51,150
-So to fix that up, what we're
-going to do is finally we're
+Así que para arreglarlo, lo que
+vamos a hacer es, finalmente,
 
 102
 00:04:51,150 --> 00:04:52,510
-going to sort it
-by state again.
+vamos a ordenarlo
+por "state" otra vez.
 
 103
 00:04:52,510 --> 00:04:55,480
-And the final part of this is
-that we're going to sort it by
+Y la parte final de esto es
+que vamos a ordenarlo por
 
 104
 00:04:55,480 --> 00:04:59,300
-state and that's going to give
-us the final result.
+"state" y nos va a dar
+el resultado final.
 
 105
 00:04:59,300 --> 00:05:00,920
-Let's take a look at that.
+Vamos a echar un vistazo a eso.
 
 106
 00:05:00,920 --> 00:05:04,660
-Now we can see that in Alaska
-it's Anchorage, in Alabama
+Ahora podemos ver que en Alaska
+es Anchorage, en Alabama
 
 107
 00:05:04,660 --> 00:05:09,240
-it's Birmingham, and so forth
-all the way down.
+es Birmingham, y así
+sucesivamente hasta el final.
 
 108
 00:05:09,240 --> 00:05:12,820
-Now we have the largest
-city in every
+Ahora tenemos la ciudad
+más grande de todos los
 
 109
 00:05:12,820 --> 00:05:15,640
-state ordered by state.
+estados ordenados por "state".
 
 110
 00:05:15,640 --> 00:05:17,150
-If we wanted to clean it up a
-little bit more, we could do a
+Si quisiéramos limpiarlo un
+poco más, podríamos hacer un
 
 111
 00:05:17,150 --> 00:05:22,010
-project, and we could rename
-this _id operator to be state,
+"$project", y podríamos renombrar
+este "_id" para ser "state",
 
 112
 00:05:22,010 --> 00:05:24,190
-but I didn't do that.
+pero no lo hice.
 
 113
 00:05:24,190 --> 00:05:24,560
-All right.
+Muy bien.
 
 114
 00:05:24,560 --> 00:05:26,090
-So, let's do a quiz.
+Hagamos un cuestionario.
 
 115
 00:05:26,090 --> 00:05:27,990
-Given the following
-collection--
+Dada la siguiente colección--
 
 116
 00:05:27,990 --> 00:05:31,430
-and this is a collection we used
-on an earlier problem, a
+y esta es una colección que hemos
+usado en un problema anterior,
 
 117
 00:05:31,430 --> 00:05:32,780
-little collection--
+una pequeña colección--
 
 118
 00:05:32,780 --> 00:05:35,470
-what would be the value of
-c in the result from this
+¿Cuál sería el valor de
+"c" en el resultado de esta
 
 119
 00:05:35,470 --> 00:05:37,170
-aggregation query?
+consulta de agregación?
 
 120
 00:05:37,170 --> 00:05:39,660
-And you can see what we're doing
-here is, well, you can
+Y puedes ver lo que estamos
+haciendo aquí es, bueno, puedes
 
 121
 00:05:39,660 --> 00:05:42,540
-read it, but we're matching on a
-being 0 and we're sorting by
+leerlo, pero estamos haciendo "$match"
+en "a: 0" y estamos ordenando por
 
 122
 00:05:42,540 --> 00:05:45,670
-c descending, and then we're
-doing a group where we look at
+"c" descendentemente, y luego estamos
+haciendo un "$group" donde nos fijamos
 
 123
 00:05:45,670 --> 00:05:47,160
-the first value of c.
+en el primer valor de "c".
 
 124
 00:05:47,160 --> 00:05:51,250
-And to figure that out,
-what's the value of c.
+Y averigua eso,
+¿cuál es el valor de "c"?.
 
 125
 00:05:51,250 --> 00:05:53,160
-I'll just tell you, there's
-only one value of c.
+Te diré que sólo
+hay un valor de "c".
 
 126
 00:05:53,160 --> 00:05:55,300
-There's only one document
-in the result set.
+Sólo hay un documento
+en el conjunto resultante.
 
 127
 00:05:55,300 --> 00:05:56,550
