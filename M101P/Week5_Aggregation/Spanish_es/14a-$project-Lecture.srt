@@ -3,438 +3,438 @@
 
 2
 00:00:00,160 --> 00:00:02,270
-The next stage of the
-aggregation pipeline that I
+La siguiente fase del
+"pipeline" de agregación que
 
 3
 00:00:02,270 --> 00:00:05,560
-want to show you is
-the project phase.
+quiero enseñarte es
+la fase "$project".
 
 4
 00:00:05,560 --> 00:00:08,920
-Now, the project phase lets you
-reshape the documents as
+Ahora, la fase "$project" te permite
+formatear los documentos tal
 
 5
 00:00:08,920 --> 00:00:10,240
-they come through
-the pipeline.
+como vienen
+del "pipeline".
 
 6
 00:00:10,240 --> 00:00:13,040
-It's a one to one stage
-of the pipeline.
+Es una fase del
+"pipeline" uno a uno.
 
 7
 00:00:13,040 --> 00:00:15,790
-So, for every document that
-comes into the project phase,
+Así, por cada documento que
+entra en la fase "$project",
 
 8
 00:00:15,790 --> 00:00:18,280
-one document will leave
-the project phase.
+un documento dejará
+la fase "$project".
 
 9
 00:00:18,280 --> 00:00:20,820
-You can do things like
-remove a key.
+Puedes hacer cosas como
+eliminar una clave.
 
 10
 00:00:20,820 --> 00:00:22,640
-You can add a new key.
+Puedes añadir una nueva clave.
 
 11
 00:00:22,640 --> 00:00:23,940
-You can reshape the keys.
+Puedes formatear las claves.
 
 12
 00:00:23,940 --> 00:00:26,730
-And by that I mean that you
-could take a key and decide to
+Y con eso quiero decir que
+podrías tomar una clave y decidir
 
 13
 00:00:26,730 --> 00:00:29,450
-put it into a sub document
-with another key.
+ponerla en un subdocumento
+con otra clave.
 
 14
 00:00:29,450 --> 00:00:31,430
-There's also some simple
-functions that you
+También existen algunas funciones
+sencillas que
 
 15
 00:00:31,430 --> 00:00:32,750
-can use on the keys.
+puedes usar sobre las claves.
 
 16
 00:00:32,750 --> 00:00:35,900
-Things like toUpper
-and toLower.
+Cosas como "$toUpper"
+y "$toLower".
 
 17
 00:00:35,900 --> 00:00:38,130
-This will make a value uppercase
-and this will make a
+Esto convertirá un valor a mayúsculas
+y esto lo convertirá
 
 18
 00:00:38,130 --> 00:00:39,620
-value all lowercase.
+a minúsculas.
 
 19
 00:00:39,620 --> 00:00:42,590
-This can be useful if you want
-to standardize the values.
+Esto puede ser útil si quieres
+estandarizar los valores.
 
 20
 00:00:42,590 --> 00:00:44,840
-You can then do some grouping on
-them if there's some mixed
+Puedes hacer algunas agrupaciones sobre
+ellos si hay algunos caracteres
 
 21
 00:00:44,840 --> 00:00:48,050
-case going on in the values
-prior to grouping.
+mezclados en los valores
+antes de agrupar.
 
 22
 00:00:48,050 --> 00:00:50,400
-You can add something
-to the value.
+Puedes sumar algo
+al valor.
 
 23
 00:00:50,400 --> 00:00:53,830
-If it's an integer, you can add
-10, or 20, or one, or two.
+Si es un entero, puedes sumar
+10, 20, 1 o 2.
 
 24
 00:00:53,830 --> 00:00:56,190
-You can multiply by a number.
+Puedes multiplicar por un número.
 
 25
 00:00:56,190 --> 00:00:58,320
-So let me show you an example.
+Déjame que te muestre un ejemplo.
 
 26
 00:00:58,320 --> 00:01:00,640
-We have this little product
-collection that I've been
+Tenemos esta pequeña colección
+de productos que te he estado
 
 27
 00:01:00,640 --> 00:01:05,660
-showing you and doing a lot of
-little transformations on, and
+enseñando y sobre la que he estado haciendo
+un montón de pequeñas transformaciones y
 
 28
 00:01:05,660 --> 00:01:08,010
-I want just reshape
-these documents.
+sólo quiero formatear
+estos documentos.
 
 29
 00:01:08,010 --> 00:01:12,520
-So to do that, I have this
-aggregation query,
+Así que para hacer eso, tengo esta
+consulta de agregación,
 
 30
 00:01:12,520 --> 00:01:14,420
-db.products.aggregate.
+"db.products.aggregate".
 
 31
 00:01:14,420 --> 00:01:17,400
-And rather than call $group,
-I'm calling $project.
+Y en lugar de llamar a "$group",
+estoy llamando a "$project".
 
 32
 00:01:17,400 --> 00:01:17,710
-Now, remember.
+Ahora, recuerda.
 
 33
 00:01:17,710 --> 00:01:19,380
-This is an array of stages.
+Esto es un array de fases.
 
 34
 00:01:19,380 --> 00:01:22,630
-So I could have projections
-and groupings, and I could
+Por lo que podría tener proyecciones
+y agrupaciones, y podría
 
 35
 00:01:22,630 --> 00:01:24,740
-have multiple projections
-and multiple groupings.
+tener múltiples proyecciones
+y múltiples agrupaciones.
 
 36
 00:01:24,740 --> 00:01:26,840
-Right now I'm just going to
-have a single projection.
+Justo ahora voy a
+tener una única proyección.
 
 37
 00:01:26,840 --> 00:01:29,490
-And the first I've done is
-specify that I don't want to
+Y lo primero que he hecho es
+especificar que no quiero
 
 38
 00:01:29,490 --> 00:01:31,700
-include the _id field.
+incluir el campo "_id".
 
 39
 00:01:31,700 --> 00:01:35,110
-Then I've also specified that
-I want to create a new key
+Luego también he indicado que
+quiero crear una clave
 
 40
 00:01:35,110 --> 00:01:38,650
-called maker and have it
-contain the value of
+llamada "maker" y que 
+contenga el valor de
 
 41
 00:01:38,650 --> 00:01:40,160
-$manufacturer.
+"$manufacturer".
 
 42
 00:01:40,160 --> 00:01:42,440
-And you'll notice that
-$manufacturer is protected by
+Y te darás cuenta que
+"$manufacturer" está entre
 
 43
 00:01:42,440 --> 00:01:43,430
-quotes here.
+comillas aquí.
 
 44
 00:01:43,430 --> 00:01:46,540
-Don't forget to do that if
-you're calling upon its value.
+No olvides hacer eso si
+estás solicitando su valor.
 
 45
 00:01:46,540 --> 00:01:48,870
-And I'm running it through the
-toLower function because I
+Y lo estoy ejecutando a través de la
+función "$toLower" porque
 
 46
 00:01:48,870 --> 00:01:51,770
-want to get a lowercase
-version of that.
+quiero obtener una versión
+en minúsculas de eso.
 
 47
 00:01:51,770 --> 00:01:54,830
-Then I'm creating a new key
-called details, which is a
+Luego estoy creando una nueva clave
+llamada "details", que es un
 
 48
 00:01:54,830 --> 00:01:57,350
-document that has
-two keys in it.
+documento que contiene
+dos claves.
 
 49
 00:01:57,350 --> 00:01:59,940
-One is a category, which is
-the old category from the
+Una es "category", que es
+la antigua "category" del
 
 50
 00:01:59,940 --> 00:02:03,090
-document, and the other is the
-price, which is using the
+documento, y la otra es 
+"price", que está usando la
 
 51
 00:02:03,090 --> 00:02:05,530
-multiply function and
-is multiplying.
+función "$multiply" y
+está multiplicando.
 
 52
 00:02:05,530 --> 00:02:08,130
-And you'll notice this is
-an array right here.
+Y notarás que esto
+justo aquí es un array.
 
 53
 00:02:08,130 --> 00:02:10,840
-It's multiplying the
-price times 10.
+Está multiplicando el
+precio por 10.
 
 54
 00:02:10,840 --> 00:02:14,110
-And finally, I've got another
-key called item which contains
+Y por último, tengo otra
+clave llamada "item" que contiene
 
 55
 00:02:14,110 --> 00:02:17,150
-the old value of the
-key called name.
+el valor antiguo de la
+clave llamada "name".
 
 56
 00:02:17,150 --> 00:02:20,300
-So, let's see what happens
-when I run that.
+Así que veamos qué sucede
+cuando ejecuto eso.
 
 57
 00:02:20,300 --> 00:02:21,250
-All right.
+De acuerdo.
 
 58
 00:02:21,250 --> 00:02:23,410
-If I run that, I'm going
-to get a result that
+Si ejecuto eso, voy a
+obtener un resultado que
 
 59
 00:02:23,410 --> 00:02:24,860
-looks just like this.
+se ve justo como esto.
 
 60
 00:02:24,860 --> 00:02:26,220
-I've already run it.
+Ya lo he ejecutado.
 
 61
 00:02:26,220 --> 00:02:29,960
-So you can see here, it says
-maker, Amazon, details,
+Así que puedes ver aquí, dice
+"maker: 'Amazon'", "details:{
 
 62
 00:02:29,960 --> 00:02:32,120
-category, Tablets,
-price, 1990.
+category: 'Tablets',
+price: 1990}".
 
 63
 00:02:32,120 --> 00:02:33,830
-It's been multiplied by 10.
+Se ha multiplicado por 10.
 
 64
 00:02:33,830 --> 00:02:36,290
-And finally, item,
-Kindle Fire.
+Y finalmente, "item:
+'Kindle Fire'".
 
 65
 00:02:36,290 --> 00:02:39,640
-So the main reason you typically
-project is because
+Así que la principal razón por la cual
+normalmente haces una proyección es porque
 
 66
 00:02:39,640 --> 00:02:42,460
-you want to clean up the
-documents, but you can also do
+quieres limpiar los
+documentos, pero también puedes hacerlo
 
 67
 00:02:42,460 --> 00:02:45,360
-it at the beginning if you want
-to eliminate and cherry
+al principio si quieres
+eliminar y manipular
 
 68
 00:02:45,360 --> 00:02:47,730
-pick certain keys out
-of the document.
+ciertas claves
+del documento.
 
 69
 00:02:47,730 --> 00:02:49,760
-That could save a lot of memory
-when you're running
+Eso podría ahorrar un montón de memoria
+cuando estás recorriendo
 
 70
 00:02:49,760 --> 00:02:51,510
-through a large number
-of documents.
+un gran número
+de documentos.
 
 71
 00:02:51,510 --> 00:02:54,740
-It's essentially a form of
-filtering step that you would
+Esencialmente es una especie
+de paso de filtrado que
 
 72
 00:02:54,740 --> 00:02:57,140
-get rid of a bunch of data
-before you send it to the
+te libra de un montón de datos
+antes de enviarlos a la
 
 73
 00:02:57,140 --> 00:02:58,760
-grouping phase.
+fase de agrupación.
 
 74
 00:02:58,760 --> 00:03:01,330
-OK, it is time for a quiz.
+OK, es hora de hacer un cuestionario.
 
 75
 00:03:01,330 --> 00:03:04,810
-Now, thinking about that zip
-code collection that we've
+Ahora, pensando en esa colección
+"zipcodes" que hemos
 
 76
 00:03:04,810 --> 00:03:08,320
-been looking at before, the
-documents look like this if
+estado viendo antes, los
+documentos se ven como éste, si
 
 77
 00:03:08,320 --> 00:03:09,350
-you recall.
+recuerdas.
 
 78
 00:03:09,350 --> 00:03:13,140
-And I'd like you to write a
-aggregation query that has a
+Y me gustaría que escribieras una
+consulta de agregación que tenga una
 
 79
 00:03:13,140 --> 00:03:18,310
-single projection stage that
-will transform a document to
+única fase de proyección que
+transformará un documento para
 
 80
 00:03:18,310 --> 00:03:19,940
-look like this.
+que se vea como éste.
 
 81
 00:03:19,940 --> 00:03:23,700
-And you'll notice that this
-is lowercase and that the
+Y te darás cuenta que estas
+son minúsculas,
 
 82
 00:03:23,700 --> 00:03:28,630
-location is gone, and that the
-state is still here, and that
+"location" no aparece,
+"state" está todavía aquí y
 
 83
 00:03:28,630 --> 00:03:33,180
-the _id seems to be gone but
-there's a new zip code key and
+"_id" parece que se ha ido pero
+hay una clave nueva "zip" que
 
 84
 00:03:33,180 --> 00:03:36,020
-it's got the old
-value from _id.
+contiene el valor
+antiguo de "_id".
 
 85
 00:03:36,020 --> 00:03:39,300
-And for the purpose of this
-query, just so that the quiz
+Y para el propósito de esta
+consulta, sólo para que el validador
 
 86
 00:03:39,300 --> 00:03:42,090
-checker can get it right, make
-sure that if there's anything
+del cuestionario pueda darla por buena,
+asegúrate que si no hay nada
 
 87
 00:03:42,090 --> 00:03:44,780
-you're going to do with the
-_id field that you specify
+que vayas a hacer con el
+campo "_id" especifícalo
 
 88
 00:03:44,780 --> 00:03:46,710
-that first in the aggregation
-query.
+primero en la consulta
+de agregación.
 
 89
 00:03:46,710 --> 00:03:50,340
-And everything else should
-appear in the exact order it
+Y todo lo demás debería
+aparecer en el orden exacto en que
 
 90
 00:03:50,340 --> 00:03:54,300
-appears in these two documents,
-since that's the
+aparece en estos dos documentos,
+ya que ése es el
 
 91
 00:03:54,300 --> 00:03:56,230
-order it'll create
-the results in.
+orden en que creará
+los resultados.
 
 92
 00:03:56,230 --> 00:03:58,580
-So you need to do that just
-to get the answer right.
+Así que necesitas hacer eso
+para obtener la respuesta correcta.
 
 93
 00:03:58,580 --> 00:03:59,830
