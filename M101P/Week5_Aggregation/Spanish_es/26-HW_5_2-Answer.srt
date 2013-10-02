@@ -3,229 +3,229 @@
 
 2
 00:00:00,120 --> 00:00:02,820
-In this problem, we asked you
-to figure out the average
+En este programa te pedíamos
+averiguar el promedio
 
 3
 00:00:02,820 --> 00:00:06,220
-population of cities in
-California and New York that
+de la población de las ciudades en
+California y New York que
 
 4
 00:00:06,220 --> 00:00:09,260
-have populations individually
-over 25,000.
+tengan poblaciones individualmente
+superiores a 25000.
 
 5
 00:00:09,260 --> 00:00:12,210
-And we also asked you to
-consider a city that appears
+Y también te pedíamos
+considerar a una ciudad que aparece
 
 6
 00:00:12,210 --> 00:00:15,180
-in both states to be
-a separate city.
+en ambos estados como
+una ciudad separada.
 
 7
 00:00:15,180 --> 00:00:17,330
-So if the same city name appears
-in both states, it's a
+Por lo que si el mismo nombre de ciudad aparece
+en ambos estados, es una
 
 8
 00:00:17,330 --> 00:00:17,980
-separate city.
+ciudad separada.
 
 9
 00:00:17,980 --> 00:00:20,940
-Now, it's a little tricky
-because of that, but it's
+Ahora, es un poco difícil
+debido a eso, pero es
 
 10
 00:00:20,940 --> 00:00:23,240
-fairly straightforward once
-you sort of pull it apart.
+bastante sencillo una vez
+que las separas.
 
 11
 00:00:23,240 --> 00:00:24,960
-I know that for a lot of people,
-some of the English
+Sé que para un montón de gente,
+el propio inglés
 
 12
 00:00:24,960 --> 00:00:27,610
-itself was probably the
-most challenging part.
+ya fue probablemente la
+parte más desafiante.
 
 13
 00:00:27,610 --> 00:00:31,260
-Now, we see that the
-answer is 82,541.
+Ahora, vemos que la
+respuesta es 82541.
 
 14
 00:00:31,260 --> 00:00:34,560
-So let's go through
-this step by step.
+Así que analicemos
+esto paso por paso.
 
 15
 00:00:34,560 --> 00:00:37,260
-The first thing we do is we want
-to look at the states,
+Lo primero que hacemos es
+mirar los estados,
 
 16
 00:00:37,260 --> 00:00:38,660
-California and New York.
+California y New York.
 
 17
 00:00:38,660 --> 00:00:40,710
-Because this problem only refers
-to those, so we can
+Como este problema sólo se refiere
+a éstos, podemos
 
 18
 00:00:40,710 --> 00:00:42,710
-immediately filter
-out by that.
+filtrar inmediatamente
+por eso.
 
 19
 00:00:42,710 --> 00:00:47,390
-Then, we have to group by city
-and state in order to separate
+Luego, tenemos que agrupar por "city"
+y "state" para separar
 
 20
 00:00:47,390 --> 00:00:49,740
-out the cities from the
-two different states.
+las ciudades de los
+dos estados diferentes.
 
 21
 00:00:49,740 --> 00:00:52,330
-That is, that a city that
-appears in two different
+Esto es, que una ciudad que
+aparece en dos estados
 
 22
 00:00:52,330 --> 00:00:55,100
-states is a different city
-and it will be considered
+diferentes es una ciudad diferente
+y será considerada
 
 23
 00:00:55,100 --> 00:00:58,800
-separately if we have the ID
-for this grouping be state
+separadamente si tenemos como identificador
+para esta agrupación "state"
 
 24
 00:00:58,800 --> 00:01:01,000
-comma city, which is
-what we've done.
+y "city", que es
+lo que hemos hecho.
 
 25
 00:01:01,000 --> 00:01:03,620
-And then, remember, we're
-looking at these zip code
+Y luego, recuerda, estamos 
+mirando estos registros a nivel
 
 26
 00:01:03,620 --> 00:01:05,670
-level records, and there
-are multiple zip
+de código postal, y hay
+múltiples códigos postales
 
 27
 00:01:05,670 --> 00:01:07,350
-codes in the same state.
+en el mismo estado.
 
 28
 00:01:07,350 --> 00:01:10,630
-We then take the population in
-each zip code and add it to
+Entonces tomamos la población por
+cada código postal y la añadimos
 
 29
 00:01:10,630 --> 00:01:13,910
-that entry by state
-comma city.
+a esa entrada por "state,
+city".
 
 30
 00:01:13,910 --> 00:01:16,280
-Now, we want to filter out
-only for cities that have
+Ahora, queremos filtrar
+sólo por ciudades que tienen
 
 31
 00:01:16,280 --> 00:01:20,260
-population greater than 25,000,
-so we do a matching
+población mayor que 25000,
+por lo que hacemos una fase "$match"
 
 32
 00:01:20,260 --> 00:01:21,800
-step right here.
+justo aquí.
 
 33
 00:01:21,800 --> 00:01:26,200
-And we look for population
-greater than 25,000.
+Y buscamos población
+mayor que 25000.
 
 34
 00:01:26,200 --> 00:01:27,120
-That's the match.
+Ése es el "$match".
 
 35
 00:01:27,120 --> 00:01:29,953
-And population is the field we
-named here, so this field and
+Y "population" es el campo que
+nombramos aquí, por lo que este campo y
 
 36
 00:01:29,953 --> 00:01:31,320
-this field correspond
-with each other.
+este campo se corresponden
+el uno con el otro.
 
 37
 00:01:31,320 --> 00:01:33,720
-And now, we just need to get the
-average population across
+Y ahora, tan solo necesitamos obtener la
+población promedio 
 
 38
 00:01:33,720 --> 00:01:34,740
-all those cities.
+de todas esas ciudades.
 
 39
 00:01:34,740 --> 00:01:36,240
-So we need to do
-a new grouping.
+Así que necesitamos hacer
+una nueva agrupación.
 
 40
 00:01:36,240 --> 00:01:40,160
-And this time, we're going to
-group by ID null, which is a
+Y esta vez vamos a 
+agrupar por "_id: null", que es una
 
 41
 00:01:40,160 --> 00:01:43,980
-way of getting a summation or an
-aggregate across an entire
+forma de obtener una suma o una
+agregación de una colección
 
 42
 00:01:43,980 --> 00:01:44,920
-collection.
+entera.
 
 43
 00:01:44,920 --> 00:01:46,990
-And we're just going to get the
-average of the pop field.
+Y simplemente vamos a obtener el
+promedio del campo "pop".
 
 44
 00:01:46,990 --> 00:01:49,560
-Let's look at that and see
-what the answer is.
+Echemos un vistazo y veamos
+cuál es la respuesta.
 
 45
 00:01:49,560 --> 00:01:51,240
-And I've already run it here.
+Ya lo he ejecutado aquí.
 
 46
 00:01:51,240 --> 00:01:55,180
-You can see that the answer
-is 82,541.46,
+Puedes ver que la respuesta
+es 82541,46,
 
 47
 00:01:55,180 --> 00:01:58,810
-or just 82,541 rounded.
+o simplemente 82541 redondeado.
 
 48
 00:01:58,810 --> 00:02:00,080
-And that was the answer
-to the problem.
+Y ésa era la respuesta
+al problema.
 
 49
 00:02:00,080 --> 00:02:01,330
