@@ -28,5 +28,6 @@ a lo que queda.
 00:00:10,440 --> 00:00:12,760
 Así que no hay nada que mostrar,
 por lo que muestra cero.
+
 8
 00:00:12,760 --> 00:00:14,010
