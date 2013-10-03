@@ -32,7 +32,7 @@ a resultar
 
 8
 00:00:13,310 --> 00:00:15,290
-ser Elizabet Kleine.
+ser "Elizabet Kleine".
 
 9
 00:00:15,290 --> 00:00:16,890
@@ -84,7 +84,7 @@ para recuperarlo en orden inverso.
 19
 00:00:36,540 --> 00:00:40,070
 Y simplemente lo limité a 10,
-para facilitarlo a la vista.
+para verlo con facilidad.
 
 20
 00:00:40,070 --> 00:00:45,580
@@ -94,16 +94,16 @@ respuesta está justo aquí.
 21
 00:00:45,580 --> 00:00:46,710
 Puedes ver que la respuesta
-es Elizabet
+es "Elizabet
 
 22
 00:00:46,710 --> 00:00:49,790
-Kleine, que tiene 503 comentarios.
+Kleine", que tiene 503 comentarios.
 
 23
 00:00:49,790 --> 00:00:51,040
 Y luego baja
-a partir ahí.
+a partir de ahí.
 
 24
 00:00:51,040 --> 00:00:52,452
