@@ -3,297 +3,297 @@
 
 2
 00:00:00,130 --> 00:00:02,830
-In this problem, we asked you to
-figure out who the easiest
+En este problema, te pedíamos
+averiguar quién es el calificador
 
 3
 00:00:02,830 --> 00:00:04,640
-grader on campus is.
+más fácil del campus.
 
 4
 00:00:04,640 --> 00:00:08,580
-Now, by easiest grader we meant
-the person who has the
+Ahora, por calificador queremos decir
+la persona que imparte las
 
 5
 00:00:08,580 --> 00:00:12,590
-classes, or the class, with the
-highest overall average.
+clases, o la clase, con el
+promedio total más alto.
 
 6
 00:00:12,590 --> 00:00:14,480
-And to figure out the class
-with the highest overall
+Y para averiguar la clase
+con el promedio total
 
 7
 00:00:14,480 --> 00:00:16,960
-average, you need to first
-figure out the average for
+más alto, primero necesitas
+averiguar el promedio por
 
 8
 00:00:16,960 --> 00:00:18,960
-each student, because there
-are variable number of
+cada estudiante, porque hay
+un número variable de
 
 9
 00:00:18,960 --> 00:00:20,440
-assessments for each
-student, and then
+evaluaciones por cada
+estudiante y a continuación
 
 10
 00:00:20,440 --> 00:00:21,610
-average those numbers.
+hacer el promedio de esos números.
 
 11
 00:00:21,610 --> 00:00:25,200
-So it was just a double group
-by to figure it out, and a
+Por lo que simplemente era una doble 
+agrupación para averiguarlo y un
 
 12
 00:00:25,200 --> 00:00:25,890
-single unwind.
+único "$unwind".
 
 13
 00:00:25,890 --> 00:00:27,940
-So let's go through
-that step by step.
+Así que analicemos
+eso, paso por paso.
 
 14
 00:00:27,940 --> 00:00:30,830
-First of all, this is the
-way a document looks.
+Primero de todo, así es como
+se ve un documento.
 
 15
 00:00:30,830 --> 00:00:33,350
-And I'll show it to you
-here on the terminal.
+Y te lo enseñaré
+aquí en el terminal.
 
 16
 00:00:33,350 --> 00:00:36,900
-So you have a student, and he
-or she has, let's see, an
+Así que tienes un estudiante y él
+o ella tiene, veamos, un
 
 17
 00:00:36,900 --> 00:00:39,920
-exam, a quiz, a homework,
-a homework, a homework.
+"exam", un "quiz", un "homework",
+un "homework", un "homework".
 
 18
 00:00:39,920 --> 00:00:42,940
-And we need to figure out the
-average of these assessments.
+Y necesitamos averiguar el
+promedio de estas evaluaciones.
 
 19
 00:00:42,940 --> 00:00:47,430
-Now, we also stipulated that we
-are not to include the quiz
+Ahora, también estipulamos que
+no vamos a incluir las calificaciones
 
 20
 00:00:47,430 --> 00:00:48,690
-scores in the calculation.
+de "quiz" en los cálculos.
 
 21
 00:00:48,690 --> 00:00:51,680
-So we're going to have to do a
-little bit of filtering to not
+Por lo que vamos a tener que hacer un
+poco de filtrado para no
 
 22
 00:00:51,680 --> 00:00:54,760
-include the quiz scores
-in the calculation.
+incluir las calificaciones de "quiz"
+en los cálculos.
 
 23
 00:00:54,760 --> 00:00:57,710
-And we're going to get the class
-ID which has the highest
+Y vamos a obtener el identificador
+de la clase con el rendimiento
 
 24
 00:00:57,710 --> 00:00:59,740
-average student performance.
+promedio más alto de estudiantes.
 
 25
 00:00:59,740 --> 00:01:02,150
-So let's go through that.
+Así que vamos a analizarlo.
 
 26
 00:01:02,150 --> 00:01:04,209
-All right, we start by
-unwinding the scores
+De acuerdo, comenzamos por hacer un
+"$unwind" de la colección
 
 27
 00:01:04,209 --> 00:01:05,239
-collection.
+"scores".
 
 28
 00:01:05,239 --> 00:01:07,480
-That makes sense, because we
-want to figure out the average
+Eso tiene sentido, porque
+queremos averiguar el promedio
 
 29
 00:01:07,480 --> 00:01:08,580
-for each student.
+por cada estudiante.
 
 30
 00:01:08,580 --> 00:01:12,900
-Then, we filter and make sure
-that we don't look at any
+Luego, filtramos y nos aseguramos
+que no examinamos ningún
 
 31
 00:01:12,900 --> 00:01:17,410
-document that has a scores.type
-of quiz.
+documento que tenga "scores.type"
+igual a "quiz".
 
 32
 00:01:17,410 --> 00:01:18,840
-Now remember, when we were
-unwinding the scores
+Ahora recuerda, cuando estábamos haciendo
+"$unwind" de la colección
 
 33
 00:01:18,840 --> 00:01:22,780
-collection, the scores was
-originally an array of items
+"scores", las calificaciones eran
+originalmente un array de elementos
 
 34
 00:01:22,780 --> 00:01:23,570
-that had type in them.
+que contenían "type".
 
 35
 00:01:23,570 --> 00:01:26,590
-And now, once they're unwound,
-it's going to be scores.type.
+Y ahora, una vez hecho el "$unwind",
+va a ser "scores.type".
 
 36
 00:01:26,590 --> 00:01:28,490
-We flattened it out
-by one level.
+Lo hemos "desovillado"
+a un nivel.
 
 37
 00:01:28,490 --> 00:01:31,060
-So we just want to filter out
-anything that's not a quiz,
+Así que simplemente queremos filtrar
+todo lo que no sea un "quiz",
 
 38
 00:01:31,060 --> 00:01:33,960
-and then we're going to get the
-average for that grade of
+y luego vamos a obtener el
+promedio por cada calificación de
 
 39
 00:01:33,960 --> 00:01:34,960
-that student.
+ese estudiante.
 
 40
 00:01:34,960 --> 00:01:39,540
-We're going to group by the
-student ID and the class ID,
+Vamos a agrupar por el identificador
+de estudiante y el identificador de clase,
 
 41
 00:01:39,540 --> 00:01:42,160
-because we want their average
-performance in that class.
+porque queremos su rendimiento 
+promedio en esa clase.
 
 42
 00:01:42,160 --> 00:01:45,460
-And then we're going to get the
-average score that they
+Y luego vamos a obtener la
+calificación promedio que
 
 43
 00:01:45,460 --> 00:01:48,460
-achieved using this
-average operator.
+consiguieron usando este
+operador "$avg".
 
 44
 00:01:48,460 --> 00:01:49,960
-And we're going to
-name it average.
+Y vamos a
+llamarlo "average".
 
 45
 00:01:49,960 --> 00:01:53,360
-After that, we're going to go
-through and we're going to
+Después, vamos a 
+analizar y calcular
 
 46
 00:01:53,360 --> 00:01:55,310
-calculate the average
-for each class.
+el promedio
+por cada clase.
 
 47
 00:01:55,310 --> 00:01:57,816
-So next stage of the pipeline
-we're going
+Por lo tanto, la segunda fase del "pipeline"
+que vamos
 
 48
 00:01:57,816 --> 00:01:59,120
-to do another grouping.
+a hacer es otra agrupación.
 
 49
 00:01:59,120 --> 00:02:03,390
-And we're going to group by the
-class, and then take an
+Y vamos a agrupar por
+clase y luego tomaremos un
 
 50
 00:02:03,390 --> 00:02:07,910
-average of the average that we
-had previously created in the
+promedio del promedio que habíamos
+creado previamente en la
 
 51
 00:02:07,910 --> 00:02:09,570
-previous stage of
-the pipeline.
+fase anterior del
+"pipeline".
 
 52
 00:02:09,570 --> 00:02:12,100
-Now at this point, we have a
-bunch of documents that have a
+Ahora en este punto, tenemos un
+montón de documentos que tienen un
 
 53
 00:02:12,100 --> 00:02:14,980
-class ID and an average score.
+identificador de clase y una calificación promedio.
 
 54
 00:02:14,980 --> 00:02:18,810
-And we can just rank those
-from highest to lowest.
+Y simplemente podemos ordenarlos
+de mayor a menor.
 
 55
 00:02:18,810 --> 00:02:22,290
-And the one with the highest
-average student performance
+Y el que tiene mayor
+rendimiento promedio de estudiantes
 
 56
 00:02:22,290 --> 00:02:24,700
-should be the one that we
-consider to be easiest.
+debería ser aquél que
+consideramos ser más fácil.
 
 57
 00:02:24,700 --> 00:02:28,510
-And if we do that, we can see
-here if we scroll up, that the
+Y si hacemos eso, podemos ver
+aquí si nos desplazamos arriba, que la
 
 58
 00:02:28,510 --> 00:02:31,980
-answer is that class ID 1.
+respuesta es "class_id: 1".
 
 59
 00:02:31,980 --> 00:02:33,120
-Here it is, right here.
+Aquí está, justo aquí.
 
 60
 00:02:33,120 --> 00:02:34,580
-Here's the result.
+Aquí está el resultado.
 
 61
 00:02:34,580 --> 00:02:37,260
-Class ID 1 has the
-highest average.
+"class_id: 1" tiene el
+promedio más alto.
 
 62
 00:02:37,260 --> 00:02:38,910
-Average of 64.5.
+Promedio de 64,5.
 
 63
 00:02:38,910 --> 00:02:43,300
-And class ID 1 was the
-accepted answer.
+Y "class_id: 1" era la
+respuesta aceptada.
 
 64
 00:02:43,300 --> 00:02:44,550
