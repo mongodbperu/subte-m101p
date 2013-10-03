@@ -9,7 +9,7 @@ OK, este problema se llamaba
 3
 00:00:03,220 --> 00:00:06,650
 Y dijimos que, bien, el
-conjunto de datos tiene tiene algunas ciudades que
+conjunto de datos tiene algunas ciudades que
 
 4
 00:00:06,650 --> 00:00:07,490
@@ -23,7 +23,7 @@ dígito, entonces vamos a suponer que
 6
 00:00:10,190 --> 00:00:12,990
 en realidad no es una ciudad, sino
-que es simplemente un código postal que
+que es simplemente un código postal
 
 7
 00:00:12,990 --> 00:00:14,230
@@ -37,9 +37,7 @@ total de las personas que viven en una
 9
 00:00:17,260 --> 00:00:20,690
 ciudad cuyo nombre comienza con un 
-dígito,  como
-nomcity that starts with a digit as
-a name, ostensiblemente, de forma
+dígito, ostensiblemente, de forma
 
 10
 00:00:20,690 --> 00:00:23,330
@@ -58,7 +56,7 @@ este problema es calcular la
 
 13
 00:00:27,150 --> 00:00:30,850
-población total de gente que
+población total de personas que
 vive en una zona rural que es una
 
 14
@@ -139,7 +137,7 @@ carácter de la ciudad.
 
 30
 00:01:09,510 --> 00:01:13,020
-Y también llevamos la
+Y también tenemos la
 población, el nombre de la ciudad
 
 31
@@ -162,7 +160,7 @@ haber dicho simplemente uno.
 
 35
 00:01:21,690 --> 00:01:23,675
-No necesité decir "$city" aquí,
+No es necesario decir "$city" aquí,
 porque sería un poco raro.
 
 36
@@ -238,7 +236,7 @@ No, eso es.
 
 51
 00:02:00,580 --> 00:02:03,440
-Aquí vamos a ejecutarlo y
+Aquí vamos a ejecutarlo y a
 averiguar que la población de las
 
 52
@@ -261,5 +259,5 @@ respuesta aceptada.
 
 56
 00:02:13,260 --> 00:02:15,420
-Así que así es como
+Por lo tanto así es como
 se hace este problema.
