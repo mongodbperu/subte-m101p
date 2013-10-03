@@ -3,261 +3,261 @@
 
 2
 00:00:00,110 --> 00:00:03,220
-OK, this problem was called
-Removing Rural Residents.
+OK, este problema se llamaba
+"Eliminando residentes rurales".
 
 3
 00:00:03,220 --> 00:00:06,650
-And in it we said, well, the
-data set has some cities that
+Y dijimos que, bien, el
+conjunto de datos tiene algunas ciudades que
 
 4
 00:00:06,650 --> 00:00:07,490
-start with a digit.
+comienzan con un dígito.
 
 5
 00:00:07,490 --> 00:00:10,190
-And if a city starts with a
-digit, then let's assume that
+Y si una ciudad comienza con un
+dígito, entonces vamos a suponer que
 
 6
 00:00:10,190 --> 00:00:12,990
-it's really not a city, that's
-it's just a zip code that's
+en realidad no es una ciudad, sino
+que es simplemente un código postal
 
 7
 00:00:12,990 --> 00:00:14,230
-not in a city.
+que no está en una ciudad.
 
 8
 00:00:14,230 --> 00:00:17,260
-And can we figure out the sum
-total of people who live in a
+Y ¿podemos averiguar la suma
+total de las personas que viven en una
 
 9
 00:00:17,260 --> 00:00:20,690
-city that starts with a digit as
-a name, ostensively, so we
+ciudad cuyo nombre comienza con un 
+dígito, ostensiblemente, de forma
 
 10
 00:00:20,690 --> 00:00:23,330
-can remove that number from the
-overall population number?
+que podamos eliminar ese número del
+número total de población?
 
 11
 00:00:23,330 --> 00:00:25,220
-So we called it Removing Rural
-Residents, although what
+Así que lo llamamos "Eliminando residentes
+rurales", aunque lo que
 
 12
 00:00:25,220 --> 00:00:27,150
-you're actually going to do in
-this problem is calculate the
+en realidad vas a hacer en
+este problema es calcular la
 
 13
 00:00:27,150 --> 00:00:30,850
-total population of people who
-live in a rural area that's a
+población total de personas que
+vive en una zona rural que es una
 
 14
 00:00:30,850 --> 00:00:32,580
-city that starts with a digit.
+ciudad que comienza con un dígito.
 
 15
 00:00:32,580 --> 00:00:36,250
-Now, to do this, we suggested
-that you might use the
+Ahora, para hacer esto, sugerimos
+que podrías usar el
 
 16
 00:00:36,250 --> 00:00:39,400
-substring operator to pull the
-first character out of the
+operador "$substr" para recuperar el
+primer carácter de la
 
 17
 00:00:39,400 --> 00:00:41,220
-city so that you
-can compare it.
+ciudad para que
+puedas compararlo.
 
 18
 00:00:41,220 --> 00:00:43,510
-Now, you could also do this
-with a regular expression.
+Ahora, también podrías hacer esto
+con una expresión regular.
 
 19
 00:00:43,510 --> 00:00:46,380
-And I specifically suggested
-a substring operator, not
+Específicamente sugerí
+el operador "$substr" no
 
 20
 00:00:46,380 --> 00:00:48,610
-because of efficiency or
-anything else, but just
+por cuestiones de eficiencia o
+similares, sino simplemente
 
 21
 00:00:48,610 --> 00:00:51,470
-because we hadn't gone over the
-substring operator, and I
+porque no habíamos visto el
+operador "$substr" y 
 
 22
 00:00:51,470 --> 00:00:53,250
-thought it was an interesting
-operator, and I wanted to
+creí que sería un operador
+interesante y quería
 
 23
 00:00:53,250 --> 00:00:54,390
-expose you to it.
+enseñártelo.
 
 24
 00:00:54,390 --> 00:00:56,510
-So that's why it's
-in this problem.
+Así que ése es el motivo por el cual
+está en este problema.
 
 25
 00:00:56,510 --> 00:00:58,850
-Let's look at the answer.
+Echemos un vistazo a la respuesta.
 
 26
 00:00:58,850 --> 00:01:01,640
-So the answer is-- as I said,
-we first do a projection to
+La respuesta es -- como dije,
+primero hacemos una proyección
 
 27
 00:01:01,640 --> 00:01:03,200
-the zip code database.
+del código postal.
 
 28
 00:01:03,200 --> 00:01:06,800
-And we create the first
-character of the city.
+Y recuperamos el primer
+carácter de la ciudad.
 
 29
 00:01:06,800 --> 00:01:09,510
-We extract out just the first
-character of the city.
+Extraemos sólo el primer
+carácter de la ciudad.
 
 30
 00:01:09,510 --> 00:01:13,020
-And we also carry through the
-population and the city name
+Y también tenemos la
+población, el nombre de la ciudad
 
 31
 00:01:13,020 --> 00:01:16,520
-and the zip code, which we now
-call zip, which was originally
+y el código postal, que ahora
+llamamos "zip", que originalmente era
 
 32
 00:01:16,520 --> 00:01:17,820
-the underscore ID.
+el "_id".
 
 33
 00:01:17,820 --> 00:01:19,780
-And then we include the state.
+Y luego incluimos el estado.
 
 34
 00:01:19,780 --> 00:01:21,690
-I guess is also could
-have just said one.
+Supongo que también podría
+haber dicho simplemente uno.
 
 35
 00:01:21,690 --> 00:01:23,675
-Didn't need to say $city here,
-so that was sort of odd.
+No es necesario decir "$city" aquí,
+porque sería un poco raro.
 
 36
 00:01:23,675 --> 00:01:26,830
-You could do it two different
-ways, but I did it this way.
+Podrías hacerlo de dos maneras
+diferentes, pero lo hice de esta manera.
 
 37
 00:01:26,830 --> 00:01:30,770
-Now, we're going to go through
-and we're going to match only
+Ahora, vamos a avanzar
+y vamos a coincidir sólo 
 
 38
 00:01:30,770 --> 00:01:32,940
-the cities that start
-with a digit.
+las ciudades que comienzan
+con un dígito.
 
 39
 00:01:32,940 --> 00:01:36,590
-So we're going to call match the
-first character being in
+Por lo que vamos a llamar a "$match" con
+el primer carácter en
 
 40
 00:01:36,590 --> 00:01:39,020
-this array of digits.
+este array de dígitos.
 
 41
 00:01:39,020 --> 00:01:41,400
-At this point, we've got a set
-of documents that only
+En este punto, tenemos un conjunto
+de documentos que sólo
 
 42
 00:01:41,400 --> 00:01:44,110
-represent these people who live
-in the rural areas where
+representan estas personas que viven
+en áreas rurales donde
 
 43
 00:01:44,110 --> 00:01:45,270
-the city starts with a digit.
+la ciudad comienza con un dígito.
 
 44
 00:01:45,270 --> 00:01:48,030
-And we just want to get a sum of
-that population, so we just
+Y sólo queremos obtener una suma de
+esa población, por lo que simplemente
 
 45
 00:01:48,030 --> 00:01:52,130
-run a grouping on id null,
-figure out the population, sum
+ejecutamos una agrupación sobre "_id: null",
+averiguamos la población y sumamos
 
 46
 00:01:52,130 --> 00:01:53,550
-of the populations that
-we see in every
+las poblaciones que
+vemos en cada
 
 47
 00:01:53,550 --> 00:01:55,390
-document as it comes through.
+documento a medida que llegan.
 
 48
 00:01:55,390 --> 00:01:57,890
-And that's pretty much
-the entire answer.
+Y ésa es más o menos
+la respuesta completa.
 
 49
 00:01:57,890 --> 00:01:59,250
-I don't think there's
-anything more to it.
+No creo que haya
+nada más que eso.
 
 50
 00:01:59,250 --> 00:02:00,580
-Nope, that's it.
+No, eso es.
 
 51
 00:02:00,580 --> 00:02:03,440
-Here we're going to run it and
-find out the population of the
+Aquí vamos a ejecutarlo y a
+averiguar que la población de las
 
 52
 00:02:03,440 --> 00:02:07,290
-rural areas is 298,015.
+zonas rurales es 298015.
 
 53
 00:02:07,290 --> 00:02:10,979
-And let's see if that was the
-answer that was accepted.
+Y veamos si ésa era la 
+respuesta aceptada.
 
 54
 00:02:10,979 --> 00:02:12,450
-And the answer is yes,
-that was the
+Y la respuesta es sí,
+ésa era la
 
 55
 00:02:12,450 --> 00:02:13,260
-answer that was accepted.
+respuesta aceptada.
 
 56
 00:02:13,260 --> 00:02:15,420
-So that's how you
-do this problem.
+Por lo tanto así es como
+se hace este problema.
