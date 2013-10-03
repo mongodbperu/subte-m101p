@@ -56,7 +56,7 @@ agrupación para averiguarlo y un
 13
 00:00:25,890 --> 00:00:27,940
 Así que analicemos
-eso paso por paso.
+eso, paso por paso.
 
 14
 00:00:27,940 --> 00:00:30,830
@@ -164,7 +164,7 @@ va a ser "scores.type".
 
 36
 00:01:26,590 --> 00:01:28,490
-Lo hemos allanado
+Lo hemos "desovillado"
 a un nivel.
 
 37
@@ -184,7 +184,7 @@ ese estudiante.
 40
 00:01:34,960 --> 00:01:39,540
 Vamos a agrupar por el identificador
-de estudiane y el identificador de clase,
+de estudiante y el identificador de clase,
 
 41
 00:01:39,540 --> 00:01:42,160
