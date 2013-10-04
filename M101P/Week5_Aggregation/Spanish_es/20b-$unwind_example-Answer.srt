@@ -7,69 +7,69 @@ OK.
 
 3
 00:00:00,820 --> 00:00:03,810
-The answer is that the push
-operator will do it.
+La respuesta es que el
+operador "$push" lo hará.
 
 4
 00:00:03,810 --> 00:00:07,890
-If you think about it, if I
-unwind, let's say, those tags,
+Si piensas en esto, si hago "$unwind",
+digamos, a estas etiquetas,
 
 5
 00:00:07,890 --> 00:00:14,270
-and then I group by the rest of
-the document, I could push
+y luego agrupo por el resto
+del documento, podría hacer
 
 6
 00:00:14,270 --> 00:00:16,830
-on the tags and it'll
-essentially
+"$push" a las etiquetas y
+esencialmente
 
 7
 00:00:16,830 --> 00:00:18,720
-recreate what I had.
+recreará lo que tuve.
 
 8
 00:00:18,720 --> 00:00:21,890
-So, push is kind of the inverse,
-if you will, of the
+Así, "$push" es algo
+contrario, si lo haces, al
 
 9
 00:00:21,890 --> 00:00:22,735
-unwind operator.
+operador "$unwind".
 
 10
 00:00:22,735 --> 00:00:24,520
-It's a little tricky, but.
+Esto es un pequeño truco, pero,
 
 11
 00:00:24,520 --> 00:00:27,530
-Another option might be add to
-set, and that usually does
+otra opción podría ser
+"$addToSet", y que usualmente
 
 12
 00:00:27,530 --> 00:00:30,600
-work depending on if the
-array was unique in
+funciona dependiendo si
+el array fuera único en
 
 13
 00:00:30,600 --> 00:00:31,810
-the original document.
+el documento original.
 
 14
 00:00:31,810 --> 00:00:35,120
-But if it wasn't unique, and
-then add to set won't recreate
+Pero si no lo es, entonces
+"$addToSet" no volverá a crear
 
 15
 00:00:35,120 --> 00:00:37,660
-the exact original array,
-because if an item was in it
+el array exacto original, porque
+si un elemento estuvo en él
 
 16
 00:00:37,660 --> 00:00:39,590
-more than once, add to set
-will only add it once.
+más de una vez, "$addToSet"
+sólo lo añadirá una vez.
 
 17
 00:00:39,590 --> 00:00:40,840

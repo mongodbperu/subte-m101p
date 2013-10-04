@@ -3,315 +3,313 @@
 
 2
 00:00:00,150 --> 00:00:03,820
-Let's go over an example of
-using unwind during our
+Repasemos un ejemplo del
+uso de "$unwind" en nuestro
 
 3
 00:00:03,820 --> 00:00:05,250
-aggregation pipeline.
+"pipeline" de agregación.
 
 4
 00:00:05,250 --> 00:00:10,330
-Now if you remember, we had
-the blog posts homework.
+Ahora, si recuerdas, tuvimos
+la tarea de posts de un blog.
 
 5
 00:00:10,330 --> 00:00:12,830
-We gave you a pretty big
-blog post data set.
+Te dimos un gran conjunto
+de datos con posts.
 
 6
 00:00:12,830 --> 00:00:15,970
-And here, I'm going to show you
-one of the elements from
+Y aquí, te voy a mostrar
+uno de los elementos de
 
 7
 00:00:15,970 --> 00:00:17,880
-that blog post data set.
+aquel conjunto de datos con posts.
 
 8
 00:00:17,880 --> 00:00:19,800
-I'm just suppressing the
-comments because it makes it a
+Estoy suprimiendo los
+comentarios para que sea
 
 9
 00:00:19,800 --> 00:00:21,320
-little bit longer.
+un poco menos extenso.
 
 10
 00:00:21,320 --> 00:00:25,800
-You can see here that it's got
-an underscore ID in the body.
+Puedes ver aquí que obtengo
+un "_id" y un "body".
 
 11
 00:00:25,800 --> 00:00:28,050
-And it looks like this one
-is the Declaration of
+Y esto parece que es
+la Declaración de la
 
 12
 00:00:28,050 --> 00:00:29,330
-Independence.
+Independencia.
 
 13
 00:00:29,330 --> 00:00:32,759
-And then we have the author,
-which was a machine.
+Y luego tenemos el autor,
+que es "machine".
 
 14
 00:00:32,759 --> 00:00:35,890
-And then a bunch of tags, which
-I pretty much randomly
+Y luego un montón de etiquetas,
+que he tomado aleatoriamente
 
 15
 00:00:35,890 --> 00:00:39,240
-took from a bunch of nouns
-that I got off the net.
+de un montón de nombres
+que he tomado de la red.
 
 16
 00:00:39,240 --> 00:00:42,190
-Now let's say you wanted to go
-through these blog posts and
+Ahora, digamos que deseamos
+ir a través de estos posts y
 
 17
 00:00:42,190 --> 00:00:46,490
-count the number of times that
-each tag appears in a post, or
+contar el número de veces que
+cada etiqueta aparece en un post,
 
 18
 00:00:46,490 --> 00:00:49,000
-how many posts were tagged
-with each tag.
+o cuantos posts han sido
+etiquetados con cada etiqueta.
 
 19
 00:00:49,000 --> 00:00:51,560
-So we can do that using
-an aggregation query.
+Podemos hacer eso usando
+una consulta de agregación.
 
 20
 00:00:51,560 --> 00:00:54,080
-We're going to unwind
-these tags.
+Vamos a usar "$unwind"
+estas etiquetas.
 
 21
 00:00:54,080 --> 00:00:57,340
-And then we're going to group
-by the tag and count.
+Y luego vamos a agrupar
+por la etiqueta y contar.
 
 22
 00:00:57,340 --> 00:00:59,610
-So let's look at how that
-works and run it.
+Vamos a ver cómo eso
+funciona y ejecutarlo.
 
 23
 00:00:59,610 --> 00:01:03,130
-So here's my aggregation query
-to unwind based on tag.
+Aquí está mi consulta de agregación
+para hacer "$unwind" sobre las etiquetas.
 
 24
 00:01:03,130 --> 00:01:05,390
-So let's go through
-it piece by piece.
+Repasémoslo parte por parte.
 
 25
 00:01:05,390 --> 00:01:07,720
-The first thing we're going to
-do is we're going to take
+Lo primero que vamos a
+hacer es que vamos a tomar
 
 26
 00:01:07,720 --> 00:01:11,110
-these posts and we're going
-to unwind them.
+estos posts y vamos
+a "desovillarlos".
 
 27
 00:01:11,110 --> 00:01:14,110
-We're going to unwind
-the tags array.
+Vamos a hacer "$unwind"
+sobre el array de etiquetas.
 
 28
 00:01:14,110 --> 00:01:16,140
-And now we're going to
-group by the tag.
+Y ahora vamos a agrupar
+por la etiqueta.
 
 29
 00:01:16,140 --> 00:01:19,000
-And we're going to count how
-many times each tag appears,
+Y vamos a contar cuántas
+veces aparece cada etiqueta,
 
 30
 00:01:19,000 --> 00:01:21,720
-using $sum:1.
+usando "$sum: 1".
 
 31
 00:01:21,720 --> 00:01:24,480
-Now I want to figure out which
-are the most popular.
+Ahora deseo averigurar
+cuál es el más usado.
 
 32
 00:01:24,480 --> 00:01:29,485
-So what I'm going to do here is
-sort them by count minus 1.
+Por lo que vamos a hacer aquí
+es ordenarlos por "count: -1".
 
 33
 00:01:29,485 --> 00:01:31,480
-And now I want the top 10.
+Y ahora deseo los 10 primeros.
 
 34
 00:01:31,480 --> 00:01:33,600
-So I'm going to limit
-them to 10.
+Vamos a limitarlos a 10.
 
 35
 00:01:33,600 --> 00:01:35,200
-And then I want it
-to be pretty.
+Y luego deseo hacer
+que se vea elegante.
 
 36
 00:01:35,200 --> 00:01:38,270
-So I'm going to reshape the
-document using Project.
+Así que vamos a cambiar la forma
+del documento usando "$project".
 
 37
 00:01:38,270 --> 00:01:40,740
-I'm going to drop the _id key.
+Voy a eliminar la clave "_id".
 
 38
 00:01:40,740 --> 00:01:43,370
-And I'm going to create a new
-one called Tag, which is just
+Y voy a crear una nueva
+llamada "tag", que es
 
 39
 00:01:43,370 --> 00:01:44,420
-the _id key.
+la clave "_id".
 
 40
 00:01:44,420 --> 00:01:45,390
-I basically--
+Básicamente--
 
 41
 00:01:45,390 --> 00:01:49,030
-this is a rename of the _id
-key, dropping it, and then
+esto es un cambio de nombre de la
+clave "_id", eliminándola y luego
 
 42
 00:01:49,030 --> 00:01:50,920
-creating a new one
-with its value.
+creando una nueva con este valor.
 
 43
 00:01:50,920 --> 00:01:53,860
-And then include the count.
+Y luego incluye el "count".
 
 44
 00:01:53,860 --> 00:01:55,840
-Let's see what happens
-when we do that.
+Veamos que sucede
+cuando hacemos esto.
 
 45
 00:01:55,840 --> 00:01:58,080
-Blog_tags.js.
+"blog_tags.js".
 
 46
 00:01:58,080 --> 00:01:58,970
-All right.
+Muy bien.
 
 47
 00:01:58,970 --> 00:02:00,350
-So we did that.
+Hacemos eso.
 
 48
 00:02:00,350 --> 00:02:01,770
-And what we get is the result.
+Y lo que obtenemos es el resultado.
 
 49
 00:02:01,770 --> 00:02:04,380
-And we see that the most
-popular tag was
+Y vemos que la etiqueta
+más utilizada fue
 
 50
 00:02:04,380 --> 00:02:06,390
-"sphynx" with 13 uses.
+"sphynx", con 13 usos.
 
 51
 00:02:06,390 --> 00:02:08,060
-And then "lunchroom" with 12.
+Y luego "lunchroom" con 12.
 
 52
 00:02:08,060 --> 00:02:10,195
-And then "crowd" with 11.
+Y luego "crowd" con 11.
 
 53
 00:02:10,195 --> 00:02:11,580
-And it goes down from there.
+Y va hacia abajo.
 
 54
 00:02:11,580 --> 00:02:12,870
-Actually, these are all
-about the same.
+En realidad, estos son
+todos acerca del mismo.
 
 55
 00:02:12,870 --> 00:02:16,050
-Now, I used a random number
-generator to evenly distribute
+Ahora, usé un generador de números
+aleatorios para distribuir uniformemente
 
 56
 00:02:16,050 --> 00:02:17,440
-the tags across the posts.
+las etiquetas a través
+de los posts.
 
 57
 00:02:17,440 --> 00:02:20,440
-So it's not too surprising that
-they'd be all about the
+Así que no es sorprendente que
+todos estos tuvieran el mismo
 
 58
 00:02:20,440 --> 00:02:22,460
-same, given that's
-how we did it.
+valor, teniendo en cuenta
+cómo los hicimos.
 
 59
 00:02:22,460 --> 00:02:24,390
-Distribution should
-be pretty equal.
+La distribución debería
+ser bastante igual.
 
 60
 00:02:24,390 --> 00:02:25,500
-Let's do a quiz.
+Hagamos un cuestionario.
 
 61
 00:02:25,500 --> 00:02:27,080
-And we haven't talked
-about this.
+Y no hemos hablado de esto.
 
 62
 00:02:27,080 --> 00:02:29,050
-We've got to think about
-it for a second.
+Tenemos que pensar
+en esto un momento.
 
 63
 00:02:29,050 --> 00:02:32,510
-Which grouping operator will
-enable you to reverse the
+¿Qué operador de agrupación
+te permitirá revertir los
 
 64
 00:02:32,510 --> 00:02:33,900
-effects of an unwind?
+efectos de un "$unwind"?
 
 65
 00:02:33,900 --> 00:02:36,980
-How would you reverse the
-effects of an unwind?
+¿Cómo revertirías los
+efectos de un "$unwind"?
 
 66
 00:02:36,980 --> 00:02:38,520
-Think about that for a second.
+Piensa acerca de eso
+por un segundo.
 
 67
 00:02:38,520 --> 00:02:41,180
-And you could try different
-grouping operators in the
+Y podrías intentar distintos
+operadores de agrupación en el
 
 68
 00:02:41,180 --> 00:02:42,430
-[INAUDIBLE] shell to do this.
+shell mongo para hacer esto.
 
 69
 00:02:42,430 --> 00:02:43,600
