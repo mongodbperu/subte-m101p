@@ -1,0 +1,29 @@
+1
+00:00:00,000 --> 00:00:00,150
+
+2
+00:00:00,150 --> 00:00:02,910
+OK, and the answer is that
+regular replica set members,
+
+3
+00:00:02,910 --> 00:00:05,360
+hidden members, and arbiters
+can all participate in the
+
+4
+00:00:05,360 --> 00:00:07,600
+election of a new primary,
+although not all them can
+
+5
+00:00:07,600 --> 00:00:10,690
+become the primary, and lawyers
+are never welcome in
+
+6
+00:00:10,690 --> 00:00:12,790
+our election for a new primary.
+
+7
+00:00:12,790 --> 00:00:14,040

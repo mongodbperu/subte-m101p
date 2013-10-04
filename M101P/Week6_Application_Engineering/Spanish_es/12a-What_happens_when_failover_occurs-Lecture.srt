@@ -1,0 +1,546 @@
+1
+00:00:00,000 --> 00:00:00,130
+
+2
+00:00:00,130 --> 00:00:04,154
+Let's talk a little bit about
+failover and what happens from
+
+3
+00:00:04,154 --> 00:00:07,920
+an application standpoint when
+failover occurs inside a
+
+4
+00:00:07,920 --> 00:00:09,530
+replica set.
+
+5
+00:00:09,530 --> 00:00:12,575
+So let's say you have a three
+node replica set.
+
+6
+00:00:12,575 --> 00:00:15,200
+I'm going to draw a three
+node replica set.
+
+7
+00:00:15,200 --> 00:00:19,690
+And these Ms stand for
+MongoDB instances.
+
+8
+00:00:19,690 --> 00:00:23,110
+And let's assume that this one
+is the primary, and that you
+
+9
+00:00:23,110 --> 00:00:27,290
+have an application written
+in Python against Pymongo.
+
+10
+00:00:27,290 --> 00:00:28,970
+And it's connected to
+this replica set.
+
+11
+00:00:28,970 --> 00:00:31,720
+So what that means is that there
+is a connection to the
+
+12
+00:00:31,720 --> 00:00:37,070
+primary, and normally, by
+default in MongoDB, all reads
+
+13
+00:00:37,070 --> 00:00:40,290
+and all writes go to
+your primary node.
+
+14
+00:00:40,290 --> 00:00:43,025
+There's an option to have reads
+go to secondaries in
+
+15
+00:00:43,025 --> 00:00:45,940
+your replica set, but the
+default is that the reads go
+
+16
+00:00:45,940 --> 00:00:47,580
+to your primary.
+
+17
+00:00:47,580 --> 00:00:50,160
+And if you want strong
+consistency where you can read
+
+18
+00:00:50,160 --> 00:00:53,290
+what you've written, then you
+need to have your reads go to
+
+19
+00:00:53,290 --> 00:00:54,320
+your primary.
+
+20
+00:00:54,320 --> 00:00:58,050
+So when failover occurs, what's
+going to happen is that
+
+21
+00:00:58,050 --> 00:00:59,590
+this node is going to die.
+
+22
+00:00:59,590 --> 00:01:02,430
+And then an election is going
+to occur and let's say this
+
+23
+00:01:02,430 --> 00:01:04,684
+one is now elected primary.
+
+24
+00:01:04,684 --> 00:01:07,880
+And at that point, you're going
+to get a connection to
+
+25
+00:01:07,880 --> 00:01:10,280
+this guy, and you'll
+continue forward.
+
+26
+00:01:10,280 --> 00:01:12,750
+But failover is not
+instantaneous.
+
+27
+00:01:12,750 --> 00:01:14,070
+Failover takes time.
+
+28
+00:01:14,070 --> 00:01:15,420
+How long does it take?
+
+29
+00:01:15,420 --> 00:01:17,770
+Well, it could often take
+one second, two
+
+30
+00:01:17,770 --> 00:01:19,090
+seconds, three seconds.
+
+31
+00:01:19,090 --> 00:01:22,230
+And during that time when
+election is occurring and the
+
+32
+00:01:22,230 --> 00:01:25,480
+replica set is deciding who's
+going to be the primary, you
+
+33
+00:01:25,480 --> 00:01:28,910
+can't complete reads, and you
+can't complete writes because
+
+34
+00:01:28,910 --> 00:01:30,850
+you don't have a primary
+to go to.
+
+35
+00:01:30,850 --> 00:01:34,770
+Let me show you a program, and
+I'll show you how this works.
+
+36
+00:01:34,770 --> 00:01:38,100
+So I have a program here,
+which is a simple Python
+
+37
+00:01:38,100 --> 00:01:41,240
+program, that's going to connect
+to a replica set using
+
+38
+00:01:41,240 --> 00:01:44,390
+the MongoReplicaSetClient
+class.
+
+39
+00:01:44,390 --> 00:01:48,150
+And it's listing three replica
+sets in its seed list and
+
+40
+00:01:48,150 --> 00:01:50,500
+naming the replica set m101.
+
+41
+00:01:50,500 --> 00:01:53,990
+And I have this replica set
+running on my local machine
+
+42
+00:01:53,990 --> 00:01:58,780
+already so it's already started
+and instantiated.
+
+43
+00:01:58,780 --> 00:02:00,130
+And I have two functions.
+
+44
+00:02:00,130 --> 00:02:01,710
+I have a readsome
+and writesome.
+
+45
+00:02:01,710 --> 00:02:04,170
+And they do something
+very similar.
+
+46
+00:02:04,170 --> 00:02:08,009
+The writesome function is going
+to go through a range of
+
+47
+00:02:08,009 --> 00:02:11,110
+a million integers, and it's
+going to just write each one
+
+48
+00:02:11,110 --> 00:02:12,390
+to a collection.
+
+49
+00:02:12,390 --> 00:02:14,640
+And the read one does
+a find one from that
+
+50
+00:02:14,640 --> 00:02:16,040
+collection over and over.
+
+51
+00:02:16,040 --> 00:02:19,070
+First let's do this write.
+
+52
+00:02:19,070 --> 00:02:21,270
+And what we're going to do is
+we're going to call writesome.
+
+53
+00:02:21,270 --> 00:02:23,830
+We're going to start adding
+integers to the collection.
+
+54
+00:02:23,830 --> 00:02:26,540
+And by the way, the collection
+is dropped at the beginning.
+
+55
+00:02:26,540 --> 00:02:30,060
+And then, while that's
+happening, we're going to step
+
+56
+00:02:30,060 --> 00:02:34,180
+down the primary so that we get
+a replica set election,
+
+57
+00:02:34,180 --> 00:02:36,580
+and there's a new primary.
+
+58
+00:02:36,580 --> 00:02:38,080
+So let's do that.
+
+59
+00:02:38,080 --> 00:02:41,470
+Let's go to this and run it.
+
+60
+00:02:41,470 --> 00:02:43,460
+So it's inserting these.
+
+61
+00:02:43,460 --> 00:02:47,250
+Now let's go to the
+Mongo shell.
+
+62
+00:02:47,250 --> 00:02:49,440
+I'm going to get the replica
+set status, figure out what
+
+63
+00:02:49,440 --> 00:02:51,010
+the primary is.
+
+64
+00:02:51,010 --> 00:02:54,180
+The primary is at 27018.
+
+65
+00:02:54,180 --> 00:02:57,110
+So I'm going to connect
+to that host.
+
+66
+00:02:57,110 --> 00:02:59,750
+And then I'm going to
+do an rs.stepDown, a
+
+67
+00:02:59,750 --> 00:03:02,400
+replica set step down.
+
+68
+00:03:02,400 --> 00:03:03,620
+OK, I did it.
+
+69
+00:03:03,620 --> 00:03:05,210
+I stepped down the primary.
+
+70
+00:03:05,210 --> 00:03:06,390
+And in the background--
+
+71
+00:03:06,390 --> 00:03:08,720
+I don't know if you can see--
+but as soon as I did that,
+
+72
+00:03:08,720 --> 00:03:11,470
+this program quit entirely.
+
+73
+00:03:11,470 --> 00:03:13,740
+All right, so it got to
+inserting and inserted 47
+
+74
+00:03:13,740 --> 00:03:16,940
+numbers, and then
+it just quit.
+
+75
+00:03:16,940 --> 00:03:20,270
+So if you don't catch the
+exceptions that occur when the
+
+76
+00:03:20,270 --> 00:03:23,570
+replica set is electing a new
+primary, the program will
+
+77
+00:03:23,570 --> 00:03:25,260
+actually terminate.
+
+78
+00:03:25,260 --> 00:03:27,270
+Now, just to show you that it
+doesn't matter whether I read
+
+79
+00:03:27,270 --> 00:03:29,700
+or write, this is true in both
+cases, I'm going to change
+
+80
+00:03:29,700 --> 00:03:31,480
+this program to do reads.
+
+81
+00:03:31,480 --> 00:03:34,540
+I'm going to comment out this
+statement that dropped the
+
+82
+00:03:34,540 --> 00:03:36,970
+collection that deleted every
+document from the collection.
+
+83
+00:03:36,970 --> 00:03:40,620
+And I am going to change
+this to readsome.
+
+84
+00:03:40,620 --> 00:03:42,040
+So I'm going to call it again.
+
+85
+00:03:42,040 --> 00:03:43,370
+Now it's just going to
+read the same number
+
+86
+00:03:43,370 --> 00:03:44,860
+over and over again.
+
+87
+00:03:44,860 --> 00:03:48,880
+And now, let's, once again,
+step down the primary.
+
+88
+00:03:48,880 --> 00:03:51,570
+I need to figure out where
+the primary is.
+
+89
+00:03:51,570 --> 00:03:55,680
+Using rs.status, it looks
+like it's 27017.
+
+90
+00:03:55,680 --> 00:03:58,540
+So I'm going to exit from
+here and connect.
+
+91
+00:03:58,540 --> 00:04:02,050
+And then I'm going to step
+down that primary.
+
+92
+00:04:02,050 --> 00:04:03,990
+And you can see that as
+soon as I did that,
+
+93
+00:04:03,990 --> 00:04:05,030
+this program quit.
+
+94
+00:04:05,030 --> 00:04:07,160
+This program that is now just
+reading numbers from the
+
+95
+00:04:07,160 --> 00:04:10,820
+collection, it also quit because
+this statement, this
+
+96
+00:04:10,820 --> 00:04:13,460
+find_one occurred while there
+was a replica set
+
+97
+00:04:13,460 --> 00:04:14,280
+election going on.
+
+98
+00:04:14,280 --> 00:04:17,790
+And there was no primary, and
+we've got an exception.
+
+99
+00:04:17,790 --> 00:04:20,500
+So I guess what I wanted to show
+you here is that if you
+
+100
+00:04:20,500 --> 00:04:22,670
+don't do anything special,
+and there's a replica set
+
+101
+00:04:22,670 --> 00:04:24,960
+failover, all that failover is
+completely automatic, your
+
+102
+00:04:24,960 --> 00:04:27,500
+program, if it's working with
+a database during that time,
+
+103
+00:04:27,500 --> 00:04:29,840
+will actually terminate.
+
+104
+00:04:29,840 --> 00:04:31,460
+All right, so it's
+time for a quiz.
+
+105
+00:04:31,460 --> 00:04:34,450
+So let's say we had this insert
+statement right here--
+
+106
+00:04:34,450 --> 00:04:35,960
+db.test.insert.
+
+107
+00:04:35,960 --> 00:04:37,830
+What will happen if the
+following statement is
+
+108
+00:04:37,830 --> 00:04:40,830
+executed in Python during
+a primary election?
+
+109
+00:04:40,830 --> 00:04:42,740
+You're after a failover has
+occurred, and it's electing a
+
+110
+00:04:42,740 --> 00:04:43,880
+new primary.
+
+111
+00:04:43,880 --> 00:04:46,230
+And the four choices are, the
+insert will fail, but the
+
+112
+00:04:46,230 --> 00:04:49,330
+program will continue; the
+insert will succeed to a new
+
+113
+00:04:49,330 --> 00:04:52,750
+primary because failover is
+automatic within MongoDB; the
+
+114
+00:04:52,750 --> 00:04:55,270
+insert will fail, and the
+program will terminate; or the
+
+115
+00:04:55,270 --> 00:04:57,880
+insert will succeed, and the
+program will terminate.
+
+116
+00:04:57,880 --> 00:04:59,130
+And pick the best choice.
+
+117
+00:04:59,130 --> 00:05:00,200

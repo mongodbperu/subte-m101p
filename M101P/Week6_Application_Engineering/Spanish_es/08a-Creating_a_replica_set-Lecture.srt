@@ -1,0 +1,900 @@
+1
+00:00:00,000 --> 00:00:00,240
+
+2
+00:00:00,240 --> 00:00:04,070
+Now, let's create a small
+replica set on just this one
+
+3
+00:00:04,070 --> 00:00:06,830
+computer that I'm using so
+you can see how it works.
+
+4
+00:00:06,830 --> 00:00:08,990
+Now normally when you create a
+replica set, you're going to
+
+5
+00:00:08,990 --> 00:00:14,290
+put one of the mongods on each
+of the physical servers so
+
+6
+00:00:14,290 --> 00:00:16,050
+that there's some real
+fault tolerance here.
+
+7
+00:00:16,050 --> 00:00:17,840
+And you might very well
+run them all onto
+
+8
+00:00:17,840 --> 00:00:18,920
+the standard port.
+
+9
+00:00:18,920 --> 00:00:20,940
+But we're going to do it
+just on a single node.
+
+10
+00:00:20,940 --> 00:00:23,630
+And to do that, I'm going to
+have to run them on different
+
+11
+00:00:23,630 --> 00:00:25,810
+ports so that they don't
+conflict with each other.
+
+12
+00:00:25,810 --> 00:00:28,010
+So I've written a small
+script here called
+
+13
+00:00:28,010 --> 00:00:31,600
+create_replica_set.sh, and it's
+going to be available for
+
+14
+00:00:31,600 --> 00:00:34,180
+download if you want
+to download it.
+
+15
+00:00:34,180 --> 00:00:37,440
+And it's going to create three
+directories, /data/rs1,
+
+16
+00:00:37,440 --> 00:00:40,270
+/data/rs2, and /data/rs3.
+
+17
+00:00:40,270 --> 00:00:42,620
+And they don't exist right
+now, so it will actually
+
+18
+00:00:42,620 --> 00:00:43,730
+create them.
+
+19
+00:00:43,730 --> 00:00:46,910
+And then it's going to start
+three mongod instances.
+
+20
+00:00:46,910 --> 00:00:50,510
+Now, it has to declare each
+one is part of the same
+
+21
+00:00:50,510 --> 00:00:53,830
+replica set, so minus
+replSet rs1.
+
+22
+00:00:53,830 --> 00:00:57,650
+And this is just telling it that
+it should put its log in
+
+23
+00:00:57,650 --> 00:00:59,700
+a log file called 1.log.
+
+24
+00:00:59,700 --> 00:01:02,310
+And then this is its dbpath
+where it's going to put its
+
+25
+00:01:02,310 --> 00:01:03,210
+data files.
+
+26
+00:01:03,210 --> 00:01:05,620
+So again, /data/rs1.
+
+27
+00:01:05,620 --> 00:01:07,690
+And then it's going to choose
+a port where it's
+
+28
+00:01:07,690 --> 00:01:08,710
+going to listen on.
+
+29
+00:01:08,710 --> 00:01:10,750
+This one is going to get the
+privilege of listening on the
+
+30
+00:01:10,750 --> 00:01:11,830
+standard port.
+
+31
+00:01:11,830 --> 00:01:13,515
+And then it's going to
+fork which is going
+
+32
+00:01:13,515 --> 00:01:14,650
+to allow it to return.
+
+33
+00:01:14,650 --> 00:01:16,720
+And that way I don't have
+to run these each
+
+34
+00:01:16,720 --> 00:01:18,090
+in their own shell.
+
+35
+00:01:18,090 --> 00:01:20,210
+So these are commands that
+are going to work
+
+36
+00:01:20,210 --> 00:01:21,980
+with the bash shell.
+
+37
+00:01:21,980 --> 00:01:24,940
+On Windows it'll be slightly
+different, but this will work
+
+38
+00:01:24,940 --> 00:01:26,750
+on most UNIX machines.
+
+39
+00:01:26,750 --> 00:01:29,380
+So we're going to run bash and
+then create_replica_set.sh.
+
+40
+00:01:29,380 --> 00:01:31,890
+
+41
+00:01:31,890 --> 00:01:34,440
+And then it started them all.
+
+42
+00:01:34,440 --> 00:01:37,130
+And we can see what's in
+one of the log files.
+
+43
+00:01:37,130 --> 00:01:40,270
+So we'll look at 1.log.
+
+44
+00:01:40,270 --> 00:01:43,700
+So basically it's just warning
+me that it's not totally
+
+45
+00:01:43,700 --> 00:01:44,850
+configured yet.
+
+46
+00:01:44,850 --> 00:01:48,140
+So at this point I have three
+servers running, but they're
+
+47
+00:01:48,140 --> 00:01:50,770
+not initialized yet to know
+about each other.
+
+48
+00:01:50,770 --> 00:01:55,540
+Because if you'll notice in that
+script, I didn't tell the
+
+49
+00:01:55,540 --> 00:01:57,370
+first one about the second
+one or the second one
+
+50
+00:01:57,370 --> 00:01:58,190
+about the third one.
+
+51
+00:01:58,190 --> 00:02:01,370
+So there's no way these guys can
+act in concert right now.
+
+52
+00:02:01,370 --> 00:02:04,550
+They're basically just
+independent, and they're
+
+53
+00:02:04,550 --> 00:02:05,590
+running on a port.
+
+54
+00:02:05,590 --> 00:02:07,400
+And so now we need to
+tie them together.
+
+55
+00:02:07,400 --> 00:02:10,020
+So to do that we have to
+actually give a command inside
+
+56
+00:02:10,020 --> 00:02:11,620
+the mongo shell.
+
+57
+00:02:11,620 --> 00:02:13,310
+I'll show you what those
+commands look like.
+
+58
+00:02:13,310 --> 00:02:17,600
+
+59
+00:02:17,600 --> 00:02:20,410
+OK, so we have to create
+a configuration.
+
+60
+00:02:20,410 --> 00:02:24,710
+And this configuration looks
+like this document that is an
+
+61
+00:02:24,710 --> 00:02:26,450
+arbitrary name, config, here.
+
+62
+00:02:26,450 --> 00:02:30,050
+I have to name it with _id equal
+to the repl set name
+
+63
+00:02:30,050 --> 00:02:31,840
+that I gave to each
+of the mongod's.
+
+64
+00:02:31,840 --> 00:02:34,380
+And then I have a members array
+which is going to name
+
+65
+00:02:34,380 --> 00:02:36,220
+three members.
+
+66
+00:02:36,220 --> 00:02:38,010
+And these IDs are arbitrary.
+
+67
+00:02:38,010 --> 00:02:39,560
+They have to be unique.
+
+68
+00:02:39,560 --> 00:02:41,060
+And then these are the hosts.
+
+69
+00:02:41,060 --> 00:02:42,680
+They're going to be part
+of the replication set.
+
+70
+00:02:42,680 --> 00:02:47,715
+The first one is 27017, and
+second one at 27018, and the
+
+71
+00:02:47,715 --> 00:02:49,570
+third one at 27019.
+
+72
+00:02:49,570 --> 00:02:52,650
+And I also, for this first one,
+decided to have it be
+
+73
+00:02:52,650 --> 00:02:55,130
+delayed five seconds with
+respect to the other ones.
+
+74
+00:02:55,130 --> 00:02:58,460
+So it's not going to get its
+data for five seconds after
+
+75
+00:02:58,460 --> 00:03:01,740
+the other machines, so we can
+more easily see what's going
+
+76
+00:03:01,740 --> 00:03:03,200
+on with replication.
+
+77
+00:03:03,200 --> 00:03:06,970
+And in order to do that the
+replication subsystem requires
+
+78
+00:03:06,970 --> 00:03:09,370
+that you not allow it to
+become the primary.
+
+79
+00:03:09,370 --> 00:03:12,730
+So I set priority
+equal to zero.
+
+80
+00:03:12,730 --> 00:03:16,160
+And then I just call
+rs.initiate--
+
+81
+00:03:16,160 --> 00:03:17,660
+this is a mongo shell
+command--
+
+82
+00:03:17,660 --> 00:03:20,190
+with that configuration
+document.
+
+83
+00:03:20,190 --> 00:03:22,860
+And now I just get the status
+to see what's going on.
+
+84
+00:03:22,860 --> 00:03:26,360
+Now I'm going to pipe that into
+one of the mongo shells,
+
+85
+00:03:26,360 --> 00:03:29,470
+so I want to connect to--
+
+86
+00:03:29,470 --> 00:03:33,570
+I can't actually run this
+initiation command on 27017
+
+87
+00:03:33,570 --> 00:03:38,100
+because you can't initialize a
+replica set from a host that
+
+88
+00:03:38,100 --> 00:03:40,680
+cannot become primary and this
+one can not become primary.
+
+89
+00:03:40,680 --> 00:03:43,530
+So I'm going to have to do
+it connecting to 27018.
+
+90
+00:03:43,530 --> 00:03:46,420
+So another thing to note for all
+you UNIX folks out there.
+
+91
+00:03:46,420 --> 00:03:49,660
+So you'll notice that I didn't
+call this local host.
+
+92
+00:03:49,660 --> 00:03:52,410
+I called it Andrews-iMac.local.
+
+93
+00:03:52,410 --> 00:03:54,890
+I didn't have a lot of luck
+on my Mac using local
+
+94
+00:03:54,890 --> 00:03:56,510
+host as the host name.
+
+95
+00:03:56,510 --> 00:03:57,530
+I'm not sure why.
+
+96
+00:03:57,530 --> 00:03:59,620
+This is what the machine thinks
+it's named, and that
+
+97
+00:03:59,620 --> 00:04:03,250
+seems to resolve with
+getaddrinfo, the UNIX command.
+
+98
+00:04:03,250 --> 00:04:05,500
+It's needed to map
+names to IPs.
+
+99
+00:04:05,500 --> 00:04:07,300
+So I used that.
+
+100
+00:04:07,300 --> 00:04:13,720
+And I'm going to connect
+to it, --port 27018.
+
+101
+00:04:13,720 --> 00:04:15,490
+And if I do that, I just
+get the shell.
+
+102
+00:04:15,490 --> 00:04:18,040
+I'm just in the shell
+for this mongod.
+
+103
+00:04:18,040 --> 00:04:22,140
+Now instead I'm going to read
+in this initiation script,
+
+104
+00:04:22,140 --> 00:04:24,880
+init_replica.js,
+and that should
+
+105
+00:04:24,880 --> 00:04:26,420
+initialize my replica set.
+
+106
+00:04:26,420 --> 00:04:29,060
+So it says it should come online
+in about a minute.
+
+107
+00:04:29,060 --> 00:04:34,050
+Let's connect to it now,
+again, and then run--
+
+108
+00:04:34,050 --> 00:04:36,430
+oh, look at that.
+
+109
+00:04:36,430 --> 00:04:39,000
+So you see something different
+happen for the first time.
+
+110
+00:04:39,000 --> 00:04:41,770
+Now we connected to
+the server port.
+
+111
+00:04:41,770 --> 00:04:45,700
+Instead of just saying normal
+shell prompt, I get this
+
+112
+00:04:45,700 --> 00:04:48,010
+[? rs:1SECONDARY ?]
+
+113
+00:04:48,010 --> 00:04:50,400
+telling me that I'm
+in the secondary.
+
+114
+00:04:50,400 --> 00:04:52,650
+rs is going to give me my
+replica set status.
+
+115
+00:04:52,650 --> 00:04:54,480
+I'm going to do that.
+
+116
+00:04:54,480 --> 00:04:59,510
+And if I do that what I find
+out is that I've got three
+
+117
+00:04:59,510 --> 00:05:02,570
+nodes in my replica set, two
+of them are in a recovering
+
+118
+00:05:02,570 --> 00:05:05,080
+state, and one of them, the one
+I'm connected to, is in a
+
+119
+00:05:05,080 --> 00:05:06,540
+primary state.
+
+120
+00:05:06,540 --> 00:05:09,870
+So that's probably going to
+resolve itself momentarily.
+
+121
+00:05:09,870 --> 00:05:13,890
+So let me just look again,
+and now it's up.
+
+122
+00:05:13,890 --> 00:05:18,370
+So secondary, primary,
+secondary.
+
+123
+00:05:18,370 --> 00:05:20,360
+Perfect.
+
+124
+00:05:20,360 --> 00:05:22,460
+So now that's all good.
+
+125
+00:05:22,460 --> 00:05:25,370
+But now I'm on a secondary here,
+so I won't be able to do
+
+126
+00:05:25,370 --> 00:05:26,560
+any rights.
+
+127
+00:05:26,560 --> 00:05:29,500
+So I'm going to disconnect
+from this and go to the
+
+128
+00:05:29,500 --> 00:05:31,320
+primary which looks
+like it's at--
+
+129
+00:05:31,320 --> 00:05:32,260
+oh, I am on primary.
+
+130
+00:05:32,260 --> 00:05:33,320
+Sorry.
+
+131
+00:05:33,320 --> 00:05:34,570
+I was initially on secondary.
+
+132
+00:05:34,570 --> 00:05:36,880
+It changed the prompt, I guess,
+
+133
+00:05:36,880 --> 00:05:38,280
+because now I'm primary.
+
+134
+00:05:38,280 --> 00:05:38,720
+Is that true?
+
+135
+00:05:38,720 --> 00:05:40,930
+Let's go back here.
+
+136
+00:05:40,930 --> 00:05:44,130
+Yes, when I first connected, it
+thought I was a secondary,
+
+137
+00:05:44,130 --> 00:05:46,120
+but as soon as it brought the
+replica set fully up it made
+
+138
+00:05:46,120 --> 00:05:46,950
+me the primary.
+
+139
+00:05:46,950 --> 00:05:47,850
+OK.
+
+140
+00:05:47,850 --> 00:05:49,680
+So, good, I'm the primary.
+
+141
+00:05:49,680 --> 00:05:52,960
+So if I disconnect and connect
+to one of the other ones, I
+
+142
+00:05:52,960 --> 00:05:54,310
+should see it be a secondary.
+
+143
+00:05:54,310 --> 00:05:56,110
+And it is a secondary.
+
+144
+00:05:56,110 --> 00:05:59,910
+And if I connect to the final
+one, which is a 27019, I
+
+145
+00:05:59,910 --> 00:06:02,560
+should see that it
+is a secondary.
+
+146
+00:06:02,560 --> 00:06:03,690
+OK.
+
+147
+00:06:03,690 --> 00:06:06,970
+And if I try to write to
+the secondary, I'm
+
+148
+00:06:06,970 --> 00:06:08,790
+going to have no luck.
+
+149
+00:06:08,790 --> 00:06:09,730
+Let's write to the primary.
+
+150
+00:06:09,730 --> 00:06:14,770
+So I'm going to get off
+there and then I'm
+
+151
+00:06:14,770 --> 00:06:16,490
+already using test.
+
+152
+00:06:16,490 --> 00:06:22,010
+db.people.insert name Andrew.
+
+153
+00:06:22,010 --> 00:06:24,490
+Let's see if that document
+gets inserted.
+
+154
+00:06:24,490 --> 00:06:26,420
+I inserted it.
+
+155
+00:06:26,420 --> 00:06:32,190
+And now let's go to one of the
+secondaries and let's see what
+
+156
+00:06:32,190 --> 00:06:33,440
+is in the collection.
+
+157
+00:06:33,440 --> 00:06:36,820
+
+158
+00:06:36,820 --> 00:06:37,830
+Now what does it say?
+
+159
+00:06:37,830 --> 00:06:40,550
+It says, I can't query this
+because I'm a secondary, and
+
+160
+00:06:40,550 --> 00:06:42,870
+you can't query secondaries
+by default.
+
+161
+00:06:42,870 --> 00:06:44,590
+So how do you do that?
+
+162
+00:06:44,590 --> 00:06:50,050
+Well, there is a command called
+rs.slaveOk(), I'm
+
+163
+00:06:50,050 --> 00:06:53,170
+sorry, rs.slave0k which
+is going to allow this
+
+164
+00:06:53,170 --> 00:06:54,230
+connection.
+
+165
+00:06:54,230 --> 00:06:56,360
+Remember, what we have right
+now is mongo shell
+
+166
+00:06:56,360 --> 00:06:57,640
+attached to a mongod.
+
+167
+00:06:57,640 --> 00:07:01,030
+And you have to set for this
+connection that you are OK
+
+168
+00:07:01,030 --> 00:07:03,120
+with reading from a secondary.
+
+169
+00:07:03,120 --> 00:07:04,500
+And then once I do
+that, I should be
+
+170
+00:07:04,500 --> 00:07:05,520
+able to do the query.
+
+171
+00:07:05,520 --> 00:07:07,070
+So let's see.
+
+172
+00:07:07,070 --> 00:07:10,810
+If I do the find I see
+there's my object.
+
+173
+00:07:10,810 --> 00:07:12,990
+So you can see that now my
+object got replicated to a
+
+174
+00:07:12,990 --> 00:07:14,260
+second server.
+
+175
+00:07:14,260 --> 00:07:16,050
+And if I go to the last
+server, then I
+
+176
+00:07:16,050 --> 00:07:17,050
+should also get it there.
+
+177
+00:07:17,050 --> 00:07:22,770
+So let's see what rs.status()
+looks like.
+
+178
+00:07:22,770 --> 00:07:29,570
+So my secondaries are at
+port 27019 and 27017.
+
+179
+00:07:29,570 --> 00:07:33,600
+So I was on nine so
+let's go to seven.
+
+180
+00:07:33,600 --> 00:07:39,400
+And let's give it an
+rs.slaveOk() command, and then
+
+181
+00:07:39,400 --> 00:07:40,990
+let's do db.people.find().
+
+182
+00:07:40,990 --> 00:07:43,520
+
+183
+00:07:43,520 --> 00:07:45,490
+And we'll see that that
+has been replicated.
+
+184
+00:07:45,490 --> 00:07:48,140
+And so that's just the basics
+to show you how you create a
+
+185
+00:07:48,140 --> 00:07:50,080
+replica set inside mongo.
+
+186
+00:07:50,080 --> 00:07:52,270
+And I'm going to put these
+scripts up in the lesson files
+
+187
+00:07:52,270 --> 00:07:54,120
+this week, so I really encourage
+you to do this
+
+188
+00:07:54,120 --> 00:07:58,090
+yourself so that you can play
+with it and see how they work.
+
+189
+00:07:58,090 --> 00:07:59,893
+Now let's do a quiz.
+
+190
+00:07:59,893 --> 00:08:02,690
+
+191
+00:08:02,690 --> 00:08:03,430
+Here's the quiz.
+
+192
+00:08:03,430 --> 00:08:05,430
+Which command, when issued from
+the mongo shell, will
+
+193
+00:08:05,430 --> 00:08:07,360
+allow you to read from
+a secondary?
+
+194
+00:08:07,360 --> 00:08:10,550
+db.isMaster(), db adminCommand
+readPreference Secondary,
+
+195
+00:08:10,550 --> 00:08:14,600
+rs.setStatus('Primary'),
+or rs.slaveOk()?
+
+196
+00:08:14,600 --> 00:08:16,330
+Which one will let you read
+from a secondary?
+
+197
+00:08:16,330 --> 00:08:17,580

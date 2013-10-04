@@ -1,0 +1,275 @@
+1
+00:00:00,000 --> 00:00:00,120
+
+2
+00:00:00,120 --> 00:00:00,460
+All right.
+
+3
+00:00:00,460 --> 00:00:03,280
+So we discussed that if a
+primary election occurs-- if
+
+4
+00:00:03,280 --> 00:00:05,010
+there's a failover in
+your replica set--
+
+5
+00:00:05,010 --> 00:00:08,070
+and you do nothing special, the
+program will terminate.
+
+6
+00:00:08,070 --> 00:00:09,320
+Now we want to do better
+than that.
+
+7
+00:00:09,320 --> 00:00:10,810
+So how do we do better
+than that?
+
+8
+00:00:10,810 --> 00:00:11,960
+What we need to do is catch the
+
+9
+00:00:11,960 --> 00:00:13,190
+exceptions that might occur.
+
+10
+00:00:13,190 --> 00:00:16,890
+So here's the same program
+written, but in this case
+
+11
+00:00:16,890 --> 00:00:21,160
+these rights all go into a try
+except block inside Python.
+
+12
+00:00:21,160 --> 00:00:22,560
+So we try to insert
+each of these
+
+13
+00:00:22,560 --> 00:00:24,970
+documents, one to a million.
+
+14
+00:00:24,970 --> 00:00:29,310
+But if there's a problem, than
+what we do is we print out the
+
+15
+00:00:29,310 --> 00:00:31,340
+exception and we continue.
+
+16
+00:00:31,340 --> 00:00:33,400
+And we sleep for a half
+a second again
+
+17
+00:00:33,400 --> 00:00:34,870
+between each insert.
+
+18
+00:00:34,870 --> 00:00:38,060
+So, let's see what happens if
+we run this program and then
+
+19
+00:00:38,060 --> 00:00:39,960
+cause a replica set election.
+
+20
+00:00:39,960 --> 00:00:41,715
+So, I'm gonna go here.
+
+21
+00:00:41,715 --> 00:00:43,490
+Now we're inserting
+the numbers.
+
+22
+00:00:43,490 --> 00:00:46,300
+And now we're gonna once
+again figure out where
+
+23
+00:00:46,300 --> 00:00:48,490
+our primary is 27019.
+
+24
+00:00:48,490 --> 00:00:49,310
+OK, good.
+
+25
+00:00:49,310 --> 00:00:50,700
+So that's easy.
+
+26
+00:00:50,700 --> 00:00:53,420
+So, we're gonna just step
+down this primary.
+
+27
+00:00:53,420 --> 00:00:55,190
+And we're gonna see
+what happens.
+
+28
+00:00:55,190 --> 00:00:58,010
+So if we go back to this window,
+you can see that we
+
+29
+00:00:58,010 --> 00:00:59,510
+inserted up to 38.
+
+30
+00:00:59,510 --> 00:01:00,660
+And now we're getting
+a bunch of
+
+31
+00:01:00,660 --> 00:01:03,120
+pymongo.error.AutoReconnect errors--
+
+32
+00:01:03,120 --> 00:01:04,340
+exceptions.
+
+33
+00:01:04,340 --> 00:01:07,390
+And then after a period
+of time, look at that.
+
+34
+00:01:07,390 --> 00:01:09,160
+It's continuing forward.
+
+35
+00:01:09,160 --> 00:01:09,850
+So what happened?
+
+36
+00:01:09,850 --> 00:01:13,920
+It looks like it inserted up
+to 38, and then it took a
+
+37
+00:01:13,920 --> 00:01:18,420
+bunch of errors, and it's
+starting again at document
+
+38
+00:01:18,420 --> 00:01:21,300
+where i was 59, 60, 61.
+
+39
+00:01:21,300 --> 00:01:21,890
+All right.
+
+40
+00:01:21,890 --> 00:01:23,900
+So this is clearly
+an improvement.
+
+41
+00:01:23,900 --> 00:01:27,360
+Now, instead of the program
+terminating, we are catching
+
+42
+00:01:27,360 --> 00:01:28,630
+these exceptions.
+
+43
+00:01:28,630 --> 00:01:30,500
+But we're losing data.
+
+44
+00:01:30,500 --> 00:01:32,280
+So if we're looking to make sure
+that every single one of
+
+45
+00:01:32,280 --> 00:01:35,490
+these inserts occurs, it's not
+always going to occur.
+
+46
+00:01:35,490 --> 00:01:38,070
+Because in certain cases,
+instead of inserting we're
+
+47
+00:01:38,070 --> 00:01:40,400
+taking an exception because
+we're trying to reconnect to a
+
+48
+00:01:40,400 --> 00:01:41,840
+new primary.
+
+49
+00:01:41,840 --> 00:01:44,700
+And then we don't retry
+that actual insert.
+
+50
+00:01:44,700 --> 00:01:46,290
+So we lose it.
+
+51
+00:01:46,290 --> 00:01:48,820
+Now, in some applications, it
+might be acceptable to lose an
+
+52
+00:01:48,820 --> 00:01:51,420
+insert now and again, depends
+on the application.
+
+53
+00:01:51,420 --> 00:01:54,150
+But if you actually want to make
+sure your insert occurs,
+
+54
+00:01:54,150 --> 00:01:57,290
+this program's not gonna work
+particularly well, except that
+
+55
+00:01:57,290 --> 00:01:59,180
+it didn't actually terminate
+the entire program.
+
+56
+00:01:59,180 --> 00:02:01,730
+So this is an improvement.
+
+57
+00:02:01,730 --> 00:02:02,120
+All right.
+
+58
+00:02:02,120 --> 00:02:03,870
+So it's time for a quiz.
+
+59
+00:02:03,870 --> 00:02:06,800
+If you catch exceptions during
+failover, are you guaranteed
+
+60
+00:02:06,800 --> 00:02:08,789
+to have your writes succeed?
+
+61
+00:02:08,789 --> 00:02:10,039
+Yes or no.

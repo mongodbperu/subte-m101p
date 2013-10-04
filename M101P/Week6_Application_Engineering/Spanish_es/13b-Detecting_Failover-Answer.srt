@@ -1,0 +1,46 @@
+1
+00:00:00,000 --> 00:00:00,140
+
+2
+00:00:00,140 --> 00:00:00,410
+OK.
+
+3
+00:00:00,410 --> 00:00:01,160
+And the answer is no.
+
+4
+00:00:01,160 --> 00:00:02,950
+You're not guaranteed to
+have them succeed.
+
+5
+00:00:02,950 --> 00:00:04,540
+Your program won't terminate.
+
+6
+00:00:04,540 --> 00:00:07,620
+But if all you do is just catch
+the exception, then the
+
+7
+00:00:07,620 --> 00:00:08,670
+write won't complete.
+
+8
+00:00:08,670 --> 00:00:10,650
+And your program will
+continue forward.
+
+9
+00:00:10,650 --> 00:00:13,066
+And depending on how the program
+is structured, you may
+
+10
+00:00:13,066 --> 00:00:14,890
+not even realize that you
+missed that write.
+
+11
+00:00:14,890 --> 00:00:16,140

@@ -1,0 +1,25 @@
+1
+00:00:00,000 --> 00:00:00,170
+
+2
+00:00:00,170 --> 00:00:02,620
+OK, and the answer, as we
+just saw, was nine.
+
+3
+00:00:02,620 --> 00:00:05,040
+We have the replica set of three
+and the config servers
+
+4
+00:00:05,040 --> 00:00:08,130
+each is a mongod process, mongos
+it started but it is
+
+5
+00:00:08,130 --> 00:00:10,050
+not a mongod process, so
+that does not count.
+
+6
+00:00:10,050 --> 00:00:11,300
