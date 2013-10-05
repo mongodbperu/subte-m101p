@@ -46,7 +46,7 @@ con replicación.
 11
 00:00:18,120 --> 00:00:21,200
 Y el último es alcanzar
-escalabilidad horizintal,
+escalabilidad horizontal,
 
 12
 00:00:21,200 --> 00:00:23,410
@@ -103,7 +103,7 @@ si piensas al respecto.
 23
 00:00:48,930 --> 00:00:52,920
 Y hace inserciones
-y actualicaciones.
+y actualizaciones.
 
 24
 00:00:52,920 --> 00:00:56,440
@@ -142,12 +142,12 @@ o una inserción o algo en el
 31
 00:01:11,920 --> 00:01:16,790
 API de Mongo, esta no es
-reconocida, por defecto.
+confirmada, por defecto.
 
 32
 00:01:16,790 --> 00:01:18,900
-O no esperamos por un
-reconocimiento en ella.
+O no esperamos por una
+confirmación en ella.
 
 33
 00:01:18,900 --> 00:01:22,830
@@ -251,7 +251,7 @@ llama modo seguro (safe mode)--
 
 54
 00:02:09,910 --> 00:02:13,240
-que en esencua ha quedado
+que en esencia ha quedado
 deprecado en este momento,
 
 55
@@ -319,18 +319,18 @@ el parámetro "j".
 
 68
 00:02:51,870 --> 00:02:54,870
-Ahora, el parámetros "w"
+Ahora, el parámetro "w"
 determina si vas a
 
 69
 00:02:54,870 --> 00:02:58,140
-esperar o no porque la
-escritura sera reconocida.
+esperar o no a que la
+escritura sea confirmada.
 
 70
 00:02:58,140 --> 00:03:02,310
-Así, "w=1" esperará porque
-la escritura sea reconocida.
+Así, "w=1" esperará a que
+la escritura sea confirmada.
 
 71
 00:03:02,310 --> 00:03:03,850
@@ -344,7 +344,7 @@ porque la escritura sea
 
 73
 00:03:05,980 --> 00:03:06,850
-reconocida.
+confirmada.
 
 74
 00:03:06,850 --> 00:03:09,230
@@ -368,7 +368,7 @@ y luego hacer un cambio en
 78
 00:03:14,500 --> 00:03:18,260
 memoria y luego fallar la energía,
-y luego aquel escritura se
+y luego aquella escritura se
 
 79
 00:03:18,260 --> 00:03:20,040
@@ -464,7 +464,7 @@ y desear esperar a ser
 
 98
 00:04:13,080 --> 00:04:13,800
-reconocida.
+confirmada.
 
 99
 00:04:13,800 --> 00:04:16,910
@@ -500,11 +500,11 @@ pero dejamos esto en "0", entonces
 106
 00:04:30,180 --> 00:04:32,960
 lo que va a pasar es que
-vamos a esperar por un
+vamos a esperar por una
 
 107
 00:04:32,960 --> 00:04:35,340
-simple reconocimiento
+simple confirmación
 de Mongo que
 
 108
@@ -560,11 +560,11 @@ esto para que llegue al "journal",
 119
 00:04:57,970 --> 00:05:00,230
 ignora el hecho que dijiste,
-no deseo esperar por el
+no deseo esperar por la
 
 120
 00:05:00,230 --> 00:05:01,300
-reconocimiento.
+confirmación.
 
 121
 00:05:01,300 --> 00:05:03,260
@@ -602,7 +602,7 @@ de escritura (write concern).
 
 128
 00:05:18,330 --> 00:05:21,050
-Y la concernecia de escritura es,
+Y la concernencia de escritura es,
 ¿cómo te concierne que tus
 
 129
@@ -664,7 +664,7 @@ y "journal" igual a "0".
 141
 00:05:52,110 --> 00:05:54,860
 Ese fue el modo seguro-- cuando
-establecemos "safe" en "True"
+establecimos "safe" en "True"
 
 142
 00:05:54,860 --> 00:05:56,340
@@ -690,7 +690,7 @@ la semana pasada--
 147
 00:06:04,330 --> 00:06:08,800
 hicimos un gran cambio, por lo que,
-por defecto, si usar los nuevos
+por defecto, si usas los nuevos
 
 148
 00:06:08,800 --> 00:06:11,170
@@ -708,12 +708,12 @@ a obtener esto.
 
 151
 00:06:15,240 --> 00:06:17,450
-Pero su realmente deseas
+Pero si realmente deseas
 asegurarte que estás llegando al
 
 152
 00:06:17,450 --> 00:06:21,020
-disco antes salir, esto es
+disco antes de continuar, esto es
 lo que debería estar usando--
 
 153
@@ -738,7 +738,7 @@ vez en esta semana.
 157
 00:06:31,210 --> 00:06:33,280
 Pero lo que realmente deseamos
-enfatizar es que hay este
+enfatizar es que existe este
 
 158
 00:06:33,280 --> 00:06:38,380
@@ -748,7 +748,7 @@ escritura y tu modo de "journaling".
 159
 00:06:38,380 --> 00:06:40,870
 Y hay un montón de modos
-dentro de los driver
+dentro de los drivers
 
 160
 00:06:40,870 --> 00:06:42,050
@@ -762,7 +762,7 @@ del bajo nivel del API
 162
 00:06:45,360 --> 00:06:48,780
 en Mongo, las operaciones
-no son reconodidas.
+no son confirmadas.
 
 163
 00:06:48,780 --> 00:06:52,590
@@ -772,7 +772,7 @@ a "getLastError" o algo
 164
 00:06:52,590 --> 00:06:54,630
 para asegurarse que van a
-ser reconocidas o que
+ser confirmadas o que
 
 165
 00:06:54,630 --> 00:06:55,510
