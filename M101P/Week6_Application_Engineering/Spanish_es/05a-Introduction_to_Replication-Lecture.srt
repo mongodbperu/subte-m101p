@@ -7,290 +7,290 @@ OK.
 
 3
 00:00:00,440 --> 00:00:03,320
-We've talked about how we get
-durability on a single node by
+Hemos hablado acerca de cómo conseguimos
+durabilidad en un nodo único
 
 4
 00:00:03,320 --> 00:00:06,070
-waiting for the write, let's
-say, to go to the log.
+esperando que las escrituras, digamos,
+vayan al log.
 
 5
 00:00:06,070 --> 00:00:09,080
-But how do we get availability,
-and how do we
+Pero ¿cómo conseguimos disponibilidad,
+y cómo conseguimos
 
 6
 00:00:09,080 --> 00:00:10,450
-get fault tolerance?
+tolerancia a fallos?
 
 7
 00:00:10,450 --> 00:00:13,100
-And by that, I mean if that
-node goes down, we want to
+Y con eso, quiero decir que si este
+nodo se cae, queremos 
 
 8
 00:00:13,100 --> 00:00:14,830
-still be able to
-use the system.
+todavía ser capaces
+de usar el sistema.
 
 9
 00:00:14,830 --> 00:00:17,990
-At if the primary node goes down
-and we lose it entirely
+Y si el nodo primario se cae
+y lo perdemos completamente
 
 10
 00:00:17,990 --> 00:00:20,570
-for some reason, let's say
-there's a fire, how do we make
+por alguna razón, digamos que
+hay un incendio, ¿cómo nos aseguramos
 
 11
 00:00:20,570 --> 00:00:23,220
-sure we don't lose our data
-between the backups?
+que no perdemos nuestros datos
+entre las copias de seguridad?
 
 12
 00:00:23,220 --> 00:00:26,800
-And so what we do to solve
-both those problems is we
+Y por eso lo que hacemos para resolver
+estos dos problemas es
 
 13
 00:00:26,800 --> 00:00:28,330
-introduce replication.
+introducir la replicación.
 
 14
 00:00:28,330 --> 00:00:30,620
-And I'll show you
-how that works.
+Y te enseñaré
+cómo funciona.
 
 15
 00:00:30,620 --> 00:00:33,400
-So we have the concept
-of a replica set.
+Tenemos el concepto
+de conjunto de réplicas.
 
 16
 00:00:33,400 --> 00:00:36,445
-And the replica set is
-a set of Mongo nodes.
+Y un conjunto de réplicas es
+un conjunto de nodos Mongo.
 
 17
 00:00:36,445 --> 00:00:38,380
-And I'm going to show
-you three nodes.
+Y voy a mostrarte
+tres nodos.
 
 18
 00:00:38,380 --> 00:00:43,370
-And these are all Mongos,
-mongod's that act together and
+Y éstos son todos Mongo,
+mongods que trabajan juntos y
 
 19
 00:00:43,370 --> 00:00:45,950
-all mirror each other in
-terms of the data.
+son espejos entre ellos en
+términos de datos.
 
 20
 00:00:45,950 --> 00:00:48,640
-There is one primary, and
-then the other nodes are
+Hay un nodo primario y 
+luego los otros nodos son
 
 21
 00:00:48,640 --> 00:00:49,670
-secondaries.
+secundarios.
 
 22
 00:00:49,670 --> 00:00:50,940
-But that's dynamic.
+Pero eso es dinámico.
 
 23
 00:00:50,940 --> 00:00:53,990
-And data that's written to the
-primary will asynchronously
+Y los datos que se escriben al
+primario se replicarán
 
 24
 00:00:53,990 --> 00:00:56,300
-replicate to the secondaries.
+asíncronamente a los secundarios.
 
 25
 00:00:56,300 --> 00:01:00,020
-Your application and its drivers
-stay connected to the
+Tu aplicación y sus drivers
+permanecen conectados al
 
 26
 00:01:00,020 --> 00:01:03,450
-primary, and will write
-to the primary.
+primario y escribirán
+al primario.
 
 27
 00:01:03,450 --> 00:01:05,110
-You can only write
-to the primary.
+Sólo puedes escribir
+al primario.
 
 28
 00:01:05,110 --> 00:01:08,950
-If the primary goes down, then
-the remaining nodes, in this
+Si el primario se cae, entonces
+los nodos restantes, en este
 
 29
 00:01:08,950 --> 00:01:13,290
-case these two notes will
-perform an election to elect a
+caso estos dos nodos
+realizarán una elección para elegir
 
 30
 00:01:13,290 --> 00:01:14,170
-new primary.
+un nuevo primario.
 
 31
 00:01:14,170 --> 00:01:17,610
-To elect a new primary, you have
-to have a strict majority
+Para elegir un nuevo primario, debes
+tener una mayoría estricta
 
 32
 00:01:17,610 --> 00:01:18,740
-of the original number
-of nodes.
+del número original
+de nodos.
 
 33
 00:01:18,740 --> 00:01:21,630
-So since the original number of
-nodes here was three, you'd
+Como el número original de
+nodos aquí era tres,
 
 34
 00:01:21,630 --> 00:01:23,480
-need two nodes to elect a
-new primary, and that's
+necesitarías dos nodos para elegir un
+nuevo primario, y ése es
 
 35
 00:01:23,480 --> 00:01:24,670
-the number we have.
+el número que tenemos.
 
 36
 00:01:24,670 --> 00:01:27,870
-So if that went down, then this
-can become the primary.
+Por lo que si se cayera, entonces éste
+puede convertirse en primario.
 
 37
 00:01:27,870 --> 00:01:30,960
-And at that point, what would
-happens is your app would
+Y en este punto, lo que
+ocurriría es que tu aplicación
 
 38
 00:01:30,960 --> 00:01:34,490
-reconnect to the primary for
-rights, through the drivers.
+se reconectaría al primario para
+las escrituras, a través de los drivers.
 
 39
 00:01:34,490 --> 00:01:35,640
-All transparently.
+Todo de manera transparente.
 
 40
 00:01:35,640 --> 00:01:38,470
-So this group of nodes is
-called a replica set.
+Así, este grupo de nodos 
+se llama conjunto de réplicas.
 
 41
 00:01:38,470 --> 00:01:41,160
-And that's going to form the
-basic mechanism by which we
+Y va a formar el
+mecanismo básico por el cual
 
 42
 00:01:41,160 --> 00:01:44,410
-get fault tolerance and
-availability in Mongo.
+conseguiremos tolerancia a fallos y
+disponibilidad en Mongo.
 
 43
 00:01:44,410 --> 00:01:46,900
-Now, there's some other details
-of this in terms of
+Ahora, hay algunos otros detalles
+con respecto a esto en términos de
 
 44
 00:01:46,900 --> 00:01:49,010
-whether reads can happen to the
-secondaries or not, and
+si pueden ocurrir lecturas en 
+los secundarios o no,
 
 45
 00:01:49,010 --> 00:01:49,870
-we'll go through that.
+y analizaremos eso.
 
 46
 00:01:49,870 --> 00:01:52,400
-But this kind of gives
-you the basic outline
+Pero esto en cierto modo te
+da el esquema básico
 
 47
 00:01:52,400 --> 00:01:53,500
-of the way it works.
+sobre cómo funciona.
 
 48
 00:01:53,500 --> 00:01:56,670
-Now when this node, this node
-came back up, it could come
+Ahora cuando este nodo, este nodo
+se recupera, podría volver
 
 49
 00:01:56,670 --> 00:02:00,840
-back up as a secondary, and in
-which case it would rejoin the
+como un secundario, en cuyo
+caso volvería a unirse al
 
 50
 00:02:00,840 --> 00:02:04,120
-group, and be able to act as a
-secondary while this one acted
+grupo y sería capaz de actuar como
+un secundario mientras este nodo actuase
 
 51
 00:02:04,120 --> 00:02:04,830
-as the primary.
+como primario.
 
 52
 00:02:04,830 --> 00:02:06,750
-So this is the basics
-of replication.
+Así que ésta es la base
+de la replicación.
 
 53
 00:02:06,750 --> 00:02:09,669
-Now, the minimum number of
-nodes, as I said is three.
+Ahora, el número mínimo de
+nodos, como ya dije es tres.
 
 54
 00:02:09,669 --> 00:02:12,890
-And the reason is that if you
-had fewer than three nodes,
+Y la razón es que si
+tuvieras menos de tres nodos,
 
 55
 00:02:12,890 --> 00:02:17,400
-then what would remain would not
-be a majority of that set,
+entonces los que quedarían no
+serían una mayoría de ese conjunto,
 
 56
 00:02:17,400 --> 00:02:18,210
-of the original set.
+del conjunto original.
 
 57
 00:02:18,210 --> 00:02:20,035
-And so there would be no way
-to elect a new primary.
+Y por eso no habría forma
+de elegir un nuevo primario.
 
 58
 00:02:20,035 --> 00:02:22,810
-So you'd go without a primary,
-which means you could no
+Por lo que continuaría sin un primario,
+lo que significa que ya no podrías
 
 59
 00:02:22,810 --> 00:02:24,500
-longer take rights.
+recibir escrituras.
 
 60
 00:02:24,500 --> 00:02:27,680
-OK, let's go over a quick quiz
-on some of these concepts.
+OK, hagamos un cuestionario rápido
+sobre algunos de estos conceptos.
 
 61
 00:02:27,680 --> 00:02:30,210
-What is the minimum original
-number of nodes needed to
+¿Cuál es el número mínimo 
+original de nodos necesarios para
 
 62
 00:02:30,210 --> 00:02:32,550
-assure the election of a new
-primary if a node goes down?
+asegurar la elección de un nuevo
+primario si se cae un nodo?
 
 63
 00:02:32,550 --> 00:02:33,800
