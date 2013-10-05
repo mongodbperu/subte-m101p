@@ -3,32 +3,32 @@
 
 2
 00:00:00,320 --> 00:00:01,540
-And of course, the
-answer is three.
+Y por supuesto, la 
+respuesta es tres.
 
 3
 00:00:01,540 --> 00:00:03,870
-And as I said before, that's
-because if you had fewer than
+Y como dije antes, eso es
+porque si tuvieras menos de
 
 4
 00:00:03,870 --> 00:00:07,100
-three, then what would remain,
-let's say two nodes, or one
+tres, entonces quedarían,
+digamos dos nodos, o un
 
 5
 00:00:07,100 --> 00:00:09,780
-node if there were fewer than
-three, if you had two nodes,
+nodo si hubiera menos de
+tres, si tuvieras dos nodos,
 
 6
 00:00:09,780 --> 00:00:10,740
-would not be a majority.
+no habría una mayoría.
 
 7
 00:00:10,740 --> 00:00:12,310
-And so you couldn't
-elect any primary.
+Y por eso no podrías
+elegir un primario.
 
 8
 00:00:12,310 --> 00:00:13,560
