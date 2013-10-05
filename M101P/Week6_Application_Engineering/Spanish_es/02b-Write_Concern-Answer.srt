@@ -3,71 +3,70 @@
 
 2
 00:00:00,140 --> 00:00:03,110
-OK, and the answer is, as we
-talked about, w equals 1.
+De acuerdo y la respuesta es
+que, como hablamos, "w=1".
 
 3
 00:00:03,110 --> 00:00:04,860
-I want to make sure I
-acknowledge the write.
+Deseo asegurarme de
+confirmar la escritura.
 
 4
 00:00:04,860 --> 00:00:07,940
-And j equals 1, I want to make
-sure it's journaled.
+Y "j=1", deseo asegurarme
+de llegar al "journal".
 
 5
 00:00:07,940 --> 00:00:11,210
-These other answers are
-wrong in various ways.
+Estas otras respuestas están
+erradas en varias formas.
 
 6
 00:00:11,210 --> 00:00:14,140
-w equals zero won't wait at all
-for an acknowledgement, or
+"w=0" no esperará en todas
+por una confirmación, o
 
 7
 00:00:14,140 --> 00:00:15,240
-for journaling.
+para "journaling".
 
 8
 00:00:15,240 --> 00:00:18,710
-w equals 2, I'll just
-foreshadow this.
+"w=2", voy a presagiar esto.
 
 9
 00:00:18,710 --> 00:00:21,330
-We'll wait for the node that
-you're talking to, the primary
+Esperaremos por el nodo que
+estás hablando, el nodo
 
 10
 00:00:21,330 --> 00:00:24,520
-node and, and one other note
-in a replica set to
+primario y otro nodo
+en un conjunto de réplicas
 
 11
 00:00:24,520 --> 00:00:26,820
-acknowledge the write, but
-none of them necessarily
+para confirmar la escritura,
+pero ninguna de estas necesariamente
 
 12
 00:00:26,820 --> 00:00:27,770
-journaling it.
+alcanzan el "journal".
 
 13
 00:00:27,770 --> 00:00:30,600
-And w equals 1, j equal 0.
+Y "w=1", "j=0".
 
 14
 00:00:30,600 --> 00:00:33,720
-We'll wait for the node you're
-talking to to acknowledge the
+Esperará por el nodo que te
+dirá la confirmación de la
 
 15
 00:00:33,720 --> 00:00:35,550
-write, but it won't wait for
-it to get journaled all the
+escritura, pero no esperará
+por llegar todo al "journal"
 
 16
 00:00:35,550 --> 00:00:36,800
-way to disk.
+en el disco.
