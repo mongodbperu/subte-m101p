@@ -3,27 +3,27 @@
 
 2
 00:00:00,150 --> 00:00:02,910
-OK, and the answer is that
-regular replica set members,
+OK, y la respuesta es que
+los miembros normales del conjunto de réplicas,
 
 3
 00:00:02,910 --> 00:00:05,360
-hidden members, and arbiters
-can all participate in the
+miembros ocultos y árbitros
+pueden todos participar en la
 
 4
 00:00:05,360 --> 00:00:07,600
-election of a new primary,
-although not all them can
+elección de un nuevo primario,
+aunque no todos ellos pueden
 
 5
 00:00:07,600 --> 00:00:10,690
-become the primary, and lawyers
-are never welcome in
+convertirse en el primario, y los abogados
+nunca son bienvenidos en
 
 6
 00:00:10,690 --> 00:00:12,790
-our election for a new primary.
+nuestra elección de un nuevo primario.
 
 7
 00:00:12,790 --> 00:00:14,040
