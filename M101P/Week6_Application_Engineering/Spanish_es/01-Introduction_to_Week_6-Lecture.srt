@@ -1,0 +1,98 @@
+1
+00:00:00,000 --> 00:00:00,490
+
+2
+00:00:00,490 --> 00:00:01,950
+Bienvenido a la semana seis.
+
+3
+00:00:01,950 --> 00:00:04,315
+Esta semana vamos a hacer
+ingeniería de aplicaciones.
+
+4
+00:00:04,315 --> 00:00:07,690
+Los dos principales temas
+son replicación y Sharding.
+
+5
+00:00:07,690 --> 00:00:10,450
+Replicación es la técnica para
+introducir un grado de tolerancia
+
+6
+00:00:10,450 --> 00:00:13,340
+a fallos a MongoDB,
+replicando asíncronamente
+
+7
+00:00:13,340 --> 00:00:17,070
+tus datos a través de varios
+nodos ejecutando MongoDB.
+
+8
+00:00:17,070 --> 00:00:19,370
+Y lo que vamos a hablar
+es lo que necesitas saber
+
+9
+00:00:19,370 --> 00:00:22,440
+como ingeniero, como
+desarrollador, para ofrecer
+
+10
+00:00:22,440 --> 00:00:23,750
+un entorno replicado.
+
+11
+00:00:23,750 --> 00:00:25,900
+El siguiente tema es Sharding.
+
+12
+00:00:25,900 --> 00:00:29,400
+Sharding es la manera en
+que escalamos en Mongo.
+
+13
+00:00:29,400 --> 00:00:30,980
+Te permitimos dividir
+una colección
+
+14
+00:00:30,980 --> 00:00:33,260
+a través de múltiples instancias.
+
+15
+00:00:33,260 --> 00:00:35,260
+Y vamos a necesitar conocer
+un par de cosas como
+
+16
+00:00:35,260 --> 00:00:38,720
+desarrollador para ofrecer
+entornos con Sharding.
+
+17
+00:00:38,720 --> 00:00:40,815
+Primero, vas a necesitar
+conocer cómo crear una clave
+
+18
+00:00:40,815 --> 00:00:44,110
+de shard y cómo escribir consultas
+que funcionen en un entorno
+
+19
+00:00:44,110 --> 00:00:44,950
+con Sharding.
+
+20
+00:00:44,950 --> 00:00:46,880
+Así que vamos a hablar de esto.
+
+21
+00:00:46,880 --> 00:00:48,130
+Así que empecemos.
+
+22
+00:00:48,130 --> 00:00:49,050

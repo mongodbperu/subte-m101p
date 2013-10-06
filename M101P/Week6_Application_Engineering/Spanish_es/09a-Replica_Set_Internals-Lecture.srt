@@ -1,0 +1,522 @@
+1
+00:00:00,000 --> 00:00:02,090
+All right, let's talk about how
+replication works behind
+
+2
+00:00:02,090 --> 00:00:03,050
+the scenes.
+
+3
+00:00:03,050 --> 00:00:06,830
+So, I've connected to two of the
+Mongod's right now through
+
+4
+00:00:06,830 --> 00:00:07,660
+Mongo shell.
+
+5
+00:00:07,660 --> 00:00:09,980
+One is, I've connected
+to the primary--
+
+6
+00:00:09,980 --> 00:00:12,530
+at 27018, at that port.
+
+7
+00:00:12,530 --> 00:00:15,040
+In this second window, I've
+connected to this the
+
+8
+00:00:15,040 --> 00:00:19,320
+secondary Mongod at 27019.
+
+9
+00:00:19,320 --> 00:00:21,340
+And what I'm going
+to do here--
+
+10
+00:00:21,340 --> 00:00:25,840
+just want to get rs.status
+again, just to look at the
+
+11
+00:00:25,840 --> 00:00:27,600
+different configuration.
+
+12
+00:00:27,600 --> 00:00:31,315
+And you can see here that I am
+27018, and I am the primary.
+
+13
+00:00:31,315 --> 00:00:35,440
+You can also call rs.isMaster,
+which will tell you whether or
+
+14
+00:00:35,440 --> 00:00:36,710
+not you're the master.
+
+15
+00:00:36,710 --> 00:00:44,360
+So rs.isMaster is true here, and
+rs.isMaster is going to be
+
+16
+00:00:44,360 --> 00:00:47,930
+false here, because I'm
+not the master here.
+
+17
+00:00:47,930 --> 00:00:50,690
+Now, let's go and insert
+something again.
+
+18
+00:00:50,690 --> 00:00:53,600
+So, I'm going to use the
+test database again.
+
+19
+00:00:53,600 --> 00:00:57,660
+And I'm going to look at
+db.people.find, and now I'm
+
+20
+00:00:57,660 --> 00:00:59,100
+going to add something to
+it-- db.people.insert--
+
+21
+00:00:59,100 --> 00:01:02,700
+
+22
+00:01:02,700 --> 00:01:04,330
+and I'm gonna add a new name.
+
+23
+00:01:04,330 --> 00:01:08,540
+Now we'll add Richard to that.
+
+24
+00:01:08,540 --> 00:01:10,940
+And as soon as I do that,
+if we do the find
+
+25
+00:01:10,940 --> 00:01:12,610
+here, I can see them.
+
+26
+00:01:12,610 --> 00:01:14,820
+And if I do the find here--
+
+27
+00:01:14,820 --> 00:01:18,670
+
+28
+00:01:18,670 --> 00:01:20,735
+oh, I can't run it yet.
+
+29
+00:01:20,735 --> 00:01:24,750
+I have to say slaveOK to be able
+to read from this one.
+
+30
+00:01:24,750 --> 00:01:27,230
+And you can see the data's
+been synchronized.
+
+31
+00:01:27,230 --> 00:01:29,012
+So, how does that work?
+
+32
+00:01:29,012 --> 00:01:33,200
+Well, there is a special
+collection, a capped
+
+33
+00:01:33,200 --> 00:01:34,260
+collection--
+
+34
+00:01:34,260 --> 00:01:37,220
+which means that it's a certain
+size and it will loop
+
+35
+00:01:37,220 --> 00:01:38,770
+after it fills--
+
+36
+00:01:38,770 --> 00:01:42,210
+in the local database, which
+contains an oplog for
+
+37
+00:01:42,210 --> 00:01:43,510
+replication.
+
+38
+00:01:43,510 --> 00:01:44,430
+So--
+
+39
+00:01:44,430 --> 00:01:46,760
+if we show collections, you
+can see it right here.
+
+40
+00:01:46,760 --> 00:01:51,020
+It's called oplog.rs.
+
+41
+00:01:51,020 --> 00:01:52,380
+So, I'm going to look at it.
+
+42
+00:01:52,380 --> 00:01:53,630
+So, db.oplog.rs.find.pretty.
+
+43
+00:01:53,630 --> 00:02:00,630
+
+44
+00:02:00,630 --> 00:02:06,320
+And here you can see that in
+this op log we have a insert
+
+45
+00:02:06,320 --> 00:02:08,320
+into test.people with--
+
+46
+00:02:08,320 --> 00:02:11,150
+here's the object that was
+inserted named Richard.
+
+47
+00:02:11,150 --> 00:02:14,080
+And if we look at the oplog on
+this side, we should see the
+
+48
+00:02:14,080 --> 00:02:15,760
+exact same item.
+
+49
+00:02:15,760 --> 00:02:18,960
+So let's do that.
+
+50
+00:02:18,960 --> 00:02:23,255
+Now, this is a cat collection,
+and it's in natural order.
+
+51
+00:02:23,255 --> 00:02:25,530
+It doesn't need an underscore
+ID, because capped collections
+
+52
+00:02:25,530 --> 00:02:26,810
+don't need them.
+
+53
+00:02:26,810 --> 00:02:30,720
+And you can see here that this
+is the same item here that
+
+54
+00:02:30,720 --> 00:02:32,120
+came through the oplog.
+
+55
+00:02:32,120 --> 00:02:35,750
+And the way this replication
+happens is that the
+
+56
+00:02:35,750 --> 00:02:39,020
+secondaries query the primary
+and ask it for any of the
+
+57
+00:02:39,020 --> 00:02:41,600
+items since a certain
+time stamp.
+
+58
+00:02:41,600 --> 00:02:43,690
+And then they are brought up to
+date with all the data that
+
+59
+00:02:43,690 --> 00:02:45,330
+came in the interim.
+
+60
+00:02:45,330 --> 00:02:48,800
+So, you can also add an index.
+
+61
+00:02:48,800 --> 00:02:50,650
+And if you do that, then
+it will also get
+
+62
+00:02:50,650 --> 00:02:51,270
+added to the oplog.
+
+63
+00:02:51,270 --> 00:02:53,780
+Let's do that so that
+you can see.
+
+64
+00:02:53,780 --> 00:03:00,780
+Db.people.ensureIndex on name.
+
+65
+00:03:00,780 --> 00:03:05,880
+We do that, and we'll
+get the indexes now.
+
+66
+00:03:05,880 --> 00:03:08,100
+See, there's an index.
+
+67
+00:03:08,100 --> 00:03:11,660
+And if you look here in the
+oplog on the other side, we
+
+68
+00:03:11,660 --> 00:03:14,600
+can see that there's going to
+be an index on this side,
+
+69
+00:03:14,600 --> 00:03:16,140
+too-- and a secondary--
+
+70
+00:03:16,140 --> 00:03:17,370
+that the index itself--
+
+71
+00:03:17,370 --> 00:03:20,750
+index creation came through
+in the oplog.
+
+72
+00:03:20,750 --> 00:03:23,280
+And insert into
+test.system.indexes.
+
+73
+00:03:23,280 --> 00:03:26,000
+The way indexes are actually
+managed inside MongoDB is
+
+74
+00:03:26,000 --> 00:03:28,450
+they're just basically
+insertions into a collection
+
+75
+00:03:28,450 --> 00:03:31,230
+to tell the Mongo server
+that the index exists.
+
+76
+00:03:31,230 --> 00:03:32,740
+Kind of cool, actually.
+
+77
+00:03:32,740 --> 00:03:35,385
+So, that's the way replication
+works.
+
+78
+00:03:35,385 --> 00:03:38,055
+It uses this oplog concept.
+
+79
+00:03:38,055 --> 00:03:38,890
+All right.
+
+80
+00:03:38,890 --> 00:03:41,900
+So the question is, what
+would happen if I
+
+81
+00:03:41,900 --> 00:03:44,620
+shut down the primary?
+
+82
+00:03:44,620 --> 00:03:48,280
+How long would it take for a
+secondary to get elected?
+
+83
+00:03:48,280 --> 00:03:49,370
+So, let's do that.
+
+84
+00:03:49,370 --> 00:03:51,740
+So let's see how long
+failover would take.
+
+85
+00:03:51,740 --> 00:03:56,810
+So, I'm going to quit out of
+this primary, which was 27018.
+
+86
+00:03:56,810 --> 00:03:58,010
+I'm going to shut it down.
+
+87
+00:03:58,010 --> 00:04:00,410
+I'm going to grep for
+the Mongos running.
+
+88
+00:04:00,410 --> 00:04:06,150
+And the 27018 looks like
+it's right here, 6463.
+
+89
+00:04:06,150 --> 00:04:08,320
+I'm just going to kill it.
+
+90
+00:04:08,320 --> 00:04:09,930
+Kill it, 6463.
+
+91
+00:04:09,930 --> 00:04:12,256
+But let's get ready to look
+at this, make sure I
+
+92
+00:04:12,256 --> 00:04:13,500
+have this one right.
+
+93
+00:04:13,500 --> 00:04:18,170
+27018, processed ID 6463.
+
+94
+00:04:18,170 --> 00:04:23,060
+Let's do a rs.status here, and
+see how long it takes.
+
+95
+00:04:23,060 --> 00:04:25,040
+So, right now, everything
+is looking good.
+
+96
+00:04:25,040 --> 00:04:26,830
+27018 is the primary.
+
+97
+00:04:26,830 --> 00:04:28,330
+We're going to go, we're
+going to kill it.
+
+98
+00:04:28,330 --> 00:04:30,850
+
+99
+00:04:30,850 --> 00:04:35,550
+And now, we're going to see
+how long it takes a new
+
+100
+00:04:35,550 --> 00:04:37,170
+primary to be elected.
+
+101
+00:04:37,170 --> 00:04:42,010
+And you can see that 27018 is
+now unreachable, and it looks
+
+102
+00:04:42,010 --> 00:04:44,040
+like 27019--
+
+103
+00:04:44,040 --> 00:04:45,450
+this-- is already the primary.
+
+104
+00:04:45,450 --> 00:04:47,660
+So that was pretty fast.
+
+105
+00:04:47,660 --> 00:04:50,230
+So, that's how fast failover
+takes in this case.
+
+106
+00:04:50,230 --> 00:04:52,090
+And I think that's
+pretty typical.
+
+107
+00:04:52,090 --> 00:04:53,150
+I think it would take
+a little longer on a
+
+108
+00:04:53,150 --> 00:04:54,140
+large running system.
+
+109
+00:04:54,140 --> 00:04:56,060
+But that was fast.
+
+110
+00:04:56,060 --> 00:05:00,800
+All right, so now it's
+time for a quiz.
+
+111
+00:05:00,800 --> 00:05:04,570
+And the quiz is, in the video,
+how long did it take to elect
+
+112
+00:05:04,570 --> 00:05:05,660
+a new primary?
+
+113
+00:05:05,660 --> 00:05:06,860
+About 3 seconds--
+
+114
+00:05:06,860 --> 00:05:11,110
+or maybe less, about 10 seconds,
+about 30 seconds, or
+
+115
+00:05:11,110 --> 00:05:11,890
+about a minute?
+
+116
+00:05:11,890 --> 00:05:13,540
+And so, answer the question.
+
+117
+00:05:13,540 --> 00:05:14,790

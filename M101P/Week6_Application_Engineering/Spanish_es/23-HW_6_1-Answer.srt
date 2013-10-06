@@ -1,0 +1,199 @@
+1
+00:00:00,000 --> 00:00:00,200
+
+2
+00:00:00,200 --> 00:00:00,430
+All right.
+
+3
+00:00:00,430 --> 00:00:03,350
+In this question, we're just
+asking you some facts about
+
+4
+00:00:03,350 --> 00:00:05,590
+the replication system
+built into MongoDB.
+
+5
+00:00:05,590 --> 00:00:07,680
+And it was a check all
+that apply question.
+
+6
+00:00:07,680 --> 00:00:08,970
+"Which of the following
+statements are true about
+
+7
+00:00:08,970 --> 00:00:10,570
+MongoDB replication?"
+
+8
+00:00:10,570 --> 00:00:12,890
+The first one is true. "The
+minimum sensible number of
+
+9
+00:00:12,890 --> 00:00:15,740
+voting nodes to a replica set
+is three." If you had two
+
+10
+00:00:15,740 --> 00:00:18,065
+nodes, then you couldn't
+elect a new primary.
+
+11
+00:00:18,065 --> 00:00:20,070
+And If you had one node, you
+couldn't elect a new primary.
+
+12
+00:00:20,070 --> 00:00:21,290
+There would be no nodes left.
+
+13
+00:00:21,290 --> 00:00:23,140
+So the answer for
+that is three.
+
+14
+00:00:23,140 --> 00:00:24,350
+"MongoDB replication is
+
+15
+00:00:24,350 --> 00:00:26,040
+synchronous." That is not true.
+
+16
+00:00:26,040 --> 00:00:27,450
+It is asynchronous.
+
+17
+00:00:27,450 --> 00:00:29,550
+It synchronizes in the
+background, and sends the
+
+18
+00:00:29,550 --> 00:00:31,680
+updates to the other nodes.
+
+19
+00:00:31,680 --> 00:00:34,780
+Using getLastError, and setting
+a w parameter, you can
+
+20
+00:00:34,780 --> 00:00:39,100
+essentially set a fence, and ask
+that certain actions occur
+
+21
+00:00:39,100 --> 00:00:39,920
+before you continue.
+
+22
+00:00:39,920 --> 00:00:42,600
+But it's still, really, an
+asynchronous process.
+
+23
+00:00:42,600 --> 00:00:44,880
+"The Mongo shell is capable of
+attaching to a replica set and
+
+24
+00:00:44,880 --> 00:00:48,270
+automatically failing over."
+So, this is also false.
+
+25
+00:00:48,270 --> 00:00:52,440
+As we know, you connect Mongo
+to a particular MongoD.
+
+26
+00:00:52,440 --> 00:00:55,920
+And, if that MongoD goes down,
+it does not reconnect to a
+
+27
+00:00:55,920 --> 00:00:56,580
+different server.
+
+28
+00:00:56,580 --> 00:00:58,400
+That's not the way the
+Mongo shell works.
+
+29
+00:00:58,400 --> 00:00:59,200
+So, that's false.
+
+30
+00:00:59,200 --> 00:00:59,840
+Oops, sorry.
+
+31
+00:00:59,840 --> 00:01:01,435
+Didn't mean to highlight that.
+
+32
+00:01:01,435 --> 00:01:04,720
+The next one is, "By default,
+using the new MongoClient
+
+33
+00:01:04,720 --> 00:01:08,460
+connection class gives you
+w = 1 and j = 1." And
+
+34
+00:01:08,460 --> 00:01:10,190
+that's also not true.
+
+35
+00:01:10,190 --> 00:01:13,100
+It gives you w = 1 and j = 0.
+
+36
+00:01:13,100 --> 00:01:14,980
+It will wait for the write
+to be acknowledged on the
+
+37
+00:01:14,980 --> 00:01:18,470
+primary, and it does not wait
+for journaling to occur.
+
+38
+00:01:18,470 --> 00:01:21,120
+The last answer was, "The
+oplog utilizes a capped
+
+39
+00:01:21,120 --> 00:01:23,650
+collection." And that is true.
+
+40
+00:01:23,650 --> 00:01:26,860
+It does utilize a capped
+collection, which rolls at the
+
+41
+00:01:26,860 --> 00:01:28,750
+end of the collection.
+
+42
+00:01:28,750 --> 00:01:31,570
+If it needs more space, it
+reuses the first space from
+
+43
+00:01:31,570 --> 00:01:32,820
+the first document in
+the collection.
+
+44
+00:01:32,820 --> 00:01:34,030

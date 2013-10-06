@@ -1,0 +1,95 @@
+1
+00:00:00,000 --> 00:00:00,285
+
+2
+00:00:00,285 --> 00:00:00,570
+OK.
+
+3
+00:00:00,570 --> 00:00:03,360
+And the answer is it takes
+a really long time.
+
+4
+00:00:03,360 --> 00:00:06,940
+So it probably, I actually tried
+this on my computer, it
+
+5
+00:00:06,940 --> 00:00:09,390
+took at least 10
+minutes or so.
+
+6
+00:00:09,390 --> 00:00:12,600
+At that point, you're subject to
+the TCP timeout, which can
+
+7
+00:00:12,600 --> 00:00:13,920
+be extremely long.
+
+8
+00:00:13,920 --> 00:00:17,690
+Because basically, you've said
+I want to wait until I get an
+
+9
+00:00:17,690 --> 00:00:19,210
+acknowledgement from
+four nodes.
+
+10
+00:00:19,210 --> 00:00:22,850
+There's only three nodes, and
+so it'll just time out.
+
+11
+00:00:22,850 --> 00:00:25,760
+So just generally speaking, this
+is just a reminder that
+
+12
+00:00:25,760 --> 00:00:29,120
+you need to set the w timeout
+if for any reason you think
+
+13
+00:00:29,120 --> 00:00:32,095
+there's a possibility that the
+number of nodes that you're
+
+14
+00:00:32,095 --> 00:00:35,010
+asking to commit to, or
+not commit to, but get
+
+15
+00:00:35,010 --> 00:00:37,860
+acknowledged from is greater
+than the number that are up.
+
+16
+00:00:37,860 --> 00:00:41,070
+Like, if you put w equals 3, and
+there's a possibility that
+
+17
+00:00:41,070 --> 00:00:42,540
+you're running in a state
+where there's only two
+
+18
+00:00:42,540 --> 00:00:43,140
+nodes that's up.
+
+19
+00:00:43,140 --> 00:00:43,440
+All right.
+
+20
+00:00:43,440 --> 00:00:44,690
+That's it.
+
+21
+00:00:44,690 --> 00:00:45,290

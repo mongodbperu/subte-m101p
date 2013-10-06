@@ -1,0 +1,393 @@
+1
+00:00:00,000 --> 00:00:03,320
+I want to describe a failover
+situation which could result
+
+2
+00:00:03,320 --> 00:00:05,590
+in a rollback of some data
+that was previously
+
+3
+00:00:05,590 --> 00:00:07,380
+committed to mongod.
+
+4
+00:00:07,380 --> 00:00:10,930
+So imagine you have three
+servers right here.
+
+5
+00:00:10,930 --> 00:00:14,510
+One, two, and three.
+
+6
+00:00:14,510 --> 00:00:18,150
+And imagine this guy is the
+primary, and writes are going
+
+7
+00:00:18,150 --> 00:00:19,730
+along to this node.
+
+8
+00:00:19,730 --> 00:00:24,400
+And they're getting replicated
+out, but let's say that you
+
+9
+00:00:24,400 --> 00:00:27,280
+are writing, and these nodes,
+you're lagging behind for a
+
+10
+00:00:27,280 --> 00:00:28,560
+few seconds.
+
+11
+00:00:28,560 --> 00:00:31,530
+And all of a sudden, this
+node goes down.
+
+12
+00:00:31,530 --> 00:00:35,520
+So if that node goes down, then
+one of these two will be
+
+13
+00:00:35,520 --> 00:00:37,610
+elected as the primary.
+
+14
+00:00:37,610 --> 00:00:40,930
+But there are writes on this
+node that this node
+
+15
+00:00:40,930 --> 00:00:42,420
+doesn't have yet.
+
+16
+00:00:42,420 --> 00:00:44,980
+If the app log hasn't
+yet been replicated.
+
+17
+00:00:44,980 --> 00:00:49,270
+So this guy's going to come up
+right here as the primary, and
+
+18
+00:00:49,270 --> 00:00:52,010
+he's not going to have
+those rights.
+
+19
+00:00:52,010 --> 00:00:55,890
+Then, after a period of time,
+this guy might come back up as
+
+20
+00:00:55,890 --> 00:00:56,850
+a secondary.
+
+21
+00:00:56,850 --> 00:00:59,330
+So let's say he comes
+up as a secondary.
+
+22
+00:00:59,330 --> 00:01:01,080
+So this Mongo server
+comes back up,
+
+23
+00:01:01,080 --> 00:01:03,600
+number one, as a secondary.
+
+24
+00:01:03,600 --> 00:01:06,980
+When he comes back up, he'll
+look at the primary, which is
+
+25
+00:01:06,980 --> 00:01:09,290
+this node now to see if there's
+
+26
+00:01:09,290 --> 00:01:11,070
+anything he needs to take.
+
+27
+00:01:11,070 --> 00:01:13,210
+And when he does that, he's
+going to realize that he has
+
+28
+00:01:13,210 --> 00:01:16,560
+writes that are not in
+the current primary.
+
+29
+00:01:16,560 --> 00:01:19,360
+And so what he's going to do
+with those writes, what node
+
+30
+00:01:19,360 --> 00:01:21,630
+one is going to do with those
+writes is he is going
+
+31
+00:01:21,630 --> 00:01:23,030
+to roll them back.
+
+32
+00:01:23,030 --> 00:01:27,270
+So he's going to roll them back
+and put them into a file.
+
+33
+00:01:27,270 --> 00:01:30,370
+And they could be applied
+manually if you'd like, but
+
+34
+00:01:30,370 --> 00:01:32,610
+they won't be part
+of the data set.
+
+35
+00:01:32,610 --> 00:01:36,690
+So this is a scenario where
+failover can result in
+
+36
+00:01:36,690 --> 00:01:40,780
+rollback of some data that had
+been previously committed.
+
+37
+00:01:40,780 --> 00:01:44,340
+Now, there's a way to avoid this
+particular scenario for
+
+38
+00:01:44,340 --> 00:01:48,150
+the most part, and that's by
+waiting until when you're
+
+39
+00:01:48,150 --> 00:01:51,560
+writing to this primary
+initially, you wait until the
+
+40
+00:01:51,560 --> 00:01:54,930
+majority of the nodes have
+the data, and then that
+
+41
+00:01:54,930 --> 00:01:57,570
+vulnerability won't exist,
+for the most part.
+
+42
+00:01:57,570 --> 00:01:59,860
+There's some small corner
+cases in outstanding
+
+43
+00:01:59,860 --> 00:02:00,950
+[INAUDIBLE]
+
+44
+00:02:00,950 --> 00:02:03,660
+on very strange situations
+where it
+
+45
+00:02:03,660 --> 00:02:04,460
+could potentially happen.
+
+46
+00:02:04,460 --> 00:02:06,770
+But basically, it
+will not happen.
+
+47
+00:02:06,770 --> 00:02:11,970
+So if you simply set your w
+write concern to wait until a
+
+48
+00:02:11,970 --> 00:02:14,640
+majority of the nodes have the
+write, then it won't happen.
+
+49
+00:02:14,640 --> 00:02:17,050
+And we're going to go through
+how that works after we go
+
+50
+00:02:17,050 --> 00:02:18,060
+through the drivers.
+
+51
+00:02:18,060 --> 00:02:20,850
+But just so you understand that
+in the default case, if
+
+52
+00:02:20,850 --> 00:02:26,070
+you just set w equal to one, and
+even if you set j equal to
+
+53
+00:02:26,070 --> 00:02:29,360
+one, which means I want to make
+sure that I don't return
+
+54
+00:02:29,360 --> 00:02:32,440
+until it's committed to the
+journal on this node, that if
+
+55
+00:02:32,440 --> 00:02:35,910
+this note was to fail before
+he replicated his stuff to
+
+56
+00:02:35,910 --> 00:02:39,980
+these two nodes, then it's
+perfectly possible that you
+
+57
+00:02:39,980 --> 00:02:42,690
+would lose the rights, because
+when he came back up, he'd
+
+58
+00:02:42,690 --> 00:02:43,810
+roll them back.
+
+59
+00:02:43,810 --> 00:02:47,300
+Put into a file, a roll back
+file, but usually in most
+
+60
+00:02:47,300 --> 00:02:51,340
+operational situations, that's
+never applied, because it's
+
+61
+00:02:51,340 --> 00:02:52,510
+too complicated do that.
+
+62
+00:02:52,510 --> 00:02:54,000
+So most people don't do it.
+
+63
+00:02:54,000 --> 00:02:55,810
+OK, let's do a quiz.
+
+64
+00:02:55,810 --> 00:02:59,250
+So the quiz is what happens if
+a node comes back up as a
+
+65
+00:02:59,250 --> 00:03:02,530
+secondary after a period of
+being offline, and the op log
+
+66
+00:03:02,530 --> 00:03:04,220
+has looped on the primary?
+
+67
+00:03:04,220 --> 00:03:06,500
+That's a scenario that
+we did not discuss.
+
+68
+00:03:06,500 --> 00:03:09,860
+But maybe you can reason out
+what will probably happen.
+
+69
+00:03:09,860 --> 00:03:12,280
+And remember, the op log
+is a cat collection.
+
+70
+00:03:12,280 --> 00:03:16,560
+So it's possible that so much
+time has elapsed that when you
+
+71
+00:03:16,560 --> 00:03:19,410
+go to look at the primary, that
+it doesn't have any of
+
+72
+00:03:19,410 --> 00:03:22,100
+the operations that happened
+in the intervening time
+
+73
+00:03:22,100 --> 00:03:23,530
+anymore, because it's
+already looped.
+
+74
+00:03:23,530 --> 00:03:25,360
+It's been 24 hours,
+or something.
+
+75
+00:03:25,360 --> 00:03:27,640
+So what do you think happens
+in that situation?
+
+76
+00:03:27,640 --> 00:03:30,230
+And the choices are the entire
+data set will be covered from
+
+77
+00:03:30,230 --> 00:03:33,590
+the primary, a rollback will
+occur, the new node stays
+
+78
+00:03:33,590 --> 00:03:38,180
+offline, does not rejoinder
+the replica set as a
+
+79
+00:03:38,180 --> 00:03:41,500
+secondary, or the new node
+begins to calculate pi to a
+
+80
+00:03:41,500 --> 00:03:43,130
+very large number of
+decimal places.
+
+81
+00:03:43,130 --> 00:03:46,150
+So what do you think happens in
+the situations where the op
+
+82
+00:03:46,150 --> 00:03:48,280
+log rolls or loops?
+
+83
+00:03:48,280 --> 00:03:49,530
+The cat collection loops.

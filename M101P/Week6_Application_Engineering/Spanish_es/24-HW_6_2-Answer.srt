@@ -1,0 +1,147 @@
+1
+00:00:00,000 --> 00:00:00,070
+
+2
+00:00:00,070 --> 00:00:02,440
+This question, we're asking you
+to imagine a five-member
+
+3
+00:00:02,440 --> 00:00:06,410
+replica set, and figure out
+how you would specify that
+
+4
+00:00:06,410 --> 00:00:08,800
+writes are committed to the
+journal, and acknowledge by at
+
+5
+00:00:08,800 --> 00:00:11,790
+least three nodes, before
+you proceed.
+
+6
+00:00:11,790 --> 00:00:14,470
+So, what things would you need
+in the getLastError call,
+
+7
+00:00:14,470 --> 00:00:15,120
+essentially?
+
+8
+00:00:15,120 --> 00:00:20,780
+And the answer is that you would
+need w = 3 and j = 1.
+
+9
+00:00:20,780 --> 00:00:22,600
+So you'd want to wait
+for three nodes--
+
+10
+00:00:22,600 --> 00:00:23,770
+if you want to wait for
+three of the five
+
+11
+00:00:23,770 --> 00:00:25,600
+nodes to get the write.
+
+12
+00:00:25,600 --> 00:00:28,910
+So, the answer is
+w = 3 and j = 1.
+
+13
+00:00:28,910 --> 00:00:31,630
+There isn't a w = 3,
+j = 1 answer here.
+
+14
+00:00:31,630 --> 00:00:34,420
+There's a w = "majority"
+and j = 1.
+
+15
+00:00:34,420 --> 00:00:36,660
+But the majority of five
+nodes is three notes.
+
+16
+00:00:36,660 --> 00:00:38,330
+So that was the answer here.
+
+17
+00:00:38,330 --> 00:00:40,950
+And these other ones are wrong,
+for obvious reasons.
+
+18
+00:00:40,950 --> 00:00:43,670
+Either w does not
+equal 3 here--
+
+19
+00:00:43,670 --> 00:00:46,220
+here w = 3, but j does
+not equal 1.
+
+20
+00:00:46,220 --> 00:00:48,920
+So we didn't wait for it to be
+committed to the journal.
+
+21
+00:00:48,920 --> 00:00:50,510
+Here, you're waiting for all the
+nodes to acknowledge the
+
+22
+00:00:50,510 --> 00:00:51,960
+write, and here--
+
+23
+00:00:51,960 --> 00:00:53,000
+this doesn't make any sense.
+
+24
+00:00:53,000 --> 00:00:54,680
+There is no j = 3 value.
+
+25
+00:00:54,680 --> 00:00:57,330
+j, if you set it to
+more than one--
+
+26
+00:00:57,330 --> 00:00:58,750
+it's either true or
+false, really.
+
+27
+00:00:58,750 --> 00:01:00,430
+And if it's true, then it waits
+for the write on the
+
+28
+00:01:00,430 --> 00:01:01,410
+primary node.
+
+29
+00:01:01,410 --> 00:01:03,340
+There's no way to say, you
+want to wait for it to be
+
+30
+00:01:03,340 --> 00:01:04,914
+journaled on the secondary
+nodes.
+
+31
+00:01:04,914 --> 00:01:06,350
+That doesn't exist in MongoDB.
+
+32
+00:01:06,350 --> 00:01:07,600

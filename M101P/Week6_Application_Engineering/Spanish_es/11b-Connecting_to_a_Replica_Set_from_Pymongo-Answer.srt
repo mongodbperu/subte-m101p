@@ -1,0 +1,25 @@
+1
+00:00:00,000 --> 00:00:00,130
+
+2
+00:00:00,130 --> 00:00:02,260
+And the answer is the missing
+node will be discovered as
+
+3
+00:00:02,260 --> 00:00:05,400
+long as you list at least one
+valid inside the seed list.
+
+4
+00:00:05,400 --> 00:00:06,710
+So you don't have to
+list everything
+
+5
+00:00:06,710 --> 00:00:07,750
+inside the replica set.
+
+6
+00:00:07,750 --> 00:00:09,000
+They're sort of self-discovery.

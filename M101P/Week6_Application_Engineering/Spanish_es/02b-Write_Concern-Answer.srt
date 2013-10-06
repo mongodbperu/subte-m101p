@@ -1,0 +1,72 @@
+1
+00:00:00,000 --> 00:00:00,140
+
+2
+00:00:00,140 --> 00:00:03,110
+De acuerdo y la respuesta es
+que, como hablamos, "w=1".
+
+3
+00:00:03,110 --> 00:00:04,860
+Deseo asegurarme de
+confirmar la escritura.
+
+4
+00:00:04,860 --> 00:00:07,940
+Y "j=1", deseo asegurarme
+de llegar al "journal".
+
+5
+00:00:07,940 --> 00:00:11,210
+Estas otras respuestas están
+erradas en varias formas.
+
+6
+00:00:11,210 --> 00:00:14,140
+"w=0" no esperará en todas
+por una confirmación, o
+
+7
+00:00:14,140 --> 00:00:15,240
+para "journaling".
+
+8
+00:00:15,240 --> 00:00:18,710
+"w=2", voy a presagiar esto.
+
+9
+00:00:18,710 --> 00:00:21,330
+Esperaremos por el nodo que
+estás hablando, el nodo
+
+10
+00:00:21,330 --> 00:00:24,520
+primario y otro nodo
+en un conjunto de réplicas
+
+11
+00:00:24,520 --> 00:00:26,820
+para confirmar la escritura,
+pero ninguna de estas necesariamente
+
+12
+00:00:26,820 --> 00:00:27,770
+alcanzan el "journal".
+
+13
+00:00:27,770 --> 00:00:30,600
+Y "w=1", "j=0".
+
+14
+00:00:30,600 --> 00:00:33,720
+Esperará por el nodo que te
+dirá la confirmación de la
+
+15
+00:00:33,720 --> 00:00:35,550
+escritura, pero no esperará
+por llegar todo al "journal"
+
+16
+00:00:35,550 --> 00:00:36,800
+en el disco.

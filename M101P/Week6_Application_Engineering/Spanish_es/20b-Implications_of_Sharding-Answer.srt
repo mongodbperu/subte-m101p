@@ -1,0 +1,19 @@
+1
+00:00:00,000 --> 00:00:00,280
+
+2
+00:00:00,280 --> 00:00:02,730
+And the answer is that it has to
+be an index on the zip code
+
+3
+00:00:02,730 --> 00:00:05,710
+or non-multi-key index that
+starts with the zip code.
+
+4
+00:00:05,710 --> 00:00:07,330
+So that's the answer to that.
+
+5
+00:00:07,330 --> 00:00:08,580
