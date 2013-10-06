@@ -3,8 +3,8 @@
 
 2
 00:00:00,150 --> 00:00:02,910
-OK, y la respuesta es que
-los miembros normales del conjunto de réplicas,
+OK, y la respuesta es que los miembros
+normales del conjunto de réplicas,
 
 3
 00:00:02,910 --> 00:00:05,360
@@ -18,8 +18,8 @@ aunque no todos ellos pueden
 
 5
 00:00:07,600 --> 00:00:10,690
-convertirse en el primario, y los abogados
-nunca son bienvenidos en
+convertirse en el primario, y los 
+abogados nunca son bienvenidos en
 
 6
 00:00:10,690 --> 00:00:12,790

@@ -9,16 +9,16 @@ elección que corresponde cuando
 3
 00:00:03,320 --> 00:00:06,290
 el primario falla y los distintos
-tipos de nodos que
+tipos de nodos que pueden existir
 
 4
 00:00:06,290 --> 00:00:08,360
-pueden existir en un conjunto de réplicas.
+en un conjunto de réplicas.
 
 5
 00:00:08,360 --> 00:00:12,970
-Así que primero está el tipo
-normal de nodo ("regular"), y ese nodo,
+Así que primero está el tipo normal
+de nodo ("regular"), y ese nodo,
 
 6
 00:00:12,970 --> 00:00:16,690
@@ -66,8 +66,8 @@ un número par de nodos en
 
 15
 00:00:38,690 --> 00:00:42,740
-el conjunto de réplicas, entonces necesitas
-asegurar que hay un nodo
+el conjunto de réplicas, entonces 
+necesitas asegurar que hay un nodo
 
 16
 00:00:42,740 --> 00:00:46,300
@@ -130,13 +130,13 @@ para recuperación de desastres.
 
 28
 00:01:14,250 --> 00:01:16,920
-Puede configurarse para que sea, digamos,
-una hora, dos horas,
+Puede configurarse para que sea, 
+digamos, una hora, dos horas,
 
 29
 00:01:16,920 --> 00:01:19,720
-el tiempo que quieras que vaya detrás
-de los otros nodos.
+el tiempo que quieras que vaya 
+detrás de los otros nodos.
 
 30
 00:01:19,720 --> 00:01:23,240
@@ -145,8 +145,8 @@ votación, por lo tanto sí a
 
 31
 00:01:23,240 --> 00:01:28,280
-la votación, pero no puede llegar a ser
-un nodo primario.
+la votación, pero no puede llegar a 
+ser un nodo primario.
 
 32
 00:01:28,280 --> 00:01:31,360
@@ -314,12 +314,13 @@ si hay un fallo?
 
 66
 00:02:58,620 --> 00:03:00,790
-Miembros normales ("regular") de un conjunto de réplicas,
-miembros ocultos ("hidden"),
+Miembros normales ("regular") de un
+conjunto de réplicas, miembros 
 
 67
 00:03:00,790 --> 00:03:02,130
-árbitros ("arbiter") y abogados ("lawyer").
+ocultos ("hidden"), árbitros 
+("arbiter") y abogados ("lawyer").
 
 68
 00:03:02,130 --> 00:03:03,380
