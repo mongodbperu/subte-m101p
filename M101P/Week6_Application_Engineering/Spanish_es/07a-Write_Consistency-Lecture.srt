@@ -1,353 +1,352 @@
-1
-00:00:00,000 --> 00:00:00,130
+1 00:00:00,000 --> 00:00:00,130
 
 2
 00:00:00,130 --> 00:00:04,270
-In the replication within
-MongoDB, there's only a single
+En la replicación dentro
+de MongoDB sólo hay un único
 
 3
 00:00:04,270 --> 00:00:06,500
-primary at any given time.
+primario en un momento dado.
 
 4
 00:00:06,500 --> 00:00:10,600
-And in the default
-configuration, your writes and
+Y en la configuración
+por defecto, tus escrituras y 
 
 5
 00:00:10,600 --> 00:00:12,310
-your reads go to that primary.
+lecturas van a ese primario.
 
 6
 00:00:12,310 --> 00:00:14,510
-Now, your writes have to go to
-the primary, but your reads
+Ahora, tus escrituras tienen que ir
+al primario, pero tus lecturas
 
 7
 00:00:14,510 --> 00:00:16,570
-don't have to go
-to the primary.
+no tienen que ir 
+al primario.
 
 8
 00:00:16,570 --> 00:00:19,390
-The reads could go to the
-secondaries if you'd like.
+Las lecturas podrían ir a los
+secundarios si quisieras.
 
 9
 00:00:19,390 --> 00:00:23,040
-But if you allow the writes to
-go on to the primary, then
+Pero si permites que las escrituras
+vayan al primario, entonces
 
 10
 00:00:23,040 --> 00:00:28,300
-what happens is you get strong
-consistency of reads with
+lo que ocurre es que obtienes una
+fuerte consistencia de las lecturas
 
 11
 00:00:28,300 --> 00:00:29,440
-respect to writes.
+con respecto a las escrituras.
 
 12
 00:00:29,440 --> 00:00:32,259
-And what this means, among other
-things is that you won't
+Y lo que esto significa, entre otras
+cosas, es que no
 
 13
 00:00:32,259 --> 00:00:33,830
-read stale data.
+leerás datos obsoletos.
 
 14
 00:00:33,830 --> 00:00:36,130
-That if you write something,
-that you'll be able to read
+Si escribes algo,
+serás capaz de leerlo,
 
 15
 00:00:36,130 --> 00:00:40,600
-it, and other application
-servers that read it will also
+y otros servidores de
+aplicaciones que lo lean también
 
 16
 00:00:40,600 --> 00:00:43,240
-be able to read what you wrote
-after you wrote it.
+serán capaces de leer lo que
+escribiste después de escribirlo.
 
 17
 00:00:43,240 --> 00:00:46,700
-Provided that you waited for the
-write to complete through
+Siempre y cuando esperes a
+que se complete la escritura
 
 18
 00:00:46,700 --> 00:00:47,540
-journaling.
+a través del "journaling".
 
 19
 00:00:47,540 --> 00:00:51,390
-Now, you can, if you prefer,
-allow your reads to go to your
+Ahora, puedes, si prefieres,
+permitir que tus lecturas vayan
 
 20
 00:00:51,390 --> 00:00:52,530
-secondaries.
+a los secundarios.
 
 21
 00:00:52,530 --> 00:00:57,530
-But if you do that, then you may
-read stale data from the
+Pero si haces eso, entonces podrías
+leer datos obsoletos de los
 
 22
 00:00:57,530 --> 00:01:00,690
-secondaries, relative to what
-you wrote, or somebody else
+secundarios, en relación con lo
+que escribiste, o con lo que alguien
 
 23
 00:01:00,690 --> 00:01:02,180
-wrote in the primaries.
+escribió en los primarios.
 
 24
 00:01:02,180 --> 00:01:06,630
-And the lag between any two
-nodes is not guaranteed,
+Y el desfase entre dos nodos
+cualesquiera no está garantizado,
 
 25
 00:01:06,630 --> 00:01:09,276
-because the replication
-is asynchronous.
+porque la replicación
+es asíncrona.
 
 26
 00:01:09,276 --> 00:01:11,070
-So you want to keep
-that in mind.
+Así que ten
+eso en mente.
 
 27
 00:01:11,070 --> 00:01:13,010
-And we'll go through the
-different read preferences
+Y analizaremos las
+distintas opciones de lectura
 
 28
 00:01:13,010 --> 00:01:15,930
-that you can set in terms of the
-drivers to decide whether
+que puedes establecer en cuanto
+a drivers para decidir si
 
 29
 00:01:15,930 --> 00:01:18,100
-or not you're willing to
-accept reads from the
+quieres aceptar lecturas
+desde los secundarios
 
 30
 00:01:18,100 --> 00:01:19,230
-secondaries.
+o no.
 
 31
 00:01:19,230 --> 00:01:21,850
-And the reasons why you might
-want to read from the
+Y las razones por las cuales 
+podrías querer leer desde los
 
 32
 00:01:21,850 --> 00:01:23,790
-secondaries, I mean, the
-traditional reason people do
+secundarios, quiero decir, el
+motivo tradicional por el la gente
 
 33
 00:01:23,790 --> 00:01:25,700
-it is because they want to scale
-their reads through the
+lo hace es porque quieren escalar
+sus lecturas a través del
 
 34
 00:01:25,700 --> 00:01:26,490
-replica set.
+conjunto de réplicas.
 
 35
 00:01:26,490 --> 00:01:28,890
-So they feel that if they can
-sen their reads to all the
+Por lo que sienten que si pueden
+enviar sus lecturas a todos los
 
 36
 00:01:28,890 --> 00:01:32,160
-nodes, that they'll get
-some read scaling.
+nodos, conseguirán algún
+escalado de lectura.
 
 37
 00:01:32,160 --> 00:01:34,990
-We'll go over that a little bit
-later in terms of whether
+Analizaremos eso un poco más
+tarde en términos de si
 
 38
 00:01:34,990 --> 00:01:38,360
-that's really true or not, and
-whether it's a good idea.
+eso es realmente cierto o no y
+si es una buena idea.
 
 39
 00:01:38,360 --> 00:01:40,540
-But I guess for the purposes
-of this, I just want to
+Pero supongo que para este
+propósito, simplemente quiero
 
 40
 00:01:40,540 --> 00:01:43,710
-explain to you that the memory
-model here is strongly
+explicarte que el modelo de
+memoria aquí es fuertemente
 
 41
 00:01:43,710 --> 00:01:44,680
-consistent.
+consistente.
 
 42
 00:01:44,680 --> 00:01:48,340
-On the other hand, though, when
-failover occurs, briefly
+Por otro lado, sin embargo, cuando se
+produce una recuperación de un fallo,
 
 43
 00:01:48,340 --> 00:01:50,680
-during that time when there's no
-primary, you can't complete
+durante ese breve periodo de tiempo 
+en que no hay primario, no puedes 
 
 44
 00:01:50,680 --> 00:01:52,680
-a write, because there
-is no primary.
+completar una escritura, porque no
+hay primario.
 
 45
 00:01:52,680 --> 00:01:55,230
-And then when another primary
-is elected, let's say this
+Y luego cuando otro primario
+es elegido, digamos que este
 
 46
 00:01:55,230 --> 00:01:56,730
-primary goes down, which
-is going to be
+primario se cae, lo cual
+va a ser 
 
 47
 00:01:56,730 --> 00:01:58,510
-pretty rare, obviously.
+bastante raro, obviamente.
 
 48
 00:01:58,510 --> 00:02:01,700
-Then during that period, you
-won't be able to actually
+Entonces durante ese periodo,
+en realidad no podrás 
 
 49
 00:02:01,700 --> 00:02:03,350
-perform any rights.
+realizar ninguna escritura.
 
 50
 00:02:03,350 --> 00:02:06,850
-And this is in contrast to
-some other systems that
+Y eso es en contraposición a
+algunos otros sistemas que
 
 51
 00:02:06,850 --> 00:02:10,720
-compete with MongoDB that have
-a weaker form of consistency.
+compiten con MongoDB, que tienen
+una forma más débil de consistencia.
 
 52
 00:02:10,720 --> 00:02:13,250
-Some of them have what's called
-eventual consistency.
+Algunos de ellos tienen lo que se
+llama consistencia eventual.
 
 53
 00:02:13,250 --> 00:02:16,210
-And eventual consistency means
-that eventually, you'll be
+Y consistencia eventual significa
+que eventualmente, podrás
 
 54
 00:02:16,210 --> 00:02:18,400
-able to read what you wrote, but
-there's no guarantee that
+leer lo que escribiste, pero
+no hay garantía que
 
 55
 00:02:18,400 --> 00:02:20,780
-you'll be able to read it in
-any particular time frame.
+podrás leerlo en
+un momento en particular.
 
 56
 00:02:20,780 --> 00:02:23,320
-And I mean, the problem with
-eventual consistency is it's
+Y quiero decir, el problema con
+la consistencia eventual es que
 
 57
 00:02:23,320 --> 00:02:26,850
-pretty hard to reason about,
-because when you write
+es bastante duro razonar sobre ella,
+porque cuando escribes
 
 58
 00:02:26,850 --> 00:02:29,030
-something into the database, I
-mean, most web servers these
+algo en la base de datos, quiero 
+decir, hoy en día la mayoría de los
 
 59
 00:02:29,030 --> 00:02:31,780
-days, most application servers
-are stateless.
+servidores web y de aplicaciones
+son sin estado.
 
 60
 00:02:31,780 --> 00:02:36,000
-So it's a little disconcerting
-to, let's say, write the
+Por lo que es un poco desconcertante,
+digamos, escribir la
 
 61
 00:02:36,000 --> 00:02:38,270
-session information and write
-other information into the
+información de sesión y escribir
+otra información en la
 
 62
 00:02:38,270 --> 00:02:41,100
-database, and then read
-it back out and
+base de datos y luego leerla
+de nuevo y
 
 63
 00:02:41,100 --> 00:02:42,330
-get a different value.
+obtener un resultado diferente.
 
 64
 00:02:42,330 --> 00:02:45,250
-And then have to reconcile
-what that means.
+Y luego tiene que reconciliar
+lo que eso significa.
 
 65
 00:02:45,250 --> 00:02:48,790
-So MongoDB does not offer
-eventual consistency in its
+Por tanto, MongoDB no ofrece
+consistencia eventual en su
 
 66
 00:02:48,790 --> 00:02:50,290
-default configuration
-where you read and
+configuración por defecto,
+donde lees y
 
 67
 00:02:50,290 --> 00:02:51,500
-write to the primaries.
+escribes en los primarios.
 
 68
 00:02:51,500 --> 00:02:54,180
-If you want to form an eventual
-consistency, you can
+Si quieres formar una consistencia
+eventual, puedes
 
 69
 00:02:54,180 --> 00:02:56,510
-read from the secondaries, which
-will give you eventual
+leer de los secundarios, los 
+cuales te darán consistencia
 
 70
 00:02:56,510 --> 00:02:57,430
-consistency.
+eventual.
 
 71
 00:02:57,430 --> 00:02:59,750
-OK, so let's do a quiz.
+OK, hagamos un cuestionario.
 
 72
 00:02:59,750 --> 00:03:02,215
-All right, so during the time
-when failover is occurring in
+Bien, durante el tiempo en que está
+ocurriendo una recuperación de un
 
 73
 00:03:02,215 --> 00:03:05,050
-a replica set, can writes
-successfully complete?
+fallo en un conjunto de réplicas, ¿pueden
+completarse con éxito las escrituras?
 
 74
 00:03:05,050 --> 00:03:06,460
-The answer is yes or no.
+La respuesta es sí o no.
 
 75
 00:03:06,460 --> 00:03:07,710
