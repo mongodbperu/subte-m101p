@@ -7,383 +7,377 @@ OK.
 
 3
 00:00:00,790 --> 00:00:03,550
-Now that we understand the
-aggregation framework, we can
+Ahora que comprendemos lo que
+es el Aggregation Framework
 
 4
 00:00:03,550 --> 00:00:07,420
-go through some common SQL
-examples and see how they map
+podemos ver ejemplos comunes de 
+SQL y cómo se relacionan a
 
 5
 00:00:07,420 --> 00:00:08,820
-to Mongo DB.
+MongoDB.
 
 6
 00:00:08,820 --> 00:00:10,760
-Now these are in the
-documentation and I'm not
+Éstos están en la
+documentación y no
 
 7
 00:00:10,760 --> 00:00:12,300
-going to go over all of
-them, but I'll go over
+voy a repasarlos
+todos, pero veamos
 
 8
 00:00:12,300 --> 00:00:14,040
-just a couple of them.
+un par de ellos.
 
 9
 00:00:14,040 --> 00:00:16,260
-This is in the same page, the
-SQL to aggregation framework
+Esto está en la misma página que
+el recuadro de cómo se relaciona
 
 10
 00:00:16,260 --> 00:00:17,610
-mapping chart.
+SQL al Aggregation Framework.
 
 11
 00:00:17,610 --> 00:00:21,900
-We assume that we have
-a Mongo DB collection
+Asumimos que tenemos
+una colección en MongoDB
 
 12
 00:00:21,900 --> 00:00:23,140
-that contains orders.
+que contiene pedidos.
 
 13
 00:00:23,140 --> 00:00:25,960
-They have line items in
-this array right here.
+Tiene unidades en este
+en este array aquí.
 
 14
 00:00:25,960 --> 00:00:28,845
-So you can see the line items
-for the order are in this
+Puedes ver que las unidades
+para este pedido están en
 
 15
 00:00:28,845 --> 00:00:31,250
-array with SKU, quantity,
-and price.
+este array con SKU,
+cantidad y precio.
 
 16
 00:00:31,250 --> 00:00:35,580
-And there's also the overall
-order info right here very
+Y también está la información
+general sobre el pedido, 
 
 17
 00:00:35,580 --> 00:00:37,700
-naturally kept together
-in one document.
+naturalmente junta 
+en un solo documento.
 
 18
 00:00:37,700 --> 00:00:41,390
-In the world of SQL, this
-would be three tables.
+En el mundo de SQL, esto
+estaría en tres tablas.
 
 19
 00:00:41,390 --> 00:00:43,390
-There'd be an orders table that
-would have this outermost
+Habría una tabla "orders"
+que tendría esta
 
 20
 00:00:43,390 --> 00:00:44,420
-information.
+información acá.
 
 21
 00:00:44,420 --> 00:00:47,430
-They'd have an order line items
-table that has this
+Una tabla "order_lineitem"
+que tendría esta
 
 22
 00:00:47,430 --> 00:00:48,380
-information.
+información.
 
 23
 00:00:48,380 --> 00:00:51,460
-And then there'd be a table
-tying it together probably
+Y luego habría una tabla
+que juntaría todo probablemente
 
 24
 00:00:51,460 --> 00:00:54,690
-order line item, item order
-ID, which you could use to
+"order_lineitem.order_id"
+que usarías para juntar
 
 25
 00:00:54,690 --> 00:00:56,700
-join those two tables together
-to tie the line
+estas dos tablas para relacionar
 
 26
 00:00:56,700 --> 00:00:58,260
-items to the orders.
+las unidades con los pedidos.
 
 27
 00:00:58,260 --> 00:01:02,830
-So let's say I wanted to count
-the number of orders.
+Digamos que quiero contar
+el número de órdenes.
 
 28
 00:01:02,830 --> 00:01:04,670
-The way that would work
-in SQL is just select
+La manera en que funcionaría
+en SQL es simplemente hacer
 
 29
 00:01:04,670 --> 00:01:06,940
-count star from orders.
+SELECT COUNT * de "orders".
 
 30
 00:01:06,940 --> 00:01:11,580
-And if I wanted to do it in
-Mongo DB, now there is
+Y si quiero hacer eso
+en MongoDB, tenemos
 
 31
 00:01:11,580 --> 00:01:13,220
-actually a count command.
+un comando "count".
 
 32
 00:01:13,220 --> 00:01:15,090
-So we could just do
-db.orders.count.
+Así que hacemos "db.order.count",
 
 33
 00:01:15,090 --> 00:01:18,140
-But to keep in the spirit of
-the aggregation framework
+pero adheriéndonos al espíritu
+del Aggregation Framework
 
 34
 00:01:18,140 --> 00:01:19,190
-we'll do it this way.
+lo vamos a hacer de
+la siguiente manera.
 
 35
 00:01:19,190 --> 00:01:22,080
-We're going to aggregate
-grouping on something we
+Vamos a hacer "$group" de
+acuerdo a algo que no hemos
 
 36
 00:01:22,080 --> 00:01:23,260
-haven't done before.
+usado antes.
 
 37
 00:01:23,260 --> 00:01:25,330
-the group is going
-to be on null.
+El "$group" va a ser sobre null.
 
 38
 00:01:25,330 --> 00:01:27,630
-And then we're going to count
-indicate a new count
+Luego vamos a contar
+con una nueva clave
 
 39
 00:01:27,630 --> 00:01:30,110
-key with sum one.
+y sumar uno.
 
 40
 00:01:30,110 --> 00:01:32,970
-I think this is just to
-show you how it maps.
+Esto es simplemente para
+mostrarte cómo se relaciona,
 
 41
 00:01:32,970 --> 00:01:35,870
-Although it might not be exact
-way you do the calculation.
+aunque no vaya a ser exactamente
+la manera en que lo calcules.
 
 42
 00:01:35,870 --> 00:01:37,460
-You probably use the count.
+Probablemente usarías "count".
 
 43
 00:01:37,460 --> 00:01:39,300
-I would probably just called
-the order account on the
+Yo probablemete hubiese
+utilizado "count" en
 
 44
 00:01:39,300 --> 00:01:40,930
-orders collection to get this
-particular piece of
+colección "orders" para
+obtener esta información
 
 45
 00:01:40,930 --> 00:01:42,190
-information.
+en particular.
 
 46
 00:01:42,190 --> 00:01:45,240
-Next one is, let's see what the
-sum of the price is across
+Lo siguiente es, veamos cuál
+es la suma de los precios de
 
 47
 00:01:45,240 --> 00:01:46,250
-all the orders.
+todos los pedidos.
 
 48
 00:01:46,250 --> 00:01:47,800
-sum price from the orders.
+SUM(price) FROM orders.
 
 49
 00:01:47,800 --> 00:01:50,340
-That's the SQL expression
-right there.
+Ésa es la expresión SQL.
 
 50
 00:01:50,340 --> 00:01:52,190
-I can do that using
-aggregation.
+Puedo hacer eso usando agregación.
 
 51
 00:01:52,190 --> 00:01:55,560
-Again I'm going to group
-by underscore id null.
+Una vez más voy a agrupar
+de acuerdo a _id null.
 
 52
 00:01:55,560 --> 00:01:58,100
-And this time, there is no other
-way to do it that I know
+Esta vez no hay otra manera de
+hacerlo que yo sepa así que
 
 53
 00:01:58,100 --> 00:01:59,250
-of so this is useful.
+esto es muy útil.
 
 54
 00:01:59,250 --> 00:02:02,850
-You group by underscore id null,
-and then every single
+Agrupas por _id null y
+luego cada documento
 
 55
 00:02:02,850 --> 00:02:04,320
-document's going to
-get aggregated to
+va a ser agregado al mismo
 
 56
 00:02:04,320 --> 00:02:05,840
-the same result document.
+documento en el resultado.
 
 57
 00:02:05,840 --> 00:02:07,980
-And we're going to calculate
-the running total, which is
+Y vamos a calcular el
+total, que es la suma 
 
 58
 00:02:07,980 --> 00:02:11,030
-the sum of the prices.
+de todos los precios.
 
 59
 00:02:11,030 --> 00:02:14,510
-Now, let's skip forward a little
-bit and figure out one
+Ahora, saltemos hacia adelante
+un poco y veamos uno que
 
 60
 00:02:14,510 --> 00:02:16,920
-that actually uses an unwind
-so you can see
+use un "$unwind" para que
 
 61
 00:02:16,920 --> 00:02:18,240
-what that looks like.
+veas cómo funciona.
 
 62
 00:02:18,240 --> 00:02:21,180
-So here's one that
-uses an unwind.
+Aquí hay uno que
+usa un "$unwind".
 
 63
 00:02:21,180 --> 00:02:24,720
-what we're doing here is we're
-unwinding this collection on
+Lo que vamos a hacer aquí es
+hacer "$unwind" en esta colección
 
 64
 00:02:24,720 --> 00:02:27,240
-the items and then we're
-grouping to by the customer ID
+sobre las unidades y luego
+agrupar por el ID del cliente
 
 65
 00:02:27,240 --> 00:02:29,780
-and figuring out how many
-items they purchased.
+y averiguar cuántas
+unidades ha comprado.
 
 66
 00:02:29,780 --> 00:02:31,960
-So this is the number of unique
-line items that a
+Éste es el número de
+unidades únicas que un
 
 67
 00:02:31,960 --> 00:02:33,220
-customer purchased.
+cliente compró.
 
 68
 00:02:33,220 --> 00:02:36,060
-That's pretty easy to express
-in the aggregation query.
+Es muy fácil de expresar usando
+una consulta de agregación.
 
 69
 00:02:36,060 --> 00:02:40,470
-And then in SQL it's expressed
-like this, we're getting the
+Y en SQL se expresa así.
+Obtenemos la suma de la
 
 70
 00:02:40,470 --> 00:02:43,720
-sum of a line item, that
-quantity and we're joining the
+unidad, la cantidad y juntamos
 
 71
 00:02:43,720 --> 00:02:46,240
-orders table and the order
-line item table--
+la tabla "orders" y la tabla
+"order_lineitem"--
 
 72
 00:02:46,240 --> 00:02:48,160
-this is the join where
-we join it--
+este es el "join"
+donde las juntamos--
 
 73
 00:02:48,160 --> 00:02:50,150
-and doing it by customer ID.
+y lo hacemos por
+ID del cliente.
 
 74
 00:02:50,150 --> 00:02:52,540
-So it's kind of different.
+Es algo diferente.
 
 75
 00:02:52,540 --> 00:02:54,280
-To be honest now that I've been
-doing this for a while, I
+Para serte honesto ahora que
+he estado haciendo esto un tiempo
 
 76
 00:02:54,280 --> 00:02:57,370
-almost feel like this one feels
-more natural for me.
+me parece que esto es
+más natural para mí.
 
 77
 00:02:57,370 --> 00:02:59,740
-I can decode it more quickly
-than this one.
+Puedo decodificarlo más
+rápidamente que éste.
 
 78
 00:02:59,740 --> 00:03:01,172
-Thinking about it as a
-pipeline makes it a
+Pensarlo como un
+"pipeline" lo hace
 
 79
 00:03:01,172 --> 00:03:03,470
-bit easier for me.
+más fácil para mí.
 
 80
 00:03:03,470 --> 00:03:06,660
-you can go through all these
-if you want on the page.
+Puedes probar todos éstos
+en esta página, si quieres.
 
 81
 00:03:06,660 --> 00:03:09,465
-You should be able to reason out
-what all of these do now
+Ahora que entiendes las
+diferentes partes del
 
 82
 00:03:09,465 --> 00:03:11,080
-that you understand the
-different parts of the
+Aggregation Framework,
+deberías poder deducir
 
 83
 00:03:11,080 --> 00:03:12,330
-aggregation framework.
+qué hace cada ejemplo.
 
 84
 00:03:12,330 --> 00:03:13,100

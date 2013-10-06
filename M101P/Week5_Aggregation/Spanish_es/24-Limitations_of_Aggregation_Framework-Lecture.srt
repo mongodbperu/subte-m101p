@@ -3,465 +3,461 @@
 
 2
 00:00:00,160 --> 00:00:02,170
-The aggregation framework
-is super cool.
+El Aggregation Framework
+es bastante útil, pero
 
 3
 00:00:02,170 --> 00:00:03,669
-But it is subject to certain
-limitations.
+tiene sus limitaciones.
 
 4
 00:00:03,669 --> 00:00:06,370
-And I want to discuss those
-with you right now so that
+Quiero hablar de ellas para
 
 5
 00:00:06,370 --> 00:00:07,830
-you're aware of them.
+que sepas cuáles son.
 
 6
 00:00:07,830 --> 00:00:11,620
-The first one is that the
-results set is limited to 16
+La primera es que el conjunto
+de resultados está limitado
 
 7
 00:00:11,620 --> 00:00:15,400
-megabytes of memory because, as
-you know, it's returned in
+a 16MB de memoria porque, como
+sabes, se retorna en un
 
 8
 00:00:15,400 --> 00:00:16,250
-a single document.
+solo documento
 
 9
 00:00:16,250 --> 00:00:19,360
-And a single document in MongoDB
-is limited to 16
+y un documento en MongoDB
+está limitado a 16MB
 
 10
 00:00:19,360 --> 00:00:20,940
-megabytes of memory.
+de memoria.
 
 11
 00:00:20,940 --> 00:00:22,280
-So that's pretty large.
+Es bastante grande,
 
 12
 00:00:22,280 --> 00:00:24,080
-But for a very large collection,
-that could be a
+pero para una colección
+muy grande puede ser
 
 13
 00:00:24,080 --> 00:00:26,120
-limitation if it's going to
-run across the entire
+una limitación, si es
+que vas a atravesar
 
 14
 00:00:26,120 --> 00:00:27,450
-collection.
+la colección entera.
 
 15
 00:00:27,450 --> 00:00:30,870
-Another limitation is that you
-can't use more than 10% of the
+Otra limitación es que no
+puedes usar más del 10% de
 
 16
 00:00:30,870 --> 00:00:32,040
-memory on a machine.
+la memoria de una máquina.
 
 17
 00:00:32,040 --> 00:00:33,920
-Now that's a lot of memory.
+Eso es un montón de memoria,
 
 18
 00:00:33,920 --> 00:00:37,730
-But these aggregations can be
-quite complicated, especially
+pero estas agregaciones pueden ser
+bastante complicadas, especialmente
 
 19
 00:00:37,730 --> 00:00:39,710
-if they're going across
-the entire collection.
+si están atravesando
+una colección entera.
 
 20
 00:00:39,710 --> 00:00:42,500
-Now you can reduce the size of
-your aggregations by doing
+Puedes reducir el tamaño de
+tus agregaciones haciendo
 
 21
 00:00:42,500 --> 00:00:45,540
-early matches to do filtering,
-if you don't need to do
+"$match" iniciales para ir 
+filtrando, si es que no tienes
 
 22
 00:00:45,540 --> 00:00:47,500
-calculations across
-all the documents.
+que hacer cálculos sobre
+todos los documentos.
 
 23
 00:00:47,500 --> 00:00:50,960
-Similarly, you could use Project
-to filter out some of
+También puedes usar
+"$project" para filtrar
 
 24
 00:00:50,960 --> 00:00:53,360
-the fields so that
-you're using--
+los campos que no
+estés utilizando--
 
 25
 00:00:53,360 --> 00:00:54,760
-processing less data.
+procesando así menos datos.
 
 26
 00:00:54,760 --> 00:00:57,640
-But these are two things
-to keep in mind.
+Pero éstas son dos cosas
+que debes considerar.
 
 27
 00:00:57,640 --> 00:01:02,080
-And the last one is how
-it works in a sharded
+La última es cómo funciona
+en un ambiente con
 
 28
 00:01:02,080 --> 00:01:03,080
-environment.
+"shards".
 
 29
 00:01:03,080 --> 00:01:05,690
-So let's go through a
-sharded environment.
+Veamos un ambiente con "shards".
 
 30
 00:01:05,690 --> 00:01:09,240
-So in a sharded environment, if
-you remember, you typically
+En un ambiente con "shards",
+si te acuerdas, típicamente
 
 31
 00:01:09,240 --> 00:01:10,710
-have your collection.
+tienes tu colección.
 
 32
 00:01:10,710 --> 00:01:11,650
-We're not going to go over this
+No vamos a abordar esto
 
 33
 00:01:11,650 --> 00:01:13,900
-extensively in this class.
+extensamente en esta clase.
 
 34
 00:01:13,900 --> 00:01:17,280
-Collections split amongst
-multiple Mongo instances.
+Las colecciones las tendrías divididas
+a través de varias instancias de Mongo
 
 35
 00:01:17,280 --> 00:01:19,300
-And these are often
-replica sets.
+y éstas usualmente son
+conjuntos de réplicas.
 
 36
 00:01:19,300 --> 00:01:22,590
-So there might be three servers
-here and three servers
+Así que podrían haber tres
+servidores aquí y tres
 
 37
 00:01:22,590 --> 00:01:26,170
-here and three servers here that
-are all handling the same
+aquí y tres más aquí, todos
+manejando la misma parte
 
 38
 00:01:26,170 --> 00:01:27,480
-part of the collection.
+de la colección.
 
 39
 00:01:27,480 --> 00:01:29,960
-And then rather than sending
-your query directly to a
+Y en lugar de enviar tu
+consulta directo a un
 
 40
 00:01:29,960 --> 00:01:31,610
-MongoD process.
+proceso mongod--
 
 41
 00:01:31,610 --> 00:01:34,500
-And these all have MongoDs
-running on them.
+todos éstos tienen procesos
+mongod ejecutándose--
 
 42
 00:01:34,500 --> 00:01:37,720
-You send it to a
-MongoS process.
+la mandas a un proceso mongos.
 
 43
 00:01:37,720 --> 00:01:38,600
-It's a router.
+Es un router.
 
 44
 00:01:38,600 --> 00:01:41,050
-So your application is here.
+Tu aplicación está aquí.
 
 45
 00:01:41,050 --> 00:01:45,660
-And it talks to MongoS, which
-then talks to MongoD.
+Y habla con el mongos, el cual
+luego habla con los mongod.
 
 46
 00:01:45,660 --> 00:01:47,750
-And each of these is a shard.
+Cada uno de éstos es un "shard".
 
 47
 00:01:47,750 --> 00:01:51,240
-So aggregation does work in
-a sharded environment.
+Así que las agregaciones sí
+funcionan en un ambiente con
 
 48
 00:01:51,240 --> 00:01:56,570
-But after the first group, or
-the first sort phase, the
+"shards", pero después del primer
+"$group" o la primera fase de "$sort",
 
 49
 00:01:56,570 --> 00:01:58,930
-aggregation has to be brought
-back to the MongoS.
+la agregación tiene que
+retornar al mongos.
 
 50
 00:01:58,930 --> 00:02:02,990
-So the first group in Sort can
-be split up to run here on a
+Entonces el primer grupo en
+"$sort" puede ser dividido y
 
 51
 00:02:02,990 --> 00:02:03,835
-particular--
+ejecutarse aquí--
 
 52
 00:02:03,835 --> 00:02:06,060
-well if you're going to run an
-aggregation across the entire
+bueno, si vas a ejecutar una
+consulta de agregación sobre
 
 53
 00:02:06,060 --> 00:02:08,730
-collection, the MongoS will send
-group and sort to all the
+la colección entera, el mongos va a
+enviar el "$group" y el "$sort" a
 
 54
 00:02:08,730 --> 00:02:09,870
-shards, and it will do them.
+todos los "shards" y
+los va a ejecutar.
 
 55
 00:02:09,870 --> 00:02:12,270
-But after the first group and
-sort, they need to be gathered
+Pero después del primer "$group"
+y "$sort", tienen que ser agrupados
 
 56
 00:02:12,270 --> 00:02:14,480
-here in the MongoS, brought
-together for final result
+acá en el mongos, para
+el resultado final
 
 57
 00:02:14,480 --> 00:02:17,030
-before they're sent to the next
-stage of the pipeline.
+antes de ser enviados a la
+siguiente etapa del "pipeline".
 
 58
 00:02:17,030 --> 00:02:18,530
-Because the next stage of the
-pipeline needs to see the
+Porque la siguiente etapa del
+"pipeline" necesita ver el
 
 59
 00:02:18,530 --> 00:02:19,530
-finished result.
+resultado final.
 
 60
 00:02:19,530 --> 00:02:22,900
-So as a result, if you have a
-very long pipeline, you can
+Así que como resultado, si
+tienes un "pipeline" muy largo
 
 61
 00:02:22,900 --> 00:02:24,850
-easily wind up where
-your calculation is
+fácilmente puedes terminar
+haciendo que tu cálculo
 
 62
 00:02:24,850 --> 00:02:26,460
-running on your MongoS.
+corra en tu mongos.
 
 63
 00:02:26,460 --> 00:02:29,250
-Now in terms of application
-engineering, usually the
+En términos de ingeniería
+de aplicaciones, usualmente
 
 64
 00:02:29,250 --> 00:02:32,290
-MongoS process is running on
-the same computer as your
+el proceso mongos corre en
+la misma computadora que tu
 
 65
 00:02:32,290 --> 00:02:32,960
-applications.
+aplicación.
 
 66
 00:02:32,960 --> 00:02:35,980
-So as your app is running, and
-then you put a little MongoS
+Mientras tu aplicación se
+ejecuta, le pones un pequeño
 
 67
 00:02:35,980 --> 00:02:37,270
-on the same box.
+mongos en la misma máquina.
 
 68
 00:02:37,270 --> 00:02:39,540
-And that box might be
-sized differently,
+Y esa máquina puede tener
+un tamaño diferente al de
 
 69
 00:02:39,540 --> 00:02:40,550
-relative to the database.
+la base de datos.
 
 70
 00:02:40,550 --> 00:02:41,690
-Might be smaller.
+Puede que sea más pequeña.
 
 71
 00:02:41,690 --> 00:02:44,090
-And this aggregation
-might be gigantic.
+Y esta agregación
+podría ser gigantesca.
 
 72
 00:02:44,090 --> 00:02:46,960
-So keep in mind that when
-you're in a sharded
+Así que ten en mente que
+cuando estás en un ambiente
 
 73
 00:02:46,960 --> 00:02:49,970
-environment and you're doing
-allegations, that your
+con "shards" y estás haciendo
+agregaciones, es probable
 
 74
 00:02:49,970 --> 00:02:51,210
-calculations probably happening
+que tus cálculos
+estén ocurriendo
 
 75
 00:02:51,210 --> 00:02:52,310
-in your MongoS router.
+en tu router mongos.
 
 76
 00:02:52,310 --> 00:02:53,970
-And that might have an effect
-on other application
+Y esto puede afectar
+el rendimiento de
 
 77
 00:02:53,970 --> 00:02:56,250
-performance if MongoS is
-co-located with the
+tu aplicación si el
+mongos está en la misma
 
 78
 00:02:56,250 --> 00:02:57,130
-application.
+máquina que tu aplicación.
 
 79
 00:02:57,130 --> 00:02:58,730
-Kind of beyond the scope
-of this course.
+Es algo que está más allá de
+la envergadura de este curso,
 
 80
 00:02:58,730 --> 00:03:01,750
-But I just want to mention it
-because I know that some of
+pero quería mencionarlo
+porque sé que algunos
 
 81
 00:03:01,750 --> 00:03:04,190
-you probably do work in sharded
-environments on large
+de ustedes probablemente
+trabajan en grandes
 
 82
 00:03:04,190 --> 00:03:05,850
-production systems.
+sistemas de producción.
 
 83
 00:03:05,850 --> 00:03:07,580
-And we're going to talk a little
-bit more about the
+Vamos a hablar un poco más
+sobre las implicaciones
 
 84
 00:03:07,580 --> 00:03:10,460
-implications of sharding and
-replication and other aspects
+de "sharding" y réplicas
+y otros aspectos de la
 
 85
 00:03:10,460 --> 00:03:13,850
-of system architecture as
-a developer next week.
+arquitectura de sistemas 
+la próxima semana.
 
 86
 00:03:13,850 --> 00:03:15,230
-Now there are other alternatives
-to the
+Ahora, hay otras alternativas
+al Aggregation Framework
 
 87
 00:03:15,230 --> 00:03:18,470
-aggregation framework if you
-don't want to use it, or can't
+si es que no quieres
+usarlo o no puedes
 
 88
 00:03:18,470 --> 00:03:20,350
-use it because of some
-of the limitations.
+debido a sus limitaciones.
 
 89
 00:03:20,350 --> 00:03:21,920
-You can use MapReduce.
+Puedes usar MapReduce.
 
 90
 00:03:21,920 --> 00:03:23,710
-There's a version of that
-built into Mongo.
+Hay una versión que
+viene con Mongo.
 
 91
 00:03:23,710 --> 00:03:26,220
-And we haven't talked about
-it in this course.
+Y no hemos hablado de
+ello en este curso,
 
 92
 00:03:26,220 --> 00:03:27,660
-But you could use it.
+pero podrías usarlo.
 
 93
 00:03:27,660 --> 00:03:29,762
-You could also use Hadoop.
+Podrías también usar Hadoop.
 
 94
 00:03:29,762 --> 00:03:31,800
-And the Hadoop framework
-is basically an
+Y el framework de Hadoop
+es básicamente una
 
 95
 00:03:31,800 --> 00:03:33,610
-implementation of MapReduce.
+implementación de MapReduce.
 
 96
 00:03:33,610 --> 00:03:35,500
-And if you want to do that,
-there's a Hadoop connector
+Si quieres hacer eso, hay
+un conector para Hadoop
 
 97
 00:03:35,500 --> 00:03:39,460
-that can connect between
-Hadoop and MongoDB.
+que conecta a Hadoop con MongoDB.
 
 98
 00:03:39,460 --> 00:03:42,400
-So those are some other options
-if you can't use the
+Ésas son otras opciones
+si es que no puedes usar
 
 99
 00:03:42,400 --> 00:03:44,660
-aggregation framework for
-a particular query.
+el Aggregation Framework
+para un consulta en particular.
 
 100
 00:03:44,660 --> 00:03:45,100
-All right.
+Bueno.
 
 101
 00:03:45,100 --> 00:03:46,350
-So that's it.
+Eso es todo.

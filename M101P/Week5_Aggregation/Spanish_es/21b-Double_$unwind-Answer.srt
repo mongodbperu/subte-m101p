@@ -3,303 +3,297 @@
 
 2
 00:00:00,670 --> 00:00:06,150
-And the answer is yes, with
-two pushes in a row.
+La respuesta es que sí se puede hacer,
+con dos "$push" consecutivos.
 
 3
 00:00:06,150 --> 00:00:08,550
-So what does that look like?
+¿Cómo funciona eso?
 
 4
 00:00:08,550 --> 00:00:11,130
-I'm just going to show it to you
-because it's wild enough
+Te lo voy a mostrar
+porque es un poco loco
 
 5
 00:00:11,130 --> 00:00:12,940
-that it's kind of fun.
+y algo divertido.
 
 6
 00:00:12,940 --> 00:00:14,200
-So here we go.
+Veámoslo.
 
 7
 00:00:14,200 --> 00:00:18,030
-First, I'm unwinding by
-size and colors again.
+Primero, hago los "$unwind"
+por tamaño y colores de nuevo.
 
 8
 00:00:18,030 --> 00:00:22,400
-And then I am grouping again
-by size and color.
+Luego agrupo una vez más
+por tamaño y color.
 
 9
 00:00:22,400 --> 00:00:24,990
-So at this point, I have the
-result I had during the
+En este punto tengo el
+resultado que tenía en
 
 10
 00:00:24,990 --> 00:00:28,080
-lesson, which is that I've
-grouped by size and color.
+la lección, que es tener todo
+agrupado por tamaño y color.
 
 11
 00:00:28,080 --> 00:00:31,520
-And now I want to get the
-original documents
+Ahora quiero obtener los
+documentos originales
 
 12
 00:00:31,520 --> 00:00:32,340
-for the most part.
+básicamente.
 
 13
 00:00:32,340 --> 00:00:33,400
-So how would I do that?
+¿Cómo hago eso?
 
 14
 00:00:33,400 --> 00:00:34,940
-Create the size array first.
+Creo el array "size" primero,
 
 15
 00:00:34,940 --> 00:00:40,240
-I group on name and colors,
-and then I push
+y agrupo sobre "name"
+y "colors" y luego hago
 
 16
 00:00:40,240 --> 00:00:42,940
-the size onto sizes.
+"$push" al "size" sobre "sizes".
 
 17
 00:00:42,940 --> 00:00:45,640
-So these are scalars at
-this point, and now
+En este punto, éstos
+son escalares y ahora
 
 18
 00:00:45,640 --> 00:00:47,520
-I'm building an array.
+voy a crear un array.
 
 19
 00:00:47,520 --> 00:00:52,660
-And then, after I do that, I
-have a second phase where I
+Luego, después de hacer eso,
+va a haber una segunda fase
 
 20
 00:00:52,660 --> 00:00:55,010
-create the colors array.
+en la cual creo el
+array de colores.
 
 21
 00:00:55,010 --> 00:00:58,490
-Right here I push the colors,
-and I look at name and sizes.
+Aquí he hecho "$push" a los
+colores, veo "name" y "size"
 
 22
 00:00:58,490 --> 00:01:00,930
-And then I build the
-size array by
+y luego construyo
+el array "size"
 
 23
 00:01:00,930 --> 00:01:02,880
-grouping on name and colors.
+agrupando de acuerdo
+a "name" y "colors".
 
 24
 00:01:02,880 --> 00:01:05,230
-Now at this point, colors
-is no longer--
+Ahora "colors" ya no es--
 
 25
 00:01:05,230 --> 00:01:07,650
-their $colors is no
-longer a scalar.
+"$colors" ya no es un escalar.
 
 26
 00:01:07,650 --> 00:01:09,000
-It's actually an array,
-because I
+Es en realidad un array porque
 
 27
 00:01:09,000 --> 00:01:11,460
-built an array of colors.
+he creado un array de colores.
 
 28
 00:01:11,460 --> 00:01:14,920
-So I'm grouping on the name of
-the product and an array of
+Estoy agrupando de acuerdo al
+nombre del producto y un array
 
 29
 00:01:14,920 --> 00:01:18,770
-colors, and I'm pushing sizes
-onto a new sizes key.
+de colores y estoy haciendo "$push"
+a "sizes" sobre una nueva clave "sizes".
 
 30
 00:01:18,770 --> 00:01:22,100
-And that will produce
-the same result.
+Esto producirá el mismo resultado.
 
 31
 00:01:22,100 --> 00:01:26,560
-And then, just to clean
-it up, I'm going to
+Luego, simplemente para limpiarlo,
 
 32
 00:01:26,560 --> 00:01:28,880
-reshape it using project.
+voy a remodelarlo usando "$project".
 
 33
 00:01:28,880 --> 00:01:31,660
-I'm going to drop the id, I'm
-going to create the name from
+Voy a eliminar el "id", voy
+a crear el nombre de acuerdo a
 
 34
 00:01:31,660 --> 00:01:35,730
-_id.name, I'm going to include
-the sizes, and I'm going to
+"_id.name", voy a incluir
+los tamaños y voy a
 
 35
 00:01:35,730 --> 00:01:38,230
-include the colors
-from _id.colors.
+incluir los colores de
+acuerdo a "_id.colors".
 
 36
 00:01:38,230 --> 00:01:42,060
-So if I run that,
-reverse_double_unwind.js, you
+Así que si ejecuto eso,
+"reverse_double_unwind.js"
 
 37
 00:01:42,060 --> 00:01:45,650
-can see I get back in the result
-field pretty much the
+verás que obtengo en el campo
+"result" básicamente lo que
 
 38
 00:01:45,650 --> 00:01:46,700
-original documents.
+tenía en los documentos originales.
 
 39
 00:01:46,700 --> 00:01:48,420
-The ordering is a little bit
-different, but I can see that
+El ordenamiento es un poco
+diferente, pero puedo ver que
 
 40
 00:01:48,420 --> 00:01:51,565
-here is name "T-Shirt" and here
-are my sizes, and here
+aquí está "name" "T-Shirt" y
+aquí están mis "sizes" y aquí
 
 41
 00:01:51,565 --> 00:01:52,590
-are my colors.
+mis "colors".
 
 42
 00:01:52,590 --> 00:01:56,670
-And here's my "Chino Pants",
-and here are my sizes, and
+Y aquí están mis "Chino Pants",
+y aquí mis "sizes" y aquí mis
 
 43
 00:01:56,670 --> 00:02:00,000
-here are my colors using
-that push operator.
+"colors" usando el operador "$push".
 
 44
 00:02:00,000 --> 00:02:02,530
-So that's pretty neat, and
-it works pretty well.
+Eso es bastante útil y
+funciona bastante bien.
 
 45
 00:02:02,530 --> 00:02:05,190
-And you could do it with
-two push operators.
+Puedes hacerlo con dos
+operadores "$push".
 
 46
 00:02:05,190 --> 00:02:09,419
-You can also do it with a single
-stage if you're willing
+Podrías hacerlo también en una
+sola operación si estás dispuesto
 
 47
 00:02:09,419 --> 00:02:11,660
-to use the set operator and
-you know that they were
+a usar el operador "$addToSet"
+y sabes que originalmente
 
 48
 00:02:11,660 --> 00:02:13,440
-originally unique.
+los valores eran únicos.
 
 49
 00:02:13,440 --> 00:02:15,990
-So let me show you what
-that looks like.
+Déjame mostrarte cómo funciona eso.
 
 50
 00:02:15,990 --> 00:02:17,790
-So here we're going to do
-the exact same thing.
+Acá vamos a hacer
+exactamente lo mismo.
 
 51
 00:02:17,790 --> 00:02:21,920
-We're going to unwind by size
-and colors, and then we're
+Vamos a "$unwind" por tamaño
+y color y luego vamos a 
 
 52
 00:02:21,920 --> 00:02:25,190
-going to do a single grouping
-stage, and we're going to use
+hacer una sola etapa de agrupación
 
 53
 00:02:25,190 --> 00:02:27,420
-addToSet, versus push.
+usando "$addToSet" en
+lugar de "$push".
 
 54
 00:02:27,420 --> 00:02:29,450
-And we can essentially
-build them
+Podemos esencialmente construirlos
 
 55
 00:02:29,450 --> 00:02:31,890
-simultaneously using addToSet.
+simultáneamente usando "$addToSet".
 
 56
 00:02:31,890 --> 00:02:32,480
-I tested it.
+Lo probé.
 
 57
 00:02:32,480 --> 00:02:35,320
-It seems to work, because in
-this particular case the items
+Parece funcionar porque en
+este caso en particular los
 
 58
 00:02:35,320 --> 00:02:37,720
-were unique in the
-original arrays.
+elementos eran únicos en
+los arrays originales.
 
 59
 00:02:37,720 --> 00:02:42,340
-So if we call that, you can
-see we get back the same
+Así que si ejecutamos eso
+puedes ver que obtenemos
 
 60
 00:02:42,340 --> 00:02:43,670
-documents again.
+los mismos documentos de nuevo
 
 61
 00:02:43,670 --> 00:02:45,930
-In a single stage using
-addToSet, but this is sort of
+con una sola operación usando 
+"$addToSet", pero esto es un
 
 62
 00:02:45,930 --> 00:02:47,780
-a special case for that.
+caso especial.
 
 63
 00:02:47,780 --> 00:02:51,890
-OK, so, the answer is yes, I
-can reverse a double unwind
+Bien. Entonces la respuesta es que
+sí, puedo revertir el doble "$unwind"
 
 64
 00:02:51,890 --> 00:02:55,010
-using two pushes in a row
-although I have to be kind of
+usando dos "$push" consecutivos,
+aunque tengo que ser cuidadoso
 
 65
 00:02:55,010 --> 00:02:57,100
-careful about how I do it
-because it's a little tricky.
+cuando lo hago porque
+es algo difícil.
 
 66
 00:02:57,100 --> 00:02:58,350

@@ -3,191 +3,188 @@
 
 2
 00:00:00,200 --> 00:00:02,570
-Now that you've gone through the
-aggregation framework, you
+Ahora que has visto el
+Aggregation Framework
 
 3
 00:00:02,570 --> 00:00:04,160
-should have a better
-understanding--
+deberías tener un
+mejor entendimiento--
 
 4
 00:00:04,160 --> 00:00:05,940
-especially is you come
-from the SQL world--
+especialmente si vienes
+del mundo de SQL--
 
 5
 00:00:05,940 --> 00:00:08,780
-how the pieces of the
-aggregation framework map to
+de cómo las piezas del
+Aggregation Framework se
 
 6
 00:00:08,780 --> 00:00:10,660
-what exists in MongoDB.
+relacionan a lo que
+existe en MongoDB.
 
 7
 00:00:10,660 --> 00:00:13,990
-So, I think this is fairly
-obvious once you've done it,
+Creo que es obvio una
+vez que lo has hecho,
 
 8
 00:00:13,990 --> 00:00:15,920
-but I just want to take
-you through it.
+pero hagamos un repaso.
 
 9
 00:00:15,920 --> 00:00:18,760
-The where clause that you might
-see in SQL is equivalent
+La cláusula WHERE que podrías
+ver en SQL es equivalente a la
 
 10
 00:00:18,760 --> 00:00:23,560
-to the match clause in a match
-phase of an aggregation.
+cláusula "$match" en la fase
+"$match" de una agregación.
 
 11
 00:00:23,560 --> 00:00:26,000
-When you group by something in
-SQL, that's equivalent to
+Cuando haces GROUP BY en
+SQL es equivalente a
 
 12
 00:00:26,000 --> 00:00:32,560
-using the group phase of the
-pipeline in MongoDB.
+usar la fase "$group" en
+un "pipeline" de MongoDB.
 
 13
 00:00:32,560 --> 00:00:34,230
-Now, if you don't know SQL,
-you're probably not familiar
+Ahora, si no sabes SQL,
+probablemente no estás
 
 14
 00:00:34,230 --> 00:00:35,780
-with a lot of these.
+familiarizado con muchos de éstos,
 
 15
 00:00:35,780 --> 00:00:40,730
-But the having clause lets
-you specify which of the
+pero la cláusula HAVING te
+permite especificar cuáles
 
 16
 00:00:40,730 --> 00:00:43,360
-aggregated results
-you want to see.
+de los resultados de la
+agregación quieres ver.
 
 17
 00:00:43,360 --> 00:00:46,540
-It's an additional level of
-filtering you get than in SQL.
+Con Mongo obtienes un nivel
+adicional de filtración que
 
 18
 00:00:46,540 --> 00:00:48,340
-And that's really
-straightforward in Mongo
+en SQL y es muy simple
 
 19
 00:00:48,340 --> 00:00:51,310
-because since we can put
-multiple operators in the
+porque como podemos poner
+varios operadores en el
 
 20
 00:00:51,310 --> 00:00:53,930
-pipeline, we can have multiple
-match stages.
+"pipeline", podemos tener
+varias etapas de "$match".
 
 21
 00:00:53,930 --> 00:00:56,560
-So you just put another match
-stage and it works perfectly
+Simplemente pones otra
+etapa "$match" y funciona
 
 22
 00:00:56,560 --> 00:00:57,790
-well that way.
+perfectamente.
 
 23
 00:00:57,790 --> 00:01:00,490
-Selecting out what you want is
-equivalent to projection.
+SELECT es equivalente a "$project".
 
 24
 00:01:00,490 --> 00:01:02,340
-Ordering is equivalent
-to sorting.
+ORDER BY es igual a hacer "$sort".
 
 25
 00:01:02,340 --> 00:01:04,010
-Limiting is equivalent
-to limiting.
+Usar LIMIT es igual a hacer "$limit".
 
 26
 00:01:04,010 --> 00:01:05,640
-Sum is equivalent to summing.
+Y usar SUM es igual a hacer "$sum".
 
 27
 00:01:05,640 --> 00:01:08,850
-In counting, you use
-a sum operator.
+Para contar usas el operador "$sum".
 
 28
 00:01:08,850 --> 00:01:11,730
-You use a 1 if you want to
-count, and if you want to sum,
+Usas un 1 si quieres
+contar y si quieres sumar
 
 29
 00:01:11,730 --> 00:01:14,730
-and then you use a sum operator
-with the key of what
+luego usas un operador
+"$sum" con la clave de
 
 30
 00:01:14,730 --> 00:01:15,950
-you want to sum on.
+lo que quieres sumar.
 
 31
 00:01:15,950 --> 00:01:19,540
-And the join is really no direct
-analog in MongoDB, but
+Y para un "join" no hay un
+análogo directo en MongoDB,
 
 32
 00:01:19,540 --> 00:01:22,870
-it's sort of similar to the way
-you use unwind, because
+pero es algo similar a la manera
+en que usas "$unwind" porque
 
 33
 00:01:22,870 --> 00:01:26,540
-unwind unwinds then rejoins in
-a way that makes it more
+"$unwind" desagrupa y luego
+reagrupa de una manera que
 
 34
 00:01:26,540 --> 00:01:28,950
-amenable to aggregation.
+hace los datos más
+fáciles de agregar. 
 
 35
 00:01:28,950 --> 00:01:31,570
-So if you have SQL in your head
-and you're thinking about
+Así que si tienes SQL en tu
+mente y estás pensando en cómo 
 
 36
 00:01:31,570 --> 00:01:34,190
-how it all fits together, then
-this little chart, which is
+todo esto encaja, entonces este
+pequeño recuadro, el cual está
 
 37
 00:01:34,190 --> 00:01:35,550
-available in our
-documentation--
+disponible en nuestra
+documentación--
 
 38
 00:01:35,550 --> 00:01:38,860
-and you can just Google for SQL
-to aggregation framework
+puedes simplemente buscar: "SQL
+to aggregation framework MongoDB"
 
 39
 00:01:38,860 --> 00:01:40,650
-MongoDB and you'll
-get this page--
+en Google y encontrarás
+esta página--
 
 40
 00:01:40,650 --> 00:01:41,900
-shows you how that maps.
+y te muestra como
+esto se relaciona.
 
 41
 00:01:41,900 --> 00:01:43,060
