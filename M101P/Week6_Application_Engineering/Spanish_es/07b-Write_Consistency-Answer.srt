@@ -1,54 +1,55 @@
 1
 00:00:00,000 --> 00:00:01,410
-And the answer is no.
+Y la respuesta es no.
 
 2
 00:00:01,410 --> 00:00:03,620
-During that short time, and
-failover is usually under
+Durante ese corto periodo de tiempo,
+la recuperación de un fallo está 
 
 3
 00:00:03,620 --> 00:00:04,790
-three seconds.
+normalmente por debajo de los 
+tres segundos.
 
 4
 00:00:04,790 --> 00:00:06,900
-During that short time when
-failover is occurring and a
+Durante ese corto periodo de tiempo
+cuando está ocurriendo la 
 
 5
 00:00:06,900 --> 00:00:09,180
-new primary is being
-collected, no.
+recuperación y un nuevo primario 
+está siendo elegido, no.
 
 6
 00:00:09,180 --> 00:00:12,060
-You cannot complete a write,
-and you'll get error inside
+No puedes completar una escritura
+y obtendrás un error en tu
 
 7
 00:00:12,060 --> 00:00:13,490
-your program if you're
-trying to write.
+programa si estás
+intentando escribir.
 
 8
 00:00:13,490 --> 00:00:15,850
-And so you definitely want
-to be catching those, and
+Y por eso indudablemente quieres
+estar capturándolos y
 
 9
 00:00:15,850 --> 00:00:18,860
-potentially retrying them for a
-while to make sure that it's
+potencialmente reintentando durante
+un rato para asegurar que no es sólo
 
 10
 00:00:18,860 --> 00:00:21,080
-not just a transient
-thing where you're
+una cosa pasajera 
+cuando vayas a analizar la
 
 11
 00:00:21,080 --> 00:00:22,330
-going through failover.
+recuperación del fallo.
 
 12
 00:00:22,330 --> 00:00:23,440
