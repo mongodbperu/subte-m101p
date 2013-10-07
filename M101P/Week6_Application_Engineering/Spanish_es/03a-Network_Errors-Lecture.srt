@@ -221,7 +221,7 @@ para asegurarte y ver si lo que
 47
 00:01:56,200 --> 00:01:59,320
 pones, en realidad, se ha
-confirmado no, incluso si obtuviste
+confirmado o no, incluso si obtuviste
 
 48
 00:01:59,320 --> 00:02:00,220
@@ -270,8 +270,8 @@ Aquí está el cuestionario.
 
 58
 00:02:19,560 --> 00:02:21,580
-Una de las razones por qué una
-aplicación pudiera recibir un
+Una de las razones por las cuales
+una aplicación pudiera recibir un
 
 59
 00:02:21,580 --> 00:02:23,960
