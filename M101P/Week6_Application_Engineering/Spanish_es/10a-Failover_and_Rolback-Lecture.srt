@@ -1,393 +1,393 @@
 1
 00:00:00,000 --> 00:00:03,320
-I want to describe a failover
-situation which could result
+Quiero describir una situación de
+conmutación por error que podría
 
 2
 00:00:03,320 --> 00:00:05,590
-in a rollback of some data
-that was previously
+resultar en un "rollback" de
+algunos datos que previamente se
 
 3
 00:00:05,590 --> 00:00:07,380
-committed to mongod.
+envían hacia mongod.
 
 4
 00:00:07,380 --> 00:00:10,930
-So imagine you have three
-servers right here.
+Así que imagina que tienes
+tres servidores aquí.
 
 5
 00:00:10,930 --> 00:00:14,510
-One, two, and three.
+Uno, dos y tres.
 
 6
 00:00:14,510 --> 00:00:18,150
-And imagine this guy is the
-primary, and writes are going
+E imagina que este es el
+primario y las escrituras
 
 7
 00:00:18,150 --> 00:00:19,730
-along to this node.
+van hacia este nodo.
 
 8
 00:00:19,730 --> 00:00:24,400
-And they're getting replicated
-out, but let's say that you
+Y están siendo replicadas,
+pero digamos que estás
 
 9
 00:00:24,400 --> 00:00:27,280
-are writing, and these nodes,
-you're lagging behind for a
+escribiendo y estos nodos,
+están retrasados por
 
 10
 00:00:27,280 --> 00:00:28,560
-few seconds.
+algunos segundos.
 
 11
 00:00:28,560 --> 00:00:31,530
-And all of a sudden, this
-node goes down.
+Y de repente, este nodo se cae.
 
 12
 00:00:31,530 --> 00:00:35,520
-So if that node goes down, then
-one of these two will be
+Así que ese nodo se cae,
+entonces uno de estos dos
 
 13
 00:00:35,520 --> 00:00:37,610
-elected as the primary.
+serán elegidos como el primario.
 
 14
 00:00:37,610 --> 00:00:40,930
-But there are writes on this
-node that this node
+Pero hay escrituras en este
+nodo que este otro nodo
 
 15
 00:00:40,930 --> 00:00:42,420
-doesn't have yet.
+no las tiene aún.
 
 16
 00:00:42,420 --> 00:00:44,980
-If the app log hasn't
-yet been replicated.
+Si el "oplog" aún no
+ha sido replicado.
 
 17
 00:00:44,980 --> 00:00:49,270
-So this guy's going to come up
-right here as the primary, and
+Entonces este nodo va a venir
+aquí como el primario, y
 
 18
 00:00:49,270 --> 00:00:52,010
-he's not going to have
-those rights.
+él no va a tener
+estas escrituras.
 
 19
 00:00:52,010 --> 00:00:55,890
-Then, after a period of time,
-this guy might come back up as
+Entonces, después de un período
+de tiempo este retornaría como
 
 20
 00:00:55,890 --> 00:00:56,850
-a secondary.
+un secundario.
 
 21
 00:00:56,850 --> 00:00:59,330
-So let's say he comes
-up as a secondary.
+Así que digamos que
+regresa como secundario.
 
 22
 00:00:59,330 --> 00:01:01,080
-So this Mongo server
-comes back up,
+Así que este servidor
+Mongo regresa,
 
 23
 00:01:01,080 --> 00:01:03,600
-number one, as a secondary.
+número uno, como secundario.
 
 24
 00:01:03,600 --> 00:01:06,980
-When he comes back up, he'll
-look at the primary, which is
+Cuando él regresar, va a
+ver al primario, que es
 
 25
 00:01:06,980 --> 00:01:09,290
-this node now to see if there's
+este nodo ahora, para ver si hay
 
 26
 00:01:09,290 --> 00:01:11,070
-anything he needs to take.
+algo que él necesita tomar.
 
 27
 00:01:11,070 --> 00:01:13,210
-And when he does that, he's
-going to realize that he has
+Y cuando hace eso, va
+a darse cuenta que tiene
 
 28
 00:01:13,210 --> 00:01:16,560
-writes that are not in
-the current primary.
+escrituras que no están
+en el actual primario.
 
 29
 00:01:16,560 --> 00:01:19,360
-And so what he's going to do
-with those writes, what node
+Y lo que va a hacer con esas
+escrituras, lo que el nodo
 
 30
 00:01:19,360 --> 00:01:21,630
-one is going to do with those
-writes is he is going
+uno va a hacer con estas
+escrituras es que va a
 
 31
 00:01:21,630 --> 00:01:23,030
-to roll them back.
+hacerles "rollback".
 
 32
 00:01:23,030 --> 00:01:27,270
-So he's going to roll them back
-and put them into a file.
+Así que les hace "rollback"
+y los pone en un archivo.
 
 33
 00:01:27,270 --> 00:01:30,370
-And they could be applied
-manually if you'd like, but
+Y podrían ser aplicados
+manualmente si deseas, pero
 
 34
 00:01:30,370 --> 00:01:32,610
-they won't be part
-of the data set.
+no van a ser parte
+del conjunto de datos.
 
 35
 00:01:32,610 --> 00:01:36,690
-So this is a scenario where
-failover can result in
+Así que esta es una situación donde la
+conmutación por error puede resultar en
 
 36
 00:01:36,690 --> 00:01:40,780
-rollback of some data that had
-been previously committed.
+un "rollback" de algunos datos
+que han sido previamente enviados.
 
 37
 00:01:40,780 --> 00:01:44,340
-Now, there's a way to avoid this
-particular scenario for
+Ahora, hay una manera de evitar
+este particular escenario, en su
 
 38
 00:01:44,340 --> 00:01:48,150
-the most part, and that's by
-waiting until when you're
+mayor parte, y eso es
+esperando hasta que estés
 
 39
 00:01:48,150 --> 00:01:51,560
-writing to this primary
-initially, you wait until the
+escribiendo a este primario
+inicialmente, esperas hasta que
 
 40
 00:01:51,560 --> 00:01:54,930
-majority of the nodes have
-the data, and then that
+la mayoría de los nodos tengan
+los datos, y luego esas
 
 41
 00:01:54,930 --> 00:01:57,570
-vulnerability won't exist,
-for the most part.
+vulnerabilidades no existan,
+en su mayor parte.
 
 42
 00:01:57,570 --> 00:01:59,860
-There's some small corner
-cases in outstanding
+Hay algunos pequeños
+casos extremos aquí,
 
 43
 00:01:59,860 --> 00:02:00,950
-[INAUDIBLE]
+hay situaciones
 
 44
 00:02:00,950 --> 00:02:03,660
-on very strange situations
-where it
+muy extrañas donde
 
 45
 00:02:03,660 --> 00:02:04,460
-could potentially happen.
+podría ocurrir potencialmente.
 
 46
 00:02:04,460 --> 00:02:06,770
-But basically, it
-will not happen.
+Pero, básicamente,
+no va a suceder.
 
 47
 00:02:06,770 --> 00:02:11,970
-So if you simply set your w
-write concern to wait until a
+Así que si sólo estableces tu
+concernencia de escritura (w) para
 
 48
 00:02:11,970 --> 00:02:14,640
-majority of the nodes have the
-write, then it won't happen.
+que espere a que la mayoría de los nodos
+tengan la escritura, entonces no ocurrirá.
 
 49
 00:02:14,640 --> 00:02:17,050
-And we're going to go through
-how that works after we go
+Y vamos a repasar
+cómo funciona y luego
 
 50
 00:02:17,050 --> 00:02:18,060
-through the drivers.
+repasar los drivers.
 
 51
 00:02:18,060 --> 00:02:20,850
-But just so you understand that
-in the default case, if
+Pero sólo para que lo entiendas
+en el caso por defecto, si
 
 52
 00:02:20,850 --> 00:02:26,070
-you just set w equal to one, and
-even if you set j equal to
+estableces "w=1" e incluso
+si estableces "j=1",
 
 53
 00:02:26,070 --> 00:02:29,360
-one, which means I want to make
-sure that I don't return
+que significa que deseas
+asegurarte que no retorne
 
 54
 00:02:29,360 --> 00:02:32,440
-until it's committed to the
-journal on this node, that if
+hasta que esté registrado en el
+"journal" en este nodo, que si
 
 55
 00:02:32,440 --> 00:02:35,910
-this note was to fail before
-he replicated his stuff to
+esta nota fue fallida antes
+que este replicara esta cosa a
 
 56
 00:02:35,910 --> 00:02:39,980
-these two nodes, then it's
-perfectly possible that you
+estos dos nodos, entonces es
+perfectamente posible que
 
 57
 00:02:39,980 --> 00:02:42,690
-would lose the rights, because
-when he came back up, he'd
+perdieras las escrituras,
+porque cuando él regrese,
 
 58
 00:02:42,690 --> 00:02:43,810
-roll them back.
+le hará "rollback".
 
 59
 00:02:43,810 --> 00:02:47,300
-Put into a file, a roll back
-file, but usually in most
+Lo pone en un archivo, un archivo
+"rollback", pero usualmente en
 
 60
 00:02:47,300 --> 00:02:51,340
-operational situations, that's
-never applied, because it's
+situaciones más operativas, que
+nunca se aplican, porque es
 
 61
 00:02:51,340 --> 00:02:52,510
-too complicated do that.
+complicado hacer eso.
 
 62
 00:02:52,510 --> 00:02:54,000
-So most people don't do it.
+Así que la mayorías de
+personas no lo hacen.
 
 63
 00:02:54,000 --> 00:02:55,810
-OK, let's do a quiz.
+De acuerdo, hagamos
+un cuestionario.
 
 64
 00:02:55,810 --> 00:02:59,250
-So the quiz is what happens if
-a node comes back up as a
+Así que el cuestionario es ¿qué
+ocurre si un node regresa como
 
 65
 00:02:59,250 --> 00:03:02,530
-secondary after a period of
-being offline, and the op log
+secundarios luego de estar
+desconectado y el "oplog"
 
 66
 00:03:02,530 --> 00:03:04,220
-has looped on the primary?
+fue recorrido en el primario?
 
 67
 00:03:04,220 --> 00:03:06,500
-That's a scenario that
-we did not discuss.
+Este es un escenario
+que no hemos discutido.
 
 68
 00:03:06,500 --> 00:03:09,860
-But maybe you can reason out
-what will probably happen.
+Pero quizá puedas razonar
+lo que probablemente sucederá.
 
 69
 00:03:09,860 --> 00:03:12,280
-And remember, the op log
-is a cat collection.
+Y recuerda, el "oplog"
+es una colección con tope.
 
 70
 00:03:12,280 --> 00:03:16,560
-So it's possible that so much
-time has elapsed that when you
+Así que es posible que haya
+pasado buen tiempo para cuando
 
 71
 00:03:16,560 --> 00:03:19,410
-go to look at the primary, that
-it doesn't have any of
+viste que el primario
+no tenía ninguna de
 
 72
 00:03:19,410 --> 00:03:22,100
-the operations that happened
-in the intervening time
+las operaciones que ocurrieron
+en el tiempo transcurrido,
 
 73
 00:03:22,100 --> 00:03:23,530
-anymore, because it's
-already looped.
+porque ya está recorrido.
 
 74
 00:03:23,530 --> 00:03:25,360
-It's been 24 hours,
-or something.
+Ya han pasado 24 horas
+o algo así.
 
 75
 00:03:25,360 --> 00:03:27,640
-So what do you think happens
-in that situation?
+Entonces, ¿qué crees que
+sucede en esa situación?
 
 76
 00:03:27,640 --> 00:03:30,230
-And the choices are the entire
-data set will be covered from
+Y las opciones son: Todo el
+conjunto de datos serán cubiertos
 
 77
 00:03:30,230 --> 00:03:33,590
-the primary, a rollback will
-occur, the new node stays
+desde el primario, Un "rollback"
+ocurrirá, El nuevo nodo se queda
 
 78
 00:03:33,590 --> 00:03:38,180
-offline, does not rejoinder
-the replica set as a
+desconectado (no regresa al
+conjunto de réplicas como un
 
 79
 00:03:38,180 --> 00:03:41,500
-secondary, or the new node
-begins to calculate pi to a
+secundario), o El nuevo nodo
+comienza a calcular PI a un
 
 80
 00:03:41,500 --> 00:03:43,130
-very large number of
-decimal places.
+número grande de
+posiciones decimales.
 
 81
 00:03:43,130 --> 00:03:46,150
-So what do you think happens in
-the situations where the op
+Entonces, ¿qué crees que ocurre
+en las situaciones donde el "oplog"
 
 82
 00:03:46,150 --> 00:03:48,280
-log rolls or loops?
+fue recorrido?
 
 83
 00:03:48,280 --> 00:03:49,530
-The cat collection loops.
+Las colecciones con
+tope se recorren.
