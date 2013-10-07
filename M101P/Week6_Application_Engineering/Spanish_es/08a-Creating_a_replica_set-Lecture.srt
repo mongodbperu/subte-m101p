@@ -3,140 +3,140 @@
 
 2
 00:00:00,240 --> 00:00:04,070
-Now, let's create a small
-replica set on just this one
+Ahora, creemos un pequeño conjunto
+de réplicas sólo en este
 
 3
 00:00:04,070 --> 00:00:06,830
-computer that I'm using so
-you can see how it works.
+equipo que estoy usando para
+que puedas ver cómo funciona.
 
 4
 00:00:06,830 --> 00:00:08,990
-Now normally when you create a
-replica set, you're going to
+Normalmente, cuando creas un
+conjunto de réplicas, vas a
 
 5
 00:00:08,990 --> 00:00:14,290
-put one of the mongods on each
-of the physical servers so
+poner uno de los mongod en cada
+servidor físico para que
 
 6
 00:00:14,290 --> 00:00:16,050
-that there's some real
-fault tolerance here.
+realmente haya tolerancia
+a fallos aquí.
 
 7
 00:00:16,050 --> 00:00:17,840
-And you might very well
-run them all onto
+Y muy bien podrías
+ejecutarlos todos ellos
 
 8
 00:00:17,840 --> 00:00:18,920
-the standard port.
+en el puerto estándar.
 
 9
 00:00:18,920 --> 00:00:20,940
-But we're going to do it
-just on a single node.
+Pero vamos a hacer eso
+sólo en un único nodo.
 
 10
 00:00:20,940 --> 00:00:23,630
-And to do that, I'm going to
-have to run them on different
+Y para hacer eso, voy a
+tener que ejecutarlos en puertos
 
 11
 00:00:23,630 --> 00:00:25,810
-ports so that they don't
-conflict with each other.
+diferentes para que no haya
+conflictos entre ellos.
 
 12
 00:00:25,810 --> 00:00:28,010
-So I've written a small
-script here called
+He escrito un pequeño
+script aquí llamado
 
 13
 00:00:28,010 --> 00:00:31,600
-create_replica_set.sh, and it's
-going to be available for
+"create_replica_set.sh", y va a
+estar disponible para
 
 14
 00:00:31,600 --> 00:00:34,180
-download if you want
-to download it.
+descargar si quieres
+descargarlo.
 
 15
 00:00:34,180 --> 00:00:37,440
-And it's going to create three
-directories, /data/rs1,
+Y va a crear tres
+directorios, "/data/rs1",
 
 16
 00:00:37,440 --> 00:00:40,270
-/data/rs2, and /data/rs3.
+"/data/rs2" y "/data/rs3".
 
 17
 00:00:40,270 --> 00:00:42,620
-And they don't exist right
-now, so it will actually
+Y no existen justo
+ahora, por lo que los
 
 18
 00:00:42,620 --> 00:00:43,730
-create them.
+creará realmente.
 
 19
 00:00:43,730 --> 00:00:46,910
-And then it's going to start
-three mongod instances.
+Y luego va a iniciar
+tres instancias de mongod.
 
 20
 00:00:46,910 --> 00:00:50,510
-Now, it has to declare each
-one is part of the same
+Ahora, tiene que declarar que cada
+una es parte del mismo conjunto
 
 21
 00:00:50,510 --> 00:00:53,830
-replica set, so minus
-replSet rs1.
+de réplicas, así que
+"-replSet rs1".
 
 22
 00:00:53,830 --> 00:00:57,650
-And this is just telling it that
-it should put its log in
+Y ésto simplemente le está diciendo
+que debería poner su log en un
 
 23
 00:00:57,650 --> 00:00:59,700
-a log file called 1.log.
+fichero log llamado "1.log".
 
 24
 00:00:59,700 --> 00:01:02,310
-And then this is its dbpath
-where it's going to put its
+Y luego esto es el "dbpath"
+donde va a poner sus
 
 25
 00:01:02,310 --> 00:01:03,210
-data files.
+ficheros de datos.
 
 26
 00:01:03,210 --> 00:01:05,620
-So again, /data/rs1.
+Así que de nuevo, "/data/rs1".
 
 27
 00:01:05,620 --> 00:01:07,690
-And then it's going to choose
-a port where it's
+Y luego va a elegir
+un puerto donde va
 
 28
 00:01:07,690 --> 00:01:08,710
-going to listen on.
+va a escuchar.
 
 29
 00:01:08,710 --> 00:01:10,750
-This one is going to get the
-privilege of listening on the
+Éste va a tener el privilegio
+de escuchar en el
 
 30
 00:01:10,750 --> 00:01:11,830
-standard port.
+puerto estándar.
 
 31
 00:01:11,830 --> 00:01:13,515
@@ -847,54 +847,54 @@ replica set inside mongo.
 
 186
 00:07:50,080 --> 00:07:52,270
-And I'm going to put these
-scripts up in the lesson files
+Y voy a subir estos scripts 
+a los ficheros de la lección
 
 187
 00:07:52,270 --> 00:07:54,120
-this week, so I really encourage
-you to do this
+de esta semana, por lo que relamente
+te animo a hacer esto
 
 188
 00:07:54,120 --> 00:07:58,090
-yourself so that you can play
-with it and see how they work.
+por ti mismo para que puedas jugar
+con esto y ver cómo funciona.
 
 189
 00:07:58,090 --> 00:07:59,893
-Now let's do a quiz.
+Ahora hagamos un cuestionario.
 
 190
 00:07:59,893 --> 00:08:02,690
 
 191
 00:08:02,690 --> 00:08:03,430
-Here's the quiz.
+Aquí está el cuestionario.
 
 192
 00:08:03,430 --> 00:08:05,430
-Which command, when issued from
-the mongo shell, will
+¿Qué comando, cuando se lanza
+desde el shell Mongo,
 
 193
 00:08:05,430 --> 00:08:07,360
-allow you to read from
-a secondary?
+te permitirá leer de
+un secundario?
 
 194
 00:08:07,360 --> 00:08:10,550
-db.isMaster(), db adminCommand
-readPreference Secondary,
+"db.isMaster()", "db.adminCommand(
+readPreference Secondary)",
 
 195
 00:08:10,550 --> 00:08:14,600
-rs.setStatus('Primary'),
-or rs.slaveOk()?
+"rs.setStatus('Primary')"
+o "rs.slaveOk()"?
 
 196
 00:08:14,600 --> 00:08:16,330
-Which one will let you read
-from a secondary?
+¿Cuál te dejará leer
+de un secundario?
 
 197
 00:08:16,330 --> 00:08:17,580

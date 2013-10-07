@@ -3,7 +3,7 @@
 
 2
 00:00:00,110 --> 00:00:01,360
-And the answer is rs.slaveOK().
+Y la respuesta es "rs.slaveOK()".
 
 3
 00:00:01,360 --> 00:00:02,540
