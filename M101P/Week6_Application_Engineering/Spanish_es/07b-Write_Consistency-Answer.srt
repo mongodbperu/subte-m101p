@@ -40,7 +40,7 @@ estar capturándolos y
 9
 00:00:15,850 --> 00:00:18,860
 potencialmente reintentando durante
-un poco para asegurar que no es sólo
+un rato para asegurar que no es sólo
 
 10
 00:00:18,860 --> 00:00:21,080

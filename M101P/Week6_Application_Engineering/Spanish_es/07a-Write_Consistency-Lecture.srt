@@ -1,4 +1,5 @@
-1 00:00:00,000 --> 00:00:00,130
+1
+00:00:00,000 --> 00:00:00,130
 
 2
 00:00:00,130 --> 00:00:04,270
@@ -145,7 +146,7 @@ podrías querer leer desde los
 32
 00:01:21,850 --> 00:01:23,790
 secundarios, quiero decir, el
-motivo tradicional por el la gente
+motivo más común por el que la gente
 
 33
 00:01:23,790 --> 00:01:25,700
@@ -193,7 +194,7 @@ consistente.
 42
 00:01:44,680 --> 00:01:48,340
 Por otro lado, sin embargo, cuando se
-produce una recuperación de un fallo,
+produce una conmutación por error,
 
 43
 00:01:48,340 --> 00:01:50,680
@@ -265,7 +266,7 @@ la consistencia eventual es que
 
 57
 00:02:23,320 --> 00:02:26,850
-es bastante duro razonar sobre ella,
+es bastante difícil razonar sobre ella,
 porque cuando escribes
 
 58
@@ -337,11 +338,11 @@ OK, hagamos un cuestionario.
 72
 00:02:59,750 --> 00:03:02,215
 Bien, durante el tiempo en que está
-ocurriendo una recuperación de un
+ocurriendo una conmutación por 
 
 73
 00:03:02,215 --> 00:03:05,050
-fallo en un conjunto de réplicas, ¿pueden
+error en un conjunto de réplicas, ¿pueden
 completarse con éxito las escrituras?
 
 74
