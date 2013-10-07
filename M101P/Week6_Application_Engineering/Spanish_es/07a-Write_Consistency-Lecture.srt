@@ -164,8 +164,8 @@ enviar sus lecturas a todos los
 
 36
 00:01:28,890 --> 00:01:32,160
-nodos, conseguirán algún
-escalado de lectura.
+nodos, las lecturas
+escalarán mejor.
 
 37
 00:01:32,160 --> 00:01:34,990
