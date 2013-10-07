@@ -3,327 +3,327 @@
 
 2
 00:00:00,140 --> 00:00:03,080
-Now that you've learned how to
-use the write concern modes,
+Ahora que hemos aprendido cómo utilizar
+los modos de concernencia de escritura,
 
 3
 00:00:03,080 --> 00:00:07,050
-and you know how to set j equal
-to 1 and w equal to 1,
+y sabes cómo establecer
+"j=1" y "w=1",
 
 4
 00:00:07,050 --> 00:00:10,440
-you might think that you can
-pretty much guarantee that a
+se podría pensar que puedes
+garantizar bien que una
 
 5
 00:00:10,440 --> 00:00:12,710
-write will complete or not
-complete inside Mongo, and
+escritura se completará
+o no en Mongo y
 
 6
 00:00:12,710 --> 00:00:14,150
-you'll find out whether
-it was true or not.
+te darás cuenta de
+si es cierto o no.
 
 7
 00:00:14,150 --> 00:00:16,570
-If that gives you a level of
-certainty in the world.
+Si eso te da un nivel de
+certeza en la realidad.
 
 8
 00:00:16,570 --> 00:00:19,290
-Unfortunately, it's
-not exactly true.
+Por desgracia, esto no
+es exactamente cierto.
 
 9
 00:00:19,290 --> 00:00:22,760
-And the reason is that there
-are network errors.
+Y la razón es que
+hay errores de red.
 
 10
 00:00:22,760 --> 00:00:27,360
-So for instance, let's say that
-you did an insert, and
+Así, por ejemplo, digamos
+que hiciste una inserción y
 
 11
 00:00:27,360 --> 00:00:31,500
-that insert was specified with a
-connection that had j equals
+aquella inserción fue especificada
+con una conexión que tenía "j=1"
 
 12
 00:00:31,500 --> 00:00:35,340
-1 and w equals 1, such the
-driver issued a get last error
+y "w=1", de manera que el
+driver ejecutó un "getLastError"
 
 13
 00:00:35,340 --> 00:00:36,590
-on your behalf.
+por ti.
 
 14
 00:00:36,590 --> 00:00:40,070
-And the write did complete, but
-unfortunately, before it
+Y la escritura se completó,
+pero desafortunadamente, antes
 
 15
 00:00:40,070 --> 00:00:42,630
-completed, the network
-connection got reset.
+de completarse, la conexión
+de red se reinició.
 
 16
 00:00:42,630 --> 00:00:46,620
-TCP reset, there's some
-intervening network problem.
+Un reinicio TCP, existen algunos
+problemas que intervienen en la red.
 
 17
 00:00:46,620 --> 00:00:49,560
-In that particular case, you
-don't know whether your write
+En ese caso en concreto,
+no sabes si tu escritura
 
 18
 00:00:49,560 --> 00:00:52,840
-completed or not, because you
-didn't get an acknowledgement
+se completó o no, porque no
+obtuviste una confirmación
 
 19
 00:00:52,840 --> 00:00:53,840
-that it completed.
+de que se haya completado.
 
 20
 00:00:53,840 --> 00:00:55,310
-So if you'd gotten the
-acknowledgement that it
+Así que si hubieras recibido
+la confirmación que se ha
 
 21
 00:00:55,310 --> 00:00:57,540
-completed, you'd be sure
-it had completed.
+completado, estarías seguro
+que se ha completado.
 
 22
 00:00:57,540 --> 00:00:59,450
-But the fact that you didn't
-get the acknowledgement
+Pero el hecho que no hayas
+recibido la confirmación
 
 23
 00:00:59,450 --> 00:01:01,580
-doesn't guarantee it
-didn't complete.
+no garantiza que se
+haya completado.
 
 24
 00:01:01,580 --> 00:01:03,960
-And this is important to
-remember in a client server
+Y esto es importante tener en
+cuenta en una aplicación
 
 25
 00:01:03,960 --> 00:01:06,630
-application, which is that
-there are these network
+cliente-servidor, que es que
+hay estos errores de red,
 
 26
 00:01:06,630 --> 00:01:09,520
-errors, and you can never
-be completely sure
+y nunca se puede estar
+completamente seguro de
 
 27
 00:01:09,520 --> 00:01:11,470
-what exactly happened.
+lo que pasó exactamente.
 
 28
 00:01:11,470 --> 00:01:14,040
-Now, it depends on your
-application whether that's a
+Ahora, esto depende de
+tu aplicación si eso es
 
 29
 00:01:14,040 --> 00:01:15,060
-problem or not.
+un problema o no.
 
 30
 00:01:15,060 --> 00:01:16,770
-You can often check to see
-whether or not the write
+A menudo puedes comprobar para
+ver si la escritura ocurrió
 
 31
 00:01:16,770 --> 00:01:18,610
-happened after if you need to.
+después si lo necesitas.
 
 32
 00:01:18,610 --> 00:01:22,670
-But even if you're protecting
-your inserts with try
+Pero incluso si estás protegiendo
+tus inserciones con bloques de
 
 33
 00:01:22,670 --> 00:01:25,750
-exception blocks, and making
-sure that you get all the
+"try exception", y te aseguras
+de capturar todas las excepciones,
 
 34
 00:01:25,750 --> 00:01:28,390
-exceptions, sometimes you'll
-get an exception, but the
+a veces obtendrás una
+excepción, pero la
 
 35
 00:01:28,390 --> 00:01:29,310
-write will complete.
+escritura se completará.
 
 36
 00:01:29,310 --> 00:01:31,890
-Now, if you get no exceptions
-and it says the write
+Ahora bien, si no obtienes
+excepciones y dice que la
 
 37
 00:01:31,890 --> 00:01:33,920
-completed, well then
-you're fine, you
+escritura se completó,
+bueno, entonces está bien,
 
 38
 00:01:33,920 --> 00:01:35,460
-know the write completed.
+sabes que la escritura
+se ha completado.
 
 39
 00:01:35,460 --> 00:01:38,340
-By I just wanted to point out
-that there is a certain degree
+Pero sólo quiero señalar
+que existe cierto grado
 
 40
 00:01:38,340 --> 00:01:42,310
-of uncertainty in any network
-based application, such as you
+de incertidumbre en cualquier
+aplicación basada en red, tal como
 
 41
 00:01:42,310 --> 00:01:46,480
-can never be completely positive
-when something has
+nunca puedes estar completamente
+positivo cuando algo ha sucedido
 
 42
 00:01:46,480 --> 00:01:47,990
-happened or not, because
-you may not have
+o no, porque es
+posible no haber
 
 43
 00:01:47,990 --> 00:01:49,640
-received the response.
+recibido la respuesta.
 
 44
 00:01:49,640 --> 00:01:52,800
-Now, you could build something
-on top of this to
+Ahora, podrías construir algo
+en la parte superior para
 
 45
 00:01:52,800 --> 00:01:53,690
-protect you from it.
+protegerte de esto.
 
 46
 00:01:53,690 --> 00:01:56,200
-You could do another check to
-make sure and see if what you
+Podrías hacer otra verificación
+para asegurarte y ver si lo que
 
 47
 00:01:56,200 --> 00:01:59,320
-put in really got committed or
-not, even know you didn't get
+pones, en realidad, se ha
+confirmado o no, incluso si obtuviste
 
 48
 00:01:59,320 --> 00:02:00,220
-a response.
+una respuesta.
 
 49
 00:02:00,220 --> 00:02:02,370
-But most applications
-don't do that.
+Pero la mayoría de
+aplicaciones no hacen eso.
 
 50
 00:02:02,370 --> 00:02:05,140
-And when the network is working
-well, it's very rare
+Y cuando la red está funcionando
+bien, es muy extraño que
 
 51
 00:02:05,140 --> 00:02:07,370
-that you might see a network
-connection error.
+puedas ver un error
+de conexión de red.
 
 52
 00:02:07,370 --> 00:02:10,460
-But you could see one, and if
-you do see it, you may not
+Pero podrías ver uno y
+si lo ves, podrías no
 
 53
 00:02:10,460 --> 00:02:13,170
-know whether or not your write
-committed or not, even if you
+saber si tu escritura se
+confirmó o no, incluso si
 
 54
 00:02:13,170 --> 00:02:14,840
-specified that you
-want to receive
+especificaste que deseas recibir
 
 55
 00:02:14,840 --> 00:02:16,160
-acknowledgement when it did.
+confirmación cuando lo hizo.
 
 56
 00:02:16,160 --> 00:02:18,120
-All right, let's do a quiz.
+Muy bien, hagamos un cuestionario.
 
 57
 00:02:18,120 --> 00:02:19,560
-So here's the quiz.
+Aquí está el cuestionario.
 
 58
 00:02:19,560 --> 00:02:21,580
-One of the reasons why an
-application may receive an
+Una de las razones por las cuales
+una aplicación pudiera recibir un
 
 59
 00:02:21,580 --> 00:02:23,960
-error back if the write
-was successful.
+error de regreso si la
+escritura fue satisfactoria.
 
 60
 00:02:23,960 --> 00:02:25,380
-Check all that apply.
+Marca todas las que apliquen.
 
 61
 00:02:25,380 --> 00:02:28,000
-The network TCP connection
-between the application and
+La conexión de red TCP
+entre la aplicación y
 
 62
 00:02:28,000 --> 00:02:30,803
-the server was reset, between
-the time of the write and the
+el servidor fue reiniciada, entre
+el momento de la escritura y el
 
 63
 00:02:30,803 --> 00:02:32,480
-time of the get last
-error call.
+momento de la llamada
+del "getLastError".
 
 64
 00:02:32,480 --> 00:02:34,890
-The Mongodb server terminates
-between the write and the get
+El servidor MongoDB termina
+entre la escritura y la llamada
 
 65
 00:02:34,890 --> 00:02:36,060
-last error call.
+al "getLastError".
 
 66
 00:02:36,060 --> 00:02:39,030
-The network fails between the
-time of the write and the time
+La red falla entre el momento
+de la escritura y el momento de
 
 67
 00:02:39,030 --> 00:02:40,710
-of the get last error call.
+la llamada al "getLastError".
 
 68
 00:02:40,710 --> 00:02:42,840
-Or the write violates a primary
-key constraint on the
+O la escritura contraviene una
+restricción de clave primaria en la
 
 69
 00:02:42,840 --> 00:02:44,140
-collection and must
-be rolled back.
+colección y debe
+hacer "rollback".
 
 70
 00:02:44,140 --> 00:02:45,390
