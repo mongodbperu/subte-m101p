@@ -7,93 +7,94 @@ OK.
 
 3
 00:00:00,750 --> 00:00:03,030
-And the answer is no.
+Y la respuesta es no.
 
 4
 00:00:03,030 --> 00:00:05,440
-And the reason the answer
-is no is that
+Y la razón por la que la
+repuesta es no es que
 
 5
 00:00:05,440 --> 00:00:07,530
-we retry three times.
+intentamos tres veces.
 
 6
 00:00:07,530 --> 00:00:09,910
-And we sleep five seconds.
+Y hacemos "sleep"
+por cinco segundos.
 
 7
 00:00:09,910 --> 00:00:12,480
-So this presumes that a new
-primary is elected within 15
+Por lo que esto asume que un
+nuevo primario es elegido en 15
 
 8
 00:00:12,480 --> 00:00:14,870
-seconds, which may
-be the case.
+segundos, que
+puede ser el caso.
 
 9
 00:00:14,870 --> 00:00:16,880
-But it may not be the case.
+Pero puede no se el caso.
 
 10
 00:00:16,880 --> 00:00:20,710
-So if you retry 20 times, and
-if you waited longer and
+Así que si se intenta 20
+veces, y si se espera más y
 
 11
 00:00:20,710 --> 00:00:24,500
-longer each time, then it
-becomes very unlikely that the
+más cada vez, entonces se
+vuelve muy poco problable que
 
 12
 00:00:24,500 --> 00:00:25,660
-write wouldn't succeed.
+la escritura no tenga éxito.
 
 13
 00:00:25,660 --> 00:00:27,790
-You could probably get that down
-in a well managed network
+Probablemente podría conseguir
+que en una red bien gestionada
 
 14
 00:00:27,790 --> 00:00:29,550
-as something that was so low,
-it wouldn't matter.
+como algo que era tan
+bajo, no importaría.
 
 15
 00:00:29,550 --> 00:00:31,960
-But the point is, in this
-particular case, the way it's
+Pero el punto es, en este caso en
+particular, la manera en que está
 
 16
 00:00:31,960 --> 00:00:34,510
-structured with just the three
-retries and a five second
+estructurado con sólo tres
+reintentos y un "sleep" de cinco
 
 17
 00:00:34,510 --> 00:00:36,790
-sleep, it may not complete
-because you may go through all
+segundo, no se puede completar
+porque puede ir a través de todos
 
 18
 00:00:36,790 --> 00:00:39,630
-the retries while the election
-is still occurring if there
+los reintentos mientras que la
+elección se sigue produciendo si hay
 
 19
 00:00:39,630 --> 00:00:41,850
-are other problems existing
-on your network.
+otros problemas que
+existen en la red.
 
 20
 00:00:41,850 --> 00:00:44,410
-Under normal circumstances, an
-election for a new primary is
+En circuntancias normales, una
+elección para un nuevo primario
 
 21
 00:00:44,410 --> 00:00:46,570
-going to happen within a half
-second to a second.
+va a pasar entre medio
+segundo y un segundo.
 
 22
 00:00:46,570 --> 00:00:47,820
