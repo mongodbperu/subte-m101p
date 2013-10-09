@@ -1,522 +1,522 @@
 1
 00:00:00,000 --> 00:00:02,090
-All right, let's talk about how
-replication works behind
+Bien, hablemos sobre cómo
+funciona la replicación
 
 2
 00:00:02,090 --> 00:00:03,050
-the scenes.
+internamente.
 
 3
 00:00:03,050 --> 00:00:06,830
-So, I've connected to two of the
-Mongod's right now through
+Me he conectado a dos de los
+mongod justo ahora a través
 
 4
 00:00:06,830 --> 00:00:07,660
-Mongo shell.
+del shell Mongo.
 
 5
 00:00:07,660 --> 00:00:09,980
-One is, I've connected
-to the primary--
+Éste es, me he conectado
+al primario --
 
 6
 00:00:09,980 --> 00:00:12,530
-at 27018, at that port.
+al 27018, a ese puerto.
 
 7
 00:00:12,530 --> 00:00:15,040
-In this second window, I've
-connected to this the
+En esta segunda ventana, me he
+conectado a este
 
 8
 00:00:15,040 --> 00:00:19,320
-secondary Mongod at 27019.
+mongod secundario en el 27019.
 
 9
 00:00:19,320 --> 00:00:21,340
-And what I'm going
-to do here--
+Y lo que voy a 
+hacer aquí --
 
 10
 00:00:21,340 --> 00:00:25,840
-just want to get rs.status
-again, just to look at the
+sólo quiero obtener un "rs.status()"
+otra vez, para echar un vistazo a la
 
 11
 00:00:25,840 --> 00:00:27,600
-different configuration.
+diferente configuración.
 
 12
 00:00:27,600 --> 00:00:31,315
-And you can see here that I am
-27018, and I am the primary.
+Y puedes ver aquí que estoy en el
+27018 y soy el primario.
 
 13
 00:00:31,315 --> 00:00:35,440
-You can also call rs.isMaster,
-which will tell you whether or
+También puedes llamar a "rs.isMaster()",
+que te dirá si eres
 
 14
 00:00:35,440 --> 00:00:36,710
-not you're the master.
+o no el maestro.
 
 15
 00:00:36,710 --> 00:00:44,360
-So rs.isMaster is true here, and
-rs.isMaster is going to be
+Por tanto, "rs.isMaster()" es "true" aquí,
+y "rs.isMaster()" va a ser
 
 16
 00:00:44,360 --> 00:00:47,930
-false here, because I'm
-not the master here.
+"false" aquí, porque no
+soy el maestro aquí.
 
 17
 00:00:47,930 --> 00:00:50,690
-Now, let's go and insert
-something again.
+Ahora, continuemos e insertemos
+algo de nuevo.
 
 18
 00:00:50,690 --> 00:00:53,600
-So, I'm going to use the
-test database again.
+Voy a usar la 
+base de datos "test" otra vez.
 
 19
 00:00:53,600 --> 00:00:57,660
-And I'm going to look at
-db.people.find, and now I'm
+Y voy a echar un vistazo a
+"db.people.find()", y ahora voy
 
 20
 00:00:57,660 --> 00:00:59,100
-going to add something to
-it-- db.people.insert--
+a añadir algo
+-- "db.people.insert" --
 
 21
 00:00:59,100 --> 00:01:02,700
 
 22
 00:01:02,700 --> 00:01:04,330
-and I'm gonna add a new name.
+y voy a añadir un nuevo nombre.
 
 23
 00:01:04,330 --> 00:01:08,540
-Now we'll add Richard to that.
+Añadiremos "Richard".
 
 24
 00:01:08,540 --> 00:01:10,940
-And as soon as I do that,
-if we do the find
+Y en cuanto hago eso,
+si hacemos el "find"
 
 25
 00:01:10,940 --> 00:01:12,610
-here, I can see them.
+aquí, puedo verlo.
 
 26
 00:01:12,610 --> 00:01:14,820
-And if I do the find here--
+Y si hago el "find" aquí --
 
 27
 00:01:14,820 --> 00:01:18,670
 
 28
 00:01:18,670 --> 00:01:20,735
-oh, I can't run it yet.
+oh, todavía no puedo ejecutarlo.
 
 29
 00:01:20,735 --> 00:01:24,750
-I have to say slaveOK to be able
-to read from this one.
+Tengo que decirle "rs.slaveOk()" para 
+poder leer de éste.
 
 30
 00:01:24,750 --> 00:01:27,230
-And you can see the data's
-been synchronized.
+Y puedes ver que los datos han
+sido sincronizados.
 
 31
 00:01:27,230 --> 00:01:29,012
-So, how does that work?
+Así que, ¿cómo funciona eso?
 
 32
 00:01:29,012 --> 00:01:33,200
-Well, there is a special
-collection, a capped
+Bien, hay una colección 
+especial, una colección
 
 33
 00:01:33,200 --> 00:01:34,260
-collection--
+con tope ("capped") --
 
 34
 00:01:34,260 --> 00:01:37,220
-which means that it's a certain
-size and it will loop
+que significa que tiene un cierto
+tamaño y rotará
 
 35
 00:01:37,220 --> 00:01:38,770
-after it fills--
+una vez se llene --
 
 36
 00:01:38,770 --> 00:01:42,210
-in the local database, which
-contains an oplog for
+en la base de datos local, que
+contiene un "oplog" para
 
 37
 00:01:42,210 --> 00:01:43,510
-replication.
+replicación.
 
 38
 00:01:43,510 --> 00:01:44,430
-So--
+Así que --
 
 39
 00:01:44,430 --> 00:01:46,760
-if we show collections, you
-can see it right here.
+si mostramos las colecciones,
+puedes verla justo aquí.
 
 40
 00:01:46,760 --> 00:01:51,020
-It's called oplog.rs.
+Se llama "oplog.rs".
 
 41
 00:01:51,020 --> 00:01:52,380
-So, I'm going to look at it.
+Así que voy a echarle un vistazo.
 
 42
 00:01:52,380 --> 00:01:53,630
-So, db.oplog.rs.find.pretty.
+"db.oplog.rs.find().pretty()".
 
 43
 00:01:53,630 --> 00:02:00,630
 
 44
 00:02:00,630 --> 00:02:06,320
-And here you can see that in
-this op log we have a insert
+Y aquí puedes ver que en
+este "oplog" tenemos un "insert"
 
 45
 00:02:06,320 --> 00:02:08,320
-into test.people with--
+en "test.people" con --
 
 46
 00:02:08,320 --> 00:02:11,150
-here's the object that was
-inserted named Richard.
+aquí está el objeto que fue
+insertado llamado "Richard".
 
 47
 00:02:11,150 --> 00:02:14,080
-And if we look at the oplog on
-this side, we should see the
+Y si echamos un vistazo al "oplog" por
+este lado, deberíamos ver 
 
 48
 00:02:14,080 --> 00:02:15,760
-exact same item.
+exactamente el mismo elemento.
 
 49
 00:02:15,760 --> 00:02:18,960
-So let's do that.
+Así que hagamos eso.
 
 50
 00:02:18,960 --> 00:02:23,255
-Now, this is a cat collection,
-and it's in natural order.
+Ahora, ésta es una colección con tope,
+y está en orden natural.
 
 51
 00:02:23,255 --> 00:02:25,530
-It doesn't need an underscore
-ID, because capped collections
+No necesita un "_id",
+porque las colecciones con tope
 
 52
 00:02:25,530 --> 00:02:26,810
-don't need them.
+no lo necesitan.
 
 53
 00:02:26,810 --> 00:02:30,720
-And you can see here that this
-is the same item here that
+Y puedes ver aquí que éste
+es el mismo elemento que
 
 54
 00:02:30,720 --> 00:02:32,120
-came through the oplog.
+apareció en el "oplog".
 
 55
 00:02:32,120 --> 00:02:35,750
-And the way this replication
-happens is that the
+Y la forma en que ocurre esta
+replicación es que los
 
 56
 00:02:35,750 --> 00:02:39,020
-secondaries query the primary
-and ask it for any of the
+secundarios consultan el primario
+y le piden cualquiera de los 
 
 57
 00:02:39,020 --> 00:02:41,600
-items since a certain
-time stamp.
+elementos desde un cierto
+"timestamp".
 
 58
 00:02:41,600 --> 00:02:43,690
-And then they are brought up to
-date with all the data that
+Y entonces se trajo todos los datos
+hasta la fecha que
 
 59
 00:02:43,690 --> 00:02:45,330
-came in the interim.
+vinieron mientras tanto.
 
 60
 00:02:45,330 --> 00:02:48,800
-So, you can also add an index.
+También puede añadir un índice.
 
 61
 00:02:48,800 --> 00:02:50,650
-And if you do that, then
-it will also get
+Y si haces eso, entonces
+también lo 
 
 62
 00:02:50,650 --> 00:02:51,270
-added to the oplog.
+añadirá al "oplog".
 
 63
 00:02:51,270 --> 00:02:53,780
-Let's do that so that
-you can see.
+Hagamos eso para que
+puedas verlo.
 
 64
 00:02:53,780 --> 00:03:00,780
-Db.people.ensureIndex on name.
+"db.people.ensureIndex({name: 1})".
 
 65
 00:03:00,780 --> 00:03:05,880
-We do that, and we'll
-get the indexes now.
+Hacemos eso y 
+obtendremos los índices ahora.
 
 66
 00:03:05,880 --> 00:03:08,100
-See, there's an index.
+Mira, hay un índice.
 
 67
 00:03:08,100 --> 00:03:11,660
-And if you look here in the
-oplog on the other side, we
+Y si miras aquí en el
+"oplog" en el otro lado, 
 
 68
 00:03:11,660 --> 00:03:14,600
-can see that there's going to
-be an index on this side,
+podemos ver que también va a haber
+un índice en este lado,
 
 69
 00:03:14,600 --> 00:03:16,140
-too-- and a secondary--
+-- y uno secundario --
 
 70
 00:03:16,140 --> 00:03:17,370
-that the index itself--
+además del propio índice --
 
 71
 00:03:17,370 --> 00:03:20,750
-index creation came through
-in the oplog.
+la creación del índice apareció
+en el "oplog".
 
 72
 00:03:20,750 --> 00:03:23,280
-And insert into
-test.system.indexes.
+"insert" en
+"test.system.indexes".
 
 73
 00:03:23,280 --> 00:03:26,000
-The way indexes are actually
-managed inside MongoDB is
+La forma en que los índices se
+gestionan realmente en MongoDB es
 
 74
 00:03:26,000 --> 00:03:28,450
-they're just basically
-insertions into a collection
+que básicamente son
+inserciones en una colección
 
 75
 00:03:28,450 --> 00:03:31,230
-to tell the Mongo server
-that the index exists.
+para decirle al servidor Mongo
+que el índice existe.
 
 76
 00:03:31,230 --> 00:03:32,740
-Kind of cool, actually.
+Algo genial, en realidad.
 
 77
 00:03:32,740 --> 00:03:35,385
-So, that's the way replication
-works.
+Así que, así es como funciona
+la replicación.
 
 78
 00:03:35,385 --> 00:03:38,055
-It uses this oplog concept.
+Usa este concepto de "oplog".
 
 79
 00:03:38,055 --> 00:03:38,890
-All right.
+De acuerdo.
 
 80
 00:03:38,890 --> 00:03:41,900
-So the question is, what
-would happen if I
+Entonces la pregunta es, ¿qué
+ocurriría si
 
 81
 00:03:41,900 --> 00:03:44,620
-shut down the primary?
+apago el primario?
 
 82
 00:03:44,620 --> 00:03:48,280
-How long would it take for a
-secondary to get elected?
+¿Cuánto tardaría un
+secundario en ser elegido?
 
 83
 00:03:48,280 --> 00:03:49,370
-So, let's do that.
+Vamos a hacer eso.
 
 84
 00:03:49,370 --> 00:03:51,740
-So let's see how long
-failover would take.
+Veamos cuánto tardaría una
+conmutación por error.
 
 85
 00:03:51,740 --> 00:03:56,810
-So, I'm going to quit out of
-this primary, which was 27018.
+Así, voy a quitar este
+primario que estaba en el 27018.
 
 86
 00:03:56,810 --> 00:03:58,010
-I'm going to shut it down.
+Voy a apargarlo.
 
 87
 00:03:58,010 --> 00:04:00,410
-I'm going to grep for
-the Mongos running.
+Voy a buscar con "grep" los
+mongo en ejecución.
 
 88
 00:04:00,410 --> 00:04:06,150
-And the 27018 looks like
-it's right here, 6463.
+Y el 27018 parece que
+está justo aquí, 6463.
 
 89
 00:04:06,150 --> 00:04:08,320
-I'm just going to kill it.
+Simplemente voy a hacerle un "kill".
 
 90
 00:04:08,320 --> 00:04:09,930
-Kill it, 6463.
+"kill 6463".
 
 91
 00:04:09,930 --> 00:04:12,256
-But let's get ready to look
-at this, make sure I
+Pero estemos preparados para mirar
+esto, asegurémonos
 
 92
 00:04:12,256 --> 00:04:13,500
-have this one right.
+que tengo esto bien.
 
 93
 00:04:13,500 --> 00:04:18,170
-27018, processed ID 6463.
+27018, identificador de proceso 6463.
 
 94
 00:04:18,170 --> 00:04:23,060
-Let's do a rs.status here, and
-see how long it takes.
+Hagamos un "rs.status()" aquí y
+veamos cuánto tarda.
 
 95
 00:04:23,060 --> 00:04:25,040
-So, right now, everything
-is looking good.
+Justo ahora todo
+parece que está bien.
 
 96
 00:04:25,040 --> 00:04:26,830
-27018 is the primary.
+27018 es el primario.
 
 97
 00:04:26,830 --> 00:04:28,330
-We're going to go, we're
-going to kill it.
+Vamos a continuar, vamos
+a hacerle un "kill".
 
 98
 00:04:28,330 --> 00:04:30,850
 
 99
 00:04:30,850 --> 00:04:35,550
-And now, we're going to see
-how long it takes a new
+Y ahora, vamos a ver
+cuánto tarda en elegir
 
 100
 00:04:35,550 --> 00:04:37,170
-primary to be elected.
+un nuevo primario.
 
 101
 00:04:37,170 --> 00:04:42,010
-And you can see that 27018 is
-now unreachable, and it looks
+Y puedes ver que el 27018 es
+ahora inaccesible y parece que
 
 102
 00:04:42,010 --> 00:04:44,040
-like 27019--
+el 27019 --
 
 103
 00:04:44,040 --> 00:04:45,450
-this-- is already the primary.
+éste -- es ahora el primario.
 
 104
 00:04:45,450 --> 00:04:47,660
-So that was pretty fast.
+Por lo que fue bastante rápido.
 
 105
 00:04:47,660 --> 00:04:50,230
-So, that's how fast failover
-takes in this case.
+Así de rápida es una conmutación por
+error en este caso.
 
 106
 00:04:50,230 --> 00:04:52,090
-And I think that's
-pretty typical.
+Y piensa que es
+bastante normal.
 
 107
 00:04:52,090 --> 00:04:53,150
-I think it would take
-a little longer on a
+Creo que tardaría
+un poco más en un
 
 108
 00:04:53,150 --> 00:04:54,140
-large running system.
+sistema en ejecución más grande.
 
 109
 00:04:54,140 --> 00:04:56,060
-But that was fast.
+Pero fue rápido.
 
 110
 00:04:56,060 --> 00:05:00,800
-All right, so now it's
-time for a quiz.
+Bien, hora de hacer
+un cuestionario.
 
 111
 00:05:00,800 --> 00:05:04,570
-And the quiz is, in the video,
-how long did it take to elect
+Y el cuestionario es, en el vídeo,
+¿cuánto tardó en elegir
 
 112
 00:05:04,570 --> 00:05:05,660
-a new primary?
+un nuevo primario?
 
 113
 00:05:05,660 --> 00:05:06,860
-About 3 seconds--
+Alrededor de 3 segundos --
 
 114
 00:05:06,860 --> 00:05:11,110
-or maybe less, about 10 seconds,
-about 30 seconds, or
+o quizá menos, alrededor de 10 segundos,
+unos 30 segundos o
 
 115
 00:05:11,110 --> 00:05:11,890
-about a minute?
+en torno a un minuto?
 
 116
 00:05:11,890 --> 00:05:13,540
-And so, answer the question.
+Y eso es, responde a la pregunta.
 
 117
 00:05:13,540 --> 00:05:14,790
