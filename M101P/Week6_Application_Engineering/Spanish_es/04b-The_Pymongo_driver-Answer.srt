@@ -3,13 +3,13 @@
 
 2
 00:00:00,150 --> 00:00:02,040
-And the answer is MongoClient.
+Y la respuesta es "MongoClient".
 
 3
 00:00:02,040 --> 00:00:03,200
-Pretty easy quiz.
+Cuestionario demasiado fácil.
 
 4
 00:00:03,200 --> 00:00:05,260
-Just wanted to make sure
-you're listening.
+Sólo quise asegurarme
+que estás escuchando.
