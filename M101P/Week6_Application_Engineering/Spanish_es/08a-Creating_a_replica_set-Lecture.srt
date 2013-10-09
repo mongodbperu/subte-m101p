@@ -3,638 +3,638 @@
 
 2
 00:00:00,240 --> 00:00:04,070
-Now, let's create a small
-replica set on just this one
+Ahora, creemos un pequeño conjunto
+de réplicas sólo en este
 
 3
 00:00:04,070 --> 00:00:06,830
-computer that I'm using so
-you can see how it works.
+equipo que estoy usando para
+que puedas ver cómo funciona.
 
 4
 00:00:06,830 --> 00:00:08,990
-Now normally when you create a
-replica set, you're going to
+Normalmente, cuando creas un
+conjunto de réplicas, vas a
 
 5
 00:00:08,990 --> 00:00:14,290
-put one of the mongods on each
-of the physical servers so
+poner uno de los mongod en cada
+servidor físico para que
 
 6
 00:00:14,290 --> 00:00:16,050
-that there's some real
-fault tolerance here.
+realmente haya tolerancia
+a fallos aquí.
 
 7
 00:00:16,050 --> 00:00:17,840
-And you might very well
-run them all onto
+Y muy bien podrías
+ejecutarlos todos ellos
 
 8
 00:00:17,840 --> 00:00:18,920
-the standard port.
+en el puerto estándar.
 
 9
 00:00:18,920 --> 00:00:20,940
-But we're going to do it
-just on a single node.
+Pero vamos a hacer eso
+sólo en un único nodo.
 
 10
 00:00:20,940 --> 00:00:23,630
-And to do that, I'm going to
-have to run them on different
+Y para hacer eso, voy a
+tener que ejecutarlos en puertos
 
 11
 00:00:23,630 --> 00:00:25,810
-ports so that they don't
-conflict with each other.
+diferentes para que no haya
+conflictos entre ellos.
 
 12
 00:00:25,810 --> 00:00:28,010
-So I've written a small
-script here called
+He escrito un pequeño
+script aquí llamado
 
 13
 00:00:28,010 --> 00:00:31,600
-create_replica_set.sh, and it's
-going to be available for
+"create_replica_set.sh", y va a
+estar disponible para
 
 14
 00:00:31,600 --> 00:00:34,180
-download if you want
-to download it.
+descargar si quieres
+descargarlo.
 
 15
 00:00:34,180 --> 00:00:37,440
-And it's going to create three
-directories, /data/rs1,
+Y va a crear tres
+directorios, "/data/rs1",
 
 16
 00:00:37,440 --> 00:00:40,270
-/data/rs2, and /data/rs3.
+"/data/rs2" y "/data/rs3".
 
 17
 00:00:40,270 --> 00:00:42,620
-And they don't exist right
-now, so it will actually
+Y no existen justo
+ahora, por lo que los
 
 18
 00:00:42,620 --> 00:00:43,730
-create them.
+creará realmente.
 
 19
 00:00:43,730 --> 00:00:46,910
-And then it's going to start
-three mongod instances.
+Y luego va a iniciar
+tres instancias de mongod.
 
 20
 00:00:46,910 --> 00:00:50,510
-Now, it has to declare each
-one is part of the same
+Ahora, tiene que declarar que cada
+una es parte del mismo conjunto
 
 21
 00:00:50,510 --> 00:00:53,830
-replica set, so minus
-replSet rs1.
+de réplicas, así que
+"-replSet rs1".
 
 22
 00:00:53,830 --> 00:00:57,650
-And this is just telling it that
-it should put its log in
+Y esto simplemente le está diciendo
+que debería poner su log en un
 
 23
 00:00:57,650 --> 00:00:59,700
-a log file called 1.log.
+fichero log llamado "1.log".
 
 24
 00:00:59,700 --> 00:01:02,310
-And then this is its dbpath
-where it's going to put its
+Y luego esto es el "dbpath"
+donde va a poner sus
 
 25
 00:01:02,310 --> 00:01:03,210
-data files.
+ficheros de datos.
 
 26
 00:01:03,210 --> 00:01:05,620
-So again, /data/rs1.
+Así que de nuevo, "/data/rs1".
 
 27
 00:01:05,620 --> 00:01:07,690
-And then it's going to choose
-a port where it's
+Y luego va a elegir
+un puerto donde va
 
 28
 00:01:07,690 --> 00:01:08,710
-going to listen on.
+a escuchar.
 
 29
 00:01:08,710 --> 00:01:10,750
-This one is going to get the
-privilege of listening on the
+Éste va a tener el privilegio
+de escuchar en el
 
 30
 00:01:10,750 --> 00:01:11,830
-standard port.
+puerto estándar.
 
 31
 00:01:11,830 --> 00:01:13,515
-And then it's going to
-fork which is going
+Y lo va a hacer en
+paralelo, lo que va
 
 32
 00:01:13,515 --> 00:01:14,650
-to allow it to return.
+a permitirle volver.
 
 33
 00:01:14,650 --> 00:01:16,720
-And that way I don't have
-to run these each
+Y de esa forma no tiene
+que ejecutar esto cada uno
 
 34
 00:01:16,720 --> 00:01:18,090
-in their own shell.
+uno en su propio shell.
 
 35
 00:01:18,090 --> 00:01:20,210
-So these are commands that
-are going to work
+Así que éstos son comandos que
+van a funcionar
 
 36
 00:01:20,210 --> 00:01:21,980
-with the bash shell.
+con el shell bash.
 
 37
 00:01:21,980 --> 00:01:24,940
-On Windows it'll be slightly
-different, but this will work
+En Windows será ligeramente
+diferente, pero funcionará
 
 38
 00:01:24,940 --> 00:01:26,750
-on most UNIX machines.
+en la mayoría de equipos UNIX.
 
 39
 00:01:26,750 --> 00:01:29,380
-So we're going to run bash and
-then create_replica_set.sh.
+Así que vamos a ejecutar "bash" y
+luego "create_replica_set.sh".
 
 40
 00:01:29,380 --> 00:01:31,890
 
 41
 00:01:31,890 --> 00:01:34,440
-And then it started them all.
+Y entonces se inicia todo.
 
 42
 00:01:34,440 --> 00:01:37,130
-And we can see what's in
-one of the log files.
+Podemos ver qué hay en
+uno de los ficheros de log.
 
 43
 00:01:37,130 --> 00:01:40,270
-So we'll look at 1.log.
+Miraremos en "1.log".
 
 44
 00:01:40,270 --> 00:01:43,700
-So basically it's just warning
-me that it's not totally
+Básicamente está sólo advirtiendo
+que no está totalmente
 
 45
 00:01:43,700 --> 00:01:44,850
-configured yet.
+configurado todavía.
 
 46
 00:01:44,850 --> 00:01:48,140
-So at this point I have three
-servers running, but they're
+Por lo que en este punto tengo tres
+servidores en ejecución, pero
 
 47
 00:01:48,140 --> 00:01:50,770
-not initialized yet to know
-about each other.
+no están inicializados todavía
+para que se conozcan entre ellos.
 
 48
 00:01:50,770 --> 00:01:55,540
-Because if you'll notice in that
-script, I didn't tell the
+Porque si te fijas en ese
+script, no le hablé al
 
 49
 00:01:55,540 --> 00:01:57,370
-first one about the second
-one or the second one
+primero sobre el segundo
+o al segundo
 
 50
 00:01:57,370 --> 00:01:58,190
-about the third one.
+sobre el tercero.
 
 51
 00:01:58,190 --> 00:02:01,370
-So there's no way these guys can
-act in concert right now.
+Así que no hay forma de que puedan
+actuar conjuntamente por ahora.
 
 52
 00:02:01,370 --> 00:02:04,550
-They're basically just
-independent, and they're
+Básicamente son
+independientes y se están
 
 53
 00:02:04,550 --> 00:02:05,590
-running on a port.
+ejecutando en un puerto.
 
 54
 00:02:05,590 --> 00:02:07,400
-And so now we need to
-tie them together.
+Y por eso ahora necesitamos
+enlazarlos.
 
 55
 00:02:07,400 --> 00:02:10,020
-So to do that we have to
-actually give a command inside
+Para hacer eso tenemos
+que ejecutar un comando en
 
 56
 00:02:10,020 --> 00:02:11,620
-the mongo shell.
+el shell Mongo.
 
 57
 00:02:11,620 --> 00:02:13,310
-I'll show you what those
-commands look like.
+Te enseñaré cómo
+son esos comandos.
 
 58
 00:02:13,310 --> 00:02:17,600
 
 59
 00:02:17,600 --> 00:02:20,410
-OK, so we have to create
-a configuration.
+OK, así que tenemos que crear
+una configuración.
 
 60
 00:02:20,410 --> 00:02:24,710
-And this configuration looks
-like this document that is an
+Y esta configuración es
+como este documento que tiene un
 
 61
 00:02:24,710 --> 00:02:26,450
-arbitrary name, config, here.
+nombre arbitrario, "config", aquí.
 
 62
 00:02:26,450 --> 00:02:30,050
-I have to name it with _id equal
-to the repl set name
+Tengo que llamarlo con "_id" igual
+al nombre del conjunto de réplicas
 
 63
 00:02:30,050 --> 00:02:31,840
-that I gave to each
-of the mongod's.
+que le di a cada uno
+de los mongod.
 
 64
 00:02:31,840 --> 00:02:34,380
-And then I have a members array
-which is going to name
+Y luego tengo un array "members"
+que va a indicar los
 
 65
 00:02:34,380 --> 00:02:36,220
-three members.
+tres miembros.
 
 66
 00:02:36,220 --> 00:02:38,010
-And these IDs are arbitrary.
+Y los identificadores son arbitrarios.
 
 67
 00:02:38,010 --> 00:02:39,560
-They have to be unique.
+Tienen que ser únicos.
 
 68
 00:02:39,560 --> 00:02:41,060
-And then these are the hosts.
+Y éstos son los hosts.
 
 69
 00:02:41,060 --> 00:02:42,680
-They're going to be part
-of the replication set.
+Van a ser parte
+del conjunto de réplicas.
 
 70
 00:02:42,680 --> 00:02:47,715
-The first one is 27017, and
-second one at 27018, and the
+El primero es 27017, 
+el segundo está en el 27018 y el
 
 71
 00:02:47,715 --> 00:02:49,570
-third one at 27019.
+tercero está en el 27019.
 
 72
 00:02:49,570 --> 00:02:52,650
-And I also, for this first one,
-decided to have it be
+También, para este primero,
+decidí que sea con un
 
 73
 00:02:52,650 --> 00:02:55,130
-delayed five seconds with
-respect to the other ones.
+retraso de cinco segundos con
+respecto a los otros.
 
 74
 00:02:55,130 --> 00:02:58,460
-So it's not going to get its
-data for five seconds after
+Por lo que no va a obtener sus
+datos hasta cinco segundos tras
 
 75
 00:02:58,460 --> 00:03:01,740
-the other machines, so we can
-more easily see what's going
+las otras máquinas, así que
+podemos ver más fácilmente qué
 
 76
 00:03:01,740 --> 00:03:03,200
-on with replication.
+está pasando con la replicación.
 
 77
 00:03:03,200 --> 00:03:06,970
-And in order to do that the
-replication subsystem requires
+Y para hacer eso, el subsistema de
+replicación requiere
 
 78
 00:03:06,970 --> 00:03:09,370
-that you not allow it to
-become the primary.
+que no le permitas
+convertirse en primario.
 
 79
 00:03:09,370 --> 00:03:12,730
-So I set priority
-equal to zero.
+Por lo que le establezco "priority"
+igual a cero.
 
 80
 00:03:12,730 --> 00:03:16,160
-And then I just call
-rs.initiate--
+Y luego simplemente llamo a
+"rs.initiate(config)" --
 
 81
 00:03:16,160 --> 00:03:17,660
-this is a mongo shell
-command--
+esto es un comando del shell
+Mongo --
 
 82
 00:03:17,660 --> 00:03:20,190
-with that configuration
-document.
+con ese documento de
+configuración.
 
 83
 00:03:20,190 --> 00:03:22,860
-And now I just get the status
-to see what's going on.
+Y ahora simplemente obtengo el estado
+para ver cómo va.
 
 84
 00:03:22,860 --> 00:03:26,360
-Now I'm going to pipe that into
-one of the mongo shells,
+Ahora voy a hacer un "pipe" de eso
+en uno de los shells Mongo,
 
 85
 00:03:26,360 --> 00:03:29,470
-so I want to connect to--
+por lo que quiero conectarme a --
 
 86
 00:03:29,470 --> 00:03:33,570
-I can't actually run this
-initiation command on 27017
+en realidad no puedo ejecutar este
+comando de iniciación en el 27017
 
 87
 00:03:33,570 --> 00:03:38,100
-because you can't initialize a
-replica set from a host that
+porque no puedes inicializar un
+conjunto de réplicas desde un host que
 
 88
 00:03:38,100 --> 00:03:40,680
-cannot become primary and this
-one can not become primary.
+no puede ser primario y éste
+no puede llegar a ser primario.
 
 89
 00:03:40,680 --> 00:03:43,530
-So I'm going to have to do
-it connecting to 27018.
+Por lo que voy a tener que hacerlo
+conectándome al 27018.
 
 90
 00:03:43,530 --> 00:03:46,420
-So another thing to note for all
-you UNIX folks out there.
+Otra cosa a notar para todos los que
+son usuarios UNIX por ahí.
 
 91
 00:03:46,420 --> 00:03:49,660
-So you'll notice that I didn't
-call this local host.
+Te darás cuenta que no
+llamé a esto "localhost".
 
 92
 00:03:49,660 --> 00:03:52,410
-I called it Andrews-iMac.local.
+Lo llamé "andrews-imac.local".
 
 93
 00:03:52,410 --> 00:03:54,890
-I didn't have a lot of luck
-on my Mac using local
+No tengo mucha suerte
+en mi Mac usando "localhost"
 
 94
 00:03:54,890 --> 00:03:56,510
-host as the host name.
+como nombre de host.
 
 95
 00:03:56,510 --> 00:03:57,530
-I'm not sure why.
+No estoy seguro de por qué.
 
 96
 00:03:57,530 --> 00:03:59,620
-This is what the machine thinks
-it's named, and that
+Así es como la máquina piensa
+que se llama y eso
 
 97
 00:03:59,620 --> 00:04:03,250
-seems to resolve with
-getaddrinfo, the UNIX command.
+parece resolverse con
+"getaddrinfo", el comando UNIX.
 
 98
 00:04:03,250 --> 00:04:05,500
-It's needed to map
-names to IPs.
+Es necesario mapear 
+nombres a IPs.
 
 99
 00:04:05,500 --> 00:04:07,300
-So I used that.
+Así que usé eso.
 
 100
 00:04:07,300 --> 00:04:13,720
-And I'm going to connect
-to it, --port 27018.
+Y voy a conectarme,
+--port 27018.
 
 101
 00:04:13,720 --> 00:04:15,490
-And if I do that, I just
-get the shell.
+Y si hago eso, simplemente
+obtengo el shell.
 
 102
 00:04:15,490 --> 00:04:18,040
-I'm just in the shell
-for this mongod.
+Estoy en el shell
+de este mongod.
 
 103
 00:04:18,040 --> 00:04:22,140
-Now instead I'm going to read
-in this initiation script,
+Ahora, en cambio, voy a leer
+de este script de inicialización,
 
 104
 00:04:22,140 --> 00:04:24,880
-init_replica.js,
-and that should
+"init_replica.js",
+y debería
 
 105
 00:04:24,880 --> 00:04:26,420
-initialize my replica set.
+inicializar mi conjunto de réplicas.
 
 106
 00:04:26,420 --> 00:04:29,060
-So it says it should come online
-in about a minute.
+Dice que debería estar en línea
+en alrededor de un minuto.
 
 107
 00:04:29,060 --> 00:04:34,050
-Let's connect to it now,
-again, and then run--
+Conectémonos ahora,
+de nuevo, y luego ejecuta --
 
 108
 00:04:34,050 --> 00:04:36,430
-oh, look at that.
+oh, mira eso.
 
 109
 00:04:36,430 --> 00:04:39,000
-So you see something different
-happen for the first time.
+Ves que ocurre algo 
+diferente la primera vez.
 
 110
 00:04:39,000 --> 00:04:41,770
-Now we connected to
-the server port.
+Ahora nos conectamos al
+puerto del servidor.
 
 111
 00:04:41,770 --> 00:04:45,700
-Instead of just saying normal
-shell prompt, I get this
+En lugar de obtener simplemente un
+indicador normal del shell, obtengo
 
 112
 00:04:45,700 --> 00:04:48,010
-[? rs:1SECONDARY ?]
+este "rs1:SECONDARY>"
 
 113
 00:04:48,010 --> 00:04:50,400
-telling me that I'm
-in the secondary.
+diciéndome que estoy
+en el secundario.
 
 114
 00:04:50,400 --> 00:04:52,650
-rs is going to give me my
-replica set status.
+"rs.status()" me va a dar el estado 
+de mi conjunto de réplicas.
 
 115
 00:04:52,650 --> 00:04:54,480
-I'm going to do that.
+Voy a hacer eso.
 
 116
 00:04:54,480 --> 00:04:59,510
-And if I do that what I find
-out is that I've got three
+Y si hago eso lo que averiguo
+es que tengo tres
 
 117
 00:04:59,510 --> 00:05:02,570
-nodes in my replica set, two
-of them are in a recovering
+nodos en mi conjunto de réplicas, dos
+de ellos están en un estado
 
 118
 00:05:02,570 --> 00:05:05,080
-state, and one of them, the one
-I'm connected to, is in a
+"RECOVERING" y el otro, al que
+estoy conectado, está en
 
 119
 00:05:05,080 --> 00:05:06,540
-primary state.
+estado "PRIMARY".
 
 120
 00:05:06,540 --> 00:05:09,870
-So that's probably going to
-resolve itself momentarily.
+Así que probablemente va a
+resolverse momentáneamente.
 
 121
 00:05:09,870 --> 00:05:13,890
-So let me just look again,
-and now it's up.
+Déjame que mire de nuevo,
+y ahora está funcionando.
 
 122
 00:05:13,890 --> 00:05:18,370
-So secondary, primary,
-secondary.
+Así que secundario, primario,
+secundario.
 
 123
 00:05:18,370 --> 00:05:20,360
-Perfect.
+Perfecto.
 
 124
 00:05:20,360 --> 00:05:22,460
-So now that's all good.
+Por tanto ahora está todo bien.
 
 125
 00:05:22,460 --> 00:05:25,370
-But now I'm on a secondary here,
-so I won't be able to do
+Pero ahora estoy en un secundario aquí,
+por lo que no podré hacer
 
 126
 00:05:25,370 --> 00:05:26,560
-any rights.
+ninguna escritura.
 
 127
 00:05:26,560 --> 00:05:29,500
-So I'm going to disconnect
-from this and go to the
+Así que me voy a desconectar
+de éste y voy a ir al
 
 128
 00:05:29,500 --> 00:05:31,320
-primary which looks
-like it's at--
+primario, que parece que
+está en --
 
 129
 00:05:31,320 --> 00:05:32,260
-oh, I am on primary.
+oh, estoy en un primario.
 
 130
 00:05:32,260 --> 00:05:33,320
-Sorry.
+Lo siento.
 
 131
 00:05:33,320 --> 00:05:34,570
-I was initially on secondary.
+Inicialmente estaba en un secundario.
 
 132
 00:05:34,570 --> 00:05:36,880
-It changed the prompt, I guess,
+Cambió el indicador del shell, supongo,
 
 133
 00:05:36,880 --> 00:05:38,280
-because now I'm primary.
+porque ahora estoy en un primario.
 
 134
 00:05:38,280 --> 00:05:38,720
-Is that true?
+¿Es eso cierto?
 
 135
 00:05:38,720 --> 00:05:40,930
-Let's go back here.
+Volvamos aquí.
 
 136
 00:05:40,930 --> 00:05:44,130
-Yes, when I first connected, it
-thought I was a secondary,
+Sí, cuando me conecté por primera vez,
+creí que era un secundario,
 
 137
 00:05:44,130 --> 00:05:46,120
-but as soon as it brought the
-replica set fully up it made
+pero en cuanto levantó completamente
+el conjunto de réplicas me 
 
 138
 00:05:46,120 --> 00:05:46,950
-me the primary.
+transformó en primario.
 
 139
 00:05:46,950 --> 00:05:47,850
@@ -642,30 +642,30 @@ OK.
 
 140
 00:05:47,850 --> 00:05:49,680
-So, good, I'm the primary.
+Así que, bien, estoy en el primario.
 
 141
 00:05:49,680 --> 00:05:52,960
-So if I disconnect and connect
-to one of the other ones, I
+Si me desconecto y conecto
+a uno de los otros nodos, 
 
 142
 00:05:52,960 --> 00:05:54,310
-should see it be a secondary.
+debería ver que es un secundario.
 
 143
 00:05:54,310 --> 00:05:56,110
-And it is a secondary.
+Y es un secundario.
 
 144
 00:05:56,110 --> 00:05:59,910
-And if I connect to the final
-one, which is a 27019, I
+Y si me conecto al último
+nodo, que está en el 27019,
 
 145
 00:05:59,910 --> 00:06:02,560
-should see that it
-is a secondary.
+debería ver que
+es un secundario.
 
 146
 00:06:02,560 --> 00:06:03,690
@@ -673,228 +673,228 @@ OK.
 
 147
 00:06:03,690 --> 00:06:06,970
-And if I try to write to
-the secondary, I'm
+Y si intento escribir al
+secundario, no voy
 
 148
 00:06:06,970 --> 00:06:08,790
-going to have no luck.
+a tener suerte.
 
 149
 00:06:08,790 --> 00:06:09,730
-Let's write to the primary.
+Escribamos al primario.
 
 150
 00:06:09,730 --> 00:06:14,770
-So I'm going to get off
-there and then I'm
+Así que voy a salir
+de ahí y ya
 
 151
 00:06:14,770 --> 00:06:16,490
-already using test.
+estoy usando "test".
 
 152
 00:06:16,490 --> 00:06:22,010
-db.people.insert name Andrew.
+"db.people.insert({name: 'Andrew'})".
 
 153
 00:06:22,010 --> 00:06:24,490
-Let's see if that document
-gets inserted.
+Veamos si se inserta
+ese documento.
 
 154
 00:06:24,490 --> 00:06:26,420
-I inserted it.
+Lo inserté.
 
 155
 00:06:26,420 --> 00:06:32,190
-And now let's go to one of the
-secondaries and let's see what
+Y ahora vayamos a uno de los
+secundarios y veamos qué
 
 156
 00:06:32,190 --> 00:06:33,440
-is in the collection.
+hay en la colección.
 
 157
 00:06:33,440 --> 00:06:36,820
 
 158
 00:06:36,820 --> 00:06:37,830
-Now what does it say?
+¿Qué dice ahora?
 
 159
 00:06:37,830 --> 00:06:40,550
-It says, I can't query this
-because I'm a secondary, and
+Dice, no puedo consultar esto
+porque soy un secundario y
 
 160
 00:06:40,550 --> 00:06:42,870
-you can't query secondaries
-by default.
+no puedes consultar secundarios
+por defecto.
 
 161
 00:06:42,870 --> 00:06:44,590
-So how do you do that?
+Así que, ¿cómo hacemos eso?
 
 162
 00:06:44,590 --> 00:06:50,050
-Well, there is a command called
-rs.slaveOk(), I'm
+Bien, hay un comando llamado
+"db.slaveOk()", lo
 
 163
 00:06:50,050 --> 00:06:53,170
-sorry, rs.slave0k which
-is going to allow this
+siento, "rs.slaveOk()", que
+va a permitir esta
 
 164
 00:06:53,170 --> 00:06:54,230
-connection.
+conexión.
 
 165
 00:06:54,230 --> 00:06:56,360
-Remember, what we have right
-now is mongo shell
+Recuerda, lo que tenemos justo
+ahora es el shell Mongo
 
 166
 00:06:56,360 --> 00:06:57,640
-attached to a mongod.
+vinculado a un mongod.
 
 167
 00:06:57,640 --> 00:07:01,030
-And you have to set for this
-connection that you are OK
+Y tienes que configurar esta
+conexión para decirle que estás
 
 168
 00:07:01,030 --> 00:07:03,120
-with reading from a secondary.
+de acuerdo en leer de un secundario.
 
 169
 00:07:03,120 --> 00:07:04,500
-And then once I do
-that, I should be
+Y una vez que hago
+eso, debería ser
 
 170
 00:07:04,500 --> 00:07:05,520
-able to do the query.
+capaz de hacer la consulta.
 
 171
 00:07:05,520 --> 00:07:07,070
-So let's see.
+Veamos.
 
 172
 00:07:07,070 --> 00:07:10,810
-If I do the find I see
-there's my object.
+Si hago el "find" veo
+que ahí está mi objeto.
 
 173
 00:07:10,810 --> 00:07:12,990
-So you can see that now my
-object got replicated to a
+Por lo que puedes ver que ahora mi
+objeto se replicó a un
 
 174
 00:07:12,990 --> 00:07:14,260
-second server.
+segundo servidor.
 
 175
 00:07:14,260 --> 00:07:16,050
-And if I go to the last
-server, then I
+Y si voy al último
+servidor, entonces 
 
 176
 00:07:16,050 --> 00:07:17,050
-should also get it there.
+también debería obtenerlo.
 
 177
 00:07:17,050 --> 00:07:22,770
-So let's see what rs.status()
-looks like.
+Veamos cómo se ve
+"rs.status()".
 
 178
 00:07:22,770 --> 00:07:29,570
-So my secondaries are at
-port 27019 and 27017.
+Así que mis secundarios están en los
+puertos 27019 y 27017.
 
 179
 00:07:29,570 --> 00:07:33,600
-So I was on nine so
-let's go to seven.
+Yo estaba en el nueve, por lo que
+nos vamos al siete.
 
 180
 00:07:33,600 --> 00:07:39,400
-And let's give it an
-rs.slaveOk() command, and then
+Y ejecutemos el comando
+"rs.slaveOk()" y luego
 
 181
 00:07:39,400 --> 00:07:40,990
-let's do db.people.find().
+hagamos "db.people.find()".
 
 182
 00:07:40,990 --> 00:07:43,520
 
 183
 00:07:43,520 --> 00:07:45,490
-And we'll see that that
-has been replicated.
+Y veremos que se
+ha replicado eso.
 
 184
 00:07:45,490 --> 00:07:48,140
-And so that's just the basics
-to show you how you create a
+Y eso es simplemente lo básico
+para enseñarte cómo crear un
 
 185
 00:07:48,140 --> 00:07:50,080
-replica set inside mongo.
+conjunto de réplicas en Mongo.
 
 186
 00:07:50,080 --> 00:07:52,270
-And I'm going to put these
-scripts up in the lesson files
+Y voy a subir estos scripts 
+a los ficheros de la lección
 
 187
 00:07:52,270 --> 00:07:54,120
-this week, so I really encourage
-you to do this
+de esta semana, por lo que realmente
+te animo a hacer esto
 
 188
 00:07:54,120 --> 00:07:58,090
-yourself so that you can play
-with it and see how they work.
+por ti mismo para que puedas jugar
+con esto y ver cómo funciona.
 
 189
 00:07:58,090 --> 00:07:59,893
-Now let's do a quiz.
+Ahora hagamos un cuestionario.
 
 190
 00:07:59,893 --> 00:08:02,690
 
 191
 00:08:02,690 --> 00:08:03,430
-Here's the quiz.
+Aquí está el cuestionario.
 
 192
 00:08:03,430 --> 00:08:05,430
-Which command, when issued from
-the mongo shell, will
+¿Qué comando, cuando se lanza
+desde el shell Mongo,
 
 193
 00:08:05,430 --> 00:08:07,360
-allow you to read from
-a secondary?
+te permitirá leer de
+un secundario?
 
 194
 00:08:07,360 --> 00:08:10,550
-db.isMaster(), db adminCommand
-readPreference Secondary,
+"db.isMaster()", "db.adminCommand(
+{'readPreference': 'Secondary'})",
 
 195
 00:08:10,550 --> 00:08:14,600
-rs.setStatus('Primary'),
-or rs.slaveOk()?
+"rs.setStatus('Primary')"
+o "rs.slaveOk()"?
 
 196
 00:08:14,600 --> 00:08:16,330
-Which one will let you read
-from a secondary?
+¿Cuál te dejará leer
+de un secundario?
 
 197
 00:08:16,330 --> 00:08:17,580
