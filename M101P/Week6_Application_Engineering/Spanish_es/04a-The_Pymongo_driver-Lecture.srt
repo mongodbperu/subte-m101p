@@ -148,7 +148,7 @@ nos advierte, en efecto, está
 
 32
 00:01:20,850 --> 00:01:23,960
-depreciado y deberíamos usar
+obsoleto y deberíamos usar
 "MongoClient" en su lugar.
 
 33
@@ -223,8 +223,8 @@ darle al driver.
 
 48
 00:02:05,330 --> 00:02:07,430
-"w" es una de las hemos estado
-hablando, para confirmar
+"w" es una de las que hemos
+estado hablando, para confirmar
 
 49
 00:02:07,430 --> 00:02:08,410
@@ -356,7 +356,7 @@ por predeterminado sería
 
 77
 00:03:11,050 --> 00:03:13,040
-Y eso es una cambio de antes.
+Y eso es un cambio de antes.
 
 78
 00:03:13,040 --> 00:03:15,210
@@ -437,7 +437,7 @@ publicó la semana pasada.
 94
 00:03:48,770 --> 00:03:51,790
 Una vez más, es el nuevo valor
-predeterminado dugerido para que
+predeterminado sugerido para que
 
 95
 00:03:51,790 --> 00:03:54,520
@@ -486,8 +486,8 @@ otra vez, esta es una elaboración
 
 104
 00:04:15,810 --> 00:04:17,680
-adicional de lo que los
-distintos modos hacen.
+adicional de lo que hacen
+los distintos modos.
 
 105
 00:04:17,680 --> 00:04:19,910
@@ -541,8 +541,8 @@ como un concepto.
 
 116
 00:04:40,980 --> 00:04:44,720
-Y he estado viendo que
-en el driver de Python.
+Y no lo he visto en
+el driver de Python.
 
 117
 00:04:44,720 --> 00:04:47,050
@@ -587,7 +587,7 @@ hay una nueva clase ahí,
 125
 00:05:03,990 --> 00:05:07,520
 creo que en todos los
-driver, en realidad,
+drivers, en realidad,
 
 126
 00:05:07,520 --> 00:05:09,590
