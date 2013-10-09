@@ -414,7 +414,7 @@ conectándome al 27018.
 90
 00:03:43,530 --> 00:03:46,420
 Otra cosa a notar para todos los que
-sois usuarios UNIX por ahí.
+son usuarios UNIX por ahí.
 
 91
 00:03:46,420 --> 00:03:49,660
@@ -460,7 +460,7 @@ Así que usé eso.
 100
 00:04:07,300 --> 00:04:13,720
 Y voy a conectarme,
-"--port 27018".
+--port 27018.
 
 101
 00:04:13,720 --> 00:04:15,490
@@ -642,7 +642,7 @@ OK.
 
 140
 00:05:47,850 --> 00:05:49,680
-Así que, bien, soy el primario.
+Así que, bien, estoy en el primario.
 
 141
 00:05:49,680 --> 00:05:52,960
@@ -720,7 +720,7 @@ hay en la colección.
 
 158
 00:06:36,820 --> 00:06:37,830
-¿Qué dice?
+¿Qué dice ahora?
 
 159
 00:06:37,830 --> 00:06:40,550
