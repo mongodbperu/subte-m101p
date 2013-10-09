@@ -1,4 +1,4 @@
-﻿1
+1
 00:00:00,000 --> 00:00:02,460
 OK, creo que tardó
 unos tres segundos.

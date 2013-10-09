@@ -1,4 +1,4 @@
-﻿1
+1
 00:00:00,000 --> 00:00:02,090
 Bien, hablemos sobre cómo
 funciona la replicación
@@ -251,7 +251,7 @@ y le piden cualquiera de los
 57
 00:02:39,020 --> 00:02:41,600
 elementos desde un cierto
-timestamp.
+"timestamp".
 
 58
 00:02:41,600 --> 00:02:43,690
