@@ -1,18 +1,18 @@
 1
 00:00:00,000 --> 00:00:02,460
-OK, I think it took about
-three seconds.
+OK, creo que tardó
+unos tres segundos.
 
 2
 00:00:02,460 --> 00:00:04,340
-I mean, it might have taken
-less than a second, but I
+Quiero decir, podría haber tardado
+menos de un segundo, pero
 
 3
 00:00:04,340 --> 00:00:06,530
-think it took me three seconds
-to move the window, so I said
+creo que me llevó tres segundos
+mover la ventana, por lo que diría
 
 4
 00:00:06,530 --> 00:00:08,080
-three seconds.
+tres segundos.
