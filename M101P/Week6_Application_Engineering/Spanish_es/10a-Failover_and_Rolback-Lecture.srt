@@ -106,8 +106,8 @@ número uno, como secundario.
 
 24
 00:01:03,600 --> 00:01:06,980
-Cuando él regresar, va a
-ver al primario, que es
+Cuando regresa, va a ver
+al primario, que es
 
 25
 00:01:06,980 --> 00:01:09,290
@@ -287,7 +287,7 @@ complicado hacer eso.
 
 62
 00:02:52,510 --> 00:02:54,000
-Así que la mayorías de
+Así que la mayoría de
 personas no lo hacen.
 
 63
@@ -302,7 +302,7 @@ ocurre si un node regresa como
 
 65
 00:02:59,250 --> 00:03:02,530
-secundarios luego de estar
+secundario luego de estar
 desconectado y el "oplog"
 
 66
