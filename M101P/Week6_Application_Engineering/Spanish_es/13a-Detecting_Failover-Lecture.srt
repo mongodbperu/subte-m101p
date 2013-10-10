@@ -45,7 +45,7 @@ programa escrito, pero en este
 
 11
 00:00:16,890 --> 00:00:21,160
-caso estás escrituras entran en
+caso estas escrituras entran en
 un bloque "try except" en Python.
 
 12
@@ -73,7 +73,7 @@ medio segundo entre
 
 17
 00:00:33,400 --> 00:00:34,870
-entre cada inserción.
+cada inserción.
 
 18
 00:00:34,870 --> 00:00:38,060
@@ -144,7 +144,7 @@ excepciones.
 
 33
 00:01:04,340 --> 00:01:07,390
-Y luego, despues de un
+Y luego, después de un
 período de tiempo, mira eso.
 
 34
@@ -157,17 +157,17 @@ Entonces, ¿qué pasó?
 
 36
 00:01:09,850 --> 00:01:13,920
-Para que inserta hasta
+Parece que insertó hasta
 38, y luego tomó un
 
 37
 00:01:13,920 --> 00:01:18,420
-montón de errores y está
-iniciando de nuevo en donde
+montón de errores y está iniciando
+de nuevo en el documento
 
 38
 00:01:18,420 --> 00:01:21,300
-el documento fue 59, 60, 61.
+donde "i" era 59, 60, 61.
 
 39
 00:01:21,300 --> 00:01:21,890
@@ -231,7 +231,7 @@ podría ser aceptable perder una
 
 52
 00:01:48,820 --> 00:01:51,420
-inserción ahora y otra vez,
+inserción una vez en cuando,
 depende de la aplicación.
 
 53
@@ -265,11 +265,11 @@ para un cuestionario.
 59
 00:02:03,870 --> 00:02:06,800
 Si atrapas excepciones durante una
-conmutación por erros, ¿se garantiza
+conmutación por error, ¿se garantiza
 
 60
 00:02:06,800 --> 00:02:08,789
-tener tus escrituras exitosas?
+que tus escrituras sean exitosas?
 
 61
 00:02:08,789 --> 00:02:10,039
