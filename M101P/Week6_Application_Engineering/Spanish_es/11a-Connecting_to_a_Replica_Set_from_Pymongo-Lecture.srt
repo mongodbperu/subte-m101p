@@ -39,7 +39,7 @@ a 1, "j" igual a "True".
 9
 00:00:26,240 --> 00:00:29,090
 Ahora este host es lo que
-se llama un "seddlist".
+se llama un "seedlist".
 
 10
 00:00:29,090 --> 00:00:32,340
@@ -192,7 +192,7 @@ funciona en Python.
 
 42
 00:01:47,110 --> 00:01:48,310
-Y la otros son
+Y los otros son
 bastante similares.
 
 43
@@ -224,7 +224,7 @@ OK, hagamos un cuestionario.
 
 49
 00:02:03,140 --> 00:02:04,420
-Así que es cuestionario es--
+Así que el cuestionario es--
 
 50
 00:02:04,420 --> 00:02:07,440
