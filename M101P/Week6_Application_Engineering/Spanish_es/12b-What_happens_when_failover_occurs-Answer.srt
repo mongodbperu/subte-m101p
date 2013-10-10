@@ -3,17 +3,17 @@
 
 2
 00:00:00,150 --> 00:00:00,360
-OK.
+De acuerdo.
 
 3
 00:00:00,360 --> 00:00:03,060
-And the answer is that the
-insert will fail and the
+Y la respuesta es que la
+inserción fallará y el
 
 4
 00:00:03,060 --> 00:00:04,760
-program will terminate,
-as we showed.
+programa terminará,
+como te mostré.
 
 5
 00:00:04,760 --> 00:00:06,010
