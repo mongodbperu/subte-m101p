@@ -7,22 +7,22 @@ OK.
 
 3
 00:00:00,600 --> 00:00:02,720
-And the answer is that the
-entire data set will be copied
+Y la respuesta es que todo el
+conjunto de datos será copiado
 
 4
 00:00:02,720 --> 00:00:03,610
-from the primary.
+desde el primario.
 
 5
 00:00:03,610 --> 00:00:06,220
-That's going to be a slow,
-inefficient operation, but it
+Eso va a ser un operación
+lenta e ineficiente, pero
 
 6
 00:00:06,220 --> 00:00:09,130
-will work properly, even if
-the op log has looped.
+funcionará correctamente, incluso
+si el "oplog" fue recorrido.
 
 7
 00:00:09,130 --> 00:00:10,380
