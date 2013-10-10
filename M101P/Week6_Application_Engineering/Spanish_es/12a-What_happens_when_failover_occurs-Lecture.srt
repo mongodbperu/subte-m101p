@@ -100,8 +100,8 @@ este nodo va a morir.
 
 22
 00:00:59,590 --> 00:01:02,430
-Y luego una elección ser va
-a producir y digamos éste
+Y luego se va a producir
+una elección y digamos éste
 
 23
 00:01:02,430 --> 00:01:04,684
@@ -218,7 +218,7 @@ a través de un intervalo de
 
 47
 00:02:08,009 --> 00:02:11,110
-un millón de enteror, y va a
+un millón de enteros, y va a
 simplemente escribir cada uno
 
 48
@@ -457,7 +457,7 @@ obtuvimos una excepción.
 99
 00:04:17,790 --> 00:04:20,500
 Supongo que lo que deseo
-mostrarte aquí es que si no
+mostrarte aquí es que si no haces
 
 100
 00:04:20,500 --> 00:04:22,670
@@ -523,7 +523,7 @@ inserción sucederá a un nuevo
 
 113
 00:04:49,330 --> 00:04:52,750
-primario porque la conmitación por
+primario porque la conmutación por
 error es automática en MongoDB, La
 
 114
@@ -533,7 +533,7 @@ programa terminará, o, La
 
 115
 00:04:55,270 --> 00:04:57,880
-inserción secederá y
+inserción sucederá y
 el programa terminará.
 
 116
