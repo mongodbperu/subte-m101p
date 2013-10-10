@@ -3,267 +3,270 @@
 
 2
 00:00:00,100 --> 00:00:03,120
-Now let's turn our attention
-to the way that drivers
+Ahora centremos nuestra atención
+en la forma en que los drivers
 
 3
 00:00:03,120 --> 00:00:04,840
-connect to these replica sets.
+se conectan a estos
+conjuntos de réplicas.
 
 4
 00:00:04,840 --> 00:00:10,050
-I have a program here--
-pymongo_to_replset.py, and I'm
+Tengo un programa aquí--
+pymongo_to_replset.py y estoy
 
 5
 00:00:10,050 --> 00:00:12,240
-using the new MongoClient
-client class.
+usando la nueva clase
+cliente "MongoClient".
 
 6
 00:00:12,240 --> 00:00:18,050
-And what I'm doing here is
-connecting to a host in a
+Y lo que estoy haciendo aquí
+es conectándome a un host en un
 
 7
 00:00:18,050 --> 00:00:23,790
-replica set, and naming it
-to replicaSet, and then
+conjunto de réplicas, poner el nombre
+del conjunto de réplicas, y luego
 
 8
 00:00:23,790 --> 00:00:26,240
-specifying that w equals
-1, j equals True.
+especificar que "w" es igual
+a 1, "j" igual a "True".
 
 9
 00:00:26,240 --> 00:00:29,090
-Now this host is what's
-called a seedlist.
+Ahora este host es lo que
+se llama un "seedlist".
 
 10
 00:00:29,090 --> 00:00:32,340
-And you'll notice that I only
-listed one of them, and it
+Y vas a notar que sólo he
+listado uno de ellos, y
 
 11
 00:00:32,340 --> 00:00:35,460
-should be enough to connect
-to the entire replica set.
+debe ser suficiente para conectarse
+a todo un conjunto de réplicas.
 
 12
 00:00:35,460 --> 00:00:37,590
-If you want to be sure that
-you're going to connect, you
+Si quieres estar seguro
+que vas a conectarte,
 
 13
 00:00:37,590 --> 00:00:40,540
-can list all of them
-as a list.
+puedes listar todos
+ellos en forma de lista.
 
 14
 00:00:40,540 --> 00:00:42,830
-But here, I'll just show you
-when I'm listing one.
+Pero aquí, sólo voy a mostrarte
+cuando estoy listando uno.
 
 15
 00:00:42,830 --> 00:00:45,750
-So I'm using c.m101--
+Así que estoy usando "c.m101"--
 
 16
 00:00:45,750 --> 00:00:47,660
-I'm sorry, the m101 database,
-and the people
+Lo siento, la base de datos
+"m101" y la colección
 
 17
 00:00:47,660 --> 00:00:48,640
-collection in it.
+"people" en ella.
 
 18
 00:00:48,640 --> 00:00:51,020
-And I'm trying to put these
-three items in it.
+Y estoy intentando poner
+estos tres elementos en ella.
 
 19
 00:00:51,020 --> 00:00:54,310
-So let's see if that works.
+Así que veamos si funciona.
 
 20
 00:00:54,310 --> 00:00:55,750
-OK, and it works just fine.
+OK, y funciona muy bien.
 
 21
 00:00:55,750 --> 00:01:00,350
-And you can see you can also
-list all the hosts right here.
+Y puedes ver que también puedes usar
+una lista con todos los hosts aquí.
 
 22
 00:01:00,350 --> 00:01:02,630
-So I'll do that just to
-show you how it works.
+Así lo haré para
+mostrarte cómo funciona.
 
 23
 00:01:02,630 --> 00:01:05,600
-So now I've listed all
-three hosts in the
+Ahora he listado todos
+los tres hosts en el
 
 24
 00:01:05,600 --> 00:01:07,720
-replica set as a list.
+conjunto de réplicas
+como una lista.
 
 25
 00:01:07,720 --> 00:01:08,860
-And normally, these would
-probably be three hosts
+Y normalmente, probablemente
+esos serían tres hosts
 
 26
 00:01:08,860 --> 00:01:10,710
-running on the standard port,
-but we're just running on
+ejecutándose en el puerto estándar
+pero estamos ejecutando en
 
 27
 00:01:10,710 --> 00:01:12,170
-localhost here.
+"localhost" aquí.
 
 28
 00:01:12,170 --> 00:01:13,610
-And here I'm using localhost.
+Y aquí estoy usando "localhost".
 
 29
 00:01:13,610 --> 00:01:16,010
-It seems to work fine connecting
-using the driver,
+Parece que funciona bien
+la conexión con el driver,
 
 30
 00:01:16,010 --> 00:01:18,400
-using the localhost
-name, which is the
+usando el nombre
+"localhost", que es el
 
 31
 00:01:18,400 --> 00:01:20,300
-local IP of the machine.
+IP local de la máquina.
 
 32
 00:01:20,300 --> 00:01:21,590
-This is all in the
-same machine.
+Esto es todo en la
+misma máquina.
 
 33
 00:01:21,590 --> 00:01:24,280
-All right, so we're going
-to do this again.
+Muy bien, así que vamos
+a hacer esto otra vez.
 
 34
 00:01:24,280 --> 00:01:27,580
-Now we're connected with a
-seedlist of all three, and
+Ahora estamos conectados con un
+"seedlist" de los tres y vamos
 
 35
 00:01:27,580 --> 00:01:28,730
-we're going to run it again.
+a ejecutarlo de nuevo.
 
 36
 00:01:28,730 --> 00:01:31,670
-And, it works fine again.
+Y funciona muy bien otra vez.
 
 37
 00:01:31,670 --> 00:01:35,850
-And by the way, if you want to
-see what's in this collection,
+Y por cierto, si deseo ver lo
+que hay en esta colección,
 
 38
 00:01:35,850 --> 00:01:39,190
-you can see that the three
-items I put in times two,
+puedes ver que los tres
+elementos se ponen dos veces,
 
 39
 00:01:39,190 --> 00:01:40,980
-because I did it twice.
+porque lo hice dos veces.
 
 40
 00:01:40,980 --> 00:01:45,140
-So that is the way a seedlist
-works, and the way the driver
+Así que esa es la forma como funciona
+el "seedlist", y la forma en que
 
 41
 00:01:45,140 --> 00:01:47,110
-works inside Python.
+funciona en Python.
 
 42
 00:01:47,110 --> 00:01:48,310
-And the other ones are
-pretty similar.
+Y los otros son
+bastante similares.
 
 43
 00:01:48,310 --> 00:01:49,870
-Java is pretty similar.
+Java es muy similar.
 
 44
 00:01:49,870 --> 00:01:52,510
-They're all pretty much the same
-thing, in terms of the
+Todos son más o menos lo
+mismo, en cuanto al uso de un
 
 45
 00:01:52,510 --> 00:01:56,070
-use of a seedlist to specify
-the hosts that are in the
+"seedlist" para especificar
+los hosts que están en el
 
 46
 00:01:56,070 --> 00:01:59,030
-replica set, and handling
-the automatic failover
+conjunto de réplicas y manejar
+la atutomática conmutación por error
 
 47
 00:01:59,030 --> 00:02:00,800
-as they need to.
+ya que se necesitan.
 
 48
 00:02:00,800 --> 00:02:03,140
-OK, let's do a quiz.
+OK, hagamos un cuestionario.
 
 49
 00:02:03,140 --> 00:02:04,420
-So the quiz is--
+Así que el cuestionario es--
 
 50
 00:02:04,420 --> 00:02:07,440
-if you leave replica set node
-out of the seedlist within the
+si se deja de establecer un nodo
+del conjunto de réplicas al
 
 51
 00:02:07,440 --> 00:02:09,100
-driver, what will happen?
+driver, ¿qué ocurrirá?
 
 52
 00:02:09,100 --> 00:02:11,910
-The missing node will not be
-used for the application.
+El nodo restante no será
+utilizado por la aplicación.
 
 53
 00:02:11,910 --> 00:02:13,790
-The missing node will be
-discovered as long as you list
+El nodo restante será
+descubierto siempre y cuando
 
 54
 00:02:13,790 --> 00:02:15,700
-it at least one valid node.
+listes al menos un nodo válido.
 
 55
 00:02:15,700 --> 00:02:19,210
-The missing node will be used
-for reads, but not for writes.
+El nodo restante será utilizado para
+lecturas, pero no para escrituras.
 
 56
 00:02:19,210 --> 00:02:20,580
-Or, the missing node
-will be used for
+O el nodo restante
+será utilizado para
 
 57
 00:02:20,580 --> 00:02:22,050
-writes, but not for reads.
+escrituras, pero
+no para lecturas.
 
 58
 00:02:22,050 --> 00:02:23,300
-So check the right answer.
+Marca la respuesta correcta.
 
 59
 00:02:23,300 --> 00:02:24,330
