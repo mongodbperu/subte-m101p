@@ -3,340 +3,340 @@
 
 2
 00:00:00,120 --> 00:00:03,470
-OK, let's go over the
-implications of replication
+OK, analicemos las
+implicaciones de la replicación
 
 3
 00:00:03,470 --> 00:00:05,990
-for application development.
+para el desarrollo de aplicaciones.
 
 4
 00:00:05,990 --> 00:00:09,210
-Now on one hand, the whole idea
-of using replica sets is
+Por un lado, la idea global
+de usar conjuntos de réplicas es
 
 5
 00:00:09,210 --> 00:00:11,850
-that they're very transparent
-to the developer, and hence
+que son muy transparentes
+para el desarrollador y por eso
 
 6
 00:00:11,850 --> 00:00:14,170
-you don't really have to
-understand that they're there.
+no tienes que comprender
+realmente que están ahí.
 
 7
 00:00:14,170 --> 00:00:17,050
-It's supposed to just create
-greater availability and fault
+Se supone que sólo crean
+mayor disponibilidad y tolerancia
 
 8
 00:00:17,050 --> 00:00:19,730
-tolerance, and not
-getting your way.
+a fallos sin interferir
+en tu camino.
 
 9
 00:00:19,730 --> 00:00:21,260
-But there's a few things
-you need to remember.
+Pero hay unas cuantas cosas
+que necesitas recordar.
 
 10
 00:00:21,260 --> 00:00:24,180
-The first one is that
-of course, there
+La primera es que,
+por supuesto, existen
 
 11
 00:00:24,180 --> 00:00:26,120
-are these seed lists.
+estas "seed lists".
 
 12
 00:00:26,120 --> 00:00:28,500
-So you need to remember that
-when you're using the drivers,
+Por lo que necesitas recordar que
+cuando estás usando los drivers,
 
 13
 00:00:28,500 --> 00:00:30,560
-which are primarily responsible
-for [INAUDIBLE]
+que son pincipalmente los 
+responsables de conectarte
 
 14
 00:00:30,560 --> 00:00:34,590
-you to a new node during
-failover, after a new primary
+a un nuevo nodo durante una conmutación
+por error, tras la elección de un
 
 15
 00:00:34,590 --> 00:00:37,960
-is elected, drivers need to know
-about at least one member
+nuevo primario, los drivers necesitan
+conocer al menos a un miembro
 
 16
 00:00:37,960 --> 00:00:39,080
-of the replica set.
+del conjunto de réplicas.
 
 17
 00:00:39,080 --> 00:00:41,850
-So you need to understand
-that a seed list exists.
+Por lo que necesitas comprender
+que existe una "seed list".
 
 18
 00:00:41,850 --> 00:00:43,890
-The second is that now that
-we're in this distributed
+La segunda es que ahora que
+estamos en este entorno
 
 19
 00:00:43,890 --> 00:00:46,620
-environment, you need to
-understand this idea of write
+distribuido, necesitas
+comprender esta idea de concernencia
 
 20
 00:00:46,620 --> 00:00:50,460
-concern, and in particular, the
-idea of waiting for some
+de escritura, y en particular, la
+idea de esperar a que algún
 
 21
 00:00:50,460 --> 00:00:53,880
-number of nodes to acknowledge
-your writes through the w
+número de nodos confirme
+tus escrituras a través del parámetro
 
 22
 00:00:53,880 --> 00:00:57,480
-parameter, the j parameter,
-which lets you wait or not
+"w", el parámetro "j",
+que te permiten esperar o no
 
 23
 00:00:57,480 --> 00:01:00,700
-wait for the primary node to
-commit that write to disk.
+a que el nodo primario haga 
+"commit" de esa escritura al disco.
 
 24
 00:01:00,700 --> 00:01:04,599
-And also the w timeout
-parameter, which is how long
+Y también el parámetro "wtimeout",
+que es cúanto
 
 25
 00:01:04,599 --> 00:01:07,090
-you're going to wait to see that
-your write replicated to
+vas a esperar hasta ver
+tu escritura replicada a
 
 26
 00:01:07,090 --> 00:01:09,000
-other members of the
-replica set.
+otros miembros del
+conjunto de réplicas.
 
 27
 00:01:09,000 --> 00:01:13,160
-So you have to keep that in
-mind, because that is going to
+Así que tienes que tener eso en
+mente, porque va a tener
 
 28
 00:01:13,160 --> 00:01:15,840
-have an implication on the way
-you write the applications,
+implicaciones en la forma
+en que escribes aplicaciones,
 
 29
 00:01:15,840 --> 00:01:18,410
-assuming that these defaults
-haven't just been put into the
+suponiendo que estos valores por
+defecto no han sido establecidos en
 
 30
 00:01:18,410 --> 00:01:20,260
-replica set for you.
+el conjunto de réplicas por ti.
 
 31
 00:01:20,260 --> 00:01:22,800
-All right, the next is that
-now that there's multiple
+Bien, la siguiente es que
+ahora que existen múltiples
 
 32
 00:01:22,800 --> 00:01:25,800
-nodes for you to potentially
-read from, you have to decide
+nodos de los que potencialmente
+puedes leer, tienes que decidir
 
 33
 00:01:25,800 --> 00:01:27,720
-whether or not you want to read
-from your primary, which
+si quieres leer o no
+de tu primario, que
 
 34
 00:01:27,720 --> 00:01:30,530
-is the default, most obvious,
-and preferred thing to do, or
+es por defecto, lo más obvio y 
+lo ideal, o
 
 35
 00:01:30,530 --> 00:01:33,310
-whether you want to take your
-reads from your secondaries.
+si quieres efectuar tus
+lecturas sobre los secundarios.
 
 36
 00:01:33,310 --> 00:01:35,210
-And if you're going to take your
-read from your secondary,
+Y si vas a tomar tus
+lecturas de los secundarios,
 
 37
 00:01:35,210 --> 00:01:37,510
-the application has to be
-ready to use data that's
+la aplicación tiene que estar
+perparada para usar datos
 
 38
 00:01:37,510 --> 00:01:40,070
-potentially stale with respect
-to what was written.
+potencialmente obsoletos con 
+respecto a lo que se escribió.
 
 39
 00:01:40,070 --> 00:01:43,070
-And the final idea is that
-even though replication
+Y la idea final es que
+aún existiendo la
 
 40
 00:01:43,070 --> 00:01:47,200
-exists, and that you have these
-nodes in place to deal
+replicación, y que tengas estos
+nodos preparados para tratar
 
 41
 00:01:47,200 --> 00:01:51,370
-with errors and defaults, and
-elect a new primary if needed,
+los errores y defectos y elegir
+un nuevo primario si es necesario,
 
 42
 00:01:51,370 --> 00:01:53,700
-still, errors can
-always happen.
+aún así, siempre pueden
+producirse errores.
 
 43
 00:01:53,700 --> 00:01:57,640
-And these errors can happen
-because of transient
+Y estos errores pueden ocurrir
+por situaciones transitorias
 
 44
 00:01:57,640 --> 00:02:00,510
-situations like failover
-occurring, or they can happen
+como una conmutación por error,
+o pueden suceder
 
 45
 00:02:00,510 --> 00:02:02,760
-because there are network
-errors that occur.
+porque hay posibles errores
+de red.
 
 46
 00:02:02,760 --> 00:02:05,220
-Or maybe there's actually errors
-in terms of violating
+O en realidad podría haber errores
+en términos de incumplimiento
 
 47
 00:02:05,220 --> 00:02:08,570
-the unique key constraints,
-or other syntactic things.
+de las restricciones de clave única
+u otras cosas sintácticas.
 
 48
 00:02:08,570 --> 00:02:11,520
-And so generally speaking, to
-create a robust application,
+Y por eso, hablando en general, para
+crear una aplicación robusta
 
 49
 00:02:11,520 --> 00:02:14,470
-you need to be checking for
-exceptions when you read and
+necesitas comprobar las
+excepciones cuando lees y cuando
 
 50
 00:02:14,470 --> 00:02:17,600
-write database to make sure
-that if anything comes up,
+escribes en la base de datos para
+asegurarte que si surge algo,
 
 51
 00:02:17,600 --> 00:02:18,370
-that you know it.
+lo sabes.
 
 52
 00:02:18,370 --> 00:02:20,910
-So that you can make sure you
-understand the application of
+Así que puedes asegurarte que
+entiendes la aplicación sobre
 
 53
 00:02:20,910 --> 00:02:24,040
-what data has been committed,
-and what data is durable in
+qué datos han sido confirmados,
+y qué datos son persistentes
 
 54
 00:02:24,040 --> 00:02:25,320
-your application.
+en tu aplicación.
 
 55
 00:02:25,320 --> 00:02:27,470
-OK, so let's do a short quiz.
+OK, hagamos un pequeño cuestionario.
 
 56
 00:02:27,470 --> 00:02:28,930
-And here's the quiz.
+Y aquí está el cuestionario.
 
 57
 00:02:28,930 --> 00:02:32,140
-So if you sit w equals 4 in a
-connection and there are only
+Si estableces "w" igual a 4 en una
+conexión y hay sólo tres
 
 58
 00:02:32,140 --> 00:02:34,790
-three nodes in the replica set,
-how long will you wait in
+nodos en el conjunto de réplicas,
+¿cuánto esperarás en
 
 59
 00:02:34,790 --> 00:02:36,880
-PyMongo for a response
-for an insert if you
+PyMongo para una respuesta
+de un "insert" si 
 
 60
 00:02:36,880 --> 00:02:38,220
-don't set a time out?
+no estableciste un "wtimeout"?
 
 61
 00:02:38,220 --> 00:02:39,670
-Don't set a w time out?
+No estableces un "wtimeout".
 
 62
 00:02:39,670 --> 00:02:42,310
-And I know we haven't gone over
-this explicitly, but I
+Y sé que no hemos visto
+esto explícitamente, pero 
 
 63
 00:02:42,310 --> 00:02:45,960
-want you to guess what the
-answer is based on the fact
+quiero que supongas cuál es
+la respuesta basándote en el hecho
 
 64
 00:02:45,960 --> 00:02:48,380
-that the w timeout controls how
-long you're going to wait
+que "wtimeout" controla cuánto
+vas a esperar
 
 65
 00:02:48,380 --> 00:02:50,890
-for these commits, and there's
-only three nodes, and you've
+a estos "commits" y sólo 
+hay tres nodos, y has
 
 66
 00:02:50,890 --> 00:02:52,370
-set w equal to four.
+establecido "w" igual a cuatro.
 
 67
 00:02:52,370 --> 00:02:55,260
-How long do you think it'll take
-for you to come back and
+¿Cuánto crees que tardará
+en volver y 
 
 68
 00:02:55,260 --> 00:02:56,260
-get some sort of error?
+dar algún tipo de error?
 
 69
 00:02:56,260 --> 00:02:58,940
-Obviously it's not going to over
-commit to four nodes if
+Obviamente no va a hacer
+"commit" a cuatro nodos si
 
 70
 00:02:58,940 --> 00:03:00,770
-there's only three nodes
-in the replica set.
+hay sólo tres nodos
+en el conjunto de réplicas.
 
 71
 00:03:00,770 --> 00:03:02,050
-So check off the answer.
+Así que marca la respuesta.
 
 72
 00:03:02,050 --> 00:03:03,300

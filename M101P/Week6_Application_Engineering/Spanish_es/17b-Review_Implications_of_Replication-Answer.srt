@@ -7,89 +7,89 @@ OK.
 
 3
 00:00:00,570 --> 00:00:03,360
-And the answer is it takes
-a really long time.
+Y la respuesta es que en realidad
+tarda mucho tiempo.
 
 4
 00:00:03,360 --> 00:00:06,940
-So it probably, I actually tried
-this on my computer, it
+Así que probablemente, en realidad
+probé esto en mi equipo, 
 
 5
 00:00:06,940 --> 00:00:09,390
-took at least 10
-minutes or so.
+tardó al menos 10
+minutos o así.
 
 6
 00:00:09,390 --> 00:00:12,600
-At that point, you're subject to
-the TCP timeout, which can
+En ese punto, estás sujeto al
+"timeout" TCP, que puede
 
 7
 00:00:12,600 --> 00:00:13,920
-be extremely long.
+ser extremadamente alto.
 
 8
 00:00:13,920 --> 00:00:17,690
-Because basically, you've said
-I want to wait until I get an
+Como básicamente, has dicho que
+quiero esperar hasta que obtenga una
 
 9
 00:00:17,690 --> 00:00:19,210
-acknowledgement from
-four nodes.
+confirmación de
+cuatro nodos.
 
 10
 00:00:19,210 --> 00:00:22,850
-There's only three nodes, and
-so it'll just time out.
+Hay sólo tres nodos y 
+por lo tanto dará un "timeout".
 
 11
 00:00:22,850 --> 00:00:25,760
-So just generally speaking, this
-is just a reminder that
+Por lo que hablando en general, esto
+es sólo un recordatorio, que
 
 12
 00:00:25,760 --> 00:00:29,120
-you need to set the w timeout
-if for any reason you think
+necesitas establecer el "wtimeout"
+si por alguna razón crees
 
 13
 00:00:29,120 --> 00:00:32,095
-there's a possibility that the
-number of nodes that you're
+que hay un posibilidad de que el
+número de nodos a los que estás
 
 14
 00:00:32,095 --> 00:00:35,010
-asking to commit to, or
-not commit to, but get
+pidiendo hacer "commit", o 
+no "commit", o de los que quieres
 
 15
 00:00:35,010 --> 00:00:37,860
-acknowledged from is greater
-than the number that are up.
+obtener confirmación es mayor
+que el número que están activos.
 
 16
 00:00:37,860 --> 00:00:41,070
-Like, if you put w equals 3, and
-there's a possibility that
+Como si pones "w" igual a 3 y
+hay una posibilidad que
 
 17
 00:00:41,070 --> 00:00:42,540
-you're running in a state
-where there's only two
+estés en un estado
+donde sólo hay dos
 
 18
 00:00:42,540 --> 00:00:43,140
-nodes that's up.
+nodos activos.
 
 19
 00:00:43,140 --> 00:00:43,440
-All right.
+De acuerdo.
 
 20
 00:00:43,440 --> 00:00:44,690
-That's it.
+Eso es.
 
 21
 00:00:44,690 --> 00:00:45,290
