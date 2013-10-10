@@ -3,23 +3,23 @@
 
 2
 00:00:00,130 --> 00:00:02,260
-And the answer is the missing
-node will be discovered as
+Y la respuesta es que el
+nodo restante será descubierto
 
 3
 00:00:02,260 --> 00:00:05,400
-long as you list at least one
-valid inside the seed list.
+siempre y cuando listes al menos
+un nodo válido en el "seedlist".
 
 4
 00:00:05,400 --> 00:00:06,710
-So you don't have to
-list everything
+Por lo que no tienes
+que listar todos
 
 5
 00:00:06,710 --> 00:00:07,750
-inside the replica set.
+dentro del conjunto de réplicas.
 
 6
 00:00:07,750 --> 00:00:09,000
-They're sort of self-discovery.
+Ellos son descubiertos entre ellos.
