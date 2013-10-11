@@ -3,145 +3,145 @@
 
 2
 00:00:00,070 --> 00:00:02,440
-This question, we're asking you
-to imagine a five-member
+En esta pregunta te estamos pidiendo
+que imagines un conjunto de réplicas de
 
 3
 00:00:02,440 --> 00:00:06,410
-replica set, and figure out
-how you would specify that
+cinco miembros y que averigües
+cómo especificarías que
 
 4
 00:00:06,410 --> 00:00:08,800
-writes are committed to the
-journal, and acknowledge by at
+las escrituras sean confirmadas al
+"journal" y confirmadas al menos
 
 5
 00:00:08,800 --> 00:00:11,790
-least three nodes, before
-you proceed.
+por tres nodos, antes
+de continuar.
 
 6
 00:00:11,790 --> 00:00:14,470
-So, what things would you need
-in the getLastError call,
+Entonces, ¿qué cosas necesitarías
+en la llamada a "getLastError",
 
 7
 00:00:14,470 --> 00:00:15,120
-essentially?
+esencialmente?
 
 8
 00:00:15,120 --> 00:00:20,780
-And the answer is that you would
-need w = 3 and j = 1.
+Y la respuesta es que necesitarías
+"w = 3" y "j = 1".
 
 9
 00:00:20,780 --> 00:00:22,600
-So you'd want to wait
-for three nodes--
+Por lo que querrías esperar
+a tres nodos --
 
 10
 00:00:22,600 --> 00:00:23,770
-if you want to wait for
-three of the five
+si quieres esperar a
+tres de los cinco
 
 11
 00:00:23,770 --> 00:00:25,600
-nodes to get the write.
+nodos para conseguir la escritura.
 
 12
 00:00:25,600 --> 00:00:28,910
-So, the answer is
-w = 3 and j = 1.
+Así que la respuesta es
+"w = 3" y "j = 1".
 
 13
 00:00:28,910 --> 00:00:31,630
-There isn't a w = 3,
-j = 1 answer here.
+No hay una respuesta 
+"w = 3", "j = 1" aquí.
 
 14
 00:00:31,630 --> 00:00:34,420
-There's a w = "majority"
-and j = 1.
+Hay una "w = 'majority'"
+y "j = 1".
 
 15
 00:00:34,420 --> 00:00:36,660
-But the majority of five
-nodes is three notes.
+Pero la mayoría para cinco
+nodos es tres nodos.
 
 16
 00:00:36,660 --> 00:00:38,330
-So that was the answer here.
+Así que ésa era la respuesta aquí.
 
 17
 00:00:38,330 --> 00:00:40,950
-And these other ones are wrong,
-for obvious reasons.
+Y estas otras eran erróneas,
+por razones obvias.
 
 18
 00:00:40,950 --> 00:00:43,670
-Either w does not
-equal 3 here--
+"w" no es
+igual a 3 aquí --
 
 19
 00:00:43,670 --> 00:00:46,220
-here w = 3, but j does
-not equal 1.
+aquí "w = 3", pero "j" no es
+igual a 1.
 
 20
 00:00:46,220 --> 00:00:48,920
-So we didn't wait for it to be
-committed to the journal.
+Por lo que no esperamos a que se
+confirme al "journal".
 
 21
 00:00:48,920 --> 00:00:50,510
-Here, you're waiting for all the
-nodes to acknowledge the
+Aquí, estás esperando a que todos
+los nodos confirmen la
 
 22
 00:00:50,510 --> 00:00:51,960
-write, and here--
+escritura, y aquí --
 
 23
 00:00:51,960 --> 00:00:53,000
-this doesn't make any sense.
+esto no tiene ningún sentido.
 
 24
 00:00:53,000 --> 00:00:54,680
-There is no j = 3 value.
+No hay valor "j = 3".
 
 25
 00:00:54,680 --> 00:00:57,330
-j, if you set it to
-more than one--
+"j", si lo estableces
+a más de uno --
 
 26
 00:00:57,330 --> 00:00:58,750
-it's either true or
-false, really.
+o es cierto o
+es falso, en realidad.
 
 27
 00:00:58,750 --> 00:01:00,430
-And if it's true, then it waits
-for the write on the
+Y si es cierto, entonces espera
+a la escritura en el
 
 28
 00:01:00,430 --> 00:01:01,410
-primary node.
+nodo primario.
 
 29
 00:01:01,410 --> 00:01:03,340
-There's no way to say, you
-want to wait for it to be
+No hay forma de decir que
+quieres esperar a que sea
 
 30
 00:01:03,340 --> 00:01:04,914
-journaled on the secondary
-nodes.
+confirmada en el "journal" en
+los nodos secundarios.
 
 31
 00:01:04,914 --> 00:01:06,350
-That doesn't exist in MongoDB.
+Eso no existe en MongoDB.
 
 32
 00:01:06,350 --> 00:01:07,600
