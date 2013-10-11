@@ -3,273 +3,274 @@
 
 2
 00:00:00,120 --> 00:00:00,460
-All right.
+Muy bien.
 
 3
 00:00:00,460 --> 00:00:03,280
-So we discussed that if a
-primary election occurs-- if
+Discutimos que si una
+elección de primario ocurre--
 
 4
 00:00:03,280 --> 00:00:05,010
-there's a failover in
-your replica set--
+si hay una conmutación por error
+en tu conjunto de réplicas--
 
 5
 00:00:05,010 --> 00:00:08,070
-and you do nothing special, the
-program will terminate.
+y no haces nada especial,
+el programa terminará.
 
 6
 00:00:08,070 --> 00:00:09,320
-Now we want to do better
-than that.
+Ahora deseo hacer
+algo mejor que eso.
 
 7
 00:00:09,320 --> 00:00:10,810
-So how do we do better
-than that?
+Entonces, ¿cómo lo
+hacemos mejor que eso?
 
 8
 00:00:10,810 --> 00:00:11,960
-What we need to do is catch the
+Lo que tenemos que hacer es atrapar
 
 9
 00:00:11,960 --> 00:00:13,190
-exceptions that might occur.
+las excepciones que puedan ocurrir.
 
 10
 00:00:13,190 --> 00:00:16,890
-So here's the same program
-written, but in this case
+Así que aquí está el mismo
+programa escrito, pero en este
 
 11
 00:00:16,890 --> 00:00:21,160
-these rights all go into a try
-except block inside Python.
+caso estas escrituras entran en
+un bloque "try except" en Python.
 
 12
 00:00:21,160 --> 00:00:22,560
-So we try to insert
-each of these
+Así que intentas insertar
+cada uno de estos
 
 13
 00:00:22,560 --> 00:00:24,970
-documents, one to a million.
+documentos, de uno a un millón.
 
 14
 00:00:24,970 --> 00:00:29,310
-But if there's a problem, than
-what we do is we print out the
+Pero si hay un problema, lo
+que hacemos es imprimir la
 
 15
 00:00:29,310 --> 00:00:31,340
-exception and we continue.
+excepción y continuar.
 
 16
 00:00:31,340 --> 00:00:33,400
-And we sleep for a half
-a second again
+Y hacemos "sleep" por
+medio segundo entre
 
 17
 00:00:33,400 --> 00:00:34,870
-between each insert.
+cada inserción.
 
 18
 00:00:34,870 --> 00:00:38,060
-So, let's see what happens if
-we run this program and then
+Por lo tanto, veamos qué sucede
+si ejecutamos este programa y luego
 
 19
 00:00:38,060 --> 00:00:39,960
-cause a replica set election.
+causamos una elección en
+el conjunto de réplicas.
 
 20
 00:00:39,960 --> 00:00:41,715
-So, I'm gonna go here.
+Así que voy a ir aquí.
 
 21
 00:00:41,715 --> 00:00:43,490
-Now we're inserting
-the numbers.
+Ahora estamos
+insertando los números.
 
 22
 00:00:43,490 --> 00:00:46,300
-And now we're gonna once
-again figure out where
+Y ahora vamos una vez más
+a averiguar dónde está
 
 23
 00:00:46,300 --> 00:00:48,490
-our primary is 27019.
+nuestro primario, está en 27019.
 
 24
 00:00:48,490 --> 00:00:49,310
-OK, good.
+OK, bueno.
 
 25
 00:00:49,310 --> 00:00:50,700
-So that's easy.
+Eso es fácil.
 
 26
 00:00:50,700 --> 00:00:53,420
-So, we're gonna just step
-down this primary.
+Vamos a simplemente
+detener este primario.
 
 27
 00:00:53,420 --> 00:00:55,190
-And we're gonna see
-what happens.
+Y vamos a ver qué pasa.
 
 28
 00:00:55,190 --> 00:00:58,010
-So if we go back to this window,
-you can see that we
+Si volvemos a esta ventana,
+puedes ver que insertamos
 
 29
 00:00:58,010 --> 00:00:59,510
-inserted up to 38.
+hasta 38.
 
 30
 00:00:59,510 --> 00:01:00,660
-And now we're getting
-a bunch of
+Y ahora vamos a
+obtener un montón de
 
 31
 00:01:00,660 --> 00:01:03,120
-pymongo.error.AutoReconnect errors--
+errores "pymongo.error.AutoReconnect"--
 
 32
 00:01:03,120 --> 00:01:04,340
-exceptions.
+excepciones.
 
 33
 00:01:04,340 --> 00:01:07,390
-And then after a period
-of time, look at that.
+Y luego, después de un
+período de tiempo, mira eso.
 
 34
 00:01:07,390 --> 00:01:09,160
-It's continuing forward.
+Está continuando.
 
 35
 00:01:09,160 --> 00:01:09,850
-So what happened?
+Entonces, ¿qué pasó?
 
 36
 00:01:09,850 --> 00:01:13,920
-It looks like it inserted up
-to 38, and then it took a
+Parece que insertó hasta
+38, y luego tomó un
 
 37
 00:01:13,920 --> 00:01:18,420
-bunch of errors, and it's
-starting again at document
+montón de errores y está iniciando
+de nuevo en el documento
 
 38
 00:01:18,420 --> 00:01:21,300
-where i was 59, 60, 61.
+donde "i" era 59, 60, 61.
 
 39
 00:01:21,300 --> 00:01:21,890
-All right.
+Muy bien.
 
 40
 00:01:21,890 --> 00:01:23,900
-So this is clearly
-an improvement.
+Así que esto es
+claramente una mejora.
 
 41
 00:01:23,900 --> 00:01:27,360
-Now, instead of the program
-terminating, we are catching
+Ahora, en lugar que el programa
+termine, vamos a atrapar
 
 42
 00:01:27,360 --> 00:01:28,630
-these exceptions.
+estas excepciones.
 
 43
 00:01:28,630 --> 00:01:30,500
-But we're losing data.
+Pero estamos perdiendo datos.
 
 44
 00:01:30,500 --> 00:01:32,280
-So if we're looking to make sure
-that every single one of
+Así que si estamos buscando
+asegurarnos que cada una de
 
 45
 00:01:32,280 --> 00:01:35,490
-these inserts occurs, it's not
-always going to occur.
+estas inserciones ocurren,
+no siempre van a ocurrir.
 
 46
 00:01:35,490 --> 00:01:38,070
-Because in certain cases,
-instead of inserting we're
+Porque en ciertos casos,
+en lugar de insertar, está
 
 47
 00:01:38,070 --> 00:01:40,400
-taking an exception because
-we're trying to reconnect to a
+tomando una excepción porque
+está intentando reconectar al
 
 48
 00:01:40,400 --> 00:01:41,840
-new primary.
+nuevo primario.
 
 49
 00:01:41,840 --> 00:01:44,700
-And then we don't retry
-that actual insert.
+Y luego no reintenta
+aquella inserción.
 
 50
 00:01:44,700 --> 00:01:46,290
-So we lose it.
+Así que la perdemos.
 
 51
 00:01:46,290 --> 00:01:48,820
-Now, in some applications, it
-might be acceptable to lose an
+Ahora, en algunas aplicaciones,
+podría ser aceptable perder una
 
 52
 00:01:48,820 --> 00:01:51,420
-insert now and again, depends
-on the application.
+inserción una vez en cuando,
+depende de la aplicación.
 
 53
 00:01:51,420 --> 00:01:54,150
-But if you actually want to make
-sure your insert occurs,
+Pero si en realidad deseas
+asegurarte que la inserción ocurra,
 
 54
 00:01:54,150 --> 00:01:57,290
-this program's not gonna work
-particularly well, except that
+este programa no va a funcionar
+muy bien, excepto que
 
 55
 00:01:57,290 --> 00:01:59,180
-it didn't actually terminate
-the entire program.
+no llegó a terminar
+todo el programa.
 
 56
 00:01:59,180 --> 00:02:01,730
-So this is an improvement.
+Así que esta es una mejora.
 
 57
 00:02:01,730 --> 00:02:02,120
-All right.
+Muy bien.
 
 58
 00:02:02,120 --> 00:02:03,870
-So it's time for a quiz.
+Ahora es momento
+para un cuestionario.
 
 59
 00:02:03,870 --> 00:02:06,800
-If you catch exceptions during
-failover, are you guaranteed
+Si atrapas excepciones durante una
+conmutación por error, ¿se garantiza
 
 60
 00:02:06,800 --> 00:02:08,789
-to have your writes succeed?
+que tus escrituras sean exitosas?
 
 61
 00:02:08,789 --> 00:02:10,039
-Yes or no.
+Sí o no.
