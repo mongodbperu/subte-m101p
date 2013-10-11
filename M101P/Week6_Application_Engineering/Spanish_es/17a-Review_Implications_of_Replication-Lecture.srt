@@ -4,7 +4,7 @@
 2
 00:00:00,120 --> 00:00:03,470
 OK, analicemos las
-implicaciones de la replicación
+repercusiones de la replicación
 
 3
 00:00:03,470 --> 00:00:05,990
@@ -47,7 +47,7 @@ por supuesto, existen
 
 11
 00:00:24,180 --> 00:00:26,120
-estas "seed lists".
+estas "seedlists".
 
 12
 00:00:26,120 --> 00:00:28,500
@@ -76,7 +76,7 @@ del conjunto de réplicas.
 17
 00:00:39,080 --> 00:00:41,850
 Por lo que necesitas comprender
-que existe una "seed list".
+que existe una "seedlist".
 
 18
 00:00:41,850 --> 00:00:43,890
@@ -105,13 +105,13 @@ que te permiten esperar o no
 
 23
 00:00:57,480 --> 00:01:00,700
-a que el nodo primario haga 
-"commit" de esa escritura al disco.
+a que el nodo primario asegure 
+la escritura al disco.
 
 24
 00:01:00,700 --> 00:01:04,599
 Y también el parámetro "wtimeout",
-que es cúanto
+que es cuánto
 
 25
 00:01:04,599 --> 00:01:07,090
@@ -130,7 +130,7 @@ mente, porque va a tener
 
 28
 00:01:13,160 --> 00:01:15,840
-implicaciones en la forma
+repercusiones en la forma
 en que escribes aplicaciones,
 
 29

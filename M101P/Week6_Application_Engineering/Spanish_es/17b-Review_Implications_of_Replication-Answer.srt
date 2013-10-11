@@ -62,7 +62,7 @@ número de nodos a los que estás
 14
 00:00:32,095 --> 00:00:35,010
 pidiendo hacer "commit", o 
-no "commit", o de los que quieres
+no, o de los que quieres
 
 15
 00:00:35,010 --> 00:00:37,860
