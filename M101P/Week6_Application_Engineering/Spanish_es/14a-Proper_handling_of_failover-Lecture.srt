@@ -44,7 +44,7 @@ reescrito con un bucle de reintento.
 
 11
 00:00:18,550 --> 00:00:20,550
-Así que vamos verlo
+Así que vamos a verlo
 línea por línea.
 
 12
@@ -104,7 +104,7 @@ imprimimos la excepción.
 
 24
 00:00:45,140 --> 00:00:46,990
-Y luego de imprimimos
+Y luego imprimimos
 "Retrying...".
 
 25
@@ -207,7 +207,7 @@ Bien, mira eso.
 
 47
 00:01:33,070 --> 00:01:37,440
-Basicamente, me parece como
+Básicamente, me parece como
 si tomara dos excepciones
 
 48
@@ -282,7 +282,7 @@ par de tipos distintos de
 
 63
 00:02:19,350 --> 00:02:23,440
-excecpciones que puedes
+excepciones que puedes
 tomar en PyMongo en MongoDB.
 
 64
@@ -370,7 +370,7 @@ se ha completado.
 81
 00:03:02,590 --> 00:03:05,540
 Entonces, ¿cómo hacer que todo
-esto sea idempotente para que
+esto sea idempotente para
 
 82
 00:03:05,540 --> 00:03:06,960
@@ -464,7 +464,7 @@ duplicada, bueno, entonces lo
 
 101
 00:03:49,890 --> 00:03:53,540
-que deseas hacer "break"
+que deseas hacer es "break"
 y moverte porque sabes
 
 102
@@ -490,7 +490,7 @@ y porque el "_id" debe
 106
 00:04:04,580 --> 00:04:07,640
 ser único en la colección,
-basicamente puedes ejecutar
+básicamente puedes ejecutar
 
 107
 00:04:07,640 --> 00:04:11,190

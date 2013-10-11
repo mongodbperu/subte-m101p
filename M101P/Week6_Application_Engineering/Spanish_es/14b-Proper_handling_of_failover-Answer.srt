@@ -35,7 +35,7 @@ puede ser el caso.
 
 9
 00:00:14,870 --> 00:00:16,880
-Pero puede no se el caso.
+Pero puede no ser el caso.
 
 10
 00:00:16,880 --> 00:00:20,710
@@ -45,7 +45,7 @@ veces, y si se espera más y
 11
 00:00:20,710 --> 00:00:24,500
 más cada vez, entonces se
-vuelve muy poco problable que
+vuelve muy poco probable que
 
 12
 00:00:24,500 --> 00:00:25,660
@@ -73,7 +73,7 @@ reintentos y un "sleep" de cinco
 
 17
 00:00:34,510 --> 00:00:36,790
-segundo, no se puede completar
+segundos, no se puede completar
 porque puede ir a través de todos
 
 18
@@ -88,7 +88,7 @@ existen en la red.
 
 20
 00:00:41,850 --> 00:00:44,410
-En circuntancias normales, una
+En circunstancias normales, una
 elección para un nuevo primario
 
 21
