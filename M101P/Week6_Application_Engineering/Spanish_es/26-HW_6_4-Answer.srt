@@ -3,75 +3,75 @@
 
 2
 00:00:00,140 --> 00:00:03,515
-This question, we asked you to
-imagine a sharded system with
+En esta pregunta te pedíamos que
+imaginaras un sistema con "sharding"
 
 3
 00:00:03,515 --> 00:00:05,960
-three shards, and wanted you
-to figure out where a
+con tres "shards", y queríamos que
+averiguaras dónde iría una
 
 4
 00:00:05,960 --> 00:00:08,990
-particular query would go to
-on the sharded system.
+consulta particular en
+el sistema con "sharding".
 
 5
 00:00:08,990 --> 00:00:11,470
-So this was the sh.status
-output.
+Ésta era la salida de
+"sh.status()".
 
 6
 00:00:11,470 --> 00:00:14,220
-And you can see that, at the
-bottom, it shows you the range
+Y puedes ver que, en la parte
+de abajo, muestra el rango
 
 7
 00:00:14,220 --> 00:00:17,760
-of student_ids and where they
-potentially map to.
+de "student_id" y dónde
+mapean potencialemente.
 
 8
 00:00:17,760 --> 00:00:22,750
-So, for instance, from
-student_id 0 to 2640 goes to
+Así que, por ejemplo, de
+"student_id" 0 a 2640 va al
 
 9
 00:00:22,750 --> 00:00:27,730
-shard 0, and from minKey
-to 0 goes to shard 1.
+"shard" 0, y de "minKey"
+a 0 va al "shard" 1.
 
 10
 00:00:27,730 --> 00:00:31,040
-We specifically asked you
-about the query where
+Específicamente te pedíamos
+la consulta donde
 
 11
 00:00:31,040 --> 00:00:35,650
-student_id is 530289, and you
-can see that that's a range
+"student_id" es 530289, y puedes
+ver que hay un rango
 
 12
 00:00:35,650 --> 00:00:37,070
-specified right here.
+especificado justo aquí.
 
 13
 00:00:37,070 --> 00:00:41,600
-It falls in between here--
-between 509266 and 596849.
+Cae aquí dentro --
+entre 509266 y 596849.
 
 14
 00:00:41,600 --> 00:00:43,590
-And so it sits on shard 1.
+Y por eso está en el "shard" 1.
 
 15
 00:00:43,590 --> 00:00:46,070
-And that, in fact, is
-the answer-- that
+Y ésa, de hecho, es
+la respuesta -- que
 
 16
 00:00:46,070 --> 00:00:47,320
-it is on shard 1.
+está en el "shard" 1.
 
 17
 00:00:47,320 --> 00:00:48,530
