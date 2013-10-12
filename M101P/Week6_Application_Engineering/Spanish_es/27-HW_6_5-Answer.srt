@@ -311,16 +311,16 @@ y a unas cuantas otras cosas.
 68
 00:02:34,250 --> 00:02:37,300
 Y me da mi código de
-validación, que es "congrats, you
+validación, que es 
 
 69
 00:02:37,300 --> 00:02:39,060
-rock, 2012".
+"CongratsYouRock2012".
 
 70
 00:02:39,060 --> 00:02:42,410
-Por cierto, todos vosotros moláis
-si conseguisteis hacer todo esto.
+Por cierto, todos ustedes son 
+fantásticos por hacer todo esto.
 
 71
 00:02:42,410 --> 00:02:45,060
@@ -358,7 +358,7 @@ el curso fue fácil, pero sé que
 
 78
 00:02:57,490 --> 00:02:58,490
-para muchos de vosotros fue
+para muchos de ustedes fue
 probablemente un reto.
 
 79
