@@ -3,645 +3,642 @@
 
 2
 00:00:00,110 --> 00:00:03,100
-I showed you how to detect
-failover and continue forward
+Te mostré cómo detectar una
+conmutación por error y continuar
 
 3
 00:00:03,100 --> 00:00:04,210
-in your program.
+en tu programa.
 
 4
 00:00:04,210 --> 00:00:05,920
-Now what if we wanted to do
-better than that, and we
+Ahora lo que queríamos hacer
+es mejor que eso, y en relidad
 
 5
 00:00:05,920 --> 00:00:08,520
-actually want to make sure
-that our writes succeed?
+queremos asegurarnos que
+las escrituras tengan éxito.
 
 6
 00:00:08,520 --> 00:00:10,140
-How would we go about that?
+¿Cómo podríamos hacer eso?
 
 7
 00:00:10,140 --> 00:00:14,030
-Well, the way to go about that
-is to put our inserts into a
+Bueno, la manera de hacer eso
+es poner nuestras inserciones en
 
 8
 00:00:14,030 --> 00:00:15,330
-retry loop.
+un bucle de reintento.
 
 9
 00:00:15,330 --> 00:00:16,930
-And so this is the same
-program, but it's been
+Y este es el mismo
+programa pero ha sido
 
 10
 00:00:16,930 --> 00:00:18,550
-rewritten with a retry loop.
+reescrito con un bucle de reintento.
 
 11
 00:00:18,550 --> 00:00:20,550
-So let's go through
-it line by line.
+Así que vamos a verlo
+línea por línea.
 
 12
 00:00:20,550 --> 00:00:22,770
-Once again, we are iterating
-through i
+Una vez más, estamos
+iterando de uno en uno
 
 13
 00:00:22,770 --> 00:00:23,890
-from one to a million.
+desde uno hasta un millón.
 
 14
 00:00:23,890 --> 00:00:27,130
-We're creating a document where
-i is one, two, three,
+Estamos creando un documento
+donde "i" es uno, dos, tres,
 
 15
 00:00:27,130 --> 00:00:28,230
-four, five.
+cuatro, cinco.
 
 16
 00:00:28,230 --> 00:00:30,920
-And in this case, we're
-going to retry
+Y en este caso,
+vamos a intentar
 
 17
 00:00:30,920 --> 00:00:32,770
-from zero to two times.
+desde cero hasta 2 veces.
 
 18
 00:00:32,770 --> 00:00:34,420
-We're going to try
-to do the insert.
+Vamos a intentar
+hacer la inserción.
 
 19
 00:00:34,420 --> 00:00:36,200
-And if the insert
-works, great.
+Y si la inserción
+funciona, genial.
 
 20
 00:00:36,200 --> 00:00:38,320
-We break, which breaks out
-of this retry loop.
+Y hacemos "break" para
+romper este bucle de reintento.
 
 21
 00:00:38,320 --> 00:00:40,450
-And we go to the next i value.
+Y vamos al siguiente valor de "i".
 
 22
 00:00:40,450 --> 00:00:44,240
-But if we catch an exception,
-then what happens is we print
+Pero si atrapamos una excepción,
+entonces lo que sucede es que
 
 23
 00:00:44,240 --> 00:00:45,140
-out the exception.
+imprimimos la excepción.
 
 24
 00:00:45,140 --> 00:00:46,990
-And then we print retrying.
+Y luego imprimimos
+"Retrying...".
 
 25
 00:00:46,990 --> 00:00:48,360
-And we sleep for a full
-five seconds.
+Y hacemos "sleep"
+por cinco segundos.
 
 26
 00:00:48,360 --> 00:00:49,850
-And then we retry it again.
+Y luego volvemos a intentar.
 
 27
 00:00:49,850 --> 00:00:52,390
-And I'll explain in a second
-why this pymongo
+Y te explicaré en un segundo
+por qué este "pymongo.
 
 28
 00:00:52,390 --> 00:00:55,560
-DuplicateKeyError is separately
-broken out.
+DuplicateKeyError"
+está por separado.
 
 29
 00:00:55,560 --> 00:00:56,500
-I'll explain why that is.
+Te explicaré por qué es así.
 
 30
 00:00:56,500 --> 00:00:59,070
-But let's see what happens if we
-run this program and see if
+Pero vamos a ver qué pasa si
+ejecutamos este programa y vemos
 
 31
 00:00:59,070 --> 00:01:00,470
-we do better than before.
+si lo hacemos mejor que antes.
 
 32
 00:01:00,470 --> 00:01:02,700
-So once again, we're going
-to run the program.
+Así que una vez más, vamos
+a ejecutar el programa.
 
 33
 00:01:02,700 --> 00:01:04,480
-And now it's running.
+Y ahora está ejecutándose.
 
 34
 00:01:04,480 --> 00:01:06,740
-And it's printing these integer
-values as it inserts
+Y está imprimiendo estos valores
+enteros mientras los va insertando
 
 35
 00:01:06,740 --> 00:01:08,200
-them into the collection.
+en la colección.
 
 36
 00:01:08,200 --> 00:01:12,560
-And now, I'm going to once
-again figure out what my
+Y ahora voy a averiguar
+una vez más cuál es mi
 
 37
 00:01:12,560 --> 00:01:16,220
-primary is, which is 27018.
+primario, que está en 27018.
 
 38
 00:01:16,220 --> 00:01:21,030
-And then I'm going
-to step down.
+Y luego voy a detenerlo.
 
 39
 00:01:21,030 --> 00:01:21,590
-So there.
+Ahí.
 
 40
 00:01:21,590 --> 00:01:23,280
-I just stepped down
-the primary.
+Acabo de detener el primario.
 
 41
 00:01:23,280 --> 00:01:25,230
-Let's go and see what this
-program is doing.
+Vamos y veamos lo que
+está haciendo este programa.
 
 42
 00:01:25,230 --> 00:01:27,730
-So we can see here that
-it says it's retrying.
+Podemos ver aquí que
+dice que está reintentando.
 
 43
 00:01:27,730 --> 00:01:28,490
-It's retrying.
+Está reintentando.
 
 44
 00:01:28,490 --> 00:01:29,640
-It's retrying.
+Está reintentando.
 
 45
 00:01:29,640 --> 00:01:31,970
-And then, OK, what happened
-after that?
+Y luego, OK, ¿qué
+sucedió luego de eso?
 
 46
 00:01:31,970 --> 00:01:33,070
-Well, look at that.
+Bien, mira eso.
 
 47
 00:01:33,070 --> 00:01:37,440
-So basically, it looks to me
-like it took two AutoReconnect
+Básicamente, me parece como
+si tomara dos excepciones
 
 48
 00:01:37,440 --> 00:01:41,750
-exceptions and then continued
-exactly where it left off.
+AutoReconnect y luego continuó
+exactamente donde se quedó.
 
 49
 00:01:41,750 --> 00:01:44,690
-So it inserted this as
-zero through 41.
+Así que insertó esto
+desde cero hasta 41.
 
 50
 00:01:44,690 --> 00:01:48,290
-And then it inserted
+Y luego insertó
 42, 43, 44, 45, 46.
 
 51
 00:01:48,290 --> 00:01:49,330
-Well, this is great.
+Bueno, esto es genial.
 
 52
 00:01:49,330 --> 00:01:50,660
-This is what we're
-looking for.
+Esto es lo que estamos buscando.
 
 53
 00:01:50,660 --> 00:01:54,830
-So now even though we had a
-primary failure and a replica
+Así que ahora, aunque tuvimos una
+falla en el primario y una elección
 
 54
 00:01:54,830 --> 00:01:58,520
-set election such that we
-elected a new primary, our
+en el conjunto de réplicas de tal
+manera que hemos elegido un nuevo
 
 55
 00:01:58,520 --> 00:02:01,790
-program was able to get its
-writes done reliably.
+primario, nuestro programa fue capaz
+de obtener sus escrituras fiablemente.
 
 56
 00:02:01,790 --> 00:02:03,720
-So let's see how this
-works again.
+Veamos cómo esto funciona otra vez.
 
 57
 00:02:03,720 --> 00:02:08,509
-So what happens is if this write
-causes an exception,
+Lo que sucede es que si esta
+escritura causa una excepción,
 
 58
 00:02:08,509 --> 00:02:10,759
-then we print out
-the exception.
+luego imprime la excepción.
 
 59
 00:02:10,759 --> 00:02:13,180
-And then we come back in, and we
-try it again after waiting
+Y luego regresamos e intentamos
+de nuevo después de esperar
 
 60
 00:02:13,180 --> 00:02:15,200
-for a full five seconds.
+por cinco segundos.
 
 61
 00:02:15,200 --> 00:02:17,600
-Now, why is this
-DuplicateKeyError here?
+Ahora, ¿por qué está este
+"DuplicateKeyError" aquí?
 
 62
 00:02:17,600 --> 00:02:19,350
-Well, there's actually a couple
-different types of
+Bueno, en realidad hay un
+par de tipos distintos de
 
 63
 00:02:19,350 --> 00:02:23,440
-exceptions you can take inside
-pymongo in mongod.
+excepciones que puedes
+tomar en PyMongo en MongoDB.
 
 64
 00:02:23,440 --> 00:02:25,490
-One of them is this auto
-reconnect error, which means
+Uno de ellos es este error
+"AutoReconnect", que significa
 
 65
 00:02:25,490 --> 00:02:26,880
-that the driver is trying
-to connect to a
+que el driver está
+intentando conectarse
 
 66
 00:02:26,880 --> 00:02:28,570
-new replica set primary.
+al nuevo primario del
+conjunto de réplicas.
 
 67
 00:02:28,570 --> 00:02:29,320
-But there's other ones.
+Pero hay otros.
 
 68
 00:02:29,320 --> 00:02:31,490
-There's network connection
-errors, for instance.
+Hay errores de conexión
+de red, por ejemplo.
 
 69
 00:02:31,490 --> 00:02:34,020
-And sometimes, you may
-not know whether or
+Y a veces, no podrías
+conocer si tu escritura
 
 70
 00:02:34,020 --> 00:02:35,580
-not your write succeeded.
+se realizó con éxito o no.
 
 71
 00:02:35,580 --> 00:02:38,680
-In particular, your write
-may have succeeded.
+En particular, tu escritura
+podría tener éxito.
 
 72
 00:02:38,680 --> 00:02:40,110
-But even though it succeeded,
-you may
+Pero a pesar que tuvo
+éxito, es posible
 
 73
 00:02:40,110 --> 00:02:41,640
-have taken an exception.
+que haya tomado una excepción.
 
 74
 00:02:41,640 --> 00:02:45,220
-And that's the nature of the way
-the error reporting works
+Y esa es la naturaleza de la forma
+en que el informe de errores funciona
 
 75
 00:02:45,220 --> 00:02:48,920
-inside mongoDB because the write
-goes to the database.
+en MongoDB porque la escritura
+va a la base de datos.
 
 76
 00:02:48,920 --> 00:02:51,360
-There is no return value from
-that at the driver level.
+No hay valor de retorno
+a nivel del driver.
 
 77
 00:02:51,360 --> 00:02:54,960
-And then the driver calls
-GetLastError on your behalf.
+Y luego el driver llama
+a "getLastError" por ti.
 
 78
 00:02:54,960 --> 00:02:58,280
-And it could be the case that
-the GetLastError call doesn't
+Y podría darse el caso que la
+llamada a "getLastError" no se
 
 79
 00:02:58,280 --> 00:03:00,490
-complete for some reason--
-it gets a network error--
+complete por alguna razón--
+consigue un error de red--
 
 80
 00:03:00,490 --> 00:03:02,590
-but that the write
-did complete.
+pero la escritura
+se ha completado.
 
 81
 00:03:02,590 --> 00:03:05,540
-So how do you make this whole
-thing item potent so that you
+Entonces, ¿cómo hacer que todo
+esto sea idempotente para
 
 82
 00:03:05,540 --> 00:03:06,960
-can run it over and over.
+poder ejecutarlo una y otra vez.
 
 83
 00:03:06,960 --> 00:03:09,290
-So there's a subtlety to the
-way this code is structured
+Por lo que hay una sutileza a la forma
+en que este código está estructurado
 
 84
 00:03:09,290 --> 00:03:11,420
-that I really want to point
-out to you and you
+que en realidad
+deseo señalar y
 
 85
 00:03:11,420 --> 00:03:12,380
-should notice it.
+deberías notarlo.
 
 86
 00:03:12,380 --> 00:03:15,130
-And that is that the document
-we're inserting is actually
+Y es que el documento que
+estamos insertando es en realidad
 
 87
 00:03:15,130 --> 00:03:18,640
-defined up here outside
-the retry loop.
+definido aquí, fuera
+del bucle de reintento.
 
 88
 00:03:18,640 --> 00:03:23,240
-And by doing it that way, when
-we do this insert right here,
+Y al hacerlo de esta forma, cuando
+hacemos esta inserción de aquí,
 
 89
 00:03:23,240 --> 00:03:25,590
-the driver's going to
-assign underscore ID
+el driver le va a
+asignar un "_id"
 
 90
 00:03:25,590 --> 00:03:27,280
-to this Python dict.
+a este diccionario de Python.
 
 91
 00:03:27,280 --> 00:03:28,750
-And it's going to try
-to insert it.
+Y va a intentar insertarlo.
 
 92
 00:03:28,750 --> 00:03:31,920
-Well, if the insert was
-successful, then that
+Bueno, si la inserción fuera
+exitosa, entonces aquel
 
 93
 00:03:31,920 --> 00:03:33,990
-underscore ID is going to appear
-in the collection.
+"_id" va a aparecer
+en la colección.
 
 94
 00:03:33,990 --> 00:03:35,960
-And if you try to insert
-it again--
+Y si intentas insertar de nuevo--
 
 95
 00:03:35,960 --> 00:03:38,990
-all right, because let's say you
-thought it failed because
+bien, porque digamos que
+va tener que fallar porque
 
 96
 00:03:38,990 --> 00:03:41,800
-you got an exception, but in
-fact it had succeeded.
+obtienes una excepción, pero
+en efecto había sido exitosa.
 
 97
 00:03:41,800 --> 00:03:43,430
-If you come through the loop
-and you try to insert it
+Si vienes del bucle
+e intentas insertarlo
 
 98
 00:03:43,430 --> 00:03:45,910
-again, then when you try to
-insert it again, you're going
+otra vez, entonces cuando intentas
+insertarlo de nuevo, vas a
 
 99
 00:03:45,910 --> 00:03:47,610
-to get a duplicate key error.
+obtener un error de clave
+duplicada (DuplicateKeyError).
 
 100
 00:03:47,610 --> 00:03:49,890
-And if you get a duplicate key
-error, well, then all you want
+Y si obtienes un error de clave
+duplicada, bueno, entonces lo
 
 101
 00:03:49,890 --> 00:03:53,540
-to do is you just want to break
-and move on because you
+que deseas hacer es "break"
+y moverte porque sabes
 
 102
 00:03:53,540 --> 00:03:56,230
-know you already inserted that
-document the first time.
+que aquel documento ya fue
+insertado la primera vez.
 
 103
 00:03:56,230 --> 00:03:59,570
-So by having this document
-defined outside the retry loop
+Teniendo este documento definido
+fuera del bucle de reintento
 
 104
 00:03:59,570 --> 00:04:02,090
-and taking advantage of the
-driver's functionality of
+y aprovechando la
+funcionalidad del driver
 
 105
 00:04:02,090 --> 00:04:04,580
-inserting an underscore ID field
-and because underscore
+de insertar un campo "_id"
+y porque el "_id" debe
 
 106
 00:04:04,580 --> 00:04:07,640
-IDs must be unique inside the
-collection, you can basically
+ser único en la colección,
+básicamente puedes ejecutar
 
 107
 00:04:07,640 --> 00:04:11,190
-run this insert more
-than once safely.
+esta inserción más de
+una vez de forma segura.
 
 108
 00:04:11,190 --> 00:04:13,240
-Now the reality is even if
-we hadn't broken out this
+Ahora la verdad es que incluso
+si no hubieramos salido con este
 
 109
 00:04:13,240 --> 00:04:16,529
-DuplicateKeyError, this would
-still work because even if
+"DuplicateKeyError", esto todavía
+podría funcionar, porque incluso si
 
 110
 00:04:16,529 --> 00:04:18,750
-this DuplicateKeyError was
-handled here, if it went
+este "DuplicateKeyError"
+fuera atrapado aquí, iría
 
 111
 00:04:18,750 --> 00:04:20,040
-through all the retries--
+a través de todos los reintentos--
 
 112
 00:04:20,040 --> 00:04:21,899
-I mean, it'll be
-a little slow.
+Quiero decir, que
+será un poco lento.
 
 113
 00:04:21,899 --> 00:04:24,470
-But if it went through all the
-retries, it still wouldn't
+Pero si fueras a través de todos
+los reintentos, seguiría sin
 
 114
 00:04:24,470 --> 00:04:26,220
-insert the document
-more than once.
+insertar el documento
+más de una vez.
 
 115
 00:04:26,220 --> 00:04:27,340
-And that's the behavior
-you want.
+Y ese es el comportamiento
+que se desea.
 
 116
 00:04:27,340 --> 00:04:28,950
-You don't want to insert the
-document more than once.
+No se desea insertar el
+documento más de una vez.
 
 117
 00:04:28,950 --> 00:04:30,790
-You want to only
-insert it once.
+Sólo se desea
+insertalo una vez.
 
 118
 00:04:30,790 --> 00:04:35,090
-So this is properly structured
-code that will deal with
+Así que este es un código bien
+estructurado que hace frente a
 
 119
 00:04:35,090 --> 00:04:38,250
-replica set failures and
-primary elections.
+fallas de conjuntos de réplicas
+y elecciones de primario.
 
 120
 00:04:38,250 --> 00:04:40,490
-And it is the type of code
-you should write in your
+Y ese es el tipo de código
+que deberías escribir en
 
 121
 00:04:40,490 --> 00:04:43,370
-applications if they're
-production applications and
+tus aplicaciones si son
+aplicaciones para producción y
 
 122
 00:04:43,370 --> 00:04:45,230
-they're going to be running
-with a replica set.
+van a ejecutarse con un
+conjunto de réplicas.
 
 123
 00:04:45,230 --> 00:04:48,370
-And we definitely recommend
-using replica sets in
+Y definitivamente recomendamos
+usar conjuntos de réplicas en
 
 124
 00:04:48,370 --> 00:04:49,330
-production.
+producción.
 
 125
 00:04:49,330 --> 00:04:49,690
-All right.
+Muy bien.
 
 126
 00:04:49,690 --> 00:04:51,610
-So it's time for a quiz.
+Es momento para un cuestionario.
 
 127
 00:04:51,610 --> 00:04:54,030
-Is this code guaranteed
-to get the write
+¿Este código garantiza que
+la escritura sea existosa
 
 128
 00:04:54,030 --> 00:04:55,940
-done if failover occurs?
+si una conmutación
+por error ocurre?
 
 129
 00:04:55,940 --> 00:04:57,090
-And I'll just tell you
-so you don't need
+Y sólo voy a decirte
+que no necesitas
 
 130
 00:04:57,090 --> 00:04:58,100
-to read it too carefully.
+leer tan cuidadosamente.
 
 131
 00:04:58,100 --> 00:05:01,100
-It's exactly the code that I
-showed you in this lesson.
+Es exactamente el código que
+te mostré en esta lección.
 
 132
 00:05:01,100 --> 00:05:02,300
-And it's a little tricky.
+Y es un poco engañoso.
 
 133
 00:05:02,300 --> 00:05:03,440
-And I didn't really
-quite answer this
+Y realmente no
+respondí mucho a esta
 
 134
 00:05:03,440 --> 00:05:05,110
-question in the lesson.
+pregunta en la lección.
 
 135
 00:05:05,110 --> 00:05:06,800
-But see if you know
-the answer.
+Pero ve si sabes
+la respuesta.
 
 136
 00:05:06,800 --> 00:05:09,520
-Will this code guarantee to get
-this right inserted with
+¿Con este código se garantiza que
+la escritura sea insertada con
 
 137
 00:05:09,520 --> 00:05:11,260
-this retry loop the way
-it's structured now?
+este bucle de reintento de la forma
+como está estructurado ahora?
 
 138
 00:05:11,260 --> 00:05:12,510
