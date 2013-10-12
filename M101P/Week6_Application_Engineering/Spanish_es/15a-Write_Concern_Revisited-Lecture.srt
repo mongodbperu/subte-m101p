@@ -3,553 +3,552 @@
 
 2
 00:00:00,150 --> 00:00:02,540
-Now that we understand how
-replicate sets work, we can
+Ahora que entendemos cómo funcionan
+los conjuntos de replicas, podemos
 
 3
 00:00:02,540 --> 00:00:06,450
-get back to discussing write
-concern again, which we
+volver a discutir sobre concernencia
+de escritura (write concern) otra vez,
 
 4
 00:00:06,450 --> 00:00:08,640
-haven't talked about seriously
-since we talked about the
+que no hemos hablado en serio,
+ya que hemos hablado en
 
 5
 00:00:08,640 --> 00:00:10,830
-single mongod situation.
+situaciones de un solo mongod.
 
 6
 00:00:10,830 --> 00:00:16,079
-So the W parameter determines
-how many nodes you wait for
+El parámetro "w" determina
+cuántos nodos esperan antes
 
 7
 00:00:16,079 --> 00:00:18,640
-before you move on when
-you do an insert.
+que la repuesta retorne a ti
+cuando haces una inserción.
 
 8
 00:00:18,640 --> 00:00:20,190
-And again, this is accomplished
-by calling get
+Y de nuevo, esto se logra
+llamando a "getLastError"
 
 9
 00:00:20,190 --> 00:00:22,950
-last error by the drivers
-with W set.
+desde los drivers
+estableciendo "w".
 
 10
 00:00:22,950 --> 00:00:27,270
-So in the simple case where
-you have three nodes which
+Por lo que en el simple caso
+donde tienes los tres nodos que
 
 11
 00:00:27,270 --> 00:00:30,360
-we've discussed, three nodes
-in a replica set, sitting W
+hemos discutido, tres nodos en un
+conjunto de réplicas, estableciendo
 
 12
 00:00:30,360 --> 00:00:35,360
-equal to one, if this is the
-primary, will just wait for
+"w=1", si este es el
+primario, sólo esperará por
 
 13
 00:00:35,360 --> 00:00:37,500
-the primary to acknowledge
-the write.
+por la confirmación de la
+escritura en el primario.
 
 14
 00:00:37,500 --> 00:00:40,450
-Setting it equal to two, will
-wait for the primary and one
+Estableciendo "w=2", esperará
+por el primario y otro nodo
 
 15
 00:00:40,450 --> 00:00:42,500
-other node to acknowledge
-the write.
+para confirmar la escritura.
 
 16
 00:00:42,500 --> 00:00:45,420
-Setting it equal to three, will
-wait for all three to
+Estableciendo "w=3", esperará
+por todos los tres para
 
 17
 00:00:45,420 --> 00:00:47,490
-acknowledge the write.
+confirmar la escritura.
 
 18
 00:00:47,490 --> 00:00:50,240
-Setting journal equal to one
-will wait for the primary to
+Estableciendo "j=1" esperará
+por el primario para que la
 
 19
 00:00:50,240 --> 00:00:52,620
-write it all the way to disk.
+escritura esté en el disco.
 
 20
 00:00:52,620 --> 00:00:55,485
-Now, how long you wait
-is called wtimeout.
+Ahora, cuánto tiempo
+espera se llama "wtimeout".
 
 21
 00:00:55,485 --> 00:00:58,900
-So how long are you willing to
-wait for your writes to be
+¿Cuánto tiempo estás dspuesto
+a esperar para que tus escrituras
 
 22
 00:00:58,900 --> 00:01:01,020
-acknowledged by the
-secondaries?
+sean confirmadas
+por el secundario?
 
 23
 00:01:01,020 --> 00:01:04,900
-That's wtimeout which also can
-be set in the drivers.
+Eso es el "wtimeout" que también
+se puede establecer en los drivers.
 
 24
 00:01:04,900 --> 00:01:07,140
-Now these values, collectively,
-are
+Ahora estos valores,
+colectivamente, son
 
 25
 00:01:07,140 --> 00:01:08,260
-called write concern--
+llamados concernencia de
+escritura (write concern)--
 
 26
 00:01:08,260 --> 00:01:09,870
-W, J and wtimeout.
+"w", "j" y "wtimeout".
 
 27
 00:01:09,870 --> 00:01:11,500
-And there's actually
-three different
+Y en realidad hay tres distintos
 
 28
 00:01:11,500 --> 00:01:13,160
-places they can be set.
+lugares donde pueden
+ser establecidos.
 
 29
 00:01:13,160 --> 00:01:16,520
-One is that you can set them on
-a connection, which is the
+Uno de ellos es que puedes
+establecerlos en una conexión,
 
 30
 00:01:16,520 --> 00:01:18,160
-way we've been showing them.
+que es la forma que
+he estado mostrándote.
 
 31
 00:01:18,160 --> 00:01:21,280
-You can also set them on a
-collection inside the drivers.
+También puedes establecerlos
+en una colección en los drivers.
 
 32
 00:01:21,280 --> 00:01:22,460
-I don't think there's much
-of a difference there.
+No creo que haya mucha
+diferencia allí.
 
 33
 00:01:22,460 --> 00:01:25,070
-I think it's just the semantics
-of the driver.
+Creo que sólo es la
+semántica del driver.
 
 34
 00:01:25,070 --> 00:01:26,250
-I think either way it's
-just the driver
+Creo que en cualquier
+caso, el driver
 
 35
 00:01:26,250 --> 00:01:27,610
-calling get last error.
+llama a "getLastError".
 
 36
 00:01:27,610 --> 00:01:30,380
-And the last thing is that when
-you actually configure
+Y el último es que cuando
+en realidad configuras el
 
 37
 00:01:30,380 --> 00:01:34,870
-the replica set, in the
-configuration itself you can
+conjunto de réplicas, en
+su configuración puedes
 
 38
 00:01:34,870 --> 00:01:36,730
-set these values.
+establecer esos valores.
 
 39
 00:01:36,730 --> 00:01:40,200
-You can set defaults so that
-if no values come in, the
+Puedes establecer valores por
+defecto, que si no le envías,
 
 40
 00:01:40,200 --> 00:01:42,300
-replica set is always
-handled this way.
+el conjunto de réplicas siempre
+lo manejará de ese manera.
 
 41
 00:01:42,300 --> 00:01:45,430
-And I think from a system
-administration standpoint,
+Y pienso que desde el punto de vista
+de un administrador de sistemas,
 
 42
 00:01:45,430 --> 00:01:47,110
-this is probably the
-safest thing to do.
+esto es probablemente
+lo más rápido de hacer.
 
 43
 00:01:47,110 --> 00:01:50,340
-Because that way the developers
-aren't using a
+Cuando la forma que están usando
+los desarrolladores no es el
 
 44
 00:01:50,340 --> 00:01:52,530
-different default than you're
-expecting to be using.
+valor predeterminado que
+esperas que sea usado.
 
 45
 00:01:52,530 --> 00:01:56,110
-But in any event, you can do
-any of the three of them.
+Pero en cualquier caso, puedes
+hacer cualquiera de las tres.
 
 46
 00:01:56,110 --> 00:01:58,950
-There's a couple different other
-ways to use W. First one
+Hay un par de otras maneras
+distintas de usar "w". La primera
 
 47
 00:01:58,950 --> 00:02:01,730
-is that you can say
-W majority--
+es que puedes decir
+"w='majority'"--
 
 48
 00:02:01,730 --> 00:02:02,700
-very useful.
+muy útil.
 
 49
 00:02:02,700 --> 00:02:05,800
-And W majority is the one that
-will wait for the majority of
+Y "w='majority'" es el que
+va a esperar a la mayoría de
 
 50
 00:02:05,800 --> 00:02:08,199
-the nodes to replicate.
+los nodos para replicar.
 
 51
 00:02:08,199 --> 00:02:12,050
-Now, it turns out that W
-majority, or W2 if there were
+Ahora, resulta que "w='majority'",
+o "w=2" si hubiera
 
 52
 00:02:12,050 --> 00:02:17,020
-three nodes, is also what you
-need to avoid roll backs when
+tres nodos, es también lo que
+necesitas para evitar "rollbacks"
 
 53
 00:02:17,020 --> 00:02:19,760
-you failover.
+cuando una conmutación
+por error ocurre.
 
 54
 00:02:19,760 --> 00:02:23,180
-If you can imagine if you're
-writing to this primary and
+Puedes imaginar si estás
+escribiendo a este primario y
 
 55
 00:02:23,180 --> 00:02:26,780
-you're waiting for the writes
-to go here to the secondary,
+estás esperando que tus
+escrituras vayan a los secundarios,
 
 56
 00:02:26,780 --> 00:02:31,210
-then in this situation where
-the primary steps down this
+luego en esta situación donde
+el primario se detiene, este
 
 57
 00:02:31,210 --> 00:02:32,480
-guy has the writes.
+tiene las escrituras.
 
 58
 00:02:32,480 --> 00:02:35,570
-And I believe in that situation
-he'll be elected as
+Y creo que en esa situación
+este sería elegido como
 
 59
 00:02:35,570 --> 00:02:37,700
-primary if he's the
-furthest ahead.
+primario si es el que
+tiene la prioridad.
 
 60
 00:02:37,700 --> 00:02:41,920
-Not certain about that, so not
-sure it avoids rollbacks in
+No es cierto en eso, así que
+no es seguro evitar "rollbacks"
 
 61
 00:02:41,920 --> 00:02:43,180
-all those situations.
+en todas las situaciones.
 
 62
 00:02:43,180 --> 00:02:46,890
-But that's my understanding,
-that W majority is enough to
+Pero ese es mi entender, que
+"w='majority'" es suficiente para
 
 63
 00:02:46,890 --> 00:02:49,530
-avoid the rollback case.
+evitar el "rollback".
 
 64
 00:02:49,530 --> 00:02:54,220
-It's also important to note that
-J, which is wait for a
+Es importante también notar que
+"j", que es quien espera por
 
 65
 00:02:54,220 --> 00:02:57,945
-commit to journal, you're only
-waiting for it to commit to
+asegurar la operación al "journal",
+estás esperando sólo que se asegure
 
 66
 00:02:57,945 --> 00:03:00,190
-the journal on the
-primary node.
+en el "journal" del nodo primario.
 
 67
 00:03:00,190 --> 00:03:02,620
-You're not waiting for it to
-commit to journal on the
+No estás esperando para que
+se asegure al "journal" de
 
 68
 00:03:02,620 --> 00:03:04,240
-secondary nodes.
+los nodos secundarios.
 
 69
 00:03:04,240 --> 00:03:09,290
-So there's no guarantee that
-it's committed to the journal
+Por lo que no hay garantía que
+se esté asegurando al "journal"
 
 70
 00:03:09,290 --> 00:03:10,100
-in the second node.
+en el segundo nodo.
 
 71
 00:03:10,100 --> 00:03:13,175
-So you can imagine some crazy
-scenarios where the primary
+Así que puedes imaginar algunos
+locos escenarios donde el primario
 
 72
 00:03:13,175 --> 00:03:15,540
-and the secondary are
-both destroyed.
+y el secundarios son destruidos.
 
 73
 00:03:15,540 --> 00:03:17,980
-Or maybe this one's destroyed
-permanently and this one only
+O tal vez éste está destruido
+permanentemente y éste sólo
 
 74
 00:03:17,980 --> 00:03:18,730
-temporarily.
+temporalmente.
 
 75
 00:03:18,730 --> 00:03:21,960
-But because you only waited for
-W majority and because it
+Pero porque sólo esperaste por
+"w='majority'" y porque en realidad
 
 76
 00:03:21,960 --> 00:03:24,530
-wasn't actually committed all
-the way to disk that they
+esto no fue asegurado
+todo en el disco donde
 
 77
 00:03:24,530 --> 00:03:28,530
-happened simultaneously, then
-you might lose that write.
+sucedieron simultáneamente, entonces
+podrías perder esa escritura.
 
 78
 00:03:28,530 --> 00:03:31,760
-Anyway, so you could set W
-majority, you can set W equal
+De todos modos, podría establecer
+"w='majority'", puedes establecer
 
 79
 00:03:31,760 --> 00:03:33,620
-to a number which is the number
-of nodes you want to
+"w" igual a un número, que es
+el número de nodos que deseas
 
 80
 00:03:33,620 --> 00:03:35,350
-wait for before you continue.
+esperar antes de continuar.
 
 81
 00:03:35,350 --> 00:03:38,470
-And then there's also a way to
-set W equal to a tag value.
+Y luego también hay una manera de
+poner "w" igual a un valor de etiqueta.
 
 82
 00:03:38,470 --> 00:03:40,640
-And I'll go into that just
-a little bit about
+Y voy a repasar eso un poco acerca
 
 83
 00:03:40,640 --> 00:03:41,510
-what that might do.
+de lo que podría hacer.
 
 84
 00:03:41,510 --> 00:03:45,180
-You can label some of these
-nodes with tags.
+Puedes etiquetar algunos
+de estos nodos.
 
 85
 00:03:45,180 --> 00:03:47,990
-So let's look at the program
-that I want to show you.
+Veamos el programa
+que deseo mostrarte.
 
 86
 00:03:47,990 --> 00:03:53,370
-So this program is setting W
-equal to three and if you
+Este programa establece
+"w=3" y si recuerdas,
 
 87
 00:03:53,370 --> 00:03:56,520
-recall, one of the nodes
-has a delay on it.
+uno de los nodos tiene un retraso.
 
 88
 00:03:56,520 --> 00:04:01,650
-And so what should happen is
-that it should be pretty slow
+Y lo que debería pasar es
+que debería ser muy lento
 
 89
 00:04:01,650 --> 00:04:05,240
-to write that when it's waiting
-for all three nodes.
+para escribir eso cuando esté
+esperando por todos los tres nodos.
 
 90
 00:04:05,240 --> 00:04:06,750
-And I set a pretty
-long time out--
+Y puse un tiempo
+bastante largo--
 
 91
 00:04:06,750 --> 00:04:08,990
-10,000 seconds on that,
-and it's only going to
+10000 seconds en
+él, y sólo va a
 
 92
 00:04:08,990 --> 00:04:09,800
-have to wait five.
+tener que esperar 5.
 
 93
 00:04:09,800 --> 00:04:12,060
-So let's see what
-happens there.
+Así que veamos lo
+que sucede allí.
 
 94
 00:04:12,060 --> 00:04:19,300
 
 95
 00:04:19,300 --> 00:04:23,630
-You can see that we're winding
-up waiting a full five seconds
+Puedes ver que estamos con un desfase
+de espera de unos cinco segundos
 
 96
 00:04:23,630 --> 00:04:25,420
-between every single write.
+entre cada escritura.
 
 97
 00:04:25,420 --> 00:04:28,720
-And the reason is that the W was
-set to three, which means
+Y la razón es que el "w" fue
+establecido a tres, que quiere
 
 98
 00:04:28,720 --> 00:04:31,590
-that all three nodes need to
-acknowledge the write.
+decir que todos los tres nodos
+necesitan confirmar la escritura.
 
 99
 00:04:31,590 --> 00:04:36,740
-And because one of the nodes is,
-if you remember, running
+Y porque uno de los nodos
+está, si recuerdas, ejecutándose
 
 100
 00:04:36,740 --> 00:04:41,280
-delayed, he doesn't get the
-write for a full five seconds.
+con retraso, éste no obtiene la
+escritura por unos cinco segundos.
 
 101
 00:04:41,280 --> 00:04:44,280
-You can see it right there.
+Puedes ver justo ahí.
 
 102
 00:04:44,280 --> 00:04:46,860
-So one of these guys
-is running delayed.
+Uno de esos está
+ejecutándose con retraso.
 
 103
 00:04:46,860 --> 00:04:48,100
-Where is that shown?
+¿Dónde está eso mostrado?
 
 104
 00:04:48,100 --> 00:04:51,026
-Oh, it might only be in
-the configuration.
+Oh, podría estar sólo
+en la configuración.
 
 105
 00:04:51,026 --> 00:04:52,230
-Let's look at the conf--
+Veamos en la configuración--
 
 106
 00:04:52,230 --> 00:04:53,560
-ah, there we go.
+ah, ahí vamos.
 
 107
 00:04:53,560 --> 00:04:57,330
-Yes, so in the configuration
-rs.conf, you can see that this
+Sí, por lo que en la configuración
+"rs.conf", puedes ver que este
 
 108
 00:04:57,330 --> 00:05:00,500
-one right here is on a
-five seconds delay.
+de aquí está con un
+retraso de cinco segundos.
 
 109
 00:05:00,500 --> 00:05:05,510
-Also, just so you know if you
-use rs.help you can get a lot
+Además, sólo para que lo sepas,
+si usas "rs.help" puedes obtener
 
 110
 00:05:05,510 --> 00:05:09,530
-of nice little commands that
-deal with replica sets inside
+muchos pequeños comandos que
+tienen que ver con conjuntos de
 
 111
 00:05:09,530 --> 00:05:11,920
-the Mongo shell.
+réplicas en el shell Mongo.
 
 112
 00:05:11,920 --> 00:05:14,360
-And you can look in the
-documentation for all these.
+Y puedes mirar en la
+documentación de todos estos.
 
 113
 00:05:14,360 --> 00:05:17,900
-You can Google them and
-look on the docs.
+Puedes buscarlo en Google y
+mirar en la documentación.
 
 114
 00:05:17,900 --> 00:05:20,230
-All right, so let's do a quiz.
+Muy bien, hagamos un cuestionario.
 
 115
 00:05:20,230 --> 00:05:22,590
-So the question is, if you set
-W equal to one and J equal to
+La pregunta es, si
+estableces "w=1" y "j=1",
 
 116
 00:05:22,590 --> 00:05:26,420
-one, is it possible to wind up
-rolling back a committed write
+¿es posible tener un "rollback"
+para una escritura ya asegurada
 
 117
 00:05:26,420 --> 00:05:27,960
-to the primary on failover.
+en el primario en una
+conmutación por error?
 
 118
 00:05:27,960 --> 00:05:29,210
-What's the answer?
+¿Cuál es la respuesta?
