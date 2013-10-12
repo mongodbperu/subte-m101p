@@ -9,11 +9,11 @@ imaginaras un sistema con "sharding"
 3
 00:00:03,515 --> 00:00:05,960
 con tres "shards", y queríamos que
-averiguaras dónde iría una
+averiguaras hacia dónde iría una
 
 4
 00:00:05,960 --> 00:00:08,990
-consulta particular en
+consulta en particular en
 el sistema con "sharding".
 
 5
@@ -28,7 +28,7 @@ de abajo, muestra el rango
 
 7
 00:00:14,220 --> 00:00:17,760
-de "student_id" y dónde
+de "student_id" y hacia dónde
 mapean potencialemente.
 
 8
