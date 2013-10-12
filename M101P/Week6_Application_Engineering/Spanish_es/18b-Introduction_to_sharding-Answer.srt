@@ -3,60 +3,60 @@
 
 2
 00:00:00,400 --> 00:00:02,880
-OK, so this is a little
-bit tricky.
+OK, esto es un poco
+difícil.
 
 3
 00:00:02,880 --> 00:00:05,780
-OK, the answer is three.
+OK, la respuesta es tres.
 
 4
 00:00:05,780 --> 00:00:07,180
-All right, the shard key is not
+Bien, la clave de "shard" no está
 
 5
 00:00:07,180 --> 00:00:08,320
-including in the find operation.
+incluida en la operación "find".
 
 6
 00:00:08,320 --> 00:00:09,950
-There are three shards,
-each one a replica
+Hay tres "shards",
+cada uno un conjunto de
 
 7
 00:00:09,950 --> 00:00:12,030
-set of three nodes.
+de réplicas de tres nodos.
 
 8
 00:00:12,030 --> 00:00:14,440
-How many nodes will see
-the find operation?
+¿Cuántos nodos verán
+la operación "find"?
 
 9
 00:00:14,440 --> 00:00:18,480
-So it will go to all three of
-the shards, but only to one of
+Irá a los tres "shards",
+pero sólo a uno de los
 
 10
 00:00:18,480 --> 00:00:21,210
-the nodes within each shard
-because it's a replica set.
+nodos dentro de cada "shard"
+porque es un conjunto de réplicas.
 
 11
 00:00:21,210 --> 00:00:24,630
-So wherever the current primary
-and the default
+Así que esté donde esté el primario
+actual, la configuración por defecto
 
 12
 00:00:24,630 --> 00:00:27,620
-configuration will get that
-read, and therefore, it will
+obtendrá esa lectura,
+y por tanto, sólo
 
 13
 00:00:27,620 --> 00:00:31,280
-only be seen by three
-actual Mongod's
+será vista por tres
+mongod reales
 
 14
 00:00:31,280 --> 00:00:32,530
-and that's the answer.
+y ésa es la respuesta.
