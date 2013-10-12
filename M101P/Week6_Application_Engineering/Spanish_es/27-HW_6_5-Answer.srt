@@ -3,373 +3,373 @@
 
 2
 00:00:00,170 --> 00:00:02,910
-OK, in this problem, we asked
-you to create a replica set
+OK, en este problema te pedíamos
+que crearas un conjunto de réplicas
 
 3
 00:00:02,910 --> 00:00:04,310
-and prove that it works.
+y que probaras que funciona.
 
 4
 00:00:04,310 --> 00:00:08,860
-Now, the hard part about this is
-probably that nothing ever
+Ahora, la parte difícil de esto es
+probablemente que nada
 
 5
 00:00:08,860 --> 00:00:11,710
-works quite as you hope on a
-computer and that lots of
+funciona nunca como esperas en un
+ordenador y que surgen montones
 
 6
 00:00:11,710 --> 00:00:13,770
-small things come up, and you
-have to work through them.
+de cosas y tienes
+que resolverlas.
 
 7
 00:00:13,770 --> 00:00:15,530
-In addition, if you're a Windows
-user, I didn't even
+Además, si eres un usuario de
+Windows, no te di
 
 8
 00:00:15,530 --> 00:00:17,660
-give you Windows instructions,
-so that's an additional level
+instrucciones para Windows,
+por lo que hay un nivel adicional
 
 9
 00:00:17,660 --> 00:00:19,375
-of complexity.
+de complejidad.
 
 10
 00:00:19,375 --> 00:00:21,970
-I suggested that you create
-three directories right here
+Sugerí que crearas
+tres directorios justo aquí
 
 11
 00:00:21,970 --> 00:00:23,280
-and that's slash data.
+bajo este "/data".
 
 12
 00:00:23,280 --> 00:00:26,160
-And then, that you run these
-commands right here to name a
+Y luego, que ejecutaras estos
+comandos justo aquí para nombrar un
 
 13
 00:00:26,160 --> 00:00:28,600
-replica set and define your
-logpath as being in your
+conjunto de réplicas y definir tu
+"logpath" para que estuviera en tu
 
 14
 00:00:28,600 --> 00:00:31,180
-current directory, use small
-files, because you don't want
+directorio actual, usar 
+"smallfiles", porque no quieres
 
 15
 00:00:31,180 --> 00:00:34,910
-to use the disk space and,
-finally, to use these
+usar todo el espacio en disco y,
+por último, usar estos
 
 16
 00:00:34,910 --> 00:00:36,875
-different data directories
-that we created.
+directorios de datos distintos
+que creamos.
 
 17
 00:00:36,875 --> 00:00:39,240
-Then, you're supposed to connect
-to Mongo and, then,
+Entonces, se supone que te conectas
+a Mongo y luego
 
 18
 00:00:39,240 --> 00:00:42,430
-install this configuration
-on the server and,
+instalas esta configuración
+en el servidor y,
 
 19
 00:00:42,430 --> 00:00:43,165
-then, initiate it.
+luego, lo inicializas.
 
 20
 00:00:43,165 --> 00:00:44,640
-And that's really it.
+Y realmente es eso.
 
 21
 00:00:44,640 --> 00:00:46,860
-And then, run this validation
-script to prove you did it.
+Y luego, ejecutas este script de
+validación para comprobar que lo hiciste.
 
 22
 00:00:46,860 --> 00:00:48,850
-So I'm going to show you
-it running on my
+Así que voy a enseñártelo
+en ejecución en mi
 
 23
 00:00:48,850 --> 00:00:51,140
-computer and how it works.
+equipo y cómo funciona.
 
 24
 00:00:51,140 --> 00:00:52,160
-I have two scripts actually.
+En realidad tengo dos scripts.
 
 25
 00:00:52,160 --> 00:00:55,590
-The first one is called
-create_replica_set.sh.
+El primero se llama
+"create_replica_set.sh".
 
 26
 00:00:55,590 --> 00:00:58,810
-And what that does is it first
-removes all the directories.
+Y lo que hace es que primero
+elimina todos los directorios.
 
 27
 00:00:58,810 --> 00:01:01,450
-So this is probably
-not something for
+Así que esto probablemente
+no es algo para
 
 28
 00:01:01,450 --> 00:01:02,230
-the faint of heart.
+los débiles de corazón.
 
 29
 00:01:02,230 --> 00:01:03,480
-But I know that these
-are basically
+Pero sé que éstos
+están básicamente
 
 30
 00:01:03,480 --> 00:01:04,700
-empty, so I don't care.
+vacíos, así que no me preocupa.
 
 31
 00:01:04,700 --> 00:01:07,610
-And then, I create the
-directories again.
+Y entonces, creo los
+directorios de nuevo.
 
 32
 00:01:07,610 --> 00:01:09,055
-And then, I run the
-three Mongos.
+Luego, ejecuto los
+tres mongod.
 
 33
 00:01:09,055 --> 00:01:10,875
-Let's first do that.
+Hagamos eso.
 
 34
 00:01:10,875 --> 00:01:15,220
-So let's go here and I'm going
-to start with killall mongod.
+Así que vayamos aquí y voy
+a hacer un "killall mongod".
 
 35
 00:01:15,220 --> 00:01:17,770
-I think that's done, but, yeah,
-it was already done.
+Creo que está hecho, pero, sí,
+ya está hecho.
 
 36
 00:01:17,770 --> 00:01:22,905
-And then, I'm going to call
-create_replica_set.sh.
+Y entonces, voy a llamar a
+"create_replica_set.sh".
 
 37
 00:01:22,905 --> 00:01:24,560
-And you can see it runs.
+Y puedes ver que se ejecuta.
 
 38
 00:01:24,560 --> 00:01:26,870
-And then, if I look at
-one of the logs,
+Luego, si miro uno
+de los "logs",
 
 39
 00:01:26,870 --> 00:01:27,800
-it seems to be running.
+parece que se está ejecutando.
 
 40
 00:01:27,800 --> 00:01:29,320
-So that's good.
+Eso está bien.
 
 41
 00:01:29,320 --> 00:01:33,410
-ps -ef grep [? for ?] mongod,
-and I've got three of them. so
+"ps -ef | grep mongod",
+y obtengo tres de ellos, por lo que
 
 42
 00:01:33,410 --> 00:01:34,710
-I'm feeling good about that.
+me siento bien con esto.
 
 43
 00:01:34,710 --> 00:01:39,440
-And then, I wrote a secondary
-script called init_replSet.
+Entonces, escribí un segundo
+script llamado "init_replSet".
 
 44
 00:01:39,440 --> 00:01:43,490
-And that just has the command
-that I told you to type in at
+Y simplemente tiene el comando
+que te dije que escribieras en
 
 45
 00:01:43,490 --> 00:01:44,460
-the prompt.
+el indicador.
 
 46
 00:01:44,460 --> 00:01:46,210
-I was doing it over and over
-again, so it was easier to put
+Estaba haciendo esto una y otra 
+vez, así que era más sencillo ponerlo
 
 47
 00:01:46,210 --> 00:01:47,445
-it into a script.
+en un script.
 
 48
 00:01:47,445 --> 00:01:49,835
-And so that's the configuration
-and
+Y por tanto ésa es la configuración
+y 
 
 49
 00:01:49,835 --> 00:01:51,015
-the initiate step.
+el paso de incialización.
 
 50
 00:01:51,015 --> 00:01:55,570
-So I'm going to call that mongo
-initiate replica.js.
+Así que voy a llamar a 
+"mongo < init_replica.js".
 
 51
 00:01:55,570 --> 00:01:57,540
-And there we go.
+Y allá vamos.
 
 52
 00:01:57,540 --> 00:01:58,210
-It should be good.
+Debería estar bien.
 
 53
 00:01:58,210 --> 00:02:01,815
-I'll make sure it's
-OK, rs.status.
+Me aseguraré que está
+bien, "rs.status()".
 
 54
 00:02:01,815 --> 00:02:03,010
-Looks good to me.
+Me parece bien.
 
 55
 00:02:03,010 --> 00:02:04,300
-Actually, it's not
-totally done yet.
+En realidad, aún no
+está totalmente hecho.
 
 56
 00:02:04,300 --> 00:02:07,880
-It's in secondary startup
-unknown, Let's see.
+Están en estado "SECONDARY", "STARTUP"
+y "UNKNOWN", veamos.
 
 57
 00:02:07,880 --> 00:02:08,994
-So I'll run it again.
+Lo ejecutaré de nuevo.
 
 58
 00:02:08,994 --> 00:02:10,874
-They're not quite done yet.
+Aún no ha terminado.
 
 59
 00:02:10,874 --> 00:02:13,030
-So let's see if I just
-keep running this.
+Así que veamos si mantengo
+esto en ejecución.
 
 60
 00:02:13,030 --> 00:02:17,150
-Recovering and, oh, now, I'm
-up at the secondary.
+"RECOVERING" y, ¡oh!, ahora, tengo
+arriba el secundario.
 
 61
 00:02:17,150 --> 00:02:19,040
-So now, it looks
-like it's good.
+Ahora, parece
+que está bien.
 
 62
 00:02:19,040 --> 00:02:21,500
-Great, primary, secondary,
-secondary.
+Genial, "PRIMARY", "SECONDARY",
+"SECONDARY".
 
 63
 00:02:21,500 --> 00:02:23,510
-And then, I'm going to quit
-out of this and run the
+Y entonces, voy a salir
+de aquí y voy a ejecutar el
 
 64
 00:02:23,510 --> 00:02:26,540
-validation script, python
-validate.py.
+script de validación,
+"python validate.py".
 
 65
 00:02:26,540 --> 00:02:29,740
-And it connects locally
-to the replica set
+Y se conecta localmente
+al conjunto de réplicas
 
 66
 00:02:29,740 --> 00:02:31,380
-and says that I passed.
+y dice que pasó.
 
 67
 00:02:31,380 --> 00:02:34,250
-It connects to the RSS status
-and a few other things.
+Se conecta a "rs.status()"
+y a unas cuantas otras cosas.
 
 68
 00:02:34,250 --> 00:02:37,300
-So it gives me my validation
-code, which is congrats, you
+Y me da mi código de
+validación, que es "congrats, you
 
 69
 00:02:37,300 --> 00:02:39,060
-rock, 2012.
+rock, 2012".
 
 70
 00:02:39,060 --> 00:02:42,410
-And by the way, you all rock
-if you got all this done.
+Por cierto, todos vosotros moláis
+si conseguisteis hacer todo esto.
 
 71
 00:02:42,410 --> 00:02:45,060
-I think it's been a pretty
-intense course if you've never
+Creo que ha sido un curso
+bastante intenso si nunca
 
 72
 00:02:45,060 --> 00:02:47,210
-done MongoDB before and,
-certainly, if you don't have
+antes has usado MongoDB y,
+desde luego, si no tienes
 
 73
 00:02:47,210 --> 00:02:48,770
-any Python of experience,
-as well.
+ninguna experiencia en Python,
+también.
 
 74
 00:02:48,770 --> 00:02:50,880
-I know for a lot of people,
-you're probably experienced.
+Sé que un montón de gente,
+probablemente, tiene experiencia.
 
 75
 00:02:50,880 --> 00:02:52,880
-Some people on the
-forums seem more
+Algunas personas en los
+foros parecen con más
 
 76
 00:02:52,880 --> 00:02:54,820
-experienced than me in MongoDB.
+experiencia en MongoDB que yo.
 
 77
 00:02:54,820 --> 00:02:57,490
-So for those people maybe it was
-an easy course, but I know
+Por lo que para esas personas quizá
+el curso fue fácil, pero sé que
 
 78
 00:02:57,490 --> 00:02:58,490
-for a lot of you, it was
-probably challenging.
+para muchos de vosotros fue
+probablemente un reto.
 
 79
 00:02:58,490 --> 00:03:01,680
-So congratulations on getting
-to this point.
+Así que enhorabuena por llegar
+a este punto.
 
 80
 00:03:01,680 --> 00:03:04,680
-OK, so that's how this
-particular problem works.
+OK, así es como funciona
+este problema particular.
 
 81
 00:03:04,680 --> 00:03:05,930
