@@ -1,0 +1,4043 @@
+1
+00:00:00,000 --> 00:00:04,300
+OK, welcome to week 7 of
+MongoDB for developers.
+
+2
+00:00:04,300 --> 00:00:07,550
+This week we're going to be
+doing some interviews with
+
+3
+00:00:07,550 --> 00:00:11,650
+users of MongoDB, and today I'm
+here with Jon Hoffman from
+
+4
+00:00:11,650 --> 00:00:12,450
+Foursquare.
+
+5
+00:00:12,450 --> 00:00:15,840
+They were an early and big user
+of MongoDB, so thanks for
+
+6
+00:00:15,840 --> 00:00:17,150
+coming here today Jon.
+
+7
+00:00:17,150 --> 00:00:19,170
+Yeah, thank you for having me.
+
+8
+00:00:19,170 --> 00:00:20,900
+So we're going to do this
+pretty casually.
+
+9
+00:00:20,900 --> 00:00:23,800
+I have some questions I would
+like to ask you about your use
+
+10
+00:00:23,800 --> 00:00:28,210
+of MongoDB at Foursquare.
+
+11
+00:00:28,210 --> 00:00:31,180
+I guess first we should talk
+about what Foursquare is,
+
+12
+00:00:31,180 --> 00:00:32,890
+because some of our
+international students may not
+
+13
+00:00:32,890 --> 00:00:34,822
+be familiar with it.
+
+14
+00:00:34,822 --> 00:00:37,200
+Can you describe it
+really briefly?
+
+15
+00:00:37,200 --> 00:00:38,880
+Sure, Foursquare
+is two things.
+
+16
+00:00:38,880 --> 00:00:40,210
+It's a social utility.
+
+17
+00:00:40,210 --> 00:00:42,720
+It's a way to tell your friends
+where you are and find
+
+18
+00:00:42,720 --> 00:00:45,380
+out where they are, and then
+we also recycle that
+
+19
+00:00:45,380 --> 00:00:48,500
+information and aid in social
+discovery of your city.
+
+20
+00:00:48,500 --> 00:00:52,990
+So if you're looking for a new
+restaurant, or a bar, or any
+
+21
+00:00:52,990 --> 00:00:56,470
+type of place in your city, you
+can use the app to search
+
+22
+00:00:56,470 --> 00:00:58,000
+for that sort of thing,
+and we'll give you a
+
+23
+00:00:58,000 --> 00:01:01,230
+recommendation based on where
+your friends have been and
+
+24
+00:01:01,230 --> 00:01:03,570
+where you've been in the past.
+
+25
+00:01:03,570 --> 00:01:06,230
+And is it primarily a mobile
+application then?
+
+26
+00:01:06,230 --> 00:01:06,770
+Yeah.
+
+27
+00:01:06,770 --> 00:01:09,190
+So you use it on your
+smartphone--
+
+28
+00:01:09,190 --> 00:01:12,550
+like your iPhone, your
+BlackBerry, or your Android--
+
+29
+00:01:12,550 --> 00:01:16,400
+and you use it while
+you're on the go.
+
+30
+00:01:16,400 --> 00:01:18,510
+So give me a feeling for
+the scale of this?
+
+31
+00:01:18,510 --> 00:01:22,340
+Like, approximately how many
+check-ins occur, and what is
+
+32
+00:01:22,340 --> 00:01:25,530
+the rate of check-ins and
+that sort of thing?
+
+33
+00:01:25,530 --> 00:01:28,760
+So people let each other know
+where they are, or check-in
+
+34
+00:01:28,760 --> 00:01:32,060
+about five million
+times per day.
+
+35
+00:01:32,060 --> 00:01:32,840
+Wow
+
+36
+00:01:32,840 --> 00:01:34,110
+Yeah.
+
+37
+00:01:34,110 --> 00:01:36,360
+All right.
+
+38
+00:01:36,360 --> 00:01:42,580
+And what's the main role of
+MongoDB in the system?
+
+39
+00:01:42,580 --> 00:01:44,830
+So MongoDB is our primary
+data store.
+
+40
+00:01:44,830 --> 00:01:46,350
+We use it for almost
+everything.
+
+41
+00:01:46,350 --> 00:01:49,070
+Every time someone checks in--
+all those 5 million check-ins
+
+42
+00:01:49,070 --> 00:01:51,210
+every day gets stored MongoDB.
+
+43
+00:01:51,210 --> 00:01:54,810
+We store the user's account
+information in Mongo, we store
+
+44
+00:01:54,810 --> 00:01:58,660
+all associated information
+like information about a
+
+45
+00:01:58,660 --> 00:02:02,090
+place, tips that people
+have left--
+
+46
+00:02:02,090 --> 00:02:04,960
+almost everything is
+stored in Mongo.
+
+47
+00:02:04,960 --> 00:02:06,730
+That's great.
+
+48
+00:02:06,730 --> 00:02:07,780
+What's your role there?
+
+49
+00:02:07,780 --> 00:02:09,360
+Just so people know.
+
+50
+00:02:09,360 --> 00:02:13,050
+So I manage the storage team,
+where we focus on online
+
+51
+00:02:13,050 --> 00:02:14,210
+storage and offline storage.
+
+52
+00:02:14,210 --> 00:02:19,420
+And online storage is our Mongo
+database build out.
+
+53
+00:02:19,420 --> 00:02:24,570
+So describe the evolution of
+the use MongoDB, from the
+
+54
+00:02:24,570 --> 00:02:28,300
+beginning versus how
+it's evolved.
+
+55
+00:02:28,300 --> 00:02:30,020
+Can you give us a
+sense of that?
+
+56
+00:02:30,020 --> 00:02:30,320
+Sure.
+
+57
+00:02:30,320 --> 00:02:34,490
+So Foursquare started in 2009,
+and the prototype for
+
+58
+00:02:34,490 --> 00:02:38,240
+Foursquare was actually
+built on top of MySQL.
+
+59
+00:02:38,240 --> 00:02:40,790
+And then they had to be a
+rewrite when things started to
+
+60
+00:02:40,790 --> 00:02:42,100
+get serious.
+
+61
+00:02:42,100 --> 00:02:46,680
+So we started to rewrite the
+application in Scala, and we
+
+62
+00:02:46,680 --> 00:02:49,990
+switched from MySQL
+to Postgres.
+
+63
+00:02:49,990 --> 00:02:52,360
+That was fine for a little
+while, but at some point we
+
+64
+00:02:52,360 --> 00:02:55,640
+realized that we're going to
+need to split our data up
+
+65
+00:02:55,640 --> 00:02:58,710
+amongst multiple servers.
+
+66
+00:02:58,710 --> 00:03:03,620
+And that would involve getting
+rid of a lot of the features
+
+67
+00:03:03,620 --> 00:03:08,360
+that you have in a relational
+database, like joins and
+
+68
+00:03:08,360 --> 00:03:12,230
+transaction integrity, so that
+we'd have to move to some
+
+69
+00:03:12,230 --> 00:03:15,540
+other type of system,
+either on top of SQL
+
+70
+00:03:15,540 --> 00:03:17,290
+or something else.
+
+71
+00:03:17,290 --> 00:03:20,930
+So we looked at a few options,
+and we knew some people who
+
+72
+00:03:20,930 --> 00:03:22,160
+were using Mongo.
+
+73
+00:03:22,160 --> 00:03:26,930
+We started moving some things
+over to Mongo in 2010.
+
+74
+00:03:26,930 --> 00:03:30,480
+And we started with just
+a few collections.
+
+75
+00:03:30,480 --> 00:03:33,400
+So we moved over the database
+that stores venue
+
+76
+00:03:33,400 --> 00:03:34,510
+information--
+
+77
+00:03:34,510 --> 00:03:37,980
+information about places like
+restaurants and bars.
+
+78
+00:03:37,980 --> 00:03:41,982
+We moved that over to
+Mongo, but we didn't
+
+79
+00:03:41,982 --> 00:03:44,030
+do the switch overnight.
+
+80
+00:03:44,030 --> 00:03:47,750
+What we did was we started
+writing all of our data to
+
+81
+00:03:47,750 --> 00:03:48,810
+both places--
+
+82
+00:03:48,810 --> 00:03:51,110
+both to SQL and to Mongo.
+
+83
+00:03:51,110 --> 00:03:54,260
+And once we were satisfied that
+things were stable, and
+
+84
+00:03:54,260 --> 00:03:58,980
+we knew what we were doing, we
+slowly migrated the reads over
+
+85
+00:03:58,980 --> 00:04:00,160
+from SQL to Mongo.
+
+86
+00:04:00,160 --> 00:04:02,750
+So you were basically running
+both systems in parallel.
+
+87
+00:04:02,750 --> 00:04:03,730
+Exactly.
+
+88
+00:04:03,730 --> 00:04:06,515
+And writing to both systems,
+so you weren't dependent on
+
+89
+00:04:06,515 --> 00:04:07,280
+Mongo for awhile.
+
+90
+00:04:07,280 --> 00:04:09,040
+You kind of got comfortable with
+it, and then you switched
+
+91
+00:04:09,040 --> 00:04:11,880
+over once you were certain that
+it was working for you.
+
+92
+00:04:11,880 --> 00:04:14,250
+Right, we need to get confidence
+in the technology
+
+93
+00:04:14,250 --> 00:04:17,660
+and make sure that all of the
+data that was supposed to be
+
+94
+00:04:17,660 --> 00:04:18,829
+there was there.
+
+95
+00:04:18,829 --> 00:04:21,430
+And once we had that, we
+switched things over.
+
+96
+00:04:21,430 --> 00:04:25,050
+OK, so at this point, did you
+turn Postgres off entirely at
+
+97
+00:04:25,050 --> 00:04:26,060
+this point?
+
+98
+00:04:26,060 --> 00:04:30,320
+We actually still left
+it on just in case
+
+99
+00:04:30,320 --> 00:04:31,660
+something went wrong.
+
+100
+00:04:31,660 --> 00:04:34,010
+So we still had rights
+going to both places.
+
+101
+00:04:34,010 --> 00:04:37,350
+It's just that the read location
+was now Mongo.
+
+102
+00:04:37,350 --> 00:04:41,600
+And we left that on for at least
+a few weeks before we
+
+103
+00:04:41,600 --> 00:04:44,880
+were confident that we
+could turn it off.
+
+104
+00:04:44,880 --> 00:04:46,530
+What's your implementation
+language?
+
+105
+00:04:46,530 --> 00:04:48,420
+You said it was Scala?
+
+106
+00:04:48,420 --> 00:04:49,720
+Yes, Scala.
+
+107
+00:04:49,720 --> 00:04:55,930
+And were you using just our
+driver, or is there some other
+
+108
+00:04:55,930 --> 00:05:00,410
+intermediary layer that you
+used to talk to Mongo?
+
+109
+00:05:00,410 --> 00:05:02,280
+So just some background
+on Scala for
+
+110
+00:05:02,280 --> 00:05:03,380
+people who don't know.
+
+111
+00:05:03,380 --> 00:05:06,220
+Scala is a statically compiled
+language that runs
+
+112
+00:05:06,220 --> 00:05:07,870
+on top of the JVM.
+
+113
+00:05:07,870 --> 00:05:10,930
+So you write code in a
+syntax that's a bit
+
+114
+00:05:10,930 --> 00:05:11,750
+different from Java.
+
+115
+00:05:11,750 --> 00:05:14,610
+It kind of combines
+object oriented
+
+116
+00:05:14,610 --> 00:05:16,880
+and functional styles.
+
+117
+00:05:16,880 --> 00:05:20,320
+But it compiles down to Java
+bytecode, and it's completely
+
+118
+00:05:20,320 --> 00:05:23,040
+backward compatible with
+Java libraries.
+
+119
+00:05:23,040 --> 00:05:27,370
+So the driver that we're using
+was just 10gen's own Mongo
+
+120
+00:05:27,370 --> 00:05:28,850
+Java driver.
+
+121
+00:05:28,850 --> 00:05:29,840
+OK.
+
+122
+00:05:29,840 --> 00:05:32,960
+So the students all know that
+MongoDB is schema-less, and we
+
+123
+00:05:32,960 --> 00:05:36,990
+talk a lot about that being
+good in terms of agile
+
+124
+00:05:36,990 --> 00:05:40,170
+methodology and letting you
+evolve your schema over time.
+
+125
+00:05:40,170 --> 00:05:43,570
+Can you tell us a little bit
+about how your schemas has
+
+126
+00:05:43,570 --> 00:05:44,300
+evolved over time?
+
+127
+00:05:44,300 --> 00:05:47,580
+Whether or not it has been
+helpful, or whether the schema
+
+128
+00:05:47,580 --> 00:05:52,160
+has been fairly static
+over time in Mongo.
+
+129
+00:05:52,160 --> 00:05:52,470
+Sure.
+
+130
+00:05:52,470 --> 00:05:55,560
+So it depends on
+the collection.
+
+131
+00:05:55,560 --> 00:05:58,650
+Some of our collections have
+remained stable over time, and
+
+132
+00:05:58,650 --> 00:05:59,380
+some of them haven't.
+
+133
+00:05:59,380 --> 00:06:01,830
+And I can give you an example
+of our biggest collection,
+
+134
+00:06:01,830 --> 00:06:03,980
+which the check-ins
+that we store.
+
+135
+00:06:03,980 --> 00:06:06,880
+This is thing that we get 5
+million a day of, and at this
+
+136
+00:06:06,880 --> 00:06:10,220
+point we have over 2 and 1/2
+billion of these things.
+
+137
+00:06:10,220 --> 00:06:13,120
+And when we first started
+putting data into the
+
+138
+00:06:13,120 --> 00:06:18,220
+collection, we didn't have a
+good sense for how much space
+
+139
+00:06:18,220 --> 00:06:20,980
+it would end up eventually
+using.
+
+140
+00:06:20,980 --> 00:06:23,200
+We could have done the math
+ahead of time, but we didn't
+
+141
+00:06:23,200 --> 00:06:25,870
+think to, because we were
+kind of new to Mongo.
+
+142
+00:06:25,870 --> 00:06:30,760
+And at some point we realized
+that we were storing data in a
+
+143
+00:06:30,760 --> 00:06:34,330
+less than completely
+efficient way.
+
+144
+00:06:34,330 --> 00:06:39,140
+So we were able to rewrite the
+records while the system was
+
+145
+00:06:39,140 --> 00:06:45,210
+still live, so that involved
+going through a batch job that
+
+146
+00:06:45,210 --> 00:06:48,280
+ran through and removed certain
+bits of data, added
+
+147
+00:06:48,280 --> 00:06:48,970
+other data.
+
+148
+00:06:48,970 --> 00:06:54,750
+We added new field names, in
+some cases, that were shorter,
+
+149
+00:06:54,750 --> 00:06:57,140
+new keys on the documents that
+were shorter and were going to
+
+150
+00:06:57,140 --> 00:06:59,080
+take up less space.
+
+151
+00:06:59,080 --> 00:07:04,410
+And the way we did this is, we
+continued to have old field,
+
+152
+00:07:04,410 --> 00:07:08,160
+we added a new field, and then
+in our application code, we
+
+153
+00:07:08,160 --> 00:07:12,230
+were able to handle both,
+depending on what existed.
+
+154
+00:07:12,230 --> 00:07:15,890
+So the new field name would take
+precedence over the old
+
+155
+00:07:15,890 --> 00:07:19,720
+field name, but it would still
+be able to read the old field
+
+156
+00:07:19,720 --> 00:07:21,970
+name if that's all
+that existed.
+
+157
+00:07:21,970 --> 00:07:26,210
+In that way, we were able to
+have this migration process
+
+158
+00:07:26,210 --> 00:07:29,200
+running without taking
+any downtime on that.
+
+159
+00:07:29,200 --> 00:07:32,830
+So it was almost like a lazy
+migration where it would--
+
+160
+00:07:32,830 --> 00:07:34,160
+were you actively
+migrating data?
+
+161
+00:07:34,160 --> 00:07:38,720
+Or was it just faulted in when
+you used that document you
+
+162
+00:07:38,720 --> 00:07:41,020
+would update it to
+the new schema?
+
+163
+00:07:41,020 --> 00:07:43,050
+So it was both.
+
+164
+00:07:43,050 --> 00:07:45,910
+So for new data, it could be
+written with the new schema,
+
+165
+00:07:45,910 --> 00:07:49,310
+but we don't update old
+data very often.
+
+166
+00:07:49,310 --> 00:07:52,700
+So we had to run a
+batch process.
+
+167
+00:07:52,700 --> 00:07:56,440
+And over a few days-- it maybe
+even taken a few weeks to
+
+168
+00:07:56,440 --> 00:07:57,765
+rewrite all the data--
+
+169
+00:07:57,765 --> 00:08:00,390
+we slowly rewrote these keys.
+
+170
+00:08:00,390 --> 00:08:01,985
+So let's talk a little bit
+about performance.
+
+171
+00:08:01,985 --> 00:08:05,490
+
+172
+00:08:05,490 --> 00:08:08,690
+On your most active collection,
+do you know how
+
+173
+00:08:08,690 --> 00:08:11,600
+many indexes you have, just
+in order of magnitude?
+
+174
+00:08:11,600 --> 00:08:13,350
+Do you have 1, 5, 10, 100?
+
+175
+00:08:13,350 --> 00:08:16,350
+Well you can't have 100, but how
+many indexes do you have
+
+176
+00:08:16,350 --> 00:08:19,690
+on the most active
+collections?
+
+177
+00:08:19,690 --> 00:08:21,440
+I think the most active
+collections have
+
+178
+00:08:21,440 --> 00:08:22,890
+fewer indexes actually.
+
+179
+00:08:22,890 --> 00:08:24,090
+Makes sense.
+
+180
+00:08:24,090 --> 00:08:25,700
+Yeah because those are the
+ones that are most
+
+181
+00:08:25,700 --> 00:08:27,250
+sensitive to rights.
+
+182
+00:08:27,250 --> 00:08:31,110
+They have very well defined
+access patterns.
+
+183
+00:08:31,110 --> 00:08:35,510
+So for our check-ins collection,
+I think we have
+
+184
+00:08:35,510 --> 00:08:41,059
+three or four indexes, and
+that's the biggest one.
+
+185
+00:08:41,059 --> 00:08:43,690
+And then for some smaller
+collections where we be a
+
+186
+00:08:43,690 --> 00:08:46,380
+little bit more loose in our
+access patterns, where we're
+
+187
+00:08:46,380 --> 00:08:49,460
+not as sensitive to rights,
+I think the most number of
+
+188
+00:08:49,460 --> 00:08:53,550
+indexes we have still
+would be under 10.
+
+189
+00:08:53,550 --> 00:08:56,650
+Do you use our geospatial
+indexes?
+
+190
+00:08:56,650 --> 00:08:57,680
+We do.
+
+191
+00:08:57,680 --> 00:09:02,190
+So when we migrated our venues
+collection, which is one of
+
+192
+00:09:02,190 --> 00:09:06,860
+the first things we migrated
+from Postgres to Mongo, one of
+
+193
+00:09:06,860 --> 00:09:11,330
+the big benefits of Mongo
+is that it had built in
+
+194
+00:09:11,330 --> 00:09:12,390
+geospatial indexing.
+
+195
+00:09:12,390 --> 00:09:16,830
+So Postgres has that as well,
+but it wasn't as easy to use,
+
+196
+00:09:16,830 --> 00:09:20,520
+and we weren't as familiar
+with it.
+
+197
+00:09:20,520 --> 00:09:25,450
+So when we were on Postgres,
+we were just doing own very
+
+198
+00:09:25,450 --> 00:09:29,660
+crude bounding box queries, like
+get me the venues where
+
+199
+00:09:29,660 --> 00:09:32,770
+the latitude is between this
+value and that value, and the
+
+200
+00:09:32,770 --> 00:09:37,360
+longitude is between this value
+that value, which works
+
+201
+00:09:37,360 --> 00:09:39,540
+up to a certain point.
+
+202
+00:09:39,540 --> 00:09:43,840
+And when we moved to Mongo, we
+switched to using the built in
+
+203
+00:09:43,840 --> 00:09:47,826
+geoindexing, and we were able to
+handle a lot more load on a
+
+204
+00:09:47,826 --> 00:09:49,400
+single machine.
+
+205
+00:09:49,400 --> 00:09:51,690
+Do you use the 2D model?
+
+206
+00:09:51,690 --> 00:09:55,962
+Or do you use the new
+spherical model?
+
+207
+00:09:55,962 --> 00:09:58,710
+At the time-- this was a
+couple of years ago--
+
+208
+00:09:58,710 --> 00:10:02,950
+so at that time, we were
+using the 2D model.
+
+209
+00:10:02,950 --> 00:10:08,000
+And currently, I think we're
+still using the 2D model on
+
+210
+00:10:08,000 --> 00:10:10,710
+collections that have
+geoindexing.
+
+211
+00:10:10,710 --> 00:10:11,710
+OK.
+
+212
+00:10:11,710 --> 00:10:12,250
+Right.
+
+213
+00:10:12,250 --> 00:10:15,000
+Which still means that with the
+way you used to be doing
+
+214
+00:10:15,000 --> 00:10:16,540
+it with latitude and longitude
+bounds, you
+
+215
+00:10:16,540 --> 00:10:18,370
+were getting boxes.
+
+216
+00:10:18,370 --> 00:10:21,430
+And so now you're getting
+circles, but they might be
+
+217
+00:10:21,430 --> 00:10:24,700
+ellipsis, because the lines of
+latitude and longitude might
+
+218
+00:10:24,700 --> 00:10:29,280
+not be equally spaced,
+I guess.
+
+219
+00:10:29,280 --> 00:10:33,670
+And we sometimes have
+problems with that.
+
+220
+00:10:33,670 --> 00:10:35,150
+Further from the equator,
+I guess.
+
+221
+00:10:35,150 --> 00:10:36,100
+Right, exactly.
+
+222
+00:10:36,100 --> 00:10:41,280
+So in very northern cities, like
+Reykjavik, Iceland, we
+
+223
+00:10:41,280 --> 00:10:46,560
+have problems where the amount
+to work the database has to do
+
+224
+00:10:46,560 --> 00:10:52,540
+to find a certain bounded area
+is just a lot higher than in
+
+225
+00:10:52,540 --> 00:10:53,850
+other places in the world.
+
+226
+00:10:53,850 --> 00:10:55,100
+Interesting.
+
+227
+00:10:55,100 --> 00:10:57,150
+
+228
+00:10:57,150 --> 00:11:01,790
+So while we're on the topic
+of performance, how do you
+
+229
+00:11:01,790 --> 00:11:04,400
+monitor the system to make
+sure you're getting good
+
+230
+00:11:04,400 --> 00:11:05,970
+performance--
+
+231
+00:11:05,970 --> 00:11:07,480
+find your slow queries?
+
+232
+00:11:07,480 --> 00:11:13,050
+What is your standard way of
+making sure that a developer
+
+233
+00:11:13,050 --> 00:11:17,390
+is writing queries that hit the
+indexes and that no one's
+
+234
+00:11:17,390 --> 00:11:21,100
+going to mess up the performance
+by putting in a
+
+235
+00:11:21,100 --> 00:11:24,210
+slow query that's frequent?
+
+236
+00:11:24,210 --> 00:11:29,480
+So in our application layer,
+we're using a library that we
+
+237
+00:11:29,480 --> 00:11:31,310
+wrote in-house called Rogue.
+
+238
+00:11:31,310 --> 00:11:34,180
+And this is a Scala library.
+
+239
+00:11:34,180 --> 00:11:36,570
+And it allows you to define a
+schema for each document.
+
+240
+00:11:36,570 --> 00:11:39,620
+It also allows you to statically
+define what the
+
+241
+00:11:39,620 --> 00:11:43,410
+indexes you're using
+on the database.
+
+242
+00:11:43,410 --> 00:11:47,450
+And in the code itself, when you
+write a query that doesn't
+
+243
+00:11:47,450 --> 00:11:51,630
+use an index, you'll actually
+get a compile error--
+
+244
+00:11:51,630 --> 00:11:52,100
+That's pretty cool.
+
+245
+00:11:52,100 --> 00:11:53,910
+--in your application code.
+
+246
+00:11:53,910 --> 00:11:56,780
+And there's a way to override
+that, of course, because
+
+247
+00:11:56,780 --> 00:12:01,680
+sometimes you do want to do a
+full scan query, but if you
+
+248
+00:12:01,680 --> 00:12:04,460
+don't specify that, you'll
+get a compile error.
+
+249
+00:12:04,460 --> 00:12:08,970
+And you won't even be able
+to run your code.
+
+250
+00:12:08,970 --> 00:12:14,520
+Index selection is not
+completely obvious.
+
+251
+00:12:14,520 --> 00:12:16,840
+We have a Query Optimizer, and
+sometimes there are several
+
+252
+00:12:16,840 --> 00:12:18,030
+different plans.
+
+253
+00:12:18,030 --> 00:12:22,920
+How do you know, for any given
+query, what index MongoDB
+
+254
+00:12:22,920 --> 00:12:27,840
+would use without running it?
+
+255
+00:12:27,840 --> 00:12:31,260
+So first of all, when we're
+designing a collection, we go
+
+256
+00:12:31,260 --> 00:12:35,430
+through an internal review
+process where people describe
+
+257
+00:12:35,430 --> 00:12:38,840
+the data they want to store,
+what the query patterns are
+
+258
+00:12:38,840 --> 00:12:42,710
+going to be, what the update
+patterns are going to be, how
+
+259
+00:12:42,710 --> 00:12:45,400
+they correlate to other things
+that we already know something
+
+260
+00:12:45,400 --> 00:12:46,050
+think about.
+
+261
+00:12:46,050 --> 00:12:49,640
+Like, are they adding something
+that will correlate
+
+262
+00:12:49,640 --> 00:12:51,840
+to some action, like something
+that will be
+
+263
+00:12:51,840 --> 00:12:53,080
+accessed on every check-in?
+
+264
+00:12:53,080 --> 00:12:55,190
+Or something that will
+be accessed on every
+
+265
+00:12:55,190 --> 00:12:57,210
+recommendation query.
+
+266
+00:12:57,210 --> 00:13:01,330
+So that way we understand the
+usage, and then we can decide
+
+267
+00:13:01,330 --> 00:13:04,580
+what indexes we want to build.
+
+268
+00:13:04,580 --> 00:13:10,780
+And once we have that, we also
+know what queries we're going
+
+269
+00:13:10,780 --> 00:13:12,030
+to be executing.
+
+270
+00:13:12,030 --> 00:13:14,150
+
+271
+00:13:14,150 --> 00:13:16,800
+So one of the problems that you
+could have in Mongo, is
+
+272
+00:13:16,800 --> 00:13:19,635
+that you could execute a
+query and it could use
+
+273
+00:13:19,635 --> 00:13:22,570
+an unintended index.
+
+274
+00:13:22,570 --> 00:13:24,430
+And we've seen that
+happen before, but
+
+275
+00:13:24,430 --> 00:13:26,420
+it's a very rare case.
+
+276
+00:13:26,420 --> 00:13:31,850
+Like, very often the index
+that's used is the one that we
+
+277
+00:13:31,850 --> 00:13:34,940
+expect to be used.
+
+278
+00:13:34,940 --> 00:13:38,370
+So you have it statically
+mapped, basically?
+
+279
+00:13:38,370 --> 00:13:39,650
+We have it statically mapped,
+but Mongo has some
+
+280
+00:13:39,650 --> 00:13:42,900
+intelligence built in where the
+decision of what index to
+
+281
+00:13:42,900 --> 00:13:45,100
+use you can sometimes
+be ambiguous.
+
+282
+00:13:45,100 --> 00:13:48,970
+And I believe there are
+heuristics within Mongo based
+
+283
+00:13:48,970 --> 00:13:53,660
+on the amount of time that a
+query takes using an index
+
+284
+00:13:53,660 --> 00:13:56,190
+which is another, it'll decide
+to go with one or the other.
+
+285
+00:13:56,190 --> 00:13:56,540
+That's right.
+
+286
+00:13:56,540 --> 00:13:59,330
+That's what it does.
+
+287
+00:13:59,330 --> 00:14:03,330
+And sometimes we've seen that
+make the wrong decision.
+
+288
+00:14:03,330 --> 00:14:04,530
+Do you hint in that case?
+
+289
+00:14:04,530 --> 00:14:07,660
+Yeah in that case, we'll add a
+hint onto the query so that we
+
+290
+00:14:07,660 --> 00:14:12,270
+knew that we are always going
+to use the right index.
+
+291
+00:14:12,270 --> 00:14:14,860
+And does the developer need
+to write the hint?
+
+292
+00:14:14,860 --> 00:14:17,450
+Or is it automatically built
+into this interface layer so
+
+293
+00:14:17,450 --> 00:14:20,058
+that, as long as--
+
+294
+00:14:20,058 --> 00:14:21,940
+do they have to write the hint,
+or is it written for
+
+295
+00:14:21,940 --> 00:14:22,450
+[INAUDIBLE]?
+
+296
+00:14:22,450 --> 00:14:24,860
+Yeah, so the developer
+will right the hint.
+
+297
+00:14:24,860 --> 00:14:27,730
+And because we have the indexes
+statically defined as
+
+298
+00:14:27,730 --> 00:14:30,685
+this part of our schema
+definition, all they have to
+
+299
+00:14:30,685 --> 00:14:34,330
+do is say like, dot hint, and
+then have reference this
+
+300
+00:14:34,330 --> 00:14:36,370
+static defined index.
+
+301
+00:14:36,370 --> 00:14:37,810
+OK.
+
+302
+00:14:37,810 --> 00:14:39,700
+All right.
+
+303
+00:14:39,700 --> 00:14:47,840
+And then when you want to roll
+out new code, do you keep a
+
+304
+00:14:47,840 --> 00:14:48,570
+system running?
+
+305
+00:14:48,570 --> 00:14:52,600
+Do you quiesce parts of
+the system to do that?
+
+306
+00:14:52,600 --> 00:14:55,160
+If you have to migrate the
+schema our change the schema
+
+307
+00:14:55,160 --> 00:14:59,820
+slightly, how do you deal with
+that in the running system?
+
+308
+00:14:59,820 --> 00:15:04,020
+So we've had a few cases where
+we've done more complicated
+
+309
+00:15:04,020 --> 00:15:06,435
+migrations than the check-ins
+migration
+
+310
+00:15:06,435 --> 00:15:07,975
+that I described earlier.
+
+311
+00:15:07,975 --> 00:15:10,580
+
+312
+00:15:10,580 --> 00:15:16,270
+So in the check-in schema
+rewrite, we were able to use
+
+313
+00:15:16,270 --> 00:15:20,360
+the same schema definition
+within our application on top
+
+314
+00:15:20,360 --> 00:15:24,080
+of the changing document,
+because it didn't change in a
+
+315
+00:15:24,080 --> 00:15:25,640
+drastic way.
+
+316
+00:15:25,640 --> 00:15:28,810
+But in some other cases, we've
+done very, very drastic
+
+317
+00:15:28,810 --> 00:15:31,950
+changes, and it would
+be too risky to kind
+
+318
+00:15:31,950 --> 00:15:33,950
+of do that in place.
+
+319
+00:15:33,950 --> 00:15:37,380
+So what we've done in those
+cases, is created an entirely
+
+320
+00:15:37,380 --> 00:15:39,720
+parallel collection of data.
+
+321
+00:15:39,720 --> 00:15:44,970
+So an example of this is
+our friends graph data.
+
+322
+00:15:44,970 --> 00:15:51,170
+We started off with a friend
+graph that basically just had
+
+323
+00:15:51,170 --> 00:15:53,260
+one record for each
+relationship.
+
+324
+00:15:53,260 --> 00:15:56,480
+So if I'm friends with you,
+there'd be a relationship that
+
+325
+00:15:56,480 --> 00:15:58,830
+points to that--
+
+326
+00:15:58,830 --> 00:15:59,710
+in that direction.
+
+327
+00:15:59,710 --> 00:16:02,530
+Like, me to you-- my user
+ID to your user ID.
+
+328
+00:16:02,530 --> 00:16:06,700
+And there'd be another record
+that points from you to me.
+
+329
+00:16:06,700 --> 00:16:10,150
+And that way, when we did a
+query on who are my friends,
+
+330
+00:16:10,150 --> 00:16:14,000
+we'd just be searching
+on let's say the
+
+331
+00:16:14,000 --> 00:16:17,060
+from key in this record.
+
+332
+00:16:17,060 --> 00:16:20,130
+And when we're doing a query on
+who are your friends, we're
+
+333
+00:16:20,130 --> 00:16:23,300
+also searching on the from key,
+and there'd be just be
+
+334
+00:16:23,300 --> 00:16:26,350
+two separate records for each
+side of the relationship to
+
+335
+00:16:26,350 --> 00:16:29,420
+make the querying easier.
+
+336
+00:16:29,420 --> 00:16:32,240
+We realized that that
+was using--
+
+337
+00:16:32,240 --> 00:16:35,090
+that kind of representation of
+the friend graph was using a
+
+338
+00:16:35,090 --> 00:16:37,895
+lot more space than it
+needed to in Mongo.
+
+339
+00:16:37,895 --> 00:16:41,470
+So we basically de-normalized
+that friend graph.
+
+340
+00:16:41,470 --> 00:16:44,810
+So instead of storing one record
+per relationship, we
+
+341
+00:16:44,810 --> 00:16:49,530
+stored one record per user, and
+inside of that record we
+
+342
+00:16:49,530 --> 00:16:55,330
+had a list of all of the
+friends that they had.
+
+343
+00:16:55,330 --> 00:17:01,640
+So for your friend record,
+there'd be a list of each user
+
+344
+00:17:01,640 --> 00:17:03,350
+ID that your friends with.
+
+345
+00:17:03,350 --> 00:17:05,290
+And the same for my
+friend record.
+
+346
+00:17:05,290 --> 00:17:09,014
+Now, the friend relationship
+in Foursquare is
+
+347
+00:17:09,014 --> 00:17:10,470
+an asymmetric one?
+
+348
+00:17:10,470 --> 00:17:12,069
+Or is it a symmetric one?
+
+349
+00:17:12,069 --> 00:17:14,690
+I can follow you without
+you following me back.
+
+350
+00:17:14,690 --> 00:17:16,420
+For the most part,
+it's symmetric.
+
+351
+00:17:16,420 --> 00:17:20,490
+We do have some rare cases
+where it's not.
+
+352
+00:17:20,490 --> 00:17:24,770
+But the process of rewriting
+that schema was fairly
+
+353
+00:17:24,770 --> 00:17:25,550
+complicated.
+
+354
+00:17:25,550 --> 00:17:31,810
+So what we did was we basically
+had both schemas
+
+355
+00:17:31,810 --> 00:17:37,480
+running in parallel, and in
+order to keep them in sync, we
+
+356
+00:17:37,480 --> 00:17:41,050
+utilized the Mongo
+oplog itself.
+
+357
+00:17:41,050 --> 00:17:44,910
+We wrote an application that
+tailed the oplog for all
+
+358
+00:17:44,910 --> 00:17:49,170
+modifications to the original
+collection and then
+
+359
+00:17:49,170 --> 00:17:52,660
+transformed those into the way
+that they should look in the
+
+360
+00:17:52,660 --> 00:17:54,230
+new schema.
+
+361
+00:17:54,230 --> 00:17:58,220
+That was a pretty involved
+migration.
+
+362
+00:17:58,220 --> 00:18:03,300
+So that's a good segue, so we
+haven't gone over too many
+
+363
+00:18:03,300 --> 00:18:06,330
+operational issues in this
+course because it's not the
+
+364
+00:18:06,330 --> 00:18:11,400
+DBA course, but I want to give
+the students some idea of
+
+365
+00:18:11,400 --> 00:18:13,850
+operationally what
+you look like.
+
+366
+00:18:13,850 --> 00:18:17,380
+So first of all, you
+run sharded, right?
+
+367
+00:18:17,380 --> 00:18:18,310
+Yeah.
+
+368
+00:18:18,310 --> 00:18:24,110
+And you run on AWS?
+
+369
+00:18:24,110 --> 00:18:26,930
+So we have a split environment,
+actually.
+
+370
+00:18:26,930 --> 00:18:30,920
+Our application servers run on
+AWS and some other internal
+
+371
+00:18:30,920 --> 00:18:34,640
+sources, but our Mongo database
+servers are actually
+
+372
+00:18:34,640 --> 00:18:38,390
+in our own colocated servers.
+
+373
+00:18:38,390 --> 00:18:41,900
+And that's been an evolution for
+you, because you did run
+
+374
+00:18:41,900 --> 00:18:42,860
+them on AWS.
+
+375
+00:18:42,860 --> 00:18:46,840
+So we started off on AWS, and
+then we've recently migrated
+
+376
+00:18:46,840 --> 00:18:49,380
+over to our own racks.
+
+377
+00:18:49,380 --> 00:18:51,700
+Right, and I've seen some talks
+from Foursquare talking
+
+378
+00:18:51,700 --> 00:18:52,920
+about that.
+
+379
+00:18:52,920 --> 00:18:57,110
+Some of the early problems were
+with EBS performance.
+
+380
+00:18:57,110 --> 00:19:01,120
+So EBS is the elastic block
+store at Amazon.
+
+381
+00:19:01,120 --> 00:19:07,240
+It's essentially a network
+based file system.
+
+382
+00:19:07,240 --> 00:19:10,040
+And you weren't getting the
+performance you needed, and
+
+383
+00:19:10,040 --> 00:19:12,596
+there were other problems.
+
+384
+00:19:12,596 --> 00:19:15,430
+And so you talked about
+migrating away from--
+
+385
+00:19:15,430 --> 00:19:18,720
+I saw this maybe six months
+ago-- away from Amazon just
+
+386
+00:19:18,720 --> 00:19:21,660
+for that part of it.
+
+387
+00:19:21,660 --> 00:19:23,310
+Has that been a good
+migration?
+
+388
+00:19:23,310 --> 00:19:26,440
+Did it help you solve the
+problems you were having when
+
+389
+00:19:26,440 --> 00:19:29,120
+you went to dedicated
+hardware?
+
+390
+00:19:29,120 --> 00:19:30,020
+Yeah it did.
+
+391
+00:19:30,020 --> 00:19:36,080
+So the problem that we are
+having with EBS was that
+
+392
+00:19:36,080 --> 00:19:39,570
+because it's a network service,
+every once in awhile
+
+393
+00:19:39,570 --> 00:19:44,610
+you'd see very great variations
+in the latency for
+
+394
+00:19:44,610 --> 00:19:47,470
+doing disc operations.
+
+395
+00:19:47,470 --> 00:19:50,560
+And in addition to that, you'd
+see just extreme variations
+
+396
+00:19:50,560 --> 00:19:54,990
+where the I/O would completely
+lock up on the machine, and
+
+397
+00:19:54,990 --> 00:19:57,440
+that's because there's some
+sort of background process
+
+398
+00:19:57,440 --> 00:20:00,950
+running on the data
+to re-mirror it on
+
+399
+00:20:00,950 --> 00:20:04,060
+Amazon's side of things.
+
+400
+00:20:04,060 --> 00:20:06,830
+And no application deals
+with the disc
+
+401
+00:20:06,830 --> 00:20:08,020
+completing locking up.
+
+402
+00:20:08,020 --> 00:20:09,040
+No, not easily.
+
+403
+00:20:09,040 --> 00:20:11,060
+Applications just do not
+expect that happen.
+
+404
+00:20:11,060 --> 00:20:14,300
+So there could be an I/O error
+maybe that an application
+
+405
+00:20:14,300 --> 00:20:17,450
+knows how to deal with, but an
+application does not deal well
+
+406
+00:20:17,450 --> 00:20:22,510
+with indefinite lockups of I/O.
+And Mongo doesn't deal
+
+407
+00:20:22,510 --> 00:20:25,170
+with that well.
+
+408
+00:20:25,170 --> 00:20:31,860
+And the problem we had was that
+Mongo has this wonderful
+
+409
+00:20:31,860 --> 00:20:36,180
+replication feature of replica
+sets where you can have a
+
+410
+00:20:36,180 --> 00:20:40,200
+primary, and multiple
+secondaries, and ideas that
+
+411
+00:20:40,200 --> 00:20:41,820
+your rights go to the primary.
+
+412
+00:20:41,820 --> 00:20:42,910
+You have multiple secondaries.
+
+413
+00:20:42,910 --> 00:20:46,300
+If one of these servers goes
+down, you have redundancy.
+
+414
+00:20:46,300 --> 00:20:49,505
+So if the primary goes down,
+there will be an election and
+
+415
+00:20:49,505 --> 00:20:52,060
+a secondary will take over
+and become a primary.
+
+416
+00:20:52,060 --> 00:20:53,840
+Within a few seconds, you'll
+have a new place
+
+417
+00:20:53,840 --> 00:20:54,650
+to take your rights.
+
+418
+00:20:54,650 --> 00:20:58,190
+If one of the secondaries
+goes down, that's fine.
+
+419
+00:20:58,190 --> 00:21:02,020
+Queries will be routed to
+the other secondaries.
+
+420
+00:21:02,020 --> 00:21:08,130
+But that failover mechanism
+relies on some sort of hard
+
+421
+00:21:08,130 --> 00:21:11,960
+failure, like the process died,
+or the machine died, or
+
+422
+00:21:11,960 --> 00:21:14,440
+it's inaccessible
+on the network.
+
+423
+00:21:14,440 --> 00:21:19,040
+When the process is simply just
+extremely slow because
+
+424
+00:21:19,040 --> 00:21:23,520
+the disk is no longer
+returning I/O calls.
+
+425
+00:21:23,520 --> 00:21:27,260
+Mongo doesn't know how to
+deal with that well.
+
+426
+00:21:27,260 --> 00:21:31,410
+So what we would see is that
+this wonderful failover just
+
+427
+00:21:31,410 --> 00:21:36,430
+didn't function because of these
+problems of running on
+
+428
+00:21:36,430 --> 00:21:37,640
+top of network discs.
+
+429
+00:21:37,640 --> 00:21:40,210
+And would you see flapping?
+
+430
+00:21:40,210 --> 00:21:41,700
+Would you see--
+
+431
+00:21:41,700 --> 00:21:44,340
+would the system think that a
+replica was gone, and it would
+
+432
+00:21:44,340 --> 00:21:47,725
+try to pull it out and it
+would come back and?
+
+433
+00:21:47,725 --> 00:21:51,360
+No what we would see, actually,
+is depending on
+
+434
+00:21:51,360 --> 00:21:56,370
+where the problem occurred, we
+would just have queries timing
+
+435
+00:21:56,370 --> 00:21:57,540
+out on the back end.
+
+436
+00:21:57,540 --> 00:22:02,300
+So if our application tried to
+do a right, and the primary
+
+437
+00:22:02,300 --> 00:22:04,760
+was having a problem, that
+right would time out.
+
+438
+00:22:04,760 --> 00:22:07,410
+If they're trying to do a
+read to a secondary--
+
+439
+00:22:07,410 --> 00:22:09,231
+those would time out.
+
+440
+00:22:09,231 --> 00:22:10,481
+Do you use safe mode?
+
+441
+00:22:10,481 --> 00:22:13,270
+
+442
+00:22:13,270 --> 00:22:14,900
+Right concern--
+
+443
+00:22:14,900 --> 00:22:17,675
+do you call get last error
+to make sure that
+
+444
+00:22:17,675 --> 00:22:19,450
+your query is complete?
+
+445
+00:22:19,450 --> 00:22:20,980
+Yeah we do, actually.
+
+446
+00:22:20,980 --> 00:22:26,830
+We run GetLastError with SAFE,
+WriteConcern SAFE.
+
+447
+00:22:26,830 --> 00:22:31,010
+And is the new system that you
+co-located, does it use solid
+
+448
+00:22:31,010 --> 00:22:33,400
+state drives, or does it
+use spinning disks?
+
+449
+00:22:33,400 --> 00:22:36,920
+Yeah it uses solid
+state drivers.
+
+450
+00:22:36,920 --> 00:22:39,400
+I guess Amazon didn't have solid
+state drives when you
+
+451
+00:22:39,400 --> 00:22:41,550
+made the decision to make
+that transition.
+
+452
+00:22:41,550 --> 00:22:42,540
+Is that true?
+
+453
+00:22:42,540 --> 00:22:44,750
+That's true.
+
+454
+00:22:44,750 --> 00:22:48,890
+Do you have any experience with
+trying to use solid state
+
+455
+00:22:48,890 --> 00:22:50,290
+drives at Amazon to see if
+you get the same result?
+
+456
+00:22:50,290 --> 00:22:53,000
+
+457
+00:22:53,000 --> 00:22:53,690
+No.
+
+458
+00:22:53,690 --> 00:22:56,970
+The information that I have from
+other people is that they
+
+459
+00:22:56,970 --> 00:22:58,730
+actually work as advertised.
+
+460
+00:22:58,730 --> 00:23:02,630
+So we're running solid state
+drives on our own machines,
+
+461
+00:23:02,630 --> 00:23:05,570
+and I assume that the
+performance characteristics
+
+462
+00:23:05,570 --> 00:23:07,100
+would be somewhat similar.
+
+463
+00:23:07,100 --> 00:23:12,370
+So that actually would have
+solved our problems with
+
+464
+00:23:12,370 --> 00:23:14,470
+running on Amazon, if we
+had access to that
+
+465
+00:23:14,470 --> 00:23:16,440
+technology at the time.
+
+466
+00:23:16,440 --> 00:23:20,280
+But there are additional reasons
+for moving into our
+
+467
+00:23:20,280 --> 00:23:22,500
+own co-located servers.
+
+468
+00:23:22,500 --> 00:23:26,580
+And the biggest one, besides
+this reliability concern,
+
+469
+00:23:26,580 --> 00:23:30,910
+which was has actually since
+been addressed, is the cost.
+
+470
+00:23:30,910 --> 00:23:35,660
+So we think that because we're
+at a certain scale, we can
+
+471
+00:23:35,660 --> 00:23:40,950
+dedicate a certain amount of
+money to purchasing a fixed
+
+472
+00:23:40,950 --> 00:23:44,250
+set of capacity and actually do
+things a little bit cheaper
+
+473
+00:23:44,250 --> 00:23:45,282
+than on Amazon.
+
+474
+00:23:45,282 --> 00:23:47,570
+That really didn't make
+sense until we got to
+
+475
+00:23:47,570 --> 00:23:48,760
+be a certain size.
+
+476
+00:23:48,760 --> 00:23:50,085
+Yeah, certainly.
+
+477
+00:23:50,085 --> 00:23:52,800
+
+478
+00:23:52,800 --> 00:23:57,110
+When you're small, the thought
+of adding one person to handle
+
+479
+00:23:57,110 --> 00:24:01,910
+these things dwarfs the cost
+of any slight markup that
+
+480
+00:24:01,910 --> 00:24:03,790
+Amazon has over doing
+it yourself.
+
+481
+00:24:03,790 --> 00:24:04,520
+Right.
+
+482
+00:24:04,520 --> 00:24:05,370
+Yeah.
+
+483
+00:24:05,370 --> 00:24:07,120
+I guess when you get
+to a certain size,
+
+484
+00:24:07,120 --> 00:24:08,370
+that's no longer true.
+
+485
+00:24:08,370 --> 00:24:13,690
+
+486
+00:24:13,690 --> 00:24:17,840
+I thought maybe we would go over
+the life of a check-in
+
+487
+00:24:17,840 --> 00:24:21,580
+and do that in front of a white
+board, if that would be
+
+488
+00:24:21,580 --> 00:24:22,890
+OK with you.
+
+489
+00:24:22,890 --> 00:24:26,520
+And we'd move to a whiteboard,
+so you can show everybody--
+
+490
+00:24:26,520 --> 00:24:28,440
+give them a high level view of
+what happens when someone
+
+491
+00:24:28,440 --> 00:24:30,480
+checks in, relative
+to MongoDB.
+
+492
+00:24:30,480 --> 00:24:32,550
+Sure, all right.
+
+493
+00:24:32,550 --> 00:24:35,550
+OK well, we'll be right back.
+
+494
+00:24:35,550 --> 00:24:38,850
+OK, so welcome to our
+acoustically challenged
+
+495
+00:24:38,850 --> 00:24:39,790
+conference room.
+
+496
+00:24:39,790 --> 00:24:43,230
+You're going to take us through
+the life cycle of a
+
+497
+00:24:43,230 --> 00:24:47,840
+check-in, showing us how it
+interacts with MongoDB.
+
+498
+00:24:47,840 --> 00:24:51,730
+So, a check-in is something
+that would be done on your
+
+499
+00:24:51,730 --> 00:24:55,030
+iPhone, or your BlackBerry,
+or your Android device.
+
+500
+00:24:55,030 --> 00:24:57,460
+And what you're doing is you're
+posting a certain
+
+501
+00:24:57,460 --> 00:24:59,840
+amount of information over to
+Foursquare's application
+
+502
+00:24:59,840 --> 00:25:05,030
+server, and then we're doing a
+back and forth with our Mongo
+
+503
+00:25:05,030 --> 00:25:07,950
+databases to store
+that information
+
+504
+00:25:07,950 --> 00:25:09,810
+and render your result.
+
+505
+00:25:09,810 --> 00:25:14,050
+So I'll walk you through the
+basics of how that happens.
+
+506
+00:25:14,050 --> 00:25:17,740
+There's basically three
+actors in the system.
+
+507
+00:25:17,740 --> 00:25:20,800
+There is the user's
+device over here,
+
+508
+00:25:20,800 --> 00:25:24,030
+which could be an iPhone.
+
+509
+00:25:24,030 --> 00:25:30,350
+Then there is our application
+server over here, and as I
+
+510
+00:25:30,350 --> 00:25:33,820
+mentioned, this is code
+written in Scala.
+
+511
+00:25:33,820 --> 00:25:37,470
+And it's running on top of
+the Mongo Java driver.
+
+512
+00:25:37,470 --> 00:25:41,593
+And then we have our Mongo
+database over here.
+
+513
+00:25:41,593 --> 00:25:50,250
+
+514
+00:25:50,250 --> 00:25:55,000
+So the first thing that happens
+is the user taps on
+
+515
+00:25:55,000 --> 00:25:58,960
+their device, they locate the
+venue that they're at, they
+
+516
+00:25:58,960 --> 00:26:01,770
+click on that, and they
+click check-in.
+
+517
+00:26:01,770 --> 00:26:08,030
+And the information to gets
+posted over to our app is a
+
+518
+00:26:08,030 --> 00:26:18,050
+token for authentication, a
+venue ID, and some lat, long
+
+519
+00:26:18,050 --> 00:26:19,960
+information from the
+device about where
+
+520
+00:26:19,960 --> 00:26:21,210
+they are right now.
+
+521
+00:26:21,210 --> 00:26:23,650
+
+522
+00:26:23,650 --> 00:26:26,380
+So when the application has that
+information, the first
+
+523
+00:26:26,380 --> 00:26:30,380
+thing it needs to do is to
+authenticate the user.
+
+524
+00:26:30,380 --> 00:26:36,040
+So it takes that token that came
+over, and it executes a
+
+525
+00:26:36,040 --> 00:26:37,810
+query against Mongo--
+
+526
+00:26:37,810 --> 00:26:42,500
+
+527
+00:26:42,500 --> 00:26:45,190
+token.
+
+528
+00:26:45,190 --> 00:26:49,570
+So it's basically just doing a
+simple find query where the ID
+
+529
+00:26:49,570 --> 00:26:51,580
+is the token.
+
+530
+00:26:51,580 --> 00:26:55,890
+And the result that it gets back
+is a record that has a
+
+531
+00:26:55,890 --> 00:26:59,230
+mapping to the user
+ID for that token.
+
+532
+00:26:59,230 --> 00:27:00,110
+OK.
+
+533
+00:27:00,110 --> 00:27:03,420
+So it gets the user ID, which
+is an integer of some sort.
+
+534
+00:27:03,420 --> 00:27:03,790
+Right.
+
+535
+00:27:03,790 --> 00:27:06,370
+So the user ID is an integer.
+
+536
+00:27:06,370 --> 00:27:12,600
+So now for Mongo, we
+get the user ID.
+
+537
+00:27:12,600 --> 00:27:16,230
+And the reason the user ID is an
+integer and not a standard
+
+538
+00:27:16,230 --> 00:27:20,700
+Mongo object ID, is because
+we're coming from a legacy of
+
+539
+00:27:20,700 --> 00:27:27,070
+a SQL system where the ID was an
+auto incrementing integer.
+
+540
+00:27:27,070 --> 00:27:30,220
+And because of the pervasiveness
+of the user ID
+
+541
+00:27:30,220 --> 00:27:33,360
+as a foreign key, it would've
+been a lot of work to migrate
+
+542
+00:27:33,360 --> 00:27:37,100
+over, so we left this
+as an integer.
+
+543
+00:27:37,100 --> 00:27:39,850
+And the user name is changeable
+
+544
+00:27:39,850 --> 00:27:40,410
+on your system then?
+
+545
+00:27:40,410 --> 00:27:43,930
+Yes, so the user name
+is changeable.
+
+546
+00:27:43,930 --> 00:27:48,480
+So our document within Mongo
+for a user record has the
+
+547
+00:27:48,480 --> 00:27:52,330
+underscore idea as an integer,
+and there's fields for first
+
+548
+00:27:52,330 --> 00:27:54,830
+name, last name, email,
+et cetera.
+
+549
+00:27:54,830 --> 00:27:57,890
+
+550
+00:27:57,890 --> 00:28:02,040
+So once we have this user ID on
+the app server, we want to
+
+551
+00:28:02,040 --> 00:28:05,620
+look up this user record that
+has the more detailed
+
+552
+00:28:05,620 --> 00:28:08,220
+information about the user,
+because one of the things
+
+553
+00:28:08,220 --> 00:28:12,230
+within the user record is
+their last check-in ID.
+
+554
+00:28:12,230 --> 00:28:17,180
+And it turns out that we
+need that later on.
+
+555
+00:28:17,180 --> 00:28:23,080
+So then we do a query to Mongo
+with the user ID, and what we
+
+556
+00:28:23,080 --> 00:28:26,510
+get back is this fat
+user record.
+
+557
+00:28:26,510 --> 00:28:31,330
+
+558
+00:28:31,330 --> 00:28:31,980
+Gotcha.
+
+559
+00:28:31,980 --> 00:28:33,490
+OK.
+
+560
+00:28:33,490 --> 00:28:35,660
+Go to the app server--
+
+561
+00:28:35,660 --> 00:28:36,650
+it goes to that.
+
+562
+00:28:36,650 --> 00:28:38,970
+That's on the app server now.
+
+563
+00:28:38,970 --> 00:28:41,780
+The next thing that we need to
+do is we need to take this
+
+564
+00:28:41,780 --> 00:28:46,770
+venue ID, and make sure that
+it's a real venue.
+
+565
+00:28:46,770 --> 00:28:49,650
+If it's not, then we'll return
+an error to the user.
+
+566
+00:28:49,650 --> 00:28:53,080
+So we execute a query
+with this venue ID.
+
+567
+00:28:53,080 --> 00:28:58,350
+And the venue ID is a standard
+Mongo object ID.
+
+568
+00:28:58,350 --> 00:29:05,850
+So we send a query over with the
+venue ID, and we get back
+
+569
+00:29:05,850 --> 00:29:07,750
+a venue record.
+
+570
+00:29:07,750 --> 00:29:09,290
+Or not-- in that case we fail.
+
+571
+00:29:09,290 --> 00:29:18,390
+
+572
+00:29:18,390 --> 00:29:20,400
+And keep in mind that these
+are different collections.
+
+573
+00:29:20,400 --> 00:29:24,595
+So this would be a collection
+called oauth tokens, this is a
+
+574
+00:29:24,595 --> 00:29:27,325
+query against a collection
+called users, this is a query
+
+575
+00:29:27,325 --> 00:29:30,120
+against a collection
+called venues.
+
+576
+00:29:30,120 --> 00:29:32,090
+Which of these are shorted?
+
+577
+00:29:32,090 --> 00:29:36,970
+So all of them are
+sharded actually.
+
+578
+00:29:36,970 --> 00:29:42,220
+I'm simplifying things a bit
+here, but some of these are on
+
+579
+00:29:42,220 --> 00:29:44,100
+completely different
+Mongo clusters.
+
+580
+00:29:44,100 --> 00:29:47,020
+So we have the venue information
+stored on one
+
+581
+00:29:47,020 --> 00:29:50,620
+Mongo cluster and the
+user information
+
+582
+00:29:50,620 --> 00:29:51,930
+on a different one.
+
+583
+00:29:51,930 --> 00:29:56,990
+And these Mongo clusters are
+full sharded systems with
+
+584
+00:29:56,990 --> 00:30:01,740
+Mongo S routers, and multiple
+shards, and replica sets
+
+585
+00:30:01,740 --> 00:30:03,180
+within each shard.
+
+586
+00:30:03,180 --> 00:30:06,755
+But just for the flow, I'll
+leave those details out.
+
+587
+00:30:06,755 --> 00:30:09,320
+
+588
+00:30:09,320 --> 00:30:14,380
+So after we have the venue
+record, we basically have
+
+589
+00:30:14,380 --> 00:30:19,480
+everything that we need to
+record the check-in.
+
+590
+00:30:19,480 --> 00:30:21,730
+So that's what we do.
+
+591
+00:30:21,730 --> 00:30:25,950
+At this point, we can create
+a new check-in record.
+
+592
+00:30:25,950 --> 00:30:28,630
+
+593
+00:30:28,630 --> 00:30:37,550
+So we can create a record,
+and we store that
+
+594
+00:30:37,550 --> 00:30:40,580
+check-in over to Mongo.
+
+595
+00:30:40,580 --> 00:30:42,675
+So we do an insert operation.
+
+596
+00:30:42,675 --> 00:30:52,440
+
+597
+00:30:52,440 --> 00:30:57,590
+And we do this with a
+WriteConcern SAFE.
+
+598
+00:30:57,590 --> 00:30:58,710
+This other stuff--
+
+599
+00:30:58,710 --> 00:31:00,580
+well this is the first write you
+did, so the other ones are
+
+600
+00:31:00,580 --> 00:31:01,450
+just reads.
+
+601
+00:31:01,450 --> 00:31:04,970
+So right, WriteConcern
+SAFE, right?
+
+602
+00:31:04,970 --> 00:31:07,743
+So at this point, we've stored
+the check-in, but we need to
+
+603
+00:31:07,743 --> 00:31:09,930
+do a lot more work.
+
+604
+00:31:09,930 --> 00:31:15,550
+One thing that we do
+is we calculate
+
+605
+00:31:15,550 --> 00:31:16,770
+rewards on your check-in.
+
+606
+00:31:16,770 --> 00:31:18,760
+So if you've ever checked in at
+Foursquare, you know that
+
+607
+00:31:18,760 --> 00:31:21,430
+sometimes you get a badge
+for doing a check-in.
+
+608
+00:31:21,430 --> 00:31:24,500
+You might get points, we'll give
+you information about how
+
+609
+00:31:24,500 --> 00:31:29,290
+long it's been since the last
+you've been to a place, how
+
+610
+00:31:29,290 --> 00:31:32,200
+many miles it's been since
+your last check-in.
+
+611
+00:31:32,200 --> 00:31:34,380
+In order to do that, we need
+a lot more information.
+
+612
+00:31:34,380 --> 00:31:36,980
+
+613
+00:31:36,980 --> 00:31:41,700
+So one thing that we need is
+actually your entire check-in
+
+614
+00:31:41,700 --> 00:31:43,920
+history up to that point.
+
+615
+00:31:43,920 --> 00:31:48,770
+So to calculate certain badge
+rewards, we need to know how
+
+616
+00:31:48,770 --> 00:31:52,920
+many times have you been to this
+particular place or to
+
+617
+00:31:52,920 --> 00:31:56,900
+this type of place
+in the past.
+
+618
+00:31:56,900 --> 00:32:00,000
+So we'll do a query here.
+
+619
+00:32:00,000 --> 00:32:02,780
+So there's no real result
+here, but we'll do an
+
+620
+00:32:02,780 --> 00:32:06,450
+additional query to get
+your check-in history.
+
+621
+00:32:06,450 --> 00:32:12,980
+And what this is, is a query
+on the user ID against the
+
+622
+00:32:12,980 --> 00:32:14,785
+check-ins collection.
+
+623
+00:32:14,785 --> 00:32:18,370
+So the way that the check-in
+collection works is we have
+
+624
+00:32:18,370 --> 00:32:21,580
+one document per check-in,
+and then there's a
+
+625
+00:32:21,580 --> 00:32:24,640
+user ID in each document.
+
+626
+00:32:24,640 --> 00:32:28,110
+We have an index on user ID, and
+the collection is actually
+
+627
+00:32:28,110 --> 00:32:29,970
+sharded by user ID.
+
+628
+00:32:29,970 --> 00:32:32,910
+So we'll do a query against
+the user ID, and we'll get
+
+629
+00:32:32,910 --> 00:32:34,575
+back multiple check-ins.
+
+630
+00:32:34,575 --> 00:32:37,120
+
+631
+00:32:37,120 --> 00:32:42,740
+So a query on user ID, and
+then we get back many
+
+632
+00:32:42,740 --> 00:32:43,990
+check-ins documents.
+
+633
+00:32:43,990 --> 00:32:49,880
+
+634
+00:32:49,880 --> 00:32:51,850
+OK.
+
+635
+00:32:51,850 --> 00:32:54,180
+You pull their entire history
+if they have check-ins?
+
+636
+00:32:54,180 --> 00:32:56,440
+Yeah, so we pull their
+entire history.
+
+637
+00:32:56,440 --> 00:32:58,480
+If they've checked in thousands
+of times, we get
+
+638
+00:32:58,480 --> 00:33:00,760
+thousands of documents.
+
+639
+00:33:00,760 --> 00:33:05,300
+Each one of our documents
+is about 85 bytes.
+
+640
+00:33:05,300 --> 00:33:06,280
+Wow, that's small.
+
+641
+00:33:06,280 --> 00:33:08,820
+So you've really worked on
+keeping those small.
+
+642
+00:33:08,820 --> 00:33:12,880
+Yes, we did a lot of work to
+make sure that the keys within
+
+643
+00:33:12,880 --> 00:33:15,500
+each document are often
+a single character--
+
+644
+00:33:15,500 --> 00:33:17,320
+were possible.
+
+645
+00:33:17,320 --> 00:33:20,680
+We're storing the absolute
+minimum of data.
+
+646
+00:33:20,680 --> 00:33:24,030
+We have a few Boolean fields
+on there, but instead of
+
+647
+00:33:24,030 --> 00:33:30,730
+putting each Boolean in
+it's own key, we have
+
+648
+00:33:30,730 --> 00:33:32,270
+basically a bit set.
+
+649
+00:33:32,270 --> 00:33:36,060
+So we're storing one long on the
+document, and we're doing
+
+650
+00:33:36,060 --> 00:33:39,330
+some bit arithmetic
+to write to a
+
+651
+00:33:39,330 --> 00:33:44,500
+particular bit in that long.
+
+652
+00:33:44,500 --> 00:33:48,960
+So, does that make it harder to
+develop, that you've made
+
+653
+00:33:48,960 --> 00:33:52,636
+all the key names one character
+in the documents?
+
+654
+00:33:52,636 --> 00:33:55,600
+
+655
+00:33:55,600 --> 00:34:00,230
+It doesn't, because we have this
+statically defined scheme
+
+656
+00:34:00,230 --> 00:34:02,340
+that we've written for
+each document.
+
+657
+00:34:02,340 --> 00:34:07,860
+And in our application code,
+we have very convenient
+
+658
+00:34:07,860 --> 00:34:09,449
+humanized names for
+these fields.
+
+659
+00:34:09,449 --> 00:34:10,150
+I see.
+
+660
+00:34:10,150 --> 00:34:12,310
+So those names are not really
+seen by developers very much.
+
+661
+00:34:12,310 --> 00:34:17,360
+So developers won't see that the
+venue ID field within the
+
+662
+00:34:17,360 --> 00:34:21,962
+checking record is just a v.
+What they'll see is dot venue
+
+663
+00:34:21,962 --> 00:34:25,699
+ID on the check-in.
+
+664
+00:34:25,699 --> 00:34:28,510
+And that way, things
+are manageable.
+
+665
+00:34:28,510 --> 00:34:32,420
+It would be a very difficult
+situation if you have to
+
+666
+00:34:32,420 --> 00:34:36,530
+remember that v was venue ID in
+some cases, and maybe it's
+
+667
+00:34:36,530 --> 00:34:37,944
+something else in some
+other cases.
+
+668
+00:34:37,944 --> 00:34:40,909
+
+669
+00:34:40,909 --> 00:34:44,820
+Would you like a feature in
+MongoDB that would take care
+
+670
+00:34:44,820 --> 00:34:48,590
+of this type of mapping for
+you and keep smaller--
+
+671
+00:34:48,590 --> 00:34:52,199
+Yeah ideally, Mongo would
+somehow compress that
+
+672
+00:34:52,199 --> 00:34:54,730
+information itself.
+
+673
+00:34:54,730 --> 00:34:57,800
+And then we wouldn't have
+to manage that.
+
+674
+00:34:57,800 --> 00:35:01,350
+So it would be convenient if
+there was a feature to do
+
+675
+00:35:01,350 --> 00:35:06,340
+that, but you're doing
+it for us, basically.
+
+676
+00:35:06,340 --> 00:35:07,040
+Right.
+
+677
+00:35:07,040 --> 00:35:07,900
+Yeah.
+
+678
+00:35:07,900 --> 00:35:10,580
+I think there's room for
+improvement there, because
+
+679
+00:35:10,580 --> 00:35:15,860
+even these one letter keys are
+still duplicated, in our case,
+
+680
+00:35:15,860 --> 00:35:18,150
+a few billion times.
+
+681
+00:35:18,150 --> 00:35:24,650
+So you'll have a few gigabytes
+of data just for storing each
+
+682
+00:35:24,650 --> 00:35:26,430
+character in the key name.
+
+683
+00:35:26,430 --> 00:35:32,310
+You probably need some
+delimiter, because the schema
+
+684
+00:35:32,310 --> 00:35:33,560
+can be different in
+each document.
+
+685
+00:35:33,560 --> 00:35:36,190
+
+686
+00:35:36,190 --> 00:35:38,780
+It's an interesting problem.
+
+687
+00:35:38,780 --> 00:35:43,670
+Yeah I think it's one that's
+on the horizon to fix, and
+
+688
+00:35:43,670 --> 00:35:45,960
+there are possible solutions
+out there.
+
+689
+00:35:45,960 --> 00:35:50,810
+But hopefully a future version
+of Mongo will have that.
+
+690
+00:35:50,810 --> 00:35:55,340
+And it's usually not a problem
+until you end up getting into
+
+691
+00:35:55,340 --> 00:35:59,690
+the hundreds of millions or
+billions of documents.
+
+692
+00:35:59,690 --> 00:36:03,940
+For someone just getting started
+with Mongo, if your
+
+693
+00:36:03,940 --> 00:36:07,570
+library doesn't support aliasing
+short key names to
+
+694
+00:36:07,570 --> 00:36:10,770
+long key names, it's probably
+better to stick with a human
+
+695
+00:36:10,770 --> 00:36:13,090
+readable name.
+
+696
+00:36:13,090 --> 00:36:15,800
+At least think about the type
+of scale that you're
+
+697
+00:36:15,800 --> 00:36:18,710
+going to grow to.
+
+698
+00:36:18,710 --> 00:36:22,980
+Yeah I think that one of the
+benefits of MongoDB is the
+
+699
+00:36:22,980 --> 00:36:25,370
+readability of the data
+when you get it out.
+
+700
+00:36:25,370 --> 00:36:28,400
+
+701
+00:36:28,400 --> 00:36:32,490
+It does hurt you a little bit to
+have to have it translated
+
+702
+00:36:32,490 --> 00:36:33,620
+because you look at
+the document.
+
+703
+00:36:33,620 --> 00:36:37,030
+If you're just doing some
+debugging, or snooping around,
+
+704
+00:36:37,030 --> 00:36:39,560
+it's almost obfuscated.
+
+705
+00:36:39,560 --> 00:36:42,970
+Yeah we've had to be disciplined
+in using our own
+
+706
+00:36:42,970 --> 00:36:46,980
+tools to do investigations,
+because if you look at a
+
+707
+00:36:46,980 --> 00:36:49,010
+check-in document--
+
+708
+00:36:49,010 --> 00:36:50,630
+just the raw data for Mongo--
+
+709
+00:36:50,630 --> 00:36:54,330
+if you use the console and pull
+up a document, you have
+
+710
+00:36:54,330 --> 00:36:56,770
+these kind of ambiguous
+names for the keys.
+
+711
+00:36:56,770 --> 00:36:59,860
+Oftentimes it's pretty obvious,
+but you also have
+
+712
+00:36:59,860 --> 00:37:03,800
+this flag, which is a long,
+which is a bit set, which no
+
+713
+00:37:03,800 --> 00:37:07,630
+human I know of can interpret
+themselves.
+
+714
+00:37:07,630 --> 00:37:11,610
+So you need a computer
+for that.
+
+715
+00:37:11,610 --> 00:37:14,100
+We usually don't use
+the Mongo console
+
+716
+00:37:14,100 --> 00:37:15,510
+to bring back document.
+
+717
+00:37:15,510 --> 00:37:18,900
+We'll bring up a Scale console
+and use our own application
+
+718
+00:37:18,900 --> 00:37:21,150
+code to bring back a document
+if we want to
+
+719
+00:37:21,150 --> 00:37:23,296
+manually inspect it.
+
+720
+00:37:23,296 --> 00:37:27,540
+If you had to do it again, would
+you use Scale again?
+
+721
+00:37:27,540 --> 00:37:32,980
+Yes, I think Scala has been
+really great for developer
+
+722
+00:37:32,980 --> 00:37:35,590
+productivity.
+
+723
+00:37:35,590 --> 00:37:38,370
+It's something that I think a
+lot of developers get excited
+
+724
+00:37:38,370 --> 00:37:42,610
+to use, because it combines a
+lot of benefits that you get
+
+725
+00:37:42,610 --> 00:37:44,780
+from a statically
+typed language--
+
+726
+00:37:44,780 --> 00:37:47,270
+all the benefits you get from a
+statically typed language--
+
+727
+00:37:47,270 --> 00:37:51,740
+with some of the flexibility
+that you would have in a
+
+728
+00:37:51,740 --> 00:37:54,150
+language like Python or Ruby.
+
+729
+00:37:54,150 --> 00:37:57,930
+
+730
+00:37:57,930 --> 00:38:00,700
+I think the most important
+feature that leads that
+
+731
+00:38:00,700 --> 00:38:01,905
+flexibility--
+
+732
+00:38:01,905 --> 00:38:04,860
+that kind of dynamic language
+style flexibility--
+
+733
+00:38:04,860 --> 00:38:10,050
+is the ability to create
+closures in
+
+734
+00:38:10,050 --> 00:38:12,230
+line with your code.
+
+735
+00:38:12,230 --> 00:38:16,460
+So an example of that is if you
+have let's say, a list of
+
+736
+00:38:16,460 --> 00:38:21,540
+check-ins, and you want to
+convert that into a list of
+
+737
+00:38:21,540 --> 00:38:24,855
+venue IDs, because that's the
+input for some other function.
+
+738
+00:38:24,855 --> 00:38:27,490
+
+739
+00:38:27,490 --> 00:38:29,540
+In Java, what you would
+have to do is--
+
+740
+00:38:29,540 --> 00:38:33,370
+you would create a new array
+list, and then you would write
+
+741
+00:38:33,370 --> 00:38:38,310
+a for loop, and then in the body
+of the for loop, you'd
+
+742
+00:38:38,310 --> 00:38:41,750
+add check-in dot ID
+to that list.
+
+743
+00:38:41,750 --> 00:38:46,150
+So you'd have like four
+lines of code to do
+
+744
+00:38:46,150 --> 00:38:49,170
+this very basic operation.
+
+745
+00:38:49,170 --> 00:38:53,160
+Maybe there's an opportunity and
+therefore a bug, like an
+
+746
+00:38:53,160 --> 00:38:57,800
+off by one error if you started
+your for loop on the
+
+747
+00:38:57,800 --> 00:39:04,610
+wrong index or you put the wrong
+comparison operator,
+
+748
+00:39:04,610 --> 00:39:06,200
+something like that.
+
+749
+00:39:06,200 --> 00:39:10,640
+So in Scala, instead of having
+to write these external
+
+750
+00:39:10,640 --> 00:39:15,920
+looping functions, the
+collections have built in
+
+751
+00:39:15,920 --> 00:39:18,670
+transformation methods and
+iteration methods.
+
+752
+00:39:18,670 --> 00:39:24,380
+So a collection will have a
+dot map method on it that
+
+753
+00:39:24,380 --> 00:39:28,430
+takes a function that converts
+each item in the collection to
+
+754
+00:39:28,430 --> 00:39:29,920
+something else.
+
+755
+00:39:29,920 --> 00:39:33,536
+So the code to convert a list
+of check-ins into a list of
+
+756
+00:39:33,536 --> 00:39:37,990
+IDs basically looks like
+check-in dot map.
+
+757
+00:39:37,990 --> 00:39:41,800
+And then an inline function,
+which in Scala could just be
+
+758
+00:39:41,800 --> 00:39:46,010
+as simple as like, underscore,
+dot venue ID.
+
+759
+00:39:46,010 --> 00:39:49,060
+And then in that one line
+you'd have that
+
+760
+00:39:49,060 --> 00:39:50,660
+transformation.
+
+761
+00:39:50,660 --> 00:39:53,190
+I think that you can do that
+in a lot of other languages
+
+762
+00:39:53,190 --> 00:39:57,840
+like Python and Ruby, but then
+you don't have the benefits of
+
+763
+00:39:57,840 --> 00:39:58,860
+static compilation.
+
+764
+00:39:58,860 --> 00:40:01,860
+You can't get a lot of the other
+features that make us
+
+765
+00:40:01,860 --> 00:40:06,940
+productive like statically
+checking that our Mongo query
+
+766
+00:40:06,940 --> 00:40:17,030
+syntax actually will yield a
+sensible Mongo query, because
+
+767
+00:40:17,030 --> 00:40:22,250
+the way that we create queries
+is by building up upon
+
+768
+00:40:22,250 --> 00:40:25,760
+statically defined fields
+in our schema.
+
+769
+00:40:25,760 --> 00:40:28,030
+But it runs in the JVM.
+
+770
+00:40:28,030 --> 00:40:29,040
+Yeah this runs in the JVM.
+
+771
+00:40:29,040 --> 00:40:31,960
+So it is a dynamically
+executed language.
+
+772
+00:40:31,960 --> 00:40:33,720
+No.
+
+773
+00:40:33,720 --> 00:40:39,040
+It's actually just a syntax
+that gets compiled
+
+774
+00:40:39,040 --> 00:40:41,390
+into Java byte code.
+
+775
+00:40:41,390 --> 00:40:43,630
+So at the time that your
+application is running, the
+
+776
+00:40:43,630 --> 00:40:46,680
+JVM doesn't really know that
+it's executing Scala.
+
+777
+00:40:46,680 --> 00:40:49,930
+It's just executing
+Java byte code.
+
+778
+00:40:49,930 --> 00:40:52,420
+It's the combination of this
+compiler that takes a
+
+779
+00:40:52,420 --> 00:40:56,280
+different type of syntax, and it
+converts it into byte code
+
+780
+00:40:56,280 --> 00:40:58,630
+and a library.
+
+781
+00:40:58,630 --> 00:40:59,880
+All right.
+
+782
+00:40:59,880 --> 00:41:01,750
+
+783
+00:41:01,750 --> 00:41:06,160
+So this point you've got all
+the previous check-ins, so
+
+784
+00:41:06,160 --> 00:41:08,300
+what happens next?
+
+785
+00:41:08,300 --> 00:41:11,260
+So over here-- and I'll gloss
+through this bit-- but we
+
+786
+00:41:11,260 --> 00:41:16,250
+calculate things like what
+badges they may have won, what
+
+787
+00:41:16,250 --> 00:41:19,480
+points they may have gotten, and
+basic informational bits,
+
+788
+00:41:19,480 --> 00:41:23,250
+like the times of the last
+check-in, the last time
+
+789
+00:41:23,250 --> 00:41:25,540
+they're there, maybe the
+number of miles they've
+
+790
+00:41:25,540 --> 00:41:28,580
+traveled since their
+previous check-in.
+
+791
+00:41:28,580 --> 00:41:32,150
+So I'll just gloss over that,
+but we're basically
+
+792
+00:41:32,150 --> 00:41:36,960
+calculating rewards here.
+
+793
+00:41:36,960 --> 00:41:41,030
+
+794
+00:41:41,030 --> 00:41:44,210
+The output of those rewards
+might be information that we
+
+795
+00:41:44,210 --> 00:41:46,360
+store back into Mongo.
+
+796
+00:41:46,360 --> 00:41:50,320
+So for every check-in where
+you've scored some points,
+
+797
+00:41:50,320 --> 00:41:55,440
+we're writing a score document
+back into Mongo.
+
+798
+00:41:55,440 --> 00:41:57,970
+
+799
+00:41:57,970 --> 00:42:01,980
+If you won a badge, we'll write
+a record of that back
+
+800
+00:42:01,980 --> 00:42:04,170
+into Mongo.
+
+801
+00:42:04,170 --> 00:42:08,380
+So we might do a few
+more writes here.
+
+802
+00:42:08,380 --> 00:42:14,690
+But at this point, we have all
+the basic information to
+
+803
+00:42:14,690 --> 00:42:18,260
+return a result back
+to the user.
+
+804
+00:42:18,260 --> 00:42:20,510
+So they've checked in, it's
+been successful, we've
+
+805
+00:42:20,510 --> 00:42:22,390
+calculated their rewards.
+
+806
+00:42:22,390 --> 00:42:27,750
+Now we return a result back to
+the user, and we basically
+
+807
+00:42:27,750 --> 00:42:29,730
+have all the information that
+we need to do that.
+
+808
+00:42:29,730 --> 00:42:35,445
+We'll return the check-in--
+
+809
+00:42:35,445 --> 00:42:38,430
+the ID from their check-in.
+
+810
+00:42:38,430 --> 00:42:41,170
+And the important thing to
+realize here, is that when we
+
+811
+00:42:41,170 --> 00:42:43,220
+inserted this check-in,
+we actually
+
+812
+00:42:43,220 --> 00:42:45,835
+created the object ID--
+
+813
+00:42:45,835 --> 00:42:49,810
+the unique identifier for that
+check-in-- on the client side.
+
+814
+00:42:49,810 --> 00:42:51,185
+So we don't--
+
+815
+00:42:51,185 --> 00:42:54,170
+Kind of like what we do with
+BSON object IDs almost.
+
+816
+00:42:54,170 --> 00:42:55,875
+Well they are BSON object IDs.
+
+817
+00:42:55,875 --> 00:42:56,280
+Oh they are?
+
+818
+00:42:56,280 --> 00:42:57,830
+Yeah.
+
+819
+00:42:57,830 --> 00:43:01,280
+The object ID for the check-in
+gets created client-side, so
+
+820
+00:43:01,280 --> 00:43:05,600
+we know what it is before
+it hits the database.
+
+821
+00:43:05,600 --> 00:43:08,720
+So we have this check-in ID,
+we have the venue that they
+
+822
+00:43:08,720 --> 00:43:13,140
+were at, we have the result of
+this reward's calculation, and
+
+823
+00:43:13,140 --> 00:43:16,180
+at this point, we return a
+result back to the user.
+
+824
+00:43:16,180 --> 00:43:18,950
+
+825
+00:43:18,950 --> 00:43:22,270
+This is extremely simplified
+version of what
+
+826
+00:43:22,270 --> 00:43:24,080
+we're actually doing.
+
+827
+00:43:24,080 --> 00:43:30,400
+I can tell you that here maybe I
+described six or seven Mongo
+
+828
+00:43:30,400 --> 00:43:37,270
+operations, but on average we
+actually do something like 40
+
+829
+00:43:37,270 --> 00:43:39,630
+or 50 Mongo operations.
+
+830
+00:43:39,630 --> 00:43:41,380
+So do you have--
+
+831
+00:43:41,380 --> 00:43:43,490
+do you cache Mongo with
+memcache or anything?
+
+832
+00:43:43,490 --> 00:43:46,300
+Or do you run directly
+against it?
+
+833
+00:43:46,300 --> 00:43:46,700
+No.
+
+834
+00:43:46,700 --> 00:43:48,790
+So we query directly
+against Mongo.
+
+835
+00:43:48,790 --> 00:43:51,130
+And are you stateless in your
+application servers?
+
+836
+00:43:51,130 --> 00:43:51,930
+Like--
+
+837
+00:43:51,930 --> 00:43:53,540
+I'm sure you have load balances
+in front of your
+
+838
+00:43:53,540 --> 00:43:55,000
+application servers, right?
+
+839
+00:43:55,000 --> 00:43:55,420
+Yeah.
+
+840
+00:43:55,420 --> 00:43:59,690
+So am I locked to one
+application server during a
+
+841
+00:43:59,690 --> 00:44:05,070
+session, can my requests go to
+this application servers over
+
+842
+00:44:05,070 --> 00:44:08,050
+a period of even microseconds,
+and it won't matter because
+
+843
+00:44:08,050 --> 00:44:08,920
+they're stateless.
+
+844
+00:44:08,920 --> 00:44:09,620
+How does that work?
+
+845
+00:44:09,620 --> 00:44:11,010
+Yeah, exactly.
+
+846
+00:44:11,010 --> 00:44:12,720
+These app servers--
+
+847
+00:44:12,720 --> 00:44:15,200
+the servers that handle
+our API requests--
+
+848
+00:44:15,200 --> 00:44:17,896
+which are requests from the
+devices like iPhones,
+
+849
+00:44:17,896 --> 00:44:21,590
+Blackberrys, Androids,
+they're stateless.
+
+850
+00:44:21,590 --> 00:44:23,250
+And we have tons of them.
+
+851
+00:44:23,250 --> 00:44:28,110
+
+852
+00:44:28,110 --> 00:44:30,810
+You'll post a check into
+us and get a result.
+
+853
+00:44:30,810 --> 00:44:33,980
+And that might go to app server
+one the next time that
+
+854
+00:44:33,980 --> 00:44:35,980
+you issue a request to
+us, that'll go to a
+
+855
+00:44:35,980 --> 00:44:37,360
+different app server.
+
+856
+00:44:37,360 --> 00:44:40,290
+And there's a reason for
+a state to be stored on
+
+857
+00:44:40,290 --> 00:44:40,830
+[INAUDIBLE].
+
+858
+00:44:40,830 --> 00:44:41,630
+Is there a session state?
+
+859
+00:44:41,630 --> 00:44:43,860
+Do you have a collection for
+session state so that these
+
+860
+00:44:43,860 --> 00:44:48,266
+application servers can go
+from request to request?
+
+861
+00:44:48,266 --> 00:44:48,640
+No.
+
+862
+00:44:48,640 --> 00:44:51,540
+As far as the API is concerned,
+all the session
+
+863
+00:44:51,540 --> 00:44:55,520
+state would be handled by
+the client application.
+
+864
+00:44:55,520 --> 00:44:58,250
+So if this the iPhone
+application, it's maintaining
+
+865
+00:44:58,250 --> 00:44:59,310
+what's going on on
+your own device.
+
+866
+00:44:59,310 --> 00:45:00,560
+It knows where you are
+in some process.
+
+867
+00:45:00,560 --> 00:45:03,302
+
+868
+00:45:03,302 --> 00:45:03,763
+OK.
+
+869
+00:45:03,763 --> 00:45:05,150
+All right.
+
+870
+00:45:05,150 --> 00:45:05,750
+Thanks.
+
+871
+00:45:05,750 --> 00:45:07,000
+Sure.

@@ -1,0 +1,6222 @@
+1
+00:00:00,000 --> 00:00:00,630
+
+2
+00:00:00,630 --> 00:00:02,230
+Welcome back to M101.
+
+3
+00:00:02,230 --> 00:00:05,170
+I'm here with Ryan Bubinski,
+the Technical Co-Founder of
+
+4
+00:00:05,170 --> 00:00:06,330
+Codecademy.
+
+5
+00:00:06,330 --> 00:00:08,710
+And he's going to talk
+to us today about
+
+6
+00:00:08,710 --> 00:00:10,220
+their use of MongoDB.
+
+7
+00:00:10,220 --> 00:00:12,260
+So thanks for coming
+here, Ryan.
+
+8
+00:00:12,260 --> 00:00:12,750
+Thank you, Andrew.
+
+9
+00:00:12,750 --> 00:00:14,192
+It's my pleasure.
+
+10
+00:00:14,192 --> 00:00:14,860
+All right.
+
+11
+00:00:14,860 --> 00:00:16,950
+So tell me first, describe
+what Codecademy
+
+12
+00:00:16,950 --> 00:00:18,890
+does for the audience.
+
+13
+00:00:18,890 --> 00:00:20,840
+A lot of them are from
+Eastern Europe, so
+
+14
+00:00:20,840 --> 00:00:23,040
+maybe some don't know.
+
+15
+00:00:23,040 --> 00:00:23,780
+Certainly.
+
+16
+00:00:23,780 --> 00:00:27,660
+So Codecademy is the easiest way
+to learn to code online, a
+
+17
+00:00:27,660 --> 00:00:30,240
+series of interactive courses,
+tutorials, that take a
+
+18
+00:00:30,240 --> 00:00:33,020
+complete beginner to someone
+who's competent and literate
+
+19
+00:00:33,020 --> 00:00:35,880
+in technologies of programming
+and coding.
+
+20
+00:00:35,880 --> 00:00:36,650
+All right.
+
+21
+00:00:36,650 --> 00:00:38,180
+And it's a little bit different
+than the way we're
+
+22
+00:00:38,180 --> 00:00:41,040
+structuring this course, because
+rather than video
+
+23
+00:00:41,040 --> 00:00:43,476
+segments followed by these
+little quizzes, it's more of
+
+24
+00:00:43,476 --> 00:00:46,650
+an interactive system where
+you'll read a little bit and
+
+25
+00:00:46,650 --> 00:00:51,090
+then you'll do a hand-on task
+which lets you show mastery
+
+26
+00:00:51,090 --> 00:00:53,620
+immediately of what you're
+trying to accomplish, right?
+
+27
+00:00:53,620 --> 00:00:53,860
+Yeah.
+
+28
+00:00:53,860 --> 00:00:54,360
+That's right.
+
+29
+00:00:54,360 --> 00:00:57,230
+So we favor a learn-by-doing
+approach.
+
+30
+00:00:57,230 --> 00:01:00,830
+So we try to get our students
+coding as early as possible,
+
+31
+00:01:00,830 --> 00:01:04,170
+and start to teach them as there
+actually performing or
+
+32
+00:01:04,170 --> 00:01:06,950
+coding what's going on what and
+they're doing, and showing
+
+33
+00:01:06,950 --> 00:01:10,310
+them how they can apply
+programming to build projects,
+
+34
+00:01:10,310 --> 00:01:14,140
+to build websites and
+applications, and to really do
+
+35
+00:01:14,140 --> 00:01:16,420
+whatever it is they want
+to do with programming.
+
+36
+00:01:16,420 --> 00:01:19,830
+And some of the first tracks you
+did was in JavaScript, is
+
+37
+00:01:19,830 --> 00:01:20,460
+that right?
+
+38
+00:01:20,460 --> 00:01:22,200
+Our first track was
+in JavaScript.
+
+39
+00:01:22,200 --> 00:01:23,190
+So it's completely web-based.
+
+40
+00:01:23,190 --> 00:01:24,790
+It's within the browser.
+
+41
+00:01:24,790 --> 00:01:28,460
+And so JavaScript is pretty much
+the language of the web,
+
+42
+00:01:28,460 --> 00:01:31,250
+and it's also the language
+of browsers.
+
+43
+00:01:31,250 --> 00:01:35,760
+And we wanted to start with
+something that was immediately
+
+44
+00:01:35,760 --> 00:01:38,300
+accessible to as many people as
+possible, and would allow
+
+45
+00:01:38,300 --> 00:01:41,360
+them to immediately start
+creating interesting web
+
+46
+00:01:41,360 --> 00:01:42,000
+applications.
+
+47
+00:01:42,000 --> 00:01:44,160
+And for us, that
+was JavaScript.
+
+48
+00:01:44,160 --> 00:01:46,020
+And it's been pretty
+popular, right?
+
+49
+00:01:46,020 --> 00:01:48,865
+You've had millions of people
+who have done the stuff and
+
+50
+00:01:48,865 --> 00:01:51,410
+gone through and taken
+some of these tracks?
+
+51
+00:01:51,410 --> 00:01:51,680
+Yeah.
+
+52
+00:01:51,680 --> 00:01:54,240
+I think our approach has
+resonated with a very large
+
+53
+00:01:54,240 --> 00:01:57,670
+number of people all over the
+world with a wide variety of
+
+54
+00:01:57,670 --> 00:02:02,320
+interests, and I think we've,
+fortunately, introduced to a
+
+55
+00:02:02,320 --> 00:02:04,130
+large number of people, who
+wouldn't otherwise be
+
+56
+00:02:04,130 --> 00:02:07,000
+interested in programming or
+who otherwise wouldn't have
+
+57
+00:02:07,000 --> 00:02:08,789
+gotten involved with
+programming, we've gotten them
+
+58
+00:02:08,789 --> 00:02:12,440
+interested in the craft, and
+we're starting to make code
+
+59
+00:02:12,440 --> 00:02:15,090
+normal, which is what
+we want to do.
+
+60
+00:02:15,090 --> 00:02:16,360
+It's very cool.
+
+61
+00:02:16,360 --> 00:02:19,650
+So you started with MongoDB.
+
+62
+00:02:19,650 --> 00:02:21,380
+So how'd you decide
+you use MongoDB?
+
+63
+00:02:21,380 --> 00:02:23,490
+What were some of the thing that
+were interesting about it
+
+64
+00:02:23,490 --> 00:02:24,870
+to you guys?
+
+65
+00:02:24,870 --> 00:02:25,370
+Sure.
+
+66
+00:02:25,370 --> 00:02:28,050
+So there's a long story.
+
+67
+00:02:28,050 --> 00:02:30,030
+I think we'll get into
+some of the details.
+
+68
+00:02:30,030 --> 00:02:35,390
+But the short version of it is
+when we were first setting
+
+69
+00:02:35,390 --> 00:02:38,280
+out, Zach and I, my co-founder,
+we were
+
+70
+00:02:38,280 --> 00:02:40,430
+prototyping different versions
+of the site.
+
+71
+00:02:40,430 --> 00:02:44,150
+We were working through
+different ways of creating an
+
+72
+00:02:44,150 --> 00:02:47,450
+interactive online platform, and
+we were quickly changing
+
+73
+00:02:47,450 --> 00:02:49,870
+our model definitions, quickly
+changing our schema,
+
+74
+00:02:49,870 --> 00:02:51,830
+definitions and the relations,
+and models.
+
+75
+00:02:51,830 --> 00:02:55,610
+And we wanted a data store that
+was very flexible and
+
+76
+00:02:55,610 --> 00:02:59,080
+that wouldn't slow us down
+as we were making these
+
+77
+00:02:59,080 --> 00:03:00,520
+definition changes.
+
+78
+00:03:00,520 --> 00:03:03,460
+And I actually wasn't
+familiar with Mongo.
+
+79
+00:03:03,460 --> 00:03:07,850
+I was a relational database
+guy for many years before.
+
+80
+00:03:07,850 --> 00:03:12,930
+And I saw Mongo as this
+fantastic technology that
+
+81
+00:03:12,930 --> 00:03:16,800
+would allow us to not worry
+about the schema up front--
+
+82
+00:03:16,800 --> 00:03:18,860
+or at least until we needed
+to start thinking
+
+83
+00:03:18,860 --> 00:03:20,860
+seriously at scale.
+
+84
+00:03:20,860 --> 00:03:24,000
+And so for us, MongoDB was the
+easiest way to rapidly
+
+85
+00:03:24,000 --> 00:03:27,430
+prototype different
+models and their
+
+86
+00:03:27,430 --> 00:03:29,280
+relations one way or another.
+
+87
+00:03:29,280 --> 00:03:33,140
+And I felt like that very
+significantly sped up
+
+88
+00:03:33,140 --> 00:03:34,750
+development for us.
+
+89
+00:03:34,750 --> 00:03:38,310
+So did you have any concerns
+going into it?
+
+90
+00:03:38,310 --> 00:03:39,555
+If you come from the world of
+relational, what would you be
+
+91
+00:03:39,555 --> 00:03:41,180
+most worried about?
+
+92
+00:03:41,180 --> 00:03:44,710
+Naturally doing joins across
+different models and different
+
+93
+00:03:44,710 --> 00:03:48,390
+tables, or in the case of
+MongoDB, collections.
+
+94
+00:03:48,390 --> 00:03:54,350
+I think in the world of
+relational databases, your
+
+95
+00:03:54,350 --> 00:03:57,280
+intuition or your gut is
+always telling you to
+
+96
+00:03:57,280 --> 00:04:01,440
+normalize, normalize, normalize,
+and in a document
+
+97
+00:04:01,440 --> 00:04:05,760
+or key values store, you need to
+denormalize sometimes, and
+
+98
+00:04:05,760 --> 00:04:07,030
+sometimes that doesn't
+feel right.
+
+99
+00:04:07,030 --> 00:04:11,530
+But in many cases, you can find
+a very happy balance or
+
+100
+00:04:11,530 --> 00:04:15,280
+best of both worlds that is so
+much easier to deal with.
+
+101
+00:04:15,280 --> 00:04:18,079
+Yeah.
+
+102
+00:04:18,079 --> 00:04:21,820
+What is your implementation
+language for Codecademy?
+
+103
+00:04:21,820 --> 00:04:22,120
+Sure.
+
+104
+00:04:22,120 --> 00:04:25,770
+So Codecademy is primarily
+built on top of Ruby for
+
+105
+00:04:25,770 --> 00:04:29,250
+anything server side and
+JavaScript for some of the
+
+106
+00:04:29,250 --> 00:04:31,330
+server-side logic
+and all of the
+
+107
+00:04:31,330 --> 00:04:32,780
+client-side logic, of course.
+
+108
+00:04:32,780 --> 00:04:37,720
+And we have multiple layers
+outside of MongoDB.
+
+109
+00:04:37,720 --> 00:04:40,090
+Our API layer is implemented
+in Ruby.
+
+110
+00:04:40,090 --> 00:04:42,290
+Our application layer is
+implemented in Ruby and
+
+111
+00:04:42,290 --> 00:04:43,140
+JavaScript.
+
+112
+00:04:43,140 --> 00:04:46,920
+And we have a series of
+independent JavaScript
+
+113
+00:04:46,920 --> 00:04:51,210
+applications that power the web
+client or the actual web
+
+114
+00:04:51,210 --> 00:04:54,080
+application that most people
+know of as Codecademy.
+
+115
+00:04:54,080 --> 00:04:55,120
+I see.
+
+116
+00:04:55,120 --> 00:04:58,150
+And do you use our drivers
+directly or something
+
+117
+00:04:58,150 --> 00:04:59,420
+intermediary, like some mapping
+
+118
+00:04:59,420 --> 00:05:01,450
+layer to talk to MongoDB?
+
+119
+00:05:01,450 --> 00:05:09,800
+So for our API that wraps our
+data layer, we use a object
+
+120
+00:05:09,800 --> 00:05:14,290
+document mapper called Mongoid,
+which uses their own
+
+121
+00:05:14,290 --> 00:05:18,270
+version of a MongoDB driver
+that directly communicates
+
+122
+00:05:18,270 --> 00:05:19,140
+with our database.
+
+123
+00:05:19,140 --> 00:05:22,440
+And we've experimented with
+using the driver directly.
+
+124
+00:05:22,440 --> 00:05:25,830
+In some cases, we do-- if we
+want a very particular type of
+
+125
+00:05:25,830 --> 00:05:29,890
+insert or update and we want
+to go directly to the data
+
+126
+00:05:29,890 --> 00:05:31,680
+store and move on.
+
+127
+00:05:31,680 --> 00:05:37,630
+But for most development using
+an ODM is a nice way of
+
+128
+00:05:37,630 --> 00:05:41,470
+encapsulating that logic and of
+focusing at a higher level
+
+129
+00:05:41,470 --> 00:05:45,560
+on how the model's structured,
+how it relates to other
+
+130
+00:05:45,560 --> 00:05:48,390
+models, and that allows us
+to kind of more easily
+
+131
+00:05:48,390 --> 00:05:52,740
+conceptualize how we're laying
+out the data layer.
+
+132
+00:05:52,740 --> 00:05:56,910
+So except in the rare cases
+where we need to optimize
+
+133
+00:05:56,910 --> 00:06:00,700
+performance or a particular
+use case, we use an ODM.
+
+134
+00:06:00,700 --> 00:06:00,920
+Yeah.
+
+135
+00:06:00,920 --> 00:06:02,010
+So that's my question.
+
+136
+00:06:02,010 --> 00:06:05,610
+With these mapping layers,
+sometimes it puts a developer
+
+137
+00:06:05,610 --> 00:06:08,750
+a little bit further away
+from the schema.
+
+138
+00:06:08,750 --> 00:06:11,990
+And getting the performance on
+any database backed system is
+
+139
+00:06:11,990 --> 00:06:13,430
+about making sure you
+hit the indexes.
+
+140
+00:06:13,430 --> 00:06:14,100
+Yep.
+
+141
+00:06:14,100 --> 00:06:16,590
+So is it a problem--
+
+142
+00:06:16,590 --> 00:06:18,450
+and maybe if you have a small
+team, it's a big issue-- but
+
+143
+00:06:18,450 --> 00:06:21,750
+to have everyone be cognizant
+of how to write code that's
+
+144
+00:06:21,750 --> 00:06:23,190
+going to hit the indexes
+if you're using this
+
+145
+00:06:23,190 --> 00:06:24,780
+mapping layer or--
+
+146
+00:06:24,780 --> 00:06:26,970
+what are the benefits, what are
+the pros and cons of that?
+
+147
+00:06:26,970 --> 00:06:27,390
+Yeah.
+
+148
+00:06:27,390 --> 00:06:30,240
+I think when you're choosing
+whether or not to use the
+
+149
+00:06:30,240 --> 00:06:35,070
+driver or an ODM, so you need
+to be cognizant of how many
+
+150
+00:06:35,070 --> 00:06:36,730
+developers there are,
+like you mentioned.
+
+151
+00:06:36,730 --> 00:06:39,235
+How familiar the developers
+are with your data store.
+
+152
+00:06:39,235 --> 00:06:42,170
+
+153
+00:06:42,170 --> 00:06:45,510
+Some of the pros of an ODM,
+of course, are logical
+
+154
+00:06:45,510 --> 00:06:47,700
+encapsulation.
+
+155
+00:06:47,700 --> 00:06:50,890
+Specific to the Rails
+framework-- which we don't use
+
+156
+00:06:50,890 --> 00:06:53,890
+for an API, but we use for
+an application layer--
+
+157
+00:06:53,890 --> 00:06:57,740
+our API is essentially
+a Rack application.
+
+158
+00:06:57,740 --> 00:07:00,210
+And so there's very little
+convention on top of what
+
+159
+00:07:00,210 --> 00:07:00,720
+you're building.
+
+160
+00:07:00,720 --> 00:07:00,930
+Rack?
+
+161
+00:07:00,930 --> 00:07:05,870
+Rack is a HTTP API,
+essentially.
+
+162
+00:07:05,870 --> 00:07:10,740
+It's a bare bones framework on
+top of Ruby that gives you a
+
+163
+00:07:10,740 --> 00:07:16,630
+nice interface for handling HTTP
+requests and responses.
+
+164
+00:07:16,630 --> 00:07:22,090
+So it's basically what
+powers the web server
+
+165
+00:07:22,090 --> 00:07:23,410
+interface for Rails.
+
+166
+00:07:23,410 --> 00:07:27,200
+Rails sit's on top of
+Rack as a framework.
+
+167
+00:07:27,200 --> 00:07:30,480
+So Rails is a framework
+on a framework.
+
+168
+00:07:30,480 --> 00:07:33,690
+And Rails has a lot of stuff
+that you don't necessarily
+
+169
+00:07:33,690 --> 00:07:37,300
+want in an API, but you do you
+want in a web application.
+
+170
+00:07:37,300 --> 00:07:40,950
+And so in an API where you're
+optimizing on response time
+
+171
+00:07:40,950 --> 00:07:46,010
+and availability, you want to
+go as far down to the web
+
+172
+00:07:46,010 --> 00:07:50,790
+server level-- meaning, like
+in our case, we use Nginx--
+
+173
+00:07:50,790 --> 00:07:52,720
+you want to go as far
+down to the request
+
+174
+00:07:52,720 --> 00:07:54,460
+response cycle as possible.
+
+175
+00:07:54,460 --> 00:07:55,810
+Just like you're talking about
+sometimes when you're
+
+176
+00:07:55,810 --> 00:07:57,540
+optimizing for your data layer,
+you want to get as
+
+177
+00:07:57,540 --> 00:08:00,710
+close to the data store
+as possible.
+
+178
+00:08:00,710 --> 00:08:06,100
+So to go back, in something like
+a Rails framework or a
+
+179
+00:08:06,100 --> 00:08:08,243
+web development framework, you
+do want to encapsulate a lot
+
+180
+00:08:08,243 --> 00:08:08,660
+of that logic.
+
+181
+00:08:08,660 --> 00:08:11,370
+And you're optimizing for a
+higher level structure.
+
+182
+00:08:11,370 --> 00:08:13,330
+You want to make sure that your
+documents have the fields
+
+183
+00:08:13,330 --> 00:08:15,890
+that they need, that the
+relations are properly set up.
+
+184
+00:08:15,890 --> 00:08:20,030
+And sometimes if you're dealings
+exclusively with a
+
+185
+00:08:20,030 --> 00:08:23,690
+driver, handling properties of
+models, handlings relations
+
+186
+00:08:23,690 --> 00:08:27,140
+models can get cumbersome.
+
+187
+00:08:27,140 --> 00:08:29,790
+When you're rapidly developing
+and things are quickly
+
+188
+00:08:29,790 --> 00:08:34,289
+evolving, when your structure
+starts to converge and you
+
+189
+00:08:34,289 --> 00:08:37,710
+want to start optimizing and you
+start to have to consider
+
+190
+00:08:37,710 --> 00:08:40,630
+query times, write times, and
+you start to get significant
+
+191
+00:08:40,630 --> 00:08:45,000
+load that really tests your data
+layer, that's when you
+
+192
+00:08:45,000 --> 00:08:49,230
+need to start, as a team, of
+course, focusing on what
+
+193
+00:08:49,230 --> 00:08:50,645
+percent of the time are you
+hitting your indexes?
+
+194
+00:08:50,645 --> 00:08:50,990
+Right.
+
+195
+00:08:50,990 --> 00:08:52,910
+If you're not hitting your
+indexes, how large is the
+
+196
+00:08:52,910 --> 00:08:53,770
+collection?
+
+197
+00:08:53,770 --> 00:08:55,500
+Is there a serious performance
+issue?
+
+198
+00:08:55,500 --> 00:08:57,130
+And then you just start
+benchmarking.
+
+199
+00:08:57,130 --> 00:09:01,540
+So we have opted to make sure
+that everyone on the team is
+
+200
+00:09:01,540 --> 00:09:04,690
+familiar, of course, with the
+entire stack, that people are
+
+201
+00:09:04,690 --> 00:09:06,575
+familiar with the drivers
+that we use.
+
+202
+00:09:06,575 --> 00:09:09,770
+Not everyone directly uses the
+driver, especially if you're a
+
+203
+00:09:09,770 --> 00:09:11,760
+front-end engineer who's moving
+into the back end.
+
+204
+00:09:11,760 --> 00:09:14,875
+You're probably going to be
+interacting with our ODM or
+
+205
+00:09:14,875 --> 00:09:17,870
+our mapper, and less
+so the driver.
+
+206
+00:09:17,870 --> 00:09:21,650
+However, we have set up
+a series of tools--
+
+207
+00:09:21,650 --> 00:09:24,050
+both ones that we've
+built and ones that
+
+208
+00:09:24,050 --> 00:09:26,340
+are available publicly--
+
+209
+00:09:26,340 --> 00:09:31,050
+that alert developers if they
+have missed an index on a
+
+210
+00:09:31,050 --> 00:09:34,570
+large collection, if they've
+written a query that isn't
+
+211
+00:09:34,570 --> 00:09:40,050
+going to be performant in
+production, or just
+
+212
+00:09:40,050 --> 00:09:40,610
+if they wrote a--
+
+213
+00:09:40,610 --> 00:09:42,890
+I don't know if you've guys have
+covered n+1 queries, or
+
+214
+00:09:42,890 --> 00:09:44,930
+queries that result in,
+essentially, a very large
+
+215
+00:09:44,930 --> 00:09:46,530
+number of requests to
+the database in a
+
+216
+00:09:46,530 --> 00:09:48,990
+single web page request.
+
+217
+00:09:48,990 --> 00:09:49,280
+Yeah.
+
+218
+00:09:49,280 --> 00:09:52,220
+And all these things are very
+dangerous when pushed to
+
+219
+00:09:52,220 --> 00:09:53,860
+production, so we try
+to catch those in
+
+220
+00:09:53,860 --> 00:09:55,435
+development, of course.
+
+221
+00:09:55,435 --> 00:09:59,270
+So we've covered looking
+at the query
+
+222
+00:09:59,270 --> 00:10:02,135
+plans, and the profiler.
+
+223
+00:10:02,135 --> 00:10:03,190
+Do you guys use that?
+
+224
+00:10:03,190 --> 00:10:04,980
+Do you try to log
+long queries?
+
+225
+00:10:04,980 --> 00:10:07,150
+Do you regularly monitor that?
+
+226
+00:10:07,150 --> 00:10:14,220
+We use the 10gen MMS service for
+essentially if something
+
+227
+00:10:14,220 --> 00:10:15,720
+goes wrong.
+
+228
+00:10:15,720 --> 00:10:17,930
+Kind of doing a what-happened
+analysis and just
+
+229
+00:10:17,930 --> 00:10:18,840
+looking at the logs.
+
+230
+00:10:18,840 --> 00:10:21,270
+We run the profiler a percentage
+of the time or on
+
+231
+00:10:21,270 --> 00:10:22,440
+certain deployments.
+
+232
+00:10:22,440 --> 00:10:23,650
+Not all the time, because
+of the performance
+
+233
+00:10:23,650 --> 00:10:24,620
+hit that you take.
+
+234
+00:10:24,620 --> 00:10:26,450
+Right.
+
+235
+00:10:26,450 --> 00:10:31,150
+But we try to watch just the
+raw application logs during
+
+236
+00:10:31,150 --> 00:10:32,430
+development.
+
+237
+00:10:32,430 --> 00:10:33,850
+We enable, of course,
+logging and
+
+238
+00:10:33,850 --> 00:10:35,990
+development for our driver.
+
+239
+00:10:35,990 --> 00:10:37,820
+Just count the raw number
+of queries that
+
+240
+00:10:37,820 --> 00:10:39,560
+you're doing on a request.
+
+241
+00:10:39,560 --> 00:10:42,040
+There's a lot of holistic kind
+of goals that you should
+
+242
+00:10:42,040 --> 00:10:44,210
+strive for when you're building
+a web applications.
+
+243
+00:10:44,210 --> 00:10:45,380
+Just touch the database
+as little as possible.
+
+244
+00:10:45,380 --> 00:10:45,660
+Right.
+
+245
+00:10:45,660 --> 00:10:48,650
+You don't want to be doing 200
+queries to your database on a
+
+246
+00:10:48,650 --> 00:10:49,220
+single web request.
+
+247
+00:10:49,220 --> 00:10:50,825
+It doesn't matter even if
+they're a single millisecond.
+
+248
+00:10:50,825 --> 00:10:53,630
+The latency of the request
+is still going to
+
+249
+00:10:53,630 --> 00:10:54,670
+hit you really hard.
+
+250
+00:10:54,670 --> 00:10:58,030
+So, just making sure that simple
+things like that, which
+
+251
+00:10:58,030 --> 00:11:00,800
+a mapper can, sometimes,
+naively implement--
+
+252
+00:11:00,800 --> 00:11:02,830
+Yes.
+
+253
+00:11:02,830 --> 00:11:06,375
+--just enough to be dangerous or
+you're not exactly sure how
+
+254
+00:11:06,375 --> 00:11:10,550
+it's executing the query plan,
+you can get into some of those
+
+255
+00:11:10,550 --> 00:11:13,640
+really dangerous situations in
+a production environment.
+
+256
+00:11:13,640 --> 00:11:15,760
+Do you use any caching layer
+in front of Mongo?
+
+257
+00:11:15,760 --> 00:11:17,200
+Like memcached or anything
+like that?
+
+258
+00:11:17,200 --> 00:11:18,340
+We've thought about it.
+
+259
+00:11:18,340 --> 00:11:19,350
+We haven't had to.
+
+260
+00:11:19,350 --> 00:11:20,040
+That's great.
+
+261
+00:11:20,040 --> 00:11:23,190
+I think one of the core tenets
+of Mongo is that your active
+
+262
+00:11:23,190 --> 00:11:25,020
+data set sits in memory.
+
+263
+00:11:25,020 --> 00:11:30,050
+So we've kind of had, I guess,
+a basic philosophy that if
+
+264
+00:11:30,050 --> 00:11:32,720
+it's not performant at the Mongo
+layer, then we're not
+
+265
+00:11:32,720 --> 00:11:34,510
+doing it right.
+
+266
+00:11:34,510 --> 00:11:37,080
+That's gotten us very far.
+
+267
+00:11:37,080 --> 00:11:39,290
+We have not set up an
+intermediary caching layer in
+
+268
+00:11:39,290 --> 00:11:40,530
+production.
+
+269
+00:11:40,530 --> 00:11:44,460
+And in terms of session
+management for the users, are
+
+270
+00:11:44,460 --> 00:11:46,510
+the web servers themselves, the
+application servers, are
+
+271
+00:11:46,510 --> 00:11:48,680
+they stateless?
+
+272
+00:11:48,680 --> 00:11:50,830
+From interaction to interaction,
+as the user
+
+273
+00:11:50,830 --> 00:11:53,760
+interacts with the website, do
+you pull the state from Mongo
+
+274
+00:11:53,760 --> 00:11:57,400
+to figure out where you left off
+or is there some binding
+
+275
+00:11:57,400 --> 00:11:59,170
+of the user to the application
+layer?
+
+276
+00:11:59,170 --> 00:11:59,670
+Certainly.
+
+277
+00:11:59,670 --> 00:12:00,610
+Tell me about that.
+
+278
+00:12:00,610 --> 00:12:04,640
+So we have a horizontally-
+scaled web application,
+
+279
+00:12:04,640 --> 00:12:07,150
+meaning that we have numerous
+web servers.
+
+280
+00:12:07,150 --> 00:12:10,070
+And when a person hits the
+website, they can get any one
+
+281
+00:12:10,070 --> 00:12:10,630
+of the servers.
+
+282
+00:12:10,630 --> 00:12:11,060
+Exactly.
+
+283
+00:12:11,060 --> 00:12:13,910
+Which requires that at least
+those servers themselves have
+
+284
+00:12:13,910 --> 00:12:18,820
+to be stateless, or not have
+any internalized knowledge
+
+285
+00:12:18,820 --> 00:12:19,770
+about user.
+
+286
+00:12:19,770 --> 00:12:21,220
+Right.
+
+287
+00:12:21,220 --> 00:12:25,350
+Every user has a session, and
+we use cookie-based session
+
+288
+00:12:25,350 --> 00:12:26,310
+storage for users.
+
+289
+00:12:26,310 --> 00:12:29,710
+So when a user hits the site,
+they're given a unique ID.
+
+290
+00:12:29,710 --> 00:12:32,780
+That unique ID relates to
+a document in our users
+
+291
+00:12:32,780 --> 00:12:36,370
+collection, and that also is
+stored locally on the user's
+
+292
+00:12:36,370 --> 00:12:39,680
+browser in a cookie that
+stores their user ID.
+
+293
+00:12:39,680 --> 00:12:43,090
+So that cookie is essentially
+sent to whichever
+
+294
+00:12:43,090 --> 00:12:44,340
+web server they get.
+
+295
+00:12:44,340 --> 00:12:45,870
+The web server says, OK.
+
+296
+00:12:45,870 --> 00:12:48,780
+Based upon that user ID
+from the cookie that
+
+297
+00:12:48,780 --> 00:12:49,720
+the user sent me--
+
+298
+00:12:49,720 --> 00:12:52,310
+and there's various encryption
+and security measures to make
+
+299
+00:12:52,310 --> 00:12:56,400
+sure that someone isn't
+spoofing a user ID.
+
+300
+00:12:56,400 --> 00:12:59,120
+The web server will
+then go to--
+
+301
+00:12:59,120 --> 00:13:02,730
+we originally used Mongo
+for our session store.
+
+302
+00:13:02,730 --> 00:13:05,380
+We used Mongo for our session
+store because it was simple,
+
+303
+00:13:05,380 --> 00:13:06,560
+especially for Rails.
+
+304
+00:13:06,560 --> 00:13:08,840
+There were nice packages
+that would allow for
+
+305
+00:13:08,840 --> 00:13:10,365
+Mongo-backed sessions.
+
+306
+00:13:10,365 --> 00:13:14,370
+
+307
+00:13:14,370 --> 00:13:19,230
+Just because we wanted to
+reduce the raw number of
+
+308
+00:13:19,230 --> 00:13:20,955
+database queries and the number
+of times we were going
+
+309
+00:13:20,955 --> 00:13:24,170
+to the database for a request,
+we switched to a Redis-backed
+
+310
+00:13:24,170 --> 00:13:26,190
+session store.
+
+311
+00:13:26,190 --> 00:13:27,850
+Which is in memory.
+
+312
+00:13:27,850 --> 00:13:29,360
+Yeah, it's a share in memory.
+
+313
+00:13:29,360 --> 00:13:29,940
+And not persistent.
+
+314
+00:13:29,940 --> 00:13:31,630
+So if you turn off the machines,
+you'd learn session
+
+315
+00:13:31,630 --> 00:13:32,600
+state in that case, right?
+
+316
+00:13:32,600 --> 00:13:35,550
+The difference is that Mongo
+would persist the session.
+
+317
+00:13:35,550 --> 00:13:44,830
+
+318
+00:13:44,830 --> 00:13:48,190
+Redis is meant to be a shared
+volatile data store.
+
+319
+00:13:48,190 --> 00:13:57,520
+They do you have weak or not
+eventual persistence to disc--
+
+320
+00:13:57,520 --> 00:13:59,760
+not anywhere at the level
+of guarantee that
+
+321
+00:13:59,760 --> 00:14:00,950
+MongoDB would provide.
+
+322
+00:14:00,950 --> 00:14:01,280
+Right.
+
+323
+00:14:01,280 --> 00:14:04,230
+So you use Redis for
+the session state.
+
+324
+00:14:04,230 --> 00:14:06,950
+So what happens is that a user
+hit the site, they're in the
+
+325
+00:14:06,950 --> 00:14:08,710
+middle of the track.
+
+326
+00:14:08,710 --> 00:14:10,590
+You obviously have to know,
+when they're submitting an
+
+327
+00:14:10,590 --> 00:14:12,140
+answer, what they're submitting
+it to and where
+
+328
+00:14:12,140 --> 00:14:13,160
+they are in the track.
+
+329
+00:14:13,160 --> 00:14:15,330
+They're submitting,
+basically, the
+
+330
+00:14:15,330 --> 00:14:18,090
+information plus the cookie.
+
+331
+00:14:18,090 --> 00:14:20,290
+And then that cookie is used
+to retrieve a session state
+
+332
+00:14:20,290 --> 00:14:21,960
+from Redis and then you
+process the request?
+
+333
+00:14:21,960 --> 00:14:24,390
+Is that the way it works
+in the server?
+
+334
+00:14:24,390 --> 00:14:26,410
+The session state's not kept in
+the client, as well, it's
+
+335
+00:14:26,410 --> 00:14:28,320
+kept in Redis on your
+servers, right?
+
+336
+00:14:28,320 --> 00:14:29,080
+Yes.
+
+337
+00:14:29,080 --> 00:14:30,020
+OK.
+
+338
+00:14:30,020 --> 00:14:33,980
+And then the rest the
+information, once they
+
+339
+00:14:33,980 --> 00:14:37,000
+successfully complete a step in
+the lesson, that goes into
+
+340
+00:14:37,000 --> 00:14:39,370
+Mongo, into the documents.
+
+341
+00:14:39,370 --> 00:14:39,630
+Sure.
+
+342
+00:14:39,630 --> 00:14:44,950
+So as you're pointing out, Redis
+doesn't have the same
+
+343
+00:14:44,950 --> 00:14:49,430
+kind of persistence guarantee
+that Mongo has.
+
+344
+00:14:49,430 --> 00:14:54,150
+And so we do use Redis as this
+quick session storage layer.
+
+345
+00:14:54,150 --> 00:14:55,725
+That gives you the
+user context, as
+
+346
+00:14:55,725 --> 00:14:56,770
+you're talking about.
+
+347
+00:14:56,770 --> 00:15:00,380
+And if the page requires loading
+the user document, all
+
+348
+00:15:00,380 --> 00:15:03,910
+of the stateful representation
+of the application
+
+349
+00:15:03,910 --> 00:15:05,840
+is stored in Mongo.
+
+350
+00:15:05,840 --> 00:15:06,510
+Gotcha.
+
+351
+00:15:06,510 --> 00:15:13,835
+So the session does not store,
+for us, meaningful or, I'll
+
+352
+00:15:13,835 --> 00:15:16,630
+say, primary stateful
+information.
+
+353
+00:15:16,630 --> 00:15:19,990
+It'll store metadata around
+the state, it'll store
+
+354
+00:15:19,990 --> 00:15:23,440
+contextual information that
+if it was lost, would not,
+
+355
+00:15:23,440 --> 00:15:26,030
+probably, even be noticed
+by the user.
+
+356
+00:15:26,030 --> 00:15:29,790
+But it helps us know where
+we need to go to load the
+
+357
+00:15:29,790 --> 00:15:33,000
+stateful representation, and
+primarily that's in Mongo.
+
+358
+00:15:33,000 --> 00:15:37,410
+So the web application or the
+web server will go first with
+
+359
+00:15:37,410 --> 00:15:40,240
+the cookie, will go to Redis,
+load the session context, and
+
+360
+00:15:40,240 --> 00:15:43,910
+then that will dictate what the
+query plan is to load the
+
+361
+00:15:43,910 --> 00:15:49,230
+state for whatever web page or
+portion of the web application
+
+362
+00:15:49,230 --> 00:15:52,910
+needs to be served back
+to the client.
+
+363
+00:15:52,910 --> 00:15:55,870
+And then the web server
+will go to Mongo
+
+364
+00:15:55,870 --> 00:15:59,520
+whatever that state is.
+
+365
+00:15:59,520 --> 00:16:02,220
+Almost all of our state
+is persisted in Mongo.
+
+366
+00:16:02,220 --> 00:16:03,740
+OK.
+
+367
+00:16:03,740 --> 00:16:07,620
+So I think what I want to do
+next is have you take me
+
+368
+00:16:07,620 --> 00:16:12,080
+through some of the evolution of
+your scaling in front of a
+
+369
+00:16:12,080 --> 00:16:14,720
+whiteboard and just explain
+maybe a little bit of your
+
+370
+00:16:14,720 --> 00:16:19,430
+schema and what's been important
+to index, and some
+
+371
+00:16:19,430 --> 00:16:21,160
+things around performance.
+
+372
+00:16:21,160 --> 00:16:24,282
+So we're going to switch
+to a whiteboard.
+
+373
+00:16:24,282 --> 00:16:24,650
+All right.
+
+374
+00:16:24,650 --> 00:16:25,090
+Sounds good.
+
+375
+00:16:25,090 --> 00:16:25,360
+All right.
+
+376
+00:16:25,360 --> 00:16:26,350
+Let's go do that.
+
+377
+00:16:26,350 --> 00:16:26,530
+All right.
+
+378
+00:16:26,530 --> 00:16:30,090
+So take me through, at a high
+level, what the system looks
+
+379
+00:16:30,090 --> 00:16:32,620
+like and where MongoDB
+fits in.
+
+380
+00:16:32,620 --> 00:16:32,900
+Sure.
+
+381
+00:16:32,900 --> 00:16:33,650
+Certainly.
+
+382
+00:16:33,650 --> 00:16:37,660
+So there's three major
+components to Codecademy as a
+
+383
+00:16:37,660 --> 00:16:38,670
+complete system.
+
+384
+00:16:38,670 --> 00:16:41,630
+There's the client, the
+application layer, and the
+
+385
+00:16:41,630 --> 00:16:42,920
+data layer.
+
+386
+00:16:42,920 --> 00:16:43,710
+And I'll describe all three.
+
+387
+00:16:43,710 --> 00:16:45,440
+And obviously, Mongo sits
+on the data layer.
+
+388
+00:16:45,440 --> 00:16:45,900
+Right.
+
+389
+00:16:45,900 --> 00:16:50,635
+So we have you, your computer,
+is the client.
+
+390
+00:16:50,635 --> 00:16:53,140
+
+391
+00:16:53,140 --> 00:16:58,670
+And then you have, I'll call
+this Rails, and this is the
+
+392
+00:16:58,670 --> 00:17:02,030
+application layer.
+
+393
+00:17:02,030 --> 00:17:04,960
+This is the client layer,
+so this is your browser.
+
+394
+00:17:04,960 --> 00:17:07,530
+
+395
+00:17:07,530 --> 00:17:11,760
+And then you have
+the data layer.
+
+396
+00:17:11,760 --> 00:17:15,170
+And I'll represent
+this as API.
+
+397
+00:17:15,170 --> 00:17:18,640
+This is Rack, as I mentioned.
+
+398
+00:17:18,640 --> 00:17:22,800
+And this communicates
+directly with--
+
+399
+00:17:22,800 --> 00:17:27,410
+I guess we'll draw it as the
+traditional representation.
+
+400
+00:17:27,410 --> 00:17:29,690
+This is Mongo.
+
+401
+00:17:29,690 --> 00:17:32,080
+So there's three major
+components.
+
+402
+00:17:32,080 --> 00:17:34,012
+There's there client layer, the
+application layer, and the
+
+403
+00:17:34,012 --> 00:17:36,360
+data layer.
+
+404
+00:17:36,360 --> 00:17:41,980
+We want to encapsulate the data
+layer to make sure that
+
+405
+00:17:41,980 --> 00:17:45,450
+there's a very well defined
+interface for how we're
+
+406
+00:17:45,450 --> 00:17:47,010
+accessing Mongo.
+
+407
+00:17:47,010 --> 00:17:50,170
+Because as we talked about
+before, improper accesses to
+
+408
+00:17:50,170 --> 00:17:52,620
+Mongo can lead to a lot of
+problems in production.
+
+409
+00:17:52,620 --> 00:17:52,910
+Right.
+
+410
+00:17:52,910 --> 00:17:55,310
+And so by abstracting out
+these three different
+
+411
+00:17:55,310 --> 00:17:59,130
+components, we're essentially
+ensuring that we can focus on
+
+412
+00:17:59,130 --> 00:18:01,530
+each individually and optimize
+each individually, because
+
+413
+00:18:01,530 --> 00:18:03,380
+they have very different
+use cases.
+
+414
+00:18:03,380 --> 00:18:05,210
+Client, you obviously care
+about things like
+
+415
+00:18:05,210 --> 00:18:05,920
+browser load times.
+
+416
+00:18:05,920 --> 00:18:06,060
+Right.
+
+417
+00:18:06,060 --> 00:18:07,375
+You care about--
+
+418
+00:18:07,375 --> 00:18:10,280
+it's a primarily JavaScript
+application, of course, you
+
+419
+00:18:10,280 --> 00:18:14,250
+care about the complexity of
+that and even the size of the
+
+420
+00:18:14,250 --> 00:18:17,130
+requests and the size of the
+assets that you're serving--
+
+421
+00:18:17,130 --> 00:18:20,520
+images, your CSS, your
+JavaScript, your HTML.
+
+422
+00:18:20,520 --> 00:18:23,150
+For the application layer, you
+have a lot of coupling.
+
+423
+00:18:23,150 --> 00:18:27,170
+You have a lot of different
+components to it.
+
+424
+00:18:27,170 --> 00:18:30,150
+That's where you're defining
+your requests and how they map
+
+425
+00:18:30,150 --> 00:18:35,050
+to actions and controllers, and
+then how those controllers
+
+426
+00:18:35,050 --> 00:18:40,050
+do various ways of aggregating
+your data to format them into
+
+427
+00:18:40,050 --> 00:18:41,450
+a proper response.
+
+428
+00:18:41,450 --> 00:18:48,270
+So the API is what connects the
+application to Mongo by
+
+429
+00:18:48,270 --> 00:18:51,380
+essentially encapsulating
+those access patterns.
+
+430
+00:18:51,380 --> 00:18:55,880
+So if the application wants
+to, say, return your user
+
+431
+00:18:55,880 --> 00:18:58,220
+profile, it's going to
+query across multiple
+
+432
+00:18:58,220 --> 00:18:59,490
+collections in Mongo.
+
+433
+00:18:59,490 --> 00:19:03,660
+So it's going to issue multiple
+calls to the API that
+
+434
+00:19:03,660 --> 00:19:06,230
+do joins across multiple
+collections, or different
+
+435
+00:19:06,230 --> 00:19:07,690
+parts of the database.
+
+436
+00:19:07,690 --> 00:19:13,460
+And you want to be able to
+optimize how you're accessing
+
+437
+00:19:13,460 --> 00:19:15,660
+Mongo for those different
+types of queries.
+
+438
+00:19:15,660 --> 00:19:21,180
+So I think we'll dive in a bit
+to the data layer and how
+
+439
+00:19:21,180 --> 00:19:25,190
+through a request cycle we
+go from the client to
+
+440
+00:19:25,190 --> 00:19:26,490
+Mongo and then back.
+
+441
+00:19:26,490 --> 00:19:27,020
+OK.
+
+442
+00:19:27,020 --> 00:19:29,070
+Sounds good.
+
+443
+00:19:29,070 --> 00:19:32,720
+So a student is sitting at the
+computer and they're in the
+
+444
+00:19:32,720 --> 00:19:34,240
+middle of one of these
+tracks, and they have
+
+445
+00:19:34,240 --> 00:19:35,010
+to submit an answer.
+
+446
+00:19:35,010 --> 00:19:37,340
+So what happens after that,
+when they're submitting an
+
+447
+00:19:37,340 --> 00:19:38,790
+answer and it needs
+to get evaluated?
+
+448
+00:19:38,790 --> 00:19:39,230
+Sure.
+
+449
+00:19:39,230 --> 00:19:42,010
+So you're sitting at
+your computer.
+
+450
+00:19:42,010 --> 00:19:45,880
+You are on an exercise and
+you make a submission.
+
+451
+00:19:45,880 --> 00:19:51,550
+So as soon as you hit Run,
+you have this request.
+
+452
+00:19:51,550 --> 00:19:55,800
+This request it's going to have
+code and other associated
+
+453
+00:19:55,800 --> 00:20:00,420
+metadata, like your--
+
+454
+00:20:00,420 --> 00:20:02,240
+as we talked about, we
+store our session
+
+455
+00:20:02,240 --> 00:20:04,640
+information in Redis--
+
+456
+00:20:04,640 --> 00:20:07,110
+so it'll have your cookie.
+
+457
+00:20:07,110 --> 00:20:08,780
+Your cookie will have a
+lot of this metadata,
+
+458
+00:20:08,780 --> 00:20:12,230
+including your user ID.
+
+459
+00:20:12,230 --> 00:20:15,290
+We actually, at the moment of
+the request, use an external
+
+460
+00:20:15,290 --> 00:20:18,075
+code evaluation service that we
+created that's outside of
+
+461
+00:20:18,075 --> 00:20:19,325
+the system.
+
+462
+00:20:19,325 --> 00:20:21,190
+
+463
+00:20:21,190 --> 00:20:22,870
+We call it codex.
+
+464
+00:20:22,870 --> 00:20:25,190
+What's important is that this
+happens outside of this entire
+
+465
+00:20:25,190 --> 00:20:28,600
+flow, and that's for
+security reasons.
+
+466
+00:20:28,600 --> 00:20:30,880
+Code, when it's submitted, will
+actually go to codex and
+
+467
+00:20:30,880 --> 00:20:33,380
+will come back with an
+evaluated response.
+
+468
+00:20:33,380 --> 00:20:36,370
+At the end of that evaluated
+response, you get the output,
+
+469
+00:20:36,370 --> 00:20:39,480
+and then we propagate
+it and store it.
+
+470
+00:20:39,480 --> 00:20:39,800
+OK.
+
+471
+00:20:39,800 --> 00:20:41,800
+I'll sandboxed to that--
+
+472
+00:20:41,800 --> 00:20:42,075
+Yep.
+
+473
+00:20:42,075 --> 00:20:42,460
+All code is sandboxed.
+
+474
+00:20:42,460 --> 00:20:43,830
+This happens outside of this.
+
+475
+00:20:43,830 --> 00:20:44,120
+OK.
+
+476
+00:20:44,120 --> 00:20:46,300
+So once you have your request,
+then have your evaluator
+
+477
+00:20:46,300 --> 00:20:48,710
+response, goes to Rails.
+
+478
+00:20:48,710 --> 00:20:53,760
+In Rails, it's making a post
+request to a submissions
+
+479
+00:20:53,760 --> 00:20:54,730
+controller.
+
+480
+00:20:54,730 --> 00:20:56,510
+And this is a route.
+
+481
+00:20:56,510 --> 00:20:57,760
+We'll call it submissions.
+
+482
+00:20:57,760 --> 00:21:01,190
+
+483
+00:21:01,190 --> 00:21:03,760
+And this is where the
+application is receiving, at
+
+484
+00:21:03,760 --> 00:21:08,130
+the HTTP layer, your request and
+then it's processing it.
+
+485
+00:21:08,130 --> 00:21:12,470
+So it's taking your request,
+it's pulling from the API the
+
+486
+00:21:12,470 --> 00:21:14,420
+appropriate metadata so
+that it knows where
+
+487
+00:21:14,420 --> 00:21:15,470
+to write the context.
+
+488
+00:21:15,470 --> 00:21:18,620
+So this is going
+to require a--
+
+489
+00:21:18,620 --> 00:21:21,080
+we'll split it up into reads and
+then we'll split up into
+
+490
+00:21:21,080 --> 00:21:22,410
+writes that happen.
+
+491
+00:21:22,410 --> 00:21:26,500
+So this will read your user.
+
+492
+00:21:26,500 --> 00:21:29,640
+This will be an API call, so
+these are both API calls, as
+
+493
+00:21:29,640 --> 00:21:31,380
+we've talked about across
+this layer.
+
+494
+00:21:31,380 --> 00:21:34,490
+It needs to read your context
+for the user and it
+
+495
+00:21:34,490 --> 00:21:36,280
+needs to pull the--
+
+496
+00:21:36,280 --> 00:21:39,680
+we'll call it the
+context context.
+
+497
+00:21:39,680 --> 00:21:47,380
+So for a submission, it's
+associated with an exercise.
+
+498
+00:21:47,380 --> 00:21:49,890
+An exercise belongs
+to a course.
+
+499
+00:21:49,890 --> 00:21:52,360
+It has a content context,
+is what I'm calling it.
+
+500
+00:21:52,360 --> 00:21:56,020
+So it's going to pull,
+essentially, the associated
+
+501
+00:21:56,020 --> 00:21:57,270
+exercise data.
+
+502
+00:21:57,270 --> 00:22:00,080
+
+503
+00:22:00,080 --> 00:22:04,500
+On top of that, these are the
+only two things that we need
+
+504
+00:22:04,500 --> 00:22:08,230
+to actually pull for a write
+to get the appropriate
+
+505
+00:22:08,230 --> 00:22:12,120
+associated data to write
+your submission.
+
+506
+00:22:12,120 --> 00:22:14,570
+What are the major collections
+inside MongoDB
+
+507
+00:22:14,570 --> 00:22:16,170
+that represent this?
+
+508
+00:22:16,170 --> 00:22:18,360
+So if we're going to jump--
+
+509
+00:22:18,360 --> 00:22:21,840
+the application layer has
+no knowledge of this.
+
+510
+00:22:21,840 --> 00:22:26,042
+For the API layer, it
+has knowledge of--
+
+511
+00:22:26,042 --> 00:22:29,490
+
+512
+00:22:29,490 --> 00:22:35,530
+there's a user's collection,
+there is a--
+
+513
+00:22:35,530 --> 00:22:40,430
+we'll call it a section
+collection.
+
+514
+00:22:40,430 --> 00:22:45,870
+Section have embedded
+exercises.
+
+515
+00:22:45,870 --> 00:22:50,600
+The sections of a track to learn
+a skill, in this case.
+
+516
+00:22:50,600 --> 00:22:50,860
+Right.
+
+517
+00:22:50,860 --> 00:22:53,480
+So sections, you can just
+think of them as
+
+518
+00:22:53,480 --> 00:22:54,820
+groupings of exercises.
+
+519
+00:22:54,820 --> 00:22:55,220
+Yeah.
+
+520
+00:22:55,220 --> 00:22:55,515
+OK.
+
+521
+00:22:55,515 --> 00:22:57,110
+There can be a variety of--
+
+522
+00:22:57,110 --> 00:22:57,450
+Chapters, if you will.
+
+523
+00:22:57,450 --> 00:23:01,050
+--of chapters or different
+ways of showing those
+
+524
+00:23:01,050 --> 00:23:03,970
+groupings to users, but we
+essentially just say it's a
+
+525
+00:23:03,970 --> 00:23:05,320
+grouping of exercises.
+
+526
+00:23:05,320 --> 00:23:06,960
+It's a single document
+and it has
+
+527
+00:23:06,960 --> 00:23:08,870
+embedded exercise documents.
+
+528
+00:23:08,870 --> 00:23:11,540
+And then there's another
+collection called submissions.
+
+529
+00:23:11,540 --> 00:23:13,660
+So we are reading from users
+and sections and we are
+
+530
+00:23:13,660 --> 00:23:16,680
+writing to submissions.
+
+531
+00:23:16,680 --> 00:23:21,640
+Right and so the learning track
+is represented by the
+
+532
+00:23:21,640 --> 00:23:22,430
+sections collection?
+
+533
+00:23:22,430 --> 00:23:23,100
+Yep.
+
+534
+00:23:23,100 --> 00:23:28,160
+And it doesn't change when a
+user goes through the track.
+
+535
+00:23:28,160 --> 00:23:31,380
+This represents the course,
+if you will, and then the
+
+536
+00:23:31,380 --> 00:23:35,140
+submissions collection
+is taking the user--
+
+537
+00:23:35,140 --> 00:23:37,300
+you're keeping track of
+user progress here.
+
+538
+00:23:37,300 --> 00:23:41,130
+And just everyone kind of knows
+how this thing works--
+
+539
+00:23:41,130 --> 00:23:42,870
+but you're writing code and it's
+getting evaluated, and
+
+540
+00:23:42,870 --> 00:23:43,990
+you're telling them whether
+they got the
+
+541
+00:23:43,990 --> 00:23:45,210
+right answer or not.
+
+542
+00:23:45,210 --> 00:23:47,960
+So that happens over in this
+corner right here.
+
+543
+00:23:47,960 --> 00:23:49,570
+This happens completely
+outside of this site.
+
+544
+00:23:49,570 --> 00:23:49,840
+Right.
+
+545
+00:23:49,840 --> 00:23:52,980
+Just because you never can
+quite trust code that's
+
+546
+00:23:52,980 --> 00:23:54,800
+written by the user.
+
+547
+00:23:54,800 --> 00:23:58,120
+Yeah, we definitely don't want
+this service having any
+
+548
+00:23:58,120 --> 00:24:01,480
+knowledge of any other
+part of the service.
+
+549
+00:24:01,480 --> 00:24:02,080
+Right.
+
+550
+00:24:02,080 --> 00:24:05,260
+And so by the time it all gets
+to here, you actually already
+
+551
+00:24:05,260 --> 00:24:08,120
+know whether the student
+got the right answer?
+
+552
+00:24:08,120 --> 00:24:08,370
+Mm hm.
+
+553
+00:24:08,370 --> 00:24:13,810
+We both the code that you're
+submitting and the evaluated,
+
+554
+00:24:13,810 --> 00:24:19,210
+I guess, response or result of
+your code, as well as any
+
+555
+00:24:19,210 --> 00:24:24,080
+errors that were thrown, any
+other kind of the information
+
+556
+00:24:24,080 --> 00:24:28,210
+that resulted from running the
+code or evaluating it in an
+
+557
+00:24:28,210 --> 00:24:29,660
+environment.
+
+558
+00:24:29,660 --> 00:24:30,910
+Can you talk a little
+bit about--
+
+559
+00:24:30,910 --> 00:24:34,040
+
+560
+00:24:34,040 --> 00:24:35,830
+the size the collection,
+the submissions
+
+561
+00:24:35,830 --> 00:24:37,360
+collection is the big one.
+
+562
+00:24:37,360 --> 00:24:40,420
+The users is more modestly
+sized, and the sections is
+
+563
+00:24:40,420 --> 00:24:43,850
+probably quite small, because
+that's just the courses
+
+564
+00:24:43,850 --> 00:24:44,600
+themselves.
+
+565
+00:24:44,600 --> 00:24:45,230
+Yeah.
+
+566
+00:24:45,230 --> 00:24:48,510
+I'll talk a little bit
+about what orders of
+
+567
+00:24:48,510 --> 00:24:49,700
+magnitude are here.
+
+568
+00:24:49,700 --> 00:24:52,270
+I think just to kind of finish
+the API calls here.
+
+569
+00:24:52,270 --> 00:24:52,500
+Sure.
+
+570
+00:24:52,500 --> 00:24:54,355
+So when you have your request,
+this goes to
+
+571
+00:24:54,355 --> 00:24:55,225
+the application layer.
+
+572
+00:24:55,225 --> 00:24:58,555
+It goes to this route
+as a post request.
+
+573
+00:24:58,555 --> 00:25:01,740
+
+574
+00:25:01,740 --> 00:25:05,600
+That then has to reads for the
+user into that collection
+
+575
+00:25:05,600 --> 00:25:09,450
+across the API, and it has
+reads to sections.
+
+576
+00:25:09,450 --> 00:25:13,750
+So I think now that we know
+about the exact collections
+
+577
+00:25:13,750 --> 00:25:17,030
+that we're querying, I'll
+call this a section.
+
+578
+00:25:17,030 --> 00:25:19,150
+This is the associated
+section exercise.
+
+579
+00:25:19,150 --> 00:25:21,260
+And then the writes
+are to submission.
+
+580
+00:25:21,260 --> 00:25:22,060
+Gotcha.
+
+581
+00:25:22,060 --> 00:25:24,770
+OK.
+
+582
+00:25:24,770 --> 00:25:26,560
+And this then goes to the API.
+
+583
+00:25:26,560 --> 00:25:31,130
+The API is what contains the
+driver that is doing the reads
+
+584
+00:25:31,130 --> 00:25:35,578
+and writes directly from Mongo,
+and that does, we'll
+
+585
+00:25:35,578 --> 00:25:37,800
+call it, just aggregation.
+
+586
+00:25:37,800 --> 00:25:39,570
+This isn't the aggregation
+framework.
+
+587
+00:25:39,570 --> 00:25:41,290
+I'm just using this
+generically.
+
+588
+00:25:41,290 --> 00:25:43,860
+From when it does its reads,
+and then upon aggregation,
+
+589
+00:25:43,860 --> 00:25:44,840
+does its writes.
+
+590
+00:25:44,840 --> 00:25:46,180
+And then we send the response.
+
+591
+00:25:46,180 --> 00:25:49,102
+And the client knows that
+there's been a successful
+
+592
+00:25:49,102 --> 00:25:54,780
+write and it won't reattempt
+another request.
+
+593
+00:25:54,780 --> 00:25:56,930
+If, of course, there's for some
+reason a failure, there's
+
+594
+00:25:56,930 --> 00:26:00,390
+just an exponential backoff of
+retries to ensure that the
+
+595
+00:26:00,390 --> 00:26:02,150
+request went through.
+
+596
+00:26:02,150 --> 00:26:07,450
+So a lot of the interesting
+details here are around how we
+
+597
+00:26:07,450 --> 00:26:09,860
+deal with these different
+collections and the different
+
+598
+00:26:09,860 --> 00:26:12,860
+orders of magnitude
+that we have.
+
+599
+00:26:12,860 --> 00:26:16,420
+We've stored user submissions
+from the very beginning.
+
+600
+00:26:16,420 --> 00:26:20,040
+And over the year and few months
+now that the site's
+
+601
+00:26:20,040 --> 00:26:21,970
+been live, we've collected
+hundreds of millions of
+
+602
+00:26:21,970 --> 00:26:22,650
+submissions.
+
+603
+00:26:22,650 --> 00:26:23,070
+Wow.
+
+604
+00:26:23,070 --> 00:26:27,150
+And that, of course, has a lot
+of challenges, especially both
+
+605
+00:26:27,150 --> 00:26:30,940
+with the volume but also the
+fact that code that people are
+
+606
+00:26:30,940 --> 00:26:33,940
+submitting varies
+widely in size.
+
+607
+00:26:33,940 --> 00:26:37,990
+And so a submission document, if
+we were to include the code
+
+608
+00:26:37,990 --> 00:26:40,620
+that was being submitted, each
+submission document could
+
+609
+00:26:40,620 --> 00:26:45,340
+range from a few tens of bytes
+to hundreds of kilobytes or
+
+610
+00:26:45,340 --> 00:26:46,850
+even potentially a megabyte.
+
+611
+00:26:46,850 --> 00:26:49,150
+And I don't know how much in
+detail you guys have gotten
+
+612
+00:26:49,150 --> 00:26:51,770
+about compaction in MongoDB,
+but that can lead to a very
+
+613
+00:26:51,770 --> 00:26:55,290
+inefficient storage
+within MongoDB.
+
+614
+00:26:55,290 --> 00:26:56,100
+Right.
+
+615
+00:26:56,100 --> 00:26:59,960
+So we can talk a bit more about
+the evolution of the
+
+616
+00:26:59,960 --> 00:27:02,200
+submissions collection, which
+has posed some interesting
+
+617
+00:27:02,200 --> 00:27:04,400
+challenges for us as
+we've scaled--
+
+618
+00:27:04,400 --> 00:27:07,380
+both from where we started
+and where we are today.
+
+619
+00:27:07,380 --> 00:27:07,530
+Yeah.
+
+620
+00:27:07,530 --> 00:27:08,520
+Let's talk about that.
+
+621
+00:27:08,520 --> 00:27:13,050
+So you were telling me earlier
+you're in a replicated but
+
+622
+00:27:13,050 --> 00:27:14,740
+non-sharded environment,
+but in the past,
+
+623
+00:27:14,740 --> 00:27:16,430
+you've actually sharded.
+
+624
+00:27:16,430 --> 00:27:20,710
+So maybe you can take the
+students through the evolution
+
+625
+00:27:20,710 --> 00:27:23,880
+of that decision and how you
+managed to go from sharded to
+
+626
+00:27:23,880 --> 00:27:28,660
+unsharded, which is obviously
+easier to administer because
+
+627
+00:27:28,660 --> 00:27:30,030
+your [? added ?] performance
+is great.
+
+628
+00:27:30,030 --> 00:27:32,075
+So if you could talk
+about that.
+
+629
+00:27:32,075 --> 00:27:32,630
+Yeah.
+
+630
+00:27:32,630 --> 00:27:37,100
+So there's three different
+eras or versions of the
+
+631
+00:27:37,100 --> 00:27:38,010
+submissions collection.
+
+632
+00:27:38,010 --> 00:27:39,900
+I think I'll erase this,
+and then we can--
+
+633
+00:27:39,900 --> 00:27:40,500
+Sure, yeah.
+
+634
+00:27:40,500 --> 00:27:42,130
+--go into more detail
+about that.
+
+635
+00:27:42,130 --> 00:27:46,470
+So as I mentioned, there are
+three different versions or
+
+636
+00:27:46,470 --> 00:27:49,620
+generations of our submission
+collection.
+
+637
+00:27:49,620 --> 00:27:51,885
+At first, it was just a raw
+submission collection.
+
+638
+00:27:51,885 --> 00:27:56,480
+
+639
+00:27:56,480 --> 00:28:00,460
+It had things like
+exercise ID--
+
+640
+00:28:00,460 --> 00:28:03,500
+this is the content context.
+
+641
+00:28:03,500 --> 00:28:06,400
+User ID.
+
+642
+00:28:06,400 --> 00:28:11,170
+And this was a unique key
+index compound on
+
+643
+00:28:11,170 --> 00:28:12,280
+exercise and user IDs.
+
+644
+00:28:12,280 --> 00:28:16,900
+So we can get more into how we
+introduced indexes on this in
+
+645
+00:28:16,900 --> 00:28:18,650
+the second generation.
+
+646
+00:28:18,650 --> 00:28:20,360
+It was on exercises ID comma
+user ID you said?
+
+647
+00:28:20,360 --> 00:28:22,180
+Or user ID comma exercise ID?
+
+648
+00:28:22,180 --> 00:28:23,600
+Which was the index?
+
+649
+00:28:23,600 --> 00:28:24,910
+User ID, exercise ID.
+
+650
+00:28:24,910 --> 00:28:26,160
+User ID, exercise ID.
+
+651
+00:28:26,160 --> 00:28:30,390
+And then we had this the
+array for answers.
+
+652
+00:28:30,390 --> 00:28:34,540
+Answers are what actually stored
+the submitted content.
+
+653
+00:28:34,540 --> 00:28:38,650
+So this would be an array of
+embedded answer documents, and
+
+654
+00:28:38,650 --> 00:28:41,970
+these would have things
+like, we'll call
+
+655
+00:28:41,970 --> 00:28:45,600
+it the actual entry.
+
+656
+00:28:45,600 --> 00:28:51,290
+This would be the code
+the user wrote.
+
+657
+00:28:51,290 --> 00:28:52,920
+And then there'd be additional
+
+658
+00:28:52,920 --> 00:28:57,040
+information, like a time stamp.
+
+659
+00:28:57,040 --> 00:29:01,110
+We actually use abbreviated
+property names or key names
+
+660
+00:29:01,110 --> 00:29:03,240
+because they're included in the
+document size, but I'll
+
+661
+00:29:03,240 --> 00:29:04,490
+write them out here fully.
+
+662
+00:29:04,490 --> 00:29:07,040
+
+663
+00:29:07,040 --> 00:29:12,810
+And so you use abbreviated key
+names because it reduces the
+
+664
+00:29:12,810 --> 00:29:17,360
+size of your overall data
+footprint in Mongo.
+
+665
+00:29:17,360 --> 00:29:20,630
+Yeah, because your serializing
+your document into a binary
+
+666
+00:29:20,630 --> 00:29:22,180
+representation.
+
+667
+00:29:22,180 --> 00:29:25,960
+The property names of your
+adjacent document are included
+
+668
+00:29:25,960 --> 00:29:27,610
+in the document size.
+
+669
+00:29:27,610 --> 00:29:28,540
+Right.
+
+670
+00:29:28,540 --> 00:29:31,270
+And as a result, it's something
+you can easily
+
+671
+00:29:31,270 --> 00:29:33,950
+optimize, and especially if you
+split your applications up
+
+672
+00:29:33,950 --> 00:29:37,005
+into these different interfaces
+between your data
+
+673
+00:29:37,005 --> 00:29:37,930
+layer and your application
+layer.
+
+674
+00:29:37,930 --> 00:29:44,340
+It's easy to just do, in the
+API code, just do a simple
+
+675
+00:29:44,340 --> 00:29:47,910
+mapping where you're converting
+between the full
+
+676
+00:29:47,910 --> 00:29:50,930
+text or the full length version
+of the property name
+
+677
+00:29:50,930 --> 00:29:52,910
+and the abbreviated version
+of the property names.
+
+678
+00:29:52,910 --> 00:29:52,985
+Right.
+
+679
+00:29:52,985 --> 00:29:54,130
+So the developers still get
+the benefit of intuitive
+
+680
+00:29:54,130 --> 00:29:56,900
+names, and you get the
+efficiency of having shorter
+
+681
+00:29:56,900 --> 00:29:59,795
+names inside the MongoDB
+collections.
+
+682
+00:29:59,795 --> 00:30:00,130
+Yeah.
+
+683
+00:30:00,130 --> 00:30:03,800
+And if you have a very large
+volume of documents that are
+
+684
+00:30:03,800 --> 00:30:07,450
+relatively small, your property
+names can be even a
+
+685
+00:30:07,450 --> 00:30:11,650
+fourth, or even half, I guess,
+in some cases, the size of
+
+686
+00:30:11,650 --> 00:30:13,030
+your total document.
+
+687
+00:30:13,030 --> 00:30:15,870
+So even just doing a simple
+abbreviation can cut down the
+
+688
+00:30:15,870 --> 00:30:17,280
+size o collection in half.
+
+689
+00:30:17,280 --> 00:30:17,870
+Yeah.
+
+690
+00:30:17,870 --> 00:30:21,060
+So just go to the general
+structure here, this is how we
+
+691
+00:30:21,060 --> 00:30:22,420
+originally started out.
+
+692
+00:30:22,420 --> 00:30:25,030
+It's just a simple exercise ID,
+user ID, and then an array
+
+693
+00:30:25,030 --> 00:30:25,660
+of answers.
+
+694
+00:30:25,660 --> 00:30:28,050
+The is sorted.
+
+695
+00:30:28,050 --> 00:30:30,260
+We had an arbitrary limit on
+the length of this array.
+
+696
+00:30:30,260 --> 00:30:33,515
+Obviously it could grow
+uncontrollably.
+
+697
+00:30:33,515 --> 00:30:34,630
+We just hard-coded a limit.
+
+698
+00:30:34,630 --> 00:30:38,160
+It was pretty easy through
+atomic pushes and pops off of
+
+699
+00:30:38,160 --> 00:30:40,360
+it to maintain that size.
+
+700
+00:30:40,360 --> 00:30:41,830
+And that was it.
+
+701
+00:30:41,830 --> 00:30:46,150
+So what was really interesting
+here is as this collection
+
+702
+00:30:46,150 --> 00:30:50,370
+grew, it, of course, very
+quickly got into the millions.
+
+703
+00:30:50,370 --> 00:30:53,030
+We needed to be very careful and
+explicit with the indexes
+
+704
+00:30:53,030 --> 00:30:54,060
+that we were using here.
+
+705
+00:30:54,060 --> 00:30:58,340
+And so one problem that we
+originally had was that,
+
+706
+00:30:58,340 --> 00:31:02,180
+occasionally, if someone would
+hit Submit twice in rapid
+
+707
+00:31:02,180 --> 00:31:05,930
+succession, we couldn't
+do a proper atomic
+
+708
+00:31:05,930 --> 00:31:07,490
+lookup and then write.
+
+709
+00:31:07,490 --> 00:31:10,390
+We weren't doing an
+upsert on it.
+
+710
+00:31:10,390 --> 00:31:13,980
+Or if we were doing an upsert,
+it wouldn't 100% of the time
+
+711
+00:31:13,980 --> 00:31:15,890
+because we were using an ODM.
+
+712
+00:31:15,890 --> 00:31:17,700
+We couldn't guarantee
+uniqueness.
+
+713
+00:31:17,700 --> 00:31:20,310
+There's things that we could do
+that would get us very far,
+
+714
+00:31:20,310 --> 00:31:22,430
+but we still couldn't guarantee
+uniqueness.
+
+715
+00:31:22,430 --> 00:31:25,760
+And we wanted to-- just keep
+our data set clean--
+
+716
+00:31:25,760 --> 00:31:29,120
+we wanted to guarantee
+uniqueness across user ID
+
+717
+00:31:29,120 --> 00:31:31,300
+first and then exercise
+ID second.
+
+718
+00:31:31,300 --> 00:31:35,180
+And in Mongo, the proper way
+of doing that is creating a
+
+719
+00:31:35,180 --> 00:31:37,560
+compound unique index.
+
+720
+00:31:37,560 --> 00:31:43,780
+So some indexes here that we
+created, very simply, was user
+
+721
+00:31:43,780 --> 00:31:47,970
+ID, exercise ID.
+
+722
+00:31:47,970 --> 00:31:48,370
+Right.
+
+723
+00:31:48,370 --> 00:31:50,540
+User ID comma exercise ID.
+
+724
+00:31:50,540 --> 00:31:51,000
+Yeah.
+
+725
+00:31:51,000 --> 00:31:51,210
+Sorry.
+
+726
+00:31:51,210 --> 00:31:53,930
+I use the hashes for notation.
+
+727
+00:31:53,930 --> 00:31:56,520
+Or the pounds.
+
+728
+00:31:56,520 --> 00:31:59,760
+And this was just unique.
+
+729
+00:31:59,760 --> 00:32:01,060
+Right.
+
+730
+00:32:01,060 --> 00:32:04,230
+And that then guarantees that,
+of course, you're not creating
+
+731
+00:32:04,230 --> 00:32:06,950
+duplicate documents across
+these two fields.
+
+732
+00:32:06,950 --> 00:32:07,880
+Yeah.
+
+733
+00:32:07,880 --> 00:32:10,100
+That's the information you know
+when the user submits an
+
+734
+00:32:10,100 --> 00:32:11,690
+exercise answer, also.
+
+735
+00:32:11,690 --> 00:32:11,840
+Right.
+
+736
+00:32:11,840 --> 00:32:14,540
+And this is how we map a user
+for an exercise to their
+
+737
+00:32:14,540 --> 00:32:15,480
+submitted content.
+
+738
+00:32:15,480 --> 00:32:19,780
+And we want to make sure that
+there's only one document in
+
+739
+00:32:19,780 --> 00:32:22,210
+the database that is associated
+with those two
+
+740
+00:32:22,210 --> 00:32:27,730
+values, and that we're
+guaranteeing that we're
+
+741
+00:32:27,730 --> 00:32:29,200
+storing all of your submissions
+
+742
+00:32:29,200 --> 00:32:30,120
+in the right order.
+
+743
+00:32:30,120 --> 00:32:30,340
+Right.
+
+744
+00:32:30,340 --> 00:32:31,150
+And these never change.
+
+745
+00:32:31,150 --> 00:32:35,180
+So once you append something to
+this answer's array, it's
+
+746
+00:32:35,180 --> 00:32:35,920
+never going to get edited.
+
+747
+00:32:35,920 --> 00:32:37,070
+Is that correct?
+
+748
+00:32:37,070 --> 00:32:37,780
+Right.
+
+749
+00:32:37,780 --> 00:32:39,890
+It's written once, read many
+times in that sense.
+
+750
+00:32:39,890 --> 00:32:40,520
+Right.
+
+751
+00:32:40,520 --> 00:32:41,230
+OK.
+
+752
+00:32:41,230 --> 00:32:50,000
+So then you're able to, when you
+write this document, you
+
+753
+00:32:50,000 --> 00:32:52,550
+just push something to the end
+of this array, basically?
+
+754
+00:32:52,550 --> 00:32:52,860
+Yeah.
+
+755
+00:32:52,860 --> 00:32:54,990
+We use an atomic push
+operation on it.
+
+756
+00:32:54,990 --> 00:32:56,610
+You use an atomic push.
+
+757
+00:32:56,610 --> 00:32:58,126
+A find-modify, essential.
+
+758
+00:32:58,126 --> 00:32:58,840
+Yep.
+
+759
+00:32:58,840 --> 00:32:59,595
+OK.
+
+760
+00:32:59,595 --> 00:33:01,450
+To push something
+onto the array.
+
+761
+00:33:01,450 --> 00:33:06,055
+Do you do any padding of these
+to try to make sure that as
+
+762
+00:33:06,055 --> 00:33:09,370
+they grow that they don't need
+to get moved in the collection
+
+763
+00:33:09,370 --> 00:33:12,630
+or do you just let Mongo
+deal with that?
+
+764
+00:33:12,630 --> 00:33:17,350
+Originally, we just let Mongo
+deal with it, because this was
+
+765
+00:33:17,350 --> 00:33:19,290
+our implementation when we had
+
+766
+00:33:19,290 --> 00:33:21,050
+exclusively JavaScript content.
+
+767
+00:33:21,050 --> 00:33:26,530
+We didn't have content that
+would require multiple tabs or
+
+768
+00:33:26,530 --> 00:33:27,970
+multiple types of files.
+
+769
+00:33:27,970 --> 00:33:31,310
+We didn't have content that
+involves writing an entire
+
+770
+00:33:31,310 --> 00:33:33,660
+application, it might just
+simply be a simple function
+
+771
+00:33:33,660 --> 00:33:35,120
+call or a simple method.
+
+772
+00:33:35,120 --> 00:33:39,300
+And so the variation size of
+these files was within one or
+
+773
+00:33:39,300 --> 00:33:40,280
+two orders of magnitude.
+
+774
+00:33:40,280 --> 00:33:44,380
+And so Mongo did a relatively
+decent job of determining the
+
+775
+00:33:44,380 --> 00:33:46,030
+proper padding length.
+
+776
+00:33:46,030 --> 00:33:49,870
+As we started to add complex
+types of content and to accept
+
+777
+00:33:49,870 --> 00:33:51,660
+more complex types
+of submissions,
+
+778
+00:33:51,660 --> 00:33:53,150
+that of course changed.
+
+779
+00:33:53,150 --> 00:33:55,740
+So I think we can talk about the
+second generation and how
+
+780
+00:33:55,740 --> 00:34:00,750
+we had to change this schema to
+fit into that new use case.
+
+781
+00:34:00,750 --> 00:34:00,980
+OK.
+
+782
+00:34:00,980 --> 00:34:07,610
+So this is, we'll say, it's
+first gen and this is about,
+
+783
+00:34:07,610 --> 00:34:13,360
+we'll say, order of magnitude
+1 million submissions.
+
+784
+00:34:13,360 --> 00:34:20,205
+And so going on to the second
+generation, this is when we
+
+785
+00:34:20,205 --> 00:34:23,460
+were getting to, well say, the
+next order of magnitude, about
+
+786
+00:34:23,460 --> 00:34:28,290
+10 million, with a high
+variability in document size.
+
+787
+00:34:28,290 --> 00:34:30,520
+So we carried a lot
+of things over.
+
+788
+00:34:30,520 --> 00:34:32,690
+Some of the things that
+we changed was--
+
+789
+00:34:32,690 --> 00:34:36,159
+
+790
+00:34:36,159 --> 00:34:39,380
+we kept a lot of the same
+schema, and What we really
+
+791
+00:34:39,380 --> 00:34:41,590
+changed was our implementation
+of Mongo.
+
+792
+00:34:41,590 --> 00:34:42,620
+So we did a few things.
+
+793
+00:34:42,620 --> 00:34:44,980
+We beefed up our boxes.
+
+794
+00:34:44,980 --> 00:34:47,870
+So Mongo, for us, is
+hosted on EC2.
+
+795
+00:34:47,870 --> 00:34:51,469
+Before, in first gen, we were
+using a third-party cloud
+
+796
+00:34:51,469 --> 00:34:52,980
+hosted service.
+
+797
+00:34:52,980 --> 00:34:54,550
+We move over to EC2.
+
+798
+00:34:54,550 --> 00:34:58,525
+We are running currently
+here on quad extra
+
+799
+00:34:58,525 --> 00:35:00,280
+large memory instances.
+
+800
+00:35:00,280 --> 00:35:03,720
+So we significantly increased
+the amount of memory that was
+
+801
+00:35:03,720 --> 00:35:04,965
+available to us.
+
+802
+00:35:04,965 --> 00:35:07,580
+As this collection was growing
+larger and larger, it needed
+
+803
+00:35:07,580 --> 00:35:12,600
+to be in memory, and as a
+result, it was easy for us to
+
+804
+00:35:12,600 --> 00:35:15,170
+scale vertically just
+by provisioning
+
+805
+00:35:15,170 --> 00:35:16,380
+more significant hardware.
+
+806
+00:35:16,380 --> 00:35:16,850
+Right.
+
+807
+00:35:16,850 --> 00:35:19,555
+Scale up versus scale down.
+
+808
+00:35:19,555 --> 00:35:19,850
+Yep.
+
+809
+00:35:19,850 --> 00:35:20,170
+Versus scale down.
+
+810
+00:35:20,170 --> 00:35:23,970
+You bought bigger hardware,
+and solid state disc?
+
+811
+00:35:23,970 --> 00:35:24,960
+Or just regular?
+
+812
+00:35:24,960 --> 00:35:26,710
+I guess solid state just wasn't
+available when you--
+
+813
+00:35:26,710 --> 00:35:29,960
+It wasn't available, and I think
+there's particular use
+
+814
+00:35:29,960 --> 00:35:32,330
+cases where you get a
+significant benefit from solid
+
+815
+00:35:32,330 --> 00:35:35,840
+state, and for ours, we were
+sufficient to stick with EBS.
+
+816
+00:35:35,840 --> 00:35:37,260
+Right.
+
+817
+00:35:37,260 --> 00:35:37,910
+We scaled up.
+
+818
+00:35:37,910 --> 00:35:43,010
+We went 4x large memory
+instances.
+
+819
+00:35:43,010 --> 00:35:45,780
+
+820
+00:35:45,780 --> 00:35:52,230
+We did use provisioned IOPS.
+
+821
+00:35:52,230 --> 00:35:56,050
+Provisioned IOPS, which is a
+feature of Elastic Block Store
+
+822
+00:35:56,050 --> 00:35:57,840
+at Amazon Web Services.
+
+823
+00:35:57,840 --> 00:35:58,420
+Yep.
+
+824
+00:35:58,420 --> 00:36:03,370
+And that guarantees a certain
+bandwidth between the EBS
+
+825
+00:36:03,370 --> 00:36:05,300
+network storage and
+your instance.
+
+826
+00:36:05,300 --> 00:36:09,060
+If you're on traditional EBS,
+there's no guarantee of
+
+827
+00:36:09,060 --> 00:36:12,700
+bandwidth and it can fluctuate
+wildly, which, of course, for
+
+828
+00:36:12,700 --> 00:36:16,290
+a memory store which should be
+memory but isn't always, you
+
+829
+00:36:16,290 --> 00:36:17,510
+want a guaranteed backup there.
+
+830
+00:36:17,510 --> 00:36:18,760
+Right.
+
+831
+00:36:18,760 --> 00:36:20,520
+
+832
+00:36:20,520 --> 00:36:25,840
+We also set up a replica set.
+
+833
+00:36:25,840 --> 00:36:26,340
+Right.
+
+834
+00:36:26,340 --> 00:36:27,170
+Which is a best practice.
+
+835
+00:36:27,170 --> 00:36:28,260
+You definitely want to
+use a replica set.
+
+836
+00:36:28,260 --> 00:36:28,570
+Right.
+
+837
+00:36:28,570 --> 00:36:32,740
+So not exactly scaling
+horizontally like you would
+
+838
+00:36:32,740 --> 00:36:36,670
+when you shard, but it did
+create for us multiple
+
+839
+00:36:36,670 --> 00:36:38,390
+machines to read from.
+
+840
+00:36:38,390 --> 00:36:42,965
+Yeah, you decided to read from
+your secondaries, which meant
+
+841
+00:36:42,965 --> 00:36:46,430
+that you're also dealing with
+eventual consistency versus
+
+842
+00:36:46,430 --> 00:36:47,600
+strong consistency.
+
+843
+00:36:47,600 --> 00:36:48,600
+Right.
+
+844
+00:36:48,600 --> 00:36:53,970
+So we had a single primary,
+of course, and we had two
+
+845
+00:36:53,970 --> 00:36:55,220
+secondaries.
+
+846
+00:36:55,220 --> 00:36:57,500
+
+847
+00:36:57,500 --> 00:37:01,730
+And we did writes to the
+primary, and we did reads from
+
+848
+00:37:01,730 --> 00:37:03,740
+the secondary.
+
+849
+00:37:03,740 --> 00:37:07,470
+And the reason why we did that
+was just to guarantee that we
+
+850
+00:37:07,470 --> 00:37:13,790
+could horizontally scale the
+read load, and one machine was
+
+851
+00:37:13,790 --> 00:37:15,775
+more than sufficient to handle
+the write load that
+
+852
+00:37:15,775 --> 00:37:16,730
+we had at the time.
+
+853
+00:37:16,730 --> 00:37:21,030
+It's primarily a read-heavy
+application.
+
+854
+00:37:21,030 --> 00:37:25,560
+And this allowed us to both
+ensure that in event of a
+
+855
+00:37:25,560 --> 00:37:29,420
+failure that one of the
+secondaries would be promoted,
+
+856
+00:37:29,420 --> 00:37:31,490
+or in some way the load
+would be balanced
+
+857
+00:37:31,490 --> 00:37:32,740
+if a secondary failed.
+
+858
+00:37:32,740 --> 00:37:37,070
+But also, like I said, to
+horizontally scale our read
+
+859
+00:37:37,070 --> 00:37:40,580
+such that if the read load
+significantly increased, we
+
+860
+00:37:40,580 --> 00:37:43,130
+could continually add
+more secondaries.
+
+861
+00:37:43,130 --> 00:37:43,560
+Yeah.
+
+862
+00:37:43,560 --> 00:37:47,790
+And there's some debate within
+10gen about whether or not
+
+863
+00:37:47,790 --> 00:37:49,870
+this is the best way to scale
+reads or whether you'd be
+
+864
+00:37:49,870 --> 00:37:51,480
+better off just adding shards.
+
+865
+00:37:51,480 --> 00:37:52,100
+Yeah.
+
+866
+00:37:52,100 --> 00:37:53,960
+Aside from the consistency
+issues, which is that you have
+
+867
+00:37:53,960 --> 00:37:56,970
+to have your application be
+tolerant of reading data
+
+868
+00:37:56,970 --> 00:37:59,630
+that's potentially different
+than what you wrote.
+
+869
+00:37:59,630 --> 00:38:02,290
+In terms of slowing down the
+secondaries and slowing down
+
+870
+00:38:02,290 --> 00:38:06,080
+replication, you have to make
+sure, of course, that from the
+
+871
+00:38:06,080 --> 00:38:08,370
+capacity planning standpoint
+that these are as large--
+
+872
+00:38:08,370 --> 00:38:13,190
+often, people will buy cheaper
+boxes for their secondaries
+
+873
+00:38:13,190 --> 00:38:17,070
+sometimes, and then they'll have
+problems with keeping up
+
+874
+00:38:17,070 --> 00:38:20,120
+with replication if they load
+this guy down with reads.
+
+875
+00:38:20,120 --> 00:38:23,750
+So not everyone recommend that,
+but certainly a lot of
+
+876
+00:38:23,750 --> 00:38:24,740
+users do that.
+
+877
+00:38:24,740 --> 00:38:29,200
+They scale reads using
+replication versus sharding.
+
+878
+00:38:29,200 --> 00:38:32,230
+And we talked a little bit about
+that in the application
+
+879
+00:38:32,230 --> 00:38:33,050
+engineering part.
+
+880
+00:38:33,050 --> 00:38:33,380
+Yeah.
+
+881
+00:38:33,380 --> 00:38:33,710
+Definitely.
+
+882
+00:38:33,710 --> 00:38:37,080
+There were some reads that
+had to go to the primary.
+
+883
+00:38:37,080 --> 00:38:41,350
+If we needed to guarantee
+consistency, we would, instead
+
+884
+00:38:41,350 --> 00:38:44,530
+of using the secondary session
+configuration, we'd use a
+
+885
+00:38:44,530 --> 00:38:48,420
+primary session configuration,
+where we'd both write and read
+
+886
+00:38:48,420 --> 00:38:49,130
+from the primary.
+
+887
+00:38:49,130 --> 00:38:52,100
+And that was sufficient, but,
+of course, like you were
+
+888
+00:38:52,100 --> 00:38:54,340
+saying before, it requires that
+developers understand the
+
+889
+00:38:54,340 --> 00:38:57,890
+implementation of the data layer
+and understand when you
+
+890
+00:38:57,890 --> 00:38:59,300
+have a guarantee of consistency
+
+891
+00:38:59,300 --> 00:39:00,510
+and when you don't.
+
+892
+00:39:00,510 --> 00:39:01,220
+And, right.
+
+893
+00:39:01,220 --> 00:39:04,790
+It isn't always easy or ideal.
+
+894
+00:39:04,790 --> 00:39:07,390
+After this, we're very happy
+with the implementation--
+
+895
+00:39:07,390 --> 00:39:07,880
+Right.
+
+896
+00:39:07,880 --> 00:39:10,140
+This is generation two.
+
+897
+00:39:10,140 --> 00:39:11,400
+Generation two.
+
+898
+00:39:11,400 --> 00:39:15,720
+We, as we continued to grow, had
+to actually look into an
+
+899
+00:39:15,720 --> 00:39:17,740
+alternative way of scaling
+horizontally.
+
+900
+00:39:17,740 --> 00:39:19,900
+So I think we can spend some
+time talking about that.
+
+901
+00:39:19,900 --> 00:39:20,135
+Yeah.
+
+902
+00:39:20,135 --> 00:39:20,370
+Sure.
+
+903
+00:39:20,370 --> 00:39:24,380
+So we're going to go to
+third generation.
+
+904
+00:39:24,380 --> 00:39:27,000
+There were a few things
+that we did here.
+
+905
+00:39:27,000 --> 00:39:29,460
+This is order of hundreds of
+millions of submissions.
+
+906
+00:39:29,460 --> 00:39:34,040
+So we're starting to get into
+some significant storage
+
+907
+00:39:34,040 --> 00:39:35,110
+requirements here,
+because these
+
+908
+00:39:35,110 --> 00:39:36,650
+aren't simply log entries.
+
+909
+00:39:36,650 --> 00:39:40,770
+These are large documents that
+are potentially have an array
+
+910
+00:39:40,770 --> 00:39:44,710
+of answers that could be
+a megabyte or more.
+
+911
+00:39:44,710 --> 00:39:45,490
+Right.
+
+912
+00:39:45,490 --> 00:39:48,860
+And as know, there's a hard cap
+on the document limit, and
+
+913
+00:39:48,860 --> 00:39:51,910
+our content was getting more
+complicated, more elaborate,
+
+914
+00:39:51,910 --> 00:39:55,410
+complex, and the types of
+submissions or answers for
+
+915
+00:39:55,410 --> 00:39:58,150
+that content was similarly
+getting more complex.
+
+916
+00:39:58,150 --> 00:40:00,760
+We started introducing web
+courses, we started
+
+917
+00:40:00,760 --> 00:40:01,910
+introducing courses
+where people were
+
+918
+00:40:01,910 --> 00:40:03,140
+building actual programs.
+
+919
+00:40:03,140 --> 00:40:06,690
+And so we started to see that
+submissions were increasingly
+
+920
+00:40:06,690 --> 00:40:09,400
+resembling file projects.
+
+921
+00:40:09,400 --> 00:40:10,170
+Right.
+
+922
+00:40:10,170 --> 00:40:12,840
+And so we were starting to use
+Mongo as a file store, which
+
+923
+00:40:12,840 --> 00:40:14,200
+is not its intended purpose.
+
+924
+00:40:14,200 --> 00:40:14,900
+Yeah.
+
+925
+00:40:14,900 --> 00:40:17,510
+There's some GridFS stuff
+in there, but yes.
+
+926
+00:40:17,510 --> 00:40:19,020
+Personally, I've never
+liked storing very
+
+927
+00:40:19,020 --> 00:40:20,360
+large things in databases.
+
+928
+00:40:20,360 --> 00:40:21,916
+I think they're better
+off in file systems.
+
+929
+00:40:21,916 --> 00:40:22,690
+But.
+
+930
+00:40:22,690 --> 00:40:23,950
+So, right.
+
+931
+00:40:23,950 --> 00:40:27,010
+The first thing that we did here
+for the third generation
+
+932
+00:40:27,010 --> 00:40:32,240
+was take our array of answers
+and take the entry field from
+
+933
+00:40:32,240 --> 00:40:35,570
+each of those documents
+and store that in S3.
+
+934
+00:40:35,570 --> 00:40:42,495
+So we did S3-backed
+answer storage.
+
+935
+00:40:42,495 --> 00:40:45,260
+
+936
+00:40:45,260 --> 00:40:48,840
+And so we were treating S3 just
+as a key value store.
+
+937
+00:40:48,840 --> 00:40:52,470
+We used a hash of the contents
+so that it was essentially
+
+938
+00:40:52,470 --> 00:40:53,720
+guaranteed--
+
+939
+00:40:53,720 --> 00:40:55,575
+
+940
+00:40:55,575 --> 00:40:56,060
+Right.
+
+941
+00:40:56,060 --> 00:40:58,600
+As free as Amazon Simple Storage
+Service, which I'm not
+
+942
+00:40:58,600 --> 00:41:01,340
+sure we've talked about a
+tremendous amount, but it lets
+
+943
+00:41:01,340 --> 00:41:03,910
+you store files and guarantees,
+pretty much, that
+
+944
+00:41:03,910 --> 00:41:08,080
+you'll get them back, and then
+charges you by the byte in
+
+945
+00:41:08,080 --> 00:41:10,430
+terms of what you're storing
+per month and also how much
+
+946
+00:41:10,430 --> 00:41:12,080
+bandwidth you use from Amazon.
+
+947
+00:41:12,080 --> 00:41:13,910
+And it's very, very reliable.
+
+948
+00:41:13,910 --> 00:41:16,140
+So you pretty much know you put
+something in S3, you're
+
+949
+00:41:16,140 --> 00:41:17,220
+going to be able to
+get it back out.
+
+950
+00:41:17,220 --> 00:41:17,610
+Right.
+
+951
+00:41:17,610 --> 00:41:20,830
+And the only major issue with S3
+versus Mongo is, of course,
+
+952
+00:41:20,830 --> 00:41:22,490
+the latency of retrieval.
+
+953
+00:41:22,490 --> 00:41:23,040
+Yes.
+
+954
+00:41:23,040 --> 00:41:25,970
+Because you're going across the
+network and you're using
+
+955
+00:41:25,970 --> 00:41:29,640
+another service, you have to
+factor in the retrieval.
+
+956
+00:41:29,640 --> 00:41:33,120
+We actually load S3 documents
+directly from the browser.
+
+957
+00:41:33,120 --> 00:41:39,540
+So we do not now include your
+submitted entry history in the
+
+958
+00:41:39,540 --> 00:41:40,570
+response back.
+
+959
+00:41:40,570 --> 00:41:42,750
+As we talked about in the major
+application, as you go
+
+960
+00:41:42,750 --> 00:41:44,850
+through the application layer
+and the API layer.
+
+961
+00:41:44,850 --> 00:41:47,420
+We only send back the associated
+metadata or store
+
+962
+00:41:47,420 --> 00:41:51,160
+the metadata in the submissions
+collection.
+
+963
+00:41:51,160 --> 00:41:54,190
+The actual entry itself is
+stored in S3, and that
+
+964
+00:41:54,190 --> 00:41:56,050
+retrieval happens
+on the client.
+
+965
+00:41:56,050 --> 00:42:02,250
+And so that allows us to have
+a very quick response cycle.
+
+966
+00:42:02,250 --> 00:42:05,610
+So we did S3-backed
+answer storage.
+
+967
+00:42:05,610 --> 00:42:09,990
+And as a result, our submission
+collection both
+
+968
+00:42:09,990 --> 00:42:20,060
+became significantly smaller,
+but it also, each of the
+
+969
+00:42:20,060 --> 00:42:21,880
+documents in the submission
+collection became more
+
+970
+00:42:21,880 --> 00:42:24,760
+consistent in size, so that
+significantly increased our
+
+971
+00:42:24,760 --> 00:42:26,640
+compaction factor.
+
+972
+00:42:26,640 --> 00:42:30,200
+And so as a result, we got an
+even larger essentially,
+
+973
+00:42:30,200 --> 00:42:34,210
+increase or benefit in the
+decrease of the collection
+
+974
+00:42:34,210 --> 00:42:35,925
+size, which was quickly
+ballooning.
+
+975
+00:42:35,925 --> 00:42:39,766
+
+976
+00:42:39,766 --> 00:42:43,670
+So in generation two, did you
+eventually go to a sharded
+
+977
+00:42:43,670 --> 00:42:45,460
+configuration?
+
+978
+00:42:45,460 --> 00:42:47,350
+This is generation
+three, right?
+
+979
+00:42:47,350 --> 00:42:47,610
+Yeah.
+
+980
+00:42:47,610 --> 00:42:49,020
+This is generation three.
+
+981
+00:42:49,020 --> 00:42:51,850
+So in generation two, so the
+documents are growing pretty
+
+982
+00:42:51,850 --> 00:42:55,250
+fast because you're storing
+all the responses in this
+
+983
+00:42:55,250 --> 00:42:57,940
+answers array, and
+the exercises are
+
+984
+00:42:57,940 --> 00:42:59,220
+getting more complex.
+
+985
+00:42:59,220 --> 00:43:02,070
+And so the amount of information
+stored for each of
+
+986
+00:43:02,070 --> 00:43:03,370
+the answers is growing.
+
+987
+00:43:03,370 --> 00:43:09,260
+And after you moved to a
+replicated environment where
+
+988
+00:43:09,260 --> 00:43:12,080
+you're setting your writes to
+your primary and your reads to
+
+989
+00:43:12,080 --> 00:43:12,990
+your secondaries--
+
+990
+00:43:12,990 --> 00:43:16,230
+you told me before, we were
+talking beforehand, that you
+
+991
+00:43:16,230 --> 00:43:18,040
+eventually got to the point
+where even that wasn't enough
+
+992
+00:43:18,040 --> 00:43:20,120
+and you decided to
+shard the system.
+
+993
+00:43:20,120 --> 00:43:23,410
+So can you talk a little bit
+about the sharding you did and
+
+994
+00:43:23,410 --> 00:43:26,820
+the shard key you chose and
+your thinking behind that?
+
+995
+00:43:26,820 --> 00:43:27,280
+Certainly.
+
+996
+00:43:27,280 --> 00:43:32,280
+So we had a submissions
+collection which was very
+
+997
+00:43:32,280 --> 00:43:33,630
+rapidly growing.
+
+998
+00:43:33,630 --> 00:43:36,790
+And, of course, when you have
+a collection that's growing
+
+999
+00:43:36,790 --> 00:43:39,180
+both in volume and size and
+you're starting to overload
+
+1000
+00:43:39,180 --> 00:43:44,180
+your machines, one of the, I
+think, more common solutions
+
+1001
+00:43:44,180 --> 00:43:45,400
+to the problem is sharding--
+
+1002
+00:43:45,400 --> 00:43:48,030
+meaning that you're going to
+split your collection across
+
+1003
+00:43:48,030 --> 00:43:49,320
+multiple machines.
+
+1004
+00:43:49,320 --> 00:43:51,990
+And you need to split that
+collection by a shard key.
+
+1005
+00:43:51,990 --> 00:43:54,240
+And I don't know how much detail
+you guys have gone into
+
+1006
+00:43:54,240 --> 00:43:56,260
+about covering how to choose
+your shard key.
+
+1007
+00:43:56,260 --> 00:43:57,080
+We did.
+
+1008
+00:43:57,080 --> 00:43:59,550
+And we talked about that last
+week from a developer's
+
+1009
+00:43:59,550 --> 00:44:00,380
+standpoint.
+
+1010
+00:44:00,380 --> 00:44:02,650
+We haven't really gone over
+extensively how to set up
+
+1011
+00:44:02,650 --> 00:44:05,500
+sharding configurations, which
+is more of a DBA topic, but we
+
+1012
+00:44:05,500 --> 00:44:08,850
+did talk about shard key
+selection and criteria.
+
+1013
+00:44:08,850 --> 00:44:11,310
+So what did what you guys
+choose and what was your
+
+1014
+00:44:11,310 --> 00:44:12,110
+thinking behind it?
+
+1015
+00:44:12,110 --> 00:44:14,470
+So we chose--
+
+1016
+00:44:14,470 --> 00:44:16,080
+and this, I guess, was
+somewhat naively.
+
+1017
+00:44:16,080 --> 00:44:18,750
+This was an experiment
+in sharding.
+
+1018
+00:44:18,750 --> 00:44:22,280
+We wanted to see if this was a
+valid solution to the problem.
+
+1019
+00:44:22,280 --> 00:44:25,420
+And when you pick a shard key,
+you both want something that's
+
+1020
+00:44:25,420 --> 00:44:29,300
+not monotonically increasing,
+that has a random distribution
+
+1021
+00:44:29,300 --> 00:44:36,340
+across whatever its range is,
+and you also want, ideally,
+
+1022
+00:44:36,340 --> 00:44:39,520
+locality querying.
+
+1023
+00:44:39,520 --> 00:44:43,550
+If you're going to be querying
+multiple documents, you want,
+
+1024
+00:44:43,550 --> 00:44:46,080
+ideally, them to come from the
+same box or at least to be
+
+1025
+00:44:46,080 --> 00:44:47,970
+fresh in memory.
+
+1026
+00:44:47,970 --> 00:44:51,740
+For us, that was really across
+the user ID because we would
+
+1027
+00:44:51,740 --> 00:44:54,140
+never, for a single exercise,
+loads submissions across
+
+1028
+00:44:54,140 --> 00:44:56,630
+multiple users.
+
+1029
+00:44:56,630 --> 00:44:58,510
+It would always be for a single
+user, and it might
+
+1030
+00:44:58,510 --> 00:45:01,500
+potentially be across
+multiple exercises.
+
+1031
+00:45:01,500 --> 00:45:04,620
+And so for us, it was really
+only two machines.
+
+1032
+00:45:04,620 --> 00:45:10,100
+We noticed that there was an
+even distribution of access.
+
+1033
+00:45:10,100 --> 00:45:13,770
+Also a user who's currently very
+active will be active in
+
+1034
+00:45:13,770 --> 00:45:18,510
+the next few moments, and so
+its fresh in memory and it
+
+1035
+00:45:18,510 --> 00:45:19,530
+worked pretty well.
+
+1036
+00:45:19,530 --> 00:45:23,990
+We weren't so happy with how
+quickly the submission
+
+1037
+00:45:23,990 --> 00:45:27,340
+collection was growing, just
+in raw size, and not
+
+1038
+00:45:27,340 --> 00:45:31,660
+necessarily in the number of
+cardinality of the set.
+
+1039
+00:45:31,660 --> 00:45:35,630
+And so, for us, we thought that
+sharding did give us the
+
+1040
+00:45:35,630 --> 00:45:38,060
+benefit of distributing this
+collection across multiple
+
+1041
+00:45:38,060 --> 00:45:41,480
+machines and the resources of
+each, but we thought that
+
+1042
+00:45:41,480 --> 00:45:43,510
+there might be a better solution
+to the type of
+
+1043
+00:45:43,510 --> 00:45:44,860
+problem that we were facing.
+
+1044
+00:45:44,860 --> 00:45:46,860
+That problem is, essentially,
+that we were treating MongoDB
+
+1045
+00:45:46,860 --> 00:45:50,530
+as a file store for the
+submitted answers.
+
+1046
+00:45:50,530 --> 00:45:53,350
+So are you saying that you
+experimented, set up some
+
+1047
+00:45:53,350 --> 00:45:55,580
+experimental configurations that
+were sharded but never
+
+1048
+00:45:55,580 --> 00:45:57,640
+went live with the sharding
+configuration for the users?
+
+1049
+00:45:57,640 --> 00:45:59,660
+Or you did go live with the
+sharded configuration?
+
+1050
+00:45:59,660 --> 00:46:00,590
+We did go live.
+
+1051
+00:46:00,590 --> 00:46:02,465
+This is before we hit the--
+
+1052
+00:46:02,465 --> 00:46:04,550
+I think there's some
+arbitrary shard
+
+1053
+00:46:04,550 --> 00:46:07,030
+cap of like 120 gigabytes.
+
+1054
+00:46:07,030 --> 00:46:07,980
+I'm not sure.
+
+1055
+00:46:07,980 --> 00:46:10,570
+There's a collection
+cap before you
+
+1056
+00:46:10,570 --> 00:46:13,800
+can shard it naively.
+
+1057
+00:46:13,800 --> 00:46:15,960
+And so before we hit that, we
+wanted to experiment and see
+
+1058
+00:46:15,960 --> 00:46:17,720
+is this a solution that we
+wanted to commit to.
+
+1059
+00:46:17,720 --> 00:46:20,010
+It's something that
+we looked into.
+
+1060
+00:46:20,010 --> 00:46:23,800
+Once we started experimenting
+with it, I think we realized
+
+1061
+00:46:23,800 --> 00:46:27,170
+that there was a better solution
+for us, particularly.
+
+1062
+00:46:27,170 --> 00:46:27,960
+OK.
+
+1063
+00:46:27,960 --> 00:46:32,610
+So and when you went to a
+sharded environment, you had
+
+1064
+00:46:32,610 --> 00:46:33,920
+sharded replica sets?
+
+1065
+00:46:33,920 --> 00:46:35,130
+Is that what you did?
+
+1066
+00:46:35,130 --> 00:46:35,410
+Yeah.
+
+1067
+00:46:35,410 --> 00:46:37,995
+We did a sharded replicants
+sets.
+
+1068
+00:46:37,995 --> 00:46:42,280
+It was just two shards.
+
+1069
+00:46:42,280 --> 00:46:45,650
+You have your Mongo S, right?
+
+1070
+00:46:45,650 --> 00:46:47,340
+I'll draw this over here.
+
+1071
+00:46:47,340 --> 00:46:53,990
+
+1072
+00:46:53,990 --> 00:47:00,340
+You have your Mongo S. And we
+had two shard configurations.
+
+1073
+00:47:00,340 --> 00:47:03,460
+Each has a primary.
+
+1074
+00:47:03,460 --> 00:47:05,525
+And then those were backed
+by just two secondaries.
+
+1075
+00:47:05,525 --> 00:47:10,170
+
+1076
+00:47:10,170 --> 00:47:14,190
+And this was, I think,
+pretty standard.
+
+1077
+00:47:14,190 --> 00:47:16,580
+We were just trying to get a
+configuration that could scale
+
+1078
+00:47:16,580 --> 00:47:18,400
+horizontally as we wanted to.
+
+1079
+00:47:18,400 --> 00:47:21,090
+But obviously, you're
+essentially doubling your
+
+1080
+00:47:21,090 --> 00:47:22,810
+machine count.
+
+1081
+00:47:22,810 --> 00:47:27,650
+We didn't feel like this was
+necessarily the most efficient
+
+1082
+00:47:27,650 --> 00:47:30,610
+solution to the problem, and
+we were trying to identify
+
+1083
+00:47:30,610 --> 00:47:32,280
+what really was our problem.
+
+1084
+00:47:32,280 --> 00:47:36,520
+Our real problem was that the
+size of the answer entries
+
+1085
+00:47:36,520 --> 00:47:39,200
+varied wildly.
+
+1086
+00:47:39,200 --> 00:47:43,840
+We also treated submissions as
+primarily read-heavy and not
+
+1087
+00:47:43,840 --> 00:47:50,350
+write-heavy, so we didn't need
+high level performance on
+
+1088
+00:47:50,350 --> 00:47:51,850
+submission reads.
+
+1089
+00:47:51,850 --> 00:47:52,300
+Right.
+
+1090
+00:47:52,300 --> 00:47:54,440
+Actually, you don't read
+them that often, so.
+
+1091
+00:47:54,440 --> 00:47:55,010
+Yeah.
+
+1092
+00:47:55,010 --> 00:48:00,450
+As we talked about for the
+flow of the request,
+
+1093
+00:48:00,450 --> 00:48:02,410
+essentially it's
+mostly writes.
+
+1094
+00:48:02,410 --> 00:48:02,690
+Yeah.
+
+1095
+00:48:02,690 --> 00:48:04,880
+You don't even need to read
+the previous historical
+
+1096
+00:48:04,880 --> 00:48:06,350
+response to take a new one.
+
+1097
+00:48:06,350 --> 00:48:07,090
+Yeah.
+
+1098
+00:48:07,090 --> 00:48:10,592
+Part of the solution here
+before that we that we
+
+1099
+00:48:10,592 --> 00:48:15,410
+denormalized a lot of the
+progress information of a user
+
+1100
+00:48:15,410 --> 00:48:16,660
+through content.
+
+1101
+00:48:16,660 --> 00:48:18,600
+
+1102
+00:48:18,600 --> 00:48:20,242
+That's, of course,
+very read-heavy.
+
+1103
+00:48:20,242 --> 00:48:22,770
+As you're showing a user
+his progress, you don't
+
+1104
+00:48:22,770 --> 00:48:26,010
+necessarily need to retrieve the
+submitted documents, but
+
+1105
+00:48:26,010 --> 00:48:28,460
+you do need to retrieve whether
+or not the user has
+
+1106
+00:48:28,460 --> 00:48:32,210
+completed the content, to what
+extent, information like that.
+
+1107
+00:48:32,210 --> 00:48:35,000
+We denormalize into another
+collection.
+
+1108
+00:48:35,000 --> 00:48:35,820
+OK.
+
+1109
+00:48:35,820 --> 00:48:39,546
+So experiments with sharding
+found you didn't need it after
+
+1110
+00:48:39,546 --> 00:48:41,970
+you moved to S3, and then moved
+to what we'll call the
+
+1111
+00:48:41,970 --> 00:48:48,960
+third generation, which uses
+S3 for those documents, and
+
+1112
+00:48:48,960 --> 00:48:49,930
+the documents are a
+lot more compact.
+
+1113
+00:48:49,930 --> 00:48:52,170
+And now you've moved back to a
+situation where you're using
+
+1114
+00:48:52,170 --> 00:48:54,480
+replica sets, and you basically
+have a single
+
+1115
+00:48:54,480 --> 00:48:58,580
+replica set, and it's performing
+well enough to
+
+1116
+00:48:58,580 --> 00:48:59,700
+serve the whole system.
+
+1117
+00:48:59,700 --> 00:49:00,080
+Yeah.
+
+1118
+00:49:00,080 --> 00:49:02,050
+A single replica set.
+
+1119
+00:49:02,050 --> 00:49:04,920
+So we did move back from the
+sharded configuration, as you
+
+1120
+00:49:04,920 --> 00:49:07,600
+said, to a single primary
+and two secondaries.
+
+1121
+00:49:07,600 --> 00:49:12,270
+Both still quad, large memory
+instances on EC2.
+
+1122
+00:49:12,270 --> 00:49:17,980
+But we're able to keep our
+active set in memory without
+
+1123
+00:49:17,980 --> 00:49:18,990
+any serious issues.
+
+1124
+00:49:18,990 --> 00:49:22,810
+We haven't needed to set
+up a caching layer.
+
+1125
+00:49:22,810 --> 00:49:26,730
+We've always tried to maintain
+a policy of the simplest
+
+1126
+00:49:26,730 --> 00:49:28,080
+solution is the best solution.
+
+1127
+00:49:28,080 --> 00:49:28,450
+Yeah.
+
+1128
+00:49:28,450 --> 00:49:31,580
+And for us, it's been incredibly
+performant.
+
+1129
+00:49:31,580 --> 00:49:34,050
+We will need to shard
+at some point.
+
+1130
+00:49:34,050 --> 00:49:35,570
+That moment isn't now.
+
+1131
+00:49:35,570 --> 00:49:39,420
+And it's clear, I think, that
+the submissions collection
+
+1132
+00:49:39,420 --> 00:49:41,830
+will be one of the first
+collections to be sharded.
+
+1133
+00:49:41,830 --> 00:49:45,220
+But moving to S3 for us, at
+the moment, was a pretty
+
+1134
+00:49:45,220 --> 00:49:47,520
+significant win.
+
+1135
+00:49:47,520 --> 00:49:48,490
+Yeah.
+
+1136
+00:49:48,490 --> 00:49:52,680
+And in terms of your replicated
+environment, have
+
+1137
+00:49:52,680 --> 00:49:55,526
+you found that you have to be
+cognizant of the fact that
+
+1138
+00:49:55,526 --> 00:49:57,810
+you're in a replicated
+environment or has it been
+
+1139
+00:49:57,810 --> 00:50:01,720
+transparent to the developer?
+
+1140
+00:50:01,720 --> 00:50:04,480
+So, as we mentioned before, you
+do you have to be aware,
+
+1141
+00:50:04,480 --> 00:50:07,625
+because we have writes to
+primary and we have writes
+
+1142
+00:50:07,625 --> 00:50:08,060
+from secondary.
+
+1143
+00:50:08,060 --> 00:50:09,190
+Oh, there is that.
+
+1144
+00:50:09,190 --> 00:50:09,890
+You have to be aware of that.
+
+1145
+00:50:09,890 --> 00:50:12,210
+I wasn't sure if you were still
+doing that now that you
+
+1146
+00:50:12,210 --> 00:50:14,840
+realized you're more write-heavy
+than read-heavy.
+
+1147
+00:50:14,840 --> 00:50:16,530
+So you still continue to send
+you reads through your
+
+1148
+00:50:16,530 --> 00:50:17,050
+secondaries.
+
+1149
+00:50:17,050 --> 00:50:18,960
+Well, the submission collection
+is write-heavy.
+
+1150
+00:50:18,960 --> 00:50:21,710
+The majority of the other
+collections are read-heavy.
+
+1151
+00:50:21,710 --> 00:50:22,623
+Ive got you.
+
+1152
+00:50:22,623 --> 00:50:23,470
+OK.
+
+1153
+00:50:23,470 --> 00:50:24,290
+All right.
+
+1154
+00:50:24,290 --> 00:50:28,410
+So there's that level
+of awareness.
+
+1155
+00:50:28,410 --> 00:50:31,710
+You run with Safe Mode
+equals true?
+
+1156
+00:50:31,710 --> 00:50:34,070
+That's actually changed with the
+most recent drivers, but
+
+1157
+00:50:34,070 --> 00:50:36,020
+you obviously got started
+much earlier than that.
+
+1158
+00:50:36,020 --> 00:50:36,710
+Yeah.
+
+1159
+00:50:36,710 --> 00:50:38,780
+If we're going to walk away
+from the submission
+
+1160
+00:50:38,780 --> 00:50:39,540
+collection--
+
+1161
+00:50:39,540 --> 00:50:40,790
+I speak a little bit
+more generally--
+
+1162
+00:50:40,790 --> 00:50:44,020
+
+1163
+00:50:44,020 --> 00:50:49,270
+any kind of stateful information
+that the user
+
+1164
+00:50:49,270 --> 00:50:53,380
+would notice if it was to not
+persist, or disappear, we
+
+1165
+00:50:53,380 --> 00:50:54,870
+certainly use Safe Mode.
+
+1166
+00:50:54,870 --> 00:51:00,240
+For a lot of the activity
+logging or the more
+
+1167
+00:51:00,240 --> 00:51:04,600
+event-based writes that the
+application performs, we
+
+1168
+00:51:04,600 --> 00:51:07,500
+disable Safe Mode or
+we'll optimize for
+
+1169
+00:51:07,500 --> 00:51:10,130
+just insertion speed.
+
+1170
+00:51:10,130 --> 00:51:10,960
+I've got you.
+
+1171
+00:51:10,960 --> 00:51:12,090
+OK.
+
+1172
+00:51:12,090 --> 00:51:15,800
+So if it's more analytics or
+something, then you'll--
+
+1173
+00:51:15,800 --> 00:51:16,270
+Yeah.
+
+1174
+00:51:16,270 --> 00:51:18,490
+We'll store additional
+information on top of
+
+1175
+00:51:18,490 --> 00:51:23,200
+submissions, like general
+information about how the
+
+1176
+00:51:23,200 --> 00:51:26,430
+user's interacting with the
+site, where they're going, how
+
+1177
+00:51:26,430 --> 00:51:28,460
+they're spending time on it.
+
+1178
+00:51:28,460 --> 00:51:30,220
+We store a lot of that
+also in Mongo.
+
+1179
+00:51:30,220 --> 00:51:32,730
+
+1180
+00:51:32,730 --> 00:51:36,040
+But, for the most part, for
+that, we're using drivers and
+
+1181
+00:51:36,040 --> 00:51:42,690
+we're very specific about our
+insertion strategy around that
+
+1182
+00:51:42,690 --> 00:51:44,160
+type of information.
+
+1183
+00:51:44,160 --> 00:51:44,990
+Right.
+
+1184
+00:51:44,990 --> 00:51:47,400
+So let's talk a little bit about
+scaling and the way you
+
+1185
+00:51:47,400 --> 00:51:50,950
+do capacity planning and other
+things of that nature.
+
+1186
+00:51:50,950 --> 00:51:54,670
+So, first of all, you said you
+were running on a 4x large.
+
+1187
+00:51:54,670 --> 00:51:55,685
+Your replicas are the same?
+
+1188
+00:51:55,685 --> 00:51:58,090
+Are they all the same machine?
+
+1189
+00:51:58,090 --> 00:51:59,580
+Primaries and secondaries
+run on the same
+
+1190
+00:51:59,580 --> 00:52:00,675
+instance type on EC2.
+
+1191
+00:52:00,675 --> 00:52:01,170
+Same instance type.
+
+1192
+00:52:01,170 --> 00:52:02,440
+Yep.
+
+1193
+00:52:02,440 --> 00:52:03,660
+OK.
+
+1194
+00:52:03,660 --> 00:52:07,500
+And if you want to add
+more capacity, how do
+
+1195
+00:52:07,500 --> 00:52:09,210
+you go about that?
+
+1196
+00:52:09,210 --> 00:52:14,070
+So they weren't always
+quad extra larges.
+
+1197
+00:52:14,070 --> 00:52:16,876
+We had to upgrade, and we wanted
+to upgrade in such a
+
+1198
+00:52:16,876 --> 00:52:18,670
+way that we didn't have
+any downtime.
+
+1199
+00:52:18,670 --> 00:52:23,270
+And to do that, Mongo allows you
+to switch into a replica
+
+1200
+00:52:23,270 --> 00:52:27,570
+set configuration, but you do
+you have to, essentially, take
+
+1201
+00:52:27,570 --> 00:52:31,160
+the site down and turn off your
+database at least for a
+
+1202
+00:52:31,160 --> 00:52:32,260
+brief moment.
+
+1203
+00:52:32,260 --> 00:52:34,720
+So when we switched from a
+single instance to a replica
+
+1204
+00:52:34,720 --> 00:52:37,980
+set configuration, we did have
+to bring the site down.
+
+1205
+00:52:37,980 --> 00:52:42,300
+Between when you have a replica
+configuration and we
+
+1206
+00:52:42,300 --> 00:52:44,490
+wanted to upgrade our boxes,
+what we would do is we would
+
+1207
+00:52:44,490 --> 00:52:49,800
+add a larger provisioned
+instance as a secondary, then
+
+1208
+00:52:49,800 --> 00:52:54,770
+have that new instance be
+brought up to date through
+
+1209
+00:52:54,770 --> 00:52:57,560
+replication across
+the replica set.
+
+1210
+00:52:57,560 --> 00:53:02,680
+Once it was synced up, we would
+then demote the primary,
+
+1211
+00:53:02,680 --> 00:53:05,350
+and we would set the priority
+flag in the new instance
+
+1212
+00:53:05,350 --> 00:53:09,540
+secondary so that it would
+assume responsibility for
+
+1213
+00:53:09,540 --> 00:53:10,170
+being the primary.
+
+1214
+00:53:10,170 --> 00:53:12,630
+So pretty seamless, actually.
+
+1215
+00:53:12,630 --> 00:53:14,630
+Yeah.
+
+1216
+00:53:14,630 --> 00:53:16,225
+And not a lot of downtime.
+
+1217
+00:53:16,225 --> 00:53:19,000
+It could potentially be almost
+no downtime right except for
+
+1218
+00:53:19,000 --> 00:53:21,470
+the time when you're just
+transitioning and when you
+
+1219
+00:53:21,470 --> 00:53:24,220
+step down the primary to
+bring the secondary up.
+
+1220
+00:53:24,220 --> 00:53:24,710
+Yeah.
+
+1221
+00:53:24,710 --> 00:53:26,810
+If you're patient, I think.
+
+1222
+00:53:26,810 --> 00:53:29,600
+It's certainly faster to
+sometimes take the site down,
+
+1223
+00:53:29,600 --> 00:53:33,930
+and if you have EBS back-storage
+to unmount it
+
+1224
+00:53:33,930 --> 00:53:37,110
+from one instance, remount
+it to another.
+
+1225
+00:53:37,110 --> 00:53:39,345
+If you're pressed for time,
+that's a quick option.
+
+1226
+00:53:39,345 --> 00:53:44,060
+If you're not pressed for time
+and you've properly planned
+
+1227
+00:53:44,060 --> 00:53:46,970
+things out and you see the trend
+or the writing on the
+
+1228
+00:53:46,970 --> 00:53:50,100
+wall, then, yeah, you can,
+potentially, of course, expand
+
+1229
+00:53:50,100 --> 00:53:51,850
+your capacity without
+any downtime.
+
+1230
+00:53:51,850 --> 00:53:52,650
+Right.
+
+1231
+00:53:52,650 --> 00:53:57,930
+So taking the server down,
+attaching the EBS store to a
+
+1232
+00:53:57,930 --> 00:54:02,630
+new box results in more
+downtime but a shorter
+
+1233
+00:54:02,630 --> 00:54:04,610
+duration of time from the time
+you make the decision to do
+
+1234
+00:54:04,610 --> 00:54:06,330
+this to the time you'll
+be up with a new box.
+
+1235
+00:54:06,330 --> 00:54:06,680
+Yeah.
+
+1236
+00:54:06,680 --> 00:54:11,050
+Replication, especially for a
+data set that's significantly
+
+1237
+00:54:11,050 --> 00:54:13,570
+sized, can take a long time.
+
+1238
+00:54:13,570 --> 00:54:14,900
+It could take hours.
+
+1239
+00:54:14,900 --> 00:54:17,270
+Do you copy over the data
+files first and then do
+
+1240
+00:54:17,270 --> 00:54:19,460
+replication or do you
+just let the whole
+
+1241
+00:54:19,460 --> 00:54:20,090
+replication catch up?
+
+1242
+00:54:20,090 --> 00:54:22,310
+We've done both.
+
+1243
+00:54:22,310 --> 00:54:25,580
+We've tried our syncing
+across the network
+
+1244
+00:54:25,580 --> 00:54:26,660
+bandwidth or the writes.
+
+1245
+00:54:26,660 --> 00:54:29,400
+If you have provisioned IOPS,
+it's a lot better.
+
+1246
+00:54:29,400 --> 00:54:32,600
+If you're replicating across
+provision IOPS instances from
+
+1247
+00:54:32,600 --> 00:54:35,160
+one to another, it's, of course,
+much, much faster than
+
+1248
+00:54:35,160 --> 00:54:38,850
+if it's a standard EBS or a
+femoral back-storage instance
+
+1249
+00:54:38,850 --> 00:54:42,040
+to a provisioned IOPS or any
+other instance type.
+
+1250
+00:54:42,040 --> 00:54:46,710
+But if they're both provisioned
+IOPS, it can be
+
+1251
+00:54:46,710 --> 00:54:47,850
+performant.
+
+1252
+00:54:47,850 --> 00:54:51,390
+It's certainly easiest just to
+connector a completely fresh
+
+1253
+00:54:51,390 --> 00:54:55,220
+member to a replica set
+and let it sync.
+
+1254
+00:54:55,220 --> 00:54:58,030
+Sometimes you have to restart
+it, but it almost
+
+1255
+00:54:58,030 --> 00:54:59,030
+always syncs up.
+
+1256
+00:54:59,030 --> 00:55:04,700
+And in terms of getting the
+performance you need, you run
+
+1257
+00:55:04,700 --> 00:55:09,290
+some of the front end on Heroku,
+you were saying?
+
+1258
+00:55:09,290 --> 00:55:12,380
+And then the back end
+is actually on AWS.
+
+1259
+00:55:12,380 --> 00:55:14,370
+So is that a challenge?
+
+1260
+00:55:14,370 --> 00:55:19,000
+Does the developer have to be
+aware of that longer latency
+
+1261
+00:55:19,000 --> 00:55:20,662
+than sort of running
+it locally.
+
+1262
+00:55:20,662 --> 00:55:22,860
+Do the developers have to be
+more aware of the cost of
+
+1263
+00:55:22,860 --> 00:55:25,210
+talking to a database that's not
+necessarily located in the
+
+1264
+00:55:25,210 --> 00:55:27,660
+same LAN or something?
+
+1265
+00:55:27,660 --> 00:55:30,995
+So if we go back to our client,
+our application, and
+
+1266
+00:55:30,995 --> 00:55:37,070
+our API layers, our application
+layer and our API
+
+1267
+00:55:37,070 --> 00:55:42,095
+layer, which essentially wraps
+or handles all the reads and
+
+1268
+00:55:42,095 --> 00:55:44,840
+writes to the database,
+both of those two
+
+1269
+00:55:44,840 --> 00:55:46,620
+are hosted on Heroku.
+
+1270
+00:55:46,620 --> 00:55:51,980
+And Heroku is also AWS backed.
+
+1271
+00:55:51,980 --> 00:55:53,230
+Right They use AWS.
+
+1272
+00:55:53,230 --> 00:55:55,530
+Their dynamos are running
+on top of AWS--
+
+1273
+00:55:55,530 --> 00:55:57,990
+at least the last
+that I heard.
+
+1274
+00:55:57,990 --> 00:56:03,810
+And I'm fairly sure that
+we use, in terms of our
+
+1275
+00:56:03,810 --> 00:56:04,800
+availability zone--
+
+1276
+00:56:04,800 --> 00:56:07,660
+AWS has different availability
+zones
+
+1277
+00:56:07,660 --> 00:56:08,890
+located across the world.
+
+1278
+00:56:08,890 --> 00:56:12,510
+And, of course, whenever you're
+across a network, you
+
+1279
+00:56:12,510 --> 00:56:16,590
+care about the latency
+between the nodes.
+
+1280
+00:56:16,590 --> 00:56:20,200
+And if you're on the other
+side of the world, you're
+
+1281
+00:56:20,200 --> 00:56:22,340
+going to have more significant
+latency than if the two boxes
+
+1282
+00:56:22,340 --> 00:56:25,810
+are connected, assuming that you
+have fantastic connections
+
+1283
+00:56:25,810 --> 00:56:26,830
+between them.
+
+1284
+00:56:26,830 --> 00:56:32,690
+And both us and Heroku
+are hosting the same
+
+1285
+00:56:32,690 --> 00:56:34,070
+availability zone.
+
+1286
+00:56:34,070 --> 00:56:37,775
+And because of that, there is
+less latency then if we were
+
+1287
+00:56:37,775 --> 00:56:39,500
+in different availability
+zones.
+
+1288
+00:56:39,500 --> 00:56:41,960
+But we still are going
+across the network.
+
+1289
+00:56:41,960 --> 00:56:44,810
+And so whenever you have
+an application that's
+
+1290
+00:56:44,810 --> 00:56:46,380
+communicating with the database
+and they're not on
+
+1291
+00:56:46,380 --> 00:56:49,310
+the same box, so they have to
+go across the network, you
+
+1292
+00:56:49,310 --> 00:56:51,320
+have to deal with latency
+of one sort or another.
+
+1293
+00:56:51,320 --> 00:56:53,870
+And as a result, you have to
+be very conscious of the
+
+1294
+00:56:53,870 --> 00:56:55,590
+number of requests--
+
+1295
+00:56:55,590 --> 00:56:57,120
+not only the types of queries,
+but just the
+
+1296
+00:56:57,120 --> 00:56:58,460
+raw number of queries--
+
+1297
+00:56:58,460 --> 00:57:00,370
+that you're performing
+on the database.
+
+1298
+00:57:00,370 --> 00:57:03,560
+Because there's a communication
+overhead just to
+
+1299
+00:57:03,560 --> 00:57:06,060
+get to the database and get
+the response back to the
+
+1300
+00:57:06,060 --> 00:57:06,660
+application.
+
+1301
+00:57:06,660 --> 00:57:10,180
+So for us, we try to make sure
+that every single request
+
+1302
+00:57:10,180 --> 00:57:15,030
+involves a certain number of
+database requests or fewer.
+
+1303
+00:57:15,030 --> 00:57:17,360
+For us, it's about 10.
+
+1304
+00:57:17,360 --> 00:57:23,260
+Even that's a little
+bit generous.
+
+1305
+00:57:23,260 --> 00:57:23,780
+Yeah.
+
+1306
+00:57:23,780 --> 00:57:28,460
+It's interesting, because I'm
+kind of an old guy, but in the
+
+1307
+00:57:28,460 --> 00:57:34,390
+'90s and in the early part of
+the 2000s when you would
+
+1308
+00:57:34,390 --> 00:57:37,180
+create a database-backed system
+attached to relational,
+
+1309
+00:57:37,180 --> 00:57:39,890
+the first rule of thumb was
+you never attached the web
+
+1310
+00:57:39,890 --> 00:57:42,960
+servers to the database because
+it'd just be too slow.
+
+1311
+00:57:42,960 --> 00:57:44,800
+And you cache it.
+
+1312
+00:57:44,800 --> 00:57:48,020
+And I guess, for me, one of the
+cool things about MongoDB
+
+1313
+00:57:48,020 --> 00:57:52,770
+is that you now can attach the
+web servers directly to the
+
+1314
+00:57:52,770 --> 00:57:55,050
+database and not have a separate
+caching layer and
+
+1315
+00:57:55,050 --> 00:57:58,700
+still get adequate performance
+for the users.
+
+1316
+00:57:58,700 --> 00:58:00,850
+That's cool.
+
+1317
+00:58:00,850 --> 00:58:04,240
+But I guess now that we're
+virtualizing everything and
+
+1318
+00:58:04,240 --> 00:58:07,150
+it's not always in the same,
+it's getting a little tougher
+
+1319
+00:58:07,150 --> 00:58:09,820
+because we're getting
+more latency.
+
+1320
+00:58:09,820 --> 00:58:12,180
+Yeah, we moved the cloud, so now
+it's easier, of course, to
+
+1321
+00:58:12,180 --> 00:58:14,030
+provision and horizontally
+scale.
+
+1322
+00:58:14,030 --> 00:58:17,050
+But we've introduced a lot of
+latency between connections.
+
+1323
+00:58:17,050 --> 00:58:19,810
+And as a result, you certainly
+have to be very conscious of
+
+1324
+00:58:19,810 --> 00:58:21,730
+just the volume of requests.
+
+1325
+00:58:21,730 --> 00:58:24,050
+So you have to batch
+your requests.
+
+1326
+00:58:24,050 --> 00:58:25,030
+You have to be conscious of it.
+
+1327
+00:58:25,030 --> 00:58:25,350
+Right.
+
+1328
+00:58:25,350 --> 00:58:28,200
+And it's not even a throughput
+issue, it's a latency issue.
+
+1329
+00:58:28,200 --> 00:58:30,940
+It's not that you can't get
+enough requests through the
+
+1330
+00:58:30,940 --> 00:58:34,750
+server, it's that any one user
+that's doing one thing on a
+
+1331
+00:58:34,750 --> 00:58:38,970
+web page, you can't wait for a
+lot of back and forths over a
+
+1332
+00:58:38,970 --> 00:58:40,585
+network or it's going to
+get too slow for them.
+
+1333
+00:58:40,585 --> 00:58:41,080
+Yeah, that's a good point.
+
+1334
+00:58:41,080 --> 00:58:43,580
+And that's why you want to be
+making asynchronous requests
+
+1335
+00:58:43,580 --> 00:58:47,530
+when possible or try to not have
+them, at the very least,
+
+1336
+00:58:47,530 --> 00:58:49,240
+be sequential.
+
+1337
+00:58:49,240 --> 00:58:50,970
+Right.
+
+1338
+00:58:50,970 --> 00:58:51,530
+All right.
+
+1339
+00:58:51,530 --> 00:58:57,330
+Well, thanks for letting us in
+on the internals of Codecademy
+
+1340
+00:58:57,330 --> 00:58:59,110
+and telling us how
+it all works.
+
+1341
+00:58:59,110 --> 00:59:01,020
+This has been really great,
+so thank you.
+
+1342
+00:59:01,020 --> 00:59:01,390
+Thank you.
+
+1343
+00:59:01,390 --> 00:59:02,610
+It was certainly
+a fun exercise.
+
+1344
+00:59:02,610 --> 00:59:02,680
+All right.
+
+1345
+00:59:02,680 --> 00:59:03,930
+It was good.
+
+1346
+00:59:03,930 --> 00:59:04,300
