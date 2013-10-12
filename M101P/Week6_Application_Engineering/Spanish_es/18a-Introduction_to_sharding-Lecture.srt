@@ -133,7 +133,7 @@ es dividir los datos de una
 
 29
 00:01:23,220 --> 00:01:25,000
-colección particular.
+colección en particular.
 
 30
 00:01:25,000 --> 00:01:27,470
@@ -196,7 +196,7 @@ van a ser distribuidas.
 42
 00:01:59,470 --> 00:02:03,580
 La forma en que esto funciona es que
-existe un router que viene
+existe un "router" que viene
 
 43
 00:02:03,580 --> 00:02:08,350
@@ -214,7 +214,7 @@ la instalación para MongoDB.
 
 46
 00:02:13,890 --> 00:02:18,160
-Y ese router es el que va
+Y ese "router" es el que va
 a encargarse de esta
 
 47
@@ -224,7 +224,7 @@ distribución por ti.
 48
 00:02:19,100 --> 00:02:23,410
 Por lo que va a mantener algún tipo
-de pool de conexiones o
+de "pool" de conexiones o
 
 49
 00:02:23,410 --> 00:02:27,210
@@ -296,7 +296,7 @@ están asignados a cada "shard".
 63
 00:03:10,040 --> 00:03:14,430
 Y esto se hace por medio
-del mapeo de los trozos.
+del mapeo de los "chunks".
 
 64
 00:03:14,430 --> 00:03:17,710
@@ -305,11 +305,11 @@ Así que la idea es que tu tabla
 
 65
 00:03:17,710 --> 00:03:19,000
-en trozos.
+en "chunks".
 
 66
 00:03:19,000 --> 00:03:21,800
-Y esos trozos
+Y esos "chunks"
 tendrían su lugar.
 
 67
@@ -343,12 +343,12 @@ Así que tienes la colección
 
 73
 00:03:36,120 --> 00:03:41,050
-en estos trozos de "orders"
+en estos "chunks" de "orders"
 basándose en rangos de "order_id".
 
 74
 00:03:41,050 --> 00:03:45,150
-Y cada uno de estos trozos vive
+Y cada uno de estos "chunks" vive
 en un "shard" particular.
 
 75
@@ -387,8 +387,8 @@ mi mapeo.
 
 82
 00:04:05,110 --> 00:04:09,080
-"order_id" 10 mapea a este trozo,
-este trozo mapea a este
+"order_id" 10 mapea a este "chunk",
+este "chunk" mapea a este
 
 83
 00:04:09,080 --> 00:04:12,860
@@ -398,7 +398,7 @@ directamente al "shard".
 84
 00:04:12,860 --> 00:04:15,890
 Y entonces obtendrás una
-respuesta bastante rápidamente.
+respuesta bastante rápida.
 
 85
 00:04:15,890 --> 00:04:18,940
@@ -545,7 +545,7 @@ La clave de "shard" es algo
 que vas a determinar.
 
 115
-00:05:32,890" --> 00:05:36,700
+00:05:32,890 --> 00:05:36,700
 La clave de "shard" es alguna parte
 del propio documento.
 
@@ -585,11 +585,11 @@ entonces Mongo dividirá
 123
 00:05:54,170 --> 00:05:58,350
 esa colección en
-trozos y decidirá en qué "shard"
+"chunks" y decidirá en qué "shard"
 
 124
 00:05:58,350 --> 00:06:01,000
-vivirá cada uno de los trozos
+vivirá cada uno de los "chunks"
 basándose en rangos, y entonces
 
 125
@@ -617,7 +617,7 @@ haber más de un mongos.
 
 130
 00:06:14,090 --> 00:06:16,260
-Son realmente sin estado y
+Son realmente "stateless" y
 normalmente se ejecutan en el mismo
 
 131
@@ -645,7 +645,7 @@ uno diferente.
 
 136
 00:06:28,780 --> 00:06:30,500
-Es bastante sin estado.
+Es bastante "stateless".
 
 137
 00:06:30,500 --> 00:06:33,200
