@@ -37,11 +37,11 @@ por encima del otro primario.
 
 9
 00:00:21,790 --> 00:00:23,370
-Él no va enviar eso.
+Él no va a enviar eso.
 
 10
 00:00:23,370 --> 00:00:24,950
-Y va poner eso en un archivo.
+Y va a poner eso en un archivo.
 
 11
 00:00:24,950 --> 00:00:26,670

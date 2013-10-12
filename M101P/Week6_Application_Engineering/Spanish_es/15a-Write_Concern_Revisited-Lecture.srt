@@ -4,7 +4,7 @@
 2
 00:00:00,150 --> 00:00:02,540
 Ahora que entendemos cómo funcionan
-los conjuntos de replicas, podemos
+los conjuntos de réplicas, podemos
 
 3
 00:00:02,540 --> 00:00:06,450
@@ -57,7 +57,7 @@ primario, sólo esperará por
 
 13
 00:00:35,360 --> 00:00:37,500
-por la confirmación de la
+la confirmación de la
 escritura en el primario.
 
 14
@@ -94,7 +94,7 @@ espera se llama "wtimeout".
 
 21
 00:00:55,485 --> 00:00:58,900
-¿Cuánto tiempo estás dspuesto
+¿Cuánto tiempo estás dispuesto
 a esperar para que tus escrituras
 
 22
@@ -337,7 +337,7 @@ locos escenarios donde el primario
 
 72
 00:03:13,175 --> 00:03:15,540
-y el secundarios son destruidos.
+y el secundario son destruidos.
 
 73
 00:03:15,540 --> 00:03:17,980
@@ -426,7 +426,7 @@ bastante largo--
 
 91
 00:04:06,750 --> 00:04:08,990
-10000 seconds en
+10000 segundos en
 él, y sólo va a
 
 92
@@ -472,7 +472,7 @@ escritura por unos cinco segundos.
 
 101
 00:04:41,280 --> 00:04:44,280
-Puedes ver justo ahí.
+Puedes verlo justo ahí.
 
 102
 00:04:44,280 --> 00:04:46,860
@@ -481,7 +481,7 @@ ejecutándose con retraso.
 
 103
 00:04:46,860 --> 00:04:48,100
-¿Dónde está eso mostrado?
+¿Dónde se muestra eso?
 
 104
 00:04:48,100 --> 00:04:51,026
