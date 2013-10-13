@@ -3,52 +3,49 @@
 
 2
 00:00:00,760 --> 00:00:03,160
-And the answer is yes, we went
-through that earlier, which is
+Y la respuesta es sí, lo hemos
+visto antes, que básicamente es
 
 3
 00:00:03,160 --> 00:00:07,140
-basically that if you set that
-to be equal to one, j equal to
+que si estableces "w=1", "j=1",
 
 4
 00:00:07,140 --> 00:00:10,740
-one, and the right one to the
-primary, and the primary goes
+y la escritura va al
+primario, y el primario cae
 
 5
 00:00:10,740 --> 00:00:13,320
-down before it propagates the
-right to the secondary, and
+antes que se propague la
+escritura hacia los secundarios,
 
 6
 00:00:13,320 --> 00:00:16,640
-the secondary comes back, the
-secondary becomes primary.
+y el secundario retorna, los
+secundarios vuelven a ser primarios.
 
 7
 00:00:16,640 --> 00:00:19,130
-Then when the original primary
-returns, he's going to roll
+Luego, cuando el primario original
+retorna, va a hacerse "rollback"
 
 8
 00:00:19,130 --> 00:00:21,790
-himself back because he's a
-head of the other primary.
+por si mismo porque él está
+por encima del otro primario.
 
 9
 00:00:21,790 --> 00:00:23,370
-He's not going to
-send that one.
+Él no va a enviar eso.
 
 10
 00:00:23,370 --> 00:00:24,950
-And he'll put that
-into a file.
+Y va a poner eso en un archivo.
 
 11
 00:00:24,950 --> 00:00:26,670
-So yes, it is possible.
+Así que sí, es posible.
 
 12
 00:00:26,670 --> 00:00:28,093
