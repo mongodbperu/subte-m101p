@@ -8,7 +8,7 @@ Y los tres primeros son ciertos.
 
 3
 00:00:03,100 --> 00:00:05,690
-Estas son todas posible razones
+Estas son todas posibles razones
 por las que se podría no desear
 
 4
@@ -69,7 +69,7 @@ que es algo que hiciste en
 16
 00:00:29,940 --> 00:00:34,410
 base a razones deliberadas,
-versus sólo pensarlo,
+frente a sólo pensarlo,
 
 17
 00:00:34,410 --> 00:00:36,080
