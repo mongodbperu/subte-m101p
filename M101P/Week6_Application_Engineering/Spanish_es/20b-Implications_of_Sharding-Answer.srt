@@ -3,17 +3,17 @@
 
 2
 00:00:00,280 --> 00:00:02,730
-And the answer is that it has to
-be an index on the zip code
+Y la respuesta es que tiene
+que ser un índice en "zipcode"
 
 3
 00:00:02,730 --> 00:00:05,710
-or non-multi-key index that
-starts with the zip code.
+o un índice no-múltiple que
+comience con "zipcode".
 
 4
 00:00:05,710 --> 00:00:07,330
-So that's the answer to that.
+Ésa es la respuesta.
 
 5
 00:00:07,330 --> 00:00:08,580
