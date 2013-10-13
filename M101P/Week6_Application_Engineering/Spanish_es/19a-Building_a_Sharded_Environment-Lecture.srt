@@ -3,1441 +3,1418 @@
 
 2
 00:00:00,130 --> 00:00:02,300
-We're going to go over building
-a shared environment.
+Vamos a ver cómo crear un
+ambiente con "shards".
 
 3
 00:00:02,300 --> 00:00:05,770
-Now, this is something that is
-probably more of a DBA task.
+Esto probablemente les
+corresponde más a los
 
 4
 00:00:05,770 --> 00:00:09,550
-But if you want to develop on
-your own computer and play
+DBAs, pero si quieres desarrollar en
+tu propio computador y experimentar
 
 5
 00:00:09,550 --> 00:00:11,860
-with sharded environments,
-then you need to
+con ambientes con
+"shards", vas a tener
 
 6
 00:00:11,860 --> 00:00:12,930
-be able to do this.
+que hacer esto.
 
 7
 00:00:12,930 --> 00:00:14,860
-And it looks little bit daunting
-at first, but it's
+Al comienzo es un poco
+sobrecogedor, pero no
 
 8
 00:00:14,860 --> 00:00:16,790
-not actually as bad
-as it seems.
+es tan complicado como parece.
 
 9
 00:00:16,790 --> 00:00:19,380
-So once you go through it,
-hopefully you'll be able to do
+Una vez que hayamos repasado
+el proceso, espero que puedas
 
 10
 00:00:19,380 --> 00:00:20,280
-it yourself.
+hacerlo tú mismo.
 
 11
 00:00:20,280 --> 00:00:23,120
-I definitely suggest you
-download the script that I
+Definitivamente te sugiero que
+descargues el script que escribí
 
 12
 00:00:23,120 --> 00:00:25,710
-wrote and give it a try
-on your own computer.
+y lo ejecutes en tu computadora.
 
 13
 00:00:25,710 --> 00:00:28,140
-And if it doesn't work, just
-play around, and you can
+Y si no funciona, simplemente
+experimenta un poco y
 
 14
 00:00:28,140 --> 00:00:30,240
-probably get it working
-in not too long.
+no tardarás en
+hacerlo funcionar.
 
 15
 00:00:30,240 --> 00:00:31,280
-So we're going to
-create a sharded
+Vamos a crear un ambiente
 
 16
 00:00:31,280 --> 00:00:33,400
-environment with two shards.
+con dos "shards"
 
 17
 00:00:33,400 --> 00:00:36,760
-And each one is going
-to be a replica set.
+y cada uno va a ser un
+conjunto de réplicas.
 
 18
 00:00:36,760 --> 00:00:39,270
-So this would be shard 0.
+Éste va a ser el "shard0".
 
 19
 00:00:39,270 --> 00:00:42,520
-And shard 0 is going to contain
-this replica set right
+El "shard0" va a contener
+este conjunto de réplicas
 
 20
 00:00:42,520 --> 00:00:44,010
-here of these three nodes.
+con estos tres nodos.
 
 21
 00:00:44,010 --> 00:00:45,550
-I'll put an R for replica set.
+Voy a poner "r"
+por "replica set".
 
 22
 00:00:45,550 --> 00:00:49,130
-And then we're going to create
-another one, shard 1.
+Luego vamos a crear
+otro, "shard1"
 
 23
 00:00:49,130 --> 00:00:53,190
-And it's going to have its own
-replica set of three mongos.
+y va a tener su propio conjunto
+de réplicas con tres mongod.
 
 24
 00:00:53,190 --> 00:00:54,490
-These are all going to
-run on my computer.
+Éstos van a ejecutarse
+todos en mi computadora.
 
 25
 00:00:54,490 --> 00:00:57,410
-You would never do this this
-way in the real world.
+Nunca harías eso
+en la vida real.
 
 26
 00:00:57,410 --> 00:00:59,380
-We're going to have to play
-around with port numbers,
+Vamos a tener que
+modificar los puertos,
 
 27
 00:00:59,380 --> 00:01:01,245
-because obviously you
-can't reuse the same
+porque obviamente no
+puedes reusar el mismo
 
 28
 00:01:01,245 --> 00:01:02,450
-port in the same host.
+puerto en la misma máquina.
 
 29
 00:01:02,450 --> 00:01:05,300
-So that's probably also
-something you wouldn't do in
+Probablemente no harías
 
 30
 00:01:05,300 --> 00:01:06,450
-the real world.
+esto en la vida real.
 
 31
 00:01:06,450 --> 00:01:08,490
-And then, I haven't talked about
-yet, but you're going to
+Luego, no he hablado sobre
+esto aún, pero vas a
 
 32
 00:01:08,490 --> 00:01:10,330
-need some config servers.
+necesitar algunos
+servidores "config".
 
 33
 00:01:10,330 --> 00:01:13,780
-So these config servers are
-little mongo servers that keep
+Estos "config" son pequeños
+servidores mongo que mantienen
 
 34
 00:01:13,780 --> 00:01:15,920
-track of where the different
-shards are.
+un registro de la ubicación
+de los diferentes "shards"
 
 35
 00:01:15,920 --> 00:01:18,930
-And they're not running
-in a replica set.
+y no son un conjunto
+de réplicas.
 
 36
 00:01:18,930 --> 00:01:21,530
-There's actually some
-sort of agreement
+Hay un tipo de protocolo
 
 37
 00:01:21,530 --> 00:01:22,680
-protocol between them.
+de entendimiento entre ellos
 
 38
 00:01:22,680 --> 00:01:24,080
-And there's a two phase
-commit when you want
+y hay un proceso de anotación
+de dos fases cuando quieres
 
 39
 00:01:24,080 --> 00:01:25,300
-to move things around.
+cambiar algo.
 
 40
 00:01:25,300 --> 00:01:27,380
-In production, you typically
-used three of them.
+En producción,
+típicamente usas tres.
 
 41
 00:01:27,380 --> 00:01:29,710
-In development, you can get away
-with using one of them.
+En desarrollo, puedes
+simplemente usar uno,
 
 42
 00:01:29,710 --> 00:01:32,200
-But I'm going to use three of
-them just for good practice.
+pero yo voy a usar tres
+por que es buena práctica.
 
 43
 00:01:32,200 --> 00:01:34,930
-And again, these are
-also mongods.
+Una vez más, éstos también
+son procesos mongod.
 
 44
 00:01:34,930 --> 00:01:36,660
-So you can see here, I've
-got 1, 2, 3, 4,
+Entonces puedes ver aquí,
+tengo 1, 2, 3, 4, 5, 6, 7,
 
 45
 00:01:36,660 --> 00:01:38,470
-5, 6, 7, 8, 9 mongods.
+8, 9 procesos mongods.
 
 46
 00:01:38,470 --> 00:01:41,150
-And then, my old router--
-my mongos--
+Además, tengo mi
+router--mi mongos--
 
 47
 00:01:41,150 --> 00:01:42,820
-that's going to talk to
-these guys for me.
+éste va a comunicarse
+con el resto
 
 48
 00:01:42,820 --> 00:01:45,110
-And then my application
-over here--
+y luego, mi aplicación, acá,
 
 49
 00:01:45,110 --> 00:01:47,280
-it would actually talk
-to my mongos.
+se comunicará con mi mongos.
 
 50
 00:01:47,280 --> 00:01:47,560
-All right.
+Bien.
 
 51
 00:01:47,560 --> 00:01:50,290
-So let's get started and see
-how we would do that.
+Hay que comenzar y ver
+cómo haríamos esto.
 
 52
 00:01:50,290 --> 00:01:52,580
-So the first part of this is you
-have to figure out where
+Lo primero es que tienes
+que averiguar dónde vas
 
 53
 00:01:52,580 --> 00:01:53,720
-you're going to put your data.
+a poner tus datos.
 
 54
 00:01:53,720 --> 00:01:57,010
-So I put it in /data
-on my computer.
+Yo lo pongo en "/data"
+en mi computadora.
 
 55
 00:01:57,010 --> 00:01:58,430
-And that's where I am now.
+Ahí estoy.
 
 56
 00:01:58,430 --> 00:02:00,670
-And the way I decided to do
-it was I created three
+La manera en que decidí
+hacerlo es crear tres
 
 57
 00:02:00,670 --> 00:02:02,770
-subdirectories-- shard0
-and shard1.
+subdirectorios--"shard0" y "shard1".
 
 58
 00:02:02,770 --> 00:02:04,730
-Actually, I created one for
-shard2, but I didn't building
+En realidad creé uno para
+"shard2", pero no terminé
 
 59
 00:02:04,730 --> 00:02:05,850
-anything there.
+creando nada ahí.
 
 60
 00:02:05,850 --> 00:02:09,360
-And in shard0, I've got a
-directory for replica
+Y en "shard0", tengo un
+directorio para conjunto
 
 61
 00:02:09,360 --> 00:02:12,490
-set 0, 1, and 2.
+de réplicas 0, 1 y 2.
 
 62
 00:02:12,490 --> 00:02:14,670
-That's actually the first node
-of the replica set, the
+En realidad este es el primer
+nodo del conjunto de réplicas,
 
 63
 00:02:14,670 --> 00:02:16,180
-second, and the third.
+éste el segundo y éste el tercero.
 
 64
 00:02:16,180 --> 00:02:19,390
-And then in shard2, I have
-the same thing--
+Luego, en "shard2"
+tengo lo mismo--
 
 65
 00:02:19,390 --> 00:02:20,060
-shard1, rather--
+digo "shard1"--
 
 66
 00:02:20,060 --> 00:02:20,840
-the same thing.
+lo mismo.
 
 67
 00:02:20,840 --> 00:02:22,300
-And these are empty to start.
+Comienzan vacíos,
 
 68
 00:02:22,300 --> 00:02:25,040
-But these directories are where
-mongo is going to put
+pero en estos directorios
+mongo va a poner los
 
 69
 00:02:25,040 --> 00:02:27,100
-its data directories for
-each of those nodes
+directorios de datos
+para estos nodos
 
 70
 00:02:27,100 --> 00:02:28,330
-in the replica set.
+del conjunto de réplicas.
 
 71
 00:02:28,330 --> 00:02:30,990
-And then I did the same thing
-for the config server.
+Luego hago lo mismo para
+el servidor "config".
 
 72
 00:02:30,990 --> 00:02:33,750
-But let me show you my script,
-and you can see how it works.
+Déjame mostrarte mi script
+y verás cómo funciona.
 
 73
 00:02:33,750 --> 00:02:34,670
-All right.
+Bien.
 
 74
 00:02:34,670 --> 00:02:37,000
-So I created a script called
-init_sharded_env.sh.
+Creé un script llamado
+"init_sharded_env.sh".
 
 75
 00:02:37,000 --> 00:02:39,620
 
 76
 00:02:39,620 --> 00:02:41,940
-And it's a bash script,
-essentially.
+Es esencialmente
+un script bash.
 
 77
 00:02:41,940 --> 00:02:45,500
-It's a little wider than this
-window, so forgive that.
+Vas a tener que disculparme porque 
+es más ancho que esta ventana,
 
 78
 00:02:45,500 --> 00:02:47,080
-It's going to be a little
-hard to read.
+y va a ser un poco
+difícil de leer.
 
 79
 00:02:47,080 --> 00:02:50,280
-But it's pretty straightforward.
+Pero es fácil de entender.
 
 80
 00:02:50,280 --> 00:02:51,850
-First thing we're going to do
-is we're going to start a
+Lo primero que vamos
+a hacer es crear un
 
 81
 00:02:51,850 --> 00:02:54,100
-replica set and tell it that
-it will be a shard.
+conjunto de réplicas y
+decirle que va a ser un shard.
 
 82
 00:02:54,100 --> 00:02:56,050
-So how do you do that?
+¿Cómo hacemos eso?
 
 83
 00:02:56,050 --> 00:02:58,440
-First, I created the
-directories--
+Primero, creé los directorios:
 
 84
 00:02:58,440 --> 00:03:03,420
-shard0/rs0, shard0/rs1,
-and shard0/rs2.
+"shard0/rs0", "shard0/rs1",
+y "shard0/rs2".
 
 85
 00:03:03,420 --> 00:03:06,200
-And then, I made just a regular
-old replica set.
+Luego creé un conjunto
+de réplicas normal.
 
 86
 00:03:06,200 --> 00:03:09,470
-So I started him out and I told
-him he's a replica set.
+Lo creé y le dije que es
+un conjunto de réplicas y
 
 87
 00:03:09,470 --> 00:03:11,420
-And here's his log path.
+aquí está la ruta de su log.
 
 88
 00:03:11,420 --> 00:03:14,570
-And I give a log file so I
-can keep track of these.
+Le doy un archivo de log para
+mantener un registro de ellos.
 
 89
 00:03:14,570 --> 00:03:16,180
-Here's the data path.
+Aquí esta la ruta de los datos.
 
 90
 00:03:16,180 --> 00:03:19,680
-I've given him a port, so these
-servers run in ports
+Le he dado un puerto. Estos
+servidores se ejecutan en los
 
 91
 00:03:19,680 --> 00:03:23,210
-37017, 37018, and 37019.
+puertos 37017, 37018 y 37019.
 
 92
 00:03:23,210 --> 00:03:24,210
-And I told it to fork.
+Le he dicho que haga "fork"
 
 93
 00:03:24,210 --> 00:03:25,690
-And also told it that it's
-eventually going
+y que eventualmente va a ser
 
 94
 00:03:25,690 --> 00:03:26,930
-to be a shard server.
+un servidor "shard".
 
 95
 00:03:26,930 --> 00:03:28,940
-So you have to do that
-to make it work.
+Tienes que hacer eso
+para que funcione.
 
 96
 00:03:28,940 --> 00:03:32,600
-So it's got both the minus
-replSet flag and the minus
+Tiene la señal "--replSet" y
 
 97
 00:03:32,600 --> 00:03:33,880
-shardsvr flag.
+la señal "--shardsvr".
 
 98
 00:03:33,880 --> 00:03:37,220
-And after you run these three
-servers, they don't really
+Cuando inicies estos tres
+servidores, aún no saben
 
 99
 00:03:37,220 --> 00:03:39,270
-know they're a replica
-set yet.
+que son un conjunto de réplicas
 
 100
 00:03:39,270 --> 00:03:41,870
-And so this is the same
-as it was last time.
+y esto es lo mismo
+que la última vez.
 
 101
 00:03:41,870 --> 00:03:46,270
-So this next part of the shell
-script is something that's
+La siguiente parte
+del script es algo
 
 102
 00:03:46,270 --> 00:03:49,570
-familiar to shell programmers
-from yesteryear.
+que les va parecer conocido a
+los programadores shell de antaño.
 
 103
 00:03:49,570 --> 00:03:50,820
-It's called a here document.
+Se llama un documento "here".
 
 104
 00:03:50,820 --> 00:03:53,300
-Basically, it says to
-invoke mongo-- which
+Básicamente, te dice que
+que invoque a mongo,
 
 105
 00:03:53,300 --> 00:03:54,890
-is this mongo shell--
+es este shell mongo,
 
 106
 00:03:54,890 --> 00:03:57,240
-and connect to 37017--
+y se conecte a 37017.
 
 107
 00:03:57,240 --> 00:03:59,150
-so it's going to connect
-to this guy--
+Se va a conectar a éste
 
 108
 00:03:59,150 --> 00:04:06,520
-and then take this document from
-here to here and just run
+y va a tomar este documento,
+de aquí hasta aquí y ejecutarlo
 
 109
 00:04:06,520 --> 00:04:09,370
-it into standard input
-for the mongo shell.
+como entrada estándar
+del shell mongo.
 
 110
 00:04:09,370 --> 00:04:12,930
-So this is going to be the
-command that creates the
+Éste es el comando
+que va a crear el
 
 111
 00:04:12,930 --> 00:04:13,760
-replica set.
+conjunto de réplicas.
 
 112
 00:04:13,760 --> 00:04:16,240
-I didn't want to create a
-separate JS file, so I just
+No quise hacer un archivo
+JS separado, así que puse
 
 113
 00:04:16,240 --> 00:04:17,940
-put it all into the
-shell script.
+todo en el mismo script.
 
 114
 00:04:17,940 --> 00:04:19,480
-Basically, it's a config file.
+Básicamente, es un
+archivo de configuración.
 
 115
 00:04:19,480 --> 00:04:21,220
-It says s0.
+Dice "s0".
 
 116
 00:04:21,220 --> 00:04:26,640
-Here are my members right here
-at 37017, 37018, and 37019.
+Aquí están mis miembros
+en 37017, 37018 y 37019.
 
 117
 00:04:26,640 --> 00:04:29,290
-And it creates a config
-document and it calls
+Y va a crear un documento
+"config" y llamar a
 
 118
 00:04:29,290 --> 00:04:30,230
-rs.initiate.
+"rs.initiate".
 
 119
 00:04:30,230 --> 00:04:31,450
-And that's it.
+Eso es todo.
 
 120
 00:04:31,450 --> 00:04:35,780
-And now, at this point one of
-my replica sets that's going
+Ahora, uno de los conjuntos
+de réplicas que va a formar
 
 121
 00:04:35,780 --> 00:04:38,640
-to make up my shard0
-is up and running.
+parte de mi "shard0"
+está ejecutándose.
 
 122
 00:04:38,640 --> 00:04:41,250
-I do the same thing
-for a shard1.
+Hago lo mismo para el "shard1".
 
 123
 00:04:41,250 --> 00:04:44,120
-I create the data directories,
-if they don't already exist,
+Creo los directorios de
+datos, si no existen aún,
 
 124
 00:04:44,120 --> 00:04:48,320
-for shard1/rs0, shard1/rs1,
-and shard2/rs1.
+"shard1/rs0", "shard1/rs1"
+y "shard2/rs1".
 
 125
 00:04:48,320 --> 00:04:54,880
-And then I start these three
-servers with minus replSet s1,
+Luego inicio estos tres
+servidores con "--replSet" s1,
 
 126
 00:04:54,880 --> 00:04:58,570
-because these are all going to
-be part of the s1 replica set,
+porque éstos van a ser parte
+del conjunto de réplicas s1,
 
 127
 00:04:58,570 --> 00:05:00,190
-which is going to
-be the shard1.
+el cual va a ser "shard1".
 
 128
 00:05:00,190 --> 00:05:03,970
-I give it some log paths, and
-then I give the correct data
+Voy a darle las rutas de los
+logs y la ruta correcta para
 
 129
 00:05:03,970 --> 00:05:05,400
-path for each of
-these servers.
+los datos de cada servidor.
 
 130
 00:05:05,400 --> 00:05:08,290
-I create some non-conflicting
-port numbers-- in this case
+Creo estos puertos asegurándome
+que no estén en conflicto, en
 
 131
 00:05:08,290 --> 00:05:12,570
-47017, 47018, and 47019--
+este caso 47017, 47018 y 47019,
 
 132
 00:05:12,570 --> 00:05:14,915
-and the minus shardsvr option
-for each of them.
+e incluyo la opción "--shardsvr"
+para cada uno de ellos.
 
 133
 00:05:14,915 --> 00:05:17,590
-And again, I do the same trick
-in this shell script, which is
+Una vez más, hago el mismo
+truco en este script, es
 
 134
 00:05:17,590 --> 00:05:19,770
-going to be running
-against Bash.
+decir, lo ejecuto en Bash.
 
 135
 00:05:19,770 --> 00:05:23,820
-I just specify that I want to
-run mongo and I want to
+Simplemente especifico que
+quiero ejecutar mongo y 
 
 136
 00:05:23,820 --> 00:05:26,630
-connect to 47017, which
-is the first one.
+conectarme a 47017,
+el cual es el primero
 
 137
 00:05:26,630 --> 00:05:31,190
-And please input into them the
-mongo shell this document
+y que por favor ingrese al
+shell mongo este documento
 
 138
 00:05:31,190 --> 00:05:32,830
-right here, which is going
-to initiate the
+aquí, el cual va a iniciar
 
 139
 00:05:32,830 --> 00:05:34,910
-second replica set.
+el segundo conjunto de réplicas.
 
 140
 00:05:34,910 --> 00:05:38,370
-So at this point, I have two
-replica sets, but I now need
+En este momento tengo dos conjuntos
+de réplicas, pero ahora necesito
 
 141
 00:05:38,370 --> 00:05:41,270
-to start my config servers
-so that I can get
+iniciar mis servidores config
+para que pueda iniciar
 
 142
 00:05:41,270 --> 00:05:42,870
-this thing all initiated.
+todo esto.
 
 143
 00:05:42,870 --> 00:05:46,050
-So I do that over here.
+Hago eso aquí.
 
 144
 00:05:46,050 --> 00:05:48,300
-I create three different
-directories for my config
+Creo tres directorios diferentes
+para mis servidores config
 
 145
 00:05:48,300 --> 00:05:50,710
-servers in this mkdir
-command--
+con este comando mkdir--
 
 146
 00:05:50,710 --> 00:05:52,610
-one for each of the mongods.
+uno para cada mongod--
 
 147
 00:05:52,610 --> 00:05:56,220
-And then, I run these three
-separate mongod commands.
+y luego ejecuto estos
+tres comandos mongod
 
 148
 00:05:56,220 --> 00:05:57,990
-And again, I give
-non-conflicting ports--
+y una vez más les doy puertos
+que no estén en conflicto--
 
 149
 00:05:57,990 --> 00:06:02,360
-57017, 57018, 57019.
+57017, 57018, 57019
 
 150
 00:06:02,360 --> 00:06:04,090
-And I tell it to fork.
+y les digo que hagan "fork"
 
 151
 00:06:04,090 --> 00:06:06,990
-And I tell it that it
-is a config server.
+y le digo que es un
+servidor config.
 
 152
 00:06:06,990 --> 00:06:07,550
-OK?
+¿OK?
 
 153
 00:06:07,550 --> 00:06:11,150
-And now, we're with three
-pieces, but they don't
+Ahora, tenemos las
+tres piezas, pero no
 
 154
 00:06:11,150 --> 00:06:12,380
-necessarily all work together.
+están trabajando juntas.
 
 155
 00:06:12,380 --> 00:06:13,460
-We have two replica sets.
+Tenemos dos conjuntos de réplicas.
 
 156
 00:06:13,460 --> 00:06:14,840
-They've been initiated.
+Han sido iniciados.
 
 157
 00:06:14,840 --> 00:06:16,190
-We have some config servers.
+Tenemos servidores config.
 
 158
 00:06:16,190 --> 00:06:18,700
-But what do we do to actually
-get this thing to work?
+¿Pero qué tenemos que hacer
+para que esto funcione?
 
 159
 00:06:18,700 --> 00:06:23,230
-So what I do is I start on
-mongos on the standard port.
+Lo que yo hago es comenzar
+el mongos en el puerto estándar.
 
 160
 00:06:23,230 --> 00:06:24,780
-There's no port number
-given here.
+No hay un número de puerto acá.
 
 161
 00:06:24,780 --> 00:06:28,220
-And I tell it that this
-is its log path.
+Le digo que éste es
+la ruta de su log y
 
 162
 00:06:28,220 --> 00:06:30,880
-I tell it where the config
-servers are.
+le digo dónde están
+los servidores config.
 
 163
 00:06:30,880 --> 00:06:33,470
-So the way mongos works, you
-just tell it where the config
+La manera en que mongos funciona
+es que le dices dónde están los
 
 164
 00:06:33,470 --> 00:06:34,830
-servers are.
+servidores config.
 
 165
 00:06:34,830 --> 00:06:38,650
-And now, I need to get
-this all working.
+Ahora, tengo que hacer
+que todo esto funcione.
 
 166
 00:06:38,650 --> 00:06:45,560
-So the way this works is I call
-mongo and I don't give
+Lo que tengo que hacer
+es llamar a mongo sin
 
 167
 00:06:45,560 --> 00:06:46,700
-any port specification.
+especificar ningún puerto.
 
 168
 00:06:46,700 --> 00:06:49,880
-And what that's going to do is
-it's going to connect to the
+Lo que va a ocurrir es que
+se va a conectar al mongos
 
 169
 00:06:49,880 --> 00:06:53,630
-mongos, because the mongos is
-running endlessly on the
+porque el mongos está
+corriendo continuamente en
 
 170
 00:06:53,630 --> 00:06:55,070
-standard mongod port.
+el puerto estándar de mongod.
 
 171
 00:06:55,070 --> 00:06:57,250
-So it's a little weird to think
-of it as listing on a
+Es algo extraño pensar
+que está corriendo
 
 172
 00:06:57,250 --> 00:06:59,110
-mongod port, but that's
-what it does.
+en un puerto mongod,
+pero eso es lo que hace.
 
 173
 00:06:59,110 --> 00:07:02,590
-If you have an application on
-mongo, it stands in for mongo
+Si tienes una aplicación en
+mongo, va a reemplazar a
 
 174
 00:07:02,590 --> 00:07:03,400
-and redirects.
+mongo y redireccionar.
 
 175
 00:07:03,400 --> 00:07:05,730
-So it lists them on the standard
-port in this case.
+Así que los lista en el puerto
+estándar en este caso.
 
 176
 00:07:05,730 --> 00:07:07,550
-So just a little warning--
+Una pequeña advertencia--
 
 177
 00:07:07,550 --> 00:07:11,670
-I tried, on my Mac, to not use
-the standard port for mongos
+traté, en mi Mac, de no usar
+el puerto estándar para el
 
 178
 00:07:11,670 --> 00:07:14,290
-and have it listed on some other
-port, and I never got
+mongos y listarlo en otro
+puerto, pero nunca logré
 
 179
 00:07:14,290 --> 00:07:14,930
-that working.
+que funcione.
 
 180
 00:07:14,930 --> 00:07:17,680
-The issue was I was able to
-get this part working.
+El problema era que lograba
+que esta parte funcione.
 
 181
 00:07:17,680 --> 00:07:20,980
-I got mongos running, but I
-couldn't get my mongo to
+Logré hacer que el mongos se
+ejecute, pero no podías hacer
 
 182
 00:07:20,980 --> 00:07:21,800
-connect to it.
+que mongo se conecte a él.
 
 183
 00:07:21,800 --> 00:07:24,860
-So I gave up on that and then
-went to the standard port,
+Así que me rendí y lo hice
+en el puerto estándar,
 
 184
 00:07:24,860 --> 00:07:26,540
-which is probably the
-good idea, anyway.
+lo cual de todas maneras
+es una buena idea.
 
 185
 00:07:26,540 --> 00:07:27,730
-But just so you realize--
+Pero sólo para que sepas--
 
 186
 00:07:27,730 --> 00:07:29,850
-I'm not sure if its a bug or if
-it has to do with the fact
+no sé si es un defecto o si
+tiene que ver con el hecho
 
 187
 00:07:29,850 --> 00:07:30,980
-that I was all on local host.
+que todo está en localhost,
 
 188
 00:07:30,980 --> 00:07:32,450
-But it didn't work.
+pero no funcionó.
 
 189
 00:07:32,450 --> 00:07:32,880
-It's fine.
+Está bien.
 
 190
 00:07:32,880 --> 00:07:34,260
-It works its way.
+Funciona de esta manera.
 
 191
 00:07:34,260 --> 00:07:37,760
-So again, I run the
-mongo shell and
+Una vez más, ejecuto
+el shell mongo y
 
 192
 00:07:37,760 --> 00:07:39,540
-send everything here.
+envío todo aquí.
 
 193
 00:07:39,540 --> 00:07:42,950
-Now, these are the commands
-to add these two shards.
+Ahora, éstos son los comandos
+para agregar estos dos "shards".
 
 194
 00:07:42,950 --> 00:07:45,670
-And this is going to bring
-it all together.
+Esto es lo que hace que todo
+funcione como conjunto.
 
 195
 00:07:45,670 --> 00:07:48,460
-So the mongo shell is talking
-to the mongos.
+Así que el shell mongo
+está hablándole al mongos.
 
 196
 00:07:48,460 --> 00:07:51,100
-The mongos knows about
-the config servers.
+El mongos sabe de la existencia
+de los servidores config.
 
 197
 00:07:51,100 --> 00:07:54,060
-The problem is the config
-servers don't know about the
+El problema es que los servidores
+config no saben sobre la existencia
 
 198
 00:07:54,060 --> 00:07:56,130
-shards, which are
-replica sets.
+de los "shards", los cuales
+son conjuntos de réplicas.
 
 199
 00:07:56,130 --> 00:07:57,360
-So they have to know about it.
+Tienen que saber sobre ellos.
 
 200
 00:07:57,360 --> 00:08:01,260
-So this ties it together and
-makes it so that it all works.
+Esto hace que todo
+funcione como conjunto.
 
 201
 00:08:01,260 --> 00:08:02,640
-Db.adminCommand--
+"db.adminCommand",
 
 202
 00:08:02,640 --> 00:08:09,810
-add a shard, s0 slash one
-of the hosts in it.
+agrega un "shard", "s0/" y uno
+de los hosts que contiene.
 
 203
 00:08:09,810 --> 00:08:11,960
-This is essentially
-a seed list.
+Esto es esencialmente
+una lista de semillas.
 
 204
 00:08:11,960 --> 00:08:14,430
-So this is a seed
-list, and it'll
+Esto es una lista
+de semillas y va
 
 205
 00:08:14,430 --> 00:08:15,480
-discover the rest of them.
+a descubrir el resto.
 
 206
 00:08:15,480 --> 00:08:19,130
-And then add another
-shard, s1.
+Luego otro "shard", "s1".
 
 207
 00:08:19,130 --> 00:08:21,040
-Again this is a seed list.
+Una vez más, esto es
+una list de semillas.
 
 208
 00:08:21,040 --> 00:08:23,470
-If we gave it one of the nodes
-in the replica set, it'll
+Si le damos uno de los nodos
+del conjunto de réplicas, va
 
 209
 00:08:23,470 --> 00:08:24,680
-discover the rest of them.
+a descubrir el resto.
 
 210
 00:08:24,680 --> 00:08:26,340
-And then I had to enable
-sharding on a
+Luego tengo que habilitar
+"sharding" en una base de
 
 211
 00:08:26,340 --> 00:08:27,190
-database, so I did.
+datos, así que lo hice.
 
 212
 00:08:27,190 --> 00:08:29,160
-I enabled it on a
-test database.
+Lo habilité en la base
+de datos "test".
 
 213
 00:08:29,160 --> 00:08:32,280
-And then I said I wanted to
-shard the collection, test
+Luego dije que quería
+"shard" la colección
 
 214
 00:08:32,280 --> 00:08:35,380
-that grades, which it's the
-grades collections that I've
+"test.grades", la cual es la
+colección que hemos utilizado
 
 215
 00:08:35,380 --> 00:08:37,730
-been playing with in the
-previous lessons.
+en las lecciones anteriores.
 
 216
 00:08:37,730 --> 00:08:42,799
-And I said that the key for
-that is student_id:1.
+Le dije que la clave para
+eso es "student_id:1".
 
 217
 00:08:42,799 --> 00:08:46,130
-Now, just a word of warning,
-if the collection doesn't
+Ahora, una advertencia,
+si la colección no existe,
 
 218
 00:08:46,130 --> 00:08:51,340
-exist, then mongod will do it
-fine, and it will also create
+mongod no tiene ningún problema
+en crearla y también crearía
 
 219
 00:08:51,340 --> 00:08:55,470
-an index on student_id,
-which I'll talk
+un índice en "student_id",
+sobre el cual voy a hablar
 
 220
 00:08:55,470 --> 00:08:56,170
-to about in a second.
+en un segundo.
 
 221
 00:08:56,170 --> 00:09:00,000
-It's a requirement that there
-be an index on the starting
+Es un requerimiento que haya
+un índice en el prefijo
 
 222
 00:09:00,000 --> 00:09:02,480
-prefix of the shard key.
+inicial de la clave de "shard".
 
 223
 00:09:02,480 --> 00:09:06,140
-But if the collection does
-exist, then before you'll
+Pero si la colección ya existe
+entonces antes de que te deje
 
 224
 00:09:06,140 --> 00:09:09,650
-allowed to shard it, you need
-to have created that index.
+hacerla "shard", vas a tener
+que haber creado ese índice.
 
 225
 00:09:09,650 --> 00:09:11,152
-So if it's a brand new
-collection, you've never done
+Si tienes una colección nueva,
+a la cual nunca le has hecho
 
 226
 00:09:11,152 --> 00:09:12,820
-anything before and you know
-that from the beginning that
+nada y sabes desde el
+comienzo que vas a
 
 227
 00:09:12,820 --> 00:09:15,580
-you want to shard, which
-is probably unusual.
+querer hacerle "shard",
+eso es algo inusual.
 
 228
 00:09:15,580 --> 00:09:17,880
-The more usual case is probably
-that you have a
+El caso más probable es que
 
 229
 00:09:17,880 --> 00:09:20,190
-collection on a single
-replica set.
+tengas una colección en un
+conjunto de réplicas único
 
 230
 00:09:20,190 --> 00:09:22,010
-You decide you want
-to shard it.
+y decides que le quieres
+hacer "shard".
 
 231
 00:09:22,010 --> 00:09:23,920
-And so what you're going to do
-is you're going to bring up a
+Lo que vas a hacer es crear
 
 232
 00:09:23,920 --> 00:09:26,140
-second replica set, some config
-servers, you're going
+un segundo conjunto de réplicas,
+algunos servidores config,
 
 233
 00:09:26,140 --> 00:09:28,370
-to bring it to a sharding
-configuration, you're going to
+vas a darle una configuración
+de "sharding", vas a habilitar
 
 234
 00:09:28,370 --> 00:09:30,710
-enable sharding on the database,
-and then you're
+"sharding" en la base
+de datos y luego vas
 
 235
 00:09:30,710 --> 00:09:33,300
-going to have to make sure
-there's an index on whatever
+a tener que asegurarte que
+hay un índice en lo que quieres
 
 236
 00:09:33,300 --> 00:09:34,960
-you want the shard key to be.
+que sea tu clave de "shard".
 
 237
 00:09:34,960 --> 00:09:38,880
-So in fact, I actually got an
-error when I did this in the
+Así que en realidad, obtuve
+un error cuando hice esto en
 
 238
 00:09:38,880 --> 00:09:41,560
-shell because I hadn't created
-that index yet.
+el shell porque no había
+creado ese índice aún.
 
 239
 00:09:41,560 --> 00:09:43,530
-But in this case, if you're
-actually running my script,
+Pero en este caso, si estás
+ejecutando mi script,
 
 240
 00:09:43,530 --> 00:09:46,420
-the test.grades collection
-won't exist yet.
+la colección "test.grades"
+no va a existir aún,
 
 241
 00:09:46,420 --> 00:09:48,050
-So you should be OK.
+así que no tendrás
+ningún problema.
 
 242
 00:09:48,050 --> 00:09:50,170
-But I actually imported the
-collection first, so I
+Pero yo importé la colección
+primero, entonces
 
 243
 00:09:50,170 --> 00:09:51,590
-actually ran into the problem.
+tuve este problema.
 
 244
 00:09:51,590 --> 00:09:52,920
-Anyway, so that's it.
+En fin, eso es.
 
 245
 00:09:52,920 --> 00:09:54,085
-And then after that, this thing
+Después de hacer esto,
+esto debería estar
 
 246
 00:09:54,085 --> 00:09:54,800
-should be up and running.
+ejecutándose.
 
 247
 00:09:54,800 --> 00:09:56,920
-So I ran all that
-on my computer.
+Lo hice todo en mi computadora.
 
 248
 00:09:56,920 --> 00:09:58,890
-And I won't run it for you right
-this second, because I
+No lo voy a ejecutar en
+este momento porque ya
 
 249
 00:09:58,890 --> 00:10:01,120
-already imported the data, so
-it would be a little bit
+he importado los datos,
+así que sería un poco
 
 250
 00:10:01,120 --> 00:10:02,100
-inconvenient.
+inconveniente.
 
 251
 00:10:02,100 --> 00:10:04,650
-And I will show you
-what it looks like
+Te voy a mostrar
+lo que ocurre
 
 252
 00:10:04,650 --> 00:10:07,150
-when I now run mongos.
+ahora cuando ejecuto mongos.
 
 253
 00:10:07,150 --> 00:10:10,120
-So if I run mongo--
+Si ejecuto mongo--
 
 254
 00:10:10,120 --> 00:10:12,070
-oh, by the way, I'll just show
-you all the stuff running.
+ah, por si acaso, te lo
+estoy mostrando con todo
 
 255
 00:10:12,070 --> 00:10:15,040
+ya ejecutándose.
 
 256
 00:10:15,040 --> 00:10:17,260
-So those are my mongods.
+Éstos son mis procesos mongod.
 
 257
 00:10:17,260 --> 00:10:19,770
-There should be nine of them.
+Debería haber nueve.
 
 258
 00:10:19,770 --> 00:10:22,280
-Let's count them.
+Contémoslos.
 
 259
 00:10:22,280 --> 00:10:23,325
-10 of them--
+Hay 10.
 
 260
 00:10:23,325 --> 00:10:25,630
-I'm not sure why there
-are 10 of them.
+No sé por qué hay 10.
 
 261
 00:10:25,630 --> 00:10:27,600
-Oh, it's the rep itself
-is the 10th.
+Ah, es el mismo "rep",
+ése es el décimo.
 
 262
 00:10:27,600 --> 00:10:28,810
-Sure.
+Claro.
 
 263
 00:10:28,810 --> 00:10:30,390
-So there are nine of them.
+Así que hay nueve.
 
 264
 00:10:30,390 --> 00:10:32,210
-So we're going to run mongo.
+Ejecutemos mongo.
 
 265
 00:10:32,210 --> 00:10:35,270
-And it's going to connect to
-the default port on local
+Se va a conectar al puerto
+por defecto en localhost,
 
 266
 00:10:35,270 --> 00:10:38,550
-host, which is to connect
-to the mongos.
+el cual es equivalente a
+conectarse con el mongos.
 
 267
 00:10:38,550 --> 00:10:41,230
-So now, for the first time,
-you're seeing this, which is a
+Ahora, por la primera vez,
+estás viendo esto, que es
 
 268
 00:10:41,230 --> 00:10:43,640
-mongo shell reporting that's
-actually connected to a mongos
+un shell mongo reportando
+que está conectado a un mongos
 
 269
 00:10:43,640 --> 00:10:45,020
-versus a mongod.
+en lugar de un mongod.
 
 270
 00:10:45,020 --> 00:10:47,170
-So that's a new thing right
-there, and you should just
+Eso es algo nuevo y
+deberías tomar nota
 
 271
 00:10:47,170 --> 00:10:48,700
-take note of it.
+de ello.
 
 272
 00:10:48,700 --> 00:10:50,690
-That tells you that you're
-connected to a sharded
+Esto te dice que estás
+conectado a un ambiente
 
 273
 00:10:50,690 --> 00:10:52,280
-environment.
+con "shards".
 
 274
 00:10:52,280 --> 00:10:55,920
-And then, if I look at all my
-shard help commands, I can see
+Si veo todos mis comandos
+de ayuda para "shards",
 
 275
 00:10:55,920 --> 00:10:56,790
-what they are.
+veo lo que son.
 
 276
 00:10:56,790 --> 00:10:58,990
-Of course, the help one
-I just ran and add
+Por supuesto está el de "help"
+que acabo de ejecutar y el de
 
 277
 00:10:58,990 --> 00:11:01,160
-shard, enable sharding.
+"addShard", "enableSharding".
 
 278
 00:11:01,160 --> 00:11:03,160
-I can get the status of
-the shard system.
+Puedo obtener el estado
+del sistema de "shards".
 
 279
 00:11:03,160 --> 00:11:04,660
-Let's do that--
+Hagamos eso:
 
 280
 00:11:04,660 --> 00:11:05,910
-sh.status.
+"sh.status".
 
 281
 00:11:05,910 --> 00:11:08,470
 
 282
 00:11:08,470 --> 00:11:10,020
-So a little hard to read--
+Es algo difícil de leer.
 
 283
 00:11:10,020 --> 00:11:13,820
-what it's telling me is that
-there are two shards right
+Lo que me está diciendo
+es que hay dos "shards"
 
 284
 00:11:13,820 --> 00:11:17,460
-here up and running, each
-one a replica set.
+ejecutándose aquí y cada uno
+es un conjunto de réplicas.
 
 285
 00:11:17,460 --> 00:11:21,650
-Looks like it discovered all
-of the hosts in the replica
+Parece que descubrió todos los
+hosts en los conjuntos de
 
 286
 00:11:21,650 --> 00:11:23,760
-set, which makes sense, because
-it was a seed list, so
+réplicas, lo cual tiene sentido,
+porque era una lista de semillas,
 
 287
 00:11:23,760 --> 00:11:25,330
-it discovered the
-rest of them.
+así que descubrió el resto.
 
 288
 00:11:25,330 --> 00:11:28,790
-And then there's the database,
-there's the admin database,
+Luego están las bases de datos,
+la base de datos "admin",
 
 289
 00:11:28,790 --> 00:11:30,610
-which is not partitioned, the
-test database, which is
+la cual no está dividida, la
+base de datos "test", que está
 
 290
 00:11:30,610 --> 00:11:32,130
-partitioned, meaning
-that it is sharded.
+dividida, es decir,
+contiene "shards"
 
 291
 00:11:32,130 --> 00:11:34,270
-And then it's telling
-you the chunks.
+y luego te está diciendo
+cuáles son los pedazos.
 
 292
 00:11:34,270 --> 00:11:36,120
-We talked about those chunks.
+Hablamos sobre estos pedazos.
 
 293
 00:11:36,120 --> 00:11:39,480
-So from $minKey, which is the
-lowest possible student ID
+Desde "$minKey", el cual
+es el "student_id" más bajo
 
 294
 00:11:39,480 --> 00:11:41,380
-that you could possibly
-represent in the database all
+que posiblemente podrías
+representar en la base de datos
 
 295
 00:11:41,380 --> 00:11:45,270
-the way to 1, it's going
-to put that on s1.
+hasta 1, eso lo va
+a poner en "s1".
 
 296
 00:11:45,270 --> 00:11:48,610
-And then it shows you-- you see
-the ranges of student IDs
+Luego te muestra, puedes ver
+los rangos de "student_id"
 
 297
 00:11:48,610 --> 00:11:50,380
-and the different shards
-they're on.
+y los diferentes "shards"
+en los que están.
 
 298
 00:11:50,380 --> 00:11:55,910
-If I then go to the grades
-collection and ask for its
+Si luego voy a la colección
+"grades" y le pido sus
 
 299
 00:11:55,910 --> 00:11:58,560
-stats, it'll also tell
-me that it's sharded.
+estadísticas, también me va
+a decir que contiene "shards".
 
 300
 00:11:58,560 --> 00:12:02,340
-So you can see here that it
-reports that it's sharded
+Así que puedes ver aquí
+como reporta "sharded"
 
 301
 00:12:02,340 --> 00:12:05,800
-true, that it's got looks like
-two million documents in it.
+"true", y que contiene dos
+millones de documentos.
 
 302
 00:12:05,800 --> 00:12:07,520
-It's pretty big, actually,
-right now.
+Es bastante grande ahora.
 
 303
 00:12:07,520 --> 00:12:12,370
-Its size is looks like 432
-megabytes, I believe.
+Su tamaño es como
+432 megabytes, creo.
 
 304
 00:12:12,370 --> 00:12:14,140
-Well, that's not that big.
+Bueno, no es tan grande.
 
 305
 00:12:14,140 --> 00:12:16,260
-And then you can see here, it
-talks about the shards that
+Luego, como ves aquí, te
+informa sobre los "shards"
 
 306
 00:12:16,260 --> 00:12:18,420
-exists and the number
-of documents
+que existen y el número
+de documentos en cada
 
 307
 00:12:18,420 --> 00:12:20,510
-on each of the shards.
+uno de ellos.
 
 308
 00:12:20,510 --> 00:12:22,670
-Looks like it's pretty well
-balanced, I guess.
+Parece que está bien balanceada.
 
 309
 00:12:22,670 --> 00:12:23,660
-Let's see.
+Veamos.
 
 310
 00:12:23,660 --> 00:12:23,790
-Size--
+Tamaño--
 
 311
 00:12:23,790 --> 00:12:24,624
@@ -1445,174 +1422,174 @@ Size--
 
 312
 00:12:24,624 --> 00:12:29,040
-yeah, 200 megabytes, I think,
-on each of these servers.
+sí, 200 megabytes, creo, en
+cada uno de estos servidores.
 
 313
 00:12:29,040 --> 00:12:33,240
-And if I do a query on it--
-so I'll do a query--
+Y si hago una consulta, digamos
 
 314
 00:12:33,240 --> 00:12:34,490
-grades.find({'student_id':1})--
+"grades.find({'student_id':1})",
 
 315
 00:12:34,490 --> 00:12:42,506
 
 316
 00:12:42,506 --> 00:12:44,710
-the document looks similar
-to what you've been
+el documento se ve muy similar
+a lo que has estado utilizando
 
 317
 00:12:44,710 --> 00:12:46,560
-playing with all along.
+desde el comienzo.
 
 318
 00:12:46,560 --> 00:12:48,010
-You remember this structure.
+¿Te acuerdas de esta estructura?
 
 319
 00:12:48,010 --> 00:12:52,950
-And if I do an explain on it,
-you can see that I'm going to
+Y si hago un "explain",
+puedes ver que me va a
 
 320
 00:12:52,950 --> 00:12:55,890
-get more information
-than I got before.
+retornar más información que antes.
 
 321
 00:12:55,890 --> 00:12:59,820
-In particular, I'm going to
-find out that to do this
+En particular, voy a ver que
+para hacer esta consulta en
 
 322
 00:12:59,820 --> 00:13:04,770
-particular query, it looked at
-the shard s1, parallel sort.
+particular, buscó en el "shard"
+"s1" en ordenamiento paralelo.
 
 323
 00:13:04,770 --> 00:13:08,480
-And I don't think it looked at
-shard s0, which makes sense.
+Y no creo que buscó en el "shard"
+"s0", lo cual tiene sentido.
 
 324
 00:13:08,480 --> 00:13:11,050
-And so that tells you how
-efficient was-- whether it had
+Eso te dice qué tan eficiente
+fue la consulta, si es que
 
 325
 00:13:11,050 --> 00:13:14,160
-to go to multiple shards
-to answer it or
+tuvo que ir a múltiples
+"shards" para responderla
 
 326
 00:13:14,160 --> 00:13:15,190
-just to go to one.
+o sólo a uno.
 
 327
 00:13:15,190 --> 00:13:18,640
-And you can see that once it got
-into this shard, it used
+Puedes ver que una vez que
+llegó a este "shard", usó
 
 328
 00:13:18,640 --> 00:13:20,950
-the BtreeCursor student ID
-index, because remember, there
+el índice "BtreeCursor"
+"student_id" porque acuérdate
 
 329
 00:13:20,950 --> 00:13:22,520
-is an index on student ID.
+que hay un índice
+en "student_id".
 
 330
 00:13:22,520 --> 00:13:25,800
-There had to be an index on
-student ID for me to shard on
+Tiene que haber un índice en
+"student_id" para que pueda hacer
 
 331
 00:13:25,800 --> 00:13:27,130
-student ID.
+"shard" por "student_id".
 
 332
 00:13:27,130 --> 00:13:31,060
-Now, if I do a query that
-doesn't include any criteria,
+Ahora, si hago un consulta
+que no incluya criterios,
 
 333
 00:13:31,060 --> 00:13:33,220
-it should have to go
-to all the shards.
+tendría que ir a
+todos los "shards".
 
 334
 00:13:33,220 --> 00:13:35,390
-So I'll do that.
+Voy a hacer eso.
 
 335
 00:13:35,390 --> 00:13:36,620
-All right.
+Está bien.
 
 336
 00:13:36,620 --> 00:13:42,110
-So here, you can see it went
-to both shard s0 and s1 in
+Aquí puedes ver si fue tanto
+al "shard" "s0" como al "s1"
 
 337
 00:13:42,110 --> 00:13:45,760
-order to answer this query, and
-that once was in there, it
+para responder esta consulta
+y una vez que entró al "shard",
 
 338
 00:13:45,760 --> 00:13:46,720
-used the basic cursor,
-because there
+usó el cursor básico,
+porque no había
 
 339
 00:13:46,720 --> 00:13:49,960
-was no criteria specified.
+ningún criterio específico.
 
 340
 00:13:49,960 --> 00:13:53,010
-So that gives you an idea of
-what a sharded environment
+Eso te da una idea de cómo
+funciona un ambiente con
 
 341
 00:13:53,010 --> 00:13:53,860
-looks like.
+"sharding".
 
 342
 00:13:53,860 --> 00:13:56,600
-And hopefully, you'll create one
-yourself so that you can
+Espero que crees uno
+tú mismo y que puedas
 
 343
 00:13:56,600 --> 00:14:00,290
-play with it and understand
-how it works.
+experimentar y comprender
+cómo funciona.
 
 344
 00:14:00,290 --> 00:14:02,190
-And we'll talk more about it.
+Vamos a hablar un
+poco más sobre esto.
 
 345
 00:14:02,190 --> 00:14:03,910
-Now, let's do a quiz.
+Ahora hagamos un cuestionario.
 
 346
 00:14:03,910 --> 00:14:05,680
-And the question is, if you
-want to build a production
+Y la pregunta es, si quieres
+crear un sistema de producción
 
 347
 00:14:05,680 --> 00:14:08,280
-system with two shards, each one
-a replica set with three
+con dos "shards", y que cada
+uno sea un conjunto de réplicas
 
 348
 00:14:08,280 --> 00:14:10,880
-nodes, how many mongo processes
-must you start?
+con tres nodos, ¿cuántos procesos
+mongod debes iniciar?
 
 349
 00:14:10,880 --> 00:14:12,130

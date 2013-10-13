@@ -3,23 +3,22 @@
 
 2
 00:00:00,170 --> 00:00:02,620
-OK, and the answer, as we
-just saw, was nine.
+Bien. Y la respuesta, como
+acabamos de ver, es nueve.
 
 3
 00:00:02,620 --> 00:00:05,040
-We have the replica set of three
-and the config servers
+Tenemos los conjuntos de réplicas
+de tres y los servidores "config",
 
 4
 00:00:05,040 --> 00:00:08,130
-each is a mongod process, mongos
-it started but it is
+cada uno es un proceso mongod.
+Hay un mongos, pero no es un
 
 5
 00:00:08,130 --> 00:00:10,050
-not a mongod process, so
-that does not count.
+proceso mongod, así que no cuenta.
 
 6
 00:00:10,050 --> 00:00:11,300
