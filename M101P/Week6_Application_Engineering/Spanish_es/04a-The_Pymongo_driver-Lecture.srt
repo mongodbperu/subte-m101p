@@ -380,7 +380,7 @@ todas las conexiones.
 82
 00:03:22,510 --> 00:03:24,830
 Y la antigua clase de conexión
-va a ser depreciada, así que
+va a ser obsoleta, así que
 
 83
 00:03:24,830 --> 00:03:26,710

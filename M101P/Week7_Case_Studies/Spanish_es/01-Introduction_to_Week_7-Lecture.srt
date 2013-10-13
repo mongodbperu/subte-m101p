@@ -1,0 +1,54 @@
+1
+00:00:00,000 --> 00:00:00,250
+
+2
+00:00:00,250 --> 00:00:01,710
+Bienvenido a la semana siete.
+
+3
+00:00:01,710 --> 00:00:03,310
+Estamos atravesando lo más difícil.
+
+4
+00:00:03,310 --> 00:00:05,690
+Esta semana, vamos a tomar
+un receso y vamos a hacer
+
+5
+00:00:05,690 --> 00:00:07,830
+algunas entrevistas con
+algunas personas que están
+
+6
+00:00:07,830 --> 00:00:09,700
+usando MongoDB en la industria.
+
+7
+00:00:09,700 --> 00:00:13,030
+Vamos a entrevistar a Jon
+Hoffman de Foursquare y
+
+8
+00:00:13,030 --> 00:00:15,480
+Ryan Bubinski de Codecademy.
+
+9
+00:00:15,480 --> 00:00:17,390
+Va a ser muy divertido
+y más fácil que las
+
+10
+00:00:17,390 --> 00:00:18,470
+semanas anteriores.
+
+11
+00:00:18,470 --> 00:00:20,320
+No hay tareas esta semana,
+excepto por el examen final,
+
+12
+00:00:20,320 --> 00:00:22,400
+así que recuéstate y pásala bien.
+
+13
+00:00:22,400 --> 00:00:23,650

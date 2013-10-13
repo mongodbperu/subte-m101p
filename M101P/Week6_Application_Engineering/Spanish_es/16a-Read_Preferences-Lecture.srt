@@ -3,446 +3,441 @@
 
 2
 00:00:00,190 --> 00:00:03,040
-So as we talked about before,
-the default within the drivers
+Como hemos hablado antes,
+por defecto en los drivers
 
 3
 00:00:03,040 --> 00:00:07,200
-is that you're going to read
-from the same node that you do
+vas a leer del mismo nodo del
 
 4
 00:00:07,200 --> 00:00:08,680
-your writes from.
+que escribes.
 
 5
 00:00:08,680 --> 00:00:11,150
-So if this is your primary and
-you're writing here, and this
+Así que si este es tu primario
+y estás escribiendo aquí y esto
 
 6
 00:00:11,150 --> 00:00:13,230
-is the replica set, and there
-are five of them, you're going
+es el conjunto de réplicas
+y hay cinco de estos, vas a
 
 7
 00:00:13,230 --> 00:00:14,570
-to read from the same node.
+leer desde el mismo nodo.
 
 8
 00:00:14,570 --> 00:00:19,010
-But you can override that by
-specifying a read preference.
+Pero puedes cambiar eso especificando
+una preferencia de lectura.
 
 9
 00:00:19,010 --> 00:00:21,370
-And the read preference says
-that you, let's say might want
+Y la preferencia de lectura dice
+que, digamos puedes desear
 
 10
 00:00:21,370 --> 00:00:22,640
-to read from the secondaries.
+leer desde los secundarios.
 
 11
 00:00:22,640 --> 00:00:25,020
-Now, there are several standard
-read preferences that
+Ahora, hay varias preferencias
+de lectura estándar que
 
 12
 00:00:25,020 --> 00:00:27,610
-are typically set inside
-the drivers.
+se configuran normalmente
+dentro de los drivers.
 
 13
 00:00:27,610 --> 00:00:29,890
-PyMongo's got four
-different ones.
+PyMongo tiene 4 distintas.
 
 14
 00:00:29,890 --> 00:00:32,850
-The first one is that
-you'd like to always
+La primera es que te
+guste leer siempre
 
 15
 00:00:32,850 --> 00:00:33,940
-read from the primary.
+desde el primario.
 
 16
 00:00:33,940 --> 00:00:35,640
-And that means pretty obviously
-that you want to
+Y lo que significa es
+obviamente que deseas
 
 17
 00:00:35,640 --> 00:00:39,310
-read what you wrote, and that
-it has to go to the primary.
+leer lo que escribes, y que
+esto va a ir hacia el primario.
 
 18
 00:00:39,310 --> 00:00:42,100
-You could say you always want
-to read from the secondary,
+Podrías decir que siempre
+deseas leer del secundario,
 
 19
 00:00:42,100 --> 00:00:44,480
-which means that if there's no
-secondary available, that you
+lo que significa que si no
+hay un secundario disponible,
 
 20
 00:00:44,480 --> 00:00:46,850
-actually wouldn't be
-able to do reads.
+en realidad no va a ser
+capaz de hacer lecturas.
 
 21
 00:00:46,850 --> 00:00:49,830
-You could say that you prefer
-the secondary, but you'll take
+Podrías decir que prefieres
+el secundario pero tomarás
 
 22
 00:00:49,830 --> 00:00:52,170
-a primary if there's
-no secondary.
+un primario si no
+hay secundario.
 
 23
 00:00:52,170 --> 00:00:55,260
-And you can say you'd prefer
-primary, but that if there's
+Y puedes decir que prefieres
+el primario, pero que si no hay
 
 24
 00:00:55,260 --> 00:00:57,585
-no primary available, you'll
-take a secondary.
+un primario disponible,
+tomarás un secundario.
 
 25
 00:00:57,585 --> 00:00:59,590
-There's also several different
-other things that we're not
+También hay varias otras
+distintas cosas que no vamos
 
 26
 00:00:59,590 --> 00:01:00,390
-going to go into too much.
+a repasarlas mucho.
 
 27
 00:01:00,390 --> 00:01:03,580
-One is that you can say I want
-the nearest, and the drivers
+Una es que puedes decir que
+deseas el más cercano y los
 
 28
 00:01:03,580 --> 00:01:05,850
-have a notion of what the
-nearest is by keeping, they
+drivers tienen una noción
+de cuál es el más cercano,
 
 29
 00:01:05,850 --> 00:01:08,670
-periodically ping mongod's and
-they know how far they are
+ellos hacen "ping" periódicamente
+y saben qué puntos están más
 
 30
 00:01:08,670 --> 00:01:09,940
-away from each one of them.
+lejos de cada uno de ellos.
 
 31
 00:01:09,940 --> 00:01:11,800
-So you can say I want
-the nearest.
+Así que puedes decir que
+deseas el más cercano.
 
 32
 00:01:11,800 --> 00:01:15,510
-And there's also some
-concepts of tagging.
+Y también hay un
+concepto de etiquetas.
 
 33
 00:01:15,510 --> 00:01:19,180
-You can assign tags to each of
-these, the hosts inside the
+Y puedes asignar etiquetas a
+cada uno de ellos, los hosts del
 
 34
 00:01:19,180 --> 00:01:20,190
-replica set.
+conjunto de réplicas.
 
 35
 00:01:20,190 --> 00:01:23,120
-And then you could say, oh,
-I want my reads to go to a
+Y luego podrías decir, oh,
+deseo que mis lecturas vayan a
 
 36
 00:01:23,120 --> 00:01:25,400
-particular set of
-tagged hosts.
+un conjunto de hosts con
+una etiqueta particular.
 
 37
 00:01:25,400 --> 00:01:29,020
-So this could be good for, let's
-say if the primary is
+Por lo que esto podrías ser bueno,
+para digamos si el primario está en,
 
 38
 00:01:29,020 --> 00:01:32,060
-in, let's say California, but
-you've got replicas all over
+digamos California, pero
+tienes réplicas en todo los
 
 39
 00:01:32,060 --> 00:01:35,750
-the United States, and you want
-to always read from one
+Estados Unidos, y deseas
+leer siempre de uno que está
 
 40
 00:01:35,750 --> 00:01:37,120
-that's close by, you could
-say, you know what?
+muy cerca, se podría
+decir, ya sabes qué.
 
 41
 00:01:37,120 --> 00:01:39,680
-I want to read from the New
-York data center because I
+Deseo leer desde el centro
+de datos en Nueva York porque
 
 42
 00:01:39,680 --> 00:01:41,770
-know this user has his
-data near New York.
+sé que este usuario tiene sus
+datos cerca a Nueva York.
 
 43
 00:01:41,770 --> 00:01:44,230
-Now, that's assuming that you're
-OK with the idea that
+Ahora, eso es suponiendo que estás
+de acuerdo con la idea que los
 
 44
 00:01:44,230 --> 00:01:46,030
-data might be slightly
-out of date.
+datos puedan estar un
+poco desactualizados.
 
 45
 00:01:46,030 --> 00:01:49,790
-So you could imagine in a
-situation where it's a social
+Así que podrías imaginar en una
+situación donde es un sistema de
 
 46
 00:01:49,790 --> 00:01:51,660
-networking system,
-and it's a wall.
+redes sociales y este es un muro.
 
 47
 00:01:51,660 --> 00:01:55,900
-And you don't really care if I
-see an update on my wall, as
+Y realmente no importa si veo
+una actualización en mi muro,
 
 48
 00:01:55,900 --> 00:01:57,570
-long as I see them eventually.
+siempre y cuando los
+vea eventualmente.
 
 49
 00:01:57,570 --> 00:02:00,800
-Then you could imagine doing
-a read that's closer to me
+Luego podrías imaginar hacer
+una lectura que está más cerca
 
 50
 00:02:00,800 --> 00:02:02,310
-geographically.
+de mi geográficamente.
 
 51
 00:02:02,310 --> 00:02:05,430
-So you look inside the driver
-to understand where these
+Así que nos fijamos en el driver
+para entender donde están estas
 
 52
 00:02:05,430 --> 00:02:08,940
-different options, I'll
-show them to you here.
+distintas opciones,
+te las mostraré aquí.
 
 53
 00:02:08,940 --> 00:02:11,410
-So this is the PyMongo pages.
+Esta es la página de PyMongo.
 
 54
 00:02:11,410 --> 00:02:14,410
-You can see that the choices
-only exists if you use the
+Puedes ver que las opciones
+sólo existen si usas la clase
 
 55
 00:02:14,410 --> 00:02:16,100
-MongoReplicaSetClient,
-which is the
+MongoReplicaSetClient, que es
 
 56
 00:02:16,100 --> 00:02:17,910
-alternative connection class.
+la clase de conexión alternativa.
 
 57
 00:02:17,910 --> 00:02:21,090
-And if you do that, then you
-can set a bunch of read
+Y si lo haces, entonces puedes
+establecer un montón de preferencias
 
 58
 00:02:21,090 --> 00:02:23,530
-preferences at the
-database level.
+de lectura a nivel
+de la base de datos.
 
 59
 00:02:23,530 --> 00:02:27,000
-And here they are numerated
-inside the driver.
+Y aquí están listadas en el driver.
 
 60
 00:02:27,000 --> 00:02:30,100
-And you just need to look inside
-the driver for your
+Y sólo necesitas mirar
+en el driver para tu
 
 61
 00:02:30,100 --> 00:02:32,220
-particular language to
-understand how to get to the
+lenguaje en particular para
+entender cómo obtener las
 
 62
 00:02:32,220 --> 00:02:33,670
-different read preferences.
+distintas preferencias de lectura.
 
 63
 00:02:33,670 --> 00:02:36,410
-Again, it's primary, primary
-preferred, secondary,
+Otra vez, hay primario,
+primario preferido, secundario,
 
 64
 00:02:36,410 --> 00:02:39,190
-secondary preferred,
-and nearest.
+secundario preferido,
+y más cercano.
 
 65
 00:02:39,190 --> 00:02:41,180
-And as I said, there's
-also a way to do
+Y como dije, hay también
+una forma para hacer
 
 66
 00:02:41,180 --> 00:02:42,710
-some stuff with tags.
+algunas cosas con etiquetas.
 
 67
 00:02:42,710 --> 00:02:44,930
-So I'm not going to go
-into it right now.
+No voy a repasarlo ahora mismo.
 
 68
 00:02:44,930 --> 00:02:48,510
-Now, one thought is that a lot
-of folks automatically assume
+Ahora, algo que piensa mucha
+gente es que asume automáticamente
 
 69
 00:02:48,510 --> 00:02:50,580
-that reading from the secondary
-scales their
+que las lecturas del
+secundario escalan su
 
 70
 00:02:50,580 --> 00:02:53,490
-performance of reads, but
-it doesn't always work
+rendimiento, pero no siempre
 
 71
 00:02:53,490 --> 00:02:54,420
-out all that well.
+funciona tan bien.
 
 72
 00:02:54,420 --> 00:02:56,510
-And in fact, that's the
-subject of our quiz.
+Y de hecho, ese es el objeto
+de nuestro cuestionario.
 
 73
 00:02:56,510 --> 00:02:58,020
-And so I'll ask you to think
-about that, and then we'll
+Y por eso voy a pedirte que
+pienses en eso y luego vamos
 
 74
 00:02:58,020 --> 00:02:59,320
-talk about it.
+a hablar de eso.
 
 75
 00:02:59,320 --> 00:03:00,680
-So let's go to the quiz.
+Así que vayamos al cuestionario.
 
 76
 00:03:00,680 --> 00:03:02,450
-All right, so here's the quiz.
+Muy bien, aquí está el cuestionario.
 
 77
 00:03:02,450 --> 00:03:04,610
-So you can configure your
-application via the driver to
+Puedes configurar tu aplicación
+a través del driver para leer
 
 78
 00:03:04,610 --> 00:03:06,920
-read from secondary nodes
-in the replica set.
+de los nodos secundarios
+en el conjunto de réplicas.
 
 79
 00:03:06,920 --> 00:03:09,140
-What are the reasons that you
-might not want to do that?
+¿Cuáles son las razones que podrías
+tener para no desear hacer eso?
 
 80
 00:03:09,140 --> 00:03:11,010
-Check all that apply.
+Marca todas las que apliquen.
 
 81
 00:03:11,010 --> 00:03:12,870
-And I'll go through the
-reasons with you.
+Y voy a repasar
+las razones contigo.
 
 82
 00:03:12,870 --> 00:03:14,910
-So if your write traffic is
-significantly greater than
+Si el tráfico de escritura es
+significativamente mayor que
 
 83
 00:03:14,910 --> 00:03:17,200
-your read traffic, you may
-overwhelm the secondary, which
+tu tráfico de lectura, podrías
+"abrumar" al secundario, que
 
 84
 00:03:17,200 --> 00:03:19,760
-must process all the rights,
-as well as the reads.
+debe procesar todas las escrituras,
+así como las lecturas.
 
 85
 00:03:19,760 --> 00:03:22,060
-Replication lag can result.
+Puede resultar una
+demora de replicación.
 
 86
 00:03:22,060 --> 00:03:24,830
-You may not read what you
-previously wrote to MongoDB if
+Podrías no leer lo que escribiste
+previamente a MongoDB si lees
 
 87
 00:03:24,830 --> 00:03:25,890
-you read from the secondaries.
+desde los secundarios.
 
 88
 00:03:25,890 --> 00:03:28,770
-If a secondary hardware has
-insufficient memory to keep
+Si el hardware de un secundario tiene
+insuficiente memoria para mantener
 
 89
 00:03:28,770 --> 00:03:31,640
-the read working set memory,
-direct reads to it
+la lectura en la memoria del conjunto
+de trabajo, dirigirá las lecturas
 
 90
 00:03:31,640 --> 00:03:33,040
-will likely slow down.
+un poco más lentamente.
 
 91
 00:03:33,040 --> 00:03:35,770
-Directing reads to it will
-likely slow it down.
+Dirigiendo las lecturas
+reducirá la velocidad.
 
 92
 00:03:35,770 --> 00:03:37,720
-And then finally, reading from
-secondaries prevents it from
+Y luego finalmente, leyendo de
+secundarios previene que sea
 
 93
 00:03:37,720 --> 00:03:39,160
-being promoted to a primary.
+promovido a un primario.
 
 94
 00:03:39,160 --> 00:03:41,620
-So check all that apply, and
-then we'll discuss the answer.
+Así que marca todas las que apliquen
+y luego discutiremos la respuesta.
 
 95
 00:03:41,620 --> 00:03:42,870
