@@ -1,91 +1,90 @@
 1
 00:00:00,000 --> 00:00:00,840
-All right.
+Muy bien.
 
 2
 00:00:00,840 --> 00:00:03,100
-And the first three are true.
+Y los tres primeros son ciertos.
 
 3
 00:00:03,100 --> 00:00:05,690
-These are all potential reasons
-why you might not want
+Estas son todas posibles razones
+por las que se podría no desear
 
 4
 00:00:05,690 --> 00:00:07,220
-to read from secondaries.
+leer desde los secundarios.
 
 5
 00:00:07,220 --> 00:00:08,439
-The last one is not true.
+La última no es verdad.
 
 6
 00:00:08,439 --> 00:00:10,620
-Reading from a secondary does
-not prevent it from being
+Leyendo de un secundario
+no previene que sea
 
 7
 00:00:10,620 --> 00:00:12,550
-promoted to a primary
+promovido a ser primario.
 
 8
 00:00:12,550 --> 00:00:15,270
-The other thing to consider is
-that sometimes, if you're
+Y la otra cosa a considerar es
+que en ocasiones, si estás
 
 9
 00:00:15,270 --> 00:00:17,085
-deploying hardware, you need to
-make sure that the hardware
+desplegando hardware, necesitas
+asegurarte que el hardware que
 
 10
 00:00:17,085 --> 00:00:20,530
-you're deploying for your
-secondary is the same level of
+estás desplegando para tu
+secundario es del mismo nivel de
 
 11
 00:00:20,530 --> 00:00:22,530
-performance as your primary.
+rendimiento que tu primario.
 
 12
 00:00:22,530 --> 00:00:24,900
-Otherwise, it could be
-impossible for it to satisfy
+De lo contrario, podría ser
+imposible para él satisfacer
 
 13
 00:00:24,900 --> 00:00:25,910
-those reads.
+estas lecturas.
 
 14
 00:00:25,910 --> 00:00:28,210
-So anyway, it's OK to read from
-secondaries, as long as
+Así que de todos modos, está bien leer
+desde los secundarios, mientras que
 
 15
 00:00:28,210 --> 00:00:29,940
-it's a thoughtful thing to do,
-and it's something that you
+sea algo serio de hacer y
+que es algo que hiciste en
 
 16
 00:00:29,940 --> 00:00:34,410
-did based on deliberate reasons,
-versus just thinking,
+base a razones deliberadas,
+frente a sólo pensarlo,
 
 17
 00:00:34,410 --> 00:00:36,080
-well, it's a generally
-good thing.
+bueno, en general
+es algo bueno.
 
 18
 00:00:36,080 --> 00:00:38,230
-Because if you have no reason
-to do it, you probably just
+Porque si no tienes razón para
+hacerlo, es probable que sólo
 
 19
 00:00:38,230 --> 00:00:40,450
-have your reads go
-to the primary.
+tengas que leer desde el primario.
 
 20
 00:00:40,450 --> 00:00:41,700
-OK.
+De acuerdo.
