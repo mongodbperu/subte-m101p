@@ -1,669 +1,659 @@
 1
 00:00:00,000 --> 00:00:01,530
-Let's talk about how
-you choose a
+Hablemos de cómo elegir una
 
 2
 00:00:01,530 --> 00:00:03,560
-shard key in practice.
+clave de "shard" en la práctica.
 
 3
 00:00:03,560 --> 00:00:06,210
-This is important because it's
-going to determine what kind
+Esto es importante porque
+va a determinar qué tipo
 
 4
 00:00:06,210 --> 00:00:09,170
-of performance you get from
-a shard configuration.
+de rendimiento obtienes de
+una configuración de sharding.
 
 5
 00:00:09,170 --> 00:00:11,590
-The first thought is that you
-need to make sure that there's
+La primera consideración es que
+necesitas asegurarte que haya
 
 6
 00:00:11,590 --> 00:00:13,300
-sufficient cardinality.
+suficiente cardinalidad.
 
 7
 00:00:13,300 --> 00:00:16,860
-By that I mean there is
-sufficient variety of values.
+Con esto quiero decir que haya
+suficiente variedad de valores.
 
 8
 00:00:16,860 --> 00:00:20,630
-So for instance, if you decided
-to shard on something
+Por ejemplo, si decides
+hacer "shard" de algo
 
 9
 00:00:20,630 --> 00:00:23,500
-where there's only three
-possible values, then there
+donde sólo hay tres valores
+posibles, entonces no habría
 
 10
 00:00:23,500 --> 00:00:27,530
-would be no way for Mongo to
-spread it across let's say,
+manera para que Mongo
+se extienda a, digamos,
 
 11
 00:00:27,530 --> 00:00:28,650
-100 shards.
+100 "shards".
 
 12
 00:00:28,650 --> 00:00:30,260
-So you have think about
-whether or not there's
+Por lo que tienes que
+pensar en si hay o no
 
 13
 00:00:30,260 --> 00:00:33,250
-sufficient cardinality for it
-to be a proper shard key.
+suficiente cardinalidad para que
+sea una clave de "shard" apropiada.
 
 14
 00:00:33,250 --> 00:00:35,640
-And you can often solve that
-problem by putting in a
+Y a menudo puedes resolver
+ese problema poniendo en una
 
 15
 00:00:35,640 --> 00:00:37,740
-secondary part of the key, which
-has more cardinality
+parte secundaria de la clave,
+que tiene más cardinalidad
 
 16
 00:00:37,740 --> 00:00:39,580
-than the first part
-of the key.
+que la primera parte de la clave.
 
 17
 00:00:39,580 --> 00:00:42,590
-The second thought is that you
-kind of want to avoid hot
+La segunda consideración es
+desear evitar "hotspots"
 
 18
 00:00:42,590 --> 00:00:43,790
-spotting in writes.
+en escrituras.
 
 19
 00:00:43,790 --> 00:00:45,800
-And hot spotting in writes,
-just the way the
+Y los "hotspots" en escrituras,
+sólo por la forma en que la
 
 20
 00:00:45,800 --> 00:00:48,720
-implementation works today, will
-occur for anything that's
+implementación funciona en la actualidad,
+ocurrirán por cualquier cosa que es
 
 21
 00:00:48,720 --> 00:00:50,040
-monotonically increasing.
+monótonamente creciente.
 
 22
 00:00:50,040 --> 00:00:52,110
-And I can explain why that is.
+Y puedo explicar por qué.
 
 23
 00:00:52,110 --> 00:00:54,760
-So if you did sh.status,
-and you looked at those
+Si hiciste "sh.status",
+y viste esos "chunks"
 
 24
 00:00:54,760 --> 00:00:56,960
-configuration chunks when we
-went through that earlier part
+de configuración cuando estuvimos
+por aquella anterior parte de la
 
 25
 00:00:56,960 --> 00:01:00,030
-of the lesson, you may have
-noticed that the first one was
+lección, te habrás dado
+cuenta que primero se
 
 26
 00:01:00,030 --> 00:01:03,870
-set to min key to some value,
-and then there were a bunch of
+se estableció el "minKey" a algún
+valor, y luego hubo un montón de
 
 27
 00:01:03,870 --> 00:01:05,519
-values for all the
-other chunks.
+valores para todos
+los otros "chunks".
 
 28
 00:01:05,519 --> 00:01:08,940
-And then the final one was some
-value to max key, which
+Y el último fue algún
+valor de "maxKey", que
 
 29
 00:01:08,940 --> 00:01:10,750
-is the maximum possible key.
+es el máximo valor
+posible de la clave.
 
 30
 00:01:10,750 --> 00:01:14,050
-And the problem is that when you
-do a insert of something
+y el problema es que cuando
+haces una inserción de algo
 
 31
 00:01:14,050 --> 00:01:17,270
-that has a larger value than
-has ever been seen before--
+que tiene un valor mayor que
+lo que hayas visto antes--
 
 32
 00:01:17,270 --> 00:01:20,780
-for instance, if you decide to
-shard on the key underscore
+por ejemplo, si decides hacer
+"shard" sobre la clave "_id",
 
 33
 00:01:20,780 --> 00:01:22,910
-ID, and it's a BSON-ID.
+y es un identificador BSON.
 
 34
 00:01:22,910 --> 00:01:26,320
-BSON-IDs increase pretty
-much monotonically.
+Los identificadores BSON
+aumentan monótonamente.
 
 35
 00:01:26,320 --> 00:01:29,570
-And if you look at them you'll
-notice they'll just keep
+Y si te fijas en ellos
+notarás que se mantienen
 
 36
 00:01:29,570 --> 00:01:30,650
-increasing, increasing,
-increasing.
+creciendo, creciendo, creciendo.
 
 37
 00:01:30,650 --> 00:01:31,870
-That's because the high
-part of them is
+Eso se debe a la parte de ellos
 
 38
 00:01:31,870 --> 00:01:33,450
-actually a time stamp.
+que es en realidad un "timestamp".
 
 39
 00:01:33,450 --> 00:01:35,810
-And so what's going to happen
-is that every single one, as
+Y lo que va a pasar es que
+todos y cada uno, como sean
 
 40
 00:01:35,810 --> 00:01:37,920
-it gets inserted, is going to
-be larger than the maximum
+insertados, van a ser más
+grandes que el máximo valor
 
 41
 00:01:37,920 --> 00:01:40,280
-thing that's ever been seen
-by the collection before.
+que jamás hayas visto
+en la colección.
 
 42
 00:01:40,280 --> 00:01:43,150
-So it's always going to be
-assigned to the highest chunk.
+Así que siempre va a ser
+asignado al más alto "chunk".
 
 43
 00:01:43,150 --> 00:01:45,710
-And what this means is that if
-you think about it, if you've
+y lo que significa es que, si
+piensas al respecto, si tienes
 
 44
 00:01:45,710 --> 00:01:48,520
-got these 10 nodes, or whatever
-number of nodes you
+estos 10 nodos, o cualquier
+número de nodos que tengas
 
 45
 00:01:48,520 --> 00:01:51,160
-have in your shard, and you
-start doing inserts, and
+en tu "shard", y empieces
+a hacer inserciones, y
 
 46
 00:01:51,160 --> 00:01:53,160
-you're inserting, you're
-inserting, you're inserting.
+estás insertando, estás
+insertando, estás insertando.
 
 47
 00:01:53,160 --> 00:01:54,920
-The inserts are just going
-to continue to just
+Las inserciones sólo
+van a continuar siendo
 
 48
 00:01:54,920 --> 00:01:56,970
-hammer this one shard.
+clavadas a este "shard".
 
 49
 00:01:56,970 --> 00:01:59,330
-And then eventually maybe
-it'll re-balance.
+Y luego eventualmente quizá
+vayan a ser rebalanceados.
 
 50
 00:01:59,330 --> 00:02:01,910
-But then it will go to
-some other shard.
+Pero luego se irá a
+algún otro "shard".
 
 51
 00:02:01,910 --> 00:02:04,950
-It doesn't matter, it's always
-going to hit one shard.
+No importa, siempre va
+a ir hacia un "shard".
 
 52
 00:02:04,950 --> 00:02:07,690
-Now if the writes are of
-low enough frequency--
+Ahora bien, si las escrituras son
+suficientemente poco frecuentes--
 
 53
 00:02:07,690 --> 00:02:09,380
-and again, it's always the
-question of what your access
+y de nuevo, es siempre la
+pregunta de cómo es tu
 
 54
 00:02:09,380 --> 00:02:10,570
-patterns look like--
+patrón de acceso--
 
 55
 00:02:10,570 --> 00:02:12,500
-that might be OK.
+que podría estar bien.
 
 56
 00:02:12,500 --> 00:02:15,760
-But if the writes are really
-frequent, then
+Pero si las escrituras son
+muy frecuentes, entonces
 
 57
 00:02:15,760 --> 00:02:17,340
-maybe that's not OK.
+quizá no está bien.
 
 58
 00:02:17,340 --> 00:02:20,430
-So you ideally want to think
-about a shard key that isn't
+Por lo que lo ideal es pensar en
+una clave de "shard" que no es
 
 59
 00:02:20,430 --> 00:02:23,270
-monotonically increasing, but
-has sufficient cardinality.
+monótonamente creciente, pero
+con suficiente cardinalidad.
 
 60
 00:02:23,270 --> 00:02:26,590
-And those are two good basic
-criteria to think about for
+y ésos son dos buenos criterios
+básicos para pensar en tu
 
 61
 00:02:26,590 --> 00:02:27,710
-your shard key.
+clave de "shard".
 
 62
 00:02:27,710 --> 00:02:30,980
-So I'll give you some examples
-and you can think about it a
+Así que te voy a dar algunos
+ejemplos y pensar un poco
 
 63
 00:02:30,980 --> 00:02:31,740
-little bit.
+al respecto.
 
 64
 00:02:31,740 --> 00:02:33,990
-Well let's say that, for
-instance, we were thinking
+Bueno, digamos que, por
+ejemplo, estábamos pensando
 
 65
 00:02:33,990 --> 00:02:35,390
-about sharding an order
+en hacer sharding a una colección
 
 66
 00:02:35,390 --> 00:02:37,190
-collection, billions of orders.
+de órdenes, billones de órdenes.
 
 67
 00:02:37,190 --> 00:02:40,170
-They have order IDs, and the
-order IDs are monotonically
+Tienen campos "order_id" y los
+"order_id" son monótonamente
 
 68
 00:02:40,170 --> 00:02:41,300
-increasing.
+crecientes.
 
 69
 00:02:41,300 --> 00:02:44,280
-Well you probably don't want
-to shard on the order ID.
+Bueno, es problable que no desees
+hacer "shard" sobre el "order_id".
 
 70
 00:02:44,280 --> 00:02:46,630
-Now could you shard on the
-vendor the order is with?
+Ahora, ¿podrías hacer "shard"
+sobre el "vendor" (fabricante)?
 
 71
 00:02:46,630 --> 00:02:47,540
-Well, potentially.
+Bueno, potencialmente.
 
 72
 00:02:47,540 --> 00:02:49,520
-If the vendor has enough
-cardinality, that might be a
+Si el "vendor" tiene suficiente
+cardinalidad, podría ser una
 
 73
 00:02:49,520 --> 00:02:51,250
-good choice.
+buena elección.
 
 74
 00:02:51,250 --> 00:02:53,660
-Now could you shard
-on the order date?
+Ahora, ¿podría hacer "shard" sobre
+"order_date" (fecha de la orden)?
 
 75
 00:02:53,660 --> 00:02:55,320
-The order date has a problem,
-that it's probably going to be
+La fecha de la orden tiene un
+problema, que probablemente va
 
 76
 00:02:55,320 --> 00:02:55,920
-increasing.
+a estar incrementando.
 
 77
 00:02:55,920 --> 00:02:58,205
-And we're going to get some hot
-spotting on the inserts.
+Y vamos a obtener algunos
+"hotspots" en las inserciones.
 
 78
 00:02:58,205 --> 00:03:00,720
-So that's probably not
-a great choice.
+Así que probablemente
+no es una gran elección.
 
 79
 00:03:00,720 --> 00:03:04,900
-Could you shard on vendor
-comma order date?
+¿Podrías hacer "shard" sobre
+"vendor" y "order_date"?
 
 80
 00:03:04,900 --> 00:03:06,170
-And the answer is yeah.
+Y la respuesta es sí.
 
 81
 00:03:06,170 --> 00:03:07,670
-And it might work pretty well.
+Y puede funcionar bastante bien.
 
 82
 00:03:07,670 --> 00:03:09,760
-Because it's probably got
-lot of cardinality.
+Debido a que probablemente
+tiene mucha cardinalidad.
 
 83
 00:03:09,760 --> 00:03:13,850
-And it isn't going to be-- even
-as you add orders for
+Y no a ser-- incluso a medida
+que añades órdenes para
 
 84
 00:03:13,850 --> 00:03:16,590
-multiple different vendors,
-different higher order
+varios proveedores, diferentes
+proveedores en muchas órdenes,
 
 85
 00:03:16,590 --> 00:03:19,290
-vendors, so they're going to be
-split amongst the different
+por lo que van a ser
+divididos entre los distintos
 
 86
 00:03:19,290 --> 00:03:23,180
-shards, due to the vendor order
-ID being different.
+"shards", debido a que el identificador
+y el proveedor van a ser diferentes.
 
 87
 00:03:23,180 --> 00:03:26,230
-And that might have sufficient
-cardinality to be a good index
+Y eso podría tener suficiente
+cardinalidad para ser un buen índice,
 
 88
 00:03:26,230 --> 00:03:28,300
-again, depends on your
-access patterns.
+otra vez, depende de
+tus patrones de acceso.
 
 89
 00:03:28,300 --> 00:03:30,060
-Let's think about another one.
+Vamos a pensar en otro.
 
 90
 00:03:30,060 --> 00:03:33,290
-So let's say you built a
-photo sharing system.
+Así que digamos que construiste
+un sistema para compartir fotos.
 
 91
 00:03:33,290 --> 00:03:36,080
-And each user has photos.
+Y cada usuario tiene fotos.
 
 92
 00:03:36,080 --> 00:03:38,260
-And you keep track of some
-information in the user's
+Y mantienes alguna información
+en la colección de usuarios,
 
 93
 00:03:38,260 --> 00:03:41,260
-collection, all right, with the
-username, and some other
+muy bien, con el "username",
+y alguna otra información
 
 94
 00:03:41,260 --> 00:03:42,490
-identification information--
+de identificación--
 
 95
 00:03:42,490 --> 00:03:46,200
-maybe a list of albums, probably
-some other photos
+tal vez una lista de álbums,
+probablemente alguna otra
 
 96
 00:03:46,200 --> 00:03:47,620
-collection.
+colección de fotos.
 
 97
 00:03:47,620 --> 00:03:50,460
-Could you use user name
-as your shard key?
+¿Podrías usar el "username"
+como tu clave de "shard"?
 
 98
 00:03:50,460 --> 00:03:52,270
-And the answer is yes.
+Y la respuesta es sí.
 
 99
 00:03:52,270 --> 00:03:54,975
-It's probably got a lot of
-good properties to it.
+Es probable que obtengas muchas
+buenas propiedades de él.
 
 100
 00:03:54,975 --> 00:03:57,950
-If you think about it, if the
-system is mostly parallel with
+Si piensas en ello, si el sistema
+es principalmente paralelo con
 
 101
 00:03:57,950 --> 00:04:01,480
-respect to the user,
-then you've got
+respecto al usuario,
+entonces tendrías
 
 102
 00:04:01,480 --> 00:04:03,680
-these different MongoDBs.
+estas diferentes
+instancias de MongoDB.
 
 103
 00:04:03,680 --> 00:04:07,250
-And if I'm doing something for
-username Joe, it'll map to
+Y si estás haciendo algo con
+el "username" "Joe", mapeará a
 
 104
 00:04:07,250 --> 00:04:07,850
-this shard.
+este "shard".
 
 105
 00:04:07,850 --> 00:04:10,495
-And if I'm doing it for username
-Bob, maybe it maps to
+Y si estoy haciendo algo con el
+"username" "Bob", quizá mapee a
 
 106
 00:04:10,495 --> 00:04:11,000
-that shard.
+aquel "shard".
 
 107
 00:04:11,000 --> 00:04:12,780
-And that nicely runs
-in parallel.
+y eso se ejecuta en paralelo.
 
 108
 00:04:12,780 --> 00:04:15,000
-I like to think about
-how was the
+Me gusta pensar en cómo sería el
 
 109
 00:04:15,000 --> 00:04:16,880
-problem naturally parallel?
+problema naturalmente paralelo.
 
 110
 00:04:16,880 --> 00:04:19,510
-And if it's naturally parallel
-against some particular
+Y si es naturalmente paralelo
+contra alguna característica en
 
 111
 00:04:19,510 --> 00:04:22,750
-characteristic, that might be
-a good one to shard against.
+particular, eso sería algo
+bueno para hacer "shard".
 
 112
 00:04:22,750 --> 00:04:23,880
-Because that's going
-to give you nice
+Porque eso va a darte mucho
 
 113
 00:04:23,880 --> 00:04:26,180
-parallelism in your operation.
+paralelismo en tu operación.
 
 114
 00:04:26,180 --> 00:04:30,225
-Alright, so that's a few
-thoughts about the selection
+Muy bien, así que ésas son algunas
+consideraciones acerca de la elección
 
 115
 00:04:30,225 --> 00:04:31,470
-of a shard key.
+de una clave de "shard".
 
 116
 00:04:31,470 --> 00:04:33,650
-Truth is, you have to do this
-kind of carefully because it
+La verdad es que tienes que
+ser así de cuidadoso porque
 
 117
 00:04:33,650 --> 00:04:35,060
-is very hard to redo it.
+es muy difícil rehacerlo.
 
 118
 00:04:35,060 --> 00:04:38,040
-Because you can't change it,
-and they're immutable.
+Porque no se pueden cambiar
+y son inmutables.
 
 119
 00:04:38,040 --> 00:04:41,240
-So think about it hard
-before you do it.
+Así que piensa bien
+antes de hacerlo.
 
 120
 00:04:41,240 --> 00:04:42,870
-And make sure that
-it makes sense.
+Y asegúrate que tenga sentido.
 
 121
 00:04:42,870 --> 00:04:45,190
-This is the kind of thing where
-it could make sense to
+Éste es el tipo de cosas
+donde podría tener sentido
 
 122
 00:04:45,190 --> 00:04:46,990
-set up a separate machine.
+configurar equipos separados.
 
 123
 00:04:46,990 --> 00:04:49,690
-And do some testing, and the
-access pattern analysis,
+Y hacer algunas pruebas, y el
+análisis de patrón de acceso
 
 124
 00:04:49,690 --> 00:04:51,890
-before you finally
-commit to one.
+antes de que termines escogiendo uno.
 
 125
 00:04:51,890 --> 00:04:53,590
-All right, let's do a quiz.
+Muy bien, hagamos un cuestionario.
 
 126
 00:04:53,590 --> 00:04:55,780
-All right, so let's say you're
-building a Facebook competitor
+Muy bien, digamos que estás construyendo
+un competidor de Facebook llamado
 
 127
 00:04:55,780 --> 00:04:57,860
-called Footbook, that
-will be a mobile
+Footbook, que será una red social
 
 128
 00:04:57,860 --> 00:04:59,730
-social network of feet.
+móvil de pies.
 
 129
 00:04:59,730 --> 00:05:01,630
-And you've decided that your
-primary data structure for
+Y has decidido que la estructura
+de tus datos primario para los
 
 130
 00:05:01,630 --> 00:05:03,970
-posts for the wall will
-look like this.
+posts del muro será como éste.
 
 131
 00:05:03,970 --> 00:05:07,300
-So you have a username, toe guy,
-with a the post time and
+Así que tienes un "username",
+"toe guy", con el "posttime" y
 
 132
 00:05:07,300 --> 00:05:09,700
-a random thought-- "I'm looking
-at my feet right now."
+un "randomthought", "I'm looking
+at my feet right now".
 
 133
 00:05:09,700 --> 00:05:11,720
-And it's visible to
-these things.
+Y "visible_to" son estas cosas.
 
 134
 00:05:11,720 --> 00:05:14,170
-So thinking about the tradeoffs
-of shard key
+Pensando en las ventajas y
+desventajas de la selección de
 
 135
 00:05:14,170 --> 00:05:15,740
-selection, select the true
-statements below.
+una clave de "shard", elige las
+afirmaciones que son ciertas abajo.
 
 136
 00:05:15,740 --> 00:05:18,380
-Choosing post time as a shard
-key will cause hot spotting as
+Eligiendo a "posttime" como una
+clave de "shard" causará "hotspots"
 
 137
 00:05:18,380 --> 00:05:19,690
-time progresses.
+mientras pasa el tiempo.
 
 138
 00:05:19,690 --> 00:05:21,600
-Choosing usernames as the shard
-key will distribute
+Eligiendo "username" como una
+clave de "shard" distribuirá bien
 
 139
 00:05:21,600 --> 00:05:23,970
-posts to the wall well
-across the shards.
+los posts de los muros
+a través de los "shards".
 
 140
 00:05:23,970 --> 00:05:26,250
-Choosing visible to as a
-shard key is illegal.
+Eligiendo "visible_to" como la
+clave de "shard" no es válido.
 
 141
 00:05:26,250 --> 00:05:28,460
-And choosing post time as a
-shard key suffers from low
+Y al elegir "posttime" como la
+clave de "shard" se sufre baja
 
 142
 00:05:28,460 --> 00:05:29,710
-cardinality.
+cardinalidad.
