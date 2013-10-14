@@ -9,7 +9,7 @@ tres primeras son ciertas.
 3
 00:00:03,660 --> 00:00:06,110
 El "posttime" causará
-"hotsposts" porque es
+"hotspots" porque es
 
 4
 00:00:06,110 --> 00:00:07,240
