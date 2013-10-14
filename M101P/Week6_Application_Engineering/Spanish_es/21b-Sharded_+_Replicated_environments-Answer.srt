@@ -3,36 +3,37 @@
 
 2
 00:00:00,280 --> 00:00:02,630
-And the answer is it's the
-drivers, because the drivers
+Y la respuesta es que serán
+los drivers, porque los drivers
 
 3
 00:00:02,630 --> 00:00:03,440
-are what's attached mongos.
+son los que están
+conectados a los mongos.
 
 4
 00:00:03,440 --> 00:00:05,870
-The mongos' go up and down,
-so they can't be the ones
+Los mongos se inician y se
+terminan, así que no pueden
 
 5
 00:00:05,870 --> 00:00:07,260
-responsible for that.
+ser responsables de esto.
 
 6
 00:00:07,260 --> 00:00:09,070
-And certainly, config servers
-don't do that.
+Y definitivamente los servidores
+"config" no hacen esto.
 
 7
 00:00:09,070 --> 00:00:11,300
-They're in charge of figuring
-out where the chunks are for
+Están a cargo de averiguar
+dónde están los pedazos
 
 8
 00:00:11,300 --> 00:00:12,370
-the sharding.
+para hacer el "sharding".
 
 9
 00:00:12,370 --> 00:00:13,620
-OK, so that's the answer.
+En fin, ésa es la respuesta.
