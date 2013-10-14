@@ -35,8 +35,8 @@ Contributing is very easy, just follow these steps:
 .. note::
 
    The team uses a `Kanban board in Huboard
-   <http://huboard.com/MongoDBPeru/subte>`_ to track and manage assignments
-   caption files, please consider it to make contributions.
+   <http://huboard.com/MongoDBPeru/subte-m101p>`_ to track and manage
+   assignments caption files, please consider it to make contributions.
 
    Usually, at least a team member will verify and discuss your changes before
    merging. So you may have to do more than one commit per pull request.
