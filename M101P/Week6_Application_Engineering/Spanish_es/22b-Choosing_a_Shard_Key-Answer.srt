@@ -3,87 +3,86 @@
 
 2
 00:00:00,360 --> 00:00:03,660
-And the answer is that the
-first three are true.
+Y la respuesta es que las
+tres primeras son ciertas.
 
 3
 00:00:03,660 --> 00:00:06,110
-The posttime will cause
-hotspotting because it's
+El "posttime" causará
+"hotsposts" porque es
 
 4
 00:00:06,110 --> 00:00:07,240
-monotonically increasing.
+monótonamente creciente.
 
 5
 00:00:07,240 --> 00:00:11,130
-The username should be posts
-well across the shards.
+El "username" debería ser
+distribuido hacia los "shards".
 
 6
 00:00:11,130 --> 00:00:13,090
-I think that would actually
-be a good choice.
+Pienso que seria en
+realidad una buena elección.
 
 7
 00:00:13,090 --> 00:00:17,470
-And choosing visible_to is
-illegal because, remember, you
+Y elegiendo "visible_to" no es
+válido, porque, recuerda, que
 
 8
 00:00:17,470 --> 00:00:21,740
-can index that is going to be
-on the shard or the starting
+puedes indexar lo que va a
+estár en el "shard" o la parte
 
 9
 00:00:21,740 --> 00:00:24,180
-part of the shard key and
-visible_to will acquire a
+inicial de la clave de "shard"
+y "visible_to" adquirirá un
 
 10
 00:00:24,180 --> 00:00:26,480
-multi-key index and
-that's illegal.
+índice multiclave
+y no es válido.
 
 11
 00:00:26,480 --> 00:00:28,730
-And then, choosing posttime as
-a shard key suffers from low
+Y luego, eligiendo "posttime" como
+una clave de "shard" se sufre una
 
 12
 00:00:28,730 --> 00:00:29,320
-cardinality.
+baja cardinalidad.
 
 13
 00:00:29,320 --> 00:00:30,540
-It does not.
+No es cierto.
 
 14
 00:00:30,540 --> 00:00:32,780
-Posttimes are going to
-be very varied, lots
+"posttime" será muy variado,
 
 15
 00:00:32,780 --> 00:00:33,420
-of different values.
+tendrá muchos distintos valores.
 
 16
 00:00:33,420 --> 00:00:35,070
-It just happens to be that
-they are monotonically
+Esto sólo va a ser
+que sea monótonamente
 
 17
 00:00:35,070 --> 00:00:35,630
-increasing.
+creciente.
 
 18
 00:00:35,630 --> 00:00:38,580
-It's going to cause hotspotting
-on the inserts.
+Va a causar "hotspots"
+en las inserciones.
 
 19
 00:00:38,580 --> 00:00:39,830
-So that's the answer.
+Así que esa es la respuesta.
 
 20
 00:00:39,830 --> 00:00:40,690
