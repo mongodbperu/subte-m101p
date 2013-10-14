@@ -1,8 +1,9 @@
-=====
-Subte
-=====
+===========
+Subte-M101P
+===========
 
-Translation of the `MongoDB University`_ Courses.
+Translation of M101P - MongoDB for Developers course. Course offered by
+`MongoDB University`_.
 
 Contributing
 ============
@@ -13,7 +14,7 @@ Contributing is very easy, just follow these steps:
 #. Create a new issue assigning yourself the translation of a lesson's files.
 
    For instance: `#111: "Translate Week 2 | 26-getLastError"
-   <https://github.com/MongoDBPeru/subte/issues/111>`_.
+   <https://github.com/MongoDBPeru/subte-m101p/issues/111>`_.
 
 #. Create a "lesson branch" or "issue branch"::
 
@@ -28,8 +29,8 @@ Contributing is very easy, just follow these steps:
    to our master branch, noting also the issue that you will close.
 
    For instance: `#180: "Completed translation of 26-getLastError into Spanish"
-   <https://github.com/MongoDBPeru/subte/pull/180>`_ is a pull request that
-   resolve the issue `#111`_.
+   <https://github.com/MongoDBPeru/subte-m101p/pull/180>`_ is a pull request
+   that resolve the issue `#111`_.
 
 .. note::
 
@@ -48,4 +49,4 @@ Contributing is very easy, just follow these steps:
    assigned for the subtitles.
 
 .. _MongoDB University: http://education.mongodb.com
-.. _#111: https://github.com/MongoDBPeru/subte/issues/111
+.. _#111: https://github.com/MongoDBPeru/subte-m101p/issues/111
