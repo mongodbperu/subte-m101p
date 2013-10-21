@@ -1,17 +1,17 @@
 1
 00:00:00,000 --> 00:00:04,300
-OK, welcome to week 7 of
-MongoDB for developers.
+OK, bienvenidos a la semana 7
+de MongoDB para desarrolladores.
 
 2
 00:00:04,300 --> 00:00:07,550
-This week we're going to be
-doing some interviews with
+Esta semana vamos a hacer
+algunas entrevistas a
 
 3
 00:00:07,550 --> 00:00:11,650
-users of MongoDB, and today I'm
-here with Jon Hoffman from
+usuarios de MongoDB, y ahora
+estoy aquí con Jon Hoffman de
 
 4
 00:00:11,650 --> 00:00:12,450
@@ -19,546 +19,538 @@ Foursquare.
 
 5
 00:00:12,450 --> 00:00:15,840
-They were an early and big user
-of MongoDB, so thanks for
+Ellos son uno de los primeros y más
+grandes usuarios de MongoDB, así que
 
 6
 00:00:15,840 --> 00:00:17,150
-coming here today Jon.
+gracias por venir aquí hoy Jon.
 
 7
 00:00:17,150 --> 00:00:19,170
-Yeah, thank you for having me.
+Sí, gracias por invitarme.
 
 8
 00:00:19,170 --> 00:00:20,900
-So we're going to do this
-pretty casually.
+Vamos a hacer esto
+muy casualmente.
 
 9
 00:00:20,900 --> 00:00:23,800
-I have some questions I would
-like to ask you about your use
+Tengo algunas preguntas que me
+gustaría hacerte acerca del uso
 
 10
 00:00:23,800 --> 00:00:28,210
-of MongoDB at Foursquare.
+de MongoDB en Foursquare.
 
 11
 00:00:28,210 --> 00:00:31,180
-I guess first we should talk
-about what Foursquare is,
+Supongo que primero debemos hablar
+acerca de lo que es Foursquare,
 
 12
 00:00:31,180 --> 00:00:32,890
-because some of our
-international students may not
+porque alguno de nuestros estudiantes
+internacionales podrían no estar
 
 13
 00:00:32,890 --> 00:00:34,822
-be familiar with it.
+familiarizados con él.
 
 14
 00:00:34,822 --> 00:00:37,200
-Can you describe it
-really briefly?
+¿Puedes decribirlo brevemente?
 
 15
 00:00:37,200 --> 00:00:38,880
-Sure, Foursquare
-is two things.
+Seguro, Foursquare es dos cosas.
 
 16
 00:00:38,880 --> 00:00:40,210
-It's a social utility.
+Es una utilidad social.
 
 17
 00:00:40,210 --> 00:00:42,720
-It's a way to tell your friends
-where you are and find
+Es una forma de decirle a tus
+amigos dónde estas y saber
 
 18
 00:00:42,720 --> 00:00:45,380
-out where they are, and then
-we also recycle that
+ellos dónde están, y luego
+también reutilizamos esa
 
 19
 00:00:45,380 --> 00:00:48,500
-information and aid in social
-discovery of your city.
+información y ayudamos en el
+descubrimiento social de tu ciudad.
 
 20
 00:00:48,500 --> 00:00:52,990
-So if you're looking for a new
-restaurant, or a bar, or any
+Si estás buscando un nuevo
+restaurante, o bar, o cualquier
 
 21
 00:00:52,990 --> 00:00:56,470
-type of place in your city, you
-can use the app to search
+tipo de lugar en tu ciudad, puedes
+usar la aplicación para buscar
 
 22
 00:00:56,470 --> 00:00:58,000
-for that sort of thing,
-and we'll give you a
+ese tipo de lugar,
+y te daremos una
 
 23
 00:00:58,000 --> 00:01:01,230
-recommendation based on where
-your friends have been and
+recomendación basada en dónde
+tus amigos han estado y
 
 24
 00:01:01,230 --> 00:01:03,570
-where you've been in the past.
+dónde has estado antes.
 
 25
 00:01:03,570 --> 00:01:06,230
-And is it primarily a mobile
-application then?
+¿Y entonces éste es principalmente
+una aplicación móvil?
 
 26
 00:01:06,230 --> 00:01:06,770
-Yeah.
+Sí.
 
 27
 00:01:06,770 --> 00:01:09,190
-So you use it on your
-smartphone--
+Así que lo usas en
+tu teléfono--
 
 28
 00:01:09,190 --> 00:01:12,550
-like your iPhone, your
-BlackBerry, or your Android--
+como tu iPhone, tu
+BlackBerry o tu Android--
 
 29
 00:01:12,550 --> 00:01:16,400
-and you use it while
-you're on the go.
+y lo utilizas mientras
+estás yendo hacia el lugar.
 
 30
 00:01:16,400 --> 00:01:18,510
-So give me a feeling for
-the scale of this?
+¿Dame una idea para escalar esto?
 
 31
 00:01:18,510 --> 00:01:22,340
-Like, approximately how many
-check-ins occur, and what is
+Como, ¿aproximadamente cuántos
+"check-ins" ocurren y cuál es
 
 32
 00:01:22,340 --> 00:01:25,530
-the rate of check-ins and
-that sort of thing?
+la frecuencia de los "check-ins"
+y ese tipo de cosas?
 
 33
 00:01:25,530 --> 00:01:28,760
-So people let each other know
-where they are, or check-in
+Los usuarios le permiten saber a
+otros dónde están, o hacen "check-in"
 
 34
 00:01:28,760 --> 00:01:32,060
-about five million
-times per day.
+cerca de cinco millones
+de veces por día.
 
 35
 00:01:32,060 --> 00:01:32,840
-Wow
+¡Vaya!
 
 36
 00:01:32,840 --> 00:01:34,110
-Yeah.
+Sí.
 
 37
 00:01:34,110 --> 00:01:36,360
-All right.
+Muy bien.
 
 38
 00:01:36,360 --> 00:01:42,580
-And what's the main role of
-MongoDB in the system?
+¿Y cuál es el principal rol
+de MongoDB en el sistema?
 
 39
 00:01:42,580 --> 00:01:44,830
-So MongoDB is our primary
-data store.
+MongoDB es nuestro principal
+almacén de datos.
 
 40
 00:01:44,830 --> 00:01:46,350
-We use it for almost
-everything.
+Lo usamos para casi todo.
 
 41
 00:01:46,350 --> 00:01:49,070
-Every time someone checks in--
-all those 5 million check-ins
+Cada vez que alguien hace "check-in"--
+todos esos 5 millones de "check-ins"
 
 42
 00:01:49,070 --> 00:01:51,210
-every day gets stored MongoDB.
+todos los días son
+almacenados en MongoDB.
 
 43
 00:01:51,210 --> 00:01:54,810
-We store the user's account
-information in Mongo, we store
+Almacenamos la información de
+las cuentas de usuario en Mongo,
 
 44
 00:01:54,810 --> 00:01:58,660
-all associated information
-like information about a
+almacenamos toda la información
+asociada como información de
 
 45
 00:01:58,660 --> 00:02:02,090
-place, tips that people
-have left--
+lugares, consejos
+que la gente deja--
 
 46
 00:02:02,090 --> 00:02:04,960
-almost everything is
-stored in Mongo.
+casi todo está
+almacenado en Mongo.
 
 47
 00:02:04,960 --> 00:02:06,730
-That's great.
+Qué genial.
 
 48
 00:02:06,730 --> 00:02:07,780
-What's your role there?
+¿Cuál es tu rol ahí?
 
 49
 00:02:07,780 --> 00:02:09,360
-Just so people know.
+Sólo para que la gente lo sepa.
 
 50
 00:02:09,360 --> 00:02:13,050
-So I manage the storage team,
-where we focus on online
+Administro el equipo de almacenamiento,
+donde nos enfocamos en el
 
 51
 00:02:13,050 --> 00:02:14,210
-storage and offline storage.
+almacenamiento "online" y "offline". 
 
 52
 00:02:14,210 --> 00:02:19,420
-And online storage is our Mongo
-database build out.
+El almacenamiento "online" es
+nuestra base de datos basada en Mongo.
 
 53
 00:02:19,420 --> 00:02:24,570
-So describe the evolution of
-the use MongoDB, from the
+Bien, describe la evolución del
+uso de MongoDB, desde el inicio
 
 54
 00:02:24,570 --> 00:02:28,300
-beginning versus how
-it's evolved.
+y cómo ha evolucionado.
 
 55
 00:02:28,300 --> 00:02:30,020
-Can you give us a
-sense of that?
+¿Puedes decirnos cómo es eso?
 
 56
 00:02:30,020 --> 00:02:30,320
-Sure.
+Claro.
 
 57
 00:02:30,320 --> 00:02:34,490
-So Foursquare started in 2009,
-and the prototype for
+Foursquare inició en 2009,
+y el prototipo para
 
 58
 00:02:34,490 --> 00:02:38,240
-Foursquare was actually
-built on top of MySQL.
+Foursquare fue en realidad
+construido en base a MySQL.
 
 59
 00:02:38,240 --> 00:02:40,790
-And then they had to be a
-rewrite when things started to
+Y entonces ellos tuvieron que
+reescribir cuando empezaron
 
 60
 00:02:40,790 --> 00:02:42,100
-get serious.
+a tomar seriedad.
 
 61
 00:02:42,100 --> 00:02:46,680
-So we started to rewrite the
-application in Scala, and we
+Empezaron a reescribir la
+aplicación en Scala y cambiamos
 
 62
 00:02:46,680 --> 00:02:49,990
-switched from MySQL
-to Postgres.
+de MySQL a Postgres.
 
 63
 00:02:49,990 --> 00:02:52,360
-That was fine for a little
-while, but at some point we
+Eso estuvo bueno por un
+rato, pero en algún momento
 
 64
 00:02:52,360 --> 00:02:55,640
-realized that we're going to
-need to split our data up
+nos dimos cuenta que necesitaríamos
+distribuir nuestros datos en
 
 65
 00:02:55,640 --> 00:02:58,710
-amongst multiple servers.
+varios servidores.
 
 66
 00:02:58,710 --> 00:03:03,620
-And that would involve getting
-rid of a lot of the features
+Y eso implicaría la eliminación
+de muchas de las características
 
 67
 00:03:03,620 --> 00:03:08,360
-that you have in a relational
-database, like joins and
+que tienes en las bases de datos
+relacionales, como las relaciones e
 
 68
 00:03:08,360 --> 00:03:12,230
-transaction integrity, so that
-we'd have to move to some
+integridad de transacciones, por lo
+que tendríamos que movernos a algún
 
 69
 00:03:12,230 --> 00:03:15,540
-other type of system,
-either on top of SQL
+otro tipo de sistema, ya sea SQL
 
 70
 00:03:15,540 --> 00:03:17,290
-or something else.
+o algún otro.
 
 71
 00:03:17,290 --> 00:03:20,930
-So we looked at a few options,
-and we knew some people who
+Así que buscamos algunas opciones,
+y supimos de algunas personas que
 
 72
 00:03:20,930 --> 00:03:22,160
-were using Mongo.
+estaban usando Mongo.
 
 73
 00:03:22,160 --> 00:03:26,930
-We started moving some things
-over to Mongo in 2010.
+Empezamos a mover algunas
+cosas a Mongo en el 2010.
 
 74
 00:03:26,930 --> 00:03:30,480
-And we started with just
-a few collections.
+Y empezamos con sólo
+unas pocas colecciones.
 
 75
 00:03:30,480 --> 00:03:33,400
-So we moved over the database
-that stores venue
+Mudamos la base de datos
+que almacena la información
 
 76
 00:03:33,400 --> 00:03:34,510
-information--
+de lugares--
 
 77
 00:03:34,510 --> 00:03:37,980
-information about places like
-restaurants and bars.
+información de lugares
+como restaurantes y bares.
 
 78
 00:03:37,980 --> 00:03:41,982
-We moved that over to
-Mongo, but we didn't
+Movimos eso a Mongo,
+pero hicimos el cambio
 
 79
 00:03:41,982 --> 00:03:44,030
-do the switch overnight.
+sin ventana de mantenimiento.
 
 80
 00:03:44,030 --> 00:03:47,750
-What we did was we started
-writing all of our data to
+Lo que hicimos fue que iniciamos
+escribiendo todos nuestros datos
 
 81
 00:03:47,750 --> 00:03:48,810
-both places--
+en ambos lugares--
 
 82
 00:03:48,810 --> 00:03:51,110
-both to SQL and to Mongo.
+en SQL y en Mongo.
 
 83
 00:03:51,110 --> 00:03:54,260
-And once we were satisfied that
-things were stable, and
+Y una vez que se realizaron
+estas cosas siendo estables y
 
 84
 00:03:54,260 --> 00:03:58,980
-we knew what we were doing, we
-slowly migrated the reads over
+supimos lo que estábamos haciendo,
+migramos lentamente las lecturas
 
 85
 00:03:58,980 --> 00:04:00,160
-from SQL to Mongo.
+de SQL hacia Mongo.
 
 86
 00:04:00,160 --> 00:04:02,750
-So you were basically running
-both systems in parallel.
+Así que básicamente estaban
+ejecutando ambos sistemas en paralelo.
 
 87
 00:04:02,750 --> 00:04:03,730
-Exactly.
+Exacto.
 
 88
 00:04:03,730 --> 00:04:06,515
-And writing to both systems,
-so you weren't dependent on
+Y escribiendo a ambos sistemas,
+por lo que no dependías de
 
 89
 00:04:06,515 --> 00:04:07,280
-Mongo for awhile.
+Mongo por un tiempo.
 
 90
 00:04:07,280 --> 00:04:09,040
-You kind of got comfortable with
-it, and then you switched
+Te sentiste a gusto con él,
+y hasta que por fin cambiaste
 
 91
 00:04:09,040 --> 00:04:11,880
-over once you were certain that
-it was working for you.
+estando seguro que estaba
+funcionando bien para ti.
 
 92
 00:04:11,880 --> 00:04:14,250
-Right, we need to get confidence
-in the technology
+Correcto, necesitábamos la
+confianza en la tecnología
 
 93
 00:04:14,250 --> 00:04:17,660
-and make sure that all of the
-data that was supposed to be
+y asegurarnos que todos los
+datos que se suponen que estuvieran
 
 94
 00:04:17,660 --> 00:04:18,829
-there was there.
+ahí, estaban ahí.
 
 95
 00:04:18,829 --> 00:04:21,430
-And once we had that, we
-switched things over.
+Y una vez que tuvimos eso,
+cambiamos las cosas.
 
 96
 00:04:21,430 --> 00:04:25,050
-OK, so at this point, did you
-turn Postgres off entirely at
+OK, en ese punto, ¿cambiaste
+completamente Postgres en
 
 97
 00:04:25,050 --> 00:04:26,060
-this point?
+ese momento?
 
 98
 00:04:26,060 --> 00:04:30,320
-We actually still left
-it on just in case
+En realidad todavía
+lo mantenemos en caso
 
 99
 00:04:30,320 --> 00:04:31,660
-something went wrong.
+algo salga mal.
 
 100
 00:04:31,660 --> 00:04:34,010
-So we still had rights
-going to both places.
+Aún teníamos a las escrituras
+yendo hacia ambos lugares.
 
 101
 00:04:34,010 --> 00:04:37,350
-It's just that the read location
-was now Mongo.
+Sólo las lecturas iban a Mongo.
 
 102
 00:04:37,350 --> 00:04:41,600
-And we left that on for at least
-a few weeks before we
+Y lo dejamos así por lo menos
+un par de semanas antes que
 
 103
 00:04:41,600 --> 00:04:44,880
-were confident that we
-could turn it off.
+estuviéramos seguros
+que podríamos apagarlo.
 
 104
 00:04:44,880 --> 00:04:46,530
-What's your implementation
-language?
+¿Cuál es el lenguaje
+de tu implementación?
 
 105
 00:04:46,530 --> 00:04:48,420
-You said it was Scala?
+¿Dijiste que fue Scala?
 
 106
 00:04:48,420 --> 00:04:49,720
-Yes, Scala.
+Sí, Scala.
 
 107
 00:04:49,720 --> 00:04:55,930
-And were you using just our
-driver, or is there some other
+¿Y estaban usando sólo su
+driver o hay alguna otra
 
 108
 00:04:55,930 --> 00:05:00,410
-intermediary layer that you
-used to talk to Mongo?
+capa intermediaria que usaron
+para comunicarse a Mongo?
 
 109
 00:05:00,410 --> 00:05:02,280
-So just some background
-on Scala for
+Sólo algunos procesos
+"por detrás" en Scala.
 
 110
 00:05:02,280 --> 00:05:03,380
-people who don't know.
+Para quienes no lo saben,
 
 111
 00:05:03,380 --> 00:05:06,220
-Scala is a statically compiled
-language that runs
+Scala es un lenguaje compilado
+estáticamente que se ejecuta
 
 112
 00:05:06,220 --> 00:05:07,870
-on top of the JVM.
+sobre la JVM.
 
 113
 00:05:07,870 --> 00:05:10,930
-So you write code in a
-syntax that's a bit
+Se escribe código en una
+sintaxiz que es un poco
 
 114
 00:05:10,930 --> 00:05:11,750
-different from Java.
+diferente de Java.
 
 115
 00:05:11,750 --> 00:05:14,610
-It kind of combines
-object oriented
+En cierto modo se combina
+estilos orientado a objetos
 
 116
 00:05:14,610 --> 00:05:16,880
-and functional styles.
+y funcional.
 
 117
 00:05:16,880 --> 00:05:20,320
-But it compiles down to Java
-bytecode, and it's completely
+Pero se compila a bytecode
+de Java y es completamente
 
 118
 00:05:20,320 --> 00:05:23,040
-backward compatible with
-Java libraries.
+compatible con las
+librerías de Java.
 
 119
 00:05:23,040 --> 00:05:27,370
-So the driver that we're using
-was just 10gen's own Mongo
+El driver que estamos usando es
+simplemente el driver de Java
 
 120
 00:05:27,370 --> 00:05:28,850
-Java driver.
+para Mongo de 10gen.
 
 121
 00:05:28,850 --> 00:05:29,840
@@ -566,429 +558,424 @@ OK.
 
 122
 00:05:29,840 --> 00:05:32,960
-So the students all know that
-MongoDB is schema-less, and we
+Todos los estudiantes saben que
+MongoDB es "schemaless", y hablamos
 
 123
 00:05:32,960 --> 00:05:36,990
-talk a lot about that being
-good in terms of agile
+mucho acerca de lo bueno que
+es en términos de metodologías
 
 124
 00:05:36,990 --> 00:05:40,170
-methodology and letting you
-evolve your schema over time.
+ágiles y que permite evolucionar
+tu esquema con el tiempo.
 
 125
 00:05:40,170 --> 00:05:43,570
-Can you tell us a little bit
-about how your schemas has
+¿Puedes contarnos un poco
+acerca de cómo tus esquemas han
 
 126
 00:05:43,570 --> 00:05:44,300
-evolved over time?
+evolucionado con el tiempo?
 
 127
 00:05:44,300 --> 00:05:47,580
-Whether or not it has been
-helpful, or whether the schema
+Si es que ha sido o no útil,
+o si es que el esquema ha sido
 
 128
 00:05:47,580 --> 00:05:52,160
-has been fairly static
-over time in Mongo.
+bastante estático
+en el tiempo en Mongo.
 
 129
 00:05:52,160 --> 00:05:52,470
-Sure.
+Seguro.
 
 130
 00:05:52,470 --> 00:05:55,560
-So it depends on
-the collection.
+Depende de la colección.
 
 131
 00:05:55,560 --> 00:05:58,650
-Some of our collections have
-remained stable over time, and
+Algunas de nuestras colecciones se
+han mantenido estables con el tiempo,
 
 132
 00:05:58,650 --> 00:05:59,380
-some of them haven't.
+y algunas de ellas no.
 
 133
 00:05:59,380 --> 00:06:01,830
-And I can give you an example
-of our biggest collection,
+Y puedo darte un ejemplo de
+nuestra más grande colección,
 
 134
 00:06:01,830 --> 00:06:03,980
-which the check-ins
-that we store.
+donde almacenamos 
+los "check-ins".
 
 135
 00:06:03,980 --> 00:06:06,880
-This is thing that we get 5
-million a day of, and at this
+Esta es la que llega a tener 5
+millones al día, y en este momento
 
 136
 00:06:06,880 --> 00:06:10,220
-point we have over 2 and 1/2
-billion of these things.
+tiene más de 2 billones
+y medio de esas cosas.
 
 137
 00:06:10,220 --> 00:06:13,120
-And when we first started
-putting data into the
+Y cuando comenzamos primero
+poniendo datos en la
 
 138
 00:06:13,120 --> 00:06:18,220
-collection, we didn't have a
-good sense for how much space
+colección, no teníamos
+idea de cuánto espacio
 
 139
 00:06:18,220 --> 00:06:20,980
-it would end up eventually
-using.
+terminaría usando eventualmente.
 
 140
 00:06:20,980 --> 00:06:23,200
-We could have done the math
-ahead of time, but we didn't
+Podríamos haber hecho cálculos
+antes de tiempo, pero no creo,
 
 141
 00:06:23,200 --> 00:06:25,870
-think to, because we were
-kind of new to Mongo.
+porque eramos nuevos para Mongo.
 
 142
 00:06:25,870 --> 00:06:30,760
-And at some point we realized
-that we were storing data in a
+Y en algún momento nos dimos cuenta
+que estábamos almacenando datos de
 
 143
 00:06:30,760 --> 00:06:34,330
-less than completely
-efficient way.
+manera algo menos que
+completamente eficiente.
 
 144
 00:06:34,330 --> 00:06:39,140
-So we were able to rewrite the
-records while the system was
+Fuimos capaces de reescribir los
+registros mientras el sistema se
 
 145
 00:06:39,140 --> 00:06:45,210
-still live, so that involved
-going through a batch job that
+mantenía vivo, esto involucraba
+ir por un "job" por lotes que
 
 146
 00:06:45,210 --> 00:06:48,280
-ran through and removed certain
-bits of data, added
+iba y removía ciertos bits
+de los datos, añadía
 
 147
 00:06:48,280 --> 00:06:48,970
-other data.
+otros datos.
 
 148
 00:06:48,970 --> 00:06:54,750
-We added new field names, in
-some cases, that were shorter,
+Añadimos nuevos nombres de campos,
+en algunos casos, que sean más cortos,
 
 149
 00:06:54,750 --> 00:06:57,140
-new keys on the documents that
-were shorter and were going to
+nuevas claves en los documentos que
+eran más cortos y que ibamos a
 
 150
 00:06:57,140 --> 00:06:59,080
-take up less space.
+ocupar menos espacio.
 
 151
 00:06:59,080 --> 00:07:04,410
-And the way we did this is, we
-continued to have old field,
+Y la forma en que hicimos esto
+es manteniendo el viejo campo,
 
 152
 00:07:04,410 --> 00:07:08,160
-we added a new field, and then
-in our application code, we
+añadimos un nuevo campo y luego en
+nuestro código de la aplicación,
 
 153
 00:07:08,160 --> 00:07:12,230
-were able to handle both,
-depending on what existed.
+hemos sido capaces de manejar
+ambos, dependiendo si existía.
 
 154
 00:07:12,230 --> 00:07:15,890
-So the new field name would take
-precedence over the old
+El nuevo nombre del campo tendría
+preferencia sobre el viejo nombre
 
 155
 00:07:15,890 --> 00:07:19,720
-field name, but it would still
-be able to read the old field
+de campo, pero aún así es
+capaz de leer el viejo nombre
 
 156
 00:07:19,720 --> 00:07:21,970
-name if that's all
-that existed.
+del campo si eso es
+todo lo que existía.
 
 157
 00:07:21,970 --> 00:07:26,210
-In that way, we were able to
-have this migration process
+De este modo, hemos podido
+tener este proceso de migración
 
 158
 00:07:26,210 --> 00:07:29,200
-running without taking
-any downtime on that.
+ejecutándose sin tener
+un tiempo de inactividad.
 
 159
 00:07:29,200 --> 00:07:32,830
-So it was almost like a lazy
-migration where it would--
+¿Fue como una migración
+lenta donde
 
 160
 00:07:32,830 --> 00:07:34,160
-were you actively
-migrating data?
+estabas migrando
+datos activamente?
 
 161
 00:07:34,160 --> 00:07:38,720
-Or was it just faulted in when
-you used that document you
+¿o a veces falló cuando
+usaste ese documento que
 
 162
 00:07:38,720 --> 00:07:41,020
-would update it to
-the new schema?
+actualizaría al nuevo esquema?
 
 163
 00:07:41,020 --> 00:07:43,050
-So it was both.
+Fue ambos.
 
 164
 00:07:43,050 --> 00:07:45,910
-So for new data, it could be
-written with the new schema,
+Para nuevos datos, podría ser
+inscrito con el nuevo esquema,
 
 165
 00:07:45,910 --> 00:07:49,310
-but we don't update old
-data very often.
+pero a menudo no actualiza
+los antiguos datos.
 
 166
 00:07:49,310 --> 00:07:52,700
-So we had to run a
-batch process.
+Tengo ejecutándose un
+proceso por lotes.
 
 167
 00:07:52,700 --> 00:07:56,440
-And over a few days-- it maybe
-even taken a few weeks to
+Y en pocos días-- incluso tal
+vez tomó un par de semanas para
 
 168
 00:07:56,440 --> 00:07:57,765
-rewrite all the data--
+reescribir todos los datos--
 
 169
 00:07:57,765 --> 00:08:00,390
-we slowly rewrote these keys.
+poco a poco reescribió
+esas claves.
 
 170
 00:08:00,390 --> 00:08:01,985
-So let's talk a little bit
-about performance.
+Hablemos un poco
+acerca de rendimiento.
 
 171
 00:08:01,985 --> 00:08:05,490
 
 172
 00:08:05,490 --> 00:08:08,690
-On your most active collection,
-do you know how
+En tu colección más
+activa, ¿sabes cuántos
 
 173
 00:08:08,690 --> 00:08:11,600
-many indexes you have, just
-in order of magnitude?
+índices tienes, sólo
+en el orden de magnitud?
 
 174
 00:08:11,600 --> 00:08:13,350
-Do you have 1, 5, 10, 100?
+¿Tienes 1, 5, 10, 100?
 
 175
 00:08:13,350 --> 00:08:16,350
-Well you can't have 100, but how
-many indexes do you have
+Bueno no podemos tener 100,
+pero ¿cuántos índices tienes
 
 176
 00:08:16,350 --> 00:08:19,690
-on the most active
-collections?
+en la colección más activa?
 
 177
 00:08:19,690 --> 00:08:21,440
-I think the most active
-collections have
+Creo que las colecciones
+más activas en realidad
 
 178
 00:08:21,440 --> 00:08:22,890
-fewer indexes actually.
+tienen menos índices.
 
 179
 00:08:22,890 --> 00:08:24,090
-Makes sense.
+Tiene sentido.
 
 180
 00:08:24,090 --> 00:08:25,700
-Yeah because those are the
-ones that are most
+Sí porque esas son las más
 
 181
 00:08:25,700 --> 00:08:27,250
-sensitive to rights.
+sensibles a escrituras.
 
 182
 00:08:27,250 --> 00:08:31,110
-They have very well defined
-access patterns.
+Ellos tienen muy bien definidos
+los patrones de acceso.
 
 183
 00:08:31,110 --> 00:08:35,510
-So for our check-ins collection,
-I think we have
+Para nuestra colección de
+"check-ins", creo que tenemos
 
 184
 00:08:35,510 --> 00:08:41,059
-three or four indexes, and
-that's the biggest one.
+tres o cuatro índices y
+eso que es la más grande.
 
 185
 00:08:41,059 --> 00:08:43,690
-And then for some smaller
-collections where we be a
+Y luego para algunas colecciones
+más pequeñas donde estamos
 
 186
 00:08:43,690 --> 00:08:46,380
-little bit more loose in our
-access patterns, where we're
+poco más holgados en nuestros
+patrones de acceso, donde no
 
 187
 00:08:46,380 --> 00:08:49,460
-not as sensitive to rights,
-I think the most number of
+somos tan sensibles a las escrituras,
+creo que el mayor número de
 
 188
 00:08:49,460 --> 00:08:53,550
-indexes we have still
-would be under 10.
+índices que tenemos aún
+estaría por debajo de 10.
 
 189
 00:08:53,550 --> 00:08:56,650
-Do you use our geospatial
-indexes?
+¿Utilizan nuestros
+índices geoespaciales?
 
 190
 00:08:56,650 --> 00:08:57,680
-We do.
+Lo hacemos.
 
 191
 00:08:57,680 --> 00:09:02,190
-So when we migrated our venues
-collection, which is one of
+Cuando migramos nuestra colección
+de lugares, que es una de las
 
 192
 00:09:02,190 --> 00:09:06,860
-the first things we migrated
-from Postgres to Mongo, one of
+primeras cosas que migramos
+de Postgres to Mongo, uno de
 
 193
 00:09:06,860 --> 00:09:11,330
-the big benefits of Mongo
-is that it had built in
+los grandes beneficios de Mongo
+es que tiene ya por defecto
 
 194
 00:09:11,330 --> 00:09:12,390
-geospatial indexing.
+indexación geospacial.
 
 195
 00:09:12,390 --> 00:09:16,830
-So Postgres has that as well,
-but it wasn't as easy to use,
+Postgres también lo tiene, pero
+no fue tan fácil de utilizar,
 
 196
 00:09:16,830 --> 00:09:20,520
-and we weren't as familiar
-with it.
+y no estábamos
+familiarizados con él.
 
 197
 00:09:20,520 --> 00:09:25,450
-So when we were on Postgres,
-we were just doing own very
+Por ello cuando estábamos en
+Postgres, estábamos haciendo nuestras
 
 198
 00:09:25,450 --> 00:09:29,660
-crude bounding box queries, like
-get me the venues where
+consultas limitando cuadrados en
+crudo, como obtener el lugar donde
 
 199
 00:09:29,660 --> 00:09:32,770
-the latitude is between this
-value and that value, and the
+la latitud está entre
+este y otro valor, y la
 
 200
 00:09:32,770 --> 00:09:37,360
-longitude is between this value
-that value, which works
+longitud está entre este y
+otro valor, que funciona
 
 201
 00:09:37,360 --> 00:09:39,540
-up to a certain point.
+hasta cierto punto.
 
 202
 00:09:39,540 --> 00:09:43,840
-And when we moved to Mongo, we
-switched to using the built in
+Y cuando nos mudamos a Mongo, nos
+cambiamos al uso de geoindexación
 
 203
 00:09:43,840 --> 00:09:47,826
-geoindexing, and we were able to
-handle a lot more load on a
+por defecto, y fuimos capaces
+de manejar una mayor carga en un
 
 204
 00:09:47,826 --> 00:09:49,400
-single machine.
+solo equipo.
 
 205
 00:09:49,400 --> 00:09:51,690
-Do you use the 2D model?
+¿Utilizan el modelo 2D?
 
 206
 00:09:51,690 --> 00:09:55,962
-Or do you use the new
-spherical model?
+¿O utilizan el nuevo
+modelo esférico?
 
 207
 00:09:55,962 --> 00:09:58,710
-At the time-- this was a
-couple of years ago--
+En ese momento-- esto fue
+hace un par de años--
 
 208
 00:09:58,710 --> 00:10:02,950
-so at that time, we were
-using the 2D model.
+en ese momento, estábamos
+usando el modelo 2D.
 
 209
 00:10:02,950 --> 00:10:08,000
-And currently, I think we're
-still using the 2D model on
+Y actualmente, creo que aún
+estámos usando el modelo 2D en
 
 210
 00:10:08,000 --> 00:10:10,710
-collections that have
-geoindexing.
+colecciones que
+tengan geoindexación.
 
 211
 00:10:10,710 --> 00:10:11,710
@@ -996,416 +983,413 @@ OK.
 
 212
 00:10:11,710 --> 00:10:12,250
-Right.
+Bien.
 
 213
 00:10:12,250 --> 00:10:15,000
-Which still means that with the
-way you used to be doing
+Que significa que aún con la
+forma en que solían estar haciendo
 
 214
 00:10:15,000 --> 00:10:16,540
-it with latitude and longitude
-bounds, you
+con los límites de
+latitud y longitud,
 
 215
 00:10:16,540 --> 00:10:18,370
-were getting boxes.
+obtienen cuadrados.
 
 216
 00:10:18,370 --> 00:10:21,430
-And so now you're getting
-circles, but they might be
+Y ahora está obteniendo
+círculos, pero podrían ser
 
 217
 00:10:21,430 --> 00:10:24,700
-ellipsis, because the lines of
-latitude and longitude might
+elipsis, porque las líneas de
+latitud y longitud podrían
 
 218
 00:10:24,700 --> 00:10:29,280
-not be equally spaced,
-I guess.
+no estar igualmente
+equidistantes, supongo.
 
 219
 00:10:29,280 --> 00:10:33,670
-And we sometimes have
-problems with that.
+A veces hemos tenido
+problemas con eso.
 
 220
 00:10:33,670 --> 00:10:35,150
-Further from the equator,
-I guess.
+Más lejos del ecuador, supongo.
 
 221
 00:10:35,150 --> 00:10:36,100
-Right, exactly.
+Correcto, eso es.
 
 222
 00:10:36,100 --> 00:10:41,280
-So in very northern cities, like
-Reykjavik, Iceland, we
+En muchas ciudades del norte,
+como Reykjavik, Iceland,
 
 223
 00:10:41,280 --> 00:10:46,560
-have problems where the amount
-to work the database has to do
+tenemos problemas donde el valor a
+trabajar en la base de datos tiene
 
 224
 00:10:46,560 --> 00:10:52,540
-to find a certain bounded area
-is just a lot higher than in
+que encontrar cierta área limitada
+que es mucho más alta que en
 
 225
 00:10:52,540 --> 00:10:53,850
-other places in the world.
+otros lugares del mundo.
 
 226
 00:10:53,850 --> 00:10:55,100
-Interesting.
+Interesante.
 
 227
 00:10:55,100 --> 00:10:57,150
 
 228
 00:10:57,150 --> 00:11:01,790
-So while we're on the topic
-of performance, how do you
+Ya que estamos hablando
+de rendimiento, ¿cómo
 
 229
 00:11:01,790 --> 00:11:04,400
-monitor the system to make
-sure you're getting good
+monitorean el sistema para
+asegurarse que tienen un buen
 
 230
 00:11:04,400 --> 00:11:05,970
-performance--
+rendimiento--
 
 231
 00:11:05,970 --> 00:11:07,480
-find your slow queries?
+buscan sus consultas lentas?
 
 232
 00:11:07,480 --> 00:11:13,050
-What is your standard way of
-making sure that a developer
+¿Cuál es la forma habitual de
+asegurarse que un desarrollador
 
 233
 00:11:13,050 --> 00:11:17,390
-is writing queries that hit the
-indexes and that no one's
+está escribiendo consultas que van
+hacia los índices y que nadie va a
 
 234
 00:11:17,390 --> 00:11:21,100
-going to mess up the performance
-by putting in a
+estropear el rendimiento
+poniendo una consulta
 
 235
 00:11:21,100 --> 00:11:24,210
-slow query that's frequent?
+lenta?, que es frecuente.
 
 236
 00:11:24,210 --> 00:11:29,480
-So in our application layer,
-we're using a library that we
+En nuestra capa de aplicación,
+estamos usando una librería que
 
 237
 00:11:29,480 --> 00:11:31,310
-wrote in-house called Rogue.
+escribimos llamada Rogue.
 
 238
 00:11:31,310 --> 00:11:34,180
-And this is a Scala library.
+Esta es una librería en Scala.
 
 239
 00:11:34,180 --> 00:11:36,570
-And it allows you to define a
-schema for each document.
+Y esto nos permite definir un
+esquema para cada documento.
 
 240
 00:11:36,570 --> 00:11:39,620
-It also allows you to statically
-define what the
+Esto también permite definir
+estáticamente qué indices
 
 241
 00:11:39,620 --> 00:11:43,410
-indexes you're using
-on the database.
+estás usando en
+la base de datos.
 
 242
 00:11:43,410 --> 00:11:47,450
-And in the code itself, when you
-write a query that doesn't
+En el mismo código, cuando
+escribes una consulta que no
 
 243
 00:11:47,450 --> 00:11:51,630
-use an index, you'll actually
-get a compile error--
+utiliza un índice, en realidad vas
+a obtener un error de compilación--
 
 244
 00:11:51,630 --> 00:11:52,100
-That's pretty cool.
+Eso está genial.
 
 245
 00:11:52,100 --> 00:11:53,910
---in your application code.
+--en el código de tu aplicación.
 
 246
 00:11:53,910 --> 00:11:56,780
-And there's a way to override
-that, of course, because
+Y hay una manera de sobreescribir
+esto, por supuesto, porque
 
 247
 00:11:56,780 --> 00:12:01,680
-sometimes you do want to do a
-full scan query, but if you
+a veces deseas hacer un escaneo
+completo de consulta, pero si no
 
 248
 00:12:01,680 --> 00:12:04,460
-don't specify that, you'll
-get a compile error.
+lo especificas, obtendrás
+un error de compilación.
 
 249
 00:12:04,460 --> 00:12:08,970
-And you won't even be able
-to run your code.
+Y no podrás ejecutar tu código.
 
 250
 00:12:08,970 --> 00:12:14,520
-Index selection is not
-completely obvious.
+La selección de índices
+no es completamente obvia.
 
 251
 00:12:14,520 --> 00:12:16,840
-We have a Query Optimizer, and
-sometimes there are several
+Tenemos un optimizador de
+consultas y a veces hay
 
 252
 00:12:16,840 --> 00:12:18,030
-different plans.
+distintos planes.
 
 253
 00:12:18,030 --> 00:12:22,920
-How do you know, for any given
-query, what index MongoDB
+¿Cómo sabes, para alguna consulta
+dada, qué índice de MongoDB
 
 254
 00:12:22,920 --> 00:12:27,840
-would use without running it?
+usaría sin ejecutarla?
 
 255
 00:12:27,840 --> 00:12:31,260
-So first of all, when we're
-designing a collection, we go
+En primer lugar, cuando estamos
+diseñamos una colección, pasamos
 
 256
 00:12:31,260 --> 00:12:35,430
-through an internal review
-process where people describe
+por un proceso de revisión
+interna donde la gente describe
 
 257
 00:12:35,430 --> 00:12:38,840
-the data they want to store,
-what the query patterns are
+los datos que desean almacenar,
+qué patrones de consulta van a
 
 258
 00:12:38,840 --> 00:12:42,710
-going to be, what the update
-patterns are going to be, how
+ser, qué patrones de
+actualización van a ser, 
 
 259
 00:12:42,710 --> 00:12:45,400
-they correlate to other things
-that we already know something
+cómo ellos se relacionan a las
+otras cosas que ya sabemos algo
 
 260
 00:12:45,400 --> 00:12:46,050
-think about.
+que pensamos.
 
 261
 00:12:46,050 --> 00:12:49,640
-Like, are they adding something
-that will correlate
+Como, están añadiendo
+algo que se relacionará
 
 262
 00:12:49,640 --> 00:12:51,840
-to some action, like something
-that will be
+a alguna acción,
+como algo que se puede
 
 263
 00:12:51,840 --> 00:12:53,080
-accessed on every check-in?
+acceder en cada "check-in".
 
 264
 00:12:53,080 --> 00:12:55,190
-Or something that will
-be accessed on every
+O algo que se tendrá
+acceso en todas las
 
 265
 00:12:55,190 --> 00:12:57,210
-recommendation query.
+consultas de recomendaciones.
 
 266
 00:12:57,210 --> 00:13:01,330
-So that way we understand the
-usage, and then we can decide
+Esa es la manera de entender
+el uso, y luego podemos decidir
 
 267
 00:13:01,330 --> 00:13:04,580
-what indexes we want to build.
+qué índices deseamos construir.
 
 268
 00:13:04,580 --> 00:13:10,780
-And once we have that, we also
-know what queries we're going
+Y una vez que lo tenemos, también
+sabemos qué consultas vamos a
 
 269
 00:13:10,780 --> 00:13:12,030
-to be executing.
+estar ejecutando.
 
 270
 00:13:12,030 --> 00:13:14,150
 
 271
 00:13:14,150 --> 00:13:16,800
-So one of the problems that you
-could have in Mongo, is
+Uno de los problemas que
+podrías tener en Mongo, es
 
 272
 00:13:16,800 --> 00:13:19,635
-that you could execute a
-query and it could use
+que podrías ejecutar una
+oonsulta y podría usar
 
 273
 00:13:19,635 --> 00:13:22,570
-an unintended index.
+un índice no deseado.
 
 274
 00:13:22,570 --> 00:13:24,430
-And we've seen that
-happen before, but
+Y hemos visto que
+sucedió antes, pero
 
 275
 00:13:24,430 --> 00:13:26,420
-it's a very rare case.
+es un caso muy extraño.
 
 276
 00:13:26,420 --> 00:13:31,850
-Like, very often the index
-that's used is the one that we
+Como, muy a menudo el índice
+que es usado es el único que
 
 277
 00:13:31,850 --> 00:13:34,940
-expect to be used.
+esperamos sea usado.
 
 278
 00:13:34,940 --> 00:13:38,370
-So you have it statically
-mapped, basically?
+¿En realidad lo tienen
+mapeado estáticamente?
 
 279
 00:13:38,370 --> 00:13:39,650
-We have it statically mapped,
-but Mongo has some
+Lo tenemos mapeado estáticamente,
+pero Mongo tiene algo de
 
 280
 00:13:39,650 --> 00:13:42,900
-intelligence built in where the
-decision of what index to
+inteligencia por defecto donde
+la decisión de qué índice
 
 281
 00:13:42,900 --> 00:13:45,100
-use you can sometimes
-be ambiguous.
+usar puede a veces
+ser ambigua.
 
 282
 00:13:45,100 --> 00:13:48,970
-And I believe there are
-heuristics within Mongo based
+Y creo que hay heurística
+en Mongo basada en la
 
 283
 00:13:48,970 --> 00:13:53,660
-on the amount of time that a
-query takes using an index
+cantidad de tiempo que una
+consulta toma usando un índice
 
 284
 00:13:53,660 --> 00:13:56,190
-which is another, it'll decide
-to go with one or the other.
+y otro, decidirá ir con uno u otro.
 
 285
 00:13:56,190 --> 00:13:56,540
-That's right.
+Eso es correcto.
 
 286
 00:13:56,540 --> 00:13:59,330
-That's what it does.
+Eso es lo que hace.
 
 287
 00:13:59,330 --> 00:14:03,330
-And sometimes we've seen that
-make the wrong decision.
+Y a veces he visto que tomó
+la decisión equivocada.
 
 288
 00:14:03,330 --> 00:14:04,530
-Do you hint in that case?
+¿Usaste "hint" en aquel caso?
 
 289
 00:14:04,530 --> 00:14:07,660
-Yeah in that case, we'll add a
-hint onto the query so that we
+Sí en aquel caso, añadimos
+un "hint" a la consulta que
 
 290
 00:14:07,660 --> 00:14:12,270
-knew that we are always going
-to use the right index.
+supimos que siempre va
+a usar el índice correcto.
 
 291
 00:14:12,270 --> 00:14:14,860
-And does the developer need
-to write the hint?
+¿Los desarrolladores
+necesitan escribir el "hint"?
 
 292
 00:14:14,860 --> 00:14:17,450
-Or is it automatically built
-into this interface layer so
+¿O es automáticamente construido
+en esta capa de interfaz para eso,
 
 293
 00:14:17,450 --> 00:14:20,058
-that, as long as--
+siempre y cuando--
 
 294
 00:14:20,058 --> 00:14:21,940
-do they have to write the hint,
-or is it written for
+¿ellos tienen que escribir
+el "hint" o está escrito
 
 295
 00:14:21,940 --> 00:14:22,450
-[INAUDIBLE]?
+defecto?
 
 296
 00:14:22,450 --> 00:14:24,860
-Yeah, so the developer
-will right the hint.
+Sí, el desarrollador
+escribirá el "hint".
 
 297
 00:14:24,860 --> 00:14:27,730
-And because we have the indexes
-statically defined as
+Y porque tenemos los índices
+estáticamente definidos como
 
 298
 00:14:27,730 --> 00:14:30,685
-this part of our schema
-definition, all they have to
+parte de nuestra definición
+de esquema, todos ellos tienen
 
 299
 00:14:30,685 --> 00:14:34,330
-do is say like, dot hint, and
-then have reference this
+que hacer como un ".hint()" y
+luego hacer referencia a este
 
 300
 00:14:34,330 --> 00:14:36,370
-static defined index.
+indice definido estáticamente.
 
 301
 00:14:36,370 --> 00:14:37,810
@@ -1413,726 +1397,720 @@ OK.
 
 302
 00:14:37,810 --> 00:14:39,700
-All right.
+Muy bien.
 
 303
 00:14:39,700 --> 00:14:47,840
-And then when you want to roll
-out new code, do you keep a
+Y luego cuando despliegas el
+nuevo código, ¿mantienes el
 
 304
 00:14:47,840 --> 00:14:48,570
-system running?
+sistema en ejecución?
 
 305
 00:14:48,570 --> 00:14:52,600
-Do you quiesce parts of
-the system to do that?
+¿Desactivas partes del
+sistema para hacerlo?
 
 306
 00:14:52,600 --> 00:14:55,160
-If you have to migrate the
-schema our change the schema
+Si tienes que migrar el
+esquema, o si cambias el esquema
 
 307
 00:14:55,160 --> 00:14:59,820
-slightly, how do you deal with
-that in the running system?
+un poco, ¿cómo lidias con eso
+en el sistema en producción?
 
 308
 00:14:59,820 --> 00:15:04,020
-So we've had a few cases where
-we've done more complicated
+Hemos tenido algunos casos en los
+que hemos hecho las migraciones más
 
 309
 00:15:04,020 --> 00:15:06,435
-migrations than the check-ins
-migration
+complicadas que la
+migración de "check-ins"
 
 310
 00:15:06,435 --> 00:15:07,975
-that I described earlier.
+que describí antes.
 
 311
 00:15:07,975 --> 00:15:10,580
 
 312
 00:15:10,580 --> 00:15:16,270
-So in the check-in schema
-rewrite, we were able to use
+En la reescritura del esquema
+de "check-in", pudimos usar la
 
 313
 00:15:16,270 --> 00:15:20,360
-the same schema definition
-within our application on top
+misma definición de esquema
+en nuestra aplicación basándonos
 
 314
 00:15:20,360 --> 00:15:24,080
-of the changing document,
-because it didn't change in a
+en el cambio de documento,
+porque no cambiamos de
 
 315
 00:15:24,080 --> 00:15:25,640
-drastic way.
+manera drástica.
 
 316
 00:15:25,640 --> 00:15:28,810
-But in some other cases, we've
-done very, very drastic
+Pero en otros casos,
+hemos hecho cambios bastante
 
 317
 00:15:28,810 --> 00:15:31,950
-changes, and it would
-be too risky to kind
+drásticos y sería demasiado
+arriesgado para hacer algo
 
 318
 00:15:31,950 --> 00:15:33,950
-of do that in place.
+de ese tipo.
 
 319
 00:15:33,950 --> 00:15:37,380
-So what we've done in those
-cases, is created an entirely
+Lo que hemos hecho en estos
+caso es crear una colección
 
 320
 00:15:37,380 --> 00:15:39,720
-parallel collection of data.
+completa de datos en paralelo.
 
 321
 00:15:39,720 --> 00:15:44,970
-So an example of this is
-our friends graph data.
+Un ejemplo de esto es nuestros
+datos de gráficos de amigos.
 
 322
 00:15:44,970 --> 00:15:51,170
-We started off with a friend
-graph that basically just had
+Iniciamos con un gráfico de
+amigos que en realidad sólo tenía
 
 323
 00:15:51,170 --> 00:15:53,260
-one record for each
-relationship.
+un registro
+por cada relación.
 
 324
 00:15:53,260 --> 00:15:56,480
-So if I'm friends with you,
-there'd be a relationship that
+Si yo soy tu amigo,
+habría una relación que
 
 325
 00:15:56,480 --> 00:15:58,830
-points to that--
+señale esto--
 
 326
 00:15:58,830 --> 00:15:59,710
-in that direction.
+en esa dirección.
 
 327
 00:15:59,710 --> 00:16:02,530
-Like, me to you-- my user
-ID to your user ID.
+Como, yo a tú-- mi identificador
+de usuario hacia el tuyo.
 
 328
 00:16:02,530 --> 00:16:06,700
-And there'd be another record
-that points from you to me.
+Y habría otro que
+señala de ti hacia mi.
 
 329
 00:16:06,700 --> 00:16:10,150
-And that way, when we did a
-query on who are my friends,
+Y de esa manera, cuando hicimos una
+consulta en quienes son mis amigos,
 
 330
 00:16:10,150 --> 00:16:14,000
-we'd just be searching
-on let's say the
+que acaba de ser la
+búsqueda que digamos
 
 331
 00:16:14,000 --> 00:16:17,060
-from key in this record.
+desde la clave en este registro.
 
 332
 00:16:17,060 --> 00:16:20,130
-And when we're doing a query on
-who are your friends, we're
+Y cuando estamos haciendo una
+consulta de quienes son tus amigos,
 
 333
 00:16:20,130 --> 00:16:23,300
-also searching on the from key,
-and there'd be just be
+también estamos buscando desde la
+clave, y tendría que haber sólo
 
 334
 00:16:23,300 --> 00:16:26,350
-two separate records for each
-side of the relationship to
+dos registros separados por cada
+lado de la relación para hacer
 
 335
 00:16:26,350 --> 00:16:29,420
-make the querying easier.
+más fácil la consulta.
 
 336
 00:16:29,420 --> 00:16:32,240
-We realized that that
-was using--
+Nos dimos cuenta que
+eso se estaba usando--
 
 337
 00:16:32,240 --> 00:16:35,090
-that kind of representation of
-the friend graph was using a
+ese tipo de representación de
+gráficos de amigos estaba usando
 
 338
 00:16:35,090 --> 00:16:37,895
-lot more space than it
-needed to in Mongo.
+mucho espacio de lo
+necesario en Mongo.
 
 339
 00:16:37,895 --> 00:16:41,470
-So we basically de-normalized
-that friend graph.
+Básicamente denormalizamos
+esos gráficos de amigos.
 
 340
 00:16:41,470 --> 00:16:44,810
-So instead of storing one record
-per relationship, we
+En lugar de almacenar un registro
+por relación, almacenamos
 
 341
 00:16:44,810 --> 00:16:49,530
-stored one record per user, and
-inside of that record we
+un registro por usuario y
+en ese registro tuvimos
 
 342
 00:16:49,530 --> 00:16:55,330
-had a list of all of the
-friends that they had.
+una lista de todos los
+amigos que ellos tenían.
 
 343
 00:16:55,330 --> 00:17:01,640
-So for your friend record,
-there'd be a list of each user
+Así para tu registro de amigos
+habría una lista de cada identificador
 
 344
 00:17:01,640 --> 00:17:03,350
-ID that your friends with.
+de usuario que tus amigos tenían.
 
 345
 00:17:03,350 --> 00:17:05,290
-And the same for my
-friend record.
+Y lo mismo para mi
+registro de amigos.
 
 346
 00:17:05,290 --> 00:17:09,014
-Now, the friend relationship
-in Foursquare is
+Ahora, ¿la relación de
+amistad en Foursquare es
 
 347
 00:17:09,014 --> 00:17:10,470
-an asymmetric one?
+asimétrico?
 
 348
 00:17:10,470 --> 00:17:12,069
-Or is it a symmetric one?
+¿o es simétrico?
 
 349
 00:17:12,069 --> 00:17:14,690
-I can follow you without
-you following me back.
+¿Yo puedo seguirte
+sin que tu me sigas?
 
 350
 00:17:14,690 --> 00:17:16,420
-For the most part,
-it's symmetric.
+Mayormente, es simétrico.
 
 351
 00:17:16,420 --> 00:17:20,490
-We do have some rare cases
-where it's not.
+Tenemos algunos casos
+raros donde no lo es.
 
 352
 00:17:20,490 --> 00:17:24,770
-But the process of rewriting
-that schema was fairly
+Pero el proceso de reescritura
+de ese esquema fue bastante
 
 353
 00:17:24,770 --> 00:17:25,550
-complicated.
+complicado.
 
 354
 00:17:25,550 --> 00:17:31,810
-So what we did was we basically
-had both schemas
+Así que lo que hicimos fue en
+realidad tener ambos esquemas
 
 355
 00:17:31,810 --> 00:17:37,480
-running in parallel, and in
-order to keep them in sync, we
+ejecutándose en paralelo, y
+mantenerlos sincronizados,
 
 356
 00:17:37,480 --> 00:17:41,050
-utilized the Mongo
-oplog itself.
+utilizamos el "oplog" de Mongo.
 
 357
 00:17:41,050 --> 00:17:44,910
-We wrote an application that
-tailed the oplog for all
+Escribimos una aplicación que
+siga al "oplog" para todas
 
 358
 00:17:44,910 --> 00:17:49,170
-modifications to the original
-collection and then
+las modificaciones de la
+colección original y luego
 
 359
 00:17:49,170 --> 00:17:52,660
-transformed those into the way
-that they should look in the
+transforme eso de manera
+que debería verse en el
 
 360
 00:17:52,660 --> 00:17:54,230
-new schema.
+nuevo esquema.
 
 361
 00:17:54,230 --> 00:17:58,220
-That was a pretty involved
-migration.
+Fue una migración muy complicada.
 
 362
 00:17:58,220 --> 00:18:03,300
-So that's a good segue, so we
-haven't gone over too many
+Eso fue una buena transición,
+no hemos repasado mucho acerca de
 
 363
 00:18:03,300 --> 00:18:06,330
-operational issues in this
-course because it's not the
+asuntos operacionales en este
+curso porque no es el curso de
 
 364
 00:18:06,330 --> 00:18:11,400
-DBA course, but I want to give
-the students some idea of
+DBA, pero quiero darle a los
+estudiantes alguna idea de
 
 365
 00:18:11,400 --> 00:18:13,850
-operationally what
-you look like.
+cómo es operacionalmente.
 
 366
 00:18:13,850 --> 00:18:17,380
-So first of all, you
-run sharded, right?
+En primer lugar, ¿ejecutan
+con Sharding, correcto?
 
 367
 00:18:17,380 --> 00:18:18,310
-Yeah.
+Sí.
 
 368
 00:18:18,310 --> 00:18:24,110
-And you run on AWS?
+¿Y utilizan AWS?
 
 369
 00:18:24,110 --> 00:18:26,930
-So we have a split environment,
-actually.
+Tenemos en realidad un
+entorno distribuido.
 
 370
 00:18:26,930 --> 00:18:30,920
-Our application servers run on
-AWS and some other internal
+Nuestros servidores de aplicación
+se ejecutan en AWS y algunas otras
 
 371
 00:18:30,920 --> 00:18:34,640
-sources, but our Mongo database
-servers are actually
+fuentes, pero nuestros servidores
+de base de datos Mongo, en realidad
 
 372
 00:18:34,640 --> 00:18:38,390
-in our own colocated servers.
+en nuestros propios servidores.
 
 373
 00:18:38,390 --> 00:18:41,900
-And that's been an evolution for
-you, because you did run
+Y eso ha sido una evolución
+para ti, porque lo ejecutaste
 
 374
 00:18:41,900 --> 00:18:42,860
-them on AWS.
+en AWS.
 
 375
 00:18:42,860 --> 00:18:46,840
-So we started off on AWS, and
-then we've recently migrated
+Empezamos en AWS y luego
+recientemente migramos a
 
 376
 00:18:46,840 --> 00:18:49,380
-over to our own racks.
+nuestra propia infraestructura.
 
 377
 00:18:49,380 --> 00:18:51,700
-Right, and I've seen some talks
-from Foursquare talking
+Bien, he visto algunas presentaciones
+de Foursquare hablando
 
 378
 00:18:51,700 --> 00:18:52,920
-about that.
+acerca de eso.
 
 379
 00:18:52,920 --> 00:18:57,110
-Some of the early problems were
-with EBS performance.
+Algunos de los primeros problemas
+que tuvieronfue con el rendimiento de EBS.
 
 380
 00:18:57,110 --> 00:19:01,120
-So EBS is the elastic block
-store at Amazon.
+EBS es el Elastic block
+store en Amazon.
 
 381
 00:19:01,120 --> 00:19:07,240
-It's essentially a network
-based file system.
+Es esencialmente un sistema
+de archivos basado en la red.
 
 382
 00:19:07,240 --> 00:19:10,040
-And you weren't getting the
-performance you needed, and
+Y no estaban obteniendo el
+rendimiento que necesitaban y
 
 383
 00:19:10,040 --> 00:19:12,596
-there were other problems.
+habían otros problemas.
 
 384
 00:19:12,596 --> 00:19:15,430
-And so you talked about
-migrating away from--
+Y hablaban de la
+migración fuera de--
 
 385
 00:19:15,430 --> 00:19:18,720
-I saw this maybe six months
-ago-- away from Amazon just
+vi esto quizá hace seis
+meses-- fuera de Amazon sólo
 
 386
 00:19:18,720 --> 00:19:21,660
-for that part of it.
+para esa parte.
 
 387
 00:19:21,660 --> 00:19:23,310
-Has that been a good
-migration?
+¿Ha sido una buena migración?
 
 388
 00:19:23,310 --> 00:19:26,440
-Did it help you solve the
-problems you were having when
+¿Ayudaste a resolver los
+problemas que tuvieron cuando
 
 389
 00:19:26,440 --> 00:19:29,120
-you went to dedicated
-hardware?
+migraron a hardware dedicado?
 
 390
 00:19:29,120 --> 00:19:30,020
-Yeah it did.
+Sí, lo hice.
 
 391
 00:19:30,020 --> 00:19:36,080
-So the problem that we are
-having with EBS was that
+El problema que tuvimos
+teniendo EBS fue
 
 392
 00:19:36,080 --> 00:19:39,570
-because it's a network service,
-every once in awhile
+porque es un servicio en
+la red, de vez en cuando
 
 393
 00:19:39,570 --> 00:19:44,610
-you'd see very great variations
-in the latency for
+podías ver muchas grandes
+variaciones en la latencia
 
 394
 00:19:44,610 --> 00:19:47,470
-doing disc operations.
+para operaciones en disco.
 
 395
 00:19:47,470 --> 00:19:50,560
-And in addition to that, you'd
-see just extreme variations
+Y además de eso, podías
+ver extremas variaciones
 
 396
 00:19:50,560 --> 00:19:54,990
-where the I/O would completely
-lock up on the machine, and
+donde el I/O se bloqueaba por
+completo en el equipo, y
 
 397
 00:19:54,990 --> 00:19:57,440
-that's because there's some
-sort of background process
+eso es porque hay algún
+tiempo de proceso por detrás
 
 398
 00:19:57,440 --> 00:20:00,950
-running on the data
-to re-mirror it on
+ejecutándose en los datos
+para hacer un espejo en
 
 399
 00:20:00,950 --> 00:20:04,060
-Amazon's side of things.
+las cosas de Amazon.
 
 400
 00:20:04,060 --> 00:20:06,830
-And no application deals
-with the disc
+Y sin aplicación
+lidia con el disco
 
 401
 00:20:06,830 --> 00:20:08,020
-completing locking up.
+completando el bloqueo.
 
 402
 00:20:08,020 --> 00:20:09,040
-No, not easily.
+No, no es fácil.
 
 403
 00:20:09,040 --> 00:20:11,060
-Applications just do not
-expect that happen.
+Las aplicaciones no
+esperan que eso suceda.
 
 404
 00:20:11,060 --> 00:20:14,300
-So there could be an I/O error
-maybe that an application
+Podría haber un error de I/O
+que quizá en la aplicación
 
 405
 00:20:14,300 --> 00:20:17,450
-knows how to deal with, but an
-application does not deal well
+sepa lidiar con esto, pero
+una aplicación no trata bien
 
 406
 00:20:17,450 --> 00:20:22,510
-with indefinite lockups of I/O.
-And Mongo doesn't deal
+con bloqueos indefinidos de I/O.
+Y Mongo no trata muy
 
 407
 00:20:22,510 --> 00:20:25,170
-with that well.
+bien con esto.
 
 408
 00:20:25,170 --> 00:20:31,860
-And the problem we had was that
-Mongo has this wonderful
+El problema que tuvimos fue
+que Mongo tiene esta funcionalidad
 
 409
 00:20:31,860 --> 00:20:36,180
-replication feature of replica
-sets where you can have a
+maravillosa de replicación, de conjuntos
+de réplicas, donde puedes tener un
 
 410
 00:20:36,180 --> 00:20:40,200
-primary, and multiple
-secondaries, and ideas that
+primario y múltiples
+secundarios, y la idea que
 
 411
 00:20:40,200 --> 00:20:41,820
-your rights go to the primary.
+tus escrituras van al primario.
 
 412
 00:20:41,820 --> 00:20:42,910
-You have multiple secondaries.
+Tienes múltiples secundarios.
 
 413
 00:20:42,910 --> 00:20:46,300
-If one of these servers goes
-down, you have redundancy.
+Si uno de los servidores
+cae, tienes redundancia.
 
 414
 00:20:46,300 --> 00:20:49,505
-So if the primary goes down,
-there will be an election and
+Si el primario cae, se
+ejecutará una elección y
 
 415
 00:20:49,505 --> 00:20:52,060
-a secondary will take over
-and become a primary.
+un secundario tomará el lugar
+y se convertirá en primario.
 
 416
 00:20:52,060 --> 00:20:53,840
-Within a few seconds, you'll
-have a new place
+En pocos segundos,
+tus escrituras tendrán
 
 417
 00:20:53,840 --> 00:20:54,650
-to take your rights.
+un nuevo lugar a tomar.
 
 418
 00:20:54,650 --> 00:20:58,190
-If one of the secondaries
-goes down, that's fine.
+Si uno de los secundarios
+cae, está bien.
 
 419
 00:20:58,190 --> 00:21:02,020
-Queries will be routed to
-the other secondaries.
+Las consultas serán enviadas
+a los otros secundarios.
 
 420
 00:21:02,020 --> 00:21:08,130
-But that failover mechanism
-relies on some sort of hard
+Pero ese mecanismo de conmutación
+por error se basa en un tipo de
 
 421
 00:21:08,130 --> 00:21:11,960
-failure, like the process died,
-or the machine died, or
+interrupción, como un proceso
+muerto o equipo muerto, o
 
 422
 00:21:11,960 --> 00:21:14,440
-it's inaccessible
-on the network.
+es inaccesible en la red.
 
 423
 00:21:14,440 --> 00:21:19,040
-When the process is simply just
-extremely slow because
+Cuando el proceso es
+simplemente muy lento porque
 
 424
 00:21:19,040 --> 00:21:23,520
-the disk is no longer
-returning I/O calls.
+el disco no retorna más
+las llamadas de I/O.
 
 425
 00:21:23,520 --> 00:21:27,260
-Mongo doesn't know how to
-deal with that well.
+Mongo no sabe cómo
+lidiar con eso también.
 
 426
 00:21:27,260 --> 00:21:31,410
-So what we would see is that
-this wonderful failover just
+Lo que veríamos es que esta
+maravillosa conmutación por error
 
 427
 00:21:31,410 --> 00:21:36,430
-didn't function because of these
-problems of running on
+no funcionaba por estos
+problemas de ejecutar en
 
 428
 00:21:36,430 --> 00:21:37,640
-top of network discs.
+base a discos de red.
 
 429
 00:21:37,640 --> 00:21:40,210
-And would you see flapping?
+¿Y verías esa inestabilidad?
 
 430
 00:21:40,210 --> 00:21:41,700
-Would you see--
+Verías--
 
 431
 00:21:41,700 --> 00:21:44,340
-would the system think that a
-replica was gone, and it would
+¿qué pensaría el sistema que una
+réplica se cae, e intentaría
 
 432
 00:21:44,340 --> 00:21:47,725
-try to pull it out and it
-would come back and?
+llevarlo a cabo y
+traerlo de regreso?
 
 433
 00:21:47,725 --> 00:21:51,360
-No what we would see, actually,
-is depending on
+No lo veríamos,
+en realidad, depende de
 
 434
 00:21:51,360 --> 00:21:56,370
-where the problem occurred, we
-would just have queries timing
+dónde el problema ocurrió,
+tendríamos la consultas de tiempo
 
 435
 00:21:56,370 --> 00:21:57,540
-out on the back end.
+de respuesta en el backend.
 
 436
 00:21:57,540 --> 00:22:02,300
-So if our application tried to
-do a right, and the primary
+Si nuestra aplicación intentó de
+hacer una escritura, y el primario
 
 437
 00:22:02,300 --> 00:22:04,760
-was having a problem, that
-right would time out.
+tuvo un problema, que la escritura
+culminó su tiempo de espera.
 
 438
 00:22:04,760 --> 00:22:07,410
-If they're trying to do a
-read to a secondary--
+Si ellos intentan hacer una
+lectura al secundario--
 
 439
 00:22:07,410 --> 00:22:09,231
-those would time out.
+esos podría terminar
+el tiempo de espera.
 
 440
 00:22:09,231 --> 00:22:10,481
-Do you use safe mode?
+¿Usan el modo seguro?
 
 441
 00:22:10,481 --> 00:22:13,270
 
 442
 00:22:13,270 --> 00:22:14,900
-Right concern--
+Concernencia de escritura--
 
 443
 00:22:14,900 --> 00:22:17,675
-do you call get last error
-to make sure that
+¿llaman a "getLastError"
+para asegurarse que
 
 444
 00:22:17,675 --> 00:22:19,450
-your query is complete?
+tu consulta está completa?
 
 445
 00:22:19,450 --> 00:22:20,980
-Yeah we do, actually.
+Sí, lo hacemos en realidad.
 
 446
 00:22:20,980 --> 00:22:26,830
-We run GetLastError with SAFE,
-WriteConcern SAFE.
+Ejecutamos "getLastError" con
+"safe", "WriteConcern" igual "safe".
 
 447
 00:22:26,830 --> 00:22:31,010
-And is the new system that you
-co-located, does it use solid
+Y en el nuevo sistema que
+reubicaron, ¿usan discos
 
 448
 00:22:31,010 --> 00:22:33,400
-state drives, or does it
-use spinning disks?
+de estado sólido o usan
+discos mecánicos?
 
 449
 00:22:33,400 --> 00:22:36,920
-Yeah it uses solid
-state drivers.
+Sí, usamos discos
+de estado sólido.
 
 450
 00:22:36,920 --> 00:22:39,400
-I guess Amazon didn't have solid
-state drives when you
+Supongo que Amazon no tenía
+discos de estado sólidos cuando
 
 451
 00:22:39,400 --> 00:22:41,550
-made the decision to make
-that transition.
+tomaron la decisión de
+hacer esa transición.
 
 452
 00:22:41,550 --> 00:22:42,540
-Is that true?
+¿Es eso cierto?
 
 453
 00:22:42,540 --> 00:22:44,750
-That's true.
+Eso es cierto.
 
 454
 00:22:44,750 --> 00:22:48,890
-Do you have any experience with
-trying to use solid state
+¿Tienes alguna experiencia con
+intentar usar discos de estado
 
 455
 00:22:48,890 --> 00:22:50,290
-drives at Amazon to see if
-you get the same result?
+sólido en Amazon para ver si
+obtienes el mismo resultado?
 
 456
 00:22:50,290 --> 00:22:53,000
@@ -2143,317 +2121,318 @@ No.
 
 458
 00:22:53,690 --> 00:22:56,970
-The information that I have from
-other people is that they
+La información que tengo de
+otras personas es que en realidad
 
 459
 00:22:56,970 --> 00:22:58,730
-actually work as advertised.
+funciona como dicen.
 
 460
 00:22:58,730 --> 00:23:02,630
-So we're running solid state
-drives on our own machines,
+Estamos ejecutando discos de estado
+sólido en nuestros propios equipos,
 
 461
 00:23:02,630 --> 00:23:05,570
-and I assume that the
-performance characteristics
+y asumo que las
+prestaciones de rendimiento
 
 462
 00:23:05,570 --> 00:23:07,100
-would be somewhat similar.
+serían algo similar.
 
 463
 00:23:07,100 --> 00:23:12,370
-So that actually would have
-solved our problems with
+Así que en realidad habría
+solucionado nuestros problemas
 
 464
 00:23:12,370 --> 00:23:14,470
-running on Amazon, if we
-had access to that
+ejecutando en Amazon,
+si tuviéramos acceso a esa
 
 465
 00:23:14,470 --> 00:23:16,440
-technology at the time.
+tecnología en el momento.
 
 466
 00:23:16,440 --> 00:23:20,280
-But there are additional reasons
-for moving into our
+Pero hay razones adicionales
+para migrar a nuestro propia
 
 467
 00:23:20,280 --> 00:23:22,500
-own co-located servers.
+infraestructura de servidores.
 
 468
 00:23:22,500 --> 00:23:26,580
-And the biggest one, besides
-this reliability concern,
+La más grande, además de esta
+preocupación de la fiabilidad,
 
 469
 00:23:26,580 --> 00:23:30,910
-which was has actually since
-been addressed, is the cost.
+es que ha sido realidad
+dirigido, es el costo.
 
 470
 00:23:30,910 --> 00:23:35,660
-So we think that because we're
-at a certain scale, we can
+Pensamos que porque estamos
+en una cierta escala, podemos
 
 471
 00:23:35,660 --> 00:23:40,950
-dedicate a certain amount of
-money to purchasing a fixed
+dedicar una cierta cantidad de
+dinero comprando un conjunto
 
 472
 00:23:40,950 --> 00:23:44,250
-set of capacity and actually do
-things a little bit cheaper
+fijo de capacidad y en realidad
+hace cosas un poco más baratas
 
 473
 00:23:44,250 --> 00:23:45,282
-than on Amazon.
+que en Amazon.
 
 474
 00:23:45,282 --> 00:23:47,570
-That really didn't make
-sense until we got to
+Eso realmente no tiene
+sentido hasta que llegamos
 
 475
 00:23:47,570 --> 00:23:48,760
-be a certain size.
+a un cierto tamaño.
 
 476
 00:23:48,760 --> 00:23:50,085
-Yeah, certainly.
+Sí, sin duda.
 
 477
 00:23:50,085 --> 00:23:52,800
 
 478
 00:23:52,800 --> 00:23:57,110
-When you're small, the thought
-of adding one person to handle
+Cuando eres pequeño, la idea de
+agregar una persona para manejar
 
 479
 00:23:57,110 --> 00:24:01,910
-these things dwarfs the cost
-of any slight markup that
+esas cosas empequeñece el costo
+de cualquier marcado ligero que
 
 480
 00:24:01,910 --> 00:24:03,790
-Amazon has over doing
-it yourself.
+Amazon ha terminado
+haciendo por ti mismo.
 
 481
 00:24:03,790 --> 00:24:04,520
-Right.
+Claro.
 
 482
 00:24:04,520 --> 00:24:05,370
-Yeah.
+Sí.
 
 483
 00:24:05,370 --> 00:24:07,120
-I guess when you get
-to a certain size,
+Supongo cuando obtienes
+un cierto tamaño,
 
 484
 00:24:07,120 --> 00:24:08,370
-that's no longer true.
+que no es más grande.
 
 485
 00:24:08,370 --> 00:24:13,690
 
 486
 00:24:13,690 --> 00:24:17,840
-I thought maybe we would go over
-the life of a check-in
+Pensé que quizá podríamos ir más
+hacia la vida de los "check-ins"
 
 487
 00:24:17,840 --> 00:24:21,580
-and do that in front of a white
-board, if that would be
+y hacer eso en frente de
+una pizarra, si eso estaría
 
 488
 00:24:21,580 --> 00:24:22,890
-OK with you.
+bien para ti.
 
 489
 00:24:22,890 --> 00:24:26,520
-And we'd move to a whiteboard,
-so you can show everybody--
+Y vamos a la pizarra, para
+que puedas mostrar a todos--
 
 490
 00:24:26,520 --> 00:24:28,440
-give them a high level view of
-what happens when someone
+darnos una visión de alto nivel
+de lo que pasa cuando alguien
 
 491
 00:24:28,440 --> 00:24:30,480
-checks in, relative
-to MongoDB.
+hace "check-in",
+en relación con MongoDB.
 
 492
 00:24:30,480 --> 00:24:32,550
-Sure, all right.
+Claro, está bien.
 
 493
 00:24:32,550 --> 00:24:35,550
-OK well, we'll be right back.
+De acuerdo bueno, vamos
+a estar de regreso.
 
 494
 00:24:35,550 --> 00:24:38,850
-OK, so welcome to our
-acoustically challenged
+OK, bienvenidos a nuestra
+sala de reuniones
 
 495
 00:24:38,850 --> 00:24:39,790
-conference room.
+con limitaciones acústicas.
 
 496
 00:24:39,790 --> 00:24:43,230
-You're going to take us through
-the life cycle of a
+Llévanos a revisar el
+ciclo de vida de un
 
 497
 00:24:43,230 --> 00:24:47,840
-check-in, showing us how it
-interacts with MongoDB.
+"check-in", mostrándonos cómo
+ésto interactúa con MongoDB.
 
 498
 00:24:47,840 --> 00:24:51,730
-So, a check-in is something
-that would be done on your
+Un "check-in" es algo
+que se puede hacer en tu
 
 499
 00:24:51,730 --> 00:24:55,030
-iPhone, or your BlackBerry,
-or your Android device.
+iPhone, o tu BlackBerry,
+o tu dispositivo Android.
 
 500
 00:24:55,030 --> 00:24:57,460
-And what you're doing is you're
-posting a certain
+Y lo que estás haciendo es que
+estás publicando una determinada
 
 501
 00:24:57,460 --> 00:24:59,840
-amount of information over to
-Foursquare's application
+cantidad de información hacia el
+servidor de aplicación de Foursquare,
 
 502
 00:24:59,840 --> 00:25:05,030
-server, and then we're doing a
-back and forth with our Mongo
+y luego estamos haciendo un
+ida y vuelta con nuestras bases
 
 503
 00:25:05,030 --> 00:25:07,950
-databases to store
-that information
+de datos Mongo para
+almacenar esa información
 
 504
 00:25:07,950 --> 00:25:09,810
-and render your result.
+y convertir tu resultado.
 
 505
 00:25:09,810 --> 00:25:14,050
-So I'll walk you through the
-basics of how that happens.
+Así que voy a mostrar lo
+básico de cómo eso sucede.
 
 506
 00:25:14,050 --> 00:25:17,740
-There's basically three
-actors in the system.
+Básicamente hay tres
+actores en el sistema.
 
 507
 00:25:17,740 --> 00:25:20,800
-There is the user's
-device over here,
+Está el dispositivo
+del usuario por aquí,
 
 508
 00:25:20,800 --> 00:25:24,030
-which could be an iPhone.
+que podría ser un iPhone.
 
 509
 00:25:24,030 --> 00:25:30,350
-Then there is our application
-server over here, and as I
+Luego está nuestro servidor
+de aplicaciones aquí, y como
 
 510
 00:25:30,350 --> 00:25:33,820
-mentioned, this is code
-written in Scala.
+mencioné, ésto es
+código escrito en Scala.
 
 511
 00:25:33,820 --> 00:25:37,470
-And it's running on top of
-the Mongo Java driver.
+Y está ejecutándose sobre el
+driver de Java para Mongo.
 
 512
 00:25:37,470 --> 00:25:41,593
-And then we have our Mongo
-database over here.
+Y luego tenemos nuestra
+base de datos Mongo por aquí.
 
 513
 00:25:41,593 --> 00:25:50,250
 
 514
 00:25:50,250 --> 00:25:55,000
-So the first thing that happens
-is the user taps on
+Lo primero que sucede es
+que el usuario toma su
 
 515
 00:25:55,000 --> 00:25:58,960
-their device, they locate the
-venue that they're at, they
+dispositivo, ubica el
+lugar en el que está,
 
 516
 00:25:58,960 --> 00:26:01,770
-click on that, and they
-click check-in.
+hace "clic" en eso y
+luego hace "check-in".
 
 517
 00:26:01,770 --> 00:26:08,030
-And the information to gets
-posted over to our app is a
+Y la información que se envía
+a nuestra aplicación, es un
 
 518
 00:26:08,030 --> 00:26:18,050
-token for authentication, a
-venue ID, and some lat, long
+token para la autenticación, un
+identificador del lugar, y una
 
 519
 00:26:18,050 --> 00:26:19,960
-information from the
-device about where
+información de latitud y longitud
+del dispositivo acerca de donde
 
 520
 00:26:19,960 --> 00:26:21,210
-they are right now.
+se encuentran ahora.
 
 521
 00:26:21,210 --> 00:26:23,650
 
 522
 00:26:23,650 --> 00:26:26,380
-So when the application has that
-information, the first
+Cuando la aplicación tiene
+esa información, lo primero
 
 523
 00:26:26,380 --> 00:26:30,380
-thing it needs to do is to
-authenticate the user.
+que necesita es
+autenticar al usuario.
 
 524
 00:26:30,380 --> 00:26:36,040
-So it takes that token that came
-over, and it executes a
+Toma aquel token que
+viene y ejecuta una
 
 525
 00:26:36,040 --> 00:26:37,810
-query against Mongo--
+consulta hacia Mongo--
 
 526
 00:26:37,810 --> 00:26:42,500
@@ -2464,22 +2443,22 @@ token.
 
 528
 00:26:45,190 --> 00:26:49,570
-So it's basically just doing a
-simple find query where the ID
+Básicamente está haciendo
+una consulta simple donde el
 
 529
 00:26:49,570 --> 00:26:51,580
-is the token.
+identificador es el token.
 
 530
 00:26:51,580 --> 00:26:55,890
-And the result that it gets back
-is a record that has a
+Y el resultado que retorna
+es un registro que tiene un
 
 531
 00:26:55,890 --> 00:26:59,230
-mapping to the user
-ID for that token.
+mapeo al identificador del
+usuario para aquel token.
 
 532
 00:26:59,230 --> 00:27:00,110
@@ -2487,124 +2466,125 @@ OK.
 
 533
 00:27:00,110 --> 00:27:03,420
-So it gets the user ID, which
-is an integer of some sort.
+Obtiene el identificador de usuario,
+que es un entero de algún orden.
 
 534
 00:27:03,420 --> 00:27:03,790
-Right.
+Correcto.
 
 535
 00:27:03,790 --> 00:27:06,370
-So the user ID is an integer.
+El identificador de
+usuario en un entero.
 
 536
 00:27:06,370 --> 00:27:12,600
-So now for Mongo, we
-get the user ID.
+Ahora, para Mongo, tenemos
+el identificador de usuario.
 
 537
 00:27:12,600 --> 00:27:16,230
-And the reason the user ID is an
-integer and not a standard
+Y la razón para que el identificador
+de usuario sea un entero y no un
 
 538
 00:27:16,230 --> 00:27:20,700
-Mongo object ID, is because
-we're coming from a legacy of
+ObjectId normal de Mongo, es porque
+venimos de un sistema heredado de
 
 539
 00:27:20,700 --> 00:27:27,070
-a SQL system where the ID was an
-auto incrementing integer.
+SQL donde el identificador fue
+un entero autoincremental.
 
 540
 00:27:27,070 --> 00:27:30,220
-And because of the pervasiveness
-of the user ID
+Y porque se preserva el
+identificador de usuario
 
 541
 00:27:30,220 --> 00:27:33,360
-as a foreign key, it would've
-been a lot of work to migrate
+como clave foránea, hubiera
+sido demasiado de trabajo migrar,
 
 542
 00:27:33,360 --> 00:27:37,100
-over, so we left this
-as an integer.
+por lo que se mantuvo
+como un entero.
 
 543
 00:27:37,100 --> 00:27:39,850
-And the user name is changeable
+¿Y el nombre de usuario
+se puede modificar
 
 544
 00:27:39,850 --> 00:27:40,410
-on your system then?
+en tu sistema entonces?
 
 545
 00:27:40,410 --> 00:27:43,930
-Yes, so the user name
-is changeable.
+Sí, el nombre de usuario
+se puede modificar.
 
 546
 00:27:43,930 --> 00:27:48,480
-So our document within Mongo
-for a user record has the
+Nuestro documento en Mongo para
+un registro de usuario tiene el
 
 547
 00:27:48,480 --> 00:27:52,330
-underscore idea as an integer,
-and there's fields for first
+"_id" como un entero,
+y hay campos para el
 
 548
 00:27:52,330 --> 00:27:54,830
-name, last name, email,
-et cetera.
+nombre, apellido, correo, etcétera.
 
 549
 00:27:54,830 --> 00:27:57,890
 
 550
 00:27:57,890 --> 00:28:02,040
-So once we have this user ID on
-the app server, we want to
+Así que una vez que tenemos este identificador
+en el servidor de aplicaciones, queremos
 
 551
 00:28:02,040 --> 00:28:05,620
-look up this user record that
-has the more detailed
+consultar este registro de usuario
+que tiene información más detallada
 
 552
 00:28:05,620 --> 00:28:08,220
-information about the user,
-because one of the things
+acerca del usuario,
+porque una de las cosas
 
 553
 00:28:08,220 --> 00:28:12,230
-within the user record is
-their last check-in ID.
+en el registro de usuario está el
+identificador de su último "check-in".
 
 554
 00:28:12,230 --> 00:28:17,180
-And it turns out that we
-need that later on.
+Y resulta que lo
+necesitaremos más adelante.
 
 555
 00:28:17,180 --> 00:28:23,080
-So then we do a query to Mongo
-with the user ID, and what we
+Luego hacemos una consulta a Mongo con
+el identificador de usuario, y lo que
 
 556
 00:28:23,080 --> 00:28:26,510
-get back is this fat
-user record.
+retorna es el registro
+completo de usuario.
 
 557
 00:28:26,510 --> 00:28:31,330
 
 558
 00:28:31,330 --> 00:28:31,980
-Gotcha.
+Te entiendo.
 
 559
 00:28:31,980 --> 00:28:33,490
@@ -2612,334 +2592,337 @@ OK.
 
 560
 00:28:33,490 --> 00:28:35,660
-Go to the app server--
+Va hacia el servidor
+de aplicaciones--
 
 561
 00:28:35,660 --> 00:28:36,650
-it goes to that.
+va a eso.
 
 562
 00:28:36,650 --> 00:28:38,970
-That's on the app server now.
+Eso está en el servidor
+de aplicaciones ahora.
 
 563
 00:28:38,970 --> 00:28:41,780
-The next thing that we need to
-do is we need to take this
+Lo siguiente que necesitamos
+es que tenemos que tomar este
 
 564
 00:28:41,780 --> 00:28:46,770
-venue ID, and make sure that
-it's a real venue.
+identificador del lugar, y
+asegurar que es un lugar real.
 
 565
 00:28:46,770 --> 00:28:49,650
-If it's not, then we'll return
-an error to the user.
+Si no lo es, entonces retornará
+un error hacia el usuario.
 
 566
 00:28:49,650 --> 00:28:53,080
-So we execute a query
-with this venue ID.
+Ejecutamos una consulta con
+este identificador de lugar.
 
 567
 00:28:53,080 --> 00:28:58,350
-And the venue ID is a standard
-Mongo object ID.
+Y el identificador de lugar es
+un ObjectId estándar de Mongo.
 
 568
 00:28:58,350 --> 00:29:05,850
-So we send a query over with the
-venue ID, and we get back
+Enviamos una consulta con el
+identificador de lugar y obtenemos
 
 569
 00:29:05,850 --> 00:29:07,750
-a venue record.
+el registro del lugar.
 
 570
 00:29:07,750 --> 00:29:09,290
-Or not-- in that case we fail.
+O no-- en caso fallemos.
 
 571
 00:29:09,290 --> 00:29:18,390
 
 572
 00:29:18,390 --> 00:29:20,400
-And keep in mind that these
-are different collections.
+Y tiene en cuenta que éstas
+son distintas colecciones.
 
 573
 00:29:20,400 --> 00:29:24,595
-So this would be a collection
-called oauth tokens, this is a
+Esto sería una colección
+llamada "oauth_tokens", esta
 
 574
 00:29:24,595 --> 00:29:27,325
-query against a collection
-called users, this is a query
+es una consulta contra una colección
+llamada "users", esta es una consulta
 
 575
 00:29:27,325 --> 00:29:30,120
-against a collection
-called venues.
+contra una colección
+llamada "venues".
 
 576
 00:29:30,120 --> 00:29:32,090
-Which of these are shorted?
+¿Cuál de éstas es
+la más pequeña?
 
 577
 00:29:32,090 --> 00:29:36,970
-So all of them are
-sharded actually.
+En realidad todas ellas
+están con Sharding.
 
 578
 00:29:36,970 --> 00:29:42,220
-I'm simplifying things a bit
-here, but some of these are on
+Estoy simplificando cosas un poco
+aquí, pero algunos de estas están en
 
 579
 00:29:42,220 --> 00:29:44,100
-completely different
-Mongo clusters.
+clústers de Mongo
+completamente diferentes.
 
 580
 00:29:44,100 --> 00:29:47,020
-So we have the venue information
-stored on one
+Tenemos la información
+de lugares almacenada en
 
 581
 00:29:47,020 --> 00:29:50,620
-Mongo cluster and the
-user information
+un clúster de Mongo y
+la información de usuarios
 
 582
 00:29:50,620 --> 00:29:51,930
-on a different one.
+en uno diferente.
 
 583
 00:29:51,930 --> 00:29:56,990
-And these Mongo clusters are
-full sharded systems with
+Y estos clústers de Mongo están
+sistemas completamente con Sharding
 
 584
 00:29:56,990 --> 00:30:01,740
-Mongo S routers, and multiple
-shards, and replica sets
+con enrutadores mongos y múltiples
+"shards" y conjuntos de réplicas
 
 585
 00:30:01,740 --> 00:30:03,180
-within each shard.
+en cada "shard".
 
 586
 00:30:03,180 --> 00:30:06,755
-But just for the flow, I'll
-leave those details out.
+Pero sólo para el flujo,
+no consideraré esos detalles.
 
 587
 00:30:06,755 --> 00:30:09,320
 
 588
 00:30:09,320 --> 00:30:14,380
-So after we have the venue
-record, we basically have
+Después que tenemos el registro
+del lugar, básicamente tenemos
 
 589
 00:30:14,380 --> 00:30:19,480
-everything that we need to
-record the check-in.
+todo lo que necesitamos para
+registrar el "check-in".
 
 590
 00:30:19,480 --> 00:30:21,730
-So that's what we do.
+Así que eso es lo que hacemos.
 
 591
 00:30:21,730 --> 00:30:25,950
-At this point, we can create
-a new check-in record.
+En este punto, podemos crear un
+nuevo registro de "check-in".
 
 592
 00:30:25,950 --> 00:30:28,630
 
 593
 00:30:28,630 --> 00:30:37,550
-So we can create a record,
-and we store that
+Podemos crear un registro,
+y almacenamos aquel
 
 594
 00:30:37,550 --> 00:30:40,580
-check-in over to Mongo.
+"check-in" sobre Mongo.
 
 595
 00:30:40,580 --> 00:30:42,675
-So we do an insert operation.
+Así que hacemos una
+operación de inserción.
 
 596
 00:30:42,675 --> 00:30:52,440
 
 597
 00:30:52,440 --> 00:30:57,590
-And we do this with a
-WriteConcern SAFE.
+Y lo hacemos con un
+"WriteConcern" igual a "safe".
 
 598
 00:30:57,590 --> 00:30:58,710
-This other stuff--
+Esta otra cosa--
 
 599
 00:30:58,710 --> 00:31:00,580
-well this is the first write you
-did, so the other ones are
+bueno esta es la primera escritura
+que hiciste, las otras son
 
 600
 00:31:00,580 --> 00:31:01,450
-just reads.
+sólo lecturas.
 
 601
 00:31:01,450 --> 00:31:04,970
-So right, WriteConcern
-SAFE, right?
+Correcto, "WriteConcern"
+igual a "safe", ¿correcto?
 
 602
 00:31:04,970 --> 00:31:07,743
-So at this point, we've stored
-the check-in, but we need to
+En este punto, hemos almacenado
+el "check-in", pero necesitamos
 
 603
 00:31:07,743 --> 00:31:09,930
-do a lot more work.
+hacer mucho más trabajo.
 
 604
 00:31:09,930 --> 00:31:15,550
-One thing that we do
-is we calculate
+Una cosa que hacemos
+es calcular las
 
 605
 00:31:15,550 --> 00:31:16,770
-rewards on your check-in.
+recompensas en tu "check-in".
 
 606
 00:31:16,770 --> 00:31:18,760
-So if you've ever checked in at
-Foursquare, you know that
+Si has hecho "check-in"
+en Foursquare, sabes que
 
 607
 00:31:18,760 --> 00:31:21,430
-sometimes you get a badge
-for doing a check-in.
+a veces obtienes una medalla
+por hacer un "check-in".
 
 608
 00:31:21,430 --> 00:31:24,500
-You might get points, we'll give
-you information about how
+Podrías conseguir puntos, te
+daremos información acerca de
 
 609
 00:31:24,500 --> 00:31:29,290
-long it's been since the last
-you've been to a place, how
+cuánto tiempo hay desde la última
+vez que has estado en un lugar,
 
 610
 00:31:29,290 --> 00:31:32,200
-many miles it's been since
-your last check-in.
+cuántas millas hay desde
+tu último "check-in".
 
 611
 00:31:32,200 --> 00:31:34,380
-In order to do that, we need
-a lot more information.
+Para hacer eso, necesitas
+mucha más información.
 
 612
 00:31:34,380 --> 00:31:36,980
 
 613
 00:31:36,980 --> 00:31:41,700
-So one thing that we need is
-actually your entire check-in
+Lo único que necesitamos es
+en realidad todo tu historial
 
 614
 00:31:41,700 --> 00:31:43,920
-history up to that point.
+de "check-ins" hasta el momento.
 
 615
 00:31:43,920 --> 00:31:48,770
-So to calculate certain badge
-rewards, we need to know how
+Para calcular determinadas recompensas,
+medallas, necesitamos saber cuántas
 
 616
 00:31:48,770 --> 00:31:52,920
-many times have you been to this
-particular place or to
+veces has estado en este
+lugar en particular o
 
 617
 00:31:52,920 --> 00:31:56,900
-this type of place
-in the past.
+en este tipo de lugar antes.
 
 618
 00:31:56,900 --> 00:32:00,000
-So we'll do a query here.
+Así que haremos una consulta aquí.
 
 619
 00:32:00,000 --> 00:32:02,780
-So there's no real result
-here, but we'll do an
+No hay resultado real aquí,
+pero haremos una consulta
 
 620
 00:32:02,780 --> 00:32:06,450
-additional query to get
-your check-in history.
+adicional para obtener tu
+historial de "check-ins".
 
 621
 00:32:06,450 --> 00:32:12,980
-And what this is, is a query
-on the user ID against the
+Y lo que es esto, es una consulta
+en el identificador de usuario contra
 
 622
 00:32:12,980 --> 00:32:14,785
-check-ins collection.
+la colección de "check-ins".
 
 623
 00:32:14,785 --> 00:32:18,370
-So the way that the check-in
-collection works is we have
+La forma en que la colección de
+"check-ins" funciona es que tenemos
 
 624
 00:32:18,370 --> 00:32:21,580
-one document per check-in,
-and then there's a
+un documento por "check-in",
+y luego hay un identificador
 
 625
 00:32:21,580 --> 00:32:24,640
-user ID in each document.
+de usuario en cada documento.
 
 626
 00:32:24,640 --> 00:32:28,110
-We have an index on user ID, and
-the collection is actually
+Tenemos un índice en el identificador
+de usuario, y la colección es en realidad
 
 627
 00:32:28,110 --> 00:32:29,970
-sharded by user ID.
+con Sharding por este identificador.
 
 628
 00:32:29,970 --> 00:32:32,910
-So we'll do a query against
-the user ID, and we'll get
+Haremos una consulta contra el
+identificador de usuario, obtendremos
 
 629
 00:32:32,910 --> 00:32:34,575
-back multiple check-ins.
+múltiples "check-ins".
 
 630
 00:32:34,575 --> 00:32:37,120
 
 631
 00:32:37,120 --> 00:32:42,740
-So a query on user ID, and
-then we get back many
+Una consulta en el identificador de
+usuario, y luego obtenemos muchos
 
 632
 00:32:42,740 --> 00:32:43,990
-check-ins documents.
+documentos de "check-ins".
 
 633
 00:32:43,990 --> 00:32:49,880
@@ -2950,645 +2933,639 @@ OK.
 
 635
 00:32:51,850 --> 00:32:54,180
-You pull their entire history
-if they have check-ins?
+¿Tú extraes el historial completo
+si es que tiene "check-ins"?
 
 636
 00:32:54,180 --> 00:32:56,440
-Yeah, so we pull their
-entire history.
+Sí, nosotros extraemos
+el historial completo.
 
 637
 00:32:56,440 --> 00:32:58,480
-If they've checked in thousands
-of times, we get
+Si han hecho "check-in"
+miles de veces, obtenemos
 
 638
 00:32:58,480 --> 00:33:00,760
-thousands of documents.
+miles de documentos.
 
 639
 00:33:00,760 --> 00:33:05,300
-Each one of our documents
-is about 85 bytes.
+Cada uno de nuestros documentos
+es de unos 85 bytes.
 
 640
 00:33:05,300 --> 00:33:06,280
-Wow, that's small.
+Vaya, eso es pequeño.
 
 641
 00:33:06,280 --> 00:33:08,820
-So you've really worked on
-keeping those small.
+Ustedes han trabajado en
+mantenerlos pequeños.
 
 642
 00:33:08,820 --> 00:33:12,880
-Yes, we did a lot of work to
-make sure that the keys within
+Sí, hemos trabajado mucho para
+asegurarnos que las claves en
 
 643
 00:33:12,880 --> 00:33:15,500
-each document are often
-a single character--
+cada documento son a
+menudo un solo caracter--
 
 644
 00:33:15,500 --> 00:33:17,320
-were possible.
+si fuera posible.
 
 645
 00:33:17,320 --> 00:33:20,680
-We're storing the absolute
-minimum of data.
+Estamos almacenando lo
+más mínimo de los datos.
 
 646
 00:33:20,680 --> 00:33:24,030
-We have a few Boolean fields
-on there, but instead of
+Tenemos algunos campos booleanos
+allí, pero en lugar de
 
 647
 00:33:24,030 --> 00:33:30,730
-putting each Boolean in
-it's own key, we have
+poner cada booleano en su
+propia clave, tenemos en
 
 648
 00:33:30,730 --> 00:33:32,270
-basically a bit set.
+realidad un conjunto de bits.
 
 649
 00:33:32,270 --> 00:33:36,060
-So we're storing one long on the
-document, and we're doing
+Estamos almacenando un entero largo
+en el documento, estamos haciendo
 
 650
 00:33:36,060 --> 00:33:39,330
-some bit arithmetic
-to write to a
+un poco de aritmética
+para escribir a un
 
 651
 00:33:39,330 --> 00:33:44,500
-particular bit in that long.
+particular bit en
+aquel entero largo.
 
 652
 00:33:44,500 --> 00:33:48,960
-So, does that make it harder to
-develop, that you've made
+Entonces, ¿hace esto más difícil
+de desarrollar, que has hecho
 
 653
 00:33:48,960 --> 00:33:52,636
-all the key names one character
-in the documents?
+todos los nombres de la claves
+en un caracter en los documentos?
 
 654
 00:33:52,636 --> 00:33:55,600
 
 655
 00:33:55,600 --> 00:34:00,230
-It doesn't, because we have this
-statically defined scheme
+No es así, porque tenemos este
+esquema estáticamente definido
 
 656
 00:34:00,230 --> 00:34:02,340
-that we've written for
-each document.
+que hemos escrito
+para cada documento.
 
 657
 00:34:02,340 --> 00:34:07,860
-And in our application code,
-we have very convenient
+Y en el código de nuestra
+aplicación, tenemos nombres muy
 
 658
 00:34:07,860 --> 00:34:09,449
-humanized names for
-these fields.
+convenientes para esos campos.
 
 659
 00:34:09,449 --> 00:34:10,150
-I see.
+Ya veo.
 
 660
 00:34:10,150 --> 00:34:12,310
-So those names are not really
-seen by developers very much.
+Esos nombres realmente no son
+vistos por los desarrolladores.
 
 661
 00:34:12,310 --> 00:34:17,360
-So developers won't see that the
-venue ID field within the
+Los desarrolladores no verán que el
+campo del identificador de lugar en el
 
 662
 00:34:17,360 --> 00:34:21,962
-checking record is just a v.
-What they'll see is dot venue
+registro "check-in" es sólo una uve (v).
+Lo que ellos verán es ".venue_id"
 
 663
 00:34:21,962 --> 00:34:25,699
-ID on the check-in.
+en el "check-in".
 
 664
 00:34:25,699 --> 00:34:28,510
-And that way, things
-are manageable.
+Y de esa manera, las
+cosas son manejables.
 
 665
 00:34:28,510 --> 00:34:32,420
-It would be a very difficult
-situation if you have to
+Sería una situación
+difícil si tenemos que
 
 666
 00:34:32,420 --> 00:34:36,530
-remember that v was venue ID in
-some cases, and maybe it's
+recordar que "v" es el identificador
+del lugar en algunos casos, y quizá es
 
 667
 00:34:36,530 --> 00:34:37,944
-something else in some
-other cases.
+algo distinto en otros casos.
 
 668
 00:34:37,944 --> 00:34:40,909
 
 669
 00:34:40,909 --> 00:34:44,820
-Would you like a feature in
-MongoDB that would take care
+¿Te gustaría una funcionalidad
+en MongoDB que tome cuidado
 
 670
 00:34:44,820 --> 00:34:48,590
-of this type of mapping for
-you and keep smaller--
+a este tipo de mapeo para
+que puedas mantenerlos cortos?
 
 671
 00:34:48,590 --> 00:34:52,199
-Yeah ideally, Mongo would
-somehow compress that
+Sí, idealmente, Mongo podría
+de alguna manera comprimir
 
 672
 00:34:52,199 --> 00:34:54,730
-information itself.
+esa información.
 
 673
 00:34:54,730 --> 00:34:57,800
-And then we wouldn't have
-to manage that.
+Y entonces no tendríamos
+que manejar eso.
 
 674
 00:34:57,800 --> 00:35:01,350
-So it would be convenient if
-there was a feature to do
+Sería conveniente si hubiera
+una característica para hacer
 
 675
 00:35:01,350 --> 00:35:06,340
-that, but you're doing
-it for us, basically.
+eso, pero lo están haciendo
+ustedes, básicamente.
 
 676
 00:35:06,340 --> 00:35:07,040
-Right.
+Correcto.
 
 677
 00:35:07,040 --> 00:35:07,900
-Yeah.
+Sí.
 
 678
 00:35:07,900 --> 00:35:10,580
-I think there's room for
-improvement there, because
+Pienso que hay un margen
+de mejora allí, porque
 
 679
 00:35:10,580 --> 00:35:15,860
-even these one letter keys are
-still duplicated, in our case,
+incluso estas claves de una sola letra
+pueden estar duplicados, en nuestro caso,
 
 680
 00:35:15,860 --> 00:35:18,150
-a few billion times.
+unos mil millones de veces.
 
 681
 00:35:18,150 --> 00:35:24,650
-So you'll have a few gigabytes
-of data just for storing each
+Así que tendrías unos cuantos gigabytes
+de datos sólo para almacenar cada
 
 682
 00:35:24,650 --> 00:35:26,430
-character in the key name.
+caracter en el nombre de la clave.
 
 683
 00:35:26,430 --> 00:35:32,310
-You probably need some
-delimiter, because the schema
+Probablemente necesitas algún
+delimitador, porque el esquema
 
 684
 00:35:32,310 --> 00:35:33,560
-can be different in
-each document.
+puede ser distinto
+en cada documento.
 
 685
 00:35:33,560 --> 00:35:36,190
 
 686
 00:35:36,190 --> 00:35:38,780
-It's an interesting problem.
+Es un problema interesante.
 
 687
 00:35:38,780 --> 00:35:43,670
-Yeah I think it's one that's
-on the horizon to fix, and
+Sí, pienso que es uno que está
+en el futuro para solucionar, y
 
 688
 00:35:43,670 --> 00:35:45,960
-there are possible solutions
-out there.
+hay posibles soluciones allí.
 
 689
 00:35:45,960 --> 00:35:50,810
-But hopefully a future version
-of Mongo will have that.
+Pero es de esperar una futura
+versión de Mongo que la tenga.
 
 690
 00:35:50,810 --> 00:35:55,340
-And it's usually not a problem
-until you end up getting into
+Y no es usualmente un problema
+hasta que se llega a
 
 691
 00:35:55,340 --> 00:35:59,690
-the hundreds of millions or
-billions of documents.
+los cientos de millones
+o billones de documentos.
 
 692
 00:35:59,690 --> 00:36:03,940
-For someone just getting started
-with Mongo, if your
+Para alguien que acaba de
+iniciar con Mongo, si tu
 
 693
 00:36:03,940 --> 00:36:07,570
-library doesn't support aliasing
-short key names to
+librería no soporta cortos alias
+para los nombres de las claves para
 
 694
 00:36:07,570 --> 00:36:10,770
-long key names, it's probably
-better to stick with a human
+nombres de claves extensos, es
+probablemente mejor quedarse con
 
 695
 00:36:10,770 --> 00:36:13,090
-readable name.
+un nombre legible.
 
 696
 00:36:13,090 --> 00:36:15,800
-At least think about the type
-of scale that you're
+Por lo menos en el tipo
+de escalabilidad en el
 
 697
 00:36:15,800 --> 00:36:18,710
-going to grow to.
+que vas a ir creciendo.
 
 698
 00:36:18,710 --> 00:36:22,980
-Yeah I think that one of the
-benefits of MongoDB is the
+Sí, creo que uno de los
+beneficios de MongoDB es la
 
 699
 00:36:22,980 --> 00:36:25,370
-readability of the data
-when you get it out.
+la legibilidad de los
+datos al extraerlos.
 
 700
 00:36:25,370 --> 00:36:28,400
 
 701
 00:36:28,400 --> 00:36:32,490
-It does hurt you a little bit to
-have to have it translated
+Es un poco doloroso
+tener que traducirlos
 
 702
 00:36:32,490 --> 00:36:33,620
-because you look at
-the document.
+para que veas el documento.
 
 703
 00:36:33,620 --> 00:36:37,030
-If you're just doing some
-debugging, or snooping around,
+Si estás haciendo alguna
+depuración o inspección,
 
 704
 00:36:37,030 --> 00:36:39,560
-it's almost obfuscated.
+es casi ofuscado.
 
 705
 00:36:39,560 --> 00:36:42,970
-Yeah we've had to be disciplined
-in using our own
+Sí, tenemos que ser disciplinados
+en usar nuestras propias
 
 706
 00:36:42,970 --> 00:36:46,980
-tools to do investigations,
-because if you look at a
+herramientas para hacer
+investigaciones porque si ves en
 
 707
 00:36:46,980 --> 00:36:49,010
-check-in document--
+un documento de "check-in"--
 
 708
 00:36:49,010 --> 00:36:50,630
-just the raw data for Mongo--
+sólo los datos para Mongo--
 
 709
 00:36:50,630 --> 00:36:54,330
-if you use the console and pull
-up a document, you have
+si usas la consola y
+extraes un documento, tienes
 
 710
 00:36:54,330 --> 00:36:56,770
-these kind of ambiguous
-names for the keys.
+este tipo de nombres
+ambiguos para las claves.
 
 711
 00:36:56,770 --> 00:36:59,860
-Oftentimes it's pretty obvious,
-but you also have
+A menudo es bastante obvio,
+pero también tenemos
 
 712
 00:36:59,860 --> 00:37:03,800
-this flag, which is a long,
-which is a bit set, which no
+este "flag", que es un entero largo,
+que es un conjunto de bit, que ningún
 
 713
 00:37:03,800 --> 00:37:07,630
-human I know of can interpret
-themselves.
+humano que conozca pueda
+interpretar por ellos mismos.
 
 714
 00:37:07,630 --> 00:37:11,610
-So you need a computer
-for that.
+Por lo que se necesita
+un equipo para eso.
 
 715
 00:37:11,610 --> 00:37:14,100
-We usually don't use
-the Mongo console
+Usualmente no usamos
+la consola de Mongo
 
 716
 00:37:14,100 --> 00:37:15,510
-to bring back document.
+para sacar el documento.
 
 717
 00:37:15,510 --> 00:37:18,900
-We'll bring up a Scale console
-and use our own application
+Lo hacemos con una consola de Scala
+y usamos nuestro propio código de la
 
 718
 00:37:18,900 --> 00:37:21,150
-code to bring back a document
-if we want to
+aplicación para sacar un
+documento si deseamos
 
 719
 00:37:21,150 --> 00:37:23,296
-manually inspect it.
+inspeccionarlo manualmente.
 
 720
 00:37:23,296 --> 00:37:27,540
-If you had to do it again, would
-you use Scale again?
+Si tuvieras que hacerlo de nuevo,
+¿Usarías Scala otra vez?
 
 721
 00:37:27,540 --> 00:37:32,980
-Yes, I think Scala has been
-really great for developer
+Sí, pienso que Scala ha sido realmente
+genial para la productividad
 
 722
 00:37:32,980 --> 00:37:35,590
-productivity.
+de los desarrolladores.
 
 723
 00:37:35,590 --> 00:37:38,370
-It's something that I think a
-lot of developers get excited
+Es algo que pienso que muchos
+desarrolladores se emocionan al
 
 724
 00:37:38,370 --> 00:37:42,610
-to use, because it combines a
-lot of benefits that you get
+usarlo, porque combina muchos
+beneficios que obtienes de un
 
 725
 00:37:42,610 --> 00:37:44,780
-from a statically
-typed language--
+lenguaje estáticamente tipado--
 
 726
 00:37:44,780 --> 00:37:47,270
-all the benefits you get from a
-statically typed language--
+todos los beneficios que obtienes
+de un lenguaje estáticamente tipado--
 
 727
 00:37:47,270 --> 00:37:51,740
-with some of the flexibility
-that you would have in a
+con algo de la flexibilidad
+que tendrías en un lenguaje
 
 728
 00:37:51,740 --> 00:37:54,150
-language like Python or Ruby.
+como Python o Ruby.
 
 729
 00:37:54,150 --> 00:37:57,930
 
 730
 00:37:57,930 --> 00:38:00,700
-I think the most important
-feature that leads that
+Creo que la característica más
+importante es que lleva esa
 
 731
 00:38:00,700 --> 00:38:01,905
-flexibility--
+flexibilidad--
 
 732
 00:38:01,905 --> 00:38:04,860
-that kind of dynamic language
-style flexibility--
+ese tipo de estilo flexible
+de lenguaje dinámico--
 
 733
 00:38:04,860 --> 00:38:10,050
-is the ability to create
-closures in
+es la capacidad de
+crear cierres en
 
 734
 00:38:10,050 --> 00:38:12,230
-line with your code.
+línea con tu código.
 
 735
 00:38:12,230 --> 00:38:16,460
-So an example of that is if you
-have let's say, a list of
+Un ejemplo de ello es si
+tienes, digamos, una lista de
 
 736
 00:38:16,460 --> 00:38:21,540
-check-ins, and you want to
-convert that into a list of
+"check-ins" y deseas convertir
+en una lista de identificadores
 
 737
 00:38:21,540 --> 00:38:24,855
-venue IDs, because that's the
-input for some other function.
+de lugares, porque esa es la
+entrada para otra función.
 
 738
 00:38:24,855 --> 00:38:27,490
 
 739
 00:38:27,490 --> 00:38:29,540
-In Java, what you would
-have to do is--
+En Java, lo que
+tendría que hacer es--
 
 740
 00:38:29,540 --> 00:38:33,370
-you would create a new array
-list, and then you would write
+crearías un nuevo ArrayList,
+y luego escribirías un bucle
 
 741
 00:38:33,370 --> 00:38:38,310
-a for loop, and then in the body
-of the for loop, you'd
+"for", y luego en el cuerpo
+del bucle "for", añadirías
 
 742
 00:38:38,310 --> 00:38:41,750
-add check-in dot ID
-to that list.
+"check-in.id" a esa lista.
 
 743
 00:38:41,750 --> 00:38:46,150
-So you'd have like four
-lines of code to do
+Por lo que tendrías como
+cuatro líneas para hacer
 
 744
 00:38:46,150 --> 00:38:49,170
-this very basic operation.
+esa operación bastante básica.
 
 745
 00:38:49,170 --> 00:38:53,160
-Maybe there's an opportunity and
-therefore a bug, like an
+Quizá hay una oportunidad y
+por consiguiente un error,
 
 746
 00:38:53,160 --> 00:38:57,800
-off by one error if you started
-your for loop on the
+obtener un error si iniciaste
+tu bucle "for" en el
 
 747
 00:38:57,800 --> 00:39:04,610
-wrong index or you put the wrong
-comparison operator,
+índice equivocado o pones el
+operador de comparación equivocado,
 
 748
 00:39:04,610 --> 00:39:06,200
-something like that.
+o algo como eso.
 
 749
 00:39:06,200 --> 00:39:10,640
-So in Scala, instead of having
-to write these external
+En Scala, en lugar de tener
+que escribir estas funciones
 
 750
 00:39:10,640 --> 00:39:15,920
-looping functions, the
-collections have built in
+externas con bucles, las
+colecciones tienen por defecto
 
 751
 00:39:15,920 --> 00:39:18,670
-transformation methods and
-iteration methods.
+métodos de transformación
+y métodos de iteración.
 
 752
 00:39:18,670 --> 00:39:24,380
-So a collection will have a
-dot map method on it that
+Una colección tendrá un
+método ".map" en ella que
 
 753
 00:39:24,380 --> 00:39:28,430
-takes a function that converts
-each item in the collection to
+toma una función que convierte
+cada elemento en la colección a
 
 754
 00:39:28,430 --> 00:39:29,920
-something else.
+otra cosa.
 
 755
 00:39:29,920 --> 00:39:33,536
-So the code to convert a list
-of check-ins into a list of
+El código converte una lista
+de "check-ins" en una lista de
 
 756
 00:39:33,536 --> 00:39:37,990
-IDs basically looks like
-check-in dot map.
+identificadores básicamente se
+parece como un "check-in.map".
 
 757
 00:39:37,990 --> 00:39:41,800
-And then an inline function,
-which in Scala could just be
+Y entonces una función "inline",
+que en Scala podría ser sólo
 
 758
 00:39:41,800 --> 00:39:46,010
-as simple as like, underscore,
-dot venue ID.
+tan simple como "_.venue_id".
 
 759
 00:39:46,010 --> 00:39:49,060
-And then in that one line
-you'd have that
+Y luego en esa única
+línea tendría esa
 
 760
 00:39:49,060 --> 00:39:50,660
-transformation.
+transformación.
 
 761
 00:39:50,660 --> 00:39:53,190
-I think that you can do that
-in a lot of other languages
+Creo que se puede hacer eso
+en muchos otros lenguajes
 
 762
 00:39:53,190 --> 00:39:57,840
-like Python and Ruby, but then
-you don't have the benefits of
+como Python y Ruby, pero entonces
+no tendríamos los beneficios de la
 
 763
 00:39:57,840 --> 00:39:58,860
-static compilation.
+compilación estática.
 
 764
 00:39:58,860 --> 00:40:01,860
-You can't get a lot of the other
-features that make us
+No puedes obtener muchas de las
+otras funcionalidades que nos hace
 
 765
 00:40:01,860 --> 00:40:06,940
-productive like statically
-checking that our Mongo query
+productivos como comprobar estáticamente
+que nuestra sintaxis de consulta de Mongo
 
 766
 00:40:06,940 --> 00:40:17,030
-syntax actually will yield a
-sensible Mongo query, because
+en realidad cederá una consulta
+sensible de Mongo, porque la
 
 767
 00:40:17,030 --> 00:40:22,250
-the way that we create queries
-is by building up upon
+manera en que creamos
+consultas es mediante la
 
 768
 00:40:22,250 --> 00:40:25,760
-statically defined fields
-in our schema.
+definición estática de
+campos en nuestro esquema.
 
 769
 00:40:25,760 --> 00:40:28,030
-But it runs in the JVM.
+Pero, esto se ejecuta en la JVM.
 
 770
 00:40:28,030 --> 00:40:29,040
-Yeah this runs in the JVM.
+Sí, esto se ejecuta en la JVM.
 
 771
 00:40:29,040 --> 00:40:31,960
-So it is a dynamically
-executed language.
+Es un lenguaje
+ejecutado dinámicamente.
 
 772
 00:40:31,960 --> 00:40:33,720
@@ -3596,277 +3573,277 @@ No.
 
 773
 00:40:33,720 --> 00:40:39,040
-It's actually just a syntax
-that gets compiled
+Es en realidad sólo una
+sintaxís que se compila
 
 774
 00:40:39,040 --> 00:40:41,390
-into Java byte code.
+en bytecode de Java.
 
 775
 00:40:41,390 --> 00:40:43,630
-So at the time that your
-application is running, the
+En el momento que tu aplicación
+está ejecutándose, la JVM
 
 776
 00:40:43,630 --> 00:40:46,680
-JVM doesn't really know that
-it's executing Scala.
+no sabe en realidad que
+está ejecutando Scala.
 
 777
 00:40:46,680 --> 00:40:49,930
-It's just executing
-Java byte code.
+Está sólo ejecutando
+bytecode de Java.
 
 778
 00:40:49,930 --> 00:40:52,420
-It's the combination of this
-compiler that takes a
+Es la combinación de este
+compilador que toma un tipo
 
 779
 00:40:52,420 --> 00:40:56,280
-different type of syntax, and it
-converts it into byte code
+distinto de sintaxis y
+lo convierte en bytecode
 
 780
 00:40:56,280 --> 00:40:58,630
-and a library.
+y una librería.
 
 781
 00:40:58,630 --> 00:40:59,880
-All right.
+Muy bien.
 
 782
 00:40:59,880 --> 00:41:01,750
 
 783
 00:41:01,750 --> 00:41:06,160
-So this point you've got all
-the previous check-ins, so
+Este punto en que obtienes
+todos los "check-ins" anteriores,
 
 784
 00:41:06,160 --> 00:41:08,300
-what happens next?
+¿qué ocurre después?
 
 785
 00:41:08,300 --> 00:41:11,260
-So over here-- and I'll gloss
-through this bit-- but we
+Por aquí-- voy a aclarar
+un poco esto-- pero
 
 786
 00:41:11,260 --> 00:41:16,250
-calculate things like what
-badges they may have won, what
+calculamos cosas como qué
+medallas pueden haber ganado,
 
 787
 00:41:16,250 --> 00:41:19,480
-points they may have gotten, and
-basic informational bits,
+qué puntos han alcanzado,
+e información básica,
 
 788
 00:41:19,480 --> 00:41:23,250
-like the times of the last
-check-in, the last time
+como las veces de los últimos
+"check-ins", la última vez
 
 789
 00:41:23,250 --> 00:41:25,540
-they're there, maybe the
-number of miles they've
+que estuvieron ahí, quizá
+el número de millas que han
 
 790
 00:41:25,540 --> 00:41:28,580
-traveled since their
-previous check-in.
+viajado desde su
+anterior "check-in".
 
 791
 00:41:28,580 --> 00:41:32,150
-So I'll just gloss over that,
-but we're basically
+Voy a aclarar esto,
+pero básicamente estamos
 
 792
 00:41:32,150 --> 00:41:36,960
-calculating rewards here.
+calculando recompensas aquí.
 
 793
 00:41:36,960 --> 00:41:41,030
 
 794
 00:41:41,030 --> 00:41:44,210
-The output of those rewards
-might be information that we
+La salida de estas recompensas
+podrían ser información que
 
 795
 00:41:44,210 --> 00:41:46,360
-store back into Mongo.
+almacenamos de nuevo en Mongo.
 
 796
 00:41:46,360 --> 00:41:50,320
-So for every check-in where
-you've scored some points,
+Para cada "check-in" donde
+has calificado algunos puntos,
 
 797
 00:41:50,320 --> 00:41:55,440
-we're writing a score document
-back into Mongo.
+estamos escribiendo un documento
+de calificación de regreso en Mongo.
 
 798
 00:41:55,440 --> 00:41:57,970
 
 799
 00:41:57,970 --> 00:42:01,980
-If you won a badge, we'll write
-a record of that back
+Si ganas una medalla, escribiremos
+un registro de eso de regreso
 
 800
 00:42:01,980 --> 00:42:04,170
-into Mongo.
+en Mongo.
 
 801
 00:42:04,170 --> 00:42:08,380
-So we might do a few
-more writes here.
+Podríamos hacer algunas
+escrituras más aquí.
 
 802
 00:42:08,380 --> 00:42:14,690
-But at this point, we have all
-the basic information to
+Pero en este punto, tenemos
+toda la información básica para
 
 803
 00:42:14,690 --> 00:42:18,260
-return a result back
-to the user.
+retornar un resultado
+de regreso al usuario.
 
 804
 00:42:18,260 --> 00:42:20,510
-So they've checked in, it's
-been successful, we've
+Así ellos hacen "check-in",
+ha sido exitoso, hemos
 
 805
 00:42:20,510 --> 00:42:22,390
-calculated their rewards.
+calculado sus recompensas.
 
 806
 00:42:22,390 --> 00:42:27,750
-Now we return a result back to
-the user, and we basically
+Ahora retornamos un resultado
+al usuario y básicamente tenemos
 
 807
 00:42:27,750 --> 00:42:29,730
-have all the information that
-we need to do that.
+toda esa información que
+necesitamos para hacer eso.
 
 808
 00:42:29,730 --> 00:42:35,445
-We'll return the check-in--
+Retornaremos el "check-in"--
 
 809
 00:42:35,445 --> 00:42:38,430
-the ID from their check-in.
+el identificador de su "check-in".
 
 810
 00:42:38,430 --> 00:42:41,170
-And the important thing to
-realize here, is that when we
+Y lo más importante a
+realizar aquí, es que cuando
 
 811
 00:42:41,170 --> 00:42:43,220
-inserted this check-in,
-we actually
+insertamos este "check-in",
+en realidad creamos
 
 812
 00:42:43,220 --> 00:42:45,835
-created the object ID--
+el ObjectId--
 
 813
 00:42:45,835 --> 00:42:49,810
-the unique identifier for that
-check-in-- on the client side.
+el identificador único para ese
+"check-in"-- en el lado del cliente.
 
 814
 00:42:49,810 --> 00:42:51,185
-So we don't--
+Entonces no lo hacemos--
 
 815
 00:42:51,185 --> 00:42:54,170
-Kind of like what we do with
-BSON object IDs almost.
+Algo así como lo que hacemos
+con el ObjectId de BSON al menos.
 
 816
 00:42:54,170 --> 00:42:55,875
-Well they are BSON object IDs.
+Bueno son ObjectIds de BSON.
 
 817
 00:42:55,875 --> 00:42:56,280
-Oh they are?
+Oh, ¿Lo son?
 
 818
 00:42:56,280 --> 00:42:57,830
-Yeah.
+Sí.
 
 819
 00:42:57,830 --> 00:43:01,280
-The object ID for the check-in
-gets created client-side, so
+El ObjectId para el "check-in"
+se crea en el lado del cliente,
 
 820
 00:43:01,280 --> 00:43:05,600
-we know what it is before
-it hits the database.
+sabemos que se hace antes que
+vaya hacia la base de datos.
 
 821
 00:43:05,600 --> 00:43:08,720
-So we have this check-in ID,
-we have the venue that they
+Tenemos este identificador de
+"check-in", tenemos el lugar en
 
 822
 00:43:08,720 --> 00:43:13,140
-were at, we have the result of
-this reward's calculation, and
+el que están, tenemos el resultado
+del cálculo de recompensas, y
 
 823
 00:43:13,140 --> 00:43:16,180
-at this point, we return a
-result back to the user.
+en este punto, retornamos
+un resultado al usuario.
 
 824
 00:43:16,180 --> 00:43:18,950
 
 825
 00:43:18,950 --> 00:43:22,270
-This is extremely simplified
-version of what
+Esta es una versión
+extremádamente simplificada de
 
 826
 00:43:22,270 --> 00:43:24,080
-we're actually doing.
+lo que en realidad
+estamos haciendo.
 
 827
 00:43:24,080 --> 00:43:30,400
-I can tell you that here maybe I
-described six or seven Mongo
+Puedo decirte que ahí quizá
+describo seis o siete operaciones
 
 828
 00:43:30,400 --> 00:43:37,270
-operations, but on average we
-actually do something like 40
+con Mongo, pero en promedio
+en realidad hacemos unas 40
 
 829
 00:43:37,270 --> 00:43:39,630
-or 50 Mongo operations.
+o 50 operaciones con Mongo.
 
 830
 00:43:39,630 --> 00:43:41,380
-So do you have--
+¿Tienen--
 
 831
 00:43:41,380 --> 00:43:43,490
-do you cache Mongo with
-memcache or anything?
+tienen caché en Mongo
+con memcached o algo?
 
 832
 00:43:43,490 --> 00:43:46,300
-Or do you run directly
-against it?
+¿O ejecutan directamente en él?
 
 833
 00:43:46,300 --> 00:43:46,700
@@ -3874,125 +3851,125 @@ No.
 
 834
 00:43:46,700 --> 00:43:48,790
-So we query directly
-against Mongo.
+Consultamos directamente
+hacia Mongo.
 
 835
 00:43:48,790 --> 00:43:51,130
-And are you stateless in your
-application servers?
+¿Y son "stateless" tus
+servidores de aplicaciones?
 
 836
 00:43:51,130 --> 00:43:51,930
-Like--
+Como--
 
 837
 00:43:51,930 --> 00:43:53,540
-I'm sure you have load balances
-in front of your
+Estoy seguro que tienes
+balanceo de carga en tus
 
 838
 00:43:53,540 --> 00:43:55,000
-application servers, right?
+servidores de aplicaciones,
+¿correcto?
 
 839
 00:43:55,000 --> 00:43:55,420
-Yeah.
+Sí.
 
 840
 00:43:55,420 --> 00:43:59,690
-So am I locked to one
-application server during a
+Si bloqueo un servidor
+de aplicación durante una
 
 841
 00:43:59,690 --> 00:44:05,070
-session, can my requests go to
-this application servers over
+sesión, ¿pueden mis solicitudes ir
+hacia estos servidores de aplicación
 
 842
 00:44:05,070 --> 00:44:08,050
-a period of even microseconds,
-and it won't matter because
+en un período de unos microsegundos,
+y no ser de importancia porque
 
 843
 00:44:08,050 --> 00:44:08,920
-they're stateless.
+ellos son "stateless"?
 
 844
 00:44:08,920 --> 00:44:09,620
-How does that work?
+¿Cómo funciona eso?
 
 845
 00:44:09,620 --> 00:44:11,010
-Yeah, exactly.
+Sí, exacto.
 
 846
 00:44:11,010 --> 00:44:12,720
-These app servers--
+Esos servidores de aplicaciones--
 
 847
 00:44:12,720 --> 00:44:15,200
-the servers that handle
-our API requests--
+los servidores que manejan
+nuestras solicitudes de API--
 
 848
 00:44:15,200 --> 00:44:17,896
-which are requests from the
-devices like iPhones,
+que son solicitudes de los
+dispositivos como iPhones,
 
 849
 00:44:17,896 --> 00:44:21,590
 Blackberrys, Androids,
-they're stateless.
+son "stateless".
 
 850
 00:44:21,590 --> 00:44:23,250
-And we have tons of them.
+Y tenemos toneladas de esos.
 
 851
 00:44:23,250 --> 00:44:28,110
 
 852
 00:44:28,110 --> 00:44:30,810
-You'll post a check into
-us and get a result.
+Publicarás un "check-in" a
+nosotros y obtienes un resultado.
 
 853
 00:44:30,810 --> 00:44:33,980
-And that might go to app server
-one the next time that
+Y podrías ir al servidor de
+aplicaciones uno, la siguiente
 
 854
 00:44:33,980 --> 00:44:35,980
-you issue a request to
-us, that'll go to a
+vez que haces una solicitud hacia
+nosotros, eso irá hacia un
 
 855
 00:44:35,980 --> 00:44:37,360
-different app server.
+servidores de aplicaciones distinto.
 
 856
 00:44:37,360 --> 00:44:40,290
-And there's a reason for
-a state to be stored on
+Y hay una razón para un
+estado en ser almacenado.
 
 857
 00:44:40,290 --> 00:44:40,830
-[INAUDIBLE].
 
 858
 00:44:40,830 --> 00:44:41,630
-Is there a session state?
+¿Hay un estado de sesión?
 
 859
 00:44:41,630 --> 00:44:43,860
-Do you have a collection for
-session state so that these
+¿Tienes una colección para los
+estados de sesión para que esos
 
 860
 00:44:43,860 --> 00:44:48,266
-application servers can go
-from request to request?
+servidores de aplicaciones puedan
+ir de solicitud a solicitud?
 
 861
 00:44:48,266 --> 00:44:48,640
@@ -4000,28 +3977,28 @@ No.
 
 862
 00:44:48,640 --> 00:44:51,540
-As far as the API is concerned,
-all the session
+En lo que se refiere al
+API, todos los estados de
 
 863
 00:44:51,540 --> 00:44:55,520
-state would be handled by
-the client application.
+sesión serían manejados
+por la aplicación cliente.
 
 864
 00:44:55,520 --> 00:44:58,250
-So if this the iPhone
-application, it's maintaining
+Si ésta es la aplicación
+iPhone, está manteniendo
 
 865
 00:44:58,250 --> 00:44:59,310
-what's going on on
-your own device.
+lo que va a ser tu
+propio dispositivo.
 
 866
 00:44:59,310 --> 00:45:00,560
-It knows where you are
-in some process.
+Sabe donde estás en
+el mismo proceso.
 
 867
 00:45:00,560 --> 00:45:03,302
@@ -4032,12 +4009,12 @@ OK.
 
 869
 00:45:03,763 --> 00:45:05,150
-All right.
+Muy bien.
 
 870
 00:45:05,150 --> 00:45:05,750
-Thanks.
+Gracias.
 
 871
 00:45:05,750 --> 00:45:07,000
-Sure.
+Claro.
