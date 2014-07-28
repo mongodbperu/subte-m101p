@@ -1,0 +1,900 @@
+[
+    {
+        "concept": "Welcome to M101P",
+        "lecture": "D_OtQYRyPvE",
+        "answer": "d7_B3jx3V_o"
+    },
+    {
+        "concept": "What is MongoDB",
+        "lecture": "Lfl8hdQOi6Y",
+        "answer": "h80NwJJZM-g"
+    },
+    {
+        "concept": "Mongo relative to relational",
+        "lecture": "-KIC1LXxcGM",
+        "answer": "IAvnMgvHuLw"
+    },
+    {
+        "concept": "Overview of Building an app with Mongo",
+        "lecture": "_e0J06elxb8"
+    },
+    {
+        "concept": "Quick introduction to the Mongo Shell",
+        "lecture": "f-lyGAMnNY4",
+        "answer": "YQTqdLe3W4M"
+    },
+    {
+        "concept": "JSON introduced through the Mongo Shell",
+        "lecture": "2jsJeH8q6YM",
+        "answer": "uWcOsdV4Iz4"
+    },
+    {
+        "concept": "Installing MongoDB (mac)",
+        "lecture": "6VFukRETCTg"
+    },
+    {
+        "concept": "Installing MongoDB (windows)",
+        "lecture": "hX5louVryOQ"
+    },
+    {
+        "concept": "Installing Bottle and Python (mac)",
+        "lecture": "vxTN6KFegLg"
+    },
+    {
+        "concept": "Installing Python (Windows)",
+        "lecture": "njfPdZTmTrI"
+    },
+    {
+        "concept": "Installing Bottle.py (Windows)",
+        "lecture": "OhEpXjL0vt8"
+    },
+    {
+        "concept": "Installing PyMongo (mac)",
+        "lecture": "vHmoNiXUBQs"
+    },
+    {
+        "concept": "Installing PyMongo (pc)",
+        "lecture": "hOEV-q176kc"
+    },
+    {
+        "concept": "Hello World, Mongo Style",
+        "lecture": "e4u1Ha2vkDY"
+    },
+    {
+        "concept": "Hello World on a Web Server",
+        "lecture": "nRAE1SxqAiw"
+    },
+    {
+        "concept": "Mongo is Schemaless",
+        "lecture": "K6dlBbH_XHI"
+    },
+    {
+        "concept": "JSON Revisited",
+        "lecture": "CTffxoSSLqg",
+        "answer": "ciuq7XPqHKI"
+    },
+    {
+        "concept": "JSON Subdocuments",
+        "lecture": "vrYAEH3g13M",
+        "answer": "NGp_y6BaEMw"
+    },
+    {
+        "concept": "JSON Spec",
+        "lecture": "kOrsT94-A28"
+    },
+    {
+        "concept": "Introduction to Our Class Project, The Blog",
+        "lecture": "ePi3kDoexoM"
+    },
+    {
+        "concept": "Blog in Relational Tables",
+        "lecture": "boR2y9MHCa0",
+        "answer": "vB-4AbbLKeg"
+    },
+    {
+        "concept": "Blog in Documents",
+        "lecture": "ZjwCzyqKVdY",
+        "answer": "WJblHPsp1p4"
+    },
+    {
+        "concept": "Intro to Schema design",
+        "lecture": "6XE3wZCPiZ8",
+        "answer": "wiwOEG_6ojs"
+    },
+    {
+        "concept": "Introduction to Python",
+        "lecture": "-cAtffa59FM",
+        "answer": "PuyAdxxzSk0"
+    },
+    {
+        "concept": "Python lists",
+        "lecture": "H1BOYfbnPq8",
+        "answer": "8WdnrhlfSLE"
+    },
+    {
+        "concept": "Python lists, manipulating",
+        "lecture": "PHii2QYNyB8",
+        "answer": "ZSraFzkEDzs"
+    },
+    {
+        "concept": "Python lists, slice operator",
+        "lecture": "vNyIZNWK0rw",
+        "answer": "vE498xAFoGc"
+    },
+    {
+        "concept": "Python lists, inclusion",
+        "lecture": "QXUMUvHB2Ws",
+        "answer": "LdA0__D4zLI"
+    },
+    {
+        "concept": "Python: working with dicts",
+        "lecture": "_AbCyE0uKmE",
+        "answer": "edEYrBoa7Ao"
+    },
+    {
+        "concept": "Python: dicts and lists together",
+        "lecture": "9k1XvuoGdrk",
+        "answer": "Gqb-OUFcQas"
+    },
+    {
+        "concept": "Python: for loops, with lists",
+        "lecture": "zMqLCtf3ML4",
+        "answer": "ohA78_D5Rn8"
+    },
+    {
+        "concept": "Python: for loops, with dicts",
+        "lecture": "HHTICY6rUGI",
+        "answer": "OnkPdMP1fVc"
+    },
+    {
+        "concept": "Python: combining dicts and lists",
+        "lecture": "ome7jDN_lH0",
+        "answer": "Y6NKd6xUC6M"
+    },
+    {
+        "concept": "Python: while loops",
+        "lecture": "TEdFAheS5UE"
+    },
+    {
+        "concept": "Python: function calls",
+        "lecture": "PizwcirYuGY"
+    },
+    {
+        "concept": "Python: exception handing",
+        "lecture": "nrZYqF9KwaU"
+    },
+    {
+        "concept": "Bottle framework: Url handlers",
+        "lecture": "x5TlvbWxjL0"
+    },
+    {
+        "concept": "Bottle framework: using views",
+        "lecture": "GUFDtACjFcc"
+    },
+    {
+        "concept": "Bottle framework: handling form content",
+        "lecture": "sUUT-gIS5ik"
+    },
+    {
+        "concept": "Bottle framework: using cookies",
+        "lecture": "Wk_1Lz_-gk4"
+    },
+    {
+        "concept": "The Pymongo driver",
+        "lecture": "AUk17lCRRd4"
+    },
+    {
+        "concept": "Pymongo exception processing",
+        "lecture": "quHoMsHQnCw"
+    },
+    {
+        "concept": "mongorestore"
+    },
+    {
+        "concept": "Homework 1.1",
+        "lecture": "r48N7GcDqVI",
+        "answer": "memPfvehjGo"
+    },
+    {
+        "concept": "Homework 1.2",
+        "answer": "Y-vLcIBlSDs"
+    },
+    {
+        "concept": "Homework 1.3",
+        "answer": "UuUWHfeJL9A"
+    },
+    {
+        "concept": "Introduction to Week 2",
+        "lecture": "1whD5axw6-0"
+    },
+    {
+        "concept": "CRUD and the Mongo Shell",
+        "lecture": "kB_9lXE-EbY",
+        "answer": "osal1NuP4UA"
+    },
+    {
+        "concept": "Secrets of the Mongo Shell",
+        "lecture": "hJy10xgZXzc",
+        "answer": "a6TFwpCoLoY"
+    },
+    {
+        "concept": "BSON Introduced",
+        "lecture": "K3J6WvDW-Hc",
+        "answer": "4hsTQrMs-xY"
+    },
+    {
+        "concept": "Mongo shell, inserting docs",
+        "lecture": "RbRRvBLl7Qo",
+        "answer": "4eqpL7ETQZQ"
+    },
+    {
+        "concept": "Mongo shell, introduction to findOne",
+        "lecture": "w9V0fJsDwbQ",
+        "answer": "uN_wf5a3BE4"
+    },
+    {
+        "concept": "Mongo shell, introduction to find",
+        "lecture": "8kKfFK6a0Ak"
+    },
+    {
+        "concept": "Mongo shell, querying using field selection",
+        "lecture": "UIg86QjSoyY",
+        "answer": "ouHFZgtEAuU"
+    },
+    {
+        "concept": "Mongo shell, querying using $gt and $lt",
+        "lecture": "FHLrz4VGzkg",
+        "answer": "tY7I1l8JdDI"
+    },
+    {
+        "concept": "Mongo shell, inequalities on strings",
+        "lecture": "imCCKOevU3c",
+        "answer": "ZRWT0lcHsoU"
+    },
+    {
+        "concept": "Mongo shell, using regexes, $exists, $type",
+        "lecture": "lI-jhqYf1JY",
+        "answer": "yMi7PwOoqXY"
+    },
+    {
+        "concept": "Mongo shell, using $or",
+        "lecture": "BW5ElNCRZps",
+        "answer": "diimYkvr374"
+    },
+    {
+        "concept": "Mongo shell, using $and",
+        "lecture": "hYk7pjgjjzc",
+        "answer": "oIkSajy8NLw"
+    },
+    {
+        "concept": "Mongo shell, querying inside arrays",
+        "lecture": "jvEqwW75Bus",
+        "answer": "gwECaa4N9Xc"
+    },
+    {
+        "concept": "Mongo shell, $in and $all",
+        "lecture": "QU2NrkviORE",
+        "answer": "6O1UGHwuEww"
+    },
+    {
+        "concept": "Mongo shell, dot notation",
+        "lecture": "NrjFECIfwqk",
+        "answer": "yiEjK_V008s"
+    },
+    {
+        "concept": "Mongo shell, cursors",
+        "lecture": "3jA6iFSEJOI",
+        "answer": "djzpK7UIO94"
+    },
+    {
+        "concept": "Mongo shell, counting results",
+        "lecture": "eKD5bVmNQMI",
+        "answer": "Uozp0diXOc8"
+    },
+    {
+        "concept": "Mongo shell, wholesale updating of a document",
+        "lecture": "EBCk6W7x-OY",
+        "answer": "pwnRUdtI8lY"
+    },
+    {
+        "concept": "Mongo shell, using the $set command",
+        "lecture": "9iMX2KxYAd8",
+        "answer": "F6ZY_VVAXZ8"
+    },
+    {
+        "concept": "Mongo shell, unset commands",
+        "lecture": "OBX9q4kqweA",
+        "answer": "edqDAKMQTv4"
+    },
+    {
+        "concept": "mongo shell, $push, $pop, $pull, $pushAll, $pullAll, $addToSet",
+        "lecture": "iHSwyr7bfQs",
+        "answer": "bGbiIGEM0FY"
+    },
+    {
+        "concept": "mongo shell, upserts",
+        "lecture": "dfvwrlVODGc",
+        "answer": "Loo5XKQAryM"
+    },
+    {
+        "concept": "multi-update",
+        "lecture": "8uNNDduO09w",
+        "answer": "B1DqIls06Tc"
+    },
+    {
+        "concept": "Mongo shell, removing data",
+        "lecture": "PMhGgc3HCn4",
+        "answer": "T3wcuZHm6Ac"
+    },
+    {
+        "concept": "getLastError",
+        "lecture": "kUulkJQvH_A"
+    },
+    {
+        "concept": "Pymongo, find, find_one and cursors",
+        "lecture": "kXu5V3MlFI0",
+        "answer": "d-EOPb3_YVI"
+    },
+    {
+        "concept": "Pymongo, using field selection",
+        "lecture": "pCRMWfF_SC8",
+        "answer": "vMNLxyQ47BM"
+    },
+    {
+        "concept": "Pymongo, using $gt and $lt",
+        "lecture": "p5ltB0g3lUo",
+        "answer": "2kzdSZmJ8jM"
+    },
+    {
+        "concept": "Importing Reddit",
+        "lecture": "dd49ULz7y6Q"
+    },
+    {
+        "concept": "Pymongo, using a regex",
+        "lecture": "UIes2_2rBWE"
+    },
+    {
+        "concept": "Pymongo, using dot notation",
+        "lecture": "kiJRqBbCSGk",
+        "answer": "5mpm64vncL0"
+    },
+    {
+        "concept": "Pymongo, skip, limit and sort",
+        "lecture": "F1bSsbt5Qfk",
+        "answer": "cUNoJN6Ii-I"
+    },
+    {
+        "concept": "Pymongo, sorting, final thoughts",
+        "lecture": "hwUg8r7a-d8"
+    },
+    {
+        "concept": "Pymongo, inserting",
+        "lecture": "1buD4Ern9rA",
+        "answer": "pEMyrKDzgFg"
+    },
+    {
+        "concept": "Pymongo, updating",
+        "lecture": "u6iRURy8rY0",
+        "answer": "Cyk5uzO-65w"
+    },
+    {
+        "concept": "Pymongo, upserts",
+        "lecture": "hcGo9lV9HwI",
+        "answer": "tMEohyZX0cI"
+    },
+    {
+        "concept": "Pymongo, find and modify",
+        "lecture": "rQ8Oml5e6PI"
+    },
+    {
+        "concept": "Blog, User Interface",
+        "lecture": "QA80WBg0hLg"
+    },
+    {
+        "concept": "Blog, Session Management",
+        "lecture": "BzVvoyF8mBo"
+    },
+    {
+        "concept": "Blog, Internals",
+        "lecture": "O1sitBpE8u0"
+    },
+    {
+        "concept": "HW 2.1",
+        "answer": "RUy50I3mrnU"
+    },
+    {
+        "concept": "HW 2.2",
+        "answer": "xS0njlIkClY"
+    },
+    {
+        "concept": "HW 2.3",
+        "answer": "ROna1m94mt8"
+    },
+    {
+        "concept": "Introduction to Week 3",
+        "lecture": "8lLQtcrHs5U"
+    },
+    {
+        "concept": "MongoDB Schema Design",
+        "lecture": "itnfWjMnQ4A",
+        "answer": "OVDnLJXpqNE"
+    },
+    {
+        "concept": "Relational Normalization",
+        "lecture": "GX__f2s4hd8"
+    },
+    {
+        "concept": "Mongo Design for Blog",
+        "lecture": "PRylEHH5t84",
+        "answer": "s5E0T4caqj4"
+    },
+    {
+        "concept": "Alternative Schema for Blog",
+        "lecture": "ZvqNWVWB2-o"
+    },
+    {
+        "concept": "Living without constraints",
+        "lecture": "YFRMkDPaams",
+        "answer": "3VckBMGInic"
+    },
+    {
+        "concept": "Living without transactions",
+        "lecture": "FfRr3qjRfww",
+        "answer": "189zABW3HHk"
+    },
+    {
+        "concept": "One to One Relations",
+        "lecture": "cCsfon0vUlQ",
+        "answer": "BjW64RkzlGg"
+    },
+    {
+        "concept": "One to Many Relations",
+        "lecture": "EIaP1KbVkUc",
+        "answer": "KQcspnr-Y2M"
+    },
+    {
+        "concept": "Many to Many Relations",
+        "lecture": "fEYYjZ7zEHc"
+    },
+    {
+        "concept": "Multikeys",
+        "lecture": "ocU9WNUL9YQ"
+    },
+    {
+        "concept": "Benefits of Embedding",
+        "lecture": "XIN0Dqht08Q"
+    },
+    {
+        "concept": "Trees",
+        "lecture": "lIjXyQklGWY",
+        "answer": "80P6yVSkKQY"
+    },
+    {
+        "concept": "When to Denormalize",
+        "lecture": "jDZ-HFoJ0vg"
+    },
+    {
+        "concept": "Handling Blobs",
+        "lecture": "AsL5p1Z0Ss8"
+    },
+    {
+        "concept": "HW 3.1",
+        "lecture": "lpSMbphEl7c",
+        "answer": "iODR0m6m25c"
+    },
+    {
+        "concept": "HW 3.2",
+        "lecture": "SEh6Y4lHkWQ",
+        "answer": "CQ-w_w3MTAw"
+    },
+    {
+        "concept": "HW 3.3",
+        "lecture": "HPSgVT2BEYQ",
+        "answer": "wCF3X4PM49w"
+    },
+    {
+        "concept": "Introduction to Week 4",
+        "lecture": "8qBXI8ggV88"
+    },
+    {
+        "concept": "Indexes",
+        "lecture": "kkIAqyqYOCc",
+        "answer": "5Z6V8mJ8eS4"
+    },
+    {
+        "concept": "Creating indexes",
+        "lecture": "tRqenx45UAM",
+        "answer": "h1VdrcOjFm8"
+    },
+    {
+        "concept": "Discovering indexes",
+        "lecture": "hH7kYu_-FXg"
+    },
+    {
+        "concept": "Multikey Indexes",
+        "lecture": "JO_puGONaLc",
+        "answer": "CeE6hZ90Uzk"
+    },
+    {
+        "concept": "Multikey Continued",
+        "lecture": "mPSGG2p33RQ"
+    },
+    {
+        "concept": "Index creation options, unique",
+        "lecture": "764mQG1iL8E",
+        "answer": "cCO7b-fcj0I"
+    },
+    {
+        "concept": "Index creation options, remove dups",
+        "lecture": "YJaWPXNGvoU",
+        "answer": "s46y1rJAvVs"
+    },
+    {
+        "concept": "Index creation options, sparse",
+        "lecture": "s4sYwLndtTI",
+        "answer": "_MJYRlianas"
+    },
+    {
+        "concept": "Index creation options, background",
+        "lecture": "28wCvoXmY7A",
+        "answer": "aNSHjG_LnSc"
+    },
+    {
+        "concept": "Using Explain",
+        "lecture": "r5YeICVzDjQ",
+        "answer": "Gpj_s49H_rQ"
+    },
+    {
+        "concept": "When is an index used?",
+        "lecture": "Lwms58Y_3Jc",
+        "answer": "imHqsvqx-GA"
+    },
+    {
+        "concept": "How large is your index?",
+        "lecture": "oywrqWNY46s",
+        "answer": "mXHUIghDkFw"
+    },
+    {
+        "concept": "Index Cardinality",
+        "lecture": "xiujksUfzUA",
+        "answer": "4UW_oMSswTo"
+    },
+    {
+        "concept": "Index Selectivity",
+        "lecture": "On8HHR1agsI",
+        "answer": "BT95omWR2nw"
+    },
+    {
+        "concept": "Hinting an index",
+        "lecture": "ksOn-SkaIcg",
+        "answer": "WHc_qRSxGM0"
+    },
+    {
+        "concept": "Hinting in Pymongo",
+        "lecture": "dlKcfo7WtGU"
+    },
+    {
+        "concept": "Efficiency of Index use",
+        "lecture": "1sADN-NKwhY"
+    },
+    {
+        "concept": "Geospacial Indexes",
+        "lecture": "UKUDYqNVL6I",
+        "answer": "hVLa0H7Oe98"
+    },
+    {
+        "concept": "Geospacial Spherical",
+        "lecture": "vY3_H4MzkIY"
+    },
+    {
+        "concept": "Logging Slow Queries",
+        "lecture": "aWuvC-O7Qkk"
+    },
+    {
+        "concept": "Profiling",
+        "lecture": "pN1Yhrup9-I",
+        "answer": "A4x4kE02pSc"
+    },
+    {
+        "concept": "Mongotop",
+        "lecture": "D9YLXgy7NYo"
+    },
+    {
+        "concept": "Mongostat",
+        "lecture": "eLWQO_AJmrI"
+    },
+    {
+        "concept": "Sharding Overview",
+        "lecture": "BDxT-VZdYqc"
+    },
+    {
+        "concept": "HW 4.1",
+        "lecture": "0tpXSPgYk4I",
+        "answer": "ecMrwMMBqIg"
+    },
+    {
+        "concept": "HW 4.2",
+        "lecture": "Zz8TerE95Ss",
+        "answer": "LrsbQkNztMY"
+    },
+    {
+        "concept": "HW 4.3",
+        "lecture": "K-oXNC7voR8",
+        "answer": "pDtSL7gbQa4"
+    },
+    {
+        "concept": "HW 4.4"
+    },
+    {
+        "concept": "Introduction to Week 5",
+        "lecture": "EaEIHm3CMQM"
+    },
+    {
+        "concept": "Simple Aggregation Example",
+        "lecture": "T2BX-LZOYsY",
+        "answer": "Nt0cQI86G40"
+    },
+    {
+        "concept": "The Aggregation Pipeline",
+        "lecture": "WazN2DS8s8c",
+        "answer": "mcnGfI69rRc"
+    },
+    {
+        "concept": "Simple Example Expanded",
+        "lecture": "3lEpnMcfpCs",
+        "answer": "nr1E1qTyIHU"
+    },
+    {
+        "concept": "Compound Grouping",
+        "lecture": "LPFVRrag2Zg",
+        "answer": "bIlwnlYBRA0"
+    },
+    {
+        "concept": "Using a document for _id",
+        "lecture": "zoN4cj_XQzY"
+    },
+    {
+        "concept": "Aggregation Expressions",
+        "lecture": "L4G14MTfTgQ",
+        "answer": "kJ0k2na4ukU"
+    },
+    {
+        "concept": "Using $sum",
+        "lecture": "oAV9tC0R8xk",
+        "answer": "ATO_s_Ah08o"
+    },
+    {
+        "concept": "Using $avg",
+        "lecture": "7UWOK8rWf1w",
+        "answer": "tT6Jx8s9dTc"
+    },
+    {
+        "concept": "Using $addToSet",
+        "lecture": "y2FD4R3in5U",
+        "answer": "zGcTxUQuLGE"
+    },
+    {
+        "concept": "Using $push",
+        "lecture": "gjIVUFufx3A",
+        "answer": "hFqDvVXtm6E"
+    },
+    {
+        "concept": "Using $max and $min",
+        "lecture": "BYoNX4trjOQ",
+        "answer": "sHCdOiCispA"
+    },
+    {
+        "concept": "Double group stage",
+        "lecture": "ET4ubwQTTos",
+        "answer": "J-asAAEHJ0Q"
+    },
+    {
+        "concept": "$project",
+        "lecture": "yi-ySSNO8Ao",
+        "answer": "IGN0lXg-kJ0"
+    },
+    {
+        "concept": "$match",
+        "lecture": "qohLRL8k0So",
+        "answer": "CHGiumXE-pU"
+    },
+    {
+        "concept": "$sort",
+        "lecture": "TW1KByIuns4",
+        "answer": "-cghyd6AHHA"
+    },
+    {
+        "concept": "$limit and $skip",
+        "lecture": "AdxoEzVqdtc",
+        "answer": "joRw-fqCIWA"
+    },
+    {
+        "concept": "Revisiting $first and $last",
+        "lecture": "O1zeqAxdUgk",
+        "answer": "WBWb0ssDVeY"
+    },
+    {
+        "concept": "$unwind",
+        "lecture": "E4aYOQPeQvI",
+        "answer": "Xfl3m7wz8ts"
+    },
+    {
+        "concept": "$unwind example",
+        "lecture": "XiWCJr4Lqag",
+        "answer": "jAWL-BJD0tI"
+    },
+    {
+        "concept": "Double $unwind",
+        "lecture": "sgnidsHyFeU",
+        "answer": "pziFq1oVRI4"
+    },
+    {
+        "concept": "Mapping between SQL and Aggregation",
+        "lecture": "auL2R0XKlyM"
+    },
+    {
+        "concept": "Some common SQL queries",
+        "lecture": "ep2gLSR6C0U"
+    },
+    {
+        "concept": "Limitations of Aggregation Framework",
+        "lecture": "8BQzKXI-_wE"
+    },
+    {
+        "concept": "HW 5.1",
+        "answer": "9wkTlkRZ8Z0"
+    },
+    {
+        "concept": "HW 5.2",
+        "answer": "VTSFb8m4vrs"
+    },
+    {
+        "concept": "HW 5.3",
+        "answer": "wqfqAzhOie8"
+    },
+    {
+        "concept": "HW 5.4",
+        "answer": "UpwIQjRO2vw"
+    },
+    {
+        "concept": "Introduction to Week 6",
+        "lecture": "3l9Esnu2-7s"
+    },
+    {
+        "concept": "Write Concern",
+        "lecture": "EtEPEkX3koo",
+        "answer": "2-UO105PDrk"
+    },
+    {
+        "concept": "Network Errors",
+        "lecture": "BycNYXFpqhM",
+        "answer": "64mAA3SEnkg"
+    },
+    {
+        "concept": "The Pymongo driver",
+        "lecture": "H1zGLx8ggXk",
+        "answer": "ghbQtF5YfHw"
+    },
+    {
+        "concept": "Introduction to Replication",
+        "lecture": "f1WTYGORU3w",
+        "answer": "XCssKzhlnZU"
+    },
+    {
+        "concept": "Replica set elections",
+        "lecture": "WFXSVHO78bQ",
+        "answer": "vrUxTTD-XwA"
+    },
+    {
+        "concept": "Write Consistency",
+        "lecture": "Oqf_Eza-s1M",
+        "answer": "SjaJEYK1u3E"
+    },
+    {
+        "concept": "Creating a replica set",
+        "lecture": "flCFVFBRsKI",
+        "answer": "ibZVf59aUj8"
+    },
+    {
+        "concept": "Replica Set Internals",
+        "lecture": "lx0Kj4n4EWM",
+        "answer": "_am2mdVF1uk"
+    },
+    {
+        "concept": "Failover and Rolback",
+        "lecture": "IW1oW_Adlt0",
+        "answer": "t3rNxRg6WZE"
+    },
+    {
+        "concept": "Connecting to a Replica Set from Pymongo",
+        "lecture": "WFI8LpSgaK8",
+        "answer": "rODKm1GvUpY"
+    },
+    {
+        "concept": "What happens when failover occurs",
+        "lecture": "u5V_xYBoPzs",
+        "answer": "aZLcR8ey7cE"
+    },
+    {
+        "concept": "Detecting Failover",
+        "lecture": "8pjEFAVzUKk",
+        "answer": "E1_42g_Tfao"
+    },
+    {
+        "concept": "Proper handling of failover",
+        "lecture": "tcLJxRSzVqU",
+        "answer": "4Y-xQa8CyBA"
+    },
+    {
+        "concept": "Write Concern Revisited",
+        "lecture": "5VyXyccjS3k",
+        "answer": "hQrCwRplszo"
+    },
+    {
+        "concept": "Read Preferences",
+        "lecture": "_c8_YYln5WU",
+        "answer": "tp17iqGdw-k"
+    },
+    {
+        "concept": "Review Implications of Replication",
+        "lecture": "K5ISnvYKQFQ",
+        "answer": "8wuWShep8Qs"
+    },
+    {
+        "concept": "Introduction to sharding",
+        "lecture": "_GfDqa1qRl0",
+        "answer": "4Z0D2bX5Cg4"
+    },
+    {
+        "concept": "Building a Sharded Environment",
+        "lecture": "aaYc2W4keF4",
+        "answer": "5tPjnJrY0rU"
+    },
+    {
+        "concept": "Implications of Sharding",
+        "lecture": "ig278F60gRA",
+        "answer": "vfl0hqdgB3Q"
+    },
+    {
+        "concept": "Sharded + Replicated environments",
+        "lecture": "gkUCUbM0oEg",
+        "answer": "hnuiYokdO7g"
+    },
+    {
+        "concept": "Choosing a Shard Key",
+        "lecture": "8q2GB3QSBSI",
+        "answer": "91tO_iGga5w"
+    },
+    {
+        "concept": "HW 6.1",
+        "answer": "J4ZuF8UJD9s"
+    },
+    {
+        "concept": "HW 6.2",
+        "answer": "8K-6JPrvkEs"
+    },
+    {
+        "concept": "HW 6.3",
+        "answer": "496QtQt4tX8"
+    },
+    {
+        "concept": "HW 6.4",
+        "answer": "uEemjO9S7vQ"
+    },
+    {
+        "concept": "HW 6.5",
+        "answer": "C0ZLyPfymR8"
+    },
+    {
+        "concept": "Introduction to Week 7",
+        "lecture": "adRyiudsgv0"
+    },
+    {
+        "concept": "Interview with Jon Hoffman, foursquare",
+        "lecture": "GBauy0o-Wzs"
+    },
+    {
+        "concept": "Interview with Ryan Bubunksi, codecademy",
+        "lecture": "RkPmVQNesZA"
+    }
+]

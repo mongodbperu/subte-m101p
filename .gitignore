@@ -47,4 +47,9 @@ Thumbs.db
 *.3gp
 *.flv
 
+# INTELLIJ #
+############
+.idea/*
+*.iml
+
 M101P/Final_Exam
