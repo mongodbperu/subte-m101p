@@ -1,369 +1,429 @@
 1
-00:00:00,000 --> 00:00:00,160
+00:00:00,000 --> 00:00:00,530
+ 
 
 2
-00:00:00,160 --> 00:00:05,250
-In MongoDB you can have a
-key that holds an array.
+00:00:00,530 --> 00:00:02,600
+Let's talk about
+multikey indexes.
 
 3
-00:00:05,250 --> 00:00:07,770
-For instance, if you have tags
-keyed that hold cycling,
+00:00:02,600 --> 00:00:05,500
+We discussed multikey indexes
+briefly in the previous unit,
 
 4
-00:00:07,770 --> 00:00:09,450
-tennis, and football.
+00:00:05,500 --> 00:00:07,810
+but I want to go
+into more detail now.
 
 5
-00:00:09,450 --> 00:00:15,370
-And you can index tags, so you
-can call ensure index, and you
+00:00:07,810 --> 00:00:10,120
+Let's say you have a
+document, and that document
 
 6
-00:00:15,370 --> 00:00:17,900
-can tell the database
-that you want the
+00:00:10,120 --> 00:00:13,610
+has a key tags, and
+the value is an array.
 
 7
-00:00:17,900 --> 00:00:19,785
-tags key to be indexed.
+00:00:13,610 --> 00:00:15,700
+And in this case,
+we have an array
 
 8
-00:00:19,785 --> 00:00:23,160
-Now, if you do that what MongoDB
-does is it creates
+00:00:15,700 --> 00:00:17,950
+of cycling, tennis,
+and football.
 
 9
-00:00:23,160 --> 00:00:25,540
-what's called a multikey
-index.
+00:00:17,950 --> 00:00:20,487
+If you want to perform
+queries on this collection,
 
 10
-00:00:25,540 --> 00:00:30,980
-Now, what a multikey index is,
-is that rather than create one
+00:00:20,487 --> 00:00:22,070
+and you want those
+queries to be fast,
 
 11
-00:00:30,980 --> 00:00:34,890
-index point for each document,
-if it sees an array in the
+00:00:22,070 --> 00:00:24,570
+you want to add an
+index on tags if you're
 
 12
-00:00:34,890 --> 00:00:37,840
-document, it will create
-an index point for
+00:00:24,570 --> 00:00:26,450
+trying to query on tags.
 
 13
-00:00:37,840 --> 00:00:40,100
-every item in the array.
+00:00:26,450 --> 00:00:28,920
+Now MongoDB supports
+adding an index
 
 14
-00:00:40,100 --> 00:00:45,860
-So that if we do a Find where
-cycling is in tags, then it
+00:00:28,920 --> 00:00:31,710
+on a key whose value
+might be an array.
 
 15
-00:00:45,860 --> 00:00:50,110
-will be fast because it's
-able to use the index.
+00:00:31,710 --> 00:00:34,450
+And if the value is an
+array, what MongoDB does
 
 16
-00:00:50,110 --> 00:00:53,200
-And that only happens
-if it's an array.
+00:00:34,450 --> 00:00:36,700
+is it creates what's
+called a multikey index.
 
 17
-00:00:53,200 --> 00:00:55,160
-That's called a multikey
-index.
+00:00:36,700 --> 00:00:39,180
+Rather than having a single
+index point per document,
 
 18
-00:00:55,160 --> 00:00:57,210
-Then you can create
-a compound index.
+00:00:39,180 --> 00:00:40,960
+there are multiple
+index points, one
 
 19
-00:00:57,210 --> 00:01:02,960
-For instance, I can create a
-compound index on tags colon
+00:00:40,960 --> 00:00:43,520
+for each of these
+elements in the array.
 
 20
-00:01:02,960 --> 00:01:04,349
-color or something.
+00:00:43,520 --> 00:00:44,910
+Now MongoDB is dynamic.
 
 21
-00:01:04,349 --> 00:01:06,220
-And that works just fine.
+00:00:44,910 --> 00:00:47,680
+It doesn't know when you
+create the index what documents
 
 22
-00:01:06,220 --> 00:01:08,890
-But Mongo restricts
-the queries.
+00:00:47,680 --> 00:00:49,240
+are going to exist
+in the collection.
 
 23
-00:01:08,890 --> 00:01:13,860
-You cannot have two items in a
-document that are both arrays
+00:00:49,240 --> 00:00:51,610
+So it's not until
+you actually insert
 
 24
-00:01:13,860 --> 00:01:15,700
-if it's a multikey index.
+00:00:51,610 --> 00:00:54,260
+a document whose value
+is an array that it
 
 25
-00:01:15,700 --> 00:01:17,690
-Now, this is all
-dynamic, right?
+00:00:54,260 --> 00:00:56,049
+becomes a multikey index.
 
 26
-00:01:17,690 --> 00:01:20,950
-So when you first create an
-index on two things, MongoDB
+00:00:56,049 --> 00:00:57,590
+And there are some
+other restrictions
 
 27
-00:01:20,950 --> 00:01:22,720
-doesn't know whether or not
-there are going to be arrays
+00:00:57,590 --> 00:00:58,900
+on multikey indexes.
 
 28
-00:01:22,720 --> 00:01:23,760
-in those items.
+00:00:58,900 --> 00:01:02,660
+For instance, you can create
+a compound index on tags comma
 
 29
-00:01:23,760 --> 00:01:27,470
-So it's when you insert the
-items that it will stop you
+00:01:02,660 --> 00:01:06,890
+color because only one
+of those two is an array,
 
 30
-00:01:27,470 --> 00:01:28,690
-from inserting them
-if they're both
+00:01:06,890 --> 00:01:08,990
+and the other one in
+this case is a scalar.
 
 31
-00:01:28,690 --> 00:01:30,240
-arrays and they're multikeys.
+00:01:08,990 --> 00:01:12,620
+But MongoDB wouldn't allow
+you to create a compound index
 
 32
-00:01:30,240 --> 00:01:34,090
-And the reason is because of the
-polynomial explosion that
+00:01:12,620 --> 00:01:16,150
+on tags comma location
+because then it
 
 33
-00:01:34,090 --> 00:01:38,500
-you'd have of index points every
-single time you added
+00:01:16,150 --> 00:01:19,720
+has to create index points for
+every combination of the array
 
 34
-00:01:38,500 --> 00:01:43,430
-and subtracted something from
-the array if we allowed you to
+00:01:19,720 --> 00:01:20,380
+elements.
 
 35
-00:01:43,430 --> 00:01:46,500
-compound index where both
-items were arrays.
+00:01:20,380 --> 00:01:23,080
+And that gets too large,
+and so it's not allowed.
 
 36
-00:01:46,500 --> 00:01:49,120
-So let me make this more
-concrete by showing you some
+00:01:23,080 --> 00:01:24,214
+It can't do that.
 
 37
-00:01:49,120 --> 00:01:51,270
-stuff in the shell.
+00:01:24,214 --> 00:01:26,380
+To make this more concrete,
+let's go into the shell,
 
 38
-00:01:51,270 --> 00:01:56,020
-So I'm just going to use the
-test database here and I'm
+00:01:26,380 --> 00:01:29,750
+and play around a little bit,
+and see how this all works.
 
 39
-00:01:56,020 --> 00:02:00,140
-going to actually start by
-creating a collection and
+00:01:29,750 --> 00:01:31,600
+What I'm going to
+do right now is
 
 40
-00:02:00,140 --> 00:02:01,910
-insert something into
-the collection.
+00:01:31,600 --> 00:01:34,550
+I'm going to insert just
+a simple little document
 
 41
-00:02:01,910 --> 00:02:05,550
-I'll call the collection BBB.
+00:01:34,550 --> 00:01:36,400
+into a collection,
+the collection foo,
 
 42
-00:02:05,550 --> 00:02:09,570
-I inserted into BBB
-A and B being one.
+00:01:36,400 --> 00:01:39,850
+and have it be simple document
+with the keys a and b.
 
 43
-00:02:09,570 --> 00:02:14,140
-And I can now, if I want, I can
-create an index for that.
+00:01:39,850 --> 00:01:44,310
+Now let's add an index to
+this, db.foo.ensureIndex,
 
 44
-00:02:14,140 --> 00:02:16,540
-At this point I have to set up
-a standard compound index.
+00:01:44,310 --> 00:01:49,970
+and we're going to add
+an index on a comma b.
 
 45
-00:02:16,540 --> 00:02:21,470
-But what if I tried to insert
-something into the index where
+00:01:49,970 --> 00:01:50,770
+It added the index.
 
 46
-00:02:21,470 --> 00:02:24,060
-it was an array,
-which I can do.
+00:01:50,770 --> 00:01:51,886
+That's no problem.
 
 47
-00:02:24,060 --> 00:02:29,660
-So now I'm going to insert
-A is 1, 2, 3.
+00:01:51,886 --> 00:01:53,260
+Before there was
+one index, which
 
 48
-00:02:29,660 --> 00:02:33,610
-Now at this point it's a
-multikey index, and I can also
+00:01:53,260 --> 00:01:55,080
+was the underscore ID index.
 
 49
-00:02:33,610 --> 00:02:38,110
-insert something where, let's
-say, B is 1, 2, 3.
+00:01:55,080 --> 00:01:56,530
+Now it says there
+are two indexes.
 
 50
-00:02:38,110 --> 00:02:44,040
-Now A is going to be 5 in this
-case, and B is going to be the
+00:01:56,530 --> 00:01:59,500
+Let's now do a query
+to find a result
 
 51
-00:02:44,040 --> 00:02:45,500
-array 1, 2, 3.
+00:01:59,500 --> 00:02:03,032
+and find something where a is 1.
 
 52
-00:02:45,500 --> 00:02:48,130
-A little extra cone there.
+00:02:03,032 --> 00:02:03,990
+It found that document.
 
 53
-00:02:48,130 --> 00:02:49,650
-Here we go.
+00:02:03,990 --> 00:02:06,720
+Now let's do an
+explain and see what
 
 54
-00:02:49,650 --> 00:02:51,430
-So that all works just fine.
+00:02:06,720 --> 00:02:09,490
+explain says about
+what index it used.
 
 55
-00:02:51,430 --> 00:02:54,870
-And there's an index in here,
-and you can see it, if you
+00:02:09,490 --> 00:02:11,660
+And it said it used
+this BtreeCursor index,
 
 56
-00:02:54,870 --> 00:02:57,480
-call get indexes you'll see
-the indexes we created.
+00:02:11,660 --> 00:02:13,550
+and it said multikey is false.
 
 57
-00:02:57,480 --> 00:03:01,650
-So there's the index that we
-created on A and B. But if I
+00:02:13,550 --> 00:02:17,950
+Well, now let's insert another
+document into this collection.
 
 58
-00:03:01,650 --> 00:03:06,370
-try to insert something where
-both A and B are an array into
+00:02:17,950 --> 00:02:21,400
+And this time, let's
+make a an array.
 
 59
-00:03:06,370 --> 00:03:10,120
-this multikey index, the
-database will cry foul.
+00:02:21,400 --> 00:02:23,905
+So we're making a
+an array, and I'll
 
 60
-00:03:10,120 --> 00:03:11,630
-It will not allow that.
+00:02:23,905 --> 00:02:27,470
+make b just a scalar, like five.
 
 61
-00:03:11,630 --> 00:03:14,460
-You cannot index the parallel
-arrays B and A.
+00:02:27,470 --> 00:02:28,970
+My insert was fine.
 
 62
-00:03:14,460 --> 00:03:17,990
-So there's this concept of a
-multikey index inside MongoDB.
+00:02:28,970 --> 00:02:31,330
+I'm going to go back
+and do my find again.
 
 63
-00:03:17,990 --> 00:03:19,170
-Its dynamic.
+00:02:31,330 --> 00:02:33,190
+First I'll just do the find.
 
 64
-00:03:19,170 --> 00:03:21,870
-It doesn't really know there's
-going to be array values in
+00:02:33,190 --> 00:02:34,210
+That's all fine.
 
 65
-00:03:21,870 --> 00:03:23,020
-any given key.
+00:02:34,210 --> 00:02:36,020
+Found both documents.
 
 66
-00:03:23,020 --> 00:03:26,730
-But if you start adding arrays
-into a key, it's fine.
+00:02:36,020 --> 00:02:38,070
+Now I'm going to explain it.
 
 67
-00:03:26,730 --> 00:03:29,160
-If it's part of index it will
-create next point for every
+00:02:38,070 --> 00:02:40,620
+And now things look
+a little different.
 
 68
-00:03:29,160 --> 00:03:31,680
-item in the array, but you
-can't do it for parallel
+00:02:40,620 --> 00:02:43,980
+Now it says that
+multikey is true.
 
 69
-00:03:31,680 --> 00:03:35,380
-arrays, as it calls it, if
-more than one value is an
+00:02:43,980 --> 00:02:46,560
+Because there' a document
+in the collection
 
 70
-00:03:35,380 --> 00:03:37,700
-array in a compound index.
+00:02:46,560 --> 00:02:50,112
+with a value that is an array,
+and its indexed because there
 
 71
-00:03:37,700 --> 00:03:40,670
-OK, it is time for a quiz.
+00:02:50,112 --> 00:02:51,850
+is an index on a comma b.
 
 72
-00:03:40,670 --> 00:03:44,290
-Suppose we have a collection foo
-that has an index created
+00:02:51,850 --> 00:02:53,940
+Now multikey is true.
 
 73
-00:03:44,290 --> 00:03:45,440
-as follows.
+00:02:53,940 --> 00:02:56,650
+And as I said before, if
+you try to insert something
 
 74
-00:03:45,440 --> 00:03:49,610
-db.foo.ensureIndex A1, B1.
+00:02:56,650 --> 00:03:01,020
+into the collection, where
+both a and b are arrays
 
 75
-00:03:49,610 --> 00:03:52,720
-Which of the following inserts
-are valid to this collection?
+00:03:01,020 --> 00:03:04,770
+for this compound index,
+that is going to fail.
 
 76
-00:03:52,720 --> 00:03:54,940
-And I won't go through
-them, because they're
+00:03:04,770 --> 00:03:06,670
+Let's watch that fail.
 
 77
-00:03:54,940 --> 00:03:56,210
-a little bit detailed.
+00:03:06,670 --> 00:03:10,710
+And it says here, I can't insert
+that document with a having
 
 78
-00:03:56,210 --> 00:03:58,970
-But figure out which one of
-these are valid for the
+00:03:10,710 --> 00:03:13,950
+a value of 123 and b
+having a value of 345,
 
 79
-00:03:58,970 --> 00:04:00,220
-collection.
+00:03:13,950 --> 00:03:17,410
+it says, because I can't
+index parallel arrays b and a.
+
+80
+00:03:17,410 --> 00:03:19,620
+So you can have a
+compound index on a and b,
+
+81
+00:03:19,620 --> 00:03:23,080
+but if both of those values
+for a document are both arrays,
+
+82
+00:03:23,080 --> 00:03:24,150
+then it will fail.
+
+83
+00:03:24,150 --> 00:03:27,410
+And that's the way
+multikey indexes work.
+
+84
+00:03:27,410 --> 00:03:30,130
+It is time for a quiz.
+
+85
+00:03:30,130 --> 00:03:32,380
+Suppose we have a
+collection, foo,
+
+86
+00:03:32,380 --> 00:03:34,510
+that has an index
+created as follows.
+
+87
+00:03:34,510 --> 00:03:39,690
+db.foo ensure index a:1 b:1,
+which of the following inserts
+
+88
+00:03:39,690 --> 00:03:41,530
+are valid to this collection?
+
+89
+00:03:41,530 --> 00:03:44,160
+And I won't go through them
+because they're a little bit
+
+90
+00:03:44,160 --> 00:03:46,460
+detailed, but figure
+out which one of these
+
+91
+00:03:46,460 --> 00:03:49,300
+are valid for the collection.
+

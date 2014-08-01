@@ -1,373 +1,347 @@
 1
-00:00:00,000 --> 00:00:00,320
+00:00:00,000 --> 00:00:00,500
+ 
 
 2
-00:00:00,320 --> 00:00:03,390
-OK, we talked a little bit
-earlier about MongoDB being
+00:00:00,500 --> 00:00:03,090
+OK, we talked a little
+bit earlier about MongoDB
 
 3
-00:00:03,390 --> 00:00:04,230
-schemaless.
+00:00:03,090 --> 00:00:04,200
+being schema-less.
 
 4
-00:00:04,230 --> 00:00:06,940
-And I wanted to go back to that
-and show you a little bit
+00:00:04,200 --> 00:00:07,520
+And I want to go back to that
+and show you a little bit more
 
 5
-00:00:06,940 --> 00:00:10,130
-more are inside the shell what
-that looks like now that
+00:00:07,520 --> 00:00:09,770
+inside the shell what
+that looks like, now
 
 6
-00:00:10,130 --> 00:00:13,370
-you've seen MongoDB installed,
-and you've seen the shell, and
+00:00:09,770 --> 00:00:11,899
+that you've seen
+MongoDB installed
 
 7
-00:00:13,370 --> 00:00:16,610
-you've seen us build a small
-application end-to-end.
+00:00:11,899 --> 00:00:13,440
+and you've seen the
+shell, and you've
 
 8
-00:00:16,610 --> 00:00:18,660
-So fundamentally, that
-comes down to a
+00:00:13,440 --> 00:00:16,570
+seen this build a small
+application end to end.
 
 9
-00:00:18,660 --> 00:00:19,970
-few different things.
+00:00:16,570 --> 00:00:19,500
+So fundamentally, that comes
+down to a few different things.
 
 10
-00:00:19,970 --> 00:00:23,050
-One is that, often, in
-a relational system,
+00:00:19,500 --> 00:00:23,020
+And the one is that often
+in a relational system
 
 11
-00:00:23,050 --> 00:00:24,270
-you'll have a table.
+00:00:23,020 --> 00:00:26,400
+you'll have a table and you'll
+have certain columns the table.
 
 12
-00:00:24,270 --> 00:00:26,440
-And you'll have certain
-columns in the table.
+00:00:26,400 --> 00:00:30,700
+For instance, name, age,
+and maybe city of birth,
 
 13
-00:00:26,440 --> 00:00:29,890
-For instance, name,
-age, and maybe
+00:00:30,700 --> 00:00:31,460
+or something.
 
 14
-00:00:29,890 --> 00:00:31,480
-city of birth or something.
+00:00:31,460 --> 00:00:33,050
+And over time, you
+may decide that you
 
 15
-00:00:31,480 --> 00:00:33,630
-And over time, you may decide
-that you want to keep some
+00:00:33,050 --> 00:00:35,133
+want to keep some additional
+piece of information.
 
 16
-00:00:33,630 --> 00:00:34,960
-additional piece
-of information.
+00:00:35,133 --> 00:00:37,370
+And to do that, you'd
+have to expand the table
 
 17
-00:00:34,960 --> 00:00:37,400
-And to do that, you'd have
-to expand the table.
+00:00:37,370 --> 00:00:38,882
+and do an Alter Table command.
 
 18
-00:00:37,400 --> 00:00:39,120
-And do an ALTER TABLE command.
+00:00:38,882 --> 00:00:40,840
+That's how it works in
+the world of relational.
 
 19
-00:00:39,120 --> 00:00:40,920
-That's how it works in the
-world of relational.
-
-20
-00:00:40,920 --> 00:00:42,650
+00:00:40,840 --> 00:00:42,730
 In Mongo, you don't
 need to do that.
 
+20
+00:00:42,730 --> 00:00:45,320
+So in Mongo, different documents
+can have different schema.
+
 21
-00:00:42,650 --> 00:00:44,200
-So in Mongo, different
-documents can
+00:00:45,320 --> 00:00:47,890
+And so this means that
+as the system evolves
 
 22
-00:00:44,200 --> 00:00:45,250
-have different schema.
+00:00:47,890 --> 00:00:49,950
+with agile
+methodologies often you
 
 23
-00:00:45,250 --> 00:00:48,630
-And so this means that, as the
-system evolves, with agile
+00:00:49,950 --> 00:00:51,700
+work in short two- and
+three-week sprints,
 
 24
-00:00:48,630 --> 00:00:51,440
-methodologies, often you'll work
-in short two and three
+00:00:51,700 --> 00:00:54,270
+and you make changes and
+you'll iterate the system,
 
 25
-00:00:51,440 --> 00:00:51,925
-weeks sprints.
+00:00:54,270 --> 00:00:55,757
+we can accommodate that.
 
 26
-00:00:51,925 --> 00:00:54,290
-And you'll make changes, and
-you'll iterate the system.
+00:00:55,757 --> 00:00:57,590
+So let's look at what
+that practically looks
 
 27
-00:00:54,290 --> 00:00:55,690
-We can accommodate that.
+00:00:57,590 --> 00:00:58,616
+like in the shell.
 
 28
-00:00:55,690 --> 00:00:57,410
-So let's look at what
-that practically
+00:00:58,616 --> 00:01:02,130
+All right, so let's create a new
+collection and call it "users"
 
 29
-00:00:57,410 --> 00:00:59,050
-looks like in the shall.
+00:01:02,130 --> 00:01:03,900
+and then put something in it.
 
 30
-00:00:59,050 --> 00:01:01,550
-All right, so let's create a
-new collection and call it
+00:01:03,900 --> 00:01:06,080
+I'm going to put name
+in it, my own name.
 
 31
-00:01:01,550 --> 00:01:03,830
-users, and then put
-something in it.
+00:01:06,080 --> 00:01:09,920
+And then, let's say, I want
+to put my city of birth in it,
 
 32
-00:01:03,830 --> 00:01:06,100
-I'm going to put in a name,
-put my whole name.
-
-33
-00:01:06,100 --> 00:01:09,950
-And then let's say I want to
-put my city of birth in it.
-
-34
-00:01:09,950 --> 00:01:11,540
+00:01:09,920 --> 00:01:11,530
 I'll say it's Queens.
 
-35
-00:01:11,540 --> 00:01:13,010
+33
+00:01:11,530 --> 00:01:12,980
 And I can do that.
 
+34
+00:01:12,980 --> 00:01:14,710
+Now, if I look in the
+user's collection,
+
+35
+00:01:14,710 --> 00:01:16,200
+I'll see my document.
+
 36
-00:01:13,010 --> 00:01:14,030
-Now, if I look in the user's
-
-37
-00:01:14,030 --> 00:01:16,220
-collection, I'll see my document.
-
-38
-00:01:16,220 --> 00:01:17,300
+00:01:16,200 --> 00:01:16,890
 And here it is.
 
-39
-00:01:17,300 --> 00:01:18,570
-There's a pretty
-print command.
+37
+00:01:16,890 --> 00:01:19,140
+There's a pretty print
+command inside of the shell.
 
-40
-00:01:18,570 --> 00:01:19,160
-It's out of the shell.
-
-41
-00:01:19,160 --> 00:01:20,020
+38
+00:01:19,140 --> 00:01:19,990
 It's very useful.
 
+39
+00:01:19,990 --> 00:01:21,910
+It prints things out
+a little bit neater.
+
+40
+00:01:21,910 --> 00:01:23,749
+And here it is, pretty printed.
+
+41
+00:01:23,749 --> 00:01:26,290
+But now, let's say, I want to
+add another user to the system.
+
 42
-00:01:20,020 --> 00:01:21,950
-It print things out a
-little bit neater.
+00:01:26,290 --> 00:01:27,950
+And for whatever
+reason, I'm now going
 
 43
-00:01:21,950 --> 00:01:23,760
-And here it is, pretty
-printed.
-
-44
-00:01:23,760 --> 00:01:24,880
-But now, let's say
-I want to add
-
-45
-00:01:24,880 --> 00:01:26,320
-another user to the system.
-
-46
-00:01:26,320 --> 00:01:28,990
-And for whatever reason, I'm
-now going to store some
-
-47
-00:01:28,990 --> 00:01:30,070
+00:01:27,950 --> 00:01:30,010
+to store some
 additional information.
 
+44
+00:01:30,010 --> 00:01:32,100
+For instance, I want
+to store new user who's
+
+45
+00:01:32,100 --> 00:01:34,772
+name is Richard Kreuter,
+my co-instructor.
+
+46
+00:01:34,772 --> 00:01:36,980
+I have decided that I want
+to store his city of birth
+
+47
+00:01:36,980 --> 00:01:38,620
+as well, which I'm
+not sure about,
+
 48
-00:01:30,070 --> 00:01:33,120
-For instance, I want to store
-a new user whose name is
+00:01:38,620 --> 00:01:39,837
+I'm just going to make up.
 
 49
-00:01:33,120 --> 00:01:34,440
-Richard Kreuter, my
-co-instructor.
+00:01:39,837 --> 00:01:41,920
+But I also want to store
+his favorite color, which
 
 50
-00:01:34,440 --> 00:01:37,120
-And I've decided that I want to
-store his city of birth as
+00:01:41,920 --> 00:01:44,300
+I believe is red,
+based on nothing.
 
 51
-00:01:37,120 --> 00:01:38,900
-well, which I'm not sure
-about, and I'm just
+00:01:44,300 --> 00:01:45,370
+Just a guess.
 
 52
-00:01:38,900 --> 00:01:40,050
-going to make up.
+00:01:45,370 --> 00:01:47,620
+Now, if I look in
+that collection,
 
 53
-00:01:40,050 --> 00:01:42,195
-But I also want to store his
-favorite color, which I
+00:01:47,620 --> 00:01:50,194
+I can see that I've got
+two different documents.
 
 54
-00:01:42,195 --> 00:01:45,390
-believe is red, based on
-nothing, just a guess.
+00:01:50,194 --> 00:01:52,110
+And these two different
+documents, one of them
 
 55
-00:01:45,390 --> 00:01:48,660
-Now, if I look in that
-collection, I can see that
+00:01:52,110 --> 00:01:54,630
+has just a name and city
+of birth-- of course,
 
 56
-00:01:48,660 --> 00:01:50,290
-I've got two different
-documents.
+00:01:54,630 --> 00:01:57,060
+this interesting object ID
+that we'll talk about later.
 
 57
-00:01:50,290 --> 00:01:52,760
-And these two different
-documents, one of them has
+00:01:57,060 --> 00:02:01,040
+And the other one has name,
+city of birth, and favor color.
 
 58
-00:01:52,760 --> 00:01:54,860
-just a name, and city of birth,
-and of course this
+00:02:01,040 --> 00:02:03,550
+So this permits Mongo
+to be very agile,
 
 59
-00:01:54,860 --> 00:01:57,080
-interesting object ID that
-we'll talk about later.
+00:02:03,550 --> 00:02:06,150
+because you don't need to have
+exactly the same keys in each
 
 60
-00:01:57,080 --> 00:01:59,870
-And the other one has
-name, city of birth,
+00:02:06,150 --> 00:02:07,250
+of the documents.
 
 61
-00:01:59,870 --> 00:02:01,050
-and favorite color.
+00:02:07,250 --> 00:02:09,389
+And I could evolve
+it over time too.
 
 62
-00:02:01,050 --> 00:02:04,140
-So this permits Mongo to be very
-agile because you don't
-
-63
-00:02:04,140 --> 00:02:07,280
-need to have exactly the same
-keys in each of the documents.
-
-64
-00:02:07,280 --> 00:02:09,410
-And I can evolve it
-over time, too.
-
-65
-00:02:09,410 --> 00:02:11,910
-And I can change to schema
+00:02:09,389 --> 00:02:11,880
+And I can change the schema
 of an existing document.
 
-66
-00:02:11,910 --> 00:02:15,420
+63
+00:02:11,880 --> 00:02:15,380
 So for instance, I
-can do db.users.
+can do a "db.users."
+
+64
+00:02:15,380 --> 00:02:16,900
+Put it into a variable.
+
+65
+00:02:16,900 --> 00:02:20,370
+I'm looking for the object with
+a name of Andrew Erlichson.
+
+66
+00:02:20,370 --> 00:02:22,420
+I can see the
+object-- there it is.
 
 67
-00:02:15,420 --> 00:02:16,470
-put it into a variable.
-
-68
-00:02:16,470 --> 00:02:18,330
-And I'm looking for the
-object with the
-
-69
-00:02:18,330 --> 00:02:20,050
-name of Andrew Erlichson.
-
-70
-00:02:20,050 --> 00:02:21,730
-And I can see the object.
-
-71
-00:02:21,730 --> 00:02:22,440
-There it is.
-
-72
-00:02:22,440 --> 00:02:24,240
+00:02:22,420 --> 00:02:24,110
 Put my favorite color in.
 
+68
+00:02:24,110 --> 00:02:27,640
+And I could do a
+"db.users.save" of j.
+
+69
+00:02:27,640 --> 00:02:30,000
+And now if I look
+at this collection,
+
+70
+00:02:30,000 --> 00:02:32,560
+you can see that
+my object has now
+
+71
+00:02:32,560 --> 00:02:35,411
+been updated to include
+a favorite color as well.
+
+72
+00:02:35,411 --> 00:02:36,910
+This is flexibility
+that we're going
+
 73
-00:02:24,240 --> 00:02:26,190
-And now, I can look at
-Jay, and you can see
+00:02:36,910 --> 00:02:41,270
+to take advantage of a lot as
+we build systems using MongoDB.
 
-74
-00:02:26,190 --> 00:02:27,740
-that it's been updated.
-
-75
-00:02:27,740 --> 00:02:31,270
-And now I could do a
-db.users.save of Jay.
-
-76
-00:02:31,270 --> 00:02:34,260
-And now, if I look at this
-collection, you can see that
-
-77
-00:02:34,260 --> 00:02:37,330
-my object has now been
-updated to include a
-
-78
-00:02:37,330 --> 00:02:39,170
-favorite color as well.
-
-79
-00:02:39,170 --> 00:02:41,360
-This is flexibility that we're
-going to take advantage of a
-
-80
-00:02:41,360 --> 00:02:43,640
-lot as we build systems
-using MongoDB.
-
-81
-00:02:43,640 --> 00:02:44,890

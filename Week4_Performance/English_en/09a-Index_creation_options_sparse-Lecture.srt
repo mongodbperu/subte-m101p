@@ -1,755 +1,769 @@
 1
-00:00:00,000 --> 00:00:00,120
+00:00:00,000 --> 00:00:00,500
+ 
 
 2
-00:00:00,120 --> 00:00:02,550
-Now we know how to create unique
-indexes on collections.
+00:00:00,500 --> 00:00:02,560
+OK, we've shown you how
+to create unique indexes
 
 3
-00:00:02,550 --> 00:00:05,900
-The question is, what happens
-if we try to create a unique
+00:00:02,560 --> 00:00:05,270
+on collections, and now
+I want to talk to you
 
 4
-00:00:05,900 --> 00:00:09,900
-index on a collection, and
-there is more than one
+00:00:05,270 --> 00:00:07,480
+about sparse
+indexes which can be
 
 5
-00:00:09,900 --> 00:00:12,960
-document missing
-the index key?
+00:00:07,480 --> 00:00:10,400
+used to create unique indexes
+when the index key is missing
 
 6
-00:00:12,960 --> 00:00:16,490
-So for example, let's say I try
-to create a unique index
+00:00:10,400 --> 00:00:11,760
+from the document.
 
 7
-00:00:16,490 --> 00:00:22,870
-on these three documents,
-a, b, and c, ab, and ab.
+00:00:11,760 --> 00:00:13,520
+So let's look at
+these four documents,
 
 8
-00:00:22,870 --> 00:00:24,260
-The first document
-has a, b, c.
+00:00:13,520 --> 00:00:15,300
+these four documents--
+the first one
 
 9
-00:00:24,260 --> 00:00:25,380
-The second document
-has a and b.
+00:00:15,300 --> 00:00:19,290
+has the keys A, B, and C, the
+second one has A, B, and C,
 
 10
-00:00:25,380 --> 00:00:27,480
-And the third document
-has a and b.
+00:00:19,290 --> 00:00:22,950
+the third has just A, B, and
+the fourth has just A, B.
 
 11
-00:00:27,480 --> 00:00:31,320
-And I want to create
-an index on just c.
+00:00:22,950 --> 00:00:24,985
+If we want to create
+a unique index on A,
 
 12
-00:00:31,320 --> 00:00:34,200
-Well, that's fine for
-the first document.
+00:00:24,985 --> 00:00:27,600
+that would work
+fine because A has
 
 13
-00:00:34,200 --> 00:00:36,910
-But for the second document,
-c does not have a value.
+00:00:27,600 --> 00:00:29,470
+a different value
+for each document,
 
 14
-00:00:36,910 --> 00:00:40,950
-And so the database considers
-c to be null.
+00:00:29,470 --> 00:00:31,100
+and A is included
+in every document,
 
 15
-00:00:40,950 --> 00:00:42,620
-And for the third document,
-the database
+00:00:31,100 --> 00:00:32,340
+so it would work fine.
 
 16
-00:00:42,620 --> 00:00:45,040
-considers c to be null.
+00:00:32,340 --> 00:00:35,816
+But let's say we want to
+create a unique index on C,
 
 17
-00:00:45,040 --> 00:00:49,020
-But unique means each
-key could only be
+00:00:35,816 --> 00:00:38,250
+on the key C-- well
+the first document
 
 18
-00:00:49,020 --> 00:00:50,420
-in the index once.
+00:00:38,250 --> 00:00:41,020
+and the second document
+both have a C value,
 
 19
-00:00:50,420 --> 00:00:53,110
-And so if there are multiple
-documents where the key is
+00:00:41,020 --> 00:00:42,750
+so that will work just fine.
 
 20
-00:00:53,110 --> 00:00:56,210
-null, you can't create
-the index.
+00:00:42,750 --> 00:00:46,250
+But the third and fourth,
+they don't have C values,
 
 21
-00:00:56,210 --> 00:00:58,930
-You don't want to drop the
-dups, what do you do?
+00:00:46,250 --> 00:00:47,915
+and it won't work.
 
 22
-00:00:58,930 --> 00:01:02,660
-Now again, the problem is that
-a unique index only allows
+00:00:47,915 --> 00:00:50,540
+And the reason why you won't be
+able to create the unique index
 
 23
-00:01:02,660 --> 00:01:04,970
-each key to be in
-the index once.
+00:00:50,540 --> 00:00:53,740
+on C, just the unique one,
+is that these two documents
 
 24
-00:01:04,970 --> 00:01:08,380
-And if the key is missing for
-multiple documents, they all
+00:00:53,740 --> 00:00:57,950
+right here are both considered
+to have a C value of null.
 
 25
-00:01:08,380 --> 00:01:09,860
-map to null.
+00:00:57,950 --> 00:01:00,690
+And since a unique index
+only allows a value
 
 26
-00:01:09,860 --> 00:01:15,090
-So this maps to null, and this
-maps to null for the key.
+00:01:00,690 --> 00:01:04,180
+to appear once in the index, you
+would get a duplicate key entry
 
 27
-00:01:15,090 --> 00:01:18,310
-And that means that they can't
-coexist in the index.
+00:01:04,180 --> 00:01:07,820
+if you tried to create a unique
+index on C for these four
 
 28
-00:01:18,310 --> 00:01:24,080
-And the answer to this problem
-is sparse indexes.
+00:01:07,820 --> 00:01:08,770
+documents.
 
 29
-00:01:24,080 --> 00:01:29,010
-What sparse indexes do is they
-only index the documents that
+00:01:08,770 --> 00:01:10,350
+So what's the solution to that?
 
 30
-00:01:29,010 --> 00:01:33,850
-have a key set for the
-key being indexed.
+00:01:10,350 --> 00:01:13,560
+Well, you can remove the dupes
+when you're creating the index,
 
 31
-00:01:33,850 --> 00:01:37,540
-So this document would be
-indexed, but these two
+00:01:13,560 --> 00:01:15,900
+but the problem is
+that would remove
 
 32
-00:01:37,540 --> 00:01:40,170
-documents would not
-be indexed.
+00:01:15,900 --> 00:01:17,920
+either this document
+or this document,
 
 33
-00:01:40,170 --> 00:01:44,480
-So that has some interesting
-implications, because if these
+00:01:17,920 --> 00:01:20,340
+which is certainly
+not what you want.
 
 34
-00:01:44,480 --> 00:01:48,700
-two documents are not indexed,
-then if we use the index to
+00:01:20,340 --> 00:01:23,800
+So instead, you can create
+what's called a sparse index.
 
 35
-00:01:48,700 --> 00:01:51,680
-find the answer to a query,
-these documents won't be
+00:01:23,800 --> 00:01:26,210
+And what a sparse
+index will do is
 
 36
-00:01:51,680 --> 00:01:52,740
-considered.
+00:01:26,210 --> 00:01:29,160
+it will only create index
+entries for the documents that
 
 37
-00:01:52,740 --> 00:01:55,340
-But other than that, it works
-pretty much as you'd expect.
+00:01:29,160 --> 00:01:31,630
+contain the key being indexed.
 
 38
-00:01:55,340 --> 00:01:57,920
-Let me show you an example
-to explain how
+00:01:31,630 --> 00:01:35,920
+So if we are indexing
+against C, then there
 
 39
-00:01:57,920 --> 00:01:59,760
-sparse indexes work.
+00:01:35,920 --> 00:01:37,630
+will be no index
+entries for this
 
 40
-00:01:59,760 --> 00:02:04,100
-Here is a small collection
-called products.
+00:01:37,630 --> 00:01:39,660
+and there will be no
+index entries for this.
 
 41
-00:02:04,100 --> 00:02:07,420
-And I'll do a db.products.find
-on it so you can see them.
+00:01:39,660 --> 00:01:41,950
+So let's go through in
+the shell and look at this
 
 42
-00:02:07,420 --> 00:02:10,449
-And maybe I'll print
-them out pretty.
+00:01:41,950 --> 00:01:45,110
+and look at some of the
+ramifications of using
 
 43
-00:02:10,449 --> 00:02:12,900
-And you can see here--
+00:01:45,110 --> 00:01:47,444
+a sparse index,
+and what it means.
 
 44
-00:02:12,900 --> 00:02:15,740
-the first two printed pretty,
-the second ones are too small
+00:01:47,444 --> 00:01:49,360
+OK, if small collection
+of products-- and I'll
 
 45
-00:02:15,740 --> 00:02:17,880
-to be printed in
-a pretty way--
+00:01:49,360 --> 00:01:53,110
+pretty print it-- and we can
+see that the first document is
 
 46
-00:02:17,880 --> 00:02:19,780
-that the first two documents--
+00:01:53,110 --> 00:01:55,540
+a polo shirt and it
+has a size of medium,
 
 47
-00:02:19,780 --> 00:02:21,590
-the first one is a polo shirt.
+00:01:55,540 --> 00:01:57,550
+and the second document
+is a pair of jeans
 
 48
-00:02:21,590 --> 00:02:23,090
-It's a products collection.
+00:01:57,550 --> 00:02:02,050
+and it's got a size of 32x32,
+and the third document is
 
 49
-00:02:23,090 --> 00:02:24,450
-Has a size medium.
+00:02:02,050 --> 00:02:06,273
+a iPhone cradle, it has no size,
+and the fourth document a DVI
 
 50
-00:02:24,450 --> 00:02:25,800
-And the second one is jeans.
-
-51
-00:02:25,800 --> 00:02:27,640
-It has a size 32 by 32.
-
-52
-00:02:27,640 --> 00:02:31,150
-And the third and fourth
-documents, one of them is a
-
-53
-00:02:31,150 --> 00:02:34,110
-DVI-to-VGA cable, and
+00:02:06,273 --> 00:02:08,669
+to VGA cable, and
 it has no size.
 
+51
+00:02:08,669 --> 00:02:11,527
+Well if I wanted to create a
+unique index on size, which
+
+52
+00:02:11,527 --> 00:02:13,110
+it's a little bit
+nonsensical, I don't
+
+53
+00:02:13,110 --> 00:02:14,859
+know why you would do
+that, but let's just
+
 54
-00:02:34,110 --> 00:02:39,730
-And the other one is an iPhone
-cradle, and it has no size.
+00:02:14,859 --> 00:02:17,150
+say you wanted to do
+it-- and so let's do that
 
 55
-00:02:39,730 --> 00:02:46,270
-Now, if we wanted to create an
-index on, let's say, size, and
+00:02:17,150 --> 00:02:22,300
+by calling the
+db.products.ensureIndex on size
 
 56
-00:02:46,270 --> 00:02:48,510
-we wanted to make that
-index sparse--
+00:02:22,300 --> 00:02:26,164
+ascending, and let's give the
+option unique equals true.
 
 57
-00:02:48,510 --> 00:02:50,700
-well, first of all, we certainly
-couldn't create an
+00:02:26,164 --> 00:02:28,080
+Let's see what happens
+when we try to do that.
 
 58
-00:02:50,700 --> 00:02:52,710
-index that was unique.
+00:02:28,080 --> 00:02:30,720
+So what happens is,
+we get an error.
 
 59
-00:02:52,710 --> 00:02:54,340
-And I'll show you that.
+00:02:30,720 --> 00:02:32,140
+And we get an
+error because there
 
 60
-00:02:54,340 --> 00:02:58,530
-So we'll do
-db.products.ensureIndix on
+00:02:32,140 --> 00:02:34,340
+are two documents in
+this collection that
 
 61
-00:02:58,530 --> 00:03:03,970
-size, where it is unique.
+00:02:34,340 --> 00:02:38,920
+don't have a size and that both
+map to having a size of null,
 
 62
-00:03:03,970 --> 00:03:05,910
-And you can see that
-we can't do that,
+00:02:38,920 --> 00:02:41,360
+and that is going to be a
+duplicate key because you can't
 
 63
-00:03:05,910 --> 00:03:06,850
-there's a duplicate key.
+00:02:41,360 --> 00:02:44,240
+have null in the
+collection more than once.
 
 64
-00:03:06,850 --> 00:03:08,670
-The duplicate key is null.
+00:02:44,240 --> 00:02:46,470
+So all right, what
+are my options?
 
 65
-00:03:08,670 --> 00:03:09,040
-All right?
+00:02:46,470 --> 00:02:49,320
+Well my options are
+I could, instead,
 
 66
-00:03:09,040 --> 00:03:13,170
-So if we wanted instead to
-create the index, but to allow
+00:02:49,320 --> 00:02:53,230
+create this index with
+sparse equal to true.
 
 67
-00:03:13,170 --> 00:03:16,030
-it to be sparse, then
-we can create it.
+00:02:53,230 --> 00:02:56,006
+And now it's going to be fine.
 
 68
-00:03:16,030 --> 00:03:19,070
-Now, this is a little bit of a
-synthetic example because it's
+00:02:56,006 --> 00:02:57,380
+Now I'm able to
+create the index.
 
 69
-00:03:19,070 --> 00:03:23,610
-not clear why you'd want a
-unique index on the size,
+00:02:57,380 --> 00:02:58,921
+There wasn't one
+index before and now
 
 70
-00:03:23,610 --> 00:03:25,320
-since there's obviously going to
-be more than one item with
+00:02:58,921 --> 00:03:01,190
+there are two, all right?
 
 71
-00:03:25,320 --> 00:03:28,180
-a size, but it doesn't
-have to be unique to
+00:03:01,190 --> 00:03:03,480
+And that's pretty
+much works well,
 
 72
-00:03:28,180 --> 00:03:29,440
-create a sparse index.
+00:03:03,480 --> 00:03:05,490
+but there are certain
+things to think
 
 73
-00:03:29,440 --> 00:03:31,320
-So in fact--
+00:03:05,490 --> 00:03:07,770
+about when you create
+a sparse index.
 
 74
-00:03:31,320 --> 00:03:33,240
-well, I'll create it this way.
+00:03:07,770 --> 00:03:10,230
+And in particular,
+if you use that index
 
 75
-00:03:33,240 --> 00:03:35,520
-And now you can see there's
-an index on it.
+00:03:10,230 --> 00:03:12,730
+and you, for instance,
+sort on that index,
 
 76
-00:03:35,520 --> 00:03:40,880
-And I can look at it
-and see it's there.
+00:03:12,730 --> 00:03:15,480
+then the results may not
+be what you'd expect.
 
 77
-00:03:40,880 --> 00:03:42,460
-It works pretty much
-as I'd expect.
+00:03:15,480 --> 00:03:17,210
+So we would certainly
+expect that if we
 
 78
-00:03:42,460 --> 00:03:44,560
-It doesn't really change
-most queries.
+00:03:17,210 --> 00:03:20,870
+call dp.products.find, that
+we would get all the documents
 
 79
-00:03:44,560 --> 00:03:50,920
-If I do a find and I look for
-size medium, I find what I
+00:03:20,870 --> 00:03:23,990
+back, and we do--
+that's not surprising.
 
 80
-00:03:50,920 --> 00:03:53,620
-expected to find, which is the
-polo shirt, size medium.
+00:03:23,990 --> 00:03:26,450
+But let's say we
+called dp.products.find
 
 81
-00:03:53,620 --> 00:03:54,490
-No big deal.
+00:03:26,450 --> 00:03:28,440
+and said sort on size ascending.
 
 82
-00:03:54,490 --> 00:03:58,320
-But if I use this new index to
-sort, for example, it will not
+00:03:28,440 --> 00:03:31,920
+If we did that, then we
+still get all four documents
 
 83
-00:03:58,320 --> 00:04:00,970
-do exactly what you
-might expect.
+00:03:31,920 --> 00:03:33,970
+back sorted by size.
 
 84
-00:04:00,970 --> 00:04:06,540
-So let's say I do
-db.products.find, let me find
+00:03:33,970 --> 00:03:36,120
+That's interesting,
+that's good, that's good.
 
 85
-00:04:06,540 --> 00:04:11,030
-all the documents and
-sort them by size.
+00:03:36,120 --> 00:03:38,070
+But let's see what
+index it's using,
 
 86
-00:04:11,030 --> 00:04:11,880
-All right.
+00:03:38,070 --> 00:03:41,740
+so I'm going to use an explain
+on this and see what it says.
 
 87
-00:04:11,880 --> 00:04:15,165
-That is going to return
-two documents.
+00:03:41,740 --> 00:03:46,790
+And it says that it's using
+a basic cursor for the index.
 
 88
-00:04:15,165 --> 00:04:16,459
-Hmm, that's interesting.
+00:03:46,790 --> 00:03:50,450
+So that's the reason why we're
+getting all the documents back.
 
 89
-00:04:16,459 --> 00:04:19,149
-So there are four documents in
-the collection, but if I sort
+00:03:50,450 --> 00:03:53,290
+OK, well what if we
+deliberately hinted and said
 
 90
-00:04:19,149 --> 00:04:22,190
-them by size, I only
-get two documents.
+00:03:53,290 --> 00:03:56,860
+we wanted to use the
+index on size ascending.
 
 91
-00:04:22,190 --> 00:04:23,820
-OK, that's weird.
+00:03:56,860 --> 00:04:01,980
+Now if we did that, then we
+only get two documents back.
 
 92
-00:04:23,820 --> 00:04:24,750
-What's happening?
+00:04:01,980 --> 00:04:05,370
+We did a find, where we would
+expect all of the documents,
 
 93
-00:04:24,750 --> 00:04:28,360
-What's happening is that if this
-index is sparse and there
+00:04:05,370 --> 00:04:07,132
+but we only got two back.
 
 94
-00:04:28,360 --> 00:04:31,750
-are no entries for the two
-pieces of electronics that
+00:04:07,132 --> 00:04:08,590
+And the reason we
+only got two back
 
 95
-00:04:31,750 --> 00:04:34,910
-were in the product collection
-that don't have a size, and
+00:04:08,590 --> 00:04:12,040
+is that we're using the index
+size, the index size is sparse,
 
 96
-00:04:34,910 --> 00:04:38,840
-it's going to use this index
-that we created on size, do
+00:04:12,040 --> 00:04:14,365
+the index on size is missing
+the two documents that
 
 97
-00:04:38,840 --> 00:04:42,220
-the sort, there is no entry
-for the documents that
+00:04:14,365 --> 00:04:16,120
+don't have sizes,
+and so they're not
 
 98
-00:04:42,220 --> 00:04:43,280
-have no size key.
+00:04:16,120 --> 00:04:17,670
+included when it's returned.
 
 99
-00:04:43,280 --> 00:04:45,540
-And so they're simply left
-out of the final result.
+00:04:17,670 --> 00:04:21,310
+And if you call explain
+you'll see that now it
 
 100
-00:04:45,540 --> 00:04:46,940
-They're basically
-filtered out.
+00:04:21,310 --> 00:04:23,220
+is using this index on size.
 
 101
-00:04:46,940 --> 00:04:48,370
-That might be a little
-bit unexpected.
+00:04:23,220 --> 00:04:25,940
+So here it is,
+BtreeCursor size, we
 
 102
-00:04:48,370 --> 00:04:51,260
-So again, if we just do a
-straight find without sorting
+00:04:25,940 --> 00:04:29,360
+called explain to tell us that
+the query plan and it is using
 
 103
-00:04:51,260 --> 00:04:53,830
-it, we get four documents.
+00:04:29,360 --> 00:04:32,519
+this index on size, and it's
+omitting the two documents.
 
 104
-00:04:53,830 --> 00:04:57,250
-But if we sort it, we get two.
+00:04:32,519 --> 00:04:34,810
+All right well, well that
+was a pretty tortured example
 
 105
-00:04:57,250 --> 00:04:58,660
-OK.
+00:04:34,810 --> 00:04:37,226
+having to actually hint
+to use the size index when
 
 106
-00:04:58,660 --> 00:05:02,180
-Very strange, and the reason is,
-this is a result of there
+00:04:37,226 --> 00:04:39,470
+the database wouldn't
+use it by default,
 
 107
-00:05:02,180 --> 00:05:03,970
-being a sparse index on size.
+00:04:39,470 --> 00:04:41,350
+but what's important
+to remember with this,
 
 108
-00:05:03,970 --> 00:05:05,230
-It's an artifact of that.
+00:04:41,350 --> 00:04:45,590
+is that this behavior changed
+when we went from MongoDB 2.4
 
 109
-00:05:05,230 --> 00:05:07,220
-And if we drop the index--
+00:04:45,590 --> 00:04:48,260
+to MongoDB 2.6.
 
 110
-00:05:07,220 --> 00:05:10,460
-I'm going to drop the
-index on size--
+00:04:48,260 --> 00:04:48,970
+OK?
 
 111
-00:05:10,460 --> 00:05:13,860
-and then I rerun this exact
-same query with a sort--
+00:04:48,970 --> 00:04:55,010
+2.6 was released in April,
+2014 and in MongoDB 2.4,
 
 112
-00:05:13,860 --> 00:05:16,030
-which granted, will now be slow
-because I can't use index
+00:04:55,010 --> 00:04:57,540
+the database even if you
+hadn't given that hint,
 
 113
-00:05:16,030 --> 00:05:17,542
-to do the sort, but there's
-only two documents is this
+00:04:57,540 --> 00:05:02,810
+it would have used that index,
+that index on size-- so yes.
 
 114
-00:05:17,542 --> 00:05:19,200
-collection, so it
-doesn't matter--
+00:05:02,810 --> 00:05:07,060
+In MongoDB 2.6, by default
+it doesn't use that index,
 
 115
-00:05:19,200 --> 00:05:21,920
-then I get four documents.
+00:05:07,060 --> 00:05:09,850
+and the reason it doesn't
+use that index by default,
 
 116
-00:05:21,920 --> 00:05:23,570
-So you have to be a little
-bit careful with
+00:05:09,850 --> 00:05:11,341
+is that it knows
+that if it does,
 
 117
-00:05:23,570 --> 00:05:24,740
-these sparse indexes.
+00:05:11,341 --> 00:05:13,590
+it's going to omit documents
+that would have otherwise
 
 118
-00:05:24,740 --> 00:05:27,740
-They will let you create a
-unique index, even when
+00:05:13,590 --> 00:05:14,460
+been returned.
 
 119
-00:05:27,740 --> 00:05:29,560
-multiple documents in the
-collection are missing the
+00:05:14,460 --> 00:05:16,020
+So that's not going
+to use that index
 
 120
-00:05:29,560 --> 00:05:33,430
-key, but they do change the
-nature of some of the queries,
+00:05:16,020 --> 00:05:17,770
+for the query for the sort.
 
 121
-00:05:33,430 --> 00:05:36,990
-especially sorting queries and
-also some items when you're
+00:05:17,770 --> 00:05:20,670
+So this is a change of
+behavior from MongoDB 2.4
 
 122
-00:05:36,990 --> 00:05:37,500
-are filtering.
+00:05:20,670 --> 00:05:23,010
+to MongoDB 2.6, and
+I think it's mostly
 
 123
-00:05:37,500 --> 00:05:39,290
-You can also see different
-results.
+00:05:23,010 --> 00:05:24,510
+a change of behavior
+for the better,
 
 124
-00:05:39,290 --> 00:05:41,290
-So you have to be a little bit
-wary and realize that if the
+00:05:24,510 --> 00:05:27,670
+because you kind of get
+the results you expect.
 
 125
-00:05:41,290 --> 00:05:44,900
-index is used that it's not
-going to hit the items that
+00:05:27,670 --> 00:05:29,910
+But if you really want to
+force the older behavior
 
 126
-00:05:44,900 --> 00:05:46,100
-are not in the index.
+00:05:29,910 --> 00:05:32,186
+you can do so using
+the hint command,
 
 127
-00:05:46,100 --> 00:05:48,490
-And we're going to show you
-later on how to ask that this
+00:05:32,186 --> 00:05:34,560
+and you just have to remember
+that you may, in fact, omit
 
 128
-00:05:48,490 --> 00:05:50,240
-particular index not be used.
+00:05:34,560 --> 00:05:36,240
+documents that would've
+otherwise been returned
 
 129
-00:05:50,240 --> 00:05:53,860
-So there are ways to work around
-this, even if you want
+00:05:36,240 --> 00:05:38,360
+by the query if you sort
+by a sparse index that
 
 130
-00:05:53,860 --> 00:05:56,900
-to have the index in the
-collection in general.
+00:05:38,360 --> 00:05:40,470
+is missing certain documents.
 
 131
-00:05:56,900 --> 00:05:57,200
-All right.
+00:05:40,470 --> 00:05:43,500
+All right, so thinking
+about MongoDB 2.6,
 
 132
-00:05:57,200 --> 00:05:59,390
-Now it's time for a quiz.
+00:05:43,500 --> 00:05:45,740
+let's go and do a quiz.
 
 133
-00:05:59,390 --> 00:06:01,480
-Suppose you had the following
-documents in a collection
+00:05:45,740 --> 00:05:46,990
+So here's the quiz.
 
 134
-00:06:01,480 --> 00:06:04,250
-called people with the
-following docs.
+00:05:46,990 --> 00:05:48,950
+Let's say that we have
+the following documents
 
 135
-00:06:04,250 --> 00:06:06,230
-I have three documents
-in the collection.
+00:05:48,950 --> 00:05:51,730
+in a collection called people,
+with the following docs.
 
 136
-00:06:06,230 --> 00:06:09,880
-The first one is named Andrew,
-and he has a title of Jester.
+00:05:51,730 --> 00:05:54,480
+You can see, there are
+three documents here,
 
 137
-00:06:09,880 --> 00:06:11,620
-And then the second one is named
-Dwight, and he has a
+00:05:54,480 --> 00:05:56,680
+and the three
+documents, the first one
 
 138
-00:06:11,620 --> 00:06:13,070
-title of CEO.
+00:05:56,680 --> 00:06:00,180
+has a name Andrew,
+a title of Jester,
 
 139
-00:06:13,070 --> 00:06:16,490
-And the third one is named John,
-and he has no title.
+00:06:00,180 --> 00:06:01,680
+the second one has
+a name of Dwight,
 
 140
-00:06:16,490 --> 00:06:20,210
-And then I decided to create
-an index on title.
+00:06:01,680 --> 00:06:04,400
+title of CEO, the third
+one is the name of John,
 
 141
-00:06:20,210 --> 00:06:22,730
-And I decide to make its sparse,
-so that there are no
+00:06:04,400 --> 00:06:05,660
+there is no title.
 
 142
-00:06:22,730 --> 00:06:27,100
-entries in the index for items
-where title does not exist.
+00:06:05,660 --> 00:06:08,930
+There's an index on this
+collection, on the title key,
 
 143
-00:06:27,100 --> 00:06:31,050
-If you perform the following
-query, db.people.find, with
+00:06:08,930 --> 00:06:11,110
+and it is sparse.
 
 144
-00:06:31,050 --> 00:06:34,910
-title being null, what do you
-think the database returns?
+00:06:11,110 --> 00:06:13,070
+So if you perform
+this following query,
 
 145
-00:06:34,910 --> 00:06:37,220
-What do you think
-MongoDB returns?
+00:06:13,070 --> 00:06:15,050
+what do you get back and why?
 
 146
-00:06:37,220 --> 00:06:39,210
-And the four choices are--
+00:06:15,050 --> 00:06:18,940
+So in MongoDB 2.6, if you
+perform the query and look
 
 147
-00:06:39,210 --> 00:06:41,370
-no documents, because the query
-uses the index, and
+00:06:18,940 --> 00:06:25,380
+for title null, with a hint that
+it should use the title index,
 
 148
-00:06:41,370 --> 00:06:44,030
-there are no documents with the
-title null in the index.
+00:06:25,380 --> 00:06:27,700
+what would you
+expect to get back?
 
 149
-00:06:44,030 --> 00:06:46,490
-No documents, because querying
-for title null only finds
+00:06:27,700 --> 00:06:29,990
+And the answers are-- well,
+it'll return no documents,
 
 150
-00:06:46,490 --> 00:06:49,010
-documents that explicitly
-have title null,
+00:06:29,990 --> 00:06:31,365
+because the query
+uses the index,
 
 151
-00:06:49,010 --> 00:06:50,530
-regardless of the index.
+00:06:31,365 --> 00:06:33,860
+and there are no documents
+with title null in the index.
 
 152
-00:06:50,530 --> 00:06:54,070
-And you know you can set title
-to be null in a document.
+00:06:33,860 --> 00:06:37,000
+Or, no documents, because
+querying for title null
 
 153
-00:06:54,070 --> 00:06:57,070
-Or the document for John,
-because the query won't use
+00:06:37,000 --> 00:06:39,320
+only finds documents that
+explicitly have title null,
 
 154
-00:06:57,070 --> 00:06:59,790
-the index, so you'll just
-get John because
+00:06:39,320 --> 00:06:40,819
+regardless of the index.
 
 155
-00:06:59,790 --> 00:07:01,410
-he's missing a title.
+00:06:40,819 --> 00:06:43,360
+The document for John, because
+the query won't use the index.
 
 156
-00:07:01,410 --> 00:07:04,500
-Or all documents in the
-collection, because title null
+00:06:43,360 --> 00:06:44,950
+All the documents
+in the collections,
 
 157
-00:07:04,500 --> 00:07:06,310
+00:06:44,950 --> 00:06:47,230
+because title null
 matches all the documents.
 
 158
-00:07:06,310 --> 00:07:08,620
-Or the document for John,
-because the ensureIndex
+00:06:47,230 --> 00:06:49,850
+Or, the document for John,
+because the insurer index
 
 159
-00:07:08,620 --> 00:07:13,170
-command above here won't
+00:06:49,850 --> 00:06:53,030
+command won't
 succeed in this case.
 
-160
-00:07:13,170 --> 00:07:15,390
-And please check the
-right answer.
-
-161
-00:07:15,390 --> 00:07:16,640

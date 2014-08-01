@@ -30,7 +30,7 @@
     },
     {
         "concept": "Installing MongoDB (mac)",
-        "lecture": "6VFukRETCTg"
+        "lecture": "pnVQcEt5_vw"
     },
     {
         "concept": "Installing MongoDB (windows)",
@@ -62,11 +62,11 @@
     },
     {
         "concept": "Hello World on a Web Server",
-        "lecture": "nRAE1SxqAiw"
+        "lecture": "OeN_ZOwII7w"
     },
     {
         "concept": "Mongo is Schemaless",
-        "lecture": "K6dlBbH_XHI"
+        "lecture": "uKB-Hoqs6zI"
     },
     {
         "concept": "JSON Revisited",
@@ -328,7 +328,7 @@
     },
     {
         "concept": "getLastError",
-        "lecture": "kUulkJQvH_A"
+        "lecture": "a6o0TQjUMug"
     },
     {
         "concept": "Pymongo, find, find_one and cursors",
@@ -458,7 +458,7 @@
     },
     {
         "concept": "Multikeys",
-        "lecture": "ocU9WNUL9YQ"
+        "lecture": "KtIY4Q1tUao"
     },
     {
         "concept": "Benefits of Embedding",
@@ -512,7 +512,7 @@
     },
     {
         "concept": "Multikey Indexes",
-        "lecture": "JO_puGONaLc",
+        "lecture": "8DqRASZGu9k",
         "answer": "CeE6hZ90Uzk"
     },
     {
@@ -531,8 +531,8 @@
     },
     {
         "concept": "Index creation options, sparse",
-        "lecture": "s4sYwLndtTI",
-        "answer": "_MJYRlianas"
+        "lecture": "Gi4uZXLh0Ks",
+        "answer": "CHh9JRMdTb8"
     },
     {
         "concept": "Index creation options, background",
@@ -578,13 +578,19 @@
         "lecture": "1sADN-NKwhY"
     },
     {
-        "concept": "Geospacial Indexes",
+        "concept": "Geospatial Indexes",
         "lecture": "UKUDYqNVL6I",
         "answer": "hVLa0H7Oe98"
     },
     {
-        "concept": "Geospacial Spherical",
-        "lecture": "vY3_H4MzkIY"
+        "concept": "Geospatial Spherical",
+        "lecture": "pULU4DVsUWQ",
+        "answer": "YtRnCyKS1VE"
+    },
+    {
+        "concept": "Text Searches in MongoDB",
+        "lecture": "l_2kwrIlZ_g",
+        "answer": "7OK0e1gftjg"
     },
     {
         "concept": "Logging Slow Queries",
@@ -631,12 +637,12 @@
     },
     {
         "concept": "Simple Aggregation Example",
-        "lecture": "T2BX-LZOYsY",
+        "lecture": "DQBXCsjeO5c",
         "answer": "Nt0cQI86G40"
     },
     {
         "concept": "The Aggregation Pipeline",
-        "lecture": "WazN2DS8s8c",
+        "lecture": "AuO8CEkTG6Y",
         "answer": "mcnGfI69rRc"
     },
     {
@@ -689,22 +695,27 @@
         "answer": "J-asAAEHJ0Q"
     },
     {
-        "concept": "$project",
+        "concept": "Using $project",
         "lecture": "yi-ySSNO8Ao",
         "answer": "IGN0lXg-kJ0"
     },
     {
-        "concept": "$match",
-        "lecture": "qohLRL8k0So",
+        "concept": "Using $match",
+        "lecture": "7RtHG90Hrbw",
         "answer": "CHGiumXE-pU"
     },
     {
-        "concept": "$sort",
+        "concept": "Using $text",
+        "lecture": "LpDSge_GbpI",
+        "answer": "n7VzyQpZAAw"
+    },
+    {
+        "concept": "Using $sort",
         "lecture": "TW1KByIuns4",
         "answer": "-cghyd6AHHA"
     },
     {
-        "concept": "$limit and $skip",
+        "concept": "Using $limit and $skip",
         "lecture": "AdxoEzVqdtc",
         "answer": "joRw-fqCIWA"
     },
@@ -714,7 +725,7 @@
         "answer": "WBWb0ssDVeY"
     },
     {
-        "concept": "$unwind",
+        "concept": "Using $unwind",
         "lecture": "E4aYOQPeQvI",
         "answer": "Xfl3m7wz8ts"
     },
@@ -727,6 +738,20 @@
         "concept": "Double $unwind",
         "lecture": "sgnidsHyFeU",
         "answer": "pziFq1oVRI4"
+    },
+    {
+        "concept": "Aggregation Options",
+        "lecture": "0CGNVacCrY8",
+        "answer": "z0X6jRnpaJI"
+    },
+    {
+        "concept": "Python and Aggregation Results",
+        "lecture": "GqdcFE6kNBs",
+        "answer": "z1XiFcfEVDw"
+    },
+    {
+        "concept": "Limitations of Aggregation Framework",
+        "lecture": "U_gRSxEq3c0"
     },
     {
         "concept": "Mapping between SQL and Aggregation",

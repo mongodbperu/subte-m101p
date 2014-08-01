@@ -1,714 +1,510 @@
 1
-00:00:00,000 --> 00:00:00,160
+00:00:00,000 --> 00:00:03,237
+Aggregation uses a pipeline in mongoDB.
 
 2
-00:00:00,160 --> 00:00:03,770
-Aggregation uses a pipeline
-in MongoDB.
+00:00:03,437 --> 00:00:07,874
+And if you're familiar with the unix world,
+you probably know what pipes look like.
 
 3
-00:00:03,770 --> 00:00:06,350
-And, if you're familiar with the
-Unix world, you probably
+00:00:07,964 --> 00:00:13,240
+For instance if I wanted to look in a
+directory and find a size of
 
 4
-00:00:06,350 --> 00:00:08,119
-know what pipes look like.
+00:00:13,240 --> 00:00:20,372
+every sub-directory in it 
+du - s * piped to sort -n
 
 5
-00:00:08,119 --> 00:00:13,060
-For instance, if I wanted to
-look in a directory and find
+00:00:20,632 --> 00:00:23,911
+that would numerically sort the size
+of sub-directories
 
 6
-00:00:13,060 --> 00:00:16,140
-the size of every sub-directory
-in it. du minus
+00:00:23,911 --> 00:00:25,394
+and print them on my screen.
 
 7
-00:00:16,140 --> 00:00:22,840
-s star piped to sort minus n,
-that would numerically sort
+00:00:25,594 --> 00:00:28,474
+So, that's the Unix world of pipes.
+And we have a similar idea
 
 8
-00:00:22,840 --> 00:00:24,570
-the size of the sub-directories
-and print them
+00:00:28,474 --> 00:00:31,445
+of a pipeline here.
+At the very top is your collection
 
 9
-00:00:24,570 --> 00:00:25,690
-on my screen.
+00:00:31,795 --> 00:00:34,175
+and, for instance,
+that product's collection is sent through
 
 10
-00:00:25,690 --> 00:00:28,280
-So that's the Unix world of
-pipes, and we have a similar
-
-11
-00:00:28,280 --> 00:00:29,900
-idea of a Pipeline here.
-
-12
-00:00:29,900 --> 00:00:32,030
-At the very top, is
-your collection.
-
-13
-00:00:32,030 --> 00:00:34,090
-And, for instance, that products
-collection is sent
-
-14
-00:00:34,090 --> 00:00:35,920
-through document by document.
-
-15
-00:00:35,920 --> 00:00:37,270
+00:00:34,175 --> 00:00:37,021
+document by document.
 The documents are piped through
 
-16
-00:00:37,270 --> 00:00:39,040
-this processing pipeline.
+11
+00:00:37,021 --> 00:00:40,786
+this processing pipeline, and they
+go through a series of stages,
 
-17
-00:00:39,040 --> 00:00:41,490
-And they go through a
-series of stages.
-
-18
-00:00:41,490 --> 00:00:43,720
-And then we eventually
+12
+00:00:41,106 --> 00:00:42,824
+and then we eventually
 get a result set.
 
+13
+00:00:43,504 --> 00:00:46,131
+Now, the one stage I showed you
+is the group stage,
+
+14
+00:00:46,441 --> 00:00:49,760
+which is going to do the aggregations.
+But there are lots of other stages.
+
+15
+00:00:49,760 --> 00:00:53,200
+There's a potential sorting stage
+and a matching stage
+
+16
+00:00:53,200 --> 00:00:55,162
+we filter for documents.
+I'm gonna go through each one
+
+17
+00:00:55,162 --> 00:00:59,269
+real briefly to explain how it works.
+But these stages can appear
+
+18
+00:00:59,269 --> 00:01:03,519
+multiple times inside the pipeline.
+If you recall when I showed you
+
 19
-00:00:43,720 --> 00:00:46,990
-Now, the one stage I showed you,
-is the group stage, which
+00:01:03,519 --> 00:01:07,456
+that aggregation command,
+there was an array inside
 
 20
-00:00:46,990 --> 00:00:48,710
-is going to do the
-aggregations.
+00:01:07,996 --> 00:01:10,634
+the function call.
+And the reason there was an array
 
 21
-00:00:48,710 --> 00:00:50,040
-But there are lots
-of other stages.
+00:01:10,634 --> 00:01:14,410
+is that each of the items in that array
+is a stage of the pipeline
 
 22
-00:00:50,040 --> 00:00:53,660
-There's a potential sorting
-stage and a matching stage we
+00:01:14,680 --> 00:01:17,691
+that is gonna transform that collection.
 
 23
-00:00:53,660 --> 00:00:54,480
-filter for documents.
+00:01:17,921 --> 00:01:20,575
+Okay, let's go over each of these 
+pipeline stages quickly
 
 24
-00:00:54,480 --> 00:00:56,680
-I'm going to go through each
-one real briefly to explain
+00:01:20,575 --> 00:01:22,499
+and talk about what it does.
 
 25
-00:00:56,680 --> 00:00:57,660
-how it works.
+00:01:22,819 --> 00:01:26,711
+The first one is $project.
+Now, just to be clear,
 
 26
-00:00:57,660 --> 00:01:00,170
-But these stages can
-appear multiple
+00:01:26,711 --> 00:01:29,724
+you can have these pipeline stages
+appear more than once in the pipeline
 
 27
-00:01:00,170 --> 00:01:02,040
-times inside the pipeline.
+00:01:29,724 --> 00:01:32,708
+and they also can be
+in many different orders.
 
 28
-00:01:02,040 --> 00:01:05,379
-If you recall, when I showed you
-that aggregation command,
+00:01:32,938 --> 00:01:36,535
+But what project is gonna do
+is it's going to reshape the document.
 
 29
-00:01:05,379 --> 00:01:09,600
-there was an array inside
-the function call.
+00:01:36,535 --> 00:01:40,906
+It's gonna select out certain fields
+and also potentially select one out
 
 30
-00:01:09,600 --> 00:01:11,680
-And the reason there was an
-array, is that each of the
+00:01:40,906 --> 00:01:44,145
+from deep in the hierarchy
+and bring it up to the top.
 
 31
-00:01:11,680 --> 00:01:15,270
-items in that array is a stage
-of the pipeline that is going
+00:01:44,145 --> 00:01:47,521
+So, the reshaping of the documents..
+And for every document
 
 32
-00:01:15,270 --> 00:01:18,390
-to transform that collection.
+00:01:47,521 --> 00:01:50,550
+that comes into the projection stage
+one document is gonna leave
 
 33
-00:01:18,390 --> 00:01:21,520
-So let's go through what the
-different possible stages are
+00:01:50,550 --> 00:01:54,518
+the projection stage.
+And so, we say this stage is 1:1
 
 34
-00:01:21,520 --> 00:01:24,210
-of an aggregation pipeline
-at the high level.
+00:01:54,518 --> 00:01:56,796
+in terms of its handling of the documents.
 
 35
-00:01:24,210 --> 00:01:27,610
-And then, we're going to dig in
-to each one, individually,
+00:01:56,796 --> 00:02:01,073
+Another stage is $match.
+Match is a filtering step
 
 36
-00:01:27,610 --> 00:01:29,820
-and then I'll show
-you what it does.
+00:02:01,483 --> 00:02:04,168
+where you can select out 
+only the documents
 
 37
-00:01:29,820 --> 00:01:30,180
-All right.
+00:02:04,168 --> 00:02:06,453
+that you wanna analyze
+in the aggregation.
 
 38
-00:01:30,180 --> 00:01:33,330
-So the first one is
-dollar project.
+00:02:06,663 --> 00:02:09,594
+So, for instance, in the previous example
+where we had documents
 
 39
-00:01:33,330 --> 00:01:37,030
-And it is doesn't have to be the
-first one, but often it is
+00:02:09,594 --> 00:02:12,914
+that had a different manufacturers,
+we might decide only filter
 
 40
-00:01:37,030 --> 00:01:38,060
-the first one.
+00:02:12,914 --> 00:02:16,153
+on the manufacturer
+being Samsung or Apple.
 
 41
-00:01:38,060 --> 00:01:41,600
-And a dollar project is going
-to select out which keys
+00:02:16,153 --> 00:02:19,504
+And so, this is going to be
+an n:1 filtering.
 
 42
-00:01:41,600 --> 00:01:42,740
-you're interested in.
+00:02:19,504 --> 00:02:22,491
+Where we're going to reduce the number
+of documents potentially.
 
 43
-00:01:42,740 --> 00:01:44,790
-It could also reshape
-the document.
+00:02:22,491 --> 00:02:26,326
+The next operator I wanted to discuss
+is the Group Operator.
 
 44
-00:01:44,790 --> 00:01:47,150
-And I'll show you how that
-works, if you want to change
+00:02:26,326 --> 00:02:28,772
+This is really central
+to aggregation itself.
 
 45
-00:01:47,150 --> 00:01:48,630
-its form a little bit--
+00:02:29,162 --> 00:02:31,517
+This is going to allow you to do 
+the aggregation.
 
 46
-00:01:48,630 --> 00:01:50,450
-taking something out of a
-hierarchical document and
+00:02:31,517 --> 00:02:33,234
+I'm gonna write 'aggregate'.
 
 47
-00:01:50,450 --> 00:01:51,636
-putting it at the high
-level, you can do
+00:02:33,234 --> 00:02:37,253
+And, inside the group stage
+you could use things like sum and count
 
 48
-00:01:51,636 --> 00:01:53,050
-it with dollar project.
+00:02:37,253 --> 00:02:41,259
+that will group together the documents
+and perform these aggregation functions.
 
 49
-00:01:53,050 --> 00:01:53,870
-Now dollar project--
+00:02:41,659 --> 00:02:45,542
+So, by its nature, this is an n:1 stage
+where we're gonna reduce down
 
 50
-00:01:53,870 --> 00:01:57,210
-for every document that dollar
-project sees, it
+00:02:45,542 --> 00:02:48,417
+the number of documents
+whereas we go through this stage.
 
 51
-00:01:57,210 --> 00:01:58,390
-sends out one document.
+00:02:48,617 --> 00:02:52,668
+Now, you can also sort your documents,
+which does pretty much what you'd expect.
 
 52
-00:01:58,390 --> 00:02:00,180
-So it's one to one.
+00:02:53,028 --> 00:02:57,801
+Sorts the documents in a particular order.
+Sorting by itself is a 1:1 operator.
 
 53
-00:02:00,180 --> 00:02:03,580
-If it sees 10 documents, it
-produces 10 documents.
+00:02:58,081 --> 00:03:01,087
+Every document that comes in
+comes out on a maybe different order.
 
 54
-00:02:03,580 --> 00:02:06,226
-The next one is a
-dollar match.
+00:03:01,327 --> 00:03:04,095
+And, once you finish sorting
+documents in a pipeline stage,
 
 55
-00:02:06,226 --> 00:02:09,020
-And they don't have to be in
-this order in the pipeline.
+00:03:04,095 --> 00:03:08,171
+it could be interesting to..
+Let's say skip forward in the documents,
 
 56
-00:02:09,020 --> 00:02:11,080
-And the match is going
-to filter.
+00:03:08,461 --> 00:03:12,968
+and that just skips
+much like you would when doing a query.
 
 57
-00:02:11,080 --> 00:02:13,850
-So, for instance, in the case I
-showed you in products, if I
+00:03:12,968 --> 00:03:15,680
+If you sort, you might wanna skip
+forward from the result.
 
 58
-00:02:13,850 --> 00:02:17,140
-was only interested in products
-by Apple, I could
+00:03:15,680 --> 00:03:20,351
+Let's say, skip 10 or skip a hundred.
+And then, by its very nature,
 
 59
-00:02:17,140 --> 00:02:18,660
-filter early on in
-the pipeline.
+00:03:20,351 --> 00:03:23,742
+skip is going to be an n:1
+transformation.
 
 60
-00:02:18,660 --> 00:02:21,470
-And make sure that I'm only
-looking at the documents that
+00:03:23,742 --> 00:03:27,074
+Which is that some documents are
+gonna enter that are not going to exit.
 
 61
-00:02:21,470 --> 00:02:24,150
-have the manufacturer
-being Apple.
+00:03:27,074 --> 00:03:31,180
+You can limit the number of documents
+that you send through the next stage.
 
 62
-00:02:24,150 --> 00:02:25,760
-That's what match
-is going to do.
+00:03:31,180 --> 00:03:33,914
+And limit works very naturally with
+sort and skip.
 
 63
-00:02:25,760 --> 00:02:28,530
-I can group, of course,
-which you saw.
+00:03:34,054 --> 00:03:37,780
+So you might sort by something
+and then skip the first hundred
 
 64
-00:02:28,530 --> 00:02:31,500
-And this is going to be your
-aggregation functions.
+00:03:37,780 --> 00:03:42,056
+then limit yourself to 20.
+And this limits the number of documents
 
 65
-00:02:31,500 --> 00:02:32,790
-Now, filter--
+00:03:42,056 --> 00:03:44,814
+that goes through the stage--
+that come out of the stage, I should say.
 
 66
-00:02:32,790 --> 00:02:34,410
-for every document that
-filter sees, it
+00:03:44,814 --> 00:03:48,515
+And again, this an n:1 transformation
+where we're gonna reduce down
 
 67
-00:02:34,410 --> 00:02:35,470
-may only see a subset.
-
-68
-00:02:35,470 --> 00:02:39,750
-So, for instance, it might see
-100 documents, and then it
-
-69
-00:02:39,750 --> 00:02:42,170
-might actually produce
-25 documents.
-
-70
-00:02:42,170 --> 00:02:44,770
-With aggregation, the same thing
-is true because it's
-
-71
-00:02:44,770 --> 00:02:45,410
-aggregating.
-
-72
-00:02:45,410 --> 00:02:46,870
-So it's grouping by
-a certain key.
-
-73
-00:02:46,870 --> 00:02:49,500
-So it may not produce as many
-documents as it sees.
-
-74
-00:02:49,500 --> 00:02:53,640
-So I'll call this n to one,
-since it reduces the number of
-
-75
-00:02:53,640 --> 00:02:55,970
-documents down a bit
-or can reduce
-
-76
-00:02:55,970 --> 00:02:56,970
+00:03:48,515 --> 00:03:50,133
 the number of documents.
 
+68
+00:03:50,363 --> 00:03:53,757
+Now, in order to group by something
+in a hierarchical document
+
+69
+00:03:53,757 --> 00:03:57,725
+that may in fact have array of items
+we need to, somehow, flatten this data.
+
+70
+00:03:57,725 --> 00:04:02,062
+And the way we're gonna do that
+is with the Unwind Stage.
+
+71
+00:04:02,062 --> 00:04:05,039
+And that's gonna essentially
+normalize our data, alright?
+
+72
+00:04:05,209 --> 00:04:08,059
+Let me show you how it works.
+Let's say you had tags
+
+73
+00:04:08,059 --> 00:04:13,201
+inside the document,
+and you had "red", "blue", and "green".
+
+74
+00:04:13,511 --> 00:04:17,825
+If you put the document through
+an unwind stage, you would wind up with
+
+75
+00:04:17,825 --> 00:04:24,329
+three documents: one that had tags: red,
+one that had tags: green,
+
+76
+00:04:24,329 --> 00:04:26,761
+and one that had tags: blue.
+
 77
-00:02:56,970 --> 00:02:59,510
-And then, there's
-a sort stage.
+00:04:26,761 --> 00:04:28,704
+Everything else with the document
+will be the same.
 
 78
-00:02:59,510 --> 00:03:01,290
-And the sorting stage does
-exactly what you could
+00:04:28,704 --> 00:04:31,709
+So, we unwind on tags.
+So, this creates an explosion of data
 
 79
-00:03:01,290 --> 00:03:02,760
-imagine-- it sorts.
+00:04:31,709 --> 00:04:35,123
+but it makes it possible to run 
+the group by's that we wanna do
 
 80
-00:03:02,760 --> 00:03:03,830
-And that's one to one.
+00:04:35,123 --> 00:04:37,162
+and the aggregation functions
+that we desire.
 
 81
-00:03:03,830 --> 00:03:06,590
-Every document it sees, it
-produces another document.
+00:04:37,162 --> 00:04:40,331
+So, this is gonna expand the number
+of documents we have.
 
 82
-00:03:06,590 --> 00:03:08,560
-And then there's a skip stage.
+00:04:40,331 --> 00:04:43,368
+If any given document at there's..
+n items in an array
 
 83
-00:03:08,560 --> 00:03:10,290
-And the skip stage
-can skip forward.
+00:04:43,368 --> 00:04:45,076
+we're going to get
+n documents out.
 
 84
-00:03:10,290 --> 00:03:12,290
-It only makes sense
-after you sort.
+00:04:45,076 --> 00:04:48,101
+So, these are the main operators that
+we're gonna use in aggregation.
 
 85
-00:03:12,290 --> 00:03:13,675
-And it just skips.
+00:04:48,101 --> 00:04:52,276
+Normally aggregation puts all of its 
+output, returns it directly to you
 
 86
-00:03:13,675 --> 00:03:16,740
-I don't know how to explain
-that, other than skipping.
+00:04:52,276 --> 00:04:55,318
+instead of the documents in a cursor.
+But if you wanna redirect
 
 87
-00:03:16,740 --> 00:03:18,760
-And, again, this is
-not one to one.
+00:04:55,318 --> 00:05:00,004
+those documents to another collection,
+you can do it with the the $out stage
 
 88
-00:03:18,760 --> 00:03:21,600
-This is n to one because, of
-course, if you skip forward
+00:05:00,004 --> 00:05:03,323
+and name a collection
+that should get the results.
 
 89
-00:03:21,600 --> 00:03:23,755
-10, then you aren't going to
-produce all the documents.
+00:05:03,343 --> 00:05:06,268
+So, this is all about taking the output
+of the aggregation.
 
 90
-00:03:23,755 --> 00:03:26,140
-You are going to produce a
-subset of the documents.
+00:05:06,618 --> 00:05:10,107
+1:1, everything that comes in goes out.
+And then, some stages that
 
 91
-00:03:26,140 --> 00:03:27,840
-There's a limit stage.
+00:05:10,107 --> 00:05:12,733
+we're not gonna heavily get into
+in this particular course
 
 92
-00:03:27,840 --> 00:03:29,950
-And that limit stage is going
-to limit the number of
+00:05:12,733 --> 00:05:17,890
+but you can read them online,
+are $redact and $geonear.
 
 93
-00:03:29,950 --> 00:03:31,040
-documents produced.
+00:05:18,020 --> 00:05:20,834
+These operators are both...
+The redact operator
 
 94
-00:03:31,040 --> 00:03:33,860
-Again, it's used usually
-with skip.
+00:05:20,834 --> 00:05:24,820
+is a security related feature
+that can be used to limit the
 
 95
-00:03:33,860 --> 00:03:36,050
-You might skip forward 10, and
-then limit myself to showing
+00:05:24,820 --> 00:05:28,736
+what document certain users see.
+And, the geonear stage
 
 96
-00:03:36,050 --> 00:03:37,450
-three documents.
+00:05:28,736 --> 00:05:31,319
+allows you to perform
+location based queries
 
 97
-00:03:37,450 --> 00:03:41,770
-And that's also going to be
-usually limit the number of
+00:05:31,319 --> 00:05:35,143
+to limit the documents that come through
+the pipeline stage based on location.
 
 98
-00:03:41,770 --> 00:03:45,930
-documents that comes through
-the pipeline, in some way.
+00:05:35,143 --> 00:05:37,668
+Alright, so, now that you know
+what stages exist in
 
 99
-00:03:45,930 --> 00:03:48,590
-That's one, two, three,
-four, five, six.
+00:05:37,668 --> 00:05:39,808
+the aggregation pipeline,
+it's time for a quiz.
 
 100
-00:03:48,590 --> 00:03:53,950
-There's one more operator, and
-that is unwind, which we're
+00:05:39,808 --> 00:05:43,121
+And, I think this quiz is gonna be
+pretty straight forward.
 
 101
-00:03:53,950 --> 00:03:56,550
-going to get into much more
-completely later.
+00:05:43,421 --> 00:05:46,081
+Which of the following are stages
+in the aggregation pipeline?
 
 102
-00:03:56,550 --> 00:03:58,110
-What unwind does--
+00:05:46,081 --> 00:05:49,540
+Check all that apply.
+Match, Transpose, Group, Skip,
 
 103
-00:03:58,110 --> 00:04:00,860
-in MongoDB, we've got these
-documents that can have
+00:05:49,540 --> 00:05:52,010
+Limit, Sort, Project, and Unwind.
 
 104
-00:04:00,860 --> 00:04:03,400
-sub-arrays inside them--
-
-105
-00:04:03,400 --> 00:04:04,580
-pre-joined data.
-
-106
-00:04:04,580 --> 00:04:07,430
-And what unwind does, is
-it un-joins the data.
-
-107
-00:04:07,430 --> 00:04:09,850
-So you can imagine, that if
-you had, let's say, a blog
-
-108
-00:04:09,850 --> 00:04:16,839
-post with tags, and tags were
-sports and outdoors and
-
-109
-00:04:16,839 --> 00:04:19,860
-summer, what unwind will
-do is, it'll--
-
-110
-00:04:19,860 --> 00:04:21,149
-when it encounters
-a document--
-
-111
-00:04:21,149 --> 00:04:22,740
-and you're going to unwind
-in a particular key, like
-
-112
-00:04:22,740 --> 00:04:23,450
-[INAUDIBLE]
-
-113
-00:04:23,450 --> 00:04:24,360
-tags--
-
-114
-00:04:24,360 --> 00:04:28,130
-it's going to produce a document
-for every single one
-
-115
-00:04:28,130 --> 00:04:32,400
-of these sub-elements with
-everything else repeated.
-
-116
-00:04:32,400 --> 00:04:36,400
-So, basically, it normalizes the
-data, again, so that you
-
-117
-00:04:36,400 --> 00:04:39,100
-can more easily aggregate
-it, is what it does.
-
-118
-00:04:39,100 --> 00:04:40,780
-So this is going to create an
-explosion of documents.
-
-119
-00:04:40,780 --> 00:04:42,780
-So I might have one document
-with three keys.
-
-120
-00:04:42,780 --> 00:04:45,140
-And it might produce three
-documents going through the
-
-121
-00:04:45,140 --> 00:04:46,380
-unwind stage.
-
-122
-00:04:46,380 --> 00:04:48,250
-So I'm going to say, 1 to n.
-
-123
-00:04:48,250 --> 00:04:49,260
-We'll go through what
-every single one of
-
-124
-00:04:49,260 --> 00:04:50,840
-these stages does.
-
-125
-00:04:50,840 --> 00:04:53,340
-I want to point out that
-you can have a stage
-
-126
-00:04:53,340 --> 00:04:54,370
-exist more than once.
-
-127
-00:04:54,370 --> 00:04:57,400
-So you could decide to match
-on some documents.
-
-128
-00:04:57,400 --> 00:04:58,880
-You can then group them.
-
-129
-00:04:58,880 --> 00:05:00,070
-Then you could match again.
-
-130
-00:05:00,070 --> 00:05:01,040
-You could then sort them.
-
-131
-00:05:01,040 --> 00:05:02,330
-You could skip them.
-
-132
-00:05:02,330 --> 00:05:05,070
-You could even unwind them over
-and over again, if you
-
-133
-00:05:05,070 --> 00:05:06,410
-wanted to do that.
-
-134
-00:05:06,410 --> 00:05:07,930
-And I'll show you some cases
-where that might be
-
-135
-00:05:07,930 --> 00:05:08,990
-interesting.
-
-136
-00:05:08,990 --> 00:05:10,720
-But, for now, I just want you
-to understand that the
-
-137
-00:05:10,720 --> 00:05:13,430
-aggregation system uses
-a pipeline concept.
-
-138
-00:05:13,430 --> 00:05:15,740
-And that that pipeline has
-various operators that can run
-
-139
-00:05:15,740 --> 00:05:16,370
-other documents.
-
-140
-00:05:16,370 --> 00:05:19,490
-And that you can conceptually
-think of the documents as
-
-141
-00:05:19,490 --> 00:05:22,470
-coming in the left side, getting
-transformed through
-
-142
-00:05:22,470 --> 00:05:26,640
-these stages, and then getting
-a result set from that.
-
-143
-00:05:26,640 --> 00:05:30,180
-And, so far, we looked only
-at the grouping operator.
-
-144
-00:05:30,180 --> 00:05:31,890
-But we're going to go
-through them all.
-
-145
-00:05:31,890 --> 00:05:32,460
-OK.
-
-146
-00:05:32,460 --> 00:05:34,380
-It is time for a quiz.
-
-147
-00:05:34,380 --> 00:05:38,220
-And I think this quiz is going
-to be pretty straightforward.
-
-148
-00:05:38,220 --> 00:05:39,660
-Which of the following
-are stages in
-
-149
-00:05:39,660 --> 00:05:40,760
-the aggregation pipeline?
-
-150
-00:05:40,760 --> 00:05:42,300
-Check all that apply.
-
-151
-00:05:42,300 --> 00:05:45,100
-Match, transpose, group,
-skip, limit, sort,
-
-152
-00:05:45,100 --> 00:05:46,680
-project, and unwind.
-
-153
-00:05:46,680 --> 00:05:47,930
+00:05:52,010 --> 00:05:54,820
 Just check all that apply.
 
-154
-00:05:47,930 --> 00:05:48,880
