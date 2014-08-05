@@ -1,373 +1,413 @@
-﻿1
-00:00:00,000 --> 00:00:00,190
+1
+00:00:00,000 --> 00:00:00,499
+ 
 
 2
-00:00:00,190 --> 00:00:01,010
-OK.
+00:00:00,499 --> 00:00:02,680
+OK, let's bring it
+all together now
 
 3
-00:00:01,010 --> 00:00:03,440
-Ahora vamos a juntarlo todo
-y construiremos una aplicación
+00:00:02,680 --> 00:00:04,820
+and build a web application.
 
 4
-00:00:03,440 --> 00:00:04,830
-web.
+00:00:04,820 --> 00:00:06,680
+We have MongoD installed.
 
 5
-00:00:04,830 --> 00:00:06,700
-Tenemos mongod instalado.
+00:00:06,680 --> 00:00:10,580
+And we have our application
+layer over here.
 
 6
-00:00:06,700 --> 00:00:10,590
-Y nuestra capa de 
-aplicación por aquí.
+00:00:10,580 --> 00:00:12,850
+And that's going to
+be written in Python.
 
 7
-00:00:10,590 --> 00:00:12,860
-Va a ser escrita
-en Python.
+00:00:12,850 --> 00:00:15,350
+And we have PyMongo installed.
 
 8
-00:00:12,860 --> 00:00:15,360
-Y tenemos PyMongo instalado.
+00:00:15,350 --> 00:00:18,750
+And PyMongo is going to
+talk to MongoD via BSON.
 
 9
-00:00:15,360 --> 00:00:18,780
-Y PyMongo va a comunicarse
-con MongoDB en BSON.
+00:00:18,750 --> 00:00:21,270
+And the last part
+is we want to be
 
 10
-00:00:18,780 --> 00:00:22,740
-Y la última parte es que seamos
-capaces de mostrar una página
+00:00:21,270 --> 00:00:24,640
+able to display a
+web page via HTTP.
 
 11
-00:00:22,740 --> 00:00:24,660
-web, vía HTTP.
+00:00:24,640 --> 00:00:28,290
+And to do that, we're going
+to write a program that
 
 12
-00:00:24,660 --> 00:00:28,670
-Y para hacer eso, vamos a
-escribir un programa que usa el
+00:00:28,290 --> 00:00:30,332
+uses the Bottle framework.
 
 13
-00:00:28,670 --> 00:00:30,400
-framework Bottle.
+00:00:30,332 --> 00:00:32,040
+So I'll show you what
+a small Hello World
 
 14
-00:00:30,400 --> 00:00:33,300
-Por lo que te enseñaré cómo un 
-pequeño programa "Hello World"
+00:00:32,040 --> 00:00:34,260
+program looks like to do that.
 
 15
-00:00:33,300 --> 00:00:34,280
-puede hacer eso.
+00:00:34,260 --> 00:00:39,626
+So I'm going to open up
+the small program in Emacs.
 
 16
-00:00:34,280 --> 00:00:39,760
-Entonces voy a abrir este
-pequeño programa en Emacs.
+00:00:39,626 --> 00:00:41,000
+We'll go through
+it line by line,
 
 17
-00:00:39,760 --> 00:00:41,100
-Lo veremos línea
-por línea para que
+00:00:41,000 --> 00:00:42,440
+so we can see what it does.
 
 18
-00:00:41,100 --> 00:00:42,370
-podamos ver qué hace.
+00:00:42,440 --> 00:00:44,110
+So the first thing
+is it important
 
 19
-00:00:42,370 --> 00:00:44,650
-Lo primero que hace es
-"import bottle".
+00:00:44,110 --> 00:00:47,360
+Bottle and then it
+imports PyMongo.
 
 20
-00:00:44,650 --> 00:00:47,410
-Y luego "import pymongo".
+00:00:47,360 --> 00:00:50,350
+And then it creates
+a route for "/",
 
 21
-00:00:47,410 --> 00:00:51,570
-Y a continuación crea una ruta para
-"/", que quiere decir la ruta
+00:00:50,350 --> 00:00:52,450
+which means the default
+route of the web server.
 
 22
-00:00:51,570 --> 00:00:52,480
-por defecto del servidor web.
+00:00:52,450 --> 00:00:55,680
+So when you go to a web
+server without any URL,
 
 23
-00:00:52,480 --> 00:00:56,270
-Por lo que cuando vamos a un servidor web
-sin ninguna URL tras el hostname,
+00:00:55,680 --> 00:00:57,420
+after the host name
+this is what you get.
 
 24
-00:00:56,270 --> 00:00:57,660
-esto es lo que obtienes.
+00:00:57,420 --> 00:01:00,310
+This is a little
+decorator telling Python
 
 25
-00:00:57,660 --> 00:01:01,015
-Es un decorador que le dice a
-Python cuál es la próxima función
+00:01:00,310 --> 00:01:02,640
+that the next function
+is going to be executed
 
 26
-00:01:01,015 --> 00:01:04,489
-que va a ejecutar cuando
-el usuario alcanza esa ruta.
+00:01:02,640 --> 00:01:04,470
+when the user hits that route.
 
 27
-00:01:04,489 --> 00:01:07,050
-Y la llamamos "index".
+00:01:04,470 --> 00:01:07,280
+And we call that
+"index", but there's
 
 28
-00:01:07,050 --> 00:01:09,000
-Pero no hay nada especial
-en ese nombre.
+00:01:07,280 --> 00:01:08,970
+nothing special about that name.
 
 29
-00:01:09,000 --> 00:01:12,080
-Y podrías, de hecho, llamarla de
-cualquier otra forma que prefieras.
+00:01:08,970 --> 00:01:12,050
+And you could, in fact, call
+it something else, if you like.
 
 30
-00:01:12,080 --> 00:01:17,980
-El primer paso aquí es usar
-la clase "MongoClient" para
+00:01:12,050 --> 00:01:16,970
+The first step here is
+to use the MongoClient
 
 31
-00:01:17,980 --> 00:01:21,000
-conectarnos a "localhost"
-al puerto "27017".
+00:01:16,970 --> 00:01:20,970
+class to connect the
+local host at 27017.
 
 32
-00:01:21,000 --> 00:01:23,660
-Ése es el puerto por defecto
-en el que escucha mongod.
+00:01:20,970 --> 00:01:23,640
+That's the default port
+that MongoD listens on.
 
 33
-00:01:23,660 --> 00:01:26,990
-Y a continuación, de nuevo, nos 
-conectamos a la base de datos "test".
+00:01:23,640 --> 00:01:27,610
+And then, again, we connect
+to the test database db equals
 
 34
-00:01:26,990 --> 00:01:29,020
-"db = connection.test"
+00:01:27,610 --> 00:01:28,990
+connection.test.
 
 35
-00:01:29,020 --> 00:01:30,910
-Y luego a la colección
-"names".
+00:01:28,990 --> 00:01:32,410
+And then to the names
+collection db.names.
 
 36
-00:01:30,910 --> 00:01:32,430
-"db.names"
+00:01:32,410 --> 00:01:35,672
+Then we find a single document
+using the "find_one" command.
 
 37
-00:01:32,430 --> 00:01:35,960
-Luego encontramos un documento simple
-usando el comando "find_one"
+00:01:35,672 --> 00:01:37,630
+That's going to put that
+document into the item
 
 38
-00:01:35,960 --> 00:01:36,990
-que va a poner
-ese documento
+00:01:37,630 --> 00:01:38,630
+variable.
 
 39
-00:01:36,990 --> 00:01:38,650
-en la variable "item".
+00:01:38,630 --> 00:01:43,230
+And then it's going to return,
+basically, hello, whatever
 
 40
-00:01:38,650 --> 00:01:43,480
-Y entonces va a devolver,
-básicamente, "Hello" y cualquier cosa
+00:01:43,230 --> 00:01:46,200
+is in the names key
+of that document.
 
 41
-00:01:43,480 --> 00:01:46,130
-que esté en la clave
-"name" de ese documento.
+00:01:46,200 --> 00:01:48,870
+And this is a Python
+convention that the "%S!"
 
 42
-00:01:46,130 --> 00:01:49,270
-Y esto es una convención de Python
-según la cual el "%s" será
+00:01:48,870 --> 00:01:51,670
+will be substituted by what's
+after this percent sign,
 
 43
-00:01:49,270 --> 00:01:51,690
-sustituido por lo que esté tras
-el signo de porcentaje.
+00:01:51,670 --> 00:01:53,700
+in this case, item "name".
 
 44
-00:01:51,690 --> 00:01:53,730
-En este caso, "item['name']".
+00:01:53,700 --> 00:01:55,830
+Item's a dictionary,
+and we're pulling out
 
 45
-00:01:53,730 --> 00:01:54,830
-"item" es un diccionario.
+00:01:55,830 --> 00:01:58,130
+the value for the name key.
 
 46
-00:01:54,830 --> 00:01:58,160
-Y estamos recuperando el
-valor de la clave "name".
+00:01:58,130 --> 00:01:59,530
+This is the end
+of that function,
 
 47
-00:01:58,160 --> 00:01:59,890
-Ése es el final de
-la función, que va a 
+00:01:59,530 --> 00:02:01,410
+which is going to run
+when you hit the "/"
 
 48
-00:01:59,890 --> 00:02:02,870
-ejecutarse cuando pidas
-la ruta "/" al servidor.
+00:02:01,410 --> 00:02:02,850
+route on the server.
 
 49
-00:02:02,870 --> 00:02:05,450
-Y lo único que queda por
-hacer es que tenemos que
+00:02:02,850 --> 00:02:05,150
+And the only thing
+left to do is that we
 
 50
-00:02:05,450 --> 00:02:06,940
-decirle a Bottle que se ejecute.
+00:02:05,150 --> 00:02:06,910
+have to tell Bottle to run.
 
 51
-00:02:06,940 --> 00:02:11,660
-Y para hacerlo llamamos
-a "bottle.run" con "host = localhost" y
+00:02:06,910 --> 00:02:10,720
+And to do that, we call
+"bottle.run" with host
 
 52
-00:02:11,660 --> 00:02:15,780
-"port = 8082", que es un número
-de puerto alto al que podemos
+00:02:10,720 --> 00:02:12,450
+equal "localhost"
+and the port equals
 
 53
-00:02:15,780 --> 00:02:17,600
-llegar sin ser root.
+00:02:12,450 --> 00:02:15,360
+8082, which is a high
+number port that we
 
 54
-00:02:17,600 --> 00:02:20,470
-Así que vamos a ejecutarlo.
+00:02:15,360 --> 00:02:17,570
+can get to without being root.
 
 55
-00:02:20,470 --> 00:02:20,730
-OK.
+00:02:17,570 --> 00:02:20,440
+So let's run it.
 
 56
-00:02:20,730 --> 00:02:22,890
-Dice que está escuchando
-en "localhost".
+00:02:20,440 --> 00:02:22,860
+OK, it says it's
+listening on local host.
 
 57
-00:02:22,890 --> 00:02:25,210
-Y ahora vayamos a
-un navegador web.
+00:02:22,860 --> 00:02:28,590
+And now let's go to a web
+browser and hit that URL.
 
 58
-00:02:25,210 --> 00:02:28,620
-Y pongamos esa URL.
+00:02:28,590 --> 00:02:31,140
+And we can see it
+says "Hello Dwight!"
 
 59
-00:02:28,620 --> 00:02:31,150
-Podemos ver que dice
-"Hello Dwight!".
+00:02:31,140 --> 00:02:33,310
+And if you recall, Dwight
+was in the database
 
 60
-00:02:31,150 --> 00:02:33,970
-Y si recuerdas, "Dwight" estaba
-en la base de datos en la colección
+00:02:33,310 --> 00:02:35,080
+in the names collection.
 
 61
-00:02:33,970 --> 00:02:35,140
-"names".
+00:02:35,080 --> 00:02:37,230
+And if we make a change,
+it's reflected in the web
 
 62
-00:02:35,140 --> 00:02:36,500
-Y si hacemos un cambio --
+00:02:37,230 --> 00:02:38,760
+application that we just built.
 
 63
-00:02:36,500 --> 00:02:38,320
-lo haré por aquí.
+00:02:38,760 --> 00:02:40,400
+We're going to run
+the Mongo shell
 
 64
-00:02:38,320 --> 00:02:40,800
-Llamamos a mongo.
+00:02:40,400 --> 00:02:43,070
+and we're going to
+pull the document out
 
 65
-00:02:40,800 --> 00:02:42,360
-"use test"
+00:02:43,070 --> 00:02:44,130
+of the names collection.
 
 66
-00:02:42,360 --> 00:02:44,960
-Y luego hacemos "var j =
-db.names.findOne()"
+00:02:44,130 --> 00:02:47,100
+We're going to do that by
+assigning a JavaScript variable
 
 67
-00:02:44,960 --> 00:02:47,680
+00:02:47,100 --> 00:02:51,416
+j to the result of
+"db.names.findOne."
 
 68
-00:02:47,680 --> 00:02:49,350
-Podemos ver que "j" es "Dwight".
+00:02:51,416 --> 00:02:52,490
+We're going to look at j.
 
 69
-00:02:49,350 --> 00:02:50,960
-Podríamos hacer "j.name = 'Andrew'"
+00:02:52,490 --> 00:02:56,220
+And we see that j is a document
+with an underscore ID assigned
 
 70
-00:02:50,960 --> 00:02:54,410
+00:02:56,220 --> 00:02:59,160
+by the database and then
+the name of "Dwight."
 
 71
-00:02:54,410 --> 00:02:56,290
-Y luego podemos hacer
-"db.names.save(j)"
+00:02:59,160 --> 00:03:00,950
+We can modify that
+inside JavaScript.
 
 72
-00:02:56,290 --> 00:03:00,000
+00:03:00,950 --> 00:03:03,680
+I'm going to change
+the name to "Andrew."
 
 73
-00:03:00,000 --> 00:03:01,860
-Y ahora se guarda "Andrew"
-en la colección.
+00:03:03,680 --> 00:03:05,620
+And now I'm going to
+update the document
 
 74
-00:03:01,860 --> 00:03:04,210
-Echemos un vistazo y asegurémonos
-que es cierto.
+00:03:05,620 --> 00:03:08,870
+by calling
+"db.names.save", giving
 
 75
-00:03:04,210 --> 00:03:06,540
-Dice que "Andrew" está
-ahora ahí.
+00:03:08,870 --> 00:03:11,626
+the value of this
+JavaScript variable j.
 
 76
-00:03:06,540 --> 00:03:11,390
-Y si volvemos ahora a nuestro
-navegador web justo aquí y lo
+00:03:11,626 --> 00:03:14,580
+OK, database tells us that
+it matched one document
 
 77
-00:03:11,390 --> 00:03:14,710
-ejecutamos otra vez,
-cambia a "Andrew".
+00:03:14,580 --> 00:03:16,490
+and that it modified
+one document, which
 
 78
-00:03:14,710 --> 00:03:20,460
-Por lo que puedes ver, ahora tenemos una
-aplicación de principio a fin escrita
+00:03:16,490 --> 00:03:20,590
+is confirmed now that everything
+is as we expect it to be.
 
 79
-00:03:20,460 --> 00:03:25,330
-en Python, que utiliza
-Bottle y PyMongo.
+00:03:20,590 --> 00:03:23,380
+And we can see that there is
+one document inside the names
 
 80
-00:03:25,330 --> 00:03:26,720
-Se conecta a la base de datos.
+00:03:23,380 --> 00:03:26,840
+collection and it has
+a name of "Andrew."
 
 81
-00:03:26,720 --> 00:03:28,880
-Y luego puede responder
-a una petición HTTP y
+00:03:26,840 --> 00:03:31,010
+And now if we go back to
+our web browser right here
 
 82
-00:03:28,880 --> 00:03:30,130
-generar una página web.
+00:03:31,010 --> 00:03:35,100
+and run it again, it
+changes to "Andrew."
 
 83
-00:03:30,130 --> 00:03:31,200
+00:03:35,100 --> 00:03:40,190
+So you can see now we have an
+end-to-end application that
+
+84
+00:03:40,190 --> 00:03:43,650
+is written in Python,
+that uses Bottle,
+
+85
+00:03:43,650 --> 00:03:47,010
+and that uses PyMongo,
+connects to the database,
+
+86
+00:03:47,010 --> 00:03:49,050
+and then it can answer
+an HTTP request,
+
+87
+00:03:49,050 --> 00:03:51,490
+and produce a web page.
+

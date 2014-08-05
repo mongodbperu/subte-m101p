@@ -1,0 +1,701 @@
+1
+00:00:00,000 --> 00:00:00,140
+
+2
+00:00:00,140 --> 00:00:01,940
+The aggregation
+subsystem allows you
+
+3
+00:00:01,940 --> 00:00:05,070
+to specify certain
+options that will change
+
+4
+00:00:05,070 --> 00:00:06,630
+the behavior of
+aggregation, and I
+
+5
+00:00:06,630 --> 00:00:08,630
+want to talk to you
+about how those work
+
+6
+00:00:08,630 --> 00:00:11,070
+and when you might
+need to use them.
+
+7
+00:00:11,070 --> 00:00:15,470
+So the first one is
+explain, and explain
+
+8
+00:00:15,470 --> 00:00:18,450
+lets you-- instead of
+running aggregation query,
+
+9
+00:00:18,450 --> 00:00:22,110
+get the query plan
+that would be used
+
+10
+00:00:22,110 --> 00:00:24,140
+if we ran the aggregation query.
+
+11
+00:00:24,140 --> 00:00:28,260
+So that's useful in optimizing
+aggregation operations.
+
+12
+00:00:28,260 --> 00:00:32,640
+The next one is
+allowDiskUse, and this
+
+13
+00:00:32,640 --> 00:00:36,030
+controls whether or not the
+aggregation framework will
+
+14
+00:00:36,030 --> 00:00:39,760
+use the hard drive for some
+of the intermediary stages.
+
+15
+00:00:39,760 --> 00:00:41,570
+By default-- and
+we'll go over this
+
+16
+00:00:41,570 --> 00:00:44,350
+in a later lesson
+on limitations--
+
+17
+00:00:44,350 --> 00:00:49,650
+any given stage of aggregation
+is limited to 100 megabytes.
+
+18
+00:00:49,650 --> 00:00:52,460
+Certain stages like projection
+run the document straight
+
+19
+00:00:52,460 --> 00:00:54,517
+through and don't
+use a lot of memory,
+
+20
+00:00:54,517 --> 00:00:56,100
+but certain stages
+like, for instance,
+
+21
+00:00:56,100 --> 00:01:00,220
+sort-- which will by default
+sort in memory-- if you exceed
+
+22
+00:01:00,220 --> 00:01:02,830
+100 megabytes the
+aggregation will fail.
+
+23
+00:01:02,830 --> 00:01:05,830
+And so if you know you want
+to do a large aggregation
+
+24
+00:01:05,830 --> 00:01:09,810
+and you're willing to accept the
+performance hit of using disk,
+
+25
+00:01:09,810 --> 00:01:13,710
+you can specify that the
+aggregation can allow disk use.
+
+26
+00:01:13,710 --> 00:01:16,280
+And the last one has to do with
+the use of cursors and cursor
+
+27
+00:01:16,280 --> 00:01:17,130
+size.
+
+28
+00:01:17,130 --> 00:01:19,220
+And we're going to use
+that one in a way that's
+
+29
+00:01:19,220 --> 00:01:20,928
+slightly different
+than you might expect.
+
+30
+00:01:20,928 --> 00:01:24,340
+And I'll show you as we go
+onto the lesson what that does.
+
+31
+00:01:24,340 --> 00:01:27,280
+OK, let's talk about
+how you some of these.
+
+32
+00:01:27,280 --> 00:01:30,420
+You all remember the ZIPS--
+the ZIP code collection
+
+33
+00:01:30,420 --> 00:01:32,410
+that we showed
+earlier, which has
+
+34
+00:01:32,410 --> 00:01:35,430
+a bunch of ZIP codes
+and their populations.
+
+35
+00:01:35,430 --> 00:01:39,150
+And we might want to
+aggregate on the state--
+
+36
+00:01:39,150 --> 00:01:43,970
+that's the US state-- and what
+population exists in the state.
+
+37
+00:01:43,970 --> 00:01:46,364
+So to do that, we do
+a grouping right here.
+
+38
+00:01:46,364 --> 00:01:47,780
+A grouping where
+the underscore ID
+
+39
+00:01:47,780 --> 00:01:52,120
+is the state-- $state-- and then
+the population is $sum; $pop,
+
+40
+00:01:52,120 --> 00:01:55,450
+which refers to the population
+field of the ZIP code
+
+41
+00:01:55,450 --> 00:01:56,125
+collection.
+
+42
+00:01:56,125 --> 00:01:58,750
+And just to remind you what the
+ZIP code collection looks like,
+
+43
+00:01:58,750 --> 00:02:01,052
+let's take a look at that.
+
+44
+00:02:01,052 --> 00:02:02,635
+Let's look at the
+ZIP code collection.
+
+45
+00:02:02,635 --> 00:02:03,385
+Db.zips.find0ne().
+
+46
+00:02:03,385 --> 00:02:05,790
+
+47
+00:02:05,790 --> 00:02:08,949
+Just to remind you what the
+ZIPs collection looks like,
+
+48
+00:02:08,949 --> 00:02:11,390
+each document contains
+an ID with a ZIP code,
+
+49
+00:02:11,390 --> 00:02:13,472
+and then a city and a state.
+
+50
+00:02:13,472 --> 00:02:14,930
+And if we wanted
+to aggregate based
+
+51
+00:02:14,930 --> 00:02:17,450
+on the population
+in each state, we
+
+52
+00:02:17,450 --> 00:02:21,290
+could do it by grouping
+on the state-- underscore
+
+53
+00:02:21,290 --> 00:02:24,330
+ID is a state-- and then
+creating a new field called
+
+54
+00:02:24,330 --> 00:02:27,620
+population, and having that
+be the sum of all the dollar
+
+55
+00:02:27,620 --> 00:02:29,240
+pop fields from each document.
+
+56
+00:02:29,240 --> 00:02:31,900
+Dollar pop held the
+population and a ZIP code.
+
+57
+00:02:31,900 --> 00:02:33,870
+But let's say we don't
+want to do the query
+
+58
+00:02:33,870 --> 00:02:35,390
+but simply explain it.
+
+59
+00:02:35,390 --> 00:02:37,730
+Well, here's how
+you'd add an option.
+
+60
+00:02:37,730 --> 00:02:40,480
+So right here you can
+see that the first part
+
+61
+00:02:40,480 --> 00:02:44,780
+of this aggregation query is
+an array of aggregation stages,
+
+62
+00:02:44,780 --> 00:02:48,600
+and in this case is only one,
+which is the group stage.
+
+63
+00:02:48,600 --> 00:02:50,490
+But there could be more.
+
+64
+00:02:50,490 --> 00:02:53,490
+And after this array we
+have another document,
+
+65
+00:02:53,490 --> 00:02:56,330
+and we have this
+explain keyword true.
+
+66
+00:02:56,330 --> 00:02:59,880
+And this explain keyword
+true tells MongoDB
+
+67
+00:02:59,880 --> 00:03:02,050
+that it should, rather
+than run the aggregation,
+
+68
+00:03:02,050 --> 00:03:04,949
+give you an explanation
+of the query plan.
+
+69
+00:03:04,949 --> 00:03:07,490
+So let's go through and see what
+would happen if we use that.
+
+70
+00:03:07,490 --> 00:03:10,000
+I put this aggregation
+query into this text file,
+
+71
+00:03:10,000 --> 00:03:12,240
+so I'm just going to
+redirect it into the shell.
+
+72
+00:03:12,240 --> 00:03:14,470
+And you can see when we run
+it, that rather than get
+
+73
+00:03:14,470 --> 00:03:19,950
+the answer, what we get instead
+is this large document which
+
+74
+00:03:19,950 --> 00:03:23,800
+contains all this information
+about what indexes were used
+
+75
+00:03:23,800 --> 00:03:27,950
+to satisfy different parts
+of the aggregation query.
+
+76
+00:03:27,950 --> 00:03:31,086
+And of course if I
+remove this right here,
+
+77
+00:03:31,086 --> 00:03:33,210
+if I remove it-- so now I
+just have the aggregation
+
+78
+00:03:33,210 --> 00:03:36,920
+query itself without the extra
+options in that document.
+
+79
+00:03:36,920 --> 00:03:39,310
+Then if I run it
+again, then I will
+
+80
+00:03:39,310 --> 00:03:42,205
+get the aggregation results,
+which are very simple.
+
+81
+00:03:42,205 --> 00:03:44,240
+It's the population
+of all the states.
+
+82
+00:03:44,240 --> 00:03:47,550
+This is the first bundle of
+the iterator, first page,
+
+83
+00:03:47,550 --> 00:03:49,630
+and you can see the
+population of each state
+
+84
+00:03:49,630 --> 00:03:52,750
+and what it is, as of the date
+that this data was current.
+
+85
+00:03:52,750 --> 00:03:55,880
+OK, so that's how you
+would use explain.
+
+86
+00:03:55,880 --> 00:03:58,930
+If you wanted to use disk
+during the aggregation query,
+
+87
+00:03:58,930 --> 00:04:00,400
+it would work similarly.
+
+88
+00:04:00,400 --> 00:04:02,715
+You would put right
+here-- allowDiskUse=true.
+
+89
+00:04:02,715 --> 00:04:06,790
+
+90
+00:04:06,790 --> 00:04:10,430
+And don't forget
+to add this comma.
+
+91
+00:04:10,430 --> 00:04:13,460
+So this is really a second
+argument to aggregate,
+
+92
+00:04:13,460 --> 00:04:16,300
+and then it'll work fine.
+
+93
+00:04:16,300 --> 00:04:18,829
+And you shouldn't notice
+any difference in-- sorry
+
+94
+00:04:18,829 --> 00:04:19,670
+about that.
+
+95
+00:04:19,670 --> 00:04:20,980
+Let's go through that.
+
+96
+00:04:20,980 --> 00:04:22,430
+I made a small mistake.
+
+97
+00:04:22,430 --> 00:04:26,370
+It's not allowDiskUse=true
+when creating a JSON document.
+
+98
+00:04:26,370 --> 00:04:30,580
+So if you wanted to-- instead
+of explaining, allow disk use,
+
+99
+00:04:30,580 --> 00:04:35,410
+you would set up this
+allowDiskUse:true as a document
+
+100
+00:04:35,410 --> 00:04:39,030
+that follows the array, which is
+the first argument to aggregate
+
+101
+00:04:39,030 --> 00:04:40,330
+of all the stages.
+
+102
+00:04:40,330 --> 00:04:43,182
+And if we run that, we
+see the exact same result.
+
+103
+00:04:43,182 --> 00:04:45,140
+Might have been a tad
+slower, but of course you
+
+104
+00:04:45,140 --> 00:04:46,920
+can't see it for
+this small problem
+
+105
+00:04:46,920 --> 00:04:48,510
+because it's using disk.
+
+106
+00:04:48,510 --> 00:04:52,060
+OK, so one thing to
+point out real quickly
+
+107
+00:04:52,060 --> 00:04:54,910
+is that there's actually
+two forms for aggregation
+
+108
+00:04:54,910 --> 00:04:57,550
+that are acceptable
+historically.
+
+109
+00:04:57,550 --> 00:05:01,030
+In one form, you have
+an array of stages.
+
+110
+00:05:01,030 --> 00:05:05,440
+Stage, stage, stage.
+
+111
+00:05:05,440 --> 00:05:08,540
+In another form,
+you have just this.
+
+112
+00:05:08,540 --> 00:05:11,390
+Aggregate, and then
+in parentheses,
+
+113
+00:05:11,390 --> 00:05:16,320
+just-- no array, just
+stage, stage, stage.
+
+114
+00:05:16,320 --> 00:05:19,520
+And each of these stages is
+of course a JSON document.
+
+115
+00:05:19,520 --> 00:05:23,370
+So only this form
+of using an array
+
+116
+00:05:23,370 --> 00:05:25,390
+to hold your pipeline
+stages allows
+
+117
+00:05:25,390 --> 00:05:27,890
+you to add aggregation options.
+
+118
+00:05:27,890 --> 00:05:29,150
+This one does not.
+
+119
+00:05:29,150 --> 00:05:32,240
+So this one, you
+cannot add options to.
+
+120
+00:05:32,240 --> 00:05:34,380
+So you don't use this
+older form if you
+
+121
+00:05:34,380 --> 00:05:35,660
+are hoping to add options.
+
+122
+00:05:35,660 --> 00:05:37,660
+And the reason is
+that in this form,
+
+123
+00:05:37,660 --> 00:05:39,240
+the option would go
+right at the end,
+
+124
+00:05:39,240 --> 00:05:41,490
+and there would be no way
+for MongoDB to differentiate
+
+125
+00:05:41,490 --> 00:05:45,200
+whether that's another stage, or
+the options of the aggregation.
+
+126
+00:05:45,200 --> 00:05:47,450
+And of course, the way
+that we specify the options
+
+127
+00:05:47,450 --> 00:05:49,620
+is by having an array of stages.
+
+128
+00:05:49,620 --> 00:05:50,587
+Stage, stage, stage.
+
+129
+00:05:50,587 --> 00:05:51,670
+And each one is different.
+
+130
+00:05:51,670 --> 00:05:54,190
+I mean, it's called
+stage two, stage three.
+
+131
+00:05:54,190 --> 00:05:57,200
+And then after that, in
+this JSON document right
+
+132
+00:05:57,200 --> 00:05:58,870
+here, we've got our options.
+
+133
+00:05:58,870 --> 00:06:02,910
+And that's what I showed
+you on the screen before.
+
+134
+00:06:02,910 --> 00:06:04,920
+You can see that
+I had, right here,
+
+135
+00:06:04,920 --> 00:06:08,730
+these stages in an array, only
+one, and then another document
+
+136
+00:06:08,730 --> 00:06:12,590
+that contained my first options,
+allow disk use and true.
+
+137
+00:06:12,590 --> 00:06:13,510
+OK.
+
+138
+00:06:13,510 --> 00:06:16,130
+So that's the way
+you specify options.
+
+139
+00:06:16,130 --> 00:06:18,759
+And this is specifying those
+options using JavaScript.
+
+140
+00:06:18,759 --> 00:06:20,300
+And the next part,
+I want to show you
+
+141
+00:06:20,300 --> 00:06:23,090
+how you specify the
+options using Python, which
+
+142
+00:06:23,090 --> 00:06:26,020
+is interesting for a different
+reason as I'll explain.
+
+143
+00:06:26,020 --> 00:06:27,780
+OK, it's time for a quiz.
+
+144
+00:06:27,780 --> 00:06:29,840
+Which of the following
+aggregation expressions
+
+145
+00:06:29,840 --> 00:06:32,757
+properly allows disk use
+when performing aggregation?
+
+146
+00:06:32,757 --> 00:06:34,590
+And you can see there
+are four choices here,
+
+147
+00:06:34,590 --> 00:06:36,780
+and they're subtly different.

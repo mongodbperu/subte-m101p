@@ -1,0 +1,508 @@
+1
+00:00:00,032 --> 00:00:03,674
+Ok, the next stage of the aggregation
+pipeline I want to tell you about
+
+2
+00:00:03,674 --> 00:00:07,567
+is the match phase. 
+Now match performs a filtering
+
+3
+00:00:07,567 --> 00:00:12,147
+which is an n:1 operation.
+Match will go through each document
+
+4
+00:00:12,147 --> 00:00:15,423
+and see if the document 
+matches your criteria.
+
+5
+00:00:15,423 --> 00:00:18,391
+And if it does, then it will push it 
+through to the next stage
+
+6
+00:00:18,391 --> 00:00:19,933
+of the aggregation pipeline.
+
+7
+00:00:19,933 --> 00:00:22,473
+Now there are two reasons
+why you might want to match.
+
+8
+00:00:22,486 --> 00:00:25,203
+The first is that, you might want 
+to filter the documents
+
+9
+00:00:25,203 --> 00:00:27,523
+and only perform aggregation 
+on a subset on them.
+
+10
+00:00:27,539 --> 00:00:31,047
+And the second reason that you might want
+to perform a match is you might want
+
+11
+00:00:31,047 --> 00:00:34,040
+to filter the result itself
+which is to perform an aggregation
+
+12
+00:00:34,040 --> 00:00:36,515
+and then after that, to filter the results.
+
+13
+00:00:36,515 --> 00:00:41,222
+Alright, lets look at the zip code 
+collection and see how this might work.
+
+14
+00:00:41,222 --> 00:00:43,702
+So, here's what the zip code
+collection looks like.
+
+15
+00:00:43,702 --> 00:00:49,302
+It's got one document for each zip code
+which is in the _id with a city
+
+16
+00:00:49,306 --> 00:00:52,996
+and a location
+and a population and a state.
+
+17
+00:00:52,996 --> 00:00:56,596
+Now lets say we wanted to filter
+this data set and only aggregate
+
+18
+00:00:56,608 --> 00:01:00,841
+on documents in a particular state,
+lets say the state of California.
+
+19
+00:01:00,841 --> 00:01:03,258
+This is a document 
+for the state of Alabama
+
+20
+00:01:03,258 --> 00:01:07,523
+California has an abbreviation of CA
+so we're going to filter on that.
+
+21
+00:01:07,523 --> 00:01:10,160
+Here's how we would do this
+using aggregation
+
+22
+00:01:10,160 --> 00:01:15,265
+Now this is a small script and emax here.
+First we use agg, then we call
+
+23
+00:01:15,265 --> 00:01:20,580
+db.zips.aggregate and our aggregation
+pipeline only contains a single phase
+
+24
+00:01:20,580 --> 00:01:23,930
+which is a match phase
+and you can see here
+
+25
+00:01:23,930 --> 00:01:27,795
+that this is in square brackets
+so the aggregation pipeline stages
+
+26
+00:01:27,795 --> 00:01:30,273
+are part of an array
+and there's only one in this case.
+
+27
+00:01:30,273 --> 00:01:33,914
+And the match is specified right here
+and its very similar to the way
+
+28
+00:01:33,914 --> 00:01:36,777
+you would specify a criteria
+for a fine command.
+
+29
+00:01:36,777 --> 00:01:40,290
+We're saying that the state
+needs to be California.
+
+30
+00:01:40,290 --> 00:01:42,970
+There you go, move the cursor
+so you can see the quotes.
+
+31
+00:01:42,970 --> 00:01:49,000
+Lets run that and see what happens.
+Ok, so I ran that and you can see
+
+32
+00:01:49,003 --> 00:01:51,806
+that the results now, that every document
+that we see that's produced
+
+33
+00:01:51,806 --> 00:01:54,693
+by aggregation, is California.
+
+34
+00:01:54,693 --> 00:01:58,583
+Now that we've reduced our data set 
+down to just California
+
+35
+00:01:58,583 --> 00:02:03,653
+we can perform a grouping
+and get the population for each city
+
+36
+00:02:03,653 --> 00:02:07,134
+by grouping on the city, and I'll show
+you how to do that.
+
+37
+00:02:07,134 --> 00:02:11,889
+Alright, here's how you would first
+filter for California with the match
+
+38
+00:02:11,889 --> 00:02:14,829
+and then we have a comma here.
+This is the second element in the array
+
+39
+00:02:14,838 --> 00:02:18,897
+in the pipeline and now we're going 
+to perform a group operation
+
+40
+00:02:18,897 --> 00:02:23,911
+in this stage of the pipeline.
+We're going to group on the city
+
+41
+00:02:23,911 --> 00:02:28,333
+and we see that its $city to pull the city
+field out of the document as it passes by.
+
+42
+00:02:28,342 --> 00:02:34,171
+And we're going to aggregate
+on the population: $pop.
+
+43
+00:02:34,171 --> 00:02:38,138
+If you remember the documents,
+pop was where the population
+
+44
+00:02:38,138 --> 00:02:39,962
+of each zip code was held.
+
+45
+00:02:39,962 --> 00:02:45,732
+And then, just for fun we're going to also
+keep track of all the zip codes
+
+46
+00:02:45,732 --> 00:02:51,274
+that are included in a city and we do this
+by defining a new field called zip codes.
+
+47
+00:02:51,274 --> 00:02:58,588
+And then, using the aggregation operator,
+add to set and aggregating on the _ids.
+
+48
+00:02:58,591 --> 00:03:02,787
+And the _ids themselves are going
+to be zip codes as the document passes us by.
+
+49
+00:03:02,787 --> 00:03:07,452
+So again, we're grouping on the city
+and as we look at each document,
+
+50
+00:03:07,452 --> 00:03:11,920
+if the document is in a particular city 
+bucket, we're going to add its population
+
+51
+00:03:11,920 --> 00:03:16,810
+to the population field and then
+we're also going to add the zip code
+
+52
+00:03:16,811 --> 00:03:20,331
+to a zip codes array.
+And if we do that, lets see what we get.
+
+53
+00:03:21,698 --> 00:03:26,170
+Ok, so now we see the documents
+have been aggregated on city
+
+54
+00:03:26,170 --> 00:03:29,592
+so for instance we have TERMO
+and STANDISH and RAVENDALE
+
+55
+00:03:29,592 --> 00:03:34,373
+and its population and then you can see
+that there's a list of zip codes
+
+56
+00:03:34,373 --> 00:03:37,441
+that are included in that city.
+And for these particular cities,
+
+57
+00:03:37,441 --> 00:03:40,917
+it looks like they're all single zip codes
+in very small cities.
+
+58
+00:03:40,917 --> 00:03:43,918
+But I think if we go towards the top
+there might be one
+
+59
+00:03:43,918 --> 00:03:46,431
+that has multiple zip codes.
+
+60
+00:03:46,431 --> 00:03:51,512
+Yes! TRUCKEE has a population of 9743,
+still a small town but it includes
+
+61
+00:03:51,512 --> 00:03:54,391
+two zip codes as you can see with both 
+these array of zip codes.
+
+62
+00:03:54,662 --> 00:03:59,562
+But this document isn't very pretty
+because rather than saying, city, here
+
+63
+00:03:59,562 --> 00:04:04,431
+instead it says _id and that's just
+the nature of aggregation,
+
+64
+00:04:04,431 --> 00:04:07,296
+that you have to define an _id
+that you're going to group by.
+
+65
+00:04:07,296 --> 00:04:12,163
+So if we want to have this be a little
+bit prettier, we can reshape this document
+
+66
+00:04:12,163 --> 00:04:16,268
+to essentially rename the _id field
+to city, and we can do this
+
+67
+00:04:16,268 --> 00:04:18,829
+through projection.
+And let me show you how that works.
+
+68
+00:04:18,829 --> 00:04:23,826
+Ok, so right here is the same aggregation
+query but this time we have one more stage.
+
+69
+00:04:23,826 --> 00:04:26,243
+So we have our matching stage
+to filter only our documents
+
+70
+00:04:26,243 --> 00:04:27,613
+in California, right here.
+
+71
+00:04:27,613 --> 00:04:30,515
+And we have our grouping stage, 
+to group by the city
+
+72
+00:04:30,515 --> 00:04:32,905
+so that we can get the population.
+And that's how we wound up
+
+73
+00:04:32,905 --> 00:04:34,531
+with the _id and the result.
+
+74
+00:04:34,531 --> 00:04:38,764
+And now, finally we're going to reshape
+these documents, which is a 1:1 operation.
+
+75
+00:04:38,764 --> 00:04:41,349
+And at this projections stage
+of the pipeline
+
+76
+00:04:41,349 --> 00:04:44,216
+we're going to suppress
+the printing of _id
+
+77
+00:04:44,216 --> 00:04:48,386
+we have _id: 0, and we're going to define
+a new field called city.
+
+78
+00:04:48,386 --> 00:04:53,280
+And that new field uses the $_id value,
+so that's basically
+
+79
+00:04:53,280 --> 00:04:55,578
+a reshaping of the document
+and a renaming of the document.
+
+80
+00:04:55,578 --> 00:05:00,090
+And we're going to include the population
+which we did by saying, population: 1
+
+81
+00:05:00,090 --> 00:05:04,735
+and then we're going to include the zip 
+codes by saying zip_codes: 1.
+
+82
+00:05:04,735 --> 00:05:08,376
+And that says, include these things
+in the final result.
+
+83
+00:05:08,376 --> 00:05:11,781
+And that's going to reshape our result 
+to look a little prettier,
+
+84
+00:05:11,781 --> 00:05:13,374
+and let's see how that looks.
+
+85
+00:05:14,314 --> 00:05:19,472
+Ok, so now we've reshaped the document
+and you can see that, the population
+
+86
+00:05:19,472 --> 00:05:22,446
+is here, the zip codes are here
+and the city is here.
+
+87
+00:05:22,446 --> 00:05:29,035
+You'll also notice that MongoDB did not
+retain the original ordering of the fields.
+
+88
+00:05:29,035 --> 00:05:34,766
+So on our previous result, the _id came 
+first and now the population came first,
+
+89
+00:05:34,766 --> 00:05:37,890
+and then the zip codes and then the city.
+And this is different
+
+90
+00:05:37,890 --> 00:05:42,025
+than what we actually specified.
+We had city, population, zip codes
+
+91
+00:05:42,025 --> 00:05:44,565
+and we got population, zip codes, city.
+
+92
+00:05:44,565 --> 00:05:48,858
+So, the projection step will specify
+which fields you want to bring
+
+93
+00:05:48,858 --> 00:05:51,513
+through to the final result,
+to the next stage of the pipeline,
+
+94
+00:05:51,513 --> 00:05:54,802
+I should say, because you could aggregate
+further from here but it does not
+
+95
+00:05:54,802 --> 00:05:56,876
+retain the order necessarily.
+
+96
+00:05:56,876 --> 00:05:58,926
+Ok, now its time for a quiz.
+
+97
+00:05:58,926 --> 00:06:03,953
+So thinking again about the zip code 
+collection which we've been playing with,
+
+98
+00:06:03,953 --> 00:06:08,889
+write an aggregation query with a single
+match phase that filters for zip codes
+
+99
+00:06:08,889 --> 00:06:13,179
+with greater than a 100,000 people.
+And you may need to look up
+
+100
+00:06:13,179 --> 00:06:15,827
+the use of the $gt operator, if you've 
+forgotten how to do that.
+
+101
+00:06:15,827 --> 00:06:19,566
+I put a link to it here in the docs.
+The way I found this by the way
+
+102
+00:06:19,566 --> 00:06:23,806
+is by typing: $gt space
+MongoDB into google.
+
+103
+00:06:23,806 --> 00:06:28,974
+So, google is your friend when it comes 
+to looking up the MongoDB documentation
+
+104
+00:06:28,974 --> 00:06:31,054
+so write that query right here.
+

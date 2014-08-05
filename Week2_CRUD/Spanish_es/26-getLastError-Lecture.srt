@@ -1,385 +1,460 @@
 1
-00:00:00,000 --> 00:00:00,130
+00:00:00,000 --> 00:00:00,190
+ 
 
 2
-00:00:00,130 --> 00:00:00,710
-OK.
+00:00:00,190 --> 00:00:01,720
+This lecture
+section only applies
 
 3
-00:00:00,710 --> 00:00:02,310
-Hemos aprendido acerca de
-las operaciones básicas CRUD
+00:00:01,720 --> 00:00:03,920
+to MongoDB versions
+2.4 and earlier.
 
 4
-00:00:02,310 --> 00:00:04,090
-que ofrece MongoDB--
+00:00:03,920 --> 00:00:06,589
+If you're running MongoDB
+version 2.6 or later,
 
 5
-00:00:04,090 --> 00:00:07,530
-"Insert", "Find", "Update" y "Remove".
+00:00:06,589 --> 00:00:07,880
+you can skip over this section.
 
 6
-00:00:07,530 --> 00:00:09,290
-Sin embargo, hay algo
-más que necesitas saber
+00:00:07,880 --> 00:00:09,440
+And it won't be in the homework.
 
 7
-00:00:09,290 --> 00:00:12,960
-acerca de los detalles exactos
-de las operaciones en MongoDB.
+00:00:09,440 --> 00:00:11,605
+OK, so now we've learned
+the basic CRUD operations
 
 8
-00:00:12,960 --> 00:00:15,700
-El shell es un entorno
-interactivo, por lo que
+00:00:11,605 --> 00:00:16,494
+that MongoDB offers, Insert,
+Find, Update, and Remove.
 
 9
-00:00:15,700 --> 00:00:18,380
-te da información cada
-vez que algo sale mal.
+00:00:16,494 --> 00:00:17,910
+However, there's
+a little bit more
 
 10
-00:00:18,380 --> 00:00:22,800
-Por ejemplo, te mencioné
-que el campo "_id" es una
+00:00:17,910 --> 00:00:21,160
+that you need to know about
+the exact details of operations
 
 11
-00:00:22,800 --> 00:00:23,800
-clave primaria.
+00:00:21,160 --> 00:00:22,260
+into MongoDB.
 
 12
-00:00:23,800 --> 00:00:26,660
-Requiere estar presente
-y ser única,
+00:00:22,260 --> 00:00:24,500
+The shell is an
+interactive environment.
 
 13
-00:00:26,660 --> 00:00:29,220
-y en realidad, además
-la hacemos inmutable.
+00:00:24,500 --> 00:00:27,780
+And so it gives you information
+whenever something goes wrong.
 
 14
-00:00:29,220 --> 00:00:31,850
-Si inserto un documento con una
-clave primaria en particular,
+00:00:27,780 --> 00:00:31,110
+For example, I mentioned
+before that the underscore ID
 
 15
-00:00:31,850 --> 00:00:32,780
-digamos "Smith".
+00:00:31,110 --> 00:00:32,880
+field is a primary key.
 
 16
-00:00:32,780 --> 00:00:35,810
-Bueno, tengo razones para creer
-que un documento fue insertado.
+00:00:32,880 --> 00:00:34,500
+It is required to be present.
 
 17
-00:00:35,810 --> 00:00:37,000
-Te contaré un poco
-más sobre cómo
+00:00:34,500 --> 00:00:36,060
+It's required to be unique.
 
 18
-00:00:37,000 --> 00:00:38,320
-puedes confirmar eso.
+00:00:36,060 --> 00:00:38,630
+And we actually make it
+immutable in addition.
 
 19
-00:00:38,320 --> 00:00:41,590
-Si intento insertar un segundo
-documento con nombre "Smith",
+00:00:38,630 --> 00:00:40,910
+If I insert a document with
+a particular primary key,
 
 20
-00:00:41,590 --> 00:00:43,990
-el shell me dará un
-mensaje de error.
+00:00:40,910 --> 00:00:43,220
+let's say, Smith,
+well, I have reason
 
 21
-00:00:43,990 --> 00:00:47,510
-En efecto, el shell interactivo
-siempre comprueba si la última
+00:00:43,220 --> 00:00:44,995
+to believe that a
+document got inserted.
 
 22
-00:00:47,510 --> 00:00:50,250
-operación tuvo éxito
-o no, y te dice
+00:00:44,995 --> 00:00:47,620
+I'll tell you a little bit more
+about how you can confirm that.
 
 23
-00:00:50,250 --> 00:00:52,480
-inmediatamente si falló.
+00:00:47,620 --> 00:00:50,890
+If I try to insert a second
+document with name Smith,
 
 24
-00:00:52,480 --> 00:00:55,410
-Hasta ahora no te he mostrado
-ninguna operación que falla.
+00:00:50,890 --> 00:00:53,290
+the shell will give me
+an error message back.
 
 25
-00:00:55,410 --> 00:00:57,400
-Esto fue un poco
-de mala previsión.
+00:00:53,290 --> 00:00:55,970
+In fact, the
+interactive shell always
 
 26
-00:00:57,400 --> 00:00:59,340
-Sin embargo, puedes controlar
-programáticamente, comprobando
+00:00:55,970 --> 00:00:59,020
+checks to see whether the last
+operation succeeded or failed
 
 27
-00:00:59,340 --> 00:01:02,610
-si una operación tuvo éxito o
-no, ejecutando un comando.
+00:00:59,020 --> 00:01:01,880
+and tells you
+immediately if it failed.
 
 28
-00:01:02,610 --> 00:01:04,330
-En realidad, ya hemos
-usado algunos comandos.
+00:01:01,880 --> 00:01:04,700
+So far, I haven't shown you any
+of the operations that fail.
 
 29
-00:01:04,330 --> 00:01:06,410
-Por ejemplo, en realidad
-"count" es un comando.
+00:01:04,700 --> 00:01:06,696
+This was a little bit
+of malice aforethought.
 
 30
-00:01:06,410 --> 00:01:09,440
-En cualquier caso, hay un
-comando llamado "getLastError",
+00:01:06,696 --> 00:01:08,070
+However, you can
+programmatically
 
 31
-00:01:09,440 --> 00:01:12,600
-que retorna el resultado de
-la última operación que fue
+00:01:08,070 --> 00:01:10,440
+check whether an operation
+succeeded or failed
 
 32
-00:01:12,600 --> 00:01:15,120
-enviada en la conexión que
-estás usando actualmente.
+00:01:10,440 --> 00:01:11,880
+by running a command.
 
 33
-00:01:15,120 --> 00:01:18,280
-El resultado de "getLastError" es
-un documento y en caso de un
+00:01:11,880 --> 00:01:13,630
+We've actually used
+some commands already.
 
 34
-00:01:18,280 --> 00:01:21,860
-error, el documento tiene un
-campo "err" que tiene un
+00:01:13,630 --> 00:01:15,830
+For instance, count
+is actually a command.
 
 35
-00:01:21,860 --> 00:01:24,720
-valor no nulo conteniendo
-un mensaje de error.
+00:01:15,830 --> 00:01:18,460
+In any case, there's a
+command called getLastError,
 
 36
-00:01:24,720 --> 00:01:28,010
-La mayoría de los errores tienen
-un único código entero, que es
+00:01:18,460 --> 00:01:21,722
+which returns the outcome of
+the last write operation that
 
 37
-00:01:28,010 --> 00:01:29,510
-dado en el campo "code".
+00:01:21,722 --> 00:01:24,420
+was sent on the connection
+that you're currently using.
 
 38
-00:01:29,510 --> 00:01:32,460
-"getLastError" está disponible
-tanto en el shell y en todos
+00:01:24,420 --> 00:01:26,860
+The result of getLastError
+is a document.
 
 39
-00:01:32,460 --> 00:01:34,810
-nuestros drivers como una manera
-de comprobar si una operación de
+00:01:26,860 --> 00:01:28,510
+And in case of an
+error scenario,
 
 40
-00:01:34,810 --> 00:01:36,120
-escritura tiene éxito o no.
+00:01:28,510 --> 00:01:30,960
+the document has
+a field, ERR, that
 
 41
-00:01:36,120 --> 00:01:38,440
-En el caso que una operación de
-escritura se realice correctamente,
+00:01:30,960 --> 00:01:34,120
+has a non-null value
+containing an error message.
 
 42
-00:01:38,440 --> 00:01:42,330
-por ejemplo, voy a insertar otro
-documento con un distinto "_id".
+00:01:34,120 --> 00:01:36,670
+Most errors also have
+a unique integer code,
 
 43
-00:01:42,330 --> 00:01:45,240
-En ese caso, el comando
-"getLastError" me dirá que el
+00:01:36,670 --> 00:01:38,800
+which is given in
+the code field.
 
 44
-00:01:45,240 --> 00:01:48,800
-error es nulo--es decir
-que la operación tuvo éxito.
+00:01:38,800 --> 00:01:41,080
+getLastError is available
+both in the shell
 
 45
-00:01:48,800 --> 00:01:52,390
-Para otro tipo de operaciones, tal
-como actualizaciones, "getLastError"
+00:01:41,080 --> 00:01:42,670
+and in all of our
+drivers as a way
 
 46
-00:01:52,390 --> 00:01:54,300
-puede decirme el resultado
-de la actualización.
+00:01:42,670 --> 00:01:45,410
+of checking whether a write
+operation succeeded or failed.
 
 47
-00:01:54,300 --> 00:01:56,890
-En este caso, voy a especificar una
-actualización que debería afectar
+00:01:45,410 --> 00:01:47,520
+In the event that a
+write operation succeeds,
 
 48
-00:01:56,890 --> 00:01:58,390
-a todos los documentos
-en la colección
+00:01:47,520 --> 00:01:49,790
+for example, I'll
+insert another document
 
 49
-00:01:58,390 --> 00:01:59,690
-añadiendo un campo "title".
+00:01:49,790 --> 00:01:51,630
+with a different underscore ID.
 
 50
-00:01:59,690 --> 00:02:03,050
-"getLastError", después de tal
-actualización, me dirá los
+00:01:51,630 --> 00:01:53,350
+In that case, the
+getLastError command
 
 51
-00:02:03,050 --> 00:02:05,570
-documentos existentes que
-consiguió actualizar y
+00:01:53,350 --> 00:01:55,110
+will tell me that
+the error is null.
 
 52
-00:02:05,570 --> 00:02:06,540
-que eran dos de ellos.
+00:01:55,110 --> 00:01:58,090
+That is to say, that
+operation succeeded.
 
 53
-00:02:06,540 --> 00:02:08,270
-Así es cómo podría encontrar
-cuántos documentos fueron
+00:01:58,090 --> 00:02:01,350
+For other sorts of
+operations, such as updates,
 
 54
-00:02:08,270 --> 00:02:09,949
-afectados por una actualización.
+00:02:01,350 --> 00:02:03,700
+getLastError can tell me
+the outcome of the update.
 
 55
-00:02:09,949 --> 00:02:13,450
-Por lo contrario, si en vez de
-hacer una actualización múltiple
+00:02:03,700 --> 00:02:05,555
+In this case, I will
+specify an update
 
 56
-00:02:13,450 --> 00:02:14,220
-pido un "upsert"--
+00:02:05,555 --> 00:02:07,930
+that should affect all documents
+in the collection adding
 
 57
-00:02:14,220 --> 00:02:16,680
-es decir, que la
-operación de actualización
+00:02:07,930 --> 00:02:08,990
+a title field.
 
 58
-00:02:16,680 --> 00:02:20,340
-actualice un documento con el
-nombre "Thompson" si existe o
+00:02:08,990 --> 00:02:11,160
+getLastError, after
+such an update,
 
 59
-00:02:20,340 --> 00:02:23,220
-de lo contrario que cree un documento
-con nombre "Thompson" y título
+00:02:11,160 --> 00:02:14,500
+tells me that the documents
+that got updated already existed
 
 60
-00:02:23,220 --> 00:02:25,330
-"doctor" si éste no existe.
+00:02:14,500 --> 00:02:15,840
+and that there were two of them.
 
 61
-00:02:25,330 --> 00:02:28,270
-Después de tal "upsert",
-"getLastError" me dirá
+00:02:15,840 --> 00:02:17,798
+This is how I could find
+out how many documents
 
 62
-00:02:28,270 --> 00:02:31,700
-que no fue actualizado ningún
-documento existente, pero que
+00:02:17,798 --> 00:02:19,240
+got affected by an update.
 
 63
-00:02:31,700 --> 00:02:35,470
-fue insertado un nuevo documento
-y me retornó su "_id".
+00:02:19,240 --> 00:02:22,080
+By contrast, if instead
+of doing a multi-update,
 
 64
-00:02:35,470 --> 00:02:38,370
-Por eso ya ves que el comando
-"getLastError" es una forma de
+00:02:22,080 --> 00:02:24,440
+I ask for an upsert,
+that is to say,
 
 65
-00:02:38,370 --> 00:02:41,470
-saber si una operación de escritura
-fue exitosa o si falló y también
+00:02:24,440 --> 00:02:27,290
+an update operation that
+will either update a document
 
 66
-00:02:41,470 --> 00:02:43,530
-para obtener alguna información
-acerca de operaciones de escritura
+00:02:27,290 --> 00:02:29,450
+with name Thompson,
+if one exists,
 
 67
-00:02:43,530 --> 00:02:45,690
-que han sido satisfactorias.
+00:02:29,450 --> 00:02:33,280
+or else create a document with
+name Thompson and title Dr,
 
 68
-00:02:45,690 --> 00:02:48,250
-Una vez más, el shell automáticamente
-te alerta cuando una operación
+00:02:33,280 --> 00:02:34,620
+If none exists.
 
 69
-00:02:48,250 --> 00:02:49,470
-de escritura falla.
+00:02:34,620 --> 00:02:37,300
+After such an upsert
+operation, getLastError
 
 70
-00:02:49,470 --> 00:02:52,010
-Por lo que hasta ahora, he
-dicho repetidas veces que tengo
+00:02:37,300 --> 00:02:40,270
+tells me that it did not
+update an existing document,
 
 71
-00:02:52,010 --> 00:02:54,550
-razones para creer que mis
-operaciones de escritura fueron exitosas.
+00:02:40,270 --> 00:02:43,745
+but instead upserted a new
+document whose underscore ID
 
 72
-00:02:54,550 --> 00:02:56,230
-Esa razón era simplemente
-que el shell
+00:02:43,745 --> 00:02:44,730
+is returned to me.
 
 73
-00:02:56,230 --> 00:02:58,090
-no me dijo lo contrario.
+00:02:44,730 --> 00:02:46,300
+So you see, the
+getLastError command
 
 74
-00:02:58,090 --> 00:03:00,730
-Finalmente, si decido eliminar
-todas las personas de la colección
+00:02:46,300 --> 00:02:48,810
+is a way both to find out
+whether a write operation
 
 75
-00:03:00,730 --> 00:03:04,220
-"people", el comando
-"getLastError" me dirá que
+00:02:48,810 --> 00:02:51,050
+succeeded or failed
+and also to get
 
 76
-00:03:04,220 --> 00:03:05,860
-fueron eliminados 3 documentos.
+00:02:51,050 --> 00:02:53,400
+some information about the
+successful write operations
 
 77
-00:03:05,860 --> 00:03:07,550
-"n" igual a 3.
+00:02:53,400 --> 00:02:54,990
+that just happened.
 
 78
-00:03:07,550 --> 00:03:10,190
-Vamos a ver más del comando
-"getLastError" en una futura
+00:02:54,990 --> 00:02:57,120
+Again, the shell
+automatically tells you
 
 79
-00:03:10,190 --> 00:03:11,510
-parte de este curso.
+00:02:57,120 --> 00:02:58,770
+when a write operation fails.
 
 80
-00:03:11,510 --> 00:03:13,810
-Por ahora, deberías entender
-que ésta es la forma de verificar
+00:02:58,770 --> 00:03:00,510
+So so far, I have
+repeatedly said
 
 81
-00:03:13,810 --> 00:03:15,640
-si una operación de escritura fue
-satisfactoria o si falló.
+00:03:00,510 --> 00:03:03,100
+that I have reason to believe
+that my write operations were
 
 82
-00:03:15,640 --> 00:03:16,890
+00:03:03,100 --> 00:03:03,850
+successful.
+
+83
+00:03:03,850 --> 00:03:05,820
+That reason was simply
+that the shell did not
+
+84
+00:03:05,820 --> 00:03:07,390
+tell me otherwise.
+
+85
+00:03:07,390 --> 00:03:10,030
+Finally, if I choose to remove
+all people from the people
+
+86
+00:03:10,030 --> 00:03:12,360
+collection, the
+getLastError command
+
+87
+00:03:12,360 --> 00:03:15,160
+will tell me that there were
+three documents removed,
+
+88
+00:03:15,160 --> 00:03:16,860
+n equals 3.
+
+89
+00:03:16,860 --> 00:03:19,330
+We'll see more of you the
+getLastError command again
+
+90
+00:03:19,330 --> 00:03:20,910
+in a future part of this course.
+
+91
+00:03:20,910 --> 00:03:22,909
+For now, you should
+understand that it's the way
+
+92
+00:03:22,909 --> 00:03:25,369
+to check whether a write
+operation succeeded or failed.
+
+93
+00:03:25,369 --> 00:03:26,910
+The mechanics of
+all of these details
+
+94
+00:03:26,910 --> 00:03:30,225
+have changed substantially
+in MongoDB version 2.6 such
+
+95
+00:03:30,225 --> 00:03:32,620
+that you no longer need to
+run the getLastError command.
+
+96
+00:03:32,620 --> 00:03:35,490
+It's implicit in all
+the wire operations.
+

@@ -1,0 +1,1091 @@
+1
+00:00:00,000 --> 00:00:00,100
+ 
+
+2
+00:00:00,100 --> 00:00:02,190
+All right, now that
+we've talked about how
+
+3
+00:00:02,190 --> 00:00:05,230
+to search for locations
+using a 2D index,
+
+4
+00:00:05,230 --> 00:00:07,820
+I want to go over a
+more sophisticated type
+
+5
+00:00:07,820 --> 00:00:11,590
+of geospatial indexing-- a
+spherical geospatial indexing
+
+6
+00:00:11,590 --> 00:00:14,290
+that is also
+supported in MongoDB.
+
+7
+00:00:14,290 --> 00:00:17,530
+Now, to start out, before you
+can talk about finding things
+
+8
+00:00:17,530 --> 00:00:20,530
+in a 3D world, you have to
+talk about how you describe
+
+9
+00:00:20,530 --> 00:00:22,970
+the location of
+something in a 3D world.
+
+10
+00:00:22,970 --> 00:00:24,980
+So the world is
+actually a globe,
+
+11
+00:00:24,980 --> 00:00:27,990
+and this is my poor
+representation of the globe.
+
+12
+00:00:27,990 --> 00:00:30,700
+And locations on the
+globe are represented
+
+13
+00:00:30,700 --> 00:00:33,610
+by longitude and latitude.
+
+14
+00:00:33,610 --> 00:00:39,250
+So if you recall, latitude
+is how far off the equator
+
+15
+00:00:39,250 --> 00:00:40,180
+is the object.
+
+16
+00:00:40,180 --> 00:00:44,060
+So for instance, the equator
+is at zero degrees latitude,
+
+17
+00:00:44,060 --> 00:00:48,940
+and you can go all the way from
+minus 90 degrees to 90 degrees.
+
+18
+00:00:48,940 --> 00:00:51,050
+And that's your
+lines of latitude.
+
+19
+00:00:51,050 --> 00:00:53,220
+And then we have the longitude.
+
+20
+00:00:53,220 --> 00:00:56,100
+And the longitude-- this is a
+lot of longitude right here.
+
+21
+00:00:56,100 --> 00:00:58,790
+It describes a line
+that goes from the north
+
+22
+00:00:58,790 --> 00:01:00,320
+to the south pole.
+
+23
+00:01:00,320 --> 00:01:01,870
+So in order to
+describe the location
+
+24
+00:01:01,870 --> 00:01:03,800
+of any particular
+object on earth,
+
+25
+00:01:03,800 --> 00:01:06,720
+you need its latitude
+and its longitude.
+
+26
+00:01:06,720 --> 00:01:08,310
+Now, in addition,
+we're going to need
+
+27
+00:01:08,310 --> 00:01:11,510
+a way of indexing
+these documents that
+
+28
+00:01:11,510 --> 00:01:13,489
+have latitudes and
+longitudes in them.
+
+29
+00:01:13,489 --> 00:01:15,030
+And the way we're
+going to do that is
+
+30
+00:01:15,030 --> 00:01:17,910
+a new special type of
+index called 2dsphere.
+
+31
+00:01:17,910 --> 00:01:20,100
+So let's talk about how
+we're going to do this.
+
+32
+00:01:20,100 --> 00:01:22,990
+And I think the easiest way to
+get into this is by example.
+
+33
+00:01:22,990 --> 00:01:26,550
+So I'm going to go through an
+example of a few locations that
+
+34
+00:01:26,550 --> 00:01:28,130
+have been put into
+MongoDB documents.
+
+35
+00:01:28,130 --> 00:01:29,671
+We're going to search
+near a location
+
+36
+00:01:29,671 --> 00:01:31,320
+to find the closest locations.
+
+37
+00:01:31,320 --> 00:01:33,890
+And we're going to use a
+2dsphere index to do it.
+
+38
+00:01:33,890 --> 00:01:36,060
+So let's start
+with the locations.
+
+39
+00:01:36,060 --> 00:01:37,280
+So here's Palo Alto.
+
+40
+00:01:37,280 --> 00:01:40,870
+And in Palo Alto we've got
+four locations that are near
+
+41
+00:01:40,870 --> 00:01:42,194
+and dear to my heart.
+
+42
+00:01:42,194 --> 00:01:43,610
+We've got Fry's
+Electronics, where
+
+43
+00:01:43,610 --> 00:01:46,040
+I used to get small electronic
+components before people
+
+44
+00:01:46,040 --> 00:01:48,460
+stopped building anything,
+in the late '90s.
+
+45
+00:01:48,460 --> 00:01:49,860
+And the Pennisula
+Creamery, where
+
+46
+00:01:49,860 --> 00:01:52,160
+you can get a great
+milkshake and a burger;
+
+47
+00:01:52,160 --> 00:01:54,800
+the Apple store, where you
+can spend a lot of money;
+
+48
+00:01:54,800 --> 00:01:57,910
+and Hoover Tower, which
+is a monument right
+
+49
+00:01:57,910 --> 00:01:59,644
+in the center of
+Stanford's campus.
+
+50
+00:01:59,644 --> 00:02:01,060
+And then there's
+one more location
+
+51
+00:02:01,060 --> 00:02:06,090
+that I put on my little map, and
+that is Mount Tamalpais State
+
+52
+00:02:06,090 --> 00:02:08,150
+Park-- top of Mount
+Tam is where I
+
+53
+00:02:08,150 --> 00:02:11,330
+got engaged, so also a place
+near and dear to my heart,
+
+54
+00:02:11,330 --> 00:02:13,220
+a bit further from Stanford.
+
+55
+00:02:13,220 --> 00:02:15,180
+And we're going to put
+documents into MongoDB
+
+56
+00:02:15,180 --> 00:02:17,135
+that represent these locations.
+
+57
+00:02:17,135 --> 00:02:19,010
+All right, the first
+thing I want to show you
+
+58
+00:02:19,010 --> 00:02:22,630
+is that Google Maps is
+very convenient for finding
+
+59
+00:02:22,630 --> 00:02:25,110
+the latitude and
+longitude for locations.
+
+60
+00:02:25,110 --> 00:02:27,100
+So let's look up
+Times Square, which
+
+61
+00:02:27,100 --> 00:02:28,840
+is where we are right now.
+
+62
+00:02:28,840 --> 00:02:33,040
+You'll see that what Google Maps
+will do is, in the browser URL,
+
+63
+00:02:33,040 --> 00:02:35,440
+it will actually
+show you-- and we're
+
+64
+00:02:35,440 --> 00:02:36,860
+right over here somewhere.
+
+65
+00:02:36,860 --> 00:02:39,840
+It'll show you the
+latitude and the longitude.
+
+66
+00:02:39,840 --> 00:02:43,940
+Now, it shows it to you in
+latitude comma longitude order.
+
+67
+00:02:43,940 --> 00:02:48,480
+So the latitude is 40.75
+here, and the longitude
+
+68
+00:02:48,480 --> 00:02:50,400
+is minus 73.98.
+
+69
+00:02:50,400 --> 00:02:51,900
+This is in the
+opposite order you're
+
+70
+00:02:51,900 --> 00:02:54,310
+going to need it when you
+specify it in MongoDB.
+
+71
+00:02:54,310 --> 00:02:57,334
+MongoDB takes a
+longitude comma latitude.
+
+72
+00:02:57,334 --> 00:02:58,875
+All right, so how
+are we are we going
+
+73
+00:02:58,875 --> 00:03:01,290
+to specify the
+locations of things?
+
+74
+00:03:01,290 --> 00:03:05,940
+Well, we use a location
+specification called GeoJSON.
+
+75
+00:03:05,940 --> 00:03:08,480
+And I'm going to show
+you that right now.
+
+76
+00:03:08,480 --> 00:03:11,590
+This is a web page on
+GeoJSON, geojson.org.
+
+77
+00:03:11,590 --> 00:03:14,410
+We implement only a small
+part of the specification
+
+78
+00:03:14,410 --> 00:03:15,862
+on GeoJSON.
+
+79
+00:03:15,862 --> 00:03:17,320
+But if you want,
+you can look at it
+
+80
+00:03:17,320 --> 00:03:18,890
+and see the full specification.
+
+81
+00:03:18,890 --> 00:03:20,560
+And in particular,
+the parts that we're
+
+82
+00:03:20,560 --> 00:03:22,710
+going to be most
+interested in are the parts
+
+83
+00:03:22,710 --> 00:03:25,920
+that specify points
+and geometries.
+
+84
+00:03:25,920 --> 00:03:28,150
+And you can see there's
+coordinates and lists
+
+85
+00:03:28,150 --> 00:03:29,060
+of coordinates.
+
+86
+00:03:29,060 --> 00:03:31,880
+It's kind of a complicated thing
+when you've got-- especially
+
+87
+00:03:31,880 --> 00:03:33,585
+if you want to
+describe a polygon.
+
+88
+00:03:33,585 --> 00:03:36,210
+We're only going to do the
+most introductory lesson here
+
+89
+00:03:36,210 --> 00:03:36,800
+right now.
+
+90
+00:03:36,800 --> 00:03:38,425
+And then you can go
+look further if you
+
+91
+00:03:38,425 --> 00:03:40,920
+want to see what all the
+different possibilities are.
+
+92
+00:03:40,920 --> 00:03:43,130
+And MongoDB only supports
+a subset of these,
+
+93
+00:03:43,130 --> 00:03:45,860
+like points and polygons.
+
+94
+00:03:45,860 --> 00:03:49,660
+We don't support some of the
+more complicated structures.
+
+95
+00:03:49,660 --> 00:03:52,770
+All right, so let's
+go into MongoDB now
+
+96
+00:03:52,770 --> 00:03:54,490
+and see our documents.
+
+97
+00:03:54,490 --> 00:03:57,280
+So I put them in a
+collection called "Places."
+
+98
+00:03:57,280 --> 00:03:58,760
+So here we are.
+
+99
+00:03:58,760 --> 00:04:00,700
+I'm going to pretty print them.
+
+100
+00:04:00,700 --> 00:04:04,130
+And we're going to see the
+GeoJSON format at work.
+
+101
+00:04:04,130 --> 00:04:07,120
+So here we have the Apple store.
+
+102
+00:04:07,120 --> 00:04:10,290
+I decided to specify
+the city of Palo Alto.
+
+103
+00:04:10,290 --> 00:04:13,670
+I decided to put my GeoJSON
+location information
+
+104
+00:04:13,670 --> 00:04:15,029
+into a key called "location."
+
+105
+00:04:15,029 --> 00:04:16,029
+This is my own decision.
+
+106
+00:04:16,029 --> 00:04:17,190
+It's arbitrary.
+
+107
+00:04:17,190 --> 00:04:18,950
+But you can call it
+anything you want.
+
+108
+00:04:18,950 --> 00:04:20,240
+But I called it "location."
+
+109
+00:04:20,240 --> 00:04:21,779
+And then everything
+after this paren
+
+110
+00:04:21,779 --> 00:04:24,830
+and into this paren,
+that's a GeoJSON document.
+
+111
+00:04:24,830 --> 00:04:27,770
+In this case, I've decided
+to describe it using a point.
+
+112
+00:04:27,770 --> 00:04:29,520
+You could also describe
+it using a polygon
+
+113
+00:04:29,520 --> 00:04:31,000
+if you wanted to
+give it some area,
+
+114
+00:04:31,000 --> 00:04:33,330
+but we described
+it using a point.
+
+115
+00:04:33,330 --> 00:04:35,600
+And the type is a reserved
+word, and coordinates
+
+116
+00:04:35,600 --> 00:04:36,450
+is a reserved word.
+
+117
+00:04:36,450 --> 00:04:38,040
+Point is a reserved word.
+
+118
+00:04:38,040 --> 00:04:40,520
+And here are the coordinates
+in longitude comma
+
+119
+00:04:40,520 --> 00:04:42,960
+latitude order, which
+I got from Google Maps.
+
+120
+00:04:42,960 --> 00:04:45,370
+I decided to put that
+was a retail store
+
+121
+00:04:45,370 --> 00:04:46,571
+into the collection.
+
+122
+00:04:46,571 --> 00:04:48,570
+Again, we've got four
+objects in the collection.
+
+123
+00:04:48,570 --> 00:04:52,870
+We've got this Apple store,
+this Peninsula Creamery,
+
+124
+00:04:52,870 --> 00:04:55,040
+and Fry's Electronics.
+
+125
+00:04:55,040 --> 00:04:58,630
+And then finally, Mount
+Tamalpais State Park.
+
+126
+00:04:58,630 --> 00:05:00,470
+OK, so in order to
+query this, we're
+
+127
+00:05:00,470 --> 00:05:04,660
+going to need an index
+on the GeoJSON documents.
+
+128
+00:05:04,660 --> 00:05:08,770
+So let's do that--
+db.places.ensureIndex.
+
+129
+00:05:08,770 --> 00:05:11,370
+And it's going to
+be on location.
+
+130
+00:05:11,370 --> 00:05:14,350
+And it's going be
+of type 2dsphere.
+
+131
+00:05:14,350 --> 00:05:16,560
+Never understood why
+this is called 2dsphere.
+
+132
+00:05:16,560 --> 00:05:18,840
+It seems to me that if
+you have a two dimensional
+
+133
+00:05:18,840 --> 00:05:20,940
+sphere, that would be a circle.
+
+134
+00:05:20,940 --> 00:05:23,280
+But what I think is trying
+to be expressed here
+
+135
+00:05:23,280 --> 00:05:26,180
+is that although
+it's a 3D model--
+
+136
+00:05:26,180 --> 00:05:28,150
+it's a spherical
+model-- that it's only
+
+137
+00:05:28,150 --> 00:05:30,580
+looking at points on the
+surface of the sphere
+
+138
+00:05:30,580 --> 00:05:32,050
+versus up in the air.
+
+139
+00:05:32,050 --> 00:05:34,150
+So that's why it's
+called 2dsphere.
+
+140
+00:05:34,150 --> 00:05:35,430
+So we're going to add that.
+
+141
+00:05:35,430 --> 00:05:38,300
+And now there are two
+indexes on the collection,
+
+142
+00:05:38,300 --> 00:05:39,240
+which is all good.
+
+143
+00:05:39,240 --> 00:05:40,612
+Previously, there was one.
+
+144
+00:05:40,612 --> 00:05:41,820
+I could show you the indexes.
+
+145
+00:05:41,820 --> 00:05:43,870
+Hold on, getIndexes.
+
+146
+00:05:43,870 --> 00:05:47,760
+The indexes are this _id index,
+which always comes with every
+
+147
+00:05:47,760 --> 00:05:50,760
+collection, and then
+this index on location.
+
+148
+00:05:50,760 --> 00:05:53,050
+So what query might
+we want to run?
+
+149
+00:05:53,050 --> 00:05:55,330
+Well, I want to know the
+closest things to me,
+
+150
+00:05:55,330 --> 00:05:58,260
+and I'm standing at Hoover
+Tower, in my imagination.
+
+151
+00:05:58,260 --> 00:06:00,537
+So let's go through that.
+
+152
+00:06:00,537 --> 00:06:02,120
+I'm going to quit
+from the shell here.
+
+153
+00:06:02,120 --> 00:06:05,200
+And I've got a query
+that's been written our
+
+154
+00:06:05,200 --> 00:06:07,410
+already to be a little
+bit easier to follow.
+
+155
+00:06:07,410 --> 00:06:10,780
+So this query is going to search
+the Places collection, right
+
+156
+00:06:10,780 --> 00:06:12,620
+here, and do a Find.
+
+157
+00:06:12,620 --> 00:06:15,590
+And it's going to find
+documents by location, which
+
+158
+00:06:15,590 --> 00:06:17,500
+is the field that
+we created to hold
+
+159
+00:06:17,500 --> 00:06:19,890
+the locations of
+the various stores.
+
+160
+00:06:19,890 --> 00:06:22,520
+And it's going to use
+the $near operator.
+
+161
+00:06:22,520 --> 00:06:26,190
+Now, the $near operator
+is going to search
+
+162
+00:06:26,190 --> 00:06:30,470
+for everything near a
+point, in this case.
+
+163
+00:06:30,470 --> 00:06:33,490
+Now this $geometry is
+a required operator
+
+164
+00:06:33,490 --> 00:06:35,860
+and can also give
+$maxDistance, which
+
+165
+00:06:35,860 --> 00:06:38,020
+is the max distance in meters.
+
+166
+00:06:38,020 --> 00:06:39,490
+I said 2,000 meters.
+
+167
+00:06:39,490 --> 00:06:44,410
+Find me everything that is
+closest to these coordinates--
+
+168
+00:06:44,410 --> 00:06:51,210
+minus 122.166641 degrees
+longitude, and 37 degrees 0.427
+
+169
+00:06:51,210 --> 00:06:52,745
+blah, blah, blah latitude.
+
+170
+00:06:52,745 --> 00:06:54,620
+And these are the
+coordinates of Hoover Tower
+
+171
+00:06:54,620 --> 00:06:56,380
+that I got from Google Maps.
+
+172
+00:06:56,380 --> 00:07:00,010
+So again, just to look at the
+format of this, we had a Find.
+
+173
+00:07:00,010 --> 00:07:02,690
+We specified that we're
+looking at the Location field.
+
+174
+00:07:02,690 --> 00:07:04,880
+We're applying the
+$near operator.
+
+175
+00:07:04,880 --> 00:07:07,680
+And then, we have
+a GeoJSON document
+
+176
+00:07:07,680 --> 00:07:11,230
+that specifies the
+geometry of type point
+
+177
+00:07:11,230 --> 00:07:12,650
+with these coordinates.
+
+178
+00:07:12,650 --> 00:07:13,760
+And that's it.
+
+179
+00:07:13,760 --> 00:07:15,660
+So let's see what
+we get we do that.
+
+180
+00:07:15,660 --> 00:07:18,820
+So Mongo-- I'm going
+to just redirect
+
+181
+00:07:18,820 --> 00:07:22,210
+from this file to run a query.
+
+182
+00:07:22,210 --> 00:07:27,210
+And it looks like we
+got back two documents.
+
+183
+00:07:27,210 --> 00:07:29,830
+And these are going to be
+sorted in order of closest
+
+184
+00:07:29,830 --> 00:07:32,792
+to furthest, which is a
+feature of the $near operator.
+
+185
+00:07:32,792 --> 00:07:34,500
+The first one is the
+Peninsula Creamery--
+
+186
+00:07:34,500 --> 00:07:37,400
+and it is, in fact, closest
+to Hoover Tower-- and then
+
+187
+00:07:37,400 --> 00:07:40,620
+the Apple store, which is also
+within 2,000 meters of Hoover
+
+188
+00:07:40,620 --> 00:07:41,500
+Tower.
+
+189
+00:07:41,500 --> 00:07:43,240
+Notice that it
+eliminated Fry's and it
+
+190
+00:07:43,240 --> 00:07:48,100
+eliminated Mount Tamalpais as
+being outside 2,000 meters.
+
+191
+00:07:48,100 --> 00:07:50,230
+And just to review that
+with you to show you
+
+192
+00:07:50,230 --> 00:07:53,050
+the map again so you see that
+this is the right answer,
+
+193
+00:07:53,050 --> 00:07:55,650
+remember, we were looking at
+things closest to hover tower.
+
+194
+00:07:55,650 --> 00:07:57,920
+And it said that
+within 2,000 meters,
+
+195
+00:07:57,920 --> 00:08:00,500
+you've got the Peninsula
+Creamery at closest location,
+
+196
+00:08:00,500 --> 00:08:02,360
+and Apple store, next closest.
+
+197
+00:08:02,360 --> 00:08:05,542
+Fry's and Mount Tamalpais
+are off the screen.
+
+198
+00:08:05,542 --> 00:08:07,750
+Fry's is on the screen, but
+out of the search radius.
+
+199
+00:08:07,750 --> 00:08:10,500
+And Mount Tam is
+completely off the screen.
+
+200
+00:08:10,500 --> 00:08:12,050
+And that's how
+you would actually
+
+201
+00:08:12,050 --> 00:08:14,630
+search for something
+using the near operator.
+
+202
+00:08:14,630 --> 00:08:16,550
+So again, the
+secrets are that you
+
+203
+00:08:16,550 --> 00:08:19,090
+need to know the latitude and
+longitude of your documents.
+
+204
+00:08:19,090 --> 00:08:23,590
+You also need to
+create a 2dsphere index
+
+205
+00:08:23,590 --> 00:08:25,850
+if you want to use
+the $near operator.
+
+206
+00:08:25,850 --> 00:08:27,750
+Some of the operators
+don't require
+
+207
+00:08:27,750 --> 00:08:30,560
+having an index-- like,
+for instance, finding
+
+208
+00:08:30,560 --> 00:08:32,480
+something that's within a shape.
+
+209
+00:08:32,480 --> 00:08:34,059
+But they all perform
+better if there
+
+210
+00:08:34,059 --> 00:08:35,372
+is an index on the location.
+
+211
+00:08:35,372 --> 00:08:37,580
+And then you need to, of
+course, insert the locations
+
+212
+00:08:37,580 --> 00:08:39,030
+and perform the query.
+
+213
+00:08:39,030 --> 00:08:42,084
+OK, let's now do a quiz.
+
+214
+00:08:42,084 --> 00:08:44,000
+What is the query that
+will query a collection
+
+215
+00:08:44,000 --> 00:08:46,150
+named "Stores" to
+return the stores that
+
+216
+00:08:46,150 --> 00:08:49,780
+are within one million meters
+of the location at this latitude
+
+217
+00:08:49,780 --> 00:08:53,700
+and this longitude-- latitude
+39, longitude minus 130.
+
+218
+00:08:53,700 --> 00:08:56,050
+Type the query in the
+box below, and assume
+
+219
+00:08:56,050 --> 00:08:59,052
+that the stores collection has
+a 2dsphere index already on it,
+
+220
+00:08:59,052 --> 00:09:01,210
+on the key location.
+
+221
+00:09:01,210 --> 00:09:04,159
+And use the $near operator,
+as we did in this lesson.
+
+222
+00:09:04,159 --> 00:09:06,200
+And if you're looking for
+what the documents look
+
+223
+00:09:06,200 --> 00:09:08,180
+like, this an example document.
+
+224
+00:09:08,180 --> 00:09:12,220
+Might have an _id that looks
+like this with a store-id of 8
+
+225
+00:09:12,220 --> 00:09:15,920
+and a location of type point,
+and these are the coordinates.
+
+226
+00:09:15,920 --> 00:09:18,270
+So you have to write
+that query right here.
+
+227
+00:09:18,270 --> 00:09:20,104
+And then hit Return and
+see if it's correct.
+
+228
+00:09:20,104 --> 00:09:22,769
+You have to be pretty careful to
+make sure it's exactly the same
+
+229
+00:09:22,769 --> 00:09:25,340
+because we're going to
+pattern match against that.
+

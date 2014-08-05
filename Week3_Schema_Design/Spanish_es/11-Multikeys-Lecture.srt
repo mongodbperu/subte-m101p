@@ -1,445 +1,476 @@
 1
-00:00:00,000 --> 00:00:00,120
+00:00:00,000 --> 00:00:00,500
+ 
 
 2
-00:00:00,120 --> 00:00:03,590
-Una de las razones por las cuales
-vincular y embeber funcionan tan
+00:00:00,500 --> 00:00:02,940
+One of the reasons that
+linking and embedding works
 
 3
-00:00:03,590 --> 00:00:06,380
-bien en MongoDB es porque MongoDB
+00:00:02,940 --> 00:00:06,310
+so well within MongoDB is
+because of the existence
 
 4
-00:00:06,380 --> 00:00:09,090
-soporta índices de múltiples claves.
+00:00:06,310 --> 00:00:09,580
+of a feature called
+multikey indexes.
 
 5
-00:00:09,090 --> 00:00:12,100
-Quiero hablar un poco acerca de
-índices de múltiples claves y
+00:00:09,580 --> 00:00:11,910
+I'm going to talk a little
+bit about multikey indexes
 
 6
-00:00:12,100 --> 00:00:15,060
-por qué son útiles en
-un esquema de MongoDB.
+00:00:11,910 --> 00:00:14,892
+and why they're so
+useful within MongoDB.
 
 7
-00:00:15,060 --> 00:00:18,380
-Hablamos acerca de la estructura
-de alumnos y profesores,
+00:00:14,892 --> 00:00:18,010
+Now, let's say you had a
+schema that included students
 
 8
-00:00:18,380 --> 00:00:20,820
-donde hay una relación
-de muchos a muchos
+00:00:18,010 --> 00:00:20,880
+and teachers, and this is a
+schema that we've seen before.
 
 9
-00:00:20,820 --> 00:00:22,330
-entre alumnos y profesores.
+00:00:20,880 --> 00:00:22,580
+And these are two
+example documents
 
 10
-00:00:22,330 --> 00:00:24,540
-Un alumno tiene muchos
-profesores y un profesor
+00:00:22,580 --> 00:00:23,880
+from these collections.
 
 11
-00:00:24,540 --> 00:00:25,770
-tiene muchos alumnos.
+00:00:23,880 --> 00:00:25,770
+The students
+collection might have
 
 12
-00:00:25,770 --> 00:00:28,870
-Uno de los modelos que
-presentamos fue tener una
+00:00:25,770 --> 00:00:27,300
+a separate document
+for each student
 
 13
-00:00:28,870 --> 00:00:31,400
-colección de alumnos
-con un _id para cada
+00:00:27,300 --> 00:00:30,430
+with a unique underscore
+ID, a name for each student,
 
 14
-00:00:31,400 --> 00:00:33,860
-alumno y un nombre
-para cada alumno.
+00:00:30,430 --> 00:00:33,590
+and a key for the
+teachers, where
 
 15
-00:00:33,860 --> 00:00:36,390
-Y una colección de
-profesores con un _id
+00:00:33,590 --> 00:00:36,920
+the value is a list of the
+underscore ID values for all
 
 16
-00:00:36,390 --> 00:00:38,320
-para cada profesor y un
-nombre para cada profesor.
+00:00:36,920 --> 00:00:38,790
+the teachers that
+the student has.
 
 17
-00:00:38,320 --> 00:00:41,820
-Luego las relacionamos
-con un array de
+00:00:38,790 --> 00:00:41,470
+And on the other side, we
+have this teachers collection,
 
 18
-00:00:41,820 --> 00:00:44,560
-profesores en la colección
-de alumnos, justo aquí,
+00:00:41,470 --> 00:00:43,960
+which has a document
+for each teacher
 
 19
-00:00:44,560 --> 00:00:46,590
-un array de profesores.
+00:00:43,960 --> 00:00:45,990
+with a unique underscore
+ID, an integer
 
 20
-00:00:46,590 --> 00:00:49,730
-Y en este array de profesores,
-listamos un array de todos los
+00:00:45,990 --> 00:00:48,600
+value, and a name
+for each teacher.
 
 21
-00:00:49,730 --> 00:00:52,640
-_ids que representan a
-los profesores que
+00:00:48,600 --> 00:00:50,630
+And here you can see
+we have Tony Stark is
 
 22
-00:00:52,640 --> 00:00:53,470
-el alumno tiene.
+00:00:50,630 --> 00:00:53,120
+the only teacher in the
+collection right now.
 
 23
-00:00:53,470 --> 00:00:56,320
-Hay dos evidentes tipos
-de consultas que puedes
+00:00:53,120 --> 00:00:55,710
+And so this says right here that
+Andrew has had four teachers
 
 24
-00:00:56,320 --> 00:00:58,160
-querer hacer en
-estas colecciones.
+00:00:55,710 --> 00:00:58,200
+and that one of
+them is Tony Stark.
 
 25
-00:00:58,160 --> 00:01:01,675
-Una es, dime todos
-los profesores de
+00:00:58,200 --> 00:01:00,450
+Now, there are two
+possible queries,
 
 26
-00:01:01,675 --> 00:01:02,445
-un alumno en particular.
+00:01:00,450 --> 00:01:02,300
+or I should say two
+obvious queries.
 
 27
-00:01:02,445 --> 00:01:04,129
-Esto es bastante sencillo.
+00:01:02,300 --> 00:01:04,610
+And one is, how can I
+find all the teachers
 
 28
-00:01:04,129 --> 00:01:07,820
-Sólo harías un "db.find"
-en la colección de alumnos
+00:01:04,610 --> 00:01:06,380
+that a particular
+student has had?
 
 29
-00:01:07,820 --> 00:01:09,980
-y extraería el array
-de profesores y luego
+00:01:06,380 --> 00:01:09,660
+And the other is, how can
+I find all the students who
 
 30
-00:01:09,980 --> 00:01:13,730
-tendrías este array con
-todos estos profesores.
+00:01:09,660 --> 00:01:11,307
+have had a particular teacher?
 
 31
-00:01:13,730 --> 00:01:17,540
-Pero es un poco menos claro
-cómo podrías encontrar todos
+00:01:11,307 --> 00:01:12,890
+Now, let's go over
+the first one which
 
 32
-00:01:17,540 --> 00:01:19,670
-los alumnos que un profesor
-en particular tiene.
+00:01:12,890 --> 00:01:15,690
+is, how do I find the teachers
+for a particular student?
 
 33
-00:01:19,670 --> 00:01:22,060
-¿Cómo podrías encontrar todos
-los alumnos que tienen un
+00:01:15,690 --> 00:01:18,820
+Now, that one is straightforward
+because I can simply
 
 34
-00:01:22,060 --> 00:01:23,650
-profesor en particular?
+00:01:18,820 --> 00:01:19,820
+search this collection.
 
 35
-00:01:23,650 --> 00:01:26,520
-La forma en que lo harías
-es buscando en la colección
+00:01:19,820 --> 00:01:21,330
+I can query the
+students collection.
 
 36
-00:01:26,520 --> 00:01:30,210
-de alumnos, usando uno de nuestros
-operadores de "set", para encontrar
+00:01:21,330 --> 00:01:23,600
+I could do db.students.find.
 
 37
-00:01:30,210 --> 00:01:34,260
-todos los documentos donde,
-digamos, este valor y este
+00:01:23,600 --> 00:01:25,850
+I can specify the
+student I'm looking for,
 
 38
-00:01:34,260 --> 00:01:35,850
-valor aparecen.
+00:01:25,850 --> 00:01:29,210
+and then return the teacher's
+key with its values,
 
 39
-00:01:35,850 --> 00:01:37,850
-Pero deseas que sea rápido.
+00:01:29,210 --> 00:01:31,070
+and then I'll know the teachers.
 
 40
-00:01:37,850 --> 00:01:39,560
-Y para que sea rápido, tiene que
+00:01:31,070 --> 00:01:33,000
+But what about finding
+all the students who
 
 41
-00:01:39,560 --> 00:01:41,300
-haber un índice para eso.
+00:01:33,000 --> 00:01:34,740
+have had a particular teacher?
 
 42
-00:01:41,300 --> 00:01:43,460
-Ahora, no hemos hablado
-mucho acerca de índices
+00:01:34,740 --> 00:01:36,290
+That's a more difficult query.
 
 43
-00:01:43,460 --> 00:01:45,520
-y vamos a hablar más sobre
-rendimiento en el futuro,
+00:01:36,290 --> 00:01:38,860
+That query is going to
+use our set operators.
 
 44
-00:01:45,520 --> 00:01:50,760
-pero resulta que Mongo
-soporta la adición de un índice
+00:01:38,860 --> 00:01:41,130
+And in order for
+that to be efficient,
 
 45
-00:01:50,760 --> 00:01:52,900
-en la clave "teachers".
+00:01:41,130 --> 00:01:43,190
+we need to be able
+to use an index.
 
 46
-00:01:52,900 --> 00:01:55,800
-Y cuando tu índice es un
-array, lo que obtendrás
+00:01:43,190 --> 00:01:46,870
+And it's going to be a multikey
+index that makes this possible.
 
 47
-00:01:55,800 --> 00:02:00,470
-es un índice multiclave
-donde Mongo indexa todos
+00:01:46,870 --> 00:01:50,330
+So let me show you in
+the shell how this looks.
 
 48
-00:02:00,470 --> 00:02:03,920
-los valores en el array
-para todos los documentos.
+00:01:50,330 --> 00:01:50,830
+All right.
 
 49
-00:02:03,920 --> 00:02:07,490
-Quiero mostrarte cómo
-luce en el shell mongo
+00:01:50,830 --> 00:01:52,770
+So we have two different
+collections already
 
 50
-00:02:07,490 --> 00:02:10,100
-y mostrarte la base de datos
-en acción cuando consulte
+00:01:52,770 --> 00:01:53,560
+set up here.
 
 51
-00:02:10,100 --> 00:02:12,570
-algo que tiene un índice multiclave.
+00:01:53,560 --> 00:01:54,790
+We have a students
+collection, and we
 
 52
-00:02:12,570 --> 00:02:14,290
-Ahora mismo, estoy
-en el shell mongo
+00:01:54,790 --> 00:01:55,915
+have a teachers collection.
 
 53
-00:02:14,290 --> 00:02:20,430
-y voy a usar la
-colección "school".
+00:01:55,915 --> 00:01:58,020
+Here's the students
+collection, and here's
 
 54
-00:02:20,430 --> 00:02:22,310
-He creado dos colecciones.
+00:01:58,020 --> 00:01:59,021
+the teachers collection.
 
 55
-00:02:22,310 --> 00:02:24,420
-He creado una colección de
-alumnos y una colección de
+00:01:59,021 --> 00:02:00,978
+And we can see that the
+students collection has
 
 56
-00:02:24,420 --> 00:02:25,020
-profesores.
+00:02:00,978 --> 00:02:02,810
+a list of students,
+including myself,
 
 57
-00:02:25,020 --> 00:02:27,990
-Y se ven muy similares a lo
-que te acabo de mostrar en
+00:02:02,810 --> 00:02:04,250
+and the teachers that I had.
 
 58
-00:02:27,990 --> 00:02:28,920
-la pizarra.
+00:02:04,250 --> 00:02:05,750
+And here in the
+teachers collection,
 
 59
-00:02:28,920 --> 00:02:31,980
-Así, en la colección de
-alumnos, tenemos cuatro alumnos,
+00:02:05,750 --> 00:02:07,489
+we have a list of
+professors, and these
 
 60
-00:02:31,980 --> 00:02:33,930
-Andrew, Richard, Elliot y Mark.
+00:02:07,489 --> 00:02:09,030
+are the professors
+that were teaching
 
 61
-00:02:33,930 --> 00:02:36,710
-Y hay un array "teachers"
-que indica qué profesores
+00:02:09,030 --> 00:02:10,310
+when I was at Stanford.
 
 62
-00:02:36,710 --> 00:02:38,050
-tiene cada uno de ellos.
+00:02:10,310 --> 00:02:12,070
+And we can see that,
+for instance, I
 
 63
-00:02:38,050 --> 00:02:41,340
-En la colección de profesores,
-tengo los nombres
+00:02:12,070 --> 00:02:14,990
+had the teacher 0
+and 1, which are
 
 64
-00:02:41,340 --> 00:02:43,540
-de los cuatro profesores--éstos son
-en realidad profesores de Stanford
+00:02:14,990 --> 00:02:17,100
+Mark Horowitz and John Hennessy.
 
 65
-00:02:43,540 --> 00:02:45,010
-que estaban allí cuando
-yo estaba allí--
+00:02:17,100 --> 00:02:20,020
+Now, if we wanted to add a
+multikey index on this teachers
 
 66
-00:02:45,010 --> 00:02:47,940
-y puedes ver qué profesores
-tiene cada uno de estos alumnos.
+00:02:20,020 --> 00:02:25,970
+key, we could do it as follows,
+db.students.ensureIndex
 
 67
-00:02:47,940 --> 00:02:50,830
-Si quisiera indexar y crear
-un índice multiclave en el
+00:02:25,970 --> 00:02:28,140
+'teachers' 1.
 
 68
-00:02:50,830 --> 00:02:54,080
-array de profesores, lo puedo
-hacer a través de este comando,
+00:02:28,140 --> 00:02:30,470
+And we haven't gone
+over indexes yet,
 
 69
-00:02:54,080 --> 00:02:58,395
-"db.students.ensureIndex",
-especificando "teachers".
+00:02:30,470 --> 00:02:32,380
+but this is how
+you'd create them.
 
 70
-00:02:58,395 --> 00:03:00,360
-Vamos a cubrir índices luego,
-pero sólo quiero mostrarte
+00:02:32,380 --> 00:02:34,407
+And now the shell
+returns information
 
 71
-00:03:00,360 --> 00:03:01,882
-esto.
+00:02:34,407 --> 00:02:35,990
+that before there
+was one index, which
 
 72
-00:03:01,882 --> 00:03:05,470
-Una vez que lo hago,
-puedo consultar y
+00:02:35,990 --> 00:02:38,530
+was the index on underscore ID
+which is in every collection,
 
 73
-00:03:05,470 --> 00:03:07,190
-utilizar el índice.
+00:02:38,530 --> 00:02:39,840
+and now there are two.
 
 74
-00:03:07,190 --> 00:03:11,780
-Aquí está la consulta donde le
-pido la colección de alumnos
+00:02:39,840 --> 00:02:41,792
+And now we're going
+to do a query that's
 
 75
-00:03:11,780 --> 00:03:16,080
-encontrar todos los documentos
-de alumnos donde el array de
+00:02:41,792 --> 00:02:43,500
+going to use that
+index and be efficient.
 
 76
-00:03:16,080 --> 00:03:20,620
-profesores contiene los valores
-1 y 3, lo que significa que estoy
+00:02:43,500 --> 00:02:45,150
+So let's find all
+the students who
 
 77
-00:03:20,620 --> 00:03:24,385
-buscando a gente que tenga a
-John Hennessy y James Plummer
+00:02:45,150 --> 00:02:47,380
+had Mark Horowitz and John
+Hennessy as professors.
 
 78
-00:03:24,385 --> 00:03:28,240
-como profesores, y retornar
-estos documentos.
+00:02:47,380 --> 00:02:49,970
+So Mark Horowitz is 0,
+and John Hennessy 1.
 
 79
-00:03:28,240 --> 00:03:31,370
-Si hago eso, puedes ver,
-me parece que Richard y
+00:02:49,970 --> 00:02:55,820
+So we'll db.students.find
+'teachers," now we're all.
 
 80
-00:03:31,370 --> 00:03:35,550
-Elliot tienen a los profesores
-1 y 3, es decir a John Hennessy
+00:02:55,820 --> 00:02:56,630
+There we go.
 
 81
-00:03:35,550 --> 00:03:38,750
-y James Plummer.
+00:02:56,630 --> 00:02:59,110
+So now, we do a
+query, and we ask,
 
 82
-00:03:38,750 --> 00:03:40,930
-Ahora ¿qué sucede
-cuando usamos un
+00:02:59,110 --> 00:03:00,780
+find me all the
+students that had
 
 83
-00:03:40,930 --> 00:03:45,010
-índice? Podrías averiguarlo
-llamando a ".explain" al
+00:03:00,780 --> 00:03:02,850
+both 0 and 1 in their
+teacher's value.
 
 84
-00:03:45,010 --> 00:03:47,790
-final de la consulta.
+00:03:02,850 --> 00:03:05,450
+And we find that it's
+me, Andrew Erlichson,
 
 85
-00:03:47,790 --> 00:03:49,950
-No lo hemos mostrado, pero
-lo haremos en un futuro.
+00:03:05,450 --> 00:03:07,410
+and it's also Richard Kreuter.
 
 86
-00:03:49,950 --> 00:03:52,780
-".explain" muestra
-tu plan de consulta.
+00:03:07,410 --> 00:03:09,399
+He has also 0 and 1 in
+the teacher's value.
 
 87
-00:03:52,780 --> 00:03:55,460
-Y puedes ver justo
-arriba, dice "cursor
+00:03:09,399 --> 00:03:11,940
+Now, the question is, how do we
+know that that used an index?
 
 88
-00:03:55,460 --> 00:04:00,030
-BtreeCursor teachers_1" que
-significa que MongoDB, en efecto,
+00:03:11,940 --> 00:03:14,148
+Well, there's a little
+command that we haven't talked
 
 89
-00:04:00,030 --> 00:04:02,280
-utilizó un índice para
-realizar esta consulta.
+00:03:14,148 --> 00:03:16,000
+about yet, but it
+works like this.
 
 90
-00:04:02,280 --> 00:04:05,490
-Y la existencia de estos índices
-multiclaves es una de las
+00:03:16,000 --> 00:03:18,980
+We can append explain at
+the end of this query.
 
 91
-00:04:05,490 --> 00:04:07,510
-razones por las cuales
-embeber o relacionar
+00:03:18,980 --> 00:03:21,230
+And if we append explain
+at the end of this query,
 
 92
-00:04:07,510 --> 00:04:09,980
-funcionan tan bien en MongoDB
+00:03:21,230 --> 00:03:24,490
+it will tell us what it did when
+it was performing the query.
 
 93
-00:04:09,980 --> 00:04:12,230
-ya que puedes hacer los
-tipos de consulta que podrías
+00:03:24,490 --> 00:03:26,740
+And if we do that,
+we can see here
 
 94
-00:04:12,230 --> 00:04:15,260
-esperar hacer en una base de datos
-relacional y hacerlas con rapidez.
+00:03:26,740 --> 00:03:28,770
+that it returns a
+bunch of information,
 
 95
-00:04:15,260 --> 00:04:16,588
+00:03:28,770 --> 00:03:32,110
+but what it tells us is
+that it used the BtreeCursor
+
+96
+00:03:32,110 --> 00:03:36,210
+teachers underscore 1 index,
+which is a multikey index.
+
+97
+00:03:36,210 --> 00:03:38,170
+And that's how
+multikey indexes work
+
+98
+00:03:38,170 --> 00:03:41,030
+and why they make linking and
+embedding an efficient way
+
+99
+00:03:41,030 --> 00:03:45,710
+to represent information within
+MongoDB when you query it.
+
