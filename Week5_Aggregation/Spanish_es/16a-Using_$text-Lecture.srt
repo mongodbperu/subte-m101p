@@ -1,444 +1,448 @@
 1
 00:00:00,105 --> 00:00:04,549
-Now we understand how to use
-the match pipeline stage in aggregation.
+Ahora entendamos cómo usar la fase
+$match del pipeline en Aggregation.
 
 2
 00:00:04,590 --> 00:00:07,483
-But what if you want to do something
-a little more complicated than match
+Pero ¿qué tal si deseas hacer algo
+un poco más complicado que $match
 
 3
 00:00:07,523 --> 00:00:09,443
-and you want to do a full text search?
+y deseas hacer un full text search?
 
 4
 00:00:09,881 --> 00:00:14,475
-Well, it turns out that full text search
-and aggregation are two great tastes
+Bueno, resulta que full text search
+y agregación son dos grandes muestras
 
 5
 00:00:14,485 --> 00:00:17,658
-that go great together in MongoDB 2.6.
+que van muy bien juntos en MongoDB 2.6.
 
 6
 00:00:18,162 --> 00:00:21,910
-Now let me show you how to use
-full text search and aggregation together.
+Ahora permíteme mostrarte cómo usar
+full text search y agregación juntos.
 
 7
 00:00:22,845 --> 00:00:28,235
-Here I have the collection that we used
-before to show how full text search works.
+Aquí tengo una colección que usamos antes
+para mostrarte cómo full text search funciona.
 
 8
 00:00:28,638 --> 00:00:32,720
-We have a bunch of documents--
-each one with a key, "words",
+Tenemos un montón de documentos--
+cada uno con una clave, "words",
 
 9
 00:00:32,725 --> 00:00:34,347
-with a bunch of different words.
+con un montón de distintas palabras.
 
 10
 00:00:34,511 --> 00:00:39,918
-And if we want to do a full text search
-on "words", we would need to have
+Y si deseamos hacer un full text search
+en "words", necesitaríamos tener
 
 11
 00:00:39,932 --> 00:00:42,009
-a text index on "words".
+un índice de texto en "words".
 
 12
 00:00:42,307 --> 00:00:44,999
-And, in fact, we do have that index.
+Y, de hecho, tengo ese índice.
 
 13
 00:00:45,583 --> 00:00:50,022
-You can see that there's a full text
-search text index on "words"
+Puedes ver que hay un índice de texto
+para full text search en "words"
 
 14
 00:00:50,063 --> 00:00:52,438
-right here, "words" inside the collection.
+justo aquí, "words" dentro
+de la colección.
 
 15
 00:00:52,931 --> 00:00:54,847
-And that'll let us do a full text search.
+Y eso nos permitirá hacer
+un full text search.
 
 16
 00:00:55,217 --> 00:00:57,889
-So how do we do
-an aggregation that uses this?
+Así que ¿cómo hacemos una
+agregación que usa esto?
 
 17
 00:00:58,070 --> 00:01:00,618
-Here is a simple aggregation example.
+Aquí está un ejemplo
+simple de agregación.
 
 18
 00:01:00,875 --> 00:01:05,147
-And in this aggregation example
-we're going to have a match phase
+Y en este ejemplo de agregación,
+vamos a tener una fase $match
 
 19
 00:01:05,582 --> 00:01:07,947
-and that match phase is going to specify
+y esa fase $match va a especificar
 
 20
 00:01:08,391 --> 00:01:12,169
-that the text needs
-to search for tree and rat.
+que el texto necesita
+buscar "tree" y "rat".
 
 21
 00:01:12,423 --> 00:01:17,913
-And if you recall, these documents are
-all full of these randomish words.
+Y si recuerdas, esos documentos están
+llenos de esas palabras aleatorias.
 
 22
 00:01:18,492 --> 00:01:22,348
-So tree and rat appear here,
-tree appears here, dog appears here,
+"tree" y "rat" aparecen aquí,
+"tree" aparece aquí, "dog" por aquí,
 
 23
 00:01:22,529 --> 00:01:25,064
-obsidian appears here, shrub, etcetera.
+"obsidian" aparece aquí,
+"shrub", etcétera.
 
 24
 00:01:25,642 --> 00:01:29,670
-So we're using the same syntax
-we'd use to do a find command
+Así que estamos usando la misma sintaxis
+que usamos para hacer un comando "find"
 
 25
 00:01:29,681 --> 00:01:31,150
-and a full text search.
+y un full text search.
 
 26
 00:01:31,195 --> 00:01:33,990
-We're going to use the match pipeline
-stage and we're going to specify
+Vamos a usar la fase $match
+y vamos a especificar
 
 27
 00:01:34,055 --> 00:01:38,463
-the text operator and that we're
-searching $search for tree and rat.
+el operador $text y que estamos
+buscando $search para "tree" y "rat".
 
 28
 00:01:38,674 --> 00:01:41,471
-And that's essentially an or term.
-It's going to look for tree and rat
+Y esto es esencialmente un término "y-o".
+Va a buscar a "tree" y "rat"
 
 29
 00:01:41,803 --> 00:01:43,857
-anywhere in the string.
+en cualquier lugar en la cadena.
 
 30
 00:01:44,169 --> 00:01:47,547
-And then, just for the simplicity
-of printing out the result,
+Y luego, sólo para simplificar
+la impresión del resultado,
 
 31
 00:01:47,866 --> 00:01:51,138
-we're going to use a projection phase
-and that projection phase,
+vamos a usar una fase de proyección
+y en esa fase de proyección,
 
 32
 00:01:51,374 --> 00:01:54,867
-we're going to pull out words
-and we're going to suppress _id.
+vamos a sacar el campo "words"
+y vamos a suprimir "_id".
 
 33
 00:01:55,086 --> 00:01:57,911
-And that's just to print out
-the results in a little cleaner way.
+Y eso va a simplemente imprimir los
+resultados de una manera más clara.
 
 34
 00:01:58,147 --> 00:01:59,621
-So let's see what that looks like.
+Así que veamos cómo se ve.
 
 35
 00:01:59,700 --> 00:02:03,838
-Alright, so, text_agg.js was
-the file that I just showed you
+Muy bien, "text_agg.js" fue el
+archivo que te acabo de mostrar
 
 36
 00:02:03,839 --> 00:02:05,301
-and I'm going to run it.
+y voy a ejecutarlo.
 
 37
 00:02:05,317 --> 00:02:09,536
-And we can see that, when we did that,
-we got basically all things
+Y puedes ver que, cuando hice esto,
+básicamente obtenemos todo lo que tenga
 
 38
 00:02:09,537 --> 00:02:12,773
-that have rat and tree in them,
-or rat <i>or</i> tree in them, I should say.
+"rat" y "tree" en ellos, o
+"rat" <i>o</i> "tree", debería decir.
 
 39
 00:02:12,785 --> 00:02:16,621
-So "rat shrub granite", "cat tree ruby"--
-capitalization doesn't matter
+Así "rat shrub granite", "cat tree ruby"--
+capitalización no importa
 
 40
 00:02:16,622 --> 00:02:17,915
-with full text search.
+con full text search.
 
 41
 00:02:17,916 --> 00:02:24,046
-We got a whole bunch of results that are
-related to rat and tree, or rat or tree.
+Obtenemos muchos resultados que están
+relacionadoa a "rat" y "tree", o a "rat" o "tree".
 
 42
 00:02:24,336 --> 00:02:26,357
-And just to point out
-what may not be obvious,
+Y sólo para señalar lo
+que no podría ser obvio,
 
 43
 00:02:26,559 --> 00:02:30,083
-the words, these random words,
-were in the "words" key,
+las paladras, estas palabras aleatorias,
+estuvieron en la clave "words",
 
 44
 00:02:30,091 --> 00:02:34,786
-but the "words" key doesn't appear
-over here in the actual match term.
+pero la clave "words" no aparece aquí en
+los verdaderos términos que coinciden.
 
 45
 00:02:35,420 --> 00:02:38,995
-Because with full text search you're going
-to have a maximum of one full text index
+Porque con full text search vas a tener
+un máximo de un índice de full text
 
 46
 00:02:39,018 --> 00:02:43,479
-in each collection and you don't need
-to specify the key that holds it.
+en cada colección y no necesitas
+especificar la clave que la mantiene.
 
 47
 00:02:43,868 --> 00:02:46,593
-You can just specify that you
-want it to be a text search,
+Sólo puedes especificar que
+deseas hacer un text search,
 
 48
 00:02:46,789 --> 00:02:48,553
-looking for tree and rat.
+buscando "tree" y "rat".
 
 49
 00:02:48,655 --> 00:02:53,417
-Now we talked about a way
-of having MongoDB order the results
+Ahora, hablamos acerca de una manera
+de tener un orden en los resultados
 
 50
 00:02:53,426 --> 00:02:58,164
-from full text search in a way
-that weights the ones that have both terms
+de full text search de manera que los
+pesos más altos de aquellos que tengan
 
 51
 00:02:58,179 --> 00:03:00,282
-more highly and shows those first.
+ambos términos, los muestre primero.
 
 52
 00:03:00,388 --> 00:03:03,339
-And you can do that
-as well using aggregation.
+Y puedes hacer eso
+también usando agregación.
 
-53
 00:03:04,374 --> 00:03:06,231
-And here is that file.
+Y aquí está ese archivo.
 
 54
 00:03:06,277 --> 00:03:09,726
-So, in this case, we run
-the exact same match phase to start.
+En este caso, ejecutamos la misma
+fase $match para iniciar.
 
 55
 00:03:10,456 --> 00:03:12,237
-We're going to match on tree and rat.
+Vamos a hacer $match en "tree" y "rat".
 
 56
 00:03:12,287 --> 00:03:15,123
-And then we're going
-to run a sort pipeline stage,
+Y entonces vamos a ejecutar
+una fase $sort en el pipeline,
 
 57
 00:03:15,643 --> 00:03:21,340
-and in that sort pipeline stage, we're
-going to sort by this textScore.
+y en esa fase $sort, vamos a
+ordenar por este "textScore".
 
 58
 00:03:21,588 --> 00:03:26,278
-So we create a new key score,
-which is defined as the meta information
+Así que creamos una nueva clave "score",
+que está definido como una información meta
 
 59
 00:03:26,310 --> 00:03:29,470
-of textScore, which is what
-comes out of the engine
+de "textScore", que es
+lo que viene del motor
 
-60
 00:03:29,512 --> 00:03:31,402
-as it does the full text search.
+de cómo hace el full text search.
 
 61
 00:03:31,474 --> 00:03:35,834
-And so now we're sorting by this textScore
-for each document that was
+Y así ahora vamos a ordenar por este
+"textScore" para cada documento que fue
 
 62
 00:03:35,848 --> 00:03:39,303
-discovered with a full text search
-and this should give us a sorted array.
+descubierto con un full text search y
+esto debería darnos un array ordenado.
 
 63
 00:03:39,915 --> 00:03:44,331
-And, right here, we're just going
-to again project "words" and _id
+Y, aquí mismo, vamos otra vez a hacer
+proyección de "words" y suprimir "_id"
 
 64
 00:03:44,548 --> 00:03:47,443
-suppression so that we
-can get a cleaner result.
+de tal manera que podamos
+obtener un resultado más claro.
 
 65
 00:03:47,555 --> 00:03:49,532
-So let's see what that
-looks like when we run it.
+Veamos cómo se ve
+cuando lo ejecutamos.
 
 66
 00:03:50,350 --> 00:03:51,422
-Alright.
+Muy bien.
 
 67
 00:03:51,423 --> 00:03:54,261
-And the difference here is,
-in this case, the ones that have
+Y la diferencia aquí es,
+en este caso, los que tengan
 
 68
 00:03:54,283 --> 00:03:57,225
-both rat and tree appear first
-because they're the strongest matches.
+"rat" y "tree" aparecen primero
+porque ellos coinciden mejor.
 
 69
 00:03:57,518 --> 00:04:00,461
-So "rat tree ruby", "rat tree granite",
+"rat tree ruby", "rat tree granite",
 "rat tree obsidian"--
 
 70
 00:04:00,672 --> 00:04:02,251
-you see these right at the top.
+ves estos a la derecha arriba.
 
 71
 00:04:02,291 --> 00:04:05,601
-When we did it without the sort,
-then you can see that even
+Cuando hicimos esto sin el ordenamiento,
+entonces puedes ver que incluso
 
 72
 00:04:05,618 --> 00:04:08,652
-the documents that contain both terms
-sometimes were more deeply
+los documentos que contienen ambos términos
+a veces están más profundamente
 
 73
 00:04:08,674 --> 00:04:10,335
-ordered into the list.
+ordenados en la lista.
 
 74
 00:04:10,359 --> 00:04:13,706
-Now the last thing I want to point
-out about this full text search
+Ahora, lo último que deseo señalar
+acerca de este full text search
 
 75
 00:04:13,739 --> 00:04:18,164
-within aggregation is that the match phase
-that includes the full text search
+en agregación es que la fase $match
+que incluye el full text search
 
 76
 00:04:18,317 --> 00:04:20,269
-must appear first.
+debe aparecer primero.
 
 77
 00:04:20,634 --> 00:04:23,837
-And the reason is that once you go
-through another pipeline stage
+Y la razón es que una vez que vas
+a través de otra fase del pipeline
 
 78
 00:04:23,856 --> 00:04:27,325
-like a grouping, there'll no longer be
-the required full text search index
+como una agrupación, no será
+requerido un índice de full text search
 
 79
 00:04:27,335 --> 00:04:29,328
-on the collection, if you will.
+en la colección, si lo quisieras.
 
 80
 00:04:29,421 --> 00:04:32,830
-If you think about it,
-every time a pipeline stage exists,
+Si piensas en ello, siempre que
+una fase del pipeline existe
 
 81
 00:04:33,171 --> 00:04:35,882
-then you go from one set of documents
-to another set of documents
+entonces vas de un conjunto de documentos
+a otro conjunto de documentos
 
 82
 00:04:36,181 --> 00:04:38,990
-and instead of documents
-that's past the first stage,
+y en lugar que los documentos
+que pasaron la primera fase,
 
 83
 00:04:39,130 --> 00:04:41,098
-won't have that full
-text search index on it,
+no tendrá aquel índice
+full text search en él,
 
 84
 00:04:41,125 --> 00:04:43,246
-and, hence, you can't do this match on it.
+y, por lo tanto, no puedes
+hacer este $match en esto.
 
 85
 00:04:43,374 --> 00:04:47,245
-So you need to have that match
-with the full text search term be first.
+Así que necesitas tener primero este
+$match con el término full text search.
 
 86
 00:04:47,751 --> 00:04:49,368
-Okay, it's time for a quiz.
+De acuerdo, es momento
+para un cuestionario.
 
 87
 00:04:49,389 --> 00:04:52,787
-Which of the following statements are true
-about using a $text operator
+¿Cuál de los siguientes enunciados son
+verdad acerca de usar el operador $text
 
 88
 00:04:52,796 --> 00:04:54,520
-in the aggregation pipeline?
+en el pipeline de agregación?
 
 89
 00:04:54,738 --> 00:04:57,683
-Text is only allowed in the $match stage
-of the aggregation pipeline,
+$text está permitido solamente en la fase
+$match del pipeline de agregación,
 
 90
 00:04:58,491 --> 00:05:01,848
-$text is only allowed within a $match
-that is the first stage
+$text está permitido solamente en un
+$match que está en la primera fase
 
 91
 00:05:01,850 --> 00:05:03,268
-of the aggregation pipeline,
+del pipeline de agregación,
 
 92
 00:05:03,682 --> 00:05:06,950
-$text can be used without
-an underlying full text search index
+$text puede ser usado sin un
+índice full text search por debajo
 
 93
 00:05:07,148 --> 00:05:09,276
-when used in conjunction with aggregation,
+cuando se usa en
+conjunción con agregación,
 
 94
 00:05:09,316 --> 00:05:12,782
-and the results of $text are always sorted
-according to search match quality.
+y los resultados del $text siempre están ordenados
+de acuerdo a la calidad de coincidencia en la búsqueda.
 
 95
 00:05:12,809 --> 00:05:14,287
-So which of the following are true?
-
+¿Cuáles son verdaderos?
