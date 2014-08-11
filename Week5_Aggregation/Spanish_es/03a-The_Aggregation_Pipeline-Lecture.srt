@@ -108,8 +108,8 @@ que va a transformar esa colección.
 
 23
 00:01:17,921 --> 00:01:20,575
-OK. Veamos cada una de estas
-etapas del "pipeline" rápidamente
+OK. Veamos rápidamente cada una
+de estas fases del "pipeline"
 
 24
 00:01:20,575 --> 00:01:22,499
@@ -122,8 +122,8 @@ Ahora para dejarlo claro,
 
 26
 00:01:26,711 --> 00:01:29,724
-estas etapas pueden aparecer
-más de una vez en el "pipeline"
+estas fases pueden aparecer más
+de una vez en el "pipeline"
 
 27
 00:01:29,724 --> 00:01:32,708
@@ -334,8 +334,8 @@ algo en un documento jerárquico,
 
 69
 00:03:53,757 --> 00:03:57,725
-que podría tener un array de elementos,
-debemos, de alguna manera, aplanar esos datos.
+que podría tener un array de elementos, debemos,
+de alguna manera, desovillar esos datos.
 
 70
 00:03:57,725 --> 00:04:02,062
@@ -349,7 +349,7 @@ nuestros datos, ¿de acuerdo?
 
 72
 00:04:05,209 --> 00:04:08,059
-Déjame mostrarte como funciona.
+Déjame mostrarte cómo funciona.
 Digamos que tienes un array "tags"
 
 73
@@ -398,12 +398,12 @@ de documentos que tenemos.
 
 82
 00:04:40,331 --> 00:04:43,368
-Si en cualquier documento
-hay n elementos en un array
+Si en cualquier documento hay
+"n" elementos en un array
 
 83
 00:04:43,368 --> 00:04:45,076
-vamos a obtener n documentos.
+vamos a obtener "n" documentos.
 
 84
 00:04:45,076 --> 00:04:48,101
@@ -468,12 +468,12 @@ ciertos usuarios. Y la etapa "$geoNear"
 96
 00:05:28,736 --> 00:05:31,319
 te permite hacer consultas
-basadas en localización
+basadas en geolocalización
 
 97
 00:05:31,319 --> 00:05:35,143
 para limitar los documentos que pasan por una
-etapa del "pipeline" basado en localización.
+etapa del "pipeline" basado en geolocalización.
 
 98
 00:05:35,143 --> 00:05:37,668
