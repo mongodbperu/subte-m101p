@@ -1,525 +1,537 @@
 1
 00:00:00,000 --> 00:00:01,911
-Let's start out with a simple example
+Empecemos con un simple ejemplo
 
 2
 00:00:01,911 --> 00:00:04,172
-of aggregation in MongoDB,
+de agregación en MongoDB
 
 3
 00:00:04,612 --> 00:00:07,153
-to motivate how this stuff works.
+para motivar cómo funciona esto.
 
 4
 00:00:07,153 --> 00:00:08,800
-Now, I'm gonna start out 
-with an example
+Voy a empezar con un ejemplo
 
 5
 00:00:08,800 --> 00:00:11,783
-from the SQL world, 
-SQL world of relational.
+del mundo SQL, el
+mundo SQL relacional.
 
 6
 00:00:11,813 --> 00:00:15,217
-Let's say we had a products table,
-and that products table had
+Digamos que tenemos una tabla "products"
+y esa tabla "products" contiene
 
 7
 00:00:15,217 --> 00:00:19,391
-a name, category, manufacturer,
-and price for each item.
+un nombre, categoría, fabricante
+y precio por cada elemento.
 
 8
 00:00:19,391 --> 00:00:22,772
-So this is a table of electronics items.
+Ésta es una tabla de
+artículos electrónicos.
 
 9
 00:00:22,772 --> 00:00:25,643
-Might be an iPad, 
-which is a tablet from Apple,
+Podría tener un iPad, el
+cual es una tablet de Apple,
 
 10
 00:00:25,643 --> 00:00:26,933
-with a price of $499.
+con un precio de $499.
 
 11
 00:00:27,463 --> 00:00:30,031
-If I wanted to get a report 
-of how many products
+Si quisiera obtener un reporte
+de cuántos productos hay
 
 12
 00:00:30,031 --> 00:00:31,697
-there were from each manufacturer,
+por fabricante,
 
 13
 00:00:31,697 --> 00:00:33,608
-the way I would do that in SQL
+la forma en que lo haría en SQL
 
 14
 00:00:33,608 --> 00:00:38,885
-is select manufacturer, comma, 
-count star, from products
+es haciendo "SELECT manufacturer,
+COUNT(*) FROM products
 
 15
 00:00:39,123 --> 00:00:42,276
-where I group by manufacturer.
+GROUP BY manufacturer".
 
 16
 00:00:42,676 --> 00:00:46,381
-And this would give me 
-a report that would provide me
+Y eso me daría un reporte con
 
 17
 00:00:46,381 --> 00:00:48,704
-the number of products 
-from each manufacturer.
+el número de productos
+de cada fabricante.
 
 18
 00:00:48,734 --> 00:00:50,074
-Again, that's select manufacturer,
+Una vez más, es:
+"SELECT manufacturer,
 
 19
 00:00:50,074 --> 00:00:53,689
-count star, from products, 
-group by manufacturer.
+COUNT(*) FROM products
+GROUP BY manufacturer".
 
 20
 00:00:53,689 --> 00:00:55,271
-There's a comma right here.
+Hay una coma aquí.
 
 21
 00:00:55,421 --> 00:00:56,827
-Now if you don't understand SQL,
+Ahora, si no entiendes SQL,
 
 22
 00:00:56,827 --> 00:00:58,046
-this is not critically important,
+esto no es muy importante,
 
 23
 00:00:58,046 --> 00:00:59,330
-but if you do, it might help you.
+pero si lo entiendes,
+podría ayudarte.
 
 24
 00:00:59,740 --> 00:01:01,968
-The report that we'd get 
-would look something like this.
+El reporte que obtendríamos
+sería algo como esto.
 
 25
 00:01:02,608 --> 00:01:07,767
-We would have a manufacturer
-and then the count star for each one.
+Tendríamos una columna "manufacturer"
+y luego el "COUNT(*)" para cada uno.
 
 26
 00:01:08,057 --> 00:01:10,337
-So we would have a little report that said,
+Tendríamos un pequeño
+reporte que diría, OK.
 
 27
 00:01:10,337 --> 00:01:16,081
-okay, Apple has two products 
-and Samsung has three products.
+Apple tiene dos productos y
+Samsung tiene tres productos.
 
 28
 00:01:16,431 --> 00:01:19,774
-So it's this "group by" clause 
-that is very interesting,
+Ésta es una cláusula "GROUP BY"
+que es muy interesante,
 
 29
 00:01:20,204 --> 00:01:22,405
-along with this aggregation function,
+junto a esta función de agregación,
 
 30
 00:01:22,405 --> 00:01:25,374
-which in SQL was count star.
+que en SQL es "COUNT(*)".
 
 31
 00:01:26,174 --> 00:01:29,271
-Alright, how do we do that in MongoDB?
+Bueno, ¿cómo lo hacemos en MongoDB?
 
 32
 00:01:29,717 --> 00:01:34,579
-Let's go and look at a collection
- that is very similar
+Veamos una colección
+que es muy similar
 
 33
 00:01:34,969 --> 00:01:36,967
-to that table from the relational world.
+a aquella tabla del mundo relacional.
 
 34
 00:01:37,417 --> 00:01:39,635
-Here we have a table of items,
+Aquí tenemos una tabla con productos,
 
 35
 00:01:39,635 --> 00:01:44,107
-that are exactly the same as the ones
-that were in the other relational table.
+los cuales son exactamente los mismos
+que estaban en la otra tabla relacional.
 
 36
 00:01:44,107 --> 00:01:47,855
-Where each one has a name, 
-and, say, Kindle Paperwhite,
+Cada uno tiene un nombre,
+digamos, "Kindle Paperwhite"
 
 37
 00:01:47,855 --> 00:01:50,458
-and the category, tablets, 
-and the manufacturer, Amazon,
+y la categoría, "tablets",
+y el fabricante, "Amazon"
 
 38
 00:01:50,458 --> 00:01:52,761
-and there's like six 
-or seven things in this collection
+y hay como seis o siete
+cosas en esta colección.
 
 39
 00:01:52,761 --> 00:01:55,038
-it's pretty small,
-I just created it now.
+Es bien pequeña.
+La acabo de crear.
 
 40
 00:01:55,468 --> 00:01:56,925
-How would we aggregate
+¿Cómo agregaríamos
 
 41
 00:01:56,925 --> 00:02:00,614
-so that we could find out the number 
-of products from each manufacturer?
+para calcular el número de
+productos de cada fabricante?
 
 42
 00:02:00,864 --> 00:02:02,858
-The way we would do that is as follows.
+Lo haríamos de la siguiente manera.
 
 43
 00:02:02,858 --> 00:02:05,938
-I put this collection in a database
-called aggregation
+Puse esta colección en una base
+de datos llamada "aggregation",
 
 44
 00:02:05,938 --> 00:02:08,423
-so that doesn't matter, 
-that's where I put the collection.
+pero eso no importa.
+Ahí puse la colección.
 
 45
 00:02:08,423 --> 00:02:10,597
-We would call the aggregate function,
+Llamaríamos a la función "aggregate",
 
 46
 00:02:10,597 --> 00:02:12,309
-and this is how you 
-would do it in the Mongo shell,
+y así es como lo haces
+en el shell mongo,
 
 47
 00:02:12,309 --> 00:02:15,457
-and this unit we're going to focus
-mostly on the Mongo shell
+y esta semana nos vamos a enfocar
+principalmente en el shell mongo,
 
 48
 00:02:15,457 --> 00:02:18,600
-because it maps 
-very cleanly to the drivers,
+porque se alinea muy
+bien con los drivers
 
 49
 00:02:18,600 --> 00:02:21,902
-and I don't think it adds a lot 
-to explain how it works in the drivers,
+y no creo que añade mucho explicar
+cómo se hace en los drivers,
 
 50
 00:02:21,902 --> 00:02:25,622
-but let's say we do db.products.aggregate
+pero digamos que hacemos
+"db.products.aggregate"
 
 51
 00:02:25,622 --> 00:02:27,747
-and again, products is the collection,
+y una vez más, "products"
+es la colección.
 
 52
 00:02:27,747 --> 00:02:29,606
-alright, I want to do a group-by
+Bueno, quiero hacer un "GROUP BY"
 
 53
 00:02:29,606 --> 00:02:32,216
-and then I would have a $ group operator,
+y entonces tendría
+un operador "$group"
 
 54
 00:02:32,216 --> 00:02:34,981
-and then I want to 
-group by manufacturer,
+y luego quiero agrupar
+por fabricante
 
 55
 00:02:34,981 --> 00:02:36,619
-and I want to get the count,
+y obtener el número de documentos.
 
 56
 00:02:36,619 --> 00:02:39,551
-and the way I do that, we'll explain 
-how this works a little bit later,
+La manera en que hago eso--
+explicaremos cómo funciona luego--
 
 57
 00:02:39,551 --> 00:02:42,323
-is we create a new key 
-called num_products
+es creando una nueva clave
+llamada "num_products"
 
 58
 00:02:42,323 --> 00:02:46,534
-and we sum for each one, one.
+y sumamos uno por cada uno.
 
 59
 00:02:46,534 --> 00:02:48,770
-And we're not gonna explain 
-exactly how this works,
+Y no vamos a explicar
+cómo funciona esto
 
 60
 00:02:48,770 --> 00:02:50,230
-right now, because 
-I want to go through it
+ahora mismo, porque
+quiero repasarlo
 
 61
 00:02:50,230 --> 00:02:51,503
-in the following lessons.
+en las siguientes lecciones.
 
 62
 00:02:51,503 --> 00:02:52,831
-I just want to give you 
-a high level overview
+Sólo quiero darte una visión
+general de alto nivel sobre el
 
 63
 00:02:52,831 --> 00:02:54,391
-of the aggregation framework right now.
+Aggregration Framework
+en estos momentos.
 
 64
 00:02:54,601 --> 00:02:57,912
-But I want you to notice a few things 
-about this command.
+Pero quiero que notes algunas
+cosas respecto a este comando.
 
 65
 00:02:58,152 --> 00:03:01,774
-The first is that the dollar group operator
+La primera es que
+el operador "$group"
 
 66
 00:03:01,774 --> 00:03:03,541
-is in its own document.
+está en su propio documento.
 
 67
 00:03:03,541 --> 00:03:05,335
-So, $ group right here.
+Entonces un "$group" acá.
 
 68
 00:03:05,335 --> 00:03:07,650
-The second is, this is an array.
+La segunda es que
+esto es un array
 
 69
 00:03:07,650 --> 00:03:09,388
-And there could be other operators,
+y podría haber otros operadores
 
 70
 00:03:09,388 --> 00:03:11,126
-and we're going to go 
-through how that works.
+y vamos a ver
+cómo funciona eso,
 
 71
 00:03:11,126 --> 00:03:12,866
-But for right now we just have the one.
+pero por ahora,
+sólo tenemos uno.
 
 72
 00:03:12,866 --> 00:03:15,920
-So, I had open parentheses 
-and I had an open array here.
+Entonces tengo un paréntesis
+abierto y un array abierto acá,
 
 73
 00:03:15,920 --> 00:03:18,808
-And then I have a document 
-with dollar group.
+y luego tengo un
+documento con "$group".
 
 74
 00:03:19,479 --> 00:03:21,329
-The value for the dollar group operator
+El valor para el operador "$group"
 
 75
 00:03:21,329 --> 00:03:22,519
-has a couple different parts.
+tiene un par de partes diferentes.
 
 76
 00:03:22,519 --> 00:03:25,165
-The first part is underscore id.
+La primera es "_id"
 
 77
 00:03:25,165 --> 00:03:27,766
-and you can kind of think of this 
-as creating a new collection.
+y puedes considerar que esto
+está creando una nueva colección
 
 78
 00:03:27,766 --> 00:03:30,219
-where we're going to 
-group by manufacturer.
+donde vamos a agrupar
+por fabricante.
 
 79
 00:03:30,219 --> 00:03:32,865
-Manufacturer was a key 
-in my collection ,
+"manufacturer" era una
+clave en mi colección,
 
 80
 00:03:32,865 --> 00:03:36,143
-but now it's data to this, it's a field,
+pero ahora son
+datos, es un campo,
 
 81
 00:03:36,143 --> 00:03:39,446
-and as a result, we 
-have to prepen this dollar sign
+y por ende tenemos que
+anteponer este "$"
 
 82
 00:03:39,446 --> 00:03:41,321
-and the whole thing 
-needs to be quoted.
+y todo esto tiene que
+estar entre comillas.
 
 83
 00:03:41,501 --> 00:03:44,892
-And then it's going to create 
-a new field called num_products
+Y luego va a crear un nuevo
+campo llamado "num_products"
 
 84
 00:03:44,892 --> 00:03:47,652
-that is going to call 
-the dollar sum operator
- 
+que va a llamar al operador $sum
 
 85
 00:03:47,652 --> 00:03:48,602
-and add one for each one.
+y sumar uno por cada elemento.
 
 86
 00:03:48,602 --> 00:03:50,203
-We'll go through exactly how this works,
+Vamos a ver cómo funciona
+esto exactamente, pero
 
 87
 00:03:50,203 --> 00:03:52,074
-but let's just see it work
-and see what we get.
+ahora veamos que funcione
+y veamos qué obtenemos.
 
 88
 00:03:52,394 --> 00:03:55,146
-Okay, we get back five documents.
+OK. Nos retornó cinco documentos
 
 89
 00:03:55,146 --> 00:03:57,540
-And each document 
-corresponds to one row
+y cada documento
+corresponde a una fila
 
 90
 00:03:57,540 --> 00:03:58,573
-that we might have gotten back
+que hubiésemos obtenido
 
 91
 00:03:58,573 --> 00:04:01,906
-if we'd done a group 
-by manufacturer in SQL.
+si es que hubiésemos hecho un
+"GROUP BY manufacturer" en SQL.
 
 92
 00:04:01,906 --> 00:04:05,351
-So for instance, the first document
-is Amazon, num_products two,
+Por ejemplo, el primer documento
+es Amazon, "num_products" dos,
 
 93
 00:04:05,351 --> 00:04:08,096
-second document is Sony,
-num_products one.
+el segundo documento es
+Sony, "num_products" uno.
 
 94
 00:04:08,096 --> 00:04:10,865
-The third document is Samsung, 
-num_products two.
+El tercer documento es
+Samsung, "num_products" dos.
 
 95
 00:04:10,865 --> 00:04:13,072
-So this is just a simple overview 
-and the example
+Esto es una simple
+introducción y el ejemplo
 
 96
 00:04:13,072 --> 00:04:15,340
-of how you would group by manufacturer
+de cómo agruparías los
+documentos por fabricante
 
 97
 00:04:15,340 --> 00:04:18,133
-in a collection to get back 
-aggregation results.
+en una colección para obtener
+resultados de agregación.
 
 98
 00:04:18,133 --> 00:04:20,071
-Now, it's your turn to write a query.
+Ahora te toca a ti
+escribir una consulta.
 
 99
 00:04:20,411 --> 00:04:24,865
-Here's the quiz: Let's say you had
-a collection of products,
+Éste es el cuestionario. Digamos
+que tienes una colección de productos,
 
 100
 00:04:24,865 --> 00:04:26,534
-just like the one I just showed you,
+igual a la que te acabo de mostrar
 
 101
 00:04:26,534 --> 00:04:29,554
-and you wanted to count
-the number of products,
+y quieres contar el
+número de productos
 
 102
 00:04:29,554 --> 00:04:32,276
-not by manufacturer, as I just did,
-but by category.
+no por "manufacturer" como acabo
+de hacer, sino por "category".
 
 103
 00:04:32,776 --> 00:04:35,770
-So you just need to go back
-and look at how that query works.
+Tendrías que regresar y ver
+cómo funciona esa consulta.
 
 104
 00:04:35,770 --> 00:04:38,940
-Have the resulting key be called
-num_products, just as I did.
+Haz que la clave con los resultados se
+llame "num_products" como acabo de hacer.
 
 105
 00:04:39,240 --> 00:04:41,810
-You just need to change 
-the column name here
+Sólo tienes que cambiar el
+nombre de la columna acá
 
 106
 00:04:41,810 --> 00:04:43,714
-from manufacturer to category,
+de "manufacturer" a "category",
 
 107
 00:04:43,714 --> 00:04:45,472
-or I should say, the key name.
+o, mejor dicho, el
+nombre de la clave.
 
 108
 00:04:45,472 --> 00:04:48,090
-That's all that's required 
-to get this to work.
+Eso es todo lo que se requiere
+para que esto funcione
 
 109
 00:04:48,090 --> 00:04:50,934
-And we'll explain how it works 
-in subsequent lessons.
+y explicaremos cómo funciona
+en las siguientes lecciones.
 
 110
 00:04:51,454 --> 00:04:53,721
-I'd like you to type that below.
+Quisiera que escribas la
+consulta acá abajo y
 
 111
 00:04:53,721 --> 00:04:56,154
-And just so it makes it easier 
-for us to grade it,
+para que nos sea más
+fácil analizarla,
 
 112
 00:04:56,154 --> 00:04:59,354
-if you could double quote 
-all of the key names,
+si podrías poner todas las
+claves entre comillas dobles,
 
 113
 00:04:59,744 --> 00:05:01,075
-that would be helpful,
+eso nos ayudaría.
 
 114
 00:05:01,075 --> 00:05:03,758
-that's not strictly speaking necessary,
-and I didn't double quote everything,
+No es estrictamente necesario,
+y yo no puse todo entre comillas,
 
 115
 00:05:03,758 --> 00:05:06,398
-but just double quote it all 
-and that will make it better.
-
+pero es mejor si pones todo
+entre comillas dobles.
