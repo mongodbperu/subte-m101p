@@ -1,59 +1,59 @@
 1
 00:00:00,000 --> 00:00:00,500
- 
+
 
 2
 00:00:00,500 --> 00:00:06,170
-OK, and the answer is that
-it will return no documents,
+Bien, la respuesta es que
+no devolverá documentos,
 
 3
 00:00:06,170 --> 00:00:08,890
-because we've hinted to
-use this title index.
+ya que hemos indicado
+que use este índice "title".
 
 4
 00:00:08,890 --> 00:00:12,382
-The title index is
-sparse, and we're asking,
+El índice "title" es
+disperso y estamos preguntando,
 
 5
 00:00:12,382 --> 00:00:13,840
-it's a little bit
-subtle, but we're
+es un poco sutil,
+pero estamos
 
 6
 00:00:13,840 --> 00:00:15,690
-asking for documents
-where title is null.
+pidiendo documentos
+donde "title" es nulo,
 
 7
 00:00:15,690 --> 00:00:18,440
-And by definition the
-sparse index on title
+y por definición el
+índice disperso sobre "title"
 
 8
 00:00:18,440 --> 00:00:20,676
-omits documents
-where title is null,
+omite los documentos
+donde "title" es nulo,
 
 9
 00:00:20,676 --> 00:00:23,050
-because that would mean the
-title is not in the document.
+ya que eso significaría que el
+documento no tiene "title".
 
 10
 00:00:23,050 --> 00:00:25,350
-And so, in fact, the
-answer is no documents,
+Por consiguiente, la
+respuesta es ningún documento,
 
 11
 00:00:25,350 --> 00:00:26,960
-because the query
-uses the index,
+porque la consulta
+usa el índice
 
 12
 00:00:26,960 --> 00:00:31,000
-and there are no documents
-with title null in the index.
+y no hay documentos
+con "title" nulo en el índice.
 
