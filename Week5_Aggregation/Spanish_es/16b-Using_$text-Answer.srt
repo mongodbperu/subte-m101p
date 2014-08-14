@@ -4,8 +4,8 @@
 
 2
 00:00:00,988 --> 00:00:04,538
-Y resulta que los dos primeros son verdad,
-y los últimos dos no son verdad.
+Y resulta que los dos primeros son
+verdaderos, y los dos últimos no.
 
 3
 00:00:04,853 --> 00:00:08,350
@@ -14,20 +14,20 @@ usar el operador $text
 
 4
 00:00:08,350 --> 00:00:12,221
-a menos que haya también un índice
-full text search por debajo en la colección.
+a menos que haya también un índice de
+búsqueda de texto completo en la colección.
 
 5
 00:00:12,741 --> 00:00:17,311
 Y, los resultados no van a ser ordenados
-por el peso del full text search,
+por el peso de la búsqueda de texto completo,
 
 6
 00:00:17,311 --> 00:00:22,642
-a menos que también pongas en la fase
-$sort que actúe como algo de información meta
+a menos que también incluyas una fase
+$sort que actúe como algo de metainformación
 
 7
 00:00:22,642 --> 00:00:25,272
 que está disponible a partir de las
-coincidencias en el full text search.
+coincidencias en la búsqueda de texto completo.
