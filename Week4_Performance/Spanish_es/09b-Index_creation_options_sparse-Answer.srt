@@ -14,8 +14,8 @@ que use este índice "title".
 
 4
 00:00:08,890 --> 00:00:12,382
-El índice "title" es
-disperso y estamos preguntando,
+El índice "title" es disperso
+y lo que estamos preguntando
 
 5
 00:00:12,382 --> 00:00:13,840
