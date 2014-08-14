@@ -1,429 +1,420 @@
 1
 00:00:00,000 --> 00:00:00,530
- 
 
 2
 00:00:00,530 --> 00:00:02,600
-Let's talk about
-multikey indexes.
+Hablemos sobre índices multiclave.
 
 3
 00:00:02,600 --> 00:00:05,500
-We discussed multikey indexes
-briefly in the previous unit,
+En la unidad anterior hablamos
+brevemente sobre los índices
 
 4
 00:00:05,500 --> 00:00:07,810
-but I want to go
-into more detail now.
+multiclave, pero ahora quiero
+entrar en más detalles.
 
 5
 00:00:07,810 --> 00:00:10,120
-Let's say you have a
-document, and that document
+Digamos que tienes un documento
+y que ese documento
 
 6
 00:00:10,120 --> 00:00:13,610
-has a key tags, and
-the value is an array.
+tiene una clave "tags"
+cuyo valor es un array.
 
 7
 00:00:13,610 --> 00:00:15,700
-And in this case,
-we have an array
+Y en este caso,
+tenemos un array
 
 8
 00:00:15,700 --> 00:00:17,950
-of cycling, tennis,
-and football.
+con "cycling", "tennis"
+y "football".
 
 9
 00:00:17,950 --> 00:00:20,487
-If you want to perform
-queries on this collection,
+Si quieres hacer consultas
+en esta colección y
 
 10
 00:00:20,487 --> 00:00:22,070
-and you want those
-queries to be fast,
+quieres que esas
+consultas sean rápidas,
 
 11
 00:00:22,070 --> 00:00:24,570
-you want to add an
-index on tags if you're
+vas a querer indexar "tags"
 
 12
 00:00:24,570 --> 00:00:26,450
-trying to query on tags.
+si vas a consultar por "tags".
 
 13
 00:00:26,450 --> 00:00:28,920
-Now MongoDB supports
-adding an index
+MongoDB soporta la indexación
 
 14
 00:00:28,920 --> 00:00:31,710
-on a key whose value
-might be an array.
+de una clave cuyo valor
+pueda ser un array y
 
 15
 00:00:31,710 --> 00:00:34,450
-And if the value is an
-array, what MongoDB does
+si el valor es un array,
+lo que MongoDB hace es
 
 16
 00:00:34,450 --> 00:00:36,700
-is it creates what's
-called a multikey index.
+crear lo que llamamos
+un índice multiclave.
 
 17
 00:00:36,700 --> 00:00:39,180
-Rather than having a single
-index point per document,
+En lugar de tener un solo punto
+en el índice por documento,
 
 18
 00:00:39,180 --> 00:00:40,960
-there are multiple
-index points, one
+hay múltiples puntos, uno
 
 19
 00:00:40,960 --> 00:00:43,520
-for each of these
-elements in the array.
+por cada elemento en el array.
 
 20
 00:00:43,520 --> 00:00:44,910
-Now MongoDB is dynamic.
+Ahora, MongoDB es dínamico.
 
 21
 00:00:44,910 --> 00:00:47,680
-It doesn't know when you
-create the index what documents
+Cuando creas el índice,
+no sabe qué documentos
 
 22
 00:00:47,680 --> 00:00:49,240
-are going to exist
-in the collection.
+van a existir en la colección.
 
 23
 00:00:49,240 --> 00:00:51,610
-So it's not until
-you actually insert
+Así que no es un
+índice multiclave
 
 24
 00:00:51,610 --> 00:00:54,260
-a document whose value
-is an array that it
+hasta que insertas un
+documento cuyo valor
 
 25
 00:00:54,260 --> 00:00:56,049
-becomes a multikey index.
+es un array y hay
 
 26
 00:00:56,049 --> 00:00:57,590
-And there are some
-other restrictions
+algunas otras restricciones
 
 27
 00:00:57,590 --> 00:00:58,900
-on multikey indexes.
+para los índices multiclave.
 
 28
 00:00:58,900 --> 00:01:02,660
-For instance, you can create
-a compound index on tags comma
+Por ejemplo, puedes crear un
+índice compuesto en "tags" coma
 
 29
 00:01:02,660 --> 00:01:06,890
-color because only one
-of those two is an array,
+"color" porque sólo uno
+de esos dos es un array
 
 30
 00:01:06,890 --> 00:01:08,990
-and the other one in
-this case is a scalar.
+y el otro, en este
+caso, es un escalar.
 
 31
 00:01:08,990 --> 00:01:12,620
-But MongoDB wouldn't allow
-you to create a compound index
+Pero MongoDB no te permitiría
+crear un índice compuesto en
 
 32
 00:01:12,620 --> 00:01:16,150
-on tags comma location
-because then it
+"tags" coma "location",
+porque entonces tendría
 
 33
 00:01:16,150 --> 00:01:19,720
-has to create index points for
-every combination of the array
+que crear puntos en el índice para
+cada combinación de los elementos
 
 34
 00:01:19,720 --> 00:01:20,380
-elements.
+en los arrays
 
 35
 00:01:20,380 --> 00:01:23,080
-And that gets too large,
-and so it's not allowed.
+y eso se vuelve muy grande,
+así que no está permitido.
 
 36
 00:01:23,080 --> 00:01:24,214
-It can't do that.
+No puede hacer eso.
 
 37
 00:01:24,214 --> 00:01:26,380
-To make this more concrete,
-let's go into the shell,
+Para ver algo más concreto,
+hay que entrar al shell
 
 38
 00:01:26,380 --> 00:01:29,750
-and play around a little bit,
-and see how this all works.
+y experimentar un poco, para
+ver cómo funciona todo esto.
 
 39
 00:01:29,750 --> 00:01:31,600
-What I'm going to
-do right now is
+Lo que voy a hacer ahora es
 
 40
 00:01:31,600 --> 00:01:34,550
-I'm going to insert just
-a simple little document
+insertar un documento
+pequeño y simple
 
 41
 00:01:34,550 --> 00:01:36,400
-into a collection,
-the collection foo,
+en una colección,
+la colección "foo"
 
 42
 00:01:36,400 --> 00:01:39,850
-and have it be simple document
-with the keys a and b.
+y será un documento simple
+con las claves "a" y "b".
 
 43
 00:01:39,850 --> 00:01:44,310
-Now let's add an index to
-this, db.foo.ensureIndex,
+Ahora, agreguémosle un índice,
+"db.foo.ensureIndex",
 
 44
 00:01:44,310 --> 00:01:49,970
-and we're going to add
-an index on a comma b.
+y así vamos a agregar un
+índice en "a" coma "b".
 
 45
 00:01:49,970 --> 00:01:50,770
-It added the index.
+Agregamos el índice.
 
 46
 00:01:50,770 --> 00:01:51,886
-That's no problem.
+No hubo problemas.
 
 47
 00:01:51,886 --> 00:01:53,260
-Before there was
-one index, which
+Anteriormente había
+un solo índice,
 
 48
 00:01:53,260 --> 00:01:55,080
-was the underscore ID index.
+el índice en "_id".
 
 49
 00:01:55,080 --> 00:01:56,530
-Now it says there
-are two indexes.
+Ahora dice que
+hay dos índices.
 
 50
 00:01:56,530 --> 00:01:59,500
-Let's now do a query
-to find a result
+Hagamos ahora una consulta
+para encontrar un resultado
 
 51
 00:01:59,500 --> 00:02:03,032
-and find something where a is 1.
+y encontrar algo
+donde "a" es 1.
 
 52
 00:02:03,032 --> 00:02:03,990
-It found that document.
+Encontró ese documento.
 
 53
 00:02:03,990 --> 00:02:06,720
-Now let's do an
-explain and see what
+Ahora hagamos un
+"explain" y veamos
 
 54
 00:02:06,720 --> 00:02:09,490
-explain says about
-what index it used.
+qué nos dice sobre
+el índice que utilizó.
 
 55
 00:02:09,490 --> 00:02:11,660
-And it said it used
-this BtreeCursor index,
+Dice que utilizó este
+índice "BtreeCursor",
 
 56
 00:02:11,660 --> 00:02:13,550
-and it said multikey is false.
+y dice que "multikey" es falso.
 
 57
 00:02:13,550 --> 00:02:17,950
-Well, now let's insert another
-document into this collection.
+Ahora insertemos otro
+documento en esta colección
 
 58
 00:02:17,950 --> 00:02:21,400
-And this time, let's
-make a an array.
+y esta vez hagamos
+que "a" sea un array.
 
 59
 00:02:21,400 --> 00:02:23,905
-So we're making a
-an array, and I'll
+Estamos haciendo que "a"
+sea un array y haré que
 
 60
 00:02:23,905 --> 00:02:27,470
-make b just a scalar, like five.
+"b" sea un escalar, digamos "5".
 
 61
 00:02:27,470 --> 00:02:28,970
-My insert was fine.
+La inserción funcionó bien.
 
 62
 00:02:28,970 --> 00:02:31,330
-I'm going to go back
-and do my find again.
+Voy a regresar y hacer
+de nuevo la consulta.
 
 63
 00:02:31,330 --> 00:02:33,190
-First I'll just do the find.
+Primero simplemente
+haré la búsqueda.
 
 64
 00:02:33,190 --> 00:02:34,210
-That's all fine.
+Todo eso está bien.
 
 65
 00:02:34,210 --> 00:02:36,020
-Found both documents.
+Encontró ambos documentos.
 
 66
 00:02:36,020 --> 00:02:38,070
-Now I'm going to explain it.
+Ahora voy a hacer el "explain".
 
 67
 00:02:38,070 --> 00:02:40,620
-And now things look
-a little different.
+Ahora las cosas están
+un poco diferentes.
 
 68
 00:02:40,620 --> 00:02:43,980
-Now it says that
-multikey is true.
+Dice que "multikey"
+es verdadero porque
 
 69
 00:02:43,980 --> 00:02:46,560
-Because there' a document
-in the collection
+hay un documento
+en la colección
 
 70
 00:02:46,560 --> 00:02:50,112
-with a value that is an array,
-and its indexed because there
+cuyo valor de "a" es un array
+y está indexado porque hay
 
 71
 00:02:50,112 --> 00:02:51,850
-is an index on a comma b.
+un índice en "a" coma "b".
 
 72
 00:02:51,850 --> 00:02:53,940
-Now multikey is true.
+Ahora "multikey" es verdadero.
 
 73
 00:02:53,940 --> 00:02:56,650
-And as I said before, if
-you try to insert something
+Y como dije anteriormente,
+si vas a insertar algo en
 
 74
 00:02:56,650 --> 00:03:01,020
-into the collection, where
-both a and b are arrays
+la colección, donde tanto
+"a" y "b" son arrays,
 
 75
 00:03:01,020 --> 00:03:04,770
-for this compound index,
-that is going to fail.
+debido a este índice compuesto,
+eso va a darte un error.
 
 76
 00:03:04,770 --> 00:03:06,670
-Let's watch that fail.
+Veámoslo fallar.
 
 77
 00:03:06,670 --> 00:03:10,710
-And it says here, I can't insert
-that document with a having
+Aquí dice que no puedo insertar
+un documento cuyo valor de "a"
 
 78
 00:03:10,710 --> 00:03:13,950
-a value of 123 and b
-having a value of 345,
+es "[1, 2, 3]" y cuyo valor
+de "b" es "[3, 4, 5]",
 
 79
 00:03:13,950 --> 00:03:17,410
-it says, because I can't
-index parallel arrays b and a.
+porque no puedo indexar los
+arrays paralelos "b" y "a".
 
 80
 00:03:17,410 --> 00:03:19,620
-So you can have a
-compound index on a and b,
+Entonces, puedes tener un
+índice compuesto en "a" y "b",
 
 81
 00:03:19,620 --> 00:03:23,080
-but if both of those values
-for a document are both arrays,
+pero si en un documento,
+ambos valores son arrays,
 
 82
 00:03:23,080 --> 00:03:24,150
-then it will fail.
+te va a dar un error.
 
 83
 00:03:24,150 --> 00:03:27,410
-And that's the way
-multikey indexes work.
+Así es como funcionan
+los índice multiclave.
 
 84
 00:03:27,410 --> 00:03:30,130
-It is time for a quiz.
+Es hora de hacer un cuestionario.
 
 85
 00:03:30,130 --> 00:03:32,380
-Suppose we have a
-collection, foo,
+Digamos que tenemos
+una colección, "foo",
 
 86
 00:03:32,380 --> 00:03:34,510
-that has an index
-created as follows.
+que tiene un índice que fue
+creado de la siguiente manera:
 
 87
 00:03:34,510 --> 00:03:39,690
-db.foo ensure index a:1 b:1,
-which of the following inserts
+"db.foo.ensureIndex({ a:1, b:1 })".
+¿Cuáles de las siguientes inserciones
 
 88
 00:03:39,690 --> 00:03:41,530
-are valid to this collection?
+son válidas para esta colección?
 
 89
 00:03:41,530 --> 00:03:44,160
-And I won't go through them
-because they're a little bit
+No voy a enumerarlas porque
+son un poco detalladas,
 
 90
 00:03:44,160 --> 00:03:46,460
-detailed, but figure
-out which one of these
+pero averigua cuáles de éstas
 
 91
 00:03:46,460 --> 00:03:49,300
-are valid for the collection.
-
+son válidas para la colección.
