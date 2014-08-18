@@ -197,7 +197,7 @@ con "rat" y "tree", o con "rat" o "tree".
 42
 00:02:24,336 --> 00:02:26,357
 Y sólo para señalar lo
-que no podría ser obvio,
+que podría no ser obvio,
 
 43
 00:02:26,559 --> 00:02:30,083
