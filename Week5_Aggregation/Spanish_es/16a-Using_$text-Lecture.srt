@@ -207,7 +207,7 @@ estuvieron en la clave "words",
 44
 00:02:30,091 --> 00:02:34,786
 pero la clave "words" no aparece aquí en
-los verdaderos términos que coinciden.
+los términos que realmente coinciden.
 
 45
 00:02:35,420 --> 00:02:38,995
