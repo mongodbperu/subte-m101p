@@ -87,7 +87,7 @@ por cada elemento en el array.
 
 20
 00:00:43,520 --> 00:00:44,910
-Ahora, MongoDB es dínamico.
+Ahora, MongoDB es dinámico.
 
 21
 00:00:44,910 --> 00:00:47,680
