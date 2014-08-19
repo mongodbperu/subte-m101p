@@ -319,7 +319,7 @@ Vamos a echar un vistazo a "j".
 69
 00:02:52,490 --> 00:02:56,220
 Vemos que "j" es un documento
-con un _id asignado
+con un "_id" asignado
 
 70
 00:02:56,220 --> 00:02:59,160
@@ -409,4 +409,3 @@ una petición HTTP
 87
 00:03:49,050 --> 00:03:51,490
 y generar una página web.
-
