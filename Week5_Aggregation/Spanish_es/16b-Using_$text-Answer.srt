@@ -1,34 +1,33 @@
 1
 00:00:00,000 --> 00:00:00,988
-Ok!
+¡Muy bien!
 
 2
 00:00:00,988 --> 00:00:04,538
-And it turns out the first two are true,
-and the last two are not true.
+Y resulta que los dos primeros son
+verdaderos, y los dos últimos no.
 
 3
 00:00:04,853 --> 00:00:08,350
-And in particular, you cannot use 
-the $text operator
+Y en particular, no puedes
+usar el operador $text
 
 4
 00:00:08,350 --> 00:00:12,221
-unless there is also a full text search 
-index on the underlying collection.
+a menos que haya también un índice de
+búsqueda de texto completo en la colección.
 
 5
 00:00:12,741 --> 00:00:17,311
-And, the results will not be sorted 
-by the strength of the full text match,
+Y, los resultados no van a ser ordenados
+por el peso de la búsqueda de texto completo,
 
 6
 00:00:17,311 --> 00:00:22,642
-unless you also put in a sort phase
-that acts as some of the meta-information
+a menos que también incluyas una fase
+$sort que tenga acceso a la metainformación
 
 7
 00:00:22,642 --> 00:00:25,272
-that's available from 
-full text search matching.
-
+que está disponible a partir de las
+coincidencias en la búsqueda de texto completo.
