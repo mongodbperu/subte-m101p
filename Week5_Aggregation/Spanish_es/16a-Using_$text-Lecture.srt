@@ -29,8 +29,8 @@ búsqueda de texto completo y agregación juntos.
 
 7
 00:00:22,845 --> 00:00:28,235
-Aquí tengo una colección que usamos antes
-para mostrarte cómo full text search funciona.
+Aquí tengo una colección que usamos antes para
+mostrarte cómo funciona la búsqueda de texto completo.
 
 8
 00:00:28,638 --> 00:00:32,720
@@ -43,8 +43,8 @@ con un montón de distintas palabras.
 
 10
 00:00:34,511 --> 00:00:39,918
-Y si deseamos hacer un full text search
-en "words", necesitaríamos tener
+Y si deseamos hacer una búsqueda de texto
+completo en "words", necesitaríamos tener
 
 11
 00:00:39,932 --> 00:00:42,009
@@ -56,8 +56,8 @@ Y, de hecho, tengo ese índice.
 
 13
 00:00:45,583 --> 00:00:50,022
-Puedes ver que hay un índice de texto
-para full text search en "words"
+Puedes ver que hay un índice para
+búsqueda de texto completo en "words"
 
 14
 00:00:50,063 --> 00:00:52,438
@@ -67,7 +67,7 @@ de la colección.
 15
 00:00:52,931 --> 00:00:54,847
 Y eso nos permitirá hacer
-un full text search.
+una búsqueda de texto completo.
 
 16
 00:00:55,217 --> 00:00:57,889
@@ -115,7 +115,7 @@ que usamos para hacer un comando "find"
 
 25
 00:01:29,681 --> 00:01:31,150
-y un full text search.
+y una búsqueda de texto completo.
 
 26
 00:01:31,195 --> 00:01:33,990
@@ -211,8 +211,8 @@ los términos que realmente coinciden.
 
 45
 00:02:35,420 --> 00:02:38,995
-Porque con full text search vas a tener
-un máximo de un índice de full text
+Porque con la búsqueda de texto completo
+vas a tener un máximo de un índice de estos
 
 46
 00:02:39,018 --> 00:02:43,479
@@ -348,12 +348,12 @@ ordenados en la lista.
 74
 00:04:10,359 --> 00:04:13,706
 Ahora, lo último que deseo señalar
-acerca de este full text search
+acerca de la búsqueda de texto completo
 
 75
 00:04:13,739 --> 00:04:18,164
-en agregación es que la fase $match
-que incluye el full text search
+en agregación es que la fase $match que
+incluye la búsqueda de texto completo
 
 76
 00:04:18,317 --> 00:04:20,269
@@ -400,8 +400,8 @@ puedes hacer este $match.
 
 85
 00:04:43,374 --> 00:04:47,245
-Así que necesitas tener primero este
-$match con el término full text search.
+Así que necesitas tener primero este $match con
+el término para la búsqueda de texto completo.
 
 86
 00:04:47,751 --> 00:04:49,368
