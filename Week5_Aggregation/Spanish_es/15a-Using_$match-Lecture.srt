@@ -1,508 +1,511 @@
 1
 00:00:00,032 --> 00:00:03,674
-Ok, the next stage of the aggregation
-pipeline I want to tell you about
+Bien, la siguiente fase del pipeline
+de agregación de la que quiero
 
 2
 00:00:03,674 --> 00:00:07,567
-is the match phase. 
-Now match performs a filtering
+hablarte es la fase "$match".
+"$match" realiza un filtrado
 
 3
 00:00:07,567 --> 00:00:12,147
-which is an n:1 operation.
-Match will go through each document
+equivalente a una operación "n:1".
+"$match" recorrerá cada documento
 
 4
 00:00:12,147 --> 00:00:15,423
-and see if the document 
-matches your criteria.
+para ver si el documento
+coincide con tu criterio.
 
 5
 00:00:15,423 --> 00:00:18,391
-And if it does, then it will push it 
-through to the next stage
+Si coincide, entonces lo pasará
+a la siguiente fase
 
 6
 00:00:18,391 --> 00:00:19,933
-of the aggregation pipeline.
+del pipeline de agregación.
 
 7
 00:00:19,933 --> 00:00:22,473
-Now there are two reasons
-why you might want to match.
+Existen dos razones por las cuales
+podrías querer emplear "$match".
 
 8
 00:00:22,486 --> 00:00:25,203
-The first is that, you might want 
-to filter the documents
+La primera es que podrías querer
+filtrar los documentos
 
 9
 00:00:25,203 --> 00:00:27,523
-and only perform aggregation 
-on a subset on them.
+y solo aplicar agregación
+sobre un subconjunto de ellos.
 
 10
 00:00:27,539 --> 00:00:31,047
-And the second reason that you might want
-to perform a match is you might want
+Y la segunda razón por la que podrías
+querer realizar un "$match" es que
 
 11
 00:00:31,047 --> 00:00:34,040
-to filter the result itself
-which is to perform an aggregation
+podrías querer filtrar el propio
+resultado que se usa para realizar
 
 12
 00:00:34,040 --> 00:00:36,515
-and then after that, to filter the results.
+una agregación y luego,
+filtrar los resultados.
 
 13
 00:00:36,515 --> 00:00:41,222
-Alright, lets look at the zip code 
-collection and see how this might work.
+Veamos cómo funcionaría con la
+colección de códigos postales.
 
 14
 00:00:41,222 --> 00:00:43,702
-So, here's what the zip code
-collection looks like.
+Bien, aquí tenemos la
+colección de códigos postales.
 
 15
 00:00:43,702 --> 00:00:49,302
-It's got one document for each zip code
-which is in the _id with a city
+Contiene un documento por cada
+código postal, el cual es el "_id",
 
 16
 00:00:49,306 --> 00:00:52,996
-and a location
-and a population and a state.
+una ciudad, ubicación,
+población y estado.
 
 17
 00:00:52,996 --> 00:00:56,596
-Now lets say we wanted to filter
-this data set and only aggregate
+Ahora supongamos que quisiéramos
+filtrar este conjunto de datos y
 
 18
 00:00:56,608 --> 00:01:00,841
-on documents in a particular state,
-lets say the state of California.
+agregar solo sobre documentos de un estado
+en particular, por ejemplo California.
 
 19
 00:01:00,841 --> 00:01:03,258
-This is a document 
-for the state of Alabama
+Este documento pertenece al
+estado de Alabama,
 
 20
 00:01:03,258 --> 00:01:07,523
-California has an abbreviation of CA
-so we're going to filter on that.
+California tiene "CA" como abreviatura,
+por lo que vamos a filtrar por eso.
 
 21
 00:01:07,523 --> 00:01:10,160
-Here's how we would do this
-using aggregation
+Aquí vemos cómo lo haríamos
+usando agregación.
 
 22
 00:01:10,160 --> 00:01:15,265
-Now this is a small script and emax here.
-First we use agg, then we call
+Esto de aquí es un pequeño script
+en Emacs. Primero hacemos "use agg",
 
 23
 00:01:15,265 --> 00:01:20,580
-db.zips.aggregate and our aggregation
-pipeline only contains a single phase
+y luego "db.zips.aggregate". Nuestro
+pipeline de agregación solo contiene
 
 24
 00:01:20,580 --> 00:01:23,930
-which is a match phase
-and you can see here
+una fase, la cual es una fase
+"$match" y puedes ver que está
 
 25
 00:01:23,930 --> 00:01:27,795
-that this is in square brackets
-so the aggregation pipeline stages
+entre corchetes, ya que las fases
+del pipeline de agregación forman
 
 26
 00:01:27,795 --> 00:01:30,273
-are part of an array
-and there's only one in this case.
+parte de un array y
+solo hay una en este caso.
 
 27
 00:01:30,273 --> 00:01:33,914
-And the match is specified right here
-and its very similar to the way
+La fase "$match" se especifica
+aquí de manera similar al
 
 28
 00:01:33,914 --> 00:01:36,777
-you would specify a criteria
-for a fine command.
+criterio de un comando "find".
 
 29
 00:01:36,777 --> 00:01:40,290
-We're saying that the state
-needs to be California.
+Estamos diciendo que el estado
+tiene que ser California.
 
 30
 00:01:40,290 --> 00:01:42,970
-There you go, move the cursor
-so you can see the quotes.
+Allá vamos, muevo el cursor
+para que puedas ver las comillas.
 
 31
 00:01:42,970 --> 00:01:49,000
-Lets run that and see what happens.
-Ok, so I ran that and you can see
+Ejecutemos esto y veamos qué sucede.
+Bien, ya lo ejecuté y puedes ver que
 
 32
 00:01:49,003 --> 00:01:51,806
-that the results now, that every document
-that we see that's produced
+ahora los resultados, cada documento
+producido por agregación,
 
 33
 00:01:51,806 --> 00:01:54,693
-by aggregation, is California.
+está en California.
 
 34
 00:01:54,693 --> 00:01:58,583
-Now that we've reduced our data set 
-down to just California
+Ahora que hemos reducido nuestro
+conjunto de datos solo a California,
 
 35
 00:01:58,583 --> 00:02:03,653
-we can perform a grouping
-and get the population for each city
+podemos realizar una agrupación
+y obtener la población de cada ciudad
 
 36
 00:02:03,653 --> 00:02:07,134
-by grouping on the city, and I'll show
-you how to do that.
+agrupando por "city",
+y te enseñaré cómo hacer eso.
 
 37
 00:02:07,134 --> 00:02:11,889
-Alright, here's how you would first
-filter for California with the match
+Bien, aquí vemos cómo primero
+filtrarías por California con el
 
 38
 00:02:11,889 --> 00:02:14,829
-and then we have a comma here.
-This is the second element in the array
+"$match" y luego tenemos una coma.
+Este es el segundo elemento del array
 
 39
 00:02:14,838 --> 00:02:18,897
-in the pipeline and now we're going 
-to perform a group operation
+en el pipeline y ahora vamos
+a realizar una operación "$group"
 
 40
 00:02:18,897 --> 00:02:23,911
-in this stage of the pipeline.
-We're going to group on the city
+en esta fase del pipeline. Vamos
+a agrupar por "city" y vemos que
 
 41
 00:02:23,911 --> 00:02:28,333
-and we see that its $city to pull the city
-field out of the document as it passes by.
+se pone "$city" para extraer la
+ciudad del documento según avanza.
 
 42
 00:02:28,342 --> 00:02:34,171
-And we're going to aggregate
-on the population: $pop.
+Y vamos a agregar
+la población, "$pop".
 
 43
 00:02:34,171 --> 00:02:38,138
-If you remember the documents,
-pop was where the population
+Si recuerdas los documentos,
+"pop" era donde se guardaba
 
 44
 00:02:38,138 --> 00:02:39,962
-of each zip code was held.
+la población de cada código postal.
 
 45
 00:02:39,962 --> 00:02:45,732
-And then, just for fun we're going to also
-keep track of all the zip codes
+A continuación, solo por diversión,
+vamos a registrar todos los códigos
 
 46
 00:02:45,732 --> 00:02:51,274
-that are included in a city and we do this
-by defining a new field called zip codes.
+postales incluidos en una ciudad y
+lo haremos definiendo un nuevo campo
 
 47
 00:02:51,274 --> 00:02:58,588
-And then, using the aggregation operator,
-add to set and aggregating on the _ids.
+"zip_codes" y usando el operador de
+agregación "$addToSet" sobre los "_id".
 
 48
 00:02:58,591 --> 00:03:02,787
-And the _ids themselves are going
-to be zip codes as the document passes us by.
+Y los propios "_id" van a ser códigos
+postales mientras el documento pasa.
 
 49
 00:03:02,787 --> 00:03:07,452
-So again, we're grouping on the city
-and as we look at each document,
+De nuevo, estamos agrupando por ciudad
+y cuando examinamos cada documento,
 
 50
 00:03:07,452 --> 00:03:11,920
-if the document is in a particular city 
-bucket, we're going to add its population
+si este está en una ciudad en
+particular, vamos a añadir su población
 
 51
 00:03:11,920 --> 00:03:16,810
-to the population field and then
-we're also going to add the zip code
+al campo "population" y después
+también vamos a añadir el código postal
 
 52
 00:03:16,811 --> 00:03:20,331
-to a zip codes array.
-And if we do that, lets see what we get.
+al array "zip_codes".
+Veamos qué obtenemos si hacemos eso.
 
 53
 00:03:21,698 --> 00:03:26,170
-Ok, so now we see the documents
-have been aggregated on city
+Bien, ahora vemos que los documentos
+han sido agregados por ciudad.
 
 54
 00:03:26,170 --> 00:03:29,592
-so for instance we have TERMO
-and STANDISH and RAVENDALE
+Por ejemplo, tenemos TERMO,
+STANDISH, RAVENDALE,
 
 55
 00:03:29,592 --> 00:03:34,373
-and its population and then you can see
-that there's a list of zip codes
+y sus poblaciones y puedes ver que
+hay una lista de los códigos postales
 
 56
 00:03:34,373 --> 00:03:37,441
-that are included in that city.
-And for these particular cities,
+incluidos en cada ciudad.
+Para estas ciudades en particular,
 
 57
 00:03:37,441 --> 00:03:40,917
-it looks like they're all single zip codes
-in very small cities.
+parece que todas son ciudades muy
+pequeñas con un único código postal.
 
 58
 00:03:40,917 --> 00:03:43,918
-But I think if we go towards the top
-there might be one
+Pero creo que si vamos hacia
+arriba podría haber una
 
 59
 00:03:43,918 --> 00:03:46,431
-that has multiple zip codes.
+con varios códigos postales.
 
 60
 00:03:46,431 --> 00:03:51,512
-Yes! TRUCKEE has a population of 9743,
-still a small town but it includes
+¡Sí! TRUCKEE tiene una población de
+9743, aún una ciudad pequeña pero
 
 61
 00:03:51,512 --> 00:03:54,391
-two zip codes as you can see with both 
-these array of zip codes.
+incluye dos códigos postales como
+puedes ver en el array "zip_codes".
 
 62
 00:03:54,662 --> 00:03:59,562
-But this document isn't very pretty
-because rather than saying, city, here
+Pero este documento no es muy bonito
+porque en vez de decir "city", dice
 
 63
 00:03:59,562 --> 00:04:04,431
-instead it says _id and that's just
-the nature of aggregation,
+"_id" y esa es precisamente la
+naturaleza de la agregación,
 
 64
 00:04:04,431 --> 00:04:07,296
-that you have to define an _id
-that you're going to group by.
+que tienes que definir un "_id"
+por el cual vas a agrupar.
 
 65
 00:04:07,296 --> 00:04:12,163
-So if we want to have this be a little
-bit prettier, we can reshape this document
+Si queremos poner esto un poco más
+bonito, podemos reformatear este
 
 66
 00:04:12,163 --> 00:04:16,268
-to essentially rename the _id field
-to city, and we can do this
+documento renombrando el campo "_id"
+por "city", y podemos hacer eso
 
 67
 00:04:16,268 --> 00:04:18,829
-through projection.
-And let me show you how that works.
+mediante una proyección.
+Permíteme que te muestre cómo funciona.
 
 68
 00:04:18,829 --> 00:04:23,826
-Ok, so right here is the same aggregation
-query but this time we have one more stage.
+Justo aquí tenemos la misma consulta
+de agregación, pero esta vez con una
+
 
 69
 00:04:23,826 --> 00:04:26,243
-So we have our matching stage
-to filter only our documents
+fase más. Así, tenemos nuestra fase
+"$match" para filtrar solo nuestros
 
 70
 00:04:26,243 --> 00:04:27,613
-in California, right here.
+documentos en California, justo aquí.
 
 71
 00:04:27,613 --> 00:04:30,515
-And we have our grouping stage, 
-to group by the city
+Y tenemos nuestra fase "$group",
+para agrupar por ciudad de forma
 
 72
 00:04:30,515 --> 00:04:32,905
-so that we can get the population.
-And that's how we wound up
+que podamos obtener la población.
+Y así es como lidiamos
 
 73
 00:04:32,905 --> 00:04:34,531
-with the _id and the result.
+con el "_id" y el resultado.
 
 74
 00:04:34,531 --> 00:04:38,764
-And now, finally we're going to reshape
-these documents, which is a 1:1 operation.
+Por último, vamos a reformatear estos
+documentos, lo cual es una operación "1:1".
 
 75
 00:04:38,764 --> 00:04:41,349
-And at this projections stage
-of the pipeline
+Y en esta fase de
+proyección del pipeline
 
 76
 00:04:41,349 --> 00:04:44,216
-we're going to suppress
-the printing of _id
+vamos a omitir
+el "_id",
 
 77
 00:04:44,216 --> 00:04:48,386
-we have _id: 0, and we're going to define
-a new field called city.
+tenemos "_id: 0", y vamos a definir
+un nuevo campo llamado "city".
 
 78
 00:04:48,386 --> 00:04:53,280
-And that new field uses the $_id value,
-so that's basically
+Ese nuevo campo usa el valor "$_id",
+así que básicamente es
 
 79
 00:04:53,280 --> 00:04:55,578
-a reshaping of the document
-and a renaming of the document.
+un reformateo del documento,
+un cambio de nombre del documento.
 
 80
 00:04:55,578 --> 00:05:00,090
-And we're going to include the population
-which we did by saying, population: 1
+Y vamos a mostrar la población,
+poniendo "population: 1",
 
 81
 00:05:00,090 --> 00:05:04,735
-and then we're going to include the zip 
-codes by saying zip_codes: 1.
+y también los códigos postales
+poniendo "zip_codes: 1".
 
 82
 00:05:04,735 --> 00:05:08,376
-And that says, include these things
-in the final result.
+Y eso significa, incluye estas
+cosas en el resultado final.
 
 83
 00:05:08,376 --> 00:05:11,781
-And that's going to reshape our result 
-to look a little prettier,
+Y eso va a reformatear nuestro
+resultado para que sea más bonito.
 
 84
 00:05:11,781 --> 00:05:13,374
-and let's see how that looks.
+Veamos cómo queda.
 
 85
 00:05:14,314 --> 00:05:19,472
-Ok, so now we've reshaped the document
-and you can see that, the population
+Bien, ahora hemos reformateado
+el documento y puedes ver que
 
 86
 00:05:19,472 --> 00:05:22,446
-is here, the zip codes are here
-and the city is here.
+la población está aquí, los códigos
+postales aquí y la ciudad aquí.
 
 87
 00:05:22,446 --> 00:05:29,035
-You'll also notice that MongoDB did not
-retain the original ordering of the fields.
+También notarás que MongoDB no
+mantuvo el orden original de los campos.
 
 88
 00:05:29,035 --> 00:05:34,766
-So on our previous result, the _id came 
-first and now the population came first,
+En nuestro resultado anterior, "_id"
+aparecía primero y ahora el primero
 
 89
 00:05:34,766 --> 00:05:37,890
-and then the zip codes and then the city.
-And this is different
+es "population", luego "zip_codes" y
+por último "city", y este orden es
 
 90
 00:05:37,890 --> 00:05:42,025
-than what we actually specified.
-We had city, population, zip codes
+distinto del que realmente indicamos.
+Teníamos "city", "population"
 
 91
 00:05:42,025 --> 00:05:44,565
-and we got population, zip codes, city.
+y "zip_codes", y obtuvimos
+"population", "zip_codes" y "city".
 
 92
 00:05:44,565 --> 00:05:48,858
-So, the projection step will specify
-which fields you want to bring
+Por tanto, la fase de proyección
+especificará qué campos quieres
 
 93
 00:05:48,858 --> 00:05:51,513
-through to the final result,
-to the next stage of the pipeline,
+incluir en el resultado final,
+para la siguiente fase del pipeline,
 
 94
 00:05:51,513 --> 00:05:54,802
-I should say, because you could aggregate
-further from here but it does not
+mejor dicho, porque podrías hacer más
+agregaciones a partir de aquí pero no
 
 95
 00:05:54,802 --> 00:05:56,876
-retain the order necessarily.
+necesariamente mantiene el orden.
 
 96
 00:05:56,876 --> 00:05:58,926
-Ok, now its time for a quiz.
+Bien, hora de hacer un cuestionario.
 
 97
 00:05:58,926 --> 00:06:03,953
-So thinking again about the zip code 
-collection which we've been playing with,
+Pensando de nuevo en la colección de
+códigos postales con la que hemos jugado,
 
 98
 00:06:03,953 --> 00:06:08,889
-write an aggregation query with a single
-match phase that filters for zip codes
+escribe una consulta de agregación con
+una única fase "$match" que filtre por
 
 99
 00:06:08,889 --> 00:06:13,179
-with greater than a 100,000 people.
-And you may need to look up
+códigos postales con más de 100,000
+habitantes. Podrías necesitar echar
 
 100
 00:06:13,179 --> 00:06:15,827
-the use of the $gt operator, if you've 
-forgotten how to do that.
+un vistazo al uso del operador "$gt",
+si has olvidado cómo se usa.
 
 101
 00:06:15,827 --> 00:06:19,566
-I put a link to it here in the docs.
-The way I found this by the way
+Pongo un link aquí hacia la
+documentación. La forma en que
 
 102
 00:06:19,566 --> 00:06:23,806
-is by typing: $gt space
-MongoDB into google.
+encontré esto es poniendo en
+Google "$gt MongoDB".
 
 103
 00:06:23,806 --> 00:06:28,974
-So, google is your friend when it comes 
-to looking up the MongoDB documentation
+Así que Google es tu amigo cuando
+necesites buscar en la documentación
 
 104
 00:06:28,974 --> 00:06:31,054
-so write that query right here.
+de MongoDB.
+Escribe la consulta justo aquí.
 
