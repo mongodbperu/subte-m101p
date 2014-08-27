@@ -1,63 +1,63 @@
 1
 00:00:00,000 --> 00:00:01,915
-Okay, and the answer is the second one.
+OK. La respuesta es la segunda.
 
 2
 00:00:02,083 --> 00:00:05,816
-The second one is properly specified.
-You can see here the aggregation stages
+La segunda está especificada apropiadamente.
+Puedes ver acá que las fases de agregación
 
 3
 00:00:05,816 --> 00:00:10,173
-are in an array, and 'allow disk use'
-is specified with out a dollar sign
+están en un array y la opción "allowDiskUse"
+está especificada sin un signo de dólar
 
 4
 00:00:10,173 --> 00:00:15,253
-because you don't use a dollar sign
-when specifying this literal for this option.
+porque no se utiliza el signo de dólar
+cuando se especifica el literal de esta opción.
 
 5
 00:00:15,452 --> 00:00:17,621
-Now, the first one's wrong because
-there's a dollar sign there
+Ahora, la primera está errada
+porque hay un signo de dólar ahí
 
 6
 00:00:17,621 --> 00:00:19,874
-and it won't work, and you can try it 
-to confirm that.
+y no va a funcionar. Puedes
+probarlo para confirmarlo.
 
 7
 00:00:19,874 --> 00:00:23,773
-And the third one's wrong because
-'allow disk use' is specified properly
+Y la tercera está errada porque
+"allowDiskUse" está especificada
 
 8
 00:00:23,773 --> 00:00:29,738
-without a dollar sign, but we've taken the
-pipe line stages out of the array.
+apropiadamente sin el signo de dólar, pero hemos
+sacado las fases del "pipeline" del array.
 
 9
 00:00:29,738 --> 00:00:33,476
-It's the older style specifying a 
-navigation and it won't work with options
+Es el estilo antiguo, especificando
+una navegación y no funciona con opciones
 
 10
 00:00:33,476 --> 00:00:38,932
-'cause mongoDB doesn't know whether
-this is a pipeline stage or options.
+porque MongoDB no sabe si es una
+fase del "pipeline" o las opciones.
 
 11
 00:00:38,982 --> 00:00:41,580
-And the last one is wrong, even though
-it does use an array.
+Y la última está errada,
+aunque use un array.
 
 12
 00:00:42,000 --> 00:00:44,894
-It uses this dollar sign 
-which is not the right way
+Usa el signo de dólar y ésa no
+es la manera correcta de especificar
 
 13
 00:00:44,894 --> 00:00:46,533
-to specify allowing disk use.
-
+el permiso para que
+se utilice el disco.
