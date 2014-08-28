@@ -291,7 +291,7 @@ web que acabamos de construir.
 63
 00:02:38,760 --> 00:02:40,400
 Vamos a ejecutar
-el shell Mongo
+el shell mongo
 
 64
 00:02:40,400 --> 00:02:43,070
@@ -310,7 +310,7 @@ asignando una variable JavaScript
 67
 00:02:47,100 --> 00:02:51,416
 "j" el resultado de
-"db.names.findOne."
+"db.names.findOne".
 
 68
 00:02:51,416 --> 00:02:52,490
@@ -324,7 +324,7 @@ con un "_id" asignado
 70
 00:02:56,220 --> 00:02:59,160
 por la base de datos y a
-continuación el nombre "Dwight."
+continuación el nombre "Dwight".
 
 71
 00:02:59,160 --> 00:03:00,950
@@ -334,7 +334,7 @@ con JavaScript.
 72
 00:03:00,950 --> 00:03:03,680
 Voy a cambiar el
-nombre por "Andrew."
+nombre por "Andrew".
 
 73
 00:03:03,680 --> 00:03:05,620
