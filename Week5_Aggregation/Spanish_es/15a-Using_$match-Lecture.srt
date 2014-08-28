@@ -158,7 +158,7 @@ producido por agregación,
 
 33
 00:01:51,806 --> 00:01:54,693
-está en California.
+es de en California.
 
 34
 00:01:54,693 --> 00:01:58,583
@@ -333,7 +333,6 @@ Permíteme que te muestre cómo funciona.
 Justo aquí tenemos la misma consulta
 de agregación, pero esta vez con una
 
-
 69
 00:04:23,826 --> 00:04:26,243
 fase más. Así, tenemos nuestra fase
@@ -341,7 +340,7 @@ fase más. Así, tenemos nuestra fase
 
 70
 00:04:26,243 --> 00:04:27,613
-documentos en California, justo aquí.
+documentos de California, justo aquí.
 
 71
 00:04:27,613 --> 00:04:30,515
@@ -508,4 +507,3 @@ necesites buscar en la documentación
 00:06:28,974 --> 00:06:31,054
 de MongoDB.
 Escribe la consulta justo aquí.
-
