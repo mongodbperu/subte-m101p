@@ -72,7 +72,7 @@ una búsqueda de texto completo.
 16
 00:00:55,217 --> 00:00:57,889
 Entonces ¿cómo hacemos una
-agregación que usa esto?
+agregación que use esto?
 
 17
 00:00:58,070 --> 00:01:00,618
@@ -252,8 +252,8 @@ Y aquí está ese archivo.
 
 54
 00:03:06,277 --> 00:03:09,726
-En este caso, comenzamos ejecutando
-la misma fase $match para iniciar.
+En este caso, comenzamos
+ejecutando la misma fase $match.
 
 55
 00:03:10,456 --> 00:03:12,237
@@ -385,7 +385,7 @@ a otro conjunto de documentos
 
 82
 00:04:36,181 --> 00:04:38,990
-y a diferencia de que los documentos
+y a diferencia de los documentos
 que pasaron la primera fase,
 
 83
