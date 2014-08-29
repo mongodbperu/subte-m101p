@@ -40,7 +40,7 @@ el segundo tiene "A", "B" y "C",
 10
 00:00:19,290 --> 00:00:22,950
 el tercero sólo tiene "A" y "B",
-y el cuatro sólo tiene "A" y "B".
+y el cuarto sólo tiene "A" y "B".
 
 11
 00:00:22,950 --> 00:00:24,985
@@ -134,13 +134,13 @@ Entonces, ¿cuál es la solución?
 
 30
 00:01:10,350 --> 00:01:13,560
-Bueno, puedes remover los
+Bueno, puedes eliminar los
 duplicados cuando creas el índice,
 
 31
 00:01:13,560 --> 00:01:15,900
 pero el problema es
-que eso removería
+que eso eliminaría
 
 32
 00:01:15,900 --> 00:01:17,920
@@ -208,7 +208,7 @@ de productos y voy a imprimirla
 
 45
 00:01:49,360 --> 00:01:53,110
-bonito acá y podemos ver
+elegantemente acá y podemos ver
 que el primer documento es
 
 46
@@ -224,11 +224,11 @@ es de unos jeans con
 48
 00:01:57,550 --> 00:02:02,050
 un "size" de "32x32", y
-el tercer documento es un
+el tercer documento es una
 
 49
 00:02:02,050 --> 00:02:06,273
-cubre para un iPhone y no tiene
+funda para iPhones y no tiene
 "size", y el cuarto documento
 
 50
@@ -262,7 +262,7 @@ hagamos eso ejecutando
 
 56
 00:02:22,300 --> 00:02:26,164
-de manera ascendiente, y démosle
+de manera ascendente, y démosle
 la opción "unique" igual a "true".
 
 57
@@ -370,7 +370,7 @@ Definitivamente esperaríamos
 78
 00:03:17,210 --> 00:03:20,870
 que si ejecutamos "db.products.find"
-obteneríamos todos los documentos
+obtendríamos todos los documentos
 
 79
 00:03:20,870 --> 00:03:23,990
@@ -384,8 +384,8 @@ Pero digamos que ejecutamos
 
 81
 00:03:26,450 --> 00:03:28,440
-y decimos ordena de acuerdo a
-"size" de manera ascendiente.
+y decimos que ordene de acuerdo
+a "size" de manera ascendente.
 
 82
 00:03:28,440 --> 00:03:31,920
@@ -429,7 +429,7 @@ deliberadamente usamos
 90
 00:03:53,290 --> 00:03:56,860
 un "hint" diciendo que utilice
-el índice ascendiente en "size"?
+el índice ascendente en "size"?
 
 91
 00:03:56,860 --> 00:04:01,980
@@ -438,7 +438,7 @@ obtenemos sólo dos documentos.
 
 92
 00:04:01,980 --> 00:04:05,370
-Hicimos un find, donde esperaríamos
+Hicimos un "find", donde esperaríamos
 obtener todos los documentos, pero
 
 93
@@ -653,8 +653,8 @@ tres documentos acá
 
 137
 00:05:54,480 --> 00:05:56,680
-y los tres documentos.
-El primero tiene un
+y de estos tres documentos,
+el primero tiene un
 
 138
 00:05:56,680 --> 00:06:00,180
@@ -699,8 +699,8 @@ la consulta y buscas por
 
 147
 00:06:18,940 --> 00:06:25,380
-"title" igual a "null" con un "hint"
-que se debería usar el índice "title",
+"title" igual a "null" con un "hint" para
+indicar que se debería usar el índice "title",
 
 148
 00:06:25,380 --> 00:06:27,700
@@ -729,7 +729,7 @@ hacer consultas por "title"
 153
 00:06:37,000 --> 00:06:39,320
 igual a "null" sólo busca documentos
-que explicitamente tengan "title: null",
+que explícitamente tengan "title: null",
 
 154
 00:06:39,320 --> 00:06:40,819
@@ -757,5 +757,5 @@ de John, porque
 
 159
 00:06:49,850 --> 00:06:53,030
-el comando "ensureIndex" no
-va a ser exitoso en este caso.
+el comando "ensureIndex" no va
+a surtir efecto en este caso.
