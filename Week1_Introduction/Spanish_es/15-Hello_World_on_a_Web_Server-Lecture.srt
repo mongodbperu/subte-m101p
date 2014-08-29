@@ -1,413 +1,411 @@
 1
 00:00:00,000 --> 00:00:00,499
- 
+
 
 2
 00:00:00,499 --> 00:00:02,680
-OK, let's bring it
-all together now
+Bien, unámoslo
+todo ahora
 
 3
 00:00:02,680 --> 00:00:04,820
-and build a web application.
+y construyamos una aplicación web.
 
 4
 00:00:04,820 --> 00:00:06,680
-We have MongoD installed.
+Tenemos mongod instalado.
 
 5
 00:00:06,680 --> 00:00:10,580
-And we have our application
-layer over here.
+Tenemos nuestra capa de
+aplicación por aquí,
 
 6
 00:00:10,580 --> 00:00:12,850
-And that's going to
-be written in Python.
+que va a ser
+escrita en Python.
 
 7
 00:00:12,850 --> 00:00:15,350
-And we have PyMongo installed.
+Y tenemos PyMongo instalado.
 
 8
 00:00:15,350 --> 00:00:18,750
-And PyMongo is going to
-talk to MongoD via BSON.
+PyMongo va a comunicarse
+con MongoDB vía BSON.
 
 9
 00:00:18,750 --> 00:00:21,270
-And the last part
-is we want to be
+Y por último
+queremos ser
 
 10
 00:00:21,270 --> 00:00:24,640
-able to display a
-web page via HTTP.
+capaces de mostrar una
+página web vía HTTP.
 
 11
 00:00:24,640 --> 00:00:28,290
-And to do that, we're going
-to write a program that
+Para hacer eso, vamos
+a escribir un programa que
 
 12
 00:00:28,290 --> 00:00:30,332
-uses the Bottle framework.
+utiliza el framework Bottle.
 
 13
 00:00:30,332 --> 00:00:32,040
-So I'll show you what
-a small Hello World
+Te enseñaré un pequeño
+programa "Hola Mundo"
 
 14
 00:00:32,040 --> 00:00:34,260
-program looks like to do that.
+para ilustrar eso.
 
 15
 00:00:34,260 --> 00:00:39,626
-So I'm going to open up
-the small program in Emacs.
+Voy a abrir el
+programa en Emacs.
 
 16
 00:00:39,626 --> 00:00:41,000
-We'll go through
-it line by line,
+Lo analizaremos
+línea a línea,
 
 17
 00:00:41,000 --> 00:00:42,440
-so we can see what it does.
+para que podamos ver qué hace.
 
 18
 00:00:42,440 --> 00:00:44,110
-So the first thing
-is it important
+Lo primero es "import bottle"
 
 19
 00:00:44,110 --> 00:00:47,360
-Bottle and then it
-imports PyMongo.
+y a continuación
+"import pymongo".
 
 20
 00:00:47,360 --> 00:00:50,350
-And then it creates
-a route for "/",
+Luego crea
+una ruta para "/",
 
 21
 00:00:50,350 --> 00:00:52,450
-which means the default
-route of the web server.
+que significa que es la ruta
+por defecto del servidor web.
 
 22
 00:00:52,450 --> 00:00:55,680
-So when you go to a web
-server without any URL,
+Así, cuando accedes a un servidor
+web sin ninguna URL
 
 23
 00:00:55,680 --> 00:00:57,420
-after the host name
-this is what you get.
+tras el nombre de host,
+esto es lo que obtienes.
 
 24
 00:00:57,420 --> 00:01:00,310
-This is a little
-decorator telling Python
+Esto es un pequeño
+decorador que le dice a Python
 
 25
 00:01:00,310 --> 00:01:02,640
-that the next function
-is going to be executed
+que la función a continuación
+se va a ejecutar
 
 26
 00:01:02,640 --> 00:01:04,470
-when the user hits that route.
+cuando el usuario acceda a esa ruta.
 
 27
 00:01:04,470 --> 00:01:07,280
-And we call that
-"index", but there's
+Y la hemos llamado
+"index", pero no hay
 
 28
 00:01:07,280 --> 00:01:08,970
-nothing special about that name.
+nada especial sobre ese nombre.
 
 29
 00:01:08,970 --> 00:01:12,050
-And you could, in fact, call
-it something else, if you like.
+De hecho, podrías llamarla de otra
+forma si quieres.
 
 30
 00:01:12,050 --> 00:01:16,970
-The first step here is
-to use the MongoClient
+El primer paso aquí es
+usar la clase MongoClient
 
 31
 00:01:16,970 --> 00:01:20,970
-class to connect the
-local host at 27017.
+para conectarnos a
+localhost al puerto 27017.
 
 32
 00:01:20,970 --> 00:01:23,640
-That's the default port
-that MongoD listens on.
+Ese es el puerto por defecto
+que usa mongod.
 
 33
 00:01:23,640 --> 00:01:27,610
-And then, again, we connect
-to the test database db equals
+Y a continuación, de nuevo, nos
+conectamos a la base de datos "test"
 
 34
 00:01:27,610 --> 00:01:28,990
-connection.test.
+"db = connection.test".
 
 35
 00:01:28,990 --> 00:01:32,410
-And then to the names
-collection db.names.
+Y luego a la colección "names",
+"db.names".
 
 36
 00:01:32,410 --> 00:01:35,672
-Then we find a single document
-using the "find_one" command.
+Después buscamos un único documento
+usando el comando "find_one".
 
 37
 00:01:35,672 --> 00:01:37,630
-That's going to put that
-document into the item
+Eso va a poner ese
+documento en la variable
 
 38
 00:01:37,630 --> 00:01:38,630
-variable.
+"item".
 
 39
 00:01:38,630 --> 00:01:43,230
-And then it's going to return,
-basically, hello, whatever
+Y luego va a devolver,
+básicamente, "Hello" y lo que
 
 40
 00:01:43,230 --> 00:01:46,200
-is in the names key
-of that document.
+haya en la clave "name"
+de ese documento.
 
 41
 00:01:46,200 --> 00:01:48,870
-And this is a Python
-convention that the "%S!"
+Esto es una convención de
+Python por la que "%s!"
 
 42
 00:01:48,870 --> 00:01:51,670
-will be substituted by what's
-after this percent sign,
+se sustituirá por lo que vaya
+tras este signo de porcentaje,
 
 43
 00:01:51,670 --> 00:01:53,700
-in this case, item "name".
+en este caso, "item['name']".
 
 44
 00:01:53,700 --> 00:01:55,830
-Item's a dictionary,
-and we're pulling out
+"item" es un diccionario,
+y estamos extrayendo
 
 45
 00:01:55,830 --> 00:01:58,130
-the value for the name key.
+el valor de la clave "name".
 
 46
 00:01:58,130 --> 00:01:59,530
-This is the end
-of that function,
+Este es el final
+de esa función,
 
 47
 00:01:59,530 --> 00:02:01,410
-which is going to run
-when you hit the "/"
+que se va a ejecutar cuando
+accedas a la ruta "/"
 
 48
 00:02:01,410 --> 00:02:02,850
-route on the server.
+en el servidor.
 
 49
 00:02:02,850 --> 00:02:05,150
-And the only thing
-left to do is that we
+Y lo único que nos queda
+por hacer es que tenemos
 
 50
 00:02:05,150 --> 00:02:06,910
-have to tell Bottle to run.
+que decirle a Bottle que se ejecute.
 
 51
 00:02:06,910 --> 00:02:10,720
-And to do that, we call
-"bottle.run" with host
+Para hacer eso, haremos
+"bottle.run" con
 
 52
 00:02:10,720 --> 00:02:12,450
-equal "localhost"
-and the port equals
+"host = 'localhost'"
+y "port = 8082",
 
 53
 00:02:12,450 --> 00:02:15,360
-8082, which is a high
-number port that we
+que es un número de
+puerto alto que
 
 54
 00:02:15,360 --> 00:02:17,570
-can get to without being root.
+podemos obtener sin ser root.
 
 55
 00:02:17,570 --> 00:02:20,440
-So let's run it.
+Vamos a ejecutarlo.
 
 56
 00:02:20,440 --> 00:02:22,860
-OK, it says it's
-listening on local host.
+Bien, dice que está
+escuchando en localhost.
 
 57
 00:02:22,860 --> 00:02:28,590
-And now let's go to a web
-browser and hit that URL.
+Ahora vayamos a un navegador
+web y accedamos a esa URL.
 
 58
 00:02:28,590 --> 00:02:31,140
-And we can see it
-says "Hello Dwight!"
+Podemos ver que dice
+"Hello Dwight!"
 
 59
 00:02:31,140 --> 00:02:33,310
-And if you recall, Dwight
-was in the database
+Si recuerdas, Dwight
+estaba en la base de datos
 
 60
 00:02:33,310 --> 00:02:35,080
-in the names collection.
+en la colección "names".
 
 61
 00:02:35,080 --> 00:02:37,230
-And if we make a change,
-it's reflected in the web
+Y si hacemos un cambio,
+se refleja en la aplicación
 
 62
 00:02:37,230 --> 00:02:38,760
-application that we just built.
+web que acabamos de construir.
 
 63
 00:02:38,760 --> 00:02:40,400
-We're going to run
-the Mongo shell
+Vamos a ejecutar
+el shell mongo
 
 64
 00:02:40,400 --> 00:02:43,070
-and we're going to
-pull the document out
+y a recuperar
+el documento
 
 65
 00:02:43,070 --> 00:02:44,130
-of the names collection.
+de la colección "names".
 
 66
 00:02:44,130 --> 00:02:47,100
-We're going to do that by
-assigning a JavaScript variable
+Vamos a hacer eso
+asignando una variable JavaScript
 
 67
 00:02:47,100 --> 00:02:51,416
-j to the result of
-"db.names.findOne."
+"j" el resultado de
+"db.names.findOne".
 
 68
 00:02:51,416 --> 00:02:52,490
-We're going to look at j.
+Vamos a echar un vistazo a "j".
 
 69
 00:02:52,490 --> 00:02:56,220
-And we see that j is a document
-with an underscore ID assigned
+Vemos que "j" es un documento
+con un "_id" asignado
 
 70
 00:02:56,220 --> 00:02:59,160
-by the database and then
-the name of "Dwight."
+por la base de datos y a
+continuación el nombre "Dwight".
 
 71
 00:02:59,160 --> 00:03:00,950
-We can modify that
-inside JavaScript.
+Podemos modificar eso
+con JavaScript.
 
 72
 00:03:00,950 --> 00:03:03,680
-I'm going to change
-the name to "Andrew."
+Voy a cambiar el
+nombre por "Andrew".
 
 73
 00:03:03,680 --> 00:03:05,620
-And now I'm going to
-update the document
+Y ahora voy a
+actualizar el documento
 
 74
 00:03:05,620 --> 00:03:08,870
-by calling
-"db.names.save", giving
+haciendo
+"db.names.save",
 
 75
 00:03:08,870 --> 00:03:11,626
-the value of this
-JavaScript variable j.
+pasando el valor de la
+variable JavaScript "j".
 
 76
 00:03:11,626 --> 00:03:14,580
-OK, database tells us that
-it matched one document
+Bien, la base de datos nos dice
+que encontró un documento que
 
 77
 00:03:14,580 --> 00:03:16,490
-and that it modified
-one document, which
+coincide y que modificó
+un documento, lo cual
 
 78
 00:03:16,490 --> 00:03:20,590
-is confirmed now that everything
-is as we expect it to be.
+se confirma ahora que todo
+está tal como esperamos.
 
 79
 00:03:20,590 --> 00:03:23,380
-And we can see that there is
-one document inside the names
+Y podemos ver que hay
+un documento en la colección
 
 80
 00:03:23,380 --> 00:03:26,840
-collection and it has
-a name of "Andrew."
+"names" que tiene
+el nombre "Andrew".
 
 81
 00:03:26,840 --> 00:03:31,010
-And now if we go back to
-our web browser right here
+Ahora, si volvemos a
+nuestro navegador web justo aquí
 
 82
 00:03:31,010 --> 00:03:35,100
-and run it again, it
-changes to "Andrew."
+y lo ejecutamos de nuevo,
+cambia a "Andrew".
 
 83
 00:03:35,100 --> 00:03:40,190
-So you can see now we have an
-end-to-end application that
+Ahora puedes ver que tenemos
+una aplicación de principio a fin
 
 84
 00:03:40,190 --> 00:03:43,650
-is written in Python,
-that uses Bottle,
+escrita en Python,
+que usa Bottle,
 
 85
 00:03:43,650 --> 00:03:47,010
-and that uses PyMongo,
-connects to the database,
+usa PyMongo,
+se conecta a la base de datos
 
 86
 00:03:47,010 --> 00:03:49,050
-and then it can answer
-an HTTP request,
+y puede responder a
+una petición HTTP
 
 87
 00:03:49,050 --> 00:03:51,490
-and produce a web page.
-
+y generar una página web.
