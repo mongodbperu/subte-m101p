@@ -343,4 +343,3 @@ sistemas con MongoDB
 00:02:36,910 --> 00:02:41,270
 nos vamos a aprovechar un
 montón de esta flexibilidad.
-
