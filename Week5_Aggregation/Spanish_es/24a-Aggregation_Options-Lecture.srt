@@ -54,7 +54,7 @@ operaciones de agregación.
 12
 00:00:28,260 --> 00:00:32,640
 La siguiente es "allowDiskUse"
-y ésta controla si es que el
+y ésta controla si el
 
 13
 00:00:32,640 --> 00:00:36,030
@@ -63,7 +63,7 @@ Aggregation Framework usará
 14
 00:00:36,030 --> 00:00:39,760
 el disco duro para algunas
-de las fases intermediarias.
+de las fases intermedias.
 
 15
 00:00:39,760 --> 00:00:41,570
@@ -111,7 +111,7 @@ una agregación grande y
 
 24
 00:01:05,830 --> 00:01:09,810
-estás dispuesto a aceptar una baja
+estás dispuesto a aceptar el impacto
 en rendimiento por utilizar el disco,
 
 25
@@ -151,7 +151,7 @@ utilizamos algunas de éstas.
 32
 00:01:27,280 --> 00:01:30,420
 Se acordarán de los "zips",
-la colección de códigos "zip",
+la colección de "zip codes",
 
 33
 00:01:30,420 --> 00:01:32,410
@@ -160,7 +160,7 @@ la cual tiene un montón de
 
 34
 00:01:32,410 --> 00:01:35,430
-códigos "zip" con su
+"zip codes" con su
 número de habitantes.
 
 35
@@ -170,7 +170,7 @@ de acuerdo al estado, el
 
 36
 00:01:39,150 --> 00:01:43,970
-estado de EEUU, y ver la
+estado de EE.UU., y ver la
 población que hay en él.
 
 37
@@ -194,12 +194,12 @@ población de la colección de
 
 41
 00:01:55,450 --> 00:01:56,125
-los códigos "zip".
+"zip codes".
 
 42
 00:01:56,125 --> 00:01:58,750
 Para hacerte recordar cómo se
-ve la colección de códigos "zip",
+ve la colección de "zip codes",
 
 43
 00:01:58,750 --> 00:02:01,052
@@ -208,7 +208,7 @@ echémosle un vistazo.
 44
 00:02:01,052 --> 00:02:02,635
 Veamos la colección
-de códigos "zip":
+de "zip codes":
 
 45
 00:02:02,635 --> 00:02:03,385
@@ -220,7 +220,7 @@ de códigos "zip":
 47
 00:02:05,790 --> 00:02:08,949
 Sólo para recordarte cómo se ve
-la colección de códigos "zip",
+la colección de "zip codes",
 
 48
 00:02:08,949 --> 00:02:11,390
@@ -270,7 +270,7 @@ hacer la consulta, sino
 
 58
 00:02:33,870 --> 00:02:35,390
-simplemente explicarla.
+simplemente hacer un "explain".
 
 59
 00:02:35,390 --> 00:02:37,730
@@ -290,7 +290,7 @@ es un array de fases de agregación
 62
 00:02:44,780 --> 00:02:48,600
 y en este caso sólo hay una,
-la cual es la fase $group,
+la cual es la fase "$group",
 
 63
 00:02:48,600 --> 00:02:50,490
@@ -358,8 +358,8 @@ partes de la consulta de agregación.
 
 76
 00:03:27,950 --> 00:03:31,086
-Por supuesto, si remuevo
-esto de acá, si lo remuevo,
+Por supuesto, si elimino
+esto de acá, si lo elimino,
 
 77
 00:03:31,086 --> 00:03:33,210
@@ -406,7 +406,7 @@ OK. Así utilizarías "explain".
 
 86
 00:03:55,880 --> 00:03:58,930
-Si quisieres utilizar el
+Si quisieras utilizar el
 disco durante la agregación,
 
 87
