@@ -213,7 +213,7 @@ que el primer documento es
 
 46
 00:01:53,110 --> 00:01:55,540
-un polo con cuello y tiene
+una camiseta con cuello y tiene
 valor "medium" para "size",
 
 47
@@ -516,7 +516,7 @@ recordar acá es que este
 108
 00:04:41,350 --> 00:04:45,590
 comportamiento cambió cuando
-avanzamos de MongoDB 2.4 a
+pasamos de MongoDB 2.4 a
 
 109
 00:04:45,590 --> 00:04:48,260
@@ -528,7 +528,7 @@ MongoDB 2.6.
 
 111
 00:04:48,970 --> 00:04:55,010
-La versión 2.6 fue lanzanda en
+La versión 2.6 fue liberada en
 abril de 2014 y en MongoDB 2.4,
 
 112
@@ -746,8 +746,8 @@ Todos los documentos
 en la colección,
 
 157
-00:06:44,950 --> 00:06:47,Tra230
-porque "title: null" empareja
+00:06:44,950 --> 00:06:47,230
+porque "title: null" coincide
 con todos los documentos.
 
 158
