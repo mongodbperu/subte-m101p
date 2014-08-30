@@ -19,7 +19,7 @@ cuando se especifica el literal de esta opción.
 
 5
 00:00:15,452 --> 00:00:17,621
-Ahora, la primera está errada
+Ahora, la primera es incorrecta
 porque hay un signo de dólar ahí
 
 6
@@ -29,7 +29,7 @@ probarlo para confirmarlo.
 
 7
 00:00:19,874 --> 00:00:23,773
-Y la tercera está errada porque
+Y la tercera es incorrecta porque
 "allowDiskUse" está especificada
 
 8
@@ -49,7 +49,7 @@ fase del "pipeline" o las opciones.
 
 11
 00:00:38,982 --> 00:00:41,580
-Y la última está errada,
+Y la última es incorrecta,
 aunque use un array.
 
 12
