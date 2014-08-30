@@ -6,12 +6,12 @@ nuevo operador del "pipeline",
 2
 00:00:03,820 --> 00:00:07,734
 una nueva fase disponible,
-y es la fase $out.
+y es la fase "$out".
 
 3
 00:00:07,734 --> 00:00:11,049
-Antes de 2.6, no
-podías dirigir los
+Antes de la versión 2.6,
+no podías dirigir los
 
 4
 00:00:11,049 --> 00:00:13,717
@@ -25,7 +25,7 @@ programa personalizado para hacerlo.
 
 6
 00:00:15,785 --> 00:00:19,819
-Pero en 2.6, puedes
+Pero en MongoDB 2.6, puedes
 especificar una colección
 
 7
@@ -40,12 +40,12 @@ que quieres usar esos
 
 9
 00:00:26,068 --> 00:00:28,599
-resultados después de que
-hagas la agregación.
+resultados después de
+hacer la agregación.
 
 10
 00:00:28,599 --> 00:00:31,909
-Esto es nuevo en 2.6.
+Esto es nuevo en MongoDB 2.6.
 Veamos cómo funciona.
 
 11
@@ -55,7 +55,7 @@ de documentos que representan los
 
 12
 00:00:37,141 --> 00:00:39,999
-resultados de juegos jugados
+resultados de partidos jugados
 por algunos jugadores.
 
 13
@@ -70,7 +70,7 @@ dos puntos en ese juego
 
 15
 00:00:46,385 --> 00:00:48,522
-y acá están sus movidas.
+y acá están sus jugadas.
 
 16
 00:00:48,715 --> 00:00:51,263
@@ -150,13 +150,13 @@ Es muy simple.
 
 32
 00:01:27,071 --> 00:01:32,086
-Ahora, digamos que querramos enviar
+Ahora, digamos que queremos enviar
 los resultados a otra colección.
 
 33
 00:01:32,086 --> 00:01:34,799
 Pues ahora podemos hacer eso,
-utilizando la fase $out.
+utilizando la fase "$out".
 
 34
 00:01:35,385 --> 00:01:36,917
@@ -215,7 +215,7 @@ colección llamada "summary_results",
 
 46
 00:02:04,861 --> 00:02:07,798
-la removí antes del video, así que
+la eliminé antes del video, así que
 hay que ejecutar este pequeño script
 
 47
@@ -246,7 +246,7 @@ la colección que creamos.
 52
 00:02:21,299 --> 00:02:24,469
 Ahora, el operador
-$out es destructivo.
+"$out" es destructivo.
 
 53
 00:02:24,469 --> 00:02:28,033
@@ -260,7 +260,7 @@ si vas a usarlo, asegurándote
 
 55
 00:02:31,321 --> 00:02:35,291
-de que quieras eliminar
+de querer eliminar
 la colección anterior.
 
 56
@@ -331,17 +331,17 @@ tal vez no lo sean.
 
 70
 00:03:17,320 --> 00:03:19,289
-Déjame darte una ejemplo.
+Déjame darte un ejemplo.
 
 71
 00:03:19,694 --> 00:03:24,508
-Hagamos un $unwind simple
+Hagamos un "$unwind" simple
 de esta colección.
 
 72
 00:03:24,508 --> 00:03:27,318
-Simplemente vamos a
-$unwind el array "moves"
+Simplemente vamos a aplicar
+"$unwind" al array "moves"
 
 73
 00:03:27,318 --> 00:03:29,483
@@ -360,7 +360,7 @@ uno de estos documentos
 76
 00:03:35,620 --> 00:03:38,347
 tiene un array "moves"
-y si le hago un $unwind
+y si le hago un "$unwind"
 
 77
 00:03:38,347 --> 00:03:41,122
@@ -368,7 +368,7 @@ esto es lo que veré.
 
 78
 00:03:41,413 --> 00:03:43,532
-Entonces, hago un $unwind
+Entonces, hago un "$unwind"
 sobre el array "moves".
 
 79
@@ -378,13 +378,13 @@ Cada documento está aquí múltiples veces
 
 80
 00:03:47,292 --> 00:03:49,337
-porque hemos hecho un $unwind
+porque hemos hecho un "$unwind"
 sobre el array "moves" y vas
 
 81
 00:03:49,337 --> 00:03:52,042
 a notar que el "_id" para
-esto, cuando haces $unwind
+esto, cuando haces "$unwind"
 
 82
 00:03:52,042 --> 00:03:54,375
@@ -423,7 +423,7 @@ se llama el comando "broken_out".
 
 90
 00:04:11,680 --> 00:04:14,958
-Acá hacemos el $unwind, pero
+Acá hacemos el "$unwind", pero
 también enviamos los resultados
 
 91
@@ -433,11 +433,11 @@ a "summary_results".
 92
 00:04:16,931 --> 00:04:19,063
 No hemos hecho ninguna agrupación
-acá, sólo un $unwind, entonces
+acá, sólo un "$unwind", entonces
 
 93
 00:04:19,063 --> 00:04:21,965
-porque tenemos algunos
+como tenemos algunos
 campos "_id" duplicados,
 
 94
@@ -485,17 +485,17 @@ y no verás tus resultados.
 103
 00:04:44,823 --> 00:04:47,338
 Porque lo que en verdad
-ocurre bajo el capote,
+ocurre por debajo,
 
 104
 00:04:47,338 --> 00:04:50,629
 es que cuando haces una
-agregación con $out,
+agregación con "$out",
 
 105
 00:04:50,629 --> 00:04:52,920
 envía los resultados a
-una colección temporánea
+una colección temporal
 
 106
 00:04:52,920 --> 00:04:55,739
@@ -529,5 +529,5 @@ con esta colección.
 
 112
 00:05:14,761 --> 00:05:18,740
-Bien. Así es como el
-operador $out funciona.
+Bien. Así es como funciona
+el operador "$out".
