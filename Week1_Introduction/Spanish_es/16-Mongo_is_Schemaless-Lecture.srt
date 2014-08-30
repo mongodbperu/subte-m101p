@@ -293,8 +293,8 @@ de un documento existente.
 
 63
 00:02:11,880 --> 00:02:15,380
-Por ejemplo, puedo
-hacer "db.users."
+Por ejemplo, puedo hacer "db.users.
+findOne({name: 'Andrew Erlichson'})"
 
 64
 00:02:15,380 --> 00:02:16,900
