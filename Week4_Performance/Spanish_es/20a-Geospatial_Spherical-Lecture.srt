@@ -4,888 +4,874 @@
 
 2
 00:00:00,100 --> 00:00:02,190
-All right, now that
-we've talked about how
+Muy bien, ahora que hemos
+hablado acerca de cómo
 
 3
 00:00:02,190 --> 00:00:05,230
-to search for locations
-using a 2D index,
+buscar ubicaciones
+usando un índice 2D,
 
 4
 00:00:05,230 --> 00:00:07,820
-I want to go over a
-more sophisticated type
+Quiero abarcar un
+más sofisticado tipo
 
 5
 00:00:07,820 --> 00:00:11,590
-of geospatial indexing-- a
-spherical geospatial indexing
+de indexación geoespacial-- una
+indexación esférica geoespacial
 
 6
 00:00:11,590 --> 00:00:14,290
-that is also
-supported in MongoDB.
+que también está
+soportada en MongoDB.
 
 7
 00:00:14,290 --> 00:00:17,530
-Now, to start out, before you
-can talk about finding things
+Ahora, para empezar, antes de
+poder hablar acerca de buscar cosas
 
 8
 00:00:17,530 --> 00:00:20,530
-in a 3D world, you have to
-talk about how you describe
+en 3D, tienes que hablar
+acerca de cómo describes
 
 9
 00:00:20,530 --> 00:00:22,970
-the location of
-something in a 3D world.
+la ubicación en algo en 3D.
 
 10
 00:00:22,970 --> 00:00:24,980
-So the world is
-actually a globe,
+El mundo en realidad es un globo,
 
 11
 00:00:24,980 --> 00:00:27,990
-and this is my poor
-representation of the globe.
+ésta es mi pobre
+representación del globo,
 
 12
 00:00:27,990 --> 00:00:30,700
-And locations on the
-globe are represented
+y las ubicaciones en el
+globo son representadas
 
 13
 00:00:30,700 --> 00:00:33,610
-by longitude and latitude.
+por longitud y latitud.
 
 14
 00:00:33,610 --> 00:00:39,250
-So if you recall, latitude
-is how far off the equator
+Entonces, si recuerdas, latitud
+es qué tan lejos del ecuador
 
 15
 00:00:39,250 --> 00:00:40,180
-is the object.
+está el objeto.
 
 16
 00:00:40,180 --> 00:00:44,060
-So for instance, the equator
-is at zero degrees latitude,
+Por ejemplo, el ecuador está
+en una latitud de cero grados,
 
 17
 00:00:44,060 --> 00:00:48,940
-and you can go all the way from
-minus 90 degrees to 90 degrees.
+y puedes ir por todo el camino
+desde -90 grados a 90 grados.
 
 18
 00:00:48,940 --> 00:00:51,050
-And that's your
-lines of latitude.
+Y esas son tus líneas de latitud.
 
 19
 00:00:51,050 --> 00:00:53,220
-And then we have the longitude.
+Y luego tenemos la longitud.
 
 20
 00:00:53,220 --> 00:00:56,100
-And the longitude-- this is a
-lot of longitude right here.
+Y la longitud-- ésto es un
+montón de longitudes aquí.
 
 21
 00:00:56,100 --> 00:00:58,790
-It describes a line
-that goes from the north
+Esto describe una línea
+que va desde el norte
 
 22
 00:00:58,790 --> 00:01:00,320
-to the south pole.
+hasta el polo sur.
 
 23
 00:01:00,320 --> 00:01:01,870
-So in order to
-describe the location
+Por lo que para poder
+describir la ubicación
 
 24
 00:01:01,870 --> 00:01:03,800
-of any particular
-object on earth,
+de cualquier objeto en
+particular en la tierra,
 
 25
 00:01:03,800 --> 00:01:06,720
-you need its latitude
-and its longitude.
+necesitas su latitud
+y su longitud.
 
 26
 00:01:06,720 --> 00:01:08,310
-Now, in addition,
-we're going to need
+Ahora, adicionalmente,
+vamos a necesitar
 
 27
 00:01:08,310 --> 00:01:11,510
-a way of indexing
-these documents that
+una manera de indexar
+estos documentos que
 
 28
 00:01:11,510 --> 00:01:13,489
-have latitudes and
-longitudes in them.
+tienen latitudes y
+longitudes en ellos.
 
 29
 00:01:13,489 --> 00:01:15,030
-And the way we're
-going to do that is
+Y la manera en que
+vamos a hacer eso es
 
 30
 00:01:15,030 --> 00:01:17,910
-a new special type of
-index called 2dsphere.
+con un nuevo especial tipo
+de índice llamado "2dsphere".
 
 31
 00:01:17,910 --> 00:01:20,100
-So let's talk about how
-we're going to do this.
+Entonces hablemos de cómo
+vamos a hacer esto.
 
 32
 00:01:20,100 --> 00:01:22,990
-And I think the easiest way to
-get into this is by example.
+Y creo que la más fácil manera de
+entenderlo es a través de un ejemplo.
 
 33
 00:01:22,990 --> 00:01:26,550
-So I'm going to go through an
-example of a few locations that
+Veamos un ejemplo de
+unas ubicaciones que
 
 34
 00:01:26,550 --> 00:01:28,130
-have been put into
-MongoDB documents.
+que han sido puestos en
+documentos de MongoDB.
 
 35
 00:01:28,130 --> 00:01:29,671
-We're going to search
-near a location
+Vamos a buscar cerca
+de una ubicación
 
 36
 00:01:29,671 --> 00:01:31,320
-to find the closest locations.
+para encontrar
+ubicaciones más cercanas.
 
 37
 00:01:31,320 --> 00:01:33,890
-And we're going to use a
-2dsphere index to do it.
+Y vamos a usar un índice
+2dsphere para hacerlo.
 
 38
 00:01:33,890 --> 00:01:36,060
-So let's start
-with the locations.
+Empecemos con las ubicaciones.
 
 39
 00:01:36,060 --> 00:01:37,280
-So here's Palo Alto.
+Aquí está Palo Alto.
 
 40
 00:01:37,280 --> 00:01:40,870
-And in Palo Alto we've got
-four locations that are near
+Y en Palo Alto tenemos cuatro
+ubicaciones que están cerca
 
 41
 00:01:40,870 --> 00:01:42,194
-and dear to my heart.
+y son muy queridos por mi.
 
 42
 00:01:42,194 --> 00:01:43,610
-We've got Fry's
-Electronics, where
+Tenemos Fry's
+Electronics, donde
 
 43
 00:01:43,610 --> 00:01:46,040
-I used to get small electronic
-components before people
+solía comprar pequeños componentes
+electrónicos antes que la gente
 
 44
 00:01:46,040 --> 00:01:48,460
-stopped building anything,
-in the late '90s.
+deje de construir todo,
+a fines de los 90.
 
 45
 00:01:48,460 --> 00:01:49,860
-And the Pennisula
-Creamery, where
+Y Península Creamery, donde
 
 46
 00:01:49,860 --> 00:01:52,160
-you can get a great
-milkshake and a burger;
+puedes conseguir un gran batido
+de leche y un emparedado;
 
 47
 00:01:52,160 --> 00:01:54,800
-the Apple store, where you
-can spend a lot of money;
+El Apple store, donde puedes
+gastar un montón de dinero;
 
 48
 00:01:54,800 --> 00:01:57,910
-and Hoover Tower, which
-is a monument right
+y Hoover Tower, que es un
+monumento a la derecha
 
 49
 00:01:57,910 --> 00:01:59,644
-in the center of
-Stanford's campus.
+en el centro del
+campus de Stanford.
 
 50
 00:01:59,644 --> 00:02:01,060
-And then there's
-one more location
+Y luego hay una ubicación más
 
 51
 00:02:01,060 --> 00:02:06,090
-that I put on my little map, and
-that is Mount Tamalpais State
+que puse en mi pequeño mapa
+que es el Mount Tamalpais State
 
 52
 00:02:06,090 --> 00:02:08,150
-Park-- top of Mount
-Tam is where I
+Park-- en la cima del
+Mount Tam donde
 
 53
 00:02:08,150 --> 00:02:11,330
-got engaged, so also a place
-near and dear to my heart,
+me comprometí, así también es un
+lugar cercano y muy querido por mi,
 
 54
 00:02:11,330 --> 00:02:13,220
-a bit further from Stanford.
+un poco más lejos de Stanford.
 
 55
 00:02:13,220 --> 00:02:15,180
-And we're going to put
-documents into MongoDB
+Y vamos a poner
+documentos en MongoDB
 
 56
 00:02:15,180 --> 00:02:17,135
-that represent these locations.
+que representan estas ubicaciones.
 
 57
 00:02:17,135 --> 00:02:19,010
-All right, the first
-thing I want to show you
+Muy bien, lo primero
+que quiero es mostrarte
 
 58
 00:02:19,010 --> 00:02:22,630
-is that Google Maps is
-very convenient for finding
+es que Google Maps es muy
+conveniente para encontrar
 
 59
 00:02:22,630 --> 00:02:25,110
-the latitude and
-longitude for locations.
+la latitud y longitud
+para ubicaciones.
 
 60
 00:02:25,110 --> 00:02:27,100
-So let's look up
-Times Square, which
+Así que busquemos
+Times Square, que
 
 61
 00:02:27,100 --> 00:02:28,840
-is where we are right now.
+es donde ahora mismo estamos.
 
 62
 00:02:28,840 --> 00:02:33,040
-You'll see that what Google Maps
-will do is, in the browser URL,
+Verás que lo que Google Maps
+hará es, en la URL del navegador,
 
 63
 00:02:33,040 --> 00:02:35,440
-it will actually
-show you-- and we're
+te mostrará en realidad-- y estamos
 
 64
 00:02:35,440 --> 00:02:36,860
-right over here somewhere.
+por aquí en alguna parte.
 
 65
 00:02:36,860 --> 00:02:39,840
-It'll show you the
-latitude and the longitude.
+Te mostrará la
+latitud y la longitud.
 
 66
 00:02:39,840 --> 00:02:43,940
-Now, it shows it to you in
-latitude comma longitude order.
+Ahora, esto te lo muestra en
+latitud, coma, longitud.
 
 67
 00:02:43,940 --> 00:02:48,480
-So the latitude is 40.75
-here, and the longitude
+Así que la latitud es 40.75
+aquí, y la longitud
 
 68
 00:02:48,480 --> 00:02:50,400
-is minus 73.98.
+es -73.98.
 
 69
 00:02:50,400 --> 00:02:51,900
-This is in the
-opposite order you're
+Esto está en el orden
+opuesto al que
 
 70
 00:02:51,900 --> 00:02:54,310
-going to need it when you
-specify it in MongoDB.
+vas a necesitar cuando
+lo especifiques en MongoDB.
 
 71
 00:02:54,310 --> 00:02:57,334
-MongoDB takes a
-longitude comma latitude.
+MongoDB toma una
+longitud, coma, latitud.
 
 72
 00:02:57,334 --> 00:02:58,875
-All right, so how
-are we are we going
+Muy bien, ¿cómo vamos a
 
 73
 00:02:58,875 --> 00:03:01,290
-to specify the
-locations of things?
+especificar sus ubicaciones?
 
 74
 00:03:01,290 --> 00:03:05,940
-Well, we use a location
-specification called GeoJSON.
+Bueno, usamos una especificación
+para ubicaciones llamada GeoJSON.
 
 75
 00:03:05,940 --> 00:03:08,480
-And I'm going to show
-you that right now.
+Y vamos a mostrártelo
+ahora mismo.
 
 76
 00:03:08,480 --> 00:03:11,590
-This is a web page on
-GeoJSON, geojson.org.
+Esto es una página web
+en GeoJSON, geojson.org.
 
 77
 00:03:11,590 --> 00:03:14,410
-We implement only a small
-part of the specification
+Implementamos sólo una pequeña
+parte de la especificación
 
 78
 00:03:14,410 --> 00:03:15,862
-on GeoJSON.
+en GeoJSON.
 
 79
 00:03:15,862 --> 00:03:17,320
-But if you want,
-you can look at it
+Pero si deseas,
+puedes observarlo
 
 80
 00:03:17,320 --> 00:03:18,890
-and see the full specification.
+y ver la especificación completa.
 
 81
 00:03:18,890 --> 00:03:20,560
-And in particular,
-the parts that we're
+En concreto, las partes
+en las que vamos
 
 82
 00:03:20,560 --> 00:03:22,710
-going to be most
-interested in are the parts
+a estar más interesados
+son aquellas
 
 83
 00:03:22,710 --> 00:03:25,920
-that specify points
-and geometries.
+que especifican puntos
+y geometrías.
 
 84
 00:03:25,920 --> 00:03:28,150
-And you can see there's
-coordinates and lists
+Puedes ver que hay
+coordenadas y listas
 
 85
 00:03:28,150 --> 00:03:29,060
-of coordinates.
+de coordenadas.
 
 86
 00:03:29,060 --> 00:03:31,880
-It's kind of a complicated thing
-when you've got-- especially
+Es una cosa algo complicada
+cuando empiezas, especialmente
 
 87
 00:03:31,880 --> 00:03:33,585
-if you want to
-describe a polygon.
+si deseas describir un polígono.
 
 88
 00:03:33,585 --> 00:03:36,210
-We're only going to do the
-most introductory lesson here
+Vamos a hacer solamente una
+lección introductoria aquí
 
 89
 00:03:36,210 --> 00:03:36,800
-right now.
+ahora mismo.
 
 90
 00:03:36,800 --> 00:03:38,425
-And then you can go
-look further if you
+Y luego vas a poder
+profundizar si
 
 91
 00:03:38,425 --> 00:03:40,920
-want to see what all the
-different possibilities are.
+quieres ver cuáles son todas
+las distintas posibilidades.
 
 92
 00:03:40,920 --> 00:03:43,130
-And MongoDB only supports
-a subset of these,
+MongoDB sólo soporta un
+subconjunto de estos,
 
 93
 00:03:43,130 --> 00:03:45,860
-like points and polygons.
+como puntos y polígonos.
 
 94
 00:03:45,860 --> 00:03:49,660
-We don't support some of the
-more complicated structures.
+Y no soportamos algunas de las
+más complejas estructuras.
 
 95
 00:03:49,660 --> 00:03:52,770
-All right, so let's
-go into MongoDB now
+Muy bien, vayamos
+a MongoDB ahora
 
 96
 00:03:52,770 --> 00:03:54,490
-and see our documents.
+y veamos nuestros documentos.
 
 97
 00:03:54,490 --> 00:03:57,280
-So I put them in a
-collection called "Places."
+Los he puesto en una
+colección llamada "places"
 
 98
 00:03:57,280 --> 00:03:58,760
-So here we are.
+Aquí vamos.
 
 99
 00:03:58,760 --> 00:04:00,700
-I'm going to pretty print them.
+Voy a imprimirlos
+elegantemente.
 
 100
 00:04:00,700 --> 00:04:04,130
-And we're going to see the
-GeoJSON format at work.
+Veamos el formato
+GeoJSON en acción.
 
 101
 00:04:04,130 --> 00:04:07,120
-So here we have the Apple store.
+Aquí tenemos el Apple store.
 
 102
 00:04:07,120 --> 00:04:10,290
-I decided to specify
-the city of Palo Alto.
+Decidí especificar
+la ciudad de Palo Alto.
 
 103
 00:04:10,290 --> 00:04:13,670
-I decided to put my GeoJSON
-location information
+Decidí poner mi información
+de ubicación GeoJSON
 
 104
 00:04:13,670 --> 00:04:15,029
-into a key called "location."
+en una clave llamada "location".
 
 105
 00:04:15,029 --> 00:04:16,029
-This is my own decision.
+Esta es decisión mía.
 
 106
 00:04:16,029 --> 00:04:17,190
-It's arbitrary.
+Es arbitraria.
 
 107
 00:04:17,190 --> 00:04:18,950
-But you can call it
-anything you want.
+Puedes llamarla de la
+manera que desees.
 
 108
 00:04:18,950 --> 00:04:20,240
-But I called it "location."
+Pero la llamé "location".
 
 109
 00:04:20,240 --> 00:04:21,779
-And then everything
-after this paren
+Y luego todo lo que está
+después de este paréntesis
 
 110
 00:04:21,779 --> 00:04:24,830
-and into this paren,
-that's a GeoJSON document.
+y antes de este otro,
+es un documento GeoJSON.
 
 111
 00:04:24,830 --> 00:04:27,770
-In this case, I've decided
-to describe it using a point.
+En este caso, he decidido
+describirlo usando un punto.
 
 112
 00:04:27,770 --> 00:04:29,520
-You could also describe
-it using a polygon
+Podrías también describirlo
+usando un polígono
 
 113
 00:04:29,520 --> 00:04:31,000
-if you wanted to
-give it some area,
+si deseas darle algún área,
 
 114
 00:04:31,000 --> 00:04:33,330
-but we described
-it using a point.
+pero decidí usar un punto.
 
 115
 00:04:33,330 --> 00:04:35,600
-And the type is a reserved
-word, and coordinates
+El "type" es una palabra
+reservada, y "coordinates"
 
 116
 00:04:35,600 --> 00:04:36,450
-is a reserved word.
+también lo es.
 
 117
 00:04:36,450 --> 00:04:38,040
-Point is a reserved word.
+"Point" es una palabra reservada.
 
 118
 00:04:38,040 --> 00:04:40,520
-And here are the coordinates
-in longitude comma
+Y aquí están las coordenadas
+en longitud, coma,
 
 119
 00:04:40,520 --> 00:04:42,960
-latitude order, which
-I got from Google Maps.
+latitud, que es lo
+que obtuve de Google Maps.
 
 120
 00:04:42,960 --> 00:04:45,370
-I decided to put that
-was a retail store
+Decidí poner esto
+como una tienda "Retail"
 
 121
 00:04:45,370 --> 00:04:46,571
-into the collection.
+en la collección.
 
 122
 00:04:46,571 --> 00:04:48,570
-Again, we've got four
-objects in the collection.
+Una vez más, tengo cuatro
+objetos en la colección.
 
 123
 00:04:48,570 --> 00:04:52,870
-We've got this Apple store,
-this Peninsula Creamery,
+Tenemos este Apple store,
+Península Creamery,
 
 124
 00:04:52,870 --> 00:04:55,040
-and Fry's Electronics.
+y Fry's Electronics.
 
 125
 00:04:55,040 --> 00:04:58,630
-And then finally, Mount
+Y luego finalmente, Mount
 Tamalpais State Park.
 
 126
 00:04:58,630 --> 00:05:00,470
-OK, so in order to
-query this, we're
+De acuerdo, para poder
+consultar esto, vamos
 
 127
 00:05:00,470 --> 00:05:04,660
-going to need an index
-on the GeoJSON documents.
+a necesitar un índice
+en los documentos GeoJSON.
 
 128
 00:05:04,660 --> 00:05:08,770
-So let's do that--
+Hagamos eso--
 db.places.ensureIndex.
 
 129
 00:05:08,770 --> 00:05:11,370
-And it's going to
-be on location.
+Y va a ser en "location".
 
 130
 00:05:11,370 --> 00:05:14,350
-And it's going be
-of type 2dsphere.
+Y será de tipo 2dsphere.
 
 131
 00:05:14,350 --> 00:05:16,560
-Never understood why
-this is called 2dsphere.
+Nunca entendí por qué
+esto es llamado 2dsphere.
 
 132
 00:05:16,560 --> 00:05:18,840
-It seems to me that if
-you have a two dimensional
+Me parece que si tienes
+una esfera de dos dimensiones,
 
 133
 00:05:18,840 --> 00:05:20,940
-sphere, that would be a circle.
+eso sería un círculo.
 
 134
 00:05:20,940 --> 00:05:23,280
-But what I think is trying
-to be expressed here
+Pero lo que creo que está
+intentando expresar aquí
 
 135
 00:05:23,280 --> 00:05:26,180
-is that although
-it's a 3D model--
+es que aunque
+es un modelo 3D--
 
 136
 00:05:26,180 --> 00:05:28,150
-it's a spherical
-model-- that it's only
+es un modelo esférico--
+que sólo va a
 
 137
 00:05:28,150 --> 00:05:30,580
-looking at points on the
-surface of the sphere
+buscar puntos en la
+superficie de la esfera
 
 138
 00:05:30,580 --> 00:05:32,050
-versus up in the air.
+en lugar que en el aire.
 
 139
 00:05:32,050 --> 00:05:34,150
-So that's why it's
-called 2dsphere.
+Así que eso es por qué
+es llamada 2dsphere.
 
 140
 00:05:34,150 --> 00:05:35,430
-So we're going to add that.
+Vamos a añadirlo.
 
 141
 00:05:35,430 --> 00:05:38,300
-And now there are two
-indexes on the collection,
+Y ahora hay dos
+índices en la colección,
 
 142
 00:05:38,300 --> 00:05:39,240
-which is all good.
+que está todo bien.
 
 143
 00:05:39,240 --> 00:05:40,612
-Previously, there was one.
+Previamente, había uno.
 
 144
 00:05:40,612 --> 00:05:41,820
-I could show you the indexes.
+Podría mostrarte los índices.
 
 145
 00:05:41,820 --> 00:05:43,870
-Hold on, getIndexes.
+Espera, getIndexes.
 
 146
 00:05:43,870 --> 00:05:47,760
-The indexes are this _id index,
-which always comes with every
+Los índices son, este índice en "_id",
+que siempre viene en toda colección,
 
 147
 00:05:47,760 --> 00:05:50,760
-collection, and then
-this index on location.
+y luego este índice en "location".
 
 148
 00:05:50,760 --> 00:05:53,050
-So what query might
-we want to run?
+Pues ¿qué consulta
+podríamos ejecutar?
 
 149
 00:05:53,050 --> 00:05:55,330
-Well, I want to know the
-closest things to me,
+Bueno, quiero conocer
+lo que está más cerca a mí,
 
 150
 00:05:55,330 --> 00:05:58,260
-and I'm standing at Hoover
-Tower, in my imagination.
+y estoy en Hoover Tower,
+en mi imaginación.
 
 151
 00:05:58,260 --> 00:06:00,537
-So let's go through that.
+Vayamos a hacer eso.
 
 152
 00:06:00,537 --> 00:06:02,120
-I'm going to quit
-from the shell here.
+Voy a salir del shell aquí.
 
 153
 00:06:02,120 --> 00:06:05,200
-And I've got a query
-that's been written our
+Y tengo una consulta
+que ha sido escrita y que
 
 154
 00:06:05,200 --> 00:06:07,410
-already to be a little
-bit easier to follow.
+ya es un poco más
+fácil de seguir.
 
 155
 00:06:07,410 --> 00:06:10,780
-So this query is going to search
-the Places collection, right
+Esta consulta va a buscar
+en la colección "places",
 
 156
 00:06:10,780 --> 00:06:12,620
-here, and do a Find.
+justo aqui y hacer un "find".
 
 157
 00:06:12,620 --> 00:06:15,590
-And it's going to find
-documents by location, which
+Vamos a encontrar
+documentos por "location",
 
 158
 00:06:15,590 --> 00:06:17,500
-is the field that
-we created to hold
+que es el campo que
+creamos para mantener
 
 159
 00:06:17,500 --> 00:06:19,890
-the locations of
-the various stores.
+las ubicaciones de
+varias tiendas.
 
 160
 00:06:19,890 --> 00:06:22,520
-And it's going to use
-the $near operator.
+Y vamos a usar el
+operador "$near".
 
 161
 00:06:22,520 --> 00:06:26,190
-Now, the $near operator
-is going to search
+Ahora, el operador
+"$near" va a buscar
 
 162
 00:06:26,190 --> 00:06:30,470
-for everything near a
-point, in this case.
+por todo lo cercano a
+un punto, en este caso.
 
 163
 00:06:30,470 --> 00:06:33,490
-Now this $geometry is
-a required operator
+Ahora, este "$geometry"
+es un operador necesario
 
 164
 00:06:33,490 --> 00:06:35,860
-and can also give
-$maxDistance, which
+y puedes también dar
+"$maxDistance", que es
 
 165
 00:06:35,860 --> 00:06:38,020
-is the max distance in meters.
+la distancia máxima en metros.
 
 166
 00:06:38,020 --> 00:06:39,490
-I said 2,000 meters.
+Le digo 2000 metros.
 
 167
 00:06:39,490 --> 00:06:44,410
-Find me everything that is
-closest to these coordinates--
+Búscame todo lo que está más
+cerca a estas coordenadas--
 
 168
 00:06:44,410 --> 00:06:51,210
-minus 122.166641 degrees
-longitude, and 37 degrees 0.427
+-122.166641 grados de longitud
+y 37.427 grados
 
 169
 00:06:51,210 --> 00:06:52,745
-blah, blah, blah latitude.
+blablablá, de latitud.
 
 170
 00:06:52,745 --> 00:06:54,620
-And these are the
-coordinates of Hoover Tower
+Y esas son las coordenadas
+de Hoover Tower
 
 171
 00:06:54,620 --> 00:06:56,380
-that I got from Google Maps.
+que obtuve de Google Maps.
 
 172
 00:06:56,380 --> 00:07:00,010
-So again, just to look at the
-format of this, we had a Find.
+Otra vez, veamos sólo el
+formato de esto, tuvimos un "find".
 
 173
 00:07:00,010 --> 00:07:02,690
-We specified that we're
-looking at the Location field.
+Especificamos que estamos
+buscando en el campo "location".
 
 174
 00:07:02,690 --> 00:07:04,880
-We're applying the
-$near operator.
+Estamos aplicando
+el operador "$near".
 
 175
 00:07:04,880 --> 00:07:07,680
-And then, we have
-a GeoJSON document
+Y entonces, tenemos
+un documento GeoJSON
 
 176
 00:07:07,680 --> 00:07:11,230
-that specifies the
-geometry of type point
+que especifica el
+"$geometry" de tipo "Point"
 
 177
 00:07:11,230 --> 00:07:12,650
-with these coordinates.
+con estas coordenadas.
 
 178
 00:07:12,650 --> 00:07:13,760
-And that's it.
+Y eso es.
 
 179
 00:07:13,760 --> 00:07:15,660
-So let's see what
-we get we do that.
+Así que veamos lo que
+obtenemos al hacer esto.
 
 180
 00:07:15,660 --> 00:07:18,820
-So Mongo-- I'm going
-to just redirect
+mongo-- voy a redirigir
 
 181
 00:07:18,820 --> 00:07:22,210
-from this file to run a query.
+desde este archivo para
+ejecutar una consulta.
 
 182
 00:07:22,210 --> 00:07:27,210
-And it looks like we
-got back two documents.
+Y parece que obtenemos
+dos documentos.
 
 183
 00:07:27,210 --> 00:07:29,830
-And these are going to be
-sorted in order of closest
+Y estos van a ser ordenados
+desde el más cercano
 
 184
 00:07:29,830 --> 00:07:32,792
-to furthest, which is a
-feature of the $near operator.
+hasta el más lejano, que es una
+característica del operador "$near".
 
 185
 00:07:32,792 --> 00:07:34,500
-The first one is the
-Peninsula Creamery--
+El primero es
+Península Creamery--
 
 186
 00:07:34,500 --> 00:07:37,400
-and it is, in fact, closest
-to Hoover Tower-- and then
+y es, de hecho, el más cercano
+a Hoover Tower-- y luego
 
 187
 00:07:37,400 --> 00:07:40,620
-the Apple store, which is also
-within 2,000 meters of Hoover
+Apple store, que también está
+entre los 2000 metros de Hoover
 
 188
 00:07:40,620 --> 00:07:41,500
@@ -893,199 +879,196 @@ Tower.
 
 189
 00:07:41,500 --> 00:07:43,240
-Notice that it
-eliminated Fry's and it
+Date cuenta que ni
+consideró Fry's, ni
 
 190
 00:07:43,240 --> 00:07:48,100
-eliminated Mount Tamalpais as
-being outside 2,000 meters.
+Mount Tamalpais por estar
+fuera de los 2000 metros.
 
 191
 00:07:48,100 --> 00:07:50,230
-And just to review that
-with you to show you
+Y revisemos esto
+contigo para mostrarte
 
 192
 00:07:50,230 --> 00:07:53,050
-the map again so you see that
-this is the right answer,
+el mapa una vez más para ver que
+esta es la respuesta correcta.
 
 193
 00:07:53,050 --> 00:07:55,650
-remember, we were looking at
-things closest to hover tower.
+Recuerda, estamos buscando
+lo más cercano a Hover Tower.
 
 194
 00:07:55,650 --> 00:07:57,920
-And it said that
-within 2,000 meters,
+Y quiere decir a 2000 metros,
 
 195
 00:07:57,920 --> 00:08:00,500
-you've got the Peninsula
-Creamery at closest location,
+has obtenido la Península Creamery
+como la ubicación más cercana,
 
 196
 00:08:00,500 --> 00:08:02,360
-and Apple store, next closest.
+y Apple store, la
+siguiente más cercana.
 
 197
 00:08:02,360 --> 00:08:05,542
-Fry's and Mount Tamalpais
-are off the screen.
+Fry's y Mount Tamalpais
+están fuera de la pantalla.
 
 198
 00:08:05,542 --> 00:08:07,750
-Fry's is on the screen, but
-out of the search radius.
+Fry's está en la pantalla,
+pero fuera del radio de búsqueda.
 
 199
 00:08:07,750 --> 00:08:10,500
-And Mount Tam is
-completely off the screen.
+Y Mount Tam está completamente
+fuera de la pantalla.
 
 200
 00:08:10,500 --> 00:08:12,050
-And that's how
-you would actually
+Y eso es en realidad cómo
 
 201
 00:08:12,050 --> 00:08:14,630
-search for something
-using the near operator.
+buscaría algo usando
+el operador "$near".
 
 202
 00:08:14,630 --> 00:08:16,550
-So again, the
-secrets are that you
+De nuevo, los secretos son que
 
 203
 00:08:16,550 --> 00:08:19,090
-need to know the latitude and
-longitude of your documents.
+necesitas saber la latitud y
+longitud de tus documentos.
 
 204
 00:08:19,090 --> 00:08:23,590
-You also need to
-create a 2dsphere index
+También necesitas
+crear un índice 2dsphere
 
 205
 00:08:23,590 --> 00:08:25,850
-if you want to use
-the $near operator.
+si quieres usar el
+operador "$near".
 
 206
 00:08:25,850 --> 00:08:27,750
-Some of the operators
-don't require
+Algunos de los
+operadores no requieren
 
 207
 00:08:27,750 --> 00:08:30,560
-having an index-- like,
-for instance, finding
+tener un índice,
+como por ejemplo,
 
 208
 00:08:30,560 --> 00:08:32,480
-something that's within a shape.
+encontrar algo que está
+dentro de una forma.
 
 209
 00:08:32,480 --> 00:08:34,059
-But they all perform
-better if there
+Pero todos ellos
+rendirán mejor si
 
 210
 00:08:34,059 --> 00:08:35,372
-is an index on the location.
+hay un índice en "location".
 
 211
 00:08:35,372 --> 00:08:37,580
-And then you need to, of
-course, insert the locations
+Luego necesitas, por supuesto,
+insertar las ubicaciones
 
 212
 00:08:37,580 --> 00:08:39,030
-and perform the query.
+y realizar la consulta.
 
 213
 00:08:39,030 --> 00:08:42,084
-OK, let's now do a quiz.
+OK, hagamos un cuestionario.
 
 214
 00:08:42,084 --> 00:08:44,000
-What is the query that
-will query a collection
+¿Qué consultará una colección
 
 215
 00:08:44,000 --> 00:08:46,150
-named "Stores" to
-return the stores that
+llamada "stores" para retornar
+las tiendas que están dentro
 
 216
 00:08:46,150 --> 00:08:49,780
-are within one million meters
-of the location at this latitude
+de un millón de metros desde
+la ubicación en esta latitud
 
 217
 00:08:49,780 --> 00:08:53,700
-and this longitude-- latitude
-39, longitude minus 130.
+y esta longitud?
+Latitud 39, longitud -130.
 
 218
 00:08:53,700 --> 00:08:56,050
-Type the query in the
-box below, and assume
+Escribe la consulta en la
+caja de abajo y asume
 
 219
 00:08:56,050 --> 00:08:59,052
-that the stores collection has
-a 2dsphere index already on it,
+que la colección "stores"
+ya tiene un índice en ella,
 
 220
 00:08:59,052 --> 00:09:01,210
-on the key location.
+en la clave "location".
 
 221
 00:09:01,210 --> 00:09:04,159
-And use the $near operator,
-as we did in this lesson.
+Y utiliza el operador "$near",
+como lo hice en esta lección.
 
 222
 00:09:04,159 --> 00:09:06,200
-And if you're looking for
-what the documents look
+Y si estás deseas ver cómo
+se ven los documentos,
 
 223
 00:09:06,200 --> 00:09:08,180
-like, this an example document.
+este es un documento de ejemplo.
 
 224
 00:09:08,180 --> 00:09:12,220
-Might have an _id that looks
-like this with a store-id of 8
+Podría tener un "_id" que luce
+así, con un "store_id" de 8
 
 225
 00:09:12,220 --> 00:09:15,920
-and a location of type point,
-and these are the coordinates.
+y un "location" de tipo "Point",
+y esas son las coordenadas.
 
 226
 00:09:15,920 --> 00:09:18,270
-So you have to write
-that query right here.
+Tienes que escribir la
+consulta justo aquí.
 
 227
 00:09:18,270 --> 00:09:20,104
-And then hit Return and
-see if it's correct.
+Y luego presiona "Return" y
+mira si esto es correcto.
 
 228
 00:09:20,104 --> 00:09:22,769
-You have to be pretty careful to
-make sure it's exactly the same
+Tienes que ser muy cuidadoso
+para asegurarte que sea exactamente
 
 229
 00:09:22,769 --> 00:09:25,340
-because we're going to
-pattern match against that.
-
+lo mismo que vamos a
+validar con el patrón. 
