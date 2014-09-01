@@ -9,7 +9,7 @@ poco sobre que MongoDB
 
 3
 00:00:03,090 --> 00:00:04,200
-es sin esquema.
+es "schemaless".
 
 4
 00:00:04,200 --> 00:00:07,520
@@ -18,8 +18,8 @@ y enseñarte un poco más
 
 5
 00:00:07,520 --> 00:00:09,770
-desde el shell mongo qué
-significa eso, ahora
+qué significa eso desde
+el shell mongo , ahora
 
 6
 00:00:09,770 --> 00:00:11,899
@@ -43,8 +43,8 @@ de unas cuantas cosas diferentes.
 
 10
 00:00:19,500 --> 00:00:23,020
-La primera es que a menudo en
-un sistema relacional
+La primera es que a menudo, en
+un sistema relacional,
 
 11
 00:00:23,020 --> 00:00:26,400
@@ -77,7 +77,7 @@ que expandir la tabla
 
 17
 00:00:37,370 --> 00:00:38,882
-y ejecutar un comando "alter table".
+y ejecutar un comando "ALTER TABLE".
 
 18
 00:00:38,882 --> 00:00:40,840
@@ -341,5 +341,5 @@ sistemas con MongoDB
 
 73
 00:02:36,910 --> 00:02:41,270
-nos vamos a aprovechar un
-montón de esta flexibilidad.
+vamos a aprovechar un
+montón esta flexibilidad.
