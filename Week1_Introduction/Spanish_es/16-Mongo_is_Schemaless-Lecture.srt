@@ -19,12 +19,12 @@ y enseñarte un poco más
 5
 00:00:07,520 --> 00:00:09,770
 qué significa eso desde
-el shell mongo , ahora
+el shell mongo, ahora
 
 6
 00:00:09,770 --> 00:00:11,899
-que ya has visto la instalación
-de MongoDB,
+que ya has visto la
+instalación de MongoDB,
 
 7
 00:00:11,899 --> 00:00:13,440
@@ -92,7 +92,7 @@ necesitas hacer eso.
 20
 00:00:42,730 --> 00:00:45,320
 En Mongo, documentos diferentes
-puedes tener esquemas diferentes.
+pueden tener esquemas diferentes.
 
 21
 00:00:45,320 --> 00:00:47,890
