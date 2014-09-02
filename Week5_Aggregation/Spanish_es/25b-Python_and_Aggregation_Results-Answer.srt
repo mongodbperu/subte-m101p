@@ -1,49 +1,48 @@
 1
 00:00:00,000 --> 00:00:02,660
-Alright, and the answer is
-the last three are true.
+Bien, la respuesta es que
+las tres últimas son ciertas.
 
 2
 00:00:02,685 --> 00:00:07,895
-In mongoDB 2.6, by default, in the shell,
-the aggregate method does return a cursor,
+En MongoDB 2.6, por defecto, en el shell,
+el método "aggregate" devuelve un cursor,
 
 3
 00:00:08,091 --> 00:00:09,237
-we saw that.
+como ya vimos.
 
 4
 00:00:09,717 --> 00:00:15,148
-In 2.4 the previous version of mongoDB,
-PyMongo returned a single document.
+En MongoDB 2.4, la versión anterior,
+PyMongo devolvía un único documento.
 
 5
 00:00:15,148 --> 00:00:18,515
-And in 2.6 PyMongo returns
-a single document,
+Y en la versión 2.6 PyMongo
+devuelve un único documento,
 
 6
 00:00:18,515 --> 00:00:21,430
-but optionally you can have it return
-a cursor.
+pero opcionalmente puedes hacer
+que devuelva un cursor.
 
 7
 00:00:21,430 --> 00:00:25,611
-And we did this because we didn't want to
-break existing Python programs.
+E hicimos esto porque no queríamos
+romper los programas Python existentes.
 
 8
 00:00:26,291 --> 00:00:29,748
-But with the shell, we, essentially
-are not backwards compatible,
+Pero en el shell, esencialmente,
+no hay compatibilidad hacia atrás,
 
 9
 00:00:29,748 --> 00:00:32,597
-and if you have a Java script program
-that usually aggregate,
+y si tienes un programa JavaScript
+que usa el método "aggregate",
 
 10
 00:00:32,597 --> 00:00:36,315
-it could be broken by
-the new default in the shell.
-
+podría romperse debido al nuevo
+comportamiento por defecto del shell.
