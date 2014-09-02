@@ -1,494 +1,499 @@
 1
 00:00:00,000 --> 00:00:04,261
-Okay, so, I want to talk to you about
-Python and the special way
+Bien, quiero hablarte sobre
+Python y la forma especial en
 
 2
 00:00:04,289 --> 00:00:06,076
-it interacts with Aggregation.
+que interactúa con la agregación.
 
 3
 00:00:06,076 --> 00:00:10,066
-Or you should say that it is slightly
-different in 2.6 than it was previously.
+O mejor dicho, que es ligeramente
+diferente en el shell en la
 
 4
 00:00:10,066 --> 00:00:13,105
-In the shell but not in Python.
-And I'll explain what I'm talking about.
+versión 2.6, pero no en Python.
+Te explicaré de qué estoy hablando.
 
 5
 00:00:13,355 --> 00:00:17,765
-So, prior to mongoDB 2.6,
-mongoDB returned all the
+En versiones anteriores a MongoDB 2.6,
+MongoDB devolvía todos los resultados
 
 6
 00:00:17,765 --> 00:00:20,202
-aggregation results in one big document.
+de agregación en un documento enorme.
 
 7
 00:00:20,202 --> 00:00:22,187
-And this has a lot of limitations.
+Y esto tiene un montón de limitaciones.
 
 8
 00:00:22,187 --> 00:00:24,224
-For, instance if all the aggregation
-results are gonna be returned
+Por ejemplo, si todos los resultados de
+la agregación se van a devolver en
 
 9
 00:00:24,224 --> 00:00:27,073
-in one document, then, of course, 
-your aggregation results
+en un documento, entonces, por
+supuesto, los resultados de agregación
 
 10
 00:00:27,073 --> 00:00:29,800
-are limited to the size of the document
-which is 16 megabytes.
+están limitados al tamaño del
+documento, que es 16 MB.
 
 11
 00:00:30,420 --> 00:00:36,033
-And now, new in 2.6, very exciting,
-is that aggregation can,
+Ahora, como novedad en la versión
+2.6, muy excitante, la agregación
 
 12
 00:00:36,033 --> 00:00:40,410
-and does, inside the shell
-return a cursor.
+puede devolver un cursor, y de
+hecho lo hace en el shell.
 
 13
 00:00:40,740 --> 00:00:44,045
-So, that's a big difference.
-And what we've seen inside the shell,
+Así que esa es una gran diferencia.
+Y lo que hemos visto en el shell es,
 
 14
 00:00:44,045 --> 00:00:48,074
-of course, is that aggregation does
-return a cursor and gives you
+por supuesto, que la agregación
+devuelve un cursor y te da
 
 15
 00:00:48,074 --> 00:00:51,133
-all the documents one after another
-using an iterator.
+todos los documentos uno tras
+otro usando un iterador.
 
 16
 00:00:51,133 --> 00:00:54,137
-But prior to 2.6,
-this was not the way it worked.
+Pero en versiones anteriores a la
+2.6, esto no funcionaba así.
 
 17
 00:00:54,137 --> 00:00:56,650
-Prior to 2.6, you got one big document.
+Antes de la versión 2.6,
+obtenías un documento enorme.
 
 18
 00:00:56,650 --> 00:00:59,333
-So, the question is,
-what happens in Python?
+Por tanto, la cuestión es,
+¿qué ocurre en Python?
 
 19
 00:00:59,883 --> 00:01:03,619
-Well, it turns out that, in Python
-we still return by default
+Bien, resulta que en Python,
+por defecto, todavía devolvemos
 
 20
 00:01:03,619 --> 00:01:05,804
-one big document in 2.6.
+un documento grande
+en la versión 2.6.
 
 21
 00:01:05,804 --> 00:01:09,277
-So, Python lives over here.
-But it optionally can do
+Así que Python está por aquí.
+Pero, opcionalmente, puede hacer
 
 22
 00:01:09,277 --> 00:01:10,414
-what the shell does.
+lo mismo que el shell.
 
 23
 00:01:10,414 --> 00:01:14,171
-So.. Let's draw this out a little bit more
-'cause I think it's kinda tricky.
+Detallemos esto un poco más
+porque creo que es complicado.
 
 24
 00:01:14,171 --> 00:01:18,188
-So, we had 2.4 and had 2.6.
+Teníamos las versiones 2.4 y 2.6.
 
 25
 00:01:18,528 --> 00:01:20,964
-And then, we had
-what happens in the shell.
+Y luego, teníamos lo que
+sucedía en el shell.
 
 26
 00:01:21,039 --> 00:01:23,815
-And then, we had
-what happens in Python.
+Y a continuación, lo
+que sucedía en Python.
 
 27
 00:01:23,815 --> 00:01:28,682
-So, in 2.4, the shell and Python
-returned one big document.
+En MongoDB 2.4, tanto el shell como
+Python devolvían un documento grande.
 
 28
 00:01:28,682 --> 00:01:34,488
-And in 2.6 the shell now returns a cursor.
-And Python still returns one big document.
+En MongoDB 2.6, el shell devuelve un
+cursor y Python un documento grande.
 
 29
 00:01:35,018 --> 00:01:38,357
-But optionally Python returns a cursor.
+Pero, opcionalmente, Python
+puede devolver un cursor.
 
 30
 00:01:38,647 --> 00:01:41,291
-Let's see this in action.
-It's pretty interesting!
+Veamos esto en acción.
+¡Es muy interesante!
 
 31
 00:01:41,681 --> 00:01:44,575
-Okay, we're gonna once again aggregate
-on our zip code collection.
+Bien, una vez más vamos a agregar
+sobre nuestra colección de "zip codes".
 
 32
 00:01:45,245 --> 00:01:48,170
-This is a small Python script.
-Let's go through it line by line.
+Este es un pequeño script en Python.
+Vamos a examinarlo línea a línea.
 
 33
 00:01:48,470 --> 00:01:51,492
-We're gonna import Pymongo.
-Get a connection using MongoClient.
+Vamos a importar Pymongo. Obtenemos
+una conexión usando MongoClient.
 
 34
 00:01:51,652 --> 00:01:54,008
-We're gonna connect to our 
-aggregation data base.
+Vamos a conectarnos a nuestra
+base de datos de agregación.
 
 35
 00:01:54,008 --> 00:01:56,758
-And then, we're gonna aggregate.
-We're gonna group by our state,
+Y luego, vamos a agregar.
+Vamos a agrupar por estado,
 
 36
 00:01:56,758 --> 00:01:58,697
-and we're gonna sum our population up.
+y a sumar las poblaciones.
 
 37
 00:01:58,697 --> 00:02:00,829
-Very straight forward aggregation,
-the same we've been doing
+Una agregación muy sencilla,
+la misma que hemos estado haciendo
 
 38
 00:02:00,829 --> 00:02:03,488
-over and over again.
-And then, we're gonna print the result.
+una y otra vez. A continuación,
+vamos a imprimir el resultado.
 
 39
 00:02:03,488 --> 00:02:04,950
-Let's see what we get.
+Veamos qué obtenemos.
 
 40
 00:02:04,950 --> 00:02:07,685
-Okay. So, now we will see what we get
-when we run this
+Bien, ahora veremos qué obtenemos
+cuando ejecutamos este fichero
 
 41
 00:02:07,685 --> 00:02:10,232
-populationbystate.py file
-that I just showed you.
+"population_by_state.py" que
+acabo de enseñarte.
 
 42
 00:02:10,232 --> 00:02:13,088
-Wow! That's a big mess,
-but let's go through it carefully
+¡Guau! Eso es un caos, pero
+analicémoslo con cuidado y
 
 43
 00:02:13,088 --> 00:02:14,389
-and see what it is.
+veamos qué es.
 
 44
 00:02:14,599 --> 00:02:18,052
-Alright, and remember, all I did 
-in this particular program
+Recuerda que lo único que hice
+en este programa en particular es
 
 45
 00:02:18,066 --> 00:02:20,492
-is print the result I got
-from the aggregation.
+imprimir el resultado que
+obtuve de la agregación.
 
 46
 00:02:20,492 --> 00:02:26,747
-So, if go through here, I see that
-the result is in itself a document.
+Si nos fijamos por aquí, veo que
+el resultado en sí es un documento,
 
 47
 00:02:26,747 --> 00:02:30,053
-It returns the fact that
-aggregation was true.
+debido al hecho de que
+era una agregación.
 
 48
 00:02:30,493 --> 00:02:37,507
-And, at the result is this array of
-documents each one is one of the results
+Y en "result" está el array de
+documentos, cada uno de los cuales
 
 49
 00:02:37,507 --> 00:02:42,240
-of the aggregation query.
-That, for instance, we have, let's say,
+es un resultado de la consulta de
+agregación. Tenemos, por ejemplo,
 
 50
 00:02:42,240 --> 00:02:45,149
-Pennsylvania has a population of,
-maybe,11 million.
+que Pennsylvania tiene una
+población de, quizás 11 millones.
 
 51
 00:02:45,149 --> 00:02:48,404
-I can't quite see what that is.
-This is North Dakota, has a population
+No puedo ver qué es eso. Esto es
+Dakota del Norte, tiene una población
 
 52
 00:02:48,404 --> 00:02:51,687
-of 638,000. That's a very small state.
+de 638,000. Es un estado muy pequeño.
 
 53
 00:02:52,047 --> 00:02:57,101
-And, over here on top, was West Virginia,
-with a population of 1.7 million.
+Y, por aquí arriba, estaba West Virginia,
+con una población de 1.7 millones.
 
 54
 00:02:57,101 --> 00:02:59,215
-Is that right?
-Wow, small state, 1.8 million!
+¿Es eso correcto?
+¡Guau!, un estado pequeño, 1.8 millones,
 
 55
 00:02:59,215 --> 00:03:01,057
-If you wanna round it.
+si quieres redondear.
 
 56
 00:03:01,057 --> 00:03:04,083
-So, this aggregation result
-will be limited to 16 megabytes.
+Este resultado de agregación
+estará limitado a 16 MB.
 
 57
 00:03:04,323 --> 00:03:06,337
-This is the older style
-of returning results.
+Este es el estilo antiguo
+de devolver resultados.
 
 58
 00:03:06,767 --> 00:03:12,804
-And, we didn't wanna break Python programs
-in 2.6, so, we kept the old behavior
+Y no queríamos romper los programas
+Python en MongoDB 2.6, por lo que
 
 59
 00:03:12,804 --> 00:03:15,648
-by default.
-However, you can get the new behavior
+mantuvimos el comportamiento antiguo
+por defecto. Sin embargo, puedes conseguir
 
 60
 00:03:15,648 --> 00:03:18,351
-where you get a cursor,
-and you're not limited to 16megabytes.
+el comportamiento nuevo y obtener un
+cursor, evitando la limitación de 16 MB.
 
 61
 00:03:18,351 --> 00:03:19,355
-And I'll show you how.
+Te enseñaré cómo.
 
 62
 00:03:19,355 --> 00:03:23,501
-So, right here,
-we have the same aggregation query,
+Justo aquí tenemos la
+misma consulta de agregación,
 
 63
 00:03:23,501 --> 00:03:27,769
-and this case, we're gonna tack on
-a new value called
+y en este caso, vamos a fijar
+un nuevo valor llamado
 
 64
 00:03:27,769 --> 00:03:35,075
-'cursor equals empty document'.
-And this keyword argument to aggregation
+"cursor = {}".
+Y esta palabra clave
 
 65
 00:03:35,075 --> 00:03:40,128
-is going to change the behavior
-of the aggregation framework.
+va a cambiar el comportamiento
+del framework de agregación.
 
 66
 00:03:40,151 --> 00:03:42,788
-So, now that we're going
-to get back a cursor,
+Así, ahora que vamos
+a obtener un cursor,
 
 67
 00:03:42,788 --> 00:03:45,724
-I can no longer just print the result.
-Instead I have to iterate
+ya no puedo imprimir "result".
+En su lugar, tengo que iterar
 
 68
 00:03:45,724 --> 00:03:47,275
-through the result.
-So, let's do that,
+el resultado.
+Hagamos eso,
 
 69
 00:03:47,275 --> 00:03:51,687
-for doc in result: print doc.
-And, that should take care of it
+"for doc in result: print doc".
+Esto debería encargarse de ello
 
 70
 00:03:51,687 --> 00:03:54,205
-and print every document in the result.
-It's because I gave the
+e imprimir cada documento
+en el resultado, ya que pasé
 
 71
 00:03:54,205 --> 00:03:59,280
-cursor equals empty document option.
-So, let's run through there.
+la opción "cursor = {}".
+Repasemos eso.
 
 72
 00:03:59,280 --> 00:04:00,469
-See what I get.
+Veamos qué obtengo.
 
 73
 00:04:00,739 --> 00:04:03,289
-And, there you go!
-You get that nice clean result
+¡Allá vamos!
+Obtienes ese resultado tan claro
 
 74
 00:04:03,289 --> 00:04:06,392
-we got before which is similar
-to what you get in the shell.
+que obtuvimos antes, el cual es
+similar a lo que devolvía en el shell,
 
 75
 00:04:06,392 --> 00:04:09,687
-Where you see that each document in
-the aggregation result comes through
+donde puedes ver que cada documento
+en el resultado de la agregación
 
 76
 00:04:09,687 --> 00:04:13,286
-as a separate document in the cursor
-that you get back
+aparece como un documento
+separado en el cursor
 
 77
 00:04:13,286 --> 00:04:14,660
-and you can iterate through them.
+y puedes iterar por ellos.
 
 78
 00:04:14,660 --> 00:04:19,177
-And, if you wanted to set other options..
-For instance, if you wanted to set
+Y, si quisieras establecer otras
+opciones, por ejemplo, la opción
 
 79
 00:04:19,177 --> 00:04:22,451
-the option for using disk,
-you could do that.
+para usar el disco,
+podrías hacerlo.
 
 80
 00:04:22,451 --> 00:04:28,758
-You could say allow disk use equals true.
-And you can see it's the different style
+Podrías decir "allowDiskUse = True".
+Y puedes ver que el estilo para pasar
 
 81
 00:04:28,758 --> 00:04:31,287
-of giving options
-than you gave in the shell.
+las opciones es diferente
+al que usamos en el shell.
 
 82
 00:04:31,287 --> 00:04:33,042
-So, keep that in mind. This is Python.
+Así que ten eso en mente.
+Esto es Python.
 
 83
 00:04:33,572 --> 00:04:38,061
-And, if I do that, and go through it,
-this shouldn't change the result at all.
+Y, si hago eso y lo recorro, no
+debería cambiar en nada el resultado.
 
 84
 00:04:38,631 --> 00:04:40,820
-It gives you the same result.
-Maybe a tad slower.
+Da el mismo resultado.
+Quizás un poco más lento.
 
 85
 00:04:40,820 --> 00:04:44,392
-So, how disk use will let you get around
-that hundred megabyte limit
+Y así es como el uso de disco
+permite evitar ese límite de 100 MB
 
 86
 00:04:44,392 --> 00:04:47,383
-for any pipeline stage.
-Okay, so anyway,
+por etapa del pipeline.
+Bien, en cualquier caso,
 
 87
 00:04:47,383 --> 00:04:51,222
-that's how you ask for the behavior
-that is default in 2.6 in the shell
+así es como se solicita el comportamiento
+por defecto en el shell en MongoDB 2.6,
 
 88
 00:04:51,222 --> 00:04:55,618
-which is to get a cursor back
-versus getting one big document back.
+que va a devolver un cursor
+en lugar de un documento enorme.
 
 89
 00:04:55,618 --> 00:04:57,406
-And, generally speaking its
-a lot more convenient
+Y, en términos generales, es
+mucho más conveniente obtener
 
 90
 00:04:57,406 --> 00:04:59,926
-to get one big document back.
-But because we didn't want to
+un documento enorme, pero
+como no queríamos romper
 
 91
 00:04:59,926 --> 00:05:04,279
-break Python programs that worked in 2.4,
-we made it backwards compatible
+los programas Python que funcionaban
+en MongoDB 2.4, hicimos compatibilidad
 
 92
 00:05:04,279 --> 00:05:07,266
-by having the default in Python
-be the older behavior.
+hacia atrás dejando por defecto en
+Python el comportamiento anterior.
 
 93
 00:05:07,266 --> 00:05:10,018
-In the shell, we were not
-backward compatible.
+En el shell, no hay
+compatibilidad hacia atrás.
 
 94
 00:05:10,018 --> 00:05:13,288
-The default behavior is now to return
-a cursor that gives you
+Ahora, el comportemiento por defecto
+es devolver un cursor que te da
 
 95
 00:05:13,288 --> 00:05:14,807
-a list of documents.
+una lista de documentos.
 
 96
 00:05:14,807 --> 00:05:16,843
-Okay, its time for quiz.
-Let's see how carefully
+Bien, hora de hacer un cuestionario.
+Veamos si estuviste escuchando
 
 97
 00:05:16,843 --> 00:05:17,889
-you were listening.
+atentamente.
 
 98
 00:05:17,889 --> 00:05:23,888
-Let's talk about mongoDB 2.4 and 2.6,
-and the behavior of aggregation
+Hablemos sobre MongoDB 2.4 y 2.6,
+y sobre el comportamiento de la
 
 99
 00:05:23,888 --> 00:05:27,491
-and particularly the aggregate method
-and whether it returns a cursor
+agregación, en particular sobre el
+método "aggregate" y si devuelve un
 
 100
 00:05:27,491 --> 00:05:30,165
-or document in the shell or Pymongo.
+cursor o un documento en
+el shell o Pymongo.
 
 101
 00:05:30,165 --> 00:05:33,261
-Which of the following statements
-about aggregation results are true?
+¿Cuáles de las siguientes afirmaciones
+sobre los resultados de agregación son
 
 102
 00:05:33,261 --> 00:05:35,292
-Check all that apply.
-And I won't read them to you,
+ciertas? Marca todas las que
+apliquen. Y no te las leeré,
 
 103
 00:05:35,292 --> 00:05:38,863
-but you should read them and figure out
-which ones are true.
+pero deberías leerlas y
+averiguar cuáles son ciertas.
