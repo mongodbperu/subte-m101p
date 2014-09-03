@@ -4,48 +4,47 @@
 
 2
 00:00:00,499 --> 00:00:01,800
-And here is the answer.
+Y aquí está la respuesta.
 
 3
 00:00:01,800 --> 00:00:05,930
-The answer is db.stores.find,
-specifying again the loc,
+Y la respuesta es "db.stores.find",
+especificando otra vez "loc",
 
 4
 00:00:05,930 --> 00:00:09,360
-because, again, this collection
-stores the locations in loc.
+porque esta colección almacena
+las ubicaciones en "loc".
 
 5
 00:00:09,360 --> 00:00:11,490
-$near $geometry.
+"{ $near: { $geometry: ".
 
 6
 00:00:11,490 --> 00:00:13,950
-This is the geo JSON
-document following.
+Esto que sigue es
+un documento GeoJSON.
 
 7
 00:00:13,950 --> 00:00:16,060
-Type "Point," with the
-coordinates minus 130,
+"{ type: "Point", ",
+con las coordenadas "-130, 39"
 
 8
 00:00:16,060 --> 00:00:19,160
-39 with with a max distance
-of 1 million meters.
+con una distancia máxima
+de un millón de metros.
 
 9
 00:00:19,160 --> 00:00:22,040
-And that would be the query
-that would return everything
+Y esa sería la consulta
+que retornaría todo
 
 10
 00:00:22,040 --> 00:00:25,000
-within that search radius, and
-it would return it from closest
+en ese radio de búsqueda,
+y lo haría desde el más cercano
 
 11
 00:00:25,000 --> 00:00:26,690
-to furthest away.
-
+hasta el más lejano.
