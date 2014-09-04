@@ -1,19 +1,18 @@
 1
 00:00:00,000 --> 00:00:00,190
 
-
 2
 00:00:00,190 --> 00:00:01,720
 Esta sección sólo aplica
 
 3
 00:00:01,720 --> 00:00:03,920
-a MongoDB 2.4 y anteriores.
+a MongoDB 2.4 y versiones anteriores.
 
 4
 00:00:03,920 --> 00:00:06,589
 Si estás usando MongoDB
-2.6 o posterior,
+2.6 o versiones posteriores,
 
 5
 00:00:06,589 --> 00:00:07,880
@@ -21,12 +20,12 @@ puedes saltarte esta sección.
 
 6
 00:00:07,880 --> 00:00:09,440
-No estará en los ejercicios.
+No estará en las tareas.
 
 7
 00:00:09,440 --> 00:00:11,605
 Bien, ahora que hemos aprendido
-las operaciones CRUD básicas
+las operaciones "CRUD" básicas
 
 8
 00:00:11,605 --> 00:00:16,494
@@ -53,7 +52,7 @@ entorno interactivo,
 
 13
 00:00:24,500 --> 00:00:27,780
-y por tanto te da información
+y por lo tanto te da información
 cuando algo va mal.
 
 14
@@ -85,7 +84,7 @@ una clave primaria particular,
 
 20
 00:00:40,910 --> 00:00:43,220
-por ejemplo, Smith,
+por ejemplo, "Smith",
 bien, tengo motivos para
 
 21
@@ -101,7 +100,7 @@ sobre cómo puedes confirmar eso.
 23
 00:00:47,620 --> 00:00:50,890
 Si intento insertar un segundo
-documento con nombre Smith,
+documento con nombre "Smith",
 
 24
 00:00:50,890 --> 00:00:53,290
@@ -310,7 +309,7 @@ actualizará un documento
 
 66
 00:02:27,290 --> 00:02:29,450
-con nombre Thompson,
+con nombre "Thompson",
 si existe,
 
 67
@@ -372,8 +371,8 @@ dice automáticamente
 
 79
 00:02:57,120 --> 00:02:58,770
-cuándo falla una operación
-de escritura.
+cuando una operación
+de escritura falla.
 
 80
 00:02:58,770 --> 00:03:00,510
@@ -455,4 +454,3 @@ el comando "getLastError".
 00:03:32,620 --> 00:03:35,490
 Está implícito en todas
 las operaciones de escritura.
-
