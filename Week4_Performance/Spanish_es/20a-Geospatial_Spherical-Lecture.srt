@@ -603,12 +603,12 @@ Y va a ser en "location".
 
 130
 00:05:11,370 --> 00:05:14,350
-Y será de tipo 2dsphere.
+Y será de tipo "2dsphere".
 
 131
 00:05:14,350 --> 00:05:16,560
 Nunca entendí por qué
-esto es llamado 2dsphere.
+esto se llama "2dsphere".
 
 132
 00:05:16,560 --> 00:05:18,840
@@ -951,7 +951,7 @@ longitud de tus documentos.
 204
 00:08:19,090 --> 00:08:23,590
 También necesitas
-crear un índice 2dsphere
+crear un índice "2dsphere"
 
 205
 00:08:23,590 --> 00:08:25,850
