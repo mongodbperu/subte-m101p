@@ -34,13 +34,13 @@ romper los programas Python existentes.
 
 8
 00:00:26,291 --> 00:00:29,748
-Pero en el shell, esencialmente,
-no hay compatibilidad hacia atrás,
+Pero en el shell, esencialmente, no
+hay compatibilidad con versiones
 
 9
 00:00:29,748 --> 00:00:32,597
-y si tienes un programa JavaScript
-que usa el método "aggregate",
+anteriores, y si tienes un programa
+JavaScript que usa el método "aggregate",
 
 10
 00:00:32,597 --> 00:00:36,315
