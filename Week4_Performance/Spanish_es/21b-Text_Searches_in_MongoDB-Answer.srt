@@ -1,38 +1,36 @@
 1
 00:00:00,000 --> 00:00:00,500
- 
 
 2
 00:00:00,500 --> 00:00:02,380
-OK, and the answer is
-all three documents
+OK y la respuesta es:
+los tres documentos
 
 3
 00:00:02,380 --> 00:00:05,640
-will be returned, because
-this is a logical ORing.
+van a ser retornados, porque
+esto hace uso del "or" lógico
 
 4
 00:00:05,640 --> 00:00:08,070
-And we're looking
-for Big or Lebowski,
+y estamos buscando
+"Big" o "Lebowski"
 
 5
 00:00:08,070 --> 00:00:11,500
-and all of these titles
-include at least the word Big.
+y todos estos títulos por lo
+menos tienen la palabra "Big".
 
 6
 00:00:11,500 --> 00:00:14,486
-So all of these tiles
-would satisfy the criteria,
+Así que todos estos títulos
+satisfacen el criterio
 
 7
 00:00:14,486 --> 00:00:15,610
-and they'd all be returned.
+y todos serían retornados.
 
 8
 00:00:15,610 --> 00:00:18,100
-All these documents
-would be returned.
-
+Todos estos documentos
+serían retornados.
