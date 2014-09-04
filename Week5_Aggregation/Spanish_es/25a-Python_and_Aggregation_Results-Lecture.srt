@@ -48,7 +48,7 @@ documento, que es 16 MB.
 11
 00:00:30,420 --> 00:00:36,033
 Ahora, como novedad en la versión
-2.6, muy excitante, la agregación
+2.6, muy emocionante, la agregación
 
 12
 00:00:36,033 --> 00:00:40,410
@@ -82,7 +82,7 @@ obtenías un documento enorme.
 
 18
 00:00:56,650 --> 00:00:59,333
-Por tanto, la cuestión es,
+Por lo tanto, la cuestión es,
 ¿qué ocurre en Python?
 
 19
@@ -97,8 +97,8 @@ en la versión 2.6.
 
 21
 00:01:05,804 --> 00:01:09,277
-Así que Python está por aquí.
-Pero, opcionalmente, puede hacer
+Así que Python está por aquí,
+pero, opcionalmente, puede hacer
 
 22
 00:01:09,277 --> 00:01:10,414
@@ -151,11 +151,11 @@ sobre nuestra colección de "zip codes".
 32
 00:01:45,245 --> 00:01:48,170
 Este es un pequeño script en Python.
-Vamos a examinarlo línea a línea.
+Vamos a examinarlo línea por línea.
 
 33
 00:01:48,470 --> 00:01:51,492
-Vamos a importar Pymongo. Obtenemos
+Vamos a importar PyMongo. Obtenemos
 una conexión usando MongoClient.
 
 34
@@ -432,32 +432,32 @@ mucho más conveniente obtener
 
 90
 00:04:57,406 --> 00:04:59,926
-un documento enorme, pero
-como no queríamos romper
+un documento enorme, pero como
+no queríamos romper los programas
 
 91
 00:04:59,926 --> 00:05:04,279
-los programas Python que funcionaban
-en MongoDB 2.4, hicimos compatibilidad
+Python que funcionaban en MongoDB
+2.4, mantuvimos la compatibilidad
 
 92
 00:05:04,279 --> 00:05:07,266
-hacia atrás dejando por defecto en
-Python el comportamiento anterior.
+con versiones anteriores dejando
+por defecto en Python el
 
 93
 00:05:07,266 --> 00:05:10,018
-En el shell, no hay
-compatibilidad hacia atrás.
+comportamiento anterior. En el shell, no
+mantuvimos compatibilidad con versiones
 
 94
 00:05:10,018 --> 00:05:13,288
-Ahora, el comportemiento por defecto
-es devolver un cursor que te da
+anteriores. Ahora, el comportamiento
+por defecto es devolver un cursor
 
 95
 00:05:13,288 --> 00:05:14,807
-una lista de documentos.
+que te da una lista de documentos.
 
 96
 00:05:14,807 --> 00:05:16,843
@@ -481,7 +481,7 @@ método "aggregate" y si devuelve un
 100
 00:05:27,491 --> 00:05:30,165
 cursor o un documento en
-el shell o Pymongo.
+el shell o PyMongo.
 
 101
 00:05:30,165 --> 00:05:33,261
