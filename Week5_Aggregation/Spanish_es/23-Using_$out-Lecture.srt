@@ -1,528 +1,533 @@
 1
 00:00:00,154 --> 00:00:03,820
-In MongoDB 2.6,
-we have a new pipeline operator,
+En MongoDB 2.6, tenemos un
+nuevo operador del "pipeline",
 
 2
 00:00:03,820 --> 00:00:07,734
-a new stage available
-and it's the $out stage.
+una nueva fase disponible,
+y es la fase "$out".
 
 3
 00:00:07,734 --> 00:00:11,049
-Prior to 2.6,
-you could not redirect
+Antes de la versión 2.6,
+no podías dirigir los
 
 4
 00:00:11,049 --> 00:00:13,717
-the output of aggregation
-to a new collection.
+resultados de una agregación
+a una nueva colección.
 
 5
 00:00:13,717 --> 00:00:15,785
-You have to write
-a custom program to do that.
+Tenías que escribir tu propio
+programa personalizado para hacerlo.
 
 6
 00:00:15,785 --> 00:00:19,819
-But in 2.6 you can specify
-a collection
+Pero en MongoDB 2.6, puedes
+especificar una colección
 
 7
 00:00:19,819 --> 00:00:23,151
-that should receive the results
-of your aggregation
+que reciba los resultados
+de tu agregación y eso es
 
 8
 00:00:23,151 --> 00:00:26,068
-and that makes it very convenient
-if you want to use those results
+muy conveniente si es
+que quieres usar esos
 
 9
 00:00:26,068 --> 00:00:28,599
-after you perform
-the aggregation.
+resultados después de
+hacer la agregación.
 
 10
 00:00:28,599 --> 00:00:31,909
-And this is new in 2.6.
-So let's go over how it works.
+Esto es nuevo en MongoDB 2.6.
+Veamos cómo funciona.
 
 11
 00:00:32,507 --> 00:00:37,141
-Okay, I've set up a small collection
-of documents that represent
+OK. He creado una pequeña colección
+de documentos que representan los
 
 12
 00:00:37,141 --> 00:00:39,999
-the outcome of games played
-by a few players.
+resultados de partidos jugados
+por algunos jugadores.
 
 13
 00:00:39,999 --> 00:00:44,255
-And the structure of the document,
-let's say the first name is "Jerzy"
+La estructura del documento es, digamos
+que el nombre es "Jerzy" y el apellido
 
 14
 00:00:44,255 --> 00:00:46,385
-and the last name is "Fischer,"
-he got two points in that game
+es "Fischer", él recibió
+dos puntos en ese juego
 
 15
 00:00:46,385 --> 00:00:48,522
-and here were his moves.
+y acá están sus jugadas.
 
 16
 00:00:48,715 --> 00:00:51,263
-You can see that there's a few
-different documents in here.
+Puedes ver que hay algunos
+documentos diferentes acá.
 
 17
 00:00:51,263 --> 00:00:53,756
-The players were Shannon Bradshaw,
-our Director of Education,
+Los jugadores fueron Shannon Bradshaw,
+nuestro Director de Educación,
 
 18
 00:00:53,756 --> 00:00:56,394
-Jerzy Fischer does all of our video production,
+Jerzy Fischer, quien hace toda
+la producción de nuestros videos,
 
 19
 00:00:56,394 --> 00:00:57,928
-and of course this is me.
+y por supuesto, éste soy yo.
 
 20
 00:00:57,928 --> 00:00:59,456
-So not very many documents.
+No hay muchos documentos.
 
 21
 00:00:59,456 --> 00:01:02,601
-And if we wanted to aggregate these
-we could do it like this.
+Si quisiéramos agregar éstos,
+podríamos hacerlo así.
 
 22
 00:01:02,601 --> 00:01:04,561
-Alright, here's a simple 
-aggregation query
+OK. Acá tenemos una consulta
+simple de agregación que vamos
 
 23
 00:01:04,561 --> 00:01:06,837
-that we're going to perform
-on this collection.
+a ejecutar sobre
+esta colección.
 
 24
 00:01:06,837 --> 00:01:08,907
-It's just going to aggregate
-and group by first name
+Simplemente va a agregar
+y agrupar por nombre y
 
 25
 00:01:08,907 --> 00:01:11,557
-and last name
-and sum up the points I received.
+apellido y sumar
+los puntos recibidos.
 
 26
 00:01:11,755 --> 00:01:15,569
-If we did that, it's called simple_agg.
-Let's run it.
+Hagamos eso. Se llama
+"simple_agg". Ejecutémoslo.
 
 27
 00:01:16,639 --> 00:01:18,822
-You can see that it produces
-three documents,
+Puedes ver que produce tres
+documentos, uno para Jerzy,
 
 28
 00:01:18,822 --> 00:01:20,992
-one for Jerzy, one for Shannon
-and one for me,
+uno para Shannon
+y uno para mí,
 
 29
 00:01:20,992 --> 00:01:23,239
-with the total number of points 
-that we received.
+con el número total de
+puntos que recibimos.
 
 30
 00:01:23,239 --> 00:01:25,072
-It just aggregates the collection.
+Simplemente agrega la colección.
 
 31
 00:01:25,072 --> 00:01:27,071
-That's pretty straightforward.
+Es muy simple.
 
 32
 00:01:27,071 --> 00:01:32,086
-Now, let's say we wanted to actually send
-that result to another collection.
+Ahora, digamos que queremos enviar
+los resultados a otra colección.
 
 33
 00:01:32,086 --> 00:01:34,799
-Well we can do that now,
-using the $out stage.
+Pues ahora podemos hacer eso,
+utilizando la fase "$out".
 
 34
 00:01:35,385 --> 00:01:36,917
-So let's look at that.
+Echémosle un vistazo.
 
 35
 00:01:37,109 --> 00:01:39,750
-Okay, here's the same aggregation query
-but this time
+OK. Acá tenemos la misma consulta
+de agregación, pero esta vez vamos
 
 36
 00:01:39,750 --> 00:01:41,604
-we're going to redirect the output.
+a dirigir los resultados.
 
 37
 00:01:41,604 --> 00:01:43,072
-It's a simple grouping,
+Es una agrupación simple,
 
 38
 00:01:43,072 --> 00:01:45,542
-the _id for the grouping
-was first name and last name
+el "_id" para la agrupación
+fue el nombre y apellido
 
 39
 00:01:45,542 --> 00:01:48,278
-and we summed the points.
-That's what you just saw.
+y sumamos los puntos. Eso
+fue lo que acabas de ver.
 
 40
 00:01:48,278 --> 00:01:53,082
-Now we're going to have a new stage
-called $out
+Ahora vamos a tener una
+nueva fase llamada "$out"
 
 41
 00:01:53,082 --> 00:01:56,586
-and the value is the name
-of the collection
+y el valor es el nombre
+de la colección a la cual
 
 42
 00:01:56,586 --> 00:01:58,155
-we want to send the results to.
+queremos enviar
+los resultados,
 
 43
 00:01:58,155 --> 00:01:59,825
-'summary_results'
+"summary_results".
 
 44
 00:01:59,825 --> 00:02:02,092
-Alright, so let's see that work.
+OK, veámoslo funcionar.
 
 45
 00:02:02,092 --> 00:02:04,861
-Now, there is no collection
-called 'summary_results' right now,
+Ahora, actualmente no hay una
+colección llamada "summary_results",
 
 46
 00:02:04,861 --> 00:02:07,798
-I dropped it before the video
-so let's run this little script,
+la eliminé antes del video, así que
+hay que ejecutar este pequeño script
 
 47
 00:02:07,798 --> 00:02:10,534
-see what we get.
-And it doesn't produce
+y ver qué obtenemos.
+No produce mucha
 
 48
 00:02:10,534 --> 00:02:12,383
-a lot of output to the screen
-because, of course, it created
+salida a la pantalla porque,
+por supuesto, creó una nueva
 
 49
 00:02:12,383 --> 00:02:14,338
-a new collection
-called summary _results
+colección llamada
+"summary_results"
 
 50
 00:02:14,338 --> 00:02:17,663
-and if we look in the collection
-called summary_results
+y si vemos en la colección
+llamada "summary_results",
 
 51
 00:02:18,203 --> 00:02:21,299
-you can see that here is the collection
-that we created.
+puedes ver que acá está
+la colección que creamos.
 
 52
 00:02:21,299 --> 00:02:24,469
-Now the $out operator
-is destructive.
+Ahora, el operador
+"$out" es destructivo.
 
 53
 00:02:24,469 --> 00:02:28,033
-If the collection already existed,
-it would destroy it.
+Si la colección ya existía,
+la hubiese destruido y
 
 54
 00:02:28,773 --> 00:02:31,321
-And so be very careful
-if you're going to use it
+por eso sé muy cuidadoso
+si vas a usarlo, asegurándote
 
 55
 00:02:31,321 --> 00:02:35,291
-to make sure that you're okay
-with dropping the previous collection.
+de querer eliminar
+la colección anterior.
 
 56
 00:02:35,662 --> 00:02:37,178
-Let me show you
-how that would work,
+Déjame mostrarte
+cómo funcionaría eso,
 
 57
 00:02:37,178 --> 00:02:39,637
-so I'll show you how it's destructive.
+para ver cómo
+es destructivo.
 
 58
 00:02:39,637 --> 00:02:42,315
-So let's delete the collection.
+Borremos la colección.
 
 59
 00:02:42,992 --> 00:02:45,169
-Let's put something in the collection.
+Pongamos algo en la colección.
 
 60
 00:02:45,494 --> 00:02:48,389
-Now there is something
-in the summary _results collection.
+Ahora hay algo en la
+colección "summary_results".
 
 61
 00:02:48,389 --> 00:02:50,342
-I'll just show you that.
+Te lo acabo de mostrar.
 
 62
 00:02:50,342 --> 00:02:53,065
-And now let's run that script again.
+Ahora hay que ejecutar
+ese script una vez más.
 
 63
 00:02:53,877 --> 00:02:59,238
-And now let's connect to MongoDB
-and see what's in the summary_results collection.
+Ahora conectémonos a MongoDB y veamos
+qué hay en la colección "summary_results".
 
 64
 00:03:00,374 --> 00:03:03,584
-And we can see that that little document
-I created with "foo" : "andrew"
+Podemos ver que el pequeño documento
+que creé con "foo: andrew" ya no está
 
 65
 00:03:03,584 --> 00:03:06,126
-is gone and now we have these three documents.
+y ahora tenemos estos
+tres documentos.
 
 66
 00:03:06,575 --> 00:03:09,069
-Now another thing to be wary of
-when you do this
+Ahora, otra cosa que tienes
+que tener en mente cuando hagas
 
 67
 00:03:09,069 --> 00:03:12,236
-is that you need to make sure
-that the _id's
+esto es que tienes que asegurarte
+de que los campos "_id" que estés
 
 68
 00:03:12,236 --> 00:03:14,652
-that you're sending
-are unique
+enviando sean únicos
 
 69
 00:03:14,652 --> 00:03:17,320
-and there are certain cases
-where they might not be.
+y hay ciertos casos donde
+tal vez no lo sean.
 
 70
 00:03:17,320 --> 00:03:19,289
-So let me give you an example.
+Déjame darte un ejemplo.
 
 71
 00:03:19,694 --> 00:03:24,508
-So, let's do a simple unwind
-of this collection.
+Hagamos un "$unwind" simple
+de esta colección.
 
 72
 00:03:24,508 --> 00:03:27,318
-So we're just going to unwind
-the moves array
+Simplemente vamos a aplicar
+"$unwind" al array "moves"
 
 73
 00:03:27,318 --> 00:03:29,483
-that's in each document.
+que cada documento contiene.
 
 74
 00:03:29,483 --> 00:03:32,317
-And if you remember,
-here are the documents
+Si te acuerdas, acá
+están los documentos
 
 75
 00:03:32,317 --> 00:03:35,620
-in the collection
-and each of these documents
+en la colección y cada
+uno de estos documentos
 
 76
 00:03:35,620 --> 00:03:38,347
-has a moves array, 
-and if I unwind
+tiene un array "moves"
+y si le hago un "$unwind"
 
 77
 00:03:38,347 --> 00:03:41,122
-the moves array,
-this is what I will see.
+esto es lo que veré.
 
 78
 00:03:41,413 --> 00:03:43,532
-So, I unwind the moves array.
+Entonces, hago un "$unwind"
+sobre el array "moves".
 
 79
 00:03:43,532 --> 00:03:47,292
-We get an explosion of documents.
-Each document is in here multiple times
+Obtenemos una explosión de documentos.
+Cada documento está aquí múltiples veces
 
 80
 00:03:47,292 --> 00:03:49,337
-because the moves array has been unwound,
+porque hemos hecho un "$unwind"
+sobre el array "moves" y vas
 
 81
 00:03:49,337 --> 00:03:52,042
-and you'll notice that the _id
-for this when you unwind
+a notar que el "_id" para
+esto, cuando haces "$unwind"
 
 82
 00:03:52,042 --> 00:03:54,375
-the documents can be duplicated.
+puede duplicarse.
 
 83
 00:03:54,375 --> 00:03:56,798
-So for instance, this _id
+Por ejemplo, este "_id"
 
 84
 00:03:56,798 --> 00:03:59,221
-is the same as this _id.
+es el mismo que este "_id".
 
 85
 00:03:59,221 --> 00:04:01,645
-So if we redirected that 
-to a new collection,
+Si redirigimos esto
+a una nueva colección,
 
 86
 00:04:01,645 --> 00:04:04,339
-we're going to get an error if we try.
+vamos a obtener un error.
 
 87
 00:04:04,339 --> 00:04:06,624
-So let's see what happens if we do that.
+Veamos qué ocurre
+si hacemos eso.
 
 88
 00:04:07,587 --> 00:04:09,763
-Here, I'll show you what the script
-looked like,
+Te mostraré cómo
+se veía el script,
 
 89
 00:04:09,763 --> 00:04:11,680
-it's called the broken _out command.
+se llama el comando "broken_out".
 
 90
 00:04:11,680 --> 00:04:14,958
-And here we unwind the moves array
-but we also send the results
+Acá hacemos el "$unwind", pero
+también enviamos los resultados
 
 91
 00:04:14,958 --> 00:04:16,931
-to summary_results.
+a "summary_results".
 
 92
 00:04:16,931 --> 00:04:19,063
-We haven't done any grouping here,
-just an unwind,
+No hemos hecho ninguna agrupación
+acá, sólo un "$unwind", entonces
 
 93
 00:04:19,063 --> 00:04:21,965
-so because we have 
-some duplicated _ids,
+como tenemos algunos
+campos "_id" duplicados,
 
 94
 00:04:21,965 --> 00:04:24,401
-we're going to see an error
-when we try to do this redirection
+vamos a ver un error cuando
+tratemos de dirigir los resultados
 
 95
 00:04:24,401 --> 00:04:27,099
-to this new collection.
-So let's see that happen.
+a esta nueva colección. Veámoslo.
 
 96
 00:04:27,333 --> 00:04:30,142
-So I'm going to run this thing
-called "broken_out"
+Voy a ejecutar esto
+llamado "broken_out"
 
 97
 00:04:30,142 --> 00:04:33,876
-and we can see that if you do that
-you get a duplicate key error.
+y podemos ver que obtenemos
+un error de clave duplicada.
 
 98
 00:04:33,876 --> 00:04:36,614
-So here we are.
-We get a duplicate key error.
+Ahí está. El error
+de clave duplicada.
 
 99
 00:04:36,614 --> 00:04:38,548
-We see the insert failed.
+Vemos que la inserción falló.
 
 100
 00:04:38,548 --> 00:04:41,118
-And the way this works,
-if any of the inserts fail,
+La manera en que esto funciona es que
+si cualquiera de las inserciones falla,
 
 101
 00:04:41,118 --> 00:04:43,503
-then you won't destroy 
-the previous collection
+no se destruye la
+colección existente
 
 102
 00:04:43,503 --> 00:04:44,823
-and you won't see your result.
+y no verás tus resultados.
 
 103
 00:04:44,823 --> 00:04:47,338
-Because what actually happens
-under the covers
+Porque lo que en verdad
+ocurre por debajo,
 
 104
 00:04:47,338 --> 00:04:50,629
-is that when you are doing an aggregation
-with $out,
+es que cuando haces una
+agregación con "$out",
 
 105
 00:04:50,629 --> 00:04:52,920
-it sends the results 
-to a temporary collection
+envía los resultados a
+una colección temporal
 
 106
 00:04:52,920 --> 00:04:55,739
-and at the very end
-it does some renaming
+y al final hace un
+cambio de nombre
 
 107
 00:04:55,739 --> 00:04:58,860
-to reassignment, to update it
-so that the collection
+para reasignarla y actualizarla
+con el fin de que la colección
 
 108
 00:04:58,860 --> 00:05:01,253
-reflects where you redirected 
-the output.
+refleje aquélla a donde
+dirigiste los resultados.
 
 109
 00:05:01,253 --> 00:05:06,004
-So, for instance, this failed
-and if I go into MongoDB
+Por ejemplo, esto falló
+y si entro a MongoDB y
 
 110
 00:05:06,004 --> 00:05:10,882
-and I look at summary_results, you can see
-that I have the previous results
+observo "summary_results", puedes ver
+que tengo los resultados anteriores
 
 111
 00:05:10,882 --> 00:05:14,761
-because it wasn't destructive
-to this collection.
+porque no fue destructivo
+con esta colección.
 
 112
 00:05:14,761 --> 00:05:18,740
-Alright, so that's how the $out
-operator works.
+Bien. Así es como funciona
+el operador "$out".
