@@ -3,13 +3,12 @@
 
 2
 00:00:00,180 --> 00:00:02,580
-OK. Hemos hablado sobre el
-Aggregation Framework y sobre
+OK. Hemos hablado ya por algún
+tiempo sobre el Aggregation
 
 3
 00:00:02,580 --> 00:00:03,512
-lo bueno que es por
-algún tiempo ya.
+Framework y lo bueno que es.
 
 4
 00:00:03,512 --> 00:00:05,970
@@ -24,7 +23,7 @@ Framework dentro de MongoDB,
 6
 00:00:09,514 --> 00:00:11,180
 cómo puedes hacer para
-sortearlas y en qué
+eludirlas y en qué
 
 7
 00:00:11,180 --> 00:00:13,210
@@ -47,7 +46,7 @@ pequeño para las fases del "pipeline".
 
 11
 00:00:22,570 --> 00:00:24,910
-Y la manera en que sorteas esa
+Y la manera en que evitas esa
 limitación es, por supuesto,
 
 12
@@ -61,7 +60,7 @@ ese límite de 100MB.
 
 14
 00:00:30,740 --> 00:00:34,290
-Pero al menos que especifiques
+Pero a menos que especifiques
 esa opción en tu agregación,
 
 15
@@ -90,7 +89,7 @@ u ordenamiento.
 20
 00:00:49,070 --> 00:00:51,100
 La segunda limitación
-es que si tú decides
+es que si decides
 
 21
 00:00:51,100 --> 00:00:54,050
@@ -120,11 +119,11 @@ de sortear esta limitación
 26
 00:01:05,269 --> 00:01:08,150
 y consiste en, por supuesto,
-simplemente asignar el cursor
+simplemente pasar la opción
 
 27
 00:01:08,150 --> 00:01:11,020
-a este documento vacío
+"cursor = {}" al método "aggregate"
 
 28
 00:01:11,020 --> 00:01:14,440
@@ -151,7 +150,7 @@ tiene que ver con "sharding".
 
 33
 00:01:22,400 --> 00:01:28,880
-En un sistema con "shards", ni
+En un sistema con Sharding, ni
 bien usas un "$group" o un "$sort"
 
 34
@@ -204,13 +203,13 @@ de MongoDB detrás de ésta.
 
 44
 00:01:58,910 --> 00:02:01,460
-Así que todo esto representa
-digamos un conjunto de réplicas
+Así que todo esto representa,
+digamos, un conjunto de réplicas
 
 45
 00:02:01,460 --> 00:02:05,156
-de tres nodos el cual
-es en sí, un "shard".
+de tres nodos, el cual
+es en sí un "shard".
 
 46
 00:02:05,156 --> 00:02:06,530
@@ -229,7 +228,7 @@ son todos así.
 49
 00:02:09,800 --> 00:02:14,350
 En esta situación, tienes
-un roúter mongos en frente
+un router mongos en frente
 
 50
 00:02:14,350 --> 00:02:16,020
@@ -324,7 +323,7 @@ ser que no encuentres
 69
 00:03:03,440 --> 00:03:05,420
 el mismo nivel de
-escalabididad en
+escalabilidad en
 
 70
 00:03:05,420 --> 00:03:09,310
@@ -338,8 +337,8 @@ paralelismo para
 
 72
 00:03:11,620 --> 00:03:13,395
-consultas grandes, las
-que llamamos MapReduce.
+consultas grandes, las que
+llamamos trabajos de MapReduce.
 
 73
 00:03:13,395 --> 00:03:15,770
@@ -363,7 +362,7 @@ ver que el rendimiento de
 77
 00:03:23,850 --> 00:03:26,135
 una agregación grande en
-un clúster con "sharding"
+un clúster con Sharding
 
 78
 00:03:26,135 --> 00:03:27,510
@@ -429,8 +428,7 @@ es un poco más vieja.
 
 91
 00:03:57,160 --> 00:03:59,940
-Yo en verdad no recomendaría
-que uses esto.
+En verdad, no recomendaría que uses esto.
 
 92
 00:03:59,940 --> 00:04:03,500
