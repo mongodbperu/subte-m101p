@@ -1,340 +1,334 @@
 1
 00:00:00,000 --> 00:00:00,100
- 
 
 2
 00:00:00,100 --> 00:00:00,380
-OK.
+Bien.
 
 3
 00:00:00,380 --> 00:00:01,963
-Let's talk about
-another type of index
+Hablemos acerca de
+otro tipo de índice
 
 4
 00:00:01,963 --> 00:00:03,930
-that can be very useful
-when dealing with text.
+que puede ser muy útil
+cuando trabajas con texto.
 
 5
 00:00:03,930 --> 00:00:06,510
-And it's called a
-full-text search index
+Se llama índice de búsqueda de
+texto completo (full text search).
 
 6
 00:00:06,510 --> 00:00:08,160
-Full-text search
-was first introduced
+La búsqueda de texto
+completo fue introducida
 
 7
 00:00:08,160 --> 00:00:11,450
-on an experimental
-basis in MongoDB 2.4.
+en MongoDB 2.4 de
+manera experimental.
 
 8
 00:00:11,450 --> 00:00:13,790
-And now it's available and
-for general availability
+Ahora está disponible
+para su uso general
 
 9
 00:00:13,790 --> 00:00:16,090
-in MongoDB 2.6.
+en MongoDB 2.6.
 
 10
 00:00:16,090 --> 00:00:18,610
-So why would you use it, and
-what would you use it for?
+Entonces, ¿por qué
+y para qué lo usarías?
 
 11
 00:00:18,610 --> 00:00:21,230
-Well, let's say you had a
-very large piece of text
+Bueno, supongamos que tuvieras
+un texto bastante extenso
 
 12
 00:00:21,230 --> 00:00:23,470
-that was in a document,
-something like the US
+que está en un documento, algo
+como la Constitución de los EE.UU.,
 
 13
 00:00:23,470 --> 00:00:26,410
-Constitution, which starts out
+que empieza con:
 "We the people of the United
 
 14
 00:00:26,410 --> 00:00:29,340
 States, in order to form
-a more perfect union."
+a more perfect union".
 
 15
 00:00:29,340 --> 00:00:32,580
-Let's say you had that
-document right here in a key
+Supongamos que tuvieras ese
+documento, justo aquí, en una
 
 16
 00:00:32,580 --> 00:00:34,150
-called "mytext."
+clave llamada "mytext".
 
 17
 00:00:34,150 --> 00:00:36,475
-And you had the entire
-preamble to the US Constitution
+Y que tuvieras el preámbulo completo
+de la Constitución de EE.UU.
 
 18
 00:00:36,475 --> 00:00:38,590
-in this key, mytext.
+en esta clave, "mytext".
 
 19
 00:00:38,590 --> 00:00:40,280
-And you wanted to search it.
+Supongamos que quisieras buscarlo.
 
 20
 00:00:40,280 --> 00:00:43,450
-Well, if you search
-just on any given word,
+Bueno, si simplemente
+buscas una palabra dada,
 
 21
 00:00:43,450 --> 00:00:45,240
-then you wouldn't
-get anything back,
+entonces no obtendrías nada,
 
 22
 00:00:45,240 --> 00:00:47,450
-because MongoDB, when
-you search on strings,
+porque MongoDB, cuando
+buscas en cadenas,
 
 23
 00:00:47,450 --> 00:00:49,332
-the entire string
-needs to be there.
+la cadena completa
+necesita estar ahí.
 
 24
 00:00:49,332 --> 00:00:51,540
-So as an alternative, you
-could put every single word
+Así que como alternativa,
+podrías poner cada palabra individual
 
 25
 00:00:51,540 --> 00:00:55,380
-into an array, and then use
-the Set Notation operators
+en un array, y a continuación usar
+los operadores de conjuntos
 
 26
 00:00:55,380 --> 00:00:58,442
-to push things into it, and
-then search for whether or not
+para añadirle cosas,
+y luego buscar si las
 
 27
 00:00:58,442 --> 00:00:59,400
-the words are included.
+palabras están incluidas o no.
 
 28
 00:00:59,400 --> 00:01:01,222
-But that's pretty tedious.
+Pero eso es muy laborioso.
 
 29
 00:01:01,222 --> 00:01:03,680
-And there are certain other
-features that would be missing.
+Y existen algunas otras características
+que echaríamos en falta.
 
 30
 00:01:03,680 --> 00:01:06,270
-So instead, what we
-have is something
+Así que en lugar de esto,
+lo que tenemos es algo
 
 31
 00:01:06,270 --> 00:01:08,510
-called a full-text
-search index, which
+llamado índice de búsqueda
+de texto completo, abreviado
 
 32
 00:01:08,510 --> 00:01:12,410
-is abbreviated "text," which
-will index this entire document
+como "text", que indexará
+este documento entero y cada
 
 33
 00:01:12,410 --> 00:01:14,190
-and every word, much
-in the way an array
+palabra, de la forma
+en que se indexa un array,
 
 34
 00:01:14,190 --> 00:01:17,790
-is indexed, to allow you to
-do queries into the text,
+permitiendo hacer consultas
+dentro del texto,
 
 35
 00:01:17,790 --> 00:01:19,950
-basically applying
-the OR operator,
+básicamente aplicando
+el operador "or",
 
 36
 00:01:19,950 --> 00:01:23,240
-and looking for one
-of several words.
+y buscando una palabra
+entre muchas.
 
 37
 00:01:23,240 --> 00:01:25,590
-So let's go look at
-now a specific case
+Veamos ahora un caso específico
 
 38
 00:01:25,590 --> 00:01:27,350
-and see how it would work.
+para ver cómo funcionaría.
 
 39
 00:01:27,350 --> 00:01:27,850
-All right.
+Bien.
 
 40
 00:01:27,850 --> 00:01:29,780
-We've created a collection
-called Sentences.
+Hemos creado una colección
+llamada "sentences".
 
 41
 00:01:29,780 --> 00:01:33,110
-And this collection has got a
-bunch of mostly just randomly
+Esta colección contiene un
+montón de palabras insertadas
 
 42
 00:01:33,110 --> 00:01:36,380
-inserted words into a Words key.
+aleatoriamente en una clave "words".
 
 43
 00:01:36,380 --> 00:01:38,080
-Now, if I wanted to
-search-- and there
+Ahora, si quisiera
+buscar -- no hay
 
 44
 00:01:38,080 --> 00:01:40,100
-is no tech search index
-on this right now.
+índice de búsqueda de texto
+completo, por ahora.
 
 45
 00:01:40,100 --> 00:01:41,470
-This is a regular collection.
+Esta es una colección normal.
 
 46
 00:01:41,470 --> 00:01:45,030
-If I wanted to search for,
-let's say, dog, shrub, Ruby,
+Si quisiera buscar, por
+ejemplo, "dog shrub ruby.",
 
 47
 00:01:45,030 --> 00:01:45,670
-I could do it.
+podría hacerlo.
 
 48
 00:01:45,670 --> 00:01:47,660
-I could do-- all right.
+Podría buscarlas. Bien.
 
 49
 00:01:47,660 --> 00:01:48,820
-There we go.
+Allá vamos.
 
 50
 00:01:48,820 --> 00:01:50,730
-So I searched for
-dog, shrub, Ruby.
+Busqué "dog shrub ruby.",
 
 51
 00:01:50,730 --> 00:01:54,120
-And I found this document
-with words dog, shrub, Ruby.
+y encontré este documento con
+las palabaras "dog", "shrub", "ruby".
 
 52
 00:01:54,120 --> 00:01:55,390
-But it's very particular.
+Pero es muy particular.
 
 53
 00:01:55,390 --> 00:01:58,010
-If I leave off the
-period, doesn't find it.
+Si elimino el punto,
+no lo encuentra.
 
 54
 00:01:58,010 --> 00:02:01,720
-If I just do dog,
-Ruby, doesn't find it.
+Si simplemente pongo "dog ruby",
+no lo encuentra.
 
 55
 00:02:01,720 --> 00:02:04,660
-And if I just do dog,
-it doesn't find it.
+Y si sólo pongo "dog",
+no lo encuentra.
 
 56
 00:02:04,660 --> 00:02:06,620
-That's not going to
-work too well for me
+Esto no va a funcionar
+muy bien para buscar
 
 57
 00:02:06,620 --> 00:02:09,770
-to search on these
-different words.
+estas palabras distintas.
 
 58
 00:02:09,770 --> 00:02:12,480
-So now, let's add a text index--
-so db.sentences.ensureindex.
+Ahora, añadamos un índice "text",
+"db.sentences.ensureIndex".
 
 59
 00:02:12,480 --> 00:02:15,440
- 
+
 
 60
 00:02:15,440 --> 00:02:20,500
-And now I want to put an
-index on words of type Text.
+Quiero crear un índice
+de tipo "text" sobre "words".
 
 61
 00:02:20,500 --> 00:02:21,380
-There we go.
+Allá vamos.
 
 62
 00:02:21,380 --> 00:02:24,480
-And now when I search
-it-- dog, shrub,
+Ahora, cuando hago la búsqueda
+-- "dog shrub ruby" --
 
 63
 00:02:24,480 --> 00:02:26,240
-Ruby-- it's going to
-work a lot better.
+va a funcionar mucho mejor.
 
 64
 00:02:26,240 --> 00:02:27,910
-So let's do that.
+Hagamos eso.
 
 65
 00:02:27,910 --> 00:02:29,630
-So let's first
-look at the syntax
+Veamos primero la sintaxis
 
 66
 00:02:29,630 --> 00:02:31,560
-for searching a full-text index.
+para buscar en un índice
+de búsqueda de texto completo.
 
 67
 00:02:31,560 --> 00:02:34,130
-The way it works is,
-I have to say $text,
+La forma en que funciona es,
+tengo que poner "$text",
 
 68
 00:02:34,130 --> 00:02:39,350
-and then give a document--
-we had $search-- and then
+y luego pasar un documento
+-- teníamos "$search" -- y luego
 
 69
 00:02:39,350 --> 00:02:40,350
-what I'm looking for.
+lo que estamos buscando.
 
 70
 00:02:40,350 --> 00:02:43,170
-So we saw that, for instance,
-dog did not work before.
+Vimos que, por ejemplo,
+"dog" no funcionó antes.
 
 71
 00:02:43,170 --> 00:02:46,420
-Let's just look for dog
-now, and see if that works.
+Busquemos ahora sólo "dog"
+y veamos si funciona.
 
 72
 00:02:46,420 --> 00:02:47,130
-There we go.
+Allá vamos.
 
 73
 00:02:47,130 --> 00:02:47,680
@@ -342,151 +336,150 @@ OK.
 
 74
 00:02:47,680 --> 00:02:49,650
-So now I searched for
-just the word "dog,"
+Ahora busqué sólo
+la palabra "dog"
 
 75
 00:02:49,650 --> 00:02:52,510
-and I was able to get all of
-these back that have dog, moss,
+y pude recuperar todos estos
+documentos que contienen
 
 76
 00:02:52,510 --> 00:02:54,010
-Ruby, dog, shrub, Ruby.
+"dog moss ruby",
+"dog shrub ruby".
 
 77
 00:02:54,010 --> 00:02:56,390
-And then just to show
-you again, when I just
+A continuación, sólo para que lo
+veas de nuevo, cuando busco
 
 78
 00:02:56,390 --> 00:02:59,750
-search for dog using a
-regular search of words,
+"dog" usando una búsqueda
+normal sobre "words",
 
 79
 00:02:59,750 --> 00:03:01,580
-I don't get anything.
+no obtengo nada.
 
 80
 00:03:01,580 --> 00:03:03,684
-But if I search using
-a text index-- I'm
+Pero si busco usando
+un índice "text" -- voy
 
 81
 00:03:03,684 --> 00:03:05,100
-going to show you
-the syntax right
+a enseñarte la
+sintaxis justo aquí --
 
 82
 00:03:05,100 --> 00:03:07,700
-here-- I search
-using a text index
+busco usando un índice "text"
 
 83
 00:03:07,700 --> 00:03:10,860
-by specifying $text
-and then $search,
+especificando "$text" y
+luego "$search", y a continuación
 
 84
 00:03:10,860 --> 00:03:13,811
-and then what I'm looking for--
-dog-- I do get documents back.
+lo que estoy buscando -- "dog" --
+y obtengo los documentos.
 
 85
 00:03:13,811 --> 00:03:15,810
-I get all these documents
-back, because they all
+Obtengo todos estos documentos,
+porque todos ellos contienen
 
 86
 00:03:15,810 --> 00:03:17,080
-have a dog in them.
+"dog".
 
 87
 00:03:17,080 --> 00:03:22,425
-And if I also say moss, I get
-all of these back as well.
+Y si además pongo "moss", también
+obtengo todos estos documentos.
 
 88
 00:03:22,425 --> 00:03:25,750
-And if I say moss, Ruby, I'm
-going to get all of these back.
+Y si pongo "moss ruby", voy
+a obtener todos estos documentos.
 
 89
 00:03:25,750 --> 00:03:27,810
-And it's quite flexible.
+Es bastante flexible.
 
 90
 00:03:27,810 --> 00:03:30,470
-Putting in a period
-makes no difference.
+Incluir un punto no
+cambia el comportamiento.
 
 91
 00:03:30,470 --> 00:03:32,620
-Capitalization
-makes no difference.
+La capitalización
+tampoco afecta.
 
 92
 00:03:32,620 --> 00:03:36,330
-So it's going to also ignore
-certain stop words that are not
+Así que también va a ignorar
+ciertas palabras de parada que no
 
 93
 00:03:36,330 --> 00:03:38,780
-considered to be significant,
-like "a" and "the"
+son consideradas significantes,
+como "a" y "the"
 
 94
 00:03:38,780 --> 00:03:40,240
-in the English language.
+en inglés.
 
 95
 00:03:40,240 --> 00:03:42,150
-So that's really
-very useful if I
+Estos es realmente
+muy útil si quiero
 
 96
 00:03:42,150 --> 00:03:44,590
-want to search for a
-bunch of different words,
+buscar un montón de
+palabras diferentes
 
 97
 00:03:44,590 --> 00:03:47,650
-and essentially apply
-a logical OR operator.
+y esencialmente aplicar
+un operador lógico "or".
 
 98
 00:03:47,650 --> 00:03:49,770
-Now there's one other
-thing I wanted to show you,
+Hay otra cosa más que
+quería enseñarte,
 
 99
 00:03:49,770 --> 00:03:52,720
-which is how you can get
-back these in an order that
+y es cómo puedes obtener
+todo esto en un orden que
 
 100
 00:03:52,720 --> 00:03:56,240
-indicates how good a match
-MongoDB believes there is.
+indique cómo de buena cree
+MongoDB que es la coincidencia.
 
 101
 00:03:56,240 --> 00:03:58,040
-So let's look for one of these.
+Busquemos uno de estos.
 
 102
 00:03:58,040 --> 00:04:00,830
-So I'm going to show
-you the syntax for this.
+Voy a enseñarte la
+sintaxis de este.
 
 103
 00:04:00,830 --> 00:04:01,400
-All right.
+Bien.
 
 104
 00:04:01,400 --> 00:04:04,120
-So let's look for
-dog, tree, obsidian.
+Busquemos "dog tree obsidian".
 
 105
 00:04:04,120 --> 00:04:05,100
@@ -494,154 +487,152 @@ OK.
 
 106
 00:04:05,100 --> 00:04:06,210
-Dog, tree, obsidian.
+"dog tree obsidian".
 
 107
 00:04:06,210 --> 00:04:07,901
-Let me go back and change this.
+Permíteme que vuelva a cambiar esto.
 
 108
 00:04:07,901 --> 00:04:09,650
-And we can see the
-document right up there
+Podemos ver el
+documento justo aquí
 
 109
 00:04:09,650 --> 00:04:11,210
-with dog, tree, obsidian.
+con "dog tree obsidian".
 
 110
 00:04:11,210 --> 00:04:13,330
-I mean the best match
-for dog, tree, obsidian
+Quiero decir que la mejor coincidencia
+para "dog tree obsidian"
 
 111
 00:04:13,330 --> 00:04:15,157
-should be dog, tree,
-obsidian document.
+debería ser el documento con
+"dog tree obsidian".
 
 112
 00:04:15,157 --> 00:04:16,990
-But we're going to do
-something special now.
+Pero ahora vamos
+a hacer algo especial.
 
 113
 00:04:16,990 --> 00:04:19,769
-We're going to
-project a Score field.
+Vamos a proyectar
+el campo "score".
 
 114
 00:04:19,769 --> 00:04:22,240
-And we're going to use a
-special $meta operator,
+Y vamos a usar un
+operador especial, "$meta",
 
 115
 00:04:22,240 --> 00:04:24,760
-and then take the tech score,
-which is something that's
+y luego tomaremos el "textScore",
+que es algo que se calcula
 
 116
 00:04:24,760 --> 00:04:27,420
-internally computed as it
-runs through this tech search.
+internamente a medida que se ejecuta
+la búsqueda de texto completo.
 
 117
 00:04:27,420 --> 00:04:29,360
-And we're going to get
-that text score out.
+Y vamos a recuperar
+ese campo "textScore".
 
 118
 00:04:29,360 --> 00:04:31,574
-And then, we're going to
-sort by that tech score.
+Luego, vamos a ordenar
+por ese "textScore".
 
 119
 00:04:31,574 --> 00:04:33,490
-And we're not going to
-test you on the syntax,
+Y no vamos a preguntarte
+sobre la sintaxis,
 
 120
 00:04:33,490 --> 00:04:35,680
-but I want you know it
-exists if you ever need it.
+pero quiero que sepas que existe,
+por si alguna vez lo necesitas.
 
 121
 00:04:35,680 --> 00:04:38,680
-And if you do that,
-you'll see that now it's
+Si haces eso,
+verás ahora que
 
 122
 00:04:38,680 --> 00:04:42,920
-ranking the documents in
-order of their tech score.
+está ordenando los documentos
+según su campo "textScore".
 
 123
 00:04:42,920 --> 00:04:45,380
-And that if you're
-searching for dog,
+Y si estás buscando
 
 124
 00:04:45,380 --> 00:04:49,160
-tree, obsidian, the one with
-the highest score, a score of 2,
+"dog tree obsidian", el documento
+con mayor "score", 2, es un
 
 125
 00:04:49,160 --> 00:04:51,680
-is a document with dog, tree,
-obsidian-- all three words
+documento con "dog tree
+obsidian" -- contiene las
 
 126
 00:04:51,680 --> 00:04:52,430
-in it.
+tres palabras.
 
 127
 00:04:52,430 --> 00:04:57,240
-Very useful if you want to
-find the best match for, let's
+Muy útil si quieres encontrar
+la mejor coincidencia para,
 
 128
 00:04:57,240 --> 00:05:00,030
-say, a document that
-contains all the words.
+por ejemplo, un documento que
+contenga todas las palabras.
 
 129
 00:05:00,030 --> 00:05:00,530
-All right.
+Bien.
 
 130
 00:05:00,530 --> 00:05:03,490
-So now it's time for a quiz.
+Hora de hacer un cuestionario.
 
 131
 00:05:03,490 --> 00:05:05,070
-Let's say you
-create a text index
+Supongamos que
+creas un índice "text"
 
 132
 00:05:05,070 --> 00:05:07,800
-on the title field of
-the movies' collection.
+sobre el campo "title" de
+la colección "movies".
 
 133
 00:05:07,800 --> 00:05:09,630
-You imagine having a
-movies' collection.
+Imagina que tienes una
+colección "movies".
 
 134
 00:05:09,630 --> 00:05:13,310
-And then perform the following
-text search-- db.movies.find,
+Luego realiza la siguiente
+búsqueda de texto
 
 135
 00:05:13,310 --> 00:05:16,276
-$text, $search, "Big Lebowski."
+"db.movies.find({$text:
+{$search: 'Big Lebowski'}})".
 
 136
 00:05:16,276 --> 00:05:17,650
-Which of these
-documents might be
+¿Cuáles de estos documentos
+podrían ser recuperados si
 
 137
 00:05:17,650 --> 00:05:20,990
-returned if all these documents
-are in the collection?
-
+todos ellos están en la colección?
