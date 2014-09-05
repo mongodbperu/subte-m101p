@@ -5,12 +5,12 @@
     },
     {
         "concept": "Simple Aggregation Example",
-        "lecture": "T2BX-LZOYsY",
+        "lecture": "DQBXCsjeO5c",
         "answer": "Nt0cQI86G40"
     },
     {
         "concept": "The Aggregation Pipeline",
-        "lecture": "WazN2DS8s8c",
+        "lecture": "AuO8CEkTG6Y",
         "answer": "mcnGfI69rRc"
     },
     {
@@ -63,22 +63,27 @@
         "answer": "J-asAAEHJ0Q"
     },
     {
-        "concept": "$project",
+        "concept": "Using $project",
         "lecture": "yi-ySSNO8Ao",
         "answer": "IGN0lXg-kJ0"
     },
     {
-        "concept": "$match",
-        "lecture": "qohLRL8k0So",
+        "concept": "Using $match",
+        "lecture": "7RtHG90Hrbw",
         "answer": "CHGiumXE-pU"
     },
     {
-        "concept": "$sort",
+        "concept": "Using $text",
+        "lecture": "LpDSge_GbpI",
+        "answer": "n7VzyQpZAAw"
+    },
+    {
+        "concept": "Using $sort",
         "lecture": "TW1KByIuns4",
         "answer": "-cghyd6AHHA"
     },
     {
-        "concept": "$limit and $skip",
+        "concept": "Using $limit and $skip",
         "lecture": "AdxoEzVqdtc",
         "answer": "joRw-fqCIWA"
     },
@@ -88,7 +93,7 @@
         "answer": "WBWb0ssDVeY"
     },
     {
-        "concept": "$unwind",
+        "concept": "Using $unwind",
         "lecture": "E4aYOQPeQvI",
         "answer": "Xfl3m7wz8ts"
     },
@@ -101,6 +106,20 @@
         "concept": "Double $unwind",
         "lecture": "sgnidsHyFeU",
         "answer": "pziFq1oVRI4"
+    },
+    {
+        "concept": "Aggregation Options",
+        "lecture": "0CGNVacCrY8",
+        "answer": "z0X6jRnpaJI"
+    },
+    {
+        "concept": "Python and Aggregation Results",
+        "lecture": "GqdcFE6kNBs",
+        "answer": "z1XiFcfEVDw"
+    },
+    {
+        "concept": "Limitations of Aggregation Framework",
+        "lecture": "U_gRSxEq3c0"
     },
     {
         "concept": "Mapping between SQL and Aggregation",

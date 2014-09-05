@@ -19,7 +19,7 @@
     },
     {
         "concept": "Multikey Indexes",
-        "lecture": "JO_puGONaLc",
+        "lecture": "8DqRASZGu9k",
         "answer": "CeE6hZ90Uzk"
     },
     {
@@ -38,8 +38,8 @@
     },
     {
         "concept": "Index creation options, sparse",
-        "lecture": "s4sYwLndtTI",
-        "answer": "_MJYRlianas"
+        "lecture": "Gi4uZXLh0Ks",
+        "answer": "CHh9JRMdTb8"
     },
     {
         "concept": "Index creation options, background",
@@ -85,13 +85,19 @@
         "lecture": "1sADN-NKwhY"
     },
     {
-        "concept": "Geospacial Indexes",
+        "concept": "Geospatial Indexes",
         "lecture": "UKUDYqNVL6I",
         "answer": "hVLa0H7Oe98"
     },
     {
-        "concept": "Geospacial Spherical",
-        "lecture": "vY3_H4MzkIY"
+        "concept": "Geospatial Spherical",
+        "lecture": "pULU4DVsUWQ",
+        "answer": "YtRnCyKS1VE"
+    },
+    {
+        "concept": "Text Searches in MongoDB",
+        "lecture": "l_2kwrIlZ_g",
+        "answer": "7OK0e1gftjg"
     },
     {
         "concept": "Logging Slow Queries",
