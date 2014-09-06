@@ -42,7 +42,7 @@ en MongoDB 2.6.
 10
 00:00:16,090 --> 00:00:18,610
 Entonces, ¿por qué
-y para qué lo usarías?
+y para qué la usarías?
 
 11
 00:00:18,610 --> 00:00:21,230
@@ -131,7 +131,7 @@ Pero eso es muy laborioso.
 29
 00:01:01,222 --> 00:01:03,680
 Y existen algunas otras características
-que echaríamos en falta.
+que echaríamos de menos.
 
 30
 00:01:03,680 --> 00:01:06,270
@@ -283,7 +283,7 @@ Allá vamos.
 62
 00:02:21,380 --> 00:02:24,480
 Ahora, cuando hago la búsqueda
--- "dog shrub ruby" --
+"dog shrub ruby"
 
 63
 00:02:24,480 --> 00:02:26,240
@@ -423,7 +423,7 @@ tampoco afecta.
 92
 00:03:32,620 --> 00:03:36,330
 Así que también va a ignorar
-ciertas palabras de parada que no
+ciertas "stop words" que no
 
 93
 00:03:36,330 --> 00:03:38,780
@@ -436,7 +436,7 @@ en inglés.
 
 95
 00:03:40,240 --> 00:03:42,150
-Estos es realmente
+Esto es realmente
 muy útil si quiero
 
 96
@@ -461,7 +461,7 @@ todo esto en un orden que
 
 100
 00:03:52,720 --> 00:03:56,240
-indique cómo de buena cree
+indique qué tan buena cree
 MongoDB que es la coincidencia.
 
 101
