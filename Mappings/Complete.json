@@ -740,6 +740,10 @@
         "answer": "pziFq1oVRI4"
     },
     {
+        "concept": "Using $out",
+        "lecture": "b1dfUSrTPto"
+    },
+    {
         "concept": "Aggregation Options",
         "lecture": "0CGNVacCrY8",
         "answer": "z0X6jRnpaJI"
@@ -750,20 +754,16 @@
         "answer": "z1XiFcfEVDw"
     },
     {
-        "concept": "Limitations of Aggregation Framework",
-        "lecture": "U_gRSxEq3c0"
-    },
-    {
         "concept": "Mapping between SQL and Aggregation",
         "lecture": "auL2R0XKlyM"
     },
     {
-        "concept": "Some common SQL queries",
+        "concept": "Some Common SQL examples",
         "lecture": "ep2gLSR6C0U"
     },
     {
         "concept": "Limitations of Aggregation Framework",
-        "lecture": "8BQzKXI-_wE"
+        "lecture": "U_gRSxEq3c0"
     },
     {
         "concept": "HW 5.1",
