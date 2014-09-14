@@ -1,14 +1,14 @@
 ==========
-Change log
+Changelog
 ==========
 
-Release ``Sept2014``
+Release ``Sep2014``
 ====================
 
-*Coming soon*
+*Coming Soon*
 
-Following the release version 2.6, several files were added or modified.
-Here is the list of files added and or modified in August 2014 in
+Following the release of version 2.6, several files were added or modified.
+Here is the list of files added and/or modified in August 2014 in
 preparation for the next course offering.
 
 :**Week 1**:
@@ -40,7 +40,7 @@ preparation for the next course offering.
     #. 25b-Python_and_Aggregation_Results-Answer
     #. 28-Limitations_of_Aggregation_Framework-Lecture
 
-Release ``Sept2013``
+Release ``Sep2013``
 ====================
 
 *October 21, 2013*
