@@ -7,7 +7,7 @@ Release ``Sept2014``
 
 *September 14, 2014*
 
-Following the release of version 2.6, several files were added or modified.
+Following the release of MongoDB 2.6, several files were added or modified.
 Here is the list of files added and/or modified in August 2014 in
 preparation for the next course offering.
 
