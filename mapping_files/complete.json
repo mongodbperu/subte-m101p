@@ -10,51 +10,47 @@
         "answer": "h80NwJJZM-g"
     },
     {
-        "concept": "Mongo relative to relational",
+        "concept": "MongoDB Relative to Relational",
         "lecture": "-KIC1LXxcGM",
         "answer": "IAvnMgvHuLw"
     },
     {
-        "concept": "Overview of Building an app with Mongo",
+        "concept": "Overview of Building an App with MongoDB",
         "lecture": "_e0J06elxb8"
     },
     {
-        "concept": "Quick introduction to the Mongo Shell",
+        "concept": "Quick Introduction to the Mongo Shell",
         "lecture": "f-lyGAMnNY4",
         "answer": "YQTqdLe3W4M"
     },
     {
-        "concept": "JSON introduced through the Mongo Shell",
+        "concept": "Introduction to JSON",
         "lecture": "2jsJeH8q6YM",
         "answer": "uWcOsdV4Iz4"
     },
     {
         "concept": "Installing MongoDB (mac)",
-        "lecture": "pnVQcEt5_vw"
+        "lecture": "_WJ8m5QHvwc"
     },
     {
         "concept": "Installing MongoDB (windows)",
-        "lecture": "hX5louVryOQ"
+        "lecture": "sBdaRlgb4N8"
     },
     {
-        "concept": "Installing Bottle and Python (mac)",
-        "lecture": "vxTN6KFegLg"
-    },
-    {
-        "concept": "Installing Python (Windows)",
-        "lecture": "njfPdZTmTrI"
-    },
-    {
-        "concept": "Installing Bottle.py (Windows)",
-        "lecture": "OhEpXjL0vt8"
-    },
-    {
-        "concept": "Installing PyMongo (mac)",
+        "concept": "Application Architecture Overview",
         "lecture": "vHmoNiXUBQs"
     },
     {
-        "concept": "Installing PyMongo (pc)",
-        "lecture": "hOEV-q176kc"
+        "concept": "Installing Python (Windows)",
+        "lecture": "kQpJYH_g_Ag"
+    },
+    {
+        "concept": "Introduction to Bottle Web Framework",
+        "lecture": "FMBHl_vTZh4"
+    },
+    {
+        "concept": "Installing PyMongo",
+        "lecture": "vSA7S2xoOn8"
     },
     {
         "concept": "Hello World, Mongo Style",
@@ -97,7 +93,7 @@
         "answer": "WJblHPsp1p4"
     },
     {
-        "concept": "Intro to Schema design",
+        "concept": "Introduction to Schema design",
         "lecture": "6XE3wZCPiZ8",
         "answer": "wiwOEG_6ojs"
     },
@@ -107,7 +103,7 @@
         "answer": "PuyAdxxzSk0"
     },
     {
-        "concept": "Python lists",
+        "concept": "Python Lists",
         "lecture": "H1BOYfbnPq8",
         "answer": "8WdnrhlfSLE"
     },
@@ -117,75 +113,66 @@
         "answer": "ZSraFzkEDzs"
     },
     {
-        "concept": "Python lists, slice operator",
+        "concept": "Python Lists, Slice Operator",
         "lecture": "vNyIZNWK0rw",
         "answer": "vE498xAFoGc"
     },
     {
-        "concept": "Python lists, inclusion",
+        "concept": "Python Lists, Inclusion",
         "lecture": "QXUMUvHB2Ws",
         "answer": "LdA0__D4zLI"
     },
     {
-        "concept": "Python: working with dicts",
+        "concept": "Python, Working with Dicts",
         "lecture": "_AbCyE0uKmE",
         "answer": "edEYrBoa7Ao"
     },
     {
-        "concept": "Python: dicts and lists together",
+        "concept": "Python: Dicts and Lists Together",
         "lecture": "9k1XvuoGdrk",
         "answer": "Gqb-OUFcQas"
     },
     {
-        "concept": "Python: for loops, with lists",
+        "concept": "Python: for Loops, with Lists",
         "lecture": "zMqLCtf3ML4",
         "answer": "ohA78_D5Rn8"
     },
     {
-        "concept": "Python: for loops, with dicts",
+        "concept": "Python: for Loops, with Dicts",
         "lecture": "HHTICY6rUGI",
         "answer": "OnkPdMP1fVc"
     },
     {
-        "concept": "Python: combining dicts and lists",
-        "lecture": "ome7jDN_lH0",
-        "answer": "Y6NKd6xUC6M"
-    },
-    {
-        "concept": "Python: while loops",
+        "concept": "Python: while Loops",
         "lecture": "TEdFAheS5UE"
     },
     {
-        "concept": "Python: function calls",
+        "concept": "Python: Function Calls",
         "lecture": "PizwcirYuGY"
     },
     {
-        "concept": "Python: exception handing",
-        "lecture": "nrZYqF9KwaU"
+        "concept": "Python: Exception Handling",
+        "lecture": "tA9MN7SEp94"
     },
     {
-        "concept": "Bottle framework: Url handlers",
+        "concept": "Bottle Framework: URL Handlers",
         "lecture": "x5TlvbWxjL0"
     },
     {
-        "concept": "Bottle framework: using views",
+        "concept": "Bottle Framework: Using Views",
         "lecture": "GUFDtACjFcc"
     },
     {
-        "concept": "Bottle framework: handling form content",
+        "concept": "Bottle Framework: Handling Form Content",
         "lecture": "sUUT-gIS5ik"
     },
     {
-        "concept": "Bottle framework: using cookies",
+        "concept": "Bottle Framework: Using Cookies",
         "lecture": "Wk_1Lz_-gk4"
     },
     {
-        "concept": "The Pymongo driver",
-        "lecture": "AUk17lCRRd4"
-    },
-    {
-        "concept": "Pymongo exception processing",
-        "lecture": "quHoMsHQnCw"
+        "concept": "Pymongo: Exception Processing",
+        "lecture": "PQcw61hVTJM"
     },
     {
         "concept": "Homework 1.1",
@@ -220,175 +207,181 @@
         "answer": "4hsTQrMs-xY"
     },
     {
-        "concept": "Mongo shell, inserting docs",
+        "concept": "Inserting Docs",
         "lecture": "RbRRvBLl7Qo",
         "answer": "4eqpL7ETQZQ"
     },
     {
-        "concept": "Mongo shell, introduction to findOne",
+        "concept": "Introduction to findOne",
         "lecture": "w9V0fJsDwbQ",
         "answer": "uN_wf5a3BE4"
     },
     {
-        "concept": "Mongo shell, introduction to find",
+        "concept": "Introduction to find",
         "lecture": "8kKfFK6a0Ak"
     },
     {
-        "concept": "Mongo shell, querying using field selection",
+        "concept": "Querying Using field Selection",
         "lecture": "UIg86QjSoyY",
         "answer": "ouHFZgtEAuU"
     },
     {
-        "concept": "Mongo shell, querying using $gt and $lt",
+        "concept": "Querying Using $gt and $lt",
         "lecture": "FHLrz4VGzkg",
         "answer": "tY7I1l8JdDI"
     },
     {
-        "concept": "Mongo shell, inequalities on strings",
+        "concept": "Inequalities on Strings",
         "lecture": "imCCKOevU3c",
         "answer": "ZRWT0lcHsoU"
     },
     {
-        "concept": "Mongo shell, using regexes, $exists, $type",
+        "concept": "Using regexes, $exists, $type",
         "lecture": "lI-jhqYf1JY",
         "answer": "yMi7PwOoqXY"
     },
     {
-        "concept": "Mongo shell, using $or",
+        "concept": "Using $or",
         "lecture": "BW5ElNCRZps",
         "answer": "diimYkvr374"
     },
     {
-        "concept": "Mongo shell, using $and",
+        "concept": "Using $and",
         "lecture": "hYk7pjgjjzc",
         "answer": "oIkSajy8NLw"
     },
     {
-        "concept": "Mongo shell, querying inside arrays",
+        "concept": "Querying Inside Arrays",
         "lecture": "jvEqwW75Bus",
         "answer": "gwECaa4N9Xc"
     },
     {
-        "concept": "Mongo shell, $in and $all",
+        "concept": "Using $in and $all",
         "lecture": "QU2NrkviORE",
         "answer": "6O1UGHwuEww"
     },
     {
-        "concept": "Mongo shell, dot notation",
+        "concept": "Queries with Dot Notation",
         "lecture": "NrjFECIfwqk",
         "answer": "yiEjK_V008s"
     },
     {
-        "concept": "Mongo shell, cursors",
+        "concept": "Querying, Cursors",
         "lecture": "3jA6iFSEJOI",
         "answer": "djzpK7UIO94"
     },
     {
-        "concept": "Mongo shell, counting results",
+        "concept": "Counting Results",
         "lecture": "eKD5bVmNQMI",
         "answer": "Uozp0diXOc8"
     },
     {
-        "concept": "Mongo shell, wholesale updating of a document",
+        "concept": "Wholesale Updating of a Document",
         "lecture": "EBCk6W7x-OY",
         "answer": "pwnRUdtI8lY"
     },
     {
-        "concept": "Mongo shell, using the $set command",
+        "concept": "Using the $set Command",
         "lecture": "9iMX2KxYAd8",
         "answer": "F6ZY_VVAXZ8"
     },
     {
-        "concept": "Mongo shell, unset commands",
+        "concept": "Using the $unset Command",
         "lecture": "OBX9q4kqweA",
         "answer": "edqDAKMQTv4"
     },
     {
-        "concept": "mongo shell, $push, $pop, $pull, $pushAll, $pullAll, $addToSet",
+        "concept": "Using $push, $pop, $pull, $pushAll, $pullAll, $addToSet",
         "lecture": "iHSwyr7bfQs",
         "answer": "bGbiIGEM0FY"
     },
     {
-        "concept": "mongo shell, upserts",
+        "concept": "Upserts",
         "lecture": "dfvwrlVODGc",
         "answer": "Loo5XKQAryM"
     },
     {
-        "concept": "multi-update",
+        "concept": "Multi-update",
         "lecture": "8uNNDduO09w",
         "answer": "B1DqIls06Tc"
     },
     {
-        "concept": "Mongo shell, removing data",
+        "concept": "Removing Data",
         "lecture": "PMhGgc3HCn4",
         "answer": "T3wcuZHm6Ac"
     },
     {
-        "concept": "getLastError",
-        "lecture": "a6o0TQjUMug"
+        "concept": "Pymongo: find, find_one and Cursors",
+        "lecture": "KfW5Z0YUaoI",
+        "answer": "qgTR2g6rLy0"
     },
     {
-        "concept": "Pymongo, find, find_one and cursors",
-        "lecture": "kXu5V3MlFI0",
-        "answer": "d-EOPb3_YVI"
+        "concept": "Pymongo: Projecting Results from Find",
+        "lecture": "ExZjWmohgXs",
+        "answer": "vdfnsJsmH3M"
     },
     {
-        "concept": "Pymongo, using field selection",
-        "lecture": "pCRMWfF_SC8",
-        "answer": "vMNLxyQ47BM"
+        "concept": "Pymongo: Using $gt and $lt",
+        "lecture": "0NawlrrMwwc",
+        "answer": "b_flsJmmNos"
     },
     {
-        "concept": "Pymongo, using $gt and $lt",
-        "lecture": "p5ltB0g3lUo",
-        "answer": "2kzdSZmJ8jM"
+        "concept": "Importing from Reddit",
+        "lecture": "oVmoi6fS4X8"
     },
     {
-        "concept": "Importing Reddit",
-        "lecture": "dd49ULz7y6Q"
+        "concept": "Pymongo: Using a regex",
+        "lecture": "9ubN7ksxq9I"
     },
     {
-        "concept": "Pymongo, using a regex",
-        "lecture": "UIes2_2rBWE"
-    },
-    {
-        "concept": "Pymongo, using dot notation",
-        "lecture": "kiJRqBbCSGk",
-        "answer": "5mpm64vncL0"
-    },
-    {
-        "concept": "Pymongo, skip, limit and sort",
+        "concept": "Pymongo: Sort, Skip and Limit",
         "lecture": "F1bSsbt5Qfk",
         "answer": "cUNoJN6Ii-I"
     },
     {
-        "concept": "Pymongo, sorting, final thoughts",
+        "concept": "Pymongo: Sort, Final Thoughts",
         "lecture": "hwUg8r7a-d8"
     },
     {
-        "concept": "Pymongo, inserting",
-        "lecture": "1buD4Ern9rA",
-        "answer": "pEMyrKDzgFg"
+        "concept": "Pymongo: insert_one",
+        "lecture": "BB06dDrQ4qM",
+        "answer": "wRrj2H9TpPs"
     },
     {
-        "concept": "Pymongo, updating",
-        "lecture": "u6iRURy8rY0",
-        "answer": "Cyk5uzO-65w"
+        "concept": "Pymongo: insert_many",
+        "lecture": "GT-vmX-bgVs",
+        "answer": "RGPWKa02Lzc"
     },
     {
-        "concept": "Pymongo, upserts",
-        "lecture": "hcGo9lV9HwI",
-        "answer": "tMEohyZX0cI"
+        "concept": "Pymongo: Updating",
+        "lecture": "pXF-dHnRdpc",
+        "answer": "hj6VDjj8nj4"
     },
     {
-        "concept": "Pymongo, find and modify",
-        "lecture": "rQ8Oml5e6PI"
+        "concept": "Pymongo: Updating Data using Replace",
+        "lecture": "ph2a85eS04g",
+        "answer": "3Ot0VtD6KVw"
     },
     {
-        "concept": "Blog, User Interface",
+        "concept": "Pymongo: Upserts",
+        "lecture": "rDVV6x8poec",
+        "answer": "wo-awXZa7zM"
+    },
+    {
+        "concept": "Pymongo: Removing Data",
+        "lecture": "CT_AA1A-Vj8",
+        "answer": "36y0BSBJ88M"
+    },
+    {
+        "concept": "Pymongo: find_and_modify",
+        "lecture": "ujJzu8Um8QE"
+    },
+    {
+        "concept": "Blog: User Interface",
         "lecture": "QA80WBg0hLg"
     },
     {
-        "concept": "Blog, Session Management",
+        "concept": "Blog: Session Management",
         "lecture": "BzVvoyF8mBo"
     },
     {
@@ -491,88 +484,90 @@
     },
     {
         "concept": "Introduction to Week 4",
-        "lecture": "8qBXI8ggV88"
+        "lecture": "GGMfM3pYK_4"
+    },
+    {
+        "concept": "Storage Engines: Introduction",
+        "lecture": "YvK7I9fYpK4",
+        "answer": "SR76BjJl-PQ"
+    },
+    {
+        "concept": "Storage Engines: MMAPv1",
+        "lecture": "os3591KviNM",
+        "answer": "P_sytnBrK_Y"
+    },
+    {
+        "concept": "Storage Engines: WiredTiger",
+        "lecture": "aNsugW7r3mM",
+        "answer": "dmnPb-hhVHM"
     },
     {
         "concept": "Indexes",
-        "lecture": "kkIAqyqYOCc",
-        "answer": "5Z6V8mJ8eS4"
+        "lecture": "U3iWPF5jP-g",
+        "answer": "_0ASuXEcK0c"
     },
     {
         "concept": "Creating indexes",
-        "lecture": "tRqenx45UAM",
-        "answer": "h1VdrcOjFm8"
+        "lecture": "xi2gtzZez6Q",
+        "answer": "9FUOetT45AM"
     },
     {
-        "concept": "Discovering indexes",
-        "lecture": "hH7kYu_-FXg"
+        "concept": "Discovering (and Deleting) Indexes",
+        "lecture": "dX49IcmTrGA"
     },
     {
         "concept": "Multikey Indexes",
-        "lecture": "8DqRASZGu9k",
-        "answer": "CeE6hZ90Uzk"
+        "lecture": "_NGwn_X82Dw",
+        "answer": "caSP0dO02iU"
     },
     {
-        "concept": "Multikey Continued",
-        "lecture": "mPSGG2p33RQ"
+        "concept": "Dot Notation and Multikey",
+        "lecture": "wT0_ktAZbBg",
+        "answer": "G6rR2xYEBVA"
     },
     {
-        "concept": "Index creation options, unique",
-        "lecture": "764mQG1iL8E",
-        "answer": "cCO7b-fcj0I"
+        "concept": "Index Creation Option, Unique",
+        "lecture": "D-Ra5TEaaL4",
+        "answer": "ia6dzcj-ZMk"
     },
     {
-        "concept": "Index creation options, remove dups",
-        "lecture": "YJaWPXNGvoU",
-        "answer": "s46y1rJAvVs"
+        "concept": "Index Creation, Sparse",
+        "lecture": "ZznHByqtTMA",
+        "answer": "yV_KEDEzOyc"
     },
     {
-        "concept": "Index creation options, sparse",
-        "lecture": "Gi4uZXLh0Ks",
-        "answer": "CHh9JRMdTb8"
-    },
-    {
-        "concept": "Index creation options, background",
-        "lecture": "28wCvoXmY7A",
-        "answer": "aNSHjG_LnSc"
+        "concept": "Index Creation, Background",
+        "lecture": "AchmKNj2qhw",
+        "answer": "pKOXJSEwNyc"
     },
     {
         "concept": "Using Explain",
-        "lecture": "r5YeICVzDjQ",
-        "answer": "Gpj_s49H_rQ"
+        "lecture": "liXIn8CnJaI",
+        "answer": "YMkyhFhYmmk"
     },
     {
-        "concept": "When is an index used?",
-        "lecture": "Lwms58Y_3Jc",
-        "answer": "imHqsvqx-GA"
+        "concept": "Explain: Verbosity",
+        "lecture": "WxXVun6bZ20",
+        "answer": "qBFFnnoK1NA"
     },
     {
-        "concept": "How large is your index?",
-        "lecture": "oywrqWNY46s",
+        "concept": "Covered Queries",
+        "lecture": "QyV79jsSJ9Y",
+        "answer": "MxHsmUXjkKo"
+    },
+    {
+        "concept": "When is an Index Used?",
+        "lecture": "JyQlxDc549c"
+    },
+    {
+        "concept": "How Large is Your Index?",
+        "lecture": "wjA0eo_lihg",
         "answer": "mXHUIghDkFw"
     },
     {
-        "concept": "Index Cardinality",
+        "concept": "Number of Index Entries",
         "lecture": "xiujksUfzUA",
         "answer": "4UW_oMSswTo"
-    },
-    {
-        "concept": "Index Selectivity",
-        "lecture": "On8HHR1agsI",
-        "answer": "BT95omWR2nw"
-    },
-    {
-        "concept": "Hinting an index",
-        "lecture": "ksOn-SkaIcg",
-        "answer": "WHc_qRSxGM0"
-    },
-    {
-        "concept": "Hinting in Pymongo",
-        "lecture": "dlKcfo7WtGU"
-    },
-    {
-        "concept": "Efficiency of Index use",
-        "lecture": "1sADN-NKwhY"
     },
     {
         "concept": "Geospatial Indexes",
@@ -585,9 +580,17 @@
         "answer": "YtRnCyKS1VE"
     },
     {
-        "concept": "Text Searches in MongoDB",
-        "lecture": "l_2kwrIlZ_g",
+        "concept": "Text Indexes",
+        "lecture": "nLau5Fx9LC8",
         "answer": "7OK0e1gftjg"
+    },
+    {
+        "concept": "Efficiency of Index use",
+        "lecture": "JJmIf0pn100"
+    },
+    {
+        "concept": "Efficiency of Index use. Example",
+        "lecture": "g032EW67SRA"
     },
     {
         "concept": "Logging Slow Queries",
@@ -604,7 +607,8 @@
     },
     {
         "concept": "Mongostat",
-        "lecture": "eLWQO_AJmrI"
+        "lecture": "E2aDTSes3Wc",
+        "answer": "etOEgMTFKW0"
     },
     {
         "concept": "Sharding Overview",
