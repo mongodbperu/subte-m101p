@@ -10,51 +10,47 @@
         "answer": "h80NwJJZM-g"
     },
     {
-        "concept": "Mongo relative to relational",
+        "concept": "MongoDB Relative to Relational",
         "lecture": "-KIC1LXxcGM",
         "answer": "IAvnMgvHuLw"
     },
     {
-        "concept": "Overview of Building an app with Mongo",
+        "concept": "Overview of Building an App with MongoDB",
         "lecture": "_e0J06elxb8"
     },
     {
-        "concept": "Quick introduction to the Mongo Shell",
+        "concept": "Quick Introduction to the Mongo Shell",
         "lecture": "f-lyGAMnNY4",
         "answer": "YQTqdLe3W4M"
     },
     {
-        "concept": "JSON introduced through the Mongo Shell",
+        "concept": "Introduction to JSON",
         "lecture": "2jsJeH8q6YM",
         "answer": "uWcOsdV4Iz4"
     },
     {
         "concept": "Installing MongoDB (mac)",
-        "lecture": "pnVQcEt5_vw"
+        "lecture": "_WJ8m5QHvwc"
     },
     {
         "concept": "Installing MongoDB (windows)",
-        "lecture": "hX5louVryOQ"
+        "lecture": "sBdaRlgb4N8"
     },
     {
-        "concept": "Installing Bottle and Python (mac)",
-        "lecture": "vxTN6KFegLg"
-    },
-    {
-        "concept": "Installing Python (Windows)",
-        "lecture": "njfPdZTmTrI"
-    },
-    {
-        "concept": "Installing Bottle.py (Windows)",
-        "lecture": "OhEpXjL0vt8"
-    },
-    {
-        "concept": "Installing PyMongo (mac)",
+        "concept": "Application Architecture Overview",
         "lecture": "vHmoNiXUBQs"
     },
     {
-        "concept": "Installing PyMongo (pc)",
-        "lecture": "hOEV-q176kc"
+        "concept": "Installing Python (Windows)",
+        "lecture": "kQpJYH_g_Ag"
+    },
+    {
+        "concept": "Introduction to Bottle Web Framework",
+        "lecture": "FMBHl_vTZh4"
+    },
+    {
+        "concept": "Installing PyMongo",
+        "lecture": "vSA7S2xoOn8"
     },
     {
         "concept": "Hello World, Mongo Style",
@@ -97,7 +93,7 @@
         "answer": "WJblHPsp1p4"
     },
     {
-        "concept": "Intro to Schema design",
+        "concept": "Introduction to Schema design",
         "lecture": "6XE3wZCPiZ8",
         "answer": "wiwOEG_6ojs"
     },
@@ -107,7 +103,7 @@
         "answer": "PuyAdxxzSk0"
     },
     {
-        "concept": "Python lists",
+        "concept": "Python Lists",
         "lecture": "H1BOYfbnPq8",
         "answer": "8WdnrhlfSLE"
     },
@@ -117,75 +113,66 @@
         "answer": "ZSraFzkEDzs"
     },
     {
-        "concept": "Python lists, slice operator",
+        "concept": "Python Lists, Slice Operator",
         "lecture": "vNyIZNWK0rw",
         "answer": "vE498xAFoGc"
     },
     {
-        "concept": "Python lists, inclusion",
+        "concept": "Python Lists, Inclusion",
         "lecture": "QXUMUvHB2Ws",
         "answer": "LdA0__D4zLI"
     },
     {
-        "concept": "Python: working with dicts",
+        "concept": "Python, Working with Dicts",
         "lecture": "_AbCyE0uKmE",
         "answer": "edEYrBoa7Ao"
     },
     {
-        "concept": "Python: dicts and lists together",
+        "concept": "Python: Dicts and Lists Together",
         "lecture": "9k1XvuoGdrk",
         "answer": "Gqb-OUFcQas"
     },
     {
-        "concept": "Python: for loops, with lists",
+        "concept": "Python: for Loops, with Lists",
         "lecture": "zMqLCtf3ML4",
         "answer": "ohA78_D5Rn8"
     },
     {
-        "concept": "Python: for loops, with dicts",
+        "concept": "Python: for Loops, with Dicts",
         "lecture": "HHTICY6rUGI",
         "answer": "OnkPdMP1fVc"
     },
     {
-        "concept": "Python: combining dicts and lists",
-        "lecture": "ome7jDN_lH0",
-        "answer": "Y6NKd6xUC6M"
-    },
-    {
-        "concept": "Python: while loops",
+        "concept": "Python: while Loops",
         "lecture": "TEdFAheS5UE"
     },
     {
-        "concept": "Python: function calls",
+        "concept": "Python: Function Calls",
         "lecture": "PizwcirYuGY"
     },
     {
-        "concept": "Python: exception handing",
-        "lecture": "nrZYqF9KwaU"
+        "concept": "Python: Exception Handling",
+        "lecture": "tA9MN7SEp94"
     },
     {
-        "concept": "Bottle framework: Url handlers",
+        "concept": "Bottle Framework: URL Handlers",
         "lecture": "x5TlvbWxjL0"
     },
     {
-        "concept": "Bottle framework: using views",
+        "concept": "Bottle Framework: Using Views",
         "lecture": "GUFDtACjFcc"
     },
     {
-        "concept": "Bottle framework: handling form content",
+        "concept": "Bottle Framework: Handling Form Content",
         "lecture": "sUUT-gIS5ik"
     },
     {
-        "concept": "Bottle framework: using cookies",
+        "concept": "Bottle Framework: Using Cookies",
         "lecture": "Wk_1Lz_-gk4"
     },
     {
-        "concept": "The Pymongo driver",
-        "lecture": "AUk17lCRRd4"
-    },
-    {
-        "concept": "Pymongo exception processing",
-        "lecture": "quHoMsHQnCw"
+        "concept": "Pymongo: Exception Processing",
+        "lecture": "PQcw61hVTJM"
     },
     {
         "concept": "Homework 1.1",
