@@ -1,88 +1,90 @@
 [
     {
         "concept": "Introduction to Week 4",
-        "lecture": "8qBXI8ggV88"
+        "lecture": "GGMfM3pYK_4"
+    },
+    {
+        "concept": "Storage Engines: Introduction",
+        "lecture": "YvK7I9fYpK4",
+        "answer": "SR76BjJl-PQ"
+    },
+    {
+        "concept": "Storage Engines: MMAPv1",
+        "lecture": "os3591KviNM",
+        "answer": "P_sytnBrK_Y"
+    },
+    {
+        "concept": "Storage Engines: WiredTiger",
+        "lecture": "aNsugW7r3mM",
+        "answer": "dmnPb-hhVHM"
     },
     {
         "concept": "Indexes",
-        "lecture": "kkIAqyqYOCc",
-        "answer": "5Z6V8mJ8eS4"
+        "lecture": "U3iWPF5jP-g",
+        "answer": "_0ASuXEcK0c"
     },
     {
         "concept": "Creating indexes",
-        "lecture": "tRqenx45UAM",
-        "answer": "h1VdrcOjFm8"
+        "lecture": "xi2gtzZez6Q",
+        "answer": "9FUOetT45AM"
     },
     {
-        "concept": "Discovering indexes",
-        "lecture": "hH7kYu_-FXg"
+        "concept": "Discovering (and Deleting) Indexes",
+        "lecture": "dX49IcmTrGA"
     },
     {
         "concept": "Multikey Indexes",
-        "lecture": "8DqRASZGu9k",
-        "answer": "CeE6hZ90Uzk"
+        "lecture": "_NGwn_X82Dw",
+        "answer": "caSP0dO02iU"
     },
     {
-        "concept": "Multikey Continued",
-        "lecture": "mPSGG2p33RQ"
+        "concept": "Dot Notation and Multikey",
+        "lecture": "wT0_ktAZbBg",
+        "answer": "G6rR2xYEBVA"
     },
     {
-        "concept": "Index creation options, unique",
-        "lecture": "764mQG1iL8E",
-        "answer": "cCO7b-fcj0I"
+        "concept": "Index Creation Option, Unique",
+        "lecture": "D-Ra5TEaaL4",
+        "answer": "ia6dzcj-ZMk"
     },
     {
-        "concept": "Index creation options, remove dups",
-        "lecture": "YJaWPXNGvoU",
-        "answer": "s46y1rJAvVs"
+        "concept": "Index Creation, Sparse",
+        "lecture": "ZznHByqtTMA",
+        "answer": "yV_KEDEzOyc"
     },
     {
-        "concept": "Index creation options, sparse",
-        "lecture": "Gi4uZXLh0Ks",
-        "answer": "CHh9JRMdTb8"
-    },
-    {
-        "concept": "Index creation options, background",
-        "lecture": "28wCvoXmY7A",
-        "answer": "aNSHjG_LnSc"
+        "concept": "Index Creation, Background",
+        "lecture": "AchmKNj2qhw",
+        "answer": "pKOXJSEwNyc"
     },
     {
         "concept": "Using Explain",
-        "lecture": "r5YeICVzDjQ",
-        "answer": "Gpj_s49H_rQ"
+        "lecture": "liXIn8CnJaI",
+        "answer": "YMkyhFhYmmk"
     },
     {
-        "concept": "When is an index used?",
-        "lecture": "Lwms58Y_3Jc",
-        "answer": "imHqsvqx-GA"
+        "concept": "Explain: Verbosity",
+        "lecture": "WxXVun6bZ20",
+        "answer": "qBFFnnoK1NA"
     },
     {
-        "concept": "How large is your index?",
-        "lecture": "oywrqWNY46s",
+        "concept": "Covered Queries",
+        "lecture": "QyV79jsSJ9Y",
+        "answer": "MxHsmUXjkKo"
+    },
+    {
+        "concept": "When is an Index Used?",
+        "lecture": "JyQlxDc549c"
+    },
+    {
+        "concept": "How Large is Your Index?",
+        "lecture": "wjA0eo_lihg",
         "answer": "mXHUIghDkFw"
     },
     {
-        "concept": "Index Cardinality",
+        "concept": "Number of Index Entries",
         "lecture": "xiujksUfzUA",
         "answer": "4UW_oMSswTo"
-    },
-    {
-        "concept": "Index Selectivity",
-        "lecture": "On8HHR1agsI",
-        "answer": "BT95omWR2nw"
-    },
-    {
-        "concept": "Hinting an index",
-        "lecture": "ksOn-SkaIcg",
-        "answer": "WHc_qRSxGM0"
-    },
-    {
-        "concept": "Hinting in Pymongo",
-        "lecture": "dlKcfo7WtGU"
-    },
-    {
-        "concept": "Efficiency of Index use",
-        "lecture": "1sADN-NKwhY"
     },
     {
         "concept": "Geospatial Indexes",
@@ -95,9 +97,17 @@
         "answer": "YtRnCyKS1VE"
     },
     {
-        "concept": "Text Searches in MongoDB",
-        "lecture": "l_2kwrIlZ_g",
+        "concept": "Text Indexes",
+        "lecture": "nLau5Fx9LC8",
         "answer": "7OK0e1gftjg"
+    },
+    {
+        "concept": "Efficiency of Index use",
+        "lecture": "JJmIf0pn100"
+    },
+    {
+        "concept": "Efficiency of Index use. Example",
+        "lecture": "g032EW67SRA"
     },
     {
         "concept": "Logging Slow Queries",
@@ -114,7 +124,8 @@
     },
     {
         "concept": "Mongostat",
-        "lecture": "eLWQO_AJmrI"
+        "lecture": "E2aDTSes3Wc",
+        "answer": "etOEgMTFKW0"
     },
     {
         "concept": "Sharding Overview",
@@ -134,5 +145,8 @@
         "concept": "HW 4.3",
         "lecture": "K-oXNC7voR8",
         "answer": "pDtSL7gbQa4"
+    },
+    {
+        "concept": "HW 4.4"
     }
 ]
