@@ -1,47 +1,40 @@
 1
-00:00:00,000 --> 00:00:00,310
+00:00:00,000 --> 00:00:00,130
 
 2
-00:00:00,310 --> 00:00:01,060
+00:00:00,130 --> 00:00:00,700
 OK.
 
 3
-00:00:01,060 --> 00:00:02,760
-So this is a multi-key index.
+00:00:00,700 --> 00:00:05,080
+And the answer is that the first
+three of these are all valid.
 
 4
-00:00:02,760 --> 00:00:06,360
-And so the answer is that the
-first three are valid because
+00:00:05,080 --> 00:00:07,855
+You could insert this document
+where is a is an array
 
 5
-00:00:06,360 --> 00:00:11,520
-the first one inserts an array
-here and an item in b.
+00:00:07,855 --> 00:00:09,150
+and b is a scalar.
 
 6
-00:00:11,520 --> 00:00:15,540
-And then the second one is just
-two strings, an a and b.
+00:00:09,150 --> 00:00:11,490
+Or a is a scalar
+and b is a scalar.
 
 7
-00:00:15,540 --> 00:00:18,650
-The third one is a string
-in a and an array in b.
+00:00:11,490 --> 00:00:13,670
+Or a is a scalar
+and b is an array.
 
 8
-00:00:18,650 --> 00:00:20,170
-The fourth one is two arrays.
+00:00:13,670 --> 00:00:15,840
+But the one where is
+a is an array and b
 
 9
-00:00:20,170 --> 00:00:22,220
-And you can't have two parallel
-arrays in a multi-key
-
-10
-00:00:22,220 --> 00:00:24,740
-index, so that would
-not be valid.
-
-11
-00:00:24,740 --> 00:00:25,990
+00:00:15,840 --> 00:00:19,740
+is an array-- that's not
+legal in a multikey index.

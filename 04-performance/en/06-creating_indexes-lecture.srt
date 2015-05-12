@@ -1,636 +1,650 @@
 1
-00:00:00,000 --> 00:00:00,240
+00:00:00,000 --> 00:00:00,500
 
 2
-00:00:00,240 --> 00:00:00,670
-All right.
+00:00:00,500 --> 00:00:03,960
+Now I'd like to show you a
+large collection and the impact
 
 3
-00:00:00,670 --> 00:00:05,040
-So now, I'd like to show you
-a large collection and the
+00:00:03,960 --> 00:00:06,320
+that indexes can
+have on performance.
 
 4
-00:00:05,040 --> 00:00:07,930
-effect that indexing can have
-on the performance.
+00:00:06,320 --> 00:00:09,450
+So I've loaded up 10 million
+documents into a collection,
 
 5
-00:00:07,930 --> 00:00:10,520
-I'm going to start the Mongo
-shell here, and I'm going to
+00:00:09,450 --> 00:00:12,090
+and I'm going to show you
+that in the mongo shell.
 
 6
-00:00:10,520 --> 00:00:18,430
-use the school database and,
-in particular, the students
+00:00:12,090 --> 00:00:16,150
+It's in the school database
+in the student's collection.
 
 7
-00:00:18,430 --> 00:00:19,110
-collection.
+00:00:16,150 --> 00:00:17,900
+And I'm going to look
+at a single document
 
 8
-00:00:19,110 --> 00:00:22,220
-Now, this is similar
-to what we had in
+00:00:17,900 --> 00:00:19,525
+in the collection,
+which is a great way
 
 9
-00:00:22,220 --> 00:00:24,340
-the previous lessons.
+00:00:19,525 --> 00:00:21,760
+to get an understanding of
+what the data looks like,
 
 10
-00:00:24,340 --> 00:00:26,150
-I'll show you a document
-from it.
+00:00:21,760 --> 00:00:24,310
+assuming it's regular,
+and it is in this case.
 
 11
-00:00:26,150 --> 00:00:30,870
-You can see that we have here a
-student ID for each record.
+00:00:24,310 --> 00:00:27,697
+So you can see each document
+has a student ID and a bunch
 
 12
-00:00:30,870 --> 00:00:33,000
-And there's, actually, also
-an underscore ID which is
+00:00:27,697 --> 00:00:28,780
+of scores for the student.
 
 13
-00:00:33,000 --> 00:00:34,700
-an BSON object ID.
+00:00:28,780 --> 00:00:31,155
+These are four assessments--
+an exam, a quiz, a homework,
 
 14
-00:00:34,700 --> 00:00:36,550
-And then there's an
-array of scores.
+00:00:31,155 --> 00:00:32,080
+and a homework.
 
 15
-00:00:36,550 --> 00:00:39,030
-And then there's a class
-for each student.
+00:00:32,080 --> 00:00:35,110
+These are the grades they
+got in this particular class.
 
 16
-00:00:39,030 --> 00:00:43,320
-Now, I have inserted 10 million
-records into this
+00:00:35,110 --> 00:00:37,270
+And so there are 10
+million documents,
 
 17
-00:00:43,320 --> 00:00:44,510
-collection.
+00:00:37,270 --> 00:00:39,085
+so there are one
+million students that
 
 18
-00:00:44,510 --> 00:00:46,430
-And this is a pretty
-fast computer.
+00:00:39,085 --> 00:00:40,970
+have each taken 10 classes.
 
 19
-00:00:46,430 --> 00:00:48,410
-This is a recent iMac.
+00:00:40,970 --> 00:00:44,430
+Now, there's absolutely no
+indexes on this collection.
 
 20
-00:00:48,410 --> 00:00:52,720
-It actually has a solid state
-drive and a bunch of memory.
+00:00:44,430 --> 00:00:46,760
+So let's see how long
+it would take to do
 
 21
-00:00:52,720 --> 00:00:54,580
-And I've been playing with the
-collection so it's probably
+00:00:46,760 --> 00:00:48,120
+a query on this collection.
 
 22
-00:00:54,580 --> 00:00:55,940
-cached in memory.
+00:00:48,120 --> 00:00:52,110
+And try to find all the
+information for student ID,
 
 23
-00:00:55,940 --> 00:00:59,000
-So let's see how slow it is to
-find something in the middle
+00:00:52,110 --> 00:00:55,320
+let's say, 5, which should be
+very early in the collection
 
 24
-00:00:59,000 --> 00:01:01,990
-of the collection or really
-anywhere in the collection.
+00:00:55,320 --> 00:00:56,820
+because we just inserted it.
 
 25
-00:01:01,990 --> 00:01:05,610
-So let's go look at
-db.students.find.
+00:00:56,820 --> 00:00:59,910
+It was probably inserted
+in order on the disk.
 
 26
-00:01:05,610 --> 00:01:10,890
-And let's look at
-student ID 5.
+00:00:59,910 --> 00:01:02,460
+I'm running the MMAPv1
+storage engine in this case.
 
 27
-00:01:10,890 --> 00:01:12,610
-Student ID5 should come
-up pretty early in the
+00:01:02,460 --> 00:01:04,014
+All right, let's do that.
 
 28
-00:01:12,610 --> 00:01:13,730
-collection.
+00:01:04,014 --> 00:01:05,430
+All right, that
+took a few seconds
 
 29
-00:01:13,730 --> 00:01:18,290
-But because I'm using find
-and not find one--
+00:01:05,430 --> 00:01:09,350
+to return those 10 documents,
+and this is a fast computer.
 
 30
-00:01:18,290 --> 00:01:21,460
-Sorry about that little typo.
+00:01:09,350 --> 00:01:12,110
+This is a four gigahertz
+core i7 computer
 
 31
-00:01:21,460 --> 00:01:24,180
-Because I'm using find and not
-find one, even though it's
+00:01:12,110 --> 00:01:16,090
+with 32 gigabytes of
+memory and a fusion
 
 32
-00:01:24,180 --> 00:01:28,390
-going to find that record pretty
-early in the process,
+00:01:16,090 --> 00:01:20,060
+drive that has a combination
+of SSD and spinning disk on it.
 
 33
-00:01:28,390 --> 00:01:32,260
-it took a couple of seconds
-to find the object,
+00:01:20,060 --> 00:01:22,245
+So that's a long time.
 
 34
-00:01:32,260 --> 00:01:33,940
-two or three seconds.
+00:01:22,245 --> 00:01:26,530
+That's a lot of cycles
+for a computer this fast.
 
 35
-00:01:33,940 --> 00:01:37,920
-Now if I did a find one where
-the database could be
+00:01:26,530 --> 00:01:29,276
+So the question is, how
+could we make it faster?
 
 36
-00:01:37,920 --> 00:01:42,130
-satisfied by the first one it
-fines, then you'll see, whoa,
+00:01:29,276 --> 00:01:31,650
+But before I do that, I want
+to show you a couple things.
 
 37
-00:01:42,130 --> 00:01:44,690
-that was really fast,
-very fast.
+00:01:31,650 --> 00:01:34,560
+First is that there is
+an explain command--
 
 38
-00:01:44,690 --> 00:01:51,500
-And if I did a find one on the
-record five million, five,
+00:01:34,560 --> 00:01:37,400
+that we're going to go over in
+a later lesson-- that will show
 
 39
-00:01:51,500 --> 00:01:54,850
-one, two, three, four,
-five, six, that
+00:01:37,400 --> 00:01:39,740
+you the secrets of
+what the database is
 
 40
-00:01:54,850 --> 00:01:55,860
-should be fairly slow.
+00:01:39,740 --> 00:01:41,990
+doing when it executes a query.
 
 41
-00:01:55,860 --> 00:01:58,770
-Because it has to go through the
-entire collection or half
+00:01:41,990 --> 00:01:44,640
+And I want to give you a little
+foreshadowing of this command.
 
 42
-00:01:58,770 --> 00:02:00,850
-of the collection to find one.
+00:01:44,640 --> 00:01:46,180
+It runs on top of a collection.
 
 43
-00:02:00,850 --> 00:02:03,920
-And if I do a find, which is
-always going to search the
+00:01:46,180 --> 00:01:48,690
+So db.students, students
+is the collection.
 
 44
-00:02:03,920 --> 00:02:06,370
-entire collection because there
-could be more than one,
+00:01:48,690 --> 00:01:50,390
+Explain is the command.
 
 45
-00:02:06,370 --> 00:02:08,289
-we're going to get to the
-slowest case again.
+00:01:50,390 --> 00:01:52,122
+And then you chain
+what you want to do.
 
 46
-00:02:08,289 --> 00:02:10,970
-It has to go through the entire
-collection to make sure
+00:01:52,122 --> 00:01:53,580
+In this case you
+want to do a find.
 
 47
-00:02:10,970 --> 00:02:13,520
-that there's not more
-than one record with
+00:01:53,580 --> 00:01:56,750
+You can also chain
+an update, or delete.
 
 48
-00:02:13,520 --> 00:02:16,440
-student ID five million.
+00:01:56,750 --> 00:01:59,480
+And it's going to tell you
+what indexes it would have
 
 49
-00:02:16,440 --> 00:02:17,980
-Let's say we wanted
-to put an index on
+00:01:59,480 --> 00:02:01,760
+used to satisfy this query.
 
 50
-00:02:17,980 --> 00:02:18,930
-this and make it faster.
+00:02:01,760 --> 00:02:04,190
+Now, in this case there
+aren't any indexes it can use.
 
 51
-00:02:18,930 --> 00:02:20,320
-We can do that.
+00:02:04,190 --> 00:02:06,380
+And it's going to scan
+all 10 million documents,
 
 52
-00:02:20,320 --> 00:02:21,200
-This is how we're
-going to do it.
+00:02:06,380 --> 00:02:08,240
+and it should tell us that.
 
 53
-00:02:21,200 --> 00:02:27,000
-So we're going to call the
-ensure index command.
+00:02:08,240 --> 00:02:10,210
+So if we look through
+the output of explain--
 
 54
-00:02:27,000 --> 00:02:32,090
-And we are going to give it the
-fields, the key, that we
+00:02:10,210 --> 00:02:12,710
+and we'll go through it in
+more detail in a later lesson--
 
 55
-00:02:32,090 --> 00:02:35,010
-would like to index on.
+00:02:12,710 --> 00:02:14,959
+the interesting part is right
+here in the winning plan
 
 56
-00:02:35,010 --> 00:02:37,360
-And we're going to tell it
-that we want to do it in
+00:02:14,959 --> 00:02:17,630
+section, where you
+can see it says
 
 57
-00:02:37,360 --> 00:02:39,180
-ascending order.
+00:02:17,630 --> 00:02:19,620
+it's doing a collection scan.
 
 58
-00:02:39,180 --> 00:02:42,590
-So let's go back through
-this so you can see
+00:02:19,620 --> 00:02:22,290
+It's looking at
+all the documents.
 
 59
-00:02:42,590 --> 00:02:43,972
-each part of it.
+00:02:22,290 --> 00:02:24,360
+And that's going
+to be pretty slow.
 
 60
-00:02:43,972 --> 00:02:49,530
-db.students is the collection
-name, ensure index, and then
+00:02:24,360 --> 00:02:28,450
+Now, if we actually did
+a findOne versus a find,
 
 61
-00:02:49,530 --> 00:02:51,020
-asking to put the
-index on Student
+00:02:28,450 --> 00:02:30,650
+then it'll be faster.
 
 62
-00:02:51,020 --> 00:02:53,250
-ID, and make it ascending.
+00:02:30,650 --> 00:02:32,660
+And the reason
+it'll be faster is
 
 63
-00:02:53,250 --> 00:02:54,440
-So we're going to do
-that in real time.
+00:02:32,660 --> 00:02:35,290
+that once it finds a single
+document, it can quit looking.
 
 64
-00:02:54,440 --> 00:02:56,060
-We're going to wait and see
-how long it takes to index
+00:02:35,290 --> 00:02:39,050
+And so since the documents are
+probably in student ID order
 
 65
-00:02:56,060 --> 00:02:58,070
-those 10 million rows.
+00:02:39,050 --> 00:02:42,540
+approximately right now,
+that's going to be fairly fast.
 
 66
-00:02:58,070 --> 00:03:01,310
-Now, right now the database is
-actually going through and
+00:02:42,540 --> 00:02:44,000
+And you can see that was fast.
 
 67
-00:03:01,310 --> 00:03:03,940
-it's looking at every single
-row, and it's building an
+00:02:44,000 --> 00:02:47,570
+It didn't take very long for
+it to return a single document
 
 68
-00:03:03,940 --> 00:03:05,830
-index for every single row.
+00:02:47,570 --> 00:02:49,240
+for the student ID 5.
 
 69
-00:03:05,830 --> 00:03:07,480
-So this could take a
-couple of minutes.
+00:02:49,240 --> 00:02:51,550
+But we want our general
+find to work well,
 
 70
-00:03:07,480 --> 00:03:10,890
-We're going to just skip forward
-and wait in the video
+00:02:51,550 --> 00:02:52,990
+so we want to add an index.
 
 71
-00:03:10,890 --> 00:03:12,600
-and get to the end of it.
+00:02:52,990 --> 00:02:53,980
+So how do we do that?
 
 72
-00:03:12,600 --> 00:03:14,500
-So you're not having
-to wait for it.
+00:02:53,980 --> 00:02:59,470
+Let's add the index,
+db.students.createIndex--
 
 73
-00:03:14,500 --> 00:03:16,160
-OK, some time has elapsed
-now, and the
+00:02:59,470 --> 00:03:01,760
+and you'll notice it's camel
+cased inside the shell,
 
 74
-00:03:16,160 --> 00:03:17,570
-index has been created.
+00:03:01,760 --> 00:03:05,250
+lowercase C, uppercase
+I. And now we're
 
 75
-00:03:17,570 --> 00:03:19,050
-Overall, it took about
-two or three minutes
+00:03:05,250 --> 00:03:07,150
+going to present the
+document to create
 
 76
-00:03:19,050 --> 00:03:20,220
-to create that index.
+00:03:07,150 --> 00:03:10,190
+index that describes the index.
 
 77
-00:03:20,220 --> 00:03:22,700
-So let's see how much faster
-it is to query the database
+00:03:10,190 --> 00:03:12,510
+And in this case,
+we're saying we
 
 78
-00:03:22,700 --> 00:03:24,550
-now that the index is created.
+00:03:12,510 --> 00:03:14,660
+want it to be indexed
+on student ID ascending.
 
 79
-00:03:24,550 --> 00:03:26,520
-So we're going to the
-same find we did
+00:03:14,660 --> 00:03:17,340
+And we'll talk a little bit more
+about what that means later.
 
 80
-00:03:26,520 --> 00:03:28,600
-before, same find command.
+00:03:17,340 --> 00:03:18,989
+But we're going to
+hit Return, and this
 
 81
-00:03:28,600 --> 00:03:30,570
-We're going to look for
-a document with
+00:03:18,989 --> 00:03:20,030
+is going to take a while.
 
 82
-00:03:30,570 --> 00:03:32,350
-student ID five million.
+00:03:20,030 --> 00:03:21,695
+So I'm going to time
+this off camera,
 
 83
-00:03:32,350 --> 00:03:33,820
-We're going to pretty
-print it.
+00:03:21,695 --> 00:03:23,320
+so that I can tell
+you how long it took
 
 84
-00:03:33,820 --> 00:03:37,120
-And we expect this to hit the
-index because student ID was
+00:03:23,320 --> 00:03:25,010
+on this super fast computer.
 
 85
-00:03:37,120 --> 00:03:38,450
-the key in the index.
+00:03:25,010 --> 00:03:26,310
+Here we go.
 
 86
-00:03:38,450 --> 00:03:40,700
-So let's just run that.
+00:03:26,310 --> 00:03:26,890
+OK.
 
 87
-00:03:40,700 --> 00:03:42,120
-Wow, that was fast.
+00:03:26,890 --> 00:03:30,530
+It took about 23 seconds on this
+computer to create this index.
 
 88
-00:03:42,120 --> 00:03:44,280
-So we can see it came
-back immediately.
+00:03:30,530 --> 00:03:32,650
+And that's important
+to note because even
 
 89
-00:03:44,280 --> 00:03:46,920
-Before we had the index, it took
-up to five or six seconds
+00:03:32,650 --> 00:03:34,190
+on a really fast
+computer, creating
 
 90
-00:03:46,920 --> 00:03:47,530
-to do this query.
+00:03:34,190 --> 00:03:36,120
+an index takes a while.
 
 91
-00:03:47,530 --> 00:03:50,280
-But now, that we have an
-index, it's immediate.
+00:03:36,120 --> 00:03:38,510
+Because we have to scan
+the entire collection,
 
 92
-00:03:50,280 --> 00:03:53,940
-And you can see that if we call
-it with seven million,
+00:03:38,510 --> 00:03:41,700
+create new data structures,
+and write them all to disk.
 
 93
-00:03:53,940 --> 00:03:55,650
-also extremely fast.
+00:03:41,700 --> 00:03:43,880
+Now that we have an
+index, this search
 
 94
-00:03:55,650 --> 00:03:57,880
-But if we make a query that
-can't be index, like something
+00:03:43,880 --> 00:03:47,320
+on finding all the
+students with student ID 5
 
 95
-00:03:57,880 --> 00:04:02,170
-that asks for everything
-with class of--
+00:03:47,320 --> 00:03:49,020
+should be nice and fast.
 
 96
-00:04:02,170 --> 00:04:04,430
-Well, we could say class of
-seven million, there isn't any
+00:03:49,020 --> 00:03:53,470
+Let's see if it is nice
+and fast, and it was.
 
 97
-00:04:04,430 --> 00:04:05,410
-class with seven million.
+00:03:53,470 --> 00:03:55,810
+And if we run the
+explain command,
 
 98
-00:04:05,410 --> 00:04:07,930
-But that won't matter, because
-it can't know that.
+00:03:55,810 --> 00:03:58,645
+we're going to see that
+it's now using an index.
 
 99
-00:04:07,930 --> 00:04:12,290
-And you can see, it's going to
-take a long time to tell us
+00:03:58,645 --> 00:04:00,620
+So let's see that.
 
 100
-00:04:12,290 --> 00:04:13,590
-there's nothing.
+00:04:00,620 --> 00:04:03,260
+All right, so I ran the
+explain command once again.
 
 101
-00:04:13,590 --> 00:04:16,450
-So indexes are really important
-in terms of the
+00:04:03,260 --> 00:04:05,180
+And you can see now
+it says the winning
 
 102
-00:04:16,450 --> 00:04:18,610
-performance we get from
-the database.
+00:04:05,180 --> 00:04:07,640
+plan for this type
+of query is to use
 
 103
-00:04:18,610 --> 00:04:21,760
-Let's look at that in ensure
-index command again.
+00:04:07,640 --> 00:04:11,560
+the indexName student_ID
+1, and that's fantastic.
 
 104
-00:04:21,760 --> 00:04:24,250
-So in that ensure index command,
-we called it with
+00:04:11,560 --> 00:04:14,300
+And one little other secret
+I'll tell you about explain
 
 105
-00:04:24,250 --> 00:04:25,680
-student ID colon one.
+00:04:14,300 --> 00:04:17,310
+is that if we give
+it true-- and there's
 
 106
-00:04:25,680 --> 00:04:28,290
-Now, if we wanted to include
-the class, we could've
+00:04:17,310 --> 00:04:19,060
+two ways to give
+arguments to explain,
 
 107
-00:04:28,290 --> 00:04:31,350
-included it like this.
+00:04:19,060 --> 00:04:21,380
+this is actually the older
+one-- then it'll actually
 
 108
-00:04:31,350 --> 00:04:34,210
-And in this case, it's a
-compound index which is going
+00:04:21,380 --> 00:04:22,790
+run the query as well.
 
 109
-00:04:34,210 --> 00:04:37,010
-to be made up of student
-ID comma class.
+00:04:22,790 --> 00:04:25,610
+Which means it can tell us
+how many documents it actually
 
 110
-00:04:37,010 --> 00:04:40,160
-And I've decided to make the
-student ID ascending and the
+00:04:25,610 --> 00:04:28,310
+looked at in the execution
+stage of the query.
 
 111
-00:04:40,160 --> 00:04:41,830
-class descending.
+00:04:28,310 --> 00:04:31,680
+And you can see that the
+number of documents examined
 
 112
-00:04:41,830 --> 00:04:43,900
-So ascending versus
-descending.
+00:04:31,680 --> 00:04:33,210
+was exactly 10.
 
 113
-00:04:43,900 --> 00:04:44,750
-So it doesn't make much of a
+00:04:33,210 --> 00:04:34,545
+Isn't that pretty cool?
 
 114
-00:04:44,750 --> 00:04:46,160
-difference when you're searching.
+00:04:34,545 --> 00:04:35,920
+So once it used
+the index it only
 
 115
-00:04:46,160 --> 00:04:48,000
-But it makes a big difference
-when you're sorting.
+00:04:35,920 --> 00:04:37,640
+had to actually look
+at 10 documents.
 
 116
-00:04:48,000 --> 00:04:50,530
-Because if the database is going
-to use the index for the
+00:04:37,640 --> 00:04:39,320
+Wow, that's fantastic.
 
 117
-00:04:50,530 --> 00:04:53,470
-sort, then it needs to be
-in the right order.
+00:04:39,320 --> 00:04:41,865
+All right, now we could
+also add a compound index
 
 118
-00:04:53,470 --> 00:04:56,830
-Now, if we had other sub parts
-of this document we wanted to
+00:04:41,865 --> 00:04:43,360
+to this collection.
 
 119
-00:04:56,830 --> 00:04:58,180
-index, we could continue.
+00:04:43,360 --> 00:04:45,370
+And if we wanted to
+add a compound index,
 
 120
-00:04:58,180 --> 00:05:00,650
-We could make it a three part
-index if we wanted.
+00:04:45,370 --> 00:04:47,250
+we would do it as such.
 
 121
-00:05:00,650 --> 00:05:03,310
-Of course, it takes more space
-and a little bit longer to
+00:04:47,250 --> 00:04:51,170
+We would give a second key and
+then ascending or descending.
 
 122
-00:05:03,310 --> 00:05:05,080
-build it when you do rights.
+00:04:51,170 --> 00:04:53,060
+So for instance,
+this is the command
 
 123
-00:05:05,080 --> 00:05:08,540
-Now, in terms of using the
-index, if I had an index on a
+00:04:53,060 --> 00:04:56,790
+you would give to create an
+index on student ID, comma
 
 124
-00:05:08,540 --> 00:05:12,360
-student ID comma class and I
-specified just the class,
+00:04:56,790 --> 00:04:57,890
+class ID.
 
 125
-00:05:12,360 --> 00:05:14,250
-well, it couldn't use the index
-because it needs to be a
+00:04:57,890 --> 00:04:59,630
+Where the student ID
+part was ascending,
 
 126
-00:05:14,250 --> 00:05:16,330
-left subset of the field.
+00:04:59,630 --> 00:05:01,930
+and the class ID
+part was descending.
 
 127
-00:05:16,330 --> 00:05:20,130
-If I specified student ID and
-class, I could use the index.
+00:05:01,930 --> 00:05:04,530
+And this won't affect
+the queries we just did,
 
 128
-00:05:20,130 --> 00:05:22,190
-And if I specified just
-student ID, I
+00:05:04,530 --> 00:05:07,260
+but it will affect
+things like sorting.
 
 129
-00:05:22,190 --> 00:05:23,920
-could use that index.
+00:05:07,260 --> 00:05:09,710
+Where if the indexes
+aren't in the right order,
 
 130
-00:05:23,920 --> 00:05:25,670
-OK, let's do a quiz.
+00:05:09,710 --> 00:05:11,510
+and depending on how
+you specify the sort,
 
 131
-00:05:25,670 --> 00:05:28,880
-So please provide the Mongo
-shell command to add an index
+00:05:11,510 --> 00:05:13,995
+you may not be able
+to use the index.
 
 132
-00:05:28,880 --> 00:05:33,760
-to a collection named students
-having the index key be class
+00:05:13,995 --> 00:05:14,940
+OK.
 
 133
-00:05:33,760 --> 00:05:35,430
-comma student name.
+00:05:14,940 --> 00:05:18,300
+So now it is time for a quiz.
 
 134
-00:05:35,430 --> 00:05:37,210
-Now, this is very similar to
-what I just showed you.
+00:05:18,300 --> 00:05:19,930
+Please provide the
+mongo shell command
 
 135
-00:05:37,210 --> 00:05:39,060
-But I just wanted to get you
-into the practice of typing
+00:05:19,930 --> 00:05:22,640
+to add an index to a collection
+named students having the index
 
 136
-00:05:39,060 --> 00:05:41,500
-these ensure index commands so
-that you are used to doing it
+00:05:22,640 --> 00:05:25,940
+key be class, student_name.
 
 137
-00:05:41,500 --> 00:05:42,750
-in the shell.
+00:05:25,940 --> 00:05:28,310
+And neither of these will
+be in the -1 direction.
+
+138
+00:05:28,310 --> 00:05:30,250
+Type your answer right here.

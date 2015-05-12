@@ -1,448 +1,742 @@
 1
-00:00:00,000 --> 00:00:00,140
+00:00:00,000 --> 00:00:00,250
 
 2
-00:00:00,140 --> 00:00:03,520
-OK, ahora ya tienes la mayoría de las
-herramientas que necesitas para
+00:00:00,250 --> 00:00:00,470
+OK.
 
 3
-00:00:03,520 --> 00:00:05,390
-entender el uso de los índices.
+00:00:00,470 --> 00:00:02,011
+So at this point,
+we know quite a bit
 
 4
-00:00:05,390 --> 00:00:09,030
-Pero antes de continuar, quiero
-señalar que sólo porque
+00:00:02,011 --> 00:00:04,620
+about what types of
+indexes MongoDB supports,
 
 5
-00:00:09,030 --> 00:00:11,900
-uses un índice no quiere decir
-que lo uses eficientemente.
+00:00:04,620 --> 00:00:07,300
+how to create indexes, and
+the importance of indexes
 
 6
-00:00:11,900 --> 00:00:15,150
-Así, ciertos tipos de operadores,
-como por ejemplo "$gt" (mayor que)
+00:00:07,300 --> 00:00:10,370
+for the efficiency
+of our application.
 
 7
-00:00:15,150 --> 00:00:19,110
-y "$lt" (menor que), podrían
-usar un índice pero no hacerlo
+00:00:10,370 --> 00:00:13,600
+What I'd like to do now is
+walk through an example that
 
 8
-00:00:19,110 --> 00:00:22,000
-eficientemente porque aún 
-podrían requerir la inspección
+00:00:13,600 --> 00:00:16,640
+gives you an idea of the type
+of thinking you need to do when
 
 9
-00:00:22,000 --> 00:00:23,720
-de un montón de documentos.
+00:00:16,640 --> 00:00:18,270
+you're designing your indexes.
 
 10
-00:00:23,720 --> 00:00:29,610
-Por lo que podrías decir "$gt: 3",
-y quizá eso sea
+00:00:18,270 --> 00:00:20,630
+The goal is that our
+read and write operations
 
 11
-00:00:29,610 --> 00:00:31,200
-la mitad de la colección.
+00:00:20,630 --> 00:00:22,580
+are as efficient as possible.
 
 12
-00:00:31,200 --> 00:00:34,390
-Y por tanto aunque use el índice,
-es todavía muy lento.
+00:00:22,580 --> 00:00:26,020
+But as with so many things, this
+requires some upfront thinking
 
 13
-00:00:34,390 --> 00:00:36,930
-Otras cosas que podrían no usar
-el índice o usarlo
+00:00:26,020 --> 00:00:27,555
+and some experimentation.
 
 14
-00:00:36,930 --> 00:00:40,140
-ineficientemente son
-"$ne" (distinto de) o "$nin"
+00:00:27,555 --> 00:00:29,930
+To be sure you get the right
+indexes in place, what you'd
 
 15
-00:00:40,140 --> 00:00:42,430
-(no incluido en) o no existe.
+00:00:29,930 --> 00:00:34,170
+really want to do is test your
+indexes under some real world
 
 16
-00:00:42,430 --> 00:00:45,310
-Todos estos operadores negativos
-son difíciles
+00:00:34,170 --> 00:00:36,887
+workloads and make
+adjustments from there.
 
 17
-00:00:45,310 --> 00:00:47,450
-porque necesitan inspeccionar
-cada elemento para ver si
+00:00:36,887 --> 00:00:38,720
+But that's outside the
+scope of this course.
 
 18
-00:00:47,450 --> 00:00:50,530
-satisface el criterio, y 
-podría haber devuelto un
+00:00:38,720 --> 00:00:40,480
+What we're going
+to look at here is
 
 19
-00:00:50,530 --> 00:00:51,660
-resultado enorme.
+00:00:40,480 --> 00:00:42,130
+some of the initial
+thinking you can
 
 20
-00:00:51,660 --> 00:00:55,080
-También, cuando estás buscando con
-expresiones regulares, si no pasas
+00:00:42,130 --> 00:00:45,770
+do to get ready for some
+of that real world testing.
 
 21
-00:00:55,080 --> 00:00:57,980
-algo que coincida
-con la parte izquierda
+00:00:45,770 --> 00:00:48,740
+So what we're going for here is
+the selectivity of our index,
 
 22
-00:00:57,980 --> 00:00:59,580
-del campo, es lento.
+00:00:48,740 --> 00:00:51,089
+and to what degree for
+a given query pattern
 
 23
-00:00:59,580 --> 00:01:04,739
-Por lo que si dices que quieres buscar
-por "/abcd/", esto realmente no puede
+00:00:51,089 --> 00:00:53,630
+the index is going to minimize
+the number of records scanned.
 
 24
-00:01:04,739 --> 00:01:09,240
-usar el índice porque no
-tenemos forma de hacer esa búsqueda
+00:00:53,630 --> 00:00:56,230
+And we have to consider this
+in a scope of all operations
 
 25
-00:01:09,240 --> 00:01:10,060
-de texto completo.
+00:00:56,230 --> 00:00:59,730
+to satisfy a query, and
+sometimes make some trade offs.
 
 26
-00:01:10,060 --> 00:01:15,370
-Si por otro lado, dices
-"/^abcd/" para que coincida con la parte
+00:00:59,730 --> 00:01:02,731
+So we'll have to consider, for
+example, how sorts are handled.
 
 27
-00:01:15,370 --> 00:01:20,230
-izquierda de la cadena, entonces puede
-usarlo y lo usará.
+00:01:02,731 --> 00:01:03,230
+OK.
 
 28
-00:01:20,230 --> 00:01:22,310
-Déjame que te dé un ejemplo
-donde la información de primer
+00:01:03,230 --> 00:01:04,985
+So let's go through our example.
 
 29
-00:01:22,310 --> 00:01:24,550
-orden puede ser un poco
-confusa.
+00:01:04,985 --> 00:01:06,360
+And again, this
+is really the tip
 
 30
-00:01:24,550 --> 00:01:27,050
-Volvamos a nuestra colección
-"students".
+00:01:06,360 --> 00:01:08,759
+of the iceberg in terms of
+designing a set of indexes.
 
 31
-00:01:27,050 --> 00:01:28,250
-Hice dos de estas
-colecciones.
+00:01:08,759 --> 00:01:10,300
+But it gives you an
+idea for the type
 
 32
-00:01:28,250 --> 00:01:31,810
-Ésta tiene 10 millones
-de documentos y unos
+00:01:10,300 --> 00:01:12,258
+of thinking you're going
+to have to do in order
 
 33
-00:01:31,810 --> 00:01:33,260
-cuantos índices.
+00:01:12,258 --> 00:01:13,680
+to get those indexes right.
 
 34
-00:01:33,260 --> 00:01:34,830
-Eso es un documento de
-la colección.
+00:01:13,680 --> 00:01:15,660
+So to think about
+building indexes that
 
 35
-00:01:34,830 --> 00:01:36,560
-Puedes ver que tiene
-un "student_id" y un
+00:01:15,660 --> 00:01:17,720
+can handle our query
+patterns efficiently,
 
 36
-00:01:36,560 --> 00:01:38,470
-"class_id" y "scores".
+00:01:17,720 --> 00:01:19,380
+let's return to our
+student data set.
 
 37
-00:01:38,470 --> 00:01:42,460
-Y hay más de un
-registro por cada estudiante.
+00:01:19,380 --> 00:01:20,921
+Now, in this version
+of the data set,
 
 38
-00:01:42,460 --> 00:01:45,050
-Hay un registro
-por cada clase.
+00:01:20,921 --> 00:01:22,820
+I've added a field
+for a final grade.
 
 39
-00:01:45,050 --> 00:01:48,080
-Echemos un vistazo a los
-índices.
+00:01:22,820 --> 00:01:25,770
+And we're dealing with
+about one million students.
 
 40
-00:01:48,080 --> 00:01:48,760
-Oops.
+00:01:25,770 --> 00:01:27,880
+So here's the query
+that I want to look at.
 
 41
-00:01:48,760 --> 00:01:50,820
-Cuando examinamos los índices,
-vemos que hay un buen
+00:01:27,880 --> 00:01:30,720
+And the reason for this is
+because it illustrates several
 
 42
-00:01:50,820 --> 00:01:52,160
-número de índices sobre ella.
+00:01:30,720 --> 00:01:33,090
+of the issues that we
+have to think about
 
 43
-00:01:52,160 --> 00:01:56,393
-Tenemos uno sobre "_id"; uno
-sobre "class_id"; uno sobre "student_id";
+00:01:33,090 --> 00:01:35,010
+in designing our indexes.
 
 44
-00:01:56,393 --> 00:01:59,920
-uno sobre "student_id, class_id" --
+00:01:35,010 --> 00:01:36,540
+So note that what
+we're doing here
 
 45
-00:01:59,920 --> 00:02:01,010
-todo bien.
+00:01:36,540 --> 00:01:40,641
+is a query for all students with
+an ID greater than 500,000--
 
 46
-00:02:01,010 --> 00:02:05,590
-Ahora, hagamos una consulta que sea
-razonablemente selectiva pero que no 
+00:01:40,641 --> 00:01:42,140
+OK, so that's going
+to be about half
 
 47
-00:02:05,590 --> 00:02:06,590
-vaya a ser muy rápida.
+00:01:42,140 --> 00:01:46,460
+the students-- and
+records for the class 54.
 
 48
-00:02:06,590 --> 00:02:09,880
-Y en particular, busquemos
-todos los estudiantes
+00:01:46,460 --> 00:01:49,420
+There's about 500 classes
+represented in here.
 
 49
-00:02:09,880 --> 00:02:13,770
-con "student_id" mayor que
-500 que están en la clase 20.
+00:01:49,420 --> 00:01:52,600
+And then finally, we're going
+to sort in ascending order
 
 50
-00:02:13,770 --> 00:02:14,930
-No hay muchos
-documentos que
+00:01:52,600 --> 00:01:55,490
+on student ID, the same
+field we're querying on here.
 
 51
-00:02:14,930 --> 00:02:16,450
-satisfagan este criterio.
+00:01:55,490 --> 00:01:57,870
+Now, throughout
+this example, I'm
 
 52
-00:02:16,450 --> 00:02:19,520
-Y luego ordenemos por
-"student_id" y hagamos un "explain".
+00:01:57,870 --> 00:02:00,160
+going to be running
+explain on the cursor
 
 53
-00:02:19,520 --> 00:02:24,070
-Y si hacemos eso, podemos ver
-que es bastante lento.
+00:02:00,160 --> 00:02:03,280
+that the query returns
+to us and specifying
 
 54
-00:02:24,070 --> 00:02:26,130
-Tardó 3,6 segundos.
+00:02:03,280 --> 00:02:05,970
+that I want to see execution
+stats so that we get
 
 55
-00:02:26,130 --> 00:02:29,600
-Usó el
-índice "student_id_1_class_id_1".
+00:02:05,970 --> 00:02:09,490
+nice detailed output about
+exactly what MongoDB did
 
 56
-00:02:29,600 --> 00:02:34,120
-Resulta que ésa no es
-la mejor elección porque aunque
+00:02:09,490 --> 00:02:11,210
+in order to satisfy the query.
 
 57
-00:02:34,120 --> 00:02:38,060
-sólo devolvió 20000
-documentos, tuvo que escanear,
+00:02:11,210 --> 00:02:13,210
+So let's run this.
 
 58
-00:02:38,060 --> 00:02:44,260
-eso parece, 1,3 millones de elementos
-en el índice, y eso es un montón.
+00:02:13,210 --> 00:02:13,920
+OK.
 
 59
-00:02:44,260 --> 00:02:46,340
-Por lo que no usó el índice
-más eficiente.
+00:02:13,920 --> 00:02:16,510
+So I want to draw your attention
+to a couple different things.
 
 60
-00:02:46,340 --> 00:02:47,660
-Y puedes entender por qué.
+00:02:16,510 --> 00:02:19,560
+So first, let's take a look
+at this-- total keys examined.
 
 61
-00:02:47,660 --> 00:02:50,870
-Si usas el índice "student_id",
-y deliberadamente
+00:02:19,560 --> 00:02:21,540
+This is how many
+keys within the index
 
 62
-00:02:50,870 --> 00:02:53,330
-eliges un "student_id" que esté
-en cualquier lugar en el medio,
+00:02:21,540 --> 00:02:25,720
+MongoDB walked through in order
+to generate the results set.
 
 63
-00:02:53,330 --> 00:02:55,810
-la mitad de los estudiantes tienen "student_id"
-que es mayor que éste.
+00:02:25,720 --> 00:02:28,800
+The results set, on the other
+hand, is only 10,000 documents.
 
 64
-00:02:55,810 --> 00:02:59,140
-Y por eso va a ser muy
-ineficiente hacer eso.
+00:02:28,800 --> 00:02:31,280
+So we had to look at
+a lot more index keys
 
 65
-00:02:59,140 --> 00:03:02,672
-Pero por otro lado, si hago un "hint"
-y digo, ya
+00:02:31,280 --> 00:02:34,370
+then we really needed to in
+order to find the documents.
 
 66
-00:03:02,672 --> 00:03:04,940
-sabes, usa el índice "class_id".
+00:02:34,370 --> 00:02:36,000
+What this means
+is that the index
 
 67
-00:03:04,940 --> 00:03:06,950
-Y sé que no hay
-muchos estudiantes en cada clase
+00:02:36,000 --> 00:02:38,120
+that was used in order
+to satisfy this query
 
 68
-00:03:06,950 --> 00:03:08,940
-porque construí este conjunto de datos,
-así que tengo información que
+00:02:38,120 --> 00:02:39,300
+wasn't very selective.
 
 69
-00:03:08,940 --> 00:03:10,680
-necesariamente no tiene.
+00:02:39,300 --> 00:02:41,260
+And you remember
+that selectivity
 
 70
-00:03:10,680 --> 00:03:12,270
-Y es la misma consulta.
+00:02:41,260 --> 00:02:43,950
+is one of our key goals when
+we're designing an index.
 
 71
-00:03:12,270 --> 00:03:13,790
-Va a usar el
-índice "class_id".
+00:02:43,950 --> 00:02:45,950
+So let's see if we can
+figure out what happened.
 
 72
-00:03:13,790 --> 00:03:15,730
-Y luego, va a tener que
-averiguar manualmente
+00:02:45,950 --> 00:02:46,450
+OK.
 
 73
-00:03:15,730 --> 00:03:18,930
-cuáles son los "student_id"
-que son mayores que 500, pero
+00:02:46,450 --> 00:02:48,384
+Now, when you move
+above executionStats
 
 74
-00:03:18,930 --> 00:03:21,240
-va a ser
-bastante mejor.
+00:02:48,384 --> 00:02:50,550
+in the explain output, the
+thing you're going to see
 
 75
-00:03:21,240 --> 00:03:23,000
-Oh, fue mucho mejor.
+00:02:50,550 --> 00:02:52,380
+is the output from
+the query planner.
 
 76
-00:03:23,000 --> 00:03:28,060
-Puedes ver aquí que tardó
-133 milisegundos, y 
+00:02:52,380 --> 00:02:54,537
+So starting from the top
+and working your way down,
 
 77
-00:03:28,060 --> 00:03:31,260
-escaneó 20000 objetos aquí.
+00:02:54,537 --> 00:02:55,620
+you've got a winning plan.
 
 78
-00:03:31,260 --> 00:03:34,770
-Y si no ves ningún número
-mayor que ése aquí, entonces el
+00:02:55,620 --> 00:02:58,520
+And then you also get a chance
+to see the rejected plans.
 
 79
-00:03:34,770 --> 00:03:37,510
-número de entradas en el índice escaneadas
-parece que fue
+00:02:58,520 --> 00:03:04,560
+So this is in JSON form a
+specific outcome for this ID
 
 80
-00:03:37,510 --> 00:03:38,530
-más o menos el mismo.
+00:03:04,560 --> 00:03:07,200
+here, racing a couple
+of different query plans
 
 81
-00:03:38,530 --> 00:03:43,070
-Así que es mucho más eficiente usar
-este índice "class_id" aunque
+00:03:07,200 --> 00:03:08,310
+against one another.
 
 82
-00:03:43,070 --> 00:03:46,000
-se especificaron "class_id" y
-"student_id".
+00:03:08,310 --> 00:03:09,210
+OK.
 
 83
-00:03:46,000 --> 00:03:48,610
-Y la razón es que la forma
-en que estuvimos usando ese índice
+00:03:09,210 --> 00:03:13,230
+So what happened here
+is that the winning plan
 
 84
-00:03:48,610 --> 00:03:51,950
-"student_id" fue con uno de estos
-operadores, "$gt: 500".
+00:03:13,230 --> 00:03:16,150
+used a compound index based
+on student ID and class ID.
 
 85
-00:03:51,950 --> 00:03:52,750
-Mayor que --
+00:03:16,150 --> 00:03:19,390
+And the losing plan--
+there's only one other--
 
 86
-00:03:52,750 --> 00:03:55,850
-no es un operador particularmente
-eficiente para usar con un índice.
+00:03:19,390 --> 00:03:23,070
+would have used an
+index based on class ID,
 
 87
-00:03:55,850 --> 00:03:59,790
-Así que simplemente ten en mente cuando
-estés pensando en indexar
+00:03:23,070 --> 00:03:26,460
+but then it would have had
+to do an in memory sort.
 
 88
-00:03:59,790 --> 00:04:03,870
-y si estás usando un índice
-o no, que tienes que
+00:03:26,460 --> 00:03:29,550
+That's what this component
+of this particular query plan
 
 89
-00:04:03,870 --> 00:04:06,180
-considerar más que si se usó
-un índice, también
+00:03:29,550 --> 00:03:30,050
+means.
 
 90
-00:04:06,180 --> 00:04:07,550
-cómo se usó.
+00:03:30,050 --> 00:03:33,890
+Any time you see a sort
+stage in a query plan,
 
 91
-00:04:07,550 --> 00:04:09,180
-¿Se usó sólo para el ordenamiento?
+00:03:33,890 --> 00:03:35,940
+it means that
+MongoDB was or would
 
 92
-00:04:09,180 --> 00:04:11,410
-¿Se usó de forma
-ineficiente y provocó que la
+00:03:35,940 --> 00:03:38,780
+have been unable to sort
+the results set according
 
 93
-00:04:11,410 --> 00:04:13,430
-base de datos examinara
-millones de registros?
+00:03:38,780 --> 00:03:41,920
+to the sort specified by the
+query in the database itself.
 
 94
-00:04:13,430 --> 00:04:15,890
-Todas estas cosas son importantes
-cuando afectan al rendimiento
+00:03:41,920 --> 00:03:45,100
+Rather, it would have had
+to do an in memory sort.
 
 95
-00:04:15,890 --> 00:04:17,140
-final.
+00:03:45,100 --> 00:03:48,480
+So what happened here is
+that the index that won
 
 96
-00:04:17,140 --> 00:04:17,440
+00:03:48,480 --> 00:03:50,950
+is one that was able to
+return sorted output.
+
+97
+00:03:50,950 --> 00:03:53,480
+So it only had to get to
+that certain threshold
+
+98
+00:03:53,480 --> 00:03:56,150
+number of returned results,
+which is, I believe,
+
+99
+00:03:56,150 --> 00:03:58,720
+101 returned documents.
+
+100
+00:03:58,720 --> 00:04:01,579
+First is, if you
+remember, 10,000 documents
+
+101
+00:04:01,579 --> 00:04:03,870
+would have to have been
+returned by any query plan that
+
+102
+00:04:03,870 --> 00:04:06,250
+was unable to do a sort
+within the database.
+
+103
+00:04:06,250 --> 00:04:09,690
+Because we actually were able to
+identify 10,000 documents that
+
+104
+00:04:09,690 --> 00:04:12,350
+matched the query
+parameters stipulated here.
+
+105
+00:04:12,350 --> 00:04:14,290
+Again, the issue is
+one of selectivity.
+
+106
+00:04:14,290 --> 00:04:16,760
+And the problem
+here is that we're
+
+107
+00:04:16,760 --> 00:04:20,880
+specifying a range query that
+just isn't very selective.
+
+108
+00:04:20,880 --> 00:04:23,810
+And so we end up
+touching every single key
+
+109
+00:04:23,810 --> 00:04:28,600
+in this index that has a student
+ID value greater than 500,000.
+
+110
+00:04:28,600 --> 00:04:31,200
+So that's about half
+of the records here.
+
+111
+00:04:31,200 --> 00:04:33,200
+Now, I'm sure you can see
+where I'm headed here.
+
+112
+00:04:33,200 --> 00:04:35,330
+It's this query,
+the point query,
+
+113
+00:04:35,330 --> 00:04:38,360
+that's going to be considerably
+more selective for us.
+
+114
+00:04:38,360 --> 00:04:39,040
+OK.
+
+115
+00:04:39,040 --> 00:04:42,160
+So as I said, there's
+only about 500 classes
+
+116
+00:04:42,160 --> 00:04:44,180
+represented in this data set.
+
+117
+00:04:44,180 --> 00:04:45,930
+And now, granted,
+there's lots of students
+
+118
+00:04:45,930 --> 00:04:47,250
+taking those classes.
+
+119
+00:04:47,250 --> 00:04:49,220
+But this is going to
+constrain our results set.
+
+120
+00:04:49,220 --> 00:04:51,678
+And this is really what leads
+to those 10,000 records being
+
+121
+00:04:51,678 --> 00:04:55,280
+returned as opposed to the
+850,000 that were identified.
+
+122
+00:04:55,280 --> 00:04:57,870
+So what would better,
+given the indexes we have,
+
+123
+00:04:57,870 --> 00:05:01,770
+is if, in fact, we use
+this particular index.
+
+124
+00:05:01,770 --> 00:05:04,210
+Because this is going to be
+substantially more selective.
+
+125
+00:05:04,210 --> 00:05:05,750
+So let's do that.
+
+126
+00:05:05,750 --> 00:05:09,760
+Now, MongoDB does provide a
+way of forcing the database
+
+127
+00:05:09,760 --> 00:05:11,105
+to use a particular index.
+
+128
+00:05:11,105 --> 00:05:12,730
+I can't stress strongly
+enough that you
+
+129
+00:05:12,730 --> 00:05:14,120
+should use this with caution.
+
+130
+00:05:14,120 --> 00:05:15,860
+It's not something
+you should necessarily
+
+131
+00:05:15,860 --> 00:05:17,120
+make part of your deployment.
+
+132
+00:05:17,120 --> 00:05:19,120
+But it is a way
+of overriding what
+
+133
+00:05:19,120 --> 00:05:20,870
+would be the outcome
+of the query planner.
+
+134
+00:05:20,870 --> 00:05:22,871
+So that is called Hint.
+
+135
+00:05:22,871 --> 00:05:23,370
+OK.
+
+136
+00:05:23,370 --> 00:05:25,932
+And with Hint, we can
+specify a particular index
+
+137
+00:05:25,932 --> 00:05:28,140
+that we'd like to use, either
+by specifying its shape
+
+138
+00:05:28,140 --> 00:05:29,527
+or its actual name.
+
+139
+00:05:29,527 --> 00:05:31,610
+In this case, I'm just
+going to specify its shape.
+
+140
+00:05:31,610 --> 00:05:33,750
+And what I'm going to do
+here is I'm going to say,
+
+141
+00:05:33,750 --> 00:05:36,610
+OK, I want to use
+the class ID index.
+
+142
+00:05:36,610 --> 00:05:37,140
+OK.
+
+143
+00:05:37,140 --> 00:05:40,580
+So let's see what
+happened with this query.
+
+144
+00:05:40,580 --> 00:05:41,450
+OK.
+
+145
+00:05:41,450 --> 00:05:45,880
+We're now down from having
+scanned 850,000 index keys
+
+146
+00:05:45,880 --> 00:05:48,590
+to just about 20,000
+in order to get
+
+147
+00:05:48,590 --> 00:05:50,990
+to our results set of 10,000.
+
+148
+00:05:50,990 --> 00:05:51,490
+OK.
+
+149
+00:05:51,490 --> 00:05:55,360
+And the execution time is
+only 79 milliseconds as
+
+150
+00:05:55,360 --> 00:05:57,690
+opposed to the 2,600
+milliseconds we
+
+151
+00:05:57,690 --> 00:06:00,160
+saw before using other index.
+
+152
+00:06:00,160 --> 00:06:00,750
+OK.
+
+153
+00:06:00,750 --> 00:06:03,200
+Now, the fact is, what
+we'd really like to see
+
+154
+00:06:03,200 --> 00:06:06,560
+is that nReturned
+is, in fact, very
+
+155
+00:06:06,560 --> 00:06:08,820
+close to total keys examined.
+
+156
+00:06:08,820 --> 00:06:13,320
+So one way of addressing this
+is to design a better index.

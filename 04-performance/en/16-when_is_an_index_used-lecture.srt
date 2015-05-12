@@ -1,261 +1,286 @@
 1
-00:00:00,000 --> 00:00:00,170
+00:00:00,000 --> 00:00:00,500
 
 2
-00:00:00,170 --> 00:00:02,060
-We've learned about the Explain
-command, which is how
+00:00:00,500 --> 00:00:03,350
+OK, you're going to be hearing
+a new voice after this.
 
 3
-00:00:02,060 --> 00:00:03,970
-we figure out what the
-database is doing
+00:00:03,350 --> 00:00:05,620
+Shannon Bradshaw, our
+Director of Education,
 
 4
-00:00:03,970 --> 00:00:05,360
-when it does a query.
+00:00:05,620 --> 00:00:07,970
+is going to be delivering
+some of the lessons,
 
 5
-00:00:05,360 --> 00:00:07,670
-But what does the database do
-to figure out which index it
+00:00:07,970 --> 00:00:10,330
+and I'll be returning
+toward the end of this week,
 
 6
-00:00:07,670 --> 00:00:09,150
-should use?
+00:00:10,330 --> 00:00:14,330
+and also back next week, to
+teach the rest of the course.
 
 7
-00:00:09,150 --> 00:00:12,130
-Let's say you have a collection
-with three
+00:00:14,330 --> 00:00:16,190
+So welcome, Shannon.
 
 8
-00:00:12,130 --> 00:00:14,960
-different indexes on it-- an
-index on A, an index on B, and
+00:00:16,190 --> 00:00:16,750
+OK.
 
 9
-00:00:14,960 --> 00:00:18,750
-an index on C. We'll call that
-query plan one, query plan
+00:00:16,750 --> 00:00:20,250
+Now let's take a look at
+how MongoDB chooses an index
 
 10
-00:00:18,750 --> 00:00:20,580
-two, and query plan three.
+00:00:20,250 --> 00:00:21,770
+to satisfy a query.
 
 11
-00:00:20,580 --> 00:00:25,150
-And you specify A, B, and
-C, all three of them,
+00:00:21,770 --> 00:00:24,420
+Let's imagine we
+have five indexes.
 
 12
-00:00:25,150 --> 00:00:26,370
-when you do a query.
+00:00:24,420 --> 00:00:28,110
+When a query comes in, MongoDB
+looks at the query's shape.
 
 13
-00:00:26,370 --> 00:00:28,750
-Now, the database can use this
-index, or it could use this
+00:00:28,110 --> 00:00:31,140
+Shape has to do with what
+fields are being searched on
 
 14
-00:00:28,750 --> 00:00:29,960
-index, or it could
-use this index.
+00:00:31,140 --> 00:00:34,020
+and additional information,
+such as is there a sort?
 
 15
-00:00:29,960 --> 00:00:31,490
-It can't use up all three.
+00:00:34,020 --> 00:00:35,660
+Based on that
+information, the system
 
 16
-00:00:31,490 --> 00:00:32,830
-It can only use one of them.
+00:00:35,660 --> 00:00:37,765
+identifies a set of
+candidate indexes
 
 17
-00:00:32,830 --> 00:00:36,500
-What it does the first time we
-do this query, it'll run those
+00:00:37,765 --> 00:00:40,800
+that it may be able to use
+in satisfying the query.
 
 18
-00:00:36,500 --> 00:00:38,410
-three query plans in parallel.
+00:00:40,800 --> 00:00:42,650
+So let's assume we
+have a query come in,
 
 19
-00:00:38,410 --> 00:00:41,950
-And time will start, and these
-query plans are running.
+00:00:42,650 --> 00:00:46,010
+and three of our five
+indexes are identified
 
 20
-00:00:41,950 --> 00:00:46,650
-And as soon as one completes,
-then Mongo will return the
+00:00:46,010 --> 00:00:48,140
+as candidates for this query.
 
 21
-00:00:46,650 --> 00:00:50,460
-answer to the query and memorize
-that it is in fact
+00:00:48,140 --> 00:00:50,570
+So one, two, and three.
 
 22
-00:00:50,460 --> 00:00:53,950
-query plan two, which uses
-index B. That's going to
+00:00:50,570 --> 00:00:54,100
+MongoDB will then create
+three query plans, one each
 
 23
-00:00:53,950 --> 00:00:56,030
-satisfy those types
-of queries.
+00:00:54,100 --> 00:00:57,680
+for these indexes, and in
+three parallel threads,
 
 24
-00:00:56,030 --> 00:00:58,380
-And this is kind of cool because
-it's basically running
+00:00:57,680 --> 00:01:00,870
+issue the query such that each
+one will use a different index,
 
 25
-00:00:58,380 --> 00:01:01,950
-experiments on your actual data
-to figure out which index
+00:01:00,870 --> 00:01:03,800
+and see which one is able to
+return results the fastest.
 
 26
-00:01:01,950 --> 00:01:03,350
-it should use.
+00:01:03,800 --> 00:01:05,680
+So visually, we
+can think of this
 
 27
-00:01:03,350 --> 00:01:04,920
-And you don't have to do
-anything to make this happen,
+00:01:05,680 --> 00:01:07,740
+as a race, something like this.
 
 28
-00:01:04,920 --> 00:01:06,480
-it just happens behind
-the scenes.
+00:01:07,740 --> 00:01:10,090
+The idea here is
+that the first query
 
 29
-00:01:06,480 --> 00:01:09,650
-But I just wanted you to
-understand that broadly.
+00:01:10,090 --> 00:01:12,630
+plan to reach a goal
+state is the winner.
 
 30
-00:01:09,650 --> 00:01:13,090
-And every hundred or so queries
-it will forget what it
+00:01:12,630 --> 00:01:14,390
+But more importantly,
+going forward it'll
 
 31
-00:01:13,090 --> 00:01:16,110
-knows, and it will run another
-experiment if it has to, to
+00:01:14,390 --> 00:01:16,650
+be selected as the index
+to use for queries that
 
 32
-00:01:16,110 --> 00:01:19,290
-choose between those
-indexes again.
+00:01:16,650 --> 00:01:18,700
+have that same query shape.
 
 33
-00:01:19,290 --> 00:01:22,650
-Just to review, if you have
-a compound index on--
+00:01:18,700 --> 00:01:19,990
+So what's the goal state here?
 
 34
-00:01:22,650 --> 00:01:24,670
-I'm going to do it differently
-this time--
+00:01:19,990 --> 00:01:21,760
+Well, it can be one
+of a couple of things.
 
 35
-00:01:24,670 --> 00:01:29,470
-on D, C, B, A in that order--
+00:01:21,760 --> 00:01:24,010
+So it could be that
+one of the query plans
 
 36
-00:01:29,470 --> 00:01:32,100
-if you have a compound index,
-then in order for the database
+00:01:24,010 --> 00:01:26,300
+returned all the
+results for the query.
 
 37
-00:01:32,100 --> 00:01:37,100
-to use this index, you have to
-specify some left subset of
+00:01:26,300 --> 00:01:28,440
+Another way a query
+plan can win is
 
 38
-00:01:37,100 --> 00:01:38,050
-these items.
+00:01:28,440 --> 00:01:31,340
+by returning a certain
+threshold number of results.
 
 39
-00:01:38,050 --> 00:01:40,665
-So if you specify just D,
-it can use the index.
+00:01:31,340 --> 00:01:33,440
+But there's a caveat
+here, and that
 
 40
-00:01:40,665 --> 00:01:43,880
-If you specify D and
-C, it can use it.
+00:01:33,440 --> 00:01:36,930
+is that it's able to return
+the results in sort order.
 
 41
-00:01:43,880 --> 00:01:47,760
-If you specify D and B, it can
-use it but it only really uses
+00:01:36,930 --> 00:01:38,380
+Now, the real
+value of doing this
 
 42
-00:01:47,760 --> 00:01:48,970
-the D part.
+00:01:38,380 --> 00:01:41,610
+is that for subsequent queries
+that have the same query shape,
 
 43
-00:01:48,970 --> 00:01:56,070
-If you specify C and B, it
-cannot use it because it
+00:01:41,610 --> 00:01:43,830
+MongoDB knows which
+index to select.
 
 44
-00:01:56,070 --> 00:01:58,140
-didn't have the D
-part included.
+00:01:43,830 --> 00:01:46,470
+The way we achieve that is
+through the use of a cache.
 
 45
-00:01:58,140 --> 00:02:01,470
-And this is true whether or not
-it's using it to do a sort
+00:01:46,470 --> 00:01:49,200
+So the winning
+query plan is stored
 
 46
-00:02:01,470 --> 00:02:04,200
-or whether or not it's using
-it to do a find.
+00:01:49,200 --> 00:01:52,370
+in the cache for future use
+for queries of that shape.
 
 47
-00:02:04,200 --> 00:02:06,660
-And although I didn't say this
-explicitly, you should realize
+00:01:52,370 --> 00:01:55,810
+Now of course, over time,
+our collection changes,
 
 48
-00:02:06,660 --> 00:02:13,330
-of course that find, findOne,
-update, and remove can all
+00:01:55,810 --> 00:01:59,050
+the indexes change, so we
+don't want this to necessarily
 
 49
-00:02:13,330 --> 00:02:15,630
-benefit from indexes.
+00:01:59,050 --> 00:02:00,405
+be the index we use forever.
 
 50
-00:02:15,630 --> 00:02:17,600
-OK, let's do a quick quiz.
+00:02:00,405 --> 00:02:02,780
+So there's several ways in
+which a query plan will end up
 
 51
-00:02:17,600 --> 00:02:20,170
-This should be kind
-of review for you.
+00:02:02,780 --> 00:02:04,020
+being evicted from the cache.
 
 52
-00:02:20,170 --> 00:02:22,740
-Given the collection foo with
-the following index, A, B, and
+00:02:04,020 --> 00:02:07,950
+One of those is if there are
+a threshold number of writes.
 
 53
-00:02:22,740 --> 00:02:25,670
-C, which of the following
-queries will use the index?
+00:02:07,950 --> 00:02:09,940
+Right now that threshold
+is 1,000 writes.
 
 54
-00:02:25,670 --> 00:02:28,240
-And you can see the
-four choices here.
+00:02:09,940 --> 00:02:13,140
+Another way, of course, is
+if we rebuild the index,
 
 55
-00:02:28,240 --> 00:02:29,490
-Check all that apply.
+00:02:13,140 --> 00:02:18,500
+or if any index is either added
+or dropped from the collection.
 
 56
-00:02:29,490 --> 00:02:30,320
+00:02:18,500 --> 00:02:21,210
+And finally, if the [? mongod ?]
+process is restarted,
+
+57
+00:02:21,210 --> 00:02:23,840
+we would also lose the
+query plan, and other plans,
+
+58
+00:02:23,840 --> 00:02:24,920
+in the cache.
+
+59
+00:02:24,920 --> 00:02:28,100
+So this basic processes is
+what MongoDB uses in order
+
+60
+00:02:28,100 --> 00:02:33,480
+to figure out which index to
+use for the queries you submit.

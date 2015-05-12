@@ -1,357 +1,663 @@
 1
-00:00:00,000 --> 00:00:00,120
+00:00:00,000 --> 00:00:00,170
 
 2
-00:00:00,120 --> 00:00:03,360
-Deseo hablar acerca de una última
-opción para crear un índice,
+00:00:00,170 --> 00:00:00,382
+All right.
 
 3
-00:00:03,360 --> 00:00:05,480
-y eso es si quieres
-o no hacerlo en un
+00:00:00,382 --> 00:00:01,330
+Now, we know how
+to create indexes,
 
 4
-00:00:05,480 --> 00:00:06,990
-segundo plano (background).
+00:00:01,330 --> 00:00:03,910
+and we know how to create unique
+indexes and sparse indexes.
 
 5
-00:00:06,990 --> 00:00:08,770
-Por defecto, un índice
-es creado en un
+00:00:03,910 --> 00:00:06,490
+But the last concept I
+want to discuss with you
 
 6
-00:00:08,770 --> 00:00:10,630
-primer plano (foreground) en Mongo.
+00:00:06,490 --> 00:00:09,210
+is whether or not you create
+this index in the foreground
 
 7
-00:00:10,630 --> 00:00:13,330
-Y cuando es creado en un
-primer plano, esto bloquea todas
+00:00:09,210 --> 00:00:10,370
+or the background.
 
 8
-00:00:13,330 --> 00:00:14,390
-las otras escrituras.
+00:00:10,370 --> 00:00:12,650
+So let's go through the
+different options-- foreground
 
 9
-00:00:14,390 --> 00:00:16,980
-Si deseas, puedes ejecutarlo en
-un segundo plano, en cuyo caso
+00:00:12,650 --> 00:00:13,650
+and background.
 
 10
-00:00:16,980 --> 00:00:18,830
-no bloquerá otras escrituras.
+00:00:13,650 --> 00:00:16,600
+Now, foreground index creation
+is the default in MongoDB,
 
 11
-00:00:18,830 --> 00:00:20,700
-Así que si ejecutas
-en un primer plano,
+00:00:16,600 --> 00:00:18,830
+and the good thing about
+foreground index creation
 
 12
-00:00:20,700 --> 00:00:22,370
-va a ser más rápido.
+00:00:18,830 --> 00:00:21,210
+is that it is relatively--
+and I say "relatively"
 
 13
-00:00:22,370 --> 00:00:24,370
-Crear un índice en
-primer plano es rápido.
+00:00:21,210 --> 00:00:22,520
+because it still can be slow.
 
 14
-00:00:24,370 --> 00:00:26,220
-Pero va a bloquear
-las escrituras.
+00:00:22,520 --> 00:00:28,330
+It is relatively fast, and it
+blocks all writers and readers
 
 15
-00:00:26,220 --> 00:00:30,660
-En Mongo 2.2 y posteriores hay
-un bloqueo por base de datos.
+00:00:28,330 --> 00:00:30,950
+in the database that
+has the collection.
 
 16
-00:00:30,660 --> 00:00:34,310
-Por ello bloqueará las escrituras
-sólo en la misma base de datos.
+00:00:30,950 --> 00:00:32,619
+So a foreground
+index creation is
 
 17
-00:00:34,310 --> 00:00:36,360
-Por otro lado, si prefieres,
-puedes usar la opción
+00:00:32,619 --> 00:00:34,920
+going to block the
+writers and the readers
 
 18
-00:00:36,360 --> 00:00:38,810
-"background: true",
-en cuyo caso
+00:00:34,920 --> 00:00:37,290
+in the same database as
+the collection exists,
 
 19
-00:00:38,810 --> 00:00:41,090
-será un poco lento.
+00:00:37,290 --> 00:00:40,310
+even though we have
+per collection database
 
 20
-00:00:41,090 --> 00:00:42,270
-Y a veces tanto como--
+00:00:40,310 --> 00:00:42,810
+locking in Nmap
+V1 Storage Engine.
 
 21
-00:00:42,270 --> 00:00:44,500
-hemos escuchado reportes de todos
-lados de dos a tres veces más lento,
+00:00:42,810 --> 00:00:45,813
+And in WiredTiger,
+there is concurrency
 
 22
-00:00:44,500 --> 00:00:46,090
-cuatro o cinco
-veces más lento.
+00:00:45,813 --> 00:00:47,120
+at the document level.
 
 23
-00:00:46,090 --> 00:00:49,000
-Pero las escrituras
-suceden concurrentemente.
+00:00:47,120 --> 00:00:49,934
+Even though that's true,
+if you do an index creation
 
 24
-00:00:49,000 --> 00:00:50,750
-Esto no bloquea las escrituras.
+00:00:49,934 --> 00:00:51,600
+in the foreground,
+which is the default,
 
 25
-00:00:50,750 --> 00:00:53,180
-Puedes ejecutar una creación
-en segundo plano a la vez
+00:00:51,600 --> 00:00:54,700
+you're going to block readers
+and writers to the database.
 
 26
-00:00:53,180 --> 00:00:54,930
-en la base de datos.
+00:00:54,700 --> 00:00:56,450
+Other databases you
+can still get to.
 
 27
-00:00:54,930 --> 00:00:57,820
-Ahora la pregunta es,
-¿cuál debería elegir?
+00:00:56,450 --> 00:00:59,240
+So you have to do this probably
+not in a production system.
 
 28
-00:00:57,820 --> 00:00:59,500
-Bueno, depende
-de la situación.
+00:00:59,240 --> 00:01:01,740
+So you've got to be very careful
+if you're going to do that.
 
 29
-00:00:59,500 --> 00:01:02,390
-Pero si haces todo por ti mismo
-y estás trabajando en
+00:01:01,740 --> 00:01:05,269
+And the other option is you can
+do a background index creation.
 
 30
-00:01:02,390 --> 00:01:03,440
-desarrollo--
+00:01:05,269 --> 00:01:07,570
+Now, background index
+creations are a bit slower
 
 31
-00:01:03,440 --> 00:01:05,190
-no hay un sistema en
-producción--
+00:01:07,570 --> 00:01:09,897
+relative to the
+foreground index creation,
 
 32
-00:01:05,190 --> 00:01:07,880
-es una buena posibilidad preferir
-crear un índice en primer plano
+00:01:09,897 --> 00:01:11,605
+but they don't block
+readers and writers.
 
 33
-00:01:07,880 --> 00:01:09,790
-porque va a
-ser rápido.
+00:01:11,605 --> 00:01:14,510
+You can only have one background
+index creation going on
 
 34
-00:01:09,790 --> 00:01:12,000
-Y ese es el valor por defecto
-cuando creas un índice.
+00:01:14,510 --> 00:01:15,390
+at a time.
 
 35
-00:01:12,000 --> 00:01:15,580
-"ensureIndex" en el segundo
-documento llamado "background"--
+00:01:15,390 --> 00:01:17,820
+After that, the next
+one will queue and wait.
 
 36
-00:01:15,580 --> 00:01:17,940
-si lo dejas como está
-será "false" por defecto
+00:01:17,820 --> 00:01:20,090
+I think that is on a
+per database level.
 
 37
-00:01:17,940 --> 00:01:21,360
-en cuyo caso se ejecutará
-en un primer plano.
+00:01:20,090 --> 00:01:22,960
+And this is probably a better
+way to create an index.
 
 38
-00:01:21,360 --> 00:01:23,010
-Por otro lado, si estás
-en un sistema en producción,
+00:01:22,960 --> 00:01:24,790
+However, it's still
+fairly high-load.
 
 39
-00:01:23,010 --> 00:01:25,510
-y sabes que hay otras
-escrituras en la misma
+00:01:24,790 --> 00:01:26,832
+The other way to create
+an index very efficiently
 
 40
-00:01:25,510 --> 00:01:28,570
-base de datos, en realidad
-tienes que ejecutarlo en un
+00:01:26,832 --> 00:01:28,290
+in a production
+system is something
 
 41
-00:01:28,570 --> 00:01:30,300
-segundo plano o bloquearás
-a todos los demás.
+00:01:28,290 --> 00:01:30,930
+we haven't talked about yet,
+but we'll get to a little bit
 
 42
-00:01:30,300 --> 00:01:32,120
-Y eso va a
-ser terrible.
+00:01:30,930 --> 00:01:32,960
+in this course
+toward the end, which
 
 43
-00:01:32,120 --> 00:01:34,890
-Hay una forma de evitar eso y
-no hemos llegado a ello aún.
+00:01:32,960 --> 00:01:36,325
+is to create the index on a
+different server than the one
 
 44
-00:01:34,890 --> 00:01:36,670
-Esto es de administradores de bases
-de datos y no vamos a hablar mucho
+00:01:36,325 --> 00:01:39,150
+that you're using to
+serve most of the queries.
 
 45
-00:01:36,670 --> 00:01:37,920
-de ello en este curso.
+00:01:39,150 --> 00:01:41,785
+So if you have a
+MongoDB replica set--
 
 46
-00:01:37,920 --> 00:01:42,070
-Pero si estás en un sistema
-con replicación, que es la
+00:01:41,785 --> 00:01:43,160
+and this is a
+concept we're going
 
 47
-00:01:42,070 --> 00:01:44,410
-forma que se recomienda para ejecutar
-Mongo en sistemas en producción--
+00:01:43,160 --> 00:01:46,290
+to get to later on-- which
+is a group of servers working
 
 48
-00:01:44,410 --> 00:01:48,330
-un conjunto de réplicas, donde
-tienes varias instancias de
+00:01:46,290 --> 00:01:50,740
+together in tandem, then what
+you can do is you can take one
 
 49
-00:01:48,330 --> 00:01:50,330
-mongod con los mismos datos.
+00:01:50,740 --> 00:01:53,330
+of them out of the
+set temporarily,
 
 50
-00:01:50,330 --> 00:01:53,470
-Y todos se mantienen sincronizados
-a través de la replicación.
+00:01:53,330 --> 00:01:56,140
+only sending requests
+to, let's say, this one,
 
 51
-00:01:53,470 --> 00:01:55,780
-Entonces es posible, si deseas
-conseguir una creación rápida
+00:01:56,140 --> 00:01:59,310
+and then run the index
+creation in the foreground
 
 52
-00:01:55,780 --> 00:01:59,400
-de índices, que puedes quitar
-uno de tus servidores fuera del
+00:01:59,310 --> 00:02:01,970
+here, which could
+be much faster.
 
 53
-00:01:59,400 --> 00:02:02,600
-conjunto de réplicas y luego las
-solicitudes irán solamente hacia
+00:02:01,970 --> 00:02:04,172
+And then after the index
+creation is finished,
 
 54
-00:02:02,600 --> 00:02:03,300
-estos dos servidores.
+00:02:04,172 --> 00:02:05,880
+then you could bring
+him back in the set.
 
 55
-00:02:03,300 --> 00:02:07,200
-Y mientras eso sucede, puedes
-construir el índice aquí
+00:02:05,880 --> 00:02:07,816
+And you can rotate
+around which server
 
 56
-00:02:07,200 --> 00:02:09,860
-en un primer plano donde es
-rápido, y puedes traer esta
+00:02:07,816 --> 00:02:08,940
+takes most of the requests.
 
 57
-00:02:09,860 --> 00:02:12,320
-instancia de regreso al conjunto
-de réplicas y se actualizará.
+00:02:08,940 --> 00:02:10,889
+And in doing this,
+you can create
 
 58
-00:02:12,320 --> 00:02:15,970
-Así que sería una forma de ejecutarlo
-en un primer plano, incluso en un
+00:02:10,889 --> 00:02:12,660
+an index in the
+foreground on a server
 
 59
-00:02:15,970 --> 00:02:18,310
-sistema en producción y obtener
-un gran rendimiento sin
+00:02:12,660 --> 00:02:15,340
+without creating any performance
+penalty from the application
 
 60
-00:02:18,310 --> 00:02:19,440
-bloquear tus otras escrituras.
+00:02:15,340 --> 00:02:17,930
+standpoint that's talking
+to this cluster of database
 
 61
-00:02:19,440 --> 00:02:22,800
-Pero más allá de esa posibilidad,
-probablemente, en un sistema en
+00:02:17,930 --> 00:02:18,790
+servers.
 
 62
-00:02:22,800 --> 00:02:25,320
-producción, vas a ejecutarlo
-en un segundo plano y si estás
+00:02:18,790 --> 00:02:19,710
+All right.
 
 63
-00:02:25,320 --> 00:02:27,910
-apenas en desarrollo,
-probablemente en primer plano.
+00:02:19,710 --> 00:02:22,290
+So again, foreground
+indexing is the default.
 
 64
-00:02:27,910 --> 00:02:30,500
-De acuerdo, es tiempo para un cuestinario.
+00:02:22,290 --> 00:02:24,940
+Background indexing is
+something you have to ask for.
 
 65
-00:02:30,500 --> 00:02:32,160
-¿Qué cosas son ciertas acerca
-de crear un índice en un
+00:02:24,940 --> 00:02:27,340
+Now, let's go through and
+just try this and play with it
 
 66
-00:02:32,160 --> 00:02:33,350
-segundo plano en MongoDB?
+00:02:27,340 --> 00:02:29,080
+so we can see it in action.
 
 67
-00:02:33,350 --> 00:02:34,890
-Marca todas las que apliquen.
+00:02:29,080 --> 00:02:31,580
+Now, right here, I've got my
+students collection again,
 
 68
-00:02:34,890 --> 00:02:37,060
-Una instancia de mongod puede construir
-sólo un índice en un segundo plano
+00:02:31,580 --> 00:02:32,871
+which I had 10 million records.
 
 69
-00:02:37,060 --> 00:02:39,040
-a la vez por base de datos.
+00:02:32,871 --> 00:02:34,610
+Remember, from the
+previous lessons.
 
 70
-00:02:39,040 --> 00:02:40,640
-Aunque el servidor de base de datos
-seguirá tomando solicitudes,
+00:02:34,610 --> 00:02:36,970
+And it has two indexes
+on it, and I've dropped
 
 71
-00:02:40,640 --> 00:02:42,920
-la creación de un índice en segundo
-plano seguirá bloqueando el
+00:02:36,970 --> 00:02:39,270
+the index on scores.score.
 
 72
-00:02:42,920 --> 00:02:45,510
-shell mongo que estás usando
-para crear el índice.
+00:02:39,270 --> 00:02:41,880
+And if you recall, it was a
+very expensive index to create.
 
 73
-00:02:45,510 --> 00:02:47,160
-Crear un índice en un segundo
-plano toma más tiempo que
+00:02:41,880 --> 00:02:44,460
+Each of these documents
+has an array of scores,
 
 74
-00:02:47,160 --> 00:02:48,980
-en un primer plano.
+00:02:44,460 --> 00:02:46,252
+and it just took like
+20 minutes last time.
 
 75
-00:02:48,980 --> 00:02:51,050
-En Mongo 2.2 y posteriores,
-los índices son creados en un
+00:02:46,252 --> 00:02:48,043
+So I'm going to run
+this in the foreground,
 
 76
-00:02:51,050 --> 00:02:52,300
-segundo plano por defecto.
+00:02:48,043 --> 00:02:50,120
+and it's not going to
+complete anytime soon.
+
+77
+00:02:50,120 --> 00:02:51,930
+And then while I
+do that, I'm going
+
+78
+00:02:51,930 --> 00:02:57,240
+to also take another Mongo shell
+and use the school database
+
+79
+00:02:57,240 --> 00:03:00,850
+and then do db.students.findOne.
+
+80
+00:03:00,850 --> 00:03:03,319
+And you can see that I am,
+in fact, completely blocked.
+
+81
+00:03:03,319 --> 00:03:05,235
+I'm getting nothing from
+the database blocked.
+
+82
+00:03:05,235 --> 00:03:06,190
+That's too bad.
+
+83
+00:03:06,190 --> 00:03:07,860
+I'm not blocked from
+other databases.
+
+84
+00:03:07,860 --> 00:03:09,910
+So there, I killed it.
+
+85
+00:03:09,910 --> 00:03:11,050
+Killed that request.
+
+86
+00:03:11,050 --> 00:03:16,236
+If I'm in the test database
+and I do db.employees.find,
+
+87
+00:03:16,236 --> 00:03:18,610
+which I think is a collection
+that should still be there,
+
+88
+00:03:18,610 --> 00:03:20,670
+then you can see, I can
+access that just fine.
+
+89
+00:03:20,670 --> 00:03:22,040
+It's in a different database.
+
+90
+00:03:22,040 --> 00:03:22,540
+OK.
+
+91
+00:03:22,540 --> 00:03:24,737
+So let's go back and run
+this in the background
+
+92
+00:03:24,737 --> 00:03:26,320
+now and then see if
+that works better.
+
+93
+00:03:26,320 --> 00:03:29,240
+So I'm going to kill this index
+creation in the foreground.
+
+94
+00:03:29,240 --> 00:03:30,510
+I hit Control C in the shell.
+
+95
+00:03:30,510 --> 00:03:32,040
+It offered to kill the op.
+
+96
+00:03:32,040 --> 00:03:32,645
+I said yes.
+
+97
+00:03:32,645 --> 00:03:35,290
+It seems to have killed the
+shell as well, which is fine.
+
+98
+00:03:35,290 --> 00:03:37,260
+And then I'm going
+to run Mongo, and I'm
+
+99
+00:03:37,260 --> 00:03:38,714
+going to use school again.
+
+100
+00:03:38,714 --> 00:03:41,130
+And now, I'm going to create
+this index in the background.
+
+101
+00:03:41,130 --> 00:03:44,910
+So let's confirm that there
+is no index, first of all.
+
+102
+00:03:44,910 --> 00:03:45,440
+All right.
+
+103
+00:03:45,440 --> 00:03:49,190
+So there's no index
+on scores.score.
+
+104
+00:03:49,190 --> 00:03:49,900
+So that's good.
+
+105
+00:03:49,900 --> 00:03:51,360
+So let's create one.
+
+106
+00:03:51,360 --> 00:03:59,110
+db.students.createIndex,
+and put it on scores.score.
+
+107
+00:03:59,110 --> 00:04:00,010
+Ascending.
+
+108
+00:04:00,010 --> 00:04:04,480
+And then give the option
+for background, true.
+
+109
+00:04:04,480 --> 00:04:06,874
+So I'm going to say true
+to that, and let's see.
+
+110
+00:04:06,874 --> 00:04:07,790
+I'm going to check it.
+
+111
+00:04:07,790 --> 00:04:08,450
+Looks OK.
+
+112
+00:04:08,450 --> 00:04:09,626
+Hit Return.
+
+113
+00:04:09,626 --> 00:04:12,125
+And now, it's going to go off
+and do this in the background.
+
+114
+00:04:12,125 --> 00:04:12,980
+Pretty darn slow.
+
+115
+00:04:12,980 --> 00:04:15,530
+I'm still not going to
+get an immediate response
+
+116
+00:04:15,530 --> 00:04:16,155
+from the shell.
+
+117
+00:04:16,155 --> 00:04:18,196
+It's not going to background
+the actual operation
+
+118
+00:04:18,196 --> 00:04:19,680
+from the shell's standpoint.
+
+119
+00:04:19,680 --> 00:04:21,670
+But now, now that
+I've done that,
+
+120
+00:04:21,670 --> 00:04:24,050
+I'm going to use
+school again, and then
+
+121
+00:04:24,050 --> 00:04:25,040
+do db.students.findOne.
+
+122
+00:04:25,040 --> 00:04:28,010
+
+123
+00:04:28,010 --> 00:04:30,010
+And you can see
+that I successfully
+
+124
+00:04:30,010 --> 00:04:32,850
+queried this collection,
+even while index creation is
+
+125
+00:04:32,850 --> 00:04:34,890
+going on in the background.
+
+126
+00:04:34,890 --> 00:04:37,350
+And so that's how
+background indexes work.
+
+127
+00:04:37,350 --> 00:04:37,850
+All right.
+
+128
+00:04:37,850 --> 00:04:38,517
+Time for a quiz.
+
+129
+00:04:38,517 --> 00:04:40,808
+Which of the following are
+true about creating an index
+
+130
+00:04:40,808 --> 00:04:42,190
+in the background in MongoDB?
+
+131
+00:04:42,190 --> 00:04:43,170
+Check all that apply.
+
+132
+00:04:43,170 --> 00:04:44,960
+And here are the choices.
+
+133
+00:04:44,960 --> 00:04:47,210
+A MongoDB instance can only
+build one background index
+
+134
+00:04:47,210 --> 00:04:48,530
+at a time per database.
+
+135
+00:04:48,530 --> 00:04:51,030
+Although the database server
+will continue to take requests,
+
+136
+00:04:51,030 --> 00:04:53,510
+a background index creation
+still blocks the Mongo shell.
+
+137
+00:04:53,510 --> 00:04:54,530
+Creating an index
+in the background
+
+138
+00:04:54,530 --> 00:04:56,010
+takes longer than
+the foreground.
+
+139
+00:04:56,010 --> 00:04:58,080
+And in Mongo 2.2
+and above, indexes
+
+140
+00:04:58,080 --> 00:05:00,100
+are created in the
+background by default.
+
+141
+00:05:00,100 --> 00:05:00,600
+All right.
+
+142
+00:05:00,600 --> 00:05:02,890
+And please check your answer.

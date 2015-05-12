@@ -1,0 +1,1187 @@
+1
+00:00:00,000 --> 00:00:00,130
+
+2
+00:00:00,130 --> 00:00:01,588
+Now I want to talk
+to you about how
+
+3
+00:00:01,588 --> 00:00:04,970
+you can use dot notation to
+reach deep into a document
+
+4
+00:00:04,970 --> 00:00:06,840
+and add an index
+to something that's
+
+5
+00:00:06,840 --> 00:00:09,340
+in a subdocument of
+the main document.
+
+6
+00:00:09,340 --> 00:00:13,070
+And also, doing this with things
+that are arrays-- so combining
+
+7
+00:00:13,070 --> 00:00:15,822
+multikey with dot notation.
+
+8
+00:00:15,822 --> 00:00:17,530
+This is a pretty cool
+feature of MongoDB.
+
+9
+00:00:17,530 --> 00:00:19,690
+It's a little tricky to
+explain how it works,
+
+10
+00:00:19,690 --> 00:00:21,820
+and it may not work
+exactly as you expect.
+
+11
+00:00:21,820 --> 00:00:23,880
+So let me show
+you some examples.
+
+12
+00:00:23,880 --> 00:00:24,500
+All right.
+
+13
+00:00:24,500 --> 00:00:26,810
+I'm back in the Mongo
+shell now, and I'm
+
+14
+00:00:26,810 --> 00:00:29,380
+going to look at this students
+collection once again.
+
+15
+00:00:29,380 --> 00:00:31,939
+So db.students.find1.
+
+16
+00:00:31,939 --> 00:00:33,480
+This is the same
+collection we looked
+
+17
+00:00:33,480 --> 00:00:35,070
+at in the previous lesson.
+
+18
+00:00:35,070 --> 00:00:38,580
+And it has these documents
+that have structure
+
+19
+00:00:38,580 --> 00:00:41,280
+where there's a student ID, and
+then there's a scores array.
+
+20
+00:00:41,280 --> 00:00:43,930
+And the scores array
+has a bunch of documents
+
+21
+00:00:43,930 --> 00:00:47,465
+as elements in the array where
+each document has a type, exam,
+
+22
+00:00:47,465 --> 00:00:48,260
+and a score.
+
+23
+00:00:48,260 --> 00:00:50,530
+And it's also a class ID.
+
+24
+00:00:50,530 --> 00:00:54,350
+So let's say we want the 2
+index on this score itself.
+
+25
+00:00:54,350 --> 00:00:55,530
+We can do that.
+
+26
+00:00:55,530 --> 00:00:58,840
+The call would be as follows--
+db.students.createindex
+
+27
+00:00:58,840 --> 00:01:01,727
+scores.score is 1.
+
+28
+00:01:01,727 --> 00:01:02,810
+That's how we would do it.
+
+29
+00:01:02,810 --> 00:01:04,540
+That's how we would
+create an index that
+
+30
+00:01:04,540 --> 00:01:07,399
+would index this array and
+this sub-part of this document.
+
+31
+00:01:07,399 --> 00:01:08,940
+And I did this off
+camera, because it
+
+32
+00:01:08,940 --> 00:01:11,919
+took about 15 or 20 minutes
+to create this index,
+
+33
+00:01:11,919 --> 00:01:13,460
+because there's 10
+million documents,
+
+34
+00:01:13,460 --> 00:01:15,250
+there's four elements
+in this array.
+
+35
+00:01:15,250 --> 00:01:17,430
+And it took a long time.
+
+36
+00:01:17,430 --> 00:01:20,520
+So you can see what indexes
+are on the collection.
+
+37
+00:01:20,520 --> 00:01:21,970
+We'll do that right now.
+
+38
+00:01:21,970 --> 00:01:24,264
+And if you call
+db.getindexes, you
+
+39
+00:01:24,264 --> 00:01:26,430
+can see there are now two
+indexes on the collection.
+
+40
+00:01:26,430 --> 00:01:28,513
+One of them is on underscore
+ID, and the other one
+
+41
+00:01:28,513 --> 00:01:32,540
+is on scores.score, which
+is our multikey index.
+
+42
+00:01:32,540 --> 00:01:33,890
+So what can you do with that?
+
+43
+00:01:33,890 --> 00:01:36,390
+Well, first of all, you
+can search for records
+
+44
+00:01:36,390 --> 00:01:38,950
+where any score was
+above a certain value.
+
+45
+00:01:38,950 --> 00:01:40,680
+So let's look what
+that query looks like.
+
+46
+00:01:40,680 --> 00:01:43,810
+This will find everything
+where scores.score
+
+47
+00:01:43,810 --> 00:01:44,869
+is greater than 99.
+
+48
+00:01:44,869 --> 00:01:46,910
+And I'm actually more
+interested in understanding
+
+49
+00:01:46,910 --> 00:01:49,330
+what the query optimizer does
+with it than actually seeing
+
+50
+00:01:49,330 --> 00:01:51,870
+the results, so
+I'm using explain
+
+51
+00:01:51,870 --> 00:01:53,320
+to return that information.
+
+52
+00:01:53,320 --> 00:01:54,765
+Let's do that.
+
+53
+00:01:54,765 --> 00:01:56,140
+And if we did that
+query, you can
+
+54
+00:01:56,140 --> 00:01:58,520
+see that it's going
+to do an index scan.
+
+55
+00:01:58,520 --> 00:02:00,710
+It says right here--
+winning plan included
+
+56
+00:02:00,710 --> 00:02:02,564
+the scores.score index.
+
+57
+00:02:02,564 --> 00:02:04,480
+In the forward direction,
+it looked for things
+
+58
+00:02:04,480 --> 00:02:07,800
+with scores.scores
+between 99.0 and infinity,
+
+59
+00:02:07,800 --> 00:02:09,800
+and that's how it
+retrieved this information.
+
+60
+00:02:09,800 --> 00:02:11,550
+And if you wanted to
+see that information,
+
+61
+00:02:11,550 --> 00:02:14,602
+we could just remove the
+Explain part of this,
+
+62
+00:02:14,602 --> 00:02:16,480
+and then we'll get
+some documents back
+
+63
+00:02:16,480 --> 00:02:19,860
+where there is at least
+one score above 99.
+
+64
+00:02:19,860 --> 00:02:22,134
+Let's pretty print it so we
+can see that more clearly.
+
+65
+00:02:22,134 --> 00:02:23,550
+And you can see
+that in this case,
+
+66
+00:02:23,550 --> 00:02:25,840
+it was the homework
+that was above 99.
+
+67
+00:02:25,840 --> 00:02:29,330
+So what if we wanted to
+find people that had an exam
+
+68
+00:02:29,330 --> 00:02:31,270
+score that was above 99?
+
+69
+00:02:31,270 --> 00:02:32,949
+How would we do that?
+
+70
+00:02:32,949 --> 00:02:34,490
+Now, I'm going to
+show you the query,
+
+71
+00:02:34,490 --> 00:02:36,530
+and then I'll show
+you a query that I
+
+72
+00:02:36,530 --> 00:02:39,350
+used before I looked into it
+more carefully that turned out
+
+73
+00:02:39,350 --> 00:02:40,390
+to be wrong.
+
+74
+00:02:40,390 --> 00:02:41,960
+I think it's an
+interesting example,
+
+75
+00:02:41,960 --> 00:02:44,586
+because it's easy to
+get confused about this.
+
+76
+00:02:44,586 --> 00:02:46,710
+So the query that would
+search for all the students
+
+77
+00:02:46,710 --> 00:02:49,980
+where an exam score was
+above 99 looks like this.
+
+78
+00:02:49,980 --> 00:02:52,099
+And it uses this
+LM match operator.
+
+79
+00:02:52,099 --> 00:02:54,140
+So we're going to go
+through this very carefully.
+
+80
+00:02:54,140 --> 00:02:56,098
+It's actually being run
+with Explain right now,
+
+81
+00:02:56,098 --> 00:02:57,530
+but let's look at it.
+
+82
+00:02:57,530 --> 00:02:59,660
+So we're trying to
+inspect the scores
+
+83
+00:02:59,660 --> 00:03:02,000
+array inside the document.
+
+84
+00:03:02,000 --> 00:03:05,010
+And then we want to
+find a document which
+
+85
+00:03:05,010 --> 00:03:10,510
+has an element of the array
+that is of type exam and a score
+
+86
+00:03:10,510 --> 00:03:12,450
+greater than 99.8.
+
+87
+00:03:12,450 --> 00:03:16,240
+And to do that, we use this
+operator called LM match.
+
+88
+00:03:16,240 --> 00:03:18,580
+Now, what LM match does--
+and you can look this up
+
+89
+00:03:18,580 --> 00:03:20,760
+in the documentation--
+is it matches
+
+90
+00:03:20,760 --> 00:03:24,670
+documents that contain an array
+field with at least one element
+
+91
+00:03:24,670 --> 00:03:26,945
+that matches all the
+specified query criteria.
+
+92
+00:03:26,945 --> 00:03:29,320
+So in other words, there might
+be more than one element--
+
+93
+00:03:29,320 --> 00:03:32,050
+there might be more than
+one exam in this array
+
+94
+00:03:32,050 --> 00:03:34,060
+that match this
+criteria-- but we're
+
+95
+00:03:34,060 --> 00:03:36,550
+going to make sure that
+we match at least one
+
+96
+00:03:36,550 --> 00:03:37,800
+with all this criteria.
+
+97
+00:03:37,800 --> 00:03:39,670
+So it's looking for
+an element that's
+
+98
+00:03:39,670 --> 00:03:43,000
+of type, exam, and
+score greater than 99.8.
+
+99
+00:03:43,000 --> 00:03:45,857
+And if we do that-- let's
+first just get the results so
+
+100
+00:03:45,857 --> 00:03:47,732
+we can confirm that that
+works-- so I'm going
+
+101
+00:03:47,732 --> 00:03:49,420
+to pretty print the result.
+
+102
+00:03:49,420 --> 00:03:53,840
+We see we get something that
+has an exam score above 99.8.
+
+103
+00:03:53,840 --> 00:03:55,210
+Works perfectly well.
+
+104
+00:03:55,210 --> 00:03:55,840
+It's very nice.
+
+105
+00:03:55,840 --> 00:03:57,570
+I wonder how many
+records there are, just
+
+106
+00:03:57,570 --> 00:03:59,930
+out of curiosity, that
+would satisfy this criteria.
+
+107
+00:03:59,930 --> 00:04:04,550
+And the answer is that there
+are 20,278 students that
+
+108
+00:04:04,550 --> 00:04:07,460
+satisfy this criteria of
+having an exam score of greater
+
+109
+00:04:07,460 --> 00:04:10,360
+than 99.8 in this
+somewhat random data
+
+110
+00:04:10,360 --> 00:04:12,981
+set of 10 million documents.
+
+111
+00:04:12,981 --> 00:04:15,230
+Well, what does the explain
+output look like for this?
+
+112
+00:04:15,230 --> 00:04:18,380
+Because that's an
+interesting question to me.
+
+113
+00:04:18,380 --> 00:04:20,070
+Let's run this with
+Explain now to see
+
+114
+00:04:20,070 --> 00:04:21,860
+what the query
+optimizer is going
+
+115
+00:04:21,860 --> 00:04:23,940
+to do to satisfy this query.
+
+116
+00:04:23,940 --> 00:04:27,470
+And to do that, I need to
+remove this count at the end.
+
+117
+00:04:27,470 --> 00:04:29,870
+I just need to do
+an Explain, tell it
+
+118
+00:04:29,870 --> 00:04:32,840
+that I want to see what it
+would do with this Find command.
+
+119
+00:04:32,840 --> 00:04:35,340
+So I'm going to run that,
+and it's pretty interesting.
+
+120
+00:04:35,340 --> 00:04:37,680
+We're going to go over
+Explain in more detail.
+
+121
+00:04:37,680 --> 00:04:40,680
+But you can see, there's
+a lot of information here.
+
+122
+00:04:40,680 --> 00:04:43,030
+But the winning
+plan-- and it's easier
+
+123
+00:04:43,030 --> 00:04:44,960
+to read this from the
+bottom to the top.
+
+124
+00:04:44,960 --> 00:04:47,100
+Because actually,
+you can't quite tell,
+
+125
+00:04:47,100 --> 00:04:49,570
+but this is the first
+thing it runs, I believe.
+
+126
+00:04:49,570 --> 00:04:54,490
+It says that first, it runs
+a query on scores.score
+
+127
+00:04:54,490 --> 00:04:56,480
+being 99.8 to infinity.
+
+128
+00:04:56,480 --> 00:04:59,080
+OK, that makes perfect
+sense, because that's
+
+129
+00:04:59,080 --> 00:05:00,137
+what the index is.
+
+130
+00:05:00,137 --> 00:05:01,720
+So it can't do any
+better than to look
+
+131
+00:05:01,720 --> 00:05:03,930
+at the scores.score key.
+
+132
+00:05:03,930 --> 00:05:05,960
+And then after that,
+it runs the output
+
+133
+00:05:05,960 --> 00:05:07,870
+of that-- this is
+an index scan--
+
+134
+00:05:07,870 --> 00:05:11,680
+into the next stage, where it
+finds all the documents that
+
+135
+00:05:11,680 --> 00:05:15,015
+satisfy that criteria,
+which is probably 10x or 4
+
+136
+00:05:15,015 --> 00:05:16,500
+or 5x the number
+of documents that
+
+137
+00:05:16,500 --> 00:05:18,310
+would have that
+exam that score--
+
+138
+00:05:18,310 --> 00:05:20,770
+and then it runs the LM match.
+
+139
+00:05:20,770 --> 00:05:22,610
+And it says, I want
+to find something
+
+140
+00:05:22,610 --> 00:05:27,030
+with a score that's greater than
+99.8 and a type that's exam.
+
+141
+00:05:27,030 --> 00:05:28,377
+It calls this a fetch.
+
+142
+00:05:28,377 --> 00:05:30,710
+I don't believe there's
+anything special it can do here.
+
+143
+00:05:30,710 --> 00:05:33,900
+I think it actually iterates
+through every single document
+
+144
+00:05:33,900 --> 00:05:35,480
+and inspects them.
+
+145
+00:05:35,480 --> 00:05:39,949
+And we can confirm that by
+running it with value true
+
+146
+00:05:39,949 --> 00:05:41,740
+and letting it execute
+the query so we know
+
+147
+00:05:41,740 --> 00:05:43,480
+how many documents it examines.
+
+148
+00:05:43,480 --> 00:05:47,350
+And the answer is that it
+examined-- so right here,
+
+149
+00:05:47,350 --> 00:05:48,662
+we can see the explain output.
+
+150
+00:05:48,662 --> 00:05:50,370
+It's a little hard to
+read on the screen.
+
+151
+00:05:50,370 --> 00:05:52,390
+But again, we have the
+winning plan information.
+
+152
+00:05:52,390 --> 00:05:53,930
+It's exactly the same as before.
+
+153
+00:05:53,930 --> 00:05:55,800
+But now we have some
+additional information
+
+154
+00:05:55,800 --> 00:05:57,560
+called execution stats.
+
+155
+00:05:57,560 --> 00:06:01,350
+And we just go through here
+and look at what's interesting.
+
+156
+00:06:01,350 --> 00:06:05,950
+And then we can see that it
+returned 20,000 documents.
+
+157
+00:06:05,950 --> 00:06:06,990
+That makes sense.
+
+158
+00:06:06,990 --> 00:06:09,770
+But it examined
+80,000 documents.
+
+159
+00:06:09,770 --> 00:06:10,616
+Wow.
+
+160
+00:06:10,616 --> 00:06:11,990
+And you know what
+that number is?
+
+161
+00:06:11,990 --> 00:06:14,010
+It's probably the
+number of documents
+
+162
+00:06:14,010 --> 00:06:16,390
+that have a score above 99.8.
+
+163
+00:06:16,390 --> 00:06:18,690
+So let's just confirm
+that that's true.
+
+164
+00:06:18,690 --> 00:06:23,290
+Score greater than 99.8,
+give me a count of those.
+
+165
+00:06:23,290 --> 00:06:26,500
+And there are 80,054
+documents that
+
+166
+00:06:26,500 --> 00:06:28,800
+have a score greater than 99.8.
+
+167
+00:06:28,800 --> 00:06:34,570
+And it examined every single
+one of them for this query.
+
+168
+00:06:34,570 --> 00:06:36,810
+Let's see where we can
+find this information.
+
+169
+00:06:36,810 --> 00:06:38,780
+Here are the executions
+stats for the query.
+
+170
+00:06:38,780 --> 00:06:42,200
+And you can see it
+examined 80,054 documents
+
+171
+00:06:42,200 --> 00:06:44,572
+to return 20,278 documents.
+
+172
+00:06:44,572 --> 00:06:47,030
+That's because the way that
+MongoDB went through this query
+
+173
+00:06:47,030 --> 00:06:51,550
+is it used the index it had,
+which was on scores.score.
+
+174
+00:06:51,550 --> 00:06:53,127
+And then after
+that, it essentially
+
+175
+00:06:53,127 --> 00:06:54,710
+did a scan of
+everything that resulted
+
+176
+00:06:54,710 --> 00:06:57,190
+to do the LM match part of it.
+
+177
+00:06:57,190 --> 00:06:58,700
+Now, what mistake
+did I make when
+
+178
+00:06:58,700 --> 00:07:00,830
+I was setting this lesson
+up and thinking about it
+
+179
+00:07:00,830 --> 00:07:02,130
+that turned out to be wrong?
+
+180
+00:07:02,130 --> 00:07:04,180
+And the answer is, I
+tried to use this query.
+
+181
+00:07:04,180 --> 00:07:05,846
+And I won't go through
+it too carefully,
+
+182
+00:07:05,846 --> 00:07:08,250
+but I want to show it to
+you, because it confused me.
+
+183
+00:07:08,250 --> 00:07:10,270
+Here's the query I
+tried to use to get
+
+184
+00:07:10,270 --> 00:07:13,810
+the answer of every student
+that had the exam above 99.8.
+
+185
+00:07:13,810 --> 00:07:16,810
+I tried to use the
+and operator and said,
+
+186
+00:07:16,810 --> 00:07:19,090
+I want to find
+things where scores
+
+187
+00:07:19,090 --> 00:07:21,280
+that I type is exam
+and scores that score
+
+188
+00:07:21,280 --> 00:07:23,040
+is greater than 99.8.
+
+189
+00:07:23,040 --> 00:07:25,297
+And when I did that,
+you know what I found?
+
+190
+00:07:25,297 --> 00:07:27,620
+I found documents
+that look like this.
+
+191
+00:07:27,620 --> 00:07:31,410
+I found documents where there
+is a score greater than 99.8%,
+
+192
+00:07:31,410 --> 00:07:32,950
+but it wasn't for the exam.
+
+193
+00:07:32,950 --> 00:07:34,270
+Really interesting, huh?
+
+194
+00:07:34,270 --> 00:07:37,095
+So actually, if you
+use this and operator,
+
+195
+00:07:37,095 --> 00:07:38,470
+there's no guarantee
+that when it
+
+196
+00:07:38,470 --> 00:07:41,550
+finds a document that satisfies
+this criteria without the LM
+
+197
+00:07:41,550 --> 00:07:44,370
+match part that it
+satisfies this criteria
+
+198
+00:07:44,370 --> 00:07:45,680
+in the same sub-part.
+
+199
+00:07:45,680 --> 00:07:46,805
+It might be different part.
+
+200
+00:07:46,805 --> 00:07:48,221
+And this really
+comes out when you
+
+201
+00:07:48,221 --> 00:07:49,890
+look at the explain
+output, actually.
+
+202
+00:07:49,890 --> 00:07:52,620
+The explain output
+helps you understand
+
+203
+00:07:52,620 --> 00:07:54,969
+the way the database
+interpreted this query.
+
+204
+00:07:54,969 --> 00:07:56,510
+And once you see
+this explain output,
+
+205
+00:07:56,510 --> 00:07:57,843
+you're like, oh yeah, of course.
+
+206
+00:07:57,843 --> 00:07:59,210
+It makes perfect sense.
+
+207
+00:07:59,210 --> 00:08:03,560
+So the explain output said,
+here's what we're going to do.
+
+208
+00:08:03,560 --> 00:08:06,050
+Here the winning plan.
+
+209
+00:08:06,050 --> 00:08:09,460
+It says in the first stage,
+in the lowest level stage,
+
+210
+00:08:09,460 --> 00:08:12,540
+I want to find everything with
+scores that score above 99.8.
+
+211
+00:08:12,540 --> 00:08:14,640
+And pass that up
+to the next stage,
+
+212
+00:08:14,640 --> 00:08:16,360
+and the next stage
+should look for things
+
+213
+00:08:16,360 --> 00:08:18,190
+with scores.type equal to exam.
+
+214
+00:08:18,190 --> 00:08:19,690
+Oh dear, that's not right.
+
+215
+00:08:19,690 --> 00:08:21,992
+Because basically, it's
+returning all these documents,
+
+216
+00:08:21,992 --> 00:08:24,200
+returning a huge number of
+documents from this stage.
+
+217
+00:08:24,200 --> 00:08:25,158
+Well, we know how many.
+
+218
+00:08:25,158 --> 00:08:28,794
+It's like 80,000 students
+have 99.8 and above.
+
+219
+00:08:28,794 --> 00:08:30,960
+So first, it does this
+query, finds all the students
+
+220
+00:08:30,960 --> 00:08:33,350
+with any score above 99.8.
+
+221
+00:08:33,350 --> 00:08:35,059
+Then it passes it
+to this next stage
+
+222
+00:08:35,059 --> 00:08:37,720
+and says, now find me
+all the documents where
+
+223
+00:08:37,720 --> 00:08:40,640
+scores.type is equal to exam.
+
+224
+00:08:40,640 --> 00:08:44,090
+And that's not going
+to work, because that
+
+225
+00:08:44,090 --> 00:08:46,240
+is going to give you things
+where the score was not
+
+226
+00:08:46,240 --> 00:08:47,790
+for the actual exam.
+
+227
+00:08:47,790 --> 00:08:50,530
+Now, compare that
+output to what output
+
+228
+00:08:50,530 --> 00:08:54,244
+we got for the correct
+query with the LM match.
+
+229
+00:08:54,244 --> 00:08:56,785
+When we used the correct query
+for this, look at the output--
+
+230
+00:08:56,785 --> 00:08:57,800
+it's very different.
+
+231
+00:08:57,800 --> 00:09:00,240
+In that case, the first
+stage of the query
+
+232
+00:09:00,240 --> 00:09:01,310
+did the exact same thing.
+
+233
+00:09:01,310 --> 00:09:04,205
+It looked for things with
+scores that score above 99.8.
+
+234
+00:09:04,205 --> 00:09:05,830
+But in the second
+stage, we didn't just
+
+235
+00:09:05,830 --> 00:09:07,620
+look for things with type exam.
+
+236
+00:09:07,620 --> 00:09:09,820
+We looked for an
+element match where
+
+237
+00:09:09,820 --> 00:09:11,190
+both conditions were true.
+
+238
+00:09:11,190 --> 00:09:13,290
+Where the score
+was again 99.8, we
+
+239
+00:09:13,290 --> 00:09:15,780
+reaffirmed that this was
+true for the document
+
+240
+00:09:15,780 --> 00:09:17,810
+and that the type was exam.
+
+241
+00:09:17,810 --> 00:09:18,350
+All right.
+
+242
+00:09:18,350 --> 00:09:19,880
+That's a lot of information.
+
+243
+00:09:19,880 --> 00:09:22,890
+But I hope that helps better
+explain-- no pun intended--
+
+244
+00:09:22,890 --> 00:09:24,170
+how that works.
+
+245
+00:09:24,170 --> 00:09:25,570
+OK, it's time for a quiz.
+
+246
+00:09:25,570 --> 00:09:27,070
+Suppose you have a
+collection called
+
+247
+00:09:27,070 --> 00:09:29,620
+people in the database
+Earth and documents
+
+248
+00:09:29,620 --> 00:09:30,639
+in the following form.
+
+249
+00:09:30,639 --> 00:09:31,930
+You can see the documents here.
+
+250
+00:09:31,930 --> 00:09:33,780
+What would be the command
+in the Mongo shell
+
+251
+00:09:33,780 --> 00:09:37,310
+to create an index on
+company descending?
+
+252
+00:09:37,310 --> 00:09:40,140
+Please type your
+answer right down here.

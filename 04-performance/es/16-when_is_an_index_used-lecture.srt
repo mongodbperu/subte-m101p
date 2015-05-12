@@ -1,261 +1,286 @@
 1
-00:00:00,000 --> 00:00:00,170
+00:00:00,000 --> 00:00:00,500
 
 2
-00:00:00,170 --> 00:00:02,060
-Hemos aprendido sobre el comando
-"explain", que sirve para
+00:00:00,500 --> 00:00:03,350
+OK, you're going to be hearing
+a new voice after this.
 
 3
-00:00:02,060 --> 00:00:03,970
-averiguar qué está
-haciendo la base de datos
+00:00:03,350 --> 00:00:05,620
+Shannon Bradshaw, our
+Director of Education,
 
 4
-00:00:03,970 --> 00:00:05,360
-cuando realiza una consulta.
+00:00:05,620 --> 00:00:07,970
+is going to be delivering
+some of the lessons,
 
 5
-00:00:05,360 --> 00:00:07,670
-Pero, ¿qué hace la base de datos
-para averiguar qué índice
+00:00:07,970 --> 00:00:10,330
+and I'll be returning
+toward the end of this week,
 
 6
-00:00:07,670 --> 00:00:09,150
-debería usar?
+00:00:10,330 --> 00:00:14,330
+and also back next week, to
+teach the rest of the course.
 
 7
-00:00:09,150 --> 00:00:12,130
-Digamos que tienes una colección
-con tres
+00:00:14,330 --> 00:00:16,190
+So welcome, Shannon.
 
 8
-00:00:12,130 --> 00:00:14,960
-índices diferentes -- un
-índice sobre "a", un índice sobre "b" y
+00:00:16,190 --> 00:00:16,750
+OK.
 
 9
-00:00:14,960 --> 00:00:18,750
-un índice sobre "c". Llamaremos a eso
-plan de consulta uno, plan de consulta
+00:00:16,750 --> 00:00:20,250
+Now let's take a look at
+how MongoDB chooses an index
 
 10
-00:00:18,750 --> 00:00:20,580
-dos y plan de consulta tres.
+00:00:20,250 --> 00:00:21,770
+to satisfy a query.
 
 11
-00:00:20,580 --> 00:00:25,150
-Y especificas "a", "b" y 
-"c", los tres, 
+00:00:21,770 --> 00:00:24,420
+Let's imagine we
+have five indexes.
 
 12
-00:00:25,150 --> 00:00:26,370
-cuando haces una consulta.
+00:00:24,420 --> 00:00:28,110
+When a query comes in, MongoDB
+looks at the query's shape.
 
 13
-00:00:26,370 --> 00:00:28,750
-Ahora, la base de datos puede usar este
-índice, o podría usar este
+00:00:28,110 --> 00:00:31,140
+Shape has to do with what
+fields are being searched on
 
 14
-00:00:28,750 --> 00:00:29,960
-índice, o podría
-usar este índice.
+00:00:31,140 --> 00:00:34,020
+and additional information,
+such as is there a sort?
 
 15
-00:00:29,960 --> 00:00:31,490
-No puede usar los tres.
+00:00:34,020 --> 00:00:35,660
+Based on that
+information, the system
 
 16
-00:00:31,490 --> 00:00:32,830
-Sólo puede usar uno de ellos.
+00:00:35,660 --> 00:00:37,765
+identifies a set of
+candidate indexes
 
 17
-00:00:32,830 --> 00:00:36,500
-Lo que hace la primera vez que 
-lanzamos esta consulta, es que ejecuta
+00:00:37,765 --> 00:00:40,800
+that it may be able to use
+in satisfying the query.
 
 18
-00:00:36,500 --> 00:00:38,410
-los tres planes de consulta en paralelo.
+00:00:40,800 --> 00:00:42,650
+So let's assume we
+have a query come in,
 
 19
-00:00:38,410 --> 00:00:41,950
-Y desde el momento en que comienzan y estos
-planes de consulta se están ejecutando,
+00:00:42,650 --> 00:00:46,010
+and three of our five
+indexes are identified
 
 20
-00:00:41,950 --> 00:00:46,650
-tan pronto como uno se complete,
-Mongo devolverá la
+00:00:46,010 --> 00:00:48,140
+as candidates for this query.
 
 21
-00:00:46,650 --> 00:00:50,460
-respuesta de la consulta y memorizará
-que de hecho es
+00:00:48,140 --> 00:00:50,570
+So one, two, and three.
 
 22
-00:00:50,460 --> 00:00:53,950
-el plan de consulta dos, que utiliza
-el índice "b". Éste va
+00:00:50,570 --> 00:00:54,100
+MongoDB will then create
+three query plans, one each
 
 23
-00:00:53,950 --> 00:00:56,030
-a satisfacer esos tipos
-de consultas.
+00:00:54,100 --> 00:00:57,680
+for these indexes, and in
+three parallel threads,
 
 24
-00:00:56,030 --> 00:00:58,380
-Y esto está bien porque
-básicamente está ejecutando
+00:00:57,680 --> 00:01:00,870
+issue the query such that each
+one will use a different index,
 
 25
-00:00:58,380 --> 00:01:01,950
-experimentos sobre tus datos reales
-para averiguar qué índice
+00:01:00,870 --> 00:01:03,800
+and see which one is able to
+return results the fastest.
 
 26
-00:01:01,950 --> 00:01:03,350
-debería usar.
+00:01:03,800 --> 00:01:05,680
+So visually, we
+can think of this
 
 27
-00:01:03,350 --> 00:01:04,920
-Y no tienes que hacer
-nada para que esto ocurra,
+00:01:05,680 --> 00:01:07,740
+as a race, something like this.
 
 28
-00:01:04,920 --> 00:01:06,480
-simplemente sucede en
-un segundo plano.
+00:01:07,740 --> 00:01:10,090
+The idea here is
+that the first query
 
 29
-00:01:06,480 --> 00:01:09,650
-Pero sólo quería que
-lo comprendieras en términos generales.
+00:01:10,090 --> 00:01:12,630
+plan to reach a goal
+state is the winner.
 
 30
-00:01:09,650 --> 00:01:13,090
-Y cada cien consultas o así
-olvidará lo que 
+00:01:12,630 --> 00:01:14,390
+But more importantly,
+going forward it'll
 
 31
-00:01:13,090 --> 00:01:16,110
-sabe, y ejecutará otros
-experimentos si tiene que hacerlo,
+00:01:14,390 --> 00:01:16,650
+be selected as the index
+to use for queries that
 
 32
-00:01:16,110 --> 00:01:19,290
-para elegir de nuevo 
-entre esos índices.
+00:01:16,650 --> 00:01:18,700
+have that same query shape.
 
 33
-00:01:19,290 --> 00:01:22,650
-Sólo por revisar, si tienes
-un índice compuesto sobre --
+00:01:18,700 --> 00:01:19,990
+So what's the goal state here?
 
 34
-00:01:22,650 --> 00:01:24,670
-voy a hacerlo diferente
-esta vez --
+00:01:19,990 --> 00:01:21,760
+Well, it can be one
+of a couple of things.
 
 35
-00:01:24,670 --> 00:01:29,470
-sobre "d", "c", "b", "a" en ese orden --
+00:01:21,760 --> 00:01:24,010
+So it could be that
+one of the query plans
 
 36
-00:01:29,470 --> 00:01:32,100
-si tienes un índice compuesto,
-entonces para que la base de datos
+00:01:24,010 --> 00:01:26,300
+returned all the
+results for the query.
 
 37
-00:01:32,100 --> 00:01:37,100
-use este índice, tienes que
-especificar algún subconjunto por la izquierda de
+00:01:26,300 --> 00:01:28,440
+Another way a query
+plan can win is
 
 38
-00:01:37,100 --> 00:01:38,050
-estos elementos.
+00:01:28,440 --> 00:01:31,340
+by returning a certain
+threshold number of results.
 
 39
-00:01:38,050 --> 00:01:40,665
-Así si especificas sólo "d", 
-puede usar el índice.
+00:01:31,340 --> 00:01:33,440
+But there's a caveat
+here, and that
 
 40
-00:01:40,665 --> 00:01:43,880
-Si especificas "d" y
-"c", puede usarlo.
+00:01:33,440 --> 00:01:36,930
+is that it's able to return
+the results in sort order.
 
 41
-00:01:43,880 --> 00:01:47,760
-Si especificas "d" y "b", puede
-usarlo pero realmente sólo usa
+00:01:36,930 --> 00:01:38,380
+Now, the real
+value of doing this
 
 42
-00:01:47,760 --> 00:01:48,970
-la parte de "d".
+00:01:38,380 --> 00:01:41,610
+is that for subsequent queries
+that have the same query shape,
 
 43
-00:01:48,970 --> 00:01:56,070
-Si especificas "c" y "b", no
-puede usarlo porque
+00:01:41,610 --> 00:01:43,830
+MongoDB knows which
+index to select.
 
 44
-00:01:56,070 --> 00:01:58,140
-no tenía la parte de
-"d" incluida.
+00:01:43,830 --> 00:01:46,470
+The way we achieve that is
+through the use of a cache.
 
 45
-00:01:58,140 --> 00:02:01,470
-Y esto es cierto tanto si
-lo está usando o no para un ordenamiento
+00:01:46,470 --> 00:01:49,200
+So the winning
+query plan is stored
 
 46
-00:02:01,470 --> 00:02:04,200
-como si lo está usando o no
-para hacer una búsqueda.
+00:01:49,200 --> 00:01:52,370
+in the cache for future use
+for queries of that shape.
 
 47
-00:02:04,200 --> 00:02:06,660
-Y aunque no lo dije
-explícitamente, por supuesto deberías
+00:01:52,370 --> 00:01:55,810
+Now of course, over time,
+our collection changes,
 
 48
-00:02:06,660 --> 00:02:13,330
-darte cuenta que "find", "findOne", 
-"update" y "remove" pueden todos
+00:01:55,810 --> 00:01:59,050
+the indexes change, so we
+don't want this to necessarily
 
 49
-00:02:13,330 --> 00:02:15,630
-beneficiarse de los índices.
+00:01:59,050 --> 00:02:00,405
+be the index we use forever.
 
 50
-00:02:15,630 --> 00:02:17,600
-OK, hagamos un cuestionario rápido.
+00:02:00,405 --> 00:02:02,780
+So there's several ways in
+which a query plan will end up
 
 51
-00:02:17,600 --> 00:02:20,170
-Esto debería ser una especie
-de repaso para ti.
+00:02:02,780 --> 00:02:04,020
+being evicted from the cache.
 
 52
-00:02:20,170 --> 00:02:22,740
-Dada la colección "foo" con
-el siguiente índice, "a", "b" y
+00:02:04,020 --> 00:02:07,950
+One of those is if there are
+a threshold number of writes.
 
 53
-00:02:22,740 --> 00:02:25,670
-"c", ¿cuáles de las siguientes
-consultas usarán el índice?
+00:02:07,950 --> 00:02:09,940
+Right now that threshold
+is 1,000 writes.
 
 54
-00:02:25,670 --> 00:02:28,240
-Y puedes ver las
-cuatro opciones aquí.
+00:02:09,940 --> 00:02:13,140
+Another way, of course, is
+if we rebuild the index,
 
 55
-00:02:28,240 --> 00:02:29,490
-Marca todas las que apliquen.
+00:02:13,140 --> 00:02:18,500
+or if any index is either added
+or dropped from the collection.
 
 56
-00:02:29,490 --> 00:02:30,320
+00:02:18,500 --> 00:02:21,210
+And finally, if the [? mongod ?]
+process is restarted,
+
+57
+00:02:21,210 --> 00:02:23,840
+we would also lose the
+query plan, and other plans,
+
+58
+00:02:23,840 --> 00:02:24,920
+in the cache.
+
+59
+00:02:24,920 --> 00:02:28,100
+So this basic processes is
+what MongoDB uses in order
+
+60
+00:02:28,100 --> 00:02:33,480
+to figure out which index to
+use for the queries you submit.

@@ -1,364 +1,390 @@
 1
-00:00:00,000 --> 00:00:00,180
+00:00:00,000 --> 00:00:00,500
 
 2
-00:00:00,180 --> 00:00:03,200
-Comenzamos esta unidad
-hablando acerca de la importancia
+00:00:00,500 --> 00:00:02,830
+So now I want to talk a
+little bit about index sizes.
 
 3
-00:00:03,200 --> 00:00:06,380
-de ser algorítmicamente
-eficientes en el uso de índices para
+00:00:02,830 --> 00:00:05,020
+As with other
+databases, with MongoDB,
 
 4
-00:00:06,380 --> 00:00:08,210
-resolver nuestras consultas.
+00:00:05,020 --> 00:00:07,360
+it's very important that we're
+able to fit what's called
 
 5
-00:00:08,210 --> 00:00:10,630
-Ahora el siguiente nivel de
-optimización es que queremos
+00:00:07,360 --> 00:00:09,740
+the working set into memory.
 
 6
-00:00:10,630 --> 00:00:13,580
-que esos índices estén en memoria.
+00:00:09,740 --> 00:00:12,290
+So the working set is
+the portion of our data
 
 7
-00:00:13,580 --> 00:00:16,390
-Porque si nuestro índice no está en
-memoria -- si nuestro índice está en
+00:00:12,290 --> 00:00:14,610
+that clients are
+frequently accessing.
 
 8
-00:00:16,390 --> 00:00:19,100
-disco y si estamos usando casi
-todo, entonces vamos a
+00:00:14,610 --> 00:00:17,080
+As you might imagine,
+the key component of this
 
 9
-00:00:19,100 --> 00:00:19,770
-encontrarnos que el 
+00:00:17,080 --> 00:00:18,430
+is our indexes.
 
 10
-00:00:19,770 --> 00:00:21,500
-rendimiento es seriamente afectado.
+00:00:18,430 --> 00:00:20,240
+For performance
+reasons, it's essential
 
 11
-00:00:21,500 --> 00:00:24,020
-Incluso aunque algorítmicamente es
-mucho más rápido que,
+00:00:20,240 --> 00:00:23,540
+that we can fit the entire
+working set into memory
 
 12
-00:00:24,020 --> 00:00:26,790
-digamos, recorrer la colección
-entera para obtener la respuesta,
+00:00:23,540 --> 00:00:26,210
+because going to disk for data
+is a time consuming operation
 
 13
-00:00:26,790 --> 00:00:30,030
-aún no va a ser súper
-rápido si tenemos que ir a
+00:00:26,210 --> 00:00:28,060
+and performance will
+degrade significantly
 
 14
-00:00:30,030 --> 00:00:32,860
-disco para acceder a nuestro índice.
+00:00:28,060 --> 00:00:30,160
+if, for frequently
+accessed data,
 
 15
-00:00:32,860 --> 00:00:34,530
-Por lo que surge una cuestión -- y
-vamos a hablar más sobre
+00:00:30,160 --> 00:00:32,200
+we have to go to disk regularly.
 
 16
-00:00:34,530 --> 00:00:37,890
-esto en el resto de la unidad --
-acerca del conjunto de trabajo y cómo
+00:00:32,200 --> 00:00:34,140
+Now, this is especially
+true with indexes
 
 17
-00:00:37,890 --> 00:00:40,830
-mantenemos la mayoría de las partes importantes
-de los datos en memoria.
+00:00:34,140 --> 00:00:35,450
+because if, in order
+to search an index,
 
 18
-00:00:40,830 --> 00:00:43,190
-Pero incluso más importante que
-mantener los datos en memoria va a
+00:00:35,450 --> 00:00:37,460
+we first have to pull it
+from disk into memory,
 
 19
-00:00:43,190 --> 00:00:45,140
-ser mantener el
-índice en memoria.
+00:00:37,460 --> 00:00:39,180
+we lose a lot of the
+performance benefits of having
 
 20
-00:00:45,140 --> 00:00:46,660
-Por lo que la primera pregunta
-que podrías tener es,
+00:00:39,180 --> 00:00:40,721
+the index in the
+first place, so it's
 
 21
-00:00:46,660 --> 00:00:48,200
-¿cuán grande es un índice?
+00:00:40,721 --> 00:00:44,470
+especially important that
+our indexes fit into memory.
 
 22
-00:00:48,200 --> 00:00:51,770
-Volvamos atrás y echemos un vistazo a esta
-colección de estudiantes que
+00:00:44,470 --> 00:00:47,590
+So let's look at how we can
+measure the size of our indexes
 
 23
-00:00:51,770 --> 00:00:53,000
-creé anteriormente.
+00:00:47,590 --> 00:00:50,440
+as a means of, say, estimating
+the amount of memory we'll
 
 24
-00:00:53,000 --> 00:00:57,840
-Y si recuerdas, tiene 10
-millones de registros de estudiantes.
+00:00:50,440 --> 00:00:52,470
+need for a MongoDB deployment.
 
 25
-00:00:57,840 --> 00:01:00,200
-Por lo que si examinamos esa
-colección, 
+00:00:52,470 --> 00:00:54,470
+So let's take a look at
+our students collection.
 
 26
-00:01:00,200 --> 00:01:01,496
-podemos obtener sus estadísticas.
+00:00:54,470 --> 00:00:57,820
+We have individual students,
+classes, and the scores
 
 27
-00:01:01,496 --> 00:01:05,190
+00:00:57,820 --> 00:00:58,730
+in this collection.
 
 28
-00:01:05,190 --> 00:01:06,970
-Tan sólo dice
-"db.students.stats".
+00:00:58,730 --> 00:01:00,270
+There are 10 million
+records here.
 
 29
-00:01:06,970 --> 00:01:10,360
-Y puedes ver que el promedio de
-objetos en ella es 232
+00:01:00,270 --> 00:01:03,299
+So first, let's take a look
+at what indexes we have.
 
 30
-00:01:10,360 --> 00:01:14,490
-bytes y que en total esta
-cosa está usando casi 3
+00:01:03,299 --> 00:01:05,340
+We can see that in addition
+to the primary index,
 
 31
-00:01:14,490 --> 00:01:16,220
-gigabytes en disco.
+00:01:05,340 --> 00:01:06,756
+we have a secondary
+compound index
 
 32
-00:01:16,220 --> 00:01:19,550
-Y podríamos no tener un equipo
-con 3 gigabytes de memoria,
+00:01:06,756 --> 00:01:08,191
+on student ID and class ID.
 
 33
-00:01:19,550 --> 00:01:21,110
-pero podríamos tener un equipo
-lo suficientemente
+00:01:08,191 --> 00:01:09,940
+If we want to see the
+size of our indexes,
 
 34
-00:01:21,110 --> 00:01:22,340
-grande para albergar nuestro índice.
+00:01:09,940 --> 00:01:11,494
+we can use the stats method.
 
 35
-00:01:22,340 --> 00:01:25,250
-Así que la siguiente pregunta es, bien,
-¿cuán grande es el índice?
+00:01:11,494 --> 00:01:13,910
+So we call the stats method
+on the collection of interest,
 
 36
-00:01:25,250 --> 00:01:28,840
-Y la respuesta es que
-si ejecutamos el comando
+00:01:13,910 --> 00:01:16,620
+and here we can see
+the total index size,
 
 37
-00:01:28,840 --> 00:01:32,310
-"totalIndexSize",
-"db.students.totalIndexSize()", 
+00:01:16,620 --> 00:01:18,130
+and this is also
+broken down for us
 
 38
-00:01:32,310 --> 00:01:35,330
-averiguaremos el tamaño de
-los índices en disco.
+00:01:18,130 --> 00:01:20,660
+into the individual sizes
+for the two collections
 
 39
-00:01:35,330 --> 00:01:38,380
-Y la respuesta es 
-que nuestro índice --
+00:01:20,660 --> 00:01:21,324
+that we have.
 
 40
-00:01:38,380 --> 00:01:40,990
-y sólo tenemos un índice sobre
-esta colección si recuerdo bien --
+00:01:21,324 --> 00:01:22,740
+There's a shortcut
+method for this
 
 41
-00:01:40,990 --> 00:01:42,030
-bien, no estoy seguro de eso.
+00:01:22,740 --> 00:01:25,340
+as well, which gives
+us just the total.
 
 42
-00:01:42,030 --> 00:01:43,180
-Lo comprobaré en un segundo.
+00:01:25,340 --> 00:01:27,090
+So from this, it
+looks like each index
 
 43
-00:01:43,180 --> 00:01:48,340
-Nuestros índices ocupan 543 megabytes.
+00:01:27,090 --> 00:01:30,524
+we have is adding 300 megabytes
+to our total index size,
 
 44
-00:01:48,340 --> 00:01:52,520
-Y ahora echemos un vistazo a cuántos
-índices existen sobre esta cosa.
+00:01:30,524 --> 00:01:32,190
+and of course, this
+has an impact, then,
 
 45
-00:01:52,520 --> 00:01:57,470
-Sí, sólo hay un índice, que
-añadimos antes, que es este
+00:01:32,190 --> 00:01:34,700
+on how much memory our
+working set requires.
 
 46
-00:01:57,470 --> 00:01:58,960
-índice sobre "student_id".
+00:01:34,700 --> 00:01:36,450
+Now, with the release
+of MongoDB 3.0,
 
 47
-00:01:58,960 --> 00:02:05,380
-Así que en total, 543 megabytes de
-espacio ocupado por índices.
+00:01:36,450 --> 00:01:38,990
+we've introduced the Wired
+Tiger storage engine.
 
 48
-00:02:05,380 --> 00:02:09,699
-Y si somos curiosos sobre cuánto
-de eso está ocupado por el índice
+00:01:38,990 --> 00:01:41,440
+One of the key
+features of Wired Tiger
 
 49
-00:02:09,699 --> 00:02:13,150
-sobre "_id", supongo que lo que podemos hacer
-es simplemente eliminar el índice que
+00:01:41,440 --> 00:01:43,830
+is that it supports a few
+different types of compression,
 
 50
-00:02:13,150 --> 00:02:16,100
-creamos y ejecutarlo de nuevo para
-averiguar -- esto es
+00:01:43,830 --> 00:01:46,250
+one of which, called
+prefix compression,
 
 51
-00:02:16,100 --> 00:02:16,490
-interesante,
+00:01:46,250 --> 00:01:48,180
+allows us to have
+smaller indexes.
 
 52
-00:02:16,490 --> 00:02:17,740
-no sé la respuesta.
+00:01:48,180 --> 00:01:50,080
+So that last
+example we looked at
 
 53
-00:02:17,740 --> 00:02:23,270
-Así que sólo voy a eliminar
-el índice sobre "student_id".
+00:01:50,080 --> 00:01:54,050
+was against a MongoDB running
+the MMAP V1 storage engine.
 
 54
-00:02:23,270 --> 00:02:27,650
-Eliminamos el índice, y ahora
-podemos ver que se ha ido.
+00:01:54,050 --> 00:01:56,080
+Now let's take a look
+at index sizes for a 3.0
 
 55
-00:02:27,650 --> 00:02:30,510
-Y vamos a obtener el tamaño de nuestro índice.
+00:01:56,080 --> 00:01:58,040
+server with the Wired
+Tiger storage engine,
 
 56
-00:02:30,510 --> 00:02:35,830
-Y se redujo a 
-casi la mitad, a 292 megabytes.
+00:01:58,040 --> 00:02:00,690
+and in particular, we've got it
+index prefix compression turned
 
 57
-00:02:35,830 --> 00:02:39,210
-Así puedes ver que parece
-que por cada índice que
+00:02:00,690 --> 00:02:01,670
+on.
 
 58
-00:02:39,210 --> 00:02:42,050
-añadimos a esta colección, 
-tendremos que tener alrededor de 200
+00:02:01,670 --> 00:02:04,320
+So let's launch a shell
+and connect to that mongod.
 
 59
-00:02:42,050 --> 00:02:45,260
-megabytes de memoria disponible
-si queremos mantener todos los
+00:02:04,320 --> 00:02:06,402
+That one's running
+on the default port.
 
 60
-00:02:45,260 --> 00:02:46,350
-índices en memoria --
+00:02:06,402 --> 00:02:07,860
+So I have exactly
+the same data set
 
 61
-00:02:46,350 --> 00:02:47,870
-o al menos los
-que vamos a usar.
+00:02:07,860 --> 00:02:10,669
+loaded here, again, 10
+million records, and I've
 
 62
-00:02:47,870 --> 00:02:49,650
-Es importante tener esto en
-mente cuando estés diseñando
+00:02:10,669 --> 00:02:13,120
+got the same indexes as I
+had in our last example.
 
 63
-00:02:49,650 --> 00:02:50,590
-tu sistema.
+00:02:13,120 --> 00:02:16,210
+So now let's take a look
+at the index sizes here.
 
 64
-00:02:50,590 --> 00:02:52,710
-Piensa sobre, bien eh, ¿cuán 
-grandes van a ser 
+00:02:16,210 --> 00:02:18,300
+And we can see that our
+total index size here
 
 65
-00:02:52,710 --> 00:02:54,680
-mi colección y
-mis índices?
+00:02:18,300 --> 00:02:20,970
+is just under 200 megabytes.
 
 66
-00:02:54,680 --> 00:02:56,920
-Es en cierto modo, un tema de
-administrador de sistemas o
+00:02:20,970 --> 00:02:23,580
+So rather than 300
+megabytes each,
 
 67
-00:02:56,920 --> 00:02:58,160
-de administrador de base de datos.
+00:02:23,580 --> 00:02:27,560
+our indexes are something on
+the order of 100 megabytes each.
 
 68
-00:02:58,160 --> 00:03:00,830
-Pero está bien como desarrollador
-tener esto en mente y
+00:02:27,560 --> 00:02:30,150
+Now, I should also say
+that this compression comes
 
 69
-00:03:00,830 --> 00:03:03,050
-darse cuenta que los índices
-no son completamente gratuitos.
+00:02:30,150 --> 00:02:31,796
+at the cost of
+CPU, and it really
 
 70
-00:03:03,050 --> 00:03:04,340
-Ya que vas a querer
-mantenerlos en memoria y
+00:02:31,796 --> 00:02:33,670
+depends on your data
+set as to whether or not
 
 71
-00:03:04,340 --> 00:03:06,320
-pueden llegar a ser un poco grandes.
+00:02:33,670 --> 00:02:35,410
+you can take
+advantage of something
 
 72
-00:03:06,320 --> 00:03:08,810
-Son el único factor 
-determinante más importante
+00:02:35,410 --> 00:02:37,830
+like prefix compression, but
+it's something to be aware of
 
 73
-00:03:08,810 --> 00:03:11,270
-en términos de si obtienes
-un buen rendimiento o no de una
+00:02:37,830 --> 00:02:39,496
+and something I wanted
+to show you here.
 
 74
-00:03:11,270 --> 00:03:13,600
-consulta, o si están
-en memoria o no.
+00:02:39,496 --> 00:02:41,940
+I'll also just briefly point
+out that with the Wired Tiger
 
 75
-00:03:13,600 --> 00:03:15,830
-De acuerdo, es hora de hacer un cuestionario.
+00:02:41,940 --> 00:02:44,770
+storage engine, the stats output
+looks a little bit different.
 
 76
-00:03:15,830 --> 00:03:18,250
-¿Qué es más importante que
-entre en memoria,
+00:02:44,770 --> 00:02:47,510
+In particular, we've got
+this Wired Tiger document
 
 77
-00:03:18,250 --> 00:03:20,700
-el índice o los datos?
+00:02:47,510 --> 00:02:50,190
+that reports on a bunch of stats
+for that particular storage
 
 78
-00:03:20,700 --> 00:03:21,950
-Marca una.
+00:02:50,190 --> 00:02:51,210
+engine.
 
 79
-00:03:21,950 --> 00:03:22,630
+00:02:51,210 --> 00:02:53,620
+So again, pay attention to
+the size of your indexes.
+
+80
+00:02:53,620 --> 00:02:56,530
+Make sure they can fit in
+memory so that you can realize
+
+81
+00:02:56,530 --> 00:02:58,690
+the full performance benefits.

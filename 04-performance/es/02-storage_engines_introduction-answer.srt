@@ -1,0 +1,70 @@
+1
+00:00:00,000 --> 00:00:00,500
+
+2
+00:00:00,500 --> 00:00:03,090
+And the answer is that a storage
+engine controls the data file
+
+3
+00:00:03,090 --> 00:00:06,720
+format, how the data is written
+to disk to persistent storage,
+
+4
+00:00:06,720 --> 00:00:08,307
+and it definitely
+affects the format
+
+5
+00:00:08,307 --> 00:00:10,390
+of the indexes, which we
+talked about a little bit
+
+6
+00:00:10,390 --> 00:00:11,470
+in this lesson.
+
+7
+00:00:11,470 --> 00:00:13,220
+It doesn't affect the
+overall architecture
+
+8
+00:00:13,220 --> 00:00:15,770
+of a cluster in terms
+of the replication,
+
+9
+00:00:15,770 --> 00:00:17,519
+or how data gets
+transferred from server
+
+10
+00:00:17,519 --> 00:00:19,060
+to server to provide
+fault tolerance-
+
+11
+00:00:19,060 --> 00:00:21,069
+they're not affected
+by the storage engine.
+
+12
+00:00:21,069 --> 00:00:22,610
+And the wire protocol
+for the drivers
+
+13
+00:00:22,610 --> 00:00:24,480
+isn't effected at
+all because remember
+
+14
+00:00:24,480 --> 00:00:27,350
+that the drivers talk to the
+server and the server talks
+
+15
+00:00:27,350 --> 00:00:29,340
+to the storage engine.

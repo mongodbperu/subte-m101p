@@ -1,113 +1,36 @@
 1
-00:00:00,000 --> 00:00:00,140
+00:00:00,000 --> 00:00:00,499
+OK.
 
 2
-00:00:00,140 --> 00:00:02,380
-Y la respuesta es que las primeras
-tres son ciertas, y la última
+00:00:00,499 --> 00:00:02,500
+And the answer is the
+first three are correct
 
 3
-00:00:02,380 --> 00:00:03,620
-no lo es.
+00:00:02,500 --> 00:00:04,400
+and the last one is not correct.
 
 4
-00:00:03,620 --> 00:00:05,893
-Una instancia de mongod puede construir
-sólo un índice en un segundo plano
+00:00:04,400 --> 00:00:07,220
+We [? didn't ?] talk about this,
+really, about when any of this
 
 5
-00:00:05,893 --> 00:00:07,510
-a la vez por base de datos.
+00:00:07,220 --> 00:00:08,750
+changed, because
+it didn't change.
 
 6
-00:00:07,510 --> 00:00:10,460
-El servidor de base de datos
-seguirá tomando solicitudes,
+00:00:08,750 --> 00:00:11,080
+Which is to say that
+index creation is
 
 7
-00:00:10,460 --> 00:00:12,150
-pero bloquearás el shell
-mongo que estás usando
+00:00:11,080 --> 00:00:13,510
+in the foreground by default,
+not in the background.
 
 8
-00:00:12,150 --> 00:00:13,250
-para crear el índice.
-
-9
-00:00:13,250 --> 00:00:16,440
-Así que podrías pensar que eso
-es una indicación que otras
-
-10
-00:00:16,440 --> 00:00:19,670
-personas son bloqueadas, pero
-no lo es, puedes continuar trabajando.
-
-11
-00:00:19,670 --> 00:00:21,635
-No estoy seguro de haberlo
-dicho, así que tuviste
-
-12
-00:00:21,635 --> 00:00:23,650
-que suponer eso.
-
-13
-00:00:23,650 --> 00:00:25,560
-Crear un índice en un segundo
-plano toma más tiempo que
-
-14
-00:00:25,560 --> 00:00:28,610
-en un primer plano,
-esto es cierto.
-
-15
-00:00:28,610 --> 00:00:30,850
-En Mongo 2.2 y posteriores,
-los índices son creados en un
-
-16
-00:00:30,850 --> 00:00:31,900
-segundo plano por defecto.
-
-17
-00:00:31,900 --> 00:00:32,409
-Eso no es cierto.
-
-18
-00:00:32,409 --> 00:00:34,320
-Ellos son creados en un
-primer plano por defecto.
-
-19
-00:00:34,320 --> 00:00:36,970
-En Mongo 2.2 y posteriores, el
-gran cambio es que hay ahora un
-
-20
-00:00:36,970 --> 00:00:39,000
-bloqueo de escritura
-por base de datos.
-
-21
-00:00:39,000 --> 00:00:40,390
-Ese es el gran cambio.
-
-22
-00:00:40,390 --> 00:00:42,550
-Así que incluso si ejecutas
-en un primer plano, sólo vas a
-
-23
-00:00:42,550 --> 00:00:46,130
-bloquear las escrituras en
-la misma base de datos, en lugar
-
-24
-00:00:46,130 --> 00:00:47,660
-que a todas las bases de datos
-en el servidor.	
-
-25
-00:00:47,660 --> 00:00:49,115
+00:00:13,510 --> 00:00:16,080
+So this last one is wrong.

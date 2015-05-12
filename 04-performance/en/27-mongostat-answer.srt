@@ -1,0 +1,39 @@
+1
+00:00:00,000 --> 00:00:00,500
+
+2
+00:00:00,500 --> 00:00:03,510
+And the answer is that they
+get getmore column does concern
+
+3
+00:00:03,510 --> 00:00:05,499
+the number of requests
+per time interval
+
+4
+00:00:05,499 --> 00:00:07,040
+to get additional
+data from a cursor.
+
+5
+00:00:07,040 --> 00:00:07,970
+That is correct.
+
+6
+00:00:07,970 --> 00:00:10,110
+And the faults column
+does appear only
+
+7
+00:00:10,110 --> 00:00:12,600
+for the mmapv1 output.
+
+8
+00:00:12,600 --> 00:00:14,210
+That's the number
+of page faults.
+
+9
+00:00:14,210 --> 00:00:17,030
+The other ones are not true.

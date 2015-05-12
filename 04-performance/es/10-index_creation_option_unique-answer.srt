@@ -1,15 +1,16 @@
 1
-00:00:00,000 --> 00:00:00,180
+00:00:00,000 --> 00:00:00,499
 
 2
-00:00:00,180 --> 00:00:03,015
-La respuesta es "db.students.
-ensureIndex({student_id:
+00:00:00,499 --> 00:00:03,210
+The answer is
+db.students.createIndex
 
 3
-00:00:03,015 --> 00:00:06,820
-1, class_id:
-1}, {unique: true})".
+00:00:03,210 --> 00:00:06,600
+student_id 1, class_id
+1, unique, true.
 
 4
-00:00:06,820 --> 00:00:08,070
+00:00:06,600 --> 00:00:08,150
+That's it.

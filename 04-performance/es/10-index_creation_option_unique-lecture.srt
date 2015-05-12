@@ -1,308 +1,389 @@
 1
-00:00:00,000 --> 00:00:00,150
+00:00:00,000 --> 00:00:00,500
 
 2
-00:00:00,150 --> 00:00:03,470
-Los índices que hemos creado
-hasta ahora no han sido únicos.
+00:00:00,500 --> 00:00:02,240
+OK, let's talk about
+unique indexes.
 
 3
-00:00:03,470 --> 00:00:06,770
-Un índice único fuerza la
-restricción de que cada clave puede
+00:00:02,240 --> 00:00:04,660
+So far, all the indexes
+that we've created
 
 4
-00:00:06,770 --> 00:00:08,600
-aparecer sólo una vez en el índice.
+00:00:04,660 --> 00:00:06,657
+have been non-unique.
 
 5
-00:00:08,600 --> 00:00:11,360
-Eso no es cierto para los índices
-que hemos creado.
+00:00:06,657 --> 00:00:08,240
+But you can also
+create unique indexes
 
 6
-00:00:11,360 --> 00:00:13,500
-Creemos otra
-colección aquí,
+00:00:08,240 --> 00:00:11,350
+that enforce the constraint
+that the keys have to be
 
 7
-00:00:13,500 --> 00:00:15,410
-"db.stuff.insert".
+00:00:11,350 --> 00:00:13,410
+unique within the collection.
 
 8
-00:00:15,410 --> 00:00:18,115
-Y voy a 
-insertar una cosa.
+00:00:13,410 --> 00:00:16,170
+No two documents can have
+the same key if it's indexed.
 
 9
-00:00:18,115 --> 00:00:19,830
-Voy a insertar una pera.
+00:00:16,170 --> 00:00:18,170
+Let's going into the Mongo
+shell and demonstrate
 
 10
-00:00:19,830 --> 00:00:25,280
-Y ahora voy a crear un
-índice en esta colección.
+00:00:18,170 --> 00:00:19,434
+what we're talking about.
 
 11
-00:00:25,280 --> 00:00:26,680
-Perdón, lo escribí mal.
+00:00:19,434 --> 00:00:21,600
+We're going to create a new
+collection called stuff.
 
 12
-00:00:26,680 --> 00:00:28,800
-Necesito tener la colección
-ahí.
+00:00:21,600 --> 00:00:23,266
+Just to make sure
+that it's really gone,
 
 13
-00:00:28,800 --> 00:00:30,640
-Así que creamos un índice
-en esta colección.
+00:00:23,266 --> 00:00:24,930
+I'm going to drop it.
 
 14
-00:00:30,640 --> 00:00:34,780
-Y puedo crear varios
-elementos con "pear" en "thing".
+00:00:24,930 --> 00:00:28,730
+Now I'm going to insert some
+stuff into my stuff collection.
 
 15
-00:00:34,780 --> 00:00:37,090
-Por lo que voy a poner
-otro más.
+00:00:28,730 --> 00:00:31,260
+All right, I've inserted an
+apple into the collection.
 
 16
-00:00:37,090 --> 00:00:40,010
-Voy a poner otro 
-con "apple".
+00:00:31,260 --> 00:00:34,310
+Now I'm going to insert a
+pear into the collection.
 
 17
-00:00:40,010 --> 00:00:43,530
-Pero, ¿qué ocurriría si quisiera
-crear un índice único?
+00:00:34,310 --> 00:00:36,020
+And now I'm going to
+insert another apple
 
 18
-00:00:43,530 --> 00:00:46,430
-Bien, si echo un vistazo
-a "stuff" justo ahora,
+00:00:36,020 --> 00:00:37,830
+into the collection.
 
 19
-00:00:46,430 --> 00:00:49,910
-puedo ver mis índices.
+00:00:37,830 --> 00:00:39,960
+And now I'm going to see
+what's in the collection.
 
 20
-00:00:49,910 --> 00:00:52,950
-Puedo ver que tengo este
-índice sobre "thing".
+00:00:39,960 --> 00:00:42,167
+And we see two
+apples and a pear.
 
 21
-00:00:52,950 --> 00:00:54,490
-Eliminemos ese índice.
+00:00:42,167 --> 00:00:44,000
+Now if we wanted to
+create an index on this,
 
 22
-00:00:54,490 --> 00:00:58,160
-Y ahora intentemos crear
-un índice que sea único.
+00:00:44,000 --> 00:00:45,519
+we certainly could.
 
 23
-00:00:58,160 --> 00:01:01,710
-Por lo que hacemos eso con el comando
-"ensureIndex", ahora con nuestro segundo
+00:00:45,519 --> 00:00:46,560
+That would be no problem.
 
 24
-00:01:01,710 --> 00:01:05,230
-documento después del primero
-con "unique" igual a "true".
+00:00:46,560 --> 00:00:51,610
+We could just do a createIndex
+on Thing ascending,
 
 25
-00:01:05,230 --> 00:01:08,220
-Y esto va a obligar a cumplir
-la restricción de que cada clave
+00:00:51,610 --> 00:00:53,325
+and works just fine.
 
 26
-00:01:08,220 --> 00:01:09,420
-pueda aparecer sólo una vez.
+00:00:53,325 --> 00:00:55,450
+But if we want to create
+a unique index, we cannot.
 
 27
-00:01:09,420 --> 00:01:14,890
-Ahora no me permitirá hacer eso
-porque, de hecho, hay
+00:00:55,450 --> 00:00:57,616
+Let me show you what a
+unique index would look like.
 
 28
-00:01:14,890 --> 00:01:16,310
-un conflicto.
+00:00:57,616 --> 00:01:00,070
+So let's drop the
+index we just created.
 
 29
-00:01:16,310 --> 00:01:19,430
-Así que deshagamos
-ese conflicto.
+00:01:00,070 --> 00:01:02,050
+And now let's create
+a unique index.
 
 30
-00:01:19,430 --> 00:01:22,170
-Entonces "db.stuff.remove",
-eliminemos uno
+00:01:02,050 --> 00:01:04,258
+We're going to call createIndex,
+but this time, we're
 
 31
-00:01:22,170 --> 00:01:24,800
-de estos justo aquí.
+00:01:04,258 --> 00:01:07,320
+going to give one additional
+document in this command.
 
 32
-00:01:24,800 --> 00:01:27,330
-Eliminaré una de
-estas peras.
+00:01:07,320 --> 00:01:09,520
+Rather than just say
+createIndex Thing 1,
 
 33
-00:01:27,330 --> 00:01:28,430
-Eso debería hacerlo.
+00:01:09,520 --> 00:01:13,150
+we're going to say
+Unique is True.
 
 34
-00:01:28,430 --> 00:01:32,290
-Y ahora si intento crear
-el índice, puedo hacerlo.
+00:01:13,150 --> 00:01:15,580
+And if we do that, what happens?
 
 35
-00:01:32,290 --> 00:01:36,390
-Y si llamo a "getIndexes" en
-esta colección, puedo ver
+00:01:15,580 --> 00:01:17,200
+Well, we get an error.
 
 36
-00:01:36,390 --> 00:01:38,630
-que ahora hay un nuevo campo.
+00:01:17,200 --> 00:01:18,630
+And the reason we
+get an error is
 
 37
-00:01:38,630 --> 00:01:41,750
-Dice "unique: true" para
-este índice secundario.
+00:01:18,630 --> 00:01:21,150
+because it can't create
+a unique index when
 
 38
-00:01:41,750 --> 00:01:45,100
-Y si intento insertar
-algo, voy a enseñarte
+00:01:21,150 --> 00:01:23,940
+there's two things inside
+this collection that
 
 39
-00:01:45,100 --> 00:01:47,220
-de nuevo la colección.
+00:01:23,940 --> 00:01:25,310
+have the same value.
 
 40
-00:01:47,220 --> 00:01:50,590
-Y entonces intento insertar algo
-que contraviene el
+00:01:25,310 --> 00:01:26,900
+So let's drop the offending one.
 
 41
-00:01:50,590 --> 00:01:53,870
-índice, como, por ejemplo,
-insertar una manzana.
+00:01:26,900 --> 00:01:29,010
+So let's look at stuff
+collection again.
 
 42
-00:01:53,870 --> 00:01:56,770
-Obtengo un error de clave duplicada
-porque no puedo tener más que
+00:01:29,010 --> 00:01:30,940
+And we see we have two apples.
 
 43
-00:01:56,770 --> 00:01:59,130
-un elemento en la colección
-que tenga una
+00:01:30,940 --> 00:01:34,805
+So let's remove one
+of those apples.
 
 44
-00:01:59,130 --> 00:02:01,560
-clave con "thing" igual a "apple".
+00:01:34,805 --> 00:01:36,330
+We're going to do it this way.
 
 45
-00:02:01,560 --> 00:02:07,320
-Entonces te darás cuenta que el índice
-"_id" no muestra que sea "unique".
+00:01:36,330 --> 00:01:37,610
+We're going to call remove.
 
 46
-00:02:07,320 --> 00:02:09,419
-Pero sabemos y te hemos contado
-que es único.
+00:01:37,610 --> 00:01:42,820
+We're going to find a document
+that has Thing Apple in it.
 
 47
-00:02:09,419 --> 00:02:13,000
-Por lo que esto es realmente un leve
-capricho de la base de datos que
+00:01:42,820 --> 00:01:45,750
+And we're going to give
+one option to remove.
 
 48
-00:02:13,000 --> 00:02:14,990
-no te cuenta que ese 
-índice particular es único.
+00:01:45,750 --> 00:01:49,870
+We're going to say
+that justOne is True.
 
 49
-00:02:14,990 --> 00:02:17,810
-Pero si intentas insertar
-algo, desde luego verás que
+00:01:49,870 --> 00:01:51,070
+We want to remove just one.
 
 50
-00:02:17,810 --> 00:02:18,420
-es único.
+00:01:51,070 --> 00:01:53,290
+And if we do that, we
+get Number Removed 1.
 
 51
-00:02:18,420 --> 00:02:22,050
-Así que voy a intentar insertar algo
-en la colección.
+00:01:53,290 --> 00:01:56,326
+And now if we look in
+the collection again,
 
 52
-00:02:22,050 --> 00:02:26,235
-Quiero hacer esto, "_id:1, b:1".
+00:01:56,326 --> 00:01:57,700
+we'll see we only
+have one apple.
 
 53
-00:02:26,235 --> 00:02:30,410
-Así que ahora estoy insertando algo
-con "_id" igual a 1.
+00:01:57,700 --> 00:01:59,590
+And now we should be able to
+add the index that we want,
 
 54
-00:02:30,410 --> 00:02:34,100
-Y si intento insertar otros
-documentos con "_id" igual a 1, obtengo
+00:01:59,590 --> 00:02:00,620
+the unique index.
 
 55
-00:02:34,100 --> 00:02:37,840
-un error de clave duplicada, exactamente
-de la misma manera que con el
+00:02:00,620 --> 00:02:02,800
+Thing 1, Unique True.
 
 56
-00:02:37,840 --> 00:02:42,740
-índice sobre "thing", incluso aunque de 
-hecho la base de datos no
+00:02:02,800 --> 00:02:03,300
+No problem.
 
 57
-00:02:42,740 --> 00:02:46,220
-te dice que ese índice
-"_id" sea único.
+00:02:03,300 --> 00:02:04,480
+We added the index.
 
 58
-00:02:46,220 --> 00:02:47,610
-Pero es un índice único.
+00:02:04,480 --> 00:02:08,590
+And if we want to
+insert something
 
 59
-00:02:47,610 --> 00:02:50,340
-Y sólo para revisar, para crear
-un índice único
+00:02:08,590 --> 00:02:12,530
+that already is in
+there, like a pear,
 
 60
-00:02:50,340 --> 00:02:55,980
-especifica esta opción "unique: true"
-en el segundo documento
+00:02:12,530 --> 00:02:14,590
+we get a duplicate key error.
 
 61
-00:02:55,980 --> 00:02:57,620
-tras "ensureIndex".
+00:02:14,590 --> 00:02:17,110
+In addition, if you look
+at the indexes on stuff
 
 62
-00:02:57,620 --> 00:03:01,400
-Bien, hora
-de hacer un cuestionario.
+00:02:17,110 --> 00:02:20,090
+by calling
+db.stuff.getIndexes, you'll
 
 63
-00:03:01,400 --> 00:03:04,250
-Por favor, proporciona el comando del
-shell mongo para añadir un índice único
+00:02:20,090 --> 00:02:24,660
+notice that the database tells
+you that the index on Thing
 
 64
-00:03:04,250 --> 00:03:09,070
-a la colección "students" sobre
-las claves "student_id", "class_id".
+00:02:24,660 --> 00:02:25,435
+is unique.
 
 65
-00:03:09,070 --> 00:03:10,980
-Y por favor escríbelo
-justo ahí.
+00:02:25,435 --> 00:02:28,750
+Now oddly, it doesn't tell
+you that the index on _id is
 
 66
-00:03:10,980 --> 00:03:12,230
+00:02:28,750 --> 00:02:31,940
+unique, although we've told
+you that _id is unique and it
+
+67
+00:02:31,940 --> 00:02:32,850
+[? is a ?] unique.
+
+68
+00:02:32,850 --> 00:02:37,750
+So it's a vagary of the database
+that it won't admit that _id is
+
+69
+00:02:37,750 --> 00:02:38,910
+unique.
+
+70
+00:02:38,910 --> 00:02:40,930
+So we can prove that
+of course it is unique.
+
+71
+00:02:40,930 --> 00:02:43,610
+Because if we try to put
+some documents into it,
+
+72
+00:02:43,610 --> 00:02:48,140
+let's say with _id Andrew,
+and we try to put two of those
+
+73
+00:02:48,140 --> 00:02:50,590
+in there, we're going to
+find it does not work.
+
+74
+00:02:50,590 --> 00:02:53,570
+db.stuff Inserted--
+let's try another one.
+
+75
+00:02:53,570 --> 00:02:58,060
+Duplicate key error on _id,
+which is exactly the same error
+
+76
+00:02:58,060 --> 00:03:00,640
+that we see on this other
+duplicate key error,
+
+77
+00:03:00,640 --> 00:03:03,506
+the E11000 error in both cases.
+
+78
+00:03:03,506 --> 00:03:05,880
+So even though the database
+doesn't tell you that the _id
+
+79
+00:03:05,880 --> 00:03:08,530
+index is unique, it is unique.
+
+80
+00:03:08,530 --> 00:03:10,857
+All right, so it's
+time for a quiz.
+
+81
+00:03:10,857 --> 00:03:12,440
+Please provide the
+mongo shell command
+
+82
+00:03:12,440 --> 00:03:16,690
+to create a unique index on
+student_id, class_id ascending
+
+83
+00:03:16,690 --> 00:03:17,930
+for the collection Students.
+
+84
+00:03:17,930 --> 00:03:19,720
+Type it below.

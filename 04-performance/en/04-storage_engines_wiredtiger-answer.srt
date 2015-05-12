@@ -1,0 +1,100 @@
+1
+00:00:00,000 --> 00:00:00,499
+
+2
+00:00:00,499 --> 00:00:03,820
+All right, and the answer is
+that you get document level
+
+3
+00:00:03,820 --> 00:00:06,150
+concurrency because it's
+a lock-free implementation
+
+4
+00:00:06,150 --> 00:00:08,550
+for most paths
+through the database,
+
+5
+00:00:08,550 --> 00:00:11,850
+and you get compression,
+which is great.
+
+6
+00:00:11,850 --> 00:00:14,320
+You do not get power-of-two
+document padding,
+
+7
+00:00:14,320 --> 00:00:16,940
+that is something that is
+a feature of the [? NMap ?]
+
+8
+00:00:16,940 --> 00:00:18,069
+storage engine.
+
+9
+00:00:18,069 --> 00:00:20,360
+And you do not get in-place
+place updates of documents.
+
+10
+00:00:20,360 --> 00:00:21,890
+If you try to update
+a document, it
+
+11
+00:00:21,890 --> 00:00:24,770
+will wind up rewriting the
+entire document to disk.
+
+12
+00:00:24,770 --> 00:00:26,850
+And it is not turbocharged.
+
+13
+00:00:26,850 --> 00:00:30,020
+Turbocharged is a
+real thing with cars.
+
+14
+00:00:30,020 --> 00:00:33,760
+Turbocharged refers to the
+idea of using the exhaust fumes
+
+15
+00:00:33,760 --> 00:00:35,820
+from a car, running
+it through a turbine,
+
+16
+00:00:35,820 --> 00:00:39,720
+and adding extra power
+to the drive train
+
+17
+00:00:39,720 --> 00:00:42,240
+by using some of the energy in
+the exhaust fumes coming out
+
+18
+00:00:42,240 --> 00:00:45,450
+of the back of the car for
+a fossil fuel based car.
+
+19
+00:00:45,450 --> 00:00:47,330
+So turbocharged is a
+real thing, but not
+
+20
+00:00:47,330 --> 00:00:49,680
+in the WireTiger
+storage engine, maybe
+
+21
+00:00:49,680 --> 00:00:52,760
+in some other
+high-performance engines.

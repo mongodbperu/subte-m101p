@@ -1,0 +1,82 @@
+1
+00:00:00,000 --> 00:00:00,120
+
+2
+00:00:00,120 --> 00:00:00,619
+OK.
+
+3
+00:00:00,619 --> 00:00:04,059
+And the answer is that only
+the third one is correct.
+
+4
+00:00:04,059 --> 00:00:06,180
+MMAP does not offer
+document level locking,
+
+5
+00:00:06,180 --> 00:00:09,770
+it offers collection level
+locking, so that's not true.
+
+6
+00:00:09,770 --> 00:00:11,894
+MMAP isn't the one
+that creates the power
+
+7
+00:00:11,894 --> 00:00:13,810
+of two-sized documents
+when they're inserted--
+
+8
+00:00:13,810 --> 00:00:16,460
+this was a little bit subtle--
+but MongoDB makes the decision
+
+9
+00:00:16,460 --> 00:00:18,670
+that it wants to
+allocate a document that
+
+10
+00:00:18,670 --> 00:00:20,160
+is power of two sized.
+
+11
+00:00:20,160 --> 00:00:21,400
+MMAP doesn't care.
+
+12
+00:00:21,400 --> 00:00:23,660
+MMAP is built on top of
+the MMAP system call.
+
+13
+00:00:23,660 --> 00:00:25,570
+That is absolutely true.
+
+14
+00:00:25,570 --> 00:00:28,420
+And the final one is false
+because MongoDB does not
+
+15
+00:00:28,420 --> 00:00:30,036
+manage the memory used by MMAP.
+
+16
+00:00:30,036 --> 00:00:31,910
+Instead, it's managed
+by the operating system
+
+17
+00:00:31,910 --> 00:00:34,050
+itself and it
+decides what to swap
+
+18
+00:00:34,050 --> 00:00:38,340
+in and out from this large file
+that is mapped into memory.

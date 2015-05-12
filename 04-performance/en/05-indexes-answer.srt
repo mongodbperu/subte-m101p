@@ -1,110 +1,60 @@
 1
-00:00:00,000 --> 00:00:00,130
+00:00:00,000 --> 00:00:00,500
 
 2
-00:00:00,130 --> 00:00:03,200
-And the answer is that adding
-the appropriate index on large
+00:00:00,500 --> 00:00:02,810
+OK, and I'm sure everyone
+got this right, that yes,
 
 3
-00:00:03,200 --> 00:00:04,900
-collections so that only a small
-percentage of queries
+00:00:02,810 --> 00:00:05,410
+indexes have a greater impact
+than any of these other things.
 
 4
-00:00:04,900 --> 00:00:07,090
-need to scan the collection,
-that's gonna have your
+00:00:05,410 --> 00:00:06,826
+And the way to
+think about this is
 
 5
-00:00:07,090 --> 00:00:08,320
-greatest impact.
+00:00:06,826 --> 00:00:08,910
+if you have a really
+large problem,
 
 6
-00:00:08,320 --> 00:00:10,800
-Any more memory so the
-working set fits into
+00:00:08,910 --> 00:00:12,250
+it's probably be more
+efficient to eliminate 95%
 
 7
-00:00:10,800 --> 00:00:13,590
-memory, that'll help.
+00:00:12,250 --> 00:00:13,900
+than to hire faster workers.
 
 8
-00:00:13,590 --> 00:00:16,059
-But, you typically won't be
-able to get your entire
+00:00:13,900 --> 00:00:16,250
+And all of these
+items here is really
 
 9
-00:00:16,059 --> 00:00:17,780
-database into memory, although
-you'll be able to get your
+00:00:16,250 --> 00:00:17,780
+about hiring faster workers.
 
 10
-00:00:17,780 --> 00:00:20,730
-entire index into memory.
+00:00:17,780 --> 00:00:20,339
+So indexing is extremely
+important database performance,
 
 11
-00:00:20,730 --> 00:00:21,865
-And that will be important
-for performance
+00:00:20,339 --> 00:00:22,130
+and you definitely want
+to make sure you've
 
 12
-00:00:21,865 --> 00:00:23,730
-as we'll see later.
+00:00:22,130 --> 00:00:24,640
+indexed the keys that
+are going to result
 
 13
-00:00:23,730 --> 00:00:26,960
-Adding a faster disk
-drive, that helps.
-
-14
-00:00:26,960 --> 00:00:29,200
-But truth is that the
-algorithmic improvements you
-
-15
-00:00:29,200 --> 00:00:33,270
-get from hitting an index are an
-order of magnitude greater
-
-16
-00:00:33,270 --> 00:00:35,800
-than what you're gonna get by
-having a faster disk drive
-
-17
-00:00:35,800 --> 00:00:36,920
-inside your computer.
-
-18
-00:00:36,920 --> 00:00:39,520
-The same thing is
-true for a CPU.
-
-19
-00:00:39,520 --> 00:00:43,370
-Creating a faster CPU is
-OK, but the algorithmic
-
-20
-00:00:43,370 --> 00:00:45,850
-improvements you get by hitting
-an index inside the
-
-21
-00:00:45,850 --> 00:00:48,360
-database is far more
-important.
-
-22
-00:00:48,360 --> 00:00:50,690
-And so thinking about indexing
-when you're thinking about
-
-23
-00:00:50,690 --> 00:00:53,410
-performance in a database is
-gonna be absolutely critical.
-
-24
-00:00:53,410 --> 00:00:54,660
+00:00:24,640 --> 00:00:27,920
+in a large percentage of your
+queries hitting the index.

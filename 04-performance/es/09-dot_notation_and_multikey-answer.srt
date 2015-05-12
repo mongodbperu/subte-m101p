@@ -1,0 +1,16 @@
+1
+00:00:00,000 --> 00:00:00,090
+
+2
+00:00:00,090 --> 00:00:00,590
+All right.
+
+3
+00:00:00,590 --> 00:00:05,260
+And the answer is that you would
+call db.earth.createIndex index
+
+4
+00:00:05,260 --> 00:00:09,790
+with a work_history.company
+company of colon minus 1.

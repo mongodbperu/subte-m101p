@@ -1,647 +1,576 @@
 1
-00:00:00,000 --> 00:00:00,100
- 
+00:00:00,000 --> 00:00:00,317
 
 2
-00:00:00,100 --> 00:00:00,380
-OK.
-
-3
-00:00:00,380 --> 00:00:01,963
+00:00:00,317 --> 00:00:01,900
 Let's talk about
 another type of index
 
-4
-00:00:01,963 --> 00:00:03,930
+3
+00:00:01,900 --> 00:00:04,250
 that can be very useful
 when dealing with text.
 
+4
+00:00:04,250 --> 00:00:06,630
+It's called a full
+text search index.
+
 5
-00:00:03,930 --> 00:00:06,510
-And it's called a
-full-text search index
-
-6
-00:00:06,510 --> 00:00:08,160
-Full-text search
-was first introduced
-
-7
-00:00:08,160 --> 00:00:11,450
-on an experimental
-basis in MongoDB 2.4.
-
-8
-00:00:11,450 --> 00:00:13,790
-And now it's available and
-for general availability
-
-9
-00:00:13,790 --> 00:00:16,090
-in MongoDB 2.6.
-
-10
-00:00:16,090 --> 00:00:18,610
-So why would you use it, and
+00:00:06,630 --> 00:00:09,160
+So why would you use it and
 what would you use it for?
 
-11
-00:00:18,610 --> 00:00:21,230
+6
+00:00:09,160 --> 00:00:11,750
 Well, let's say you had a
 very large piece of text
 
-12
-00:00:21,230 --> 00:00:23,470
+7
+00:00:11,750 --> 00:00:13,980
 that was in a document,
 something like the US
 
-13
-00:00:23,470 --> 00:00:26,410
-Constitution, which starts out
-"We the people of the United
+8
+00:00:13,980 --> 00:00:16,900
+Constitution, which starts out,
+"We, the people of the United
 
-14
-00:00:26,410 --> 00:00:29,340
+9
+00:00:16,900 --> 00:00:19,920
 States, in order to form
 a more perfect union."
 
-15
-00:00:29,340 --> 00:00:32,580
+10
+00:00:19,920 --> 00:00:23,100
 Let's say you had that
 document right here in a key
 
-16
-00:00:32,580 --> 00:00:34,150
-called "mytext."
+11
+00:00:23,100 --> 00:00:26,660
+called My Text and you had
+the entire preamble to the US
 
-17
-00:00:34,150 --> 00:00:36,475
-And you had the entire
-preamble to the US Constitution
+12
+00:00:26,660 --> 00:00:29,050
+Constitution in
+this key, My Text,
 
-18
-00:00:36,475 --> 00:00:38,590
-in this key, mytext.
+13
+00:00:29,050 --> 00:00:30,840
+and you wanted to search it.
 
-19
-00:00:38,590 --> 00:00:40,280
-And you wanted to search it.
-
-20
-00:00:40,280 --> 00:00:43,450
-Well, if you search
+14
+00:00:30,840 --> 00:00:34,000
+Well, if you searched
 just on any given word,
 
-21
-00:00:43,450 --> 00:00:45,240
-then you wouldn't
-get anything back,
+15
+00:00:34,000 --> 00:00:36,866
+then you wouldn't get
+anything back because MongoDB,
 
-22
-00:00:45,240 --> 00:00:47,450
-because MongoDB, when
-you search on strings,
+16
+00:00:36,866 --> 00:00:38,740
+when you search on
+strings, the entire string
 
-23
-00:00:47,450 --> 00:00:49,332
-the entire string
+17
+00:00:38,740 --> 00:00:39,852
 needs to be there.
 
-24
-00:00:49,332 --> 00:00:51,540
+18
+00:00:39,852 --> 00:00:42,060
 So as an alternative, you
 could put every single word
 
-25
-00:00:51,540 --> 00:00:55,380
-into an array, and then use
-the Set Notation operators
+19
+00:00:42,060 --> 00:00:46,700
+into an array and then use the
+set notation operators to push
 
-26
-00:00:55,380 --> 00:00:58,442
-to push things into it, and
-then search for whether or not
+20
+00:00:46,700 --> 00:00:49,120
+things into it and then
+search for whether or not
 
-27
-00:00:58,442 --> 00:00:59,400
-the words are included.
+21
+00:00:49,120 --> 00:00:51,752
+the words are included,
+but that's pretty tedious
 
-28
-00:00:59,400 --> 00:01:01,222
-But that's pretty tedious.
-
-29
-00:01:01,222 --> 00:01:03,680
-And there are certain other
+22
+00:00:51,752 --> 00:00:54,210
+and there are certain other
 features that would be missing.
 
-30
-00:01:03,680 --> 00:01:06,270
-So instead, what we
-have is something
+23
+00:00:54,210 --> 00:00:57,820
+So instead, what we have is
+something called a full text
 
-31
-00:01:06,270 --> 00:01:08,510
-called a full-text
-search index, which
+24
+00:00:57,820 --> 00:01:01,050
+search index, which is
+abbreviated text, which
 
-32
-00:01:08,510 --> 00:01:12,410
-is abbreviated "text," which
+25
+00:01:01,050 --> 00:01:04,260
 will index this entire document
+and every word much in the way
 
-33
-00:01:12,410 --> 00:01:14,190
-and every word, much
-in the way an array
+26
+00:01:04,260 --> 00:01:08,320
+an array is indexed to allow
+you to do queries into the text,
 
-34
-00:01:14,190 --> 00:01:17,790
-is indexed, to allow you to
-do queries into the text,
-
-35
-00:01:17,790 --> 00:01:19,950
+27
+00:01:08,320 --> 00:01:10,470
 basically applying
-the OR operator,
+the OR operator
 
-36
-00:01:19,950 --> 00:01:23,240
+28
+00:01:10,470 --> 00:01:13,780
 and looking for one
 of several words.
 
-37
-00:01:23,240 --> 00:01:25,590
+29
+00:01:13,780 --> 00:01:16,110
 So let's go look at
 now a specific case
 
-38
-00:01:25,590 --> 00:01:27,350
+30
+00:01:16,110 --> 00:01:18,400
 and see how it would work.
 
-39
-00:01:27,350 --> 00:01:27,850
-All right.
-
-40
-00:01:27,850 --> 00:01:29,780
+31
+00:01:18,400 --> 00:01:20,300
 We've created a collection
-called Sentences.
+called sentences,
 
-41
-00:01:29,780 --> 00:01:33,110
-And this collection has got a
-bunch of mostly just randomly
+32
+00:01:20,300 --> 00:01:21,990
+and this collection
+has got a bunch
 
-42
-00:01:33,110 --> 00:01:36,380
-inserted words into a Words key.
+33
+00:01:21,990 --> 00:01:28,420
+of mostly just randomly
+inserted words into a words key.
 
-43
-00:01:36,380 --> 00:01:38,080
-Now, if I wanted to
-search-- and there
+34
+00:01:28,420 --> 00:01:30,650
+There is no text search
+index on this right now.
 
-44
-00:01:38,080 --> 00:01:40,100
-is no tech search index
-on this right now.
-
-45
-00:01:40,100 --> 00:01:41,470
+35
+00:01:30,650 --> 00:01:32,490
 This is a regular collection.
 
-46
-00:01:41,470 --> 00:01:45,030
+36
+00:01:32,490 --> 00:01:35,540
 If I wanted to search for,
-let's say, dog, shrub, Ruby,
+let's say, "dog shrub ruby,"
 
-47
-00:01:45,030 --> 00:01:45,670
+37
+00:01:35,540 --> 00:01:38,180
 I could do it.
 
+38
+00:01:38,180 --> 00:01:39,360
+There we go.
+
+39
+00:01:39,360 --> 00:01:41,250
+So I searched for
+"dog shrub ruby"
+
+40
+00:01:41,250 --> 00:01:44,620
+and I found this document with
+the words "dog, shrub, ruby,"
+
+41
+00:01:44,620 --> 00:01:45,900
+but it's very particular.
+
+42
+00:01:45,900 --> 00:01:48,780
+If I leave off the period,
+it doesn't find it.
+
+43
+00:01:48,780 --> 00:01:52,240
+If I just do "dog
+ruby," doesn't find it,
+
+44
+00:01:52,240 --> 00:01:55,170
+and if I just do "dog,"
+it doesn't find it.
+
+45
+00:01:55,170 --> 00:01:58,050
+That's not going to work
+too well for me to search
+
+46
+00:01:58,050 --> 00:02:00,310
+on these different words.
+
+47
+00:02:00,310 --> 00:02:05,960
+So now let's add a text index,
+db.sentences.ensureIndex,
+
 48
-00:01:45,670 --> 00:01:47,660
-I could do-- all right.
+00:02:05,960 --> 00:02:11,020
+and now I want to put an
+index on words of type text.
 
 49
-00:01:47,660 --> 00:01:48,820
+00:02:11,020 --> 00:02:11,910
 There we go.
 
 50
-00:01:48,820 --> 00:01:50,730
-So I searched for
-dog, shrub, Ruby.
+00:02:11,910 --> 00:02:15,500
+And now when I search it,
+"dog shrub ruby," it's
 
 51
-00:01:50,730 --> 00:01:54,120
-And I found this document
-with words dog, shrub, Ruby.
+00:02:15,500 --> 00:02:18,560
+going to work a lot
+better, so let's do that.
 
 52
-00:01:54,120 --> 00:01:55,390
-But it's very particular.
+00:02:18,560 --> 00:02:21,350
+Let's first look at the syntax
+for searching a full text
 
 53
-00:01:55,390 --> 00:01:58,010
-If I leave off the
-period, doesn't find it.
+00:02:21,350 --> 00:02:22,110
+index.
 
 54
-00:01:58,010 --> 00:02:01,720
-If I just do dog,
-Ruby, doesn't find it.
+00:02:22,110 --> 00:02:24,670
+The way it works is
+I have to say $text
 
 55
-00:02:01,720 --> 00:02:04,660
-And if I just do dog,
-it doesn't find it.
+00:02:24,670 --> 00:02:28,470
+and then give a
+document with $search
 
 56
-00:02:04,660 --> 00:02:06,620
-That's not going to
-work too well for me
+00:02:28,470 --> 00:02:30,880
+and then what I'm looking for.
 
 57
-00:02:06,620 --> 00:02:09,770
-to search on these
-different words.
+00:02:30,880 --> 00:02:33,680
+So we saw that, for instance,
+"dog" did not work before.
 
 58
-00:02:09,770 --> 00:02:12,480
-So now, let's add a text index--
-so db.sentences.ensureindex.
+00:02:33,680 --> 00:02:36,950
+Let's just look for "dog"
+now and see if that works.
 
 59
-00:02:12,480 --> 00:02:15,440
- 
+00:02:36,950 --> 00:02:38,220
+There we go.
 
 60
-00:02:15,440 --> 00:02:20,500
-And now I want to put an
-index on words of type Text.
+00:02:38,220 --> 00:02:40,090
+So now I searched for
+just the word "dog"
 
 61
-00:02:20,500 --> 00:02:21,380
-There we go.
+00:02:40,090 --> 00:02:42,700
+and I was able to get all
+of these back that have "dog
 
 62
-00:02:21,380 --> 00:02:24,480
-And now when I search
-it-- dog, shrub,
+00:02:42,700 --> 00:02:44,550
+moss ruby," "dog shrub ruby."
 
 63
-00:02:24,480 --> 00:02:26,240
-Ruby-- it's going to
-work a lot better.
-
-64
-00:02:26,240 --> 00:02:27,910
-So let's do that.
-
-65
-00:02:27,910 --> 00:02:29,630
-So let's first
-look at the syntax
-
-66
-00:02:29,630 --> 00:02:31,560
-for searching a full-text index.
-
-67
-00:02:31,560 --> 00:02:34,130
-The way it works is,
-I have to say $text,
-
-68
-00:02:34,130 --> 00:02:39,350
-and then give a document--
-we had $search-- and then
-
-69
-00:02:39,350 --> 00:02:40,350
-what I'm looking for.
-
-70
-00:02:40,350 --> 00:02:43,170
-So we saw that, for instance,
-dog did not work before.
-
-71
-00:02:43,170 --> 00:02:46,420
-Let's just look for dog
-now, and see if that works.
-
-72
-00:02:46,420 --> 00:02:47,130
-There we go.
-
-73
-00:02:47,130 --> 00:02:47,680
-OK.
-
-74
-00:02:47,680 --> 00:02:49,650
-So now I searched for
-just the word "dog,"
-
-75
-00:02:49,650 --> 00:02:52,510
-and I was able to get all of
-these back that have dog, moss,
-
-76
-00:02:52,510 --> 00:02:54,010
-Ruby, dog, shrub, Ruby.
-
-77
-00:02:54,010 --> 00:02:56,390
+00:02:44,550 --> 00:02:46,870
 And then just to show
 you again, when I just
 
-78
-00:02:56,390 --> 00:02:59,750
-search for dog using a
+64
+00:02:46,870 --> 00:02:50,280
+search for "dog" using a
 regular search of words,
 
-79
-00:02:59,750 --> 00:03:01,580
-I don't get anything.
+65
+00:02:50,280 --> 00:02:54,547
+I don't get anything, but if
+I search using a text index,
 
-80
-00:03:01,580 --> 00:03:03,684
-But if I search using
-a text index-- I'm
+66
+00:02:54,547 --> 00:02:56,380
+I'm going to show you
+the syntax right here.
 
-81
-00:03:03,684 --> 00:03:05,100
-going to show you
-the syntax right
+67
+00:02:56,380 --> 00:03:00,090
+I search using a text index
+by specifying $text and then
 
-82
-00:03:05,100 --> 00:03:07,700
-here-- I search
-using a text index
+68
+00:03:00,090 --> 00:03:03,370
+$search and then what
+I'm looking for, "dog,"
 
-83
-00:03:07,700 --> 00:03:10,860
-by specifying $text
-and then $search,
+69
+00:03:03,370 --> 00:03:04,372
+I do get documents back.
 
-84
-00:03:10,860 --> 00:03:13,811
-and then what I'm looking for--
-dog-- I do get documents back.
-
-85
-00:03:13,811 --> 00:03:15,810
+70
+00:03:04,372 --> 00:03:06,330
 I get all these documents
-back, because they all
+back because they all
 
-86
-00:03:15,810 --> 00:03:17,080
-have a dog in them.
+71
+00:03:06,330 --> 00:03:07,520
+have "dog" in them.
 
-87
-00:03:17,080 --> 00:03:22,425
-And if I also say moss, I get
-all of these back as well.
+72
+00:03:07,520 --> 00:03:13,200
+And if I also say "moss," I
+get all of these back as well,
 
-88
-00:03:22,425 --> 00:03:25,750
-And if I say moss, Ruby, I'm
-going to get all of these back.
+73
+00:03:13,200 --> 00:03:16,270
+and if I say "moss ruby," I'm
+going to get all these back,
 
-89
-00:03:25,750 --> 00:03:27,810
-And it's quite flexible.
+74
+00:03:16,270 --> 00:03:18,320
+and it's quite flexible.
 
-90
-00:03:27,810 --> 00:03:30,470
+75
+00:03:18,320 --> 00:03:20,990
 Putting in a period
 makes no difference.
 
-91
-00:03:30,470 --> 00:03:32,620
+76
+00:03:20,990 --> 00:03:23,690
 Capitalization
 makes no difference.
 
-92
-00:03:32,620 --> 00:03:36,330
-So it's going to also ignore
+77
+00:03:23,690 --> 00:03:26,850
+It's going to also ignore
 certain stop words that are not
 
-93
-00:03:36,330 --> 00:03:38,780
-considered to be significant,
+78
+00:03:26,850 --> 00:03:29,300
+considered to be significant
 like "a" and "the"
 
-94
-00:03:38,780 --> 00:03:40,240
+79
+00:03:29,300 --> 00:03:30,690
 in the English language.
 
-95
-00:03:40,240 --> 00:03:42,150
+80
+00:03:30,690 --> 00:03:32,670
 So that's really
 very useful if I
 
-96
-00:03:42,150 --> 00:03:44,590
+81
+00:03:32,670 --> 00:03:34,910
 want to search for a
-bunch of different words,
+bunch of different words
 
-97
-00:03:44,590 --> 00:03:47,650
+82
+00:03:34,910 --> 00:03:38,107
 and essentially apply
 a logical OR operator.
 
-98
-00:03:47,650 --> 00:03:49,770
-Now there's one other
+83
+00:03:38,107 --> 00:03:40,190
+Now, there's one other
 thing I wanted to show you,
 
-99
-00:03:49,770 --> 00:03:52,720
-which is how you can get
-back these in an order that
+84
+00:03:40,190 --> 00:03:42,360
+which is how you
+can get back these
 
-100
-00:03:52,720 --> 00:03:56,240
-indicates how good a match
-MongoDB believes there is.
+85
+00:03:42,360 --> 00:03:45,810
+in an order that indicates how
+good a match MongoDB believes
 
-101
-00:03:56,240 --> 00:03:58,040
+86
+00:03:45,810 --> 00:03:46,790
+there is.
+
+87
+00:03:46,790 --> 00:03:48,720
 So let's look for one of these.
 
-102
-00:03:58,040 --> 00:04:00,830
-So I'm going to show
-you the syntax for this.
+88
+00:03:48,720 --> 00:03:51,950
+I'm going to show you
+the syntax for this.
 
-103
-00:04:00,830 --> 00:04:01,400
-All right.
-
-104
-00:04:01,400 --> 00:04:04,120
+89
+00:03:51,950 --> 00:03:55,830
 So let's look for
-dog, tree, obsidian.
+"dog tree obsidian."
 
-105
-00:04:04,120 --> 00:04:05,100
-OK.
+90
+00:03:55,830 --> 00:03:56,790
+Dog tree obsidian.
 
-106
-00:04:05,100 --> 00:04:06,210
-Dog, tree, obsidian.
-
-107
-00:04:06,210 --> 00:04:07,901
+91
+00:03:56,790 --> 00:03:59,050
 Let me go back and change this.
 
-108
-00:04:07,901 --> 00:04:09,650
-And we can see the
-document right up there
+92
+00:03:59,050 --> 00:04:02,000
+We can see the document right up
+there with "dog tree obsidian."
 
-109
-00:04:09,650 --> 00:04:11,210
-with dog, tree, obsidian.
+93
+00:04:02,000 --> 00:04:03,850
+The best match for
+"dog tree obsidian"
 
-110
-00:04:11,210 --> 00:04:13,330
-I mean the best match
-for dog, tree, obsidian
+94
+00:04:03,850 --> 00:04:05,677
+should be the dog tree
+obsidian document,
 
-111
-00:04:13,330 --> 00:04:15,157
-should be dog, tree,
-obsidian document.
-
-112
-00:04:15,157 --> 00:04:16,990
-But we're going to do
+95
+00:04:05,677 --> 00:04:07,510
+but we're going to do
 something special now.
 
-113
-00:04:16,990 --> 00:04:19,769
+96
+00:04:07,510 --> 00:04:10,230
 We're going to
-project a Score field.
+project a Score field,
 
-114
-00:04:19,769 --> 00:04:22,240
-And we're going to use a
-special $meta operator,
+97
+00:04:10,230 --> 00:04:12,730
+and we're going to use
+a special $meta operator
 
-115
-00:04:22,240 --> 00:04:24,760
-and then take the tech score,
-which is something that's
+98
+00:04:12,730 --> 00:04:14,415
+and then take the
+text score, which
 
-116
-00:04:24,760 --> 00:04:27,420
+99
+00:04:14,415 --> 00:04:16,290
+is something that's
 internally computed as it
-runs through this tech search.
 
-117
-00:04:27,420 --> 00:04:29,360
-And we're going to get
-that text score out.
+100
+00:04:16,290 --> 00:04:18,029
+runs through this text search.
 
-118
-00:04:29,360 --> 00:04:31,574
-And then, we're going to
-sort by that tech score.
+101
+00:04:18,029 --> 00:04:19,890
+We're going to get
+that text score out
 
-119
-00:04:31,574 --> 00:04:33,490
-And we're not going to
-test you on the syntax,
+102
+00:04:19,890 --> 00:04:22,261
+and then we're going to
+sort by that text score.
 
-120
-00:04:33,490 --> 00:04:35,680
-but I want you know it
+103
+00:04:22,261 --> 00:04:24,010
+We're not going to
+test you on this syntax
+
+104
+00:04:24,010 --> 00:04:26,510
+but I want you to know it
 exists if you ever need it.
 
-121
-00:04:35,680 --> 00:04:38,680
-And if you do that,
-you'll see that now it's
+105
+00:04:26,510 --> 00:04:29,210
+If you do that, you'll
+see that now, it's
 
-122
-00:04:38,680 --> 00:04:42,920
+106
+00:04:29,210 --> 00:04:33,390
 ranking the documents in
-order of their tech score.
+order of their text score
 
-123
-00:04:42,920 --> 00:04:45,380
-And that if you're
-searching for dog,
+107
+00:04:33,390 --> 00:04:36,150
+and that, if you're
+searching for "dog tree
 
-124
-00:04:45,380 --> 00:04:49,160
-tree, obsidian, the one with
-the highest score, a score of 2,
+108
+00:04:36,150 --> 00:04:39,670
+obsidian," the one with the
+highest score, a score of two,
 
-125
-00:04:49,160 --> 00:04:51,680
-is a document with dog, tree,
-obsidian-- all three words
+109
+00:04:39,670 --> 00:04:41,890
+is the document with "dog
+tree obsidian," all three
 
-126
-00:04:51,680 --> 00:04:52,430
-in it.
+110
+00:04:41,890 --> 00:04:45,180
+words in it, very
+useful if you want
 
-127
-00:04:52,430 --> 00:04:57,240
-Very useful if you want to
-find the best match for, let's
+111
+00:04:45,180 --> 00:04:47,970
+to find the best
+match for, let's say,
 
-128
-00:04:57,240 --> 00:05:00,030
-say, a document that
+112
+00:04:47,970 --> 00:04:51,070
+a document that
 contains all the words.
 
-129
-00:05:00,030 --> 00:05:00,530
-All right.
-
-130
-00:05:00,530 --> 00:05:03,490
+113
+00:04:51,070 --> 00:04:54,010
 So now it's time for a quiz.
 
-131
-00:05:03,490 --> 00:05:05,070
-Let's say you
-create a text index
+114
+00:04:54,010 --> 00:04:56,230
+Let's say you create a
+text index on the title
 
-132
-00:05:05,070 --> 00:05:07,800
-on the title field of
-the movies' collection.
+115
+00:04:56,230 --> 00:04:58,480
+field of the movies collection.
 
-133
-00:05:07,800 --> 00:05:09,630
-You imagine having a
-movies' collection.
+116
+00:04:58,480 --> 00:05:00,120
+Imagine having a
+movies collection,
 
-134
-00:05:09,630 --> 00:05:13,310
-And then perform the following
-text search-- db.movies.find,
+117
+00:05:00,120 --> 00:05:03,840
+and then perform the following
+text search-- db.movies.find
 
-135
-00:05:13,310 --> 00:05:16,276
-$text, $search, "Big Lebowski."
+118
+00:05:03,840 --> 00:05:06,806
+$text $search "Big Lebowski."
 
-136
-00:05:16,276 --> 00:05:17,650
+119
+00:05:06,806 --> 00:05:08,180
 Which of these
 documents might be
 
-137
-00:05:17,650 --> 00:05:20,990
-returned if all these documents
-are in the collection?
+120
+00:05:08,180 --> 00:05:09,690
+returned if all
+of these documents
 
+121
+00:05:09,690 --> 00:05:11,520
+are in the collection?

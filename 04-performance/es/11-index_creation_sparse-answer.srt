@@ -1,59 +1,90 @@
 1
-00:00:00,000 --> 00:00:00,500
-
+00:00:00,000 --> 00:00:00,470
+All right.
 
 2
-00:00:00,500 --> 00:00:06,170
-Bien, la respuesta es que
-no devolverá documentos,
+00:00:00,470 --> 00:00:01,719
+And the first two are correct.
 
 3
-00:00:06,170 --> 00:00:08,890
-ya que hemos indicado
-que use este índice "title".
+00:00:01,719 --> 00:00:03,320
+And we went over
+them in the lesson,
 
 4
-00:00:08,890 --> 00:00:12,382
-El índice "title" es disperso
-y lo que estamos preguntando
+00:00:03,320 --> 00:00:05,910
+which is that you will get a
+smaller index if it's sparse.
 
 5
-00:00:12,382 --> 00:00:13,840
-es un poco sutil,
-pero estamos
+00:00:05,910 --> 00:00:08,170
+And you are able to
+create unique indexes
 
 6
-00:00:13,840 --> 00:00:15,690
-pidiendo documentos
-donde "title" es nulo,
+00:00:08,170 --> 00:00:10,680
+when some of the documents
+lack the key that you
 
 7
-00:00:15,690 --> 00:00:18,440
-y por definición el
-índice disperso sobre "title"
+00:00:10,680 --> 00:00:11,450
+want to index on.
 
 8
-00:00:18,440 --> 00:00:20,676
-omite los documentos
-donde "title" es nulo,
+00:00:11,450 --> 00:00:12,920
+So that's true.
 
 9
-00:00:20,676 --> 00:00:23,050
-ya que eso significaría que el
-documento no tiene "title".
+00:00:12,920 --> 00:00:16,070
+But the last two are not
+true, because the third one
 
 10
-00:00:23,050 --> 00:00:25,350
-Por consiguiente, la
-respuesta es ningún documento,
+00:00:16,070 --> 00:00:18,370
+is actually pretty
+much a non sequitur.
 
 11
-00:00:25,350 --> 00:00:26,960
-porque la consulta
-usa el índice
+00:00:18,370 --> 00:00:21,160
+Your indexes can only be
+multikey if they are sparse.
 
 12
-00:00:26,960 --> 00:00:31,000
-y no hay documentos
-con "title" nulo en el índice.
+00:00:21,160 --> 00:00:22,480
+That's not true.
 
+13
+00:00:22,480 --> 00:00:24,870
+And the index can be
+used to sort much more
+
+14
+00:00:24,870 --> 00:00:27,200
+quickly in all cases.
+
+15
+00:00:27,200 --> 00:00:28,644
+So this is not true.
+
+16
+00:00:28,644 --> 00:00:30,310
+The "all cases" part
+is what's not true,
+
+17
+00:00:30,310 --> 00:00:32,759
+which is to say that you can't
+use a sparse index to sort,
+
+18
+00:00:32,759 --> 00:00:36,010
+as I showed you, if using
+it would omit any documents
+
+19
+00:00:36,010 --> 00:00:37,380
+from the final result.
+
+20
+00:00:37,380 --> 00:00:39,590
+So that's not true.
