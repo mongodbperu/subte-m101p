@@ -1,545 +1,600 @@
 1
-00:00:00,000 --> 00:00:00,500
+00:00:00,000 --> 00:00:00,130
 
 2
-00:00:00,500 --> 00:00:02,090
-En este segmento,
-te voy a mostrar
+00:00:00,130 --> 00:00:01,000
+All right.
 
 3
-00:00:02,090 --> 00:00:04,376
-cómo instalar MongoDB en una Mac.
+00:00:01,000 --> 00:00:03,522
+Now I'm going to show you
+how to install MongoDB.
 
 4
-00:00:04,376 --> 00:00:06,000
-En un segmento subsecuente,
-te mostraremos
+00:00:03,522 --> 00:00:04,980
+This video is going
+to show you how
 
 5
-00:00:06,000 --> 00:00:09,250
-cómo instalar MongoDB en una PC.
+00:00:04,980 --> 00:00:06,820
+to install MongoDB on a Mac.
 
 6
-00:00:09,250 --> 00:00:12,500
-Ahora, Mac ejecuta una versión
-de UNIX, así que la instalación
+00:00:06,820 --> 00:00:09,630
+In the next video, we'll show
+you how to install it on a PC.
 
 7
-00:00:12,500 --> 00:00:15,390
-en una máquina con Linux es
-muy similar a la de una Mac.
+00:00:09,630 --> 00:00:11,440
+If you're a Mac user,
+watch this video.
 
 8
-00:00:15,390 --> 00:00:17,490
-OK, comencemos yendo
-a un navegador web
+00:00:11,440 --> 00:00:13,970
+If you're a PC user,
+watch the next one.
 
 9
-00:00:17,490 --> 00:00:20,290
-y buscando la página de
-descarga de MongoDB.
+00:00:13,970 --> 00:00:16,660
+So the first step is to
+find the download page.
 
 10
-00:00:20,290 --> 00:00:24,920
-Vamos a hacer eso ingresando
-"download MongoDB" en Google.
+00:00:16,660 --> 00:00:18,120
+I'm going to do
+that using Google.
 
 11
-00:00:24,920 --> 00:00:27,170
-Vamos a ignorar estos avisos
+00:00:18,120 --> 00:00:21,110
+I'm going to type
+in, download MongoDB.
 
 12
-00:00:27,170 --> 00:00:29,290
-e ir al primer
-vínculo orgánico.
+00:00:21,110 --> 00:00:22,779
+And when I do that, I get an ad.
 
 13
-00:00:29,290 --> 00:00:33,279
-Puedes ver acá que es
-www.mongodb.org/downloads
+00:00:22,779 --> 00:00:25,320
+And then after that, I get the
+first organic link right here,
 
 14
-00:00:33,279 --> 00:00:34,820
-y tenemos varias opciones.
+00:00:25,320 --> 00:00:26,530
+download MongoDB.
 
 15
-00:00:34,820 --> 00:00:36,310
-Como estamos en una
-Mac, vamos a usar
+00:00:26,530 --> 00:00:28,350
+And I'm going to click on that.
 
 16
-00:00:36,310 --> 00:00:37,880
-la versión para Mac OS.
+00:00:28,350 --> 00:00:29,090
+OK.
 
 17
-00:00:37,880 --> 00:00:41,440
-Es la versión de 64 bits para nuestro
-sistema operativo Mac de 64 bits.
+00:00:29,090 --> 00:00:30,300
+So we come to this
+page, and we can
 
 18
-00:00:41,440 --> 00:00:44,260
-Siempre deberías usar la versión
-de 64 bits de MongoDB si es posible,
+00:00:30,300 --> 00:00:32,091
+see that the first
+thing that we're offered
 
 19
-00:00:44,260 --> 00:00:46,980
-al menos que tengas una
-versión de 32 bits de Windows,
+00:00:32,091 --> 00:00:35,124
+is MMS, which stands for the
+MongoDB Management Service.
 
 20
-00:00:46,980 --> 00:00:48,000
-por decir.
+00:00:35,124 --> 00:00:36,790
+Now that's a cloud
+service, and it's not
 
 21
-00:00:48,000 --> 00:00:51,150
-Las versiones de 32 bits de MongoDB
-sólo son aptas para desarrollo,
+00:00:36,790 --> 00:00:38,540
+the way we're going
+to run MongoDB today.
 
 22
-00:00:51,150 --> 00:00:55,280
-porque limitan la cantidad
-total de datos a 4GB.
+00:00:38,540 --> 00:00:41,040
+We're actually going to install
+and run it on our computer.
 
 23
-00:00:55,280 --> 00:00:58,710
-Debajo de esta primera fila de
-opciones de descarga para producción
+00:00:41,040 --> 00:00:44,610
+Now if we look down, it offers
+us the most recent release.
 
 24
-00:00:58,710 --> 00:01:02,490
-de la versión 2.6.0,
-la versión actual ahora
+00:00:44,610 --> 00:00:48,510
+This course is going to cover
+MongoDB 3.0, which is the most
 
 25
-00:01:02,490 --> 00:01:03,950
-que estamos grabando este video,
+00:00:48,510 --> 00:00:50,200
+recent release of MongoDB.
 
 26
-00:01:03,950 --> 00:01:06,400
-notarás que las versiones
-estables siempre
+00:00:50,200 --> 00:00:53,400
+It was released only weeks ago
+at the time of this recording.
 
 27
-00:01:06,400 --> 00:01:08,610
-tienen un dígito par en
-la segunda posición, acá.
+00:00:53,400 --> 00:00:56,160
+And you should download whatever
+is the most recent production
 
 28
-00:01:08,610 --> 00:01:11,500
-Entonces 2.6 es una
-versión estable.
+00:00:56,160 --> 00:00:57,930
+version when you hit this page.
 
 29
-00:01:11,500 --> 00:01:13,060
-También puedes obtener
-versiones anteriores.
+00:00:57,930 --> 00:01:01,810
+It may not be 3.0.0 by the
+time you get there, but 3.0.
 
 30
-00:01:13,060 --> 00:01:16,600
-Por ejemplo, la última
-versión de la serie 2.4
+00:01:01,810 --> 00:01:03,130
+something is what you want.
 
 31
-00:01:16,600 --> 00:01:18,160
-fue 2.4.10.
+00:01:03,130 --> 00:01:05,519
+And since we're on a Mac,
+it's already defaulted us
 
 32
-00:01:18,160 --> 00:01:20,460
-Puedes obtenerla para
-Windows, Linux,
+00:01:05,519 --> 00:01:06,630
+to the Mac download.
 
 33
-00:01:20,460 --> 00:01:22,300
-Mac OS y Solaris, si quieres.
+00:01:06,630 --> 00:01:08,860
+And I'm going to click
+this Download link to get
 
 34
-00:01:22,300 --> 00:01:24,680
-Nosotros vamos a descargar
-la versión para Mac OS.
+00:01:08,860 --> 00:01:11,660
+this tarball onto my computer.
 
 35
-00:01:24,680 --> 00:01:26,300
-Hagamos eso.
+00:01:11,660 --> 00:01:14,510
+Now let's go to a terminal shell
+and figure out where it is.
 
 36
-00:01:26,300 --> 00:01:27,920
-Ahora está descargando.
+00:01:14,510 --> 00:01:17,120
+So I know it puts these
+things in /downloads,
 
 37
-00:01:27,920 --> 00:01:30,330
-Al parecer la descarga
-tiene un total de
+00:01:17,120 --> 00:01:18,740
+so I'm in the
+downloads directory.
 
 38
-00:01:30,330 --> 00:01:31,620
-107MB.
+00:01:18,740 --> 00:01:20,830
+For those who aren't
+sure how to get there,
 
 39
-00:01:31,620 --> 00:01:34,200
-Abramos una terminal.
+00:01:20,830 --> 00:01:22,571
+I'll show you how to do that.
 
 40
-00:01:34,200 --> 00:01:38,590
-Yo ya estoy en el directorio
-"Downloads" de mi Mac
+00:01:22,571 --> 00:01:23,070
+All right.
 
 41
-00:01:38,590 --> 00:01:43,430
-y voy a hacerle
-"tar xvf" al archivo.
+00:01:23,070 --> 00:01:24,860
+So there it is in the
+downloads directory.
 
 42
-00:01:43,430 --> 00:01:47,190
-Verás que "tar xvf" va
-a expandir el "tarball"
+00:01:24,860 --> 00:01:28,010
+I'm going to un-tar it by
+using the tar command, xvf
 
 43
-00:01:47,190 --> 00:01:49,330
-Se ha creado un
-directorio MongoDB OS X
+00:01:28,010 --> 00:01:30,150
+mongodb-osx et cetera.
 
 44
-00:01:49,330 --> 00:01:50,660
-en mi directorio actual.
+00:01:30,150 --> 00:01:32,190
+That's going to
+expand the tarball.
 
 45
-00:01:50,660 --> 00:01:51,850
-Veámoslo.
+00:01:32,190 --> 00:01:34,890
+I'm going to enter the
+directory, look around.
 
 46
-00:01:51,850 --> 00:01:55,740
-Voy a abrir ese
-directorio y examinarlo.
+00:01:34,890 --> 00:01:37,830
+I see a readme file, the
+license, and a bin directory.
 
 47
-00:01:55,740 --> 00:01:58,307
-Puedes ver que está
-la AGPL, el README,
+00:01:37,830 --> 00:01:40,107
+I'm going to go in
+the bin directory.
 
 48
-00:01:58,307 --> 00:02:00,390
-y algunos anuncios de terceros
-en el directorio "bin".
+00:01:40,107 --> 00:01:41,440
+Let's see what there is in here.
 
 49
-00:02:00,390 --> 00:02:02,020
-Vamos a abrir el
-directorio "bin",
+00:01:41,440 --> 00:01:43,937
+Well, in here, we have a
+bunch of different programs,
 
 50
-00:02:02,020 --> 00:02:03,120
-ahí es donde
-está la acción.
+00:01:43,937 --> 00:01:46,270
+but the ones of greatest
+interest to us right the second
 
 51
-00:02:03,120 --> 00:02:04,786
-Si observas ahí, vemos
+00:01:46,270 --> 00:01:48,130
+are mango, which
+is the Mongo shell
 
 52
-00:02:04,786 --> 00:02:08,590
-varios archivos ejecutables,
-incluyendo "mongo" y "mongod".
+00:01:48,130 --> 00:01:51,930
+program lets us connect to
+the database, and mongod,
 
 53
-00:02:08,590 --> 00:02:10,568
-Éstos son los archivos
-ejecutables más interesantes,
+00:01:51,930 --> 00:01:53,590
+which is the actual server.
 
 54
-00:02:10,568 --> 00:02:12,026
-mongo es el shell
-que vamos a usar
+00:01:53,590 --> 00:01:55,590
+And it's the server that
+we want to get running.
 
 55
-00:02:12,026 --> 00:02:13,442
-para conectarnos
-a la base de datos
+00:01:55,590 --> 00:02:00,780
+Now the server is going to
+put its data in /data/db
 
 56
-00:02:13,442 --> 00:02:16,400
-y mongod es el proceso que
-ejecuta el servidor de la
+00:02:00,780 --> 00:02:04,130
+by default, so we need
+to create that directory.
 
 57
-00:02:16,400 --> 00:02:17,240
-base de datos.
+00:02:04,130 --> 00:02:06,590
+Now to do that, I'm going
+to need to become root,
 
 58
-00:02:17,240 --> 00:02:18,615
-En ésos nos vamos a
+00:02:06,590 --> 00:02:07,870
+so let me do that.
 
 59
-00:02:18,615 --> 00:02:20,260
-enfocar, por ahora.
+00:02:07,870 --> 00:02:09,120
+So now I'm root.
 
 60
-00:02:20,260 --> 00:02:24,250
-Por defecto, MongoDB pone
-sus datos en "/data/db".
+00:02:09,120 --> 00:02:14,470
+And now I'm going to make
+dir/data/db like that.
 
 61
-00:02:24,250 --> 00:02:26,440
-Dejaremos que haga
-lo que hace por defecto,
+00:02:14,470 --> 00:02:16,710
+So now that there's
+a data/db directory--
 
 62
-00:02:26,440 --> 00:02:29,460
-así que vamos a crear
-un directorio "/data/db".
+00:02:16,710 --> 00:02:17,730
+and we're just running
+in development.
 
 63
-00:02:29,460 --> 00:02:31,730
-Lo que voy a hacer ahora
+00:02:17,730 --> 00:02:19,146
+And I'm going to
+keep this simple,
 
 64
-00:02:31,730 --> 00:02:34,990
-es volverme root
-en esta máquina.
+00:02:19,146 --> 00:02:21,690
+so I'm going to actually
+chmod those directories
 
 65
-00:02:34,990 --> 00:02:36,470
-Ahora soy root
-en la máquina.
+00:02:21,690 --> 00:02:27,990
+777 so that I can exit root and
+write to them from my account.
 
 66
-00:02:36,470 --> 00:02:37,700
-Hay que asegurarnos de eso.
+00:02:27,990 --> 00:02:32,460
+And let's just confirm
+that /data/db is 777.
 
 67
-00:02:37,700 --> 00:02:38,980
-Sí, lo soy.
+00:02:32,460 --> 00:02:34,630
+And we can see that it is 777.
 
 68
-00:02:38,980 --> 00:02:43,350
-Luego voy a hacer:
-"mkdir -p /data/db"
+00:02:34,630 --> 00:02:36,120
+It's world writeable.
 
 69
-00:02:43,350 --> 00:02:48,360
-y luego voy a hacer
-"chmod 777 /data/db"
+00:02:36,120 --> 00:02:38,130
+So I'm going to
+exit the root shell.
 
 70
-00:02:48,360 --> 00:02:50,617
-para asegurarme de que cualquier usuario
-pueda escribir en ese directorio.
+00:02:38,130 --> 00:02:39,340
+All right.
 
 71
-00:02:50,617 --> 00:02:52,200
-Ahora, eso no sería
-una buena práctica
+00:02:39,340 --> 00:02:41,850
+So now we're going to
+get mongod running.
 
 72
-00:02:52,200 --> 00:02:54,285
-para una instalación de
-MongoDB en producción,
+00:02:41,850 --> 00:02:43,920
+I'm going to start
+it running as myself.
 
 73
-00:02:54,285 --> 00:02:56,160
-pero está bien para nuestro
-ambiente de desarrollo.
+00:02:43,920 --> 00:02:44,730
+Who am I?
 
 74
-00:02:56,160 --> 00:02:58,690
-Nos va a permitir ejecutar
-como un usuario sin privilegios
+00:02:44,730 --> 00:02:45,930
+I'm aje.
 
 75
-00:02:58,690 --> 00:03:01,320
-y poner archivos
-en "/data/db".
+00:02:45,930 --> 00:02:48,740
+I'm going to run it right here
+in this directory by typing
 
 76
-00:03:01,320 --> 00:03:04,390
-Entonces voy a
-salir del shell
+00:02:48,740 --> 00:02:50,244
+./mongod.
 
 77
-00:03:04,390 --> 00:03:07,570
-y ahora voy a
-iniciar mongod
+00:02:50,244 --> 00:02:52,160
+This will guarantee that
+I take the executable
 
 78
-00:03:07,570 --> 00:03:12,010
-y voy a hacer eso
-ingresando "./mongod".
+00:02:52,160 --> 00:02:53,580
+from the current
+directory and not
 
 79
-00:03:12,010 --> 00:03:15,240
-Ahora, utilicé "./" para que busque
-el archivo dentro del directorio actual
+00:02:53,580 --> 00:02:55,246
+from somewhere else
+in my path because I
 
 80
-00:03:15,240 --> 00:03:17,360
-en caso de que mi "path" lo
-busque en alguna otra parte.
+00:02:55,246 --> 00:02:57,590
+want to make sure I get
+the one I just downloaded.
 
 81
-00:03:17,360 --> 00:03:20,104
-Cuando haga eso,
-va a iniciarse e
+00:02:57,590 --> 00:03:00,530
+And I do that, and a whole
+bunch of stuff prints out.
 
 82
-00:03:20,104 --> 00:03:22,270
-imprimir varias
-cosas al log.
+00:03:00,530 --> 00:03:03,000
+And see here, it's
+listening on port.
 
 83
-00:03:22,270 --> 00:03:25,210
-Puedes ver que dice que
-está guardando los datos
+00:03:03,000 --> 00:03:05,980
+By default, it listens
+on the port 27017.
 
 84
-00:03:25,210 --> 00:03:27,960
-en "/data/db",
-lo cual está bien.
+00:03:05,980 --> 00:03:10,050
+And you can see here it says
+it's listening on port 27017.
 
 85
-00:03:27,960 --> 00:03:30,050
-Se ha iniciado como
-versión 2.6.0.
+00:03:10,050 --> 00:03:11,940
+Let's get a new terminal window.
 
 86
-00:03:30,050 --> 00:03:31,960
-Me ha advertido sobre
-los "soft rlimits", los
+00:03:11,940 --> 00:03:13,720
+And let's see what
+my directory is.
 
 87
-00:03:31,960 --> 00:03:34,239
-cuales son importantes en
-producción, pero no acá.
+00:03:13,720 --> 00:03:15,960
+It's downloads/mongodb bin.
 
 88
-00:03:34,239 --> 00:03:36,280
-Ahora que está ejecutándose
-en el shell de esta terminal,
+00:03:15,960 --> 00:03:16,890
+Good.
 
 89
-00:03:36,280 --> 00:03:39,080
-voy a necesitar una nueva terminal
-para que pueda ejecutar mongo.
+00:03:16,890 --> 00:03:19,251
+And now let's run
+the Mongo shell.
 
 90
-00:03:39,080 --> 00:03:42,700
-Por si acaso, está escuchando
-en el puerto 27017, el cual
+00:03:19,251 --> 00:03:19,750
+All right.
 
 91
-00:03:42,700 --> 00:03:45,230
-es el puerto por
-defecto de MongoDB.
+00:03:19,750 --> 00:03:21,510
+So I connected to
+the Mongo shell,
 
 92
-00:03:45,230 --> 00:03:47,040
-Ahora abramos una
-nueva terminal.
+00:03:21,510 --> 00:03:24,060
+and now I'm going
+to insert something
 
 93
-00:03:47,040 --> 00:03:48,900
-Tenemos ahora una
-nueva terminal y
+00:03:24,060 --> 00:03:25,720
+into a names collection.
 
 94
-00:03:48,900 --> 00:03:51,410
-creo que aún estoy en el
-directorio de descargas.
+00:03:25,720 --> 00:03:27,950
+I'm going to insert a
+document with my name
 
 95
-00:03:51,410 --> 00:03:52,480
-Sí, aquí estoy.
+00:03:27,950 --> 00:03:30,120
+in it, so db.names.insert.
 
 96
-00:03:52,480 --> 00:03:55,020
-Entonces voy a ejecutar
-el shell mongo.
+00:03:30,120 --> 00:03:31,670
+I'm going to test database.
 
 97
-00:03:55,020 --> 00:03:57,970
-Hago esto: "./mongo", para
-asegurarme que me dé
+00:03:31,670 --> 00:03:34,790
+There is one key name with
+a value Andrew Erlichson.
 
 98
-00:03:57,970 --> 00:03:59,450
-el archivo ejecutable
-en el directorio actual.
+00:03:34,790 --> 00:03:35,650
+Hit Return.
 
 99
-00:03:59,450 --> 00:04:00,790
-Y ahí vamos.
+00:03:35,650 --> 00:03:37,620
+It inserted the document.
 
 100
-00:04:00,790 --> 00:04:03,270
-Se conectó al servidor local.
+00:03:37,620 --> 00:03:40,450
+And at this point,
+if I do a find,
 
 101
-00:04:03,270 --> 00:04:05,340
-Me puso en la base
-de datos "test"
+00:03:40,450 --> 00:03:42,230
+I can see there's the document.
 
 102
-00:04:05,340 --> 00:04:07,110
-y luego, para asegurarme
-de que funciona,
+00:03:42,230 --> 00:03:42,730
+All right.
 
 103
-00:04:07,110 --> 00:04:09,660
-voy a insertar un
-documento muy simple.
+00:03:42,730 --> 00:03:44,437
+So I'm pretty much
+done, but just
 
 104
-00:04:09,660 --> 00:04:12,180
-Voy a poner algo en
-la colección "names":
+00:03:44,437 --> 00:03:46,020
+to make this work a
+little bit better,
 
 105
-00:04:12,180 --> 00:04:16,925
-"db.names.insert" y
-un documento con una clave
+00:03:46,020 --> 00:03:47,920
+what I'm going to
+do is I'm going
 
 106
-00:04:16,925 --> 00:04:19,760
-"name" cuyo valor es
-"Andrew", mi nombre.
+00:03:47,920 --> 00:03:50,536
+to kill the server by
+hitting Control-C. I'm
 
 107
-00:04:19,760 --> 00:04:20,905
-Hago eso.
+00:03:50,536 --> 00:03:52,490
+going to become root again.
 
 108
-00:04:20,905 --> 00:04:22,990
-Me dice que se ha
-insertado un documento
+00:03:52,490 --> 00:03:53,780
+Now I'm root.
 
 109
-00:04:22,990 --> 00:04:27,020
-y si busco en la colección:
-"db.names.find",
+00:03:53,780 --> 00:03:55,770
+And now I'm in
+the bin directory.
 
 110
-00:04:27,020 --> 00:04:30,790
-veo que ahí está mi
-documento, con un "_id",
+00:03:55,770 --> 00:03:59,780
+I'm just going to copy all these
+programs to usr/local/bin just
 
 111
-00:04:30,790 --> 00:04:32,670
-este "ObjectId", el cual
-explicaremos luego, que
+00:03:59,780 --> 00:04:01,330
+like that.
 
 112
-00:04:32,670 --> 00:04:34,580
-fue insertado por
-la base de datos
+00:04:01,330 --> 00:04:03,640
+And then, I'm going to
+exit this root shell.
 
 113
-00:04:34,580 --> 00:04:38,360
-y luego una clave "name"
-con el valor "Andrew".
+00:04:03,640 --> 00:04:06,390
+And then, I'm going
+to type which mongo.
 
 114
-00:04:38,360 --> 00:04:42,310
-Ahora MongoDB está
-corriendo en esta Mac
+00:04:06,390 --> 00:04:08,400
+And I get the one
+at usr/local/bin,
 
 115
-00:04:42,310 --> 00:04:44,930
-y estamos listos para usarlo.
+00:04:08,400 --> 00:04:10,360
+so that means that
+usr/local/bin was already
+
+116
+00:04:10,360 --> 00:04:12,080
+in my path, which is great.
+
+117
+00:04:12,080 --> 00:04:14,554
+And so at this point,
+mongod is running.
+
+118
+00:04:14,554 --> 00:04:15,970
+And I go back to
+my home directory
+
+119
+00:04:15,970 --> 00:04:17,940
+if I ever want to do that.
+
+120
+00:04:17,940 --> 00:04:22,260
+And if I type mongod, it will
+start the server running again.
+
+121
+00:04:22,260 --> 00:04:24,860
+And now, if I go to another
+shell, I can connect to it.
+
+122
+00:04:24,860 --> 00:04:26,320
+So that's all there is to it.
+
+123
+00:04:26,320 --> 00:04:29,532
+And now, I have MongoDB running
+on my computer in the simplest
+
+124
+00:04:29,532 --> 00:04:30,490
+possible configuration.
+
+125
+00:04:30,490 --> 00:04:33,460
+This is a standalone,
+not a replica set,
+
+126
+00:04:33,460 --> 00:04:35,750
+and not necessarily running
+with the same parameters
+
+127
+00:04:35,750 --> 00:04:38,030
+and the same configuration
+you'd want in production,
+
+128
+00:04:38,030 --> 00:04:41,720
+but a fine configuration for
+our purposes for development.
+
+129
+00:04:41,720 --> 00:04:43,270
+OK.
+

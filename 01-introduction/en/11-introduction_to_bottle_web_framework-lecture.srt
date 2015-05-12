@@ -1,0 +1,475 @@
+1
+00:00:00,000 --> 00:00:00,100
+
+2
+00:00:00,100 --> 00:00:01,860
+In this class our
+project is going
+
+3
+00:00:01,860 --> 00:00:05,574
+to be to build a blog
+using MongoDB and Python.
+
+4
+00:00:05,574 --> 00:00:07,240
+And to do that we're
+going to need a web
+
+5
+00:00:07,240 --> 00:00:09,710
+framework because this is
+going to be a web application.
+
+6
+00:00:09,710 --> 00:00:12,500
+And the one we're going to use
+in the class is called Bottle.
+
+7
+00:00:12,500 --> 00:00:16,820
+Bottle is a very simple web
+framework that is minimalistic,
+
+8
+00:00:16,820 --> 00:00:20,210
+it has basic templates, and
+lets you create web pages.
+
+9
+00:00:20,210 --> 00:00:22,750
+It's probably not something
+you'd use for a production
+
+10
+00:00:22,750 --> 00:00:24,116
+project, but you could.
+
+11
+00:00:24,116 --> 00:00:25,490
+But it's very good
+for this class
+
+12
+00:00:25,490 --> 00:00:28,650
+because it sort of strips out
+all the complexity of a lot
+
+13
+00:00:28,650 --> 00:00:30,970
+of the modern web programming.
+
+14
+00:00:30,970 --> 00:00:33,450
+So let's go find and install it.
+
+15
+00:00:33,450 --> 00:00:35,097
+It's a Python module.
+
+16
+00:00:35,097 --> 00:00:36,805
+So what I'm going to
+do here is I'm going
+
+17
+00:00:36,805 --> 00:00:38,760
+to go to Google as I always do.
+
+18
+00:00:38,760 --> 00:00:41,110
+I'm a loyal Google user.
+
+19
+00:00:41,110 --> 00:00:46,470
+And I'm going to say
+Bottle Python framework.
+
+20
+00:00:46,470 --> 00:00:49,610
+And it looks like
+it's a Bottle.py.org.
+
+21
+00:00:49,610 --> 00:00:51,730
+And so I click on
+it, and I notice
+
+22
+00:00:51,730 --> 00:00:54,320
+this is the preview release,
+and I want the stable release.
+
+23
+00:00:54,320 --> 00:00:55,950
+So I click there.
+
+24
+00:00:55,950 --> 00:00:58,980
+And now it gives me some basic
+information about this module.
+
+25
+00:00:58,980 --> 00:01:01,641
+And you can see they actually
+have an example Hello World
+
+26
+00:01:01,641 --> 00:01:02,140
+program.
+
+27
+00:01:02,140 --> 00:01:03,900
+And we're going to
+run that program.
+
+28
+00:01:03,900 --> 00:01:05,080
+It's a very short program.
+
+29
+00:01:05,080 --> 00:01:06,380
+I'm going to take you
+through it, line by line,
+
+30
+00:01:06,380 --> 00:01:07,660
+and show you what it does.
+
+31
+00:01:07,660 --> 00:01:10,010
+But right now we want to
+download it and install it.
+
+32
+00:01:10,010 --> 00:01:12,810
+Now they suggest that we get
+it from the PyPi repository,
+
+33
+00:01:12,810 --> 00:01:14,830
+and they suggest that
+we use easy_install.
+
+34
+00:01:14,830 --> 00:01:16,140
+I prefer to use PIP.
+
+35
+00:01:16,140 --> 00:01:18,860
+We have PIP installed in
+both the MAC and the Windows
+
+36
+00:01:18,860 --> 00:01:21,520
+PC that we showed in
+the earlier lesson.
+
+37
+00:01:21,520 --> 00:01:23,930
+So let's go ahead and
+use PIP to do this.
+
+38
+00:01:23,930 --> 00:01:27,090
+So I'm going get
+a Command window.
+
+39
+00:01:27,090 --> 00:01:30,940
+I'm going to become root,
+which I need to do on this Mac.
+
+40
+00:01:30,940 --> 00:01:34,250
+But I shouldn't need to do it on
+the Windows box, I don't think.
+
+41
+00:01:34,250 --> 00:01:36,780
+So pip install bottle.
+
+42
+00:01:36,780 --> 00:01:37,490
+All right.
+
+43
+00:01:37,490 --> 00:01:39,270
+So that installed
+the 12.8 version,
+
+44
+00:01:39,270 --> 00:01:41,900
+which is good news because
+we know that the version
+
+45
+00:01:41,900 --> 00:01:44,390
+number 13 was unstable.
+
+46
+00:01:44,390 --> 00:01:45,940
+And so we don't want that one.
+
+47
+00:01:45,940 --> 00:01:47,320
+Let's see if that's true.
+
+48
+00:01:47,320 --> 00:01:51,340
+It said the dot 12 was
+stable, and this is dot 12.
+
+49
+00:01:51,340 --> 00:01:52,020
+So that's good.
+
+50
+00:01:52,020 --> 00:01:53,630
+That's the stable version.
+
+51
+00:01:53,630 --> 00:01:56,270
+And now we need
+that little program.
+
+52
+00:01:56,270 --> 00:01:58,482
+So to do that, the
+easiest thing to do
+
+53
+00:01:58,482 --> 00:01:59,940
+is just to copy it
+with your mouse.
+
+54
+00:01:59,940 --> 00:02:01,230
+And I've already done that.
+
+55
+00:02:01,230 --> 00:02:03,299
+You can use whatever
+editor you want.
+
+56
+00:02:03,299 --> 00:02:04,840
+I'm going to use
+Emacs because that's
+
+57
+00:02:04,840 --> 00:02:06,652
+what I'm most familiar
+with, and I'm just
+
+58
+00:02:06,652 --> 00:02:08,860
+going to take you through
+this program, line by line,
+
+59
+00:02:08,860 --> 00:02:10,360
+and show you what it does.
+
+60
+00:02:10,360 --> 00:02:13,600
+So from Bottle it imports a few
+different methods-- route, run,
+
+61
+00:02:13,600 --> 00:02:14,550
+and template.
+
+62
+00:02:14,550 --> 00:02:17,770
+It uses these decorators,
+and these decorators
+
+63
+00:02:17,770 --> 00:02:20,020
+are used to set up
+URLs that the web
+
+64
+00:02:20,020 --> 00:02:21,520
+server is going to listen on.
+
+65
+00:02:21,520 --> 00:02:23,190
+So here it's saying
+that it wants
+
+66
+00:02:23,190 --> 00:02:27,030
+to listen on slash
+hello slash name,
+
+67
+00:02:27,030 --> 00:02:29,360
+that that's a URL this
+program will handle,
+
+68
+00:02:29,360 --> 00:02:30,580
+where name is a variable.
+
+69
+00:02:30,580 --> 00:02:33,960
+So it could be hello slash
+Andrew or hello slash Bob.
+
+70
+00:02:33,960 --> 00:02:37,850
+And that it will return
+this template, which
+
+71
+00:02:37,850 --> 00:02:38,600
+is right in place.
+
+72
+00:02:38,600 --> 00:02:40,725
+And you can also get it
+from a templates directory,
+
+73
+00:02:40,725 --> 00:02:42,610
+but in this case it's
+inline to template.
+
+74
+00:02:42,610 --> 00:02:45,870
+It says return hello name.
+
+75
+00:02:45,870 --> 00:02:47,420
+It's bolded with an
+exclamation mark,
+
+76
+00:02:47,420 --> 00:02:49,980
+and that's it, where
+name equals name.
+
+77
+00:02:49,980 --> 00:02:51,590
+And the last thing
+is just telling
+
+78
+00:02:51,590 --> 00:02:53,650
+it to run the web
+server and listen on it.
+
+79
+00:02:53,650 --> 00:02:57,350
+And so it says run host
+equals local host port 8080.
+
+80
+00:02:57,350 --> 00:02:59,970
+So let's run that
+and see what happens.
+
+81
+00:02:59,970 --> 00:03:02,310
+So we're going to invoke
+the Python interpreter
+
+82
+00:03:02,310 --> 00:03:03,670
+on hello Bottle.
+
+83
+00:03:03,670 --> 00:03:05,670
+This is not using
+MongoDB at all.
+
+84
+00:03:05,670 --> 00:03:06,170
+All right.
+
+85
+00:03:06,170 --> 00:03:07,800
+It's listening on port 8080.
+
+86
+00:03:07,800 --> 00:03:09,900
+Let's go back to
+the web browser.
+
+87
+00:03:09,900 --> 00:03:14,444
+Go to port 8080, the URL
+hello, and then append
+
+88
+00:03:14,444 --> 00:03:16,485
+Andrew on the end and see
+if it says hello to me.
+
+89
+00:03:16,485 --> 00:03:17,850
+It says hello Andrew.
+
+90
+00:03:17,850 --> 00:03:21,550
+And we could also have
+it say, hello Eliot .
+
+91
+00:03:21,550 --> 00:03:22,430
+Hello Eliot.
+
+92
+00:03:22,430 --> 00:03:26,420
+And it can say hello
+Richard, if we want.
+
+93
+00:03:26,420 --> 00:03:27,240
+That's it.
+
+94
+00:03:27,240 --> 00:03:29,448
+And then you can see every
+time I hit the web server,
+
+95
+00:03:29,448 --> 00:03:31,510
+it prints out the URL
+that got hit, which
+
+96
+00:03:31,510 --> 00:03:33,984
+is Andrew, Eliot, and Richard.
+
+97
+00:03:33,984 --> 00:03:35,650
+So that's how you
+install Bottle and how
+
+98
+00:03:35,650 --> 00:03:36,940
+you get it running on a Mac.
+
+99
+00:03:36,940 --> 00:03:38,600
+And on Windows
+it's very similar.
+
+100
+00:03:38,600 --> 00:03:41,205
+As long as you've got PIP
+installed and Python installed
+
+101
+00:03:41,205 --> 00:03:42,580
+and your scripts
+are correct, you
+
+102
+00:03:42,580 --> 00:03:45,670
+should be able to do this
+in pretty much the same way.
+

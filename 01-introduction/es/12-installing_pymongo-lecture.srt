@@ -1,449 +1,696 @@
 1
-00:00:00,000 --> 00:00:00,420
+00:00:00,000 --> 00:00:00,090
 
 2
-00:00:00,420 --> 00:00:02,860
-Estamos en buen camino para 
-construir nuestra primera aplicación
+00:00:00,090 --> 00:00:00,589
+All right.
 
 3
-00:00:02,860 --> 00:00:05,250
-web respaldada por MongoDB.
+00:00:00,589 --> 00:00:02,280
+Let's talk about PyMongo.
 
 4
-00:00:05,250 --> 00:00:07,700
-Vamos a ver cómo
-va a funcionar.
+00:00:02,280 --> 00:00:04,930
+PyMongo acts as the
+glue that connects
 
 5
-00:00:07,700 --> 00:00:09,580
-Ya hemos instalado
-MongoDB.
+00:00:04,930 --> 00:00:07,480
+your program to the database.
 
 6
-00:00:09,580 --> 00:00:14,570
-Y se está ejecutando como un proceso
-mongod en nuestro equipo.
+00:00:07,480 --> 00:00:09,310
+So you have some
+application code, which
 
 7
-00:00:14,570 --> 00:00:17,100
-Y queremos escribir una
-aplicación Python.
+00:00:09,310 --> 00:00:12,320
+I'll represent by this
+box right here, your app,
 
 8
-00:00:17,100 --> 00:00:21,020
-Y esta aplicación, que está
-escrita en Python, va a usar
+00:00:12,320 --> 00:00:15,630
+and in order to talk to
+the database, MongoDB,
 
 9
-00:00:21,020 --> 00:00:25,390
-el framework Bottle que 
-nos va a permitir capturar
+00:00:15,630 --> 00:00:18,010
+represented by this M, you
+need something in the middle.
 
 10
-00:00:25,390 --> 00:00:30,470
-peticiones HTTP del
-mundo exterior, hogares
+00:00:18,010 --> 00:00:21,550
+And that thing in the
+middle is PyMongo.
 
 11
-00:00:30,470 --> 00:00:32,180
-por todo el mundo.
+00:00:21,550 --> 00:00:24,530
+So we need to install
+PyMongo on your computer
 
 12
-00:00:32,180 --> 00:00:36,670
-Y tu programa Python, para poder
-comunicarse con MongoDB,
+00:00:24,530 --> 00:00:27,280
+so that you can talk to the
+database from your application
 
 13
-00:00:36,670 --> 00:00:38,460
-necesita algún tipo de driver.
+00:00:27,280 --> 00:00:29,510
+program from Python.
 
 14
-00:00:38,460 --> 00:00:41,510
-Y ese driver se
-llama PyMongo.
+00:00:29,510 --> 00:00:31,270
+Now to do that,
+we're going to start
 
 15
-00:00:41,510 --> 00:00:45,250
-Y a partir de ahí, permitirá
-a tu aplicación comunicarse vía
+00:00:31,270 --> 00:00:32,455
+by going to api.mongodb.org.
 
 16
-00:00:45,250 --> 00:00:48,880
-BSON con el proceso mongod.
+00:00:32,455 --> 00:00:34,980
 
 17
-00:00:48,880 --> 00:00:52,590
-Ahora voy a pasar a cómo
-instalar PyMongo en un Mac.
+00:00:34,980 --> 00:00:36,480
+Let's do that now.
 
 18
-00:00:52,590 --> 00:00:55,580
-Y luego continuaremos y te
-enseñaré cómo hacerlo en un PC.
+00:00:36,480 --> 00:00:39,616
+So we start at
+api.mongodb.org, and that's not
 
 19
-00:00:55,580 --> 00:00:56,990
-Pero es muy similar.
+00:00:39,616 --> 00:00:40,740
+a particularly pretty page.
 
 20
-00:00:56,990 --> 00:00:59,910
-Y a continuación, en un tema
-posterior, te enseñaremos
+00:00:40,740 --> 00:00:41,950
+It's a pretty basic page.
 
 21
-00:00:59,910 --> 00:01:01,970
-cómo integrar Bottle.
+00:00:41,950 --> 00:00:44,910
+It's an old page from the
+early days of our ecosystem,
 
 22
-00:01:01,970 --> 00:01:04,510
-Así que vamos a empezar.
+00:00:44,910 --> 00:00:46,880
+but it very cleanly
+lists all the languages
 
 23
-00:01:04,510 --> 00:01:06,260
-Necesitas descargar
-el driver.
+00:00:46,880 --> 00:00:51,090
+that we support and gives you a
+quick link to the documentation
 
 24
-00:01:06,260 --> 00:01:09,870
-Un buen lugar para comenzar para
-cualquiera de los drivers de MongoDB es
+00:00:51,090 --> 00:00:53,640
+and the install instructions
+for the language.
 
 25
-00:01:09,870 --> 00:01:12,520
-"api.mongodb.org".
+00:00:53,640 --> 00:00:55,720
+In this class, we're
+going to use Python,
 
 26
-00:01:12,520 --> 00:01:14,190
-Y es ahí donde he empezado.
+00:00:55,720 --> 00:00:58,079
+so we're going to click
+right here on Python.
 
 27
-00:01:14,190 --> 00:01:16,230
-Permíteme que te enseñe cómo se 
-ve cuando llegas ahí.
+00:00:58,079 --> 00:01:00,370
+And then, we're going to see
+all the different versions
 
 28
-00:01:16,230 --> 00:01:17,570
-Y entonces puedes ver que
-tiene listados todos
+00:01:00,370 --> 00:01:03,950
+of the driver, the PyMongo
+driver, that are offered.
 
 29
-00:01:17,570 --> 00:01:19,000
-estos lenguajes diferentes.
+00:01:03,950 --> 00:01:07,070
+Now we're going to use a beta
+version of the PyMongo driver
 
 30
-00:01:19,000 --> 00:01:21,670
-Y voy a hacer click
-en Python.
+00:01:07,070 --> 00:01:08,310
+in this class.
 
 31
-00:01:21,670 --> 00:01:23,200
-Y la versión actual
-en el momento de esta
+00:01:08,310 --> 00:01:09,900
+We're going to use the 3.0 beta.
 
 32
-00:01:23,200 --> 00:01:25,280
-grabación es la 2.5.
+00:01:09,900 --> 00:01:11,590
+Now this is not the
+production version,
 
 33
-00:01:25,280 --> 00:01:27,550
-Y voy a hacer click en
-instalar y actualizar.
+00:01:11,590 --> 00:01:13,340
+but it's the version
+that will be released
 
 34
-00:01:27,550 --> 00:01:30,360
-Sugiere que si estás
-usando un equipo
+00:01:13,340 --> 00:01:14,360
+in the next couple of weeks.
 
 35
-00:01:30,360 --> 00:01:32,790
-Windows, uses el instalador
-preempaquetado.
+00:01:14,360 --> 00:01:16,484
+And by the time you watch
+this, it may have already
 
 36
-00:01:32,790 --> 00:01:36,780
-Pero en un Mac u otros equipos
-Unix, puedes usar pip para
+00:01:16,484 --> 00:01:18,070
+been released, so
+you may not see a B
 
 37
-00:01:36,780 --> 00:01:39,010
-instalarlo usando "pip
-install pymongo".
+00:01:18,070 --> 00:01:19,760
+after this when you go here.
 
 38
-00:01:39,010 --> 00:01:40,330
-Y eso es lo que
-vamos a hacer.
+00:01:19,760 --> 00:01:22,220
+But right now, if
+you come to the page
 
 39
-00:01:40,330 --> 00:01:42,000
-Ahora, cuando hice esto
-por primera vez, en realidad
+00:01:22,220 --> 00:01:24,780
+at the time of this
+recording, it's still in beta.
 
 40
-00:01:42,000 --> 00:01:43,200
-no tenía "pip" instalado.
+00:01:24,780 --> 00:01:26,055
+So we're going to install it.
 
 41
-00:01:43,200 --> 00:01:44,980
-Y usé "easy_install".
+00:01:26,055 --> 00:01:27,680
+We're going to go to
+the documentation.
 
 42
-00:01:44,980 --> 00:01:47,660
-Creo que el comando era
-"easy_install install pip"
+00:01:27,680 --> 00:01:30,400
+And once we do that, we're
+going to look down this page.
 
 43
-00:01:47,660 --> 00:01:48,700
-para instalar "pip".
+00:01:30,400 --> 00:01:32,460
+There's a lot of information
+here, by the way.
 
 44
-00:01:48,700 --> 00:01:51,030
-Pero una vez instalado "pip",
-puedes ejecutar el comando
+00:01:32,460 --> 00:01:35,450
+There's a quick start
+guide that's fantastic.
 
 45
-00:01:51,030 --> 00:01:54,160
-"pip install pymongo", el cual
-necesitarás ejecutar como "root".
+00:01:35,450 --> 00:01:37,080
+There's all the
+API documentation,
 
 46
-00:01:54,160 --> 00:01:56,000
-Vamos a ver esto.
+00:01:37,080 --> 00:01:38,650
+and I'm going to
+show you that later.
 
 47
-00:01:56,000 --> 00:01:58,120
-Enconces, "whoami"
+00:01:38,650 --> 00:01:40,810
+But right now, let's focus on
+the installing and upgrading
 
 48
-00:01:58,120 --> 00:01:59,750
-No soy "root".
+00:01:40,810 --> 00:01:41,550
+instructions.
 
 49
-00:01:59,750 --> 00:02:03,560
-Así que voy a convertirme en "root".
+00:01:41,550 --> 00:01:43,020
+I'll click right there.
 
 50
-00:02:03,560 --> 00:02:05,190
-Y ahora tengo acceso
-"root" en el equipo.
+00:01:43,020 --> 00:01:47,605
+And it says that to
+install I can use pip, pip
 
 51
-00:02:05,190 --> 00:02:09,420
-Ahora voy a ejecutar
-"pip install pymongo".
+00:01:47,605 --> 00:01:48,320
+install pymongo.
 
 52
-00:02:09,420 --> 00:02:12,010
-Y lo que va a hacer es
-conectarse a la web
+00:01:48,320 --> 00:01:50,320
+Pip is an installer.
 
 53
-00:02:12,010 --> 00:02:14,910
-y descargar y compilar
-cualquier cosa que necesite.
+00:01:50,320 --> 00:01:53,980
+Now pip looks at PyPI
+as a place to get
 
 54
-00:02:14,910 --> 00:02:16,090
-Y entonces hizo eso.
+00:01:53,980 --> 00:01:55,160
+all of the distributions.
 
 55
-00:02:16,090 --> 00:02:17,730
-Y ahora está instalado.
+00:01:55,160 --> 00:01:58,050
+And unfortunately, since
+the PyMongo driver is still
 
 56
-00:02:17,730 --> 00:02:20,460
-Ahora para probarlo, he
-escrito un pequeño programa.
+00:01:58,050 --> 00:02:00,760
+in beta right now, the 3.0
+driver is still in beta,
 
 57
-00:02:20,460 --> 00:02:21,765
-Fíjate que dejé 
-de ser "root".
+00:02:00,760 --> 00:02:03,620
+if we typed pip install
+pymongo at the command line,
 
 58
-00:02:21,765 --> 00:02:23,150
-Ya no necesito ser "root".
+00:02:03,620 --> 00:02:05,310
+we wouldn't get this version.
 
 59
-00:02:23,150 --> 00:02:24,830
-Escribí un pequeño programa
-Python,
+00:02:05,310 --> 00:02:08,229
+We would actually get
+the released version.
 
 60
-00:02:24,830 --> 00:02:27,020
-"pymongo_getting_started.py".
+00:02:08,229 --> 00:02:12,090
+So if we scroll down the
+page, at the very bottom,
 
 61
-00:02:27,020 --> 00:02:29,560
-Y vamos a repasarlo
-línea por línea para
+00:02:12,090 --> 00:02:15,560
+is some information for
+installing the beta version.
 
 62
-00:02:29,560 --> 00:02:32,740
-entender cómo funciona.
+00:02:15,560 --> 00:02:18,190
+So I'm going to make this
+smaller so I can grab it.
 
 63
-00:02:32,740 --> 00:02:35,670
-Así que la primera cosa que
-hace es importar PyMongo.
+00:02:18,190 --> 00:02:19,200
+All right.
 
 64
-00:02:35,670 --> 00:02:38,070
-Y de PyMongo, importa
-la clase "MongoClient"
+00:02:19,200 --> 00:02:21,640
+Now I'm just going to
+select this with my mouse.
 
 65
-00:02:38,070 --> 00:02:40,140
-para conectarse.
+00:02:21,640 --> 00:02:23,150
+I'm going to copy
+that, and now I'm
 
 66
-00:02:40,140 --> 00:02:43,170
-Luego establece una conexión usando
-"MongoClient" a "localhost"
+00:02:23,150 --> 00:02:24,780
+going to bring that
+to a command line.
 
 67
-00:02:43,170 --> 00:02:46,510
-al puerto "27017", que es
-el puerto por defecto
+00:02:24,780 --> 00:02:27,790
+So we go to the command
+line, and we become root.
 
 68
-00:02:46,510 --> 00:02:48,800
-para la base de datos.
+00:02:27,790 --> 00:02:29,130
+Now I'm root.
 
 69
-00:02:48,800 --> 00:02:51,890
-Luego se conecta a la base
-de datos "test" y a la colección
+00:02:29,130 --> 00:02:30,750
+And now I'm going
+to paste that down.
 
 70
-00:02:51,890 --> 00:02:52,420
-"names".
+00:02:30,750 --> 00:02:31,250
+All right.
 
 71
-00:02:52,420 --> 00:02:55,400
-Ahora, si recuerdas de una lección
-anterior, inserté 
+00:02:31,250 --> 00:02:32,790
+Let's paste that.
 
 72
-00:02:55,400 --> 00:02:57,860
-mi nombre en la
-colección "names".
+00:02:32,790 --> 00:02:34,530
+And now it's
+running the install.
 
 73
-00:02:57,860 --> 00:02:59,730
-Y, de hecho, lo he
-editado para sacar 
+00:02:34,530 --> 00:02:35,950
+And now it's installed.
 
 74
-00:02:59,730 --> 00:03:01,390
-el nombre de Richard
-tras la cámara.
+00:02:35,950 --> 00:02:36,480
+All right.
 
 75
-00:03:01,390 --> 00:03:03,750
-Y vamos a poder sacar 
-un nombre fuera de ahí.
+00:02:36,480 --> 00:02:38,430
+So now that it's
+installed, we might
 
 76
-00:03:03,750 --> 00:03:05,970
-Así que veamos cómo funciona.
+00:02:38,430 --> 00:02:40,600
+want to actually try
+to write a small Python
 
 77
-00:03:05,970 --> 00:03:07,860
-No necesitamos hacer un "find"
-en la colección.
+00:02:40,600 --> 00:02:42,030
+program that uses the database.
 
 78
-00:03:07,860 --> 00:03:11,490
-Así que vamos a hacer un "find_one",
-que encuentra un documento en la
+00:02:42,030 --> 00:02:43,140
+So let's look at that.
 
 79
-00:03:11,490 --> 00:03:13,955
-colección "names", y lo pone
-en esta variable "item".
+00:02:43,140 --> 00:02:45,700
+So I have one of those
+programs right here.
 
 80
-00:03:13,955 --> 00:03:16,990
-Terminará siendo
-un diccionario Python.
+00:02:45,700 --> 00:02:47,670
+Let's look at it in editor.
 
 81
-00:03:16,990 --> 00:03:19,250
-Y entonces simplemente
-lo imprimimos.
+00:02:47,670 --> 00:02:51,360
+So this is a very short program
+that's going to use PyMongo
 
 82
-00:03:19,250 --> 00:03:20,720
-Y ése es el programa completo.
+00:02:51,360 --> 00:02:53,540
+and it's going to read
+something in the database.
 
 83
-00:03:20,720 --> 00:03:23,310
-Así que sigamos adelante
+00:02:53,540 --> 00:02:55,510
+And I'm going to
+explain it line by line.
 
 84
-00:03:23,310 --> 00:03:25,500
-y ejecutémoslo 
-llamando "python
+00:02:55,510 --> 00:02:56,380
+And then we're going
+to test it out.
 
 85
-00:03:25,500 --> 00:03:26,630
-pymongo_getting_started".
+00:02:56,380 --> 00:02:57,796
+And we'll see if
+it really worked.
 
 86
-00:03:26,630 --> 00:03:28,150
-Veamos que obtenemos.
+00:02:57,796 --> 00:02:59,670
+So the first thing
+we're going to do
 
 87
-00:03:28,150 --> 00:03:29,210
-Y obtenemos "Richard".
+00:02:59,670 --> 00:03:01,610
+is we're going to
+import PyMongo.
 
 88
-00:03:29,210 --> 00:03:31,580
-Y sólo por repasar otra vez, lo
-que hemos hecho aquí es
+00:03:01,610 --> 00:03:03,200
+This is a Python program.
 
 89
-00:03:31,580 --> 00:03:33,990
-instalar la pieza PyMongo
-del rompecabezas.
+00:03:03,200 --> 00:03:05,450
+And from PyMongo, we're
+going to import MongoClient.
 
 90
-00:03:33,990 --> 00:03:35,140
-Y hemos instalado Bottle.
+00:03:05,450 --> 00:03:07,200
+And that just makes
+it a little bit easier
 
 91
-00:03:35,140 --> 00:03:37,450
-Pero todavía no te hemos 
-enseñado cómo integrar Bottle
+00:03:07,200 --> 00:03:08,658
+to use that symbol
+so we don't have
 
 92
-00:03:37,450 --> 00:03:37,820
-y PyMongo.
+00:03:08,658 --> 00:03:11,050
+to say pymongo.MongoClient.
 
 93
-00:03:37,820 --> 00:03:39,500
-Y llegaremos a eso pronto.
+00:03:11,050 --> 00:03:12,920
+Then we're going to
+create a connection
 
 94
-00:03:39,500 --> 00:03:41,930
-Pero tras este paso, deberías
-tener instalado PyMongo
+00:03:12,920 --> 00:03:18,400
+using MongoClient to localhost
+27017-- that's a default port.
 
 95
-00:03:41,930 --> 00:03:43,990
-en tu equipo, si
-eres usuario de Unix.
+00:03:18,400 --> 00:03:21,110
+We could omit that in this
+case, and it would still work.
 
 96
-00:03:43,990 --> 00:03:46,240
-Para usuarios de Windows, tenemos
-una lección separada
+00:03:21,110 --> 00:03:24,084
+We're going to connect to
+the database, test database.
 
 97
-00:03:46,240 --> 00:03:47,490
-sobre cómo instalar PyMongo.
+00:03:24,084 --> 00:03:26,250
+Then we're going to connect
+to the names collection,
 
 98
-00:03:47,490 --> 00:03:48,490
+00:03:26,250 --> 00:03:28,230
+names equals db.names.
+
+99
+00:03:28,230 --> 00:03:30,000
+And then we're going
+to call find one
+
+100
+00:03:30,000 --> 00:03:31,510
+on the names collection.
+
+101
+00:03:31,510 --> 00:03:33,740
+And we're going to
+print the value that
+
+102
+00:03:33,740 --> 00:03:35,850
+is kept for the name key.
+
+103
+00:03:35,850 --> 00:03:36,854
+So we have a document.
+
+104
+00:03:36,854 --> 00:03:38,520
+And we're going to
+look up the name key,
+
+105
+00:03:38,520 --> 00:03:41,460
+and print that what's in
+there, and get the value out.
+
+106
+00:03:41,460 --> 00:03:44,090
+So let's try that out
+and see what happens.
+
+107
+00:03:44,090 --> 00:03:47,230
+So to run this program, I invoke
+Python from the command line.
+
+108
+00:03:47,230 --> 00:03:50,010
+And then python
+pymongo_getting-started.py.
+
+109
+00:03:50,010 --> 00:03:51,830
+And I hit Return.
+
+110
+00:03:51,830 --> 00:03:54,110
+And it prints out
+Andrew Erlichson,
+
+111
+00:03:54,110 --> 00:03:57,890
+which is exactly what we put
+in earlier if you remember.
+
+112
+00:03:57,890 --> 00:04:03,690
+We can see this in Mongo, too,
+that if we do db.names.find,
+
+113
+00:04:03,690 --> 00:04:07,250
+that we have one document
+with name Andrew Erlichson.
+
+114
+00:04:07,250 --> 00:04:09,450
+And by the way, the reason
+this worked-- and this
+
+115
+00:04:09,450 --> 00:04:11,210
+is an easy thing to
+get tripped up on--
+
+116
+00:04:11,210 --> 00:04:13,030
+is that MongoD, the
+database server,
+
+117
+00:04:13,030 --> 00:04:15,500
+is still running in this window.
+
+118
+00:04:15,500 --> 00:04:19,010
+So if MongoD is not running
+in this window, it won't work,
+
+119
+00:04:19,010 --> 00:04:20,010
+and you'll get an error.
+
+120
+00:04:20,010 --> 00:04:21,480
+So let's say I killed it.
+
+121
+00:04:21,480 --> 00:04:24,940
+Now if I try to run my program,
+now it's going to get an error.
+
+122
+00:04:24,940 --> 00:04:26,400
+And I'll show you
+that in case you
+
+123
+00:04:26,400 --> 00:04:28,360
+see this error when you try.
+
+124
+00:04:28,360 --> 00:04:29,200
+All right.
+
+125
+00:04:29,200 --> 00:04:31,070
+Now I'm trying to
+run the program here.
+
+126
+00:04:31,070 --> 00:04:32,590
+But now the database
+is not running.
+
+127
+00:04:32,590 --> 00:04:35,080
+And so now, we're hanging
+on the connect call
+
+128
+00:04:35,080 --> 00:04:36,420
+and waiting for the time out.
+
+129
+00:04:36,420 --> 00:04:39,690
+And you can see, after a period
+of time, we get this timeout.
+
+130
+00:04:39,690 --> 00:04:41,340
+And we edited out
+the wait, but you can
+
+131
+00:04:41,340 --> 00:04:43,070
+see it says Connection refused.
+
+132
+00:04:43,070 --> 00:04:45,940
+And if we just start the
+database server up and running
+
+133
+00:04:45,940 --> 00:04:48,510
+and then run it,
+then it works fine.
+
+134
+00:04:48,510 --> 00:04:51,330
+It prints out the one document
+it found, which is my name.
+
+135
+00:04:51,330 --> 00:04:52,090
+All right.
+
+136
+00:04:52,090 --> 00:04:53,910
+So that's how you get
+PyMongo installed.
+
+137
+00:04:53,910 --> 00:04:55,050
+This on a Mac.
+
+138
+00:04:55,050 --> 00:04:59,100
+However, installing it on a
+PC is pretty much the same.
+
+139
+00:04:59,100 --> 00:05:02,790
+If you install Python on the
+PC, you'll get setup tools.
+
+140
+00:05:02,790 --> 00:05:05,420
+And by changing your path
+to include those scripts,
+
+141
+00:05:05,420 --> 00:05:08,170
+you can use pip, which
+can install PyMongo.
+
+142
+00:05:08,170 --> 00:05:11,820
+Now as a reminder, we're using
+the 3.0 version of PyMongo
+
+143
+00:05:11,820 --> 00:05:13,110
+driver in this class.
+
+144
+00:05:13,110 --> 00:05:14,720
+It's in beta right
+now, so you may
+
+145
+00:05:14,720 --> 00:05:16,920
+need to use that special
+pip install line.
+
+146
+00:05:16,920 --> 00:05:19,050
+But in a few weeks, it's
+not going to be in beta,
+
+147
+00:05:19,050 --> 00:05:22,630
+and simply saying pip
+install pymongo will work.
+
+148
+00:05:22,630 --> 00:05:24,360
+I won't enter it
+here, but that is
+
+149
+00:05:24,360 --> 00:05:27,930
+all you need to install
+it when it's out of beta.
+

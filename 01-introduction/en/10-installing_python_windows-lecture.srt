@@ -1,234 +1,420 @@
 1
-00:00:00,000 --> 00:00:01,290
+00:00:00,000 --> 00:00:00,500
 
 2
-00:00:01,290 --> 00:00:03,800
-Now that we have MongoDB
-installed on our Windows
+00:00:00,500 --> 00:00:03,450
+OK, now that we've got
+MongoDB installed on Windows,
 
 3
-00:00:03,800 --> 00:00:06,910
-machine, next, we need to get
-Python installed, because
+00:00:03,450 --> 00:00:06,300
+the next step is to get
+Python installed on Windows.
 
 4
-00:00:06,910 --> 00:00:08,700
-we're going to use Python
-in this class.
+00:00:06,300 --> 00:00:08,510
+You might already have
+Python installed on Windows,
 
 5
-00:00:08,700 --> 00:00:10,690
-You may already have
-Python installed.
+00:00:08,510 --> 00:00:10,470
+and if you do you
+can skip this step.
 
 6
-00:00:10,690 --> 00:00:13,210
-And if you do have Python
-installed, then that's great.
+00:00:10,470 --> 00:00:13,260
+But a lot of folks don't so I'm
+going to show you how to do it.
 
 7
-00:00:13,210 --> 00:00:15,490
-You don't need to install
-it again.
+00:00:13,260 --> 00:00:16,630
+I'm in Google and I'm
+going to type "download
 
 8
-00:00:15,490 --> 00:00:18,050
-But if you don't, you'll
-want to just Google
+00:00:16,630 --> 00:00:18,550
+Python for Windows."
 
 9
-00:00:18,050 --> 00:00:19,700
-for download Python.
+00:00:18,550 --> 00:00:21,270
+And when I do that I
+get to the first URL
 
 10
-00:00:19,700 --> 00:00:23,610
-And then if you go to the first
-link right here, you'll
+00:00:21,270 --> 00:00:24,990
+is Python releases for
+Windows, Python.org.
 
 11
-00:00:23,610 --> 00:00:27,890
-see that it's this
-python.org page.
+00:00:24,990 --> 00:00:28,900
+And then it looks like the first
+download link is what I need,
 
 12
-00:00:27,890 --> 00:00:30,000
-And we're going to go
-for the Windows
+00:00:28,900 --> 00:00:31,110
+but I'm just going to
+scroll down for a second.
 
 13
-00:00:30,000 --> 00:00:32,920
-installer right here, 2.7.3.
+00:00:31,110 --> 00:00:33,520
+And its Python 2.7.9,
+we're not going
 
 14
-00:00:32,920 --> 00:00:35,690
-I'm going to click on it
-and download that.
+00:00:33,520 --> 00:00:36,070
+to use Python 3 series
+for this course.
 
 15
-00:00:35,690 --> 00:00:37,980
-And then I'm going to show
-that in the folder.
+00:00:36,070 --> 00:00:38,480
+So if we go down
+here, what do we have?
 
 16
-00:00:37,980 --> 00:00:40,290
-And I'm going to double
-click on it.
+00:00:38,480 --> 00:00:40,020
+We've got some downloads.
 
 17
-00:00:40,290 --> 00:00:41,650
-I actually previously
-downloaded it.
+00:00:40,020 --> 00:00:42,540
+Let's see, Gzipped source,
+I don't want to compile it,
 
 18
-00:00:41,650 --> 00:00:43,060
-I'm going to run it.
+00:00:42,540 --> 00:00:45,100
+Mac OS, I don't want to
+do that, Windows debug
 
 19
-00:00:43,060 --> 00:00:44,560
-Install for all users.
+00:00:45,100 --> 00:00:46,440
+information files.
 
 20
-00:00:44,560 --> 00:00:48,030
-Python, Python, security
-check.
+00:00:46,440 --> 00:00:51,170
+Windows x86-64 MSI installer,
+this looks good to me.
 
 21
-00:00:48,030 --> 00:00:49,460
-Say yes.
+00:00:51,170 --> 00:00:54,691
+For AMD, for EMT, x86, not
+for Itanium processors.
 
 22
-00:00:49,460 --> 00:00:51,170
-All right, that is super.
+00:00:54,691 --> 00:00:56,690
+Well, I don't think I
+have an Itanium processor,
 
 23
-00:00:51,170 --> 00:00:55,090
-So now what it does by default
-is put that right into your C
+00:00:56,690 --> 00:00:57,640
+so I'll try that.
 
 24
-00:00:55,090 --> 00:00:57,110
-drive, Python 2.7.
+00:00:57,640 --> 00:01:00,110
+And now I'm going to run that.
 
 25
-00:00:57,110 --> 00:01:03,340
-And what you're going to want to
-do is add that directory to
+00:01:00,110 --> 00:01:01,500
+Install for all users.
 
 26
-00:01:03,340 --> 00:01:05,950
-your path just like we
-did before so that
+00:01:01,500 --> 00:01:08,480
+It's going to install it at
+C colon slash Python27 slash.
 
 27
-00:01:05,950 --> 00:01:06,960
-we can get to it.
+00:01:08,480 --> 00:01:10,300
+OK, that sounds good.
 
 28
-00:01:06,960 --> 00:01:08,910
-So let's do that.
+00:01:10,300 --> 00:01:13,930
+All right, and I
+say Yes to that.
 
 29
-00:01:08,910 --> 00:01:12,030
-So we're going to go here,
-type Computer.
+00:01:13,930 --> 00:01:16,020
+All right, seems to
+be doing its work.
 
 30
-00:01:12,030 --> 00:01:15,240
-And go to System Properties.
+00:01:16,020 --> 00:01:18,080
+Oh, it's installing set
+up tools including pip,
 
 31
-00:01:15,240 --> 00:01:18,780
-I'm going to go to Advanced
-System Settings over here and
+00:01:18,080 --> 00:01:19,621
+I read that on the
+screen, it's going
 
 32
-00:01:18,780 --> 00:01:20,790
-do Environment Variables.
+00:01:19,621 --> 00:01:20,894
+to be very convenient for us.
 
 33
-00:01:20,790 --> 00:01:23,625
-Go down to my Path Variable.
+00:01:20,894 --> 00:01:22,810
+So even if you have an
+older version of Python
 
 34
-00:01:23,625 --> 00:01:24,900
-It's right there.
+00:01:22,810 --> 00:01:24,787
+you might want to
+install this one.
 
 35
-00:01:24,900 --> 00:01:26,150
-And I'm going to edit it.
+00:01:24,787 --> 00:01:27,245
+You must restart your system
+for your configuration changes
 
 36
-00:01:26,150 --> 00:01:27,060
-I'll go to the end of it.
+00:01:27,245 --> 00:01:29,990
+to take effect, click Yes
+to restart now or No if you
 
 37
-00:01:27,060 --> 00:01:30,410
-The separator, again, seems
-to be a semi-colon.
+00:01:29,990 --> 00:01:31,400
+plan to manually restart later.
 
 38
-00:01:30,410 --> 00:01:34,930
-So type C drive, so it goes
-in C drive, colon
+00:01:31,400 --> 00:01:33,450
+Wow, full restart.
 
 39
-00:01:34,930 --> 00:01:38,230
-slash Python 2.7.
+00:01:33,450 --> 00:01:35,430
+OK, well I'm going to
+restart the computer
 
 40
-00:01:38,230 --> 00:01:39,780
-So I've done that.
+00:01:35,430 --> 00:01:38,900
+and then I'll pick this
+up after it restarts.
 
 41
-00:01:39,780 --> 00:01:45,650
-I'm going to say, OK, OK,
-OK, and kill that.
+00:01:38,900 --> 00:01:41,795
+OK, we're back post
+reboot now and we're
 
 42
-00:01:45,650 --> 00:01:49,780
-Now, if I bring up a terminal
-window, command prompt, and
+00:01:41,795 --> 00:01:43,920
+going to finish up the
+process of installing Python
 
 43
-00:01:49,780 --> 00:01:52,870
-type Python, I get the
-Python interpreter.
+00:01:43,920 --> 00:01:47,270
+on this Windows
+PC by making sure
 
 44
-00:01:52,870 --> 00:01:55,690
-Print hello world.
+00:01:47,270 --> 00:01:49,260
+that the path is set correctly.
 
 45
-00:01:55,690 --> 00:01:57,560
-And it prints hello world.
+00:01:49,260 --> 00:01:51,480
+So to do that we
+go over to System
 
 46
-00:01:57,560 --> 00:01:58,260
-Excellent.
+00:01:51,480 --> 00:01:54,130
+and we click on
+Advanced System Settings
 
 47
-00:01:58,260 --> 00:02:02,600
-So now we have Python installed
-on our computer.
+00:01:54,130 --> 00:01:57,220
+and then we click on
+Environment Variables.
 
 48
-00:02:02,600 --> 00:02:05,940
-Next step is that we need to
-get PyMongo installed.
+00:01:57,220 --> 00:01:58,900
+And then for
+environment variables
 
 49
-00:02:05,940 --> 00:02:09,320
-And we need to get the small
-bottle framework installed.
+00:01:58,900 --> 00:02:03,590
+we scroll down here, find
+the path, there it is.
 
 50
-00:02:09,320 --> 00:02:12,550
-So in the next lesson, I will
-show you how to do that on a
+00:02:03,590 --> 00:02:05,570
+And now we're going
+to edit the path,
 
 51
-00:02:12,550 --> 00:02:13,800
-Windows machine.
+00:02:05,570 --> 00:02:08,780
+and now I'm going to position
+the mouse at the very end
 
 52
-00:02:13,800 --> 00:02:14,420
+00:02:08,780 --> 00:02:10,610
+and I'm going to put
+the separator in,
+
+53
+00:02:10,610 --> 00:02:12,640
+which is a semicolon.
+
+54
+00:02:12,640 --> 00:02:18,620
+So I put in C colon
+slash Python27 slash.
+
+55
+00:02:18,620 --> 00:02:19,940
+And that should do it.
+
+56
+00:02:19,940 --> 00:02:26,440
+So let's say OK to that and
+OK to that and OK to that.
+
+57
+00:02:26,440 --> 00:02:31,880
+And now if we bring up a
+shell and if we type Python
+
+58
+00:02:31,880 --> 00:02:34,210
+we get the Python
+2.7.9 interpreter
+
+59
+00:02:34,210 --> 00:02:38,570
+and now we're going to
+just print "Hello World",
+
+60
+00:02:38,570 --> 00:02:40,060
+and we see Hello World.
+
+61
+00:02:40,060 --> 00:02:44,140
+And Python is
+installed on this PC.
+
+62
+00:02:44,140 --> 00:02:46,787
+OK, so Python is now
+installed on Windows,
+
+63
+00:02:46,787 --> 00:02:48,620
+but the last piece we
+need to also make sure
+
+64
+00:02:48,620 --> 00:02:52,197
+that we get right is that
+we have the Python setup
+
+65
+00:02:52,197 --> 00:02:53,780
+tools in our path,
+because we're going
+
+66
+00:02:53,780 --> 00:02:57,530
+to want to use pip, which is
+an installer, P-I-P. If we
+
+67
+00:02:57,530 --> 00:03:00,000
+try to do that right now
+we can't because it's not
+
+68
+00:03:00,000 --> 00:03:00,820
+in our path.
+
+69
+00:03:00,820 --> 00:03:03,900
+Now, I searched using
+Windows Explorer
+
+70
+00:03:03,900 --> 00:03:07,640
+and found that it was actually
+in Python 2.7 Scripts.
+
+71
+00:03:07,640 --> 00:03:12,550
+So let's go ahead and change
+our path to include that.
+
+72
+00:03:12,550 --> 00:03:16,060
+So once again we're going to
+go to System, Advanced System
+
+73
+00:03:16,060 --> 00:03:18,270
+Properties,
+Environment Variables,
+
+74
+00:03:18,270 --> 00:03:20,730
+we're going to scroll
+down to this path variable
+
+75
+00:03:20,730 --> 00:03:23,010
+and we're going to
+edit it one more time.
+
+76
+00:03:23,010 --> 00:03:27,400
+And this time we're going to add
+another semicolon at the end.
+
+77
+00:03:27,400 --> 00:03:33,640
+And then C colon slash
+Python27 slash scripts.
+
+78
+00:03:33,640 --> 00:03:37,280
+And I believe that it
+was actually capitalized,
+
+79
+00:03:37,280 --> 00:03:40,090
+although I think it's case
+preserving and case insensitive
+
+80
+00:03:40,090 --> 00:03:41,730
+so I don't think it matters.
+
+81
+00:03:41,730 --> 00:03:47,700
+So let's do that, say OK, and
+now let's get another shell.
+
+82
+00:03:47,700 --> 00:03:49,360
+When I right click
+I get a shell.
+
+83
+00:03:49,360 --> 00:03:52,130
+And then let's see if pip
+is actually installed.
+
+84
+00:03:52,130 --> 00:03:52,950
+Excellent.
+
+85
+00:03:52,950 --> 00:03:55,560
+Now if I type "pip" I can
+actually install things.
+
+86
+00:03:55,560 --> 00:03:58,550
+That's going to be very
+useful for installing
+
+87
+00:03:58,550 --> 00:04:00,960
+PyMongo and installing Bottle.
+
+88
+00:04:00,960 --> 00:04:04,950
+So that's the end of the
+installing Python lesson.
+
