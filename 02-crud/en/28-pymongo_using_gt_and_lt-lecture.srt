@@ -1,158 +1,221 @@
 1
-00:00:00,000 --> 00:00:00,190
+00:00:00,000 --> 00:00:00,500
 
 2
-00:00:00,190 --> 00:00:03,390
-Next, let's talk about how we
-use the dollar greater than
+00:00:00,500 --> 00:00:02,900
+Let's talk about how you use
+the greater than and less
 
 3
-00:00:03,390 --> 00:00:07,400
-and dollar less than operators
-from inside Pi Mongo.
+00:00:02,900 --> 00:00:05,640
+than operators inside PyMongo.
 
 4
-00:00:07,400 --> 00:00:09,570
-Here's the same function
-I had before.
+00:00:05,640 --> 00:00:07,530
+And you already learned
+about these operators
 
 5
-00:00:09,570 --> 00:00:11,840
-I defined my own find
-command here.
+00:00:07,530 --> 00:00:08,890
+when using the Mongo shell.
 
 6
-00:00:11,840 --> 00:00:17,060
-And here, I defined a query,
-this is a Python dictionary.
+00:00:08,890 --> 00:00:11,552
+And you can review that now if
+you're not familiar with it.
 
 7
-00:00:17,060 --> 00:00:19,860
-Again, we're going to look for
-things with type is exam.
+00:00:11,552 --> 00:00:13,260
+I've written a small
+program very similar
 
 8
-00:00:19,860 --> 00:00:23,310
-In this case, we're going to
-also constrain it to have a
+00:00:13,260 --> 00:00:14,570
+to the previous programs.
 
 9
-00:00:23,310 --> 00:00:26,760
-score which is a dollar
-greater than 50
+00:00:14,570 --> 00:00:16,070
+It's going to run
+a query once again
 
 10
-00:00:26,760 --> 00:00:28,900
-and less than 70.
+00:00:16,070 --> 00:00:19,150
+against the scores collection
+in the school database.
 
 11
-00:00:28,900 --> 00:00:30,880
-Now, you'll notice again, that
-the quotes are around these
+00:00:19,150 --> 00:00:20,650
+And this time,
+the query is going
 
 12
-00:00:30,880 --> 00:00:34,250
-operators in the dollar GT and
-the dollar LT to make it work.
+00:00:20,650 --> 00:00:23,690
+to be that it's looking
+for documents of type exam
 
 13
-00:00:34,250 --> 00:00:36,940
-And then, we just go through
-and we do the find on the
+00:00:23,690 --> 00:00:25,690
+with a score, and
+you see it's quoted,
 
 14
-00:00:36,940 --> 00:00:37,920
-collection.
+00:00:25,690 --> 00:00:29,520
+is dollar greater than
+50 dollar less than 70.
 
 15
-00:00:37,920 --> 00:00:41,370
-Which, of course, collection
-is defined for the file.
+00:00:29,520 --> 00:00:32,780
+And this condition is
+a document basically.
 
 16
-00:00:41,370 --> 00:00:44,190
-Get a cursor and then go through
-it one by one and
+00:00:32,780 --> 00:00:35,960
+And it's the value
+for the score key.
 
 17
-00:00:44,190 --> 00:00:45,240
-print it out.
+00:00:35,960 --> 00:00:37,600
+That's the way it's specified.
 
 18
-00:00:45,240 --> 00:00:47,420
-And if we do that--
+00:00:37,600 --> 00:00:39,400
+And you can see
+there's a comma here.
 
 19
-00:00:47,420 --> 00:00:49,290
-This is the file I was using
-find using greater
+00:00:39,400 --> 00:00:41,340
+And you can put these
+in either order.
 
 20
-00:00:49,290 --> 00:00:51,310
-than and less than.
+00:00:41,340 --> 00:00:43,420
+It could be less than
+70 and greater than 50.
 
 21
-00:00:51,310 --> 00:00:52,730
-That's the file.
+00:00:43,420 --> 00:00:46,200
+It wouldn't matter which
+order you put these in.
 
 22
-00:00:52,730 --> 00:00:56,230
-You can see that it will print
-out the documents that are
+00:00:46,200 --> 00:00:47,650
+Then it runs this query.
 
 23
-00:00:56,230 --> 00:00:58,190
-satisfied by the query.
+00:00:47,650 --> 00:00:49,180
+And then it prints out.
 
 24
-00:00:58,190 --> 00:00:59,530
-So there you go.
+00:00:49,180 --> 00:00:51,220
+It's going to print out
+the first 10 documents.
 
 25
-00:00:59,530 --> 00:01:02,740
-So time for a quiz.
+00:00:51,220 --> 00:00:54,800
+So let's run that
+and see if it works.
 
 26
-00:01:02,740 --> 00:01:06,270
-Here's a snippet of code very
-similar to the code I was just
+00:00:54,800 --> 00:00:55,410
+All right.
 
 27
-00:01:06,270 --> 00:01:09,300
-showing you, and let's
-see how carefully
+00:00:55,410 --> 00:00:57,890
+So I'm going to invoke the
+Python interpreter on find
 
 28
-00:01:09,300 --> 00:01:10,530
-you're paying attention.
+00:00:57,890 --> 00:01:00,280
+using greater than,
+less than .py.
 
 29
-00:01:10,530 --> 00:01:13,500
-You have to substitute and
-figure out what you should put
+00:01:00,280 --> 00:01:02,740
+And when I do that, I get
+out a bunch of documents.
 
 30
-00:01:13,500 --> 00:01:18,170
-in to do a query for all of the
-quiz scores in that scores
+00:01:02,740 --> 00:01:04,090
+They're all of type exam.
 
 31
-00:01:18,170 --> 00:01:21,430
-collection where the score
-is greater than 20
+00:01:04,090 --> 00:01:05,660
+And they're all
+between, the scores
 
 32
-00:01:21,430 --> 00:01:23,100
-and less than 90.
+00:01:05,660 --> 00:01:07,032
+are all between 50 and 70.
 
 33
-00:01:23,100 --> 00:01:26,210
-And it's a multiple choice
-question, you could just
+00:01:07,032 --> 00:01:08,740
+The student IDs are
+varied because we had
 
 34
-00:01:26,210 --> 00:01:27,460
-choose one.
+00:01:08,740 --> 00:01:11,010
+no criteria for the student ID.
 
 35
-00:01:27,460 --> 00:01:28,788
+00:01:11,010 --> 00:01:13,800
+All right, now it's
+time for a quiz.
+
+36
+00:01:13,800 --> 00:01:15,420
+And here's the quiz.
+
+37
+00:01:15,420 --> 00:01:17,234
+In the following
+code below, very
+
+38
+00:01:17,234 --> 00:01:18,650
+similar to the
+code we just wrote,
+
+39
+00:01:18,650 --> 00:01:20,500
+we have one line missing.
+
+40
+00:01:20,500 --> 00:01:22,910
+Tell us what the line would
+be to search for all the quiz
+
+41
+00:01:22,910 --> 00:01:25,320
+scores that are greater
+than 20 and less than 90?
+
+42
+00:01:25,320 --> 00:01:28,000
+So it's pretty similar to
+what we did in the class.
+
+43
+00:01:28,000 --> 00:01:30,230
+And you can see
+here is the code.
+
+44
+00:01:30,230 --> 00:01:31,960
+And here is the X's.
+
+45
+00:01:31,960 --> 00:01:33,390
+So here is the missing code.
+
+46
+00:01:33,390 --> 00:01:34,610
+And you're going to
+need to figure out what
+
+47
+00:01:34,610 --> 00:01:35,960
+that line of code would be.
+
+48
+00:01:35,960 --> 00:01:38,050
+And here are the choices.

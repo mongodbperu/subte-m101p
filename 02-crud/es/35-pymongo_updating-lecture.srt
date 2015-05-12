@@ -1,823 +1,820 @@
 1
-00:00:00,000 --> 00:00:00,140
+00:00:00,000 --> 00:00:00,110
 
 2
-00:00:00,140 --> 00:00:00,400
-Bien.
+00:00:00,110 --> 00:00:01,829
+Now that we know how
+to insert some data,
 
 3
-00:00:00,400 --> 00:00:03,930
-Ahora vamos a hablar acerca de la
-actualización de datos en PyMongo.
+00:00:01,829 --> 00:00:03,870
+we need to figure out how
+we can update it inside
 
 4
-00:00:03,930 --> 00:00:07,010
-Hay varias maneras de hacerlo.
+00:00:03,870 --> 00:00:05,480
+of the database.
 
 5
-00:00:07,010 --> 00:00:09,550
-Una es usando el comando
-"save", que es un
+00:00:05,480 --> 00:00:07,990
+There are two different
+function calls inside PyMongo
 
 6
-00:00:09,550 --> 00:00:11,730
-método útil que combina
+00:00:07,990 --> 00:00:10,050
+that you're going
+to use to do this.
 
 7
-00:00:11,730 --> 00:00:13,860
-inserción y actualización.
+00:00:10,050 --> 00:00:13,067
+One is update_one, and
+the other is update_many.
 
 8
-00:00:13,860 --> 00:00:16,890
-Si hay un "_id" establecido,
-asume que es una actualización.
+00:00:13,067 --> 00:00:14,650
+There's another call
+I'm going to talk
 
 9
-00:00:16,890 --> 00:00:20,450
-Pero si no hay un "_id"
-establecido cuando llamas
+00:00:14,650 --> 00:00:16,850
+about in another
+lesson, called replace.
 
 10
-00:00:20,450 --> 00:00:23,400
-a "save", entonces asume
-que es una inserción.
+00:00:16,850 --> 00:00:19,260
+But for now, let's
+talk about updating,
 
 11
-00:00:23,400 --> 00:00:25,390
-Y otra manera es hacer una
-actualización completa.
+00:00:19,260 --> 00:00:23,310
+which updates a document
+in place in the database.
 
 12
-00:00:25,390 --> 00:00:27,390
-Hemos visto esto
-en el shell Mongo.
+00:00:23,310 --> 00:00:25,430
+There are two
+different parameters
 
 13
-00:00:27,390 --> 00:00:29,780
-Esto es donde tú identificas
-qué documento deseas
+00:00:25,430 --> 00:00:27,560
+that you're going to
+need to remember to use.
 
 14
-00:00:29,780 --> 00:00:32,170
-actualizar y luego estableces el
+00:00:27,560 --> 00:00:30,000
+One is the filter,
+which filters out which
 
 15
-00:00:32,170 --> 00:00:34,570
-documento completo
-con el nuevo valor.
+00:00:30,000 --> 00:00:33,160
+documents you want to update.
 
 16
-00:00:34,570 --> 00:00:37,710
-Finalmente, puedes hacer una
-actualización selectiva usando
+00:00:33,160 --> 00:00:35,770
+The other is an
+update statement.
 
 17
-00:00:37,710 --> 00:00:39,010
-un montón de modificadores.
+00:00:35,770 --> 00:00:38,965
+And the update statement has
+to have some sort of operator,
 
 18
-00:00:39,010 --> 00:00:40,790
-Y en esta pequeña
-lección, vamos a
+00:00:38,965 --> 00:00:43,100
+a dollar operator, such as $set,
+that tells the database how you
 
 19
-00:00:40,790 --> 00:00:42,940
-enfocarnos en el modificador "$set".
+00:00:43,100 --> 00:00:45,760
+want to manipulate the
+document, and what field you
 
 20
-00:00:42,940 --> 00:00:45,040
-Por ello hablemos acerca
-de la pequeña colección
+00:00:45,760 --> 00:00:47,840
+want to change.
 
 21
-00:00:45,040 --> 00:00:46,060
-"scores" que hemos estado usando.
+00:00:47,840 --> 00:00:49,860
+As a reminder,
+both of these calls
 
 22
-00:00:46,060 --> 00:00:49,040
-Te voy a mostrar un
-programa que escribí que
+00:00:49,860 --> 00:00:54,020
+map to the same underlying call
+inside of the database, which
 
 23
-00:00:49,040 --> 00:00:50,390
-ve la colección "scores"
-y hace algunas
+00:00:54,020 --> 00:00:55,640
+is the update command.
 
 24
-00:00:50,390 --> 00:00:51,920
-modificaciones a la misma.
+00:00:55,640 --> 00:00:58,190
+And if you remember,
+inside the Mongo shell,
 
 25
-00:00:51,920 --> 00:00:54,840
-Así que esto es lo que quiero
-hacer con la colección "scores".
+00:00:58,190 --> 00:01:00,340
+there isn't an update_one
+and an update_many,
 
 26
-00:00:54,840 --> 00:00:58,220
-Deseo añadir un "review_date"
+00:01:00,340 --> 00:01:02,280
+there's just an update command.
 
 27
-00:00:58,220 --> 00:01:00,520
-y quiero hacerlo de
-tres diferentes maneras.
+00:01:02,280 --> 00:01:05,170
+And I'm going to show you how
+we can understand this better
 
 28
-00:01:00,520 --> 00:01:03,100
-En primer lugar, vamos a hacerlo
-usando "save" y te mostraré cómo
+00:01:05,170 --> 00:01:07,410
+by showing you some of
+the PyMongo source code,
 
 29
-00:01:03,100 --> 00:01:04,150
-funciona.
+00:01:07,410 --> 00:01:08,550
+at the end of this lesson.
 
 30
-00:01:04,150 --> 00:01:06,920
-Así que lo que voy a hacer es
-que voy a encontrar un documento
+00:01:08,550 --> 00:01:09,050
+All right.
 
 31
-00:01:06,920 --> 00:01:08,890
-donde "student_id" es "1"
-y "type" es "homework".
+00:01:09,050 --> 00:01:11,460
+So now that we have update_one
+and update_many, let's
 
 32
-00:01:08,890 --> 00:01:11,160
-Voy a obtener ese
-documento y voy a ponerlo
+00:01:11,460 --> 00:01:14,030
+look at those in
+a small program.
 
 33
-00:01:11,160 --> 00:01:13,020
-en una variable "score".
+00:01:14,030 --> 00:01:16,170
+We're going to return now
+to the score collection
 
 34
-00:01:13,020 --> 00:01:17,020
-Luego voy a usar Python para
-establecer un "review_date"
+00:01:16,170 --> 00:01:18,420
+that we used in some of
+the earlier lessons, which
 
 35
-00:01:17,020 --> 00:01:20,200
-en el diccionario que
-viene del "find_one".
+00:01:18,420 --> 00:01:19,731
+is in the school database.
 
 36
-00:01:20,200 --> 00:01:22,550
-Así que lo establezco, y ahora
-en realidad estoy llamando a
+00:01:19,731 --> 00:01:21,230
+And if you remember,
+there's a bunch
 
 37
-00:01:22,550 --> 00:01:24,900
-"datetime.datetime.utcnow".
+00:01:21,230 --> 00:01:23,190
+of documents in
+this collection that
 
 38
-00:01:24,900 --> 00:01:27,210
-He importado "datetime" en la
-parte superior de este archivo.
+00:01:23,190 --> 00:01:27,670
+look like this, with a
+student ID, a type-- like exam
 
 39
-00:01:27,210 --> 00:01:28,720
-No te he mostrado esto antes,
-pero eso es cómo obtienes
+00:01:27,670 --> 00:01:29,670
+or homework-- and a score.
 
 40
-00:01:28,720 --> 00:01:32,230
-una fecha que va a
-ser un ISODate de BSON
+00:01:29,670 --> 00:01:31,630
+And I just showed one
+of these documents,
 
 41
-00:01:32,230 --> 00:01:33,830
-en MongoDB.
+00:01:31,630 --> 00:01:34,290
+but there's a bunch of these
+documents in the collection.
 
 42
-00:01:33,830 --> 00:01:35,690
-Así que es una buena
-función para conocer.
+00:01:34,290 --> 00:01:36,940
+So now we're going to
+add a reviewer to that.
 
 43
-00:01:35,690 --> 00:01:39,160
-Entonces voy a actualizar
-el registro con el
+00:01:36,940 --> 00:01:38,320
+Let's look at this
+program, which
 
 44
-00:01:39,160 --> 00:01:41,440
-método "save".
+00:01:38,320 --> 00:01:41,380
+is going to update a single
+document inside the scores
 
 45
-00:01:41,440 --> 00:01:43,350
-Así que estoy
-llamando a "save".
+00:01:41,380 --> 00:01:42,330
+collection.
 
 46
-00:01:43,350 --> 00:01:47,970
-Y lo que esperas que haga, ¿bien?,
-y lo que esperas que haga--
+00:01:42,330 --> 00:01:45,440
+Now there's a function here, add
+review date using update_one,
 
 47
-00:01:47,970 --> 00:01:51,780
-pues esto va a ser un
-campo "_id" de este
+00:01:45,440 --> 00:01:47,090
+which is going to
+take a student ID,
 
 48
-00:01:51,780 --> 00:01:54,910
-"find_one". Realizará
-un reemplazo completo de
+00:01:47,090 --> 00:01:50,590
+and then it's going to retrieve
+the document for that student
 
 49
-00:01:54,910 --> 00:01:58,380
-todo excepto del ID
-mismo, que es "_id",
+00:01:50,590 --> 00:01:54,390
+ID of type homework only
+from the scores collection
 
 50
-00:01:58,380 --> 00:02:00,840
-ya que es inmutable en Mongo.
+00:01:54,390 --> 00:01:55,390
+right here.
 
 51
-00:02:00,840 --> 00:02:03,110
-Y voy a hacer un "find_one"
-para encontrar el mismo
+00:01:55,390 --> 00:01:56,930
+And then after it
+does that, it's
 
 52
-00:02:03,110 --> 00:02:05,240
-registro y voy a imprimirlo.
+00:01:56,930 --> 00:01:58,870
+going to retrieve
+the underscore ID.
 
 53
-00:02:05,240 --> 00:02:07,160
-Y te mostrará eso.
+00:01:58,870 --> 00:02:01,370
+And it's going to do this to
+make sure that this update hits
 
 54
-00:02:07,160 --> 00:02:07,810
-¿De acuerdo?
+00:02:01,370 --> 00:02:02,540
+exactly one document.
 
 55
-00:02:07,810 --> 00:02:10,620
-Esa es la manera de llevar a cabo
-la adición de un "review_date"
+00:02:02,540 --> 00:02:05,400
+We know that underscore ID is
+unique within the collection,
 
 56
-00:02:10,620 --> 00:02:12,990
-al documento.
+00:02:05,400 --> 00:02:09,250
+so we know that if we update
+one with an underscore ID set,
 
 57
-00:02:12,990 --> 00:02:15,700
-Eso es con el comando "save".
+00:02:09,250 --> 00:02:11,084
+that we're always going
+to get one document.
 
 58
-00:02:15,700 --> 00:02:18,240
-Pero veamos, hay otra
-manera de hacerlo, que es
+00:02:11,084 --> 00:02:13,666
+And we're going to set it equal
+to the record ID that came out
 
 59
-00:02:18,240 --> 00:02:19,810
-usando un tradicional "update".
+00:02:13,666 --> 00:02:14,920
+of the record we just found.
 
 60
-00:02:19,810 --> 00:02:23,370
-Para hacer eso,
-es muy similar.
+00:02:14,920 --> 00:02:17,206
+And then after that,
+we're going to update it
 
 61
-00:02:23,370 --> 00:02:26,790
-Vamos a llamar a
-"score = scores.find_one".
+00:02:17,206 --> 00:02:18,370
+in the following way.
 
 62
-00:02:26,790 --> 00:02:30,580
-Encuentra la tarea con
-"student_id" igual a "1".
+00:02:18,370 --> 00:02:21,600
+We're going to set--
+$set-- the review date
 
 63
-00:02:30,580 --> 00:02:35,760
-Y luego, otra vez, vamos a
-establecer un "review_date".
+00:02:21,600 --> 00:02:23,600
+to the current date time.
 
 64
-00:02:35,760 --> 00:02:38,060
-Pero ahora, en lugar
-de llamar a "save",
+00:02:23,600 --> 00:02:25,950
+Now you'll notice here
+that this is a document,
 
 65
-00:02:38,060 --> 00:02:39,270
-llamaremos a "update".
+00:02:25,950 --> 00:02:28,450
+and that dollar set
+is the operator.
 
 66
-00:02:39,270 --> 00:02:41,290
-Vamos a llamar a "update";
-vamos a especificar
+00:02:28,450 --> 00:02:32,680
+And then the value for this
+$set is the review date,
 
 67
-00:02:41,290 --> 00:02:43,230
-nuestro criterio que
-vamos a buscar por este
+00:02:32,680 --> 00:02:33,810
+and what you want it to be.
 
 68
-00:02:43,230 --> 00:02:44,830
-registro de aquí.
+00:02:33,810 --> 00:02:37,310
+So essentially the final
+state of that key value pair.
 
 69
-00:02:44,830 --> 00:02:46,790
-Y luego que--
+00:02:37,310 --> 00:02:39,680
+And then it turns
+out that update_one
 
 70
-00:02:46,790 --> 00:02:48,280
-justo aquí, este registro--
+00:02:39,680 --> 00:02:42,460
+returns a number of matched,
+so we can print it out,
 
 71
-00:02:48,280 --> 00:02:51,840
-y luego vamos a establecer
-el documento a
+00:02:42,460 --> 00:02:43,270
+result.matchcount.
 
 72
-00:02:51,840 --> 00:02:54,630
-lo que está en el diccionario
-"score" de aquí, que es
+00:02:43,270 --> 00:02:46,530
+And you can see that if you look
+in the PyMongo documentation.
 
 73
-00:02:54,630 --> 00:02:56,360
-todo lo que obtuve antes.
+00:02:46,530 --> 00:02:48,880
+Then, we're just going to
+find the document that we just
 
 74
-00:02:56,360 --> 00:02:58,800
-Ahora bien, si has pensado en esto
-con cuidado, te darás cuenta
+00:02:48,880 --> 00:02:50,838
+updated, and we're going
+to print it out again,
 
 75
-00:02:58,800 --> 00:03:03,700
-que en realidad hay un
-"_id" en este diccionario.
+00:02:50,838 --> 00:02:53,400
+just so that we know that
+we updated it properly.
 
 76
-00:03:03,700 --> 00:03:06,130
-Y por lo que parece, estoy
-intentando actualizar el
+00:02:53,400 --> 00:02:56,340
+So let's run that
+and see what happens.
 
 77
-00:03:06,130 --> 00:03:11,170
-"_id", pero para Mongo está
-bien que intentes hacer eso,
+00:02:56,340 --> 00:02:58,630
+Let's make sure we're calling
+the right function here.
 
 78
-00:03:11,170 --> 00:03:14,560
-siempre y cuando el "_id"
-que pones aquí es el mismo
+00:02:58,630 --> 00:03:00,100
+Add review date
+using update one.
 
 79
-00:03:14,560 --> 00:03:17,050
-que existe en el documento.
+00:03:00,100 --> 00:03:01,420
+There's actually two
+functions in this file,
 
 80
-00:03:17,050 --> 00:03:19,740
-Y ése es el mismo, por lo
-que no producirá un error.
+00:03:01,420 --> 00:03:03,670
+but we're only going to look
+at one of them right now.
 
 81
-00:03:19,740 --> 00:03:22,230
-Si intentases establecer
-un "_id" que fuese
+00:03:03,670 --> 00:03:07,400
+And now we're going to run
+[? it to ?] a terminal python
 
 82
-00:03:22,230 --> 00:03:26,520
-distinto al de este documento,
-entonces causaría un error.
+00:03:07,400 --> 00:03:09,070
+using_update.
 
 83
-00:03:26,520 --> 00:03:28,190
-Y después de eso vamos a
-encontrarlo, y ver si hemos
+00:03:09,070 --> 00:03:09,860
+All right.
 
 84
-00:03:28,190 --> 00:03:32,240
-añadido satisfactoriamente un
-"review_date" a dicho documento.
+00:03:09,860 --> 00:03:11,000
+So what happens?
 
 85
-00:03:32,240 --> 00:03:37,650
-Luego, la última forma de
-hacer esto es usando "$set".
+00:03:11,000 --> 00:03:12,970
+Well, it gets the
+document here--
 
 86
-00:03:37,650 --> 00:03:41,110
-Ahora usar "$set" es más
-eficiente en el sentido que
+00:03:12,970 --> 00:03:15,340
+this is the document
+that it pulls out--
 
 87
-00:03:41,110 --> 00:03:44,360
-sólo vamos a actualizar una
-pequeña parte del documento,
+00:03:15,340 --> 00:03:17,560
+and you can see that
+it has a student ID 1,
 
 88
-00:03:44,360 --> 00:03:46,070
-en lugar de escribir
-todo el documento.
+00:03:17,560 --> 00:03:20,990
+which is what we specified, and
+there's no review date on it.
 
 89
-00:03:46,070 --> 00:03:48,450
-Estos documentos son muy
-pequeños y realmente no
+00:03:20,990 --> 00:03:22,970
+And then after
+the update one, it
 
 90
-00:03:48,450 --> 00:03:51,310
-importa si escribo todo el
-documento o si escribo una
+00:03:22,970 --> 00:03:25,420
+has a review date right here.
 
 91
-00:03:51,310 --> 00:03:52,270
-pequeña parte de él.
+00:03:25,420 --> 00:03:27,950
+So that worked properly,
+no problem there.
 
 92
-00:03:52,270 --> 00:03:54,430
-Pero si el documento fuera
-muy grande, no desearías
+00:03:27,950 --> 00:03:31,170
+Now let's update a
+bunch of documents.
 
 93
-00:03:54,430 --> 00:03:57,070
-escribir todo el documento
-cuando podrías sólo escribir
+00:03:31,170 --> 00:03:34,430
+To do that, we're going to
+change this program slightly.
 
 94
-00:03:57,070 --> 00:03:58,190
-una pequeña parte de él.
+00:03:34,430 --> 00:03:36,570
+Instead of calling this
+function right here,
 
 95
-00:03:58,190 --> 00:04:00,130
-Así que veamos cómo se hace eso.
+00:03:36,570 --> 00:03:39,110
+which is the add review
+date using update_one,
 
 96
-00:04:00,130 --> 00:04:02,370
-Bueno, si vas a usar "$set" para
-hacer esto, una vez más, haces un
+00:03:39,110 --> 00:03:42,300
+we're going to use this one
+right here, which adds review
 
 97
-00:04:02,370 --> 00:04:07,430
-"find_one" para encontrar el
-documento donde "student_id" es 1.
+00:03:42,300 --> 00:03:45,130
+date for all of the documents.
 
 98
-00:04:07,430 --> 00:04:10,850
-A continuación vamos a usar
-"update" otra vez, pero esta vez
+00:03:45,130 --> 00:03:46,984
+And it does this
+using update_many.
 
 99
-00:04:10,850 --> 00:04:13,690
-vamos a usar el operador "$set".
+00:03:46,984 --> 00:03:48,400
+The filter is
+empty, so it's going
 
 100
-00:04:13,690 --> 00:04:15,390
-Por ello el criterio es el mismo.
+00:03:48,400 --> 00:03:49,608
+to hit every single document.
 
 101
-00:04:15,390 --> 00:04:18,060
-Vamos a encontrar el documento
-con "student_id" "1",
+00:03:49,608 --> 00:03:51,540
+It's going to print out
+the number it matched,
 
 102
-00:04:18,060 --> 00:04:19,190
-"type" "homework".
+00:03:51,540 --> 00:03:53,060
+and it's not going to print
+out the final documents
 
 103
-00:04:19,190 --> 00:04:20,640
-Pero ahora estamos usando "$set".
+00:03:53,060 --> 00:03:54,940
+in this case, because
+there's a lot of them.
 
 104
-00:04:20,640 --> 00:04:23,410
-Y nota las comillas simples
-alrededor de '$set'.
+00:03:54,940 --> 00:03:57,520
+So let's change the function.
 
 105
-00:04:23,410 --> 00:04:28,600
-Vamos a establecer "review_date"
-igual a "utcnow".
-
-106
-00:04:28,600 --> 00:04:32,140
-Y luego, una vez más, vamos
-a encontrar el registro y
-
-107
-00:04:32,140 --> 00:04:34,380
-vamos a imprimirlo.
-
-108
-00:04:34,380 --> 00:04:39,630
-Así que tengo este programa para ser
-ejecutado de tres distintas maneras,
-
-109
-00:04:39,630 --> 00:04:41,970
-usando "save", usando
-"update", usando "$set".
-
-110
-00:04:41,970 --> 00:04:43,680
-Y luego estaba esta
-pequeña función--
-
-111
-00:04:43,680 --> 00:04:46,010
-hay otra función
-que escribí llamada
-
-112
-00:04:46,010 --> 00:04:47,290
-"remove_review_date".
-
-113
-00:04:47,290 --> 00:04:49,040
-Y eso sólo va a eliminar
-todos los "review_date" de
-
-114
-00:04:49,040 --> 00:04:49,475
-todos los registros.
-
-115
-00:04:49,475 --> 00:04:50,970
-Y te voy a mostrar
-cómo funciona.
-
-116
-00:04:50,970 --> 00:04:53,840
-En realidad demuestra
-el uso de "multi".
-
-117
-00:04:53,840 --> 00:04:56,280
-Así que te voy a enseñar eso.
-
-118
-00:04:56,280 --> 00:04:58,310
-Aquí está "remove_review_date".
-
-119
-00:04:58,310 --> 00:05:00,640
-Otra vez, vamos a obtener una
-variable para la base de datos
-
-120
-00:05:00,640 --> 00:05:05,440
-y luego vamos a llamar a
-"score.update", todos los
-
-121
-00:05:05,440 --> 00:05:08,265
-documentos, "$unset",
-"review_date", "multi=true".
-
-122
-00:05:08,265 --> 00:05:10,950
-
-123
-00:05:10,950 --> 00:05:14,740
-Ésta es una sintaxis un poco
-distinta a la que hacemos
-
-124
-00:05:14,740 --> 00:05:15,770
-en el shell mongo.
-
-125
-00:05:15,770 --> 00:05:18,050
-Es un parámetro con nombre aquí.
-
-126
-00:05:18,050 --> 00:05:20,950
-Si recuerdas, en el
-shell mongo, es el cuarto
-
-127
-00:05:20,950 --> 00:05:22,490
-argumento para el "update".
-
-128
-00:05:22,490 --> 00:05:24,570
-El tercero se trata de
-"upsert" y el cuarto es
-
-129
-00:05:24,570 --> 00:05:26,710
-cuando es un "multi-update".
-
-130
-00:05:26,710 --> 00:05:29,230
-Así que esto es sólo para eliminar
-los "review_date" de todos los
-
-131
-00:05:29,230 --> 00:05:31,910
-registros, todos los documentos,
-para asegurar que esté limpio.
-
-132
-00:05:31,910 --> 00:05:32,390
-Muy bien.
-
-133
-00:05:32,390 --> 00:05:36,080
-Ejecutémoslo y
-veamos qué ocurre.
-
-134
-00:05:36,080 --> 00:05:36,900
+00:03:57,520 --> 00:03:58,620
 OK.
 
+106
+00:03:58,620 --> 00:04:01,500
+Now let's go and watch it work.
+
+107
+00:04:01,500 --> 00:04:02,480
+There we go.
+
+108
+00:04:02,480 --> 00:04:05,410
+It updated using update_one
+and set, and in this case
+
+109
+00:04:05,410 --> 00:04:06,910
+it matched 300 documents.
+
+110
+00:04:06,910 --> 00:04:09,650
+And if we go inside
+the Mongo shell
+
+111
+00:04:09,650 --> 00:04:12,710
+and we find some documents,
+we should see that they all
+
+112
+00:04:12,710 --> 00:04:14,160
+have review dates, and they do.
+
+113
+00:04:14,160 --> 00:04:16,540
+So it updated all the documents.
+
+114
+00:04:16,540 --> 00:04:19,899
+As I said to you before,
+update_one and update both use
+
+115
+00:04:19,899 --> 00:04:22,000
+the same underlying
+command at the database.
+
+116
+00:04:22,000 --> 00:04:23,000
+How would you know that?
+
+117
+00:04:23,000 --> 00:04:25,333
+Well, you couldn't look inside
+the PyMongo documentation
+
+118
+00:04:25,333 --> 00:04:27,510
+to find that out, because
+that wouldn't tell you.
+
+119
+00:04:27,510 --> 00:04:29,343
+But if you were curious
+about how it worked,
+
+120
+00:04:29,343 --> 00:04:31,920
+you could go into the actual
+source code for PyMongo.
+
+121
+00:04:31,920 --> 00:04:34,480
+I'm going to show you how to
+navigate that real quickly.
+
+122
+00:04:34,480 --> 00:04:38,030
+Right here, I've gone to GitHub
+at www.github.com/mongodb.
+
+123
+00:04:38,030 --> 00:04:39,780
+And I'm just going
+to type Python
+
+124
+00:04:39,780 --> 00:04:42,380
+into the query to find
+the Python driver project.
+
+125
+00:04:42,380 --> 00:04:43,830
+There it is.
+
+126
+00:04:43,830 --> 00:04:45,590
+I'm going to enter it.
+
+127
+00:04:45,590 --> 00:04:50,570
+So I want to find the 3.0
+branch, because, in this case,
+
+128
+00:04:50,570 --> 00:04:51,850
+we're not on master yet.
+
+129
+00:04:51,850 --> 00:04:54,500
+We're using this beta version.
+
+130
+00:04:54,500 --> 00:04:58,090
+And if I go in here
+and I look at PyMongo
+
+131
+00:04:58,090 --> 00:05:00,430
+and I look at everything
+in the collection class--
+
+132
+00:05:00,430 --> 00:05:01,360
+and we know all
+of these functions
+
+133
+00:05:01,360 --> 00:05:02,500
+were all in the
+collection class,
+
+134
+00:05:02,500 --> 00:05:03,999
+so I'm just going
+to look in there--
+
 135
-00:05:36,900 --> 00:05:38,630
-Entonces, ¿qué pasó?
+00:05:03,999 --> 00:05:07,280
+and now I'm just going
+to search for update_one.
 
 136
-00:05:38,630 --> 00:05:41,030
-Bueno, esto eliminó
-todos los "review_date".
+00:05:07,280 --> 00:05:07,780
+All right.
 
 137
-00:05:41,030 --> 00:05:43,820
-Ahora va a intentar otro
-comando usando "save".
+00:05:07,780 --> 00:05:10,100
+There's update_one right here.
 
 138
-00:05:43,820 --> 00:05:47,100
-Antes, esto trae este
-documento, puedes ver que
+00:05:10,100 --> 00:05:13,440
+Update_one is a function that
+takes-- this self pointer is
 
 139
-00:05:47,100 --> 00:05:49,040
-no contiene un "review_date".
+00:05:13,440 --> 00:05:16,010
+just the way object-oriented
+programming works in Python,
 
 140
-00:05:49,040 --> 00:05:52,690
-Tiene un "score"
-de 21.995, etcétera.
+00:05:16,010 --> 00:05:17,926
+you can ignore that--
+the filter, which
 
 141
-00:05:52,690 --> 00:05:57,440
-Y luego, lo hago usando "save".
-Ahora va a obtener un
+00:05:17,926 --> 00:05:19,550
+was the query, and
+the update operator,
 
 142
-00:05:57,440 --> 00:05:58,490
-"review_date" con un "datetime".
+00:05:19,550 --> 00:05:22,200
+and an upsert parameter,
+which we haven't talked about.
 
 143
-00:05:58,490 --> 00:06:01,385
-Puedes ver la manera en
-que es mostrada en Python.
+00:05:22,200 --> 00:05:26,170
+And we can see that update_one
+is going to make a call to this
 
 144
-00:06:01,385 --> 00:06:04,150
-Se ve un poco diferente si
-lo haces en el shell mongo.
+00:05:26,170 --> 00:05:29,820
+_update function right here,
+with filter update, upsert,
 
 145
-00:06:04,150 --> 00:06:06,090
-Así que funcionó bien.
+00:05:29,820 --> 00:05:31,370
+and then false.
 
 146
-00:06:06,090 --> 00:06:08,910
-Luego, elimina todos los
-"review_date" otra vez.
+00:05:31,370 --> 00:05:34,210
+And if we look at
+update_many, right here,
 
 147
-00:06:08,910 --> 00:06:12,810
-Ahora, no usando "save", sino
-usando un "update" completo,
+00:05:34,210 --> 00:05:37,430
+we can see that it also
+makes a call to _update.
 
 148
-00:06:12,810 --> 00:06:16,290
-puedes ver que, otra vez, el
-"review_date" no está cuando
+00:05:37,430 --> 00:05:40,490
+The only difference is there's
+one more parameter tacked on,
 
 149
-00:06:16,290 --> 00:06:20,030
-primero accedo al documento,
-y está presente cuando hago el
+00:05:40,490 --> 00:05:43,550
+which is true, and
+that defaults to false.
 
 150
-00:06:20,030 --> 00:06:21,570
-segundo "find_one".
+00:05:43,550 --> 00:05:45,820
+That parameter, which is
+similar to the one you saw
 
 151
-00:06:21,570 --> 00:06:24,120
-Y puedes ver que el tiempo está
-cambiando, lo cual está bien.
+00:05:45,820 --> 00:05:49,380
+on the shell, controls whether
+the _update function will
 
 152
-00:06:24,120 --> 00:06:25,990
-Eso es lo que se esperaba,
-porque está ocurriendo una
+00:05:49,380 --> 00:05:51,300
+update many documents
+or just one document.
 
 153
-00:06:25,990 --> 00:06:27,660
-y otra vez. Estoy quitando
-los "review_date", y
+00:05:51,300 --> 00:05:53,180
+And you can see this
+is kind of complicated.
 
 154
-00:06:27,660 --> 00:06:29,190
-luego añado un nuevo "review_date".
+00:05:53,180 --> 00:05:55,950
+I mean, compared to having
+a nice simple function,
 
 155
-00:06:29,190 --> 00:06:32,260
-Y por último, usando un comando
-"$set", donde sólo estoy
+00:05:55,950 --> 00:05:57,530
+update_one or
+update_many, you'd have
 
 156
-00:06:32,260 --> 00:06:34,060
-estableciendo una clave.
+00:05:57,530 --> 00:05:59,280
+to understand the way
+this parameter works
 
 157
-00:06:34,060 --> 00:06:35,960
-Funciona exactamente de la misma forma.
+00:05:59,280 --> 00:06:00,430
+to know whether or not
+your update's going
 
 158
-00:06:35,960 --> 00:06:37,200
-Saco el documento.
+00:06:00,430 --> 00:06:01,540
+to update one or many.
 
 159
-00:06:37,200 --> 00:06:38,930
-Otra vez, el "review_date"
-está faltando porque ya lo he
+00:06:01,540 --> 00:06:03,920
+And again, this is the
+way the shell works
 
 160
-00:06:38,930 --> 00:06:39,710
-eliminado.
+00:06:03,920 --> 00:06:05,530
+and the way the
+drivers used to work.
 
 161
-00:06:39,710 --> 00:06:42,600
-Y después de eso, lo puse,
-y entonces puedes ver que la
+00:06:05,530 --> 00:06:08,260
+But now, we've deprecated
+those functions,
 
 162
-00:06:42,600 --> 00:06:43,490
-fecha ha sido establecida.
+00:06:08,260 --> 00:06:11,050
+and we recommend you use
+update_one and update_many.
 
 163
-00:06:43,490 --> 00:06:45,280
-Una vez más, la fecha es
-un poco distinta porque
+00:06:11,050 --> 00:06:11,800
+All right.
 
 164
-00:06:45,280 --> 00:06:48,170
-ha pasado algún tiempo
-entre las actualizaciones.
+00:06:11,800 --> 00:06:13,661
+Let's have a quiz.
 
 165
-00:06:48,170 --> 00:06:48,560
-Muy bien.
+00:06:13,661 --> 00:06:15,160
+In the following
+code fragment, what
 
 166
-00:06:48,560 --> 00:06:50,860
-Así que es hora
-para un cuestionario.
+00:06:15,160 --> 00:06:18,270
+is the Python expression
+in place of xxxx
 
 167
-00:06:50,860 --> 00:06:53,080
-Aquí está el cuestionario.
+00:06:18,270 --> 00:06:22,370
+to set a new key examiner to be
+Jones using the set operator?
 
 168
-00:06:53,080 --> 00:06:55,200
-En el siguiente fragmento de
-código, ¿cuál es la expresión en
+00:06:22,370 --> 00:06:24,512
+This is again the
+same scores collection
 
 169
-00:06:55,200 --> 00:06:58,870
-Python en lugar de "xxxx"
-para establecer una nueva clave
+00:06:24,512 --> 00:06:25,720
+that we've been using before.
 
 170
-00:06:58,870 --> 00:07:01,050
-"examiner" igual a "Jones"?
+00:06:25,720 --> 00:06:28,110
+So you can see there's
+an xxx missing here.
 
 171
-00:07:01,050 --> 00:07:03,140
-Por favor usa el operador "$set".
+00:06:28,110 --> 00:06:29,725
+We're calling
+update_one, and you
 
 172
-00:07:03,140 --> 00:07:06,720
-Y puedes ver que esto
-es muy similar al
+00:06:29,725 --> 00:06:31,558
+have to figure out what
+goes in right there.
 
 173
-00:07:06,720 --> 00:07:08,600
-código que te mostré.
-
-174
-00:07:08,600 --> 00:07:12,410
-Pero ahora, hay un "update" aquí,
-y hemos dejado en blanco lo que
-
-175
-00:07:12,410 --> 00:07:17,310
-necesitas poner aquí en
-Python para establecer la
-
-176
-00:07:17,310 --> 00:07:19,970
-clave "examiner" a "Jones".
-
-177
-00:07:19,970 --> 00:07:23,370
-Vas a poner eso aquí.
-
-178
-00:07:23,370 --> 00:07:24,620
-Y ésa es la pregunta.
-
-179
-00:07:24,620 --> 00:07:25,430
+00:06:31,558 --> 00:06:33,820
+And you should type
+it there below.

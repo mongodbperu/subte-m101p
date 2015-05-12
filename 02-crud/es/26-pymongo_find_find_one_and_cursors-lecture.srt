@@ -1,784 +1,1017 @@
 1
-00:00:00,000 --> 00:00:00,750
+00:00:00,000 --> 00:00:00,080
 
 2
-00:00:00,750 --> 00:00:02,990
-Soy Andrew Erlichson
-aquí de nuevo.
+00:00:00,080 --> 00:00:00,780
+All right.
 
 3
-00:00:02,990 --> 00:00:06,670
-Voy a llevarte por las 
-mismas operaciones CRUD que
+00:00:00,780 --> 00:00:02,550
+This is Andrew Erlichson again.
 
 4
-00:00:06,670 --> 00:00:07,400
-Richard te enseñó.
+00:00:02,550 --> 00:00:05,670
+You've just gone through the
+CRUD operations-- Creating,
 
 5
-00:00:07,400 --> 00:00:11,000
-Pero voy a mostrártelas
-usando Python y PyMongo
+00:00:05,670 --> 00:00:08,710
+Reading, Updating and Deleting
+data-- using the Mongo shell.
 
 6
-00:00:11,000 --> 00:00:13,030
-y luego estarás listo para
-la tarea de esta semana,
+00:00:08,710 --> 00:00:11,210
+And now I'm going to take you
+through those same operations,
 
 7
-00:00:13,030 --> 00:00:16,890
-con la que comenzamos a construir
-ese proyecto de blog del que
+00:00:11,210 --> 00:00:13,750
+but this time using PyMongo.
 
 8
-00:00:16,890 --> 00:00:18,270
-hablamos antes.
+00:00:13,750 --> 00:00:16,377
+And after that, I'll get you
+ready for this week's homework
 
 9
-00:00:18,270 --> 00:00:21,180
-Sólo para revisar rápidamente
-lo que vamos a hacer aquí.
+00:00:16,377 --> 00:00:18,710
+by teaching you a little bit
+more about the blog project
 
 10
-00:00:21,180 --> 00:00:23,660
-Ya has visto estas operaciones
-en el shell mongo y aprendiste los
+00:00:18,710 --> 00:00:20,720
+that we're going to be
+building in this course.
 
 11
-00:00:23,660 --> 00:00:27,730
-operadores para crear, leer,
-actualizar y borrar de Mongo.
+00:00:20,720 --> 00:00:23,130
+But first, let's review.
 
 12
-00:00:27,730 --> 00:00:30,610
-El shell mongo se comunica
-con mongod en BSON.
+00:00:23,130 --> 00:00:25,900
+You have MongoD-- and
+MongoD, of course,
 
 13
-00:00:30,610 --> 00:00:32,100
-Ahora vamos a hacer lo mismo en
+00:00:25,900 --> 00:00:28,040
+is the server that runs
+the database itself--
 
 14
-00:00:32,100 --> 00:00:34,080
-Python usando PyMongo.
+00:00:28,040 --> 00:00:30,160
+and you were working
+in the Mongo shell
 
 15
-00:00:34,080 --> 00:00:37,330
-PyMongo también se comunica
-en BSON con mongod.
+00:00:30,160 --> 00:00:31,710
+in the last few lessons.
 
 16
-00:00:37,330 --> 00:00:39,340
-Vamos a escribir algo de código aquí.
+00:00:31,710 --> 00:00:36,970
+The Mongo shell talks using
+BSON to MongoD to access data,
 
 17
-00:00:39,340 --> 00:00:41,880
-Así que para empezar, la primera
-cosa que tenemos que hacer
+00:00:36,970 --> 00:00:39,630
+to insert data, to
+update data, et cetera.
 
 18
-00:00:41,880 --> 00:00:44,410
-es cargar algunos datos
-en la base de datos.
+00:00:39,630 --> 00:00:42,710
+Now you're going to learn
+about doing it from PyMongo.
 
 19
-00:00:44,410 --> 00:00:47,773
-Esto es algo que ya
-tienes por tu parte
+00:00:42,710 --> 00:00:45,580
+You're going to write your
+application code in Python,
 
 20
-00:00:47,773 --> 00:00:50,000
-porque has visto las
-lecciones secuencialmente.
+00:00:45,580 --> 00:00:48,370
+and this Python is going
+to talk to the database
 
 21
-00:00:50,000 --> 00:00:52,330
-Pero no lo tengo en mi
-equipo, por lo que voy a
+00:00:48,370 --> 00:00:51,240
+through PyMongo, which is
+a Python library, to allow
 
 22
-00:00:52,330 --> 00:00:53,430
-hacerlo rápidamente.
+00:00:51,240 --> 00:00:52,730
+you to access the database.
 
 23
-00:00:53,430 --> 00:00:57,040
-Éste es un programa JavaScript
-que voy a conectar
+00:00:52,730 --> 00:00:55,450
+And PyMongo talks to the
+database server using
 
 24
-00:00:57,040 --> 00:00:58,570
-al shell Mongo.
+00:00:55,450 --> 00:00:57,810
+BSON using the wire protocol.
 
 25
-00:00:58,570 --> 00:01:01,960
-Simplemente va a crear 100
-estudiantes y tres
+00:00:57,810 --> 00:00:59,360
+So let's get started.
 
 26
-00:01:01,960 --> 00:01:04,030
-tipos diferentes de evaluaciones
-para ellos, "exam", "homework"
+00:00:59,360 --> 00:01:01,660
+Now if you've been following
+these lesson sequentially,
 
 27
-00:01:04,030 --> 00:01:06,460
-y "quiz", y asignarles 
-aleatoriamente algunas
+00:01:01,660 --> 00:01:05,252
+you probably already have this
+grade data in your database.
 
 28
-00:01:06,460 --> 00:01:09,060
-puntuaciones.
+00:01:05,252 --> 00:01:06,710
+But I don't have
+it on my computer,
 
 29
-00:01:09,060 --> 00:01:10,310
-Hagámoslo juntos.
+00:01:06,710 --> 00:01:08,630
+so I'm going to put
+it back on there.
 
 30
-00:01:10,310 --> 00:01:14,800
+00:01:08,630 --> 00:01:10,350
+And to do that, I
+have this program
 
 31
-00:01:14,800 --> 00:01:20,330
-Ejecutaré Mongo y redireccionaré
-la entrada estándar al fichero.
+00:01:10,350 --> 00:01:12,930
+create student
+collection data.js.
 
 32
-00:01:20,330 --> 00:01:22,540
-Esto es algo que probablemente
-sea bastante familiar
+00:01:12,930 --> 00:01:14,610
+This is JavaScript
+that I'm going
 
 33
-00:01:22,540 --> 00:01:25,400
-para cualquiera del
-mundo Mac o Unix.
+00:01:14,610 --> 00:01:16,250
+to import into the Mongo shell.
 
 34
-00:01:25,400 --> 00:01:26,590
-Así que haremos eso.
+00:01:16,250 --> 00:01:18,230
+I'm going to redirect
+it into the Mongo shell.
 
 35
-00:01:26,590 --> 00:01:28,260
-Y volveremos a la salida estándar.
+00:01:18,230 --> 00:01:19,740
+And this is a very
+simple program,
 
 36
-00:01:28,260 --> 00:01:30,840
-Se conectó a la versión 2.2
-de la base de datos,
+00:01:19,740 --> 00:01:21,470
+it just uses school database.
 
 37
-00:01:30,840 --> 00:01:32,990
-cambió a la base de datos
-"school" y luego nos dijo
+00:01:21,470 --> 00:01:23,410
+It drops the scores collection.
 
 38
-00:01:32,990 --> 00:01:34,210
-adiós.
+00:01:23,410 --> 00:01:26,870
+And then for the type of
+exam, homework and quiz,
 
 39
-00:01:34,210 --> 00:01:36,320
-Confirmemos que los datos están ahí.
+00:01:26,870 --> 00:01:30,250
+and for 100 students,
+it puts in one document
 
 40
-00:01:36,320 --> 00:01:39,710
-Y hagamos "use school" y
-luego "db.scores.find()".
+00:01:30,250 --> 00:01:31,837
+per student for each type.
 
 41
-00:01:39,710 --> 00:01:42,470
+00:01:31,837 --> 00:01:33,920
+So for a student, there'll
+be an exam, a homework,
 
 42
-00:01:42,470 --> 00:01:45,650
-Y hay datos justo aquí.
+00:01:33,920 --> 00:01:36,680
+and a quiz with a score
+that's been randomized--
 
 43
-00:01:45,650 --> 00:01:48,880
-Luego los imprimiremos
-de forma elegante.
+00:01:36,680 --> 00:01:39,090
+it's wrapping here, but this
+is just a random number.
 
 44
-00:01:48,880 --> 00:01:50,060
-Podemos ver que aquí están.
+00:01:39,090 --> 00:01:41,060
+And it inserts it
+into the database.
 
 45
-00:01:50,060 --> 00:01:53,180
-Un conjunto de estudiantes y
-cada estudiante tiene un
+00:01:41,060 --> 00:01:42,340
+So let's run that.
 
 46
-00:01:53,180 --> 00:01:56,450
-tipo diferente de nota, una nota
-en la tarea, una nota en el examen.
+00:01:42,340 --> 00:01:46,030
+I'm going to run that by
+calling Mongo and redirecting
 
 47
-00:01:56,450 --> 00:01:58,580
-Son algunos números aleatorios.
+00:01:46,030 --> 00:01:48,200
+the input from create
+student collection.js.
 
 48
-00:01:58,580 --> 00:02:01,940
-Dejamos que el driver
-asigne IDs a los objetos
+00:01:48,200 --> 00:01:51,400
+This is on a Unix box, so
+if you're familiar with Unix
 
 49
-00:02:01,940 --> 00:02:05,310
-y éstos son simplemente "ObjectIds"
-BSON para cada uno de ellos.
+00:01:51,400 --> 00:01:52,680
+you know how that works.
 
 50
-00:02:05,310 --> 00:02:06,930
-Así que comencemos.
+00:01:52,680 --> 00:01:55,150
+So if I do that, it
+runs successfully.
 
 51
-00:02:06,930 --> 00:02:11,220
-Vamos a enseñarte un pequeño
-fichero que escribí para hacer
+00:01:55,150 --> 00:01:55,650
+All right.
 
 52
-00:02:11,220 --> 00:02:12,850
-"find" y "find_one".
+00:01:55,650 --> 00:01:59,580
+And if I run Mongo and
+use the school database
 
 53
-00:02:12,850 --> 00:02:16,740
-Empecemos con el
-código para "find_one".
+00:01:59,580 --> 00:02:02,630
+and then look in the
+scores collection,
 
 54
-00:02:16,740 --> 00:02:18,150
-Éste es el inicio del fichero.
+00:02:02,630 --> 00:02:05,570
+I see a bunch of data,
+and each of the documents
 
 55
-00:02:18,150 --> 00:02:20,010
-"using_find.py".
+00:02:05,570 --> 00:02:09,270
+has a student ID, a type
+of either homework or exam
 
 56
-00:02:20,010 --> 00:02:22,740
-Sé que un montón de gente ha
-solicitado que se les envíe el
+00:02:09,270 --> 00:02:11,460
+or quiz, and a score.
 
 57
-00:02:22,740 --> 00:02:25,620
-código que estamos usando en las
-lecciones e intentaré hacerlo
+00:02:11,460 --> 00:02:14,110
+I'll print one out so
+it will print it pretty.
 
 58
-00:02:25,620 --> 00:02:27,600
-esta semana.
+00:02:14,110 --> 00:02:15,610
+And you can see
+what they look like.
 
 59
-00:02:27,600 --> 00:02:30,270
-Empezamos por importar PyMongo,
-importar "sys", hacer algún
+00:02:15,610 --> 00:02:16,900
+They look like this.
 
 60
-00:02:30,270 --> 00:02:34,060
-informe de errores y obtener
-una conexión a la base de datos
+00:02:16,900 --> 00:02:17,400
+All right.
 
 61
-00:02:34,060 --> 00:02:35,070
-en "localhost".
+00:02:17,400 --> 00:02:20,504
+So now we want to retrieve
+some of this data from Python.
 
 62
-00:02:35,070 --> 00:02:37,390
-"safe = True", para que las
-llamadas a "getLastError" nos
+00:02:20,504 --> 00:02:21,920
+So we've got a
+program to do that,
 
 63
-00:02:37,390 --> 00:02:41,300
-reporten cualquier error que 
-ocurra durante nuestras consultas.
+00:02:21,920 --> 00:02:25,390
+and I'm going to walk you
+through it line-by-line.
 
 64
-00:02:41,300 --> 00:02:44,340
-Nos conectamos a la base de
-datos "school" y luego a la
+00:02:25,390 --> 00:02:27,920
+This program is
+called using_find.py,
 
 65
-00:02:44,340 --> 00:02:46,790
-colección "scores" justo aquí.
+00:02:27,920 --> 00:02:30,610
+and I'll give you these programs
+so that you can download them
 
 66
-00:02:46,790 --> 00:02:49,060
-Y luego éste es el
-código "find_one".
+00:02:30,610 --> 00:02:32,735
+each week from the lesson
+if you'd like to run them
 
 67
-00:02:49,060 --> 00:02:51,110
-Volveremos al código 
-"find" en un segundo.
+00:02:32,735 --> 00:02:33,460
+yourself.
 
 68
-00:02:51,110 --> 00:02:54,560
-El código "find_one",
-configura una consulta.
+00:02:33,460 --> 00:02:35,930
+Now this program starts
+right at the top.
 
 69
-00:02:54,560 --> 00:02:58,470
-Prepara un diccionario con
-"student_id" igual a 10.
+00:02:35,930 --> 00:02:38,790
+This is a Python program, and
+this is running inside Emacs,
 
 70
-00:02:58,470 --> 00:03:00,360
-Algunas cosas a tener
-en cuenta sobre esto:
+00:02:38,790 --> 00:02:41,460
+but you can use whatever editor
+you want to edit your stuff.
 
 71
-00:03:00,360 --> 00:03:03,280
-Una es que 10 no tiene punto
-decimal y eso es porque queremos
+00:02:41,460 --> 00:02:44,244
+So I import PyMongo,
+and then I import sys.
 
 72
-00:03:03,280 --> 00:03:05,150
-que sea un entero en Python.
+00:02:44,244 --> 00:02:45,535
+I need both of these libraries.
 
 73
-00:03:05,150 --> 00:03:08,750
-La segunda es que 'student_id'
-está entre comillas simples.
+00:02:45,535 --> 00:02:47,060
+This is for the
+exception handling,
 
 74
-00:03:08,750 --> 00:03:11,190
-No necesitaría ser así en caso
-de estar en el shell mongo.
+00:02:47,060 --> 00:02:50,430
+and PyMongo is so that I
+can attach the database.
 
 75
-00:03:11,190 --> 00:03:12,430
-Sería opcional.
+00:02:50,430 --> 00:02:54,190
+Then I get a connection to the
+database by calling MongoClient
 
 76
-00:03:12,430 --> 00:03:15,060
-Pero en Python no es opcional.
+00:02:54,190 --> 00:02:56,620
+and assign it to the
+connection variable.
 
 77
-00:03:15,060 --> 00:03:16,870
-Un literal de tipo cadena 
-que sea clave en un
+00:02:56,620 --> 00:02:59,860
+My connection string
+is mongodb://localhost,
 
 78
-00:03:16,870 --> 00:03:18,400
-diccionario tiene que
-estar entre comillas.
+00:02:59,860 --> 00:03:03,100
+because the database is
+running on my local host.
 
 79
-00:03:18,400 --> 00:03:20,230
-Así que lo ponemos entre comillas.
+00:03:03,100 --> 00:03:06,100
+In another terminal window,
+I've started MongoD running.
 
 80
-00:03:20,230 --> 00:03:22,630
-Luego vamos a recuperar el documento.
+00:03:06,100 --> 00:03:08,680
+And now I need to connect
+to the scores collection.
 
 81
-00:03:22,630 --> 00:03:25,850
-Vamos a asignar el resultado
-a esta variable "doc".
+00:03:08,680 --> 00:03:11,810
+So to do that, first I get
+a connection to the school
 
 82
-00:03:25,850 --> 00:03:27,030
-Vamos a llamar a "scores"--
+00:03:11,810 --> 00:03:14,350
+database-- so db equals
+connection.school--
 
 83
-00:03:27,030 --> 00:03:28,720
-que es un manejador de la colección--
+00:03:14,350 --> 00:03:16,520
+and then I get a connection
+to the scores database,
 
 84
-00:03:28,720 --> 00:03:29,970
-".find_one(query)".
+00:03:16,520 --> 00:03:18,950
+and scores equals db.scores.
 
 85
-00:03:29,970 --> 00:03:31,810
+00:03:18,950 --> 00:03:21,650
+Now we're going to look
+at both find and find one.
 
 86
-00:03:31,810 --> 00:03:37,290
-Una cosa a tener en cuenta aquí es que
-la función para recuperar un único
+00:03:21,650 --> 00:03:24,770
+First let's look at find
+one, take you through there.
 
 87
-00:03:37,290 --> 00:03:40,910
-documento desde la base de datos 
-usando "findOne" es "find_one".
+00:03:24,770 --> 00:03:26,720
+So looking at the find
+one function, which
 
 88
-00:03:40,910 --> 00:03:45,730
-Si recuerdas en el shell mongo,
-era "findOne", todo en una
+00:03:26,720 --> 00:03:28,619
+I've written here,
+you can see what
 
 89
-00:03:45,730 --> 00:03:50,470
-palabra, con la "O" mayúscula.
-Ésa es una de las ventajas e
+00:03:28,619 --> 00:03:30,702
+it does is it prints that
+it's reporting for duty.
 
 90
-00:03:50,470 --> 00:03:52,770
-inconvenientes de
-los drivers en Mongo.
+00:03:30,702 --> 00:03:33,600
+Then it sets up a query
+as a Python dictionary.
 
 91
-00:03:52,770 --> 00:03:55,790
-La ventaja es que están
-escritos usando convenciones
+00:03:33,600 --> 00:03:35,960
+It says it's looking
+for the document which
 
 92
-00:03:55,790 --> 00:03:57,300
-propias para cada lenguaje.
+00:03:35,960 --> 00:03:38,430
+has a student ID of 10.
 
 93
-00:03:57,300 --> 00:04:00,320
-Por lo que si es normal usar
-guiones bajos en un lenguaje,
+00:03:38,430 --> 00:03:41,430
+Now a thing to note here
+is that Python dictionaries
 
 94
-00:04:00,320 --> 00:04:02,910
-entonces ésa es la forma en que se
-escribe el driver de forma que parezca
+00:03:41,430 --> 00:03:43,245
+require you to quote the key.
 
 95
-00:04:02,910 --> 00:04:05,140
-familiar a la gente que también
-conoce el lenguaje.
+00:03:43,245 --> 00:03:45,077
+This is not true
+in JavaScript, we
 
 96
-00:04:05,140 --> 00:04:08,230
-Como desventaja, los
-drivers varían un poco.
+00:03:45,077 --> 00:03:46,410
+wouldn't have had to quote this.
 
 97
-00:04:08,230 --> 00:04:11,220
-Por lo que podrías necesitar consultar
-la documentación del API para aprender
+00:03:46,410 --> 00:03:48,210
+But we do have to quote it here.
 
 98
-00:04:11,220 --> 00:04:15,370
-cómo hacer una cosa
-particular con tu driver.
+00:03:48,210 --> 00:03:51,770
+After that, we put the
+find_one in a try except block.
 
 99
-00:04:15,370 --> 00:04:17,750
-Esta excepción sólo
-se llama si algo falla.
+00:03:51,770 --> 00:03:54,990
+And since it's a find_one, it's
+not going to return a cursor,
 
 100
-00:04:17,750 --> 00:04:19,329
-No nos preocuparemos por eso.
+00:03:54,990 --> 00:03:57,620
+it's going to return
+a single document.
 
 101
-00:04:19,329 --> 00:04:21,410
-Luego imprime "doc" justo aquí.
+00:03:57,620 --> 00:04:02,700
+So I call find_one on the scores
+collection-- scores.findone--
 
 102
-00:04:21,410 --> 00:04:24,020
-Una de las grandes cosas
-de Python es que es muy
+00:04:02,700 --> 00:04:05,730
+find_one-- with the query.
 
 103
-00:04:24,020 --> 00:04:26,660
-flexible a la hora de
-imprimir objetos complejos.
+00:04:05,730 --> 00:04:09,790
+Now in the shell, it was
+find_one with a capital
 
 104
-00:04:26,660 --> 00:04:30,190
-Así que hagamos una llamada
-y veamos qué ocurre.
+00:04:09,790 --> 00:04:11,630
+O. It was camel cased.
 
 105
-00:04:30,190 --> 00:04:32,200
-Voy a volver a mi terminal.
+00:04:11,630 --> 00:04:14,700
+Here, it's find_one.
 
 106
-00:04:32,200 --> 00:04:34,820
-Todavía estoy en Mongo aquí así
-que simplemente voy a salir.
+00:04:14,700 --> 00:04:17,490
+Now each of the
+drivers names things
 
 107
-00:04:34,820 --> 00:04:39,110
-Ahora voy a ejecutar
-"python using_find.py"
+00:04:17,490 --> 00:04:19,897
+in a way that are idiomatic
+for the language itself.
 
 108
-00:04:39,110 --> 00:04:43,580
-y podemos ver que llama
-a "find_one" justo aquí--
+00:04:19,897 --> 00:04:21,730
+And in Python, it's
+much more typical to use
 
 109
-00:04:43,580 --> 00:04:44,730
-subo un poco la pantalla--
+00:04:21,730 --> 00:04:23,520
+underscores for function names.
 
 110
-00:04:44,730 --> 00:04:47,430
-llama a "find_one", que
-imprime "Reporting For Duty".
+00:04:23,520 --> 00:04:27,750
+So that's why it's named
+this way inside Python.
 
 111
-00:04:47,430 --> 00:04:50,960
-Luego imprime un documento
-que recuperó de la
+00:04:27,750 --> 00:04:29,950
+You're going to notice
+these types of differences
 
 112
-00:04:50,960 --> 00:04:55,440
-colección con "student_id" igual
-a 10 con un ObjectId BSON y
+00:04:29,950 --> 00:04:31,320
+throughout the drivers.
 
 113
-00:04:55,440 --> 00:04:57,120
-"type" igual a "exam".
+00:04:31,320 --> 00:04:35,600
+In addition, the drivers now
+implement a new specification
 
 114
-00:04:57,120 --> 00:05:00,080
-Notarás que lo ha impreso como
-un número en punto flotante.
+00:04:35,600 --> 00:04:39,040
+called the CRUD spec,
+which slightly changes
 
 115
-00:05:00,080 --> 00:05:02,080
-Creo que es una conversión automática
+00:04:39,040 --> 00:04:41,590
+the way you access
+data inside MongoDB
 
 116
-00:05:02,080 --> 00:05:03,980
-que ocurrió durante la
-conversión de la cadena.
+00:04:41,590 --> 00:04:43,550
+relative to what you'll
+see in the shell.
 
 117
-00:05:03,980 --> 00:05:07,730
-Pero en realidad no está
-claro que el punto flotante
+00:04:43,550 --> 00:04:47,060
+And this Python driver is
+one of the first drivers
 
 118
-00:05:07,730 --> 00:05:08,270
-viene de ahí.
+00:04:47,060 --> 00:04:49,267
+to conform to the CRUD spec.
 
 119
-00:05:08,270 --> 00:05:09,650
-Creo que fue convertido
-para la impresión.
+00:04:49,267 --> 00:04:50,850
+This is the beta
+version of the driver
 
 120
-00:05:09,650 --> 00:05:13,830
-Porque de hecho, es un
-entero en la base de datos.
+00:04:50,850 --> 00:04:53,224
+that, if you started it on
+the first day of class--
 
 121
-00:05:13,830 --> 00:05:16,210
-Si recuerdas, puedes
-verlos justo aquí.
+00:04:53,224 --> 00:04:54,890
+if you started a week
+later or if you're
 
 122
-00:05:16,210 --> 00:05:16,880
-Son enteros.
+00:04:54,890 --> 00:04:56,723
+a few weeks into the
+class, it's the release
 
 123
-00:05:16,880 --> 00:05:19,810
-No son números
-en punto flotante.
+00:04:56,723 --> 00:04:57,740
+version of a driver.
 
 124
-00:05:19,810 --> 00:05:21,400
-Así es como funciona "find_one".
+00:04:57,740 --> 00:04:59,770
+So this is the
+latest and greatest
 
 125
-00:05:21,400 --> 00:05:24,710
-Por lo que la siguiente pregunta es:
-¿cómo funciona "find"?
+00:04:59,770 --> 00:05:02,470
+interface to the
+database, so you're
 
 126
-00:05:24,710 --> 00:05:26,670
-"find", tal y como hablamos--
+00:05:02,470 --> 00:05:06,440
+seeing the most modern way of
+accessing data within MongoDB.
 
 127
-00:05:26,670 --> 00:05:29,720
-cambiemos nuestra función
-aquí para llamar a "find".
+00:05:06,440 --> 00:05:08,230
+So anyway, getting
+back to the program,
 
 128
-00:05:29,720 --> 00:05:31,710
-Hay otra función que escribimos.
+00:05:08,230 --> 00:05:10,640
+we assign the result to
+find one to a document,
 
 129
-00:05:31,710 --> 00:05:37,490
-Y "find" configura una consulta
-donde "type" es "exam".
+00:05:10,640 --> 00:05:11,850
+and then we print it out.
 
 130
-00:05:37,490 --> 00:05:42,130
-De nuevo, "type" está entre comillas,
-y "exam" está entre comillas.
+00:05:11,850 --> 00:05:13,060
+Pretty simple.
 
 131
-00:05:42,130 --> 00:05:49,730
-Ahora vamos a hacer "scores.find",
+00:05:13,060 --> 00:05:15,870
+And in order to make sure
+that we call find_one,
 
 132
-00:05:49,730 --> 00:05:51,850
-el nombre de la colección
-".find" y la consulta.
+00:05:15,870 --> 00:05:19,540
+I need to call-- this is
+my main loop, essentially,
 
 133
-00:05:51,850 --> 00:05:55,240
-Y eso nos va a devolver 
-en realidad un cursor.
+00:05:19,540 --> 00:05:21,510
+outside of any function
+inside Python--
 
 134
-00:05:55,240 --> 00:05:56,270
-No un iterador.
+00:05:21,510 --> 00:05:24,260
+I call the find_one function,
+which will invoke find_one.
 
 135
-00:05:56,270 --> 00:05:57,700
-No debería haberlo llamado así.
+00:05:24,260 --> 00:05:25,000
+All right.
 
 136
-00:05:57,700 --> 00:05:59,440
-Probablemente debería
-haberlo llamado "cursor".
+00:05:25,000 --> 00:05:29,280
+So let's now go into
+the regular Unix shell
 
 137
-00:05:59,440 --> 00:06:01,720
-Y puedo cambiarlo.
+00:05:29,280 --> 00:05:34,300
+and invoke Python
+interpreter on this program.
 
 138
-00:06:01,720 --> 00:06:03,550
-Así que nos devuelve un cursor.
+00:05:34,300 --> 00:05:36,140
+So we did that.
 
 139
-00:06:03,550 --> 00:06:10,060
-Luego justo aquí continuamos
-e iteramos sobre
+00:05:36,140 --> 00:05:37,830
+What happened is
+it printed exactly
 
 140
-00:06:10,060 --> 00:06:11,200
-ese cursor.
+00:05:37,830 --> 00:05:39,790
+as we expected-- find_one
+reporting for duty--
 
 141
-00:06:11,200 --> 00:06:15,050
-Y por cada documento en el cursor,
-simplemente imprimimos el documento.
+00:05:39,790 --> 00:05:41,880
+and then it printed
+the document.
 
 142
-00:06:15,050 --> 00:06:17,060
-No quiero imprimir cientos
-de cosas, por lo que sólo
+00:05:41,880 --> 00:05:44,630
+Now you'll remember
+that inside Python,
 
 143
-00:06:17,060 --> 00:06:17,740
-hago una pequeña comprobación.
+00:05:44,630 --> 00:05:47,964
+all we did is say print doc,
+and then by some miracle
 
 144
-00:06:17,740 --> 00:06:21,500
-Y una vez que imprime diez
-de ellos, sale del bucle.
+00:05:47,964 --> 00:05:49,880
+we got something that
+is essentially readable.
 
 145
-00:06:21,500 --> 00:06:24,750
-Por lo que pone "sanity"
-a cero y lo incrementa.
+00:05:49,880 --> 00:05:51,500
+One of the nice
+things about Python
 
 146
-00:06:24,750 --> 00:06:26,960
-Entonces, si es mayor que 10
-sale, simplemente para asegurar
+00:05:51,500 --> 00:05:54,190
+is it does a pretty good
+job printing complex objects
 
 147
-00:06:26,960 --> 00:06:29,220
-que no imprima demasiado
-en la pantalla.
+00:05:54,190 --> 00:05:55,530
+to the screen.
 
 148
-00:06:29,220 --> 00:06:31,660
-Vamos a ejecutarlo y
-ver qué ocurre.
+00:05:55,530 --> 00:05:58,180
+So you can see here that
+it prints one document.
 
 149
-00:06:31,660 --> 00:06:36,150
-Vamos a ejecutar
-"python using_find.py".
+00:05:58,180 --> 00:06:00,410
+We asked for the one where
+the student ID was 10,
 
 150
-00:06:36,150 --> 00:06:40,410
-Ahora puedes ver que en este 
-caso obtenemos un conjunto
+00:06:00,410 --> 00:06:01,760
+and we got that.
 
 151
-00:06:40,410 --> 00:06:44,580
-de documentos y los documentos 
-son todos de tipo "exam",
+00:06:01,760 --> 00:06:04,330
+Student ID 10, it
+has an underscore ID
 
 152
-00:06:44,580 --> 00:06:46,150
-porque eso es lo que consultamos.
+00:06:04,330 --> 00:06:07,890
+which is an object ID, and
+then the type of this record
 
 153
-00:06:46,150 --> 00:06:48,290
-Y vienen un conjunto de
-diferentes puntuaciones.
+00:06:07,890 --> 00:06:09,010
+was exam.
 
 154
-00:06:48,290 --> 00:06:51,950
-Así es como se usa
-el comando "find"
+00:06:09,010 --> 00:06:12,080
+That was arbitrary,
+since we didn't actually
 
 155
-00:06:51,950 --> 00:06:54,390
-y como se itera sobre un cursor.
+00:06:12,080 --> 00:06:15,270
+specify that inside the
+query which record we were
 
 156
-00:06:54,390 --> 00:06:57,820
-Ahora es momento para un cuestionario.
+00:06:15,270 --> 00:06:17,329
+going to get for the student.
 
 157
-00:06:57,820 --> 00:06:59,140
-Y aquí está el cuestionario.
+00:06:17,329 --> 00:06:19,870
+So we could have gotten a quiz,
+we could have gotten an exam,
 
 158
-00:06:59,140 --> 00:07:02,820
-Aquí hay un trozo de código
-que te debería ser familiar
+00:06:19,870 --> 00:06:21,840
+but we actually got an exam.
 
 159
-00:07:02,820 --> 00:07:04,690
-a partir de esta lección.
+00:06:21,840 --> 00:06:23,860
+And then the score itself.
 
 160
-00:07:04,690 --> 00:07:06,680
-Va a establecer una
-conexión a la base de datos
+00:06:23,860 --> 00:06:24,520
+That's it.
 
 161
-00:07:06,680 --> 00:07:09,330
-y va a obtener un manejador
-para la base de datos "school"
+00:06:24,520 --> 00:06:26,270
+That's all you need
+to do to pull data out
 
 162
-00:07:09,330 --> 00:07:10,790
-y la colección "scores".
+00:06:26,270 --> 00:06:29,280
+of MongoDB using Python.
 
 163
-00:07:10,790 --> 00:07:15,380
-Y luego va a hacer algo aquí.
+00:06:29,280 --> 00:06:30,120
+It's very easy.
 
 164
-00:07:15,380 --> 00:07:18,330
-Y a continuación va a imprimir
-el documento que recupera.
+00:06:30,120 --> 00:06:32,630
+Now you'll notice that
+the student ID is actually
 
 165
-00:07:18,330 --> 00:07:20,760
-Ahora, esto es una
-prueba de "find_one".
+00:06:32,630 --> 00:06:33,970
+a floating point number.
 
 166
-00:07:20,760 --> 00:07:22,930
-¿Cuál sería la línea de
-código por la que habría que
+00:06:33,970 --> 00:06:36,800
+That student ID is stored in
+the database as a floating point
 
 167
-00:07:22,930 --> 00:07:27,280
-reemplazar estas "XXX" para
-que pudiéramos poner el
+00:06:36,800 --> 00:06:40,340
+number because, when we created
+this data using the JavaScript
 
 168
-00:07:27,280 --> 00:07:28,270
-documento justo aquí?
+00:06:40,340 --> 00:06:42,120
+shell, we didn't do
+anything special,
 
 169
-00:07:28,270 --> 00:07:30,690
-Pon esa línea de código justo 
+00:06:42,120 --> 00:06:45,040
+and the only number type
+built into JavaScript
 
 170
-00:07:30,690 --> 00:07:31,940
-aquí. Ése es el cuestionario.
+00:06:45,040 --> 00:06:46,510
+is a floating point type.
 
 171
-00:07:31,940 --> 00:07:33,252
+00:06:46,510 --> 00:06:49,170
+MongoDB does support
+integers directly,
+
+172
+00:06:49,170 --> 00:06:51,310
+and we could have inserted
+an integer in there,
+
+173
+00:06:51,310 --> 00:06:54,420
+but that's not what we did in
+that small JavaScript program
+
+174
+00:06:54,420 --> 00:06:56,400
+where I loaded the data.
+
+175
+00:06:56,400 --> 00:06:59,102
+Now let's see how we would
+call find, not find one,
+
+176
+00:06:59,102 --> 00:07:01,060
+if we wanted to get a
+whole bunch of documents.
+
+177
+00:07:01,060 --> 00:07:05,310
+To do that, we're going to look
+at this program right here.
+
+178
+00:07:05,310 --> 00:07:06,360
+This is the find.
+
+179
+00:07:06,360 --> 00:07:09,360
+I also have a function
+that calls find right here.
+
+180
+00:07:09,360 --> 00:07:12,310
+It's in the same file, so it has
+access to the same variables.
+
+181
+00:07:12,310 --> 00:07:15,340
+And find is going to do
+something slightly different.
+
+182
+00:07:15,340 --> 00:07:18,560
+It's going to do a query
+where type is exam,
+
+183
+00:07:18,560 --> 00:07:22,250
+and it's going to call
+find on that query-- again,
+
+184
+00:07:22,250 --> 00:07:25,080
+the query is in the form
+of a Python dictionary--
+
+185
+00:07:25,080 --> 00:07:27,120
+and you're going to get
+a cursor back this time,
+
+186
+00:07:27,120 --> 00:07:30,180
+not a document, because you
+have multiple things returned.
+
+187
+00:07:30,180 --> 00:07:33,532
+And if it raises an exception,
+that will happen over here.
+
+188
+00:07:33,532 --> 00:07:35,240
+Now providing you
+don't get an exception,
+
+189
+00:07:35,240 --> 00:07:37,150
+we want to print
+out these documents.
+
+190
+00:07:37,150 --> 00:07:40,137
+And so I'm just going to
+iterate through the documents
+
+191
+00:07:40,137 --> 00:07:40,720
+in the cursor.
+
+192
+00:07:40,720 --> 00:07:44,070
+I'm going to say for doc in
+cursor, in Python, print doc.
+
+193
+00:07:44,070 --> 00:07:46,060
+And this stuff
+about sanity is just
+
+194
+00:07:46,060 --> 00:07:49,440
+limiting the number of things it
+prints to 10 and then breaking.
+
+195
+00:07:49,440 --> 00:07:52,540
+So I'm just limiting how
+much I print of the screen.
+
+196
+00:07:52,540 --> 00:07:55,440
+And to make sure that I
+run find versus find one,
+
+197
+00:07:55,440 --> 00:07:59,780
+I have to change my
+program to call find.
+
+198
+00:07:59,780 --> 00:08:00,780
+So I will do that.
+
+199
+00:08:00,780 --> 00:08:05,000
+And now I'm going to go to
+the terminal and run it.
+
+200
+00:08:05,000 --> 00:08:07,980
+And when I do that, I get a
+whole bunch of data this time,
+
+201
+00:08:07,980 --> 00:08:11,350
+all of it with
+type equal to exam.
+
+202
+00:08:11,350 --> 00:08:13,420
+So this is pretty
+much what we'd expect.
+
+203
+00:08:13,420 --> 00:08:14,030
+All right.
+
+204
+00:08:14,030 --> 00:08:16,370
+It is now time for a quiz.
+
+205
+00:08:16,370 --> 00:08:18,170
+This is a program very
+similar to the one
+
+206
+00:08:18,170 --> 00:08:20,240
+that you saw in this lesson.
+
+207
+00:08:20,240 --> 00:08:23,370
+In this program, you can
+see that we once again
+
+208
+00:08:23,370 --> 00:08:27,630
+connect to the school's database
+and the scores collection.
+
+209
+00:08:27,630 --> 00:08:30,080
+And we try to pull data
+out of the database,
+
+210
+00:08:30,080 --> 00:08:34,250
+except we've removed one
+line, which is this xxxxx.
+
+211
+00:08:34,250 --> 00:08:38,390
+And what we'd like you to do
+is write the one line of Python
+
+212
+00:08:38,390 --> 00:08:41,509
+that would find data,
+a single document,
+
+213
+00:08:41,509 --> 00:08:43,240
+and put it into the
+variable document
+
+214
+00:08:43,240 --> 00:08:44,600
+so that it can be printed out.
+
+215
+00:08:44,600 --> 00:08:49,170
+So write that line here,
+and that's the answer.

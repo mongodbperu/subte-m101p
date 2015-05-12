@@ -1,165 +1,613 @@
 1
-00:00:00,000 --> 00:00:00,750
+00:00:00,000 --> 00:00:00,500
 
 2
-00:00:00,750 --> 00:00:02,040
-Now that we know how
-to use find and
+00:00:00,500 --> 00:00:02,060
+All right, we know
+how to find data
 
 3
-00:00:02,040 --> 00:00:04,390
-find one inside Pymongo.
+00:00:02,060 --> 00:00:04,800
+in a database using
+"find" and "find_one."
 
 4
-00:00:04,390 --> 00:00:06,230
-Let's talk about how
-we do projections.
+00:00:04,800 --> 00:00:08,520
+Now I want to show you how
+to project certain fields out
 
 5
-00:00:06,230 --> 00:00:11,320
-Projections would let us select
-out particular fields
+00:00:08,520 --> 00:00:10,840
+of the documents you
+get from a database.
 
 6
-00:00:11,320 --> 00:00:14,560
-to pull during the query and
-not pull the rest of them.
+00:00:10,840 --> 00:00:15,040
+Now, projection is very similar
+to the way you use "select"
 
 7
-00:00:14,560 --> 00:00:17,510
-So let's go back to that query
-we had before where we asked
+00:00:15,040 --> 00:00:16,860
+in a relational database.
 
 8
-00:00:17,510 --> 00:00:19,970
-for everything with 'type'
-'exam' out of the scores
+00:00:16,860 --> 00:00:20,150
+And that lets you specify
+which fields you want back.
 
 9
-00:00:19,970 --> 00:00:21,440
-collection that we were using.
+00:00:20,150 --> 00:00:24,890
+Let's say, you have a
+document with an "_id" of "1",
 
 10
-00:00:21,440 --> 00:00:24,130
-And this time let's also create
-a secondary dictionary,
+00:00:24,890 --> 00:00:29,200
+and a key of "a" with a value
+of "2", and a key of "b"
 
 11
-00:00:24,130 --> 00:00:28,300
-which I call selector, where
-we would like to retrieve a
+00:00:29,200 --> 00:00:33,170
+with a value of "3", and a key
+of "c" with a value of "4."
 
 12
-00:00:28,300 --> 00:00:32,820
-student ID and not show the.
-underscore id field.
+00:00:33,170 --> 00:00:35,760
+And you want to find that
+document in the database,
 
 13
-00:00:32,820 --> 00:00:35,660
-So we're suppressing and
-retrieving specifically
+00:00:35,760 --> 00:00:38,295
+but you only want to
+see the value for "a"
 
 14
-00:00:35,660 --> 00:00:37,530
-student underscore id.
+00:00:38,295 --> 00:00:40,040
+and the value for "c."
 
 15
-00:00:37,530 --> 00:00:40,740
-And again, you'll notice these
-quotes around these literals.
+00:00:40,040 --> 00:00:42,410
+You can do that
+using a projection.
 
 16
-00:00:40,740 --> 00:00:44,260
-And then right here we're
-calling in Pymongo scores,
+00:00:42,410 --> 00:00:45,080
+And the way you do it
+is when you call "find",
 
 17
-00:00:44,260 --> 00:00:47,060
-which is the handle to the
-scores collection, dot find,
+00:00:45,080 --> 00:00:48,740
+the first parameter in
+"find" is the filter,
 
 18
-00:00:47,060 --> 00:00:49,830
-and then the query, and then
-what I call the selector.
+00:00:48,740 --> 00:00:51,020
+the actual query itself,
+to figure out which
 
 19
-00:00:49,830 --> 00:00:52,370
-And then we iterate through
-and print out the results.
+00:00:51,020 --> 00:00:52,640
+documents you want to return.
 
 20
-00:00:52,370 --> 00:00:54,670
-So what happens when
-we do that?
+00:00:52,640 --> 00:00:54,520
+The second parameter
+is going to be
 
 21
-00:00:54,670 --> 00:00:56,670
-Let's see.
+00:00:54,520 --> 00:00:57,340
+a document that specifies which
+fields you want to return.
 
 22
-00:00:56,670 --> 00:00:58,790
-Let's go through and run it.
+00:00:57,340 --> 00:00:59,010
+This is the projection.
 
 23
-00:00:58,790 --> 00:01:01,880
-And as you can see, it
-retrieves the student
+00:00:59,010 --> 00:01:01,100
+So let me show you
+concretely how that works
 
 24
-00:01:01,880 --> 00:01:05,840
-underscore id only, and
-suppresses the underscore id
+00:01:01,100 --> 00:01:02,963
+by showing you a small program.
 
 25
-00:01:05,840 --> 00:01:08,440
-field, which is exactly
-what we want.
+00:01:02,963 --> 00:01:04,379
+Now, here's a small
+program that's
 
 26
-00:01:08,440 --> 00:01:10,460
-All right, time for a quiz.
+00:01:04,379 --> 00:01:05,842
+going to go into
+the same database
 
 27
-00:01:10,460 --> 00:01:12,280
-Which of the following
-statements--
+00:01:05,842 --> 00:01:07,550
+and the same collection
+we've been using,
 
 28
-00:01:12,280 --> 00:01:13,740
-these are Python statements--
+00:01:07,550 --> 00:01:09,910
+which is the School database
+and the Scores collection.
 
 29
-00:01:13,740 --> 00:01:16,300
-could work using Pymongo
-depending on variable names,
+00:01:09,910 --> 00:01:11,315
+And we're going to call "find."
 
 30
-00:01:16,300 --> 00:01:18,430
-because the variable names
-have to be legal.
+00:01:11,315 --> 00:01:13,190
+We have a function
+called "find."
 
 31
-00:01:18,430 --> 00:01:20,000
-But let's presume they are.
+00:01:13,190 --> 00:01:15,930
+And that function
+is going to set up
 
 32
-00:01:20,000 --> 00:01:23,130
-I have to select out just the
-student ID from the scores
+00:01:15,930 --> 00:01:17,870
+a query with type "exam."
 
 33
-00:01:23,130 --> 00:01:26,820
-collection using a find command,
-so very similar to
+00:01:17,870 --> 00:01:19,900
+And you'll see that's
+just a Python dictionary,
 
 34
-00:01:26,820 --> 00:01:27,820
-what we just went over.
+00:01:19,900 --> 00:01:22,470
+and "type" is, again, a
+string literal and "exam"
 
 35
-00:01:27,820 --> 00:01:29,140
-Which of these is correct?
+00:01:22,470 --> 00:01:23,570
+is a string literal.
 
 36
-00:01:29,140 --> 00:01:30,390
+00:01:23,570 --> 00:01:25,110
+And they're both quoted.
+
+37
+00:01:25,110 --> 00:01:27,300
+And so I'm saying I want
+to find the documents where
+
+38
+00:01:27,300 --> 00:01:28,700
+"type" is "exam."
+
+39
+00:01:28,700 --> 00:01:31,670
+And then I don't want to get
+all the fields from a document.
+
+40
+00:01:31,670 --> 00:01:33,980
+Instead, I only want
+to get the "student_id"
+
+41
+00:01:33,980 --> 00:01:37,020
+and I want to
+suppress the "_id."
+
+42
+00:01:37,020 --> 00:01:39,440
+So when you give a field and
+then you have a "1" here,
+
+43
+00:01:39,440 --> 00:01:40,640
+that means included.
+
+44
+00:01:40,640 --> 00:01:43,070
+When you have a "0",
+it means excluded.
+
+45
+00:01:43,070 --> 00:01:46,420
+Now, normally, for projection
+if you don't include a field,
+
+46
+00:01:46,420 --> 00:01:47,480
+it won't be included.
+
+47
+00:01:47,480 --> 00:01:50,710
+But "_id" is special,
+unless you suppress it.
+
+48
+00:01:50,710 --> 00:01:53,640
+By giving it a "0"
+value, you will see it.
+
+49
+00:01:53,640 --> 00:01:55,800
+So then we run the
+query right here.
+
+50
+00:01:55,800 --> 00:01:57,650
+We call "scores.find."
+
+51
+00:01:57,650 --> 00:01:58,650
+Here's the query.
+
+52
+00:01:58,650 --> 00:02:01,640
+And here's the projection
+that we laid out.
+
+53
+00:02:01,640 --> 00:02:04,010
+And if there's an exception,
+we handle that here.
+
+54
+00:02:04,010 --> 00:02:05,700
+Otherwise, you print
+out the contents
+
+55
+00:02:05,700 --> 00:02:08,009
+that we find inside
+the collection.
+
+56
+00:02:08,009 --> 00:02:10,259
+And again, we just
+print out the first 10.
+
+57
+00:02:10,259 --> 00:02:13,300
+And this is just us calling
+the "find" function.
+
+58
+00:02:13,300 --> 00:02:16,394
+So let's call that and
+see what it looks like.
+
+59
+00:02:16,394 --> 00:02:18,310
+So I'm going to invoke
+the Python Interpreter,
+
+60
+00:02:18,310 --> 00:02:20,440
+invoking the Python Interpreter
+using the program we just
+
+61
+00:02:20,440 --> 00:02:22,810
+wrote which is called
+"using_find_with_projection."
+
+62
+00:02:22,810 --> 00:02:24,440
+And if we do that,
+we see that we
+
+63
+00:02:24,440 --> 00:02:27,800
+get the documents with
+"student_id" and nothing else.
+
+64
+00:02:27,800 --> 00:02:33,110
+And if we went back in here and
+we didn't suppress the "_id",
+
+65
+00:02:33,110 --> 00:02:36,050
+even though we didn't include
+it, we're going to see it.
+
+66
+00:02:36,050 --> 00:02:38,630
+So now we run this again.
+
+67
+00:02:38,630 --> 00:02:41,290
+And now we have all the
+"_id"s for each document.
+
+68
+00:02:41,290 --> 00:02:43,660
+And that's the way
+projections work.
+
+69
+00:02:43,660 --> 00:02:45,801
+Now, if you wanted to
+figure this out yourself,
+
+70
+00:02:45,801 --> 00:02:47,300
+you could look in
+the documentation.
+
+71
+00:02:47,300 --> 00:02:49,550
+The one thing I want to
+really emphasize in this class
+
+72
+00:02:49,550 --> 00:02:52,520
+is that the documentation is
+a great source of information
+
+73
+00:02:52,520 --> 00:02:55,186
+on both PyMongo
+itself and MongoDB.
+
+74
+00:02:55,186 --> 00:02:56,560
+So I'm going to
+do that real fast
+
+75
+00:02:56,560 --> 00:02:58,740
+so you can see how that looks.
+
+76
+00:02:58,740 --> 00:03:03,130
+So I would probably start
+at api.mongo.org again.
+
+77
+00:03:03,130 --> 00:03:05,590
+And I'll click on Python.
+
+78
+00:03:05,590 --> 00:03:08,210
+And we're running the beta
+driver, the 3.0beta0 driver.
+
+79
+00:03:08,210 --> 00:03:09,460
+So I'm going to click on that.
+
+80
+00:03:09,460 --> 00:03:11,140
+For you, the 3.0
+driver may be released
+
+81
+00:03:11,140 --> 00:03:12,264
+by the time you watch this.
+
+82
+00:03:12,264 --> 00:03:14,235
+I want to wind up at
+this documentation.
+
+83
+00:03:14,235 --> 00:03:16,350
+This documentation is
+a lot of information.
+
+84
+00:03:16,350 --> 00:03:20,130
+The part that's most interesting
+is the API documentation.
+
+85
+00:03:20,130 --> 00:03:22,720
+And the API
+documentation is laid out
+
+86
+00:03:22,720 --> 00:03:25,252
+with all the different
+classes inside.
+
+87
+00:03:25,252 --> 00:03:27,210
+But most of the things
+that we're interested in
+
+88
+00:03:27,210 --> 00:03:30,510
+are actually methods in
+the Collection class,
+
+89
+00:03:30,510 --> 00:03:33,450
+because we're calling
+"find" and "find_one",
+
+90
+00:03:33,450 --> 00:03:35,860
+and these are all on
+the Collection class.
+
+91
+00:03:35,860 --> 00:03:38,870
+So I'm going to go in
+there and look at that.
+
+92
+00:03:38,870 --> 00:03:43,300
+And then I'm just going to
+search inside it for "find."
+
+93
+00:03:43,300 --> 00:03:44,960
+And I get a few instances.
+
+94
+00:03:44,960 --> 00:03:46,500
+Oh, and there it was.
+
+95
+00:03:46,500 --> 00:03:48,500
+So here's the
+actual Find command.
+
+96
+00:03:48,500 --> 00:03:50,630
+And you can see the Find
+command takes a filter.
+
+97
+00:03:50,630 --> 00:03:52,030
+That was what we call the query.
+
+98
+00:03:52,030 --> 00:03:53,790
+And then it takes a projection.
+
+99
+00:03:53,790 --> 00:03:55,620
+And it tells you
+all the parameters
+
+100
+00:03:55,620 --> 00:03:56,915
+that you can put in here.
+
+101
+00:03:56,915 --> 00:03:58,290
+Now, projection,
+you'll see here,
+
+102
+00:03:58,290 --> 00:04:00,215
+it's shown as a name parameter.
+
+103
+00:04:00,215 --> 00:04:02,090
+So you could have done
+it as a name parameter
+
+104
+00:04:02,090 --> 00:04:03,340
+versus a positional parameter.
+
+105
+00:04:03,340 --> 00:04:05,840
+I could have said
+"projection=", but I didn't.
+
+106
+00:04:05,840 --> 00:04:08,690
+And you can see, if you
+look under "find_one",
+
+107
+00:04:08,690 --> 00:04:11,730
+you'll see that it tells you
+that the arguments themselves
+
+108
+00:04:11,730 --> 00:04:14,075
+are the same as from "find."
+
+109
+00:04:14,075 --> 00:04:16,450
+Let's say, he had the keyword
+arguments come from "find",
+
+110
+00:04:16,450 --> 00:04:17,450
+so you could just
+go there if you
+
+111
+00:04:17,450 --> 00:04:19,810
+want to see his arguments,
+which is where we just were.
+
+112
+00:04:19,810 --> 00:04:21,990
+Now, this is very
+useful if you're
+
+113
+00:04:21,990 --> 00:04:23,450
+trying to figure
+out what something
+
+114
+00:04:23,450 --> 00:04:26,535
+does inside PyMongo is to
+go into the documentation
+
+115
+00:04:26,535 --> 00:04:28,650
+and look at the
+API documentation
+
+116
+00:04:28,650 --> 00:04:30,820
+to see it and find out
+what the parameters are.
+
+117
+00:04:30,820 --> 00:04:32,250
+And there's a lot of parameters
+that we haven't event
+
+118
+00:04:32,250 --> 00:04:34,460
+talked about yet that you
+could explore yourself
+
+119
+00:04:34,460 --> 00:04:36,650
+or we'll get to a lot
+of them in the class.
+
+120
+00:04:36,650 --> 00:04:39,060
+All right, now it's
+time for a quiz.
+
+121
+00:04:39,060 --> 00:04:41,400
+Let's talk about projecting
+result from "find."
+
+122
+00:04:41,400 --> 00:04:43,970
+Which of the following--
+these are Python statements--
+
+123
+00:04:43,970 --> 00:04:46,380
+which of the falling
+could work using PyMongo,
+
+124
+00:04:46,380 --> 00:04:48,760
+depending on variable names,
+to project just the student
+
+125
+00:04:48,760 --> 00:04:50,330
+ID from the Scores collection?
+
+126
+00:04:50,330 --> 00:04:52,621
+All right, just a student ID
+from the Scores collection
+
+127
+00:04:52,621 --> 00:04:53,690
+using a Find command.
+
+128
+00:04:53,690 --> 00:04:55,590
+So which of the
+following of these
+
+129
+00:04:55,590 --> 00:04:58,350
+is the correct
+syntax to do that?

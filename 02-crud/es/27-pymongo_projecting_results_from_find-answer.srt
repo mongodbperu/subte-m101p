@@ -1,101 +1,80 @@
 1
-00:00:00,000 --> 00:00:00,120
+00:00:00,000 --> 00:00:00,500
 
 2
-00:00:00,120 --> 00:00:03,420
-OK. La respuesta es que sólo
-la tercera es correcta.
+00:00:00,500 --> 00:00:02,930
+All right, and the answer
+is the third one is correct.
 
 3
-00:00:03,420 --> 00:00:06,940
-En la tercera, fíjate
-que se envían dos
+00:00:02,930 --> 00:00:06,040
+The third one, you
+call students.find.
 
 4
-00:00:06,940 --> 00:00:07,700
-documentos al comando "find".
+00:00:06,040 --> 00:00:10,580
+Then, you specify 'student_id':1
+and you suppress the _id.
 
 5
-00:00:07,700 --> 00:00:10,970
-El primero está vacío, por lo que
-encuentra todos los estudiantes.
+00:00:10,580 --> 00:00:13,390
+So you give it a 0
+value in the document.
 
 6
-00:00:10,970 --> 00:00:13,980
-Y proyecta el campo con
-el 1 en el documento,
+00:00:13,390 --> 00:00:14,920
+So why are the
+other one's wrong?
 
 7
-00:00:13,980 --> 00:00:17,490
-"student_id", y suprime el
+00:00:14,920 --> 00:00:16,720
+Well, the first one
+is wrong because it
 
 8
-00:00:17,490 --> 00:00:18,620
-"_id".
+00:00:16,720 --> 00:00:19,762
+doesn't have this projection
+as a second parameter.
 
 9
-00:00:18,620 --> 00:00:20,810
-La primera es incorrecta
-porque, si te fijas,
+00:00:19,762 --> 00:00:21,470
+It actually has it as
+the first parameter
 
 10
-00:00:20,810 --> 00:00:22,480
-no hay documento de 
-consulta aquí.
+00:00:21,470 --> 00:00:23,640
+so it's going to be
+interpreted as a query.
 
 11
-00:00:22,480 --> 00:00:23,900
-Realmente pone la proyección
+00:00:23,640 --> 00:00:26,860
+This one is wrong
+for similar reasons.
 
 12
-00:00:23,900 --> 00:00:25,080
-como primer documento.
+00:00:26,860 --> 00:00:29,070
+It's the first parameter,
+not the second parameter.
 
 13
-00:00:25,080 --> 00:00:28,000
-Esto va a encontrar todo lo 
-tenga "student_id" 1
+00:00:29,070 --> 00:00:31,830
+It's also forgets
+to suppress _id'0.
 
 14
-00:00:28,000 --> 00:00:30,850
-y "_id" 0.
+00:00:31,830 --> 00:00:33,000
+The third one was right.
 
 15
-00:00:30,850 --> 00:00:34,240
-Luego la segunda es
-incorrecta por dos razones.
+00:00:33,000 --> 00:00:38,310
+The fourth one is wrong only
+because these literals are not
 
 16
-00:00:34,240 --> 00:00:37,260
-Primero, no pone este
-documento de proyección como
+00:00:38,310 --> 00:00:41,220
+quoted as they need
+to be inside Python.
 
 17
-00:00:37,260 --> 00:00:41,100
-segundo argumento en el "find"
-y además, no suprime el
-
-18
-00:00:41,100 --> 00:00:41,900
-"_id".
-
-19
-00:00:41,900 --> 00:00:43,280
-Nuestra tercera respuesta es correcta.
-
-20
-00:00:43,280 --> 00:00:47,520
-Y la cuarta es incorrecta sólo
-porque no pone entre comillas
-
-21
-00:00:47,520 --> 00:00:50,360
-estos literales, 
-"student_id" y
-
-22
-00:00:50,360 --> 00:00:51,610
-"_id".
-
-23
-00:00:51,610 --> 00:00:52,310
+00:00:41,220 --> 00:00:42,770
+OK.

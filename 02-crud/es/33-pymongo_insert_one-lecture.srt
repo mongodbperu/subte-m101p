@@ -1,427 +1,675 @@
 1
-00:00:00,000 --> 00:00:00,120
+00:00:00,000 --> 00:00:00,110
 
 2
-00:00:00,120 --> 00:00:00,600
-OK.
+00:00:00,110 --> 00:00:02,110
+All right, we've come a
+long way in this unit.
 
 3
-00:00:00,600 --> 00:00:03,130
-Hemos recorrido un largo
-camino en esta unidad.
+00:00:02,110 --> 00:00:04,320
+And now it's time to talk
+about inserting, updating
 
 4
-00:00:03,130 --> 00:00:05,980
-Lo que nos queda es hablar un
-poco acerca de inserción,
+00:00:04,320 --> 00:00:06,620
+and deleting data using PyMongo.
 
 5
-00:00:05,980 --> 00:00:09,100
-actualización y eliminación de
-datos en PyMongo, que es muy
+00:00:06,620 --> 00:00:10,460
+Now, this is an area where
+the PyMongo driver deviates
 
 6
-00:00:09,100 --> 00:00:11,190
-similar a la manera en la que
-funciona con el shell mongo.
+00:00:10,460 --> 00:00:11,410
+from the Mongo shell.
 
 7
-00:00:11,190 --> 00:00:13,410
-Así que no tomaremos tanto
-tiempo, aunque hay algunas
+00:00:11,410 --> 00:00:13,368
+And the reason it deviates
+from the Mongo shell
 
 8
-00:00:13,410 --> 00:00:15,320
-sutilezas para la inserción.
+00:00:13,368 --> 00:00:16,450
+is that there is a new
+specification called
 
 9
-00:00:15,320 --> 00:00:18,190
-Y luego vamos a hablar
-un poco acerca del blog
+00:00:16,450 --> 00:00:19,050
+the CRUD specification
+that all the drivers are
 
 10
-00:00:18,190 --> 00:00:20,290
-y del trabajo que vas a
-realizar para eso en la
+00:00:19,050 --> 00:00:22,690
+working to conform to that
+simplify the inserting,
 
 11
-00:00:20,290 --> 00:00:21,390
-tarea de esta semana.
+00:00:22,690 --> 00:00:24,290
+and updating and deleting data.
 
 12
-00:00:21,390 --> 00:00:23,100
-Y eso es todo.
+00:00:24,290 --> 00:00:26,710
+And as a result, some of the
+things you saw on the shell
 
 13
-00:00:23,100 --> 00:00:25,440
-Empecemos por hablar
-acerca de inserciones.
+00:00:26,710 --> 00:00:30,150
+are going to be different
+than some of the API
 
 14
-00:00:25,440 --> 00:00:28,740
-He escrito un pequeño programa
-aquí en Python que va a
+00:00:30,150 --> 00:00:31,960
+calls in the driver.
 
 15
-00:00:28,740 --> 00:00:32,030
-insertar dos documentos
-en la base de datos.
+00:00:31,960 --> 00:00:34,760
+And there's also
+some differences
 
 16
-00:00:32,030 --> 00:00:35,650
-Ahora, en el primer caso, he
-llamado a este documento "richard".
+00:00:34,760 --> 00:00:37,020
+between that and what
+the actual commands are,
 
 17
-00:00:35,650 --> 00:00:39,720
-Y puedes ver que
-no tiene un "_id".
+00:00:37,020 --> 00:00:39,050
+the underlying commands
+that go to the server.
 
 18
-00:00:39,720 --> 00:00:42,990
-Y en el segundo caso, tengo
-otro documento llamado "andrew",
+00:00:39,050 --> 00:00:41,240
+Now, these are
+implementation details
 
 19
-00:00:42,990 --> 00:00:45,590
-que sí tiene un "_id".
+00:00:41,240 --> 00:00:43,564
+that you don't really
+need to understand.
 
 20
-00:00:45,590 --> 00:00:48,550
-Ahora, si recuerdas de la
-primera unidad, el driver
+00:00:43,564 --> 00:00:44,980
+But they are
+sometimes interesting
 
 21
-00:00:48,550 --> 00:00:51,270
-PyMongo y todos los drivers
-en general, establecerán un
+00:00:44,980 --> 00:00:48,090
+for historical reasons, and you
+can look in the source code,
 
 22
-00:00:51,270 --> 00:00:54,790
-"_id" y crearán un ObjectId
-BSON si no existe uno
+00:00:48,090 --> 00:00:49,890
+because it's all
+open source, to see
 
 23
-00:00:54,790 --> 00:00:58,490
-establecido en los datos
-que vienen en el "insert".
+00:00:49,890 --> 00:00:51,510
+the way the
+different things map.
 
 24
-00:00:58,490 --> 00:01:02,410
-Por esto después de que los
-insertamos, vamos a ver e
+00:00:51,510 --> 00:00:54,760
+So I'll be mentioning some of
+these differences along the way
 
 25
-00:01:02,410 --> 00:01:05,239
-imprimir, en Python, el valor
+00:00:54,760 --> 00:00:58,010
+to give you an understanding of
+the way it all comes together.
 
 26
-00:01:05,239 --> 00:01:06,860
-de estos dos registros.
+00:00:58,010 --> 00:01:02,450
+So for inserting, in PyMongo,
+we've got insert_one,
 
 27
-00:01:06,860 --> 00:01:08,620
-Lo que haré es sólo
-imprimirlos en el mismo
+00:01:02,450 --> 00:01:04,550
+and we have insert_many.
 
 28
-00:01:08,620 --> 00:01:10,820
-orden en que los
-estoy insertando.
+00:01:04,550 --> 00:01:09,224
+And for updating, we've got
+update_one and update_many.
 
 29
-00:01:10,820 --> 00:01:12,860
-Muy bien, así que hagamos eso.
+00:01:09,224 --> 00:01:10,890
+And these are function
+calls, the method
 
 30
-00:01:12,860 --> 00:01:16,535
-Vamos a ejecutar el programa.
+00:01:10,890 --> 00:01:11,880
+that exists in PyMongo.
 
 31
-00:01:16,535 --> 00:01:19,200
-Y una vez que hacemos esto,
-podemos ver que imprime el
+00:01:11,880 --> 00:01:13,294
+This inserts one document.
 
 32
-00:01:19,200 --> 00:01:22,710
-primero, que es "richard".
+00:01:13,294 --> 00:01:14,460
+This inserts many documents.
 
 33
-00:01:22,710 --> 00:01:26,190
-En este caso, el driver
-añadió un "_id" y un
+00:01:14,460 --> 00:01:15,595
+This updates one document.
 
 34
-00:01:26,190 --> 00:01:28,510
-ObjectId BSON.
+00:01:15,595 --> 00:01:17,440
+This updates many documents.
 
 35
-00:01:28,510 --> 00:01:31,590
-Y en el segundo caso,
-donde ya he provisto un
+00:01:17,440 --> 00:01:19,920
+We also have replace_one,
+and replace_one
 
 36
-00:01:31,590 --> 00:01:34,900
-"_id" que es "Erlichson",
-no añadió ninguno.
+00:01:19,920 --> 00:01:21,300
+replaces one document.
 
 37
-00:01:34,900 --> 00:01:36,780
-Eso es interesante.
+00:01:21,300 --> 00:01:23,580
+And then finally,
+for deleting data,
 
 38
-00:01:36,780 --> 00:01:39,620
-Ahora, ¿qué ocurre si ejecutamos
-el programa de nuevo?
+00:01:23,580 --> 00:01:27,160
+you've got delete_one
+and delete_many.
 
 39
-00:01:39,620 --> 00:01:42,540
-¿Qué esperas que ocurra?
+00:01:27,160 --> 00:01:29,500
+On the server, a lot of
+these map to the same thing.
 
 40
-00:01:42,540 --> 00:01:44,090
-Así que hagamos eso.
+00:01:29,500 --> 00:01:34,070
+So the insert_one actually
+maps to the insert command
 
 41
-00:01:44,090 --> 00:01:50,960
-La respuesta es que la primera
-inserción tiene éxito con un
+00:01:34,070 --> 00:01:35,300
+on the server.
 
 42
-00:01:50,960 --> 00:01:53,720
-nuevo ObjectId.
+00:01:35,300 --> 00:01:37,740
+The insert_many uses what
+we call the bulk API.
 
 43
-00:01:53,720 --> 00:01:55,920
-A diferencia del primero,
-porque el driver con suerte
+00:01:37,740 --> 00:01:39,660
+The update_one
+function in PyMongo
 
 44
-00:01:55,920 --> 00:01:57,410
-añade uno nuevo.
+00:01:39,660 --> 00:01:43,820
+uses the update command, as
+does the update_many command.
 
 45
-00:01:57,410 --> 00:02:00,760
-Pero la segunda inserción,
-donde especifiqué el ID,
+00:01:43,820 --> 00:01:45,740
+And the main difference
+is certain flags
 
 46
-00:02:00,760 --> 00:02:01,510
-fracasará.
+00:01:45,740 --> 00:01:47,000
+that are sent to update.
 
 47
-00:02:01,510 --> 00:02:04,870
-Podemos confirmar eso
-yendo a Mongo, usando la
+00:01:47,000 --> 00:01:49,602
+And replace also uses
+the update command.
 
 48
-00:02:04,870 --> 00:02:09,550
-colección "schools" y luego
-buscamos en esa colección,
+00:01:49,602 --> 00:01:51,560
+And if you remember,
+there was something called
 
 49
-00:02:09,550 --> 00:02:11,880
-"people."--
+00:01:51,560 --> 00:01:53,320
+Save from the Mongo shell.
 
 50
-00:02:11,880 --> 00:02:13,910
-Creo que es "school".
+00:01:53,320 --> 00:01:55,470
+Save doesn't exist in PyMongo.
 
 51
-00:02:13,910 --> 00:02:17,370
-Y luego ver en la
-colección "people".
+00:01:55,470 --> 00:01:58,100
+Now, it used to be that to
+get these different types
 
 52
-00:02:17,370 --> 00:02:22,060
-Cuando lo hacemos, podemos
-ver que, en efecto,
+00:01:58,100 --> 00:02:00,819
+of behavior, updating one
+versus many, versus replacing
 
 53
-00:02:22,060 --> 00:02:24,330
-Richard aparece dos veces allí
+00:02:00,819 --> 00:02:02,860
+the entire document, there
+are subtle differences
 
 54
-00:02:24,330 --> 00:02:28,850
-y yo aparezco una vez, porque
-hubo un error por clave duplicada
+00:02:02,860 --> 00:02:06,030
+that you have to be aware of in
+the way the server interprets
 
 55
-00:02:28,850 --> 00:02:31,570
-cuando intenté
-insertarlo de nuevo.
+00:02:06,030 --> 00:02:08,220
+the arguments themselves
+and the flags.
 
 56
-00:02:31,570 --> 00:02:32,210
-¿De acuerdo?
+00:02:08,220 --> 00:02:11,280
+And in PyMongo this is
+very much simplified
 
 57
-00:02:32,210 --> 00:02:37,380
-Como una acotación, la razón por
-la cual el driver creó el
+00:02:11,280 --> 00:02:14,120
+by you calling update_one,
+update_many, or replace_one,
 
 58
-00:02:37,380 --> 00:02:39,320
-"_id" y no la base de datos--
+00:02:14,120 --> 00:02:15,870
+which really removes
+any ambiguity of what
 
 59
-00:02:39,320 --> 00:02:40,540
-es por algo de historia.
+00:02:15,870 --> 00:02:17,580
+you're trying to accomplish.
 
 60
-00:02:40,540 --> 00:02:44,160
-Pero fue para permitir
-escrituras muy rápidas.
+00:02:17,580 --> 00:02:20,060
+And the same thing with
+delete_one and delete_many
 
 61
-00:02:44,160 --> 00:02:46,650
-Podrías enviar una escritura
-a la base de datos con un único
+00:02:20,060 --> 00:02:23,940
+that I believe map to
+remove on the server.
 
 62
-00:02:46,650 --> 00:02:50,230
-"_id" y luego no
-esperar la respuesta.
+00:02:23,940 --> 00:02:26,690
+Now, if you go through the
+documentation for PyMongo,
 
 63
-00:02:50,230 --> 00:02:52,300
-Ahora, tenemos el modo seguro (safe)
-en "True", así que estamos esperando
+00:02:26,690 --> 00:02:29,760
+you're going to see some
+of the older calls as well.
 
 64
-00:02:52,300 --> 00:02:53,860
-una respuesta de todos modos.
+00:02:29,760 --> 00:02:32,340
+You're going to see
+an insert command,
 
 65
-00:02:53,860 --> 00:02:55,090
-Así que en realidad no importa.
+00:02:32,340 --> 00:02:35,370
+and an update command
+that map to these server
 
 66
-00:02:55,090 --> 00:02:58,090
-Y también, si has estado
-siguiendo esto, o si eres
+00:02:35,370 --> 00:02:36,789
+commands directly.
 
 67
-00:02:58,090 --> 00:03:02,070
-consciente del modo por defecto
-que es "safe" igual a "False"
+00:02:36,789 --> 00:02:39,080
+But you'll also notice if
+you look in the documentation
 
 68
-00:03:02,070 --> 00:03:04,930
-en MongoDB, sólo quería
-permitirte saber que en las
+00:02:39,080 --> 00:02:40,990
+that those are
+marked deprecated.
 
 69
-00:03:04,930 --> 00:03:09,050
-próximas semanas, uno de los planes
-para MongoDB es que el modo seguro
+00:02:40,990 --> 00:02:43,520
+You could still use
+them if you really want,
 
 70
-00:03:09,050 --> 00:03:11,110
-va a ser establecido
-en "True" por defecto.
+00:02:43,520 --> 00:02:47,000
+but we highly recommend that you
+use these newer ones, which are
 
 71
-00:03:11,110 --> 00:03:14,610
-Así que ese tipo de cosas obvian
-la necesidad para que el ObjectId
+00:02:47,000 --> 00:02:48,810
+much easier to reason about.
 
 72
-00:03:14,610 --> 00:03:17,120
-sea establecido por el driver,
-pero siempre ha sido así.
+00:02:48,810 --> 00:02:51,970
+Now, with that sort of long
+explanation out of the way,
 
 73
-00:03:17,120 --> 00:03:20,200
-Así que supongo que probablemente
-seguirá siendo así.
+00:02:51,970 --> 00:02:55,702
+let's talk about insert_one and
+how we're going to use that,
 
 74
-00:03:20,200 --> 00:03:23,670
-Pero esa fue la razón original
-por la que los drivers estaban
+00:02:55,702 --> 00:02:57,785
+because that's what this
+lesson is actually about.
 
 75
-00:03:23,670 --> 00:03:25,060
-creando los ObjectId.
+00:02:57,785 --> 00:02:59,470
+It's about Inserting
+one document.
 
 76
-00:03:25,060 --> 00:03:27,750
-Fue para permitirte enviar una
-escritura a la base de datos y no
+00:02:59,470 --> 00:03:03,840
+So I've written a program
+called using_insert_one.py,
 
 77
-00:03:27,750 --> 00:03:30,140
-esperar una respuesta, y
-conocer cuál es el ID que va a
+00:03:03,840 --> 00:03:05,640
+which you can
+download if you like.
 
 78
-00:03:30,140 --> 00:03:31,310
-tener cuando esto sucedió.
+00:03:05,640 --> 00:03:08,780
+And this program is going
+to insert some documents.
 
 79
-00:03:31,310 --> 00:03:32,200
-OK.
+00:03:08,780 --> 00:03:12,660
+And it's going to put them
+into the school database,
 
 80
-00:03:32,200 --> 00:03:34,190
-Es hora de un cuestionario.
+00:03:12,660 --> 00:03:15,480
+and it's going to put them
+into the people collection.
 
 81
-00:03:34,190 --> 00:03:35,820
-Aquí está el cuestionario.
+00:03:15,480 --> 00:03:18,200
+And the two documents
+that it's going to put in,
 
 82
-00:03:35,820 --> 00:03:39,640
-En este código de aquí, que
-parece similar al código que
+00:03:18,200 --> 00:03:19,974
+the first one is called richard.
 
 83
-00:03:39,640 --> 00:03:43,880
-tuvimos antes, donde tenemos un
-conjunto de documentos con mi nombre
+00:03:19,974 --> 00:03:21,890
+And you'll notice that
+the first one, richard,
 
 84
-00:03:43,880 --> 00:03:47,100
-y algunos intereses, si
-intentas insertarlo--
+00:03:21,890 --> 00:03:23,540
+doesn't have an _id.
 
 85
-00:03:47,100 --> 00:03:50,320
-tengo una primera inserción aquí,
-y luego la eliminación del
+00:03:23,540 --> 00:03:26,970
+And the second one,
+andrew, does have an _id.
 
 86
-00:03:50,320 --> 00:03:53,740
-"_id" aquí, y luego una
-segunda inserción aquí--
+00:03:26,970 --> 00:03:30,064
+OK, and now we're going
+to try to insert them.
 
 87
-00:03:53,740 --> 00:03:57,480
-¿Qué esperas que suceda
-con la segunda inserción?
+00:03:30,064 --> 00:03:31,480
+And we're going
+to insert richard,
 
 88
-00:03:57,480 --> 00:03:58,120
-¿De acuerdo?
+00:03:31,480 --> 00:03:33,120
+and we're going
+to insert andrew.
 
 89
-00:03:58,120 --> 00:04:00,520
-¿Qué esperas que
-suceda y cuál es tu
+00:03:33,120 --> 00:03:35,380
+And we're going to catch
+any errors that might occur.
 
 90
-00:04:00,520 --> 00:04:01,980
-explicación para eso?
+00:03:35,380 --> 00:03:37,310
+So the question is,
+what do you think
 
 91
-00:04:01,980 --> 00:04:04,430
-Hay una sola respuesta
-para esta pregunta
+00:03:37,310 --> 00:03:38,860
+is going to happen we do this?
 
 92
-00:04:04,430 --> 00:04:05,680
-y aquí están las respuestas.
+00:03:38,860 --> 00:03:42,820
+So let's go into a shell
+and run this program.
 
 93
-00:04:05,680 --> 00:04:06,510
+00:03:42,820 --> 00:03:46,490
+OK, so pretty straightforward,
+it inserted both documents.
+
+94
+00:03:46,490 --> 00:03:50,300
+And then I believe it read
+them both out of the database.
+
+95
+00:03:50,300 --> 00:03:54,380
+So tried to do to insert_ones,
+inserted richard and andrew.
+
+96
+00:03:54,380 --> 00:03:56,170
+Each of those were
+Python dictionaries.
+
+97
+00:03:56,170 --> 00:03:58,750
+And then it just printed
+out what it had inserted.
+
+98
+00:03:58,750 --> 00:04:02,710
+And if we go into the
+database now, use school,
+
+99
+00:04:02,710 --> 00:04:07,336
+and then do db.people.find(),
+you're going to find that there
+
+100
+00:04:07,336 --> 00:04:09,460
+are two documents in there,
+exactly as we'd expect.
+
+101
+00:04:09,460 --> 00:04:12,770
+It added an _id for
+Richard's document,
+
+102
+00:04:12,770 --> 00:04:14,660
+because he didn't have one.
+
+103
+00:04:14,660 --> 00:04:18,936
+And for mine, I had specified
+it, so my _id is erlichson.
+
+104
+00:04:18,936 --> 00:04:21,269
+All right, now what if we try
+to run this program again?
+
+105
+00:04:21,269 --> 00:04:22,330
+What would happen?
+
+106
+00:04:22,330 --> 00:04:24,390
+Ooh, that didn't work out.
+
+107
+00:04:24,390 --> 00:04:26,290
+So we try to run it
+again, and this time we
+
+108
+00:04:26,290 --> 00:04:27,780
+get a duplicate key error.
+
+109
+00:04:27,780 --> 00:04:29,090
+Now, why does that happen?
+
+110
+00:04:29,090 --> 00:04:30,930
+And if we look inside
+the collection,
+
+111
+00:04:30,930 --> 00:04:33,720
+we see that there
+are three documents.
+
+112
+00:04:33,720 --> 00:04:35,670
+Richard seems to
+be in there twice.
+
+113
+00:04:35,670 --> 00:04:37,200
+I'm only in there once.
+
+114
+00:04:37,200 --> 00:04:40,960
+OK, so it looks like, for
+some reason, I didn't get
+
+115
+00:04:40,960 --> 00:04:42,494
+added a second time.
+
+116
+00:04:42,494 --> 00:04:43,910
+Now let's look
+back at the program
+
+117
+00:04:43,910 --> 00:04:45,750
+and see if we can
+understand that.
+
+118
+00:04:45,750 --> 00:04:48,950
+The reason is that
+_id must be unique.
+
+119
+00:04:48,950 --> 00:04:51,880
+So when we try to insert
+me the second time,
+
+120
+00:04:51,880 --> 00:04:53,420
+we ran the program
+a second time,
+
+121
+00:04:53,420 --> 00:04:56,530
+we have a conflict on
+the unique index for _id.
+
+122
+00:04:56,530 --> 00:04:58,360
+It said erlichson is a conflict.
+
+123
+00:04:58,360 --> 00:05:01,370
+Whereas, for Richard's document,
+because we didn't specify
+
+124
+00:05:01,370 --> 00:05:04,710
+an _id, the driver added
+one, used an object ID.
+
+125
+00:05:04,710 --> 00:05:06,810
+And so he got in there twice.
+
+126
+00:05:06,810 --> 00:05:09,786
+Now, because the richard insert
+is ahead of the andrew insert,
+
+127
+00:05:09,786 --> 00:05:10,910
+Richard got in there twice.
+
+128
+00:05:10,910 --> 00:05:13,080
+If we had switched the
+order of these two,
+
+129
+00:05:13,080 --> 00:05:16,330
+then the exception that
+was raised by my insert
+
+130
+00:05:16,330 --> 00:05:17,830
+would have brought
+us to this block,
+
+131
+00:05:17,830 --> 00:05:20,090
+and we never would have
+gotten to Richard's insert.
+
+132
+00:05:20,090 --> 00:05:22,180
+So that's how insert_one works.
+
+133
+00:05:22,180 --> 00:05:24,870
+All right, now it's
+time for a quiz.
+
+134
+00:05:24,870 --> 00:05:26,180
+This is a quiz on insert_one.
+
+135
+00:05:26,180 --> 00:05:28,388
+Here's some code, not that
+different from the code we
+
+136
+00:05:28,388 --> 00:05:31,260
+looked at in this lesson,
+where we have a document
+
+137
+00:05:31,260 --> 00:05:34,760
+and it has me again, and
+my interests-- running,
+
+138
+00:05:34,760 --> 00:05:36,130
+cycling and photography.
+
+139
+00:05:36,130 --> 00:05:39,570
+We try to insert that document,
+we delete documents _id,
+
+140
+00:05:39,570 --> 00:05:41,210
+we try to insert it again.
+
+141
+00:05:41,210 --> 00:05:45,320
+And the question is, do you
+expect this second insert of me
+
+142
+00:05:45,320 --> 00:05:46,820
+to succeed in this case?
+
+143
+00:05:46,820 --> 00:05:48,720
+Check the answer.

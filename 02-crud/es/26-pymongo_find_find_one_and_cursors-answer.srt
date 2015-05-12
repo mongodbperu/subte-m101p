@@ -1,27 +1,15 @@
 1
-00:00:00,000 --> 00:00:00,270
+00:00:00,000 --> 00:00:00,500
 
 2
-00:00:00,270 --> 00:00:05,070
-OK y la respuesta es que llamas
-a "doc = scores.find_one()"
+00:00:00,500 --> 00:00:03,420
+And the answer is that to
+get a single document out
 
 3
-00:00:05,070 --> 00:00:07,830
-y eso es todo.
+00:00:03,420 --> 00:00:05,970
+of the collection, you
+call doc = scores.find_one.
 
 4
-00:00:07,830 --> 00:00:11,010
-Y te darás cuenta que lo teníamos
-asignado a la variable "doc",
-
-5
-00:00:11,010 --> 00:00:12,660
-porque es la variable que
-
-6
-00:00:12,660 --> 00:00:13,910
-imprimimos en el programa.
-
-7
-00:00:13,910 --> 00:00:14,960
+00:00:05,970 --> 00:00:07,012

@@ -1,242 +1,411 @@
 1
-00:00:00,000 --> 00:00:00,190
+00:00:00,000 --> 00:00:00,120
 
 2
-00:00:00,190 --> 00:00:01,620
-Ahora es el momento de
-centrar nuestra atención
+00:00:00,120 --> 00:00:02,495
+Now we're going to talk about
+regular expression matching
 
 3
-00:00:01,620 --> 00:00:03,670
-en nuestro buen amigo "regex".
+00:00:02,495 --> 00:00:04,290
+within queries in MongoDB.
 
 4
-00:00:03,670 --> 00:00:06,410
-Todos recordarán el "regex" de
-cuando fuimos al shell mongo
+00:00:04,290 --> 00:00:07,400
+This is the $regex
+operator, and you already
 
 5
-00:00:06,410 --> 00:00:10,200
-y usamos expresiones regulares
-para examinar documentos.
+00:00:07,400 --> 00:00:08,910
+went over that in
+the Mongo shell.
 
 6
-00:00:10,200 --> 00:00:13,475
-Entremos en el shell mongo ahora
-y echemos un vistazo rápido
+00:00:08,910 --> 00:00:11,930
+Now we're going to show you
+how to do it using PyMongo.
 
 7
-00:00:13,475 --> 00:00:18,020
-a la estructura del documento
-que existe en estos artículos
+00:00:11,930 --> 00:00:13,570
+And to illustrate
+how this works,
 
 8
-00:00:18,020 --> 00:00:20,220
-de Reddit que fueron importados.
+00:00:13,570 --> 00:00:15,470
+we're going to use a
+data set that we just
 
 9
-00:00:20,220 --> 00:00:22,670
-Simplemente echando un vistazo aquí
-podemos ver que parece que hay un
+00:00:15,470 --> 00:00:18,060
+brought in from Reddit.
 
 10
-00:00:22,670 --> 00:00:26,070
-conjunto de cosas, como "title",
-"approved_by", un campo "hidden",
+00:00:18,060 --> 00:00:21,220
+So what we want to do
+is we want to inspect
 
 11
-00:00:26,070 --> 00:00:29,290
-"subreddit_id" y un
-montón de cosas útiles.
+00:00:21,220 --> 00:00:24,080
+this data-- inspect the data
+we brought in real quickly.
 
 12
-00:00:29,290 --> 00:00:32,020
-Así que digamos que queremos
-encontrar todo aquello cuyo "title"
+00:00:24,080 --> 00:00:25,810
+It was in the Reddit
+database, and it
 
 13
-00:00:32,020 --> 00:00:34,010
-contenga "Microsoft".
+00:00:25,810 --> 00:00:27,131
+was in the stories collection.
 
 14
-00:00:34,010 --> 00:00:36,220
-Parece que había unos cuantos
-artículos en la página de inicio
+00:00:27,131 --> 00:00:29,130
+All right, so I'm looking
+at a single document--
 
 15
-00:00:36,220 --> 00:00:38,350
-de Reddit con "Microsoft" en el título.
+00:00:29,130 --> 00:00:30,860
+one of the stories
+that was brought in--
 
 16
-00:00:38,350 --> 00:00:42,390
-Para hacer eso en el shell
-mongo sería algo así.
+00:00:30,860 --> 00:00:34,040
+and we can see here that it
+has lots of different fields,
 
 17
-00:00:42,390 --> 00:00:46,410
-Llamaríamos a "db.stories.find",
-y pediríamos que "title"
+00:00:34,040 --> 00:00:36,280
+but one of the ones that
+looks most interesting to me
 
 18
-00:00:46,410 --> 00:00:49,770
-coincidiera con "$regex: Microsoft".
+00:00:36,280 --> 00:00:38,930
+is the title field, which
+has a long description
 
 19
-00:00:49,770 --> 00:00:53,670
-Voy a proyectar sólo
-la clave "title" y
+00:00:38,930 --> 00:00:40,250
+of the title of the article.
 
 20
-00:00:53,670 --> 00:00:56,270
-suprimir la clave "_id"
-por simplicidad.
+00:00:40,250 --> 00:00:41,958
+And that's what we're
+going to search on.
 
 21
-00:00:56,270 --> 00:00:59,420
-Puedes ver que hay uno,
-dos, tres, cuatro de ellos.
+00:00:41,958 --> 00:00:44,370
+Let's say we wanted to find
+all the articles about Apple
 
 22
-00:00:59,420 --> 00:01:03,160
-Y también aparecen en la página de
-inicio de tecnología de Reddit.
+00:00:44,370 --> 00:00:45,640
+and Google.
 
 23
-00:01:03,160 --> 00:01:06,060
-Para hacer esto en PyMongo 
-haríamos lo siguiente.
+00:00:45,640 --> 00:00:47,700
+So the regular
+expression syntax is
 
 24
-00:01:06,060 --> 00:01:08,810
-Tengo un pequeño programa
-que va a hacerlo.
+00:00:47,700 --> 00:00:50,580
+something that I don't
+always remember perfectly,
 
 25
-00:01:08,810 --> 00:01:12,110
-Esto es "using_regex.py".
+00:00:50,580 --> 00:00:53,350
+and so I often start with
+Google on things like that.
 
 26
-00:01:12,110 --> 00:01:14,980
-Ahora que estamos usando los
-artículos de Reddit, va a 
+00:00:53,350 --> 00:00:57,000
+Now, this is actually not really
+a PyMongo topic exactly, it's
 
 27
-00:01:14,980 --> 00:01:18,790
-conectarse a la base de datos
-"reddit", la cual importé,
+00:00:57,000 --> 00:00:59,890
+actually more of a
+MongoDB manual topic,
 
 28
-00:01:18,790 --> 00:01:20,840
-y va a echar un vistazo a
-la colección "stories".
+00:00:59,890 --> 00:01:02,720
+and the reason is that the
+regular expressions are
 
 29
-00:01:20,840 --> 00:01:22,980
-Todo lo demás es lo mismo.
+00:01:02,720 --> 00:01:04,620
+parsed entirely by the server.
 
 30
-00:01:22,980 --> 00:01:27,170
-Podrías ver por aquí en
-el documento que dice
+00:01:04,620 --> 00:01:07,320
+So I'm searching
+for MongoDB $regex,
 
 31
-00:01:27,170 --> 00:01:31,470
-que vamos a buscar
-cosas con "title" donde
+00:01:07,320 --> 00:01:09,870
+and when I do that I get a
+bunch of links here from Google,
 
 32
-00:01:31,470 --> 00:01:32,760
-"$regex" es "Microsoft".
+00:01:09,870 --> 00:01:13,510
+and the first one is
+the $regex syntax.
 
 33
-00:01:32,760 --> 00:01:37,260
-Y notarás aquí que
-"$regex" tiene que estar
+00:01:13,510 --> 00:01:17,650
+And if I go there I can see
+how to do a $regex search.
 
 34
-00:01:37,260 --> 00:01:40,350
-entre comillas, aunque no
-estaba en el shell Mongo.
+00:01:17,650 --> 00:01:21,200
+This becomes part of the
+filter itself in the query.
 
 35
-00:01:40,350 --> 00:01:41,430
-Tengo una proyección.
+00:01:21,200 --> 00:01:23,520
+And you can see that I
+first specify the field
 
 36
-00:01:41,430 --> 00:01:42,580
-Ya dejo de llamarla "selector".
+00:01:23,520 --> 00:01:25,290
+that I want to search--
+let's say title--
 
 37
-00:01:42,580 --> 00:01:43,760
-La estoy llamando "projection".
+00:01:25,290 --> 00:01:28,460
+and then I have a
+document which has to have
 
 38
-00:01:43,760 --> 00:01:47,430
-Probablemente se ajusta mejor.
+00:01:28,460 --> 00:01:30,240
+a $regex expression in it.
 
 39
-00:01:47,430 --> 00:01:49,540
-Puedes ver en esta
-proyección que voy
+00:01:30,240 --> 00:01:33,417
+And the value-- this is the
+actual regular expression here.
 
 40
-00:01:49,540 --> 00:01:52,950
-a pedir "title" y
-suprimir el campo "_id".
+00:01:33,417 --> 00:01:35,250
+Now, you can either put
+it in these slashes,
 
 41
-00:01:52,950 --> 00:01:57,340
-Luego continúo y llamo
-a "scores.find" con esa
+00:01:35,250 --> 00:01:37,500
+or you could also
+put it in quotes.
 
 42
-00:01:57,340 --> 00:02:01,060
-consulta y con esta
-proyección en PyMongo.
+00:01:37,500 --> 00:01:39,800
+In Python, we're just
+going to use quotes.
 
 43
-00:02:01,060 --> 00:02:03,010
-Veamos qué obtenemos 
-cuando hacemos eso.
+00:01:39,800 --> 00:01:41,580
+And then you could
+also take some options,
 
 44
-00:02:03,010 --> 00:02:06,780
-Así que: "using_regex.py".
+00:01:41,580 --> 00:01:43,430
+and I looked at the
+options real quickly
 
 45
-00:02:06,780 --> 00:02:10,900
-Voy a salir de
-Mongo y a llamar a
+00:01:43,430 --> 00:01:45,280
+and the most
+interesting option I saw
 
 46
-00:02:10,900 --> 00:02:12,630
-"using_regex.py".
+00:01:45,280 --> 00:01:48,630
+was case insensitivity--
+right here-- which
 
 47
-00:02:12,630 --> 00:02:16,090
-Veo que imprime la misma
+00:01:48,630 --> 00:01:51,710
+you could use to do a
+case insensitive search.
 
 48
-00:02:16,090 --> 00:02:19,550
-información, formateada de manera
-ligeramente diferente, porque
+00:01:51,710 --> 00:01:54,770
+Now, it says that it uses
+the Perl regular expressions,
 
 49
-00:02:19,550 --> 00:02:22,730
-estamos dependiendo del
-comando "print" de Python
+00:01:54,770 --> 00:01:57,246
+and so you could separately
+Google for that if you
 
 50
-00:02:22,730 --> 00:02:25,000
-para imprimir estos diccionarios.
+00:01:57,246 --> 00:01:59,620
+want to remember exactly what
+the Perl regular expression
 
 51
-00:02:25,000 --> 00:02:26,320
-Así que eso es.
+00:01:59,620 --> 00:02:00,650
+syntax is.
 
 52
-00:02:26,320 --> 00:02:27,570
-Así es como funciona.
+00:02:00,650 --> 00:02:02,490
+But let's go see a
+small program that
 
 53
-00:02:27,570 --> 00:02:28,340
+00:02:02,490 --> 00:02:04,650
+can actually read this data.
+
+54
+00:02:04,650 --> 00:02:06,480
+OK, so here's a
+small program that's
+
+55
+00:02:06,480 --> 00:02:09,810
+going to read these stories
+and print out the ones that
+
+56
+00:02:09,810 --> 00:02:11,220
+are about Apple and Google.
+
+57
+00:02:11,220 --> 00:02:13,960
+This is very similar to the
+other programs we've written.
+
+58
+00:02:13,960 --> 00:02:16,780
+Imports PyMongo and sys--
+this is a Python program--
+
+59
+00:02:16,780 --> 00:02:18,811
+connects to the database
+using MongoClient,
+
+60
+00:02:18,811 --> 00:02:20,310
+then connects to
+the Reddit database
+
+61
+00:02:20,310 --> 00:02:21,393
+in the stories collection.
+
+62
+00:02:21,393 --> 00:02:25,620
+And over here we specify query,
+and the query is a document,
+
+63
+00:02:25,620 --> 00:02:27,950
+and the document
+is-- the first part
+
+64
+00:02:27,950 --> 00:02:30,660
+is that we say that we
+want the title of the story
+
+65
+00:02:30,660 --> 00:02:33,270
+to be a regular
+expression, to match it
+
+66
+00:02:33,270 --> 00:02:36,310
+against this regular expression,
+$regex-- this is quoted,
+
+67
+00:02:36,310 --> 00:02:38,710
+you can see here--
+and I specify that it
+
+68
+00:02:38,710 --> 00:02:42,180
+has to be Apple or Google--
+and the bar signifies an
+
+69
+00:02:42,180 --> 00:02:44,690
+or-- and then I want it
+to be case insensitive.
+
+70
+00:02:44,690 --> 00:02:47,106
+I have a projection specified,
+I want to get the title out
+
+71
+00:02:47,106 --> 00:02:49,670
+of the document, and I
+want to suppress the _id.
+
+72
+00:02:49,670 --> 00:02:51,010
+So that's about it.
+
+73
+00:02:51,010 --> 00:02:53,240
+We call stories.find
+with the query--
+
+74
+00:02:53,240 --> 00:02:55,600
+this is the query-- with this
+projection, the projection
+
+75
+00:02:55,600 --> 00:02:57,580
+being that we want to
+get the title only.
+
+76
+00:02:57,580 --> 00:02:59,330
+We check for
+exceptions, and then we
+
+77
+00:02:59,330 --> 00:03:00,540
+print out every document.
+
+78
+00:03:00,540 --> 00:03:03,040
+Let's go and see what we find.
+
+79
+00:03:03,040 --> 00:03:05,900
+I'm going to invoke the Python
+interpreter on the script.
+
+80
+00:03:05,900 --> 00:03:09,290
+OK, and when I do that I get
+stories about Apple and Google.
+
+81
+00:03:09,290 --> 00:03:12,330
+I get a story from Apple here
+about an outage yesterday,
+
+82
+00:03:12,330 --> 00:03:15,030
+and iCloud services,
+another one from Google
+
+83
+00:03:15,030 --> 00:03:17,260
+about warrants in emails,
+and some other stuff
+
+84
+00:03:17,260 --> 00:03:18,404
+from Google and Apple.
+
+85
+00:03:18,404 --> 00:03:19,820
+And that's how
+regular expressions
+
+86
+00:03:19,820 --> 00:03:22,690
+work inside MongoDB queries.

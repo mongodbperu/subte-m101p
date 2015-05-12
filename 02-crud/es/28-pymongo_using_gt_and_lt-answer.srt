@@ -1,80 +1,111 @@
 1
-00:00:00,000 --> 00:00:00,260
+00:00:00,000 --> 00:00:00,500
 
 2
-00:00:00,260 --> 00:00:04,480
-OK. La respuesta es que la
-segunda es correcta.
+00:00:00,500 --> 00:00:02,770
+OK and the answer
+is the second one,
 
 3
-00:00:04,480 --> 00:00:10,410
-La que especifica este "type"
-igual a "quiz" y "score"
+00:00:02,770 --> 00:00:05,330
+that you would need to specify
+the query like this with
 
 4
-00:00:10,410 --> 00:00:13,260
-"$gt" 20 y "$lt" 90.
+00:00:05,330 --> 00:00:07,288
+['type':'quiz','
+ score':{'$gt':20, '$lt':90}].
 
 5
-00:00:13,260 --> 00:00:15,350
-Fíjate que están entre comillas.
+00:00:07,288 --> 00:00:08,920
 
 6
-00:00:15,350 --> 00:00:19,230
-La primera no es correcta,
-porque no especifica
+00:00:08,920 --> 00:00:10,850
+These are all, again, quoted.
 
 7
-00:00:19,230 --> 00:00:20,770
-que "type" es "quiz".
+00:00:10,850 --> 00:00:12,795
+Now the reason why the
+other ones are wrong,
 
 8
-00:00:20,770 --> 00:00:24,240
-La tercera es realmente un
-poco simple, pero si estás
+00:00:12,795 --> 00:00:14,170
+the first one is
+wrong because it
 
 9
-00:00:24,240 --> 00:00:26,390
-empezando con Mongo, es un
+00:00:14,170 --> 00:00:17,670
+doesn't specify that it
+needs to be of type quiz.
 
 10
-00:00:26,390 --> 00:00:28,420
-error muy fácil de cometer.
+00:00:17,670 --> 00:00:21,850
+This third one is wrong
+for a more subtle reason.
 
 11
-00:00:28,420 --> 00:00:31,210
-En lugar de tener la clave primero
-y luego un documento que
+00:00:21,850 --> 00:00:26,450
+Because rather than saying the
+score needs to conform to this
 
 12
-00:00:31,210 --> 00:00:34,080
-especifique el criterio para
-el número, realmente comienza
+00:00:26,450 --> 00:00:28,580
+condition that's specified
+as a separate document,
 
 13
-00:00:34,080 --> 00:00:36,780
-con "$gt" (mayor que) 
-o "$lt" (menor que).
+00:00:28,580 --> 00:00:30,870
+you could see that we
+distributed this out and now
 
 14
-00:00:36,780 --> 00:00:38,300
-Pero esto no es correcto.
+00:00:30,870 --> 00:00:33,536
+it's '$gt':'$gt':[? 'score':20 ?],
+'$lt':'$lt':[? 'score':90 ?].
 
 15
-00:00:38,300 --> 00:00:40,790
-Y la última sería correcta
-si no fuera por el hecho
+00:00:33,536 --> 00:00:34,820
 
 16
-00:00:40,790 --> 00:00:43,500
-que faltan las comillas para
-esos dos literales, lo cual
+00:00:34,820 --> 00:00:36,930
+You might think this
+makes sense but it's
 
 17
-00:00:43,500 --> 00:00:47,250
-no funcionará en Python y
-PyMongo, pero funcionaría en
+00:00:36,930 --> 00:00:39,840
+not the way you specify
+greater than, less than.
 
 18
-00:00:47,250 --> 00:00:48,500
-el shell mongo.
+00:00:39,840 --> 00:00:43,130
+You instead, first, put
+the key, and then you
+
+19
+00:00:43,130 --> 00:00:46,450
+have the condition within
+this subdocument specified
+
+20
+00:00:46,450 --> 00:00:48,320
+essentially as the
+value of the key.
+
+21
+00:00:48,320 --> 00:00:51,320
+The last one is wrong
+just because there's
+
+22
+00:00:51,320 --> 00:00:53,930
+no quotes around $gt or $lt.
+
+23
+00:00:53,930 --> 00:00:56,420
+You need to protect
+these literals in Python
+
+24
+00:00:56,420 --> 00:00:59,390
+to make sure that they're
+interpretive strings.

@@ -1,110 +1,29 @@
 1
-00:00:00,000 --> 00:00:00,250
+00:00:00,000 --> 00:00:00,051
 
 2
-00:00:00,250 --> 00:00:03,830
-Muy bien, la respuesta es
-que va a tener éxito.
+00:00:00,051 --> 00:00:00,550
+OK.
 
 3
-00:00:03,830 --> 00:00:06,820
-Y va a tener éxito porque esa
-llamada a "delete", de aquí,
+00:00:00,550 --> 00:00:02,400
+And the answer is, yes.
 
 4
-00:00:06,820 --> 00:00:11,620
-eliminará la clave "_id"
-que el driver añadió
+00:00:02,400 --> 00:00:05,030
+And the reason is that
+the delete right here,
 
 5
-00:00:11,620 --> 00:00:15,530
-permitiendo una segunda inserción
-para producir un nuevo "_id"
+00:00:05,030 --> 00:00:08,340
+at the _ID in the document,
+which was added by the driver
 
 6
-00:00:15,530 --> 00:00:17,110
-establecido por el driver.
+00:00:08,340 --> 00:00:11,430
+during the first insert,
+will allow the second insert
 
 7
-00:00:17,110 --> 00:00:18,975
-Ahora, las otras respuestas están
-erradas, pero vamos a ir
-
-8
-00:00:18,975 --> 00:00:20,060
-por ellas muy rápido.
-
-9
-00:00:20,060 --> 00:00:22,740
-No, porque el "_id" va
-a estar duplicado en la
-
-10
-00:00:22,740 --> 00:00:23,610
-colección.
-
-11
-00:00:23,610 --> 00:00:25,740
-Eso habría sido cierto
-pero lo eliminamos.
-
-12
-00:00:25,740 --> 00:00:27,990
-No, porque la llamada
-al "delete" eliminará
-
-13
-00:00:27,990 --> 00:00:29,060
-todo el registro en Python.
-
-14
-00:00:29,060 --> 00:00:30,200
-Eso no es cierto.
-
-15
-00:00:30,200 --> 00:00:31,320
-El "delete"--
-
-16
-00:00:31,320 --> 00:00:35,190
-la función "del" en Python
-eliminará sólo ese par de
-
-17
-00:00:35,190 --> 00:00:36,530
-clave / valor de ese diccionario.
-
-18
-00:00:36,530 --> 00:00:38,170
-Así que por eso funciona.
-
-19
-00:00:38,170 --> 00:00:41,220
-Y la respuesta final lo
-hace bien pero lo explica mal.
-
-20
-00:00:41,220 --> 00:00:44,160
-Dice, sí, porque el driver
-PyMongo siempre añade un
-
-21
-00:00:44,160 --> 00:00:45,520
-único campo ID en la inserción.
-
-22
-00:00:45,520 --> 00:00:46,720
-Eso no es cierto.
-
-23
-00:00:46,720 --> 00:00:50,800
-No añade el campo
-único ID, "_id",
-
-24
-00:00:50,800 --> 00:00:54,320
-si ya hay uno en el registro
-que está establecido en él.
-
-25
-00:00:54,320 --> 00:00:55,570
+00:00:11,430 --> 00:00:13,360
+to succeed.

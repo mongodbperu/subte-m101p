@@ -1,83 +1,111 @@
 1
-00:00:00,000 --> 00:00:00,260
+00:00:00,000 --> 00:00:00,500
 
 2
-00:00:00,260 --> 00:00:04,480
-OK, and the answer is that the
-second one is correct.
+00:00:00,500 --> 00:00:02,770
+OK and the answer
+is the second one,
 
 3
-00:00:04,480 --> 00:00:10,410
-The one that specifies this
-type quiz and score dollar
+00:00:02,770 --> 00:00:05,330
+that you would need to specify
+the query like this with
 
 4
-00:00:10,410 --> 00:00:13,260
-greater than 20 and dollar
-less than 90.
+00:00:05,330 --> 00:00:07,288
+['type':'quiz','
+ score':{'$gt':20, '$lt':90}].
 
 5
-00:00:13,260 --> 00:00:15,350
-You notice that they're
-quoted there.
+00:00:07,288 --> 00:00:08,920
 
 6
-00:00:15,350 --> 00:00:19,230
-The first one is not correct,
-because it doesn't specify
+00:00:08,920 --> 00:00:10,850
+These are all, again, quoted.
 
 7
-00:00:19,230 --> 00:00:20,770
-that the type is quiz.
+00:00:10,850 --> 00:00:12,795
+Now the reason why the
+other ones are wrong,
 
 8
-00:00:20,770 --> 00:00:24,240
-The third one is actually kind
-of backwards, but if you're
+00:00:12,795 --> 00:00:14,170
+the first one is
+wrong because it
 
 9
-00:00:24,240 --> 00:00:26,390
-just getting started
-with Mongo, it's an
+00:00:14,170 --> 00:00:17,670
+doesn't specify that it
+needs to be of type quiz.
 
 10
-00:00:26,390 --> 00:00:28,420
-easy mistake to make.
+00:00:17,670 --> 00:00:21,850
+This third one is wrong
+for a more subtle reason.
 
 11
-00:00:28,420 --> 00:00:31,210
-Instead of having the key first
-then a document this
+00:00:21,850 --> 00:00:26,450
+Because rather than saying the
+score needs to conform to this
 
 12
-00:00:31,210 --> 00:00:34,080
-specifies the criteria for the
-number, it actually starts
+00:00:26,450 --> 00:00:28,580
+condition that's specified
+as a separate document,
 
 13
-00:00:34,080 --> 00:00:36,780
-with dollar greater than
-or dollar less than.
+00:00:28,580 --> 00:00:30,870
+you could see that we
+distributed this out and now
 
 14
-00:00:36,780 --> 00:00:38,300
-But this is not correct.
+00:00:30,870 --> 00:00:33,536
+it's '$gt':'$gt':[? 'score':20 ?],
+'$lt':'$lt':[? 'score':90 ?].
 
 15
-00:00:38,300 --> 00:00:40,790
-And the last one would be
-correct if not for the fact
+00:00:33,536 --> 00:00:34,820
 
 16
-00:00:40,790 --> 00:00:43,500
-that the quotes were left off
-those two literals, which
+00:00:34,820 --> 00:00:36,930
+You might think this
+makes sense but it's
 
 17
-00:00:43,500 --> 00:00:47,250
-won't work inside Python and
-PyMongo, but would inside the
+00:00:36,930 --> 00:00:39,840
+not the way you specify
+greater than, less than.
 
 18
-00:00:47,250 --> 00:00:48,500
-Mongo shell.
+00:00:39,840 --> 00:00:43,130
+You instead, first, put
+the key, and then you
+
+19
+00:00:43,130 --> 00:00:46,450
+have the condition within
+this subdocument specified
+
+20
+00:00:46,450 --> 00:00:48,320
+essentially as the
+value of the key.
+
+21
+00:00:48,320 --> 00:00:51,320
+The last one is wrong
+just because there's
+
+22
+00:00:51,320 --> 00:00:53,930
+no quotes around $gt or $lt.
+
+23
+00:00:53,930 --> 00:00:56,420
+You need to protect
+these literals in Python
+
+24
+00:00:56,420 --> 00:00:59,390
+to make sure that they're
+interpretive strings.

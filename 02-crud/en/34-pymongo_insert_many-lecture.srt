@@ -1,0 +1,457 @@
+1
+00:00:00,000 --> 00:00:00,500
+
+2
+00:00:00,500 --> 00:00:02,990
+Now that we know how to insert
+one document using PyMongo,
+
+3
+00:00:02,990 --> 00:00:06,440
+let's show how to
+insert many documents.
+
+4
+00:00:06,440 --> 00:00:08,310
+So you insert many
+documents at once
+
+5
+00:00:08,310 --> 00:00:11,220
+by using the insert_many
+command from PyMongo,
+
+6
+00:00:11,220 --> 00:00:13,880
+and it takes two arguments.
+
+7
+00:00:13,880 --> 00:00:18,230
+The first argument is a list
+of documents to be inserted.
+
+8
+00:00:18,230 --> 00:00:22,070
+And the second argument
+is an ordered flag,
+
+9
+00:00:22,070 --> 00:00:25,080
+and the ordered flag tells
+database whether or not
+
+10
+00:00:25,080 --> 00:00:28,060
+you require the documents
+to be inserted in order.
+
+11
+00:00:28,060 --> 00:00:31,080
+So let's see how this
+affects what happens.
+
+12
+00:00:31,080 --> 00:00:32,580
+Especially when an
+error occurs when
+
+13
+00:00:32,580 --> 00:00:34,040
+you're inserting documents.
+
+14
+00:00:34,040 --> 00:00:36,520
+So here's a program-- very
+similar to the program
+
+15
+00:00:36,520 --> 00:00:37,870
+we looked at before.
+
+16
+00:00:37,870 --> 00:00:39,950
+We're just going to
+insert two documents-- one
+
+17
+00:00:39,950 --> 00:00:41,340
+for Andrew, one for Richard.
+
+18
+00:00:41,340 --> 00:00:44,050
+My underscore ID is
+specified, Richard's is not.
+
+19
+00:00:44,050 --> 00:00:46,700
+Which means that the database
+driver PyMongo will create
+
+20
+00:00:46,700 --> 00:00:48,900
+unique underscore ID on insert.
+
+21
+00:00:48,900 --> 00:00:51,490
+We create a Python list
+with Andrew, Richard,
+
+22
+00:00:51,490 --> 00:00:53,020
+and then we call insert_many.
+
+23
+00:00:53,020 --> 00:00:56,550
+And then we specify
+the list and we specify
+
+24
+00:00:56,550 --> 00:00:58,480
+that the ordering is true.
+
+25
+00:00:58,480 --> 00:01:01,780
+Now, this program has a little
+bit of scaffolding around it--
+
+26
+00:01:01,780 --> 00:01:02,730
+not very much.
+
+27
+00:01:02,730 --> 00:01:04,330
+Which is that it
+prints the people
+
+28
+00:01:04,330 --> 00:01:06,163
+in the collection and
+the people collection,
+
+29
+00:01:06,163 --> 00:01:07,990
+then it does the
+insert_many-- calling
+
+30
+00:01:07,990 --> 00:01:09,440
+my insert_many function.
+
+31
+00:01:09,440 --> 00:01:12,300
+And then it retrieves the people
+out of the collection again.
+
+32
+00:01:12,300 --> 00:01:15,270
+Print_people just gets the
+connection to the database
+
+33
+00:01:15,270 --> 00:01:17,910
+and does a find, and
+shows every document
+
+34
+00:01:17,910 --> 00:01:19,350
+in the people collection.
+
+35
+00:01:19,350 --> 00:01:21,090
+All right, let's run this thing.
+
+36
+00:01:21,090 --> 00:01:22,610
+I've cleared the
+people collection
+
+37
+00:01:22,610 --> 00:01:24,750
+in the school database
+so there's nothing in it.
+
+38
+00:01:24,750 --> 00:01:26,960
+And now we're going to
+invoke the Python interpreter
+
+39
+00:01:26,960 --> 00:01:29,610
+on the using
+insert_many program.
+
+40
+00:01:29,610 --> 00:01:32,470
+And if I do that
+before the insert_many,
+
+41
+00:01:32,470 --> 00:01:34,940
+there's nothing in the
+collection as we expect.
+
+42
+00:01:34,940 --> 00:01:38,580
+And after, these two documents--
+one for me and one for Richard.
+
+43
+00:01:38,580 --> 00:01:40,237
+And I projected
+out only the name
+
+44
+00:01:40,237 --> 00:01:41,820
+so I didn't show the
+other information
+
+45
+00:01:41,820 --> 00:01:43,370
+from these documents.
+
+46
+00:01:43,370 --> 00:01:45,220
+Now what if I run it again?
+
+47
+00:01:45,220 --> 00:01:48,390
+Well if I run it again,
+this time I get an error.
+
+48
+00:01:48,390 --> 00:01:51,965
+And I expect that I would get an
+error because we know that you
+
+49
+00:01:51,965 --> 00:01:54,465
+can't insert me twice because
+we specified the underscore ID
+
+50
+00:01:54,465 --> 00:01:55,850
+and there's a conflict.
+
+51
+00:01:55,850 --> 00:01:58,000
+But because we said
+ordered equals true,
+
+52
+00:01:58,000 --> 00:02:01,070
+and because my document was
+inserted first in the list
+
+53
+00:02:01,070 --> 00:02:03,910
+if you recall, you'll notice
+that the document after that
+
+54
+00:02:03,910 --> 00:02:06,300
+didn't get inserted and
+that we still have only two
+
+55
+00:02:06,300 --> 00:02:08,110
+documents in the collection.
+
+56
+00:02:08,110 --> 00:02:10,389
+I can run over and over
+again and I'm never
+
+57
+00:02:10,389 --> 00:02:13,060
+going to have more than two
+documents in the collection
+
+58
+00:02:13,060 --> 00:02:14,560
+when I'm done.
+
+59
+00:02:14,560 --> 00:02:16,800
+And again that's
+because in the program,
+
+60
+00:02:16,800 --> 00:02:19,660
+documents are inserted
+"andrew,richard"--
+
+61
+00:02:19,660 --> 00:02:20,570
+that's the ordering.
+
+62
+00:02:20,570 --> 00:02:22,236
+Since the ordering
+has to be maintained,
+
+63
+00:02:22,236 --> 00:02:24,320
+and since my insert's
+going to cause an error,
+
+64
+00:02:24,320 --> 00:02:26,920
+the second insert or a
+third insert of Richard
+
+65
+00:02:26,920 --> 00:02:28,110
+isn't going to occur.
+
+66
+00:02:28,110 --> 00:02:30,710
+Now what if we changed
+this ordering to be false
+
+67
+00:02:30,710 --> 00:02:31,980
+and then we try to run it?
+
+68
+00:02:31,980 --> 00:02:33,490
+Then what happens?
+
+69
+00:02:33,490 --> 00:02:36,460
+So now we're no longer
+requiring ordering.
+
+70
+00:02:36,460 --> 00:02:38,710
+We do that and we run it.
+
+71
+00:02:38,710 --> 00:02:41,700
+Now, we're still getting an
+error on the insert of Andrew,
+
+72
+00:02:41,700 --> 00:02:44,340
+but because the database is
+not guaranteeing ordering,
+
+73
+00:02:44,340 --> 00:02:46,800
+the insert Richard
+happens anyway.
+
+74
+00:02:46,800 --> 00:02:50,580
+So if we run it over
+and over, now there's
+
+75
+00:02:50,580 --> 00:02:54,380
+still only one Andrew, but lots
+of Richard's in the collection.
+
+76
+00:02:54,380 --> 00:02:56,607
+And the order parameter
+determines whether or not
+
+77
+00:02:56,607 --> 00:02:58,440
+the database will
+continue to pass an error,
+
+78
+00:02:58,440 --> 00:03:00,410
+and in particular
+without guarantees
+
+79
+00:03:00,410 --> 00:03:02,240
+to insert a document
+in order, which would
+
+80
+00:03:02,240 --> 00:03:04,410
+stop the inserts on an error.
+
+81
+00:03:04,410 --> 00:03:05,850
+All right, and it
+also turns out--
+
+82
+00:03:05,850 --> 00:03:08,210
+in case you're wondering-- that
+the ordering parameter defaults
+
+83
+00:03:08,210 --> 00:03:08,710
+to true.
+
+84
+00:03:08,710 --> 00:03:10,430
+And if you leave it
+out, the database
+
+85
+00:03:10,430 --> 00:03:13,290
+will automatically
+insert things in order
+
+86
+00:03:13,290 --> 00:03:14,940
+for the insert_many command.
+
+87
+00:03:14,940 --> 00:03:16,690
+Now it's time for a quiz.
+
+88
+00:03:16,690 --> 00:03:18,890
+Here's a program that
+is similar to the one
+
+89
+00:03:18,890 --> 00:03:20,490
+that we just showed you.
+
+90
+00:03:20,490 --> 00:03:23,760
+And in this program, we
+have an insert_many function
+
+91
+00:03:23,760 --> 00:03:26,960
+and we have a bunch of documents
+that we're going to insert.
+
+92
+00:03:26,960 --> 00:03:30,210
+And it's going to try to
+insert these documents using
+
+93
+00:03:30,210 --> 00:03:31,690
+insert_many(docs).
+
+94
+00:03:31,690 --> 00:03:34,440
+Now based on what you've
+learned in this lesson,
+
+95
+00:03:34,440 --> 00:03:36,300
+what are we going to
+see in this collection
+
+96
+00:03:36,300 --> 00:03:39,540
+after this insert_many runs?
+
+97
+00:03:39,540 --> 00:03:41,460
+And here are the four choices.
+
+98
+00:03:41,460 --> 00:03:43,700
+Check which one is correct.
