@@ -1,0 +1,389 @@
+1
+00:00:00,000 --> 00:00:00,500
+
+2
+00:00:00,500 --> 00:00:02,240
+OK, let's talk about
+unique indexes.
+
+3
+00:00:02,240 --> 00:00:04,660
+So far, all the indexes
+that we've created
+
+4
+00:00:04,660 --> 00:00:06,657
+have been non-unique.
+
+5
+00:00:06,657 --> 00:00:08,240
+But you can also
+create unique indexes
+
+6
+00:00:08,240 --> 00:00:11,350
+that enforce the constraint
+that the keys have to be
+
+7
+00:00:11,350 --> 00:00:13,410
+unique within the collection.
+
+8
+00:00:13,410 --> 00:00:16,170
+No two documents can have
+the same key if it's indexed.
+
+9
+00:00:16,170 --> 00:00:18,170
+Let's going into the Mongo
+shell and demonstrate
+
+10
+00:00:18,170 --> 00:00:19,434
+what we're talking about.
+
+11
+00:00:19,434 --> 00:00:21,600
+We're going to create a new
+collection called stuff.
+
+12
+00:00:21,600 --> 00:00:23,266
+Just to make sure
+that it's really gone,
+
+13
+00:00:23,266 --> 00:00:24,930
+I'm going to drop it.
+
+14
+00:00:24,930 --> 00:00:28,730
+Now I'm going to insert some
+stuff into my stuff collection.
+
+15
+00:00:28,730 --> 00:00:31,260
+All right, I've inserted an
+apple into the collection.
+
+16
+00:00:31,260 --> 00:00:34,310
+Now I'm going to insert a
+pear into the collection.
+
+17
+00:00:34,310 --> 00:00:36,020
+And now I'm going to
+insert another apple
+
+18
+00:00:36,020 --> 00:00:37,830
+into the collection.
+
+19
+00:00:37,830 --> 00:00:39,960
+And now I'm going to see
+what's in the collection.
+
+20
+00:00:39,960 --> 00:00:42,167
+And we see two
+apples and a pear.
+
+21
+00:00:42,167 --> 00:00:44,000
+Now if we wanted to
+create an index on this,
+
+22
+00:00:44,000 --> 00:00:45,519
+we certainly could.
+
+23
+00:00:45,519 --> 00:00:46,560
+That would be no problem.
+
+24
+00:00:46,560 --> 00:00:51,610
+We could just do a createIndex
+on Thing ascending,
+
+25
+00:00:51,610 --> 00:00:53,325
+and works just fine.
+
+26
+00:00:53,325 --> 00:00:55,450
+But if we want to create
+a unique index, we cannot.
+
+27
+00:00:55,450 --> 00:00:57,616
+Let me show you what a
+unique index would look like.
+
+28
+00:00:57,616 --> 00:01:00,070
+So let's drop the
+index we just created.
+
+29
+00:01:00,070 --> 00:01:02,050
+And now let's create
+a unique index.
+
+30
+00:01:02,050 --> 00:01:04,258
+We're going to call createIndex,
+but this time, we're
+
+31
+00:01:04,258 --> 00:01:07,320
+going to give one additional
+document in this command.
+
+32
+00:01:07,320 --> 00:01:09,520
+Rather than just say
+createIndex Thing 1,
+
+33
+00:01:09,520 --> 00:01:13,150
+we're going to say
+Unique is True.
+
+34
+00:01:13,150 --> 00:01:15,580
+And if we do that, what happens?
+
+35
+00:01:15,580 --> 00:01:17,200
+Well, we get an error.
+
+36
+00:01:17,200 --> 00:01:18,630
+And the reason we
+get an error is
+
+37
+00:01:18,630 --> 00:01:21,150
+because it can't create
+a unique index when
+
+38
+00:01:21,150 --> 00:01:23,940
+there's two things inside
+this collection that
+
+39
+00:01:23,940 --> 00:01:25,310
+have the same value.
+
+40
+00:01:25,310 --> 00:01:26,900
+So let's drop the offending one.
+
+41
+00:01:26,900 --> 00:01:29,010
+So let's look at stuff
+collection again.
+
+42
+00:01:29,010 --> 00:01:30,940
+And we see we have two apples.
+
+43
+00:01:30,940 --> 00:01:34,805
+So let's remove one
+of those apples.
+
+44
+00:01:34,805 --> 00:01:36,330
+We're going to do it this way.
+
+45
+00:01:36,330 --> 00:01:37,610
+We're going to call remove.
+
+46
+00:01:37,610 --> 00:01:42,820
+We're going to find a document
+that has Thing Apple in it.
+
+47
+00:01:42,820 --> 00:01:45,750
+And we're going to give
+one option to remove.
+
+48
+00:01:45,750 --> 00:01:49,870
+We're going to say
+that justOne is True.
+
+49
+00:01:49,870 --> 00:01:51,070
+We want to remove just one.
+
+50
+00:01:51,070 --> 00:01:53,290
+And if we do that, we
+get Number Removed 1.
+
+51
+00:01:53,290 --> 00:01:56,326
+And now if we look in
+the collection again,
+
+52
+00:01:56,326 --> 00:01:57,700
+we'll see we only
+have one apple.
+
+53
+00:01:57,700 --> 00:01:59,590
+And now we should be able to
+add the index that we want,
+
+54
+00:01:59,590 --> 00:02:00,620
+the unique index.
+
+55
+00:02:00,620 --> 00:02:02,800
+Thing 1, Unique True.
+
+56
+00:02:02,800 --> 00:02:03,300
+No problem.
+
+57
+00:02:03,300 --> 00:02:04,480
+We added the index.
+
+58
+00:02:04,480 --> 00:02:08,590
+And if we want to
+insert something
+
+59
+00:02:08,590 --> 00:02:12,530
+that already is in
+there, like a pear,
+
+60
+00:02:12,530 --> 00:02:14,590
+we get a duplicate key error.
+
+61
+00:02:14,590 --> 00:02:17,110
+In addition, if you look
+at the indexes on stuff
+
+62
+00:02:17,110 --> 00:02:20,090
+by calling
+db.stuff.getIndexes, you'll
+
+63
+00:02:20,090 --> 00:02:24,660
+notice that the database tells
+you that the index on Thing
+
+64
+00:02:24,660 --> 00:02:25,435
+is unique.
+
+65
+00:02:25,435 --> 00:02:28,750
+Now oddly, it doesn't tell
+you that the index on _id is
+
+66
+00:02:28,750 --> 00:02:31,940
+unique, although we've told
+you that _id is unique and it
+
+67
+00:02:31,940 --> 00:02:32,850
+[? is a ?] unique.
+
+68
+00:02:32,850 --> 00:02:37,750
+So it's a vagary of the database
+that it won't admit that _id is
+
+69
+00:02:37,750 --> 00:02:38,910
+unique.
+
+70
+00:02:38,910 --> 00:02:40,930
+So we can prove that
+of course it is unique.
+
+71
+00:02:40,930 --> 00:02:43,610
+Because if we try to put
+some documents into it,
+
+72
+00:02:43,610 --> 00:02:48,140
+let's say with _id Andrew,
+and we try to put two of those
+
+73
+00:02:48,140 --> 00:02:50,590
+in there, we're going to
+find it does not work.
+
+74
+00:02:50,590 --> 00:02:53,570
+db.stuff Inserted--
+let's try another one.
+
+75
+00:02:53,570 --> 00:02:58,060
+Duplicate key error on _id,
+which is exactly the same error
+
+76
+00:02:58,060 --> 00:03:00,640
+that we see on this other
+duplicate key error,
+
+77
+00:03:00,640 --> 00:03:03,506
+the E11000 error in both cases.
+
+78
+00:03:03,506 --> 00:03:05,880
+So even though the database
+doesn't tell you that the _id
+
+79
+00:03:05,880 --> 00:03:08,530
+index is unique, it is unique.
+
+80
+00:03:08,530 --> 00:03:10,857
+All right, so it's
+time for a quiz.
+
+81
+00:03:10,857 --> 00:03:12,440
+Please provide the
+mongo shell command
+
+82
+00:03:12,440 --> 00:03:16,690
+to create a unique index on
+student_id, class_id ascending
+
+83
+00:03:16,690 --> 00:03:17,930
+for the collection Students.
+
+84
+00:03:17,930 --> 00:03:19,720
+Type it below.

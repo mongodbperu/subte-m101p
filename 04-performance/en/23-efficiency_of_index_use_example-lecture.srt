@@ -1,0 +1,669 @@
+1
+00:00:00,000 --> 00:00:00,500
+
+2
+00:00:00,500 --> 00:00:01,710
+So here is that index.
+
+3
+00:00:01,710 --> 00:00:04,630
+Offscreen, I've gone ahead and
+created a compound index based
+
+4
+00:00:04,630 --> 00:00:07,450
+on class ID and student ID.
+
+5
+00:00:07,450 --> 00:00:09,420
+So with class ID as
+the prefix, we'll
+
+6
+00:00:09,420 --> 00:00:12,640
+be using the most selective
+part of our query-- the point
+
+7
+00:00:12,640 --> 00:00:14,050
+or a quality query.
+
+8
+00:00:14,050 --> 00:00:16,600
+Now, generally
+speaking-- and this
+
+9
+00:00:16,600 --> 00:00:18,160
+won't hold for all data sets.
+
+10
+00:00:18,160 --> 00:00:20,030
+But generally
+speaking, when you're
+
+11
+00:00:20,030 --> 00:00:21,930
+building compound
+indexes, as you're
+
+12
+00:00:21,930 --> 00:00:24,030
+thinking about field order
+in the compound index,
+
+13
+00:00:24,030 --> 00:00:25,350
+you want to work with
+fields on which you're
+
+14
+00:00:25,350 --> 00:00:27,360
+going to be doing your
+quality queries first.
+
+15
+00:00:27,360 --> 00:00:30,830
+Putting them before range
+queries, as we did here.
+
+16
+00:00:30,830 --> 00:00:31,330
+OK.
+
+17
+00:00:31,330 --> 00:00:33,410
+Now, I'm going to mix
+things up a little bit,
+
+18
+00:00:33,410 --> 00:00:35,280
+and you can see here
+that I've actually
+
+19
+00:00:35,280 --> 00:00:38,230
+changed the sort we want to
+do to use that final grade
+
+20
+00:00:38,230 --> 00:00:40,890
+field that I introduced when
+we first started looking
+
+21
+00:00:40,890 --> 00:00:42,480
+at this particular example.
+
+22
+00:00:42,480 --> 00:00:45,470
+So let's run this query
+now and see what explain
+
+23
+00:00:45,470 --> 00:00:47,520
+tells us about performance.
+
+24
+00:00:47,520 --> 00:00:48,020
+OK.
+
+25
+00:00:48,020 --> 00:00:49,110
+That was fast.
+
+26
+00:00:49,110 --> 00:00:51,380
+So we scroll up
+to executionStats,
+
+27
+00:00:51,380 --> 00:00:52,560
+and look at this.
+
+28
+00:00:52,560 --> 00:00:56,050
+Number returned is exactly
+equal to the totalKeysExamined
+
+29
+00:00:56,050 --> 00:00:58,060
+and the totalDocsExamined.
+
+30
+00:00:58,060 --> 00:01:02,040
+Our executionTime
+is 138 milliseconds.
+
+31
+00:01:02,040 --> 00:01:04,185
+So let's look at the
+query plan here then.
+
+32
+00:01:04,185 --> 00:01:06,310
+And here, I want to call
+your attention to the fact
+
+33
+00:01:06,310 --> 00:01:07,860
+that we have a sort stage.
+
+34
+00:01:07,860 --> 00:01:10,470
+Now, what that means is that
+we're doing an in-memory sort,
+
+35
+00:01:10,470 --> 00:01:12,690
+and I bet you can
+figure out why.
+
+36
+00:01:12,690 --> 00:01:14,490
+Because we can
+see from the index
+
+37
+00:01:14,490 --> 00:01:17,180
+scan stage that we're
+using that new index
+
+38
+00:01:17,180 --> 00:01:19,680
+that we created-- the compound
+index on class ID and student
+
+39
+00:01:19,680 --> 00:01:20,360
+ID.
+
+40
+00:01:20,360 --> 00:01:22,570
+No mention of final grade here.
+
+41
+00:01:22,570 --> 00:01:24,950
+So in order to sort,
+we're going to have
+
+42
+00:01:24,950 --> 00:01:27,820
+to do the sort in-memory.
+
+43
+00:01:27,820 --> 00:01:31,220
+Generally speaking, it's
+best to avoid in-memory sorts
+
+44
+00:01:31,220 --> 00:01:32,180
+when we can.
+
+45
+00:01:32,180 --> 00:01:33,780
+But in order to do
+that, we're going
+
+46
+00:01:33,780 --> 00:01:34,982
+to have to make a trade-off.
+
+47
+00:01:34,982 --> 00:01:36,440
+And that is-- and
+this is typically
+
+48
+00:01:36,440 --> 00:01:38,080
+the trade-off you
+have-- we're going
+
+49
+00:01:38,080 --> 00:01:40,860
+to have to examine a few
+more keys than the number
+
+50
+00:01:40,860 --> 00:01:43,650
+of documents we return
+in order to be able to do
+
+51
+00:01:43,650 --> 00:01:45,700
+that sort in the database.
+
+52
+00:01:45,700 --> 00:01:47,030
+So let me show you what I mean.
+
+53
+00:01:47,030 --> 00:01:48,820
+So we created this index here.
+
+54
+00:01:48,820 --> 00:01:51,010
+Well, let's think
+about how this works.
+
+55
+00:01:51,010 --> 00:01:54,750
+We're creating a bunch of
+pairs of values, in effect,
+
+56
+00:01:54,750 --> 00:01:58,950
+of class ID and student ID, but
+what we'd like to be able to do
+
+57
+00:01:58,950 --> 00:02:02,030
+is walk the index in sort order.
+
+58
+00:02:02,030 --> 00:02:02,720
+OK.
+
+59
+00:02:02,720 --> 00:02:04,890
+So in order to do
+that, well, we've
+
+60
+00:02:04,890 --> 00:02:07,960
+got our most selective
+part of our query here,
+
+61
+00:02:07,960 --> 00:02:10,060
+which is fine because
+we want to identify
+
+62
+00:02:10,060 --> 00:02:12,775
+every single record that
+uses the class ID specified
+
+63
+00:02:12,775 --> 00:02:13,840
+in the query.
+
+64
+00:02:13,840 --> 00:02:16,090
+But then in order to be able
+to sort within the index,
+
+65
+00:02:16,090 --> 00:02:19,340
+we'd have to be able to walk
+the index keys in order, which
+
+66
+00:02:19,340 --> 00:02:22,270
+means that we're
+going to have to have
+
+67
+00:02:22,270 --> 00:02:24,150
+that field on
+which we're sorting
+
+68
+00:02:24,150 --> 00:02:26,370
+as part of a compound index.
+
+69
+00:02:26,370 --> 00:02:29,420
+And it's going to have to go
+immediately after class ID.
+
+70
+00:02:29,420 --> 00:02:31,829
+So we want to create
+another compound index.
+
+71
+00:02:31,829 --> 00:02:33,620
+And in fact, this is
+the one that we really
+
+72
+00:02:33,620 --> 00:02:35,828
+want if a common query
+pattern is this one that we're
+
+73
+00:02:35,828 --> 00:02:38,770
+looking at because this will
+very selectively identify
+
+74
+00:02:38,770 --> 00:02:40,360
+the records that
+we want to look at.
+
+75
+00:02:40,360 --> 00:02:42,780
+And then by walking
+the next component
+
+76
+00:02:42,780 --> 00:02:44,570
+of the keys all the
+way through the index,
+
+77
+00:02:44,570 --> 00:02:48,750
+we'll be able to pull out all
+of the records in the specified
+
+78
+00:02:48,750 --> 00:02:49,250
+sort order.
+
+79
+00:02:49,250 --> 00:02:50,624
+And what we can
+do along the way,
+
+80
+00:02:50,624 --> 00:02:52,340
+as we're walking
+through those keys,
+
+81
+00:02:52,340 --> 00:02:55,990
+is simply eliminate any that
+don't match the student ID
+
+82
+00:02:55,990 --> 00:02:57,336
+range that we're looking for.
+
+83
+00:02:57,336 --> 00:02:59,460
+OK So we're going to have
+to touch a few more index
+
+84
+00:02:59,460 --> 00:03:01,820
+keys than will end up
+being in our results set.
+
+85
+00:03:01,820 --> 00:03:03,700
+But by doing the
+sort in the database,
+
+86
+00:03:03,700 --> 00:03:05,720
+we're going to save
+ourselves executionTime.
+
+87
+00:03:05,720 --> 00:03:06,940
+So let's create this index.
+
+88
+00:03:06,940 --> 00:03:08,420
+It'll take a little while.
+
+89
+00:03:08,420 --> 00:03:08,920
+OK.
+
+90
+00:03:08,920 --> 00:03:10,920
+And our index finished
+up, so let's take a look.
+
+91
+00:03:10,920 --> 00:03:13,044
+Now, there is one thing I
+want to tweak about this,
+
+92
+00:03:13,044 --> 00:03:14,642
+and that is that
+I want to change
+
+93
+00:03:14,642 --> 00:03:16,100
+the way we're
+sorting so that we're
+
+94
+00:03:16,100 --> 00:03:17,430
+sorting in descending order.
+
+95
+00:03:17,430 --> 00:03:20,670
+And this index we created
+will work just fine for that
+
+96
+00:03:20,670 --> 00:03:23,170
+because MongoDB can walk
+the index in reverse order
+
+97
+00:03:23,170 --> 00:03:24,120
+just as easily.
+
+98
+00:03:24,120 --> 00:03:26,500
+So let's run our query.
+
+99
+00:03:26,500 --> 00:03:27,000
+OK.
+
+100
+00:03:27,000 --> 00:03:29,951
+Now, let's take a look
+at what happened here.
+
+101
+00:03:29,951 --> 00:03:30,450
+OK.
+
+102
+00:03:30,450 --> 00:03:32,180
+Now, this is going
+to vary depending
+
+103
+00:03:32,180 --> 00:03:33,980
+on what else is going
+on in the system,
+
+104
+00:03:33,980 --> 00:03:37,060
+but you can see that
+our executionTime is
+
+105
+00:03:37,060 --> 00:03:38,170
+down quite a bit.
+
+106
+00:03:38,170 --> 00:03:41,280
+And this is because doing
+the sort in the database,
+
+107
+00:03:41,280 --> 00:03:43,470
+by simply walking the
+index keys in order,
+
+108
+00:03:43,470 --> 00:03:45,180
+it's going to save
+us executionTime.
+
+109
+00:03:45,180 --> 00:03:46,680
+And if we look at
+the query plan,
+
+110
+00:03:46,680 --> 00:03:49,490
+we can see that the
+winning plan does not
+
+111
+00:03:49,490 --> 00:03:51,390
+any longer have a sort stage.
+
+112
+00:03:51,390 --> 00:03:52,950
+And in fact, what
+we ended up using
+
+113
+00:03:52,950 --> 00:03:55,221
+was the index that
+we just created.
+
+114
+00:03:55,221 --> 00:03:55,720
+OK.
+
+115
+00:03:55,720 --> 00:04:00,020
+So why is this a better
+index for this query?
+
+116
+00:04:00,020 --> 00:04:04,730
+Well, for this data set, we know
+that class is very selective.
+
+117
+00:04:04,730 --> 00:04:07,380
+By specifying an
+individual class ID,
+
+118
+00:04:07,380 --> 00:04:10,505
+we're eliminating easily more
+than 90% of the data set.
+
+119
+00:04:10,505 --> 00:04:13,370
+And in fact, it's quite
+a bit more than 90%.
+
+120
+00:04:13,370 --> 00:04:15,550
+And by specifying
+this, we can simply
+
+121
+00:04:15,550 --> 00:04:17,610
+walk the index keys
+in order in order
+
+122
+00:04:17,610 --> 00:04:19,810
+to get our sorted results set.
+
+123
+00:04:19,810 --> 00:04:22,640
+And along the way,
+based on the student ID
+
+124
+00:04:22,640 --> 00:04:24,440
+component of this
+compound index,
+
+125
+00:04:24,440 --> 00:04:26,260
+we can simply make
+this comparison
+
+126
+00:04:26,260 --> 00:04:30,150
+to get rid of any records
+that don't match this range
+
+127
+00:04:30,150 --> 00:04:31,240
+constraint.
+
+128
+00:04:31,240 --> 00:04:35,050
+And if we take a look at the
+explain output one more time,
+
+129
+00:04:35,050 --> 00:04:37,540
+we'll see that that trade-off
+is, in fact, there--
+
+130
+00:04:37,540 --> 00:04:41,640
+that good executionTime, but
+we are walking a few more index
+
+131
+00:04:41,640 --> 00:04:45,400
+keys than we have documents
+in our results set.
+
+132
+00:04:45,400 --> 00:04:47,730
+But in many cases,
+this is a trade-off
+
+133
+00:04:47,730 --> 00:04:49,090
+that's well worth making.
+
+134
+00:04:49,090 --> 00:04:49,590
+OK.
+
+135
+00:04:49,590 --> 00:04:52,540
+So this gives you
+some idea of how
+
+136
+00:04:52,540 --> 00:04:54,655
+to think a little bit
+about structuring indexes.
+
+137
+00:04:54,655 --> 00:04:56,030
+And we looked at
+compound indexes
+
+138
+00:04:56,030 --> 00:04:58,150
+because this is where people
+have the most difficulty
+
+139
+00:04:58,150 --> 00:04:59,191
+setting up their indexes.
+
+140
+00:04:59,191 --> 00:05:01,640
+And thinking about
+selectivity and thinking
+
+141
+00:05:01,640 --> 00:05:05,030
+about how to get our sorts
+accomplished in the database
+
+142
+00:05:05,030 --> 00:05:07,480
+gives us indexes that
+pretty efficiently
+
+143
+00:05:07,480 --> 00:05:10,400
+handle our operations.

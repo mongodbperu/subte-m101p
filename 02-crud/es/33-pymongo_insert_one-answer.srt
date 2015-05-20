@@ -1,0 +1,29 @@
+1
+00:00:00,000 --> 00:00:00,051
+
+2
+00:00:00,051 --> 00:00:00,550
+OK.
+
+3
+00:00:00,550 --> 00:00:02,400
+And the answer is, yes.
+
+4
+00:00:02,400 --> 00:00:05,030
+And the reason is that
+the delete right here,
+
+5
+00:00:05,030 --> 00:00:08,340
+at the _ID in the document,
+which was added by the driver
+
+6
+00:00:08,340 --> 00:00:11,430
+during the first insert,
+will allow the second insert
+
+7
+00:00:11,430 --> 00:00:13,360
+to succeed.

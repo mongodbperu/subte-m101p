@@ -1,0 +1,470 @@
+1
+00:00:00,000 --> 00:00:00,500
+
+2
+00:00:00,500 --> 00:00:02,279
+This week is mostly
+about indexing.
+
+3
+00:00:02,279 --> 00:00:03,820
+And then at the very
+end of the week,
+
+4
+00:00:03,820 --> 00:00:05,400
+we're going to talk
+about sharding,
+
+5
+00:00:05,400 --> 00:00:07,410
+which is distributing
+database queries
+
+6
+00:00:07,410 --> 00:00:08,682
+across multiple servers.
+
+7
+00:00:08,682 --> 00:00:10,640
+But before we do that,
+we need to introduce you
+
+8
+00:00:10,640 --> 00:00:14,790
+to the idea of what a storage
+engine is inside the database,
+
+9
+00:00:14,790 --> 00:00:16,890
+because this was a
+big year for MongoDB.
+
+10
+00:00:16,890 --> 00:00:21,260
+New in MongoDB 3.0 is that
+we offer pluggable storage
+
+11
+00:00:21,260 --> 00:00:22,090
+engines.
+
+12
+00:00:22,090 --> 00:00:23,570
+Now, what is a storage engine?
+
+13
+00:00:23,570 --> 00:00:26,070
+A storage engine
+is the interface
+
+14
+00:00:26,070 --> 00:00:28,780
+between the persistent
+storage, which
+
+15
+00:00:28,780 --> 00:00:31,810
+we'll call the disks, which
+might be a solid state disk,
+
+16
+00:00:31,810 --> 00:00:34,830
+and the database
+itself, MongoDB.
+
+17
+00:00:34,830 --> 00:00:36,840
+And this is the Mongo server.
+
+18
+00:00:36,840 --> 00:00:39,700
+So the MongoDB server
+talks to the disk,
+
+19
+00:00:39,700 --> 00:00:43,360
+the persistent storage,
+through a storage engine.
+
+20
+00:00:43,360 --> 00:00:46,084
+So that's the storage
+engine right there.
+
+21
+00:00:46,084 --> 00:00:48,250
+And you, the programmer,
+you're going to be writing,
+
+22
+00:00:48,250 --> 00:00:49,900
+let's say, a Python program.
+
+23
+00:00:49,900 --> 00:00:52,320
+And so you'll be
+writing in Python
+
+24
+00:00:52,320 --> 00:00:57,110
+and it'll be using the
+PyMongo driver which
+
+25
+00:00:57,110 --> 00:01:00,670
+talks to the database server
+using the wire protocol.
+
+26
+00:01:00,670 --> 00:01:04,230
+And when it wants to create
+data, read data, update,
+
+27
+00:01:04,230 --> 00:01:07,840
+and delete data, it'll talk
+to the storage engine which
+
+28
+00:01:07,840 --> 00:01:09,950
+will then talk to the disk.
+
+29
+00:01:09,950 --> 00:01:12,530
+And all the different
+structures that
+
+30
+00:01:12,530 --> 00:01:14,300
+hold the documents,
+that hold the indexes,
+
+31
+00:01:14,300 --> 00:01:16,440
+and the metadata
+involving the documents
+
+32
+00:01:16,440 --> 00:01:18,810
+are all written to
+the persistent storage
+
+33
+00:01:18,810 --> 00:01:20,830
+by this storage engine.
+
+34
+00:01:20,830 --> 00:01:23,730
+Now, it may be the case that
+the storage engine itself
+
+35
+00:01:23,730 --> 00:01:28,310
+decides to use memory
+to optimize the process.
+
+36
+00:01:28,310 --> 00:01:31,230
+So in other words, the
+disk is really slow.
+
+37
+00:01:31,230 --> 00:01:34,730
+So since the idea of a database
+is to store stuff persistently,
+
+38
+00:01:34,730 --> 00:01:36,510
+what happens is
+the storage engine
+
+39
+00:01:36,510 --> 00:01:38,930
+has control of memory
+on your computer
+
+40
+00:01:38,930 --> 00:01:41,800
+and it can decide
+what to put in memory
+
+41
+00:01:41,800 --> 00:01:45,030
+and what to take out of memory
+and what to persist to disk
+
+42
+00:01:45,030 --> 00:01:45,800
+and when.
+
+43
+00:01:45,800 --> 00:01:48,340
+So database server itself
+defers the handling
+
+44
+00:01:48,340 --> 00:01:51,264
+of the memory on the server
+as well as the disk itself
+
+45
+00:01:51,264 --> 00:01:52,180
+to the storage engine.
+
+46
+00:01:52,180 --> 00:01:52,830
+
+47
+00:01:52,830 --> 00:01:56,250
+Now, we offer a pluggable
+storage engine architecture
+
+48
+00:01:56,250 --> 00:01:58,116
+where you can use more than one.
+
+49
+00:01:58,116 --> 00:01:59,990
+The idea here is that
+let's say you had a car
+
+50
+00:01:59,990 --> 00:02:02,120
+and you want it to
+have different engines.
+
+51
+00:02:02,120 --> 00:02:03,870
+You could put the
+engine in the car,
+
+52
+00:02:03,870 --> 00:02:06,520
+and then it would probably
+change the car's performance
+
+53
+00:02:06,520 --> 00:02:07,740
+characteristics.
+
+54
+00:02:07,740 --> 00:02:10,060
+For instance, it might
+accelerate faster
+
+55
+00:02:10,060 --> 00:02:12,580
+or it might get better
+or worse gas mileage
+
+56
+00:02:12,580 --> 00:02:15,960
+because of the type of
+engine you put into your car.
+
+57
+00:02:15,960 --> 00:02:18,100
+And similarly, depending
+on the type of engine
+
+58
+00:02:18,100 --> 00:02:20,360
+that you put into
+MongoDB, you're
+
+59
+00:02:20,360 --> 00:02:22,530
+going to get different
+performance characteristics.
+
+60
+00:02:22,530 --> 00:02:23,450
+And that's why it's
+important that we
+
+61
+00:02:23,450 --> 00:02:25,110
+have some basic
+understanding of this
+
+62
+00:02:25,110 --> 00:02:27,144
+before we move on to this week.
+
+63
+00:02:27,144 --> 00:02:28,560
+There are two main
+storage engines
+
+64
+00:02:28,560 --> 00:02:31,170
+that ship with MongoDB that
+we support, and one of them
+
+65
+00:02:31,170 --> 00:02:35,530
+is called MMAP, and the other
+one is called WiredTiger.
+
+66
+00:02:35,530 --> 00:02:36,615
+MMAP is the default.
+
+67
+00:02:36,615 --> 00:02:37,990
+It's what you'll
+get if you don't
+
+68
+00:02:37,990 --> 00:02:41,026
+give any options to MongoD when
+you start at the command line.
+
+69
+00:02:41,026 --> 00:02:43,150
+And MMAP, we're going to
+go through how this works.
+
+70
+00:02:43,150 --> 00:02:45,108
+It's been the storage
+engine for quite a while.
+
+71
+00:02:45,108 --> 00:02:48,470
+WiredTiger came in through
+acquisition in 2014.
+
+72
+00:02:48,470 --> 00:02:50,950
+MongoDB acquired the
+WiredTiger company.
+
+73
+00:02:50,950 --> 00:02:53,530
+This is the same team
+that built Berkeley DB
+
+74
+00:02:53,530 --> 00:02:57,440
+and also a lot of them were at
+the company SleepyCat, if you
+
+75
+00:02:57,440 --> 00:02:59,299
+know your computer history.
+
+76
+00:02:59,299 --> 00:03:00,965
+So now you have some
+basic understanding
+
+77
+00:03:00,965 --> 00:03:02,210
+of what a storage engine is.
+
+78
+00:03:02,210 --> 00:03:03,572
+So what is a storage engine not?
+
+79
+00:03:03,572 --> 00:03:05,780
+What about some of the things
+that the storage engine
+
+80
+00:03:05,780 --> 00:03:06,405
+doesn't handle?
+
+81
+00:03:06,405 --> 00:03:08,750
+Well, if you have a
+bunch of MongoDB servers
+
+82
+00:03:08,750 --> 00:03:10,950
+all running in a cluster,
+the storage engine
+
+83
+00:03:10,950 --> 00:03:14,210
+doesn't affect the communication
+between those different MongoDB
+
+84
+00:03:14,210 --> 00:03:15,140
+servers.
+
+85
+00:03:15,140 --> 00:03:17,355
+And the storage engine
+doesn't affect the API
+
+86
+00:03:17,355 --> 00:03:20,824
+that the database presents to
+the programmer, for example.
+
+87
+00:03:20,824 --> 00:03:22,490
+It's the same pretty
+much whether or not
+
+88
+00:03:22,490 --> 00:03:24,014
+you use MMAP or WiredTiger.
+
+89
+00:03:24,014 --> 00:03:26,430
+But there are going to be some
+differences in performance,
+
+90
+00:03:26,430 --> 00:03:28,630
+and that's why we're
+going to discuss it.
+
+91
+00:03:28,630 --> 00:03:30,265
+Now it's time for a quiz.
+
+92
+00:03:30,265 --> 00:03:31,890
+"The storage engine
+directly determines
+
+93
+00:03:31,890 --> 00:03:32,848
+which of the following?
+
+94
+00:03:32,848 --> 00:03:34,070
+Check all that apply.
+
+95
+00:03:34,070 --> 00:03:35,210
+The data file format.
+
+96
+00:03:35,210 --> 00:03:36,900
+Architecture of a cluster.
+
+97
+00:03:36,900 --> 00:03:38,560
+The wire protocol
+for the drivers.
+
+98
+00:03:38,560 --> 00:03:40,450
+And the format of the indexes."
+
+99
+00:03:40,450 --> 00:03:42,270
+I didn't directly talk
+about some of these,
+
+100
+00:03:42,270 --> 00:03:45,450
+so you might have to guess
+based on what I said.

@@ -1,0 +1,60 @@
+1
+00:00:00,000 --> 00:00:00,500
+
+2
+00:00:00,500 --> 00:00:02,810
+OK, and I'm sure everyone
+got this right, that yes,
+
+3
+00:00:02,810 --> 00:00:05,410
+indexes have a greater impact
+than any of these other things.
+
+4
+00:00:05,410 --> 00:00:06,826
+And the way to
+think about this is
+
+5
+00:00:06,826 --> 00:00:08,910
+if you have a really
+large problem,
+
+6
+00:00:08,910 --> 00:00:12,250
+it's probably be more
+efficient to eliminate 95%
+
+7
+00:00:12,250 --> 00:00:13,900
+than to hire faster workers.
+
+8
+00:00:13,900 --> 00:00:16,250
+And all of these
+items here is really
+
+9
+00:00:16,250 --> 00:00:17,780
+about hiring faster workers.
+
+10
+00:00:17,780 --> 00:00:20,339
+So indexing is extremely
+important database performance,
+
+11
+00:00:20,339 --> 00:00:22,130
+and you definitely want
+to make sure you've
+
+12
+00:00:22,130 --> 00:00:24,640
+indexed the keys that
+are going to result
+
+13
+00:00:24,640 --> 00:00:27,920
+in a large percentage of your
+queries hitting the index.

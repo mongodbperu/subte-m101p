@@ -1,0 +1,15 @@
+1
+00:00:00,000 --> 00:00:00,500
+
+2
+00:00:00,500 --> 00:00:03,420
+And the answer is that to
+get a single document out
+
+3
+00:00:03,420 --> 00:00:05,970
+of the collection, you
+call doc = scores.find_one.
+
+4
+00:00:05,970 --> 00:00:07,012

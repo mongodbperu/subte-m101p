@@ -1,0 +1,670 @@
+1
+00:00:00,000 --> 00:00:00,190
+
+2
+00:00:00,190 --> 00:00:00,740
+All right.
+
+3
+00:00:00,740 --> 00:00:03,040
+We've shown you how to
+create unique indexes.
+
+4
+00:00:03,040 --> 00:00:06,460
+And now, I want to show you how
+to create sparse indexes, which
+
+5
+00:00:06,460 --> 00:00:10,580
+are indexes that can be used
+when the index key is missing
+
+6
+00:00:10,580 --> 00:00:13,080
+from some of the documents.
+
+7
+00:00:13,080 --> 00:00:15,080
+Now, let's look at these
+four documents here.
+
+8
+00:00:15,080 --> 00:00:17,490
+The first one has a, b, and c.
+
+9
+00:00:17,490 --> 00:00:19,840
+The second one has a, b and, c.
+
+10
+00:00:19,840 --> 00:00:22,160
+The third one has just a
+and b, and the fourth one
+
+11
+00:00:22,160 --> 00:00:23,560
+has just a and b.
+
+12
+00:00:23,560 --> 00:00:27,720
+And you'll also notice that
+the a values and the b values
+
+13
+00:00:27,720 --> 00:00:29,865
+are unique as are the c values.
+
+14
+00:00:29,865 --> 00:00:32,825
+If I wanted to create
+a unique index on a,
+
+15
+00:00:32,825 --> 00:00:35,500
+that would be no
+problem because you
+
+16
+00:00:35,500 --> 00:00:39,150
+can see that there's a unique
+value for a in all four
+
+17
+00:00:39,150 --> 00:00:41,880
+of the documents, and a appears
+in all four of the documents.
+
+18
+00:00:41,880 --> 00:00:44,365
+A unique index on b
+wouldn't be a problem.
+
+19
+00:00:44,365 --> 00:00:47,250
+But a unique index on
+c does pose a problem.
+
+20
+00:00:47,250 --> 00:00:49,210
+And the reason is
+that, if you just
+
+21
+00:00:49,210 --> 00:00:52,300
+create a unique index
+on c, these documents
+
+22
+00:00:52,300 --> 00:00:55,300
+both have a c value of null.
+
+23
+00:00:55,300 --> 00:00:59,050
+And hence, it would violate
+the unique constraint to index
+
+24
+00:00:59,050 --> 00:01:01,220
+on c for all four documents.
+
+25
+00:01:01,220 --> 00:01:02,930
+You actually could
+have a single document
+
+26
+00:01:02,930 --> 00:01:06,670
+with null in it for c-- or
+c missing, I should say.
+
+27
+00:01:06,670 --> 00:01:08,470
+And that would work fine.
+
+28
+00:01:08,470 --> 00:01:10,240
+But you couldn't have
+multiple documents.
+
+29
+00:01:10,240 --> 00:01:12,170
+Well, what's a
+possible solution?
+
+30
+00:01:12,170 --> 00:01:17,310
+Well, one solution is that you
+can specify the sparse option
+
+31
+00:01:17,310 --> 00:01:19,310
+when creating the
+index, and what
+
+32
+00:01:19,310 --> 00:01:23,130
+sparse tells the database
+server is that it should not
+
+33
+00:01:23,130 --> 00:01:27,060
+include in the index documents
+that are missing the key.
+
+34
+00:01:27,060 --> 00:01:30,790
+So if you say, give me an
+index on c, it'll say fine.
+
+35
+00:01:30,790 --> 00:01:32,700
+These documents go in the index.
+
+36
+00:01:32,700 --> 00:01:36,790
+But these documents, they won't
+even be indexed by this index
+
+37
+00:01:36,790 --> 00:01:38,760
+because they have
+no value for c.
+
+38
+00:01:38,760 --> 00:01:41,280
+Now, let's see how this
+would work in practice.
+
+39
+00:01:41,280 --> 00:01:42,220
+All right.
+
+40
+00:01:42,220 --> 00:01:46,110
+I've created a small collection
+that I call "employees,"
+
+41
+00:01:46,110 --> 00:01:49,006
+and that collection has
+just a few employees in it.
+
+42
+00:01:49,006 --> 00:01:50,130
+Actually, four-- let's see.
+
+43
+00:01:50,130 --> 00:01:51,463
+How many employees does it have?
+
+44
+00:01:51,463 --> 00:01:52,940
+It has five employees.
+
+45
+00:01:52,940 --> 00:01:56,130
+It has Eliot, Dwight,
+Meghan, Andrew, and Shannon.
+
+46
+00:01:56,130 --> 00:01:57,880
+There's are real
+employees at the company.
+
+47
+00:01:57,880 --> 00:02:00,129
+And actually, these are their
+real employee ID numbers
+
+48
+00:02:00,129 --> 00:02:02,940
+in the sense that this is what
+order they joined the company.
+
+49
+00:02:02,940 --> 00:02:04,440
+I think Eliot set
+up the database,
+
+50
+00:02:04,440 --> 00:02:08,470
+so he made himself 1 and made
+Dwight, his co-founder, 2.
+
+51
+00:02:08,470 --> 00:02:11,100
+And Meghan Gill was still
+here, and she's number 9.
+
+52
+00:02:11,100 --> 00:02:13,090
+So you can imagine
+that we'd probably
+
+53
+00:02:13,090 --> 00:02:15,670
+want to have a unique
+index on employee ID,
+
+54
+00:02:15,670 --> 00:02:17,510
+and I added one to
+this collection.
+
+55
+00:02:17,510 --> 00:02:20,831
+But you might also want to have
+a unique index on cell phone
+
+56
+00:02:20,831 --> 00:02:22,580
+number because maybe
+you want to make sure
+
+57
+00:02:22,580 --> 00:02:25,370
+that no two employees claim to
+be carrying the same cell phone
+
+58
+00:02:25,370 --> 00:02:26,300
+number.
+
+59
+00:02:26,300 --> 00:02:29,560
+Well, that would work fine,
+except that, you can see,
+
+60
+00:02:29,560 --> 00:02:32,820
+that Andrew and Shannon
+don't have cell phones.
+
+61
+00:02:32,820 --> 00:02:34,650
+And so if you create
+a unique index
+
+62
+00:02:34,650 --> 00:02:37,330
+without giving the sparse
+option, it's not going to work.
+
+63
+00:02:37,330 --> 00:02:38,802
+So let me show you that.
+
+64
+00:02:38,802 --> 00:02:40,260
+So first, let's
+look at the indexes
+
+65
+00:02:40,260 --> 00:02:42,400
+that already exist
+in the collection
+
+66
+00:02:42,400 --> 00:02:43,858
+by calling
+db.employyes.getIndexes.
+
+67
+00:02:43,858 --> 00:02:45,497
+
+68
+00:02:45,497 --> 00:02:47,580
+And we'll see that there
+are two indexes right now
+
+69
+00:02:47,580 --> 00:02:48,329
+in the collection.
+
+70
+00:02:48,329 --> 00:02:50,490
+One of them is on underscore
+ID, and the other one
+
+71
+00:02:50,490 --> 00:02:53,270
+is on employee ID and
+is, in fact, unique.
+
+72
+00:02:53,270 --> 00:02:57,760
+So if I just try to add
+an index on cell phone--
+
+73
+00:02:57,760 --> 00:03:01,520
+cell ascending-- and make
+that unique, and you can see I
+
+74
+00:03:01,520 --> 00:03:03,450
+get a duplicate key
+error because we
+
+75
+00:03:03,450 --> 00:03:06,840
+have more than one employee
+that has no cell phone number.
+
+76
+00:03:06,840 --> 00:03:09,310
+However, if I specify
+an additional option--
+
+77
+00:03:09,310 --> 00:03:12,750
+sparse true-- now, I can
+happily create the index.
+
+78
+00:03:12,750 --> 00:03:16,180
+Now, I have an index
+on the cell phone.
+
+79
+00:03:16,180 --> 00:03:18,940
+You can see that I've got an
+index on underscore ID and one
+
+80
+00:03:18,940 --> 00:03:22,770
+on employee ID and one on
+the cell phone, which is also
+
+81
+00:03:22,770 --> 00:03:25,880
+unique, even though both
+myself and Shannon are missing
+
+82
+00:03:25,880 --> 00:03:27,350
+cell phones in this collection.
+
+83
+00:03:27,350 --> 00:03:31,150
+So we have these five
+employees, and two of them
+
+84
+00:03:31,150 --> 00:03:33,470
+are missing cell phones
+in the collection.
+
+85
+00:03:33,470 --> 00:03:35,300
+Now, interestingly
+enough, if you
+
+86
+00:03:35,300 --> 00:03:37,120
+go through all the
+documents and do a Find
+
+87
+00:03:37,120 --> 00:03:40,550
+and then sort the documents
+by employee ID, which
+
+88
+00:03:40,550 --> 00:03:42,910
+is one of our indexes,
+you get a sort
+
+89
+00:03:42,910 --> 00:03:45,550
+by employee ID, which is the
+order I put them in anyway.
+
+90
+00:03:45,550 --> 00:03:47,820
+So it wasn't that interesting,
+but maybe descending
+
+91
+00:03:47,820 --> 00:03:49,500
+is slightly more interesting.
+
+92
+00:03:49,500 --> 00:03:51,660
+And that works fine.
+
+93
+00:03:51,660 --> 00:03:54,250
+And if you ask the database
+did it use an index to satisfy
+
+94
+00:03:54,250 --> 00:03:56,530
+that query by using
+the explain command,
+
+95
+00:03:56,530 --> 00:03:58,500
+which we're learning
+more and more about,
+
+96
+00:03:58,500 --> 00:04:00,240
+we can see that
+here, in the winning
+
+97
+00:04:00,240 --> 00:04:03,790
+plan for this Find
+sorted by employee ID,
+
+98
+00:04:03,790 --> 00:04:08,160
+it sorts the documents using
+the employee ID key-- an IXSCAN.
+
+99
+00:04:08,160 --> 00:04:10,256
+That's going to be
+a very fast sort.
+
+100
+00:04:10,256 --> 00:04:11,880
+And if this collection
+were very large,
+
+101
+00:04:11,880 --> 00:04:14,330
+that could yield significant
+performance advantages
+
+102
+00:04:14,330 --> 00:04:17,029
+because we were able
+to use the index.
+
+103
+00:04:17,029 --> 00:04:21,079
+However, if we do the exact
+same type of sort, but instead
+
+104
+00:04:21,079 --> 00:04:23,610
+of sorting on that,
+sort on cell phone--
+
+105
+00:04:23,610 --> 00:04:26,290
+and we'll just sort
+ascending on the cell phone--
+
+106
+00:04:26,290 --> 00:04:29,720
+then what we're going to
+find is, if we look here
+
+107
+00:04:29,720 --> 00:04:31,540
+at the winning
+plan and the sort,
+
+108
+00:04:31,540 --> 00:04:33,280
+we can see it did a
+full collection scan.
+
+109
+00:04:33,280 --> 00:04:37,080
+It was not able to use that
+index on the cell phones.
+
+110
+00:04:37,080 --> 00:04:38,230
+Now, why is that?
+
+111
+00:04:38,230 --> 00:04:40,880
+That's because
+the database knows
+
+112
+00:04:40,880 --> 00:04:42,450
+that this is a
+sparse index, and it
+
+113
+00:04:42,450 --> 00:04:44,950
+knows that there are entries
+missing, that certain documents
+
+114
+00:04:44,950 --> 00:04:46,350
+are not indexed.
+
+115
+00:04:46,350 --> 00:04:49,250
+And if it uses that
+index for the sort,
+
+116
+00:04:49,250 --> 00:04:52,150
+it knows it's going
+to omit documents.
+
+117
+00:04:52,150 --> 00:04:53,930
+And it doesn't want
+to omit the documents,
+
+118
+00:04:53,930 --> 00:04:56,840
+and so instead it reverts
+to a collection scan.
+
+119
+00:04:56,840 --> 00:05:00,490
+So as you keep in mind
+that a sparse index can't
+
+120
+00:05:00,490 --> 00:05:03,310
+be used for sorting if there are
+any documents that are missing
+
+121
+00:05:03,310 --> 00:05:05,156
+from the index--
+and that's probably
+
+122
+00:05:05,156 --> 00:05:07,030
+why you'd use a sparse
+index, so it basically
+
+123
+00:05:07,030 --> 00:05:08,750
+can't be used for sorting.
+
+124
+00:05:08,750 --> 00:05:10,354
+So keep that in mind.
+
+125
+00:05:10,354 --> 00:05:12,020
+Now, the good thing
+about a sparse index
+
+126
+00:05:12,020 --> 00:05:13,789
+is that it could use
+a lot less space,
+
+127
+00:05:13,789 --> 00:05:15,580
+and that's one of the
+reasons why you might
+
+128
+00:05:15,580 --> 00:05:16,520
+want to use a sparse index.
+
+129
+00:05:16,520 --> 00:05:18,519
+And of course, it lets
+you create a unique index
+
+130
+00:05:18,519 --> 00:05:21,260
+when you don't have an entry
+in every single document
+
+131
+00:05:21,260 --> 00:05:23,830
+for the key that you
+want to index on.
+
+132
+00:05:23,830 --> 00:05:24,430
+All right.
+
+133
+00:05:24,430 --> 00:05:26,560
+Now, it's time for a quiz.
+
+134
+00:05:26,560 --> 00:05:28,310
+What are the advantages
+of a sparse index?
+
+135
+00:05:28,310 --> 00:05:29,750
+Check all that apply.
+
+136
+00:05:29,750 --> 00:05:32,480
+The index would be smaller than
+it would if it were not sparse.
+
+137
+00:05:32,480 --> 00:05:35,092
+You gain greater flexibility
+with creating unique indexes.
+
+138
+00:05:35,092 --> 00:05:37,300
+Your indexes can be multikey
+only if they are sparse.
+
+139
+00:05:37,300 --> 00:05:39,160
+And the index can be
+used to sort much more
+
+140
+00:05:39,160 --> 00:05:40,860
+quickly in all cases.
+
+141
+00:05:40,860 --> 00:05:42,880
+Please check the answer.

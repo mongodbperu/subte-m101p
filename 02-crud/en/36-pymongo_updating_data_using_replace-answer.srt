@@ -1,0 +1,174 @@
+1
+00:00:00,000 --> 00:00:00,500
+
+2
+00:00:00,500 --> 00:00:02,009
+OK, here are the answers.
+
+3
+00:00:02,009 --> 00:00:03,560
+The first two are false.
+
+4
+00:00:03,560 --> 00:00:06,780
+It's not true that
+replace_one and update_one all
+
+5
+00:00:06,780 --> 00:00:09,460
+move the same amount of data
+across the wire to the server.
+
+6
+00:00:09,460 --> 00:00:11,530
+[? But is ?] in
+fact, update_one is
+
+7
+00:00:11,530 --> 00:00:14,640
+going to send just a small
+$set operator or unset operator
+
+8
+00:00:14,640 --> 00:00:15,802
+or an increment operator.
+
+9
+00:00:15,802 --> 00:00:17,760
+And it's not going to
+send the entire document.
+
+10
+00:00:17,760 --> 00:00:19,801
+Replace_one is going to
+send the entire document,
+
+11
+00:00:19,801 --> 00:00:20,930
+so this one's not true.
+
+12
+00:00:20,930 --> 00:00:23,950
+For atomically updating
+or incrementing something
+
+13
+00:00:23,950 --> 00:00:25,760
+in the document,
+replace_one is not
+
+14
+00:00:25,760 --> 00:00:28,350
+a great choice, because of
+the window of vulnerability
+
+15
+00:00:28,350 --> 00:00:30,830
+that exists when you
+pull a document out
+
+16
+00:00:30,830 --> 00:00:33,770
+and you manipulate it and
+before you push it back.
+
+17
+00:00:33,770 --> 00:00:36,282
+You'd probably want to use
+an update in that case.
+
+18
+00:00:36,282 --> 00:00:37,820
+The next two are true.
+
+19
+00:00:37,820 --> 00:00:39,830
+Replace_one, update_one,
+and update_many all
+
+20
+00:00:39,830 --> 00:00:42,260
+use the server's update
+command behind the scenes.
+
+21
+00:00:42,260 --> 00:00:45,220
+And I showed you that inside
+the PyMongo implementation.
+
+22
+00:00:45,220 --> 00:00:47,756
+And the final one turns out
+to be true, but it's tricky.
+
+23
+00:00:47,756 --> 00:00:50,380
+And actually, it points out the
+way the original update command
+
+24
+00:00:50,380 --> 00:00:53,630
+was implemented, which is
+that if there's a $operator,
+
+25
+00:00:53,630 --> 00:00:55,470
+the underlying update
+command of the server
+
+26
+00:00:55,470 --> 00:00:58,150
+knows that it's an update
+versus a replacement.
+
+27
+00:00:58,150 --> 00:01:01,400
+And it turns out that if you
+use update_one or update_many,
+
+28
+00:01:01,400 --> 00:01:03,174
+you have to specify a $operator.
+
+29
+00:01:03,174 --> 00:01:04,590
+You must specify
+it because that's
+
+30
+00:01:04,590 --> 00:01:05,990
+the way those commands work.
+
+31
+00:01:05,990 --> 00:01:09,070
+If you use replace_one, you're
+giving it an entire document,
+
+32
+00:01:09,070 --> 00:01:12,504
+and you can't have any sort of
+$set operator in the document
+
+33
+00:01:12,504 --> 00:01:13,920
+you're going to
+use to replace it.
+
+34
+00:01:13,920 --> 00:01:15,520
+Because that wouldn't
+make any sense.
+
+35
+00:01:15,520 --> 00:01:17,395
+It's supposed to be a
+literal document that's
+
+36
+00:01:17,395 --> 00:01:19,720
+going to get replaced
+inside the database.
+
+37
+00:01:19,720 --> 00:01:21,710
+All right, that's about it.

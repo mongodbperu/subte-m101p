@@ -1,0 +1,390 @@
+1
+00:00:00,000 --> 00:00:00,500
+
+2
+00:00:00,500 --> 00:00:02,830
+So now I want to talk a
+little bit about index sizes.
+
+3
+00:00:02,830 --> 00:00:05,020
+As with other
+databases, with MongoDB,
+
+4
+00:00:05,020 --> 00:00:07,360
+it's very important that we're
+able to fit what's called
+
+5
+00:00:07,360 --> 00:00:09,740
+the working set into memory.
+
+6
+00:00:09,740 --> 00:00:12,290
+So the working set is
+the portion of our data
+
+7
+00:00:12,290 --> 00:00:14,610
+that clients are
+frequently accessing.
+
+8
+00:00:14,610 --> 00:00:17,080
+As you might imagine,
+the key component of this
+
+9
+00:00:17,080 --> 00:00:18,430
+is our indexes.
+
+10
+00:00:18,430 --> 00:00:20,240
+For performance
+reasons, it's essential
+
+11
+00:00:20,240 --> 00:00:23,540
+that we can fit the entire
+working set into memory
+
+12
+00:00:23,540 --> 00:00:26,210
+because going to disk for data
+is a time consuming operation
+
+13
+00:00:26,210 --> 00:00:28,060
+and performance will
+degrade significantly
+
+14
+00:00:28,060 --> 00:00:30,160
+if, for frequently
+accessed data,
+
+15
+00:00:30,160 --> 00:00:32,200
+we have to go to disk regularly.
+
+16
+00:00:32,200 --> 00:00:34,140
+Now, this is especially
+true with indexes
+
+17
+00:00:34,140 --> 00:00:35,450
+because if, in order
+to search an index,
+
+18
+00:00:35,450 --> 00:00:37,460
+we first have to pull it
+from disk into memory,
+
+19
+00:00:37,460 --> 00:00:39,180
+we lose a lot of the
+performance benefits of having
+
+20
+00:00:39,180 --> 00:00:40,721
+the index in the
+first place, so it's
+
+21
+00:00:40,721 --> 00:00:44,470
+especially important that
+our indexes fit into memory.
+
+22
+00:00:44,470 --> 00:00:47,590
+So let's look at how we can
+measure the size of our indexes
+
+23
+00:00:47,590 --> 00:00:50,440
+as a means of, say, estimating
+the amount of memory we'll
+
+24
+00:00:50,440 --> 00:00:52,470
+need for a MongoDB deployment.
+
+25
+00:00:52,470 --> 00:00:54,470
+So let's take a look at
+our students collection.
+
+26
+00:00:54,470 --> 00:00:57,820
+We have individual students,
+classes, and the scores
+
+27
+00:00:57,820 --> 00:00:58,730
+in this collection.
+
+28
+00:00:58,730 --> 00:01:00,270
+There are 10 million
+records here.
+
+29
+00:01:00,270 --> 00:01:03,299
+So first, let's take a look
+at what indexes we have.
+
+30
+00:01:03,299 --> 00:01:05,340
+We can see that in addition
+to the primary index,
+
+31
+00:01:05,340 --> 00:01:06,756
+we have a secondary
+compound index
+
+32
+00:01:06,756 --> 00:01:08,191
+on student ID and class ID.
+
+33
+00:01:08,191 --> 00:01:09,940
+If we want to see the
+size of our indexes,
+
+34
+00:01:09,940 --> 00:01:11,494
+we can use the stats method.
+
+35
+00:01:11,494 --> 00:01:13,910
+So we call the stats method
+on the collection of interest,
+
+36
+00:01:13,910 --> 00:01:16,620
+and here we can see
+the total index size,
+
+37
+00:01:16,620 --> 00:01:18,130
+and this is also
+broken down for us
+
+38
+00:01:18,130 --> 00:01:20,660
+into the individual sizes
+for the two collections
+
+39
+00:01:20,660 --> 00:01:21,324
+that we have.
+
+40
+00:01:21,324 --> 00:01:22,740
+There's a shortcut
+method for this
+
+41
+00:01:22,740 --> 00:01:25,340
+as well, which gives
+us just the total.
+
+42
+00:01:25,340 --> 00:01:27,090
+So from this, it
+looks like each index
+
+43
+00:01:27,090 --> 00:01:30,524
+we have is adding 300 megabytes
+to our total index size,
+
+44
+00:01:30,524 --> 00:01:32,190
+and of course, this
+has an impact, then,
+
+45
+00:01:32,190 --> 00:01:34,700
+on how much memory our
+working set requires.
+
+46
+00:01:34,700 --> 00:01:36,450
+Now, with the release
+of MongoDB 3.0,
+
+47
+00:01:36,450 --> 00:01:38,990
+we've introduced the Wired
+Tiger storage engine.
+
+48
+00:01:38,990 --> 00:01:41,440
+One of the key
+features of Wired Tiger
+
+49
+00:01:41,440 --> 00:01:43,830
+is that it supports a few
+different types of compression,
+
+50
+00:01:43,830 --> 00:01:46,250
+one of which, called
+prefix compression,
+
+51
+00:01:46,250 --> 00:01:48,180
+allows us to have
+smaller indexes.
+
+52
+00:01:48,180 --> 00:01:50,080
+So that last
+example we looked at
+
+53
+00:01:50,080 --> 00:01:54,050
+was against a MongoDB running
+the MMAP V1 storage engine.
+
+54
+00:01:54,050 --> 00:01:56,080
+Now let's take a look
+at index sizes for a 3.0
+
+55
+00:01:56,080 --> 00:01:58,040
+server with the Wired
+Tiger storage engine,
+
+56
+00:01:58,040 --> 00:02:00,690
+and in particular, we've got it
+index prefix compression turned
+
+57
+00:02:00,690 --> 00:02:01,670
+on.
+
+58
+00:02:01,670 --> 00:02:04,320
+So let's launch a shell
+and connect to that mongod.
+
+59
+00:02:04,320 --> 00:02:06,402
+That one's running
+on the default port.
+
+60
+00:02:06,402 --> 00:02:07,860
+So I have exactly
+the same data set
+
+61
+00:02:07,860 --> 00:02:10,669
+loaded here, again, 10
+million records, and I've
+
+62
+00:02:10,669 --> 00:02:13,120
+got the same indexes as I
+had in our last example.
+
+63
+00:02:13,120 --> 00:02:16,210
+So now let's take a look
+at the index sizes here.
+
+64
+00:02:16,210 --> 00:02:18,300
+And we can see that our
+total index size here
+
+65
+00:02:18,300 --> 00:02:20,970
+is just under 200 megabytes.
+
+66
+00:02:20,970 --> 00:02:23,580
+So rather than 300
+megabytes each,
+
+67
+00:02:23,580 --> 00:02:27,560
+our indexes are something on
+the order of 100 megabytes each.
+
+68
+00:02:27,560 --> 00:02:30,150
+Now, I should also say
+that this compression comes
+
+69
+00:02:30,150 --> 00:02:31,796
+at the cost of
+CPU, and it really
+
+70
+00:02:31,796 --> 00:02:33,670
+depends on your data
+set as to whether or not
+
+71
+00:02:33,670 --> 00:02:35,410
+you can take
+advantage of something
+
+72
+00:02:35,410 --> 00:02:37,830
+like prefix compression, but
+it's something to be aware of
+
+73
+00:02:37,830 --> 00:02:39,496
+and something I wanted
+to show you here.
+
+74
+00:02:39,496 --> 00:02:41,940
+I'll also just briefly point
+out that with the Wired Tiger
+
+75
+00:02:41,940 --> 00:02:44,770
+storage engine, the stats output
+looks a little bit different.
+
+76
+00:02:44,770 --> 00:02:47,510
+In particular, we've got
+this Wired Tiger document
+
+77
+00:02:47,510 --> 00:02:50,190
+that reports on a bunch of stats
+for that particular storage
+
+78
+00:02:50,190 --> 00:02:51,210
+engine.
+
+79
+00:02:51,210 --> 00:02:53,620
+So again, pay attention to
+the size of your indexes.
+
+80
+00:02:53,620 --> 00:02:56,530
+Make sure they can fit in
+memory so that you can realize
+
+81
+00:02:56,530 --> 00:02:58,690
+the full performance benefits.

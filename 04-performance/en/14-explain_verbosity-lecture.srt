@@ -1,0 +1,1326 @@
+1
+00:00:00,000 --> 00:00:00,500
+
+2
+00:00:00,500 --> 00:00:03,510
+So far, we've been looking at
+the Explain command running
+
+3
+00:00:03,510 --> 00:00:07,400
+in the query planner
+mode right here.
+
+4
+00:00:07,400 --> 00:00:09,210
+The query planner
+mode is very useful.
+
+5
+00:00:09,210 --> 00:00:12,150
+It's also the default
+mode for Explain.
+
+6
+00:00:12,150 --> 00:00:14,600
+But there are two other
+modes I want to go over.
+
+7
+00:00:14,600 --> 00:00:18,640
+One is the Execution Stats mode,
+and the other is the All Plans
+
+8
+00:00:18,640 --> 00:00:20,190
+execution mode.
+
+9
+00:00:20,190 --> 00:00:23,420
+And they're increasing
+the levels of verbosity,
+
+10
+00:00:23,420 --> 00:00:26,790
+because the Execution Stats
+mode includes the Query Planner
+
+11
+00:00:26,790 --> 00:00:28,690
+mode and the All
+Plans Execution mode
+
+12
+00:00:28,690 --> 00:00:31,910
+includes the Query Planner mode
+and the Execution Stats mode.
+
+13
+00:00:31,910 --> 00:00:34,310
+Query Planner tells you
+mostly what the database would
+
+14
+00:00:34,310 --> 00:00:36,170
+use in terms of
+the indexes, but it
+
+15
+00:00:36,170 --> 00:00:38,790
+doesn't tell you what the
+results of using that index
+
+16
+00:00:38,790 --> 00:00:39,500
+are.
+
+17
+00:00:39,500 --> 00:00:42,900
+For that, we're going to have
+to use the Execution Stats mode.
+
+18
+00:00:42,900 --> 00:00:44,930
+Let's take a look once
+again at the shell.
+
+19
+00:00:44,930 --> 00:00:46,596
+We're going to use
+the same data that we
+
+20
+00:00:46,596 --> 00:00:47,910
+used in the last lesson.
+
+21
+00:00:47,910 --> 00:00:50,530
+And just to review that
+data, it's a bunch of data.
+
+22
+00:00:50,530 --> 00:00:52,530
+There's a million
+different documents
+
+23
+00:00:52,530 --> 00:00:54,790
+with values for a, b, and c.
+
+24
+00:00:54,790 --> 00:00:57,700
+And we can also look at the
+indexes on the collection.
+
+25
+00:00:57,700 --> 00:00:59,784
+The collection is
+called example.
+
+26
+00:00:59,784 --> 00:01:02,200
+You can see, there's an index
+on underscore ID, of course,
+
+27
+00:01:02,200 --> 00:01:05,330
+and one on B, and
+one on A comma B.
+
+28
+00:01:05,330 --> 00:01:10,230
+Now, let's run a query using
+the new Execution Stats mode
+
+29
+00:01:10,230 --> 00:01:11,550
+that we just learned about.
+
+30
+00:01:11,550 --> 00:01:15,770
+So once again, we're going
+to get an explainable object.
+
+31
+00:01:15,770 --> 00:01:18,190
+But this time, we're going
+to give a different option.
+
+32
+00:01:18,190 --> 00:01:21,140
+This time, we're going to create
+that object with execution
+
+33
+00:01:21,140 --> 00:01:22,730
+stats as an option.
+
+34
+00:01:22,730 --> 00:01:26,160
+And we're going to put the
+result in this exp variable.
+
+35
+00:01:26,160 --> 00:01:29,294
+Now we're going to
+call exp dot find,
+
+36
+00:01:29,294 --> 00:01:31,710
+and we're going to look at one
+document in the collection.
+
+37
+00:01:31,710 --> 00:01:33,150
+And we're going
+to, of course, run
+
+38
+00:01:33,150 --> 00:01:34,810
+the Explain Command
+and Execution Stats
+
+39
+00:01:34,810 --> 00:01:37,530
+mode on this query versus
+actually do the query.
+
+40
+00:01:37,530 --> 00:01:40,360
+Now let's look through this data
+and see what there is to see.
+
+41
+00:01:40,360 --> 00:01:43,930
+So once again, we've got
+the Query Planner mode,
+
+42
+00:01:43,930 --> 00:01:46,490
+and the Query
+Planner mode tells us
+
+43
+00:01:46,490 --> 00:01:49,570
+that it is going to
+use the a underscore
+
+44
+00:01:49,570 --> 00:01:53,780
+b underscore one index, and
+that it will pass that along.
+
+45
+00:01:53,780 --> 00:01:56,570
+And at the parse query was this.
+
+46
+00:01:56,570 --> 00:01:57,330
+All good.
+
+47
+00:01:57,330 --> 00:01:59,190
+It tells us that there
+was a rejected plan,
+
+48
+00:01:59,190 --> 00:02:03,660
+and the rejected plan was
+to use the B index on this.
+
+49
+00:02:03,660 --> 00:02:04,502
+That's helpful.
+
+50
+00:02:04,502 --> 00:02:06,460
+But it doesn't tell us
+what would have happened
+
+51
+00:02:06,460 --> 00:02:07,900
+if it used each of these.
+
+52
+00:02:07,900 --> 00:02:11,750
+So the execution stats over
+here will tell us the execution
+
+53
+00:02:11,750 --> 00:02:13,270
+stats for the winning plan.
+
+54
+00:02:13,270 --> 00:02:15,000
+And there are certain
+key items that I
+
+55
+00:02:15,000 --> 00:02:16,208
+want you to pay attention to.
+
+56
+00:02:16,208 --> 00:02:17,940
+There's a lot of data
+here, and we're not
+
+57
+00:02:17,940 --> 00:02:19,540
+going to look at all of it.
+
+58
+00:02:19,540 --> 00:02:21,690
+But one thing I
+want you to notice
+
+59
+00:02:21,690 --> 00:02:23,990
+is the number of documents
+returned right here.
+
+60
+00:02:23,990 --> 00:02:26,240
+That's the number of documents
+that the query actually
+
+61
+00:02:26,240 --> 00:02:29,007
+returned, or would return
+if it were run to completion
+
+62
+00:02:29,007 --> 00:02:31,090
+and the data was brought
+back to the client, which
+
+63
+00:02:31,090 --> 00:02:32,410
+is 100 documents.
+
+64
+00:02:32,410 --> 00:02:34,070
+We can see the
+execution time millage,
+
+65
+00:02:34,070 --> 00:02:35,653
+which is the time
+for the query, which
+
+66
+00:02:35,653 --> 00:02:39,230
+is unmeasurable in this case by
+this the granularity of clock,
+
+67
+00:02:39,230 --> 00:02:41,750
+zero milliseconds,
+a very fast query.
+
+68
+00:02:41,750 --> 00:02:45,010
+And we can see that there
+was 100 keys examined and 100
+
+69
+00:02:45,010 --> 00:02:45,716
+docs examined.
+
+70
+00:02:45,716 --> 00:02:46,840
+So that tells us something.
+
+71
+00:02:46,840 --> 00:02:49,170
+It tells us that the
+index worked pretty well.
+
+72
+00:02:49,170 --> 00:02:52,450
+We looked at all 100 keys, and
+we got to the 100 documents.
+
+73
+00:02:52,450 --> 00:02:55,200
+And then you can see
+here, as we go down,
+
+74
+00:02:55,200 --> 00:02:57,730
+we can see for each stage
+the number of documents
+
+75
+00:02:57,730 --> 00:02:59,490
+returned from each stage.
+
+76
+00:02:59,490 --> 00:03:01,900
+And this is an inner stage
+here where it actually
+
+77
+00:03:01,900 --> 00:03:03,520
+did index scan.
+
+78
+00:03:03,520 --> 00:03:06,480
+And an index scan, it
+returned 100 documents.
+
+79
+00:03:06,480 --> 00:03:07,980
+You can see the key
+pattern that was
+
+80
+00:03:07,980 --> 00:03:09,688
+used for the index,
+which was, of course,
+
+81
+00:03:09,688 --> 00:03:11,730
+A B, and the selectivity.
+
+82
+00:03:11,730 --> 00:03:15,330
+And again, what t used to select
+on, which was A min value 17,
+
+83
+00:03:15,330 --> 00:03:19,050
+max value 17, B min 55, max 55.
+
+84
+00:03:19,050 --> 00:03:21,380
+And you can see it also
+provides an estimate of time
+
+85
+00:03:21,380 --> 00:03:24,130
+for this stage of the
+query, which is zero.
+
+86
+00:03:24,130 --> 00:03:26,420
+And you really read this
+from the bottom to the top
+
+87
+00:03:26,420 --> 00:03:28,544
+if you're trying to understand
+the different stages
+
+88
+00:03:28,544 --> 00:03:29,710
+of a query.
+
+89
+00:03:29,710 --> 00:03:32,430
+And because this part
+is an actual index scan,
+
+90
+00:03:32,430 --> 00:03:35,620
+it doesn't actually have
+any docs examine part of it.
+
+91
+00:03:35,620 --> 00:03:37,470
+But if you look in
+totality, you can
+
+92
+00:03:37,470 --> 00:03:41,130
+see that we examined 100
+keys, we got 100 documents,
+
+93
+00:03:41,130 --> 00:03:42,810
+and that sounds awesome.
+
+94
+00:03:42,810 --> 00:03:44,674
+And it was pretty darn fast.
+
+95
+00:03:44,674 --> 00:03:47,090
+Now let's see what would happen
+if we didn't actually have
+
+96
+00:03:47,090 --> 00:03:48,820
+this particular index to use.
+
+97
+00:03:48,820 --> 00:03:51,960
+We were selecting on A and B,
+and we had a comma b index,
+
+98
+00:03:51,960 --> 00:03:55,060
+so that was a
+pretty ideal index.
+
+99
+00:03:55,060 --> 00:03:59,740
+Let's drop this index
+on A B ascending.
+
+100
+00:03:59,740 --> 00:04:01,430
+So we'll drop the index.
+
+101
+00:04:01,430 --> 00:04:03,720
+And there was three
+indexes, now there's one.
+
+102
+00:04:03,720 --> 00:04:04,850
+Excellent.
+
+103
+00:04:04,850 --> 00:04:07,660
+So at this point, let's
+run the query again.
+
+104
+00:04:07,660 --> 00:04:10,040
+We can go back in our
+history by just going up
+
+105
+00:04:10,040 --> 00:04:11,670
+[INAUDIBLE] the [? shell ?].
+
+106
+00:04:11,670 --> 00:04:13,880
+And we already have
+an explainable object.
+
+107
+00:04:13,880 --> 00:04:15,150
+We can use it again.
+
+108
+00:04:15,150 --> 00:04:19,000
+We're going to call
+find A 17 B 55.
+
+109
+00:04:19,000 --> 00:04:20,190
+Same exact query.
+
+110
+00:04:20,190 --> 00:04:22,541
+And now let's see what happens.
+
+111
+00:04:22,541 --> 00:04:24,540
+So the results are slightly
+different this time.
+
+112
+00:04:24,540 --> 00:04:28,530
+First of all, the winning plan--
+once this awesome index is
+
+113
+00:04:28,530 --> 00:04:31,155
+missing-- the winning plan
+is to use the B index.
+
+114
+00:04:31,155 --> 00:04:32,730
+It's not as good an index.
+
+115
+00:04:32,730 --> 00:04:34,930
+But it runs the B
+index right here.
+
+116
+00:04:34,930 --> 00:04:38,440
+And it says that it's going to
+use it with a balance 55, 55.
+
+117
+00:04:38,440 --> 00:04:39,510
+Makes sense.
+
+118
+00:04:39,510 --> 00:04:40,970
+And then it's going
+to pass that up
+
+119
+00:04:40,970 --> 00:04:43,496
+to the fetch stage
+of the query, which
+
+120
+00:04:43,496 --> 00:04:45,870
+is after the index is run, it
+fetches the file documents.
+
+121
+00:04:45,870 --> 00:04:49,080
+It's going to look for the
+document that have A 17.
+
+122
+00:04:49,080 --> 00:04:49,580
+All right.
+
+123
+00:04:49,580 --> 00:04:50,890
+That's good enough.
+
+124
+00:04:50,890 --> 00:04:51,770
+Sounds good.
+
+125
+00:04:51,770 --> 00:04:54,160
+And now we're going to go
+down to the execution stats
+
+126
+00:04:54,160 --> 00:04:55,580
+and see what happened.
+
+127
+00:04:55,580 --> 00:04:57,690
+And now things are
+a lot different.
+
+128
+00:04:57,690 --> 00:05:00,430
+So the first thing you notice
+is that there's actually
+
+129
+00:05:00,430 --> 00:05:03,450
+an execution time here
+of 5 milliseconds, which
+
+130
+00:05:03,450 --> 00:05:06,559
+is much, much longer than zero,
+infinitely longer than zero.
+
+131
+00:05:06,559 --> 00:05:08,850
+Although of course, the first
+one wasn't actually zero.
+
+132
+00:05:08,850 --> 00:05:11,520
+It was probably
+just not quite one.
+
+133
+00:05:11,520 --> 00:05:14,140
+This query is a lot slower,
+and that's not surprising.
+
+134
+00:05:14,140 --> 00:05:15,550
+Because if you
+look down, you can
+
+135
+00:05:15,550 --> 00:05:22,060
+see that we examine 10,000
+keys, and 10,000 documents.
+
+136
+00:05:22,060 --> 00:05:25,020
+And that's because the first
+stage of this index scan on B
+
+137
+00:05:25,020 --> 00:05:27,300
+returned 10,000 documents
+then had to be examined
+
+138
+00:05:27,300 --> 00:05:28,830
+during the fetch stage.
+
+139
+00:05:28,830 --> 00:05:31,250
+Let's see if this tells
+us that information
+
+140
+00:05:31,250 --> 00:05:32,220
+as we go through it.
+
+141
+00:05:32,220 --> 00:05:33,350
+So let's see.
+
+142
+00:05:33,350 --> 00:05:35,750
+How do we understand this?
+
+143
+00:05:35,750 --> 00:05:38,500
+The innermost document was
+the first stage run, the input
+
+144
+00:05:38,500 --> 00:05:39,520
+stage.
+
+145
+00:05:39,520 --> 00:05:42,670
+And that run a query
+using the index B.
+
+146
+00:05:42,670 --> 00:05:46,840
+And you can see that it
+returned 10,000 documents
+
+147
+00:05:46,840 --> 00:05:47,600
+as part of that.
+
+148
+00:05:47,600 --> 00:05:51,905
+Or I should say, it returned
+pointers to 10,000 documents.
+
+149
+00:05:51,905 --> 00:05:53,280
+Because of course,
+the index scan
+
+150
+00:05:53,280 --> 00:05:55,510
+didn't really return
+the documents.
+
+151
+00:05:55,510 --> 00:05:59,650
+And then up here,
+those 10,000 documents
+
+152
+00:05:59,650 --> 00:06:01,230
+had to be whittled down.
+
+153
+00:06:01,230 --> 00:06:05,490
+They were all examined with
+a filter of A equals 17,
+
+154
+00:06:05,490 --> 00:06:07,370
+and there whittled
+down to a final number
+
+155
+00:06:07,370 --> 00:06:09,310
+of documents of 100.
+
+156
+00:06:09,310 --> 00:06:11,490
+And whenever you see
+the number of documents
+
+157
+00:06:11,490 --> 00:06:15,530
+examined much larger than the
+number of documents returned,
+
+158
+00:06:15,530 --> 00:06:17,640
+you know that you did
+a lot of extra work,
+
+159
+00:06:17,640 --> 00:06:20,380
+that you took a lot of extra
+data out of the database,
+
+160
+00:06:20,380 --> 00:06:22,710
+and at some point, it
+had to be inspected
+
+161
+00:06:22,710 --> 00:06:26,800
+and then rejected before it was
+returned to your actual client
+
+162
+00:06:26,800 --> 00:06:28,501
+program.
+
+163
+00:06:28,501 --> 00:06:30,000
+So that's what
+happens when you give
+
+164
+00:06:30,000 --> 00:06:32,460
+the option for execution stats.
+
+165
+00:06:32,460 --> 00:06:34,250
+Now, we said there's
+a third option.
+
+166
+00:06:34,250 --> 00:06:37,340
+And that third option
+is all plans execution.
+
+167
+00:06:37,340 --> 00:06:39,380
+So let's run it that way.
+
+168
+00:06:39,380 --> 00:06:41,380
+First, let's recreate our index.
+
+169
+00:06:41,380 --> 00:06:47,230
+So db.example.createindex,
+A ascending, B ascending.
+
+170
+00:06:47,230 --> 00:06:50,610
+About a million
+documents-- a few seconds.
+
+171
+00:06:50,610 --> 00:06:51,760
+There we go.
+
+172
+00:06:51,760 --> 00:06:53,290
+Our index is back
+in the collection.
+
+173
+00:06:53,290 --> 00:06:56,270
+Now let's get a new
+explainable object.
+
+174
+00:06:56,270 --> 00:06:58,590
+My new explainable
+object will have
+
+175
+00:06:58,590 --> 00:07:02,190
+the option all plans execution.
+
+176
+00:07:02,190 --> 00:07:04,050
+Now, what does all
+plans execution do?
+
+177
+00:07:04,050 --> 00:07:07,700
+All plans execution does
+what the query optimizer
+
+178
+00:07:07,700 --> 00:07:09,180
+does periodically.
+
+179
+00:07:09,180 --> 00:07:11,320
+What the query optimizer
+does periodically
+
+180
+00:07:11,320 --> 00:07:14,690
+is it runs all the possible
+indexes that could be used,
+
+181
+00:07:14,690 --> 00:07:18,880
+and it runs them in parallel,
+and then makes a decision
+
+182
+00:07:18,880 --> 00:07:20,590
+about which one is fastest.
+
+183
+00:07:20,590 --> 00:07:22,040
+And it periodically does this.
+
+184
+00:07:22,040 --> 00:07:23,456
+And then it remembers
+which one is
+
+185
+00:07:23,456 --> 00:07:26,040
+fastest for a certain
+shape of query,
+
+186
+00:07:26,040 --> 00:07:28,570
+and it always uses that index.
+
+187
+00:07:28,570 --> 00:07:32,220
+But when you run the explain
+command in all plans execution,
+
+188
+00:07:32,220 --> 00:07:36,400
+you are running the query
+optimizer that periodically
+
+189
+00:07:36,400 --> 00:07:38,370
+runs to determine
+what index would
+
+190
+00:07:38,370 --> 00:07:40,280
+be used for any
+particular shape of query.
+
+191
+00:07:40,280 --> 00:07:42,520
+So it gives you even
+more information
+
+192
+00:07:42,520 --> 00:07:44,295
+about the different
+possibilities.
+
+193
+00:07:44,295 --> 00:07:46,690
+Because you remember, in
+the last one, what we saw
+
+194
+00:07:46,690 --> 00:07:49,350
+was the execution stats
+for the winning plan.
+
+195
+00:07:49,350 --> 00:07:52,800
+But we didn't see any execution
+stats for other plans.
+
+196
+00:07:52,800 --> 00:07:54,540
+So let's see what happens now.
+
+197
+00:07:54,540 --> 00:07:57,720
+We're going to do the same
+exact query we did before.
+
+198
+00:07:57,720 --> 00:07:59,860
+And now, now what do we get?
+
+199
+00:07:59,860 --> 00:08:01,850
+We get a lot more
+information, certainly.
+
+200
+00:08:01,850 --> 00:08:04,230
+We had the executions
+that we had before,
+
+201
+00:08:04,230 --> 00:08:06,480
+and they look pretty
+much the same.
+
+202
+00:08:06,480 --> 00:08:09,170
+We did an index
+scan, and we decided
+
+203
+00:08:09,170 --> 00:08:11,640
+to use the winning
+index of A comma B.
+
+204
+00:08:11,640 --> 00:08:14,640
+But what about the all
+plans execution area,
+
+205
+00:08:14,640 --> 00:08:15,780
+which is right here?
+
+206
+00:08:15,780 --> 00:08:17,080
+What does that tell us?
+
+207
+00:08:17,080 --> 00:08:18,760
+Well, let's see.
+
+208
+00:08:18,760 --> 00:08:20,980
+The first one is actually
+the most interesting.
+
+209
+00:08:20,980 --> 00:08:25,820
+Because the first one is
+considering using the B index.
+
+210
+00:08:25,820 --> 00:08:27,790
+A little hard to read on screen.
+
+211
+00:08:27,790 --> 00:08:29,320
+By the way, this
+all plans execution
+
+212
+00:08:29,320 --> 00:08:31,720
+is an array of different plans.
+
+213
+00:08:31,720 --> 00:08:33,559
+The first one was
+actually rejected.
+
+214
+00:08:33,559 --> 00:08:35,169
+It returned zero documents.
+
+215
+00:08:35,169 --> 00:08:36,570
+And the reason it
+was rejected is
+
+216
+00:08:36,570 --> 00:08:40,750
+that the database ran the query
+using the B index right here,
+
+217
+00:08:40,750 --> 00:08:41,730
+B_1.
+
+218
+00:08:41,730 --> 00:08:46,990
+And when it did that,
+they examined 101 keys.
+
+219
+00:08:46,990 --> 00:08:50,070
+Now, we know from previously
+when we removed the A comma B
+
+220
+00:08:50,070 --> 00:08:55,280
+index that to complete this
+query with just the N index,
+
+221
+00:08:55,280 --> 00:08:58,190
+you'd look at 10,000
+different documents.
+
+222
+00:08:58,190 --> 00:09:00,370
+But in this case,
+you looked at 101.
+
+223
+00:09:00,370 --> 00:09:01,680
+Why is that?
+
+224
+00:09:01,680 --> 00:09:04,370
+Well, the reason
+is that 101 was as
+
+225
+00:09:04,370 --> 00:09:06,210
+many as the database
+needed to see
+
+226
+00:09:06,210 --> 00:09:08,280
+to know that it was a loser.
+
+227
+00:09:08,280 --> 00:09:10,630
+Because-- and you'll
+see here it says
+
+228
+00:09:10,630 --> 00:09:12,760
+that it returned
+zero documents-- so
+
+229
+00:09:12,760 --> 00:09:15,235
+it says, didn't return any
+documents in this plan,
+
+230
+00:09:15,235 --> 00:09:16,610
+because this plan
+was eliminated.
+
+231
+00:09:16,610 --> 00:09:18,630
+It said, this is
+not the best plan.
+
+232
+00:09:18,630 --> 00:09:21,650
+I know that because I got
+to 101 documents examined,
+
+233
+00:09:21,650 --> 00:09:23,720
+and I have a plan
+here-- which is
+
+234
+00:09:23,720 --> 00:09:26,570
+the second plan in the
+all plans execution--
+
+235
+00:09:26,570 --> 00:09:28,680
+which is going to
+return 100 documents
+
+236
+00:09:28,680 --> 00:09:30,420
+and only look at 100 documents.
+
+237
+00:09:30,420 --> 00:09:32,750
+I look at 100 documents,
+I look at 100 keys.
+
+238
+00:09:32,750 --> 00:09:35,970
+And that's using the A comma B.
+
+239
+00:09:35,970 --> 00:09:39,990
+So now you can really see the
+logic that the database applied
+
+240
+00:09:39,990 --> 00:09:43,080
+to make the decision,
+which is as soon as it saw
+
+241
+00:09:43,080 --> 00:09:47,780
+that using the index just on
+B was going to look at more
+
+242
+00:09:47,780 --> 00:09:50,980
+documents than using
+the A comma B index,
+
+243
+00:09:50,980 --> 00:09:53,550
+it immediately
+abandoned that path,
+
+244
+00:09:53,550 --> 00:09:55,650
+and it didn't follow it
+through to completion.
+
+245
+00:09:55,650 --> 00:09:59,970
+So although this all plans
+execution mode will give you
+
+246
+00:09:59,970 --> 00:10:03,620
+some execution information about
+alternative paths to satisfying
+
+247
+00:10:03,620 --> 00:10:06,336
+its query, it won't
+tell you everything
+
+248
+00:10:06,336 --> 00:10:08,460
+that would have happened,
+because it treats it just
+
+249
+00:10:08,460 --> 00:10:09,501
+like the query optimizer.
+
+250
+00:10:09,501 --> 00:10:11,650
+When it knows that
+it's bad, it stops.
+
+251
+00:10:11,650 --> 00:10:15,940
+And if you remember, when we
+removed the actual A, B index
+
+252
+00:10:15,940 --> 00:10:17,814
+and ran this query,
+it told us it
+
+253
+00:10:17,814 --> 00:10:19,480
+looked at a lot more
+documents than that
+
+254
+00:10:19,480 --> 00:10:22,210
+when it used just the B index.
+
+255
+00:10:22,210 --> 00:10:24,750
+Now, one thing to keep
+in mind with the database
+
+256
+00:10:24,750 --> 00:10:27,440
+is it's good to have an
+index for every query.
+
+257
+00:10:27,440 --> 00:10:29,560
+That is, every query
+should hit an index.
+
+258
+00:10:29,560 --> 00:10:32,579
+But it's also important
+that every index that
+
+259
+00:10:32,579 --> 00:10:34,620
+is on your collection,
+that there be at least one
+
+260
+00:10:34,620 --> 00:10:36,280
+query hitting it.
+
+261
+00:10:36,280 --> 00:10:39,090
+Which is to say that when you
+have an index on a collection
+
+262
+00:10:39,090 --> 00:10:42,090
+and it's never chosen,
+it's never selected,
+
+263
+00:10:42,090 --> 00:10:43,490
+it's just a waste.
+
+264
+00:10:43,490 --> 00:10:46,790
+And you're wasting time
+inserting into that index
+
+265
+00:10:46,790 --> 00:10:49,790
+and keep that index up to
+date when, in fact, you
+
+266
+00:10:49,790 --> 00:10:50,850
+don't need to be.
+
+267
+00:10:50,850 --> 00:10:53,100
+So you want to have a good
+balance between the indexes
+
+268
+00:10:53,100 --> 00:10:54,850
+on your collection
+and the queries
+
+269
+00:10:54,850 --> 00:10:57,740
+so that all the indexes get
+used and all the queries have
+
+270
+00:10:57,740 --> 00:10:59,920
+at least one index that
+can satisfy them and work
+
+271
+00:10:59,920 --> 00:11:00,950
+efficiently.
+
+272
+00:11:00,950 --> 00:11:02,820
+It's time for a quiz.
+
+273
+00:11:02,820 --> 00:11:06,384
+Let's look at this
+option for verbosity.
+
+274
+00:11:06,384 --> 00:11:08,050
+Given the following
+output from Explain,
+
+275
+00:11:08,050 --> 00:11:10,110
+what is the best description of
+what happened during the query?
+
+276
+00:11:10,110 --> 00:11:12,234
+And this looks a lot like
+what we did in the class.
+
+277
+00:11:12,234 --> 00:11:14,220
+We are creating an
+explainable object
+
+278
+00:11:14,220 --> 00:11:16,010
+and looking at this query.
+
+279
+00:11:16,010 --> 00:11:18,330
+So examine these
+results carefully,
+
+280
+00:11:18,330 --> 00:11:20,280
+and then figure
+out what happened,
+
+281
+00:11:20,280 --> 00:11:22,530
+and then pick the right answer.

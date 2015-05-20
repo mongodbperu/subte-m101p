@@ -1,0 +1,80 @@
+1
+00:00:00,000 --> 00:00:00,500
+
+2
+00:00:00,500 --> 00:00:02,930
+All right, and the answer
+is the third one is correct.
+
+3
+00:00:02,930 --> 00:00:06,040
+The third one, you
+call students.find.
+
+4
+00:00:06,040 --> 00:00:10,580
+Then, you specify 'student_id':1
+and you suppress the _id.
+
+5
+00:00:10,580 --> 00:00:13,390
+So you give it a 0
+value in the document.
+
+6
+00:00:13,390 --> 00:00:14,920
+So why are the
+other one's wrong?
+
+7
+00:00:14,920 --> 00:00:16,720
+Well, the first one
+is wrong because it
+
+8
+00:00:16,720 --> 00:00:19,762
+doesn't have this projection
+as a second parameter.
+
+9
+00:00:19,762 --> 00:00:21,470
+It actually has it as
+the first parameter
+
+10
+00:00:21,470 --> 00:00:23,640
+so it's going to be
+interpreted as a query.
+
+11
+00:00:23,640 --> 00:00:26,860
+This one is wrong
+for similar reasons.
+
+12
+00:00:26,860 --> 00:00:29,070
+It's the first parameter,
+not the second parameter.
+
+13
+00:00:29,070 --> 00:00:31,830
+It's also forgets
+to suppress _id'0.
+
+14
+00:00:31,830 --> 00:00:33,000
+The third one was right.
+
+15
+00:00:33,000 --> 00:00:38,310
+The fourth one is wrong only
+because these literals are not
+
+16
+00:00:38,310 --> 00:00:41,220
+quoted as they need
+to be inside Python.
+
+17
+00:00:41,220 --> 00:00:42,770
+OK.

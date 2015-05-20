@@ -1,0 +1,386 @@
+1
+00:00:00,000 --> 00:00:00,500
+
+2
+00:00:00,500 --> 00:00:03,490
+Sometimes life does not
+go exactly as planned.
+
+3
+00:00:03,490 --> 00:00:06,170
+And when you're writing
+programs in Python,
+
+4
+00:00:06,170 --> 00:00:07,560
+the same thing can happen.
+
+5
+00:00:07,560 --> 00:00:08,510
+There can be errors.
+
+6
+00:00:08,510 --> 00:00:10,280
+Sometimes they're unexpected.
+
+7
+00:00:10,280 --> 00:00:13,790
+And we can handle those errors
+because those errors will
+
+8
+00:00:13,790 --> 00:00:16,140
+raise exceptions in Python.
+
+9
+00:00:16,140 --> 00:00:18,390
+And we can catch
+those exceptions.
+
+10
+00:00:18,390 --> 00:00:20,820
+So let me show you
+what I'm talking about.
+
+11
+00:00:20,820 --> 00:00:24,860
+All right, here's a very small
+program written in Python
+
+12
+00:00:24,860 --> 00:00:29,200
+called exception_uncaught.py
+which does nothing but print 5
+
+13
+00:00:29,200 --> 00:00:30,110
+divided by 0.
+
+14
+00:00:30,110 --> 00:00:33,150
+And then after that it
+prints "but life goes on."
+
+15
+00:00:33,150 --> 00:00:35,301
+So let's see what happens
+when I run that program.
+
+16
+00:00:35,301 --> 00:00:37,550
+So I'm going to run the
+program by invoking the Python
+
+17
+00:00:37,550 --> 00:00:40,890
+interpreter on
+exception_uncaught.py,
+
+18
+00:00:40,890 --> 00:00:44,380
+and what happens is that rather
+than print 5 divided by 0,
+
+19
+00:00:44,380 --> 00:00:47,180
+which of course it can't do,
+I get a zero division error
+
+20
+00:00:47,180 --> 00:00:49,950
+and the program exits and it
+does not print but life goes
+
+21
+00:00:49,950 --> 00:00:50,600
+on.
+
+22
+00:00:50,600 --> 00:00:52,520
+What if I wanted a print
+"but life goes on?"
+
+23
+00:00:52,520 --> 00:00:53,770
+How could I do that?
+
+24
+00:00:53,770 --> 00:00:55,840
+I have another version
+of this program that
+
+25
+00:00:55,840 --> 00:00:58,920
+will catch the exception
+that's raised by this division
+
+26
+00:00:58,920 --> 00:01:01,930
+by zero error that I've
+introduced into the program.
+
+27
+00:01:01,930 --> 00:01:04,050
+So the program looks
+pretty much the same
+
+28
+00:01:04,050 --> 00:01:06,070
+in terms of what it
+actually does, but you
+
+29
+00:01:06,070 --> 00:01:08,220
+can see that the print
+to 5 divided by 0
+
+30
+00:01:08,220 --> 00:01:10,770
+is now in this new
+type of control block,
+
+31
+00:01:10,770 --> 00:01:13,540
+and this is a try except block.
+
+32
+00:01:13,540 --> 00:01:16,130
+The way this works is
+you have to import sys,
+
+33
+00:01:16,130 --> 00:01:18,890
+and then you use try
+colon, you indent,
+
+34
+00:01:18,890 --> 00:01:22,340
+and then you have the code
+that you want to run and catch
+
+35
+00:01:22,340 --> 00:01:23,582
+exceptions for.
+
+36
+00:01:23,582 --> 00:01:25,040
+And then there's
+an exception block
+
+37
+00:01:25,040 --> 00:01:27,300
+which catches a certain
+type of exception.
+
+38
+00:01:27,300 --> 00:01:31,470
+Now, this form right here,
+except Exception as e,
+
+39
+00:01:31,470 --> 00:01:33,760
+is going to catch
+everything of type exception
+
+40
+00:01:33,760 --> 00:01:36,040
+which is nearly all
+exceptions that you might want
+
+41
+00:01:36,040 --> 00:01:39,900
+to catch inside Python
+except for, I think,
+
+42
+00:01:39,900 --> 00:01:42,850
+hitting Control-C and
+some other keyboard
+
+43
+00:01:42,850 --> 00:01:45,070
+errors that you probably
+don't want to catch.
+
+44
+00:01:45,070 --> 00:01:46,890
+If you catch one of
+these exceptions,
+
+45
+00:01:46,890 --> 00:01:48,390
+you're then going
+to print it out.
+
+46
+00:01:48,390 --> 00:01:52,870
+So to do that you're going to,
+in this case, print exception,
+
+47
+00:01:52,870 --> 00:01:55,426
+colon, and then we print the
+type of the exception and then
+
+48
+00:01:55,426 --> 00:01:57,800
+the exception itself and we
+assume that the exception has
+
+49
+00:01:57,800 --> 00:01:59,710
+a way to print itself.
+
+50
+00:01:59,710 --> 00:02:02,990
+And then after that, we
+print "but life goes on."
+
+51
+00:02:02,990 --> 00:02:06,060
+Now, if we do that, we should
+see "but life goes on,"
+
+52
+00:02:06,060 --> 00:02:08,260
+plus we've caught the
+exception and so it
+
+53
+00:02:08,260 --> 00:02:09,710
+won't exit the program.
+
+54
+00:02:09,710 --> 00:02:10,979
+Let's run it.
+
+55
+00:02:10,979 --> 00:02:11,540
+All right.
+
+56
+00:02:11,540 --> 00:02:13,230
+So now the program runs.
+
+57
+00:02:13,230 --> 00:02:15,250
+We still don't find out
+what 5 divided by 0,
+
+58
+00:02:15,250 --> 00:02:18,120
+is because, of course, that
+has no value, it's undefined.
+
+59
+00:02:18,120 --> 00:02:20,950
+But in this case, we actually
+get this print statement
+
+60
+00:02:20,950 --> 00:02:24,165
+which prints that we have a type
+exceptions.ZeroDivisionError.
+
+61
+00:02:24,165 --> 00:02:25,540
+That's the type
+of the exception.
+
+62
+00:02:25,540 --> 00:02:27,200
+And then it prints
+out the exception
+
+63
+00:02:27,200 --> 00:02:30,680
+itself, which is integer
+division or modulo by zero.
+
+64
+00:02:30,680 --> 00:02:32,940
+And after that we get
+"but life goes on."
+
+65
+00:02:32,940 --> 00:02:35,120
+So we've caught the exception
+raised by the program
+
+66
+00:02:35,120 --> 00:02:35,974
+and we've continued.
+
+67
+00:02:35,974 --> 00:02:37,390
+Now, this is going
+to be important
+
+68
+00:02:37,390 --> 00:02:39,550
+later on because you're
+going to want to also do
+
+69
+00:02:39,550 --> 00:02:42,720
+this inside your programs
+that talk to the database,
+
+70
+00:02:42,720 --> 00:02:45,470
+because exceptions can occur
+when trying to write data
+
+71
+00:02:45,470 --> 00:02:47,700
+to the database, and you
+want to know about them
+
+72
+00:02:47,700 --> 00:02:50,140
+and handle them in
+a systematic way.
+
+73
+00:02:50,140 --> 00:02:51,940
+You may want to
+retry the inserts
+
+74
+00:02:51,940 --> 00:02:53,920
+to the database or an
+update to the database,
+
+75
+00:02:53,920 --> 00:02:57,340
+or you may want to raise the
+arrow all the way to the user.
+
+76
+00:02:57,340 --> 00:02:58,030
+It's up to you.
+
+77
+00:02:58,030 --> 00:02:59,488
+But you certainly
+want to know when
+
+78
+00:02:59,488 --> 00:03:03,410
+an error occurs when you're
+trying to read or write data
+
+79
+00:03:03,410 --> 00:03:05,060
+to the database.
+
+80
+00:03:05,060 --> 00:03:07,460
+So this is how exceptions
+work within Python,
+
+81
+00:03:07,460 --> 00:03:10,140
+and you'll be using this
+throughout the course.
+

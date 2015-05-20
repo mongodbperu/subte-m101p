@@ -1,0 +1,1208 @@
+1
+00:00:00,000 --> 00:00:00,270
+
+2
+00:00:00,270 --> 00:00:02,410
+OK, you've seen "explain"
+more than a few times
+
+3
+00:00:02,410 --> 00:00:03,700
+during this unit.
+
+4
+00:00:03,700 --> 00:00:06,480
+But we haven't really gone into
+any great detail about what
+
+5
+00:00:06,480 --> 00:00:07,960
+it does or how it works.
+
+6
+00:00:07,960 --> 00:00:12,180
+So "explain" is used to find
+out what the database is doing
+
+7
+00:00:12,180 --> 00:00:14,640
+with your query, how
+it's executing it,
+
+8
+00:00:14,640 --> 00:00:19,170
+what indexes it's using, and
+how many documents it inspected
+
+9
+00:00:19,170 --> 00:00:20,850
+when it actually ran the query.
+
+10
+00:00:20,850 --> 00:00:22,750
+And the thing to
+remember about "explain"
+
+11
+00:00:22,750 --> 00:00:25,330
+is that in all cases when
+you use an "explain",
+
+12
+00:00:25,330 --> 00:00:28,040
+it doesn't bring the data
+back from the database.
+
+13
+00:00:28,040 --> 00:00:30,270
+It may do most of the
+work to do the query,
+
+14
+00:00:30,270 --> 00:00:33,310
+but doesn't actually bring data
+back all the way to the client.
+
+15
+00:00:33,310 --> 00:00:34,940
+So it's really
+used to figure out
+
+16
+00:00:34,940 --> 00:00:36,564
+what database
+would do if it were
+
+17
+00:00:36,564 --> 00:00:37,980
+to complete this
+query completely,
+
+18
+00:00:37,980 --> 00:00:41,080
+but isn't an entire
+simulation of what would
+
+19
+00:00:41,080 --> 00:00:43,280
+happen if you did the query.
+
+20
+00:00:43,280 --> 00:00:45,290
+Second, a lot of what
+we've done in this unit,
+
+21
+00:00:45,290 --> 00:00:47,632
+shows you how to use "explain"
+from the shell, which
+
+22
+00:00:47,632 --> 00:00:50,090
+is one of the most useful places
+to examine the performance
+
+23
+00:00:50,090 --> 00:00:51,260
+of any particular query.
+
+24
+00:00:51,260 --> 00:00:53,012
+But you can also use
+it from the drivers
+
+25
+00:00:53,012 --> 00:00:54,595
+and from your
+application if you want.
+
+26
+00:00:54,595 --> 00:00:57,620
+Now, in MongoDB 3.0, we
+changed the way "explain"
+
+27
+00:00:57,620 --> 00:00:59,870
+works, especially in the shell.
+
+28
+00:00:59,870 --> 00:01:02,300
+We call this "explain"
+2.0 internally.
+
+29
+00:01:02,300 --> 00:01:07,240
+The first thing is that it used
+to be that you would call db.--
+
+30
+00:01:07,240 --> 00:01:11,270
+let's say foo, if there
+was a query-- .find.
+
+31
+00:01:11,270 --> 00:01:13,430
+And then that would
+essentially produce a cursor.
+
+32
+00:01:13,430 --> 00:01:16,580
+And then you would call
+"explain" after that.
+
+33
+00:01:16,580 --> 00:01:19,110
+But in 3.0, we changed
+it, so that instead
+
+34
+00:01:19,110 --> 00:01:21,147
+the preferred method
+of using "explain",
+
+35
+00:01:21,147 --> 00:01:22,230
+is to call db.foo.explain.
+
+36
+00:01:22,230 --> 00:01:24,820
+
+37
+00:01:24,820 --> 00:01:27,440
+And that returns an
+explainable object.
+
+38
+00:01:27,440 --> 00:01:29,490
+And from there, the
+explainable object,
+
+39
+00:01:29,490 --> 00:01:31,570
+you can run a "find' on.
+
+40
+00:01:31,570 --> 00:01:33,450
+You can also run an "update" on.
+
+41
+00:01:33,450 --> 00:01:36,830
+You can run a "remove"
+on it and "aggregate",
+
+42
+00:01:36,830 --> 00:01:37,990
+and a few other things.
+
+43
+00:01:37,990 --> 00:01:40,480
+Most notably, you can't
+run an "insert" on it.
+
+44
+00:01:40,480 --> 00:01:42,720
+So "insert" is missing.
+
+45
+00:01:42,720 --> 00:01:45,180
+So you can't find out what
+the query optimizer would
+
+46
+00:01:45,180 --> 00:01:45,860
+have done for an "insert."
+
+47
+00:01:45,860 --> 00:01:48,110
+But honestly, there isn't
+much to learn about inserts,
+
+48
+00:01:48,110 --> 00:01:50,240
+because inserts, it puts
+data in the database
+
+49
+00:01:50,240 --> 00:01:51,850
+and it has up there
+all the indexes.
+
+50
+00:01:51,850 --> 00:01:53,180
+And that's really it.
+
+51
+00:01:53,180 --> 00:01:55,220
+So there's no 'find"
+portion of an "insert."
+
+52
+00:01:55,220 --> 00:01:57,920
+There's a "find" portion
+of an "update", obviously.
+
+53
+00:01:57,920 --> 00:02:01,460
+"Find" the modifier is allowed
+here, including "help."
+
+54
+00:02:01,460 --> 00:02:02,807
+So they're now helpers.
+
+55
+00:02:02,807 --> 00:02:04,390
+So if they're inside
+the shell and you
+
+56
+00:02:04,390 --> 00:02:06,905
+call "db.foo.explain.help",
+you're
+
+57
+00:02:06,905 --> 00:02:09,530
+going to get help to figure out
+which function you can actually
+
+58
+00:02:09,530 --> 00:02:11,000
+use with "explain."
+
+59
+00:02:11,000 --> 00:02:13,870
+And again, this right
+here is returning what
+
+60
+00:02:13,870 --> 00:02:15,940
+we call an explainable object.
+
+61
+00:02:15,940 --> 00:02:18,797
+Now, in the next
+lesson, not this one,
+
+62
+00:02:18,797 --> 00:02:20,380
+we're going to go
+over what parameters
+
+63
+00:02:20,380 --> 00:02:23,670
+you can give to explain
+in terms of verbosity.
+
+64
+00:02:23,670 --> 00:02:25,080
+But in this one,
+we're just going
+
+65
+00:02:25,080 --> 00:02:26,830
+to use it in its default
+form and see what
+
+66
+00:02:26,830 --> 00:02:28,554
+it produces to understand it.
+
+67
+00:02:28,554 --> 00:02:30,470
+All right, so let's go
+through some shell work
+
+68
+00:02:30,470 --> 00:02:33,310
+so we can see this thing in
+action and understand it.
+
+69
+00:02:33,310 --> 00:02:35,060
+Let's start the Mongo shell.
+
+70
+00:02:35,060 --> 00:02:39,380
+And let's fill a
+collection with some data.
+
+71
+00:02:39,380 --> 00:02:40,620
+And I'm going to do that.
+
+72
+00:02:40,620 --> 00:02:41,953
+I'm going to cheat a little bit.
+
+73
+00:02:41,953 --> 00:02:43,640
+I'm going to copy
+something that's
+
+74
+00:02:43,640 --> 00:02:47,380
+going to create approximately
+one million documents.
+
+75
+00:02:47,380 --> 00:02:52,696
+And you could see it's a nested
+loop of JavaScript 100, 100,
+
+76
+00:02:52,696 --> 00:02:53,660
+100.
+
+77
+00:02:53,660 --> 00:02:56,950
+And it's in the "a" key, the
+"b" key, and the "c" key.
+
+78
+00:02:56,950 --> 00:02:59,920
+And so it's also setting the
+"_id' value to, I believe,
+
+79
+00:02:59,920 --> 00:03:01,820
+just an increasing integer.
+
+80
+00:03:01,820 --> 00:03:02,590
+So we'll do that.
+
+81
+00:03:02,590 --> 00:03:04,381
+And it's going to take
+a little bit of time
+
+82
+00:03:04,381 --> 00:03:07,860
+to insert a million
+objects into the database.
+
+83
+00:03:07,860 --> 00:03:09,400
+All right, and now that's done.
+
+84
+00:03:09,400 --> 00:03:12,410
+We edited out some of that time,
+but it took about 10 seconds.
+
+85
+00:03:12,410 --> 00:03:14,660
+Now we're going to add some
+indexes to the collection.
+
+86
+00:03:14,660 --> 00:03:16,368
+Well, first let's look
+at the collection,
+
+87
+00:03:16,368 --> 00:03:17,870
+so you can see
+what it looks like.
+
+88
+00:03:17,870 --> 00:03:22,220
+So I call this "example", so I'm
+going to do a "find_one" on it.
+
+89
+00:03:22,220 --> 00:03:25,430
+Oh, I'll just do a "find"
+on it, so you can see it.
+
+90
+00:03:25,430 --> 00:03:28,890
+And you can see that it's got
+data where these "_id"s are
+
+91
+00:03:28,890 --> 00:03:29,570
+increasing.
+
+92
+00:03:29,570 --> 00:03:32,000
+And then the "a",
+"b", "c" values,
+
+93
+00:03:32,000 --> 00:03:34,710
+they are going to
+go up 100 at a time
+
+94
+00:03:34,710 --> 00:03:37,630
+until eventually the "b"
+value will increment.
+
+95
+00:03:37,630 --> 00:03:39,559
+There you go-- have
+"b" values incremented.
+
+96
+00:03:39,559 --> 00:03:41,600
+So you can see there's
+just a lot of data variant
+
+97
+00:03:41,600 --> 00:03:42,940
+a, b, and c.
+
+98
+00:03:42,940 --> 00:03:45,010
+Now let's add some
+indexes on this thing.
+
+99
+00:03:45,010 --> 00:03:49,160
+Let's add two compound indexes,
+one on "a, b" and one on "b."
+
+100
+00:03:49,160 --> 00:03:55,891
+So "db.example.createIndex"
+"a, comma 1, b comma 1."
+
+101
+00:03:55,891 --> 00:03:58,140
+All right, so we're adding
+index on a million objects.
+
+102
+00:03:58,140 --> 00:04:00,110
+That was actually pretty fast.
+
+103
+00:04:00,110 --> 00:04:04,220
+And now we're going to
+add other index on just b.
+
+104
+00:04:04,220 --> 00:04:05,150
+OK.
+
+105
+00:04:05,150 --> 00:04:08,050
+Now we've got two other
+indexes other than the "_id"
+
+106
+00:04:08,050 --> 00:04:09,430
+index on this collection.
+
+107
+00:04:09,430 --> 00:04:12,740
+Now, let's say that we wanted
+to get an explainable object.
+
+108
+00:04:12,740 --> 00:04:14,920
+Well, let's do it this way.
+
+109
+00:04:14,920 --> 00:04:20,610
+"var exp equals
+db.example.explain."
+
+110
+00:04:20,610 --> 00:04:23,510
+And exp is an
+explainable object.
+
+111
+00:04:23,510 --> 00:04:26,290
+And now we're going to call--
+well it's just for grins,
+
+112
+00:04:26,290 --> 00:04:30,112
+let's just call "exp.help", so
+you can see what that produces.
+
+113
+00:04:30,112 --> 00:04:32,570
+You can see it tells you all
+these great things you can do.
+
+114
+00:04:32,570 --> 00:04:33,195
+I can call "find."
+
+115
+00:04:33,195 --> 00:04:33,810
+I can call "group."
+
+116
+00:04:33,810 --> 00:04:34,370
+I can call "remove."
+
+117
+00:04:34,370 --> 00:04:35,420
+I can call "update."
+
+118
+00:04:35,420 --> 00:04:36,530
+It's very exciting.
+
+119
+00:04:36,530 --> 00:04:38,160
+So we're just going
+to call "find."
+
+120
+00:04:38,160 --> 00:04:45,800
+So "exp.find." and we'll
+look for one where a is 17,
+
+121
+00:04:45,800 --> 00:04:47,770
+and b is 55.
+
+122
+00:04:47,770 --> 00:04:52,700
+And maybe we will also
+sort it by b descending.
+
+123
+00:04:52,700 --> 00:04:54,800
+And we have two indexes on here.
+
+124
+00:04:54,800 --> 00:04:58,294
+One of them is on "a, b",
+the other one's on "b."
+
+125
+00:04:58,294 --> 00:05:00,332
+So we're not sure
+exactly what indexes
+
+126
+00:05:00,332 --> 00:05:02,290
+are going to get used in
+the performance query,
+
+127
+00:05:02,290 --> 00:05:04,020
+although, you might have
+a pretty good guess if you
+
+128
+00:05:04,020 --> 00:05:05,530
+understand the way indexes work.
+
+129
+00:05:05,530 --> 00:05:07,350
+And so we'll do that.
+
+130
+00:05:07,350 --> 00:05:09,680
+And we get a whole
+bunch of data back.
+
+131
+00:05:09,680 --> 00:05:13,660
+And in this form, which
+is the default form,
+
+132
+00:05:13,660 --> 00:05:15,800
+it's going to run it
+in query planner mode.
+
+133
+00:05:15,800 --> 00:05:18,690
+And you can see here, first it
+gives you a form of the query
+
+134
+00:05:18,690 --> 00:05:20,700
+that it used in the index.
+
+135
+00:05:20,700 --> 00:05:22,440
+And this is an
+adjacent representation
+
+136
+00:05:22,440 --> 00:05:25,480
+of internal representation that
+the server uses for the query.
+
+137
+00:05:25,480 --> 00:05:27,730
+And then it shows you the plan.
+
+138
+00:05:27,730 --> 00:05:28,811
+This is the winning plan.
+
+139
+00:05:28,811 --> 00:05:30,560
+The winning plan is
+most interesting part,
+
+140
+00:05:30,560 --> 00:05:33,300
+of course, because the winning
+plan is the one that actually
+
+141
+00:05:33,300 --> 00:05:34,110
+got chosen.
+
+142
+00:05:34,110 --> 00:05:35,990
+And it's good to
+read these things
+
+143
+00:05:35,990 --> 00:05:37,370
+from inwards to outwards.
+
+144
+00:05:37,370 --> 00:05:40,292
+And you can see here that it
+said at the bottom level here--
+
+145
+00:05:40,292 --> 00:05:42,250
+and sometimes there are
+multiple inputs stages,
+
+146
+00:05:42,250 --> 00:05:46,840
+but here there's just one-- you
+can see that it did an IXSCAN
+
+147
+00:05:46,840 --> 00:05:49,390
+and used "a" and
+"b" of the index.
+
+148
+00:05:49,390 --> 00:05:52,440
+And the index it
+used was "a_1_b_1",
+
+149
+00:05:52,440 --> 00:05:54,950
+which we know is
+the index on "a,b."
+
+150
+00:05:54,950 --> 00:05:57,970
+If you do a
+"db.example.indexes",
+
+151
+00:05:57,970 --> 00:05:59,690
+you'll see that index.
+
+152
+00:05:59,690 --> 00:06:01,160
+It's not a multikey index.
+
+153
+00:06:01,160 --> 00:06:04,020
+And sorry to use it
+backwards, which is probably
+
+154
+00:06:04,020 --> 00:06:06,090
+because of the sorting order.
+
+155
+00:06:06,090 --> 00:06:08,457
+And right there it
+shows you the bounds.
+
+156
+00:06:08,457 --> 00:06:10,665
+And since we were only
+looking for a single document,
+
+157
+00:06:10,665 --> 00:06:14,680
+it just looked for something
+with the bounds 17, 17, 55, 55.
+
+158
+00:06:14,680 --> 00:06:17,720
+It also showed you the rejected
+plans in this case and says,
+
+159
+00:06:17,720 --> 00:06:21,180
+well, you know, it consider
+using the index on just "b",
+
+160
+00:06:21,180 --> 00:06:23,400
+but that turned out
+to be a worse choice
+
+161
+00:06:23,400 --> 00:06:24,590
+and so it didn't do it.
+
+162
+00:06:24,590 --> 00:06:27,240
+So this tells you that
+the database actually used
+
+163
+00:06:27,240 --> 00:06:29,612
+the index that we
+expected it to use.
+
+164
+00:06:29,612 --> 00:06:31,820
+Now, there's no magic to
+the way we did this by first
+
+165
+00:06:31,820 --> 00:06:33,340
+creating an explainable object.
+
+166
+00:06:33,340 --> 00:06:37,510
+We could also have done it this
+way-- "db.example.explain.find"
+
+167
+00:06:37,510 --> 00:06:38,487
+with the same thing.
+
+168
+00:06:38,487 --> 00:06:40,320
+And this will give you
+the exact same result
+
+169
+00:06:40,320 --> 00:06:42,694
+as first getting an explainable
+object for the collection
+
+170
+00:06:42,694 --> 00:06:45,290
+and then calling
+'find", no difference.
+
+171
+00:06:45,290 --> 00:06:48,760
+You can see here, we
+have rejected plan of "b"
+
+172
+00:06:48,760 --> 00:06:53,330
+and an accepted plan of
+using "a_1_b_1" index.
+
+173
+00:06:53,330 --> 00:06:55,310
+So same exact result.
+
+174
+00:06:55,310 --> 00:06:57,660
+Now in earlier
+versions of MongoDB,
+
+175
+00:06:57,660 --> 00:07:00,010
+the way that you would
+actually do an explain of this
+
+176
+00:07:00,010 --> 00:07:04,490
+is by calling
+"example.find.explain."
+
+177
+00:07:04,490 --> 00:07:06,910
+That does something
+a little different.
+
+178
+00:07:06,910 --> 00:07:08,580
+What that does is it
+gets back a cursor,
+
+179
+00:07:08,580 --> 00:07:10,850
+because "example.find"
+will bring back a cursor
+
+180
+00:07:10,850 --> 00:07:13,030
+with the "explain" set on it.
+
+181
+00:07:13,030 --> 00:07:15,470
+But the result's the same
+when you see it in the shell.
+
+182
+00:07:15,470 --> 00:07:17,490
+So you won't see
+any differences.
+
+183
+00:07:17,490 --> 00:07:20,031
+You'll see the same rejected
+plan and same accepted plan.
+
+184
+00:07:20,031 --> 00:07:21,530
+And in some ways,
+it might seem more
+
+185
+00:07:21,530 --> 00:07:24,285
+natural to call
+"db.example.find.sort" and just
+
+186
+00:07:24,285 --> 00:07:25,869
+an "append" and "explain" on it.
+
+187
+00:07:25,869 --> 00:07:27,660
+So you might ask, well,
+why do we change it
+
+188
+00:07:27,660 --> 00:07:30,130
+up to have this idea of
+an explainable object.
+
+189
+00:07:30,130 --> 00:07:32,130
+And the reason we changed
+it up in this version,
+
+190
+00:07:32,130 --> 00:07:35,160
+in version 3.0, is
+because certain things
+
+191
+00:07:35,160 --> 00:07:36,520
+don 't return a cursor.
+
+192
+00:07:36,520 --> 00:07:40,190
+For instance, if I wanted
+to run a count on this,
+
+193
+00:07:40,190 --> 00:07:43,220
+I can't then get an
+"explain" output.
+
+194
+00:07:43,220 --> 00:07:44,320
+Watch.
+
+195
+00:07:44,320 --> 00:07:45,460
+Don't work.
+
+196
+00:07:45,460 --> 00:07:49,140
+On the other hand, if I use
+my explainable object "exp"
+
+197
+00:07:49,140 --> 00:07:52,490
+and I do a count
+on that, you can
+
+198
+00:07:52,490 --> 00:07:55,260
+see I can actually get
+an "explain" output.
+
+199
+00:07:55,260 --> 00:07:57,716
+So one of the advantages
+to this new syntax
+
+200
+00:07:57,716 --> 00:07:59,840
+of getting an explainable
+object for the collection
+
+201
+00:07:59,840 --> 00:08:02,190
+and then calling
+the query operator
+
+202
+00:08:02,190 --> 00:08:04,990
+is that it's opened up
+using "explain" on a larger
+
+203
+00:08:04,990 --> 00:08:06,620
+set of things.
+
+204
+00:08:06,620 --> 00:08:09,360
+And it's also, of course.
+given us this awesome helper
+
+205
+00:08:09,360 --> 00:08:09,910
+interface.
+
+206
+00:08:09,910 --> 00:08:13,540
+So now "explain.help" works
+and tells you all the things
+
+207
+00:08:13,540 --> 00:08:15,410
+you can run "explain" on.
+
+208
+00:08:15,410 --> 00:08:17,160
+Now let's look at
+another example.
+
+209
+00:08:17,160 --> 00:08:19,520
+Let's look at something where
+it couldn't use an index
+
+210
+00:08:19,520 --> 00:08:20,430
+and see what happens.
+
+211
+00:08:20,430 --> 00:08:21,980
+So that's not hard to do.
+
+212
+00:08:21,980 --> 00:08:25,110
+Let's use our explainable
+object again "exp."
+
+213
+00:08:25,110 --> 00:08:28,580
+And then look for a
+document with "c" being 200.
+
+214
+00:08:28,580 --> 00:08:33,230
+Now, if you recall,
+there's an index on "a, b"
+
+215
+00:08:33,230 --> 00:08:35,090
+and there's an
+index on just "b."
+
+216
+00:08:35,090 --> 00:08:36,900
+But there's no index on "c."
+
+217
+00:08:36,900 --> 00:08:40,299
+So this query should in fact
+have to do a collection scan.
+
+218
+00:08:40,299 --> 00:08:41,679
+Let's see what happens.
+
+219
+00:08:41,679 --> 00:08:43,919
+Well, it only
+considered one option.
+
+220
+00:08:43,919 --> 00:08:46,350
+The winning plan was to
+scan the whole collection
+
+221
+00:08:46,350 --> 00:08:49,510
+in the forward direction for
+a document where "c" was 200.
+
+222
+00:08:49,510 --> 00:08:52,060
+No plans rejected because,
+apparently, it knew pretty much
+
+223
+00:08:52,060 --> 00:08:53,682
+that it had no other options.
+
+224
+00:08:53,682 --> 00:08:55,640
+So again, there are two
+ways to call "explain."
+
+225
+00:08:55,640 --> 00:08:57,050
+You can get an
+explainable object
+
+226
+00:08:57,050 --> 00:09:00,560
+or you can actually
+call explain the cursor.
+
+227
+00:09:00,560 --> 00:09:01,620
+So let's look at that.
+
+228
+00:09:01,620 --> 00:09:09,150
+So if I do "var cursor
+equals db.example.find a 99",
+
+229
+00:09:09,150 --> 00:09:11,675
+then I can call "explain"
+directly on this cursor.
+
+230
+00:09:11,675 --> 00:09:13,300
+And that's really
+equivalent to calling
+
+231
+00:09:13,300 --> 00:09:15,614
+"db.example.find.explain."
+
+232
+00:09:15,614 --> 00:09:17,280
+And I'll get a similar
+result telling me
+
+233
+00:09:17,280 --> 00:09:18,460
+that it used an index.
+
+234
+00:09:18,460 --> 00:09:22,000
+In this case, it used
+the "a_1_b_1" index.
+
+235
+00:09:22,000 --> 00:09:24,500
+And then I can actually
+call "next" on the cursor
+
+236
+00:09:24,500 --> 00:09:25,725
+if I want the result.
+
+237
+00:09:25,725 --> 00:09:27,100
+And that's just
+a little subtlety
+
+238
+00:09:27,100 --> 00:09:28,599
+of the shell, which
+is that when you
+
+239
+00:09:28,599 --> 00:09:32,610
+call "db.example.find" without
+assigning it to a variable,
+
+240
+00:09:32,610 --> 00:09:35,770
+the shell actually iterates
+the cursor for you.
+
+241
+00:09:35,770 --> 00:09:37,570
+Whereas, if you
+assign it to a cursor,
+
+242
+00:09:37,570 --> 00:09:39,945
+then it doesn't iterate it
+for you giving the opportunity
+
+243
+00:09:39,945 --> 00:09:41,625
+to then append and
+explain, if you want.
+
+244
+00:09:41,625 --> 00:09:45,070
+Kind of a lot of strains the
+little nuances of the shell.
+
+245
+00:09:45,070 --> 00:09:46,850
+But I guess the
+real takeaway here
+
+246
+00:09:46,850 --> 00:09:49,410
+is that the preferred
+way to call "explain"
+
+247
+00:09:49,410 --> 00:09:54,520
+in this version of MongoDB is to
+call it on the collection first
+
+248
+00:09:54,520 --> 00:09:56,890
+and to get an explainable
+object, and then to do a
+
+249
+00:09:56,890 --> 00:09:57,700
+"find."
+
+250
+00:09:57,700 --> 00:09:59,336
+Something like this.
+
+251
+00:09:59,336 --> 00:10:01,590
+OK, now it's time for a quiz.
+
+252
+00:10:01,590 --> 00:10:03,190
+Which of the following
+are valid ways
+
+253
+00:10:03,190 --> 00:10:06,070
+to find out which index
+uses a particular query?
+
+254
+00:10:06,070 --> 00:10:06,950
+Check all that apply.
+
+255
+00:10:06,950 --> 00:10:08,800
+And I'm not going
+to go through these.
+
+256
+00:10:08,800 --> 00:10:10,765
+I'll read them to you,
+but take a look at them
+
+257
+00:10:10,765 --> 00:10:13,790
+and try to see if you can
+figure out which ones work.

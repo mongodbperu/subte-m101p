@@ -1,0 +1,820 @@
+1
+00:00:00,000 --> 00:00:00,110
+
+2
+00:00:00,110 --> 00:00:01,829
+Now that we know how
+to insert some data,
+
+3
+00:00:01,829 --> 00:00:03,870
+we need to figure out how
+we can update it inside
+
+4
+00:00:03,870 --> 00:00:05,480
+of the database.
+
+5
+00:00:05,480 --> 00:00:07,990
+There are two different
+function calls inside PyMongo
+
+6
+00:00:07,990 --> 00:00:10,050
+that you're going
+to use to do this.
+
+7
+00:00:10,050 --> 00:00:13,067
+One is update_one, and
+the other is update_many.
+
+8
+00:00:13,067 --> 00:00:14,650
+There's another call
+I'm going to talk
+
+9
+00:00:14,650 --> 00:00:16,850
+about in another
+lesson, called replace.
+
+10
+00:00:16,850 --> 00:00:19,260
+But for now, let's
+talk about updating,
+
+11
+00:00:19,260 --> 00:00:23,310
+which updates a document
+in place in the database.
+
+12
+00:00:23,310 --> 00:00:25,430
+There are two
+different parameters
+
+13
+00:00:25,430 --> 00:00:27,560
+that you're going to
+need to remember to use.
+
+14
+00:00:27,560 --> 00:00:30,000
+One is the filter,
+which filters out which
+
+15
+00:00:30,000 --> 00:00:33,160
+documents you want to update.
+
+16
+00:00:33,160 --> 00:00:35,770
+The other is an
+update statement.
+
+17
+00:00:35,770 --> 00:00:38,965
+And the update statement has
+to have some sort of operator,
+
+18
+00:00:38,965 --> 00:00:43,100
+a dollar operator, such as $set,
+that tells the database how you
+
+19
+00:00:43,100 --> 00:00:45,760
+want to manipulate the
+document, and what field you
+
+20
+00:00:45,760 --> 00:00:47,840
+want to change.
+
+21
+00:00:47,840 --> 00:00:49,860
+As a reminder,
+both of these calls
+
+22
+00:00:49,860 --> 00:00:54,020
+map to the same underlying call
+inside of the database, which
+
+23
+00:00:54,020 --> 00:00:55,640
+is the update command.
+
+24
+00:00:55,640 --> 00:00:58,190
+And if you remember,
+inside the Mongo shell,
+
+25
+00:00:58,190 --> 00:01:00,340
+there isn't an update_one
+and an update_many,
+
+26
+00:01:00,340 --> 00:01:02,280
+there's just an update command.
+
+27
+00:01:02,280 --> 00:01:05,170
+And I'm going to show you how
+we can understand this better
+
+28
+00:01:05,170 --> 00:01:07,410
+by showing you some of
+the PyMongo source code,
+
+29
+00:01:07,410 --> 00:01:08,550
+at the end of this lesson.
+
+30
+00:01:08,550 --> 00:01:09,050
+All right.
+
+31
+00:01:09,050 --> 00:01:11,460
+So now that we have update_one
+and update_many, let's
+
+32
+00:01:11,460 --> 00:01:14,030
+look at those in
+a small program.
+
+33
+00:01:14,030 --> 00:01:16,170
+We're going to return now
+to the score collection
+
+34
+00:01:16,170 --> 00:01:18,420
+that we used in some of
+the earlier lessons, which
+
+35
+00:01:18,420 --> 00:01:19,731
+is in the school database.
+
+36
+00:01:19,731 --> 00:01:21,230
+And if you remember,
+there's a bunch
+
+37
+00:01:21,230 --> 00:01:23,190
+of documents in
+this collection that
+
+38
+00:01:23,190 --> 00:01:27,670
+look like this, with a
+student ID, a type-- like exam
+
+39
+00:01:27,670 --> 00:01:29,670
+or homework-- and a score.
+
+40
+00:01:29,670 --> 00:01:31,630
+And I just showed one
+of these documents,
+
+41
+00:01:31,630 --> 00:01:34,290
+but there's a bunch of these
+documents in the collection.
+
+42
+00:01:34,290 --> 00:01:36,940
+So now we're going to
+add a reviewer to that.
+
+43
+00:01:36,940 --> 00:01:38,320
+Let's look at this
+program, which
+
+44
+00:01:38,320 --> 00:01:41,380
+is going to update a single
+document inside the scores
+
+45
+00:01:41,380 --> 00:01:42,330
+collection.
+
+46
+00:01:42,330 --> 00:01:45,440
+Now there's a function here, add
+review date using update_one,
+
+47
+00:01:45,440 --> 00:01:47,090
+which is going to
+take a student ID,
+
+48
+00:01:47,090 --> 00:01:50,590
+and then it's going to retrieve
+the document for that student
+
+49
+00:01:50,590 --> 00:01:54,390
+ID of type homework only
+from the scores collection
+
+50
+00:01:54,390 --> 00:01:55,390
+right here.
+
+51
+00:01:55,390 --> 00:01:56,930
+And then after it
+does that, it's
+
+52
+00:01:56,930 --> 00:01:58,870
+going to retrieve
+the underscore ID.
+
+53
+00:01:58,870 --> 00:02:01,370
+And it's going to do this to
+make sure that this update hits
+
+54
+00:02:01,370 --> 00:02:02,540
+exactly one document.
+
+55
+00:02:02,540 --> 00:02:05,400
+We know that underscore ID is
+unique within the collection,
+
+56
+00:02:05,400 --> 00:02:09,250
+so we know that if we update
+one with an underscore ID set,
+
+57
+00:02:09,250 --> 00:02:11,084
+that we're always going
+to get one document.
+
+58
+00:02:11,084 --> 00:02:13,666
+And we're going to set it equal
+to the record ID that came out
+
+59
+00:02:13,666 --> 00:02:14,920
+of the record we just found.
+
+60
+00:02:14,920 --> 00:02:17,206
+And then after that,
+we're going to update it
+
+61
+00:02:17,206 --> 00:02:18,370
+in the following way.
+
+62
+00:02:18,370 --> 00:02:21,600
+We're going to set--
+$set-- the review date
+
+63
+00:02:21,600 --> 00:02:23,600
+to the current date time.
+
+64
+00:02:23,600 --> 00:02:25,950
+Now you'll notice here
+that this is a document,
+
+65
+00:02:25,950 --> 00:02:28,450
+and that dollar set
+is the operator.
+
+66
+00:02:28,450 --> 00:02:32,680
+And then the value for this
+$set is the review date,
+
+67
+00:02:32,680 --> 00:02:33,810
+and what you want it to be.
+
+68
+00:02:33,810 --> 00:02:37,310
+So essentially the final
+state of that key value pair.
+
+69
+00:02:37,310 --> 00:02:39,680
+And then it turns
+out that update_one
+
+70
+00:02:39,680 --> 00:02:42,460
+returns a number of matched,
+so we can print it out,
+
+71
+00:02:42,460 --> 00:02:43,270
+result.matchcount.
+
+72
+00:02:43,270 --> 00:02:46,530
+And you can see that if you look
+in the PyMongo documentation.
+
+73
+00:02:46,530 --> 00:02:48,880
+Then, we're just going to
+find the document that we just
+
+74
+00:02:48,880 --> 00:02:50,838
+updated, and we're going
+to print it out again,
+
+75
+00:02:50,838 --> 00:02:53,400
+just so that we know that
+we updated it properly.
+
+76
+00:02:53,400 --> 00:02:56,340
+So let's run that
+and see what happens.
+
+77
+00:02:56,340 --> 00:02:58,630
+Let's make sure we're calling
+the right function here.
+
+78
+00:02:58,630 --> 00:03:00,100
+Add review date
+using update one.
+
+79
+00:03:00,100 --> 00:03:01,420
+There's actually two
+functions in this file,
+
+80
+00:03:01,420 --> 00:03:03,670
+but we're only going to look
+at one of them right now.
+
+81
+00:03:03,670 --> 00:03:07,400
+And now we're going to run
+[? it to ?] a terminal python
+
+82
+00:03:07,400 --> 00:03:09,070
+using_update.
+
+83
+00:03:09,070 --> 00:03:09,860
+All right.
+
+84
+00:03:09,860 --> 00:03:11,000
+So what happens?
+
+85
+00:03:11,000 --> 00:03:12,970
+Well, it gets the
+document here--
+
+86
+00:03:12,970 --> 00:03:15,340
+this is the document
+that it pulls out--
+
+87
+00:03:15,340 --> 00:03:17,560
+and you can see that
+it has a student ID 1,
+
+88
+00:03:17,560 --> 00:03:20,990
+which is what we specified, and
+there's no review date on it.
+
+89
+00:03:20,990 --> 00:03:22,970
+And then after
+the update one, it
+
+90
+00:03:22,970 --> 00:03:25,420
+has a review date right here.
+
+91
+00:03:25,420 --> 00:03:27,950
+So that worked properly,
+no problem there.
+
+92
+00:03:27,950 --> 00:03:31,170
+Now let's update a
+bunch of documents.
+
+93
+00:03:31,170 --> 00:03:34,430
+To do that, we're going to
+change this program slightly.
+
+94
+00:03:34,430 --> 00:03:36,570
+Instead of calling this
+function right here,
+
+95
+00:03:36,570 --> 00:03:39,110
+which is the add review
+date using update_one,
+
+96
+00:03:39,110 --> 00:03:42,300
+we're going to use this one
+right here, which adds review
+
+97
+00:03:42,300 --> 00:03:45,130
+date for all of the documents.
+
+98
+00:03:45,130 --> 00:03:46,984
+And it does this
+using update_many.
+
+99
+00:03:46,984 --> 00:03:48,400
+The filter is
+empty, so it's going
+
+100
+00:03:48,400 --> 00:03:49,608
+to hit every single document.
+
+101
+00:03:49,608 --> 00:03:51,540
+It's going to print out
+the number it matched,
+
+102
+00:03:51,540 --> 00:03:53,060
+and it's not going to print
+out the final documents
+
+103
+00:03:53,060 --> 00:03:54,940
+in this case, because
+there's a lot of them.
+
+104
+00:03:54,940 --> 00:03:57,520
+So let's change the function.
+
+105
+00:03:57,520 --> 00:03:58,620
+OK.
+
+106
+00:03:58,620 --> 00:04:01,500
+Now let's go and watch it work.
+
+107
+00:04:01,500 --> 00:04:02,480
+There we go.
+
+108
+00:04:02,480 --> 00:04:05,410
+It updated using update_one
+and set, and in this case
+
+109
+00:04:05,410 --> 00:04:06,910
+it matched 300 documents.
+
+110
+00:04:06,910 --> 00:04:09,650
+And if we go inside
+the Mongo shell
+
+111
+00:04:09,650 --> 00:04:12,710
+and we find some documents,
+we should see that they all
+
+112
+00:04:12,710 --> 00:04:14,160
+have review dates, and they do.
+
+113
+00:04:14,160 --> 00:04:16,540
+So it updated all the documents.
+
+114
+00:04:16,540 --> 00:04:19,899
+As I said to you before,
+update_one and update both use
+
+115
+00:04:19,899 --> 00:04:22,000
+the same underlying
+command at the database.
+
+116
+00:04:22,000 --> 00:04:23,000
+How would you know that?
+
+117
+00:04:23,000 --> 00:04:25,333
+Well, you couldn't look inside
+the PyMongo documentation
+
+118
+00:04:25,333 --> 00:04:27,510
+to find that out, because
+that wouldn't tell you.
+
+119
+00:04:27,510 --> 00:04:29,343
+But if you were curious
+about how it worked,
+
+120
+00:04:29,343 --> 00:04:31,920
+you could go into the actual
+source code for PyMongo.
+
+121
+00:04:31,920 --> 00:04:34,480
+I'm going to show you how to
+navigate that real quickly.
+
+122
+00:04:34,480 --> 00:04:38,030
+Right here, I've gone to GitHub
+at www.github.com/mongodb.
+
+123
+00:04:38,030 --> 00:04:39,780
+And I'm just going
+to type Python
+
+124
+00:04:39,780 --> 00:04:42,380
+into the query to find
+the Python driver project.
+
+125
+00:04:42,380 --> 00:04:43,830
+There it is.
+
+126
+00:04:43,830 --> 00:04:45,590
+I'm going to enter it.
+
+127
+00:04:45,590 --> 00:04:50,570
+So I want to find the 3.0
+branch, because, in this case,
+
+128
+00:04:50,570 --> 00:04:51,850
+we're not on master yet.
+
+129
+00:04:51,850 --> 00:04:54,500
+We're using this beta version.
+
+130
+00:04:54,500 --> 00:04:58,090
+And if I go in here
+and I look at PyMongo
+
+131
+00:04:58,090 --> 00:05:00,430
+and I look at everything
+in the collection class--
+
+132
+00:05:00,430 --> 00:05:01,360
+and we know all
+of these functions
+
+133
+00:05:01,360 --> 00:05:02,500
+were all in the
+collection class,
+
+134
+00:05:02,500 --> 00:05:03,999
+so I'm just going
+to look in there--
+
+135
+00:05:03,999 --> 00:05:07,280
+and now I'm just going
+to search for update_one.
+
+136
+00:05:07,280 --> 00:05:07,780
+All right.
+
+137
+00:05:07,780 --> 00:05:10,100
+There's update_one right here.
+
+138
+00:05:10,100 --> 00:05:13,440
+Update_one is a function that
+takes-- this self pointer is
+
+139
+00:05:13,440 --> 00:05:16,010
+just the way object-oriented
+programming works in Python,
+
+140
+00:05:16,010 --> 00:05:17,926
+you can ignore that--
+the filter, which
+
+141
+00:05:17,926 --> 00:05:19,550
+was the query, and
+the update operator,
+
+142
+00:05:19,550 --> 00:05:22,200
+and an upsert parameter,
+which we haven't talked about.
+
+143
+00:05:22,200 --> 00:05:26,170
+And we can see that update_one
+is going to make a call to this
+
+144
+00:05:26,170 --> 00:05:29,820
+_update function right here,
+with filter update, upsert,
+
+145
+00:05:29,820 --> 00:05:31,370
+and then false.
+
+146
+00:05:31,370 --> 00:05:34,210
+And if we look at
+update_many, right here,
+
+147
+00:05:34,210 --> 00:05:37,430
+we can see that it also
+makes a call to _update.
+
+148
+00:05:37,430 --> 00:05:40,490
+The only difference is there's
+one more parameter tacked on,
+
+149
+00:05:40,490 --> 00:05:43,550
+which is true, and
+that defaults to false.
+
+150
+00:05:43,550 --> 00:05:45,820
+That parameter, which is
+similar to the one you saw
+
+151
+00:05:45,820 --> 00:05:49,380
+on the shell, controls whether
+the _update function will
+
+152
+00:05:49,380 --> 00:05:51,300
+update many documents
+or just one document.
+
+153
+00:05:51,300 --> 00:05:53,180
+And you can see this
+is kind of complicated.
+
+154
+00:05:53,180 --> 00:05:55,950
+I mean, compared to having
+a nice simple function,
+
+155
+00:05:55,950 --> 00:05:57,530
+update_one or
+update_many, you'd have
+
+156
+00:05:57,530 --> 00:05:59,280
+to understand the way
+this parameter works
+
+157
+00:05:59,280 --> 00:06:00,430
+to know whether or not
+your update's going
+
+158
+00:06:00,430 --> 00:06:01,540
+to update one or many.
+
+159
+00:06:01,540 --> 00:06:03,920
+And again, this is the
+way the shell works
+
+160
+00:06:03,920 --> 00:06:05,530
+and the way the
+drivers used to work.
+
+161
+00:06:05,530 --> 00:06:08,260
+But now, we've deprecated
+those functions,
+
+162
+00:06:08,260 --> 00:06:11,050
+and we recommend you use
+update_one and update_many.
+
+163
+00:06:11,050 --> 00:06:11,800
+All right.
+
+164
+00:06:11,800 --> 00:06:13,661
+Let's have a quiz.
+
+165
+00:06:13,661 --> 00:06:15,160
+In the following
+code fragment, what
+
+166
+00:06:15,160 --> 00:06:18,270
+is the Python expression
+in place of xxxx
+
+167
+00:06:18,270 --> 00:06:22,370
+to set a new key examiner to be
+Jones using the set operator?
+
+168
+00:06:22,370 --> 00:06:24,512
+This is again the
+same scores collection
+
+169
+00:06:24,512 --> 00:06:25,720
+that we've been using before.
+
+170
+00:06:25,720 --> 00:06:28,110
+So you can see there's
+an xxx missing here.
+
+171
+00:06:28,110 --> 00:06:29,725
+We're calling
+update_one, and you
+
+172
+00:06:29,725 --> 00:06:31,558
+have to figure out what
+goes in right there.
+
+173
+00:06:31,558 --> 00:06:33,820
+And you should type
+it there below.

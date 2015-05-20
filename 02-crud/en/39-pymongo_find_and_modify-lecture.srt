@@ -1,0 +1,656 @@
+1
+00:00:00,000 --> 00:00:00,970
+
+2
+00:00:00,970 --> 00:00:04,280
+Now we know how to create,
+read, update, and delete data
+
+3
+00:00:04,280 --> 00:00:08,140
+in a database, both from
+the shell and from PyMongo.
+
+4
+00:00:08,140 --> 00:00:10,200
+So what's really left?
+
+5
+00:00:10,200 --> 00:00:12,480
+Well, one thing you might
+want to do sometimes
+
+6
+00:00:12,480 --> 00:00:17,120
+is atomically change a
+document and see its value,
+
+7
+00:00:17,120 --> 00:00:19,900
+either before or
+after the change.
+
+8
+00:00:19,900 --> 00:00:22,360
+So if you think about having
+a document in the database,
+
+9
+00:00:22,360 --> 00:00:25,180
+you can certainly find
+it using find one,
+
+10
+00:00:25,180 --> 00:00:27,660
+and then you can update
+it using update one.
+
+11
+00:00:27,660 --> 00:00:30,340
+But if you do that, there
+could be an intervening change,
+
+12
+00:00:30,340 --> 00:00:32,840
+and there's no guarantee that
+the document that you retrieve
+
+13
+00:00:32,840 --> 00:00:35,200
+from the database is
+the exact same one
+
+14
+00:00:35,200 --> 00:00:36,450
+that you're storing back.
+
+15
+00:00:36,450 --> 00:00:39,360
+Now there's a general
+idea of find and modify
+
+16
+00:00:39,360 --> 00:00:41,030
+that solves this problem.
+
+17
+00:00:41,030 --> 00:00:43,780
+We're going to go over three
+different variants of this.
+
+18
+00:00:43,780 --> 00:00:47,190
+They are find one and
+delete, find one and replace,
+
+19
+00:00:47,190 --> 00:00:49,000
+and find one and update.
+
+20
+00:00:49,000 --> 00:00:52,630
+And in all cases, these are
+going to find a single document
+
+21
+00:00:52,630 --> 00:00:54,830
+and then either they're
+going to delete it,
+
+22
+00:00:54,830 --> 00:00:57,370
+they're going to replace
+it with another document,
+
+23
+00:00:57,370 --> 00:01:01,040
+or they're going to update it.
+
+24
+00:01:01,040 --> 00:01:04,550
+In the case of updating, you
+can specify whether or not
+
+25
+00:01:04,550 --> 00:01:07,620
+you want to see the document
+state from before the update
+
+26
+00:01:07,620 --> 00:01:09,260
+or after the update.
+
+27
+00:01:09,260 --> 00:01:10,920
+And this becomes
+very interesting,
+
+28
+00:01:10,920 --> 00:01:14,640
+especially if you're trying
+to create a unique counter.
+
+29
+00:01:14,640 --> 00:01:16,980
+And that's the example I
+want to show you today,
+
+30
+00:01:16,980 --> 00:01:20,380
+which is how to create a unique
+counter in the database that's
+
+31
+00:01:20,380 --> 00:01:22,860
+guaranteed to go up by one
+every single time you call
+
+32
+00:01:22,860 --> 00:01:25,680
+it using find one and update.
+
+33
+00:01:25,680 --> 00:01:27,860
+Before I go into that,
+I want to also let
+
+34
+00:01:27,860 --> 00:01:31,670
+you know that if you look
+into the actual implementation
+
+35
+00:01:31,670 --> 00:01:33,700
+of these commands
+inside PyMongo,
+
+36
+00:01:33,700 --> 00:01:39,040
+you'll see that they all map to
+find and modify at the server.
+
+37
+00:01:39,040 --> 00:01:40,630
+Now, the new [INAUDIBLE]
+specification
+
+38
+00:01:40,630 --> 00:01:43,800
+states that the commands you
+use are find one and delete
+
+39
+00:01:43,800 --> 00:01:46,400
+and replace and update, but if
+you go into the PyMongo code,
+
+40
+00:01:46,400 --> 00:01:47,900
+you'll see that,
+underneath, they're
+
+41
+00:01:47,900 --> 00:01:50,520
+all calling find and modify
+command at the server.
+
+42
+00:01:50,520 --> 00:01:54,330
+Furthermore, in the Mongo shell,
+there's also a find and modify
+
+43
+00:01:54,330 --> 00:01:56,620
+function, and that find
+and modify function
+
+44
+00:01:56,620 --> 00:01:59,370
+also calls the find and
+modify command in the server.
+
+45
+00:01:59,370 --> 00:02:01,940
+So this is another area
+where the shell has
+
+46
+00:02:01,940 --> 00:02:04,360
+diverged a bit from
+the current state
+
+47
+00:02:04,360 --> 00:02:06,430
+of the art inside the drivers.
+
+48
+00:02:06,430 --> 00:02:10,050
+All right, let's look at our
+program to increment a counter.
+
+49
+00:02:10,050 --> 00:02:12,230
+Here's our program called
+get sequence number.
+
+50
+00:02:12,230 --> 00:02:14,402
+Now this program
+imports PyMongo,
+
+51
+00:02:14,402 --> 00:02:15,860
+and then it has
+one function called
+
+52
+00:02:15,860 --> 00:02:18,460
+get sequence number, where
+the sequence number is a name.
+
+53
+00:02:18,460 --> 00:02:19,800
+It could be any string.
+
+54
+00:02:19,800 --> 00:02:22,040
+And then what it
+does is it connects
+
+55
+00:02:22,040 --> 00:02:24,400
+to the test database and
+the counters collection,
+
+56
+00:02:24,400 --> 00:02:27,120
+and then it's going to
+call find one and update.
+
+57
+00:02:27,120 --> 00:02:30,030
+The document it's going to
+look for has type, name.
+
+58
+00:02:30,030 --> 00:02:32,560
+So you can imagine having a
+bunch of different counters
+
+59
+00:02:32,560 --> 00:02:34,520
+in this collection,
+each one represented
+
+60
+00:02:34,520 --> 00:02:36,150
+by a single document.
+
+61
+00:02:36,150 --> 00:02:38,190
+And then it's going
+to do an update.
+
+62
+00:02:38,190 --> 00:02:41,200
+It's going to apply
+dollar ink to something
+
+63
+00:02:41,200 --> 00:02:43,640
+we call value, which
+is the arbitrary key.
+
+64
+00:02:43,640 --> 00:02:46,600
+We decided to keep our
+counter value in value.
+
+65
+00:02:46,600 --> 00:02:49,650
+And we're going to increment
+it by one, using the dollar ink
+
+66
+00:02:49,650 --> 00:02:51,140
+operator.
+
+67
+00:02:51,140 --> 00:02:53,080
+We're going to say upsert=True.
+
+68
+00:02:53,080 --> 00:02:55,980
+And the reason we're going to
+upsert=True is that we want
+
+69
+00:02:55,980 --> 00:02:59,240
+this to work even if there
+is no counter document
+
+70
+00:02:59,240 --> 00:03:01,580
+in the collection yet
+for this counter type.
+
+71
+00:03:01,580 --> 00:03:05,640
+Now if we're saying upsert=True,
+well then find an update
+
+72
+00:03:05,640 --> 00:03:08,610
+can't return the document
+from before the update,
+
+73
+00:03:08,610 --> 00:03:11,260
+because that document wouldn't
+exist for the first time.
+
+74
+00:03:11,260 --> 00:03:12,710
+So instead of
+getting the document
+
+75
+00:03:12,710 --> 00:03:16,070
+from before the update, we
+have a special parameter
+
+76
+00:03:16,070 --> 00:03:18,960
+that we've set here inside this
+find one and update where we've
+
+77
+00:03:18,960 --> 00:03:21,960
+said the document we want
+returned by find_one_and_update
+
+78
+00:03:21,960 --> 00:03:25,260
+is the return
+document dot after--
+
+79
+00:03:25,260 --> 00:03:27,369
+pymongo.ReturnDocument.AFTER.
+
+80
+00:03:27,369 --> 00:03:28,910
+And if you look in
+the documentation,
+
+81
+00:03:28,910 --> 00:03:30,620
+you can see this
+is a constant that
+
+82
+00:03:30,620 --> 00:03:34,460
+is defined in PyMongo that
+specifies to the driver
+
+83
+00:03:34,460 --> 00:03:36,740
+that you want to get the
+document after the updating,
+
+84
+00:03:36,740 --> 00:03:38,450
+after the incrementing.
+
+85
+00:03:38,450 --> 00:03:40,860
+So let's see what
+happens if we do this.
+
+86
+00:03:40,860 --> 00:03:43,304
+We're going to print get
+sequence number for uID.
+
+87
+00:03:43,304 --> 00:03:45,470
+So we're imagining that
+we're creating a unique user
+
+88
+00:03:45,470 --> 00:03:46,135
+identifier.
+
+89
+00:03:46,135 --> 00:03:49,720
+And by the way, you can see
+that, what this function does--
+
+90
+00:03:49,720 --> 00:03:51,530
+I didn't show you
+this part-- is that it
+
+91
+00:03:51,530 --> 00:03:54,590
+gets the counter value from
+a document that comes back.
+
+92
+00:03:54,590 --> 00:03:56,580
+So we get back this
+document counter,
+
+93
+00:03:56,580 --> 00:03:59,450
+and we get back this
+value right here.
+
+94
+00:03:59,450 --> 00:04:02,702
+Then we pull a value out of
+the document and we return it.
+
+95
+00:04:02,702 --> 00:04:04,160
+So that's what
+we're going to print
+
+96
+00:04:04,160 --> 00:04:06,070
+in this get sequence number.
+
+97
+00:04:06,070 --> 00:04:08,560
+So let's run that a few
+times and see what happens.
+
+98
+00:04:08,560 --> 00:04:10,500
+First, I want to show
+you that, in fact, there
+
+99
+00:04:10,500 --> 00:04:12,420
+is nothing in this
+collection when you start.
+
+100
+00:04:12,420 --> 00:04:14,860
+So db.counters.find.
+
+101
+00:04:14,860 --> 00:04:16,149
+Nothing in the collection.
+
+102
+00:04:16,149 --> 00:04:18,800
+Now let's run using
+find and modify.
+
+103
+00:04:18,800 --> 00:04:19,800
+We're going to run that.
+
+104
+00:04:19,800 --> 00:04:21,139
+Let's see what we get.
+
+105
+00:04:21,139 --> 00:04:23,180
+All right, it ran it three
+times and it got three
+
+106
+00:04:23,180 --> 00:04:25,080
+different sequence numbers.
+
+107
+00:04:25,080 --> 00:04:28,090
+Now I'm going to do it again,
+and I got three more sequence
+
+108
+00:04:28,090 --> 00:04:29,220
+numbers.
+
+109
+00:04:29,220 --> 00:04:31,750
+Do it again, and I have
+three more sequence numbers.
+
+110
+00:04:31,750 --> 00:04:33,640
+We've now counted
+all the way to nine.
+
+111
+00:04:33,640 --> 00:04:35,560
+So what's inside the collection?
+
+112
+00:04:35,560 --> 00:04:36,540
+Let's look.
+
+113
+00:04:36,540 --> 00:04:41,250
+Db.counters.find, we can see
+there is just a single document
+
+114
+00:04:41,250 --> 00:04:44,700
+of type uID, value nine.
+
+115
+00:04:44,700 --> 00:04:46,240
+And now that you
+see this, maybe it
+
+116
+00:04:46,240 --> 00:04:48,940
+makes more sense what
+this program is doing,
+
+117
+00:04:48,940 --> 00:04:51,900
+which is that it's looking
+for a document of type--
+
+118
+00:04:51,900 --> 00:04:54,640
+we passed in the word
+uID, so type uID.
+
+119
+00:04:54,640 --> 00:04:56,580
+And we've said that
+the update itself
+
+120
+00:04:56,580 --> 00:05:00,180
+is dollar ink, value
+increment by one.
+
+121
+00:05:00,180 --> 00:05:01,832
+Now if we change
+this to minus 1,
+
+122
+00:05:01,832 --> 00:05:03,540
+we'd be decrementing
+the value each time.
+
+123
+00:05:03,540 --> 00:05:06,206
+And if we changed it to minus 2,
+we'd be decrementing it by two.
+
+124
+00:05:06,206 --> 00:05:07,540
+I can show you that.
+
+125
+00:05:07,540 --> 00:05:09,130
+Let's change this to minus 1.
+
+126
+00:05:09,130 --> 00:05:10,670
+Now we're going to count down.
+
+127
+00:05:10,670 --> 00:05:12,682
+And now we're counting
+down, and it should count
+
+128
+00:05:12,682 --> 00:05:13,890
+to negative numbers, as well.
+
+129
+00:05:13,890 --> 00:05:17,200
+So this is how you create unique
+counters using find and modify.
+
+130
+00:05:17,200 --> 00:05:20,110
+So find and modify is
+pretty useful, especially
+
+131
+00:05:20,110 --> 00:05:22,270
+because MongoDB
+lacks transactions.
+
+132
+00:05:22,270 --> 00:05:25,580
+And although each
+action to a document
+
+133
+00:05:25,580 --> 00:05:28,430
+is atomic, if you want
+to get back the value
+
+134
+00:05:28,430 --> 00:05:31,100
+and make a change all
+in one go without there
+
+135
+00:05:31,100 --> 00:05:33,420
+being any intervening
+change, then
+
+136
+00:05:33,420 --> 00:05:36,420
+you can do it using
+find and modify.
+
+137
+00:05:36,420 --> 00:05:38,110
+OK, so that's it.
+
+138
+00:05:38,110 --> 00:05:39,960
+That's find and modify.

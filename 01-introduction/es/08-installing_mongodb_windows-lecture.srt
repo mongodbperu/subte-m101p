@@ -1,717 +1,582 @@
 1
-00:00:00,000 --> 00:00:01,830
+00:00:00,000 --> 00:00:00,500
 
 2
-00:00:01,830 --> 00:00:05,090
-Vamos a hablar sobre la 
-instalación de MongoDB en Windows,
+00:00:00,500 --> 00:00:02,460
+In this segment we're
+going to install MongoDB
 
 3
-00:00:05,090 --> 00:00:07,530
-así que vamos a ello.
+00:00:02,460 --> 00:00:04,862
+3.0 on Microsoft Windows.
 
 4
-00:00:07,530 --> 00:00:09,960
-Entonces vamos a ir al sitio web
-de MongoDB y vamos a 
+00:00:04,862 --> 00:00:06,820
+And I'm going to take
+you through all the steps
 
 5
-00:00:09,960 --> 00:00:13,780
-descargar el "tarball", o el
-fichero zip, si prefieres, con
+00:00:06,820 --> 00:00:07,920
+to do that.
 
 6
-00:00:13,780 --> 00:00:15,240
-los binarios de MongoDB.
+00:00:07,920 --> 00:00:10,780
+Now I've got a Microsoft
+Windows 8 computer here,
 
 7
-00:00:15,240 --> 00:00:18,910
-Vamos a las descargas en el sitio
-web de MongoDB, y luego elegiremos
+00:00:10,780 --> 00:00:14,030
+and it is running the
+traditional desktop.
 
 8
-00:00:18,910 --> 00:00:20,340
-cuál queremos descargar.
+00:00:14,030 --> 00:00:17,290
+And I'll show you how to
+find and download MongoDB.
 
 9
-00:00:20,340 --> 00:00:22,320
-Verás las diferentes
-versiones aquí.
+00:00:17,290 --> 00:00:20,700
+So go to Google and
+type download MongoDB,
 
 10
-00:00:22,320 --> 00:00:24,960
-Generalmente, vas a querer
-la primera, que será
+00:00:20,700 --> 00:00:23,220
+and that will take you
+to this first link.
 
 11
-00:00:24,960 --> 00:00:26,680
-la versión actual
-de producción.
+00:00:23,220 --> 00:00:26,680
+The first organic link
+is mongodb.org/download.
 
 12
-00:00:26,680 --> 00:00:28,470
-Los números pares para
-el dígito central
+00:00:26,680 --> 00:00:28,010
+Let's click on that.
 
 13
-00:00:28,470 --> 00:00:30,040
-son las versiones estables.
+00:00:28,010 --> 00:00:29,770
+And then at the top
+you can see there's
 
 14
-00:00:30,040 --> 00:00:33,220
-Los números impares para el dígito
-central son la rama de desarrollo.
+00:00:29,770 --> 00:00:31,950
+an option to use the
+MongoDB Management
 
 15
-00:00:33,220 --> 00:00:36,550
-Y aquí vemos la versión
-candidata para la próxima versión
+00:00:31,950 --> 00:00:32,995
+Service to run MongoDB.
 
 16
-00:00:36,550 --> 00:00:38,860
-estable, que será la 2.2.1.
+00:00:32,995 --> 00:00:34,120
+We're not going to do that.
 
 17
-00:00:38,860 --> 00:00:40,720
-Pero esa es aún una versión
-candidata, por lo que
+00:00:34,120 --> 00:00:36,805
+We're going to actually run
+it ourselves on our computer.
 
 18
-00:00:40,720 --> 00:00:43,630
-elegiremos la 2.2.0.
+00:00:36,805 --> 00:00:39,010
+And right now, at the
+time of this recording,
 
 19
-00:00:43,630 --> 00:00:45,380
-Por aquí están los 
-binarios para Windows.
+00:00:39,010 --> 00:00:41,880
+we had the 3.0.0 release
+that's available.
 
 20
-00:00:45,380 --> 00:00:49,310
-Normalmente, siempre querrás
-obtener el binario de 64 bits.
+00:00:41,880 --> 00:00:44,980
+And when you see it, it may
+be a slightly newer version.
 
 21
-00:00:49,310 --> 00:00:53,250
-En MongoDB, el motor de almacenamiento
-usa ficheros de mapas de memoria, por lo que
+00:00:44,980 --> 00:00:48,270
+It may be 3.0.1 or
+3.0.2 or beyond.
 
 22
-00:00:53,250 --> 00:00:55,990
-para bases de datos más grandes, necesitas
-el binario de 64 bits.
+00:00:48,270 --> 00:00:50,520
+We're going to take the
+64-bit release because this
 
 23
-00:00:55,990 --> 00:00:57,840
-Por lo tanto, siempre por defecto ése.
+00:00:50,520 --> 00:00:52,270
+is a 64-bit operating system.
 
 24
-00:00:57,840 --> 00:00:59,630
-Usa ése en producción.
+00:00:52,270 --> 00:00:54,240
+We recommend the 64-bit release.
 
 25
-00:00:59,630 --> 00:01:02,670
-Si tu máquina de desarrollo
-de escritorio es
+00:00:54,240 --> 00:00:57,090
+We definitely do not recommend
+using a 32-bit release
 
 26
-00:01:02,670 --> 00:01:05,330
-de 64 bits, usa esta versión.
+00:00:57,090 --> 00:00:59,610
+for production because it
+limits the total addressable
 
 27
-00:01:05,330 --> 00:01:08,310
-Porque si ése fuera el caso,
-ambas funcionarán en
+00:00:59,610 --> 00:01:03,580
+size of the data using the
+default storage engine.
 
 28
-00:01:08,310 --> 00:01:10,020
-tu escritorio, pero querrás
-usar ésta si estás
+00:01:03,580 --> 00:01:05,481
+I'm going to download
+the MSI file.
 
 29
-00:01:10,020 --> 00:01:11,170
-en producción.
+00:01:05,481 --> 00:01:05,980
+OK.
 
 30
-00:01:11,170 --> 00:01:13,250
-Si tienes un sistema operativo
-de 32 bits en tu
+00:01:05,980 --> 00:01:08,460
+Now the MSI file is downloaded.
 
 31
-00:01:13,250 --> 00:01:14,680
-escritorio, está bien.
+00:01:08,460 --> 00:01:11,040
+And now I'm going
+to run it, which
 
 32
-00:01:14,680 --> 00:01:16,360
-Para desarrollo, esto
-está bien.
+00:01:11,040 --> 00:01:14,940
+is going to install
+MongoDB on the computer.
 
 33
-00:01:16,360 --> 00:01:18,530
-Así que cualquiera de ellos
-es apropiado.
+00:01:14,940 --> 00:01:16,835
+So we're going to
+click through Next.
 
 34
-00:01:18,530 --> 00:01:21,050
-Y de estos dos, verás que
-hay un binario especial aquí
+00:01:16,835 --> 00:01:19,440
+We're going to accept
+the license agreement.
 
 35
-00:01:21,050 --> 00:01:23,130
-bajo 64 bits llamado "2008+".
+00:01:19,440 --> 00:01:20,700
+Next again.
 
 36
-00:01:23,130 --> 00:01:25,730
-Si miras en la parte inferior de
-la página, por el asterisco,
+00:01:20,700 --> 00:01:24,340
+I'm going to take a Complete
+install, and install it.
 
 37
-00:01:25,730 --> 00:01:27,870
-te dará más detalles
-sobre esta versión.
+00:01:24,340 --> 00:01:26,950
+It's going to ask me if I'm
+serious about installing it,
 
 38
-00:01:27,870 --> 00:01:29,620
-Si haces click,
-se descargará.
+00:01:26,950 --> 00:01:29,070
+and yes I am.
 
 39
-00:01:29,620 --> 00:01:32,590
-Esta versión usa una API nueva
-en Windows llamada "Slim
+00:01:29,070 --> 00:01:31,581
+And then it's going
+to click Finish.
 
 40
-00:01:32,590 --> 00:01:34,820
-Reader/Writer Lock" que hace que
-el rendimiento del servidor sea un
+00:01:31,581 --> 00:01:32,580
+Now where did it put it?
 
 41
-00:01:34,820 --> 00:01:37,150
-poco mejor, por lo que
-usa esto si tienes una
+00:01:32,580 --> 00:01:34,580
+Well, I'll show you
+where it put it.
 
 42
-00:01:37,150 --> 00:01:38,185
-versión reciente de Windows.
+00:01:34,580 --> 00:01:40,890
+It put it in C drive, Program
+Files, MongoDB, right here--
 
 43
-00:01:38,185 --> 00:01:43,150
-Eso sería Windows Server
-2008 R2 y superiores y Windows
+00:01:40,890 --> 00:01:44,810
+Server 3.0, bin.
 
 44
-00:01:43,150 --> 00:01:46,590
-7 y superiores en la parte
-cliente de escritorio.
+00:01:44,810 --> 00:01:46,420
+OK?
 
 45
-00:01:46,590 --> 00:01:49,580
-Así que yo tengo Windows 7 aquí,
-creo, por lo que acabo de 
+00:01:46,420 --> 00:01:48,150
+So that's where it is.
 
 46
-00:01:49,580 --> 00:01:51,140
-descargar esto.
+00:01:48,150 --> 00:01:50,520
+Now let's see what's
+in this directory.
 
 47
-00:01:51,140 --> 00:01:53,070
-Ahora, si haces click aquí,
-se descargará.
+00:01:50,520 --> 00:01:53,620
+So in this directory are
+a bunch of executables.
 
 48
-00:01:53,070 --> 00:01:56,380
-Voy a cambiar a Explorer,
-y con suerte veremos
+00:01:53,620 --> 00:01:57,160
+And the ones we care about
+the most are Mongo and MongoD.
 
 49
-00:01:56,380 --> 00:01:58,310
-lo que he descargado.
+00:01:57,160 --> 00:02:00,294
+Mongo is the shell, and
+MongoD is the server.
 
 50
-00:01:58,310 --> 00:02:01,940
-Y aquí está, bajo mi
-directorio "downloads".
+00:02:00,294 --> 00:02:02,210
+Now we want to run this
+from the command line.
 
 51
-00:02:01,940 --> 00:02:05,520
-Entonces, dentro de un fichero zip,
-tiene el "readme" y lo demás, y los
+00:02:02,210 --> 00:02:04,800
+Before we do that let's
+do a couple of things.
 
 52
-00:02:05,520 --> 00:02:06,930
-binarios están aquí también.
+00:02:04,800 --> 00:02:06,980
+First of all, let's
+change our path
 
 53
-00:02:06,930 --> 00:02:09,229
-Lo que voy a hacer es poner
-esto en una ubicación más
+00:02:06,980 --> 00:02:10,820
+so that we have access to
+this directory from the shell.
 
 54
-00:02:09,229 --> 00:02:11,720
-conveniente, así
-que  vamos allá.
+00:02:10,820 --> 00:02:13,860
+So I'm going to
+go here to System.
 
 55
-00:02:11,720 --> 00:02:13,760
-Sólo haré un directorio.
+00:02:13,860 --> 00:02:16,840
+I'm going to click on
+Advanced System Settings.
 
 56
-00:02:13,760 --> 00:02:17,370
-Podrías poner esto donde
-prefieras.
+00:02:16,840 --> 00:02:20,380
+And then I'm going to click
+on Environment Variables.
 
 57
-00:02:17,370 --> 00:02:19,602
-No podrías ponerlo en
-un directorio superior si no
+00:02:20,380 --> 00:02:23,600
+And then I'm going to go to the
+Path Variable right down here.
 
 58
-00:02:19,602 --> 00:02:20,720
-tienes los privilegios
-correctos.
+00:02:23,600 --> 00:02:25,550
+Let's scroll down and
+find a Path Variable.
 
 59
-00:02:20,720 --> 00:02:21,976
-Sin embargo, vamos a probarlo.
+00:02:25,550 --> 00:02:28,810
+Path, of course, is where
+Windows looks for executables
 
 60
-00:02:21,976 --> 00:02:24,080
-"Mongodb2_2".
+00:02:28,810 --> 00:02:29,940
+from the command prompt.
 
 61
-00:02:24,080 --> 00:02:29,060
-Y luego volveremos por
-aquí, y abriré realemente una
+00:02:29,940 --> 00:02:32,570
+And then I'm going to
+add something to it.
 
 62
-00:02:29,060 --> 00:02:29,920
-ventana para eso.
+00:02:32,570 --> 00:02:36,500
+So what I want to add is I want
+to add this directory right
 
 63
-00:02:29,920 --> 00:02:31,950
-Simplemente lo arrastraré
-y lo soltaré sobre esto.
+00:02:36,500 --> 00:02:37,700
+here.
 
 64
-00:02:31,950 --> 00:02:35,640
-Así que voy a seleccionar todo esto,
-y lo arrastraré aquí dentro.
+00:02:37,700 --> 00:02:38,770
+Perfect.
 
 65
-00:02:35,640 --> 00:02:38,900
-Los extraeré del fichero
-zip de forma permanente.
+00:02:38,770 --> 00:02:40,140
+So I'm going to select that.
 
 66
-00:02:38,900 --> 00:02:41,870
-OK, ahora cerraremos esto.
+00:02:40,140 --> 00:02:43,330
+I left clicked on it, and
+then it actually selected it.
 
 67
-00:02:41,870 --> 00:02:45,550
-Ahora tenemos esto en un
-directorio llamado "mongodb2_2",
+00:02:43,330 --> 00:02:45,330
+This is exactly what
+I wanted, because that
 
 68
-00:02:45,550 --> 00:02:46,760
-y ya podemos ejecutarlo.
+00:02:45,330 --> 00:02:48,130
+will let me do a copy
+of it without having
 
 69
-00:02:46,760 --> 00:02:48,965
-Así que es bastante
-simple.
+00:02:48,130 --> 00:02:49,690
+to completely retype it.
 
 70
-00:02:48,965 --> 00:02:51,860
-Veremos los ficheros aquí.
+00:02:49,690 --> 00:02:53,400
+And now, I go back to
+my Environment Variables
 
 71
-00:02:51,860 --> 00:02:55,510
-Creo que los ficheros clave aquí son
-"mongod.exe", que es la
+00:02:53,400 --> 00:02:58,140
+and go to the end, and then
+I'm going to hit Paste.
 
 72
-00:02:55,510 --> 00:02:58,780
-base de datos, "mongo.exe" sin 
-la "d", que es el
+00:02:58,140 --> 00:02:59,320
+And I say, OK.
 
 73
-00:02:58,780 --> 00:03:01,670
-shell administrativo y 
-"mongos", que es el controlador
+00:02:59,320 --> 00:03:00,780
+And then I'm going to say, OK.
 
 74
-00:03:01,670 --> 00:03:02,990
-de sharding.
+00:03:00,780 --> 00:03:02,260
+And I'm going to say, OK.
 
 75
-00:03:02,990 --> 00:03:07,705
-Entonces para iniciar la base de datos,
-ejecuta "mongod.exe" y luego para acceder
+00:03:02,260 --> 00:03:05,300
+Now that I've done that,
+I should be able to,
 
 76
-00:03:07,705 --> 00:03:11,030
-a ella para operaciones administrativas
-y de DBA, utiliza "mongo.exe".
+00:03:05,300 --> 00:03:08,130
+in a new shell, get
+to these executables.
 
 77
-00:03:11,030 --> 00:03:12,550
-Así que hagamos eso.
+00:03:08,130 --> 00:03:09,720
+So let me get a new shell.
 
 78
-00:03:12,550 --> 00:03:15,490
-Ahora, necesitaremos un directorio
-para poner los ficheros y
+00:03:09,720 --> 00:03:12,930
+Right click on the Start
+menu, Command Prompt.
 
 79
-00:03:15,490 --> 00:03:19,290
-el directorio por defecto 
-es barra data barra db.
+00:03:12,930 --> 00:03:16,691
+And now if I type MongoD,
+it should start up.
 
 80
-00:03:19,290 --> 00:03:22,390
-Puedes usar el que quieras si
-indicas el parámetro "dbpath"
+00:03:16,691 --> 00:03:19,190
+Now there's one other thing we
+need to do before we do this.
 
 81
-00:03:22,390 --> 00:03:24,360
-en la línea de comandos,
-pero usemos aquí
+00:03:19,190 --> 00:03:21,820
+We need a slash data
+slash db directory,
 
 82
-00:03:24,360 --> 00:03:25,210
-sólo el parámetro por defecto.
+00:03:21,820 --> 00:03:24,520
+which is where MongoD is
+going to put the data.
 
 83
-00:03:25,210 --> 00:03:27,820
-Así que voy a hacer eso, y 
-luego voy a crear un
+00:03:24,520 --> 00:03:30,460
+So let's do that md slash
+data, md slash data slash db.
 
 84
-00:03:27,820 --> 00:03:29,490
-subdirectorio bajo éste
-llamado así.
+00:03:30,460 --> 00:03:33,790
+And now let's type
+mongod and hit Return.
 
 85
-00:03:29,490 --> 00:03:32,490
-Y eso es por defecto, por lo 
-que esa ruta existe.
+00:03:33,790 --> 00:03:35,560
+And when we do that,
+you can see that.
 
 86
-00:03:32,490 --> 00:03:33,230
-Tendremos todo listo.
+00:03:35,560 --> 00:03:38,280
+We're seeing a log from MongoD.
 
 87
-00:03:33,230 --> 00:03:36,600
-La base de datos principal es
-mongod con la "D" --
+00:03:38,280 --> 00:03:41,370
+And it's still running, so it's
+still printing out the log.
 
 88
-00:03:36,600 --> 00:03:37,595
-la "D" viene de "daemon" --
+00:03:41,370 --> 00:03:43,130
+The program hasn't exited.
 
 89
-00:03:37,595 --> 00:03:38,830
-"mongod.exe".
+00:03:43,130 --> 00:03:46,380
+It's just the log is running
+right to the Command Prompt.
 
 90
-00:03:38,830 --> 00:03:40,490
-Ahí está.
+00:03:46,380 --> 00:03:48,090
+And if you read
+the log messages,
 
 91
-00:03:40,490 --> 00:03:42,680
-Si quieres, podrías
-hacer esto.
+00:03:48,090 --> 00:03:49,790
+you can see that it
+tells you that it's
 
 92
-00:03:42,680 --> 00:03:45,280
-Puedes ver qué versión
-tienes.
+00:03:49,790 --> 00:03:53,140
+listening on port
+27017, and that it's
 
 93
-00:03:45,280 --> 00:03:49,230
-También puedes ingresar "--help" y
-obtener un montón de detalles sobre
+00:03:53,140 --> 00:03:56,290
+putting its data in data
+slash db, which is a default.
 
 94
-00:03:49,230 --> 00:03:50,950
-las opciones de línea de comandos.
+00:03:56,290 --> 00:03:59,650
+Now let's get another
+shell right here.
 
 95
-00:03:50,950 --> 00:03:55,690
-Ejecutaré esto ahora, sólo
-"mongod.exe".
+00:03:59,650 --> 00:04:02,060
+And now let's run the
+Mongo Shell program.
 
 96
-00:03:55,690 --> 00:03:56,910
-Ejecútalo.
+00:04:02,060 --> 00:04:04,270
+Before we were running MongoD.
 
 97
-00:03:56,910 --> 00:03:59,615
-Hemos creado nuestro directorio
-de datos, creo.
+00:04:04,270 --> 00:04:05,770
+Now we're just
+going to run Mongo.
 
 98
-00:03:59,615 --> 00:04:03,320
-Sí, "data\db" existe, por
-lo que vamos a probarla.
+00:04:05,770 --> 00:04:07,025
+And we're going to hit Return.
 
 99
-00:04:03,320 --> 00:04:06,872
-Permitamos acceso, y ahí estamos.
+00:04:07,025 --> 00:04:12,300
+And that's going to make a
+connection to local host 27017.
 
 100
-00:04:06,872 --> 00:04:10,190
-Así que la base de datos está ahora
-ejecutándose en mi máquina local.
+00:04:12,300 --> 00:04:15,650
+And when we did that, we can
+put something into the database.
 
 101
-00:04:10,190 --> 00:04:14,220
-Resulta que éste es un equipo de 
-32 bits, por lo que en realidad fui 
+00:04:15,650 --> 00:04:17,459
+So I'm going to put db.names.
 
 102
-00:04:14,220 --> 00:04:18,779
-y seleccioné la versión de 32 bits 
-de los binarios, ya que el
+00:04:17,459 --> 00:04:20,589
+So db-- I'm in a test database,
+names of the collection-- dot
 
 103
-00:04:18,779 --> 00:04:21,300
-sistema operativo aquí 
-es de 32 bits.
+00:04:20,589 --> 00:04:21,190
+insert.
 
 104
-00:04:21,300 --> 00:04:22,540
-Pero está en marcha y funcionando.
+00:04:21,190 --> 00:04:23,740
+I'm going to put a
+document with one key name,
 
 105
-00:04:22,540 --> 00:04:24,100
-Por lo tanto, si ahora vamos
-a una ventana
+00:04:23,740 --> 00:04:27,110
+and with the value
+being my name.
 
 106
-00:04:24,100 --> 00:04:25,930
-diferente, podemos probarlo.
+00:04:27,110 --> 00:04:29,140
+And it says that we
+wrote one document.
 
 107
-00:04:25,930 --> 00:04:30,630
-Si tienes algunas herramientas
-de desarrollo y clientes
+00:04:29,140 --> 00:04:31,380
+And now if we query
+the collection,
 
 108
-00:04:30,630 --> 00:04:32,890
-para tu lenguaje de programación,
-podrías probar esto ahora.
+00:04:31,380 --> 00:04:35,400
+we see there's a document with
+an underscore ID, name Andrew
 
 109
-00:04:32,890 --> 00:04:35,300
-Además, simplemente podemos entrar
-al shell de administración,
+00:04:35,400 --> 00:04:36,280
+Erlichson.
 
 110
-00:04:35,300 --> 00:04:39,090
-que se llama "mongo",
-y conectarnos.
+00:04:36,280 --> 00:04:39,240
+So we've successfully
+gotten MongoDB installed
 
 111
-00:04:39,090 --> 00:04:43,370
-Así que el mongo shell es sólo 
-una especie de shell administrativo
+00:04:39,240 --> 00:04:41,030
+on our Windows machine.
 
 112
-00:04:43,370 --> 00:04:45,400
-que se podría utilizar con 
-otra base de datos.
+00:04:41,030 --> 00:04:43,710
+Now, if you Control
+C out of this,
 
 113
-00:04:45,400 --> 00:04:46,930
-Entonces, simplemente vamos a
-a conectarnos aquí
+00:04:43,710 --> 00:04:45,750
+then MongoD will no
+longer be running,
 
 114
-00:04:46,930 --> 00:04:48,780
-a la máquina local.
+00:04:45,750 --> 00:04:48,280
+and you will no longer be able
+to store data or read data
 
 115
-00:04:48,780 --> 00:04:50,770
-Por defecto, se conectará
-a la máquina local y a la 
+00:04:48,280 --> 00:04:49,177
+from the database.
 
 116
-00:04:50,770 --> 00:04:53,440
-base de datos "test", y luego 
-puedes ver las opciones aquí para
+00:04:49,177 --> 00:04:51,510
+Now you can obviously run it
+as a service if you'd like,
 
 117
-00:04:53,440 --> 00:04:54,540
-conectarte a cualquiera
-que desees.
+00:04:51,510 --> 00:04:53,759
+and there's supposed to be
+instructions for doing that
 
 118
-00:04:54,540 --> 00:05:00,450
-Si hago esto, es equivalente
-a simplemente ejecutarlo
+00:04:53,759 --> 00:04:54,970
+on the web and our manual.
 
 119
-00:05:00,450 --> 00:05:01,390
-por sí mismo.
+00:04:54,970 --> 00:04:57,020
+But for this course, we often
+run it from the command line.
 
 120
-00:05:01,390 --> 00:05:03,460
-Y aquí estamos, conectados.
+00:04:57,020 --> 00:04:58,070
+And it's more convenient.
 
 121
-00:05:03,460 --> 00:05:08,600
-Nos hemos conectado a nuestro
-servidor aquí, y hay una
+00:04:58,070 --> 00:04:59,611
+And it kind of gives
+us a better feel
 
 122
-00:05:08,600 --> 00:05:11,610
-variable predefinida llamada
-"db", que representa nuestra
+00:04:59,611 --> 00:05:01,470
+for what's going on
+with the database.
 
 123
-00:05:11,610 --> 00:05:12,990
-conexión al servidor.
+00:05:01,470 --> 00:05:01,970
+All right.
 
 124
-00:05:12,990 --> 00:05:17,930
-En este punto, podríamos hacer
-algo como "show dbs" o
+00:05:01,970 --> 00:05:05,650
+So that's how you get
+MongoDB running on Windows.
 
-125
-00:05:17,930 --> 00:05:21,650
-"show collections" en
-nuestra "db" actual, pero
-
-126
-00:05:21,650 --> 00:05:22,720
-no hay ninguna.
-
-127
-00:05:22,720 --> 00:05:25,100
-Por lo que podríamos hacer algo-- 
-tenemos la base de datos "test" con
-
-128
-00:05:25,100 --> 00:05:26,780
-la que estamos trabajando aquí,
-"db.mycollection.insert".
-
-129
-00:05:26,780 --> 00:05:33,960
-
-130
-00:05:33,960 --> 00:05:36,350
-Y ahí tenemos algunos datos.
-
-131
-00:05:36,350 --> 00:05:38,160
-Ahora podríamos salir del shell
-con "Control C", o
-
-132
-00:05:38,160 --> 00:05:39,310
-podríamos escribir "exit".
-
-133
-00:05:39,310 --> 00:05:42,580
-Y si miramos en "data\db",
-ahora veremos que hay 
-
-134
-00:05:42,580 --> 00:05:44,280
-algunos ficheros ahí.
-
-135
-00:05:44,280 --> 00:05:47,720
-Ahora, es posible 
-ejecutar MongoDB, el
-
-136
-00:05:47,720 --> 00:05:48,890
-servidor, como un servicio.
-
-137
-00:05:48,890 --> 00:05:50,670
-Hay un servicio Windows.
-
-138
-00:05:50,670 --> 00:05:53,500
-Hay algunas opciones de 
-línea de comando para ello.
-
-139
-00:05:53,500 --> 00:05:55,340
-Y si miramos en "Ayuda",
-o también podrías mirar en la 
-
-140
-00:05:55,340 --> 00:05:57,980
-documentación, podrías
-encontrar eso.
-
-141
-00:05:57,980 --> 00:06:00,990
-Creo que los verás--
-
-142
-00:06:00,990 --> 00:06:01,750
-desplaza hacia arriba.
-
-143
-00:06:01,750 --> 00:06:05,870
-Ahí lo tienes, "Windows Service
-Control Manager Options".
-
-144
-00:06:05,870 --> 00:06:09,500
-Pero cuando estoy haciendo el 
-desarrollo en un entorno de
-
-145
-00:06:09,500 --> 00:06:12,390
-desarrollo, simplemente lo ejecuto
-como un proceso en primer plano
-
-146
-00:06:12,390 --> 00:06:13,830
-y no como un servicio.
-
-147
-00:06:13,830 --> 00:06:16,470
-En un servidor, probablemente
-lo ejecutes como un servicio.
-
-148
-00:06:16,470 --> 00:06:20,420
-Hacer simplemente algo como
-esto es perfectamente adecuado
-
-149
-00:06:20,420 --> 00:06:24,530
-en mi entorno de desarrollo, y lo
-mismo cuando ejecute el proceso
-
-150
-00:06:24,530 --> 00:06:27,570
-mongos, por ejemplo, que es
-el controlador de sharding.
-
-151
-00:06:27,570 --> 00:06:31,575
-Pero se puede hacer de esta forma,
-si prefieres, por lo que simplemente
-
-152
-00:06:31,575 --> 00:06:32,470
-toma nota de ello.
-
-153
-00:06:32,470 --> 00:06:34,300
-Creo que eso es todo.
-
-154
-00:06:34,300 --> 00:06:35,550
-Ya lo tenemos instalado.
-
-155
-00:06:35,550 --> 00:06:36,240

@@ -1,0 +1,40 @@
+1
+00:00:00,000 --> 00:00:00,130
+
+2
+00:00:00,130 --> 00:00:00,700
+OK.
+
+3
+00:00:00,700 --> 00:00:05,080
+And the answer is that the first
+three of these are all valid.
+
+4
+00:00:05,080 --> 00:00:07,855
+You could insert this document
+where is a is an array
+
+5
+00:00:07,855 --> 00:00:09,150
+and b is a scalar.
+
+6
+00:00:09,150 --> 00:00:11,490
+Or a is a scalar
+and b is a scalar.
+
+7
+00:00:11,490 --> 00:00:13,670
+Or a is a scalar
+and b is an array.
+
+8
+00:00:13,670 --> 00:00:15,840
+But the one where is
+a is an array and b
+
+9
+00:00:15,840 --> 00:00:19,740
+is an array-- that's not
+legal in a multikey index.

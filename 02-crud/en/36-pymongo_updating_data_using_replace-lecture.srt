@@ -1,0 +1,892 @@
+1
+00:00:00,000 --> 00:00:00,500
+
+2
+00:00:00,500 --> 00:00:02,340
+Now I want to talk to
+you about replace one.
+
+3
+00:00:02,340 --> 00:00:04,410
+Replace one is a
+lot like update one.
+
+4
+00:00:04,410 --> 00:00:06,460
+The difference is it does
+a wholesale replacement
+
+5
+00:00:06,460 --> 00:00:07,737
+of a document.
+
+6
+00:00:07,737 --> 00:00:09,570
+Let's say you have a
+document on the server,
+
+7
+00:00:09,570 --> 00:00:15,850
+and it has these three key
+value pairs-- ID 1, a 2, b 3--
+
+8
+00:00:15,850 --> 00:00:18,340
+and you want to update
+the entire document.
+
+9
+00:00:18,340 --> 00:00:20,040
+What you can do is
+you can bring it
+
+10
+00:00:20,040 --> 00:00:21,980
+into a variable--
+let's say in Python,
+
+11
+00:00:21,980 --> 00:00:23,741
+you could bring it
+to the variable doc--
+
+12
+00:00:23,741 --> 00:00:25,240
+and then you can
+make changes to it.
+
+13
+00:00:25,240 --> 00:00:28,790
+You could say doc a equals 5.
+
+14
+00:00:28,790 --> 00:00:32,850
+And that would change the
+key value pair for the a key
+
+15
+00:00:32,850 --> 00:00:33,710
+to be five.
+
+16
+00:00:33,710 --> 00:00:36,960
+And then you could save it
+back to the server using
+
+17
+00:00:36,960 --> 00:00:38,080
+replace one.
+
+18
+00:00:38,080 --> 00:00:39,920
+Now unlike the update
+command, you're
+
+19
+00:00:39,920 --> 00:00:42,219
+not changing a small
+part of the document
+
+20
+00:00:42,219 --> 00:00:44,260
+when you actually send
+the command to the server.
+
+21
+00:00:44,260 --> 00:00:46,840
+You're sending an entirely
+new document to the server.
+
+22
+00:00:46,840 --> 00:00:49,230
+Because if you load
+this document variable,
+
+23
+00:00:49,230 --> 00:00:51,570
+let's say by doing a
+find one from the server,
+
+24
+00:00:51,570 --> 00:00:54,150
+if you load this
+up using find one
+
+25
+00:00:54,150 --> 00:00:56,650
+and then you work locally
+in your Python program,
+
+26
+00:00:56,650 --> 00:00:58,420
+when you do replace
+one, you're going
+
+27
+00:00:58,420 --> 00:00:59,970
+to send the entire
+document back.
+
+28
+00:00:59,970 --> 00:01:01,345
+And that differs
+from, let's say,
+
+29
+00:01:01,345 --> 00:01:03,360
+using an update with
+a dollar set operator,
+
+30
+00:01:03,360 --> 00:01:05,609
+where you're only sending a
+command through the server
+
+31
+00:01:05,609 --> 00:01:07,050
+to change one small part.
+
+32
+00:01:07,050 --> 00:01:09,740
+Now let's go through a program
+and look at an example.
+
+33
+00:01:09,740 --> 00:01:12,239
+Here's a program that's going
+to work on the same grade data
+
+34
+00:01:12,239 --> 00:01:14,198
+that we've been looking
+at in previous lessons.
+
+35
+00:01:14,198 --> 00:01:16,322
+Now the first thing we want
+to do in this program--
+
+36
+00:01:16,322 --> 00:01:18,500
+we want to add a review
+date to a particular record,
+
+37
+00:01:18,500 --> 00:01:20,570
+but before we do that, we
+want to remove all the review
+
+38
+00:01:20,570 --> 00:01:21,740
+dates from all the records.
+
+39
+00:01:21,740 --> 00:01:24,020
+So we're going to do that
+using this function I wrote
+
+40
+00:01:24,020 --> 00:01:25,870
+called remove all review dates.
+
+41
+00:01:25,870 --> 00:01:27,880
+And what that does
+is it actually
+
+42
+00:01:27,880 --> 00:01:30,670
+removes the review date
+for every record using
+
+43
+00:01:30,670 --> 00:01:31,440
+an update many.
+
+44
+00:01:31,440 --> 00:01:34,012
+Now this is a lesson
+on replace one,
+
+45
+00:01:34,012 --> 00:01:35,970
+but it's still interesting
+to see a way that we
+
+46
+00:01:35,970 --> 00:01:38,080
+can do that using update
+many before we go in
+
+47
+00:01:38,080 --> 00:01:40,012
+and use replace one.
+
+48
+00:01:40,012 --> 00:01:41,720
+So if we wanted to
+remove the review date
+
+49
+00:01:41,720 --> 00:01:44,110
+key from every
+single record, then
+
+50
+00:01:44,110 --> 00:01:47,770
+we can do it by saying review
+date, if it exists true,
+
+51
+00:01:47,770 --> 00:01:50,930
+then unset it review date one.
+
+52
+00:01:50,930 --> 00:01:53,500
+So this is, right here,
+this is our filter.
+
+53
+00:01:53,500 --> 00:01:57,020
+We're saying look for things
+where review date exists
+
+54
+00:01:57,020 --> 00:02:02,250
+as a key in the document and,
+if it exists, unset review date.
+
+55
+00:02:02,250 --> 00:02:04,970
+And that just means review
+date is one that's unset.
+
+56
+00:02:04,970 --> 00:02:07,000
+It tells you how many
+documents it matched.
+
+57
+00:02:07,000 --> 00:02:08,900
+Result.match_count.
+
+58
+00:02:08,900 --> 00:02:10,873
+Now if we do that, then
+all the review dates
+
+59
+00:02:10,873 --> 00:02:12,330
+would be missing
+when we're done.
+
+60
+00:02:12,330 --> 00:02:14,030
+Or I should say,
+they'll be removed.
+
+61
+00:02:14,030 --> 00:02:15,863
+Now once we've removed
+all the review dates,
+
+62
+00:02:15,863 --> 00:02:18,690
+let's say we wanted to add one
+review date using replace one.
+
+63
+00:02:18,690 --> 00:02:19,830
+How would we do that?
+
+64
+00:02:19,830 --> 00:02:21,570
+Well, here's a
+function that does it.
+
+65
+00:02:21,570 --> 00:02:24,580
+I call this function add
+review date using replace one.
+
+66
+00:02:24,580 --> 00:02:27,210
+It takes a student ID, it
+looks at the school database
+
+67
+00:02:27,210 --> 00:02:28,970
+and the scores
+collection, once again.
+
+68
+00:02:28,970 --> 00:02:32,680
+And then, it calls find
+one to find the document.
+
+69
+00:02:32,680 --> 00:02:34,410
+Now it does this
+because-- this is
+
+70
+00:02:34,410 --> 00:02:36,090
+a typical way you
+might use replace one
+
+71
+00:02:36,090 --> 00:02:39,320
+inside your program, which
+is that you call find one,
+
+72
+00:02:39,320 --> 00:02:41,480
+you find the record
+for the student ID
+
+73
+00:02:41,480 --> 00:02:44,100
+that was sent into this
+function of type homework,
+
+74
+00:02:44,100 --> 00:02:47,000
+and you put that
+into a variable.
+
+75
+00:02:47,000 --> 00:02:48,655
+You put it into
+the variable score.
+
+76
+00:02:48,655 --> 00:02:51,780
+Then we print it out, just
+so that we know what's there.
+
+77
+00:02:51,780 --> 00:02:54,210
+And now, we set a new key.
+
+78
+00:02:54,210 --> 00:02:57,029
+We set review date equal
+to datetime.utcnow.
+
+79
+00:02:57,029 --> 00:02:58,570
+Now at this point,
+we have a document
+
+80
+00:02:58,570 --> 00:03:00,530
+in the Python interpreter
+that looks exactly
+
+81
+00:03:00,530 --> 00:03:02,470
+like the one on the
+server except it
+
+82
+00:03:02,470 --> 00:03:03,630
+has a review date set.
+
+83
+00:03:03,630 --> 00:03:07,060
+Now we want to update that
+document using replace one.
+
+84
+00:03:07,060 --> 00:03:08,180
+Completely change it.
+
+85
+00:03:08,180 --> 00:03:09,000
+So how do we do it?
+
+86
+00:03:09,000 --> 00:03:11,360
+Well, we're going
+to call replace one.
+
+87
+00:03:11,360 --> 00:03:13,500
+We need to describe what
+record we want to replace,
+
+88
+00:03:13,500 --> 00:03:15,210
+what document we
+want to replace.
+
+89
+00:03:15,210 --> 00:03:18,360
+And I'm pulling the underscore
+ID out of the document
+
+90
+00:03:18,360 --> 00:03:19,490
+I took from the server.
+
+91
+00:03:19,490 --> 00:03:21,740
+That way I'm guaranteed
+to match properly,
+
+92
+00:03:21,740 --> 00:03:23,800
+because the underscore
+IDs are immutable.
+
+93
+00:03:23,800 --> 00:03:26,930
+So matter what criteria you used
+when you pulled it out, then
+
+94
+00:03:26,930 --> 00:03:28,430
+underscore ID couldn't change.
+
+95
+00:03:28,430 --> 00:03:30,620
+And then you passed
+the document,
+
+96
+00:03:30,620 --> 00:03:33,770
+which has now been changed and
+amended to have this review
+
+97
+00:03:33,770 --> 00:03:35,810
+date, into replace one.
+
+98
+00:03:35,810 --> 00:03:37,910
+And that will replace
+a single document--
+
+99
+00:03:37,910 --> 00:03:40,450
+right here-- with the
+document that we've modified
+
+100
+00:03:40,450 --> 00:03:41,284
+and mangled up here.
+
+101
+00:03:41,284 --> 00:03:42,783
+Now just to see
+what happened, we're
+
+102
+00:03:42,783 --> 00:03:44,330
+going to another
+find one, and we're
+
+103
+00:03:44,330 --> 00:03:45,520
+going to print
+out what we get it
+
+104
+00:03:45,520 --> 00:03:47,728
+right here so that we can
+see what the document looks
+
+105
+00:03:47,728 --> 00:03:48,880
+like after we're done.
+
+106
+00:03:48,880 --> 00:03:50,170
+Let's see it run.
+
+107
+00:03:50,170 --> 00:03:52,170
+And this program is called
+using_replace_one.py.
+
+108
+00:03:52,170 --> 00:03:54,160
+
+109
+00:03:54,160 --> 00:03:56,000
+So Python, using_replace_one.py.
+
+110
+00:03:56,000 --> 00:03:59,084
+
+111
+00:03:59,084 --> 00:04:00,690
+All right, we've run it.
+
+112
+00:04:00,690 --> 00:04:02,600
+First it removes all
+the review date data.
+
+113
+00:04:02,600 --> 00:04:04,150
+It remove review date
+from all the records.
+
+114
+00:04:04,150 --> 00:04:06,180
+It says it found 300
+documents and it removed it
+
+115
+00:04:06,180 --> 00:04:07,500
+from every one.
+
+116
+00:04:07,500 --> 00:04:10,310
+And then it pulls out that the
+student with student ID one--
+
+117
+00:04:10,310 --> 00:04:13,110
+and you can see that it
+has no review date on it--
+
+118
+00:04:13,110 --> 00:04:15,765
+and then after it
+does replace one,
+
+119
+00:04:15,765 --> 00:04:17,140
+you can see it
+has a review date.
+
+120
+00:04:17,140 --> 00:04:18,160
+And that's it.
+
+121
+00:04:18,160 --> 00:04:18,923
+The way it works.
+
+122
+00:04:18,923 --> 00:04:20,339
+Now there's one
+additional point I
+
+123
+00:04:20,339 --> 00:04:22,260
+want to make about
+replace one, which
+
+124
+00:04:22,260 --> 00:04:24,970
+is that when you use it in
+the way we just described,
+
+125
+00:04:24,970 --> 00:04:26,066
+it isn't atomic.
+
+126
+00:04:26,066 --> 00:04:28,770
+We pulled a document
+out, we made a change,
+
+127
+00:04:28,770 --> 00:04:31,452
+and then we replaced
+the entire document.
+
+128
+00:04:31,452 --> 00:04:33,410
+So there could have been
+an intervening change,
+
+129
+00:04:33,410 --> 00:04:35,900
+because there's no
+transactions in MongoDB.
+
+130
+00:04:35,900 --> 00:04:38,070
+So if you know that you
+wanted to, for instance,
+
+131
+00:04:38,070 --> 00:04:40,211
+increment something,
+it might be better
+
+132
+00:04:40,211 --> 00:04:41,710
+to use an update
+statement where you
+
+133
+00:04:41,710 --> 00:04:43,950
+can use a dollar set operator
+and know that there's
+
+134
+00:04:43,950 --> 00:04:45,227
+been no intervening change.
+
+135
+00:04:45,227 --> 00:04:47,310
+Because there's actually
+a window of vulnerability
+
+136
+00:04:47,310 --> 00:04:49,400
+in this code, and the
+window of vulnerability
+
+137
+00:04:49,400 --> 00:04:52,290
+is that between the time
+you found this record
+
+138
+00:04:52,290 --> 00:04:55,870
+and pulled out and the time
+you called replace one,
+
+139
+00:04:55,870 --> 00:04:58,355
+any intervening changes to
+the database of this document
+
+140
+00:04:58,355 --> 00:05:00,730
+are going to be lost, because
+you're going to squash them
+
+141
+00:05:00,730 --> 00:05:01,896
+when you do the replace one.
+
+142
+00:05:01,896 --> 00:05:04,730
+Now the last point I want
+to make is that replace one
+
+143
+00:05:04,730 --> 00:05:08,280
+uses the update server command
+just like update one and update
+
+144
+00:05:08,280 --> 00:05:09,169
+many.
+
+145
+00:05:09,169 --> 00:05:10,460
+I'm going to show you the code.
+
+146
+00:05:10,460 --> 00:05:12,660
+This is from GitHub,
+from the PyMongo driver.
+
+147
+00:05:12,660 --> 00:05:13,790
+This is the 3.0 beta.
+
+148
+00:05:13,790 --> 00:05:15,770
+It should be released
+by the time a lot of you
+
+149
+00:05:15,770 --> 00:05:18,670
+see the course, and it
+won't be in beta anymore.
+
+150
+00:05:18,670 --> 00:05:20,530
+So here's our replace one code.
+
+151
+00:05:20,530 --> 00:05:23,890
+The replace one code, if
+you look at it, at the end,
+
+152
+00:05:23,890 --> 00:05:24,730
+what does it do?
+
+153
+00:05:24,730 --> 00:05:27,730
+It calls underscore update,
+which is a private operator,
+
+154
+00:05:27,730 --> 00:05:29,334
+to update the document.
+
+155
+00:05:29,334 --> 00:05:31,250
+And this is exactly the
+same underscore update
+
+156
+00:05:31,250 --> 00:05:33,680
+that is called when
+you call update one.
+
+157
+00:05:33,680 --> 00:05:35,480
+You can see underscore
+update also called
+
+158
+00:05:35,480 --> 00:05:38,300
+when you update one,
+and also is called
+
+159
+00:05:38,300 --> 00:05:39,790
+when you call update many.
+
+160
+00:05:39,790 --> 00:05:41,771
+So both the replace
+one and the update
+
+161
+00:05:41,771 --> 00:05:43,520
+one and the update
+many call, but they all
+
+162
+00:05:43,520 --> 00:05:46,330
+use the update command
+for the server.
+
+163
+00:05:46,330 --> 00:05:48,400
+And the way that works is
+very similar to the way
+
+164
+00:05:48,400 --> 00:05:51,224
+you saw in the shell, although
+the shell command doesn't
+
+165
+00:05:51,224 --> 00:05:53,640
+necessarily have to be exactly
+the same, because the shell
+
+166
+00:05:53,640 --> 00:05:55,850
+command is separately
+implemented.
+
+167
+00:05:55,850 --> 00:05:58,990
+And then also calls the
+update command on the server.
+
+168
+00:05:58,990 --> 00:06:01,052
+All right, now it's
+time for a quiz.
+
+169
+00:06:01,052 --> 00:06:03,010
+And this sort of brings
+together some knowledge
+
+170
+00:06:03,010 --> 00:06:04,677
+you've gotten from
+the last few lessons.
+
+171
+00:06:04,677 --> 00:06:06,885
+Which of the following
+statements about updating data
+
+172
+00:06:06,885 --> 00:06:07,790
+for PyMongo are true.
+
+173
+00:06:07,790 --> 00:06:08,590
+Check all that apply.
+
+174
+00:06:08,590 --> 00:06:10,080
+And you can see here
+are the statements.
+
+175
+00:06:10,080 --> 00:06:11,080
+The first one, I'll
+read them to you,
+
+176
+00:06:11,080 --> 00:06:13,107
+is whether you use update
+one or replace one,
+
+177
+00:06:13,107 --> 00:06:15,690
+the same amount of data is sent
+across the wire to the server.
+
+178
+00:06:15,690 --> 00:06:17,689
+If you want to atomically
+increment the counter,
+
+179
+00:06:17,689 --> 00:06:20,730
+replace one is preferred because
+the entire counter is replaced.
+
+180
+00:06:20,730 --> 00:06:22,620
+Replace one, update
+one, and update many all
+
+181
+00:06:22,620 --> 00:06:24,745
+call the server's update
+command behind the scenes.
+
+182
+00:06:24,745 --> 00:06:26,730
+If you use update
+one or update many,
+
+183
+00:06:26,730 --> 00:06:29,150
+you must specify a dollar
+operator of some sort.
+
+184
+00:06:29,150 --> 00:06:31,051
+If you use replace
+one, you may not
+
+185
+00:06:31,051 --> 00:06:33,300
+specify a dollar operator,
+where operator is something
+
+186
+00:06:33,300 --> 00:06:34,890
+like dollar set or unset.
+
+187
+00:06:34,890 --> 00:06:35,390
+All right.
+
+188
+00:06:35,390 --> 00:06:38,300
+Check all that apply
+and all that are true.

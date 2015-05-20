@@ -1,0 +1,103 @@
+1
+00:00:00,000 --> 00:00:00,210
+
+2
+00:00:00,210 --> 00:00:00,930
+All right.
+
+3
+00:00:00,930 --> 00:00:02,840
+The answer is a
+lot of them work.
+
+4
+00:00:02,840 --> 00:00:08,870
+So db.example.find.explain
+does work, and these work, too.
+
+5
+00:00:08,870 --> 00:00:12,330
+The example.explain.find,
+this is very similar.
+
+6
+00:00:12,330 --> 00:00:14,080
+In this first case,
+we're getting a cursor
+
+7
+00:00:14,080 --> 00:00:15,670
+and then we're
+calling explain on it.
+
+8
+00:00:15,670 --> 00:00:17,880
+In this case, we're getting
+the explainable object
+
+9
+00:00:17,880 --> 00:00:21,090
+and then we're calling
+find an explainable object.
+
+10
+00:00:21,090 --> 00:00:24,580
+In this case, explainable
+object, in this case,
+
+11
+00:00:24,580 --> 00:00:27,500
+it's an explainable object and
+we assign it to a variable,
+
+12
+00:00:27,500 --> 00:00:30,330
+and then we use that
+variable to call find.
+
+13
+00:00:30,330 --> 00:00:32,890
+And in this final
+case, we got a cursor
+
+14
+00:00:32,890 --> 00:00:35,120
+and then we called
+explain on the cursor.
+
+15
+00:00:35,120 --> 00:00:37,370
+The second case doesn't
+work because what
+
+16
+00:00:37,370 --> 00:00:40,710
+we did is we called
+db.example.remove,
+
+17
+00:00:40,710 --> 00:00:42,130
+which doesn't return a cursor.
+
+18
+00:00:42,130 --> 00:00:43,150
+See, that's the secret.
+
+19
+00:00:43,150 --> 00:00:45,150
+That's why we had to move
+to this new interface.
+
+20
+00:00:45,150 --> 00:00:46,190
+And then we tried
+to call explain
+
+21
+00:00:46,190 --> 00:00:48,106
+on it, which will not
+work, and you can try it
+
+22
+00:00:48,106 --> 00:00:50,310
+and confirm that yourself.

@@ -19,175 +19,181 @@
         "answer": "4hsTQrMs-xY"
     },
     {
-        "concept": "Mongo shell, inserting docs",
+        "concept": "Inserting Docs",
         "lecture": "RbRRvBLl7Qo",
         "answer": "4eqpL7ETQZQ"
     },
     {
-        "concept": "Mongo shell, introduction to findOne",
+        "concept": "Introduction to findOne",
         "lecture": "w9V0fJsDwbQ",
         "answer": "uN_wf5a3BE4"
     },
     {
-        "concept": "Mongo shell, introduction to find",
+        "concept": "Introduction to find",
         "lecture": "8kKfFK6a0Ak"
     },
     {
-        "concept": "Mongo shell, querying using field selection",
+        "concept": "Querying Using field Selection",
         "lecture": "UIg86QjSoyY",
         "answer": "ouHFZgtEAuU"
     },
     {
-        "concept": "Mongo shell, querying using $gt and $lt",
+        "concept": "Querying Using $gt and $lt",
         "lecture": "FHLrz4VGzkg",
         "answer": "tY7I1l8JdDI"
     },
     {
-        "concept": "Mongo shell, inequalities on strings",
+        "concept": "Inequalities on Strings",
         "lecture": "imCCKOevU3c",
         "answer": "ZRWT0lcHsoU"
     },
     {
-        "concept": "Mongo shell, using regexes, $exists, $type",
+        "concept": "Using regexes, $exists, $type",
         "lecture": "lI-jhqYf1JY",
         "answer": "yMi7PwOoqXY"
     },
     {
-        "concept": "Mongo shell, using $or",
+        "concept": "Using $or",
         "lecture": "BW5ElNCRZps",
         "answer": "diimYkvr374"
     },
     {
-        "concept": "Mongo shell, using $and",
+        "concept": "Using $and",
         "lecture": "hYk7pjgjjzc",
         "answer": "oIkSajy8NLw"
     },
     {
-        "concept": "Mongo shell, querying inside arrays",
+        "concept": "Querying Inside Arrays",
         "lecture": "jvEqwW75Bus",
         "answer": "gwECaa4N9Xc"
     },
     {
-        "concept": "Mongo shell, $in and $all",
+        "concept": "Using $in and $all",
         "lecture": "QU2NrkviORE",
         "answer": "6O1UGHwuEww"
     },
     {
-        "concept": "Mongo shell, dot notation",
+        "concept": "Queries with Dot Notation",
         "lecture": "NrjFECIfwqk",
         "answer": "yiEjK_V008s"
     },
     {
-        "concept": "Mongo shell, cursors",
+        "concept": "Querying, Cursors",
         "lecture": "3jA6iFSEJOI",
         "answer": "djzpK7UIO94"
     },
     {
-        "concept": "Mongo shell, counting results",
+        "concept": "Counting Results",
         "lecture": "eKD5bVmNQMI",
         "answer": "Uozp0diXOc8"
     },
     {
-        "concept": "Mongo shell, wholesale updating of a document",
+        "concept": "Wholesale Updating of a Document",
         "lecture": "EBCk6W7x-OY",
         "answer": "pwnRUdtI8lY"
     },
     {
-        "concept": "Mongo shell, using the $set command",
+        "concept": "Using the $set Command",
         "lecture": "9iMX2KxYAd8",
         "answer": "F6ZY_VVAXZ8"
     },
     {
-        "concept": "Mongo shell, unset commands",
+        "concept": "Using the $unset Command",
         "lecture": "OBX9q4kqweA",
         "answer": "edqDAKMQTv4"
     },
     {
-        "concept": "mongo shell, $push, $pop, $pull, $pushAll, $pullAll, $addToSet",
+        "concept": "Using $push, $pop, $pull, $pushAll, $pullAll, $addToSet",
         "lecture": "iHSwyr7bfQs",
         "answer": "bGbiIGEM0FY"
     },
     {
-        "concept": "mongo shell, upserts",
+        "concept": "Upserts",
         "lecture": "dfvwrlVODGc",
         "answer": "Loo5XKQAryM"
     },
     {
-        "concept": "multi-update",
+        "concept": "Multi-update",
         "lecture": "8uNNDduO09w",
         "answer": "B1DqIls06Tc"
     },
     {
-        "concept": "Mongo shell, removing data",
+        "concept": "Removing Data",
         "lecture": "PMhGgc3HCn4",
         "answer": "T3wcuZHm6Ac"
     },
     {
-        "concept": "getLastError",
-        "lecture": "a6o0TQjUMug"
+        "concept": "Pymongo: find, find_one and Cursors",
+        "lecture": "KfW5Z0YUaoI",
+        "answer": "qgTR2g6rLy0"
     },
     {
-        "concept": "Pymongo, find, find_one and cursors",
-        "lecture": "kXu5V3MlFI0",
-        "answer": "d-EOPb3_YVI"
+        "concept": "Pymongo: Projecting Results from Find",
+        "lecture": "ExZjWmohgXs",
+        "answer": "vdfnsJsmH3M"
     },
     {
-        "concept": "Pymongo, using field selection",
-        "lecture": "pCRMWfF_SC8",
-        "answer": "vMNLxyQ47BM"
+        "concept": "Pymongo: Using $gt and $lt",
+        "lecture": "0NawlrrMwwc",
+        "answer": "b_flsJmmNos"
     },
     {
-        "concept": "Pymongo, using $gt and $lt",
-        "lecture": "p5ltB0g3lUo",
-        "answer": "2kzdSZmJ8jM"
+        "concept": "Importing from Reddit",
+        "lecture": "oVmoi6fS4X8"
     },
     {
-        "concept": "Importing Reddit",
-        "lecture": "dd49ULz7y6Q"
+        "concept": "Pymongo: Using a regex",
+        "lecture": "9ubN7ksxq9I"
     },
     {
-        "concept": "Pymongo, using a regex",
-        "lecture": "UIes2_2rBWE"
-    },
-    {
-        "concept": "Pymongo, using dot notation",
-        "lecture": "kiJRqBbCSGk",
-        "answer": "5mpm64vncL0"
-    },
-    {
-        "concept": "Pymongo, skip, limit and sort",
+        "concept": "Pymongo: Sort, Skip and Limit",
         "lecture": "F1bSsbt5Qfk",
         "answer": "cUNoJN6Ii-I"
     },
     {
-        "concept": "Pymongo, sorting, final thoughts",
+        "concept": "Pymongo: Sort, Final Thoughts",
         "lecture": "hwUg8r7a-d8"
     },
     {
-        "concept": "Pymongo, inserting",
-        "lecture": "1buD4Ern9rA",
-        "answer": "pEMyrKDzgFg"
+        "concept": "Pymongo: insert_one",
+        "lecture": "BB06dDrQ4qM",
+        "answer": "wRrj2H9TpPs"
     },
     {
-        "concept": "Pymongo, updating",
-        "lecture": "u6iRURy8rY0",
-        "answer": "Cyk5uzO-65w"
+        "concept": "Pymongo: insert_many",
+        "lecture": "GT-vmX-bgVs",
+        "answer": "RGPWKa02Lzc"
     },
     {
-        "concept": "Pymongo, upserts",
-        "lecture": "hcGo9lV9HwI",
-        "answer": "tMEohyZX0cI"
+        "concept": "Pymongo: Updating",
+        "lecture": "pXF-dHnRdpc",
+        "answer": "hj6VDjj8nj4"
     },
     {
-        "concept": "Pymongo, find and modify",
-        "lecture": "rQ8Oml5e6PI"
+        "concept": "Pymongo: Updating Data using Replace",
+        "lecture": "ph2a85eS04g",
+        "answer": "3Ot0VtD6KVw"
     },
     {
-        "concept": "Blog, User Interface",
+        "concept": "Pymongo: Upserts",
+        "lecture": "rDVV6x8poec",
+        "answer": "wo-awXZa7zM"
+    },
+    {
+        "concept": "Pymongo: Removing Data",
+        "lecture": "CT_AA1A-Vj8",
+        "answer": "36y0BSBJ88M"
+    },
+    {
+        "concept": "Pymongo: find_and_modify",
+        "lecture": "ujJzu8Um8QE"
+    },
+    {
+        "concept": "Blog: User Interface",
         "lecture": "QA80WBg0hLg"
     },
     {
-        "concept": "Blog, Session Management",
+        "concept": "Blog: Session Management",
         "lecture": "BzVvoyF8mBo"
     },
     {

@@ -1,75 +1,202 @@
 1
-00:00:00,000 --> 00:00:00,190
+00:00:00,000 --> 00:00:00,500
 
 2
-00:00:00,190 --> 00:00:03,780
-Bien, y la respuesta es que la
-tercera y la cuarta son correctas,
+00:00:00,500 --> 00:00:01,790
+OK, here's the answer.
 
 3
-00:00:03,780 --> 00:00:05,420
-y la primera y la segunda
-están equivocadas.
+00:00:01,790 --> 00:00:03,700
+The first and the
+third are correct,
 
 4
-00:00:05,420 --> 00:00:08,750
-En la tercera, hacemos
-"stuff.update", "_id",
+00:00:03,700 --> 00:00:05,240
+and we'll go through each one.
 
 5
-00:00:08,750 --> 00:00:13,680
-"bat", y luego ponemos el
-documento, "_id" "bat",
+00:00:05,240 --> 00:00:08,796
+In the first one, we're doing
+an update one with "_id" "bat",
 
 6
-00:00:13,680 --> 00:00:16,560
-"friend" "ball", "cousin" "glove",
-"upsert" "true".
+00:00:08,796 --> 00:00:11,170
+and we're setting "friend",
+"ball", and "cousin" "glove."
 
 7
-00:00:16,560 --> 00:00:20,130
-Y en la última, tomamos
-ventaja de usar el comando
+00:00:11,170 --> 00:00:13,000
+This is very similar to the
+one we showed in the lesson.
 
 8
-00:00:20,130 --> 00:00:21,700
-"$set" aquí.
+00:00:13,000 --> 00:00:15,340
+And in fact, it will insert
+if there's no document
 
 9
-00:00:21,700 --> 00:00:23,860
-Así que no tenemos
-que especificar el
+00:00:15,340 --> 00:00:18,630
+in the collection, something
+with "_id" "bat", "friend",
 
 10
-00:00:23,860 --> 00:00:25,170
-"_id" "bat" a la derecha.
+00:00:18,630 --> 00:00:20,070
+"ball", "cousin", "glove."
 
 11
-00:00:25,170 --> 00:00:26,640
-Y otra vez, "upsert" "true".
+00:00:20,070 --> 00:00:21,270
+Works fine.
 
 12
-00:00:26,640 --> 00:00:30,470
-La primera es incorrecta
-porque no especificamos el
+00:00:21,270 --> 00:00:23,490
+The second one won't work
+because there's a "$"
 
 13
-00:00:30,470 --> 00:00:33,430
-"_id" "bat" a la derecha,
-en el documento que
+00:00:23,490 --> 00:00:26,500
+operator on the right-hand side
+in the document to be replaced,
 
 14
-00:00:33,430 --> 00:00:34,530
-estamos estableciendo.
+00:00:26,500 --> 00:00:27,739
+which is not legal.
 
 15
-00:00:34,530 --> 00:00:37,690
-Y la segunda es incorrecta
-porque no usamos
+00:00:27,739 --> 00:00:30,030
+When you're using "replace_one,"
+this cannot have a "$"
 
 16
-00:00:37,690 --> 00:00:38,940
-"upsert" igual a "True".
+00:00:30,030 --> 00:00:30,940
+operator.
 
 17
-00:00:38,940 --> 00:00:40,107
+00:00:30,940 --> 00:00:32,710
+The third one is correct.
+
+18
+00:00:32,710 --> 00:00:34,320
+And the third one's
+a little subtle.
+
+19
+00:00:34,320 --> 00:00:38,270
+And we didn't actually show
+this exact case in the lesson.
+
+20
+00:00:38,270 --> 00:00:40,510
+We're looking for
+something with "_id" "bat."
+
+21
+00:00:40,510 --> 00:00:44,260
+And then we're doing "$set_id"
+"bat", "friend", "ball",
+
+22
+00:00:44,260 --> 00:00:46,670
+"cousin", "glove"
+with "upsert=True."
+
+23
+00:00:46,670 --> 00:00:49,510
+And we will get a document
+with these items in it.
+
+24
+00:00:49,510 --> 00:00:52,730
+Now, it might be surprising that
+you can use the set operator
+
+25
+00:00:52,730 --> 00:00:56,410
+on the "_id" field
+because, in fact, the "_id"
+
+26
+00:00:56,410 --> 00:00:57,960
+field is immutable.
+
+27
+00:00:57,960 --> 00:01:00,690
+But if the "_id" that you're
+setting is exactly the same
+
+28
+00:01:00,690 --> 00:01:02,981
+as the one you're filtering
+on, the database knows that
+
+29
+00:01:02,981 --> 00:01:05,330
+it's not really changing it,
+and it won't be a violation
+
+30
+00:01:05,330 --> 00:01:07,360
+of the immutability
+of the "_id."
+
+31
+00:01:07,360 --> 00:01:09,252
+And as a result, you
+can do this update,
+
+32
+00:01:09,252 --> 00:01:11,710
+you could do this insert, and
+you'll wind up with something
+
+33
+00:01:11,710 --> 00:01:14,360
+with "_id" "bat", "friend",
+"ball", and "cousin", "glove."
+
+34
+00:01:14,360 --> 00:01:17,280
+If you try that in PyMongo,
+you can confirm that.
+
+35
+00:01:17,280 --> 00:01:19,530
+The last one we also
+showed in the lesson, which
+
+36
+00:01:19,530 --> 00:01:22,032
+is that this insert won't
+fail, it'll be successful.
+
+37
+00:01:22,032 --> 00:01:23,740
+But what you'll wind
+up with is something
+
+38
+00:01:23,740 --> 00:01:25,406
+that has "friend",
+"ball", and "cousin",
+
+39
+00:01:25,406 --> 00:01:27,540
+"glove" set, because
+it was a "replace_one."
+
+40
+00:01:27,540 --> 00:01:30,180
+And "_id" "bat" won't be set.
+
+41
+00:01:30,180 --> 00:01:33,760
+Instead, you'll have
+something with a "_id"
+
+42
+00:01:33,760 --> 00:01:37,590
+operator that was
+assigned by the driver.
+
+43
+00:01:37,590 --> 00:01:40,030
+OK, and that's the answer.

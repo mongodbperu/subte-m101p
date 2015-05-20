@@ -1,0 +1,111 @@
+1
+00:00:00,000 --> 00:00:00,500
+
+2
+00:00:00,500 --> 00:00:02,770
+OK and the answer
+is the second one,
+
+3
+00:00:02,770 --> 00:00:05,330
+that you would need to specify
+the query like this with
+
+4
+00:00:05,330 --> 00:00:07,288
+['type':'quiz','
+ score':{'$gt':20, '$lt':90}].
+
+5
+00:00:07,288 --> 00:00:08,920
+
+6
+00:00:08,920 --> 00:00:10,850
+These are all, again, quoted.
+
+7
+00:00:10,850 --> 00:00:12,795
+Now the reason why the
+other ones are wrong,
+
+8
+00:00:12,795 --> 00:00:14,170
+the first one is
+wrong because it
+
+9
+00:00:14,170 --> 00:00:17,670
+doesn't specify that it
+needs to be of type quiz.
+
+10
+00:00:17,670 --> 00:00:21,850
+This third one is wrong
+for a more subtle reason.
+
+11
+00:00:21,850 --> 00:00:26,450
+Because rather than saying the
+score needs to conform to this
+
+12
+00:00:26,450 --> 00:00:28,580
+condition that's specified
+as a separate document,
+
+13
+00:00:28,580 --> 00:00:30,870
+you could see that we
+distributed this out and now
+
+14
+00:00:30,870 --> 00:00:33,536
+it's '$gt':'$gt':[? 'score':20 ?],
+'$lt':'$lt':[? 'score':90 ?].
+
+15
+00:00:33,536 --> 00:00:34,820
+
+16
+00:00:34,820 --> 00:00:36,930
+You might think this
+makes sense but it's
+
+17
+00:00:36,930 --> 00:00:39,840
+not the way you specify
+greater than, less than.
+
+18
+00:00:39,840 --> 00:00:43,130
+You instead, first, put
+the key, and then you
+
+19
+00:00:43,130 --> 00:00:46,450
+have the condition within
+this subdocument specified
+
+20
+00:00:46,450 --> 00:00:48,320
+essentially as the
+value of the key.
+
+21
+00:00:48,320 --> 00:00:51,320
+The last one is wrong
+just because there's
+
+22
+00:00:51,320 --> 00:00:53,930
+no quotes around $gt or $lt.
+
+23
+00:00:53,930 --> 00:00:56,420
+You need to protect
+these literals in Python
+
+24
+00:00:56,420 --> 00:00:59,390
+to make sure that they're
+interpretive strings.

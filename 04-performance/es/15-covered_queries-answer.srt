@@ -1,0 +1,151 @@
+1
+00:00:00,000 --> 00:00:00,790
+
+2
+00:00:00,790 --> 00:00:04,180
+The answer is that only the
+last one is a covered query.
+
+3
+00:00:04,180 --> 00:00:05,750
+So let's go through it slowly.
+
+4
+00:00:05,750 --> 00:00:08,760
+So this query right
+here only looks at name,
+
+5
+00:00:08,760 --> 00:00:13,010
+and it can use this index,
+name, date of birth.
+
+6
+00:00:13,010 --> 00:00:17,550
+And then this final index
+shows name, date of birth,
+
+7
+00:00:17,550 --> 00:00:19,390
+and suppresses _id.
+
+8
+00:00:19,390 --> 00:00:22,800
+This is completely eligible
+to be a covered query.
+
+9
+00:00:22,800 --> 00:00:26,420
+This one above right here,
+where it looks just at name
+
+10
+00:00:26,420 --> 00:00:29,640
+but returns hair
+and name and _id,
+
+11
+00:00:29,640 --> 00:00:33,270
+the issue is here that
+if it looks just at name,
+
+12
+00:00:33,270 --> 00:00:35,500
+it's going to use
+this index right here.
+
+13
+00:00:35,500 --> 00:00:37,170
+It's not going to
+use this index.
+
+14
+00:00:37,170 --> 00:00:41,090
+It can't use this index for name
+very well because, of course,
+
+15
+00:00:41,090 --> 00:00:42,350
+it's not a left subset.
+
+16
+00:00:42,350 --> 00:00:44,705
+So it's not going to
+choose this index at all.
+
+17
+00:00:44,705 --> 00:00:46,080
+It's going to
+choose a name, date
+
+18
+00:00:46,080 --> 00:00:49,550
+of birth index for this
+query, the third one, and then
+
+19
+00:00:49,550 --> 00:00:51,320
+it's going to have
+to produce hair
+
+20
+00:00:51,320 --> 00:00:53,770
+and it can't do that
+so it's going to go
+
+21
+00:00:53,770 --> 00:00:54,854
+to the documents for that.
+
+22
+00:00:54,854 --> 00:00:55,769
+You can test that out.
+
+23
+00:00:55,769 --> 00:00:57,490
+You can create some
+collections to see.
+
+24
+00:00:57,490 --> 00:01:00,140
+Now, this one over here
+looks just at name,
+
+25
+00:01:00,140 --> 00:01:04,019
+and here, once again, it's going
+to choose name, date of birth.
+
+26
+00:01:04,019 --> 00:01:07,700
+But what's even worse is that
+_id is going to be produced
+
+27
+00:01:07,700 --> 00:01:11,740
+by this query and that won't
+work because _id is not
+
+28
+00:01:11,740 --> 00:01:13,170
+in the index.
+
+29
+00:01:13,170 --> 00:01:16,000
+And this one over here
+is looking just at _id,
+
+30
+00:01:16,000 --> 00:01:17,556
+which is going to
+use the _id index.
+
+31
+00:01:17,556 --> 00:01:19,930
+And so name and date of birth
+do not appear in that index
+
+32
+00:01:19,930 --> 00:01:22,850
+at all, and so hence, it will
+need to go to the documents.

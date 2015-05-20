@@ -1,0 +1,577 @@
+1
+00:00:00,000 --> 00:00:00,499
+
+2
+00:00:00,499 --> 00:00:02,570
+Let's talk about the
+MMAP storage engine.
+
+3
+00:00:02,570 --> 00:00:03,675
+We call it MMAPV V1.
+
+4
+00:00:03,675 --> 00:00:06,220
+It's the original storage
+engine of MongoDB.
+
+5
+00:00:06,220 --> 00:00:09,390
+And it uses the MMAP system
+call under the covers
+
+6
+00:00:09,390 --> 00:00:11,980
+in order to implement
+storage management.
+
+7
+00:00:11,980 --> 00:00:14,970
+Let's look at what the MMAP
+system call looks like.
+
+8
+00:00:14,970 --> 00:00:16,690
+It's right here.
+
+9
+00:00:16,690 --> 00:00:19,750
+On any Unix machine,
+if you man MMAP,
+
+10
+00:00:19,750 --> 00:00:22,530
+you'll see that it talks about
+allocating memory or mapping
+
+11
+00:00:22,530 --> 00:00:25,247
+files or devices into
+memory, causes the pages
+
+12
+00:00:25,247 --> 00:00:27,580
+starting address and continuing
+for at most length bytes
+
+13
+00:00:27,580 --> 00:00:29,663
+to be mapped from the
+object described by the file
+
+14
+00:00:29,663 --> 00:00:31,460
+descriptor at an offset.
+
+15
+00:00:31,460 --> 00:00:33,660
+So what does that
+really practically mean?
+
+16
+00:00:33,660 --> 00:00:35,735
+Well, MongoDB needs a
+place to put documents,
+
+17
+00:00:35,735 --> 00:00:38,210
+and it puts the
+documents inside files.
+
+18
+00:00:38,210 --> 00:00:41,050
+And to do that, it initially
+allocates, let's say,
+
+19
+00:00:41,050 --> 00:00:41,860
+a large file.
+
+20
+00:00:41,860 --> 00:00:44,560
+Let's say it allocates
+100 gigabyte file on disk.
+
+21
+00:00:44,560 --> 00:00:47,520
+So we wind up with 100 gigabyte
+file on disk right here.
+
+22
+00:00:47,520 --> 00:00:49,814
+And this disk may or may
+not be physically contiguous
+
+23
+00:00:49,814 --> 00:00:52,230
+on the actual disk, because
+there are some algorithms that
+
+24
+00:00:52,230 --> 00:00:55,330
+occur beneath that layer that
+control the actual allocation
+
+25
+00:00:55,330 --> 00:00:57,000
+of space on a disk.
+
+26
+00:00:57,000 --> 00:00:59,920
+But from our standpoint, it's
+a 100-gigabyte contiguous file.
+
+27
+00:00:59,920 --> 00:01:02,530
+If MongoDB calls the
+MMAP system call,
+
+28
+00:01:02,530 --> 00:01:05,500
+it can map this file,
+this 100-gigabyte file
+
+29
+00:01:05,500 --> 00:01:07,974
+into 100 gigabytes
+of virtual memory.
+
+30
+00:01:07,974 --> 00:01:09,390
+Now to do that,
+of course, we need
+
+31
+00:01:09,390 --> 00:01:12,790
+to be on a 64-bit computer,
+because you could never
+
+32
+00:01:12,790 --> 00:01:14,960
+get 100 gigabytes of
+virtual memory space
+
+33
+00:01:14,960 --> 00:01:16,030
+on a 32-bit computer.
+
+34
+00:01:16,030 --> 00:01:18,260
+You'd be limited to
+2 or 4 gigabytes.
+
+35
+00:01:18,260 --> 00:01:20,350
+And these are all page sized.
+
+36
+00:01:20,350 --> 00:01:24,350
+So pages on an operating system
+or either 4K or 16K large.
+
+37
+00:01:24,350 --> 00:01:27,076
+So there's a lot of them
+that I'm not showing here.
+
+38
+00:01:27,076 --> 00:01:28,450
+And the operating
+system is going
+
+39
+00:01:28,450 --> 00:01:30,690
+to decide what
+can fit in memory.
+
+40
+00:01:30,690 --> 00:01:33,030
+So if the actual physical
+memory of the box is,
+
+41
+00:01:33,030 --> 00:01:35,810
+let's say, 32
+gigabytes, then if I
+
+42
+00:01:35,810 --> 00:01:39,010
+go to access one of the
+pages in this memory space,
+
+43
+00:01:39,010 --> 00:01:41,270
+it may not be in memory
+at any given time.
+
+44
+00:01:41,270 --> 00:01:43,597
+The operating system
+decides which of these pages
+
+45
+00:01:43,597 --> 00:01:44,680
+are going to be in memory.
+
+46
+00:01:44,680 --> 00:01:46,870
+I'll just say the green
+ones are in memory.
+
+47
+00:01:46,870 --> 00:01:48,790
+And so when you go
+to read a document,
+
+48
+00:01:48,790 --> 00:01:51,870
+if it hits a page that's
+in memory, then you get it.
+
+49
+00:01:51,870 --> 00:01:54,840
+And if hits a page that's not
+memory, let's say this page,
+
+50
+00:01:54,840 --> 00:01:58,330
+then the operating system
+has to bring it from disk--
+
+51
+00:01:58,330 --> 00:02:01,730
+this is on disk here-- it has to
+bring it from disk into memory
+
+52
+00:02:01,730 --> 00:02:03,380
+before you can access it.
+
+53
+00:02:03,380 --> 00:02:06,760
+And that's the basics of the way
+the MMAP storage engine works.
+
+54
+00:02:06,760 --> 00:02:10,410
+Now, the MMAP storage engine
+offers collection level
+
+55
+00:02:10,410 --> 00:02:12,050
+concurrency, or what
+we sometimes call
+
+56
+00:02:12,050 --> 00:02:13,750
+a collection level locking.
+
+57
+00:02:13,750 --> 00:02:17,070
+Each collection inside
+MongoDB is its own file,
+
+58
+00:02:17,070 --> 00:02:18,885
+if you look in data/db.
+
+59
+00:02:18,885 --> 00:02:20,290
+So what that means
+is that if you
+
+60
+00:02:20,290 --> 00:02:22,790
+have two different operations
+going on at the same time
+
+61
+00:02:22,790 --> 00:02:24,365
+and they are in the
+same collection,
+
+62
+00:02:24,365 --> 00:02:26,240
+one's going to have to
+wait for the other one
+
+63
+00:02:26,240 --> 00:02:29,060
+if they are write, because
+it's a multiple reader,
+
+64
+00:02:29,060 --> 00:02:31,750
+single writer lock
+that it takes.
+
+65
+00:02:31,750 --> 00:02:33,980
+So only one write
+can happen at a time
+
+66
+00:02:33,980 --> 00:02:35,159
+to a particular collection.
+
+67
+00:02:35,159 --> 00:02:36,700
+But if they're
+different collections,
+
+68
+00:02:36,700 --> 00:02:38,770
+then it could happen
+simultaneously.
+
+69
+00:02:38,770 --> 00:02:40,230
+In addition, the
+way this storage
+
+70
+00:02:40,230 --> 00:02:44,635
+engine works in MMAP V1, we
+allow in-place updates of data.
+
+71
+00:02:44,635 --> 00:02:47,260
+So if a document is sitting here
+in this little page right here
+
+72
+00:02:47,260 --> 00:02:49,160
+and you do an update
+to it, then we'll
+
+73
+00:02:49,160 --> 00:02:50,670
+try to update it right in place.
+
+74
+00:02:50,670 --> 00:02:52,860
+And if we can update
+it, then what we'll do
+
+75
+00:02:52,860 --> 00:02:54,709
+is we'll mark it as a
+whole, and then we'll
+
+76
+00:02:54,709 --> 00:02:56,750
+move it somewhere else
+where there is more space.
+
+77
+00:02:56,750 --> 00:02:58,170
+So we'll maybe move it
+over here or something.
+
+78
+00:02:58,170 --> 00:02:59,697
+And then we'll
+update it over there.
+
+79
+00:02:59,697 --> 00:03:01,780
+In order to make it more
+likely that we can update
+
+80
+00:03:01,780 --> 00:03:04,950
+a document in place
+without having to move it,
+
+81
+00:03:04,950 --> 00:03:10,820
+we use power of two sizes when
+we allocate the initial storage
+
+82
+00:03:10,820 --> 00:03:11,500
+for a document.
+
+83
+00:03:11,500 --> 00:03:13,130
+What that means
+is that if you try
+
+84
+00:03:13,130 --> 00:03:15,780
+to create a 3-byte document,
+you're going to get 4 bytes.
+
+85
+00:03:15,780 --> 00:03:17,515
+If you try to create
+a 7-byte document,
+
+86
+00:03:17,515 --> 00:03:20,640
+you're going to get 8
+bytes, a 19-byte document,
+
+87
+00:03:20,640 --> 00:03:22,760
+you're going to get 32 bytes.
+
+88
+00:03:22,760 --> 00:03:24,572
+And this way, it's
+more likely that you
+
+89
+00:03:24,572 --> 00:03:26,030
+can grow the document
+a little bit,
+
+90
+00:03:26,030 --> 00:03:29,150
+and that space that opens
+up, that we can re-use it
+
+91
+00:03:29,150 --> 00:03:30,480
+more easily.
+
+92
+00:03:30,480 --> 00:03:32,330
+So that's the MMAP
+storage engine.
+
+93
+00:03:32,330 --> 00:03:34,740
+And you'll notice that since
+the operating system is
+
+94
+00:03:34,740 --> 00:03:37,690
+what makes the decision about
+what is in memory versus what
+
+95
+00:03:37,690 --> 00:03:39,970
+is in disk, we
+can't really do much
+
+96
+00:03:39,970 --> 00:03:41,720
+in terms of controlling that.
+
+97
+00:03:41,720 --> 00:03:44,540
+The operating system's pretty
+smart about managing memory.
+
+98
+00:03:44,540 --> 00:03:46,850
+So it's usually not
+a bad algorithm.
+
+99
+00:03:46,850 --> 00:03:50,830
+But the database doesn't
+get to decide or contribute
+
+100
+00:03:50,830 --> 00:03:54,940
+its opinion about what winds up
+in physical memory versus what
+
+101
+00:03:54,940 --> 00:03:55,960
+winds up on disk.
+
+102
+00:03:55,960 --> 00:03:57,600
+And if you're
+curious about the way
+
+103
+00:03:57,600 --> 00:04:00,180
+virtual memory works in general,
+just Google virtual memory
+
+104
+00:04:00,180 --> 00:04:01,185
+and storage systems.
+
+105
+00:04:01,185 --> 00:04:02,560
+It's the same
+algorithms that are
+
+106
+00:04:02,560 --> 00:04:04,920
+used to manage memory
+inside the operating
+
+107
+00:04:04,920 --> 00:04:06,900
+system for all programs OK.
+
+108
+00:04:06,900 --> 00:04:08,590
+Now it's time for a quiz.
+
+109
+00:04:08,590 --> 00:04:11,250
+Which of the following
+statements about the MMAP V1
+
+110
+00:04:11,250 --> 00:04:12,250
+storage engine are true?
+
+111
+00:04:12,250 --> 00:04:13,420
+Check all that apply.
+
+112
+00:04:13,420 --> 00:04:16,259
+The first is that MMAP offers
+document-level locking.
+
+113
+00:04:16,259 --> 00:04:17,800
+The second is that
+MMAP automatically
+
+114
+00:04:17,800 --> 00:04:19,383
+allocates power of
+two-sized documents
+
+115
+00:04:19,383 --> 00:04:20,870
+when new documents are inserted.
+
+116
+00:04:20,870 --> 00:04:23,453
+The third is that MMAP is built
+on top of the MMAP system call
+
+117
+00:04:23,453 --> 00:04:24,950
+that maps files into memory.
+
+118
+00:04:24,950 --> 00:04:26,540
+And the final one
+is that MongoDB
+
+119
+00:04:26,540 --> 00:04:28,260
+manages the memory
+used by each map file,
+
+120
+00:04:28,260 --> 00:04:30,360
+deciding which parts
+to swap to disk.
+
+121
+00:04:30,360 --> 00:04:33,340
+So check the ones that
+you think are correct.

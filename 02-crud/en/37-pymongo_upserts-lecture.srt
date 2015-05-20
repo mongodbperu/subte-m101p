@@ -1,431 +1,617 @@
 1
-00:00:00,000 --> 00:00:00,130
+00:00:00,000 --> 00:00:00,060
 
 2
-00:00:00,130 --> 00:00:02,210
-Let's talk about upserting
-in PyMongo.
+00:00:00,060 --> 00:00:00,560
+OK.
 
 3
-00:00:02,210 --> 00:00:05,510
-Now if you recall from the
-lessons we did on the Mongo
+00:00:00,560 --> 00:00:03,390
+Let's talk about doing
+upserts within PyMongo.
 
 4
-00:00:05,510 --> 00:00:11,640
-shell, an upsert is an update
-where the database will
+00:00:03,390 --> 00:00:06,049
+We already covered
+upserts in this unit
 
 5
-00:00:11,640 --> 00:00:15,830
-automatically insert the data
-if there is no document that
+00:00:06,049 --> 00:00:07,590
+when we talked about
+the Mongo shell.
 
 6
-00:00:15,830 --> 00:00:17,760
-matches the criteria.
+00:00:07,590 --> 00:00:08,840
+And if you don't
+remember how they work,
 
 7
-00:00:17,760 --> 00:00:20,710
-So it's a convenient way of
-being able to combine two
+00:00:08,840 --> 00:00:11,470
+you should definitely go back
+now and look at that lesson.
 
 8
-00:00:20,710 --> 00:00:22,290
-different actions.
+00:00:11,470 --> 00:00:14,440
+Upsert is a variant of update.
 
 9
-00:00:22,290 --> 00:00:25,810
-And I've written a small program
-to demonstrate how
+00:00:14,440 --> 00:00:17,250
+Upsert says, if I can't
+find a document to update,
 
 10
-00:00:25,810 --> 00:00:27,390
-upserts work in PyMongo.
+00:00:17,250 --> 00:00:18,900
+I want to insert one.
 
 11
-00:00:27,390 --> 00:00:28,760
-So let's take a look at that.
+00:00:18,900 --> 00:00:23,890
+And you specify upsert as the
+final parameter in an update
 
 12
-00:00:28,760 --> 00:00:29,520
-OK.
+00:00:23,890 --> 00:00:24,640
+or replace.
 
 13
-00:00:29,520 --> 00:00:34,180
-So in this program which I
-call using_upsert.py--
+00:00:24,640 --> 00:00:27,400
+You say upsert equals true,
+or upsert equals false.
 
 14
-00:00:34,180 --> 00:00:36,780
-and I'm going to provide all of
-these files to you if you
+00:00:27,400 --> 00:00:28,750
+And the default is false.
 
 15
-00:00:36,780 --> 00:00:38,450
-want to run them on your
-own computer--
+00:00:28,750 --> 00:00:31,897
+Now upsert affects update
+slightly differently
 
 16
-00:00:38,450 --> 00:00:41,010
-we're going to connect to local
-host, and safe equals
+00:00:31,897 --> 00:00:33,480
+than the way it
+affects a replace one.
 
 17
-00:00:41,010 --> 00:00:43,640
-true, and go into test database,
-and look at things
+00:00:33,480 --> 00:00:34,920
+The basic flow
+chart is the same.
 
 18
-00:00:43,640 --> 00:00:45,240
-collection.
+00:00:34,920 --> 00:00:37,310
+When you do an update, you
+see if there's a match.
 
 19
-00:00:45,240 --> 00:00:48,400
-And we're going to do the
-following actions.
+00:00:37,310 --> 00:00:40,230
+If there's no match, you see
+if the upsert parameter is set.
 
 20
-00:00:48,400 --> 00:00:50,700
-First we're going to drop
-everything into things
+00:00:40,230 --> 00:00:42,210
+And if the parameter
+is at the true,
 
 21
-00:00:50,700 --> 00:00:51,950
-collection.
+00:00:42,210 --> 00:00:44,130
+then you perform an insert.
 
 22
-00:00:51,950 --> 00:00:53,250
-Now there's actually two
-different ways to do this.
+00:00:44,130 --> 00:00:46,940
+If the parameter is set
+to false, you just stop.
 
 23
-00:00:53,250 --> 00:00:54,820
-You can do things.remove.
+00:00:46,940 --> 00:00:48,980
+Now of course, when
+you do an update,
 
 24
-00:00:54,820 --> 00:00:57,200
-with an empty document to remove
-all the documents.
+00:00:48,980 --> 00:00:51,270
+if there is a match,
+regardless of upsert,
 
 25
-00:00:57,200 --> 00:01:00,320
-Or slightly more efficiently if
-the collection were large,
+00:00:51,270 --> 00:00:52,660
+you just perform the update.
 
 26
-00:01:00,320 --> 00:01:03,640
-but this is obviously a very
-small collection, you could do
+00:00:52,660 --> 00:00:55,930
+And in the case of update
+one or update many,
 
 27
-00:01:03,640 --> 00:01:06,860
-things.drop and that drops
-the collection.
+00:00:55,930 --> 00:00:57,960
+there has to be some
+sort of dollar operator
 
 28
-00:01:06,860 --> 00:01:10,480
-And after that, I'm going to
-do two different upserts.
+00:00:57,960 --> 00:01:01,540
+here-- like dollar set or
+dollar increment-- that's
 
 29
-00:01:10,480 --> 00:01:12,480
-Now I call update.
+00:01:01,540 --> 00:01:04,239
+going to be used to
+perform the update.
 
 30
-00:01:12,480 --> 00:01:17,390
-And I'm looking for thing
-that has a key of thing
+00:01:04,239 --> 00:01:06,220
+The replace one is
+slightly different.
 
 31
-00:01:17,390 --> 00:01:19,410
-and a value of apple.
+00:01:06,220 --> 00:01:08,720
+Replace one also takes
+an upsert parameter.
 
 32
-00:01:19,410 --> 00:01:25,580
-And then I'm going to set
-color red, upsert true.
+00:01:08,720 --> 00:01:11,550
+But with replace one, you're
+specifying the entire document
 
 33
-00:01:25,580 --> 00:01:26,700
-OK?
+00:01:11,550 --> 00:01:13,820
+that you want put in place.
 
 34
-00:01:26,700 --> 00:01:29,510
-And the other thing I'm going
-to update in my things
+00:01:13,820 --> 00:01:16,150
+So again, you look for a match.
 
 35
-00:01:29,510 --> 00:01:32,450
-collection is I'm going to
-look for a thing with the
+00:01:16,150 --> 00:01:17,830
+If there's no
+match, then you see
 
 36
-00:01:32,450 --> 00:01:35,230
-thing value of pear.
+00:01:17,830 --> 00:01:19,430
+if upsert is set in the call.
 
 37
-00:01:35,230 --> 00:01:40,660
-And then I'm going to set
-the color to green.
+00:01:19,430 --> 00:01:22,077
+And if it is set, you
+then perform an upsert
 
 38
-00:01:40,660 --> 00:01:43,330
-And I'm going to upsert
-equals true.
+00:01:22,077 --> 00:01:24,410
+with the document that was
+specified to the replace one.
 
 39
-00:01:43,330 --> 00:01:45,960
-And in this case, I'm suing
-the set command.
+00:01:24,410 --> 00:01:26,700
+And if upsert wasn't
+set, you stop.
 
 40
-00:01:45,960 --> 00:01:48,430
-In this case, I'm just setting
-the document--
+00:01:26,700 --> 00:01:30,760
+Similarly, if there's a match
+when you do a replace one, then
 
 41
-00:01:48,430 --> 00:01:49,850
-I'm saying the attribute
-of the document that
+00:01:30,760 --> 00:01:33,640
+regardless of upsert, you just
+completely replace the document
 
 42
-00:01:49,850 --> 00:01:51,280
-I want right here.
+00:01:33,640 --> 00:01:35,020
+with a new document.
 
 43
-00:01:51,280 --> 00:01:56,360
-And then I'm going to find the
-apple and print it out.
-
-44
-00:01:56,360 --> 00:02:00,730
-And I'm going to find the pear
-and I'm going to print it out.
-
-45
-00:02:00,730 --> 00:02:02,050
-So that's the whole program.
-
-46
-00:02:02,050 --> 00:02:04,500
-So let's see what we get.
-
-47
-00:02:04,500 --> 00:02:05,430
-All right.
-
-48
-00:02:05,430 --> 00:02:08,100
-So here's the result of
-running this program.
-
-49
-00:02:08,100 --> 00:02:12,870
-And in the case of the apple,
-it pretty much is what we'd
-
-50
-00:02:12,870 --> 00:02:17,580
-expect, which is that there's
-color red, thing apple.
-
-51
-00:02:17,580 --> 00:02:22,510
-And then a underscore IDs
-that's a BSON ObjectId.
-
-52
-00:02:22,510 --> 00:02:25,530
-But with the pear, there's
-nothing there.
-
-53
-00:02:25,530 --> 00:02:27,330
-Wow, that's kind of weird.
-
-54
-00:02:27,330 --> 00:02:28,820
-There's nothing there.
-
-55
-00:02:28,820 --> 00:02:30,160
-So why is that?
-
-56
-00:02:30,160 --> 00:02:31,950
-So let's look back at the
-program and see if we can
-
-57
-00:02:31,950 --> 00:02:33,540
-figure out what happened.
-
-58
-00:02:33,540 --> 00:02:37,745
-So with the apple, we used
-the set command.
-
-59
-00:02:37,745 --> 00:02:40,880
-And it did what we expected,
-which is that it inserted
-
-60
-00:02:40,880 --> 00:02:44,090
-something with a thing
-of value of apple
-
-61
-00:02:44,090 --> 00:02:46,270
-and a color of red.
-
-62
-00:02:46,270 --> 00:02:49,900
-But with the pear, we didn't
-use a set command.
-
-63
-00:02:49,900 --> 00:02:55,890
-So we didn't actually get a
-document with thing set.
-
-64
-00:02:55,890 --> 00:03:00,470
-So the reason why this statement
-here returned none
-
-65
-00:03:00,470 --> 00:03:04,160
-is that there is nothing with
-thing pear in the collection.
-
-66
-00:03:04,160 --> 00:03:07,950
-And I'll show you the collection
-so you can see it.
-
-67
-00:03:07,950 --> 00:03:13,380
-So we're on Mongo and
-db.things.find.
-
-68
-00:03:13,380 --> 00:03:15,930
-And here's what's in
-that collection.
-
-69
-00:03:15,930 --> 00:03:18,230
-You can see we have
-the apple-- thing
-
-70
-00:03:18,230 --> 00:03:19,770
-apple, color red--
-
-71
-00:03:19,770 --> 00:03:24,000
-but for the pear, we just
-have color green.
-
-72
-00:03:24,000 --> 00:03:26,370
-Thing pear is not there.
-
-73
-00:03:26,370 --> 00:03:30,040
-So when we ran this statement
-right here, we inserted
-
-74
-00:03:30,040 --> 00:03:35,790
-something into the database with
-color of green and thing
-
-75
-00:03:35,790 --> 00:03:36,980
-colon pear.
-
-76
-00:03:36,980 --> 00:03:39,640
-The thing attribute, the
-thing key, did not get
-
-77
-00:03:39,640 --> 00:03:41,330
-set into the document.
-
-78
-00:03:41,330 --> 00:03:43,390
-And so that's an important thing
-to remember when you're
-
-79
-00:03:43,390 --> 00:03:47,510
-doing upserts is that it
-generally just sets the
-
-80
-00:03:47,510 --> 00:03:50,330
-document equal to what's
-on the right.
-
-81
-00:03:50,330 --> 00:03:53,820
-The exception being that if you
-use a set command, then it
-
-82
-00:03:53,820 --> 00:03:58,140
-will use the criteria on the
-left in the query document as
-
-83
-00:03:58,140 --> 00:04:00,490
-a part of what's inserted.
-
-84
-00:04:00,490 --> 00:04:01,010
+00:01:35,020 --> 00:01:35,890
 OK.
 
+44
+00:01:35,890 --> 00:01:38,690
+So let's look at how
+this works in practice.
+
+45
+00:01:38,690 --> 00:01:40,400
+I've written a
+short program here
+
+46
+00:01:40,400 --> 00:01:41,920
+that's going to do some upserts.
+
+47
+00:01:41,920 --> 00:01:44,520
+It's going to put some things
+into a collection called,
+
+48
+00:01:44,520 --> 00:01:46,470
+appropriately, things.
+
+49
+00:01:46,470 --> 00:01:48,047
+And the first thing
+it's going to do
+
+50
+00:01:48,047 --> 00:01:50,130
+is just drop the collection
+so that the collection
+
+51
+00:01:50,130 --> 00:01:51,310
+is completely empty.
+
+52
+00:01:51,310 --> 00:01:55,020
+Then we're going to do
+three different commands--
+
+53
+00:01:55,020 --> 00:01:58,540
+two updates and a replace one--
+all of them with upsert=True.
+
+54
+00:01:58,540 --> 00:02:01,620
+And you can see here that
+it's the last parameter path
+
+55
+00:02:01,620 --> 00:02:04,220
+to update_one, upsert=True--
+or in this case,
+
+56
+00:02:04,220 --> 00:02:06,410
+the third parameter,
+the third parameter,
+
+57
+00:02:06,410 --> 00:02:08,190
+and the third parameter.
+
+58
+00:02:08,190 --> 00:02:10,340
+Now in the first case,
+we're going to update_one.
+
+59
+00:02:10,340 --> 00:02:13,080
+We're going to look for a thing
+that has a value of apple.
+
+60
+00:02:13,080 --> 00:02:14,110
+Thing, apple.
+
+61
+00:02:14,110 --> 00:02:16,780
+And there won't be one, because
+this collection is empty.
+
+62
+00:02:16,780 --> 00:02:22,010
+And then, since upsert is True,
+we're going to $set color red.
+
+63
+00:02:22,010 --> 00:02:24,772
+Now in the next case,
+we're going to update_many,
+
+64
+00:02:24,772 --> 00:02:26,480
+and we're going to
+look for thing banana.
+
+65
+00:02:26,480 --> 00:02:29,694
+And here we're going
+to $set color yellow,
+
+66
+00:02:29,694 --> 00:02:31,110
+and of course it's
+an upsert True,
+
+67
+00:02:31,110 --> 00:02:33,360
+so if this is not going
+to find a document,
+
+68
+00:02:33,360 --> 00:02:34,980
+it's going to insert one.
+
+69
+00:02:34,980 --> 00:02:36,660
+Now update_one and
+update_many are
+
+70
+00:02:36,660 --> 00:02:40,650
+going to work pretty much
+identically in the upsert case,
+
+71
+00:02:40,650 --> 00:02:43,560
+because in the upsert
+case, update_many is going
+
+72
+00:02:43,560 --> 00:02:45,610
+to insert exactly one document.
+
+73
+00:02:45,610 --> 00:02:47,440
+Now replace_one works
+a little differently,
+
+74
+00:02:47,440 --> 00:02:49,210
+and we're going to
+see how this goes.
+
+75
+00:02:49,210 --> 00:02:51,340
+So in this case, we
+look for something
+
+76
+00:02:51,340 --> 00:02:54,430
+with a value of pear
+for the key thing.
+
+77
+00:02:54,430 --> 00:02:58,670
+And we then specify a document
+replace-- color, green.
+
+78
+00:02:58,670 --> 00:03:00,110
+And again, upsert True.
+
+79
+00:03:00,110 --> 00:03:03,274
+After that, we're going to
+find each of these documents.
+
+80
+00:03:03,274 --> 00:03:05,940
+We're going to find the one with
+thing apple, the one with thing
+
+81
+00:03:05,940 --> 00:03:08,523
+banana and thing pear, and we're
+just going to print them out.
+
+82
+00:03:08,523 --> 00:03:10,550
+And that's all
+this program does.
+
+83
+00:03:10,550 --> 00:03:12,370
+It looks for
+exceptions, and here's
+
+84
+00:03:12,370 --> 00:03:14,890
+where it calls the function
+we just wrote using upsert.
+
 85
-00:04:01,010 --> 00:04:03,790
-So it's time for a quiz
-on upserting.
+00:03:14,890 --> 00:03:16,830
+So let's see how this works.
 
 86
-00:04:03,790 --> 00:04:07,400
-So suppose we'd like to upsert
-the following document into
+00:03:16,830 --> 00:03:19,680
+I invoked the Python
+interpreter on using upsert,
 
 87
-00:04:07,400 --> 00:04:08,910
-the collection stuff.
+00:03:19,680 --> 00:03:20,940
+and what do we get?
 
 88
-00:04:08,910 --> 00:04:12,500
-_id bat, friend ball,
-cousin glove.
+00:03:20,940 --> 00:03:23,440
+Well, the first two are
+pretty much what we expect.
 
 89
-00:04:12,500 --> 00:04:15,060
-Which of the following
-statements would work?
+00:03:23,440 --> 00:03:25,550
+In the first two,
+we pull out an apple
 
 90
-00:04:15,060 --> 00:04:16,870
-And I won't go through
-each one right now,
+00:03:25,550 --> 00:03:28,060
+with color red, thing
+apple-- and an underscore ID
 
 91
-00:04:16,870 --> 00:04:19,130
-because they're small.
+00:03:28,060 --> 00:03:29,730
+that was put in by the driver.
 
 92
-00:04:19,130 --> 00:04:20,629
-But which of the following
-statements would work?
+00:03:29,730 --> 00:03:33,040
+The banana, which was the
+result of the update many call,
 
 93
-00:04:20,629 --> 00:04:21,879
+00:03:33,040 --> 00:03:33,790
+looks similar.
+
+94
+00:03:33,790 --> 00:03:38,410
+It's a thing banana and color
+yellow, with an underscore ID.
+
+95
+00:03:38,410 --> 00:03:40,750
+But the pear-- the
+pear is not found.
+
+96
+00:03:40,750 --> 00:03:42,030
+Well, that's kind of weird.
+
+97
+00:03:42,030 --> 00:03:42,940
+What happened here?
+
+98
+00:03:42,940 --> 00:03:45,030
+Well, let's go back
+to the program.
+
+99
+00:03:45,030 --> 00:03:48,130
+It looks like, for
+update_one and update_many,
+
+100
+00:03:48,130 --> 00:03:51,505
+we have a $set operator
+here, and we're specifying
+
+101
+00:03:51,505 --> 00:03:53,450
+that we want color red set.
+
+102
+00:03:53,450 --> 00:03:56,980
+But for the upsert, we're also
+getting thing apple, as well.
+
+103
+00:03:56,980 --> 00:04:00,100
+It's creating a document with
+thing apple and color red.
+
+104
+00:04:00,100 --> 00:04:01,390
+Same thing with update_many.
+
+105
+00:04:01,390 --> 00:04:03,750
+But with replace_one,
+since we specified
+
+106
+00:04:03,750 --> 00:04:06,400
+that this is the exact
+document we want inserted,
+
+107
+00:04:06,400 --> 00:04:09,630
+it doesn't insert a document
+with thing pear and color
+
+108
+00:04:09,630 --> 00:04:10,420
+green.
+
+109
+00:04:10,420 --> 00:04:14,180
+Instead, it inserts a document
+with just color green,
+
+110
+00:04:14,180 --> 00:04:15,700
+and thing pear is missing.
+
+111
+00:04:15,700 --> 00:04:17,089
+So let's look at that.
+
+112
+00:04:17,089 --> 00:04:18,880
+Let's look in the
+Things collection
+
+113
+00:04:18,880 --> 00:04:20,390
+and see what we find.
+
+114
+00:04:20,390 --> 00:04:23,310
+And in fact, we can see
+that there's an apple,
+
+115
+00:04:23,310 --> 00:04:26,040
+there's a banana-- as
+we expected-- the pear,
+
+116
+00:04:26,040 --> 00:04:29,220
+the color green part is there,
+but the pear part is missing.
+
+117
+00:04:29,220 --> 00:04:31,890
+And the pear part is missing
+because we didn't specify it
+
+118
+00:04:31,890 --> 00:04:32,540
+on this side.
+
+119
+00:04:32,540 --> 00:04:36,324
+Now if we had put thing colon
+pear here on the right side,
+
+120
+00:04:36,324 --> 00:04:38,240
+we would have gotten the
+document we expected.
+
+121
+00:04:38,240 --> 00:04:39,110
+All right.
+
+122
+00:04:39,110 --> 00:04:40,890
+Now it's time for a quiz.
+
+123
+00:04:40,890 --> 00:04:42,947
+OK, here's the quiz on upsert.
+
+124
+00:04:42,947 --> 00:04:45,030
+Let's say we want to upsert
+the following document
+
+125
+00:04:45,030 --> 00:04:47,040
+into the collection Stuff.
+
+126
+00:04:47,040 --> 00:04:48,100
+This is using PyMongo.
+
+127
+00:04:48,100 --> 00:04:50,391
+We want the document to look
+like this when we're done.
+
+128
+00:04:50,391 --> 00:04:52,944
+ID bat, friend
+ball, cousin glove.
+
+129
+00:04:52,944 --> 00:04:54,610
+Which of the following
+Python statements
+
+130
+00:04:54,610 --> 00:04:56,380
+work when using PyMongo?
+
+131
+00:04:56,380 --> 00:04:57,690
+Check all that apply.
+
+132
+00:04:57,690 --> 00:05:00,340
+And you better look at
+these pretty carefully.

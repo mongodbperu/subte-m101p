@@ -1,0 +1,12 @@
+1
+00:00:00,000 --> 00:00:00,500
+
+2
+00:00:00,500 --> 00:00:03,240
+OK, and the answer is
+[? db.students.createIndex, ?]
+
+3
+00:00:03,240 --> 00:00:07,880
+class colon one,
+[? student name ?] colon one.

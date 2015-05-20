@@ -1,124 +1,152 @@
 1
-00:00:00,000 --> 00:00:00,800
+00:00:00,000 --> 00:00:00,499
 
 2
-00:00:00,800 --> 00:00:02,400
+00:00:00,499 --> 00:00:01,720
 Welcome to week four.
 
 3
-00:00:02,400 --> 00:00:04,640
-Congratulations on making
-it to this point.
+00:00:01,720 --> 00:00:03,800
+Congratulations on
+making it to this point.
 
 4
-00:00:04,640 --> 00:00:06,820
+00:00:03,800 --> 00:00:05,812
 This week we're going to
 talk about performance.
 
 5
-00:00:06,820 --> 00:00:08,800
-Now computer system performance
-is driven by lots
+00:00:05,812 --> 00:00:07,270
+The performance of
+computer systems
 
 6
-00:00:08,800 --> 00:00:11,170
-of factors, including the
-speed of the underlying
+00:00:07,270 --> 00:00:09,460
+is driven by a variety
+of factors including
 
 7
-00:00:11,170 --> 00:00:14,870
-operations, like the disk
-and memory and the CPU.
+00:00:09,460 --> 00:00:11,910
+the performance of the
+underlying hardware-- the CPU,
 
 8
-00:00:14,870 --> 00:00:17,000
-But the largest driver for
-performance is going to be
+00:00:11,910 --> 00:00:13,460
+the disk, and the memory.
 
 9
-00:00:17,000 --> 00:00:18,870
-your algorithmic performance.
+00:00:13,460 --> 00:00:15,451
+Once you've chosen a
+hardware configuration
 
 10
-00:00:18,870 --> 00:00:21,300
-And for a database server,
-that's going to be how fast
+00:00:15,451 --> 00:00:17,950
+it's going to be your algorithms
+that determine performance.
 
 11
-00:00:21,300 --> 00:00:23,250
-can we execute queries.
+00:00:17,950 --> 00:00:20,144
+And for a database-backed
+application
 
 12
-00:00:23,250 --> 00:00:26,720
-And that's driven by whether or
-not the database can use an
+00:00:20,144 --> 00:00:21,810
+it's going to be the
+algorithms that are
 
 13
-00:00:26,720 --> 00:00:28,700
-index to look data up.
+00:00:21,810 --> 00:00:24,220
+used to satisfy your queries.
 
 14
-00:00:28,700 --> 00:00:30,990
-So this week we're going to
-talk a lot about indexes.
+00:00:24,220 --> 00:00:26,170
+There are two ways
+you can impact
 
 15
-00:00:30,990 --> 00:00:33,350
-We're going to talk about what
-they are, we're going to talk
+00:00:26,170 --> 00:00:29,100
+the latency and throughput
+of database queries.
 
 16
-00:00:33,350 --> 00:00:36,280
-about how to create them, and
-we're going to talk about how
+00:00:29,100 --> 00:00:31,790
+One is to add indexes
+to collections.
 
 17
-00:00:36,280 --> 00:00:39,640
-you figure out which parts
-of your program are slow.
+00:00:31,790 --> 00:00:35,250
+And two is to distribute the
+load across multiple servers
 
 18
-00:00:39,640 --> 00:00:42,250
-Finally, we're going to discuss
-sharding a little bit,
+00:00:35,250 --> 00:00:36,890
+using sharding.
 
 19
-00:00:42,250 --> 00:00:45,340
-which is a technique for
-breaking up large collections
+00:00:36,890 --> 00:00:39,050
+This week we're going to
+talk about performance.
 
 20
-00:00:45,340 --> 00:00:49,700
-across multiple servers to
-exploit greater parallelism.
+00:00:39,050 --> 00:00:40,610
+But to make matters
+just a little bit
 
 21
-00:00:49,700 --> 00:00:52,850
-Now performance is normally
-the domain of database
+00:00:40,610 --> 00:00:45,290
+more interesting in MongoDB 3.0
+we introduced pluggable storage
 
 22
-00:00:52,850 --> 00:00:55,600
-administrators, but good
-developers have an
+00:00:45,290 --> 00:00:46,470
+engines.
 
 23
-00:00:55,600 --> 00:00:57,370
-understanding of performance.
+00:00:46,470 --> 00:00:48,880
+A storage engine is the
+software that controls
 
 24
-00:00:57,370 --> 00:00:59,770
-They write with performance in
-mind, and they can find their
+00:00:48,880 --> 00:00:51,190
+how the data is stored on disk.
 
 25
-00:00:59,770 --> 00:01:02,350
-own performance problems
-within their programs.
+00:00:51,190 --> 00:00:53,630
+We're also going to talk about
+how the choice of storage
 
 26
-00:01:02,350 --> 00:01:03,600
-So let's get started.
+00:00:53,630 --> 00:00:55,460
+engine impact performance.
 
 27
-00:01:03,600 --> 00:01:04,690
+00:00:55,460 --> 00:00:58,340
+Now performance is
+normally the domain
+
+28
+00:00:58,340 --> 00:00:59,820
+of database administrators.
+
+29
+00:00:59,820 --> 00:01:02,190
+But good developers
+understand performance
+
+30
+00:01:02,190 --> 00:01:04,849
+and write their applications
+with performance in mind.
+
+31
+00:01:04,849 --> 00:01:07,280
+And they can de-bug the
+performance problems
+
+32
+00:01:07,280 --> 00:01:08,580
+within their applications.
+
+33
+00:01:08,580 --> 00:01:10,380
+Let's get started.

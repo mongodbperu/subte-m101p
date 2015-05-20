@@ -1,0 +1,29 @@
+1
+00:00:00,000 --> 00:00:00,500
+
+2
+00:00:00,500 --> 00:00:02,659
+The answer is you
+need to call $set.
+
+3
+00:00:02,659 --> 00:00:04,450
+Again, you've got to
+protect it with quotes
+
+4
+00:00:04,450 --> 00:00:06,570
+because it's inside Python.
+
+5
+00:00:06,570 --> 00:00:09,910
+Then, the value of
+$set is a document with
+
+6
+00:00:09,910 --> 00:00:12,010
+'examiner':'Jones'.
+
+7
+00:00:12,010 --> 00:00:13,830
+That's the answer.
