@@ -3,8 +3,8 @@
 
 2
 00:00:00,500 --> 00:00:02,279
-This week is mostly
-about indexing.
+En esta semana vamos a tratar
+principalmente de índices.
 
 3
 00:00:02,279 --> 00:00:03,820
