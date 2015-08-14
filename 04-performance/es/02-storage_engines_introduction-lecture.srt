@@ -8,22 +8,21 @@ principalmente de índices.
 
 3
 00:00:02,279 --> 00:00:03,820
-And then at the very
-end of the week,
+Y muy al final de la semana,
 
 4
 00:00:03,820 --> 00:00:05,400
-we're going to talk
-about sharding,
+vamos a tratar algo de 
+particionado (sharding),
 
 5
 00:00:05,400 --> 00:00:07,410
-which is distributing
-database queries
+que consiste en distribuir
+las consultas a la base de datos
 
 6
 00:00:07,410 --> 00:00:08,682
-across multiple servers.
+entre varios servidores.
 
 7
 00:00:08,682 --> 00:00:10,640
