@@ -26,27 +26,27 @@ entre varios servidores.
 
 7
 00:00:08,682 --> 00:00:10,640
-But before we do that,
-we need to introduce you
+Aunque antes de eso,
+tenemos que presentar 
 
 8
 00:00:10,640 --> 00:00:14,790
-to the idea of what a storage
-engine is inside the database,
+lo que es el motor de almacenamiento
+dentro de una base de datos,
 
 9
 00:00:14,790 --> 00:00:16,890
-because this was a
-big year for MongoDB.
+ya que ha sido un año magnífico
+para MongoDB.
 
 10
 00:00:16,890 --> 00:00:21,260
-New in MongoDB 3.0 is that
-we offer pluggable storage
+Como novedad en MongoDB 3.0 está
+la posibilidad de motores de
 
 11
 00:00:21,260 --> 00:00:22,090
-engines.
+almacenamiento acoplables.
 
 12
 00:00:22,090 --> 00:00:23,570
