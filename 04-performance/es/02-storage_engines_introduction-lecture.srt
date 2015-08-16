@@ -50,41 +50,41 @@ almacenamiento acoplables.
 
 12
 00:00:22,090 --> 00:00:23,570
-Now, what is a storage engine?
+Bien, y ¿qué es un motor de almacenamiento?
 
 13
 00:00:23,570 --> 00:00:26,070
-A storage engine
-is the interface
+Un motor de almacenamiento 
+es la interfaz 
 
 14
 00:00:26,070 --> 00:00:28,780
-between the persistent
-storage, which
+entre el almacenamiento
+permanente, que
 
 15
 00:00:28,780 --> 00:00:31,810
-we'll call the disks, which
-might be a solid state disk,
+denominaremos discos y que 
+pueden ser discos de estado sólido (SSD),
 
 16
 00:00:31,810 --> 00:00:34,830
-and the database
-itself, MongoDB.
+y la propia base de datos, 
+MongoDB.
 
 17
 00:00:34,830 --> 00:00:36,840
-And this is the Mongo server.
+Este es el servidor Mongo.
 
 18
 00:00:36,840 --> 00:00:39,700
-So the MongoDB server
-talks to the disk,
+Así que el el servidor MongoDB
+habla con el disco,
 
 19
 00:00:39,700 --> 00:00:43,360
-the persistent storage,
-through a storage engine.
+el almacenamiento permanente,
+mediante el motor de almacenamiento.
 
 20
 00:00:43,360 --> 00:00:46,084
