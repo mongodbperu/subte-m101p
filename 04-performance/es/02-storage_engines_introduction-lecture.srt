@@ -403,8 +403,8 @@ afecta el API
 
 86
 00:03:17,355 --> 00:03:20,824
-que se presenta la base de datos 
-al programador, por ejemplo.
+que presenta al programador
+la base de datos, por ejemplo.
 
 87
 00:03:20,824 --> 00:03:22,490
