@@ -416,54 +416,54 @@ MMAP o WiredTiger.
 
 89
 00:03:24,014 --> 00:03:26,430
-But there are going to be some
-differences in performance,
+Aunque van a haber algunas
+diferencias en cuanto a rendimiento,
 
 90
 00:03:26,430 --> 00:03:28,630
-and that's why we're
-going to discuss it.
+y este es el motivo por el que
+estamos hablando de ello.
 
 91
 00:03:28,630 --> 00:03:30,265
-Now it's time for a quiz.
+Ahora es el momento de una pregunta.
 
 92
 00:03:30,265 --> 00:03:31,890
-"The storage engine
-directly determines
+"¿El motor de almacenamiento
+determina directamente
 
 93
 00:03:31,890 --> 00:03:32,848
-which of the following?
+cuáles de las siguientes?
 
 94
 00:03:32,848 --> 00:03:34,070
-Check all that apply.
+Selecciona todas las correctas.
 
 95
 00:03:34,070 --> 00:03:35,210
-The data file format.
+El formato del archivo de datos.
 
 96
 00:03:35,210 --> 00:03:36,900
-Architecture of a cluster.
+Architectura de un cluster.
 
 97
 00:03:36,900 --> 00:03:38,560
-The wire protocol
-for the drivers.
+El protocolo de conexión 
+para los drivers.
 
 98
 00:03:38,560 --> 00:03:40,450
-And the format of the indexes."
+Y el formato de los índices."
 
 99
 00:03:40,450 --> 00:03:42,270
-I didn't directly talk
-about some of these,
+No he mencionado directamente
+algunos de ellos,
 
 100
 00:03:42,270 --> 00:03:45,450
-so you might have to guess
-based on what I said.
+aunque podrás acertarlo 
+basándote en lo que he contado.
