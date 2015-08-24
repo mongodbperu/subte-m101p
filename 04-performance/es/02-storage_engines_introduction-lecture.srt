@@ -170,249 +170,249 @@ disco es muy lento.
 
 37
 00:01:31,230 --> 00:01:34,730
-So since the idea of a database
-is to store stuff persistently,
+Como el objetivo de una base de datos
+es almacenar cosas de forma persistente,
 
 38
 00:01:34,730 --> 00:01:36,510
-what happens is
-the storage engine
+lo que pasa es que
+el motor de almacenamiento
 
 39
 00:01:36,510 --> 00:01:38,930
-has control of memory
-on your computer
+controla la memoria del 
+ordenador
 
 40
 00:01:38,930 --> 00:01:41,800
-and it can decide
-what to put in memory
+y puede decidir
+qué pone en la memoria,
 
 41
 00:01:41,800 --> 00:01:45,030
-and what to take out of memory
-and what to persist to disk
+qué saca de la memoria
+y qué se graba en el disco.
 
 42
 00:01:45,030 --> 00:01:45,800
-and when.
+y cuándo.
 
 43
 00:01:45,800 --> 00:01:48,340
-So database server itself
-defers the handling
+Así la propia base de datos
+delega la gestión
 
 44
 00:01:48,340 --> 00:01:51,264
-of the memory on the server
-as well as the disk itself
+de la memoria en el servidor
+así como lo hace el disco
 
 45
 00:01:51,264 --> 00:01:52,180
-to the storage engine.
+en el motor de almacenamiento.
 
 46
 00:01:52,180 --> 00:01:52,830
 
 47
 00:01:52,830 --> 00:01:56,250
-Now, we offer a pluggable
-storage engine architecture
+Bien, ahora disponemos de una arquitectura
+modular para los motores de almacenamiento
 
 48
 00:01:56,250 --> 00:01:58,116
-where you can use more than one.
+de manera que se puede usar más de uno.
 
 49
 00:01:58,116 --> 00:01:59,990
-The idea here is that
-let's say you had a car
+El concepto es como si tuvieras
+un coche
 
 50
 00:01:59,990 --> 00:02:02,120
-and you want it to
-have different engines.
+y pudieras ponerle diferentes
+motores.
 
 51
 00:02:02,120 --> 00:02:03,870
-You could put the
-engine in the car,
+Pones un motor en
+el coche,
 
 52
 00:02:03,870 --> 00:02:06,520
-and then it would probably
-change the car's performance
+y seguramente se obtendrían unas
+características de rendimiento
 
 53
 00:02:06,520 --> 00:02:07,740
-characteristics.
+del coche.
 
 54
 00:02:07,740 --> 00:02:10,060
-For instance, it might
-accelerate faster
+Por ejemplo, podría
+tener mayor aceleración
 
 55
 00:02:10,060 --> 00:02:12,580
-or it might get better
-or worse gas mileage
+o podría conseguir mejores
+o peores consumos
 
 56
 00:02:12,580 --> 00:02:15,960
-because of the type of
-engine you put into your car.
+dependiendo del tipo de motor
+que se haya puesto en el coche.
 
 57
 00:02:15,960 --> 00:02:18,100
-And similarly, depending
-on the type of engine
+De manera análoga, dependiendo del
+tipo de motor 
 
 58
 00:02:18,100 --> 00:02:20,360
-that you put into
-MongoDB, you're
+que se ponga en MongoDB, 
+se obtendrían 
 
 59
 00:02:20,360 --> 00:02:22,530
-going to get different
-performance characteristics.
+diferentes características
+de rendimiento.
 
 60
 00:02:22,530 --> 00:02:23,450
-And that's why it's
-important that we
+Por esto es importante 
+que tengamos
 
 61
 00:02:23,450 --> 00:02:25,110
-have some basic
-understanding of this
+ciertas nociones de esto
 
 62
 00:02:25,110 --> 00:02:27,144
-before we move on to this week.
+antes de avanzar esta semana.
 
 63
 00:02:27,144 --> 00:02:28,560
-There are two main
-storage engines
+Principalmente hay dos
+motores de almacenamiento
 
 64
 00:02:28,560 --> 00:02:31,170
-that ship with MongoDB that
-we support, and one of them
+que vienen con MongoDB con 
+soporte, uno de ellos 
 
 65
 00:02:31,170 --> 00:02:35,530
-is called MMAP, and the other
-one is called WiredTiger.
+se llama MMAP y el otro 
+se denomina WiredTiger.
 
 66
 00:02:35,530 --> 00:02:36,615
-MMAP is the default.
+MMAP es el que viene por defecto.
 
 67
 00:02:36,615 --> 00:02:37,990
-It's what you'll
-get if you don't
+Es el que se obtiene 
+si no se indica
 
 68
 00:02:37,990 --> 00:02:41,026
-give any options to MongoD when
-you start at the command line.
+ninguna opción a MongoD cuando
+se inicia mediante la línea de comandos.
 
 69
 00:02:41,026 --> 00:02:43,150
-And MMAP, we're going to
-go through how this works.
+MMAP, vamos a ver cómo
+funciona.
 
 70
 00:02:43,150 --> 00:02:45,108
-It's been the storage
-engine for quite a while.
+Ha sido el motor de almacenamiento
+desde hace tiempo.
 
 71
 00:02:45,108 --> 00:02:48,470
-WiredTiger came in through
-acquisition in 2014.
+WiredTiger se añadió mediante una
+adquisición en 2014.
 
 72
 00:02:48,470 --> 00:02:50,950
-MongoDB acquired the
-WiredTiger company.
+MongoDB adquierió la 
+compañía WiredTiger.
 
 73
 00:02:50,950 --> 00:02:53,530
-This is the same team
-that built Berkeley DB
+Se trata del mismo equipo
+que desarrolló Berkeley DB
 
 74
 00:02:53,530 --> 00:02:57,440
-and also a lot of them were at
-the company SleepyCat, if you
+y muchos de ellos estaban en
+otra, SleepyCat, por si 
 
 75
 00:02:57,440 --> 00:02:59,299
-know your computer history.
+conoces la historia de la compañía.
 
 76
 00:02:59,299 --> 00:03:00,965
-So now you have some
-basic understanding
+Bien, ahora que ya tenemos 
+cierta comprensión 
 
 77
 00:03:00,965 --> 00:03:02,210
-of what a storage engine is.
+de los que es un motor de 
+almacenamiento.
 
 78
 00:03:02,210 --> 00:03:03,572
-So what is a storage engine not?
+Veamos lo qué no es un motor
+de almacenamiento.
 
 79
 00:03:03,572 --> 00:03:05,780
-What about some of the things
-that the storage engine
+¿Qué me dices de las cosas que
+un motro de almacenamiento
 
 80
 00:03:05,780 --> 00:03:06,405
-doesn't handle?
+no gestiona?
 
 81
 00:03:06,405 --> 00:03:08,750
-Well, if you have a
-bunch of MongoDB servers
+Bien, si tienes una serie de
+servidores MongoDB
 
 82
 00:03:08,750 --> 00:03:10,950
-all running in a cluster,
-the storage engine
+ejecutándose en un cluster,
+al motor de almacenamiento
 
 83
 00:03:10,950 --> 00:03:14,210
-doesn't affect the communication
-between those different MongoDB
+no le afectan la comunicación
+entre estos servidores 
 
 84
 00:03:14,210 --> 00:03:15,140
-servers.
+MongoDB.
 
 85
 00:03:15,140 --> 00:03:17,355
-And the storage engine
-doesn't affect the API
+Al motor de almacenamiento no le
+afecta el API 
 
 86
 00:03:17,355 --> 00:03:20,824
-that the database presents to
-the programmer, for example.
+que se presenta la base de datos 
+al programador, por ejemplo.
 
 87
 00:03:20,824 --> 00:03:22,490
-It's the same pretty
-much whether or not
+Es casi lo mismo usar o no
 
 88
 00:03:22,490 --> 00:03:24,014
-you use MMAP or WiredTiger.
+MMAP o WiredTiger.
 
 89
 00:03:24,014 --> 00:03:26,430
