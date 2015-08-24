@@ -88,85 +88,85 @@ mediante el motor de almacenamiento.
 
 20
 00:00:43,360 --> 00:00:46,084
-So that's the storage
-engine right there.
+Bien, aquí tenemos el motor de
+almacenamiento.
 
 21
 00:00:46,084 --> 00:00:48,250
-And you, the programmer,
-you're going to be writing,
+Y tú, como programador,
+vas a escribir,
 
 22
 00:00:48,250 --> 00:00:49,900
-let's say, a Python program.
+pongamos, un programa en Python.
 
 23
 00:00:49,900 --> 00:00:52,320
-And so you'll be
-writing in Python
+Así que escribes
+tu programa en Python
 
 24
 00:00:52,320 --> 00:00:57,110
-and it'll be using the
-PyMongo driver which
+y utilizas el driver 
+PyMongo que
 
 25
 00:00:57,110 --> 00:01:00,670
-talks to the database server
-using the wire protocol.
+habla con el servidor de base de
+datos mediante un protocolo de conexión.
 
 26
 00:01:00,670 --> 00:01:04,230
-And when it wants to create
-data, read data, update,
+Y cuando el programa quiera crear datos, 
+leer datos, actualizarlos,
 
 27
 00:01:04,230 --> 00:01:07,840
-and delete data, it'll talk
-to the storage engine which
+o borrarlos, hablará con el 
+motor de almacenamiento que 
 
 28
 00:01:07,840 --> 00:01:09,950
-will then talk to the disk.
+hablará entonces con el disco.
 
 29
 00:01:09,950 --> 00:01:12,530
-And all the different
-structures that
+Y todas la estructuras 
+implicadas que
 
 30
 00:01:12,530 --> 00:01:14,300
-hold the documents,
-that hold the indexes,
+mantienen los documentos,
+que mantienen los índices,
 
 31
 00:01:14,300 --> 00:01:16,440
-and the metadata
-involving the documents
+y los metadatos relativos
+a los documentos
 
 32
 00:01:16,440 --> 00:01:18,810
-are all written to
-the persistent storage
+también se escriben en un
+almacenamiento persistente
 
 33
 00:01:18,810 --> 00:01:20,830
-by this storage engine.
+mediante el motor de almacenamiento.
 
 34
 00:01:20,830 --> 00:01:23,730
-Now, it may be the case that
-the storage engine itself
+Bien, puede darse el caso que
+el motor de almacenamiento 
 
 35
 00:01:23,730 --> 00:01:28,310
-decides to use memory
-to optimize the process.
+decida utilizar la memoria 
+para optimizar el proceso.
 
 36
 00:01:28,310 --> 00:01:31,230
-So in other words, the
-disk is really slow.
+Dicho de otra forma, el 
+disco es muy lento.
 
 37
 00:01:31,230 --> 00:01:34,730
