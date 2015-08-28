@@ -31,7 +31,7 @@ tenemos que presentar
 
 8
 00:00:10,640 --> 00:00:14,790
-lo que es el motor de almacenamiento
+qué es el motor de almacenamiento
 dentro de una base de datos,
 
 9
