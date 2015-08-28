@@ -78,7 +78,7 @@ Este es el servidor Mongo.
 
 18
 00:00:36,840 --> 00:00:39,700
-Así que el el servidor MongoDB
+Así que el servidor MongoDB
 habla con el disco,
 
 19
@@ -108,7 +108,7 @@ tu programa en Python
 24
 00:00:52,320 --> 00:00:57,110
 y utilizas el driver 
-PyMongo que
+PyMongo, que
 
 25
 00:00:57,110 --> 00:01:00,670
@@ -137,7 +137,7 @@ implicadas que
 30
 00:01:12,530 --> 00:01:14,300
 mantienen los documentos,
-que mantienen los índices,
+los índices,
 
 31
 00:01:14,300 --> 00:01:16,440
@@ -191,7 +191,7 @@ qué pone en la memoria,
 41
 00:01:41,800 --> 00:01:45,030
 qué saca de la memoria
-y qué se graba en el disco.
+y qué se graba en el disco
 
 42
 00:01:45,030 --> 00:01:45,800
@@ -293,12 +293,12 @@ antes de avanzar esta semana.
 63
 00:02:27,144 --> 00:02:28,560
 Principalmente hay dos
-motores de almacenamiento
+motores de almacenamiento soportados
 
 64
 00:02:28,560 --> 00:02:31,170
-que vienen con MongoDB con 
-soporte, uno de ellos 
+que vienen con MongoDB,
+uno de ellos 
 
 65
 00:02:31,170 --> 00:02:35,530
@@ -316,7 +316,7 @@ si no se indica
 
 68
 00:02:37,990 --> 00:02:41,026
-ninguna opción a MongoD cuando
+ninguna opción a mongod cuando
 se inicia mediante la línea de comandos.
 
 69
@@ -336,7 +336,7 @@ adquisición en 2014.
 
 72
 00:02:48,470 --> 00:02:50,950
-MongoDB adquierió la 
+MongoDB adquirió la 
 compañía WiredTiger.
 
 73
@@ -360,18 +360,18 @@ cierta comprensión
 
 77
 00:03:00,965 --> 00:03:02,210
-de los que es un motor de 
+de lo que es un motor de 
 almacenamiento.
 
 78
 00:03:02,210 --> 00:03:03,572
-Veamos lo qué no es un motor
+Veamos qué no es un motor
 de almacenamiento.
 
 79
 00:03:03,572 --> 00:03:05,780
 ¿Qué me dices de las cosas que
-un motro de almacenamiento
+un motor de almacenamiento
 
 80
 00:03:05,780 --> 00:03:06,405
@@ -403,8 +403,8 @@ afecta el API
 
 86
 00:03:17,355 --> 00:03:20,824
-que presenta al programador
-la base de datos, por ejemplo.
+que presenta la base de datos
+al programador, por ejemplo.
 
 87
 00:03:20,824 --> 00:03:22,490
@@ -447,7 +447,7 @@ El formato del archivo de datos.
 
 96
 00:03:35,210 --> 00:03:36,900
-Architectura de un cluster.
+Arquitectura de un cluster.
 
 97
 00:03:36,900 --> 00:03:38,560
