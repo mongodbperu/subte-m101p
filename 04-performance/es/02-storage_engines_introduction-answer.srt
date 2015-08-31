@@ -27,7 +27,7 @@ en esta lección.
 
 7
 00:00:11,470 --> 00:00:13,220
-No afecta en el diseño 
+No afecta al diseño 
 arquitectónico del
 
 8
