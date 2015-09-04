@@ -3,118 +3,119 @@
 
 2
 00:00:00,499 --> 00:00:02,570
-Let's talk about the
-MMAP storage engine.
+Vamos a ver el motor de 
+almacenamiento MMAP.
 
 3
 00:00:02,570 --> 00:00:03,675
-We call it MMAPV V1.
+Se denomina MMAPV V1.
 
 4
 00:00:03,675 --> 00:00:06,220
-It's the original storage
-engine of MongoDB.
+Y es el motor de almacenamiento 
+inicial de MongoDB.
 
 5
 00:00:06,220 --> 00:00:09,390
-And it uses the MMAP system
-call under the covers
+Utiliza llamadas al sistema 
+MMAP por debajo
 
 6
 00:00:09,390 --> 00:00:11,980
-in order to implement
-storage management.
+para implementar la 
+gestión del almacenamiento.
 
 7
 00:00:11,980 --> 00:00:14,970
-Let's look at what the MMAP
-system call looks like.
+Veamos que pinta tienen estas
+llamadas al sistema MMAP.
 
 8
 00:00:14,970 --> 00:00:16,690
-It's right here.
+Aquí las tenemos.
 
 9
 00:00:16,690 --> 00:00:19,750
-On any Unix machine,
-if you man MMAP,
+En cualquier máquina Unix,
+si escribes 'man MMAP'
+
 
 10
 00:00:19,750 --> 00:00:22,530
-you'll see that it talks about
-allocating memory or mapping
+se puede observar que trata de
+asignación de memoria o de mapeo
 
 11
 00:00:22,530 --> 00:00:25,247
-files or devices into
-memory, causes the pages
+de archivos o dispositivos a 
+memoria, hace que la dirección
 
 12
 00:00:25,247 --> 00:00:27,580
-starting address and continuing
-for at most length bytes
+de comienzo de las páginas 
+continuando por las mayores longitudes en bytes
 
 13
 00:00:27,580 --> 00:00:29,663
-to be mapped from the
-object described by the file
+se mapeen desde el objeto descrito por
+el descriptor del archivo 
 
 14
 00:00:29,663 --> 00:00:31,460
-descriptor at an offset.
+a un desplazamiento.
 
 15
 00:00:31,460 --> 00:00:33,660
-So what does that
-really practically mean?
+Pero, ¿qué significa todo esto
+en la práctica?
 
 16
 00:00:33,660 --> 00:00:35,735
-Well, MongoDB needs a
-place to put documents,
+Bien, MongoDB necesita un
+sitio en el que poner los documentos,
 
 17
 00:00:35,735 --> 00:00:38,210
-and it puts the
-documents inside files.
+y pone los documentos
+dentro de archivos.
 
 18
 00:00:38,210 --> 00:00:41,050
-And to do that, it initially
-allocates, let's say,
+Y para hacerlo, inicialmente,
+asigna, digamos,
 
 19
 00:00:41,050 --> 00:00:41,860
-a large file.
+un archivo muy grande.
 
 20
 00:00:41,860 --> 00:00:44,560
-Let's say it allocates
-100 gigabyte file on disk.
+Supongamos que asigna en el disco
+un archivo de 100 gigas.
 
 21
 00:00:44,560 --> 00:00:47,520
-So we wind up with 100 gigabyte
-file on disk right here.
+Así que ya tenenos un archivo de 
+100 gigas en el disco.
 
 22
 00:00:47,520 --> 00:00:49,814
-And this disk may or may
-not be physically contiguous
+Y este espacio en disco puede que sea (o no) 
+físicamente contiguo 
 
 23
 00:00:49,814 --> 00:00:52,230
-on the actual disk, because
-there are some algorithms that
+en el disco real, pues 
+hay algoritmos que
 
 24
 00:00:52,230 --> 00:00:55,330
-occur beneath that layer that
-control the actual allocation
+se ejecutan por debajo de la capa
+que controlan la asignación real
 
 25
 00:00:55,330 --> 00:00:57,000
-of space on a disk.
+del espacio en el disco.
 
 26
 00:00:57,000 --> 00:00:59,920
