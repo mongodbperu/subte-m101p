@@ -9,7 +9,7 @@ de almacenamiento controla el formato
 3
 00:00:03,090 --> 00:00:06,720
 del archivo de datos, es decir, cómo se
-escriben los datos en el disco o en el almacenamiento externo.
+escriben los datos en el disco,
 
 4
 00:00:06,720 --> 00:00:08,307
@@ -27,8 +27,8 @@ en esta lección.
 
 7
 00:00:11,470 --> 00:00:13,220
-No afecta al diseño 
-arquitectónico del
+No afecta al diseño de la
+arquitectura del
 
 8
 00:00:13,220 --> 00:00:15,770
