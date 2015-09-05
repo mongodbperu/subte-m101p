@@ -3,68 +3,68 @@
 
 2
 00:00:00,500 --> 00:00:03,090
-And the answer is that a storage
-engine controls the data file
+Y la respuesta es que el motor
+de almacenamiento controla el formato
 
 3
 00:00:03,090 --> 00:00:06,720
-format, how the data is written
-to disk to persistent storage,
+del archivo de datos, es decir, cómo se
+escriben los datos en el disco,
 
 4
 00:00:06,720 --> 00:00:08,307
-and it definitely
-affects the format
+y esto, sin duda, afecta al
+formato
 
 5
 00:00:08,307 --> 00:00:10,390
-of the indexes, which we
-talked about a little bit
+de los índices, de los que
+hablaremos un poco 
 
 6
 00:00:10,390 --> 00:00:11,470
-in this lesson.
+en esta lección.
 
 7
 00:00:11,470 --> 00:00:13,220
-It doesn't affect the
-overall architecture
+No afecta al diseño de la
+arquitectura del
 
 8
 00:00:13,220 --> 00:00:15,770
-of a cluster in terms
-of the replication,
+cluster, en lo que respecta
+a replicación
 
 9
 00:00:15,770 --> 00:00:17,519
-or how data gets
-transferred from server
+o a cómo se transfieren los
+datos entre servidores
 
 10
 00:00:17,519 --> 00:00:19,060
-to server to provide
-fault tolerance-
+para proporcionar 
+tolerancia a fallos,
 
 11
 00:00:19,060 --> 00:00:21,069
-they're not affected
-by the storage engine.
+todo esto no es competencia del 
+motor de almacenamiento.
 
 12
 00:00:21,069 --> 00:00:22,610
-And the wire protocol
-for the drivers
+Tampoco el protocolo 
+de conexión de los drivers 
 
 13
 00:00:22,610 --> 00:00:24,480
-isn't effected at
-all because remember
+se ve especialmente afectado
+porque, recordemos,
 
 14
 00:00:24,480 --> 00:00:27,350
-that the drivers talk to the
-server and the server talks
+el driver habla con el servidor
+y el servidor habla
 
 15
 00:00:27,350 --> 00:00:29,340
-to the storage engine.
+con el motor de almacenamiento.
